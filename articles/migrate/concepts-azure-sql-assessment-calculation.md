@@ -5,16 +5,16 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: conceptual
 ms.date: 02/07/2021
-ms.openlocfilehash: 2bb68c8c183e3de132bc7cf4504714a260ea2683
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: c2e739a45c7915c957ca89e5b01b98afa945d03e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025127"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557199"
 ---
 # <a name="assessment-overview-migrate-to-azure-sql"></a>Değerlendirmeye genel bakış (Azure SQL 'e geçiş)
 
-Bu makalede, [Azure geçişi: bulma ve değerlendirme aracı](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-discovery-and-assessment-tool)kullanılarak bir VMware ORTAMıNDAN Azure SQL veritabanlarına veya yönetilen örneklere şirket içi SQL Server örnekleri geçirmeye yönelik değerlendirmelere genel bakış sunulmaktadır.
+Bu makalede, [Azure geçişi: bulma ve değerlendirme aracı](./migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool)kullanılarak bir VMware ORTAMıNDAN Azure SQL veritabanlarına veya yönetilen örneklere şirket içi SQL Server örnekleri geçirmeye yönelik değerlendirmelere genel bakış sunulmaktadır.
 
 ## <a name="whats-an-assessment"></a>Değerlendirme nedir?
 Bulma ve değerlendirme aracı ile bir değerlendirme, verilerin zaman içindeki bir noktaya görüntüsüdür ve kullanıma hazır olma durumunu ölçer ve şirket içi sunucuları Azure 'a geçirme etkisini tahmin eder.
@@ -80,7 +80,7 @@ Azure SQL değerlendirmesi özelliklerine aşağıda verilmiştir:
 **Yüzdebirlik kullanımı** | Yüzdebirlik kullanımı, doğru hale getirmek için kullanılan performans örneğinin yüzdebirlik değerini belirtir.
 **Konfor katsayısı** | Değerlendirme sırasında kullanılan arabellek. Dönemsel kullanım, kısa performans geçmişi ve gelecekteki kullanımlarda olası artışlar gibi sorunlar için BT hesapları.<br/><br/> Örneğin, %20 kullanımı olan 10 çekirdekli bir örnek, normalde iki çekirdekli örnekle sonuçlanır. 2,0 ile, sonuç olarak dört çekirdekli bir örnek olur.
 **Teklif/lisanslama programı** | Kayıtlı olduğunuz [Azure teklifi](https://azure.microsoft.com/support/legal/offer-details/) . Şu anda yalnızca Kullandıkça öde ve kullandıkça öde geliştirme/test seçeneklerinden birini belirleyebilirsiniz. Ayrılmış kapasiteyi uygulayarak ve kullandıkça öde teklifinin üzerine Azure Hibrit Avantajı ek indirim sunabileceğinize dikkat edin.
-**Hizmet katmanı** | Azure SQL veritabanı ve/veya Azure SQL yönetilen örneği 'ne geçiş için iş ihtiyaçlarınızı karşılamak üzere en uygun hizmet katmanı seçeneği:<br/><br/>Azure geçişi 'nin sunucularınız için en uygun hizmet katmanını önermesini istiyorsanız **önerilir** . Bu genel amaçlı veya Iş açısından kritik olabilir. <br/><br/> **Genel amaçlı** Bütçe odaklı iş yükleri için tasarlanan bir Azure SQL yapılandırması istiyorsanız. [Daha Fazla Bilgi](https://docs.microsoft.com/azure/azure-sql/database/service-tier-general-purpose) <br/><br/> **İş açısından kritik** Düşük gecikmeli iş yükleri için tasarlanan bir Azure SQL yapılandırmasının, hatalara ve hızlı yük devretmeler ile yüksek dayanıklılık sağlamak istiyorsanız. [Daha Fazla Bilgi](https://docs.microsoft.com/azure/azure-sql/database/service-tier-business-critical)
+**Hizmet katmanı** | Azure SQL veritabanı ve/veya Azure SQL yönetilen örneği 'ne geçiş için iş ihtiyaçlarınızı karşılamak üzere en uygun hizmet katmanı seçeneği:<br/><br/>Azure geçişi 'nin sunucularınız için en uygun hizmet katmanını önermesini istiyorsanız **önerilir** . Bu genel amaçlı veya Iş açısından kritik olabilir. <br/><br/> **Genel amaçlı** Bütçe odaklı iş yükleri için tasarlanan bir Azure SQL yapılandırması istiyorsanız. [Daha Fazla Bilgi](../azure-sql/database/service-tier-general-purpose.md) <br/><br/> **İş açısından kritik** Düşük gecikmeli iş yükleri için tasarlanan bir Azure SQL yapılandırmasının, hatalara ve hızlı yük devretmeler ile yüksek dayanıklılık sağlamak istiyorsanız. [Daha Fazla Bilgi](../azure-sql/database/service-tier-business-critical.md)
 **Para Birimi** | Hesabınız için faturalandırma para birimi.
 **İndirim (%)** | Azure teklifinin üzerine aldığınız, aboneliğe özgü tüm indirimler. Varsayılan ayar, %0’dır.
 **Azure Hibrit Avantajı** | Zaten bir SQL Server lisansınızın olup olmadığını belirtir. <br/><br/> Bunu yaptıysanız ve SQL Server aboneliklerinin etkin yazılım güvencesi kapsamında ele alındıklarında, lisansları Azure 'a getirdiğinizde Azure Hibrit Avantajı uygulayabilirsiniz.
@@ -113,8 +113,8 @@ Azure SQL değerlendirme özelliklerinde **Önerilen** hedef dağıtım türün�
  Hazır | Hazır | Azure SQL DB veya <br/>Azure SQL MI | Yes
  Hazır | Hazırlanma veya<br/> Bilinmiyor | Azure SQL DB | Yes
  Hazırlanma veya<br/>Bilinmiyor | Hazır | Azure SQL MI | Yes
- Hazırlanma | Hazırlanma | Azure VM için hazırlanma olasılığı | Hayır
- Hazırlanma veya<br/>Bilinmiyor | Hazırlanma veya<br/>Bilinmiyor | Bilinmiyor | Hayır
+ Hazırlanma | Hazırlanma | Azure VM için hazırlanma olasılığı | No
+ Hazırlanma veya<br/>Bilinmiyor | Hazırlanma veya<br/>Bilinmiyor | Bilinmiyor | No
 
 > [!NOTE]
 > Önerilen dağıtım türü değerlendirme özelliklerinde **önerildiği** şekilde seçilirse ve kaynak SQL Server hem Azure SQL veritabanı tek veritabanı hem de Azure SQL yönetilen örneği için uygun ise, değerlendirme, maliyetinizi en iyi duruma getirmek ve boyut ve performans sınırlarının içine sığması için belirli bir seçenek önerir.
@@ -124,7 +124,7 @@ Azure SQL değerlendirme özelliklerinde **Önerilen** hedef dağıtım türün�
 SQL örneği Azure SQL veritabanı ve Azure SQL yönetilen örneği için hazırsanız, önerilen dağıtım türü, *Azure VM için, olası* olarak işaretlendi olarak işaretlenir.
 - Örneğin, örneğin çalışıyor olduğu sunucunun bunun yerine bir Azure VM 'ye geçişe hazırlanın olup olmadığını anlamak için, kullanıcının değerlendirme türü ile "Azure VM" olarak bir değerlendirme oluşturması önerilir. Şunlara dikkat edin:
     - Azure geçişi 'ndeki Azure VM değerlendirmelerinde, şu anda, Azure sanal makinesinde SQL örnekleri ve veritabanlarını çalıştırmaya yönelik belirli performans ölçümlerini düşünmeyecektir. 
-    - Sunucuda Azure VM değerlendirmesi çalıştırdığınızda, önerilen boyut ve maliyet tahminleri sunucuda çalıştırılan ve Sunucu Geçişi aracı kullanılarak bir Azure sanal makinesine geçirilebilecek tüm örnekleri kapsar. Geçiş yapmadan önce Azure sanal makinelerindeki SQL Server için [performans yönergelerini gözden geçirin](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices).
+    - Sunucuda Azure VM değerlendirmesi çalıştırdığınızda, önerilen boyut ve maliyet tahminleri sunucuda çalıştırılan ve Sunucu Geçişi aracı kullanılarak bir Azure sanal makinesine geçirilebilecek tüm örnekleri kapsar. Geçiş yapmadan önce Azure sanal makinelerindeki SQL Server için [performans yönergelerini gözden geçirin](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md).
 
 
 ## <a name="calculate-sizing"></a>Boyutlandırmayı hesapla

@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: yuajia
-ms.openlocfilehash: bb10fb337972db2696960b530f2d7538bd36a2fb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 72388eb8006ff1b9628db5066dc63e6a0811f3d5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101100364"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557335"
 ---
 # <a name="real-time-monitoring-in-azure-front-door-standardpremium"></a>Azure ön kapısı Standart/Premium 'da gerçek zamanlı Izleme
 
@@ -22,11 +22,11 @@ ms.locfileid: "101100364"
 
 Azure ön kapısının Standart/Premium, Azure Izleyici ile tümleşiktir ve Azure ön kapısı Standart/Premium 'u gerçek zamanlı olarak izlemeye, sorun gidermenize ve hata ayıklamanıza yardımcı olmak için 11 ölçülerde bulunur.  
 
-Azure ön kapısının Standart/Premium ölçümleri ve ölçümlerini 60 saniyelik aralıklarla gönderir. Ölçümlerin portalda görünmesi 3 dakika kadar sürebilir. Ölçümler, seçtiğiniz grafiklerde veya kılavuzda görüntülenebilir ve Portal, PowerShell, CLı ve API aracılığıyla erişilebilir. Daha fazla bilgi için bkz. [Azure izleyici ölçümleri](../../azure-monitor/platform/data-platform-metrics.md).  
+Azure ön kapısının Standart/Premium ölçümleri ve ölçümlerini 60 saniyelik aralıklarla gönderir. Ölçümlerin portalda görünmesi 3 dakika kadar sürebilir. Ölçümler, seçtiğiniz grafiklerde veya kılavuzda görüntülenebilir ve Portal, PowerShell, CLı ve API aracılığıyla erişilebilir. Daha fazla bilgi için bkz. [Azure izleyici ölçümleri](../../azure-monitor/essentials/data-platform-metrics.md).  
 
 Varsayılan ölçümler ücretsizdir. Ek bir maliyet için ek ölçümleri etkinleştirebilirsiniz. 
 
-Her ölçüm için, 4XXErrorRate veya 5XXErrorRate için bir eşik gibi uyarılar yapılandırabilirsiniz. Hata oranı eşiği aşarsa, yapılandırılan şekilde bir uyarı tetikler. Daha fazla bilgi için bkz. [Azure izleyici kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../../azure-monitor/platform/alerts-metric.md). 
+Her ölçüm için, 4XXErrorRate veya 5XXErrorRate için bir eşik gibi uyarılar yapılandırabilirsiniz. Hata oranı eşiği aşarsa, yapılandırılan şekilde bir uyarı tetikler. Daha fazla bilgi için bkz. [Azure izleyici kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../../azure-monitor/alerts/alerts-metric.md). 
 
 > [!IMPORTANT]
 > Azure ön kapı Standart/Premium (Önizleme) Şu anda genel önizleme aşamasındadır.
@@ -75,7 +75,7 @@ Her ölçüm için, 4XXErrorRate veya 5XXErrorRate için bir eşik gibi uyarıla
 
 1. Ölçümler bölümünde listelenen ölçümler için **Yeni uyarı kuralı** ' nı seçin.
 
-Uyarı, Azure Izleyici 'ye göre ücretlendirilir. Uyarılar hakkında daha fazla bilgi için bkz. [Azure izleyici uyarıları](../../azure-monitor/platform/alerts-overview.md).
+Uyarı, Azure Izleyici 'ye göre ücretlendirilir. Uyarılar hakkında daha fazla bilgi için bkz. [Azure izleyici uyarıları](../../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

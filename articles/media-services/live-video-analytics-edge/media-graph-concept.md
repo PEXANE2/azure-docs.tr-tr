@@ -3,12 +3,12 @@ title: Medya grafiği kavramı-Azure
 description: Medya grafiği, medyanın nerede yakalanabileceğini, nasıl işleneceğini ve sonuçların nereye teslim edileceğini tanımlamanızı sağlar. Bu makale, medya grafiği kavramının ayrıntılı bir açıklamasını vermektedir.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 6f23e7db8cecb46106a63fdecdb6ba04dbd99682
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ad23acbbbdd0c15e92e471ee22a229470a8a3a75
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97401109"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557675"
 ---
 # <a name="media-graph"></a>Medya grafiği
 
@@ -74,7 +74,7 @@ Bir RTSP kaynak düğümü, bir [RTSP](https://tools.ietf.org/html/rfc2326) sunu
 
 #### <a name="iot-hub-message-source"></a>IoT Hub ileti kaynağı 
 
-Diğer [IoT Edge modüller](../../iot-edge/iot-edge-glossary.md#iot-edge-module)gibi, IoT Edge modüldeki canlı video analizi, [IoT Edge hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)aracılığıyla iletiler alabilir. Bu iletiler diğer modüllerden veya sınır cihazında ya da buluttan çalışan uygulamalardan gönderilebilir. Bu tür iletiler, modüldeki [adlandırılmış bir girişe](../../iot-edge/module-composition.md#sink) dağıtılır (yönlendirilir). IoT Hub ileti kaynağı düğümü, bu tür iletilerin medya grafiğine ulaşmasını sağlar. Bu iletiler veya sinyaller, genellikle sinyal kapılarını etkinleştirmek için medya grafiğinde dahili olarak kullanılabilir (aşağıdaki [sinyal kapıları](#signal-gate-processor) bölümüne bakın). 
+Diğer [IoT Edge modüller](../../iot-fundamentals/iot-glossary.md#iot-edge)gibi, IoT Edge modüldeki canlı video analizi, [IoT Edge hub](../../iot-fundamentals/iot-glossary.md#iot-edge-hub)aracılığıyla iletiler alabilir. Bu iletiler diğer modüllerden veya sınır cihazında ya da buluttan çalışan uygulamalardan gönderilebilir. Bu tür iletiler, modüldeki [adlandırılmış bir girişe](../../iot-edge/module-composition.md#sink) dağıtılır (yönlendirilir). IoT Hub ileti kaynağı düğümü, bu tür iletilerin medya grafiğine ulaşmasını sağlar. Bu iletiler veya sinyaller, genellikle sinyal kapılarını etkinleştirmek için medya grafiğinde dahili olarak kullanılabilir (aşağıdaki [sinyal kapıları](#signal-gate-processor) bölümüne bakın). 
 
 Örneğin, bir kapı açıldığında ileti üreten bir IoT Edge modüle sahip olabilirsiniz. Bu modülden gelen ileti, daha sonra bir medya grafiğinin IoT Hub 'ı ileti kaynağına yönlendirilebileceği IoT Edge hub 'a yönlendirilebilir. Medya grafiğinde, IoT Hub ileti kaynağı olayı bir sinyal kapısı işlemcisine geçirebilir, bu da daha sonra videonun bir RTSP kaynağından dosyaya kaydedilmesini etkinleştirebilir. 
 

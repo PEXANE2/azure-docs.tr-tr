@@ -7,12 +7,12 @@ ms.topic: article
 author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 2d0c0e7322ecb92fd371f5bf7924a370dd29fe85
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 65ee0847e6a59976eec223b68b1f3e0c464674e8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102584185"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563812"
 ---
 # <a name="make-your-first-api-call-to-access-commercial-marketplace-analytics-data"></a>Ticari Market Analytics verilerine erişmek için ilk API çağrısını yapın
 
@@ -50,7 +50,7 @@ curl --location --request POST 'https://login.microsoftonline.com/{TenantId}/oau
 }
 ```
 
-Uygulamanız için bir Azure AD belirteci alma hakkında daha fazla bilgi için bkz. [Store Services kullanarak Analytics verilerine erişme](https://docs.microsoft.com/windows/uwp/monetize/access-analytics-data-using-windows-store-services#step-2-obtain-an-azure-ad-access-token).
+Uygulamanız için bir Azure AD belirteci alma hakkında daha fazla bilgi için bkz. [Store Services kullanarak Analytics verilerine erişme](/windows/uwp/monetize/access-analytics-data-using-windows-store-services#step-2-obtain-an-azure-ad-access-token).
 
 ## <a name="programmatic-api-call"></a>Programlı API çağrısı
 

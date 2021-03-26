@@ -97,6 +97,8 @@
       href: ./workloads/sap/get-started.md
     - name: Oracle
       href: ./workloads/oracle/oracle-database-quick-create.md
+    - name: Oyun için Azure
+      href: 'https://docs.microsoft.com/gaming/azure/'
     - name: Elasticsearch
       href: ./linux/tutorial-elasticsearch.md
     - name: Ana bilgisayar yeniden barındırma
@@ -1004,7 +1006,7 @@
                   displayname: 'Azure disk encryption, encryption, ADE'
                 - name: Hızlı Başlangıçlar
                   items:
-                    - name: Azure CLI
+                    - name: Azure CLI’si
                       href: ./linux/disk-encryption-cli-quickstart.md
                       displayname: 'Azure disk encryption, encryption, ADE'
                     - name: Azure PowerShell
@@ -1047,7 +1049,7 @@
                   href: ./windows/disk-encryption-overview.md
                 - name: Hızlı Başlangıçlar
                   items:
-                    - name: Azure CLI
+                    - name: Azure CLI’si
                       href: ./windows/disk-encryption-cli-quickstart.md
                     - name: Azure PowerShell
                       href: ./windows/disk-encryption-powershell-quickstart.md

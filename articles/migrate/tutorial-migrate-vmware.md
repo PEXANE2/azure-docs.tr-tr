@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 0dcb750871eeae504ddb3d4e3851c834bcad125c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1d745c95b89efefabbd0b83061f9dcd9fe13911
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604560"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567127"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)
 
@@ -91,7 +91,7 @@ Aşağıda belirtilen şekilde çoğaltmayı etkinleştirin:
     - Platform tarafından yönetilen ve müşteri tarafından yönetilen anahtarlarla Çift şifreleme
 
    > [!NOTE]
-   > VM 'Leri CMK ile çoğaltmak için hedef kaynak grubu altında [bir disk şifreleme kümesi oluşturmanız](https://go.microsoft.com/fwlink/?linkid=2151800) gerekir. Bir disk şifreleme kümesi nesnesi yönetilen diskleri, SSE için kullanılacak CMK 'yi içeren bir Key Vault eşler.
+   > VM 'Leri CMK ile çoğaltmak için hedef kaynak grubu altında [bir disk şifreleme kümesi oluşturmanız](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set) gerekir. Bir disk şifreleme kümesi nesnesi yönetilen diskleri, SSE için kullanılacak CMK 'yi içeren bir Key Vault eşler.
   
 10. **Azure Hibrit Avantajı**’nda:
 
@@ -189,7 +189,7 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
 ## <a name="complete-the-migration"></a>Geçişi tamamlamayı
 
 1. Geçiş yapıldıktan sonra, **çoğaltmayı durdurmak**> VM 'ye sağ tıklayın. Bu, şirket içi makine için çoğaltmayı durduruyor ve VM için çoğaltma durumu bilgilerini temizler.
-2. Geçiş sırasında Windows VM 'Leri ve Linux için VM aracısını otomatik olarak yükledik. Linux VM Aracısı yüklemesinin düzgün şekilde çalışmasını sağlamak için makinede Linux OS varsa, geçirilen makinelerde Azure VM Linux Aracısı [gereksinimlerini](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) gözden geçirin. 
+2. Geçiş sırasında Windows VM 'Leri ve Linux için VM aracısını otomatik olarak yükledik. Linux VM Aracısı yüklemesinin düzgün şekilde çalışmasını sağlamak için makinede Linux OS varsa, geçirilen makinelerde Azure VM Linux Aracısı [gereksinimlerini](../virtual-machines/extensions/agent-linux.md#requirements) gözden geçirin. 
 3. Veritabanı bağlantısı dizelerini ve web sunucusu yapılandırmalarını güncelleştirme gibi herhangi bir geçiş sonrası uygulama ayarı gerçekleştirin.
 4. Geçirilen uygulamada son uygulama ve geçiş kabul testi gerçekleştirme işlemi şimdi Azure’da çalıştırılmaktadır.
 5. Geçirilen Azure VM örneğine giden trafiği kesin.

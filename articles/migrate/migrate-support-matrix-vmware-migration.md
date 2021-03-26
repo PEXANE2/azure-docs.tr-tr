@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 40fcdae9a94b2b48eb4c665f4e0c9c3e58962f4b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4fb2ea534954ae6c64d0da2d992ce8b1c8a62c0c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104576790"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557573"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware geçişi için destek matrisi
 
@@ -68,7 +68,7 @@ Tablo, VMware VM 'Leri için aracısız geçiş gereksinimlerini özetler.
 **IPv6** | Desteklenmez.
 **Hedef disk** | VM 'Ler, yalnızca Azure 'da yönetilen disklere (Standart HDD, standart SSD, Premium SSD) geçirilebilir.
 **Eşzamanlı çoğaltma** | 1 gereç ile vCenter Server başına VM 'Leri aynı anda çoğaltma. 300 Ek bir [genişleme](./how-to-scale-out-for-migration.md) gereci dağıtıldığında, vCenter Server başına VM 'leri aynı anda çoğaltmaya 500. 
-**Azure VM Aracısı 'nın otomatik yüklemesi (Windows ve Linux Aracısı)** | Windows Server 2008 R2 sürümleri için desteklenir. <br/> RHEL6, RHEL7, CentOS7, Ubuntu 14,04, Ubuntu 16,04, Ubuntu 18.04 için desteklenir. Bu Linux işletim sistemleri için [gerekli paketlerin](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)listesini gözden geçirin.
+**Azure VM Aracısı 'nın otomatik yüklemesi (Windows ve Linux Aracısı)** | Windows Server 2008 R2 sürümleri için desteklenir. <br/> RHEL6, RHEL7, CentOS7, Ubuntu 14,04, Ubuntu 16,04, Ubuntu 18.04 için desteklenir. Bu Linux işletim sistemleri için [gerekli paketlerin](../virtual-machines/extensions/agent-linux.md#requirements)listesini gözden geçirin.
 
 > [!TIP]
 >  Azure portal kullanarak, çoğaltmayı yapılandırmak için bir seferde en fazla 10 VM seçebilirsiniz. Daha fazla VM çoğaltmak için portalı kullanabilir ve birden çok 10 VM 'de çoğaltılacak VM 'Leri ekleyebilir ya da çoğaltmayı yapılandırmak için Azure geçişi PowerShell arabirimini kullanabilirsiniz. Eşzamanlı çoğaltmalar için desteklenen en fazla VM sayısından daha fazla eşzamanlı çoğaltma yapılandırmatığınızdan emin olun.

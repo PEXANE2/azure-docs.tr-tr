@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 60dfd448a66ca67a241f97570c91f683323a7d6d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 092078a79124682f7ee5c7824d4f7906c6e35475
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103232384"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558508"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>IoT Hub için cihaz Güncelleştirmesi (Önizleme) genel bakış
 
@@ -82,7 +82,7 @@ Cihaz Güncelleştirme Aracısı hakkında [daha fazla bilgi edinin](device-upda
 
 İçeri aktarma, güncelleştirmelerin cihaza dağıtılabilmesi için cihaz güncelleştirmesine nasıl alınacağını aşağıda bulabilirsiniz. Cihaz güncelleştirme, cihaz başına tek bir güncelleştirme kullanıma alınmasını destekler. Bu, bir işletim sistemi bölümünün tamamını veya cihazınızda güncelleştirmek istediğiniz tüm paketleri açıklayan bir apt bildirimini güncelleştiren tam görüntü güncelleştirmelerini ideal hale getirir. Güncelleştirmeleri cihaz güncelleştirmesine aktarmak için öncelikle güncelleştirmeyi açıklayan bir içeri aktarma bildirimi oluşturun ve ardından güncelleştirme dosyalarını ve içeri aktarma bildirimini Internet erişimli bir konuma yükleyin. Bundan sonra, güncelleştirme içeri aktarma işleminin zaman uyumsuz işlemini başlatmak için Azure portal veya [cihaz güncelleştirme Içeri aktarma REST API](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) kullanabilirsiniz. Cihaz güncelleştirme, dosyaları karşıya yükler, işler ve IoT cihazlarına dağıtım için kullanılabilir hale getirir.
 
-Hassas içerik için, Azure Blob depolama için geçici SAS gibi paylaşılan erişim imzasını (SAS) kullanarak indirmeyi koruyun. [SAS hakkında daha fazla bilgi](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+Hassas içerik için, Azure Blob depolama için geçici SAS gibi paylaşılan erişim imzasını (SAS) kullanarak indirmeyi koruyun. [SAS hakkında daha fazla bilgi](../storage/common/storage-sas-overview.md)
 
 :::image type="content" source="media/understand-device-update/import-update.png" alt-text="IoT Hub iş akışını içeri aktarmaya yönelik cihaz güncelleştirmesi diyagramı." lightbox="media/understand-device-update/import-update.png":::
 

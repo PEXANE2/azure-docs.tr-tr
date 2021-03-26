@@ -3,12 +3,12 @@ title: Azure Arc ile karma altyapıyı ölçeklendirerek yönetme
 description: Müşterilerinizin makinelerini ve Kubernetes kümelerini Azure dışında etkili bir şekilde yönetmeyi öğrenin.
 ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: ec32389cd7444405580530a00c8b7c5bc48bcd56
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: da7f016b507f8f876d27f6924f87f078a7806563
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103419346"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563608"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Azure Arc ile karma altyapıyı ölçeklendirerek yönetme
 
@@ -35,11 +35,11 @@ Azure portal bir temsilci abonelik için kaynakları görüntülerken, **Azure A
 
 ## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes"></a>Azure Arc etkin Kubernetes ile karma Kubernetes kümelerini ölçekte yönetin
 
-Azure 'da çalıştığı gibi, [bir müşterinin Azure Arc aboneliğine bağlanmış](../../azure-arc/kubernetes/connect-cluster.md)Kubernetes kümelerini yönetebilirsiniz.
+Azure 'da çalıştığı gibi, [bir müşterinin Azure Arc aboneliğine bağlanmış](../../azure-arc/kubernetes/quickstart-connect-cluster.md)Kubernetes kümelerini yönetebilirsiniz.
 
 Müşteriniz, [Kubernetes kümelerini Azure yaya eklemek için bir hizmet sorumlusu hesabı](../../azure-arc/kubernetes/create-onboarding-service-principal.md)oluşturmışsa, kümeleri eklemek ve yönetmek için bu hizmet sorumlusu hesabına erişebilirsiniz. Bu işlem, hizmet sorumlusu hesabını içeren aboneliğin [Azure Athouse eklendi](onboard-customer.md)olduğu durumlarda, "Kubernetes kümesi-Azure yay ekleme" adlı kiracı, yönetim kiracısındaki kullanıcılar tarafından yapılabilir.
 
-Bağlı kümeler için Gilar kullanarak [yapılandırma](../../azure-arc/kubernetes/use-gitops-connected-cluster.md) ve [Held grafikleri](../../azure-arc/kubernetes/use-gitops-with-helm.md) dağıtabilirsiniz.
+Bağlı kümeler için Gilar kullanarak [yapılandırma](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md) ve [Held grafikleri](../../azure-arc/kubernetes/use-gitops-with-helm.md) dağıtabilirsiniz.
 
 Ayrıca, Azure Izleyici ile bağlı kümeleri izleyebilir ve [Azure ilkesi 'ni kullanarak küme yapılandırmalarının ölçeğini de uygulayabilirsiniz](../../azure-arc/kubernetes/use-azure-policy.md).
 

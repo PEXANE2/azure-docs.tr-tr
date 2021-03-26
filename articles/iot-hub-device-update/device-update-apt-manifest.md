@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/17/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0b68b78499aa3bf0d84d8bd0fa5ab55d1f969113
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 878748fcfc9b096e340b53c06969962af99f603f
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101680096"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561177"
 ---
 # <a name="device-update-apt-manifest"></a>Cihaz güncelleştirme APT bildirimi
 
@@ -103,7 +103,7 @@ De, paketlerinin sürümü oluşturma hakkında [daha fazla bilgi edinin](https:
 > APT paket yöneticisi, yüklenecek bağımlı paketler otomatik olarak çözümlendiğinde bir paket tarafından verilen sürüm oluşturma gereksinimlerini yoksayar. Bağımlı paketlerin açık sürümleri verilmese de, paketin kendisi belirli bir sürümde kesin bir gereksinim (=) belirtse bile en son, bu, en sonuncuyu kullanacaktır. Bu otomatik çözüm, karşılanmadı bağımlılığı ile ilgili hatalara yol açabilir. [Daha Fazla Bilgi](https://unix.stackexchange.com/questions/350192/apt-get-not-properly-resolving-a-dependency-on-a-fixed-version-in-a-debian-ubunt)
 
 Azure IoT Edge güvenlik arka plan programının belirli bir sürümünü güncelleştiriyorsanız, paketin istenen sürümünü `iotedge` ve ona bağlı `libiothsm-std` paketini apt bildiriminiz içinde dahil etmelisiniz.
-[Daha Fazla Bilgi](https://docs.microsoft.com/azure/iot-edge/how-to-update-iot-edge#update-the-security-daemon)
+[Daha Fazla Bilgi](../iot-edge/how-to-update-iot-edge.md#update-the-security-daemon)
 
 > [!NOTE]
 > Bir apt bildirimi, cihaz güncelleştirme aracısını ve onun bağımlılıklarını güncelleştirmek için kullanılabilir. Diğer tüm paketler için yaptığınız gibi, apt bildiriminde Cihaz Güncelleştirme Aracısı adını ve istenen sürümü listeleyin. Bu apt bildirimi daha sonra IoT Hub işlem hattı için cihaz güncelleştirmesi aracılığıyla içeri ve dağıtılabilir. 
@@ -202,4 +202,3 @@ Bu güncelleştirme foo Package içerir ve çubuk paketini de içerir.
 
 > [!div class="nextstepaction"]
 > [Yeni güncelleştirme al](import-update.md)
-

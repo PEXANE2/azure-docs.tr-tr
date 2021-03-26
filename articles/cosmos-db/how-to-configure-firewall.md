@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a7796b70d4d32e7023fbc88086a737dd76ae7723
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b94b30851a5206c2183d999a3c024351cf415c90
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122723"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568248"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB 'de IP güvenlik duvarını yapılandırma
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -104,11 +104,11 @@ Gruba sanal makine örnekleri eklediğinizde Azure Cosmos DB hesabınıza otomat
 
 Azure Cosmos DB hesabınıza Internet 'teki bir bilgisayardan eriştiğinizde, hesabın istemci IP adresi veya IP adresi aralığı, hesabınız için izin verilen IP adresleri listesine eklenmelidir.
 
-### <a name="add-outbound-rules-to-the-firewall"></a>Giden kuralları güvenlik duvarına ekleme
+### <a name="add-outbound-rules-to-the-firewall"></a>Güvenlik duvarına gider kuralları ekleme
 
 Güvenlik Duvarı ayarlarınıza eklemek üzere giden IP aralıklarının geçerli listesine erişmek için lütfen bkz. [Azure IP aralıklarını ve hizmet etiketlerini indirme](https://www.microsoft.com/download/details.aspx?id=56519).
 
-Listeyi otomatikleştirmek için lütfen bkz. [hizmet etiketi bulma API 'Sini kullanma (Genel Önizleme)](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview).
+Listeyi otomatikleştirmek için lütfen bkz. [hizmet etiketi bulma API 'Sini kullanma (Genel Önizleme)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview).
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>Kaynak Yöneticisi şablonu kullanarak bir IP güvenlik duvarı yapılandırma
 

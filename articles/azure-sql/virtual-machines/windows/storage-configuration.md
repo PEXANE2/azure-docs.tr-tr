@@ -1,5 +1,5 @@
 ---
-title: SQL Server VM 'Leri için depolama yapılandırması | Microsoft Docs
+title: SQL Server VM 'Ler için depolamayı yapılandırma | Microsoft Docs
 description: Bu konu, Azure 'un sağlama sırasında (Azure Resource Manager dağıtım modeli) SQL Server VM 'Ler için depolamayı nasıl yapılandırdığını açıklamaktadır. Ayrıca, mevcut SQL Server sanal makinelerinize yönelik depolamayı nasıl yapılandırabileceğinizi açıklar.
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,27 +13,26 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: d713faf7062f82110be5fa8378faca368b9bb7a2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 982bd9239c5e95c9b7af09b5f54c5a09067ca7c6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97356740"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565435"
 ---
-# <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM’leri için depolama yapılandırması
+# <a name="configure-storage-for-sql-server-vms"></a>SQL Server VM 'Ler için depolamayı yapılandırma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Azure 'da bir SQL Server sanal makine (VM) görüntüsü yapılandırdığınızda, Azure portal depolama yapılandırmanızın otomatikleştirilmesine yardımcı olur. Bu, depolama alanının sanal makineye iliştirilmesi, bu depolamanın SQL Server için erişilebilir hale getirilmesi ve belirli performans gereksinimlerinizi iyileştirmek üzere yapılandırılmasını içerir.
+Bu makalede, Azure sanal makinelerinde (VM) SQL Server depolama alanınızı nasıl yapılandıracağınız öğretilir.
 
-Bu konu, Azure 'un sağlama ve mevcut VM 'Ler için SQL Server sanal makinelerinize yönelik depolamayı nasıl yapılandırdığını açıklamaktadır. Bu yapılandırma, SQL Server çalıştıran Azure sanal makineleri için [en iyi performans uygulamalarına](performance-guidelines-best-practices.md) dayalıdır.
+Market görüntüleri aracılığıyla dağıtılan SQL Server VM 'Ler, dağıtım sırasında değiştirilebilen varsayılan [depolama en iyi uygulamalarını](performance-guidelines-best-practices-storage.md) otomatik olarak izler. Bu yapılandırma ayarlarından bazıları dağıtımdan sonra değiştirilebilir. 
 
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Otomatik depolama yapılandırma ayarlarını kullanmak için, sanal makineniz aşağıdaki özellikleri gerektirir:
 
-* [SQL Server Galeri görüntüsü](sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo)ile sağlandı.
+* [SQL Server Gallery görüntüsüyle](sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo) sağlandı veya [SQL IaaS uzantısına]()kaydedilir.
 * [Kaynak Yöneticisi dağıtım modelini](../../../azure-resource-manager/management/deployment-models.md)kullanır.
 * [Premium SSD 'ler](../../../virtual-machines/disks-types.md)kullanır.
 
@@ -47,7 +46,9 @@ SQL Server Galeri görüntüsü kullanarak bir Azure VM sağlarken, **SQL Server
 
 ![SQL Server ayarları sekmesini ve yapılandırma Değiştir seçeneğini vurgulayan ekran görüntüsü.](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
-**Depolama iyileştirmesi** altında SQL Server dağıttığınız iş yükünün türünü seçin. **Genel** iyileştirme seçeneğiyle, varsayılan olarak en fazla 5000 IOPS içeren bir veri diskine sahip olursunuz ve bu sürücüyü verileriniz, işlem günlüğü ve tempdb depolaması için kullanacaksınız. **İşlemsel işleme** (OLTP) veya **veri depolama** alanı seçildiğinde veriler için ayrı bir disk, işlem günlüğü için ayrı bir disk oluşturulur ve tempdb için yerel SSD kullanılır. **İşlemsel işleme** ve **veri depolama** arasında bir depolama farkı yoktur, ancak [Stripe yapılandırmanızı ve izleme bayraklarını](#workload-optimization-settings)değiştirir. Premium Depolama ' yı seçtiğinizde, veri sürücüsü için önbelleğe alma özelliği *ReadOnly* olarak ayarlanır ve günlük sürücü için [SQL Server VM performans En Iyi uygulamalarına](performance-guidelines-best-practices.md)göre *yoktur* . 
+**Depolama iyileştirmesi** altında SQL Server dağıttığınız iş yükünün türünü seçin. **Genel** iyileştirme seçeneğiyle, varsayılan olarak en fazla 5000 IOPS içeren bir veri diskine sahip olursunuz ve bu sürücüyü verileriniz, işlem günlüğü ve tempdb depolaması için kullanacaksınız. 
+
+**İşlemsel işleme** (OLTP) veya **veri depolama** alanı seçildiğinde veriler için ayrı bir disk, işlem günlüğü için ayrı bir disk oluşturulur ve tempdb için yerel SSD kullanılır. **İşlemsel işleme** ve **veri depolama** arasında bir depolama farkı yoktur, ancak [Stripe yapılandırmanızı ve izleme bayraklarını](#workload-optimization-settings)değiştirir. Premium Depolama ' yı seçtiğinizde, veri sürücüsü için önbelleğe alma özelliği *ReadOnly* olarak ayarlanır ve günlük sürücü için [SQL Server VM performans En Iyi uygulamalarına](performance-guidelines-best-practices.md)göre *yoktur* . 
 
 ![Sağlama sırasında depolama yapılandırması SQL Server VM](./media/storage-configuration/sql-vm-storage-configuration.png)
 
@@ -74,7 +75,7 @@ Azure, seçimlerinize bağlı olarak VM 'yi oluşturduktan sonra aşağıdaki de
 * Depolama havuzunu sanal makinede yeni bir sürücüyle ilişkilendirir.
 * Bu yeni sürücüyü, belirtilen iş yükü türüne (veri ambarı, Işlemsel işleme veya genel) göre iyileştirir.
 
-Azure 'un depolama ayarlarını yapılandırma hakkında daha fazla bilgi için [depolama yapılandırması bölümüne](#storage-configuration)bakın. Azure portal SQL Server VM oluşturma hakkında tam bir anlatım için [sağlama öğreticisine](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md)bakın.
+Azure portal SQL Server VM oluşturma hakkında tam bir anlatım için [sağlama öğreticisine](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md)bakın.
 
 ### <a name="resource-manager-templates"></a>Resource Manager şablonları
 
@@ -111,7 +112,7 @@ SQL Server VM oluşturma işlemi sırasında yapılandırılmış sürücüler i
 ![Mevcut SQL Server VM için depolamayı yapılandırma](./media/storage-configuration/sql-vm-storage-extend-drive.png)
 
 
-## <a name="storage-configuration"></a>Depolama yapılandırması
+## <a name="automated-changes"></a>Otomatik değişiklikler
 
 Bu bölümde, Azure 'un Azure portal SQL Server VM sağlama veya yapılandırma sırasında otomatik olarak gerçekleştirdiği depolama yapılandırması değişikliklerine yönelik bir başvuru sağlanmaktadır.
 
@@ -137,7 +138,7 @@ Azure, SQL Server VM 'lerde depolama havuzu oluşturmak için aşağıdaki ayarl
 <sup>1</sup> depolama havuzu oluşturulduktan sonra, depolama havuzundaki sütun sayısını değiştiremezsiniz.
 
 
-## <a name="workload-optimization-settings"></a>İş yükü iyileştirme ayarları
+### <a name="workload-optimization-settings"></a>İş yükü iyileştirme ayarları
 
 Aşağıdaki tabloda, kullanılabilir üç iş yükü türü seçeneği ve bunların karşılık gelen iyileştirmeleri açıklanmaktadır:
 
@@ -149,6 +150,78 @@ Aşağıdaki tabloda, kullanılabilir üç iş yükü türü seçeneği ve bunla
 
 > [!NOTE]
 > Yalnızca depolama yapılandırması adımında bir SQL Server sanal makine sağladığınızda iş yükü türünü belirtebilirsiniz.
+
+## <a name="enable-caching"></a>Enable caching 
+
+Önbellek ilkesini disk düzeyinde değiştirin. Azure portal, [PowerShell](/powershell/module/az.compute/set-azvmdatadisk)veya [Azure CLI](/cli/azure/vm/disk)'yı kullanarak bunu yapabilirsiniz. 
+
+Azure portal önbelleğe alma ilkenizi değiştirmek için şu adımları izleyin:
+
+1. SQL Server hizmetinizi durdurun. 
+1. [Azure portal](https://portal.azure.com) oturum açın. 
+1. Sanal makinenize gidin, **Ayarlar** altında **diskler** ' i seçin. 
+   
+   ![Azure portal VM disk yapılandırması dikey penceresini gösteren ekran görüntüsü.](./media/storage-configuration/disk-in-portal.png)
+
+1. Açılır listeden diskinizin uygun önbelleğe alma ilkesini seçin. 
+
+   ![Azure portal disk önbelleğe alma ilkesi yapılandırmasını gösteren ekran görüntüsü.](./media/storage-configuration/azure-disk-config.png)
+
+1. Değişiklik geçerli olduktan sonra, SQL Server VM yeniden başlatın ve SQL Server hizmetini başlatın. 
+
+
+## <a name="enable-write-accelerator"></a>Yazma Hızlandırıcısı etkinleştir
+
+Yazma hızlandırma yalnızca, a serisi sanal makineler (VM) için kullanılabilen bir disk özelliğidir. Yazma hızlandırmasının amacı, yüksek hacimli görev açısından kritik OLTP iş yükleri veya veri ambarı ortamları nedeniyle tek basamaklı g/ç gecikme süresi gerektiğinde Azure Premium depolamada yapılan yazma işlemleri için g/ç gecikme süresini artırmaktır. 
+
+Tüm SQL Server etkinliğini durdurun ve yazma hızlandırma ilkenizde değişiklik yapmadan önce SQL Server hizmetini kapatın. 
+
+Disklerinizin şeritli olması halinde her bir disk için yazma hızlandırmasını tek tek etkinleştirin ve Azure VM 'niz herhangi bir değişiklik yapılmadan önce kapatılmalıdır. 
+
+Azure portal kullanarak yazma hızlandırmasını etkinleştirmek için şu adımları izleyin:
+
+1. SQL Server hizmetinizi durdurun. Disklerinizin şeritli olması durumunda sanal makineyi kapatın. 
+1. [Azure portal](https://portal.azure.com) oturum açın. 
+1. Sanal makinenize gidin, **Ayarlar** altında **diskler** ' i seçin. 
+   
+   ![Azure portal VM disk yapılandırması dikey penceresini gösteren ekran görüntüsü.](./media/storage-configuration/disk-in-portal.png)
+
+1. Açılır listeden diskinizin **yazma Hızlandırıcısı** önbellek seçeneğini belirleyin. 
+
+   ![Yazma Hızlandırıcısı önbellek ilkesini gösteren ekran görüntüsü.](./media/storage-configuration/write-accelerator.png)
+
+1. Değişiklik geçerli olduktan sonra, sanal makineyi ve SQL Server hizmetini başlatın. 
+
+## <a name="disk-striping"></a>Disk şeridi
+
+Daha fazla verimlilik için, ek veri diskleri ekleyebilir ve disk şeritleme kullanabilirsiniz. Veri disklerinin sayısını öğrenmek için, log ve tempdb dahil olmak üzere SQL Server veri dosyalarınız için gereken aktarım hızını ve bant genişliğini çözümleyin. Aktarım hızı ve bant genişliği sınırları VM boyutuna göre farklılık gösterir. Daha fazla bilgi için bkz. [VM boyutu](../../../virtual-machines/sizes.md)
+
+
+* Windows 8/Windows Server 2012 veya üzeri için, [depolama alanlarını](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831739(v=ws.11)) aşağıdaki yönergelerle kullanın:
+
+  1. Bölüm hatalı hizalaması nedeniyle performans etkisini önlemek için Interleave (Stripe boyutu) 64 KB (65.536 bayt) olarak ayarlayın. Bunun PowerShell ile ayarlanması gerekir.
+
+  2. Sütun sayısını ayarla = fiziksel disk sayısı. 8 ' den fazla disk yapılandırırken PowerShell kullanın (Sunucu Yöneticisi Kullanıcı arabirimi).
+
+Örneğin, aşağıdaki PowerShell, ayırma boyutu 64 KB ile yeni bir depolama havuzu ve depolama havuzundaki fiziksel disk miktarına eşit olan sütun sayısını oluşturur:
+
+  ```powershell
+  $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
+  
+  New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" `
+      -PhysicalDisks $PhysicalDisks | New- VirtualDisk -FriendlyName "DataFiles" `
+      -Interleave 65536 -NumberOfColumns $PhysicalDisks .Count -ResiliencySettingName simple `
+      –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter `
+      -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" `
+      -AllocationUnitSize 65536 -Confirm:$false 
+  ```
+
+  * Windows 2008 R2 veya önceki sürümlerde, dinamik diskleri (işletim sistemi şeritli birimler) kullanabilir ve şerit boyutu her zaman 64 KB 'tır. Bu seçenek, Windows 8/Windows Server 2012 itibarıyla kullanım dışıdır. Daha fazla bilgi için bkz. [sanal disk hizmetindeki Destek bildirisi Windows Storage YÖNETIM API 'sine geçiyor](https://docs.microsoft.com/windows/win32/w8cookbook/vds-is-transitioning-to-wmiv2-based-windows-storage-management-api).
+ 
+  * [SQL Server yük devretme kümesi örnekleriyle](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure) [depolama alanları doğrudan (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm) kullanıyorsanız, tek bir havuz yapılandırmanız gerekir. Bu tek havuzda farklı birimler oluşturulabilse de, hepsi aynı önbelleğe alma ilkesi gibi aynı özellikleri paylaşır.
+ 
+  * Yük beklentilerinize göre depolama havuzunuzun ilişkili disk sayısını belirleme. Farklı VM boyutlarının farklı sayıda ekli veri diskine izin verdiğini aklınızda bulundurun. Daha fazla bilgi için bkz. [sanal makineler Için boyutlar](../../../virtual-machines/sizes.md?toc=/azure/virtual-machines/windows/toc.json).
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 03/18/2021
-ms.openlocfilehash: 8617c32eac86d8e47678c06e3b028a475b4a5efb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 77007f0d9ffac39ecb6f21957dd8cd1bf7a0b945
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593866"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565716"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşleme sorunlarını giderme
 
@@ -302,7 +302,7 @@ Bu makalede, Azure Data Factory veri akışlarını eşlemek için ortak sorun g
 
 ### <a name="error-code-df-excel-invalidrange"></a>Hata kodu: DF-Excel-ınvalidrange
 - **İleti**: geçersiz Aralık belirtildi.
-- **Öneri**: parametre değerini denetleyin ve şu başvuruya göre geçerli aralığı belirtin: [Azure Data Factory-Dataset Özellikler 'de Excel biçimi](https://docs.microsoft.com/azure/data-factory/format-excel#dataset-properties).
+- **Öneri**: parametre değerini denetleyin ve şu başvuruya göre geçerli aralığı belirtin: [Azure Data Factory-Dataset Özellikler 'de Excel biçimi](./format-excel.md#dataset-properties).
 
 ### <a name="error-code-df-excel-worksheetnotexist"></a>Hata kodu: DF-Excel-WorksheetNotExist
 - **İleti**: Excel çalışma sayfası yok.
@@ -369,4 +369,3 @@ Sorun giderme konusunda daha fazla yardım için şu kaynaklara bakın:
 *  [Azure videoları](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Data Factory için Stack Overflow Forumu](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Data Factory hakkında Twitter bilgileri](https://twitter.com/hashtag/DataFactory)
-

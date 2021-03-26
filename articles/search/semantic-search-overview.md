@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7e3bfa9d91929530ae53c87ceabf639a16a5a0e6
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: b5b33007f71cfc2a29005ce84f1fedba90dd1bf1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888915"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561976"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de anlamsal arama
 
@@ -44,7 +44,7 @@ Anlamsal arama duyarlık artırır ve aşağıdaki özellikleri ekleme ile geri 
 
 ### <a name="order-of-operations"></a>İşlem sırası
 
-Anlamsal arama bileşenleri, mevcut sorgu yürütme ardışık düzenini her iki yönde de genişletir. Yazım düzeltmesini etkinleştirirseniz, yazım [denetleyicisi](speller-how-to-add.md) sorgu terimlerinin arama altyapısına ulaşmadan önce, Outset 'teki yazım hatalarını düzeltir.
+Anlamsal arama bileşenleri, mevcut sorgu yürütme ardışık düzenini her iki yönde de genişletir. Yazım düzeltmesini etkinleştirirseniz, yazım [denetleyicisi](speller-how-to-add.md) , arama altyapısına ulaşmadan önce sorgu OnSet 'teki yazım hatalarını düzeltir.
 
 :::image type="content" source="media/semantic-search-overview/semantic-workflow.png" alt-text="Sorgu yürütmesindeki anlam bileşenleri" border="true":::
 

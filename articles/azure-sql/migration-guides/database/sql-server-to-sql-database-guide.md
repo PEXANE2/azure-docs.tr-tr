@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 03/19/2021
-ms.openlocfilehash: ce155015373a096595dc61d75c876633e2e4f00a
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: e2de694a153276dcace1070d35af44dec1056e03
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105027202"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564934"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-database"></a>Geçiş Kılavuzu: Azure SQL veritabanı 'na SQL Server
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -152,7 +152,7 @@ Kaynaktan hedefe yapılan veri değişikliklerini sürekli olarak çoğaltacak/e
 Verilerin hem kaynak hem de hedefte aynı olduğunu doğruladıktan sonra kaynaktan hedef ortama aktarabilirsiniz. Tam geçişi sırasında en az kesinti iş devamlılığını etkilemediğinden emin olmak için iş/uygulama ekipleriyle tam geçişi sürecini planlamak önemlidir. 
 
 > [!IMPORTANT]
-> DMS kullanarak geçişler kapsamında bir tam geçişi gerçekleştirme ile ilişkili belirli adımlarla ilgili ayrıntılı bilgi için bkz. [geçiş tam geçişi gerçekleştirme](../../../dms/tutorial-sql-server-azure-sql-online.md#perform-migration-cutover).
+> DMS kullanarak geçişler kapsamında bir tam geçişi gerçekleştirme ile ilişkili belirli adımlarla ilgili ayrıntılı bilgi için bkz. [geçiş tam geçişi gerçekleştirme](../../../dms/tutorial-sql-server-to-azure-sql.md).
 
 ## <a name="migration-recommendations"></a>Geçiş önerileri
 

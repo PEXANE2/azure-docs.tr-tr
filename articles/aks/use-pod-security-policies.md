@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (aks) içinde Pod SecurityPolicy kullanara
 services: container-service
 ms.topic: article
 ms.date: 02/12/2021
-ms.openlocfilehash: cb317e5e0d1f558121e675f569bad37811768ca6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cf520f4b0dc2f51e6431d65ef178b6635d7fd857
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180318"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544256"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de Pod güvenlik ilkelerini kullanarak kümenizin güvenliğini sağlama
 
@@ -21,7 +21,7 @@ ms.locfileid: "102180318"
 > Aks için Azure ilkesiyle test etme işlemini başlatmak önemle önerilir, bu da Pod güvenlik ilkeleriyle eşlenen Pod ve yerleşik girişimleri güvenli hale getirmek için yerleşik ilkeler sunar. Pod güvenlik ilkesinden geçiş yapmak için, bir kümede aşağıdaki işlemleri gerçekleştirmeniz gerekir.
 > 
 > 1. Kümede [Pod güvenlik Ilkesini devre dışı bırak](#clean-up-resources)
-> 1. [Azure Ilke eklentisini][kubernetes-policy-reference] etkinleştirin
+> 1. [Azure Ilke eklentisini][azure-policy-add-on] etkinleştirin
 > 1. İstenen Azure ilkelerini [kullanılabilir yerleşik ilkelerden][policy-samples] etkinleştirin
 > 1. [Pod güvenlik ilkesi Ile Azure ilkesi arasındaki davranış değişikliklerini](#behavior-changes-between-pod-security-policy-and-azure-policy) gözden geçirme
 
@@ -462,7 +462,6 @@ Pod ağ trafiğini sınırlama hakkında daha fazla bilgi için bkz. [aks 'deki 
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [kubernetes-policy-reference]: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#policy-reference
-
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
@@ -479,3 +478,4 @@ Pod ağ trafiğini sınırlama hakkında daha fazla bilgi için bkz. [aks 'deki 
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [policy-samples]: ./policy-reference.md#microsoftcontainerservice
+[azure-policy-add-on]: ../governance/policy/concepts/policy-for-kubernetes.md

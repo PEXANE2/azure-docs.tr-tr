@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6aeb7489b455840eeca0a8e1967c7e6e2ed50b7a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 608f883304dbc8e1ea8b0127668125ae50ca0b11
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199909"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564951"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure dijital TWINS 'i Azure Time Series Insights ile tümleştirme
 
@@ -157,7 +157,7 @@ Daha sonra, oluşturduğunuz Olay Hub 'ları için bağlantı dizelerini içeren
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Time Series Insights örneği oluşturma ve bağlantı kurma
 
-Sonra, ikinci (TSI) Olay Hub 'ından verileri almak için bir Time Series Insights örneği ayarlayacaksınız. Aşağıdaki adımları izleyin ve bu işlemle ilgili daha fazla ayrıntı için bkz. [*öğretici: Azure Time Series Insights Gen2 PAYG ortamı ayarlama*](../time-series-insights/tutorials-set-up-tsi-environment.md).
+Sonra, ikinci (TSI) Olay Hub 'ından verileri almak için bir Time Series Insights örneği ayarlayacaksınız. Aşağıdaki adımları izleyin ve bu işlemle ilgili daha fazla ayrıntı için bkz. [*öğretici: Azure Time Series Insights Gen2 PAYG ortamı ayarlama*](../time-series-insights/tutorial-set-up-environment.md).
 
 1. Azure portal, bir Time Series Insights ortamı oluşturmaya başlayın. 
     1. **Gen2 (L1)** fiyatlandırma katmanını seçin.
@@ -201,7 +201,7 @@ Uçtan uca öğreticiyi kullanıyorsanız ([*öğretici: uçtan uca çözümü b
 
 Dijital TWINS, varsayılan olarak Time Series Insights düz bir hiyerarşi olarak saklanır, ancak model bilgileri ve kuruluş için çok düzeyli bir hiyerarşiyle zenginleştirilebilir. Bu işlem hakkında daha fazla bilgi edinmek için şunu okuyun: 
 
-* [*Öğretici: model tanımlama ve uygulama*](../time-series-insights/tutorials-set-up-tsi-environment.md#define-and-apply-a-model) 
+* [*Öğretici: model tanımlama ve uygulama*](../time-series-insights/tutorial-set-up-environment.md#define-and-apply-a-model) 
 
 Azure dijital TWINS 'te zaten depolanmış olan model ve grafik verilerini kullanarak bu bilgileri otomatik olarak sağlamak için özel mantık yazabilirsiniz. TWINS grafiğindeki bilgileri yönetme, yükseltme ve alma hakkında daha fazla bilgi edinmek için aşağıdaki başvurulara bakın:
 

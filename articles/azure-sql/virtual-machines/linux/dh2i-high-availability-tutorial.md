@@ -7,12 +7,12 @@ ms.topic: tutorial
 author: amvin87
 ms.author: amitkh
 ms.reviewer: vanto
-ms.openlocfilehash: 0500f4143ad7cbdaaa8406af2b242e0d40b1caa2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 07752eb5c7f18a8952c43e77afed78b06432aca6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102227407"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568548"
 ---
 # <a name="tutorial---setup-a-three-node-always-on-availability-group-with-dh2i-dxenterprise-running-on-linux-based-azure-virtual-machines"></a>Öğretici-Linux tabanlı Azure sanal makinelerinde çalışan DH2i DxEnterprise ile üç düğümlü her zaman açık kullanılabilirlik grubu kurma
 
@@ -39,22 +39,22 @@ Bu öğreticide, [Dxadmin istemci kullanıcı arabirimini](https://dh2i.com/docs
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure 'da dört VM oluşturun. Linux tabanlı sanal makineler oluşturmak için [hızlı başlangıç: Azure Portal Linux sanal makinesi oluşturma](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) makalesini izleyin. Benzer şekilde, Windows tabanlı sanal makine oluşturmak için, Azure portal makalesinde [hızlı başlangıç: Windows sanal makinesi oluşturma](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) makalesini izleyin.
-- Kümenin parçası olacak tüm Linux tabanlı sanal makinelere .NET 3,1 ' i yükler. Seçtiğiniz Linux işletim sistemine bağlı olarak [burada](https://docs.microsoft.com/dotnet/core/install/linux) belgelenen yönergeleri izleyin.
+- Azure 'da dört VM oluşturun. Linux tabanlı sanal makineler oluşturmak için [hızlı başlangıç: Azure Portal Linux sanal makinesi oluşturma](../../../virtual-machines/linux/quick-create-portal.md) makalesini izleyin. Benzer şekilde, Windows tabanlı sanal makine oluşturmak için, Azure portal makalesinde [hızlı başlangıç: Windows sanal makinesi oluşturma](../../../virtual-machines/windows/quick-create-portal.md) makalesini izleyin.
+- Kümenin parçası olacak tüm Linux tabanlı sanal makinelere .NET 3,1 ' i yükler. Seçtiğiniz Linux işletim sistemine bağlı olarak [burada](/dotnet/core/install/linux) belgelenen yönergeleri izleyin.
 - Kullanılabilirlik grubu yönetim özellikleri etkin olan geçerli bir DxEnterprise lisansı gerekecektir. Daha fazla bilgi için bkz. ücretsiz bir deneme elde etme hakkında [Dxenterprise ücretsiz deneme sürümü](https://dh2i.com/trial/) .
 
 ## <a name="install-sql-server-on-all-the-azure-vms-that-will-be-part-of-the-availability-group"></a>Kullanılabilirlik grubunun parçası olacak tüm Azure VM 'lerine SQL Server 'yi yükler
 
-Bu öğreticide, kullanılabilirlik grubunu çalıştıran üç düğümlü Linux tabanlı kümeyi ayarlarız. Linux 'ta Linux platformunuzun seçimine bağlı olarak [SQL Server yükleme](https://docs.microsoft.com/sql/linux/sql-server-linux-overview#install) belgelerini izleyin. Ayrıca, bu öğretici için [SQL Server araçlarını](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) yüklemenizi öneririz.
+Bu öğreticide, kullanılabilirlik grubunu çalıştıran üç düğümlü Linux tabanlı kümeyi ayarlarız. Linux 'ta Linux platformunuzun seçimine bağlı olarak [SQL Server yükleme](/sql/linux/sql-server-linux-overview#install) belgelerini izleyin. Ayrıca, bu öğretici için [SQL Server araçlarını](/sql/linux/sql-server-linux-setup-tools) yüklemenizi öneririz.
  
 > [!NOTE]
-> Seçtiğiniz Linux işletim sisteminin hem DH2i DxEnterprise tarafından desteklenen ortak bir dağıtım olduğundan emin olun [(bkz. en düşük sistem gereksinimleri bölümü)](https://dh2i.com/wp-content/uploads/DxEnterprise-v20-Admin-Guide.pdf) ve [Microsoft SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-release-notes-2019#supported-platforms).
+> Seçtiğiniz Linux işletim sisteminin hem DH2i DxEnterprise tarafından desteklenen ortak bir dağıtım olduğundan emin olun [(bkz. en düşük sistem gereksinimleri bölümü)](https://dh2i.com/wp-content/uploads/DxEnterprise-v20-Admin-Guide.pdf) ve [Microsoft SQL Server](/sql/linux/sql-server-linux-release-notes-2019#supported-platforms).
 >
 > Bu örnekte, hem DH2i DxEnterprise hem de Microsoft SQL Server tarafından desteklenen Ubuntu 18,04 kullanılır.
 
 Bu öğretici için, bu düğüm kümenin bir parçası olmadığı ve yalnızca DxAdmin kullanılarak kümeyi yönetmek için kullanılan SQL Server Windows sanal makinesine yüklenemedik.
 
-Bu adımı tamamladıktan sonra, kullanılabilirlik grubuna katılacak üç Linux tabanlı VM 'ye SQL Server ve [SQL Server araçlarına](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) (isteğe bağlı olarak) sahip olmanız gerekir.
+Bu adımı tamamladıktan sonra, kullanılabilirlik grubuna katılacak üç Linux tabanlı VM 'ye SQL Server ve [SQL Server araçlarına](/sql/linux/sql-server-linux-setup-tools) (isteğe bağlı olarak) sahip olmanız gerekir.
  
 ## <a name="install-dxenterprise-on-all-the-vms-and-configure-the-cluster"></a>DxEnterprise 'ı tüm VM 'Lere yükleyip kümeyi yapılandırın
 
@@ -84,7 +84,7 @@ Windows VM 'ye yalnızca DxAdmin istemci aracını yüklemek için, [Dxadmin ist
 Bu adımdan sonra, Linux VM 'lerinde DxEnterprise kümesinin ve Windows Istemci makinesinde DxAdmin istemcisinin yüklü olması gerekir. 
 
 > [!NOTE]
-> Otomatik yük devretmeyi etkinleştirmek için [burada](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-modes-always-on-availability-groups#SupportedAvModes) açıklandığı gibi, düğümden birinin *yalnızca yapılandırma modu* olarak eklendiği üç düğüm kümesi de oluşturabilirsiniz. 
+> Otomatik yük devretmeyi etkinleştirmek için [burada](/sql/database-engine/availability-groups/windows/availability-modes-always-on-availability-groups#SupportedAvModes) açıklandığı gibi, düğümden birinin *yalnızca yapılandırma modu* olarak eklendiği üç düğüm kümesi de oluşturabilirsiniz. 
 
 ## <a name="create-the-virtual-hosts-to-provide-failover-support-and-high-availability"></a>Yük devretme desteği ve yüksek kullanılabilirlik sağlamak için sanal konakları oluşturun
 
@@ -100,7 +100,7 @@ Yukarıdaki adımda oluşturulan kümeye bağlanmak için DxAdmin çalıştıran
 
 ## <a name="create-the-internal-azure-load-balancer-for-listener-optional"></a>Dinleyici için Iç Azure Yük dengeleyiciyi oluşturma (isteğe bağlı)
 
-İsteğe bağlı bu adımda, kullanılabilirlik grubu dinleyicilerinin IP adreslerini tutan Azure Yük dengeleyiciyi oluşturup yapılandırabilirsiniz. Azure Load Balancer hakkında daha fazla bilgi için [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)başvurun. Azure yük dengeleyici ve kullanılabilirlik grubu dinleyicisini DxAdmin kullanarak yapılandırmak için DxEnterprise [Azure Load Balancer hızlı başlangıç kılavuzu](https://dh2i.com/docs/20-0/dxenterprise/dh2i-dxenterprise-20-0-software-azure-load-balancer-quick-start-guide/)izleyin.
+İsteğe bağlı bu adımda, kullanılabilirlik grubu dinleyicilerinin IP adreslerini tutan Azure Yük dengeleyiciyi oluşturup yapılandırabilirsiniz. Azure Load Balancer hakkında daha fazla bilgi için [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md)başvurun. Azure yük dengeleyici ve kullanılabilirlik grubu dinleyicisini DxAdmin kullanarak yapılandırmak için DxEnterprise [Azure Load Balancer hızlı başlangıç kılavuzu](https://dh2i.com/docs/20-0/dxenterprise/dh2i-dxenterprise-20-0-software-azure-load-balancer-quick-start-guide/)izleyin.
 
 Bu adımdan sonra, oluşturulup Iç Azure yük dengeleyiciye eşlenmiş bir kullanılabilirlik grubu dinleyicisine sahip olmanız gerekir.
 
@@ -121,7 +121,7 @@ DxEnterprise içindeki daha fazla işlem hakkında daha fazla bilgi için, [Dxen
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- [Linux 'Ta kullanılabilirlik grupları](https://docs.microsoft.com/sql/linux/sql-server-linux-availability-group-overview) hakkında daha fazla bilgi edinin
-- [Hızlı başlangıç: Azure portal Linux sanal makinesi oluşturma](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)
-- [Hızlı başlangıç: Azure portalda Windows sanal makinesi oluşturma](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
-- [Linux üzerinde SQL Server 2019 için desteklenen platformlar](https://docs.microsoft.com/sql/linux/sql-server-linux-release-notes-2019#supported-platforms)
+- [Linux 'Ta kullanılabilirlik grupları](/sql/linux/sql-server-linux-availability-group-overview) hakkında daha fazla bilgi edinin
+- [Hızlı başlangıç: Azure portal Linux sanal makinesi oluşturma](../../../virtual-machines/linux/quick-create-portal.md)
+- [Hızlı başlangıç: Azure portalda Windows sanal makinesi oluşturma](../../../virtual-machines/windows/quick-create-portal.md)
+- [Linux üzerinde SQL Server 2019 için desteklenen platformlar](/sql/linux/sql-server-linux-release-notes-2019#supported-platforms)

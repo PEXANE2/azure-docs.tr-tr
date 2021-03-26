@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: e893216eb8e2d7e44e3f272f6b965b84c6253f7f
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 7a9ac98a9566986767016720fda245712197b27f
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104870339"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566549"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>Azure PowerShell kullanarak özel eşleme için IPv6 desteği ekleme (Önizleme)
 
 Bu makalede, Azure PowerShell kullanarak Azure 'daki kaynaklarınıza ExpressRoute aracılığıyla bağlanmak üzere IPv6 desteğinin nasıl ekleneceği açıklanmaktadır.
 
 > [!Note]
-> Bu özellik şu anda [kullanılabilirlik alanları olan Azure bölgelerinde](https://docs.microsoft.com/azure/availability-zones/az-region#azure-regions-with-availability-zones)önizleme için kullanılabilir. Bu nedenle, ExpressRoute bağlantı hattı herhangi bir eşleme konumu kullanılarak oluşturulabilir, ancak bağlandığı IPv6 tabanlı dağıtımlar Kullanılabilirlik Alanları bir bölgede olmalıdır.
+> Bu özellik şu anda [kullanılabilirlik alanları olan Azure bölgelerinde](../availability-zones/az-region.md#azure-regions-with-availability-zones)önizleme için kullanılabilir. Bu nedenle, ExpressRoute bağlantı hattı herhangi bir eşleme konumu kullanılarak oluşturulabilir, ancak bağlandığı IPv6 tabanlı dağıtımlar Kullanılabilirlik Alanları bir bölgede olmalıdır.
 
 ## <a name="working-with-azure-powershell"></a>Azure PowerShell çalışma
 
@@ -46,7 +46,7 @@ IPv6 desteği eklemeden önce aboneliğinizi kaydetmeniz gerekir. Kaydolmak içi
 
 ## <a name="add-ipv6-private-peering-to-your-expressroute-circuit"></a>ExpressRoute devrenizin IPv6 özel eşlemesi ekleme
 
-1. [Bir ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-arm) bağlantı hattı oluşturun veya mevcut bir devreyi kullanın. **Get-Azexpressroutedevresi** komutunu çalıştırarak devreyi alın:
+1. [Bir ExpressRoute](./expressroute-howto-circuit-arm.md) bağlantı hattı oluşturun veya mevcut bir devreyi kullanın. **Get-Azexpressroutedevresi** komutunu çalıştırarak devreyi alın:
 
     ```azurepowershell-interactive
     $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -150,7 +150,7 @@ IPv6 özel eşliğini kullanmak istediğiniz Kullanılabilirlik Alanları bir b�
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
 
-4. Bölgesel olarak yedekli mevcut bir ağ geçidiniz varsa IPv6 bağlantısını etkinleştirmek için aşağıdakileri çalıştırın. Aksi takdirde, bölgesel olarak yedekli bir SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) kullanarak [sanal ağ geçidini oluşturun](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager) .
+4. Bölgesel olarak yedekli mevcut bir ağ geçidiniz varsa IPv6 bağlantısını etkinleştirmek için aşağıdakileri çalıştırın. Aksi takdirde, bölgesel olarak yedekli bir SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) kullanarak [sanal ağ geçidini oluşturun](./expressroute-howto-add-gateway-resource-manager.md) .
 
     ```azurepowershell-interactive
     $gw = Get-AzVirtualNetworkGateway -Name "GatewayName" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -161,13 +161,13 @@ IPv6 özel eşliğini kullanmak istediğiniz Kullanılabilirlik Alanları bir b�
 
 IPv6 özel eşlemesini kullanarak Kullanılabilirlik Alanları bir bölgedeki yeni bir Azure kaynakları kümesine bağlanmayı planlıyorsanız aşağıdaki adımları izleyin.
 
-1. Hem IPv4 hem de IPv6 adres alanı ile çift yığın sanal ağı oluşturun. Daha fazla bilgi için bkz. [sanal ağ oluşturma](https://docs.microsoft.com/azure/virtual-network/quick-create-portal#create-a-virtual-network).
+1. Hem IPv4 hem de IPv6 adres alanı ile çift yığın sanal ağı oluşturun. Daha fazla bilgi için bkz. [sanal ağ oluşturma](../virtual-network/quick-create-portal.md#create-a-virtual-network).
 
-2. [Çift Stack ağ geçidi alt ağını oluşturun](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway).
+2. [Çift Stack ağ geçidi alt ağını oluşturun](./expressroute-howto-add-gateway-resource-manager.md#add-a-gateway).
 
-3. Bölgesel olarak yedekli bir SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) kullanarak [sanal ağ geçidini oluşturun](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway) . FastPath kullanmayı planlıyorsanız, ErGw3AZ kullanın (bunun yalnızca ExpressRoute Direct kullanan devreler için kullanılabilir olduğunu unutmayın).
+3. Bölgesel olarak yedekli bir SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) kullanarak [sanal ağ geçidini oluşturun](./expressroute-howto-add-gateway-resource-manager.md#add-a-gateway) . FastPath kullanmayı planlıyorsanız, ErGw3AZ kullanın (bunun yalnızca ExpressRoute Direct kullanan devreler için kullanılabilir olduğunu unutmayın).
 
-4. [Sanal ağınızı ExpressRoute devrenizi Ile ilişkilendirin](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-arm).
+4. [Sanal ağınızı ExpressRoute devrenizi Ile ilişkilendirin](./expressroute-howto-linkvnet-arm.md).
 
 ## <a name="limitations"></a>Sınırlamalar
 IPv6 desteği, Kullanılabilirlik Alanları bölgelerdeki dağıtımlara bağlantılar için kullanılabilir olsa da, aşağıdaki kullanım durumlarını desteklemez:

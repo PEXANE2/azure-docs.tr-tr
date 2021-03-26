@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 105fd185900692669fdc40e0c47a03474524e250
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c389cfd2af6fe83ec232e5f205041676ba46bd2a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731111"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558202"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azure Cloud Services için Azure Güvenlik temeli
 
@@ -36,7 +36,7 @@ Microsoft Azure Cloud Services (klasik) Azure Resource Manager sanal ağlara yer
 
 - [Ağ güvenlik grubuna genel bakış](../virtual-network/network-security-groups-overview.md)
 
-- [Sanal Ağ eşlemesi](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
+- [Sanal Ağ eşlemesi](./cloud-services-connectivity-and-networking-faq.md#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
 
 **Sorumluluk**: Müşteri
 
@@ -89,11 +89,11 @@ Varsayılan URL veya Cloud Services adına gelen trafiği engelleyin, örneğin 
 
 Klasik abonelik Yöneticisi atamalarına Izin verme kuralını yapılandırın. Varsayılan olarak, bir iç uç nokta tanımlandıktan sonra, iletişim herhangi bir rolden herhangi bir kısıtlama olmadan bir rolün iç uç noktasına akabilir. İletişimi kısıtlamak için, hizmet tanımı dosyasındaki ServiceDefinition öğesine bir NetworkTrafficRules öğesi eklemeniz gerekir.
 
-- [Bulut hizmetimin varsayılan URL 'sine gelen trafiği engelleme/devre dışı bırakabilir](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
+- [Bulut hizmetimin varsayılan URL 'sine gelen trafiği engelleme/devre dışı bırakabilir](./cloud-services-connectivity-and-networking-faq.md#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
 
-- [Azure DDOS koruması](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
+- [Azure DDOS koruması](./cloud-services-connectivity-and-networking-faq.md#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
 
-- [Belirli bir IP adresini engelle](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common#block-a-specific-ip-address)
+- [Belirli bir IP adresini engelle](./cloud-services-startup-tasks-common.md#block-a-specific-ip-address)
 
 **Sorumluluk**: Müşteri
 
@@ -175,9 +175,9 @@ Azure 'da bir platform günlüğü olan etkinlik günlüğünden, abonelik düze
 
 Etkinlik günlüğünü Azure Izleyici 'ye, Azure Event Hubs Azure 'un dışına veya arşivleme için Azure depolama 'ya göndermek üzere bir tanılama ayarı oluşturun. Azure Cloud Services 'de kritik kaynaklar değiştirildiğinde bildirim uyarıları için Azure Izleyicisini yapılandırın. 
 
-- [Azure etkinlik günlüğü](/azure/azure-monitor/platform/activity-log)
+- [Azure etkinlik günlüğü](../azure-monitor/essentials/activity-log.md)
 
-- [Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Traffic Manager Izleme](../traffic-manager/traffic-manager-monitoring.md)
 
@@ -193,7 +193,7 @@ Etkinlik günlüğünü Azure Izleyici 'ye, Azure Event Hubs Azure 'un dışına
 
 **Rehberlik**: Microsoft, Azure Cloud Services Azure kaynakları için zaman kaynaklarını korur. Müşterilerin, ortamınızda kullanılan bir zaman sunucusuna erişim izni vermek için, UDP protokolüyle 123 numaralı bağlantı noktası üzerinden bir ağ kuralı oluşturması gerekebilir.
 
-- [NTP sunucusu erişimi](https://docs.microsoft.com/azure/firewall/protect-windows-virtual-desktop#additional-considerations)
+- [NTP sunucusu erişimi](../firewall/protect-windows-virtual-desktop.md#additional-considerations)
 
 **Sorumluluk**: Paylaşılan
 
@@ -233,7 +233,7 @@ Azure Cloud Services, kullanılabilirlik, performans, başarısızlık ve kullan
 
 - [Dağıtımdan önce Visual Studio 'da tanılamayı aç](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
-- [Değişiklik geçmişini görüntüle](/azure/azure-monitor/platform/activity-log#view-change-history)
+- [Değişiklik geçmişini görüntüle](../azure-monitor/essentials/activity-log.md#view-change-history)
 
 - [Azure bulut hizmeti için Application Insights (klasik)](../azure-monitor/app/cloudservices.md)
 
@@ -269,7 +269,7 @@ Azure tanılama uzantısı, verileri bir Azure depolama hesabında toplar ve dep
 
 - [PowerShell kullanarak Azure Cloud Services tanılamayı etkinleştirme](cloud-services-diagnostics-powershell.md)
 
-- [Azure Depolama’daki tanılama verilerini depolama ve görüntüleme](https://docs.microsoft.com/azure/cloud-services/diagnostics-extension-to-storage?&amp;preserve-view=true)
+- [Azure Depolama’daki tanılama verilerini depolama ve görüntüleme](./diagnostics-extension-to-storage.md?preserve-view=)
 
 **Sorumluluk**: Müşteri
 
@@ -289,7 +289,7 @@ Azure tanılama uzantısı, verileri bir Azure depolama hesabında toplar ve dep
 
 **Kılavuz**: Azure Için Microsoft kötü amaçlı yazılımdan koruma, Azure Cloud Services ve sanal makinelerini korur. Web uygulaması ateş duvarları, ağ güvenlik duvarları, kötü amaçlı yazılım, yetkisiz giriş algılama ve önleme sistemleri (KIMLIKLER veya IP 'ler) ve daha fazlası gibi üçüncü taraf güvenlik çözümlerini de dağıtma seçeneğiniz vardır.
 
-- [Azure temel IP/KIMLIKLERININ ve DDOS 'nin sağladığı özellikler ve yetenekler nelerdir?](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
+- [Azure temel IP/KIMLIKLERININ ve DDOS 'nin sağladığı özellikler ve yetenekler nelerdir?](./cloud-services-configuration-and-management-faq.md#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
 
 **Sorumluluk**: Müşteri
 
@@ -315,7 +315,7 @@ Get-AzRoleAssignment-ıncludeclassicadministrators
 
 Klasik abonelik yönetim rolleri arasındaki farkları gözden geçirin. 
 
-- [Klasik üç abonelik yönetim rolü arasındaki farklar](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles)
+- [Klasik üç abonelik yönetim rolü arasındaki farklar](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
 
 **Sorumluluk**: Müşteri
 
@@ -325,7 +325,7 @@ Klasik abonelik yönetim rolleri arasındaki farkları gözden geçirin.
 
 **Rehberlik**: kullanılabilir rollere ve Azure Cloud Services kaynaklarını çalıştırmak ve yönetmek için gereken izinlere bağlı olarak, adanmış yönetim hesaplarının kullanımı etrafında standart işletim yordamları oluşturmanız önerilir.
 
-- [Klasik abonelik yönetim rolleri arasındaki farklar](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles)
+- [Klasik abonelik yönetim rolleri arasındaki farklar](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
 
 **Sorumluluk**: Müşteri
 
@@ -389,7 +389,7 @@ Rol işlemlerine verilen erişim izinlerini belirtmek için Azure Cloud Service 
 
 - [Yönetim grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
-- [WebRole Şeması](https://docs.microsoft.com/azure/cloud-services/schema-csdef-webrole#Certificate)
+- [WebRole Şeması](./schema-csdef-webrole.md#Certificate)
 
 **Sorumluluk**: Müşteri
 
@@ -465,9 +465,9 @@ Geçici disklerde depolanan uygulama verileri şifrelenmemiştir. Müşteri, ger
 
 Ayrıca, Application Insights kullanılabilirlik, performans, başarısızlık ve kullanım için Azure Cloud Services uygulamalarını izleyebilir. Bu, Azure Cloud Services Azure Tanılama verileri ile Application Insights SDK 'lardan Birleşik verileri kullanır.
 
-- [Azure Izleyici kullanarak klasik ölçüm uyarılarını oluşturma, görüntüleme ve yönetme](/azure/azure-monitor/platform/alerts-classic-portal)
+- [Azure Izleyici kullanarak klasik ölçüm uyarılarını oluşturma, görüntüleme ve yönetme](../azure-monitor/alerts/alerts-classic-portal.md)
 
-- [Ölçüm uyarılarına genel bakış](/azure/azure-monitor/platform/alerts-metric-overview) 
+- [Ölçüm uyarılarına genel bakış](../azure-monitor/alerts/alerts-metric-overview.md) 
 
 - [Azure bulut hizmeti için Application Insights (klasik)](../azure-monitor/app/cloudservices.md)
 
@@ -493,7 +493,7 @@ Bir müşteri Azure Cloud Services dağıtımı için belirli bir işletim siste
 
 - [Bulut hizmetini yapılandırma (klasik)](cloud-services-how-to-configure-portal.md)
 
-- [Konuk işletim sistemi sürümünü yönetme](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal#manage-guest-os-version)
+- [Konuk işletim sistemi sürümünü yönetme](./cloud-services-how-to-configure-portal.md#manage-guest-os-version)
 
 **Sorumluluk**: Paylaşılan
 
@@ -523,7 +523,7 @@ Bu senaryolar arasında düşünce sunuyoruz:
 
 Destekleyici belgeler:
 
-- [Azure kaynaklarınızın risk değerlendirmesi](https://docs.microsoft.com/azure/security/fundamentals/ddos-best-practices#risk-evaluation-of-your-azure-resources)
+- [Azure kaynaklarınızın risk değerlendirmesi](../security/fundamentals/ddos-best-practices.md#risk-evaluation-of-your-azure-resources)
 
 **Sorumluluk**: Müşteri
 
@@ -805,7 +805,7 @@ Azure Cloud Services 'de kullanılan kimlik bilgileri gibi gizli dizileri güven
 
 Ayrıca, Azure Cloud Services 'de kullanılan sertifikaların özel anahtarlarını güvenli bir depolama alanına depolamanız önerilir.
 
-- [Uzak Masaüstü 'Nü PowerShell 'den yapılandırma](https://docs.microsoft.com/azure/cloud-services/cloud-services-role-enable-remote-desktop-powershell#configure-remote-desktop-from-powershell)
+- [Uzak Masaüstü 'Nü PowerShell 'den yapılandırma](./cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
 
 **Sorumluluk**: Müşteri
 
@@ -820,7 +820,7 @@ Başlamak için, bir düz metin parolası belirtin, ConvertTo-SecureString, Powe
 
 Azure Cloud Services 'de kullanılan sertifikaların özel anahtarlarını güvenli bir depolama konumuna depolayın.
 
-- [Uzak Masaüstü 'Nü PowerShell 'den yapılandırma](https://docs.microsoft.com/azure/cloud-services/cloud-services-role-enable-remote-desktop-powershell#configure-remote-desktop-from-powershell)
+- [Uzak Masaüstü 'Nü PowerShell 'den yapılandırma](./cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
 
 **Sorumluluk**: Müşteri
 
@@ -840,9 +840,9 @@ Azure Cloud Services 'de başlangıç görevinde bir PowerShell betiği ile köt
 
 Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi özelliğini, akıllı, otomatik, uçtan uca bir çözüm olarak seçin. Makinelerinizi kötü amaçlı yazılımlara karşı korumanıza yardımcı olur ve kötü amaçlı yazılımdan koruma çözümleri tarafından kaçırılmayabilir.
 
-- [Azure Cloud Services için otomatikleştirilmiş bir şekilde kötü amaçlı yazılımdan koruma uzantısı nasıl ekleyebilirim?](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
+- [Azure Cloud Services için otomatikleştirilmiş bir şekilde kötü amaçlı yazılımdan koruma uzantısı nasıl ekleyebilirim?](./cloud-services-configuration-and-management-faq.md#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 
-- [Kötü amaçlı yazılımdan koruma senaryoları](https://docs.microsoft.com/azure/security/fundamentals/antimalware#antimalware-deployment-scenarios)
+- [Kötü amaçlı yazılımdan koruma senaryoları](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)
 
 - [Uyarlamalı uygulama denetimleri](../security-center/security-center-adaptive-application.md)
 
@@ -940,5 +940,5 @@ Abonelikleri açık bir şekilde işaretleyin (örneğin, üretim, üretim dış
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

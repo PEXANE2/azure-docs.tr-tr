@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: zxue
 ms.date: 03/03/2021
-ms.openlocfilehash: d8f7a2b2f31fb192147c1950866cff77064a3671
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: a884dac90273e98868fed6bfe1cbed23b939d286
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103020321"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557709"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>FHıR için Azure API 'de tanılama günlüğünü etkinleştirme
 
@@ -42,7 +42,7 @@ Izleme kapsamında ölçümleri görüntüleyebilirsiniz | Portaldan ölçümler
     2. Üçüncü taraf bir hizmet veya özel analitik çözüm tarafından giriş için **Olay Hub 'ına akış** . Bu adımı yapılandırmadan önce bir olay hub 'ı ad alanı ve Olay Hub 'ı ilkesi oluşturmanız gerekir.
     3. Azure Izleyici 'de Log Analytics çalışma alanına **akış** . Bu seçeneği seçmeden önce günlüklerinizi analiz çalışma alanınızı oluşturmanız gerekecektir.
 
-6. **Auditlogs** ve/veya **allölçümler**' i seçin. Ölçümler hizmet adı, kullanılabilirlik, veri boyutu, toplam gecikme, toplam istek, toplam hata ve zaman damgası içerir. [Desteklenen ölçümler](https://docs.microsoft.com/azure/azure-monitor/essentials/metrics-supported#microsofthealthcareapisservices)hakkında daha fazla ayrıntı bulabilirsiniz. 
+6. **Auditlogs** ve/veya **allölçümler**' i seçin. Ölçümler hizmet adı, kullanılabilirlik, veri boyutu, toplam gecikme, toplam istek, toplam hata ve zaman damgası içerir. [Desteklenen ölçümler](../../azure-monitor/essentials/metrics-supported.md#microsofthealthcareapisservices)hakkında daha fazla ayrıntı bulabilirsiniz. 
 
    :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Azure FHıR Tanılama ayarları. AuditLogs ve/veya Allölçümler ' i seçin." lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 

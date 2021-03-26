@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e5e01c8d1ac16e5e8be405660a0726796789e645
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ad8968fdb6548da29a031f0e44bd3671f67b5553
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738982"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557726"
 ---
 # <a name="azure-security-baseline-for-azure-resource-graph"></a>Azure Kaynak Grafiği için Azure Güvenlik temeli
 
@@ -30,7 +30,7 @@ Azure Kaynak grafiğinin Azure Güvenlik kıyaslaması ile tamamen nasıl eşlen
 
 **Kılavuz**: Azure Kaynak Grafiği, Azure rol tabanlı erişim denetimlerine (Azure RBAC) göre kaynak türlerine ve özelliklere erişim sağlar. Sorguların uygun kaynaklar için sonuçlar döndürmesini sağlamak üzere güvenlik ilkelerine (kullanıcılar, gruplar ve hizmet hesapları) verilen erişimi denetleyin ve gözden geçirin.
 
-- [Azure Kaynak Grafiği’nde izinler](https://docs.microsoft.com/azure/governance/resource-graph/overview#permissions-in-azure-resource-graph)
+- [Azure Kaynak Grafiği’nde izinler](../overview.md#permissions-in-azure-resource-graph)
 
 - [Azure kimlik erişimi Incelemelerini kullanma](../../../active-directory/governance/access-reviews-overview.md)
 
@@ -46,7 +46,7 @@ Azure Kaynak grafiğinin Azure Güvenlik kıyaslaması ile tamamen nasıl eşlen
 
 **Rehberlik**: veri ve kaynaklara erişimi denetlemek IÇIN Azure RBAC kullanın. Azure Kaynak grafiğini kullanmak için, sorgulamak istediğiniz kaynaklara uygun erişiminizin olması gerekir. Bu erişimin kapsamı salt okunurdur ve yalnızca gerekli personele verilmelidir.
 
-- [Azure Kaynak Grafiği’nde izinler](https://docs.microsoft.com/azure/governance/resource-graph/overview#permissions-in-azure-resource-graph)
+- [Azure Kaynak Grafiği’nde izinler](../overview.md#permissions-in-azure-resource-graph)
 
 - [Azure RBAC 'yi yapılandırma](../../../role-based-access-control/role-assignments-rest.md)
 
@@ -96,5 +96,5 @@ Azure Kaynak grafiğinin Azure Güvenlik kıyaslaması ile tamamen nasıl eşlen
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](../../../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../../../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

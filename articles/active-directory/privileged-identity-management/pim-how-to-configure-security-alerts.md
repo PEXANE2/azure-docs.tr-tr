@@ -14,12 +14,12 @@ ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a632c0e31de1c2d7e5417656d537e5f9f82ecfbe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 26b519ce11747ab3374d9bd286800a6c93129019
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96180498"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565240"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rolleri için güvenlik uyarılarını yapılandırma
 
@@ -50,9 +50,10 @@ Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzel
 
 ### <a name="administrators-arent-using-their-privileged-roles"></a>Yöneticiler ayrıcalıklı rollerini kullanmıyor
 
-| | |
+Önem derecesi: **düşük**
+
+| | Description |
 | --- | --- |
-| **Önem Derecesi** | Düşük |
 | **Bu uyarıyı neden alıyorum?** | Ayrıcalıklı roller atanmış kullanıcılar, saldırının olasılığını artırır. Saldırganlar, etkin olarak kullanılmayan hesaplara ait olmaması durumunda daha da kolaydır. |
 | **Nasıl düzeltilir?** | Listedeki kullanıcıları gözden geçirin ve gerekmeyen ayrıcalıklı rollerden kaldırın. |
 | **Önleme** | Ayrıcalıklı rolleri yalnızca iş gerekçesinin bulunduğu kullanıcılara atayın. </br>Kullanıcıların erişimine hala ihtiyacı olduğunu doğrulamak için düzenli [erişim İncelemeleri](pim-how-to-start-security-review.md) zamanlayın. |
@@ -62,9 +63,10 @@ Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzel
 
 ### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>Roller etkinleştirme için çok faktörlü kimlik doğrulaması gerektirmez
 
-| | |
+Önem derecesi: **düşük**
+
+| | Description |
 | --- | --- |
-| **Önem Derecesi** | Düşük |
 | **Bu uyarıyı neden alıyorum?** | Çok faktörlü kimlik doğrulaması olmadan, güvenliği aşılmış kullanıcılar ayrıcalıklı rolleri etkinleştirebilir. |
 | **Nasıl düzeltilir?** | Rol listesini gözden geçirin ve her rol için [çok faktörlü kimlik doğrulaması gerektir](pim-how-to-change-default-settings.md) . |
 | **Önleme** | Her rol için [MFA gerektir](pim-how-to-change-default-settings.md) .  |
@@ -72,17 +74,19 @@ Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzel
 
 ### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>Kuruluşun Azure AD Premium P2 yok
 
-| | |
+Önem derecesi: **düşük**
+
+| | Description |
 | --- | --- |
-| **Önem Derecesi** | Düşük |
 | **Bu uyarıyı neden alıyorum?** | Geçerli Azure AD kuruluşunda Azure AD Premium P2 yok. |
 | **Nasıl düzeltilir?** | [Azure AD sürümleri](../fundamentals/active-directory-whatis.md)hakkındaki bilgileri gözden geçirin. Azure AD Premium P2 ' ye yükseltin. |
 
 ### <a name="potential-stale-accounts-in-a-privileged-role"></a>Ayrıcalıklı bir roldeki olası eski hesaplar
 
-| | |
+Önem derecesi: **Orta**
+
+| | Description |
 | --- | --- |
-| **Önem Derecesi** | Orta |
 | **Bu uyarıyı neden alıyorum?** | Ayrıcalıklı bir roldeki hesaplar, son 90 gün içinde parolasını değiştirmedi. Bu hesaplar, tutulmayan ve saldırganların savunmasız olduğu hizmet veya paylaşılan hesaplar olabilir. |
 | **Nasıl düzeltilir?** | Listedeki hesapları gözden geçirin. Artık erişim gerekmiyorsa, bunları ayrıcalıklı rollerden kaldırın. |
 | **Önleme** | Parolayı bilen kullanıcılarda değişiklik olduğunda, paylaşılan hesapların güçlü parolalar döndürürken emin olun. </br>[Erişim gözden geçirmeleri](pim-how-to-start-security-review.md) kullanarak ayrıcalıklı rollere sahip hesapları düzenli olarak gözden geçirin ve artık gerekmeyen rol atamalarını kaldırın. |
@@ -91,9 +95,10 @@ Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzel
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>Roller Privileged Identity Management dışında atanıyor
 
-| | |
+Önem derecesi: **yüksek**
+
+| | Description |
 | --- | --- |
-| **Önem Derecesi** | Yüksek |
 | **Bu uyarıyı neden alıyorum?** | Privileged Identity Management dışında yapılan ayrıcalıklı rol atamaları düzgün izlenmiyor ve etkin bir saldırı gösterebilir. |
 | **Nasıl düzeltilir?** | Listedeki kullanıcıları gözden geçirin ve Privileged Identity Management dışında atanan ayrıcalıklı rollerden kaldırın. |
 | **Önleme** | Kullanıcılara Privileged Identity Management dışında ayrıcalıklı roller atandığını araştırın ve bundan sonra gelen atamaları yasakla. |
@@ -101,9 +106,10 @@ Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzel
 
 ### <a name="there-are-too-many-global-administrators"></a>Çok fazla genel yönetici var
 
-| | |
+Önem derecesi: **düşük**
+
+| | Description |
 | --- | --- |
-| **Önem Derecesi** | Düşük |
 | **Bu uyarıyı neden alıyorum?** | Genel yönetici, en yüksek ayrıcalıklı roldür. Küresel bir yöneticinin güvenliği tehlikeye girerse, saldırgan tüm ve tüm sisteminizi riske sokan tüm izinlerine erişim kazanır. |
 | **Nasıl düzeltilir?** | Listedeki kullanıcıları gözden geçirin ve kesinlikle genel yönetici rolüne gerek olmayan her türlü kaldırın. </br>Bunun yerine bu kullanıcılara daha düşük ayrıcalıklı roller atayın. |
 | **Önleme** | Kullanıcılara gereken en az ayrıcalıklı rolü atayın. |
@@ -114,9 +120,10 @@ Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzel
 
 ### <a name="roles-are-being-activated-too-frequently"></a>Roller çok sık etkinleştiriliyor
 
-| | |
+Önem derecesi: **düşük**
+
+| | Description |
 | --- | --- |
-| **Önem Derecesi** | Düşük |
 | **Bu uyarıyı neden alıyorum?** | Aynı kullanıcı tarafından aynı ayrıcalıklı rol için birden çok etkinleştirme saldırının bir imzadır. |
 | **Nasıl düzeltilir?** | Listedeki kullanıcıları gözden geçirin ve ayrıcalıklı rollerinin [Etkinleştirme süresinin](pim-how-to-change-default-settings.md) görevlerini gerçekleştirmesi için yeterince uzun ayarlandığından emin olun. |
 | **Önleme** | Ayrıcalıklı roller için [Etkinleştirme süresinin](pim-how-to-change-default-settings.md) , kullanıcıların görevlerini gerçekleştirmesi için yeterince uzun ayarlandığından emin olun.</br>Birden çok yönetici tarafından paylaşılan hesaplara sahip ayrıcalıklı roller için [çok faktörlü kimlik doğrulaması gerektir](pim-how-to-change-default-settings.md) . |
@@ -149,9 +156,10 @@ Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzel
 
 ### <a name="administrators-arent-using-their-privileged-roles"></a>Yöneticiler ayrıcalıklı rollerini kullanmıyor
 
-| | |
+Önem derecesi: **düşük**
+
+| | Description |
 | --- | --- |
-| **Önem Derecesi** | Düşük |
 | **Bu uyarıyı neden alıyorum?** | Ayrıcalıklı roller atanmış kullanıcılar, saldırının olasılığını artırır. Saldırganlar, etkin olarak kullanılmayan hesaplara ait olmaması durumunda daha da kolaydır. |
 | **Nasıl düzeltilir?** | Listedeki kullanıcıları gözden geçirin ve gerekmeyen ayrıcalıklı rollerden kaldırın. |
 | **Önleme** | Ayrıcalıklı rolleri yalnızca iş gerekçesinin bulunduğu kullanıcılara atayın. </br>Kullanıcıların erişimine hala ihtiyacı olduğunu doğrulamak için düzenli [erişim İncelemeleri](pim-how-to-start-security-review.md) zamanlayın. |
@@ -161,9 +169,10 @@ Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzel
 
 ### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>Roller etkinleştirme için çok faktörlü kimlik doğrulaması gerektirmez
 
-| | |
+Önem derecesi: **düşük**
+
+| | Description |
 | --- | --- |
-| **Önem Derecesi** | Düşük |
 | **Bu uyarıyı neden alıyorum?** | Çok faktörlü kimlik doğrulaması olmadan, güvenliği aşılmış kullanıcılar ayrıcalıklı rolleri etkinleştirebilir. |
 | **Nasıl düzeltilir?** | Rol listesini gözden geçirin ve her rol için [çok faktörlü kimlik doğrulaması gerektir](pim-how-to-change-default-settings.md) . |
 | **Önleme** | Her rol için [MFA gerektir](pim-how-to-change-default-settings.md) .  |
@@ -171,17 +180,19 @@ Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzel
 
 ### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>Kuruluşun Azure AD Premium P2 yok
 
-| | |
+Önem derecesi: **düşük**
+
+| | Description |
 | --- | --- |
-| **Önem Derecesi** | Düşük |
 | **Bu uyarıyı neden alıyorum?** | Geçerli Azure AD kuruluşunda Azure AD Premium P2 yok. |
 | **Nasıl düzeltilir?** | [Azure AD sürümleri](../fundamentals/active-directory-whatis.md)hakkındaki bilgileri gözden geçirin. Azure AD Premium P2 ' ye yükseltin. |
 
 ### <a name="potential-stale-accounts-in-a-privileged-role"></a>Ayrıcalıklı bir roldeki olası eski hesaplar
 
-| | |
+Önem derecesi: **Orta**
+
+| | Description |
 | --- | --- |
-| **Önem Derecesi** | Orta |
 | **Bu uyarıyı neden alıyorum?** | Ayrıcalıklı bir roldeki hesaplar, son 90 gün içinde parolasını değiştirmedi. Bu hesaplar, tutulmayan ve saldırganların savunmasız olduğu hizmet veya paylaşılan hesaplar olabilir. |
 | **Nasıl düzeltilir?** | Listedeki hesapları gözden geçirin. Artık erişim gerekmiyorsa, bunları ayrıcalıklı rollerden kaldırın. |
 | **Önleme** | Parolayı bilen kullanıcılarda değişiklik olduğunda, paylaşılan hesapların güçlü parolalar döndürürken emin olun. </br>[Erişim gözden geçirmeleri](pim-how-to-start-security-review.md) kullanarak ayrıcalıklı rollere sahip hesapları düzenli olarak gözden geçirin ve artık gerekmeyen rol atamalarını kaldırın. |
@@ -190,9 +201,10 @@ Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzel
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>Roller Privileged Identity Management dışında atanıyor
 
-| | |
+Önem derecesi: **yüksek**
+
+| | Description |
 | --- | --- |
-| **Önem Derecesi** | Yüksek |
 | **Bu uyarıyı neden alıyorum?** | Privileged Identity Management dışında yapılan ayrıcalıklı rol atamaları düzgün izlenmiyor ve etkin bir saldırı gösterebilir. |
 | **Nasıl düzeltilir?** | Listedeki kullanıcıları gözden geçirin ve Privileged Identity Management dışında atanan ayrıcalıklı rollerden kaldırın. |
 | **Önleme** | Kullanıcılara Privileged Identity Management dışında ayrıcalıklı roller atandığını araştırın ve bundan sonra gelen atamaları yasakla. |
@@ -200,9 +212,10 @@ Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzel
 
 ### <a name="there-are-too-many-global-administrators"></a>Çok fazla genel yönetici var
 
-| | |
+Önem derecesi: **düşük**
+
+| | Description |
 | --- | --- |
-| **Önem Derecesi** | Düşük |
 | **Bu uyarıyı neden alıyorum?** | Genel yönetici, en yüksek ayrıcalıklı roldür. Küresel bir yöneticinin güvenliği tehlikeye girerse, saldırgan tüm ve tüm sisteminizi riske sokan tüm izinlerine erişim kazanır. |
 | **Nasıl düzeltilir?** | Listedeki kullanıcıları gözden geçirin ve kesinlikle genel yönetici rolüne gerek olmayan her türlü kaldırın. </br>Bunun yerine bu kullanıcılara daha düşük ayrıcalıklı roller atayın. |
 | **Önleme** | Kullanıcılara gereken en az ayrıcalıklı rolü atayın. |
@@ -213,9 +226,10 @@ Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzel
 
 ### <a name="roles-are-being-activated-too-frequently"></a>Roller çok sık etkinleştiriliyor
 
-| | |
+Önem derecesi: **düşük**
+
+| | Description |
 | --- | --- |
-| **Önem Derecesi** | Düşük |
 | **Bu uyarıyı neden alıyorum?** | Aynı kullanıcı tarafından aynı ayrıcalıklı rol için birden çok etkinleştirme saldırının bir imzadır. |
 | **Nasıl düzeltilir?** | Listedeki kullanıcıları gözden geçirin ve ayrıcalıklı rollerinin [Etkinleştirme süresinin](pim-how-to-change-default-settings.md) görevlerini gerçekleştirmesi için yeterince uzun ayarlandığından emin olun. |
 | **Önleme** | Ayrıcalıklı roller için [Etkinleştirme süresinin](pim-how-to-change-default-settings.md) , kullanıcıların görevlerini gerçekleştirmesi için yeterince uzun ayarlandığından emin olun.</br>Birden çok yönetici tarafından paylaşılan hesaplara sahip ayrıcalıklı roller için [çok faktörlü kimlik doğrulaması gerektir](pim-how-to-change-default-settings.md) . |

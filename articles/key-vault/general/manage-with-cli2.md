@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cb7e047d998342125a52af5ea3ae1e88fe88d313
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c084df60fa2293a614726be44669a1465b399d2c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93289897"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557216"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Azure CLı kullanarak Key Vault yönetme 
 
@@ -147,7 +147,7 @@ az keyvault key create --vault-name "ContosoKeyVault" --name "ContosoFirstKey" -
 az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
-Artık oluşturduğunuz veya Azure Key Vault ' a yüklediğiniz anahtara URI 'sini kullanarak başvurabilirsiniz. **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** Her zaman geçerli sürümü almak için kullanın. Bu belirli sürümü almak için https://[keykasası-Name]. kasa. Azure. net/Keys/[KeyName]/[key-Unique-ID] kullanın. Örneğin, **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**. 
+Artık oluşturduğunuz veya Azure Key Vault ' a yüklediğiniz anahtara URI 'sini kullanarak başvurabilirsiniz. `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey`Her zaman geçerli sürümü almak için kullanın. Bu belirli sürümü almak için https://[keykasası-Name]. kasa. Azure. net/Keys/[KeyName]/[key-Unique-ID] kullanın. Örneğin, `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87`. 
 
 Kasaya bir gizli dizi ekleyin, bu, SQLPassword adlı bir paroladır ve "hVFkk965BuUv" değerini Azure Anahtar Kasası 'na taşır. 
 

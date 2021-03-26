@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6896a812ec173994a1299a28ff2e99a0f351391
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b47a4a79fd423806693e86aef1edd132d844069e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98724450"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557913"
 ---
 # <a name="resilient-end-user-experience"></a>Dayanıklı son kullanıcı deneyimi
 
@@ -62,7 +62,7 @@ Dış kimlik sağlayıcısı kayıt işleminin bir parçası olarak, kullanıcı
 
 ## <a name="availability-of-multi-factor-authentication"></a>Multi-Factor Authentication 'ın kullanılabilirliği
 
-[Multi-Factor Authentication (MFA) için bir telefon hizmeti](../../active-directory-b2c/phone-authentication.md)kullanırken, alternatif bir hizmet sağlayıcısını kabul ettiğinizden emin olun. Yerel Telco veya telefon hizmet sağlayıcısı, hizmetinde kesintiler yaşayabilir.
+[Multi-Factor Authentication (MFA) için bir telefon hizmeti](../../active-directory-b2c/phone-authentication-user-flows.md)kullanırken, alternatif bir hizmet sağlayıcısını kabul ettiğinizden emin olun. Yerel Telco veya telefon hizmet sağlayıcısı, hizmetinde kesintiler yaşayabilir.
 
 ### <a name="how-to-choose-an-alternate-mfa"></a>Alternatif MFA seçme  
 

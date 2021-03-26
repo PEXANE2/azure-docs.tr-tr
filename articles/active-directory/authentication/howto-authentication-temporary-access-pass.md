@@ -7,23 +7,23 @@ ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.author: justinha
-author: inbarckms
+author: justinha
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44b80b9c6847cfdc8402cb3b4983f15873e367d3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0805ac84318a4fee98c30127ac80c0dac2b96309
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579391"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558270"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Azure AD 'de geçici erişim geçişini, passwordless kimlik doğrulama yöntemlerini (Önizleme) kaydetmek için yapılandırma
 
 Microsoft Authenticator uygulamasında FIDO2 ve passwordless telefon oturum açma gibi parolasız kimlik doğrulama yöntemleri, kullanıcıların parolasız güvenli bir şekilde oturum açmasını sağlar. Kullanıcılar passwordless yöntemlerini iki yöntemden biriyle önyükleyebilir:
 
 - Mevcut Azure AD Multi-Factor Authentication yöntemlerini kullanma 
-- Geçici erişim geçişi kullanma 
+- Geçici erişim geçişi kullanma (TAP) 
 
 Geçici erişim geçişi, güçlü kimlik doğrulama gereksinimlerini karşılayan ve parolasız olanlar dahil diğer kimlik doğrulama yöntemlerini eklemek için kullanılabilen, bir yönetici tarafından verilen zaman sınırlı bir geçiş kodu olur. Ayrıca, bir Kullanıcı bir FIDO2 güvenlik anahtarı veya Microsoft Authenticator uygulaması gibi güçlü kimlik doğrulama faktörünü kaybettiği veya unuttuğunda, ancak yeni güçlü kimlik doğrulama yöntemlerini kaydetmek için oturum açması gereken durumlarda, geçici erişim geçişi de kurtarmayı kolaylaştırır.
 
@@ -49,13 +49,13 @@ Geçici erişim geçişi kimlik doğrulama yöntemi ilkesini yapılandırmak iç
    Varsayılan değer ve izin verilen değer aralığı aşağıdaki tabloda açıklanmıştır.
 
 
-   | Ayar          | Varsayılan değerler | İzin verilen değerler               | Yorumlar                                                                                                                                                                                                                                                                 |   |
-   |------------------|----------------|------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    En düşük ömür | 1 saat         | 10 – 43200 dakika (30 gün) | Geçici erişim geçişinin geçerli olduğu dakika sayısı alt sınırı.                                                                                                                                                                                                                         |   |
-   | Maksimum ömür | 24 saat       | 10 – 43200 dakika (30 gün) | Geçici erişim geçişinin geçerli olduğu en fazla dakika sayısı.                                                                                                                                                                                                                         |   |
-   | Varsayılan ömür | 1 saat         | 10 – 43200 dakika (30 gün) | Varsayılan değerler, ilke tarafından yapılandırılan minimum ve maksimum ömür dahilinde tek tek geçişler tarafından geçersiz kılınabilir                                                                                                                                                |   |
-   | Bir kerelik kullanım     | Yanlış          | Doğru/yanlış                 | İlke false olarak ayarlandığında, Kiracıdaki geçişler bir veya birden çok kez (en fazla ömür süresi) bir kez kullanılabilir. Geçici erişim geçiş ilkesinde tek seferlik kullanımı zorlayarak kiracıda oluşturulan tüm geçişler tek seferlik kullanım olarak oluşturulur. |   |
-   | Uzunluk           | 8              | 8-48 karakter              | Geçiş kodunun uzunluğunu tanımlar.                                                                                                                                                                                                                                      |   |
+   | Ayar | Varsayılan değerler | İzin verilen değerler | Yorumlar |
+   |---|---|---|---|
+   | En düşük ömür | 1 saat | 10 – 43200 dakika (30 gün) | Geçici erişim geçişinin geçerli olduğu dakika sayısı alt sınırı. |
+   | Maksimum ömür | 24 saat | 10 – 43200 dakika (30 gün) | Geçici erişim geçişinin geçerli olduğu en fazla dakika sayısı. |
+   | Varsayılan ömür | 1 saat | 10 – 43200 dakika (30 gün) | Varsayılan değerler, ilke tarafından yapılandırılan minimum ve maksimum ömür dahilinde tek tek geçişler tarafından geçersiz kılınabilir. |
+   | Bir kerelik kullanım | Yanlış | Doğru/yanlış | İlke false olarak ayarlandığında, Kiracıdaki geçişler bir veya birden çok kez (en fazla ömür süresi) bir kez kullanılabilir. Geçici erişim geçiş ilkesinde tek seferlik kullanımı zorlayarak kiracıda oluşturulan tüm geçişler tek seferlik kullanım olarak oluşturulur. |
+   | Uzunluk | 8 | 8-48 karakter | Geçiş kodunun uzunluğunu tanımlar. |
 
 ## <a name="create-a-temporary-access-pass-in-the-azure-ad-portal"></a>Azure AD portalında geçici erişim geçişi oluşturma
 

@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 0701ff53202d53131ceac8ceabb148fb5ff4f2b2
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 629459d22b18b326307b45bb512d16622808b533
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025161"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562639"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Keşif, değerlendirme ve bağımlılık analizi-genel sorular
 
@@ -143,7 +143,7 @@ Azure Geçişi, SQL örneğinizle uyumlu olan belirli bir Azure SQL dağıtım t
 Değerlendirme özelliklerinde seçilen hedef dağıtım türü **Önerilen** olduğunda ve SQL örneği Azure SQL Veritabanı ve Azure SQL Yönetilen Örneği için hazır olmadığında bu durum oluşabilir. Kullanıcının, örneğin çalıştırıldığı Sunucunun Azure VM'ye geçmeye hazır olup olmadığını öğrenmek için Azure geçişinde değerlendirme türü **Azure VM** olan bir değerlendirme oluşturması önerilir.
 Kullanıcının, örnek olarak çalışan sunucunun bir Azure VM 'ye geçirmeye hazırlanın olup olmadığını öğrenmek için Azure **VM** olarak değerlendirme türü Ile Azure geçişi ile bir değerlendirme oluşturulması önerilir:
 - Azure geçişi 'ndeki Azure VM değerlendirmelerinde Şu anda yükseltme-bir-kaydırma uygulanır ve Azure sanal makinesinde SQL örnekleri ve veritabanlarını çalıştırmaya yönelik belirli performans ölçümlerini düşünmeyecektir. 
-- Sunucuda Azure VM değerlendirmesi çalıştırdığınızda, önerilen boyut ve maliyet tahminleri sunucuda çalıştırılan ve Sunucu Geçişi aracı kullanılarak bir Azure sanal makinesine geçirilebilecek tüm örnekleri kapsar. Geçiş yapmadan önce Azure sanal makinelerindeki SQL Server için [performans yönergelerini gözden geçirin](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices).
+- Sunucuda Azure VM değerlendirmesi çalıştırdığınızda, önerilen boyut ve maliyet tahminleri sunucuda çalıştırılan ve Sunucu Geçişi aracı kullanılarak bir Azure sanal makinesine geçirilebilecek tüm örnekleri kapsar. Geçiş yapmadan önce Azure sanal makinelerindeki SQL Server için [performans yönergelerini gözden geçirin](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md).
 
 ## <a name="i-cant-see-some-databases-in-my-assessment-even-though-the-instance-is-part-of-the-assessment"></a>Örnek değerlendirmenin bir parçası olsa da bazı veritabanlarını değerlendirmemde göremiyorum
 
@@ -151,7 +151,7 @@ Azure SQL değerlendirmesi yalnızca çevrimiçi durumdaki veritabanlarını iç
 
 ## <a name="i-want-to-compare-costs-for-running-my-sql-instances-on-azure-vm-vs-azure-sql-databaseazure-sql-managed-instance"></a>Azure VM Ile Azure SQL veritabanı/Azure SQL yönetilen örneği üzerinde SQL örneklerimi çalıştırmanın maliyetlerini karşılaştırmak istiyorum
 
-**Azure SQL** değerlendirmesinde kullanılan aynı grup üzerinde türü **Azure VM** olan bir değerlendirme oluşturabilirsiniz. Ardından bu iki raporu yan yana koyup karşılaştırabilirsiniz. Öte yandan Azure Geçişi'nde Azure VM değerlendirmeleri şu anda lift-and-shift ile taşımaya odaklanmıştır ve Azure sanal makinesinde SQL örneklerini ve veritabanlarını çalıştırmaya yönelik belirli performans ölçümlerini dikkate almaz. Sunucuda Azure VM değerlendirmesi çalıştırdığınızda, önerilen boyut ve maliyet tahminleri sunucuda çalıştırılan ve Sunucu Geçişi aracı kullanılarak bir Azure sanal makinesine geçirilebilecek tüm örnekleri kapsar. Geçiş yapmadan önce Azure sanal makinelerindeki SQL Server için [performans yönergelerini gözden geçirin](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices).
+**Azure SQL** değerlendirmesinde kullanılan aynı grup üzerinde türü **Azure VM** olan bir değerlendirme oluşturabilirsiniz. Ardından bu iki raporu yan yana koyup karşılaştırabilirsiniz. Öte yandan Azure Geçişi'nde Azure VM değerlendirmeleri şu anda lift-and-shift ile taşımaya odaklanmıştır ve Azure sanal makinesinde SQL örneklerini ve veritabanlarını çalıştırmaya yönelik belirli performans ölçümlerini dikkate almaz. Sunucuda Azure VM değerlendirmesi çalıştırdığınızda, önerilen boyut ve maliyet tahminleri sunucuda çalıştırılan ve Sunucu Geçişi aracı kullanılarak bir Azure sanal makinesine geçirilebilecek tüm örnekleri kapsar. Geçiş yapmadan önce Azure sanal makinelerindeki SQL Server için [performans yönergelerini gözden geçirin](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md).
 
 ## <a name="the-storage-cost-in-my-azure-sql-assessment-is-zero"></a>Azure SQL değerlendirmem 'nda depolama maliyeti sıfır
 Azure SQL yönetilen örneği için, ilk 32 GB/örnek/ay depolaması için bir depolama maliyeti eklenmez ve daha fazla depolama maliyeti, GB 'lik artışlarla depolama için eklenir. [Daha Fazla Bilgi](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)

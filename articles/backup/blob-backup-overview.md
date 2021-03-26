@@ -3,12 +3,12 @@ title: Azure Blob 'Ları için işlemsel yedeklemeye genel bakış
 description: Azure Blobları (önizlemede) için işlemsel yedekleme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: b10191c8a01d3cc7a92dee8ca9bf59a506497a60
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1f6bc98b92a2af4b05cae766a2186f2970b7133c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101746124"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558763"
 ---
 # <a name="overview-of-operational-backup-for-azure-blobs-in-preview"></a>Azure Blobları için işlemsel yedeklemeye genel bakış (önizlemede)
 
@@ -22,7 +22,7 @@ Blobların işletimsel yedeklemesi, **yerel bir yedekleme** çözümüdür. Bu n
 
 İşletimsel yedekleme, verilerinizi korumak ve gerektiğinde kurtarmaya izin vermek için blob platformu yeteneklerini kullanır:
 
-- **Zaman içinde geri yükleme**: blob 'un [zaman içindeki geri yükleme,](https://docs.microsoft.com/azure/storage/blobs/point-in-time-restore-overview) blob verilerinin önceki bir duruma geri yüklenmesine izin verir. Bu, sırasıyla, belirtilen süre boyunca verileri sürdürmek için **geçici silme**, **akışı değiştirme** ve **BLOB sürümü oluşturma** kullanır. İşletimsel yedekleme, belirli bir süre boyunca verilerin korunduğundan emin olmak için belirli bir noktaya geri yükleme ve temel özellikleri etkinleştirme konusunda da sürer.
+- **Zaman içinde geri yükleme**: blob 'un [zaman içindeki geri yükleme,](../storage/blobs/point-in-time-restore-overview.md) blob verilerinin önceki bir duruma geri yüklenmesine izin verir. Bu, sırasıyla, belirtilen süre boyunca verileri sürdürmek için **geçici silme**, **akışı değiştirme** ve **BLOB sürümü oluşturma** kullanır. İşletimsel yedekleme, belirli bir süre boyunca verilerin korunduğundan emin olmak için belirli bir noktaya geri yükleme ve temel özellikleri etkinleştirme konusunda da sürer.
 
 - **Kilidi Sil**: kilit silme, depolama hesabının yanlışlıkla veya yetkisiz kullanıcılar tarafından silinmesini engeller. İşlem yedekleme, aynı zamanda, depolama hesabı silinirken veri kaybı olasılıklarını azaltmak için otomatik olarak bir silme kilidi uygular.
 
@@ -63,9 +63,9 @@ Bir kurtarma noktasının bulunduğu zaman içindeki herhangi bir noktadan veril
 
 Blob 'lar için işlemsel yedeklemeyi kullanırken herhangi bir yönetim ücreti veya örnek ücreti ödemeniz gerekmez. Ancak, aşağıdaki ücretleri ödeyirsiniz:
 
-- Geri yüklemeler, işlenen veri miktarına bağlı olarak blob zaman içinde geri yükleme ve atma ücretleri kullanılarak yapılır. Daha fazla bilgi için bkz. [Noktadan noktaya geri yükleme fiyatlandırması](https://docs.microsoft.com/azure/storage/blobs/point-in-time-restore-overview#pricing-and-billing).
+- Geri yüklemeler, işlenen veri miktarına bağlı olarak blob zaman içinde geri yükleme ve atma ücretleri kullanılarak yapılır. Daha fazla bilgi için bkz. [Noktadan noktaya geri yükleme fiyatlandırması](../storage/blobs/point-in-time-restore-overview.md#pricing-and-billing).
 
-- [BLOB 'lar Için geçici silme](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview), [Azure Blob depolamada akış desteğini değiştirme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-change-feed)ve [BLOB sürümü oluşturma](https://docs.microsoft.com/azure/storage/blobs/versioning-overview)nedeniyle verilerin saklanması.
+- [BLOB 'lar Için geçici silme](../storage/blobs/soft-delete-blob-overview.md), [Azure Blob depolamada akış desteğini değiştirme](../storage/blobs/storage-blob-change-feed.md)ve [BLOB sürümü oluşturma](../storage/blobs/versioning-overview.md)nedeniyle verilerin saklanması.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

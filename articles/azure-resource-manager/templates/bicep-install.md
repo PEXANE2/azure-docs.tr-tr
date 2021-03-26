@@ -3,12 +3,12 @@ title: Bıcep geliştirme ve dağıtım ortamlarını ayarlama
 description: Bıcep geliştirme ve dağıtım ortamlarını yapılandırma
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.openlocfilehash: d665a863affdec2009fc208f76b85a7f25de451d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7cd3721aca83488de61494a94826bfcd0b6acc26
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594402"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543746"
 ---
 # <a name="setup-bicep-development-and-deployment-environment"></a>Bıcep geliştirme ve dağıtım ortamını ayarlama
 
@@ -31,7 +31,7 @@ Azure CLı veya Azure PowerShell kullanarak Bıcep dosyalarını dağıtabilirsi
 - [macOS’ta Azure CLI'yi yükleme](/cli/azure/install-azure-cli-macos)
 
 > [!NOTE]
-> Şu anda hem Azure CLı hem de Azure PowerShell yalnızca yerel bicep dosyalarını dağıtabilir. Azure CLı kullanarak Bıcep dosyalarını dağıtma hakkında daha fazla bilgi için bkz. [Deploy-CLI](/deploy-cli.md#deploy-remote-template). Azure PowerShell kullanarak Bıcep dosyalarını dağıtma hakkında daha fazla bilgi için bkz. [Deploy-PowerShell](/deploy-powershell.md#deploy-remote-template).
+> Şu anda hem Azure CLı hem de Azure PowerShell yalnızca yerel bicep dosyalarını dağıtabilir. Azure CLı kullanarak Bıcep dosyalarını dağıtma hakkında daha fazla bilgi için bkz. [Deploy-CLI](./deploy-cli.md#deploy-remote-template). Azure PowerShell kullanarak Bıcep dosyalarını dağıtma hakkında daha fazla bilgi için bkz. [Deploy-PowerShell]( ./deploy-powershell.md#deploy-remote-template).
 
 Azure PowerShell veya Azure CLı 'nin desteklenen sürümü yüklendikten sonra bir Bıcep dosyasını şu ile dağıtabilirsiniz:
 

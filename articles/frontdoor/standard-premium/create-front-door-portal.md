@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 18956948a32a79c1435bf4fc1554b09480c9010c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 175fb82a5fdf300915f89c3d8cdc238638a742e1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101100919"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565138"
 ---
 # <a name="quickstart-create-an-azure-front-door-standardpremium-profile---azure-portal"></a>Hızlı başlangıç: Azure ön kapısı Standart/Premium profili oluşturma-Azure portal
 
@@ -58,7 +58,7 @@ Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://az
     | **Uç nokta adı** | Uç noktanız için genel olarak benzersiz bir ad girin. |
     | **Kaynak türü** | Kaynağı için kaynak türünü seçin. Bu örnekte, özel bağlantı etkin olan kaynak olarak bir App Service seçeceğiz. |
     | **Kaynak ana bilgisayar adı** | Başlangıcının ana bilgisayar adını girin. |
-    | **Özel bağlantıyı etkinleştir** | Azure ön kapılarınız ve Origin 'niz arasında özel bir bağlantıya sahip olmak istiyorsanız. Daha fazla ayrıntı için lütfen [özel bağlantı kılavuzuna](concept-private-link.md) başvurun ve [özel bağlantıyı etkinleştirin](how-to-enable-private-link.md).
+    | **Özel bağlantıyı etkinleştir** | Azure ön kapılarınız ve Origin 'niz arasında özel bir bağlantıya sahip olmak istiyorsanız. Daha fazla ayrıntı için lütfen [özel bağlantı kılavuzuna](concept-private-link.md) başvurun ve [özel bağlantıyı etkinleştirin](./how-to-enable-private-link-web-app.md).
     | **Önbelleğe Alma** | Azure ön kapısının Edge pop 'Ları ve Microsoft ağını kullanarak kullanıcılara içerikleri daha yakın bir şekilde önbelleğe almak istiyorsanız onay kutusunu işaretleyin. |
     | **WAF ilkesi** | Bu özelliği etkinleştirmek istiyorsanız, **Yeni oluştur** ' u seçin veya açılan listeden var olan bir WAF ilkesini seçin. |
 

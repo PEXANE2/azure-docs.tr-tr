@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/24/2021
 ms.author: thweiss
-ms.openlocfilehash: ec12deb5a7c77674026b849585552fd873aee5c1
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: f8028d69e376e2b71549be52267e2f6cbdb1f8ce
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105046003"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568673"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Rol tabanlı erişim denetimini Azure Cosmos DB hesabınız için Azure Active Directory yapılandırma (Önizleme)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -323,9 +323,9 @@ Uygulamanızda Azure Cosmos DB RBAC 'yi kullanmak için, Azure Cosmos DB SDK 's�
 
 Örnek oluşturma yönteminiz `TokenCredential` Bu makalenin kapsamı dışındadır. Kullanmak istediğiniz AAD kimliği türüne (Kullanıcı sorumlusu, hizmet sorumlusu, Grup vb.) bağlı olarak böyle bir örnek oluşturmanın birçok yolu vardır. En önemlisi, `TokenCredential` örneğiniz, rollerinizi atadığınız kimliğe (asıl kimlik) çözümlenmelidir. Sınıf oluşturma örneklerini bulabilirsiniz `TokenCredential` :
 
-- [.NET 'te](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#credential-classes)
-- [Java 'da](https://docs.microsoft.com/java/api/overview/azure/identity-readme#credential-classes)
-- [JavaScript 'te](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme#credential-classes)
+- [.NET 'te](/dotnet/api/overview/azure/identity-readme#credential-classes)
+- [Java 'da](/java/api/overview/azure/identity-readme#credential-classes)
+- [JavaScript 'te](/javascript/api/overview/azure/identity-readme#credential-classes)
 
 Aşağıdaki örneklerde bir örneği olan bir hizmet sorumlusu kullanılmaktadır `ClientSecretCredential` .
 

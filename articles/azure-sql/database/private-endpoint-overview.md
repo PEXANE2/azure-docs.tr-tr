@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1, fasttrack-edit
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 506982a22fd53dfb4f8f3d94735c11fc491469eb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0ce8e45f301ac0fd84f7d5d27d81b63103768f89
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097287"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567721"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için Azure özel bağlantısı
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -62,7 +62,7 @@ Müşteriler şirket içi makinelerden ortak uç noktaya bağlandıklarında, IP
 
  ![Bağlantı seçenekleri diyagramı][1]
 
-Ayrıca, sanal ağda doğrudan çalıştırmayan ancak onunla tümleştirilmiş olan hizmetler (örneğin, App Service Web Apps veya Işlevler) veritabanına özel bağlantı elde edebilir. Bu özel kullanım durumu hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı mimarisine özel bağlantı Ile Web uygulaması](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) .
+Ayrıca, sanal ağda doğrudan çalıştırmayan ancak onunla tümleştirilmiş olan hizmetler (örneğin, App Service Web Apps veya Işlevler) veritabanına özel bağlantı elde edebilir. Bu özel kullanım durumu hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı mimarisine özel bağlantı Ile Web uygulaması](/azure/architecture/example-scenario/private-web-app/private-web-app) .
 
 ## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network"></a>Aynı sanal ağdaki bir Azure VM 'den SQL veritabanı 'na bağlantıyı test etme
 
@@ -185,7 +185,7 @@ PolyBase ve COPY deyimleri, Azure depolama hesaplarından Azure SYNAPSE Analytic
 
 - Azure SQL veritabanı güvenliğine genel bakış için bkz. [veritabanınızın güvenliğini sağlama](security-overview.md)
 - Azure SQL veritabanı bağlantısına genel bakış için bkz. [Azure SQL bağlantı mimarisi](connectivity-architecture.md)
-- Web uygulamasını, sanal ağın dışında bir Web uygulamasını bir veritabanının özel uç noktasına bağlayan [Azure SQL veritabanı mimarisi senaryosuna özel bağlantı ile](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) de ilgileniyor olabilirsiniz.
+- Web uygulamasını, sanal ağın dışında bir Web uygulamasını bir veritabanının özel uç noktasına bağlayan [Azure SQL veritabanı mimarisi senaryosuna özel bağlantı ile](/azure/architecture/example-scenario/private-web-app/private-web-app) de ilgileniyor olabilirsiniz.
 
 <!--Image references-->
 [1]: media/quickstart-create-single-database/pe-connect-overview.png

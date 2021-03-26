@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06eb7e8d1be2e58fd6cf87167a585a2ffeee0d7f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 676fdf264cb930069425a330c3da9cd753bf8e0a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97708492"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567042"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rol ayarlarını yapılandırma
 
@@ -64,14 +64,14 @@ Bir rolün ayarlarını yapılandırırken her atama türü için iki atama sür
 
 **Uygun** atama süresi seçeneklerinden birini belirleyebilirsiniz:
 
-| | |
+| | Description |
 | --- | --- |
 | **Kalıcı uygun atamaya izin ver** | Genel Yöneticiler ve ayrıcalıklı rol yöneticileri kalıcı uygun atama atayabilir. |
 | **Uygun atamayı sona ermeden önce** | Genel Yöneticiler ve ayrıcalıklı rol yöneticileri, tüm uygun atamaların belirtilen başlangıç ve bitiş tarihine sahip olmasını gerektirebilir. |
 
 Ve bu **etkin** atama süresi seçeneklerinden birini belirleyebilirsiniz:
 
-| | |
+| | Description |
 | --- | --- |
 | **Kalıcı etkin atamaya izin ver** | Genel Yöneticiler ve ayrıcalıklı rol yöneticileri kalıcı etkin atama atayabilir. |
 | **Etkin atamanın son kullanım tarihi** | Genel Yöneticiler ve ayrıcalıklı rol yöneticileri, tüm etkin atamaların belirtilen başlangıç ve bitiş tarihine sahip olmasını gerektirebilir. |

@@ -6,12 +6,12 @@ ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: 20a22d11973f5bb01e2c1345538d5d94ce311dc7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 07a7daf6363f0e528f84635ed6713ac462f89ca5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103465768"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562860"
 ---
 # <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>Öğretici: Intel OpenVINO™ DL Streamer – Edge AI uzantısı kullanarak canlı videoyu çözümleme 
 
@@ -66,7 +66,7 @@ Bu öğreticide şunları yapacaksınız:
 
 OpenVINO™ DL Streamer-Edge AI uzantı modülü, OpenVINO™ DL Streamer ile derlenen video analizi işlem hattına hizmet eden Intel video analizine (VA sunma) dayalı bir mikro hizmettir. Geliştiriciler, algılama, sınıflandırma veya izleme gerçekleştiren ve sonuçları döndüren AI uzantısı modülüne kodu çözülmüş video çerçeveleri gönderebilir. AI uzantısı modülü, Microsoft 'tan IoT Edge canlı video analizi gibi video analizi platformlarıyla uyumlu gRPC API 'Lerini kullanıma sunar. 
 
-Karmaşık, yüksek performanslı canlı video analizi çözümleri oluşturmak için IoT Edge modüldeki canlı video analizinin, kenardaki ölçeğe uygun bir güçlü çıkarım altyapısı ile eşleştirilmesi gerekir. Bu öğreticide, IoT Edge üzerinde canlı video analizi ile çalışmak üzere tasarlanan bir Edge modülü olan [Intel OpenVINO™ DL Streamer – Edge AI uzantısına](https://aka.ms/lva-intel-openvino-dl-streamer)gönderilir. 
+Karmaşık, yüksek performanslı canlı video analizi çözümleri oluşturmak için IoT Edge modüldeki canlı video analizinin, kenardaki ölçeğe uygun bir güçlü çıkarım altyapısı ile eşleştirilmesi gerekir. Bu öğreticide, IoT Edge üzerinde canlı video analizi ile çalışmak üzere tasarlanan bir Edge modülü olan [Intel OpenVINO™ DL Streamer – Edge AI uzantısına]()gönderilir. 
 
 Bu çıkarım sunucusunun ilk sürümünde aşağıdaki [modellere](https://github.com/intel/video-analytics-serving/tree/master/samples/lva_ai_extension#edge-ai-extension-module-options)erişebilirsiniz:
 

@@ -6,22 +6,22 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 227488f165aaad2f204c647eed17467a4ef561a1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0283a84650abaadd454b4f5bca83d1473e443fb8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101663998"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561823"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>IoT Hub ve IoT Tak ve Kullan cihaz güncelleştirmesi
 
-IoT Hub cihaz güncelleştirmesi, kablosuz güncelleştirme yeteneğine sahip olan cihazları bulup yönetmek için [ıot Tak ve kullan](https://docs.microsoft.com/azure/iot-pnp/) kullanır. Cihaz Güncelleştirme hizmeti, PnP arabirimlerini kullanarak cihazlara ve cihazlardan Özellikler ve iletiler gönderir ve alır. IoT Hub cihaz güncelleştirmesi, IoT cihazlarının aşağıdaki arabirimleri ve model kimliğini aşağıda açıklandığı gibi uygulamasını gerektirir.
+IoT Hub cihaz güncelleştirmesi, kablosuz güncelleştirme yeteneğine sahip olan cihazları bulup yönetmek için [ıot Tak ve kullan](../iot-pnp/index.yml) kullanır. Cihaz Güncelleştirme hizmeti, PnP arabirimlerini kullanarak cihazlara ve cihazlardan Özellikler ve iletiler gönderir ve alır. IoT Hub cihaz güncelleştirmesi, IoT cihazlarının aşağıdaki arabirimleri ve model kimliğini aşağıda açıklandığı gibi uygulamasını gerektirir.
 
 ## <a name="adu-core-interface"></a>ADU çekirdek arabirimi
 
 ' Aducoreınterface ' arabirimi, cihazlara güncelleştirme eylemleri ve meta veriler göndermek ve cihazlardan güncelleştirme durumu almak için kullanılır. ' ADU Core ' arabirimi iki nesne özelliklerine bölünür.
 
-Modelinizde beklenen bileşen adı, bu arabirimi uygularken **"azureDeviceUpdateAgent"** . [Azure IoT PnP bileşenleri hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/iot-pnp/concepts-components)
+Modelinizde beklenen bileşen adı, bu arabirimi uygularken **"azureDeviceUpdateAgent"** . [Azure IoT PnP bileşenleri hakkında daha fazla bilgi edinin](../iot-pnp/concepts-components.md)
 
 ### <a name="agent-metadata"></a>Aracı meta verileri
 
@@ -81,9 +81,9 @@ Hizmet meta verileri, cihaz güncelleştirme hizmetlerinin eylem ve verileri cih
 
 ## <a name="device-information-interface"></a>Cihaz bilgileri arabirimi
 
-Cihaz bilgileri arabirimi [ıot Tak ve Kullan mimarisi](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)içinde kullanılan bir kavramdır. Aygıtın donanımı ve işletim sistemi hakkında bilgi sağlayan, bulut özelliklerine cihaz içerir. IoT Hub cihaz güncelleştirmesi; telemetri ve Tanılamalar için Deviceınformation. manufacturer ve Deviceınformation. model özelliklerini kullanır. Cihaz bilgileri arabirimi hakkında daha fazla bilgi için bu [örneğe](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json)bakın.
+Cihaz bilgileri arabirimi [ıot Tak ve Kullan mimarisi](../iot-pnp/overview-iot-plug-and-play.md)içinde kullanılan bir kavramdır. Aygıtın donanımı ve işletim sistemi hakkında bilgi sağlayan, bulut özelliklerine cihaz içerir. IoT Hub cihaz güncelleştirmesi; telemetri ve Tanılamalar için Deviceınformation. manufacturer ve Deviceınformation. model özelliklerini kullanır. Cihaz bilgileri arabirimi hakkında daha fazla bilgi için bu [örneğe](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json)bakın.
 
-Modelinizde beklenen bileşen adı bu arabirimi uygularken **Deviceınformation** . [Azure IoT PnP bileşenleri hakkında bilgi edinin](https://docs.microsoft.com/azure/iot-pnp/concepts-components)
+Modelinizde beklenen bileşen adı bu arabirimi uygularken **Deviceınformation** . [Azure IoT PnP bileşenleri hakkında bilgi edinin](../iot-pnp/concepts-components.md)
 
 |Ad|Tür|Şema|Yön|Açıklama|Örnek|
 |----|----|------|---------|-----------|-----------|
@@ -98,6 +98,6 @@ Modelinizde beklenen bileşen adı bu arabirimi uygularken **Deviceınformation*
 
 ## <a name="model-id"></a>Model Kimliği 
 
-Model KIMLIĞI, akıllı cihazların IoT Tak ve Play.To ile Azure IoT uygulamalarına yeteneklerini nasıl duyurmasına ilişkin özellikleri Azure IoT uygulamalarına tanıtmak için akıllı cihaz oluşturma hakkında daha fazla bilgi edinin [ıot Tak ve kullan cihaz Geliştirici Kılavuzu ' nu](https://docs.microsoft.com/azure/iot-pnp/concepts-developer-guide-device-c)ziyaret edin.
+Model KIMLIĞI, akıllı cihazların IoT Tak ve Play.To ile Azure IoT uygulamalarına yeteneklerini nasıl duyurmasına ilişkin özellikleri Azure IoT uygulamalarına tanıtmak için akıllı cihaz oluşturma hakkında daha fazla bilgi edinin [ıot Tak ve kullan cihaz Geliştirici Kılavuzu ' nu](../iot-pnp/concepts-developer-guide-device.md)ziyaret edin.
 
-IoT Hub cihaz güncelleştirmesi, IoT Tak ve Kullan akıllı cihazının, cihaz bağlantısının bir parçası olarak **"dtmı: AzureDeviceUpdate; 1"** değerine sahip BIR model kimliği bildirmesini gerektirir. [Bir model kimliğini nasıl duyurduğunu öğrenin](https://docs.microsoft.com/azure/iot-pnp/concepts-developer-guide-device-c#model-id-announcement).
+IoT Hub cihaz güncelleştirmesi, IoT Tak ve Kullan akıllı cihazının, cihaz bağlantısının bir parçası olarak **"dtmı: AzureDeviceUpdate; 1"** değerine sahip BIR model kimliği bildirmesini gerektirir. [Bir model kimliğini nasıl duyurduğunu öğrenin](../iot-pnp/concepts-developer-guide-device.md#model-id-announcement).

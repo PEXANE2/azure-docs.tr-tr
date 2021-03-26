@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 874df4301165aaf253dd0f4316adee7ab9ce7ce5
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 695aa760d554946883f72692f0bed1babad933b1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104798859"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568809"
 ---
 # <a name="create-interactive-reports-vm-insights-with-workbooks"></a>Çalışma kitapları ile etkileşimli raporlar VM öngörüleri oluşturma
 
@@ -25,7 +25,7 @@ ms.locfileid: "104798859"
 
 Aşağıdaki tabloda, sanal makine öngörülerinin, başlamanızı sağlamak için içerdiği çalışma kitapları özetlenmektedir.
 
-| Çalışma Kitabı | Açıklama | Kapsam |
+| Çalışma Kitabı | Description | Kapsam |
 |----------|-------------|-------|
 | Performans | , Etkinleştirdiğiniz tüm Log Analytics performans sayaçlarından yararlanan tek bir çalışma kitabında En Iyi N liste ve grafik görünümümüzün özelleştirilebilir bir sürümünü sağlar.| Birden çok VM |
 | Performans sayaçları | Çok sayıda performans sayacı üzerinde Ilk N grafik görünümü. | Birden çok VM |
@@ -103,13 +103,13 @@ Her bölümde kendi gelişmiş ayarları vardır. Bu ayarlar, ![ ](media/vminsig
 
 ![Azure Izleyici 'nin sanal makineler çalışma kitabı bölümündeki Gelişmiş ayarlar iletişim kutusunun ekran görüntüsü. İletişim kutusunu açan simge vurgulanır.](media/vminsights-workbooks/007-settings-expanded.png)
 
-|         |          |
+| Ayar | Açıklama |
 | ---------------- |:-----|
-| **Özel genişlik**    | Bir öğe rastgele bir boyut oluşturur, böylece grafikleri ve tablolarınızı zengin etkileşimli raporlarda daha iyi düzenlemenizi sağlayabilirsiniz.  |
-| **Koşullu olarak görünür** | Okuma modundayken bir parametreye göre adımları gizlemek için belirtin. |
-| **Bir parametreyi dışarı aktarma**| Kılavuzda veya grafikte seçili bir satırın, sonraki adımların değer değiştirmesine veya görünür hale gelmesine neden olmasını sağlar.  |
-| **Düzenlenmediğinden sorguyu göster** | Okuma modundayken bile grafiğin veya tablonun üzerindeki sorguyu görüntüler.
-| **Düzenlenmediğinden Analytics 'te aç düğmesini göster** | Tek tıklamayla erişime izin vermek için grafiğin sağ köşesine mavi analiz simgesini ekler.|
+| Özel genişlik    | Bir öğe rastgele bir boyut oluşturur, böylece grafikleri ve tablolarınızı zengin etkileşimli raporlarda daha iyi düzenlemenizi sağlayabilirsiniz.  |
+| Koşullu olarak görünür | Okuma modundayken bir parametreye göre adımları gizlemek için belirtin. |
+| Bir parametreyi dışarı aktarma| Kılavuzda veya grafikte seçili bir satırın, sonraki adımların değer değiştirmesine veya görünür hale gelmesine neden olmasını sağlar.  |
+| Düzenlenmediğinden sorguyu göster | Okuma modundayken bile grafiğin veya tablonun üzerindeki sorguyu görüntüler.
+| Düzenlenmediğinden Analytics 'te aç düğmesini göster | Tek tıklamayla erişime izin vermek için grafiğin sağ köşesine mavi analiz simgesini ekler.|
 
 Bu ayarların çoğu oldukça sezgisel, ancak **bir parametreyi dışarı aktarmayı** anlamak için bu işlevi kullanan bir çalışma kitabını incelemek daha iyidir.
 
@@ -152,12 +152,12 @@ Parametreler doğrusal, bir çalışma kitabının üstünden başlayıp daha so
  
 Şu anda desteklenen dört farklı parametre türü vardır:
 
-|                  |      |
+| Parametre | Açıklama |
 | ---------------- |:-----|
-| **Metin**    | Kullanıcının bir metin kutusunu düzenlemesine izin verir ve isteğe bağlı olarak varsayılan değeri dolduracak bir sorgu sağlayabilirsiniz. |
-| **Açılan** | Kullanıcının bir değer kümesinden seçmesine izin verir. |
-| **Zaman aralığı seçici**| Kullanıcının önceden tanımlanmış bir zaman aralığı değerleri kümesinden seçmesine izin verir veya özel bir zaman aralığından seçim yapmasına olanak tanır.|
-| **Kaynak seçici** | Kullanıcının çalışma kitabı için seçilen kaynaklardan seçmesine izin verir.|
+| Metin    | Kullanıcının bir metin kutusunu düzenlemesine izin verir ve isteğe bağlı olarak varsayılan değeri dolduracak bir sorgu sağlayabilirsiniz. |
+| Açılan | Kullanıcının bir değer kümesinden seçmesine izin verir. |
+| Zaman aralığı seçici| Kullanıcının önceden tanımlanmış bir zaman aralığı değerleri kümesinden seçmesine izin verir veya özel bir zaman aralığından seçim yapmasına olanak tanır.|
+| Kaynak seçici | Kullanıcının çalışma kitabı için seçilen kaynaklardan seçmesine izin verir.|
 
 ### <a name="using-a-text-parameter"></a>Metin parametresi kullanma
 

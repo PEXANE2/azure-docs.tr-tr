@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: b9d40848abdd85beeca592001b697e3c50b7cd59
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 15f76488790249f7e301d4474772c500c8829b77
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103008571"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565648"
 ---
 # <a name="import-new-update"></a>Yeni güncelleştirme al
 IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı öğrenin. Henüz yapmadıysanız, temel [içeri aktarma kavramlarını öğrendiğinizden](import-concepts.md)emin olun.
@@ -21,7 +21,7 @@ IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı 
 * [IoT Hub etkinleştirilmiş cihaz güncelleştirmesiyle bir IoT Hub erişim](create-device-update-account.md). IoT Hub için bir S1 (Standart) katmanı veya üstünü kullanmanız önerilir. 
 * IoT Hub içinde cihaz güncelleştirmesi için sağlanan bir IoT cihazı (veya simülatör).
    * Gerçek bir cihaz kullanıyorsanız, görüntü güncelleştirmesi için bir güncelleştirme görüntü dosyası veya paket güncelleştirmesi için [apt bildirim dosyası](device-update-apt-manifest.md) gerekir.
-* [PowerShell 5](https://docs.microsoft.com/powershell/scripting/install/installing-powershell) veya üzeri.
+* [PowerShell 5](/powershell/scripting/install/installing-powershell) veya üzeri.
 * Desteklenen tarayıcılar:
   * [Microsoft Edge](https://www.microsoft.com/edge)
   * Google Chrome
@@ -57,8 +57,8 @@ IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı 
 
     | Parametre | Açıklama |
     | --------- | ----------- |
-    | deviceManufacturer | Güncelleştirmenin, örneğin contoso ile uyumlu olduğu cihaz üreticisi. _Üretici_ [cihaz özelliği](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)ile eşleşmelidir.
-    | deviceModel | Güncelleştirmenin uyumlu olduğu cihazın modeli, örneğin, Toaster. _Model_ [cihaz özelliği](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)ile eşleşmelidir.
+    | deviceManufacturer | Güncelleştirmenin, örneğin contoso ile uyumlu olduğu cihaz üreticisi. _Üretici_ [cihaz özelliği](./device-update-plug-and-play.md#device-properties)ile eşleşmelidir.
+    | deviceModel | Güncelleştirmenin uyumlu olduğu cihazın modeli, örneğin, Toaster. _Model_ [cihaz özelliği](./device-update-plug-and-play.md#device-properties)ile eşleşmelidir.
     | updateProvider | Güncelleştirme tarafından oluşturulan veya doğrudan sorumlu olan varlık. Genellikle şirket adı olacaktır.
     | updateName | Bir güncelleştirme sınıfının tanımlayıcısı. Sınıf, seçtiğiniz herhangi bir şey olabilir. Genellikle bir cihaz veya model adı olacaktır.
     | updateVersion | Sürüm numarası, aynı sağlayıcıya ve ada sahip diğer başkalarından bu güncelleştirmeyi ayırt eder. , Cihazdaki bireysel Yazılım bileşenlerinden oluşan bir sürümle eşleşmiyor (ancak seçeneğini belirlerseniz).
@@ -135,7 +135,7 @@ Aşağıdaki yönergelerde Azure portal Kullanıcı arabirimi aracılığıyla b
 
 6. "Bir depolama kapsayıcısı seçin" altında klasör simgesini veya metin kutusunu seçin. Ardından uygun depolama hesabını seçin. Depolama kapsayıcısı güncelleştirme dosyalarını geçici olarak hazırlamak için kullanılır.
 
-   :::image type="content" source="media/import-update/storage-account.png" alt-text="Depolama Hesabı" lightbox="media/import-update/storage-account.png":::
+   :::image type="content" source="media/import-update/storage-account.png" alt-text="Depolama hesabı" lightbox="media/import-update/storage-account.png":::
 
 7. Zaten bir kapsayıcı oluşturduysanız, onu yeniden kullanabilirsiniz. (Aksi takdirde, güncelleştirmeler için yeni bir depolama kapsayıcısı oluşturmak üzere "+ kapsayıcı" seçeneğini belirleyin.).  Kullanmak istediğiniz kapsayıcıyı seçin ve "Seç" e tıklayın.
 

@@ -3,34 +3,34 @@ title: Azure Izleyici günlüklerinde sistem işlevleri
 description: Sistem işlevlerini kullanarak Azure Izleyici günlüklerine özel sorgular yazma
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 1d26adfd2bd1a3fc1506a334b4b661b66172192d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: acb45e6ad0250a1f8d10377fdd509e40051f25b9
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510598"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564917"
 ---
 # <a name="system-functions-on-azure-monitor-logs"></a>Azure Izleyici günlüklerinde sistem işlevleri
 
 Azure Backup, Log Analytics (LA) çalışma alanlarınızdaki varsayılan olarak bulunan sistem işlevleri veya çözüm işlevleri olarak adlandırılan bir işlevler kümesi sağlar.
  
-Bu işlevler, LA 'daki [ham Azure Backup tablolarındaki](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model) veriler üzerinde çalışır ve basit sorgular kullanarak yedeklemeyle ilgili tüm varlıklarınızın bilgilerini kolayca almanıza yardımcı olan biçimli verileri döndürür. Kullanıcılar, bu işlevler tarafından döndürülen verileri filtrelemek için parametreleri bu işlevlere geçirebilir. 
+Bu işlevler, LA 'daki [ham Azure Backup tablolarındaki](./backup-azure-reports-data-model.md) veriler üzerinde çalışır ve basit sorgular kullanarak yedeklemeyle ilgili tüm varlıklarınızın bilgilerini kolayca almanıza yardımcı olan biçimli verileri döndürür. Kullanıcılar, bu işlevler tarafından döndürülen verileri filtrelemek için parametreleri bu işlevlere geçirebilir. 
 
 Aşağıdaki bölümde açıklandığı gibi çeşitli avantajlar sağladığı için, özel raporlar oluşturmak üzere LA çalışma alanlarında yedekleme verilerinizi sorgulamak için sistem işlevlerinin kullanılması önerilir.
 
 ## <a name="benefits-of-using-system-functions"></a>Sistem işlevlerini kullanmanın avantajları
 
-* **Daha basit sorgular**: Using işlevleri, sorgularda gerekli olan birleştirme sayısını azaltmanıza yardımcı olur. Varsayılan olarak, işlevler sorgulanmakta olan varlıkla ilgili tüm bilgileri (yedekleme örneği, iş, kasa vb.) birleştiren ' düzleştirilmiş ' şemaları döndürür. Örneğin, yedekleme öğesi adına ve ilişkili kapsayıcısına göre başarılı yedekleme işlerinin bir listesini almanız gerekiyorsa, **_AzureBackup_getJobs ()** işlevine yönelik basit bir çağrı, her iş için bu bilgileri size verecektir. Öte yandan, ham tabloları doğrudan sorgulamak, [AddonAzureBackupJobs](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model#addonazurebackupjobs) ve [Coreazurebackup](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model#coreazurebackup) tabloları arasında birden fazla birleştirme gerçekleştirmenizi gerektirir.
+* **Daha basit sorgular**: Using işlevleri, sorgularda gerekli olan birleştirme sayısını azaltmanıza yardımcı olur. Varsayılan olarak, işlevler sorgulanmakta olan varlıkla ilgili tüm bilgileri (yedekleme örneği, iş, kasa vb.) birleştiren ' düzleştirilmiş ' şemaları döndürür. Örneğin, yedekleme öğesi adına ve ilişkili kapsayıcısına göre başarılı yedekleme işlerinin bir listesini almanız gerekiyorsa, **_AzureBackup_getJobs ()** işlevine yönelik basit bir çağrı, her iş için bu bilgileri size verecektir. Öte yandan, ham tabloları doğrudan sorgulamak, [AddonAzureBackupJobs](./backup-azure-reports-data-model.md#addonazurebackupjobs) ve [Coreazurebackup](./backup-azure-reports-data-model.md#coreazurebackup) tabloları arasında birden fazla birleştirme gerçekleştirmenizi gerektirir.
 
-* **Eski tanılama olayından daha yumuşak geçiş**: Sistem işlevlerini kullanmak [eski tanılama olayından](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event) (AzureDiagnostics modundaki AzureBackupReport) [kaynağa özgü olaylara](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users)sorunsuz bir şekilde geçiş yapmanıza yardımcı olur. Azure Backup tarafından sunulan tüm sistem işlevleri, işlevin verileri yalnızca kaynağa özgü tablolardan mi sorgulayıp, hem de eski tablodan kaynağa özgü tablolardan (kayıtları yinelenenleri kaldırma ile) sorgulayamayacağını seçmenizi sağlayan bir parametre belirtmenize olanak tanır.
+* **Eski tanılama olayından daha yumuşak geçiş**: Sistem işlevlerini kullanmak [eski tanılama olayından](./backup-azure-diagnostic-events.md#legacy-event) (AzureDiagnostics modundaki AzureBackupReport) [kaynağa özgü olaylara](./backup-azure-diagnostic-events.md#diagnostics-events-available-for-azure-backup-users)sorunsuz bir şekilde geçiş yapmanıza yardımcı olur. Azure Backup tarafından sunulan tüm sistem işlevleri, işlevin verileri yalnızca kaynağa özgü tablolardan mi sorgulayıp, hem de eski tablodan kaynağa özgü tablolardan (kayıtları yinelenenleri kaldırma ile) sorgulayamayacağını seçmenizi sağlayan bir parametre belirtmenize olanak tanır.
     * Kaynağa özgü tablolara başarıyla geçiş yaptıysanız, eski tablonun işlev tarafından sorgulanmasını dışlamayı seçebilirsiniz.
     * Şu anda geçiş işlemi yapıyorsanız ve eski tablolarda analiz için ihtiyaç duyduğunuz bazı veriler varsa, eski tabloyu eklemeyi seçebilirsiniz. Geçiş tamamlandığında ve artık eski tablodan veriye ihtiyacınız kalmadığında, eski tabloyu hariç tutmak için Sorgularınızdaki işleve geçirilen parametrenin değerini güncelleştirmeniz yeterlidir.
-    * Hala yalnızca eski tabloyu kullanıyorsanız, eski tabloyu aynı parametre aracılığıyla eklemeyi tercih ederseniz işlevler çalışmaya devam edecektir. Ancak, en erken [kaynağa özgü tablolara geçmeniz](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace) önerilir.
+    * Hala yalnızca eski tabloyu kullanıyorsanız, eski tabloyu aynı parametre aracılığıyla eklemeyi tercih ederseniz işlevler çalışmaya devam edecektir. Ancak, en erken [kaynağa özgü tablolara geçmeniz](./backup-azure-diagnostic-events.md#steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace) önerilir.
 
 * **Özel sorguların önemli olma olasılığını azaltır**: Azure Backup gelecekteki raporlama senaryolarına uyum sağlamak için temel alınan La tablolarının şemasına yönelik iyileştirmeler tanıyorsa, işlevlerin tanımı da şema değişikliklerini dikkate alacak şekilde güncelleştirilir. Bu nedenle, özel sorgular oluşturmak için sistem işlevleri kullanırsanız, tabloların temeldeki şemasında değişiklikler olsa bile, sorgularınız kesintiye uğramaz.
 
 > [!NOTE]
-> Sistem işlevleri Microsoft tarafından korunur ve tanımları kullanıcılar tarafından düzenlenemez. Düzenlenebilir işlevlere ihtiyacınız varsa, LA 'da [kaydedilmiş işlevler](https://docs.microsoft.com/azure/azure-monitor/logs/functions) oluşturabilirsiniz.
+> Sistem işlevleri Microsoft tarafından korunur ve tanımları kullanıcılar tarafından düzenlenemez. Düzenlenebilir işlevlere ihtiyacınız varsa, LA 'da [kaydedilmiş işlevler](../azure-monitor/logs/functions.md) oluşturabilirsiniz.
 
 ## <a name="types-of-system-functions-offered-by-azure-backup"></a>Azure Backup tarafından sunulan sistem işlevleri türleri
 
@@ -390,4 +390,4 @@ Aşağıda, sistem işlevlerini kullanmaya başlamanıza yardımcı olacak bazı
     ````
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Yedekleme raporları hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/configure-reports)
+[Yedekleme raporları hakkında daha fazla bilgi edinin](./configure-reports.md)

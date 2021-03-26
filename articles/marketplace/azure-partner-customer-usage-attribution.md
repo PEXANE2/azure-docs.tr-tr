@@ -8,12 +8,12 @@ author: cpercy737
 ms.author: camper
 ms.date: 03/22/2021
 ms.custom: devx-track-terraform
-ms.openlocfilehash: ed7f27b0b8fde902f4ae9b65b9f6b4ada78f79c6
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 53edd3ec9a8d30d0c25f994db4a8b6f0199c2169
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799199"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558440"
 ---
 # <a name="azure-customer-usage-attribution"></a>Azure müşteri kullanım atısyonu
 
@@ -34,7 +34,7 @@ Müşteri kullanım attributıon üç dağıtım seçeneğini destekler:
 
 ## <a name="commercial-marketplace-azure-apps"></a>Ticari Market Azure uygulamaları
 
-Ticari Market 'te yayımlanan Azure uygulamalarından Azure kullanımını izlemek büyük ölçüde otomatiktir. [Market Azure uygulamanızın planına ait teknik yapılandırmanın](https://docs.microsoft.com/azure/marketplace/create-new-azure-apps-offer-solution#define-the-technical-configuration)bir parçası olarak bir kaynak yöneticisi şablonu yüklediğinizde, Iş ortağı merkezi Azure Resource Manager tarafından okunabilen BIR izleme kimliği ekler.
+Ticari Market 'te yayımlanan Azure uygulamalarından Azure kullanımını izlemek büyük ölçüde otomatiktir. [Market Azure uygulamanızın planına ait teknik yapılandırmanın](./create-new-azure-apps-offer-solution.md#define-the-technical-configuration)bir parçası olarak bir kaynak yöneticisi şablonu yüklediğinizde, Iş ortağı merkezi Azure Resource Manager tarafından okunabilen BIR izleme kimliği ekler.
 
 Azure Resource Manager API 'Leri kullanıyorsanız, kodunuz, kaynak dağıttığı için Azure Resource Manager iletmek üzere izleme KIMLIĞINIZI [Aşağıdaki yönergeler](#use-resource-manager-apis) temelinde eklemeniz gerekecektir. Bu KIMLIK, planınızın teknik yapılandırma sayfasında Iş Ortağı Merkezi 'nde görünür. 
 

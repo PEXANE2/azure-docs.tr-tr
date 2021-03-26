@@ -3,16 +3,16 @@ title: Windows-Azure 'da Linux için bir IoT Edge dağıtma
 description: Bu makale, Windows cihazında Linux için bir IoT Edge dağıtma hakkında rehberlik sağlar.
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: 9ec28c62ca804137ede3cd60d1980e55fbaa2807
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d5c3d89ae7447b062714ad90be117a6426a39581
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618143"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561092"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Windows (EFLOW) cihazında Linux için IoT Edge dağıtma
 
-Bu makalede, [Windows 'da (EFLOW) Linux için IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-for-linux-on-windows)olan bir uç cihazda canlı video analizinin nasıl dağıtılacağını öğreneceksiniz. Bu belgedeki adımları tamamladıktan sonra, bir videoda hareketi algılayan ve bu gibi olayları buluttaki IoT Hub 'ına yayan bir [medya grafiği](media-graph-concept.md) çalıştırabileceksiniz. Daha sonra Gelişmiş senaryolar için medya grafiğini değiştirebilir ve canlı video analizinin gücünü Windows tabanlı IoT Edge cihazınıza getirebilirsiniz.
+Bu makalede, [Windows 'da (EFLOW) Linux için IoT Edge](../../iot-edge/iot-edge-for-linux-on-windows.md)olan bir uç cihazda canlı video analizinin nasıl dağıtılacağını öğreneceksiniz. Bu belgedeki adımları tamamladıktan sonra, bir videoda hareketi algılayan ve bu gibi olayları buluttaki IoT Hub 'ına yayan bir [medya grafiği](media-graph-concept.md) çalıştırabileceksiniz. Daha sonra Gelişmiş senaryolar için medya grafiğini değiştirebilir ve canlı video analizinin gücünü Windows tabanlı IoT Edge cihazınıza getirebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar 
 
@@ -21,7 +21,7 @@ Bu makalede, [Windows 'da (EFLOW) Linux için IoT Edge](https://docs.microsoft.c
     > [!NOTE]
     > Hizmet sorumluları oluşturma izinlerine sahip bir Azure aboneliğine ihtiyacınız olacak (**sahip rolü** bunu sağlar). Doğru izinleriniz yoksa, size doğru izinleri vermek için hesap yöneticinize ulaşın.
 * Geliştirme makinenizde [Visual Studio Code](https://code.visualstudio.com/) . [Azure IoT araçları uzantısına](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)sahip olduğunuzdan emin olun.
-* [EFLOW nedir?](https://aka.ms/AzEFLOW-docs)konusunu okuyun.
+* [EFLOW nedir?](../../iot-edge/iot-edge-for-linux-on-windows.md)konusunu okuyun.
 
 ## <a name="deployment-steps"></a>Dağıtım adımları
 
@@ -29,9 +29,9 @@ Aşağıdaki, belgenin genel akışını ve 5 basit adımda, canlı video analiz
 
 :::image type="content" source="./media/deploy-iot-edge-linux-on-windows/eflow.png" alt-text="Windows (EFLOW) diyagramında Linux için IoT Edge":::
 
-1. Windows cihazınıza [EFLOW 'U yükler](https://aka.ms/AzEFLOW-install) . 
+1. Windows cihazınıza [EFLOW 'U yükler](../../iot-edge/how-to-install-iot-edge-on-windows.md) . 
 
-    1. Windows BILGISAYARıNıZı kullanıyorsanız, Windows [Yönetici Merkezi](https://docs.microsoft.com/windows-server/manage/windows-admin-center/overview) başlangıç sayfasında, bağlantı listesi altında, Windows yönetici MERKEZINI çalıştırdığınız bilgisayarı temsil eden bir yerel ana bilgisayar bağlantısı görürsünüz. 
+    1. Windows BILGISAYARıNıZı kullanıyorsanız, Windows [Yönetici Merkezi](/windows-server/manage/windows-admin-center/overview) başlangıç sayfasında, bağlantı listesi altında, Windows yönetici MERKEZINI çalıştırdığınız bilgisayarı temsil eden bir yerel ana bilgisayar bağlantısı görürsünüz. 
     1. Yönettiğiniz tüm ek sunucular, bilgisayarlar veya kümeler burada da görünür.
     1. Yerel cihazınıza veya uzaktan yönetilen cihazlarınıza Azure EFLOW yüklemek ve yönetmek için Windows yönetici merkezini kullanabilirsiniz. Bu kılavuzda, Windows üzerinde Linux için Azure IoT Edge dağıtımı için hedef cihaz olarak sunulan yerel ana bilgisayar bağlantısı. Bu nedenle, IoT Edge bir cihaz olarak da listelenen localhost 'u görürsünüz.
 
@@ -110,4 +110,3 @@ Aşağıdaki, belgenin genel akışını ve 5 basit adımda, canlı video analiz
 * [Canlı videoda AI](use-your-model-quickstart.md#overview) çalıştırın (yukarıda zaten yapıldığı üzere Önkoşul kurulumunu atlayabilirsiniz)
 * Ek medya grafiklerini görüntülemek için [vs Code uzantımızı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) kullanın.
 * RTSP simülatörü kullanmak yerine RTSP 'yi destekleyen bir [IP kamera](https://en.wikipedia.org/wiki/IP_camera)  kullanın. [ONVIF uyumlu ürünler](https://www.onvif.org/conformant-products/) sayfasında RTSP 'YI destekleyen IP kameralarını bulabilirsiniz. Profiller G, S veya T ile uyumlu olan cihazları arayın.
-

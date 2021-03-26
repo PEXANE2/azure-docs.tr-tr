@@ -3,12 +3,12 @@ title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
 ms.date: 03/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: ba3cee2ecd7efcbb33c19d7ed159083e843c84a8
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: a774eb08989e8fc45a117d83d81a5b510e8202b4
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952125"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559919"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -56,8 +56,8 @@ Görevlerin ve hizmetlerin çoğu yönetilen kiracılar arasındaki temsilci kay
   - Müşterilerin karma ortamları arasında aynı ilke kümesinin uygulandığından emin olun
   - Müşterilerin karma ortamları arasında uyumluluğu izlemek için Azure Güvenlik Merkezi 'ni kullanma
 - Karma Kubernetes kümelerini ölçekte yönetme- [Azure Arc etkin Kubernetes (Önizleme)](../../azure-arc/kubernetes/overview.md):
-  - Azure 'da Temsilcili aboneliklere ve/veya kaynak gruplarına [bağlı Kubernetes kümelerini yönetme](../../azure-arc/kubernetes/connect-cluster.md)
-  - Bağlı kümeler için [Gilar kullanma](../../azure-arc/kubernetes/use-gitops-connected-cluster.md)
+  - Azure 'da Temsilcili aboneliklere ve/veya kaynak gruplarına [bağlı Kubernetes kümelerini yönetme](../../azure-arc/kubernetes/quickstart-connect-cluster.md)
+  - Bağlı kümeler için [Gilar kullanma](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md)
   - Bağlı kümeler arasında ilkeleri zorunlu kıl
 
 [Azure Otomasyonu](../../automation/index.yml):

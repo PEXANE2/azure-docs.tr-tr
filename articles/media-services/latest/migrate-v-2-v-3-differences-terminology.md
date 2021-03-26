@@ -9,14 +9,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6f677c8753f09e146d300186e19217568952b417
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5c1fbaf9be4cb128f0e4390a8c97c6f0b9330ce2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705407"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559885"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Media Services V2 ve v3 arasındaki terminoloji ve varlık değişiklikleri
 
@@ -90,7 +90,3 @@ Media Services v3 kaynaklarına uygulanan adlandırma kurallarını gözden geç
 | Canlı olay bekleme modu <!--new row --> | V2 için bekleme modu yoktu. | Tek başına modu, canlı olayların etkin havuzlarının yönetilmesine yardımcı olan yeni bir v3 özelliğidir. Müşteriler artık canlı bir etkinliği, çalışma durumuna geçmeden önce daha düşük maliyetli bir şekilde başlatabilir. Bu, kanal başlangıç zamanlarını geliştirir ve daha hızlı başlangıç havuzları için işletim sıcak havuzların maliyetlerini azaltır. |
 | Canlı etkinlik Faturalaması <!--new row --> | <!-- empty-->| Canlı olaylar, canlı kanal ölçümlerine göre faturalandırılır. |
 | Canlı çıktılar <!--new row --> | Programın oluşturulduktan sonra başlatılması gerekiyordu. | Canlı çıktılar oluşturma sırasında başlar ve silindiğinde durdurulur. |
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

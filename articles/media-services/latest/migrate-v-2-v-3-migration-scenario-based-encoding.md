@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 03/17/2021
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 915fdcb059d9e7bf9e1853040b90b82a0457652e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bf66723f878f8b277d71577c068afdad56708ad6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598414"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563280"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Senaryo tabanlı geçiş kılavuzunu kodlama
 
@@ -143,7 +143,3 @@ V2 API 'sinde Dizin Oluşturucu v1 işlemcisini kullanan müşteriler için, `Au
 ## <a name="samples"></a>Örnekler
 
 Ayrıca [kod örneklerinde v2 ve v3 kodunu da karşılaştırabilirsiniz](migrate-v-2-v-3-migration-samples.md).
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

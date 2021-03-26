@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: a767f6f877ae22a311afdb00417efb9f28fdc8f0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c3989b3d4b148dcffccb03fb5b4279c89e5c686d
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91938364"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562401"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>Öğretici: Azure Stack Edge Pro 'YU GPU ile etkinleştirme
 
@@ -105,4 +105,4 @@ Bu öğreticide hakkında bilgi edindiniz:
 Azure Stack Edge Pro cihazınızla veri aktarmayı öğrenmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Azure Stack Edge Pro ile veri aktarma](./azure-stack-edge-j-series-deploy-add-shares.md)
+> [Azure Stack Edge Pro ile veri aktarma](./azure-stack-edge-gpu-deploy-add-shares.md)

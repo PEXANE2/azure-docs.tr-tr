@@ -3,12 +3,12 @@ title: E-posta Azure Backup raporları
 description: Düzenli raporları e-posta ile almak için otomatikleştirilmiş görevler oluşturma
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 8c18d4c7a3c7a9ba343296961fa9a44614366405
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d3ec76fa1a23657578979e65c0e54bb428722244
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510569"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561347"
 ---
 # <a name="email-azure-backup-reports"></a>E-posta Azure Backup raporları
 
@@ -30,7 +30,7 @@ Yedekleme raporları aracılığıyla e-posta görevlerini yapılandırmak için
 
 ## <a name="authorize-connections-to-azure-monitor-logs-and-office-365"></a>Azure Izleyici günlüklerine ve Office 365 bağlantı yetkisini verme
 
-Mantıksal uygulama, LA çalışma alanlarını sorgulamak için [azuremonitorlogs](https://docs.microsoft.com/connectors/azuremonitorlogs/) bağlayıcısını kullanır ve e-posta göndermek Için [Office365 Outlook](https://docs.microsoft.com/connectors/office365connector/) bağlayıcısını kullanır. Bu iki bağlayıcı için bir kerelik yetkilendirme gerçekleştirmeniz gerekir. 
+Mantıksal uygulama, LA çalışma alanlarını sorgulamak için [azuremonitorlogs](/connectors/azuremonitorlogs/) bağlayıcısını kullanır ve e-posta göndermek Için [Office365 Outlook](/connectors/office365connector/) bağlayıcısını kullanır. Bu iki bağlayıcı için bir kerelik yetkilendirme gerçekleştirmeniz gerekir. 
  
 Yetkilendirmeyi gerçekleştirmek için aşağıdaki adımları izleyin:
 
@@ -79,4 +79,4 @@ Bu sorunu gidermek için:
 Sorunlar devam ederse, Microsoft destek 'e başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Yedekleme raporları hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/configure-reports)
+[Yedekleme raporları hakkında daha fazla bilgi edinin](./configure-reports.md)

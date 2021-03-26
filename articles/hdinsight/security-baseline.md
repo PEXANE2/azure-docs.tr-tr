@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bf2360bda55735aa8ef4258da5ae47f673f4d71b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c5ffdecf768be0962950bb3691dbb11fb0e70120
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738931"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565019"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>HDInsight için Azure Güvenlik temeli
 
@@ -58,9 +58,9 @@ Veri kaybı riskini azaltmak için Azure Güvenlik Duvarı 'nı kullanarak Azure
 
 **Kılavuz**: DDoS saldırılarına karşı korumalar Için Azure HDInsight 'ın dağıtıldığı sanal ağ üzerinde Azure DDoS standart korumasını etkinleştirin. Bilinen kötü amaçlı veya kullanılmayan Internet IP adresleriyle iletişimleri reddetmek için Azure Güvenlik Merkezi tümleşik tehdit zekasını kullanın.
 
-- [DDoS korumasını yapılandırma](/azure/virtual-network/manage-ddos-protection)
+- [DDoS korumasını yapılandırma](../ddos-protection/manage-ddos-protection.md)
 
-- [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](/azure/security-center/security-center-alerts-service-layer)
+- [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../security-center/azure-defender.md)
 
 **Sorumluluk**: Müşteri
 
@@ -100,7 +100,7 @@ Veri kaybı riskini azaltmak için Azure Güvenlik Duvarı 'nı kullanarak Azure
 
 **Kılavuz**: Azure HDInsight kümenizin dağıtıldığı alt ağa bağlı ağ güvenlik grupları (NSG) üzerinde ağ erişim denetimleri tanımlamak için sanal ağ hizmeti etiketlerini kullanın. Hizmet etiketlerini güvenlik kuralı oluştururken belirli IP adreslerinin yerine kullanabilirsiniz. Bir kuralın uygun kaynak veya hedef alanında hizmet etiketi adı (örn., Apimanaya) belirterek, ilgili hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir.
 
-- [Azure HDInsight için hizmet etiketlerini anlama ve kullanma](/azure/virtual-network/security-overview#service-tags)
+- [Azure HDInsight için hizmet etiketlerini anlama ve kullanma](../virtual-network/network-security-groups-overview.md#service-tags)
 
 **Sorumluluk**: Müşteri
 
@@ -130,7 +130,7 @@ Tüm kaynakların etiketlerle oluşturulmasını ve mevcut etiketlenmemiş kayna
 
 Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etiketlerine göre kaynakları arayabilir veya bunlarla ilgili eylemler gerçekleştirebilirsiniz.
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 - [Sanal ağ oluşturma](../virtual-network/quick-create-portal.md)
 
@@ -144,9 +144,9 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 **Rehberlik**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını Izleyin ve Azure HDInsight dağıtımlarınızla ilgili ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](/azure/azure-monitor/platform/activity-log-view)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Izleyici 'de uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -186,7 +186,7 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 - [Azure Izleyici 'ye Azure HDInsight kümesi ekleme](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 
-- [Log Analytics çalışma alanı saklama süresini yapılandırma](/azure/azure-monitor/platform/manage-cost-storage)
+- [Log Analytics çalışma alanı saklama süresini yapılandırma](../azure-monitor/logs/manage-cost-storage.md)
 
 **Sorumluluk**: Müşteri
 
@@ -198,7 +198,7 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 - [Azure Izleyici 'ye Azure HDInsight kümesi ekleme](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 
-- [Log Analytics çalışma alanı saklama süresini yapılandırma](/azure/azure-monitor/platform/manage-cost-storage)
+- [Log Analytics çalışma alanı saklama süresini yapılandırma](../azure-monitor/logs/manage-cost-storage.md)
 
 **Sorumluluk**: Müşteri
 
@@ -220,7 +220,7 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 - [Azure Güvenlik Merkezi 'nde uyarıları yönetme](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics günlük verilerinde uyarı alma](/azure/azure-monitor/learn/tutorial-response)
+- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/alerts/tutorial-response.md)
 
 **Sorumluluk**: Müşteri
 
@@ -230,7 +230,7 @@ Azure PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanarak, etik
 
 **Kılavuz**: Azure HDInsight, küme düğümü görüntüleri için önceden yüklenmiş ve etkin olan Azure HDInsight ile birlikte gelir, ancak yazılımı yönetmeniz ve ClamScan 'ın ürettiği tüm günlükleri el ile toplamanız/izlemeniz gerekir.
 
-- [ClamScan 'ı anlama](https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificates)
+- [ClamScan 'ı anlama](./hdinsight-faq.md#security-and-certificates)
 
 **Sorumluluk**: Müşteri
 
@@ -300,7 +300,7 @@ Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kul
 
 **Kılavuz**: çok faktörlü kimlik doğrulaması kullanarak herhangi bir parola sağlamadan kurumsal GÜVENLIK PAKETI (ESP) kümelerinde oturum açmak Için Azure HDInsight kimlik Aracısı 'nı kullanın. Azure portal gibi diğer Azure hizmetlerinde zaten oturum açtıysanız, Azure HDInsight kümenizde çoklu oturum açma (SSO) deneyimiyle oturum açabilirsiniz.
 
-- [Azure HDInsight KIMLIK Aracısı 'nı etkinleştirme](https://docs.microsoft.com/azure/hdinsight/domain-joined/identity-broker#enable-hdinsight-id-broker)
+- [Azure HDInsight KIMLIK Aracısı 'nı etkinleştirme](./domain-joined/identity-broker.md#enable-hdinsight-id-broker)
 
 **Sorumluluk**: Müşteri
 
@@ -334,7 +334,7 @@ Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kul
 
 **Rehberlik**: etki alanı kullanıcılarının kimlik doğrulaması için etki alanı kimlik bilgilerini kullanabilmesi için, yapılandırılmış kurumsal güvenlik paketi olan Azure HDInsight kümeleri bir etki alanına bağlanabilir. Azure AD ortamında şüpheli veya güvenli olmayan bir etkinlik gerçekleştiğinde günlüklerin ve uyarıların oluşturulması için Azure Active Directory (Azure AD) güvenlik raporları kullanabilirsiniz. Kimlik ve erişim etkinliğini izlemek için Azure Güvenlik Merkezi 'ni kullanın.
 
-- [Riskli etkinlik bayrağıyla işaretlenen Azure AD kullanıcılarını belirleme](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Riskli etkinlik bayrağıyla işaretlenen Azure AD kullanıcılarını belirleme](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Azure Güvenlik Merkezi 'nde Kullanıcı kimliğini ve erişim etkinliğini izleme](../security-center/security-center-identity-access.md)
 
@@ -392,7 +392,7 @@ Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturarak bu işlem
 
 **Kılavuz**: Kurumsal GÜVENLIK PAKETI (ESP) ile yapılandırılmış Azure HDInsight kümeleri, etki alanı kullanıcılarının, kümelerle kimlik doğrulamak için etki alanı kimlik bilgilerini kullanabilmesi için bir etki alanına bağlanabilir. Otomatik yanıtları, Kullanıcı kimlikleriyle ilgili şüpheli eylemler için yapılandırmak üzere Azure Active Directory (Azure AD) risk algılamaları ve kimlik koruması özelliğini kullanın. Ayrıca, daha fazla araştırma için verileri Azure Sentinel 'e aktarabilirsiniz.
 
-- [Azure AD riskli oturum açma işlemlerini görüntüleme](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD riskli oturum açma işlemlerini görüntüleme](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -404,7 +404,7 @@ Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturarak bu işlem
 
 **Rehberlik**: kullanılamıyor; Müşteri Kasası henüz Azure HDInsight için desteklenmiyor.
 
-- [Desteklenen Müşteri Kasası hizmetleri listesi](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Desteklenen Müşteri Kasası hizmetleri listesi](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Sorumluluk**: Müşteri
 
@@ -418,7 +418,7 @@ Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturarak bu işlem
 
 **Rehberlik**: hassas bilgileri depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı olması Için Azure HDInsight dağıtımlarınızla ilgili kaynaklarda yer alan etiketler kullanın.
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -432,7 +432,7 @@ Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturarak bu işlem
 
 - [Azure Data Lake Storage nasıl güvence altına alın](../data-lake-store/data-lake-store-security-overview.md)
 
-- [Azure depolama hesaplarını güvenli hale getirme](/azure/storage/common/storage-security-guide)
+- [Azure depolama hesaplarını güvenli hale getirme](../storage/blobs/security-recommendations.md)
 
 **Sorumluluk**: Müşteri
 
@@ -506,13 +506,13 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 **Rehberlik**: Apache Hive ve Apache Oozie meta verilerini depolamak IÇIN Azure SQL veritabanı KULLANıYORSANıZ, SQL verilerinin her zaman şifrelenmeye devam ettiğinden emin olun. Azure depolama hesapları ve Data Lake Storage (Gen1 veya Gen2) için, Microsoft 'un şifreleme anahtarlarınızı yönetmesine izin vermeniz önerilir, ancak kendi anahtarlarınızı yönetme seçeneğiniz vardır.
 
-- [Azure depolama hesapları için şifreleme anahtarlarını yönetme](/azure/storage/common/storage-encryption-keys-portal)
+- [Azure depolama hesapları için şifreleme anahtarlarını yönetme](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 - [Müşteri tarafından yönetilen şifreleme anahtarlarını kullanarak Azure Data Lake Storage oluşturma](../data-lake-store/data-lake-store-get-started-portal.md)
 
-- [Azure SQL veritabanı şifrelemesini anlama](/azure/sql-database/sql-database-technical-overview#data-encryption)
+- [Azure SQL veritabanı şifrelemesini anlama](../azure-sql/database/sql-database-paas-overview.md#data-encryption)
 
-- [Müşteri tarafından yönetilen anahtarları kullanarak SQL veritabanı için Saydam Veri Şifrelemesi yapılandırma](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?tabs=azure-portal)
+- [Müşteri tarafından yönetilen anahtarları kullanarak SQL veritabanı için Saydam Veri Şifrelemesi yapılandırma](../azure-sql/database/transparent-data-encryption-tde-overview.md?tabs=azure-portal)
 
 **Sorumluluk**: Paylaşılan
 
@@ -522,7 +522,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 **Rehberlik**: küme verilerine KARŞı tüm CRUD işlemlerini izlemek ve günlüğe kaydetmek Için Azure HDInsight kümeleriyle Ilişkili Azure depolama hesapları Için tanılama ayarlarını yapılandırın. Azure HDInsight kümesiyle ilişkili tüm depolama hesapları veya Data Lake depoları için denetimi etkinleştirin.
 
-- [Azure depolama hesabı için ek günlüğe kaydetme/denetim özelliğini etkinleştirme](/azure/storage/common/storage-monitor-storage-account)
+- [Azure depolama hesabı için ek günlüğe kaydetme/denetim özelliğini etkinleştirme](../storage/common/manage-storage-analytics-logs.md)
 
 - [Azure Data Lake Storage için ek günlüğe kaydetme/denetim nasıl etkinleştirilir](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md)
 
@@ -614,7 +614,7 @@ Klasik Azure kaynakları Azure Kaynak Grafiği aracılığıyla bulunabilir, anc
 
 **Kılavuz**: Azure kaynaklarına Etiketler uygulayarak bunları bir taksonomi halinde mantıksal olarak organize etmek için meta veriler verirsiniz.
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -624,11 +624,11 @@ Klasik Azure kaynakları Azure Kaynak Grafiği aracılığıyla bulunabilir, anc
 
 **Rehberlik**: varlıkları düzenlemek ve izlemek için uygun yerlerde etiketleme, yönetim grupları ve ayrı abonelikler kullanın. Envanterin düzenli olarak mutabakatını yapın ve yetkisiz kaynakların aboneliğin zamanında silindiğinden emin olun.
 
-- [Ek Azure abonelikleri oluşturma](/azure/billing/billing-create-subscription)
+- [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-- [Yönetim Grupları oluşturma](/azure/governance/management-groups/create)
+- [Yönetim Grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -697,7 +697,7 @@ Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../governance/policy/samples/built-in-policies.md#general)
 
 **Sorumluluk**: Müşteri
 
@@ -823,9 +823,9 @@ Azure HDInsight 'taki tüm yönetilen diskler Azure Depolama Hizmeti Şifrelemes
 
 Key Vault Ayrıca, küme depolama (Azure depolama hesapları ve Azure Data Lake Storage) için anahtarları yönetmek üzere Azure HDInsight dağıtımlarıyla birlikte kullanılabilir.
 
-- [Azure HDInsight 'ta Apache Kafka için kendi anahtarınızı getirme](/azure/hdinsight/kafka/apache-kafka-byok)
+- [Azure HDInsight 'ta Apache Kafka için kendi anahtarınızı getirme](./disk-encryption.md)
 
-- [Azure depolama hesapları için şifreleme anahtarlarını yönetme](/azure/storage/common/storage-encryption-keys-portal)
+- [Azure depolama hesapları için şifreleme anahtarlarını yönetme](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 **Sorumluluk**: Müşteri
 
@@ -859,7 +859,7 @@ Key Vault Ayrıca, küme depolama (Azure depolama hesapları ve Azure Data Lake 
 
 **Kılavuz**: Azure HDInsight, küme düğümü görüntüleri için önceden yüklenmiş ve etkin olan Azure HDInsight ile birlikte gelir, ancak yazılımı yönetmeniz ve ClamScan 'ın ürettiği tüm günlükleri el ile toplamanız/izlemeniz gerekir.
 
-- [Azure HDInsight için ClamScan 'ı anlama](https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificates)
+- [Azure HDInsight için ClamScan 'ı anlama](./hdinsight-faq.md#security-and-certificates)
 
 **Sorumluluk**: Müşteri
 
@@ -881,7 +881,7 @@ Data Lake Storage, BLOB depolama vb. gibi Azure HDInsight küme dağıtımınız
 
 **Rehberlik**: Azure HDInsight, küme düğümü görüntüleri için önceden yüklenmiş ve etkin bir şekilde birlikte gelir. ClamScan, altyapı ve tanım güncelleştirmelerini otomatik olarak gerçekleştirebilir, ancak günlüklerin toplama ve yönetiminin el ile gerçekleştirilmesi gerekir.
 
-- [Azure Azure HDInsight için ClamScan 'ı anlama](https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificates)
+- [Azure Azure HDInsight için ClamScan 'ı anlama](./hdinsight-faq.md#security-and-certificates)
 
 **Sorumluluk**: Müşteri
 
@@ -897,7 +897,7 @@ Data Lake Storage, BLOB depolama vb. gibi Azure HDInsight küme dağıtımınız
 
 - [Azure depolama hesapları için depolama yedekliği nasıl yapılandırılır](../storage/common/storage-redundancy.md)
 
-- [Azure SQL veritabanı için yedeklilik yapılandırma](/azure/sql-database/sql-database-active-geo-replication)
+- [Azure SQL veritabanı için yedeklilik yapılandırma](../azure-sql/database/active-geo-replication-overview.md)
 
 **Sorumluluk**: Müşteri
 
@@ -921,7 +921,7 @@ Data Lake Storage, BLOB depolama vb. gibi Azure HDInsight küme dağıtımınız
 
 **Kılavuz**: Azure hdınsight dağıtımınızda Azure Key Vault kullanılıyorsa, yedeklenen müşteri tarafından yönetilen anahtarların test geri yüklenmesi.
 
-- [Azure HDInsight 'ta Apache Kafka için kendi anahtarınızı getirme](/azure/hdinsight/kafka/apache-kafka-byok)
+- [Azure HDInsight 'ta Apache Kafka için kendi anahtarınızı getirme](./disk-encryption.md)
 
 - [Azure 'da Anahtar Kasası anahtarlarını geri yükleme](/powershell/module/az.keyvault/restore-azkeyvaultkey)
 
@@ -933,7 +933,7 @@ Data Lake Storage, BLOB depolama vb. gibi Azure HDInsight küme dağıtımınız
 
 **Rehberlik**: Azure Key Vault Azure HDInsight dağıtımıyla birlikte kullanılıyorsa, anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault geçici silme özelliğini etkinleştirin.
 
-- [Geçici silme Azure Key Vault etkinleştirme](/azure/key-vault/key-vault-ovw-soft-delete)
+- [Geçici silme Azure Key Vault etkinleştirme](../key-vault/general/soft-delete-overview.md)
 
 **Sorumluluk**: Müşteri
 
@@ -1025,5 +1025,5 @@ Data Lake Storage, BLOB depolama vb. gibi Azure HDInsight küme dağıtımınız
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

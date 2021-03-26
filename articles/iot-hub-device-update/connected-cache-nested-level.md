@@ -7,18 +7,18 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0128d0de4f078b62bc9571c8758d80cb26585354
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 7facb74cd407c576b2a7b119f19427dcd185f04e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102615389"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568826"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-two-level-nested-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>Microsoft bağlı önbellek önizleme dağıtım senaryosu örneği: giden kimliği doğrulanmamış proxy ile Iki düzey iç içe Azure IoT Edge Ağ Geçidi
 
 Aşağıdaki diyagramda, bu senaryoda bir Azure IoT Edge ağ geçidi ve bir aşağı akış Azure IoT Edge cihazı bulunur, bir Azure IoT Edge ağ geçidi, başka bir Azure IoT Edge ağ geçidine ve BT DMZ bir ara sunucuya eklenir. Aşağıda, Azure IoT Edge ağ geçitlerine dağıtılan MCC modüllerinin her ikisi için Azure portal UX içinde ayarlanacak Microsoft bağlı önbellek ortamı değişkenlerine bir örnek verilmiştir. Gösterilen örnekte, Azure IoT Edge ağ geçitlerinin iki düzeyi için yapılandırma gösterilmektedir, ancak Microsoft bağlı önbelleğinin destekleyeceği yukarı akış ana bilgisayarlarının derinliğine yönelik bir sınır yoktur. Yukarıdaki örneklerde MCC Container oluşturma seçeneklerinde fark yoktur.
 
-Azure IoT Edge ağ geçitlerinin katmanlı dağıtımlarını yapılandırma hakkında daha fazla bilgi için bkz. Şirket [yönündeki bağlantı IoT Edge cihazları-Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-connect-downstream-iot-edge-device?view=iotedge-2020-11&tabs=azure-portal&preserve-view=true) . Ayrıca Azure IoT Edge, Microsoft bağlı önbelleği ve özel modüller dağıtıldığında tüm modüllerin aynı kapsayıcı kayıt defterinde bulunması gerektiğini unutmayın.
+Azure IoT Edge ağ geçitlerinin katmanlı dağıtımlarını yapılandırma hakkında daha fazla bilgi için bkz. Şirket [yönündeki bağlantı IoT Edge cihazları-Azure IoT Edge](../iot-edge/how-to-connect-downstream-iot-edge-device.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11) . Ayrıca Azure IoT Edge, Microsoft bağlı önbelleği ve özel modüller dağıtıldığında tüm modüllerin aynı kapsayıcı kayıt defterinde bulunması gerektiğini unutmayın.
 
 Aşağıdaki diyagramda, bir Azure IoT Edge ağ geçidinin CDN kaynaklarına doğrudan erişimi olarak üst öğe olarak, Raspberry Pi gibi bir Azure IoT yaprak cihazının ana görevi gören başka bir Azure IoT Edge ağ geçidi olarak davrandığı senaryo açıklanmaktadır. Yalnızca Azure IoT Edge ağ geçidi üst öğesi CDN kaynaklarına internet bağlantısına sahiptir ve hem Azure IoT Edge alt hem de Azure IoT cihazı Internet yalıtılmış ' dir. 
 
@@ -70,7 +70,7 @@ Aşağıdaki diyagramda, bir Azure IoT Edge ağ geçidinin CDN kaynaklarına do�
 ## <a name="child-gateway-configuration"></a>Alt ağ geçidi yapılandırması
 
 >[!Note]
->Kendi özel kayıt defterinizde yapılandırmanızda kullanılan kapsayıcıları çoğaltdıysanız, modül dağıtımınızdaki config. TOML ayarları ve çalışma zamanı ayarları üzerinde bir değişiklik olması gerekir. Daha fazla bilgi için bkz. [öğretici-IoT Edge cihaz hiyerarşisi oluşturma-](https://docs.microsoft.com/azure/iot-edge/tutorial-nested-iot-edge?view=iotedge-2020-11&tabs=azure-portal&preserve-view=true#deploy-modules-to-the-lower-layer-device) daha fazla ayrıntı için Azure IoT Edge.
+>Kendi özel kayıt defterinizde yapılandırmanızda kullanılan kapsayıcıları çoğaltdıysanız, modül dağıtımınızdaki config. TOML ayarları ve çalışma zamanı ayarları üzerinde bir değişiklik olması gerekir. Daha fazla bilgi için bkz. [öğretici-IoT Edge cihaz hiyerarşisi oluşturma-](../iot-edge/tutorial-nested-iot-edge.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11#deploy-modules-to-the-lower-layer-device) daha fazla ayrıntı için Azure IoT Edge.
 
 1. Edge aracısının görüntü yolunu aşağıdaki örnekte gösterildiği gibi değiştirin:
 

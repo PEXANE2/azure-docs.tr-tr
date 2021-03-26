@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: c3a0a8bd5805757b92e3f5b046335c8883b4ba72
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: bf311eb2b2d0ff7a9c17380d2e384bc05c6f05f3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888932"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562044"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Azure Bilişsel Arama anlam derecelendirmesi
 
@@ -24,32 +24,34 @@ Anlamsal sıralama, bir ilk sonuç kümesinin en üst eşleşmelerini yeniden ve
 
 Anlamsal sıralama, kaynak ve zaman yoğunluğu olur. Bir sorgu işleminin beklenen gecikme süresi içinde işlemeyi tamamlayabilmeniz için, semantik derecelendirmede yapılan girişler birleştirilir ve azaltılır, böylece temeldeki özetleme ve yeniden yönlendirme adımları mümkün olduğunca hızlı bir şekilde tamamlanabilir.
 
-## <a name="preparation-for-semantic-ranking"></a>Anlamsal sıralama hazırlığı
+## <a name="pre-processing"></a>Ön işleme
 
-Yakınlık açısından Puanlama öncesinde, içerik anlamsal derecelendirmeden verimli bir şekilde işlenebilen bir dizi girişe düşürülmelidir. İçerik azaltma aşağıdaki adım dizisini içerir.
+Yakınlık açısından Puanlama öncesinde, içerik anlam derecelendirmesi tarafından verimli bir şekilde işlenebilen Yönetilebilir sayıda girişe düşürülmelidir.
 
-1. İçerik azaltma, anahtar sözcük araması için kullanılan varsayılan [benzerlik derecelendirmesi algoritması](index-ranking-similarity.md) tarafından döndürülen ilk sonuçlar kümesi kullanılarak başlar. Arama sonuçları en fazla 1.000 eşleşme içerebilir, ancak anlam derecelendirmesi yalnızca ilk 50 ' i işleyebilir. 
+1. İlk olarak, içerik azaltma anahtar sözcük araması için kullanılan varsayılan [benzerlik derecelendirmesi algoritması](index-ranking-similarity.md) tarafından döndürülen ilk sonuçlar kümesiyle başlar. Herhangi bir sorgu için sonuçlar, en fazla 1.000 sınırına kadar çok sayıda belge olabilir. Çok sayıda eşleşme işlemek çok uzun sürbildiğinden, yalnızca anlam derecelendirmesinin ilk 50 ilerlemesi.
 
-   Sorgu verildiğinde ilk sonuçlar, kaç eşleşme bulundığına bağlı olarak 50 ' den çok daha az olabilir. Belge sayısı ne olursa olsun, ilk sonuç kümesi, anlam derecelendirmesi için belge yapı olur.
+   Belge sayısı ne olursa olsun, bir veya 50 olduğunda, ilk sonuç kümesi, anlam derecelendirmesi için belge yapı ' i ilk yinelemesini belirler.
 
-1. Belge Corpus 'da, "searchFields" içindeki her alanın içeriği ayıklanır ve uzun bir dizeye birleştirilir.
+1. Ardından, Corpus 'lerde, "searchFields" içindeki her alanın içeriği ayıklanır ve uzun bir dizeye birleştirilir.
 
-1. Genel uzunluğunun özetleme adımının giriş gereksinimlerini karşıladığından emin olmak için, aşırı uzun olan tüm dizeler kırpılır. Bu kırpma işlemi, dizeye dahil olduklarından emin olmak için "searchFields" içindeki kısa alanları ilk olarak konumlandırmak önemlidir. Metin ağır alanları olan çok büyük belgeleriniz varsa, en fazla sınır yoksayıldıktan sonra herhangi bir şey yok sayılır.
+1. Dize Birleştirmeden sonra, genel uzunluğunun özetleme adımının giriş gereksinimlerini karşıladığından emin olmak için, aşırı uzun olan tüm dizeler kırpılır.
+
+   Bu kırpma işlemi, dizeye dahil olduklarından emin olmak için "searchFields" içindeki kısa alanları ilk olarak konumlandırmak önemlidir. Metin ağır alanları olan çok büyük belgeleriniz varsa, en fazla sınır yoksayıldıktan sonra herhangi bir şey yok sayılır.
 
 Her belge artık tek bir uzun dizeyle temsil edilir.
 
 > [!NOTE]
-> Modellere yönelik parametre girişleri, karakterler veya sözcükler değil belirteçlerdir. Simgeleştirme, aranabilir alanlarda çözümleyici ataması tarafından kısmen belirlenir. Dizelerin nasıl simgelendirilebilen hakkında Öngörüler için [Test çözümleyici REST API](/rest/api/searchservice/test-analyzer)kullanarak bir çözümleyici 'nin belirteç çıkışını inceleyebilirsiniz.
+> Dize, karakterlerden veya sözcüklerden değil belirteçlerden oluşur. Simgeleştirme, aranabilir alanlarda çözümleyici ataması tarafından kısmen belirlenir. NGram veya EdgeNGram gibi özelleştirilmiş çözümleyici kullanıyorsanız, bu alanı searchFields dışında bırakmak isteyebilirsiniz. Dizelerin nasıl simgelendirilebilen hakkında Öngörüler için [Test çözümleyici REST API](/rest/api/searchservice/test-analyzer)kullanarak bir çözümleyici 'nin belirteç çıkışını inceleyebilirsiniz.
 
-## <a name="summarization"></a>Özetleme
+## <a name="extraction"></a>Ayıklama
 
-Dize azaltmasından sonra, sorguya göre hangi Tümcelerin ve deyimlerin belgeyi en iyi şekilde özetleyeceğini belirleyen, artık makine okuma kavrama ve dil temsili modelleriyle sınırlı girdileri geçirmek mümkündür.
+Dize azaltmasından sonra, sorguya göre hangi Tümcelerin ve deyimlerin belgeyi en iyi şekilde özetleyeceğini belirleyen, artık makine okuma kavrama ve dil temsili modelleriyle sınırlı girdileri geçirmek mümkündür. Bu aşama anlam derecelendirmesine ilerlemek için dizeden içerik ayıklar.
 
-Özetleme girişleri, hazırlama aşamasındaki her belge için elde edilen uzun dizelerdir. Belirli bir girişten, özetleme modeli, ilgili belgeyi en iyi şekilde temsil eden bir belge bulur. Bu, belge için anlamsal bir [Açıklama yazısı](semantic-how-to-query-request.md) da oluşturur. Her bir başlık düz metin olarak kullanılabilir ve vurgular ve belge başına 200 sözcükten azdır.
+Özetleme girişleri, hazırlama aşamasındaki her belge için elde edilen uzun dizelerdir. Her bir dizeden özetleme modeli, en çok temsilci olan bir pası bulur. Bu, belge için anlamsal bir [Açıklama yazısı](semantic-how-to-query-request.md) da oluşturur. Her bir başlık düz metin sürümünde ve bir vurgulama sürümünde bulunur ve belge başına 200 sözcükten daha azdır.
 
 "Yanıtlar" parametresini belirttiyseniz, sorgu bir soru olarak ortaya anıdıysa ve bu, soruya yanıt veren uzun dizede bir işlem bulunursa, [anlamsal bir yanıt](semantic-answers.md) da döndürülür.
 
-## <a name="scoring-and-ranking"></a>Puanlama ve derecelendirme
+## <a name="semantic-ranking"></a>Anlam derecelendirmesi
 
 1. Açıklamalı alt yazılar, girilen sorguya göre kavramsal ve anlamsal ilgi için değerlendirilir.
 

@@ -11,12 +11,12 @@ metadata:
   ms.author: philmea
   manager: philmea
   ms.date: 2/17/2021
-  ms.openlocfilehash: 2b47f8b51cf4150659c1d5b8ed1dc145997252ef
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: 76678a5695fdffd5325543a28398e867ab3ab6f5
+  ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101665804"
+  ms.lasthandoff: 03/26/2021
+  ms.locfileid: "105560395"
 landingContent:
 - title: Cihaz güncelleştirme hakkında
   linkLists:
@@ -24,6 +24,18 @@ landingContent:
     links:
     - text: IoT Hub için cihaz güncelleştirmesi nedir?
       url: understand-device-update.md
+- title: Daha fazla bilgi edinin
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Cihaz güncelleştirme hesabı oluştur
+      url: create-device-update-account.md
+    - text: Bir güncelleştirmeyi içeri aktar
+      url: import-update.md
+    - text: Güncelleştirme grubu oluşturma
+      url: create-update-group.md
+    - text: Güncelleştirme dağıtma
+      url: deploy-update.md
   - linkListType: concept
     links:
     - text: Cihaz güncelleştirmesinin kullanımı Tak ve Kullan
@@ -36,41 +48,19 @@ landingContent:
       url: import-concepts.md
     - text: Cihaz güncelleştirme gruplarını anlama
       url: device-update-groups.md
-- title: Öğreticilerle keşfet
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Raspberry PI üzerinde cihaz güncelleştirmesi
-      url: device-update-raspberry-pi.md
-  - linkListType: tutorial
-    links:
-    - text: Simülatör üzerinde cihaz güncelleştirme
-      url: device-update-simulator.md
-  - linkListType: tutorial
-    links:
-    - text: Ubuntu Server 18,04 x64 paket aracısında cihaz güncelleştirmesi
-      url: device-update-ubuntu-agent.md
-- title: Cihazları güncelleştirme hakkında bilgi edinin
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Cihaz güncelleştirme hesabı oluştur
-      url: create-device-update-account.md
-  - linkListType: how-to-guide
-    links:
-    - text: Bir güncelleştirmeyi içeri aktar
-      url: import-update.md
-  - linkListType: how-to-guide
-    links:
-    - text: Güncelleştirme grubu oluşturma
-      url: create-update-group.md
-  - linkListType: how-to-guide
-    links:
-    - text: Güncelleştirme dağıtma
-      url: deploy-update.md
 - title: Geliştirici kılavuzu
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Cihaz Güncelleştirme Aracısı oluşturma, çalıştırma ve değiştirme
       url: device-update-agent-provisioning.md
+- title: başlarken
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Simülatör üzerinde cihaz güncelleştirme
+      url: device-update-simulator.md
+    - text: Raspberry PI üzerinde cihaz güncelleştirmesi
+      url: device-update-raspberry-pi.md
+    - text: Ubuntu Server 18,04 x64 paket aracısında cihaz güncelleştirmesi
+      url: device-update-ubuntu-agent.md

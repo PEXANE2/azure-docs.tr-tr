@@ -3,12 +3,12 @@ title: Medya grafiği uzantısı nedir? Azure
 description: IoT Edge üzerinde canlı video analizi, bir grafik uzantısı düğümü aracılığıyla medya grafiği işleme yeteneklerini genişletmenizi sağlar.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 66656690e4e53508253091134a67adeb899b3dbf
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4a7aea7cc60a67603d8a0376cf84228072659d6c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455848"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557624"
 ---
 # <a name="media-graph-extension"></a>Medya grafiği uzantısı
 
@@ -19,11 +19,11 @@ Canlı video analizi, iki tür medya grafiği uzantısı işlemciyi destekler:
 * [HTTP uzantısı işlemcisi](media-graph-concept.md#http-extension-processor)
 * [gRPC uzantı işlemcisi](media-graph-concept.md#grpc-extension-processor)
 
-Grafik uzantısı düğümü, Analytics uzantı eklentisinin sonuçları JSON biçiminde döndürmesini bekler. İdeal olarak sonuçlar, [çıkarım meta veri şeması nesne modelini](/azure/media-services/live-video-analytics-edge/inference-metadata-schema)izlemelidir.
+Grafik uzantısı düğümü, Analytics uzantı eklentisinin sonuçları JSON biçiminde döndürmesini bekler. İdeal olarak sonuçlar, [çıkarım meta veri şeması nesne modelini](./inference-metadata-schema.md)izlemelidir.
 
 ## <a name="http-extension-processor"></a>HTTP uzantısı işlemcisi
 
-HTTP uzantısı işlemcisi, performans ve/veya en iyi kaynak kullanımının birincil sorun olmadığı [http protokolünü](/azure/media-services/live-video-analytics-edge/http-extension-protocol)kullanarak genişletilebilirlik senaryolarına izin verir. Bir HTTP REST uç noktası aracılığıyla kendi AI 'nizi bir medya grafiğinde kullanıma sunabilirsiniz. 
+HTTP uzantısı işlemcisi, performans ve/veya en iyi kaynak kullanımının birincil sorun olmadığı [http protokolünü](./http-extension-protocol.md)kullanarak genişletilebilirlik senaryolarına izin verir. Bir HTTP REST uç noktası aracılığıyla kendi AI 'nizi bir medya grafiğinde kullanıma sunabilirsiniz. 
 
 Şu durumlarda HTTP uzantı işlemcisi düğümünü kullan:
 
@@ -33,7 +33,7 @@ HTTP uzantısı işlemcisi, performans ve/veya en iyi kaynak kullanımının bir
 
 ## <a name="grpc-extension-processor"></a>gRPC uzantı işlemcisi
 
-gRPC uzantısı işlemcisi, gRPC tabanlı, yüksek performanslı [yapılandırılmış Protokolü](/azure/media-services/live-video-analytics-edge/grpc-extension-protocol)kullanan genişletilebilirlik senaryolarına izin vermez. Performans ve/veya en iyi kaynak kullanımının öncelik olduğu senaryolar için idealdir. GRPC uzantısı işlemcisi, yapılandırılmış veri tanımlarının tam avantajını almanızı sağlar. gRPC, aşağıdakileri kullanarak yüksek içerik aktarımı performansı sunar:
+gRPC uzantısı işlemcisi, gRPC tabanlı, yüksek performanslı [yapılandırılmış Protokolü](./grpc-extension-protocol.md)kullanan genişletilebilirlik senaryolarına izin vermez. Performans ve/veya en iyi kaynak kullanımının öncelik olduğu senaryolar için idealdir. GRPC uzantısı işlemcisi, yapılandırılmış veri tanımlarının tam avantajını almanızı sağlar. gRPC, aşağıdakileri kullanarak yüksek içerik aktarımı performansı sunar:
 
 * [yerleşik paylaşılan bellek](https://en.wikipedia.org/wiki/Shared_memory) veya 
 * içerik, gRPC iletilerinin gövdesine doğrudan katıştırılıyor. 
@@ -57,7 +57,7 @@ Aşağıdaki diyagramda üst düzey veri akışı gösterilmektedir:
 
 ## <a name="samples"></a>Örnekler
 
-Daha önceden oluşturulmuş uzantı hizmeti olan canlı video analizlerini, [http uzantısı işlemcisi](/azure/media-services/live-video-analytics-edge/use-your-model-quickstart?pivots=programming-language-csharp) Ile veya [GRPC uzantı işlemcisi](/azure/media-services/live-video-analytics-edge/analyze-live-video-use-your-grpc-model-quickstart?pivots=programming-language-csharp) ile yüksek kare ücretlerine sahip olan düşük kare ücretlerine sahip olan hızlı başlangıçlardan biriyle çalışmaya başlayın
+Daha önceden oluşturulmuş uzantı hizmeti olan canlı video analizlerini, [http uzantısı işlemcisi](./use-your-model-quickstart.md?pivots=programming-language-csharp) Ile veya [GRPC uzantı işlemcisi](./analyze-live-video-use-your-grpc-model-quickstart.md?pivots=programming-language-csharp) ile yüksek kare ücretlerine sahip olan düşük kare ücretlerine sahip olan hızlı başlangıçlardan biriyle çalışmaya başlayın
 
 Gelişmiş kullanıcılar için, canlı video analizi için [Jupyter Not defteri](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md) örneklerinden bazılarını kullanıma alabilirsiniz. Bu not defterleri size **medya grafik uzantıları** için adım adım yönergeler sağlar:
 

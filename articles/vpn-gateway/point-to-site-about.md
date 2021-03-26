@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 795b6f13913590041b463115c0be65a6201fedab
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6caf72884ce2566ad25b7dd6d80b15d737bbe664
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97654073"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543593"
 ---
 # <a name="about-point-to-site-vpn"></a>Noktadan siteye VPN hakkında
 
@@ -61,9 +61,9 @@ Yüksek düzeyde, Azure AD kimlik doğrulamasını yapılandırmak için aşağ�
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Active Directory (AD) etki alanı sunucusu kullanarak kimlik doğrulama
 
 AD etki alanı kimlik doğrulaması, kullanıcıların kuruluş etki alanı kimlik bilgilerini kullanarak Azure 'a bağlanmasına olanak sağlar. AD sunucusu ile tümleşen bir RADIUS sunucusu gerektirir. Kuruluşlar, var olan RADIUS dağıtımlarından da faydalanabilir.
-  
-RADIUS sunucusu şirket içinde veya Azure VNet 'te dağıtılabilir. Kimlik doğrulaması sırasında Azure VPN Gateway, kimlik doğrulama iletilerini RADIUS sunucusu ile bağlanan cihaz arasında ileri ve geri iletir. Bu nedenle, RADIUS sunucusuna ağ geçidi erişilebilirliği önemli. RADIUS sunucusu şirket içinde mevcutsa, ulaşılabilirlik için Azure 'dan şirket içi siteye bir VPN S2S bağlantısı gerekir.  
-  
+
+RADIUS sunucusu şirket içinde veya Azure VNet 'te dağıtılabilir. Kimlik doğrulaması sırasında Azure VPN Gateway, kimlik doğrulama iletilerini RADIUS sunucusu ile bağlanan cihaz arasında ileri ve geri iletir. Bu nedenle, RADIUS sunucusuna ağ geçidi erişilebilirliği önemli. RADIUS sunucusu şirket içinde mevcutsa, ulaşılabilirlik için Azure 'dan şirket içi siteye bir VPN S2S bağlantısı gerekir.
+
 RADIUS sunucusu, AD Sertifika Hizmetleri ile de tümleştirilebilir. Bu, Azure sertifika kimlik doğrulamasına alternatif olarak, RADIUS sunucusunu ve P2S sertifika kimlik doğrulaması için kuruluş sertifika dağıtımınızı kullanmanıza olanak sağlar. Bunun avantajı, kök sertifikaları ve iptal edilen sertifikaları Azure 'a yüklemeniz gerekmez.
 
 Bir RADIUS sunucusu diğer dış kimlik sistemleriyle de tümleştirilebilir. Bu, Multi-Factor seçenekleri de dahil olmak üzere P2S VPN için birçok kimlik doğrulama seçeneği açar.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.openlocfilehash: f63a8fd05e1a6ed5e41eeb64aa852ff01db295af
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5184639d8c34be705aeeb691f1cf38486f850673
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101645476"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543967"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Azure Active Directory Apps yapılandırması 'nı planla
 
@@ -74,31 +74,19 @@ Yöneticiler şunları yapılandırabilir:
 
 ## <a name="plan-consent-configuration"></a>Onay yapılandırmasını planla
 
-İki tür onay vardır: verilere erişen uygulamalar için Kullanıcı onayı ve onay.
-
-![İzin yapılandırmasının ekran görüntüsü](./media/my-apps-deployment-plan/my-apps-consent.png)
-
 ### <a name="user-consent-for-applications"></a>Uygulamalar için Kullanıcı onayı 
 
-Kullanıcıların veya yöneticilerin herhangi bir uygulamanın kullanım koşullarını ve gizlilik ilkelerini kabul etmelidir. Kullanıcıların veya yalnızca yöneticilerin uygulamalara izin veremeyeceğine karar vermeniz gerekir. **İş kurallarınızın izin vermesini, kiracınızdaki uygulamaların denetimini sürdürmek için yönetici onayı kullanmanızı öneririz**.
+Bir kullanıcının bir uygulamada oturum açması ve uygulamanın kuruluşunuzun verilerine erişebilmesi için, bir kullanıcının veya yöneticinin uygulama izinlerini vermesi gerekir. Kullanıcı onaylamasına izin verilip verilmeyeceğini ve bu koşulların altına göre yapılandırma yapabilirsiniz. **Microsoft, yalnızca uygulamaların doğrulanmış yayımcılar için Kullanıcı onaylamasına izin vermenizi önerir.**
 
-Yönetici onayını kullanmak için kuruluşun genel yöneticisi olmanız ve uygulamalar şunlardan biri olmalıdır:
-
-* Kuruluşunuzda kayıtlı.
-
-* Başka bir Azure AD kuruluşunda kayıtlı ve daha önce en az bir kullanıcı tarafından onaylanan.
-
-Kullanıcıların izin vermesini sağlamak istiyorsanız, herhangi bir uygulamaya veya yalnızca belirli koşullarda onay vermesini istediğinize karar vermeniz gerekir.
-
-Daha fazla bilgi için bkz [. Azure Active Directory bir uygulamaya son kullanıcıların izin vermesini yapılandırma.](../manage-apps/configure-user-consent.md)
+Daha fazla bilgi için bkz. [son kullanıcıların uygulamalara nasıl izin vermesini yapılandırma](../manage-apps/configure-user-consent.md)
 
 ### <a name="group-owner-consent-for-apps-accessing-data"></a>Verilere erişen uygulamalar için Grup sahibi onayı
 
-Azure AD güvenlik gruplarının veya M365 gruplarının sahipleri, sahip oldukları gruplar için verilere erişmek üzere uygulamalara izin verebilir olup olmadığını belirleme. İzin vermemeyi, tüm grup sahiplerine izin vermeyi veya yalnızca Grup sahiplerinin yalnızca bir alt kümesine izin vermeyi seçebilirsiniz.
+Grup ve takım sahipleri, üçüncü taraf satıcılar tarafından yayımlanan uygulamalar gibi, kuruluşunuzun bir grupla ilişkili verilerinize erişebilmesi için uygulamalara yetki verebilir. Daha fazla bilgi için bkz. [Microsoft ekiplerde kaynağa özel izin](https://docs.microsoft.com/microsoftteams/resource-specific-consent) . 
+
+Bu özelliği izin vermek veya devre dışı bırakmak isteyip istemediğinizi yapılandırabilirsiniz.
 
 Daha fazla bilgi için bkz. [Grup onay Izinlerini yapılandırma](../manage-apps/configure-user-consent-groups.md).
-
-Ardından, Azure portal [Kullanıcı ve Grup sahibi izin ayarlarınızı](https://portal.azure.com/) yapılandırın.
 
 ### <a name="plan-communications"></a>İletişimi planlama
 

@@ -13,12 +13,12 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 24a538686e101d40daba008f30a72ffc5078047a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 05bfcc86c72d9eb393da919035ce198948b943f2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104674532"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559137"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Apple cihazları için Microsoft Enterprise SSO eklentisi (Önizleme)
 
@@ -52,14 +52,14 @@ Apple cihazları için Microsoft Enterprise SSO eklentisini kullanmak için:
 - Cihazın *MDM 'ye kayıtlı* olması gerekir, örneğin, Microsoft Intune.
 - Enterprise SSO eklentisini etkinleştirmek için yapılandırma *cihaza itilmiş* olmalıdır. Apple bu güvenlik kısıtlamasını gerektirir.
 
-iOS gereksinimleri:
-- iOS 13,0 veya üzeri cihazda yüklü olmalıdır.
-- Apple cihazları için Microsoft Enterprise SSO eklentisini sağlayan bir Microsoft uygulamasının cihazda yüklü olması gerekir. Genel Önizleme sırasında bu uygulama [Microsoft Authenticator](/intune/user-help/user-help-auth-app-overview.md)uygulamasıdır.
+### <a name="ios-requirements"></a>iOS gereksinimleri:
+- cihazda iOS 13,0 veya üzeri yüklü olmalıdır.
+- Apple cihazları için Microsoft Enterprise SSO eklentisini sağlayan bir Microsoft uygulamasının cihazda yüklü olması gerekir. Genel önizleme için bu uygulamalar [Microsoft Authenticator uygulamasıdır](/azure/active-directory/user-help/user-help-auth-app-overview).
 
 
-macOS gereksinimleri:
+### <a name="macos-requirements"></a>macOS gereksinimleri:
 - macOS 10,15 veya üzeri cihazda yüklü olmalıdır. 
-- Apple cihazları için Microsoft Enterprise SSO eklentisini sağlayan bir Microsoft uygulamasının cihazda yüklü olması gerekir. Genel Önizleme sırasında bu uygulama [Intune şirket portalı](/intune/user-help/enroll-your-device-in-intune-macos-cp.md)uygulamasıdır.
+- Apple cihazları için Microsoft Enterprise SSO eklentisini sağlayan bir Microsoft uygulamasının cihazda yüklü olması gerekir. Genel önizleme için bu uygulamalar [Intune şirket portalı uygulamasını](/mem/intune/user-help/enroll-your-device-in-intune-macos-cp)içerir.
 
 ## <a name="enable-the-sso-plug-in"></a>SSO eklentisini etkinleştirme
 

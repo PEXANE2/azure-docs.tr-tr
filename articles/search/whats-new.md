@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8e78fa46125b8aca378598c673ba76829e11d70e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 99a7f08b6d366f2f928b99caba2424c2fae0d625
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600437"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559528"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -23,7 +23,7 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Kullanılabilirlik  |
 |------------------------------|---------------|---------------|
-| [Anlamsal arama](semantic-search-overview.md) | Arama sonuçlarının çok az çabayla uygunluğunu önemli ölçüde iyileştiren, sorgu ile ilgili özelliklerin bir koleksiyonu. </br></br>[Anlamsal derecelendirme](semantic-ranking.md) , sözcüklerin ve içeriğin arkasındaki anlam anlamını kullanarak uygunluk puanlarını hesaplar. </br></br>[Anlamsal açıklamalı alt yazılar](semantic-how-to-query-request.md) , en önemli hüküm veya tümceciklere göre vurgularla belgeyi en iyi şekilde özetleyen belgeden ilgili yollardır. </br></br>[Anlam yanıtları](semantic-answers.md) , bir arama belgesinden ayıklanan anahtar yollardır. Bu, soru gibi görünen bir sorguya doğrudan yanıt olarak ifade edilir. | Genel Önizleme ([isteğe göre](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>[Arama belgelerini kullanın (REST)](/rest/api/searchservice/preview-api/search-documents) API-Version = 2020-06 -30-önizleme ve [Arama Gezgini](search-explorer.md) Azure Portal. </br></br>Bölge ve katman kısıtlamaları geçerlidir. |
+| [Anlamsal arama](semantic-search-overview.md) | Sorgu isteğine ilişkin minimum ayarlamalar aracılığıyla arama sonuçlarının uygunluğunu önemli ölçüde iyileştiren, sorgu ile ilgili özelliklerin bir koleksiyonu. </br></br>[Anlamsal derecelendirme](semantic-ranking.md) , sözcüklerin ve içeriğin arkasındaki anlam anlamını kullanarak uygunluk puanlarını hesaplar. </br></br>[Anlamsal açıklamalı alt yazılar](semantic-how-to-query-request.md) , en önemli hüküm veya tümceciklere göre vurgularla belgeyi en iyi şekilde özetleyen belgedeki ilgili pasclarını döndürür. </br></br>[Anlam yanıtları](semantic-answers.md) , soru gibi görünen bir sorguya doğrudan yanıt olarak ifade edilen bir arama belgesinden ayıklanan anahtar yollarından oluşur. | Genel Önizleme ([isteğe göre](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>[Arama belgelerini (REST)](/rest/api/searchservice/preview-api/search-documents) API-Version = 2020-06 -30-önizleme veya [Arama Gezgini](search-explorer.md) ' ni kullanın Azure Portal. </br></br>Bölge ve katman kısıtlamaları geçerlidir. |
 | [Yazım denetimi sorgu terimleri](speller-how-to-add.md) | Sorgu terimleri arama altyapısına ulaşmadan önce, yazım hatalarını denetlebilirler. `speller`Seçeneği herhangi bir sorgu türü (basit, tam veya anlamsal) ile birlikte kullanılır. |  Genel Önizleme, yalnızca REST, api-Version = 2020-06 -30-Önizleme|
 | [SharePoint Online Dizin Oluşturucu](search-howto-index-sharepoint-online.md) | Bu Dizin Oluşturucu, bir belge kitaplığından içerik dizini oluşturabilmeniz için sizi bir SharePoint Online sitesine bağlar. | Genel Önizleme, yalnızca REST, api-Version = 2020-06 -30-Önizleme |
 | [Normalleyiciler](search-normalizers.md) | Normalleştiriciler, tüm analiz zincirinin tamamında büyük küçük harf, aksan kaldırma, yokıifolding gibi basit metin ön işlemesi sağlar.| Genel Önizleme, yalnızca REST, api-Version = 2020-06 -30-Önizleme |

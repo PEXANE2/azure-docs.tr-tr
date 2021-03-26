@@ -3,25 +3,23 @@ title: Kimlik doğrulama belirteçlerini Azure Media Services geçir | Microsoft
 description: İstemciden Azure Media Services anahtar teslim hizmetine kimlik doğrulama belirteçleri gönderme hakkında bilgi edinin
 services: media-services
 keywords: içerik koruma, DRM, belirteç kimlik doğrulaması
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2021
+ms.date: 03/22/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba4daec8ef5f2cc1da3a211113e7236dfd22803d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1fe692e1eb20956f339c9b861f50163cee9c5063
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103008255"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564662"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>İstemcilerin belirteçleri Azure Media Services anahtar teslim hizmetine nasıl ilettireceğinizi öğrenin
 
@@ -33,7 +31,7 @@ Müşteriler çoğu zaman Player 'ın anahtarı edinebilmesi için Azure Media S
 
 - HTTP yetkilendirme üst bilgisi aracılığıyla.
     > [!NOTE]
-    > "Taşıyıcı" ön eki, OAuth 2,0 özelliklerine göre beklenmektedir. Belirteç yapılandırmasına sahip bir örnek oynatıcı Azure Media Player [demo sayfasında](https://ampdemo.azureedge.net/)barındırılır. Video kaynağını ayarlamak için **AES (JWT belirteci)** veya **AES (SWT belirteci)** öğesini seçin. Belirteç, yetkilendirme üst bilgisi aracılığıyla geçirilir.
+    > "Taşıyıcı" ön eki, OAuth 2,0 özelliklerine göre beklenmektedir. Video kaynağını ayarlamak için **AES (JWT belirteci)** veya **AES (SWT belirteci)** öğesini seçin. Belirteç, yetkilendirme üst bilgisi aracılığıyla geçirilir.
 
 - "Token = tokenvalue" ile bir URL sorgu parametresi ekleme.  
     > [!NOTE]

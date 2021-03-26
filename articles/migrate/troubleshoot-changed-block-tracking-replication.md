@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 33e2bf641b75a5dd360498478f1ea70c7614fb38
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5487e51ad73ab903e7b61de266e2c28d282a56c1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98071383"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568668"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Aracısız VMware VM geçişinde çoğaltma sorunlarını giderme
 
@@ -292,7 +292,7 @@ Bu sorun, vCenter Server Yönetim aracılarının çalışmayı durdurması duru
 
 ### <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>Hata Iletisi: bir iç hata oluştu. [Anlık görüntü disk boyutu geçersiz]
 
-Bu, anlık görüntü tarafından belirtilen disk boyutunun sıfır olduğu bilinen bir VMware sorunudur. [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138972)'de verilen çözümü izleyin.
+Bu, anlık görüntü tarafından belirtilen disk boyutunun sıfır olduğu bilinen bir VMware sorunudur. [VMware KB](https://kb.vmware.com/s/)'de verilen çözümü izleyin.
 
 ### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Hata Iletisi: bir iç hata oluştu. [Bellek ayırma başarısız oldu. Bellek yetersiz.]
 

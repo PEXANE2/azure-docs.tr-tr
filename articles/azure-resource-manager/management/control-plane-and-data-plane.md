@@ -3,12 +3,12 @@ title: Denetim düzlemi ve veri düzlemi işlemleri
 description: Denetim düzlemi ve veri düzlemi işlemleri arasındaki farkı açıklar. Denetim düzlemi işlemleri Azure Resource Manager tarafından işlenir. Veri düzlemi işlemleri bir hizmet tarafından işlenir.
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.openlocfilehash: f478037c3e83c1d28cc900d64512a41619628dd7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 76304c81a1af1eef87d12cfd4130867851a61d28
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91371278"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544103"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Azure denetim düzlemi ve veri düzlemi
 
@@ -52,7 +52,7 @@ Denetim düzlemi istekleri işlemek için iki senaryo içerir-"yeşil alan" ve "
 
 ## <a name="data-plane"></a>Veri düzlemi
 
-Veri düzlemi işlemlerine yönelik istekler, örneğinize özgü bir uç noktaya gönderilir. Örneğin, bilişsel hizmetler 'deki [dil Algıla işlemi](/rest/api/cognitiveservices/textanalytics/detect%20language/detect%20language) , istek URL 'si şu olduğundan bir veri düzlemi işlemidir:
+Veri düzlemi işlemlerine yönelik istekler, örneğinize özgü bir uç noktaya gönderilir. Örneğin, bilişsel hizmetler 'deki [dil Algıla işlemi](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection) , istek URL 'si şu olduğundan bir veri düzlemi işlemidir:
 
 ```http
 POST {Endpoint}/text/analytics/v2.0/languages

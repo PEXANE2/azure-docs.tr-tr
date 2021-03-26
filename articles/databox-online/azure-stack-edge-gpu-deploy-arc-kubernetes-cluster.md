@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 4d75986880075f6eb07aa31b9322bdae15535802
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1d42843805f4fce24368dd07de3a73fec2545957
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102437613"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567534"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazındaki Kubernetes kümesinde Azure yayı 'yi etkinleştirme
 
@@ -74,7 +74,7 @@ Kubernetes kümesinde Azure Arc 'ı etkinleştirmeden önce, aboneliğinizi etki
     
     ![Kubernetes kaynak sağlayıcılarını Kaydet 3](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
 
-Ayrıca, kaynak sağlayıcılarını ile de kaydedebilirsiniz `az cli` . Daha fazla bilgi için bkz. [Azure Arc etkin Kubernetes için iki sağlayıcıyı kaydetme](../azure-arc/kubernetes/connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)
+Ayrıca, kaynak sağlayıcılarını ile de kaydedebilirsiniz `az cli` . Daha fazla bilgi için bkz. [Azure Arc etkin Kubernetes için iki sağlayıcıyı kaydetme](../azure-arc/kubernetes/quickstart-connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)
 
 ## <a name="create-service-principal-assign-role"></a>Hizmet sorumlusu oluşturma, rol atama
 
@@ -226,7 +226,7 @@ Azure Arc yönetimini kaldırmak için şu adımları izleyin:
 
 
 > [!NOTE]
-> Varsayılan olarak, `yamls` Git deposundan kaynak silindiğinde, ilgili kaynaklar Kubernetes kümesinden silinmez. `--sync-garbage-collection`Git deposundan silindiği zaman kaynakların silinmesine izin vermek Için Arc OperatorParams ' de ayarlamanız gerekir. Daha fazla bilgi için bkz. [yapılandırmayı silme](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters)
+> Varsayılan olarak, `yamls` Git deposundan kaynak silindiğinde, ilgili kaynaklar Kubernetes kümesinden silinmez. `--sync-garbage-collection`Git deposundan silindiği zaman kaynakların silinmesine izin vermek Için Arc OperatorParams ' de ayarlamanız gerekir. Daha fazla bilgi için bkz. [yapılandırmayı silme](../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md#additional-parameters)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

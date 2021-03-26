@@ -5,21 +5,21 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/24/2021
 ms.custom: template-concept
-ms.openlocfilehash: 68244e1669bbdce8215df467564ea3aca56b530c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1f09bc5b753da1d79b7701e95e4c2d8bc62647c9
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098137"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567636"
 ---
-# <a name="the-azure-percept-dk-update-experience"></a>Azure Percept DK güncelleştirme deneyimi
+# <a name="azure-percept-dk-update-experience-overview"></a>Azure Percept DK güncelleştirme deneyimine genel bakış
 
-Azure Percept DK ile, geliştirme seti işletim sistemini ve üretici yazılımını güncelleştirmek için iki seçeneğiniz vardır: Kablosuz (OTA) veya USB üzerinden. OTA güncelleştirme, cihazları güncel tutmanın kolay bir yoludur, ancak USB güncelleştirme, OTA mümkün olmadığında veya cihazınızı fabrika ayarlarına sıfırlamak istediğinizde iyi bir seçenektir. Sizin için en uygun güncelleştirme yönteminden faydalanabildiğinizden emin olmak için, size yardımcı olmak üzere nasıl yapılır kılavuzlarından oluşan bir koleksiyon sunuyoruz. 
+Azure Percept DK ile, geliştirme seti işletim sistemini ve bellenimini (OTA) veya USB üzerinden güncelleştirebilirsiniz. OTA güncelleştirilmesi, [IoT Hub hizmeti Için cihaz güncelleştirmesi](https://docs.microsoft.com/azure/iot-hub-device-update/) aracılığıyla cihazları güncel tutmanın kolay bir yoludur. USB güncelleştirmeleri, OTA güncelleştirmelerini kullanabilecek kullanıcılar veya cihazın fabrika sıfırlaması gerektiğinde kullanılabilir. Azure Percept DK cihaz güncelleştirmelerini kullanmaya başlamak için aşağıdaki nasıl yapılır kılavuzlarını inceleyin:
 
-- [Azure Percept DK 'ye hava güncelleştirmeleri dağıtmak için Azure IoT Hub ayarlama](./how-to-set-up-over-the-air-updates.md)
-- [Azure Percept DK 'yi hava üzerinden güncelleştirme](./how-to-update-over-the-air.md)
+- [Azure IoT Hub, Azure Percept DK 'ye çok sayfalı (OTA) güncelleştirmeleri dağıtmak için ayarlama](./how-to-set-up-over-the-air-updates.md)
+- [Azure Percept DK-AIR (OTA) üzerinde güncelleştirme](./how-to-update-over-the-air.md)
 - [Azure Percept DK 'yi USB üzerinden güncelleştirme](./how-to-update-via-usb.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

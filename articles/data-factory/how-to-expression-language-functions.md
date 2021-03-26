@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/08/2020
-ms.openlocfilehash: 090c738d06b9b8acd53a4c194e97fa3a0515e1d6
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: c9e1abc5fb6f66981f56bc262319587d9fc4265e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104783396"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566668"
 ---
 # <a name="how-to-use-parameters-expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory içindeki parametreleri, ifadeleri ve işlevleri kullanma
 
@@ -25,7 +25,7 @@ Bu belgede, öncelikle Azure Data Factory içinde parametreli veri işlem hatlar
 
 ## <a name="azure-data-factory-ui-and-parameters"></a>Azure Data Factory Kullanıcı arabirimi ve parametreleri
 
-ADF Kullanıcı arabiriminde Azure Data Factory parametre kullanımı için yeni bir bağlantı kullanıyorsanız, Visual Açıklama [parametreleri ile meta veri odaklı işlem hattı için parametrelere ve Data Factory Kullanıcı](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization#data-factory-ui) arabirimine [sahip bağlı hizmetler IÇIN Data Factory Kullanıcı](https://docs.microsoft.com/azure/data-factory/parameterize-linked-services#data-factory-ui) arabirimini gözden geçirin.
+ADF Kullanıcı arabiriminde Azure Data Factory parametre kullanımı için yeni bir bağlantı kullanıyorsanız, Visual Açıklama [parametreleri ile meta veri odaklı işlem hattı için parametrelere ve Data Factory Kullanıcı](./how-to-use-trigger-parameterization.md#data-factory-ui) arabirimine [sahip bağlı hizmetler IÇIN Data Factory Kullanıcı](./parameterize-linked-services.md#data-factory-ui) arabirimini gözden geçirin.
 
 ## <a name="parameter-and-expression-concepts"></a>Parametre ve ifade kavramları 
 
@@ -313,11 +313,11 @@ Bu [Azure Data Factory kopya ardışık düzen parametresi geçirme öğreticisi
 
 ### <a name="detailed--mapping-data-flow-pipeline-with-parameters"></a>Parametrelerle ilgili ayrıntılı eşleme veri akışı işlem hattı 
 
-Veri akışında parametrelerin nasıl kullanılacağına ilişkin kapsamlı bir örnek için [, lütfen veri akışını parametrelerle eşlemeyi](https://docs.microsoft.com/azure/data-factory/parameters-data-flow) izleyin.
+Veri akışında parametrelerin nasıl kullanılacağına ilişkin kapsamlı bir örnek için [, lütfen veri akışını parametrelerle eşlemeyi](./parameters-data-flow.md) izleyin.
 
 ### <a name="detailed-metadata-driven-pipeline-with-parameters"></a>Parametrelerle ayrıntılı meta veri odaklı işlem hattı
 
-Meta veri odaklı işlem hatlarını tasarlamak için parametrelerin nasıl kullanılacağı hakkında daha fazla bilgi edinmek için lütfen [parametrelerle birlikte metaveri temelli](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization) işlem hattını izleyin. Bu, parametreler için popüler bir kullanım durumdur.
+Meta veri odaklı işlem hatlarını tasarlamak için parametrelerin nasıl kullanılacağı hakkında daha fazla bilgi edinmek için lütfen [parametrelerle birlikte metaveri temelli](./how-to-use-trigger-parameterization.md) işlem hattını izleyin. Bu, parametreler için popüler bir kullanım durumdur.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

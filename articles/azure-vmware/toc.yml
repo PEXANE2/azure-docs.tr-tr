@@ -132,8 +132,10 @@
           href: 'https://youtu.be/NoNG-hkksrA'
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/ext/vmware/vmware
+    - name: Azure CLı veri deposu
+      href: /cli/azure/ext/vmware/vmware/datastore
     - name: Azure PowerShell
       href: /powershell/module/az.vmware/
     - name: Terrampaform Azure sağlayıcısı

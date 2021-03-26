@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 9cd5136d69e4b14aa50a96d20f3187ce88db6e96
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f4e900c8bcdcb5febec39421e098b19ad10b8b00
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92320486"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558899"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi nedir?
 
@@ -24,7 +24,7 @@ Azure statik Web Apps iş akışı, geliştiricinin günlük iş akışına gör
 
 Bir Azure Statik Web Uygulamaları kaynağı oluşturduğunuzda Azure uygulamanın kaynak kodu deposunda bir GitHub Actions iş akışı ayarlar ve bu iş akışı seçtiğiniz dalı izler. Değişiklikleri izlenen dala her gönderişinizde veya çekme isteklerini kabul ettiğinizde, GitHub eylemi uygulamanızı ve API 'sini Azure 'a otomatik olarak oluşturur ve dağıtır.
 
-Statik Web uygulamaları, genellikle angular, tepki, svelte, Vue veya Blazor gibi kitaplıklar ve çerçeveler kullanılarak oluşturulmuştur. Bu uygulamalar, uygulamayı oluşturan HTML, CSS, JavaScript ve görüntü varlıklarını içerir. Geleneksel bir Web sunucusu ile, bu varlıklar, gerekli tüm API uç noktaları ile birlikte tek bir sunucudan sunulur.
+Statik Web Apps, genellikle angular, tepki, svelte, Vue veya Blazor gibi sunucu tarafı işlemenin gerekmediği gibi kitaplıklar ve çerçeveler kullanılarak oluşturulmuştur. Bu uygulamalar, uygulamayı oluşturan HTML, CSS, JavaScript ve görüntü varlıklarını içerir. Geleneksel bir Web sunucusu ile, bu varlıklar, gerekli tüm API uç noktaları ile birlikte tek bir sunucudan sunulur.
 
 Statik Web Apps, statik varlıklar geleneksel bir Web sunucusundan ayrılır ve bunun yerine dünyanın dört bir yanındaki coğrafi olarak dağıtılan noktalarından sunulur. Dosyalar son kullanıcılara fiziksel olarak daha yakında bulunduğu için bu dağıtım yöntemi dosyaların daha hızlı sunulmasına olanak tanır. Ayrıca, API uç noktaları [sunucusuz bir mimari](../azure-functions/functions-overview.md)kullanılarak barındırılır ve tamamen bir arka uç sunucusu gereksinimini ortadan kaldırır.
 
