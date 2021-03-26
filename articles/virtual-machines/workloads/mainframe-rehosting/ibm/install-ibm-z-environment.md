@@ -3,7 +3,7 @@ title: Azure 'da IBM zD&T geliştirme ve test ortamı 'nı yükler | Microsoft D
 description: Azure sanal makinesi (VM) hizmet olarak altyapı (IaaS) üzerinde IBM Z geliştirme ve test ortamı (zD&T) dağıtın.
 services: virtual-machines
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: mainframe-rehosting
 documentationcenter: ''
 author: njray
 ms.author: edprice
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: abcaff5979aed38ce47df08cc953829f3003f7b0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 32b63256f89d6d051305890c3387140f243e1a70
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102561560"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954335"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Azure 'da IBM zD&T geliştirme ve test ortamı 'nı yükler
 

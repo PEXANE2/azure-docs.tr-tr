@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Azure Arc etkin Kubernetes için Denetim Aracısı yükseltmeleri
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar, aracı, yükseltme
-ms.openlocfilehash: 172654f655e594c295a8807b417c32d7849bd4b1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d81a00ed4f30f446aeed96d59a455935c652b7d5
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121924"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954556"
 ---
 # <a name="upgrading-azure-arc-enabled-kubernetes-agents"></a>Azure Arc etkin Kubernetes aracılarını yükseltme
 
@@ -84,6 +84,6 @@ Azure Arc etkin Kubernetes aracılarının bir alt sürümü ayda yaklaşık bir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir Kubernetes kümesini Azure yaya bağlamak](./connect-cluster.md)için hızlı başlangıç deneyimimizi gözden geçir.
-* Zaten bir Kubernetes kümesine bağlı Azure yayı zaten var mı? [Arc etkin Kubernetes kümesinde yapılandırma oluşturma](./use-gitops-connected-cluster.md).
+* [Bir Kubernetes kümesini Azure yaya bağlamak](./quickstart-connect-cluster.md)için hızlı başlangıç deneyimimizi gözden geçir.
+* Zaten bir Kubernetes kümesine bağlı Azure yayı zaten var mı? [Arc etkin Kubernetes kümesinde yapılandırma oluşturma](./tutorial-use-gitops-connected-cluster.md).
 * Uygun [ölçekte yapılandırma uygulamak Için Azure ilkesi](./use-azure-policy.md)'ni nasıl kullanacağınızı öğrenin.

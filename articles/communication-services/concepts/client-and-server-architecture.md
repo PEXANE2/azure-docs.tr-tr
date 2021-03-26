@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 74a48b05e7e3b00d331da4fcf66092490ae70374
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f52d907c36c7900d5f5eada3ca4a7328e42f9729
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103490679"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110857"
 ---
 # <a name="client-and-server-architecture"></a>İstemci ve sunucu mimarisi
 
@@ -34,7 +34,7 @@ Her Azure Iletişim Hizmetleri uygulaması, kişinin kişiye bağlantısını ko
 
 ## <a name="user-access-management"></a>Kullanıcı erişim yönetimi
 
-Azure Iletişim Hizmetleri istemci kitaplıklarının `user access tokens` Iletişim Hizmetleri kaynaklarına güvenli bir şekilde erişmesi gerekir. `User access tokens` belirtecin duyarlı doğası ve bunları oluşturmak için gereken bağlantı dizesi nedeniyle güvenilir bir hizmet tarafından oluşturulup yönetilmelidir. Erişim belirteçlerini düzgün bir şekilde yönetmemesi, kaynakların kötüye kullanılması nedeniyle ek ücretler oluşmasına neden olabilir. Kullanıcı yönetimi için güvenilen bir hizmetin kullanılması önemle önerilir. Güvenilen hizmet belirteçleri oluşturur ve uygun şifrelemeyi kullanarak onları istemciye geri iletir. Örnek mimari akışı aşağıda bulunabilir:
+Azure Iletişim Hizmetleri SDK 'larının `user access tokens` Iletişim Hizmetleri kaynaklarına güvenli bir şekilde erişmesi gerekir. `User access tokens` belirtecin duyarlı doğası ve bunları oluşturmak için gereken bağlantı dizesi nedeniyle güvenilir bir hizmet tarafından oluşturulup yönetilmelidir. Erişim belirteçlerini düzgün bir şekilde yönetmemesi, kaynakların kötüye kullanılması nedeniyle ek ücretler oluşmasına neden olabilir. Kullanıcı yönetimi için güvenilen bir hizmetin kullanılması önemle önerilir. Güvenilen hizmet belirteçleri oluşturur ve uygun şifrelemeyi kullanarak onları istemciye geri iletir. Örnek mimari akışı aşağıda bulunabilir:
 
 :::image type="content" source="../media/scenarios/archdiagram-access.png" alt-text="Kullanıcı erişim belirteci mimarisini gösteren diyagram.":::
 
@@ -42,7 +42,7 @@ Daha fazla bilgi için [en iyi kimlik yönetimi uygulamalarını](../../security
 
 ## <a name="browser-communication"></a>Tarayıcı iletişimi
 
-Azure Communications JavaScript istemci kitaplıkları, Web uygulamalarını zengin metin, ses ve video etkileşimi ile etkinleştirebilir. Uygulama, veri düzlemine erişmek ve gerçek zamanlı metin, ses ve video iletişimi sunmak için istemci kitaplığı aracılığıyla doğrudan Azure Iletişim hizmetleriyle etkileşime girer. Örnek mimari akışı aşağıda bulunabilir:
+Azure Communications JavaScript SDK 'Ları, Web uygulamalarını zengin metin, ses ve video etkileşimi ile etkinleştirebilir. Uygulama, veri düzlemine erişmek ve gerçek zamanlı metin, ses ve video iletişimi sunmak için SDK aracılığıyla doğrudan Azure Iletişim hizmetleriyle etkileşime girer. Örnek mimari akışı aşağıda bulunabilir:
 
 :::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="Iletişim Hizmetleri için tarayıcı mimarisine tarayıcıyı gösteren diyagram.":::
 
@@ -54,7 +54,7 @@ Birçok senaryo, yerel uygulamalarla en iyi şekilde sunulur. Azure Iletişim Hi
 
 ## <a name="voice-and-sms-over-the-public-switched-telephony-network-pstn"></a>Ortak anahtarlı telefon ağı (PSTN) üzerinden sesli ve SMS
 
-Telefon sistemi üzerinden iletişim kurmak, uygulamanızın erişim düzeyini önemli ölçüde artırabilir. Azure Iletişim Hizmetleri, PSTN ses ve SMS senaryolarını desteklemek için doğrudan Azure portal veya REST API 'Leri ile istemci kitaplıklarını kullanarak [telefon numaralarını elde](../quickstarts/telephony-sms/get-phone-number.md) etmenize yardımcı olur. Telefon numaraları alındıktan sonra, hem gelen hem de giden senaryolarda hem PSTN çağırma hem de SMS kullanarak müşterilere ulaşmak için kullanılabilirler. Örnek mimari akışı aşağıda bulunabilir:
+Telefon sistemi üzerinden iletişim kurmak, uygulamanızın erişim düzeyini önemli ölçüde artırabilir. Azure Iletişim Hizmetleri, PSTN ses ve SMS senaryolarını desteklemek için doğrudan Azure portal veya REST API 'Leri ile SDK 'Ları kullanarak [telefon numaralarını](../quickstarts/telephony-sms/get-phone-number.md) almanıza yardımcı olur. Telefon numaraları alındıktan sonra, hem gelen hem de giden senaryolarda hem PSTN çağırma hem de SMS kullanarak müşterilere ulaşmak için kullanılabilirler. Örnek mimari akışı aşağıda bulunabilir:
 
 > [!Note]
 > Genel Önizleme sırasında ABD telefon numaralarının sağlanması ABD ve Kanada 'da fatura adresi bulunan müşteriler tarafından kullanılabilir.
@@ -65,7 +65,7 @@ PSTN telefon numaraları hakkında daha fazla bilgi için bkz. [telefon numaras�
 
 ## <a name="humans-communicating-with-bots-and-other-services"></a>Botlar ve diğer hizmetlerle iletişim kuran insanlar
 
-Azure Iletişim Hizmetleri, Azure Communication Services veri düzlemine doğrudan erişebilen hizmetlerle, metin ve ses kanalları gibi insandan sisteme iletişimi destekler. Örneğin, bir bot yanıt gelen telefon aramalarından veya Web sohbetine katılımda bulunabilir. Azure Iletişim Hizmetleri, bu senaryoları çağırmak ve sohbet etmek için etkinleştiren istemci kitaplıkları sağlar. Örnek mimari akışı aşağıda bulunabilir:
+Azure Iletişim Hizmetleri, Azure Communication Services veri düzlemine doğrudan erişebilen hizmetlerle, metin ve ses kanalları gibi insandan sisteme iletişimi destekler. Örneğin, bir bot yanıt gelen telefon aramalarından veya Web sohbetine katılımda bulunabilir. Azure Iletişim Hizmetleri, bu senaryolara çağrı ve sohbet için olanak sağlayan SDK 'lar sağlar. Örnek mimari akışı aşağıda bulunabilir:
 
 :::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="Iletişim Hizmetleri bot mimarisini gösteren diyagram.":::
 
@@ -73,7 +73,7 @@ Azure Iletişim Hizmetleri, Azure Communication Services veri düzlemine doğrud
 
 Örneğin, paylaşılan bir karma gerçeklik veya oyun deneyimini senkronize etmek gibi kullanıcılar arasında rastgele veri alışverişi yapmak isteyebilirsiniz. Metin, ses ve video iletişimi için kullanılan gerçek zamanlı veri düzlemi doğrudan iki şekilde kullanılabilir:
 
-- **İstemci kitaplığı çağırma** -bir çağrıda bulunan cihazlar, çağrı kanalı üzerinden veri göndermek ve almak için API 'lere erişim sağlar. Bu, mevcut bir etkileşime veri iletişimleri eklemenin en kolay yoludur.
+- **SDK 'Yı çağırma** -bir çağrıda bulunan cihazların çağrı kanalı üzerinden veri göndermek ve almak için API 'lere erişimi vardır. Bu, mevcut bir etkileşime veri iletişimleri eklemenin en kolay yoludur.
 - **Stun/** açık-Azure iletişim hizmetleri, standartlara uygun bir şekilde hizmet verebilir ve bu hizmetleri kullanabilmenizi sağlar. Bu, standartlaştırılmış temel elemanlar üzerinde yoğun şekilde özelleştirilmiş bir aktarım katmanı oluşturmanıza olanak sağlar. Standart uyumlu istemcinizi yazabilir veya [Wınrtc](https://github.com/microsoft/winrtc)gibi açık kaynak kitaplıklarını kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar

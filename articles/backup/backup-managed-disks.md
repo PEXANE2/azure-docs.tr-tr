@@ -3,19 +3,14 @@ title: Azure yönetilen disklerini yedekleme
 description: Azure portal Azure yönetilen disklerini nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: ca86550c4dec4b51c60d9ecdef124e38783a3764
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e234495eb483d6d0cc6ca556ca418138c61a99f5
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98738161"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110636"
 ---
-# <a name="back-up-azure-managed-disks-in-preview"></a>Azure yönetilen disklerini yedekleme (önizlemede)
-
->[!IMPORTANT]
->Azure disk yedekleme, bir hizmet düzeyi sözleşmesi olmadan önizlemededir ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Bölge kullanılabilirliği için bkz. [destek matrisi](disk-backup-support-matrix.md).
->
->Önizlemeye kaydolmak için [Bu formu doldurun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) .
+# <a name="back-up-azure-managed-disks"></a>Azure yönetilen disklerini yedekleme
 
 Bu makalede, [Azure yönetilen diskin](../virtual-machines/managed-disks-overview.md) Azure Portal nasıl yedekleneceği açıklanır.
 

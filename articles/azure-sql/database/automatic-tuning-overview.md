@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 03/30/2020
-ms.openlocfilehash: 4204254754307f8310d5ccfda19400de57381075
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/23/2021
+ms.openlocfilehash: 6bd8d6001fcd3bfa487259aa219ff771f26a8a94
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96500878"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951292"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde otomatik ayarlama
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,8 +54,8 @@ Otomatik ayarlamanın nasıl çalıştığına ve tipik kullanım senaryolarıyl
 
 ## <a name="enable-automatic-tuning"></a>Otomatik ayarlamayı etkinleştirme
 
-- Azure portal veya [alter database](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) T-SQL deyimini kullanarak [Azure SQL veritabanı için otomatik ayarlamayı etkinleştirirsiniz](automatic-tuning-enable.md) .
-- [Alter database](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-mi-current) T-SQL deyimini kullanarak Azure SQL yönetilen örneği için otomatik ayarlamayı etkinleştirirsiniz.
+- Azure portal veya [alter database](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true) T-SQL deyimini kullanarak [Azure SQL veritabanı için otomatik ayarlamayı etkinleştirirsiniz](automatic-tuning-enable.md) .
+- [Alter database](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-mi-current&preserve-view=true) T-SQL deyimini kullanarak Azure SQL yönetilen örneği için otomatik ayarlamayı etkinleştirirsiniz.
 
 ## <a name="automatic-tuning-options"></a>Otomatik ayarlama seçenekleri
 
@@ -64,7 +64,7 @@ Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde kullanılabilen otom
 | Otomatik ayarlama seçeneği | Tek veritabanı ve havuza alınmış veritabanı desteği | Örnek veritabanı desteği |
 | :----------------------------- | ----- | ----- |
 | **Dizin oluşturma** -iş yükünüzün performansını iyileştirebilecek dizinleri tanımlar, dizinler oluşturur ve sorguların performansının iyileştirildiğini otomatik olarak doğrular. | Yes | Hayır |
-| **Drop Index** -benzersiz dizinler ve uzun süredir kullanılmayan dizinler dışında, yedekli ve yinelenen dizinleri her gün tanımlar (>90 gün). Bu seçeneğin bölüm değiştirme ve Dizin ipuçlarını kullanan uygulamalarla uyumlu olmadığına lütfen unutmayın. Kullanılmayan dizinleri bırakma, Premium ve İş Açısından Kritik hizmet katmanlarında desteklenmez. | Yes | Hayır |
+| **Drop Index** -kullanılmayan (son 90 gün boyunca) ve yinelenen dizinlerin sayısını bırakır. Birincil anahtar ve benzersiz kısıtlamaları destekleyen dizinler dahil benzersiz dizinler hiçbir şekilde bırakılmazlar. Bu seçenek, iş yükünde Dizin ipuçları içeren sorgular varsa veya iş yükü bölüm değiştirme yaptığında otomatik olarak devre dışı bırakılabilir. Premium ve İş Açısından Kritik hizmet katmanlarında, bu seçenek kullanılmayan dizinleri hiçbir şekilde bırakamaz, ancak varsa yinelenen dizinleri de bırakacak. | Yes | Hayır |
 | **Son ıyı planı zorla** (otomatik plan düzeltmesi)-Azure SQL sorgularını, önceki iyi plandan daha yavaş bir yürütme planı kullanarak tanımlar ve gerileme planı yerine bilinen son iyi planı kullanarak sorgular. | Yes | Yes |
 
 ### <a name="automatic-tuning-for-sql-database"></a>SQL veritabanı için otomatik ayarlama
@@ -90,7 +90,7 @@ Otomatik ayarlama önerileri için e-posta bildirimleri oluşturma hakkında bil
 
 ### <a name="automatic-tuning-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için otomatik ayarlama
 
-SQL yönetilen örneği için otomatik ayarlama yalnızca **ZORLAMALı son ıyı planı** destekliyor. T-SQL aracılığıyla otomatik ayarlama seçeneklerini yapılandırma hakkında daha fazla bilgi için bkz. otomatik [ayarlama otomatik plan düzeltmesini](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) ve [Otomatik plan düzeltmesini](/sql/relational-databases/automatic-tuning/automatic-tuning?view=sql-server-ver15#automatic-plan-correction)tanıtır.
+SQL yönetilen örneği için otomatik ayarlama yalnızca **ZORLAMALı son ıyı planı** destekliyor. T-SQL aracılığıyla otomatik ayarlama seçeneklerini yapılandırma hakkında daha fazla bilgi için bkz. otomatik [ayarlama otomatik plan düzeltmesini](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) ve [Otomatik plan düzeltmesini](/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)tanıtır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
