@@ -131,6 +131,8 @@
       href: core/concepts-architecture.md
     - name: Cihaz geliştirici kılavuzu
       href: core/overview-iot-central-developer.md
+    - name: Çözüm Oluşturucu Kılavuzu
+      href: core/overview-iot-central-solution-builder.md
     - name: Yönetici kılavuzu
       href: core/overview-iot-central-admin.md
     - name: Operatör Kılavuzu

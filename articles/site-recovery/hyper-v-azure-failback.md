@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ramamill
-ms.openlocfilehash: a31a28728dd0521262bd0518cc49a385f4314302
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 96c3dce17ab78e08b28bb41c0100e51a72a666e7
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87416239"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110262"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Hyper-V VM’leri için yeniden çalışma işlemi çalıştırma
 
@@ -26,7 +26,7 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md)ile şirket Içi si
 ## <a name="before-you-start"></a>Başlamadan önce
 
 1. Yeniden [çalışma türlerini gözden geçirin](failover-failback-overview.md#hyper-v-reprotectionfailback) -özgün konum kurtarma ve alternatif konum kurtarma kullanabilirsiniz.
-2. Azure VM 'lerinin yönetilen diskler olmadığından, depolama hesabı kullandığından emin olun. Yönetilen diskler kullanılarak çoğaltılan Hyper-V VM 'lerinin yeniden çalışması desteklenmez.
+2. Azure VM 'lerinin yönetilen diskler olmadığından, depolama hesabı kullandığından emin olun. Yönetilen diskleri kullanarak Azure makinelerine yük devretmekte olan Hyper-V sanal makinelerinin yeniden çalışması desteklenmez.
 3. Şirket içi Hyper-V konağının (veya Site Recovery ile kullanıyorsanız System Center VMM sunucusunun) çalışıp çalışmadığını ve Azure 'a bağlandığını kontrol edin. 
 4. VM 'Ler için yük devretme ve tamamlama işleminin tamam olduğundan emin olun. Azure 'dan Hyper-V VM 'lerinin yeniden çalışma için belirli bir Site Recovery bileşeni ayarlamanız gerekmez.
 5. Veri eşitlemesini tamamlaması ve şirket içi VM 'yi başlatmak için gereken süre, bir dizi etkene bağlı olacaktır. Veri indirmeyi hızlandırmak için, Microsoft Kurtarma Hizmetleri aracısını indirmeyi paralel hale getirmek için daha fazla iş parçacığı kullanacak şekilde yapılandırabilirsiniz. [Daha fazla bilgi edinin](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage).

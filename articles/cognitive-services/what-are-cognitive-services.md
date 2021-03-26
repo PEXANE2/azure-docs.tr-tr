@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 85bcdb319431f1079cdbc8b94f0313f1dd6b67d6
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 71f8635d1cd96a6436cfc902622bf18bc608a143
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103602010"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867194"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure bilişsel hizmetler nedir?
 
@@ -39,11 +39,11 @@ Bu makalede yer alan aşağıdaki bölümlerde, bu beş sütun sayısının par�
 
 |Hizmet Adı|Hizmet Açıklaması|
 |:-----------|:------------------|
-|[Görüntü İşleme](./computer-vision/index.yml "Görüntü İşleme")|Görüntü İşleme Hizmeti, görüntüleri işlemeye ve bilgi döndürmeye yönelik gelişmiş bilişsel algoritmalara erişmenizi sağlar.|
-|[Özel Görüntü İşleme Hizmeti](./custom-vision-service/overview.md "Özel Görüntü İşleme Hizmeti")|Özel Görüntü İşleme Hizmeti özel görüntü sınıflandırıcıları oluşturmanıza olanak sağlar.|
-|[Yüz Tanıma](./face/index.yml "Yüz")| Yüz tanıma hizmeti, yüz öznitelik algılamayı ve tanımayı etkinleştirerek gelişmiş yüz algoritmalarına erişim sağlar.|
-|[Form Tanıma](./form-recognizer/index.yml "Form Tanıma")|Form tanıyıcı, form belgelerinden anahtar-değer çiftlerini ve tablo verilerini tanımlar ve ayıklar; ardından, özgün dosyadaki ilişkiler dahil olmak üzere yapılandırılmış verilerin çıktısını verir.|
-|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer, videonuzun öngörülerini ayıklamanızı sağlar.|
+|[Görüntü İşleme](./computer-vision/index.yml "Görüntü İşleme")|Görüntü İşleme Hizmeti, görüntüleri işlemeye ve bilgi döndürmeye yönelik gelişmiş bilişsel algoritmalara erişmenizi sağlar. Hizmeti kullanmaya başlamak için bkz. [görüntü işleme hızlı başlangıç](./computer-vision/quickstarts-sdk/client-library.md) .|
+|[Özel Görüntü İşleme Hizmeti](./custom-vision-service/index.yml "Özel Görüntü İşleme Hizmeti")|Özel Görüntü İşleme Hizmeti kendi görüntü sınıflandırıcılarınızı oluşturmanıza, dağıtmanıza ve iyileştirmenize olanak tanır. Görüntü Sınıflandırıcısı, görsel özelliklerine göre resimlere etiket uygulayan bir AI hizmetidir. |
+|[Yüz Tanıma](./face/index.yml "Yüz")| Yüz tanıma hizmeti, yüz öznitelik algılamayı ve tanımayı etkinleştirerek gelişmiş yüz algoritmalarına erişim sağlar. Hizmeti kullanmaya başlamak için bkz. [yüz hızlı başlangıç](./face/quickstarts/client-libraries.md) .|
+|[Form Tanıma](./form-recognizer/index.yml "Form Tanıma")|Form tanıyıcı, form belgelerinden anahtar-değer çiftlerini ve tablo verilerini tanımlar ve ayıklar; ardından, özgün dosyadaki ilişkiler dahil olmak üzere yapılandırılmış verilerin çıktısını verir. Başlamak için [form tanıyıcı hızlı başlangıç](./form-recognizer/quickstarts/client-library.md) bölümüne bakın.|
+|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer, videonuzun öngörülerini ayıklamanızı sağlar. Başlamak için [video Indexer hızlı başlangıç](/media-services/video-indexer/video-indexer-get-started.md) bölümüne bakın.|
 
 ## <a name="speech-apis"></a>Konuşma API 'Leri
 
@@ -59,20 +59,20 @@ Bu makalede yer alan aşağıdaki bölümlerde, bu beş sütun sayısının par�
 
 |Hizmet Adı|Hizmet Açıklaması|
 |:-----------|:------------------|
-|[LUSıS Language Understanding](./luis/index.yml "Language Understanding")|Language Understanding (LUIS), bir kişinin kendi sözcükleriyle ifade ettiği isteği uygulamanızın anlamasını sağlar.|
-|[Soru-Cevap Oluşturma](./qnamaker/index.yml "Soru-Cevap Oluşturucu")|Soru-Cevap Oluşturma yarı yapılandırılmış içeriklerden bir soru ve yanıt hizmeti oluşturmanızı sağlar.|
-|[Metin Analizi](./text-analytics/index.yml "Metin Analizi")| Metin Analizi, yaklaşım analizi, anahtar ifade ayıklama ve dil algılama için ham metin üzerinde doğal dil işleme sağlar.|
+|[LUSıS Language Understanding](./luis/index.yml "Language Understanding")|Language Understanding (LUSıS), bir kullanıcının konuşma, genel anlamı tahmin etmek için doğal dil metnine özel makine öğrenimi zekası uygulayan ve ilgili ve ayrıntılı bilgileri kullanıma sunan bulut tabanlı bir konuşma hizmetidir. Hizmeti kullanmaya başlamak için [lusıs hızlı başlangıç bölümüne bakın](./luis/get-started-portal-build-app.md) .|
+|[Soru-Cevap Oluşturma](./qnamaker/index.yml "Soru-Cevap Oluşturucu")|Soru-Cevap Oluşturma yarı yapılandırılmış içeriklerden bir soru ve yanıt hizmeti oluşturmanızı sağlar. Hizmeti kullanmaya başlamak için [bkz. soru-cevap oluşturma hızlı başlangıç](./qnamaker/quickstarts/create-publish-knowledge-base.md) .|
+|[Metin Analizi](./text-analytics/index.yml "Metin Analizi")| Metin Analizi, yaklaşım analizi, anahtar ifade ayıklama ve dil algılama için ham metin üzerinde doğal dil işleme sağlar. Hizmeti kullanmaya başlamak için bkz. [metin analizi hızlı başlangıç](./text-analytics/quickstarts/client-libraries-rest-api.md) .|
 |[Translator](./translator/index.yml "Çevirmen")|Translator, neredeyse gerçek zamanlı olarak makine tabanlı metin çevirisi sağlar.|
-| [Tam Ekran Okuyucu](./immersive-reader/index.yml "Tam Ekran Okuyucu") | Modern okuyucu, uygulamalarınıza ekran okuma ve kavrama özellikleri ekler. |
+| [Tam Ekran Okuyucu](./immersive-reader/index.yml "Tam Ekran Okuyucu") | Modern okuyucu, uygulamalarınıza ekran okuma ve kavrama özellikleri ekler. Hizmeti kullanmaya başlamak için bkz. [modern okuyucu hızlı](./immersive-reader/quickstarts/client-libraries.md) başlangıcı. |
 
 ## <a name="decision-apis"></a>Karar API 'Leri
 
 |Hizmet Adı|Hizmet Açıklaması|
 |:-----------|:------------------|
-|[Anomali Algılayıcısı](./anomaly-detector/index.yml "Anomali Algılayıcısı") |Anomali algılayıcısı, zaman serisi verilerinizde normalleştirimler izlemenize ve bunları algılamanıza olanak tanır.|
-|[Content Moderator](./content-moderator/overview.md "Content Moderator")|Content Moderator olası rahatsız edici, istenmeyen ve riskli içerik için izleme sağlar.|
-|[Ölçüm Danışmanı](./metrics-advisor/index.yml) (Önizleme) | Ölçüm Danışmanı, çok değişkenli bir zaman serisi verilerinde özelleştirilebilir anomali algılama ve hizmeti kullanmanıza yardımcı olacak tam özellikli bir Web portalı sağlar.|
-|[Kişiselleştirme](./personalizer/index.yml "Kişiselleştirme")|Kişiselleştirici, gerçek zamanlı davranışlarından öğrenerek kullanıcılarınıza göstermek için en iyi deneyimi seçmenize olanak sağlar.|
+|[Anomali Algılayıcısı](./anomaly-detector/index.yml "Anomali Algılayıcısı") |Anomali algılayıcısı, zaman serisi verilerinizde normalleştirimler izlemenize ve bunları algılamanıza olanak tanır. Hizmeti kullanmaya başlamak için bkz. [anomali algılayıcısı hızlı başlangıç](./anomaly-detector/quickstarts/client-libraries.md)|
+|[Content Moderator](./content-moderator/overview.md "Content Moderator")|Content Moderator olası rahatsız edici, istenmeyen ve riskli içerik için izleme sağlar. Hizmeti kullanmaya başlamak için bkz. [Content moderator hızlı başlangıç](./content-moderator/client-libraries.md) .|
+|[Ölçüm Danışmanı](./metrics-advisor/index.yml) (Önizleme) | Ölçüm Danışmanı, çok değişkenli bir zaman serisi verilerinde özelleştirilebilir anomali algılama ve hizmeti kullanmanıza yardımcı olacak tam özellikli bir Web portalı sağlar. Hizmeti kullanmaya başlamak için bkz. [ölçüm Danışmanı hızlı](./metrics-advisor/quickstarts/rest-api-and-client-library.md) başlangıcı. |
+|[Kişiselleştirme](./personalizer/index.yml "Kişiselleştirme")|Kişiselleştirici, gerçek zamanlı davranışlarından öğrenerek kullanıcılarınıza göstermek için en iyi deneyimi seçmenize olanak sağlar. Hizmeti kullanmaya başlamak için bkz. [kişiselleştirici hızlı başlangıç](./personalizer/quickstart-personalizer-sdk.md) .|
 
 ## <a name="search-apis"></a>API Arama
 
@@ -92,7 +92,16 @@ Bu makalede yer alan aşağıdaki bölümlerde, bu beş sütun sayısının par�
 |[Bing Yerel İşletme Arama](/azure/cognitive-services/bing-local-business-search/ "Bing Yerel İşletme Arama")| Bing yerel Iş Arama API 'SI, uygulamalarınızın arama sorguları temelinde yerel işletmeler hakkında iletişim ve konum bilgilerini bulmasını sağlar.|
 |[Bing Yazım Denetimi](/azure/cognitive-services/bing-spell-check/ "Bing Yazım Denetimi")|Bing Yazım Denetimi bağlamsal dilbilgisi ve yazım denetimi gerçekleştirmenize olanak tanır.|
 
-## <a name="development-options"></a>Dağıtım seçenekleri 
+## <a name="get-started-with-cognitive-services"></a>Bilişsel Hizmetler’i kullanmaya başlama
+
+Aşağıdaki yöntemleri kullanarak uygulamalı hızlı başlangıçlarla bilişsel hizmetler kaynağı oluşturarak başlayın:
+
+* [Azure portalı](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure portal")
+* [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
+* [Azure SDK istemci kitaplıkları](cognitive-services-apis-create-account-cli.md?tabs=windows "bilişsel hizmetler-API 'ler-oluşturma-hesap-istemci-kitaplığı? özetleme = programlama-dil-CSharp")
+* [Azure Resource Manager (ARM) şablonları](./create-account-resource-manager-template.md?tabs=portal "Azure Resource Manager (ARM) şablonları")
+
+## <a name="using-cognitive-services-in-different-development-environments"></a>Bilişsel hizmetler 'i farklı geliştirme ortamlarında kullanma
 
 Azure ve bilişsel hizmetler ile çeşitli geliştirme seçeneklerine erişebilirsiniz, örneğin:
 
@@ -102,15 +111,6 @@ Azure ve bilişsel hizmetler ile çeşitli geliştirme seçeneklerine erişebili
 * Büyük veri senaryoları için Apache Spark, Azure Databricks, Azure SYNAPSE Analytics ve Azure Kubernetes hizmeti gibi araçlar. 
 
 Daha fazla bilgi için bkz. bilişsel [Hizmetler geliştirme seçenekleri](./cognitive-services-development-options.md).
-
-## <a name="learn-with-the-quickstarts"></a>Hızlı başlangıçlarla öğrenin
-
-Aşağıdaki yöntemleri kullanarak uygulamalı hızlı başlangıçlarla bilişsel hizmetler kaynağı oluşturarak başlayın:
-
-* [Azure portalı](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure portal")
-* [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI’si")
-* [Azure SDK istemci kitaplıkları](cognitive-services-apis-create-account-cli.md?tabs=windows "bilişsel hizmetler-API 'ler-oluşturma-hesap-istemci-kitaplığı? özetleme = programlama-dil-CSharp")
-* [Azure Resource Manager (ARM) şablonları](./create-account-resource-manager-template.md?tabs=portal "Azure Resource Manager (ARM) şablonları")
 
 <!--
 ## Subscription management
@@ -128,7 +128,7 @@ Azure bilişsel hizmetler, Azure Active Directory kimlik bilgileri, geçerli bir
 
 ## <a name="containers-for-cognitive-services"></a>Bilişsel Hizmetler için Kapsayıcılar
 
- Bilişsel hizmetler, Azure bulutta veya şirket içinde dağıtım için kapsayıcılar sağlar. Bilişsel [Hizmetler kapsayıcıları](cognitive-services-container-support.md "Bilişsel Hizmetler Kapsayıcıları")hakkında daha fazla bilgi edinin.
+ Azure bilişsel hizmetler, şirket içinde Azure 'da bulunan API 'Leri kullanmanıza olanak sağlayan çeşitli Docker kapsayıcıları sağlar. Bu kapsayıcıları kullanmak, bilişsel hizmetler 'i uyumluluk, güvenlik veya diğer işletimsel nedenlerle verilerinize daha yakın hale getirme esnekliği sunar. Bilişsel [Hizmetler kapsayıcıları](cognitive-services-container-support.md "Bilişsel Hizmetler Kapsayıcıları")hakkında daha fazla bilgi edinin.
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
@@ -154,3 +154,4 @@ Bilişsel hizmetler, akıllı uygulamalar oluşturma ile ileriye doğru ileretme
 
 * [Bilişsel Hizmetler hesabı oluşturma](cognitive-services-apis-create-account.md "Bilişsel Hizmetler hesabı oluşturma")
 * [Bilişsel hizmetler docs 'taki yenilikler](whats-new-docs.md "Bilişsel hizmetler docs 'taki yenilikler")
+* [Bilişsel hizmetler için maliyetleri planlayın ve yönetin](plan-manage-costs.md)

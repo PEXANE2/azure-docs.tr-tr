@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: a3abde9092519be057dcd73ec63318f970fd5c74
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 48aef337326d58b2a503dc48862571efde0d37ab
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94543094"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034529"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı 'nda sınırlamalar-esnek sunucu (Önizleme)
 
@@ -89,8 +89,12 @@ Aşağıdakiler desteklenmez:
 - Noktadan itibaren geri yükleme ile, yeni sunucular, temel aldığı kaynak sunucuyla aynı işlem ve depolama yapılandırmasıyla oluşturulur. Yeni geri yüklenen sunucunun işlemi, sunucu oluşturulduktan sonra aşağı ölçeklendirilebilir.
 - Silinen bir sunucunun geri yüklenmesi desteklenmez.
 
+## <a name="features-available-in-single-server-but-not-yet-supported-in-flexible-server"></a>Tek bir sunucuda kullanılabilen ancak esnek sunucuda henüz desteklenmeyen özellikler 
+MySQL için Azure veritabanı 'nda tüm özellikler mevcut değildir-tek sunucu, esnek sunucuda henüz kullanılabilir. Tek sunucu ve esnek sunucu arasındaki özellik karşılaştırmasının tüm listesi için, [Azure belgelerindeki doğru MySQL sunucusu seçeneğini belirleme](../select-right-deployment-type.md#comparing-the-mysql-deployment-options-in-azure) konusuna bakın.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [İşlem ve depolama seçeneklerinde nelerin kullanılabildiğini](concepts-compute-storage.md) anlayın
+- [Azure belgelerindeki doğru MySQL sunucusu seçeneğini belirleyin](../select-right-deployment-type.md)
+- [Esnek sunucu 'da işlem ve depolama seçeneklerinde nelerin kullanılabildiğini](concepts-compute-storage.md) anlayın
 - [Desteklenen MySQL sürümleri](concepts-supported-versions.md) hakkında bilgi edinin
-- [Azure Portal kullanarak bir sunucuyu yedeklemeyi ve geri yüklemeyi](how-to-restore-server-portal.md) inceleyin
+- Hızlı başlangıç: [MySQL Için Azure veritabanı esnek sunucusu oluşturmak için Azure Portal kullanma](quickstart-create-server-portal.md)

@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 127031479d7ef414298d3096ebef814df1fe9a18
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 7e4ffb800a65a9a1e436e50921e9c7f76f02b571
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105027936"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107085"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
@@ -43,7 +43,7 @@ dotnet build
 
 ### <a name="install-the-package"></a>Paketi yükler
 
-.NET için Azure Iletişim sohbeti istemci kitaplığı 'nı yükler
+.NET için Azure Iletişimi sohbet SDK 'sını yükler
 
 ```PowerShell
 dotnet add package Azure.Communication.Chat --version 1.0.0-beta.5
@@ -51,7 +51,7 @@ dotnet add package Azure.Communication.Chat --version 1.0.0-beta.5
 
 ## <a name="object-model"></a>Nesne modeli
 
-Aşağıdaki sınıflar, C# için Azure Iletişim Hizmetleri sohbeti istemci kitaplığı 'nın bazı önemli özelliklerini işler.
+Aşağıdaki sınıflar, C# için Azure Communication Services sohbet SDK 'sının önemli özelliklerinden bazılarını idare edebilir.
 
 | Ad                                  | Açıklama                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -60,7 +60,7 @@ Aşağıdaki sınıflar, C# için Azure Iletişim Hizmetleri sohbeti istemci kit
 
 ## <a name="create-a-chat-client"></a>Sohbet istemcisi oluşturma
 
-Bir sohbet istemcisi oluşturmak için, Iletişim Hizmetleri uç noktanızı ve önkoşul adımlarının bir parçası olarak oluşturulan erişim belirtecini kullanacaksınız. `CommunicationIdentityClient`Kullanıcı oluşturmak ve sohbet istemcinize geçiş yapmak için bir belirteç vermek üzere kimlik istemci kitaplığındaki sınıfını kullanmanız gerekir.
+Bir sohbet istemcisi oluşturmak için, Iletişim Hizmetleri uç noktanızı ve önkoşul adımlarının bir parçası olarak oluşturulan erişim belirtecini kullanacaksınız. `CommunicationIdentityClient`Kullanıcı oluşturmak ve sohbet istemcinize geçirilecek bir belirteç vermek Için kimlik SDK 'sının sınıfını kullanmanız gerekir.
 
 [Kullanıcı erişim belirteçleri](../../access-tokens.md)hakkında daha fazla bilgi edinin.
 

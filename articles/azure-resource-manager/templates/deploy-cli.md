@@ -3,12 +3,12 @@ title: Azure CLı ve şablonuyla kaynak dağıtma
 description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure CLı kullanın. Kaynaklar bir Kaynak Yöneticisi şablonunda veya bir Bıcep dosyasında tanımlanır.
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: d0c48a5cf05d6cec495a7a96e181910a0849a1ac
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1fc3397409634f29690af05ca2a85e67c30b6d89
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102521705"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954981"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM şablonları ve Azure CLı ile kaynak dağıtma
 
@@ -85,7 +85,7 @@ Dağıtımın tamamlanması birkaç dakika sürebilir. Tamamlandığında, sonuc
 ## <a name="deploy-remote-template"></a>Uzak şablonu dağıtma
 
 > [!NOTE]
-> Şu anda Azure CLı, uzak Bıcep dosyalarının dağıtılmasını desteklemez. Uzak bir bicep dosyasını dağıtmak için, önce bir JSON şablonuna Bıcep dosyasını derlemek için CLı Bıcep ' yi kullanın.
+> Şu anda Azure CLı, uzak Bıcep dosyalarının dağıtılmasını desteklemez. Bicep [CLI](./bicep-install.md#development-environment) kullanarak bıcep dosyasını bir JSON şablonuna derleyin ve ardından json dosyasını uzak konuma yükleyin.
 
 ARM şablonlarını yerel makinenizde depolamak yerine, bunları bir dış konumda depolamayı tercih edebilirsiniz. Şablonları bir kaynak denetimi deposunda (GitHub gibi) saklayabilirsiniz. İsterseniz kuruluşunuzda paylaşılan erişim sağlamak için bir Azure depolama hesabı kullanabilirsiniz.
 

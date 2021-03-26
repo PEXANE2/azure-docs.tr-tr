@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 8eade7596e36389b1e345dc6f0aab1029dc100e0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e26def56fbd03626c3efc660db57012ee1b767ea
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589177"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048213"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR hizmeti yaygın sorunları için sorun giderme kılavuzu
 
@@ -348,7 +348,7 @@ ASP.NET SignalR için, SDK 1.6.0 ' de bilinen bir sorun düzeltildi. SDK 'nizi e
 
 ## <a name="thread-pool-starvation"></a>İş parçacığı havuzu başlangıçlan
 
-Sunucunuz başlatılıyor, bu, ileti işleme üzerinde hiçbir iş parçacığı çalışmaması anlamına gelir. Tüm iş parçacıkları belirli bir yöntemde askıda.
+Sunucunuz başlatılıyor, bu, ileti işleme üzerinde hiçbir iş parçacığı çalışmaması anlamına gelir. Tüm iş parçacıkları belirli bir yöntemde yanıt vermez.
 
 Normalde, bu senaryoya eşitleme üzerinden veya `Task.Result` / `Task.Wait()` zaman uyumsuz metotlarda zaman uyumsuz olarak neden olur.
 

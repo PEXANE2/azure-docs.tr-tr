@@ -3,12 +3,12 @@ title: GRPC çıkarım sunucusu geliştirme ve dağıtma-Azure
 description: Bu makalede, bir gRPC çıkarım sunucusu geliştirme ve dağıtma konusunda rehberlik sunulmaktadır.
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dbf46a26626a4143d76385968d092c4f238729da
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98881661"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034869"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>Nasıl yapılır Kılavuzu – gRPC çıkarım sunucusu geliştirme ve dağıtma
 
@@ -242,7 +242,7 @@ GRPC uzantı modülünüzü oluşturdığınıza göre artık medya grafiği top
         * Graphınstanceset altında, grafik topolojisinin adını önceki bağlantıdaki değerle eşleşecek şekilde düzenleyin:<br/>`"topologyName": "InferencingWithGrpcExtension"`
         * GraphTopologyDelete altında adı düzenleyin:<br/>`"name": "InferencingWithGrpcExtension"`
 
-            Topoloji (örneğin, `https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json` ) bir uzantı adresi tanımlamalıdır:
+            Topoloji (örneğin, `https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json` ) bir uzantı adresi tanımlamalıdır:
     * Uzantı adresi parametresi
 
         ```
@@ -308,4 +308,4 @@ Bu aşamada, Edge modüllerinin IoT Edge cihazınıza dağıtılması başladı.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Örneği çalıştırmak ve sonuçları yorumlamak için model hızlı başlangıç [ile canlı videoyu çözümle](use-your-model-quickstart.md) bölümünde bahsedilen **olayları izlemeye hazırlama** adımlarını izleyin. Ayrıca, örnek gRPC topolojilerimize göz atın: [Grpcextension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json), [cvrwithgrpcextension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json), [Evrtoassetsbygrpcextension ve [EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json).
+Örneği çalıştırmak ve sonuçları yorumlamak için model hızlı başlangıç [ile canlı videoyu çözümle](use-your-model-quickstart.md) bölümünde bahsedilen **olayları izlemeye hazırlama** adımlarını izleyin. Ayrıca, örnek gRPC topolojilerimize göz atın: [Grpcextension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json), [cvrwithgrpcextension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json), [Evrtoassetsbygrpcextension ve [EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json).

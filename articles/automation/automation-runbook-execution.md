@@ -3,14 +3,14 @@ title: Azure Otomasyonu’nda runbook yürütme
 description: Bu makalede, Azure Otomasyonu 'nda runbook 'ların işlenmesine genel bir bakış sunulmaktadır.
 services: automation
 ms.subservice: process-automation
-ms.date: 10/06/2020
+ms.date: 03/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: ca28d5829689dca46bbf3a94ce7c1591c20cf7b0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 165c9ea721bec7fc7a1657f5dde5c19d9e254e20
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100586043"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954352"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Otomasyonu’nda runbook yürütme
 
@@ -34,7 +34,8 @@ Aşağıdaki diyagramda [PowerShell runbook 'ları](automation-runbook-types.md#
 
 Azure Otomasyonu 'ndaki runbook 'lar, bir Azure korumalı alanı veya [karma runbook çalışanı](automation-hybrid-runbook-worker.md)üzerinde çalışabilir. 
 
-Runbook 'lar kimlik doğrulaması yapmak ve Azure 'daki kaynaklara karşı çalıştırmak için tasarlandığında, birden çok işin kullanabileceği paylaşılan bir ortam olan bir Azure korumalı alanı çalışır. Aynı korumalı alanı kullanan işler, korumalı alanın kaynak sınırlamalarına göre bağlanır. Azure korumalı alan ortamı etkileşimli işlemleri desteklemez. Tüm işlem dışı COM sunucularına erişimi engeller. Ayrıca, Win32 çağrıları yapan runbook 'lar için yerel MOF dosyalarının kullanılmasını gerektirir.
+Runbook 'lar kimlik doğrulaması yapmak ve Azure 'daki kaynaklara karşı çalıştırmak için tasarlandığında, birden çok işin kullanabileceği paylaşılan bir ortam olan bir Azure korumalı alanı çalışır. Aynı korumalı alanı kullanan işler, korumalı alanın kaynak sınırlamalarına göre bağlanır. Azure korumalı alan ortamı etkileşimli işlemleri desteklemez. Tüm işlem dışı COM sunucularına erişimi engeller ve Runbook 'inizdeki Win32 sağlayıcısına [WMI çağrıları](/windows/win32/wmisdk/wmi-architecture) yapmayı desteklemez.  Bu senaryolar yalnızca runbook 'u bir Windows karma Runbook Worker üzerinde çalıştırarak desteklenir.
+
 
 Ayrıca, runbook 'u doğrudan rolü barındıran bilgisayarda ve ortamdaki yerel kaynaklara karşı çalıştırmak için [karma Runbook Worker](automation-hybrid-runbook-worker.md) 'ı kullanabilirsiniz. Azure Otomasyonu runbook 'ları depolar ve yönetir ve sonra bunları bir veya daha fazla atanmış bilgisayara gönderir.
 

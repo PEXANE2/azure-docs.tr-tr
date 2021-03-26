@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 08/17/2020
 ms.author: inhenkel
 ms.custom: CLI
-ms.openlocfilehash: a6349188a2c6b4da68009df93fbea5fa6eabacf1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f0d0322f6f5f14b94a67285fe8688d72c941b3a4
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102244834"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105416"
 ---
 <!-- ### Create a storage account -->
 
@@ -20,7 +20,7 @@ Tek bir **Birincil** depolama hesabınız olması gerekir, ancak Media Services 
 
 Bu örnekte, bir Genel Amaçlı v2, standart LRS hesabı oluşturacağız. Depolama hesaplarıyla denemek istiyorsanız kullanın `--sku Standard_LRS` . Ancak, üretim için bir SKU seçerken `--sku Standard_RAGRS` iş sürekliliği için coğrafi çoğaltma sağlayan göz önünde bulundurmanız gerekir. Daha fazla bilgi için bkz. [depolama hesapları](/cli/azure/storage/account).
 
-Aşağıdaki komut, Media Services Hesabı ile ilişkilendirilecek Depolama hesabını oluşturur. Aşağıdaki betikte `storageaccountforams` öğesini kendi değeriniz ile değiştirebilirsiniz. `amsResourceGroup` önceki adımda kaynak grubu için verdiğiniz değerle aynı olmalıdır. Depolama hesabı adının uzunluğu 24 ' ten az olmalıdır.
+Aşağıdaki komut, Media Services Hesabı ile ilişkilendirilecek Depolama hesabını oluşturur. Aşağıdaki betikte, `storageaccountforams` kendi benzersiz adresler adınızı 24 karakterden daha uzun bir süre ile değiştirin. `amsResourceGroup` önceki adımda kaynak grubu için verdiğiniz değerle aynı olmalıdır.
 
 ```azurecli
 az storage account create --name storageaccountforams --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup

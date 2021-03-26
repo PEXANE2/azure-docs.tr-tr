@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 6a3049709c6c094f722a8132ee4c4b2051e24d95
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9575c0aec4a1b45f9099bff1dc4209c63529ddf6
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102616698"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025552"
 ---
 # <a name="azure-percept-security-overview"></a>Azure Percept güvenliğine genel bakış
 
@@ -25,7 +25,7 @@ Azure Percept DK cihazları, bir güven donanım köküyle tasarlanmıştır: he
 
 ### <a name="azure-percept-dk"></a>Azure Percept DK
 
-Azure Percept DK, cihazı Azure cihaz sağlama hizmetlerine ek güvenlikle bağlamak için kullanılabilecek Güvenilir Platform Modülü (TPM) 2,0 sürümünü içerir. TPM, Trusted Computing Group bir sektör genelinde, ISO standardıdır ve TPM hakkında daha fazla bilgi edinmek için [tam tpm 2,0 belirtiminde](https://trustedcomputinggroup.org/resource/tpm-library-specification/) veya ISO/IEC 11889 belirtiminde daha fazla bilgi edinebilirsiniz. DPS cihazları güvenli bir şekilde nasıl sağlayabildiği hakkında daha fazla bilgi için bkz. [Azure IoT Hub cihaz sağlama hizmeti-TPM kanıtlama](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation).
+Azure Percept DK, cihazı Azure cihaz sağlama hizmetlerine ek güvenlikle bağlamak için kullanılabilecek Güvenilir Platform Modülü (TPM) 2,0 sürümünü içerir. TPM, Trusted Computing Group bir sektör genelinde, ISO standardıdır ve TPM hakkında daha fazla bilgi edinmek için [tam tpm 2,0 belirtiminde](https://trustedcomputinggroup.org/resource/tpm-library-specification/) veya ISO/IEC 11889 belirtiminde daha fazla bilgi edinebilirsiniz. DPS cihazları güvenli bir şekilde nasıl sağlayabildiği hakkında daha fazla bilgi için bkz. [Azure IoT Hub cihaz sağlama hizmeti-TPM kanıtlama](../iot-dps/concepts-tpm-attestation.md).
 
 ### <a name="azure-percept-system-on-module-som"></a>Modül üzerinde Azure Percept System (SOM)
 
@@ -37,7 +37,7 @@ Azure Percept cihazları, bellenimi güvenli hale getirmek için donanım kök g
 
 ### <a name="iot-edge"></a>IoT Edge
 
-Azure Percept DK, Aktarım Katmanı Güvenliği (TLS) protokolü kullanan ek güvenlik ve diğer Azure hizmetleriyle Azure Percept Studio 'ya bağlanır. Azure Percept DK, Azure IoT Edge özellikli bir cihazdır. IoT Edge Runtime, bir cihazı IoT Edge cihazına veren bir programlar koleksiyonudur. Toplu olarak, IoT Edge çalışma zamanı bileşenleri, IoT Edge cihazların kenarda çalışacak kodu almasını ve sonuçları iletmelerini sağlar. Azure Percept DK, ana bilgisayar işletim sistemi ve kenar özellikli uygulamalardan IoT Edge iş yüklerini yalıtmak için Docker kapsayıcılarını kullanır. Azure IoT Edge güvenlik çerçevesi hakkında daha fazla bilgi için [IoT Edge Güvenlik Yöneticisi](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager)hakkında makalesini okuyun.
+Azure Percept DK, Aktarım Katmanı Güvenliği (TLS) protokolü kullanan ek güvenlik ve diğer Azure hizmetleriyle Azure Percept Studio 'ya bağlanır. Azure Percept DK, Azure IoT Edge özellikli bir cihazdır. IoT Edge Runtime, bir cihazı IoT Edge cihazına veren bir programlar koleksiyonudur. Toplu olarak, IoT Edge çalışma zamanı bileşenleri, IoT Edge cihazların kenarda çalışacak kodu almasını ve sonuçları iletmelerini sağlar. Azure Percept DK, ana bilgisayar işletim sistemi ve kenar özellikli uygulamalardan IoT Edge iş yüklerini yalıtmak için Docker kapsayıcılarını kullanır. Azure IoT Edge güvenlik çerçevesi hakkında daha fazla bilgi için [IoT Edge Güvenlik Yöneticisi](../iot-edge/iot-edge-security-manager.md)hakkında makalesini okuyun.
 
 ### <a name="device-update-for-iot-hub"></a>IoT Hub için cihaz güncelleştirmesi
 
@@ -57,7 +57,7 @@ Bu denetim listesi, güvenlik duvarı kuralları için bir başlangıç noktası
 |*. auth.azureperceptdk.azure.net|   443|    Azure DK SOM kimlik doğrulaması ve yetkilendirme|
 |*. auth.projectsantacruz.azure.net| 443|    Azure DK SOM kimlik doğrulaması ve yetkilendirme|
 
-Ayrıca, [Azure IoT Edge tarafından kullanılan bağlantıların](https://docs.microsoft.com/azure/iot-edge/production-checklist#allow-connections-from-iot-edge-devices)listesini gözden geçirin.
+Ayrıca, [Azure IoT Edge tarafından kullanılan bağlantıların](../iot-edge/production-checklist.md#allow-connections-from-iot-edge-devices)listesini gözden geçirin.
 
 <!---
 ## Additional Recommendations for Deployment to Production
