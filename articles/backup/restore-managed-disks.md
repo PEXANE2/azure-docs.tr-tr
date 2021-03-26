@@ -3,19 +3,14 @@ title: Azure yönetilen disklerini geri yükleme
 description: Azure portal Azure yönetilen disklerini nasıl geri yükleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 995217cd17d1e2a16cd7a5f963ee88aa7116d4a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 94adc8512987b50a8df07d295215ffcff873162f
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101703758"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108596"
 ---
-# <a name="restore-azure-managed-disks-in-preview"></a>Azure yönetilen disklerini geri yükleme (önizlemede)
-
->[!IMPORTANT]
->Azure disk yedekleme, bir hizmet düzeyi sözleşmesi olmadan önizlemededir ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Bölge kullanılabilirliği için bkz. [destek matrisi](disk-backup-support-matrix.md).
->
->Önizlemeye kaydolmak için [Bu formu doldurun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) .
+# <a name="restore-azure-managed-disks"></a>Azure yönetilen disklerini geri yükleme
 
 Bu makalede, [Azure yönetilen disklerinin](../virtual-machines/managed-disks-overview.md) Azure Backup tarafından oluşturulan bir geri yükleme noktasından nasıl geri yükleneceği açıklanmaktadır.
 

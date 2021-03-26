@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: a3d787059345b5971d99ebd7a1e26a9135b61bed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3ddfdfdfe10d5b6ea7c2d5cd99d325564163c0dd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930337"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866021"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>HDInsight 'ta Apache Spark kümelerinde jupi Not defterleri ile dış paketleri kullanma
 
@@ -34,11 +34,11 @@ Bu makalede, [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databri
 
 1. Yeni bir not defteri oluşturun. **Yeni**' yi ve ardından **Spark**' ı seçin.
 
-    ![Yeni bir Spark Jupyter Notebook oluşturma](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Yeni bir Jupyter Notebook oluştur")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png " alt-text="Yeni bir Spark Jupyter Notebook oluşturma" border="true":::
 
 1. Yeni bir not defteri oluşturulur ve Untitled.pynb adı ile açılır. Üstteki Not defteri adını seçin ve kolay bir ad girin.
 
-    ![Not defteri adını belirtme](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Not defteri adını belirtme")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png " alt-text="Not defteri adını belirtme" border="true":::
 
 1. `%%configure`Not defterini harici bir paket kullanacak şekilde yapılandırmak için Magic 'i kullanacaksınız. Dış paketleri kullanan not defterlerinde, `%%configure` ilk kod hücresinde Magic ' i çağırdığınızdan emin olun. Bu, çekirdeğin oturum başlamadan önce paketi kullanacak şekilde yapılandırılmasını sağlar.
 
@@ -56,7 +56,7 @@ Bu makalede, [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databri
 
     b. Deposundan **GroupID**, **ArtifactId** ve **Version** değerlerini toplayın. Toplamakta olduğunuz değerlerin kümenize eşleştiğinden emin olun. Bu durumda, bir Scala 2,11 ve Spark 1.5.0 paketi kullanıyoruz, ancak kümenizdeki uygun Scala veya Spark sürümü için farklı sürümler seçmeniz gerekebilir. `scala.util.Properties.versionString`Spark Jupyıter çekirdeği üzerinde veya Spark göndermesi üzerinde çalıştırarak, kümenizde Scala sürümünü bulabilirsiniz. `sc.version`Jupi Not defterleri üzerinde çalıştırarak Spark sürümünü kümenizde bulabilirsiniz.
 
-    ![Jupyter Notebook ile dış paketleri kullanma](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Jupyter Notebook ile dış paketleri kullanma")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png " alt-text="Jupyter Notebook ile dış paketleri kullanma" border="true":::
 
     c. İki nokta üst üste (**:**) ayırarak üç değeri birleştirir.
 

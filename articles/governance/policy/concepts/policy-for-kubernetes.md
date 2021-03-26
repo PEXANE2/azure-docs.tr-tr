@@ -1,14 +1,14 @@
 ---
 title: Kubernetes için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure 'da veya şirket içinde Kubernetes çalıştıran kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin.
-ms.date: 12/01/2020
+ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0aaf610cd5712ee195ed2a4108cf9e5ca9c65183
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 60ffcfac688eb40f47efefb74f79d27a2cb82446
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100577106"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868163"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes kümeleri için Azure İlkesi'ni anlama
 
@@ -68,7 +68,7 @@ Aşağıdaki sınırlamalar yalnızca AKS için Azure Ilke eklentisi için geçe
 
 Aşağıda, Azure Ilke eklentisinin kullanılmasına yönelik genel öneriler verilmiştir:
 
-- Azure Ilke eklentisinin çalışması için 3 Gatekeeper bileşeni gerekir: 1 denetim Pod ve 2 Web kancası Pod çoğaltmaları. Bu bileşenler, küme içinde denetim ve zorlama işlemleri gerektiren Kubernetes kaynakları ve ilke atamalarının sayısı arttıkça daha fazla kaynak kullanır.
+- Azure Ilke eklentisinin çalışması için üç Gatekeeper bileşeni gerekir: 1 denetim Pod ve 2 Web kancası Pod çoğaltmaları. Bu bileşenler, küme içinde denetim ve zorlama işlemleri gerektiren Kubernetes kaynakları ve ilke atamalarının sayısı arttıkça daha fazla kaynak kullanır.
 
   - En fazla 20 kısıtlama içeren tek bir kümede 500 ' den az pod için: bileşen başına 2 sanal CPU ve 350 MB bellek.
   - En fazla 40 kısıtlama içeren tek bir kümede 500 ' den fazla dizin için: bileşen başına 3 vCPU ve 600 MB bellek.
@@ -85,7 +85,7 @@ Aşağıdaki öneri yalnızca AKS ve Azure Ilkesi eklentisi için geçerlidir:
 
 ## <a name="install-azure-policy-add-on-for-aks"></a>AKS için Azure Ilke eklentisini yükler
 
-Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini etkinleştirmeden önce aboneliğiniz **Microsoft. ContainerService** ve **Microsoft. Policınsıghts** kaynak sağlayıcılarını etkinleştirmelidir.
+Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini etkinleştirmeden önce aboneliğinizin **Microsoft. Poliınghts** kaynak sağlayıcılarını etkinleştirmesi gerekir.
 
 1. Azure CLı sürüm 2.12.0 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
@@ -93,15 +93,12 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
    - Azure portal:
 
-     **Microsoft. ContainerService** ve **Microsoft. policınghts** kaynak sağlayıcılarını kaydedin. Adımlar için bkz. [kaynak sağlayıcıları ve türleri](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
+     **Microsoft. Policınsıghts** kaynak sağlayıcılarını kaydedin. Adımlar için bkz. [kaynak sağlayıcıları ve türleri](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
    - Azure CLı:
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-
-     # Provider register: Register the Azure Kubernetes Service provider
-     az provider register --namespace Microsoft.ContainerService
 
      # Provider register: Register the Azure Policy provider
      az provider register --namespace Microsoft.PolicyInsights
@@ -142,7 +139,7 @@ Yukarıdaki önkoşul adımları tamamlandıktan sonra, yönetmek istediğiniz A
      > 1. Eklentinin v2 sürümünü yüklemek için **eklentiyi etkinleştir** düğmesini seçin.
      > 1. [V1 yerleşik ilke tanımlarınızın V2 sürümlerini atayın](#assign-a-built-in-policy-definition)
 
-- Azure CLI’si
+- Azure CLI
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -182,7 +179,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
 1. Kaynak sağlayıcısını etkinleştirmek için [kaynak sağlayıcıları ve türlerindeki](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) adımları izleyin ya da Azure clı veya Azure PowerShell komutunu çalıştırın:
 
-   - Azure CLI’si
+   - Azure CLI
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
@@ -219,7 +216,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
 1. Azure Arc etkin Kubernetes kümesine ' Policy Insights veri yazıcısı (Önizleme) ' rolü atamasını atayın. `<subscriptionId>` `<rg>` Azure Arc 'ın, Kubernetes kümesinin kaynak grubuyla ve `<clusterName>` Azure Arc etkinleştirilmiş Kubernetes kümesinin ADıYLA birlikte abonelik Kimliğinizle değiştirin. Yükleme adımları için _uygulama kimliği_, _parola_ ve _kiracı_ için döndürülen değerleri izleyin.
 
-   - Azure CLI’si
+   - Azure CLI
 
      ```azurecli-interactive
      az ad sp create-for-rbac --role "Policy Insights Data Writer (Preview)" --scopes "/subscriptions/<subscriptionId>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
@@ -286,7 +283,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
 1. Kaynak sağlayıcısını etkinleştirmek için [kaynak sağlayıcıları ve türlerindeki](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) adımları izleyin ya da Azure clı veya Azure PowerShell komutunu çalıştırın:
 
-   - Azure CLI’si
+   - Azure CLI
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
@@ -440,14 +437,13 @@ Diğer bazı hususlar:
 
 - Küme aboneliği Azure Güvenlik Merkezi 'ne kayıtlıysa, Azure Güvenlik Merkezi Kubernetes ilkeleri kümeye otomatik olarak uygulanır.
 
-- Mevcut Kubernetes kaynaklarıyla küme üzerinde bir reddetme ilkesi uygulandığında, yeni ilkeyle uyumlu olmayan önceden var olan tüm kaynaklar çalışmaya devam eder. Uyumlu olmayan kaynak farklı bir düğümde yeniden zamanlandığında, Gatekeeper kaynak oluşturmayı engeller.
+- Mevcut Kubernetes kaynaklarıyla küme üzerinde bir reddetme ilkesi uygulandığında, yeni ilkeyle uyumlu olmayan önceden var olan herhangi bir kaynak çalışmaya devam eder. Uyumlu olmayan kaynak farklı bir düğümde yeniden zamanlandığında, Gatekeeper kaynak oluşturmayı engeller.
 
 - Bir küme, kaynakları doğrulayan bir reddetme ilkesine sahip olduğunda, bir dağıtım oluştururken Kullanıcı bir Red iletisi görmez. Örneğin, replicasets ve pods içeren bir Kubernetes dağıtımını göz önünde bulundurun. Bir Kullanıcı yürütüldüğünde `kubectl describe deployment $MY_DEPLOYMENT` , olayların bir parçası olarak bir Red iletisi döndürmez. Ancak, `kubectl describe replicasets.apps $MY_DEPLOYMENT` reddetme ile ilişkili olayları döndürür.
 
 ## <a name="logging"></a>Günlüğe Kaydetme
 
-Bir Kubernetes denetleyicisi/kapsayıcısı olarak, _Azure-Policy_ ve _Gatekeeper_ Pod, Kubernetes kümesinde Günlükler tutar. Günlükler, Kubernetes kümesinin **Öngörüler** sayfasında gösterilebilir.
-Daha fazla bilgi için bkz. [kapsayıcılar Için Azure izleyici Ile Kubernetes küme Performansınızı izleme](../../../azure-monitor/containers/container-insights-analyze.md).
+Bir Kubernetes denetleyicisi/kapsayıcısı olarak, hem _Azure-Policy_ hem de _Gatekeeper_ Pod, Kubernetes kümesinde günlükleri saklar. Günlükler, Kubernetes kümesinin **Öngörüler** sayfasında gösterilebilir. Daha fazla bilgi için bkz. [kapsayıcılar Için Azure izleyici Ile Kubernetes küme Performansınızı izleme](../../../azure-monitor/containers/container-insights-analyze.md).
 
 Eklenti günlüklerini görüntülemek için şunu kullanın `kubectl` :
 
@@ -481,7 +477,7 @@ Azure Ilke eklentisini AKS kümenizdeki kaldırmak için Azure portal veya Azure
 
   1. Ana sayfada, **eklentiyi devre dışı bırak** düğmesini seçin.
 
-- Azure CLI’si
+- Azure CLI
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell

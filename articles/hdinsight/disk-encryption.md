@@ -5,12 +5,12 @@ description: Bu makalede, Azure HDInsight kümelerinde bekleyen veriler için ku
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 58b3d892ea24430a9d951a5a0230282f6c4fd584
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3d4f9e3be02a64efa058ea1f84a3e261cb6166fc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99988612"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867126"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Bekleyen veriler için Azure HDInsight çift şifrelemesi
 
@@ -76,25 +76,25 @@ HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseni
 
 1. Yeni anahtar kasasından **Ayarlar**  >  **anahtarlar**  >  **+ Oluştur/içeri aktar**' a gidin.
 
-    ![Azure Key Vault yeni bir anahtar oluştur](./media/disk-encryption/create-new-key.png "Azure Key Vault yeni bir anahtar oluştur")
+    :::image type="content" source="./media/disk-encryption/create-new-key.png" alt-text="Azure Key Vault yeni bir anahtar oluştur":::
 
 1. Bir ad girin ve **Oluştur**' u seçin. **RSA** varsayılan **anahtar türünü** koruyun.
 
-    ![anahtar adı oluşturur](./media/disk-encryption/create-key.png "Anahtar adı oluştur")
+    :::image type="content" source="./media/disk-encryption/create-key.png" alt-text="anahtar adı oluşturur":::
 
 1. **Anahtarlar** sayfasına geri döndüğünüzde, oluşturduğunuz anahtarı seçin.
 
-    ![Anahtar Kasası anahtar listesi](./media/disk-encryption/key-vault-key-list.png)
+    :::image type="content" source="./media/disk-encryption/key-vault-key-list.png" alt-text="Anahtar Kasası anahtar listesi":::
 
 1. **Anahtar sürümü** sayfasını açmak için sürümü seçin. HDInsight kümesi şifrelemesi için kendi anahtarınızı kullandığınızda, anahtar URI 'sini sağlamanız gerekir. **Anahtar tanımlayıcısını** kopyalayın ve kümenizi oluşturmaya hazır olana kadar bir yere kaydedin.
 
-    ![anahtar tanımlayıcısını al](./media/disk-encryption/get-key-identifier.png)
+    :::image type="content" source="./media/disk-encryption/get-key-identifier.png" alt-text="anahtar tanımlayıcısını al":::
 
 ### <a name="create-access-policy"></a>Erişim İlkesi Oluştur
 
 1. Yeni anahtar kasasından **Ayarlar**  >  **erişim ilkeleri**  >  **+ erişim ilkesi Ekle**' ye gidin.
 
-    ![Yeni Azure Key Vault erişim ilkesi oluştur](./media/disk-encryption/key-vault-access-policy.png)
+    :::image type="content" source="./media/disk-encryption/key-vault-access-policy.png" alt-text="Yeni Azure Key Vault erişim ilkesi oluştur":::
 
 1. **Erişim Ilkesi Ekle** sayfasında, aşağıdaki bilgileri sağlayın:
 
@@ -104,13 +104,13 @@ HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseni
     |Gizli Dizi İzinleri|**Al**, **Ayarla** ve **Sil**' i seçin.|
     |Sorumlu seçin|Daha önce oluşturduğunuz Kullanıcı tarafından atanan yönetilen kimliği seçin.|
 
-    ![Azure Key Vault erişim ilkesi için sorumlusu seçin](./media/disk-encryption/azure-portal-add-access-policy.png)
+    :::image type="content" source="./media/disk-encryption/azure-portal-add-access-policy.png" alt-text="Azure Key Vault erişim ilkesi için sorumlusu seçin":::
 
 1. **Add (Ekle)** seçeneğini belirleyin.
 
 1. **Kaydet**’i seçin.
 
-    ![Azure Key Vault erişim ilkesini Kaydet](./media/disk-encryption/add-key-vault-access-policy-save.png)
+    :::image type="content" source="./media/disk-encryption/add-key-vault-access-policy-save.png" alt-text="Azure Key Vault erişim ilkesini Kaydet":::
 
 ### <a name="create-cluster-with-customer-managed-key-disk-encryption"></a>Müşteri tarafından yönetilen anahtar disk şifrelemesi ile küme oluşturma
 
@@ -129,7 +129,7 @@ Küme oluşturma sırasında, sürümlü bir anahtar ya da aşağıdaki şekilde
 
 Ayrıca, yönetilen kimliği kümeye atamanız gerekir.
 
-![Yeni küme oluştur](./media/disk-encryption/create-cluster-portal.png)
+:::image type="content" source="./media/disk-encryption/create-cluster-portal.png" alt-text="Yeni küme oluştur":::
 
 #### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 
@@ -367,7 +367,7 @@ Kaynak yönetimi şablonunun içeriği `azuredeploy.json` :
 
 Anahtarı döndürmek için temel Anahtar Kasası URI 'sine ihtiyacınız vardır. Bunu yaptıktan sonra, portalda HDInsight küme özellikleri bölümüne gidin ve **disk şifreleme anahtarı URL 'si** altında **anahtarı Değiştir** ' e tıklayın. Yeni anahtar URL 'sini girin ve anahtarı döndürmek için Gönder ' i yazın.
 
-![disk şifreleme anahtarını döndür](./media/disk-encryption/change-key.png)
+:::image type="content" source="./media/disk-encryption/change-key.png" alt-text="disk şifreleme anahtarını döndür":::
 
 #### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 
@@ -400,7 +400,7 @@ Hayır, tüm yönetilen diskler ve kaynak diskleri aynı anahtarla şifrelenir.
 
 Küme anahtara erişimi kaybederse, uyarılar Apache ambarı portalında gösterilir. Bu durumda, **anahtar değiştirme** işlemi başarısız olur. Anahtar erişimi geri yüklendikten sonra, ambarı uyarıları kaldırılır ve anahtar döndürme işlemi başarılı bir şekilde gerçekleştirilebilir.
 
-![anahtar erişim ambarı uyarısı](./media/disk-encryption/ambari-alert.png)
+:::image type="content" source="./media/disk-encryption/ambari-alert.png" alt-text="anahtar erişim ambarı uyarısı":::
 
 **Anahtarlar siliniyorsa kümeyi nasıl kurtarabilirim?**
 

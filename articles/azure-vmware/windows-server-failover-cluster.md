@@ -3,12 +3,12 @@ title: Yerel paylaşılan disklerle Azure VMware Çözüm vSAN üzerinde Windows
 description: Azure VMware çözümünde Windows Server yük devretme kümesi (WSFC) ayarlayın ve WSFC özelliği gerektiren çözümlerin avantajlarından yararlanın.
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: d667eef00fcad0e3f5243c6ab580e2e8371c6793
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8cb2fdd8d519c665840390a41c95121218750a95
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102519002"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025977"
 ---
 # <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Yerel paylaşılan disklerle Azure VMware Çözüm vSAN üzerinde Windows Server yük devretme kümesi
 
@@ -49,10 +49,10 @@ Aşağıdaki diyagramda, bir Azure VMware çözümü özel bulutundaki WSFC sana
 
 Şu anda aşağıdaki yapılandırma desteklenir:
 
-- Microsoft Windows Server 2012 veya üzeri.
-- Küme başına en fazla beş yük devretme kümesi düğümü.
-- VM başına en fazla dört PVSCSı bağdaştırıcısı.
-- PVSCSı bağdaştırıcısı başına en fazla 64 disk.
+- Microsoft Windows Server 2012 veya üzeri
+- Küme başına en fazla beş yük devretme kümesi düğümü
+- VM başına en fazla dört PVSCSı bağdaştırıcısı
+- PVSCSı bağdaştırıcısı başına en fazla 64 disk
 
 ## <a name="virtual-machine-configuration-requirements"></a>Sanal makine yapılandırma gereksinimleri
 

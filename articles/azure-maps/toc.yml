@@ -238,6 +238,8 @@
               href: spatial-io-supported-data-format-details.md
         - name: Web SDK destekleyen tarayıcılar
           href: supported-browsers.md
+        - name: En iyi uygulamalar
+          href: web-sdk-best-practices.md
     - name: Android SDK ile geliştirme
       items:
         - name: Android harita denetimini kullanmaya başlama

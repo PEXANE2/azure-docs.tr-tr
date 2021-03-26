@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: ccd642578c8c35ac6b5f23397788ad1e7f83a1f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de838e094c8a37d375aa6c7649ee5717705ad33c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942599"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866361"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Bir HDInsight kümesindeki Apache Spark uygulamalarda SSH aracılığıyla Azure Toolkit for IntelliJ hata ayıklama
 
@@ -45,7 +45,7 @@ Bu makalede, HDInsight kümesindeki uygulamalarda hata ayıklamak için [Azure T
     * Scala projesi oluşturma Sihirbazı desteği için **Maven** .
     * Scala projesi için bağımlılıkları ve oluşturmayı yönetmek üzere **SBT** .
 
-     ![IntelliJ yeni proje Spark oluştur](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png)
+     :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png" alt-text="IntelliJ yeni proje Spark oluştur" border="true":::
 
 1. **İleri**’yi seçin.
 
@@ -58,7 +58,7 @@ Bu makalede, HDInsight kümesindeki uygulamalarda hata ayıklamak için [Azure T
     |Proje SDK 'Sı|Boşsa, **yeni...** öğesini seçin ve JDK 'nize gidin.|
     |Spark sürümü|Oluşturma Sihirbazı Spark SDK ve Scala SDK için doğru sürümü tümleştirir. Spark kümesi sürümü 2.0’dan eskiyse **Spark 1.x** seçeneğini belirleyin. Aksi halde **Spark 2. x** öğesini seçin. Bu örnek **Spark 2.3.0 (Scala 2.11.8)** kullanır.|
 
-   ![IntelliJ yeni proje Spark sürümü Seç](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png" alt-text="IntelliJ yeni proje Spark sürümü Seç" border="true":::
 
 1. **Son**'u seçin. Projenin kullanılabilir hale gelmesi birkaç dakika sürebilir. İlerleme için sağ alt köşeyi izleyin.
 
@@ -70,11 +70,11 @@ Bu makalede, HDInsight kümesindeki uygulamalarda hata ayıklamak için [Azure T
 
 1. Yerel çalıştırma tamamlandığında, çıkış dosyasını geçerli Proje Gezgini **veri**  >  **__varsayılanındaki__** kaydetme dosyasına bakabilirsiniz.
 
-    ![IntelliJ projesi yerel çalıştırma sonucu](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png" alt-text="IntelliJ projesi yerel çalıştırma sonucu" border="true":::
 
 1. Yerel çalıştırma ve yerel hata ayıklama gerçekleştirirken araçlarımız varsayılan yerel çalıştırma yapılandırmasını otomatik olarak ayarladı. Sağ üst köşedeki [ **Spark on HDInsight] xxx** yapılandırmasını açın, **HDInsight üzerinde Apache Spark**' de zaten oluşturulmuş olan **[HDInsight on HDInsight] xxx** 'yi görebilirsiniz. **Yerel olarak çalıştır** sekmesine geçin.
 
-    ![IntelliJ hata ayıklama yapılandırmalarının yerel çalıştırma Çalıştır](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png" alt-text="IntelliJ hata ayıklama yapılandırmalarının yerel çalıştırma Çalıştır" border="true":::
 
     - [Ortam değişkenleri](#prerequisites): **HADOOP_HOME** sistem ortam değişkenini zaten **c:\winutils** olarak ayarladıysanız, el ile ekleme gereksinimi olmadığını otomatik olarak tespit edebilir.
     - [WinUtils.exe konumu](#prerequisites): sistem ortam değişkenini görmüyorsanız, konumunu düğmesine tıklayarak bulabilirsiniz.
@@ -94,35 +94,35 @@ Bu makalede, HDInsight kümesindeki uygulamalarda hata ayıklamak için [Azure T
 
 1. **Çalıştır/hata ayıkla yapılandırma** iletişim kutusunda artı işaretini ( **+** ) seçin. Sonra **HDInsight üzerinde Apache Spark** seçeneğini belirleyin.
 
-   ![IntelliJ yeni yapılandırma Ekle](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-add-new-Configuration.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-add-new-Configuration.png" alt-text="IntelliJ yeni yapılandırma Ekle" border="true":::
 
 1. Küme sekmesinde **Uzaktan Çalıştır '** a geçiş yapın. **Ad**, **Spark kümesi** ve **ana sınıf adı** bilgilerini girin. Ardından **Gelişmiş yapılandırma (uzaktan hata ayıklama)** seçeneğine tıklayın. Araçlarımız **Yürüticiler** ile hata ayıklamayı destekler. **Numexectors**, varsayılan değer 5 ' tir. 3 ' ten daha yüksek bir ayarlama yapmanız daha iyidir.
 
-   ![IntelliJ hata ayıklama yapılandırmasını Çalıştır](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-run-debug-configurations.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-run-debug-configurations.png" alt-text="IntelliJ hata ayıklama yapılandırmasını Çalıştır" border="true":::
 
 1. **Gelişmiş yapılandırma (uzaktan hata ayıklama)** bölümünde **Spark uzaktan hata ayıklamayı etkinleştir**' i seçin. SSH kullanıcı adını girin ve bir parola girin veya bir özel anahtar dosyası kullanın. Uzaktan hata ayıklama gerçekleştirmek istiyorsanız, onu ayarlamanız gerekir. Yalnızca uzaktan çalıştırma kullanmak istiyorsanız, bu ayarı ayarlamaya gerek yoktur.
 
-   ![IntelliJ gelişmiş yapılandırma Spark uzaktan hata ayıklamayı etkinleştir](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-enable-spark-remote-debug.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-enable-spark-remote-debug.png" alt-text="IntelliJ gelişmiş yapılandırma Spark uzaktan hata ayıklamayı etkinleştir" border="true":::
 
 1. Yapılandırma artık verdiğiniz adla birlikte kaydedilir. Yapılandırma ayrıntılarını görüntülemek için yapılandırma adını seçin. Değişiklik yapmak için, **konfigürasyonları Düzenle**' yi seçin.
 
 1. Yapılandırma ayarlarını tamamladıktan sonra, projeyi uzak kümede çalıştırabilir veya uzaktan hata ayıklama işlemi yapabilirsiniz.
 
-   ![IntelliJ hata ayıklama uzak Spark Işi uzaktan çalıştırma düğmesi](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run-button.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run-button.png" alt-text="IntelliJ hata ayıklama uzak Spark Işi uzaktan çalıştırma düğmesi" border="true":::
 
 1. Gönderim günlüklerinin sol bölmede görünmediğinden **bağlantıyı kes** düğmesine tıklayın. Ancak, arka uçta hala çalışır.
 
-   ![IntelliJ hata ayıklama uzak Spark Işi uzak çalıştırma sonucu](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png" alt-text="IntelliJ hata ayıklama uzak Spark Işi uzak çalıştırma sonucu" border="true":::
 
 ## <a name="perform-remote-debugging"></a>Uzaktan hata ayıklama gerçekleştir
 
 1. Kesme noktaları ayarlayın ve ardından **Uzaktan hata ayıklama** simgesine tıklayın. Uzaktan gönderim farkı, SSH Kullanıcı adı/parolasının yapılandırılması gerektiğidir.
 
-   ![IntelliJ hata ayıklama uzak Spark Işi hata ayıklama simgesi](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-icon.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-icon.png" alt-text="IntelliJ hata ayıklama uzak Spark Işi hata ayıklama simgesi" border="true":::
 
 1. Program yürütme, kesme noktasına ulaştığında, **hata ayıklayıcı** bölmesinde bir **sürücü** sekmesi ve iki **yürütücü** sekmesi görürsünüz. Kodu çalıştırmaya devam etmek için **programı Sürdür** simgesini seçin, daha sonra bir sonraki kesme noktasına ulaşır. Hata ayıklama için hedef yürütücüsü bulmak için doğru **yürütücü** sekmesine geçmeniz gerekir. Yürütme günlüklerini ilgili **konsol** sekmesinden görüntüleyebilirsiniz.
 
-   ![IntelliJ hata ayıklama uzak Spark Işi hata ayıklama sekmesi](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debugger-tab.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debugger-tab.png" alt-text="IntelliJ hata ayıklama uzak Spark Işi hata ayıklama sekmesi" border="true":::
 
 ### <a name="perform-remote-debugging-and-bug-fixing"></a>Uzaktan hata ayıklama ve hata düzeltmeyi gerçekleştirme
 
@@ -132,21 +132,21 @@ Bu makalede, HDInsight kümesindeki uygulamalarda hata ayıklamak için [Azure T
 
 1. Devam etmek için **programı Sürdür** simgesini seçin. Kod, ikinci noktada duraklar. Özel durum beklendiği gibi yakalandı.
 
-   ![IntelliJ hata ayıklama uzak Spark Işi hata ayıklama hatası](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-throw-error.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-throw-error.png" alt-text="IntelliJ hata ayıklama uzak Spark Işi hata ayıklama hatası" border="true":::
 
 1. Programı yeniden **başlatma** simgesini seçin. **HDInsight Spark gönderimi** penceresinde "iş çalıştırma başarısız oldu" hatası görüntülenir.
 
-   ![IntelliJ hata ayıklama uzak Spark Işi hata gönderimi](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-error-submission.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-error-submission.png" alt-text="IntelliJ hata ayıklama uzak Spark Işi hata gönderimi" border="true":::
 
 1. IntelliJ hata ayıklama özelliğini kullanarak değişken değerini dinamik olarak güncelleştirmek için, **Hata Ayıkla** ' yı seçin. **Değişkenler** bölmesi tekrar görünür.
 
 1. **Hata Ayıkla** sekmesinde hedefi sağ tıklatın ve ardından **değeri ayarla**' yı seçin. Sonra, değişken için yeni bir değer girin. Sonra değeri kaydetmek için **ENTER** ' u seçin.
 
-   ![IntelliJ hata ayıklama uzak Spark Iş kümesi değeri](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value1.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value1.png" alt-text="IntelliJ hata ayıklama uzak Spark Iş kümesi değeri" border="true":::
 
 1. Programı çalıştırmaya devam etmek için **programı Sürdür** simgesini seçin. Bu kez, hiçbir özel durum yakalanmaz. Projenin özel durum olmadan başarıyla çalıştığını görebilirsiniz.
 
-   ![IntelliJ hata ayıklama uzak Spark Işi özel durum olmadan](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-without-exception.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-without-exception.png" alt-text="IntelliJ hata ayıklama uzak Spark Işi özel durum olmadan" border="true":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

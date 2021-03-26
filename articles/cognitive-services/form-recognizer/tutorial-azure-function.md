@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8c72a018f03b5284d3fc53be02d9eb526cdfcf28
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: bf455d9401593b5c09fa295e492368a2a5bee240
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722251"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048701"
 ---
 # <a name="tutorial-use-an-azure-function-to-process-stored-documents"></a>Öğretici: depolanan belgeleri işlemek için bir Azure Işlevi kullanma
 
@@ -40,9 +40,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 * Çözümlenecek yerel PDF belgesi. Bu [örnek belgeyi](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout.pdf) kullanmak için indirebilirsiniz.
 * [Python 3.8. x](https://www.python.org/downloads/) yüklendi.
 * [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) yüklendi.
-* [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash#install-the-azure-functions-core-tools) yüklendi.
+* [Azure Functions Core Tools](../../azure-functions/functions-run-local.md?tabs=windows%2ccsharp%2cbash#install-the-azure-functions-core-tools) yüklendi.
 * Aşağıdaki Uzantılar yüklü Visual Studio Code:
-  * [Azure Işlevleri uzantısı](https://docs.microsoft.com/azure/developer/python/tutorial-vs-code-serverless-python-01#visual-studio-code-python-and-the-azure-functions-extension)
+  * [Azure Işlevleri uzantısı](/azure/developer/python/tutorial-vs-code-serverless-python-01#visual-studio-code-python-and-the-azure-functions-extension)
   * [Python uzantısı](https://code.visualstudio.com/docs/python/python-tutorial#_install-visual-studio-code-and-the-python-extension)
 
 ## <a name="create-an-azure-storage-account"></a>Azure Depolama hesabı oluşturma

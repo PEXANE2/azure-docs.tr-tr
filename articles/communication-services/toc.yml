@@ -42,7 +42,7 @@
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
         - name: Uygulamanıza video çağrısı ekleme (JavaScript)
           href: quickstarts/voice-video-calling/get-started-with-video-calling.md
-        - name: Arama istemci kitaplığını kullanma
+        - name: Çağıran SDK 'Yı kullanma
           href: quickstarts/voice-video-calling/calling-client-samples.md
         - name: Arama uygulamanızla bir Teams toplantısına katılma
           href: quickstarts/voice-video-calling/get-started-teams-interop.md
@@ -70,13 +70,13 @@
   items:
     - name: Sohbet
       items:
-        - name: Sohbet istemci kitaplığına genel bakış
+        - name: Sohbet SDK genel bakış
           href: concepts/chat/sdk-features.md
         - name: Sohbet kavramları
           href: concepts/chat/concepts.md
     - name: Telefon ve SMS
       items:
-        - name: SMS istemci kitaplığına genel bakış
+        - name: SMS SDK genel bakış
           href: concepts/telephony-sms/sdk-features.md
         - name: SMS kavramları
           href: concepts/telephony-sms/concepts.md
@@ -88,7 +88,7 @@
           href: concepts/telephony-sms/sip-interface-infrastructure.md
     - name: Sesli ve görüntülü arama
       items:
-        - name: Arama istemci kitaplığına genel bakış
+        - name: SDK 'ya genel bakış
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: Ses ve görüntü kavramları
           href: concepts/voice-video-calling/about-call-types.md

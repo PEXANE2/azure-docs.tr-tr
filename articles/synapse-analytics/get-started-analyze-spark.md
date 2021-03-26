@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 8559bd0a354a64872e58d014d1027ed971773b60
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: 0becbbdb68f75072e10a51f5a2eae95291b9ed77
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655351"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108341"
 ---
 # <a name="analyze-with-apache-spark"></a>Apache Spark ile Çözümle
 
@@ -37,9 +37,10 @@ Sunucusuz Spark havuzu, bir kullanıcının Spark ile nasıl çalışmak istedi�
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>Spark kullanarak, blob depolamada NYC TAXI verilerini çözümleme
 
 1. SYNAPSE Studio 'da **geliştirme** merkezine gidin
-2. Varsayılan dili **Pyspark (Python)** olarak ayarlanmış bir Newnnot defteri oluşturun.
+2. Varsayılan dili **Pyspark (Python)** olarak ayarlanmış yeni bir not defteri oluşturun.
 3. Yeni bir kod hücresi oluşturun ve aşağıdaki kodu bu hücreye yapıştırın.
-    ```
+    ```py
+    %%pyspark
     from azureml.opendatasets import NycTlcYellow
 
     data = NycTlcYellow()
@@ -62,6 +63,7 @@ Veriler, **veri adlı veri** çerçevesi aracılığıyla kullanılabilir. **Nyc
 1. Not defterine yeni bir ekleyin ve ardından aşağıdaki kodu girin:
 
     ```py
+    spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Spark ve not defterlerini kullanarak NYC TAXI verilerini çözümleme
@@ -76,16 +78,16 @@ Veriler, **veri adlı veri** çerçevesi aracılığıyla kullanılabilir. **Nyc
    ```
 
 1. **Nyctaxi** Spark veritabanına YÜKLEDIĞIMIZ NYC TAXI verilerini göstermek için hücreyi çalıştırın.
-1. Yeni bir kod hücresi oluşturun ve aşağıdaki kodu girin. Ardından, daha önce adanmış SQL havuzu **SQLPOOL1** ile yaptığımız analizi yapmak için hücreyi çalıştırın. Bu kod, çözümlemenin sonuçlarını **nyctaxi. passengercountstats** adlı bir tabloya kaydeder ve görüntüler.
+1. Yeni bir kod hücresi oluşturun ve aşağıdaki kodu girin. Bu verileri analiz edeceğiz ve sonuçları **nyctaxi. passengercountstats** adlı bir tabloya kaydeder.
 
    ```py
    %%pyspark
    df = spark.sql("""
       SELECT PassengerCount,
-          SUM(TripDistanceMiles) as SumTripDistance,
-          AVG(TripDistanceMiles) as AvgTripDistance
+          SUM(TripDistance) as SumTripDistance,
+          AVG(TripDistance) as AvgTripDistance
       FROM nyctaxi.trip
-      WHERE TripDistanceMiles > 0 AND PassengerCount > 0
+      WHERE TripDistance > 0 AND PassengerCount > 0
       GROUP BY PassengerCount
       ORDER BY PassengerCount
    """) 

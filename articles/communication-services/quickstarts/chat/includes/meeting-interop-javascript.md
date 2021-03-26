@@ -5,20 +5,20 @@ ms.author: askaur
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: dd183e9088f24aa8b94955bc8ed2a68b4a7eb27c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 773bca81694534346019e30e9d55190af6f51e74
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496193"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105106811"
 ---
 ## <a name="joining-the-meeting-chat"></a>Toplantı sohbetine katılma 
 
-Takımlar birlikte çalışabilirliği etkinleştirildikten sonra, bir Iletişim Hizmetleri kullanıcısı, çağıran istemci kitaplığını kullanarak bir dış Kullanıcı olarak takımlar çağrısına katılabilir. Çağrının katılması, bunları, çağrı üzerinde diğer kullanıcılarla ileti gönderebilecekleri ve buradan toplantı sohbetine katılımcı olarak ekler. Kullanıcının, çağrıya katılmadan önce gönderilen sohbet iletilerine erişimi olmayacaktır. Toplantıya katılabilmek ve sohbet başlatmak için sonraki adımları izleyebilirsiniz.
+Takımlar birlikte çalışabilirliği etkinleştirildikten sonra, bir Iletişim Hizmetleri kullanıcısı, çağıran SDK 'Yı kullanarak takımlar çağrısını dış Kullanıcı olarak birleştirebilirler. Çağrının katılması, bunları, çağrı üzerinde diğer kullanıcılarla ileti gönderebilecekleri ve buradan toplantı sohbetine katılımcı olarak ekler. Kullanıcının, çağrıya katılmadan önce gönderilen sohbet iletilerine erişimi olmayacaktır. Toplantıya katılabilmek ve sohbet başlatmak için sonraki adımları izleyebilirsiniz.
 
 ## <a name="install-the-chat-packages"></a>Sohbet paketlerini yükler
 
-`npm install`JavaScript için gerekli Iletişim Hizmetleri istemci kitaplıklarını yüklemek için komutunu kullanın.
+`npm install`JavaScript için gerekli Iletişim Hizmetleri SDK 'larını yüklemek için komutunu kullanın.
 
 ```console
 npm install @azure/communication-common --save

@@ -2,13 +2,13 @@
 title: Giriş
 description: Azure 'da VMware tabanlı iş yüklerini dağıtmak ve yönetmek için Azure VMware çözümünün özelliklerini ve avantajlarını öğrenin.
 ms.topic: overview
-ms.date: 11/11/2020
-ms.openlocfilehash: 255d3599385c60d3b13f4769796ced41a1177311
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: a75c04cf6b51068ef9867e3f9438b2820da703fe
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100579293"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048825"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Azure VMware Çözümü nedir?
 
@@ -19,6 +19,11 @@ Azure VMware çözümü, geliştirme ve yükseltmelerin üzerinde doğrulanması
 Diyagramda, Azure, Azure hizmetleri ve şirket içi ortamlarda özel bulutlar ile sanal ağlar arasındaki Bitişiklik gösterilmektedir. Özel bulutlardan Azure hizmetlerine veya sanal ağlara ağ erişimi, Azure hizmet uç noktaları için SLA odaklı tümleştirme sağlar. ExpressRoute Global Reach şirket içi ortamınızı Azure VMware çözümünüz özel bulutuna bağlar. 
 
 ![Azure VMware çözümünün özel bulut Bitişiklik ve şirket içi](./media/adjacency-overview-drawing-final.png)
+
+## <a name="customer-communication"></a>Müşteri iletişimi
+Hizmet sorunları, planlı bakım, sistem durumu danışmanları, Güvenlik Danışma belgeleri bildirimleri Azure portal **hizmet durumu** üzerinden yayımlanır. Bu bildirimler için etkinlik günlüğü uyarılarını ayarlarken zamanında işlem yapabilirsiniz. Daha fazla bilgi için bkz. [Azure Portal kullanarak hizmet durumu uyarıları oluşturma](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
+
+:::image type="content" source="media/service-health.png" alt-text="Hizmet durumu bildirimlerinin ekran görüntüsü":::
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Konaklar, kümeler ve özel bulutlar
 

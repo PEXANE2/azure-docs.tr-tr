@@ -1,9 +1,7 @@
 ---
 # <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Zorunlu alanlar. Aka.ms/skyeye/meta hakkında daha fazla bilgi için bkz..
-Başlık: Media Services dönüşümler ve Işler: Azure Media Services Açıklama: Azure Media Services videolarınızı işlemek için kuralları betimleyen dönüşümler oluşturmayı öğrenin.
-Hizmetler: Media-Services belgetationcenter: ' ' Yazar: ınridatmicrosoft Manager: femila Düzenleyicisi: ' '
-
-MS. Service: Media-Services MS. Workload: MS. Topic: kavramsal MS. Date: 03/17/2021 MS. Author: inhenkel
+Başlık: Media Services dönüşümler ve Işler: Azure Media Services Açıklama: dönüşümler videoları Azure Media Services işlemek için kuralları betimleyen.
+Hizmetler: Media-Services Author: ınridatmicrosoft Manager: femıla MS. Service: Media-Services MS. Topic: kavramsal MS. Date: 03/22/2021 MS. Author: inhenkel
 ---
 
 # <a name="transforms-and-jobs-in-media-services"></a>Media Services dönüşümler ve Işler
@@ -90,12 +88,6 @@ Aşağıdaki diyagramda, **iş** nesnesi ve başvurduğu nesneler, türetme ili�
 Resmi tam boyutlu görüntülemek için tıklayın.  
 
 [![Nesneler arasındaki sınıf türetme ilişkileri dahil olmak üzere Iş nesnesini ve başvurduğu nesneleri gösteren diyagram.](./media/api-diagrams/job-small.png)](./media/api-diagrams/job-large.png#lightbox)
-
-## <a name="configure-media-reserved-units"></a>Medya ayrılmış birimlerini yapılandırma
-
-Media Services v3 veya Video Indexer tarafından tetiklenen ses analizi ve video analizi Işleri için, hesabınızı 10 S3 medya ayrılmış birimi (MRU) ile sağlamanız önemle önerilir. 10 ' dan fazla S3 MRU 'a ihtiyacınız varsa [Azure Portal](https://portal.azure.com/)kullanarak bir destek bileti açın.
-
-Ayrıntılar için bkz. [CLI ile medya Işlemeyi ölçeklendirme](media-reserved-units-cli-how-to.md).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde bulunun, güncelleştirmeleri al
 
