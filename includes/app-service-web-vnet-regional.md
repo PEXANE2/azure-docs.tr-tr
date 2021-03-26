@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 7796b94609a9be05fdb72900d0725747440f8042
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 821746856cb37781c8f6a2e58659ce7db43e1479
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105582605"
+ms.locfileid: "105609395"
 ---
 Bölgesel VNet tümleştirmesini kullanmak, uygulamanızın erişmesini sağlar:
 
@@ -74,7 +74,7 @@ Farklı bir plandaki uygulamalarınızın, başka bir plandaki uygulamalar taraf
 
 ### <a name="service-endpoints"></a>Hizmet uç noktaları
 
-Bölgesel VNet tümleştirmesi, hizmet uç noktalarını kullanmanıza olanak sağlar. Uygulamanıza hizmet uç noktaları üzerinden bir hizmete erişebilecek temel adımlar şunlardır:
+Bölgesel VNet tümleştirmesi, hizmet uç noktaları ile güvenliği sağlanmış Azure hizmetlerine ulaşmanıza olanak sağlar. Hizmet uç noktası güvenli hizmetine erişmek için aşağıdakileri yapmanız gerekir:
 
 1. Tümleştirme için belirli bir alt ağa bağlanmak üzere Web uygulamanızla bölgesel VNet tümleştirmesini yapılandırın.
 1. Hedef hizmete gidin ve hizmet uç noktalarını tümleştirme alt ağına göre yapılandırın.
@@ -101,9 +101,6 @@ Uygulamanız VNet 'iniz ile tümleştirdikten sonra, sanal ağınızın yapılan
 1. `WEBSITE_VNET_ROUTE_ALL` değer ile `1`
 
 Bu ayarlar, uygulamanızdaki tüm giden çağrılarınızı VNet 'e gönderir ve uygulamanızın Azure DNS bir özel bölgeye erişmesini sağlar. Bu ayarlarla, uygulamanız, çalışan düzeyindeki DNS özel bölgesini sorgulayarak Azure DNS kullanabilir.  
-
-> [!NOTE]
-> Sanal Ağ Tümleştirmesi bir DNS özel bölgesi kullanarak Web uygulamasına özel bir etki alanı eklemeye çalışmak, ile mümkün değildir. Özel etki alanı doğrulama işlemi, DNS kayıtlarının görüntülenmesini önleyen çalışan düzeyinde değil, denetleyici düzeyinde yapılır. Bir DNS özel bölgesinden özel bir etki alanı kullanmak için, [Application Gateway](../articles/app-service/networking/app-gateway-with-service-endpoints.md) veya [ILB App Service ortamı](../articles/app-service/environment/create-ilb-ase.md)kullanarak doğrulamayı atmalısınız.
 
 ### <a name="private-endpoints"></a>Özel Uç Noktalar
 

@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/18/2021
+ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 297bc24c570298dddf10a101a0c0c528bddecc10
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: d8c3a2d961cc5b6fd719b77dae07b6e46c3d8b65
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889833"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604847"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H serisi ve N serisi VM’lerdeki bilinen sorunlar
 
@@ -24,9 +24,18 @@ Ubuntu-18,04 ' de, Mellanox on çekirdekler `5.4.0-1039-azure #42` ve daha yeni 
 Geçici çözüm, çekirdeği güncelleştirmek için **kurallı: UbuntuServer: 18_04-LTS-Gen2:18.04.202101290** Market Image veya daha eski bir sürümü kullanmaktır.
 Bu sorunun daha yeni bir MOFED (TBD) ile çözümlenmesi beklenmektedir.
 
-## <a name="known-issues-on-hbv3"></a>HBv3 ile ilgili bilinen sorunlar
-- Şu anda InfiniBand yalnızca 120 çekirdekli VM 'de desteklenir (Standard_HB120rs_v3).
-- Şu anda Azure hızlandırılmış ağ, tüm bölgelerde HBv3-Series üzerinde desteklenmez.
+## <a name="mpi-qp-creation-errors"></a>MPı QP oluşturma hataları
+Herhangi bir MPI iş yüklerini çalıştırmak için, aşağıda gösterildiği gibi InfiniBand QP oluşturma hataları oluşturulur, sanal makineyi yeniden başlatmayı ve iş yükünü yeniden denemeyi öneririz. Bu sorun gelecekte düzeltilecektir.
+
+```bash
+ib_mlx5_dv.c:150  UCX  ERROR mlx5dv_devx_obj_create(QP) failed, syndrome 0: Invalid argument
+```
+
+Sorun aşağıdaki gibi gözlemleniyorsa en fazla sıra çifti sayısı değerlerini doğrulayabilirsiniz.
+```bash
+[user@azurehpc-vm ~]$ ibv_devinfo -vv | grep qp
+max_qp: 4096
+```
 
 ## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>HB, HC, HBv2 ve NDv2 üzerinde hızlandırılmış ağ
 

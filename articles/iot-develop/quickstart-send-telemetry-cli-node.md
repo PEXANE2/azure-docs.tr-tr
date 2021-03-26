@@ -6,13 +6,13 @@ ms.author: timlt
 ms.service: iot-develop
 ms.devlang: node
 ms.topic: quickstart
-ms.date: 01/11/2021
-ms.openlocfilehash: 97fcff4706d6da968c93426f85569fed9af95aac
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.openlocfilehash: 047700be674dfab997b5c87f7446c19fdea9e0eb
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102197818"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605969"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-nodejs"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme (Node.js)
 
@@ -36,7 +36,7 @@ Bu hızlı başlangıçta, temel bir IoT cihaz uygulama geliştirme iş akışı
 ## <a name="use-the-nodejs-sdk-to-send-messages"></a>İleti göndermek için Node.js SDK 'sını kullanma
 Bu bölümde, sanal cihazınızdan IoT Hub 'ınıza ileti göndermek için Node.js SDK 'sını kullanacaksınız. 
 
-1. Yeni bir terminal penceresi açın. Bu terminali Node.js SDK 'Yı yüklemek ve Node.js örnek kodla çalışmak için kullanacaksınız. Şu anda iki terminalin açık olması gerekir: Node.js ile çalışmak için açtığınız bir tane ve önceki bölümlerde Azure CLı komutları girmek için kullandığınız CLı kabuğu. 
+1. Yeni bir terminal penceresi açın. Bu terminali Node.js SDK 'Yı yüklemek ve Node.js örnek kodla çalışmak için kullanacaksınız. Şu anda iki terminalin açık olması gerekir: Node.js ile çalışmak için açtığınız bir tane ve önceki bölümlerde Azure CLı komutları girmek için kullandığınız CLı kabuğu.
 
 1. [Azure ıot Node.js SDK cihaz örneklerini](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples) yerel makinenize kopyalayın:
 
@@ -44,142 +44,79 @@ Bu bölümde, sanal cihazınızdan IoT Hub 'ınıza ileti göndermek için Node.
     git clone https://github.com/Azure/azure-iot-sdk-node
     ```
 
-1. *Azure-IoT-SDK-node/Device/Samples* dizinine gidin:
+1. *Azure-IoT-SDK-node/Device/Samples/PNP* dizinine gidin:
 
     ```console
-    cd azure-iot-sdk-node/device/samples
+    cd azure-iot-sdk-node/device/samples/pnp
     ```
+
 1. Azure IoT Node.js SDK 'sını ve gerekli bağımlılıkları yükler:
 
     ```console
     npm install
     ```
+
     Bu komut, aygıt örnekleri dizinindeki *package.js* dosyasında belirtilen şekilde doğru bağımlılıkları kurar.
 
-1. Cihaz bağlantı dizesini adında bir ortam değişkeni olarak ayarlayın `DEVICE_CONNECTION_STRING` . Kullanılacak dize değeri, sanal Node.js cihazınızı oluşturduktan sonra, önceki bölümde edindiğiniz dizedir. 
+1. Sanal cihazınızın Azure IoT 'ye bağlanmasını sağlamak için aşağıdaki ortam değişkenlerinin her ikisini de ayarlayın.
+    * Adlı bir ortam değişkeni ayarlayın `IOTHUB_DEVICE_CONNECTION_STRING` . Değişken değeri için, önceki bölümde kaydettiğiniz cihaz bağlantı dizesini kullanın.
+    * Adlı bir ortam değişkeni ayarlayın `IOTHUB_DEVICE_SECURITY_TYPE` . Değişkeni için, sabit dize değerini kullanın `connectionString` .
 
     **Windows (cmd)**
 
     ```console
-    set DEVICE_CONNECTION_STRING=<your connection string here>
+    set IOTHUB_DEVICE_CONNECTION_STRING=<your connection string here>
+    ```
+    ```console
+    set IOTHUB_DEVICE_SECURITY_TYPE=connectionString
     ```
 
     > [!NOTE]
-    > Windows CMD için bağlantı dizesini çevreleyen tırnak işareti yoktur.
+    > Windows CMD için her değişken için dize değerlerini çevreleyen tırnak işareti yoktur.
 
-    **Linux (Bash)**
+    **PowerShell**
 
-    ```bash
-    export DEVICE_CONNECTION_STRING="<your connection string here>"
+    ```azurepowershell
+    $env:IOTHUB_DEVICE_CONNECTION_STRING='<your connection string here>'
+    ```
+    ```azurepowershell
+    $env:IOTHUB_DEVICE_SECURITY_TYPE='connectionString'
     ```
 
+    **Bash (Linux veya Windows)**
+
+    ```bash
+    export IOTHUB_DEVICE_CONNECTION_STRING="<your connection string here>"
+    ```
+    ```bash
+    export IOTHUB_DEVICE_SECURITY_TYPE="connectionString"
+    ```
 1. Açık CLı kabuğunuzun içinde, sanal IoT cihazınızdan olayları izlemeye başlamak için [az IoT Hub Monitor-Events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) komutunu çalıştırın.  Olay iletileri, geldikçe terminalde yazdırılacaktır.
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}
     ```
 
-1. Node.js terminalinizde, yüklü örnek dosya *simple_sample_device.js* için kodu çalıştırın. Bu kod, sanal IoT cihazına erişir ve IoT Hub 'ına bir ileti gönderir.
+1. Node.js terminalinizde, yüklü örnek dosya *simple_thermostat.js* için kodu çalıştırın. Bu kod, sanal IoT cihazına erişir ve IoT Hub 'ına bir ileti gönderir.
 
     Terminalden Node.js örneğini çalıştırmak için:
     ```console
-    node ./simple_sample_device.js
+    node ./simple_thermostat.js
     ```
-
-    İsteğe bağlı olarak, JavaScript IDE 'inizdeki örnekten Node.js kodu çalıştırabilirsiniz:
-    ```javascript
-    'use strict';
-
-    const Protocol = require('azure-iot-device-mqtt').Mqtt;
-    // Uncomment one of these transports and then change it in fromConnectionString to test other transports
-    // const Protocol = require('azure-iot-device-amqp').AmqpWs;
-    // const Protocol = require('azure-iot-device-http').Http;
-    // const Protocol = require('azure-iot-device-amqp').Amqp;
-    // const Protocol = require('azure-iot-device-mqtt').MqttWs;
-    const Client = require('azure-iot-device').Client;
-    const Message = require('azure-iot-device').Message;
-
-    // String containing Hostname, Device Id & Device Key in the following formats:
-    //  "HostName=<iothub_host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>"
-    const deviceConnectionString = process.env.DEVICE_CONNECTION_STRING;
-    let sendInterval;
-
-    function disconnectHandler () {
-    clearInterval(sendInterval);
-    client.open().catch((err) => {
-        console.error(err.message);
-    });
-    }
-
-    // The AMQP and HTTP transports have the notion of completing, rejecting or abandoning the message.
-    // For example, this is only functional in AMQP and HTTP:
-    // client.complete(msg, printResultFor('completed'));
-    // If using MQTT calls to complete, reject, or abandon are no-ops.
-    // When completing a message, the service that sent the C2D message is notified that the message has been processed.
-    // When rejecting a message, the service that sent the C2D message is notified that the message won't be processed by the device. the method to use is client.reject(msg, callback).
-    // When abandoning the message, IoT Hub will immediately try to resend it. The method to use is client.abandon(msg, callback).
-    // MQTT is simpler: it accepts the message by default, and doesn't support rejecting or abandoning a message.
-    function messageHandler (msg) {
-    console.log('Id: ' + msg.messageId + ' Body: ' + msg.data);
-    client.complete(msg, printResultFor('completed'));
-    }
-
-    function generateMessage () {
-    const windSpeed = 10 + (Math.random() * 4); // range: [10, 14]
-    const temperature = 20 + (Math.random() * 10); // range: [20, 30]
-    const humidity = 60 + (Math.random() * 20); // range: [60, 80]
-    const data = JSON.stringify({ deviceId: 'myFirstDevice', windSpeed: windSpeed, temperature: temperature, humidity: humidity });
-    const message = new Message(data);
-    message.properties.add('temperatureAlert', (temperature > 28) ? 'true' : 'false');
-    return message;
-    }
-
-    function errorCallback (err) {
-    console.error(err.message);
-    }
-
-    function connectCallback () {
-    console.log('Client connected');
-    // Create a message and send it to the IoT Hub every two seconds
-    sendInterval = setInterval(() => {
-        const message = generateMessage();
-        console.log('Sending message: ' + message.getData());
-        client.sendEvent(message, printResultFor('send'));
-    }, 2000);
-
-    }
-
-    // fromConnectionString must specify a transport constructor, coming from any transport package.
-    let client = Client.fromConnectionString(deviceConnectionString, Protocol);
-
-    client.on('connect', connectCallback);
-    client.on('error', errorCallback);
-    client.on('disconnect', disconnectHandler);
-    client.on('message', messageHandler);
-
-    client.open()
-    .catch(err => {
-    console.error('Could not connect: ' + err.message);
-    });
-
-    // Helper function to print results in the console
-    function printResultFor(op) {
-    return function printResult(err, res) {
-        if (err) console.log(op + ' error: ' + err.toString());
-        if (res) console.log(op + ' status: ' + res.constructor.name);
-    };
-    }
-    ```
+    > [!NOTE]
+    > Bu kod örneği, Azure IoT Tak ve Kullan kullanır ve bu, akıllı cihazları el ile herhangi bir yapılandırma olmadan çözümlerinizle tümleştirmenize imkan tanır.  Varsayılan olarak, bu belgelerde birçok örnek IoT Tak ve Kullan kullanır. IoT PnP 'nin avantajları ve bunu kullanma ya da kullanmayan durumlar hakkında daha fazla bilgi edinmek için bkz. [IoT nedir Tak ve kullan?](../iot-pnp/overview-iot-plug-and-play.md)
 
 Node.js kodu, cihazınızdan IoT Hub 'ına sanal bir telemetri iletisi gönderdiğinden, bu ileti, olayları izleyen CLı kabuğinizde görünür:
 
 ```output
+Starting event monitor, use ctrl-c to stop...
 event:
   component: ''
-  interface: ''
+  interface: dtmi:com:example:Thermostat;1
   module: ''
-  origin: <your device name>
-  payload: '{"deviceId":"myFirstDevice","windSpeed":11.853592092144627,"temperature":22.62484121157508,"humidity":66.17960805575937}'
+  origin: <your device ID>
+  payload:
+    temperature: 36.87027777131555
 ```
 
 Cihazınız artık güvenli bir şekilde bağlı ve Azure IoT Hub telemetri gönderiyor.

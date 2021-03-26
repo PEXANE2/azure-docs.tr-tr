@@ -7,17 +7,19 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 03/17/2021
-ms.openlocfilehash: 4926aa40831056556060cbf564022fa7f5e3aa7a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 367f527180a310f2cbc74b1ccdc1102e1e53d1cf
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962930"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605998"
 ---
 # <a name="quickstart-connect-an-mxchip-az3166-devkit-to-iot-central"></a>Hızlı başlangıç: bir MXYONGAAZ3166 devkit 'i IoT Central bağlama
 
 **Uygulama hedefi**: [katıştırılmış cihaz geliştirme](about-iot-develop.md#embedded-device-development)<br>
 **Toplam tamamlanma süresi**: 30 dakika
+
+[![Koda göz atın](media/common/browse-github-code.png)](https://github.com/azure-rtos/getting-started/tree/master/MXChip/AZ3166)
 
 Bu öğreticide, bir MXYONGA AZ3166 IoT DevKit 'i (herbundan sonra MXYONGA DevKit) Azure IoT 'ye bağlamak için Azure RTOS 'ı kullanırsınız. Bu makale, [Azure IoT Embedded cihaz geliştirmesi ile çalışmaya başlama](quickstart-device-development.md)serisinin bir parçasıdır. Seriler cihaz geliştiricilerinin Azure RTOS 'a tanıtılmasını sağlar ve çeşitli cihaz değerlendirme setlerinin Azure IoT 'ye nasıl bağlanacağını gösterir.
 
@@ -26,9 +28,6 @@ Bu öğreticide, bir MXYONGA AZ3166 IoT DevKit 'i (herbundan sonra MXYONGA DevKi
 * C 'de MXYONGA DevKit 'i programlamak için bir yerleşik geliştirme araçları kümesi yükler
 * Bir görüntü oluşturun ve MXYONGA DevKit üzerine Flash yapın
 * Azure IoT Central kullanarak bulut bileşenleri oluşturun, özellikleri görüntüleyin, cihaz telemetrisini görüntüleyin ve doğrudan komutları çağırın
-
-> [!NOTE]
-> Yalnızca kodu görüntülemeyi tercih ediyorsanız ve bu makaleyi tamamlamadıysanız, [Azure IoT 'ye BIR MXYONGA AZ3166 bağlama](https://github.com/azure-rtos/getting-started/tree/master/MXChip/AZ3166)adresindeki örneğe bakın. Bu makaleyi tamamlamayı planlıyorsanız, daha sonraki bir adımda GitHub deposunu klonlarsınız.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

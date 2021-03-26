@@ -10,12 +10,12 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
 ms.date: 03/23/2021
-ms.openlocfilehash: 9c1e5af065e70cf7ec7b7c3b09fc9e3376858481
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 9d7ab0498673ad7006087b66575eea9371b96d11
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105047261"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565915"
 ---
 # <a name="maintenance-window-preview"></a>Bakım penceresi (Önizleme)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -55,7 +55,7 @@ Bakım penceresi seçimi yapıldıktan ve hizmet yapılandırması tamamlandıkt
 Bakım penceresini yapılandırmak ve kullanmak uygun olan tüm [teklif türleri](https://azure.microsoft.com/support/legal/offer-details/)için ücretsizdir: Kullandıkça öde, bulut çözümü sağlayıcısı (CSP), Microsoft kurumsal anlaşma veya Microsoft Müşteri Sözleşmesi.
 
 > [!Note]
-> Azure teklifi, sahip olduğunuz Azure aboneliğinin türüdür. Örneğin, [Kullandıkça Öde tarifesine](https://azure.microsoft.com/offers/ms-azr-0003p/)sahip bir abonelik, [Open ile Azure](https://azure.microsoft.com/offers/ms-azr-0111p/)ve [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) tüm Azure tekliflerdir. Her teklif veya planın farklı hüküm ve avantajları vardır. Teklifiniz veya planınız, aboneliğin Genel Bakış sayfasında gösterilir. Aboneliğinizi farklı bir teklifle değiştirme hakkında daha fazla bilgi için bkz. [Azure aboneliğinizi farklı bir teklifle değiştirme](/azure/cost-management-billing/manage/switch-azure-offer).
+> Azure teklifi, sahip olduğunuz Azure aboneliğinin türüdür. Örneğin, [Kullandıkça Öde tarifesine](https://azure.microsoft.com/offers/ms-azr-0003p/)sahip bir abonelik, [Open ile Azure](https://azure.microsoft.com/offers/ms-azr-0111p/)ve [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) tüm Azure tekliflerdir. Her teklif veya planın farklı hüküm ve avantajları vardır. Teklifiniz veya planınız, aboneliğin Genel Bakış sayfasında gösterilir. Aboneliğinizi farklı bir teklifle değiştirme hakkında daha fazla bilgi için bkz. [Azure aboneliğinizi farklı bir teklifle değiştirme](../../cost-management-billing/manage/switch-azure-offer.md).
 
 ## <a name="advance-notifications"></a>Bildirimleri ilerlet
 
@@ -108,17 +108,17 @@ Azure SQL yönetilen örneği 'nde istemci bağlantı ilkesi hakkında daha fazl
 
 ## <a name="considerations-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için önemli noktalar
 
-Azure SQL yönetilen örneği, müşterinin sanal ağ alt ağı içinde çalışan adanmış bir yalıtılmış sanal makine kümesinde barındırılan hizmet bileşenlerinden oluşur. Bu sanal makineler, birden çok yönetilen örneği barındırasağlayan [sanal kümeleri](/azure/azure-sql/managed-instance/connectivity-architecture-overview#high-level-connectivity-architecture) oluşturur. Bir alt ağın örneklerinde yapılandırılan bakım penceresi, alt ağdaki sanal kümelerin sayısını ve Sanal kümeler arasında örneklerin dağıtımını etkileyebilir. Bu, birkaç etkilerin bir dikkate alınması gerekebilir.
+Azure SQL yönetilen örneği, müşterinin sanal ağ alt ağı içinde çalışan adanmış bir yalıtılmış sanal makine kümesinde barındırılan hizmet bileşenlerinden oluşur. Bu sanal makineler, birden çok yönetilen örneği barındırasağlayan [sanal kümeleri](../managed-instance/connectivity-architecture-overview.md#high-level-connectivity-architecture) oluşturur. Bir alt ağın örneklerinde yapılandırılan bakım penceresi, alt ağdaki sanal kümelerin sayısını ve Sanal kümeler arasında örneklerin dağıtımını etkileyebilir. Bu, birkaç etkilerin bir dikkate alınması gerekebilir.
 
 ### <a name="maintenance-window-configuration-is-long-running-operation"></a>Bakım penceresi yapılandırması uzun süren bir işlemdir 
 Bir sanal kümede barındırılan tüm örnekler bakım penceresini paylaşır. Varsayılan olarak, tüm yönetilen örnekler varsayılan bakım penceresi ile sanal kümede barındırılır. Yönetilen örnek için oluşturma sırasında başka bir bakım penceresi belirtme veya daha sonra, sanal kümeye karşılık gelen bakım penceresiyle yerleştirilmesi gerektiği anlamına gelir. Alt ağda böyle bir sanal küme yoksa, örneğe uyum sağlamak için önce yeni bir tane oluşturulması gerekir. Var olan sanal kümede ek örnek konamak, küme yeniden boyutlandırma gerektirebilir. Her iki işlem de yönetilen bir örnek için bakım penceresi yapılandırma süresine katkıda bulunur.
-Yönetilen örnekteki bakım penceresini yapılandırmanın beklenen süresi, [örnek yönetimi işlemlerinin tahmini süresi](/azure/azure-sql/managed-instance/management-operations-overview#duration)kullanılarak hesaplanabilir.
+Yönetilen örnekteki bakım penceresini yapılandırmanın beklenen süresi, [örnek yönetimi işlemlerinin tahmini süresi](../managed-instance/management-operations-overview.md#duration)kullanılarak hesaplanabilir.
 
 > [!Important]
 > Bakım işleminin sonunda kısa bir yeniden yapılandırma gerçekleşir ve genellikle uzun süreli işlem durumunda bile 8 saniyeye kadar sürer. Yeniden yapılandırma etkisini en aza indirmek için işlemi yoğun saatlerin dışında zamanlamanız gerekir.
 
 ### <a name="ip-address-space-requirements"></a>IP adresi alanı gereksinimleri
-Alt ağdaki her yeni sanal küme, [sanal küme IP adresi ayırmaya](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#determine-subnet-size)göre ek IP adresleri gerektirir. Mevcut yönetilen örnek için bakım penceresini değiştirmek, karşılık gelen hizmet katmanı için sanal çekirdekler senaryosunu ölçeklendirirken [geçici ek IP kapasitesi](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#address-requirements-for-update-scenarios) de gerektirir.
+Alt ağdaki her yeni sanal küme, [sanal küme IP adresi ayırmaya](../managed-instance/vnet-subnet-determine-size.md#determine-subnet-size)göre ek IP adresleri gerektirir. Mevcut yönetilen örnek için bakım penceresini değiştirmek, karşılık gelen hizmet katmanı için sanal çekirdekler senaryosunu ölçeklendirirken [geçici ek IP kapasitesi](../managed-instance/vnet-subnet-determine-size.md#address-requirements-for-update-scenarios) de gerektirir.
 
 ### <a name="ip-address-change"></a>IP adresi değişikliği
 Bakım penceresini yapılandırmak ve değiştirmek, alt ağın IP adresi aralığı içinde örneğin IP adresi değişikliğine neden olur.
@@ -137,8 +137,3 @@ Bakım penceresini yapılandırmak ve değiştirmek, alt ağın IP adresi aralı
 * [Azure SQL Veritabanı](sql-database-paas-overview.md) 
 * [SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md)
 * [Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde Azure bakım olaylarını planlayın](planned-maintenance.md)
-
-
-
-
-

@@ -6,13 +6,14 @@ ms.author: inhenkel
 manager: femilia
 ms.topic: how-to
 ms.service: media-services
+ms.custom: subject-monitoring
 ms.date: 03/17/2021
-ms.openlocfilehash: 783d9e1b4ab86f6580cf3418a0676921aef2db6a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 90ca92dc19c588d0b19adf009301cf844e0cdbde
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598210"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609059"
 ---
 # <a name="monitor-media-services"></a>İzleyici Media Services
 
@@ -37,9 +38,9 @@ robb@microsoft.com -->
 
 ## <a name="what-is-azure-monitor"></a>Azure İzleyici nedir?
 
-Media Services, Azure 'da, diğer bulutlardaki ve Şirket içindeki kaynaklara ek olarak Azure kaynaklarınızı izlemeye yönelik eksiksiz bir özellik kümesi sunan Azure [izleyici](https://docs.microsoft.com/azure/azure-monitor/overview)'yi kullanarak izleme verileri oluşturur.
+Media Services, Azure 'da, diğer bulutlardaki ve Şirket içindeki kaynaklara ek olarak Azure kaynaklarınızı izlemeye yönelik eksiksiz bir özellik kümesi sunan Azure [izleyici](../../../azure-monitor/overview.md)'yi kullanarak izleme verileri oluşturur.
 
-Azure [izleme Ile Azure kaynaklarını](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)izleyen aşağıdaki kavramları açıklayan makaleyi okumaya başlayın:
+Azure [izleme Ile Azure kaynaklarını](../../../azure-monitor/essentials/monitor-azure-resource.md)izleyen aşağıdaki kavramları açıklayan makaleyi okumaya başlayın:
 
 - Azure İzleyici nedir?
 - İzleme ile ilişkili maliyetler
@@ -49,7 +50,7 @@ Azure [izleme Ile Azure kaynaklarını](https://docs.microsoft.com/azure/azure-m
 
 ## <a name="monitoring-data"></a>Verileri izleme
 
-Media Services, [Azure kaynaklarından gelen verileri izleme](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data-from-Azure-resources)bölümünde açıklanan diğer Azure kaynaklarıyla aynı türde izleme verilerini toplar.
+Media Services, [Azure kaynaklarından gelen verileri izleme](../../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)bölümünde açıklanan diğer Azure kaynaklarıyla aynı türde izleme verilerini toplar.
 
 Azure İzleyici tarafından toplanan tüm veriler, ölçüm ve günlükler şeklindeki iki temel türden birine uyar. Bu iki tür ile şunları yapabilirsiniz:
 
@@ -69,13 +70,13 @@ Media Services tarafından oluşturulan ölçümler ve günlük ölçümleri hak
 
 *Kaynak günlükleri* , bir tanılama ayarı oluşturup bunları bir veya daha fazla konuma yönlendirene **kadar toplanmaz ve** depolanmaz.
 
-Azure portal, CLı veya PowerShell kullanarak bir tanılama ayarı oluşturmanın ayrıntılı süreci için [Azure 'da platform günlüklerini ve ölçümlerini toplamak üzere tanılama ayarı oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) makalesine bakın.
+Azure portal, CLı veya PowerShell kullanarak bir tanılama ayarı oluşturmanın ayrıntılı süreci için [Azure 'da platform günlüklerini ve ölçümlerini toplamak üzere tanılama ayarı oluşturma](../../../azure-monitor/essentials/diagnostic-settings.md) makalesine bakın.
 
 Bir tanılama ayarı oluşturduğunuzda hangi günlük kategorilerinin toplanacağını belirlersiniz. Media Services kategorileri [Media Services izleme veri başvurusunda](monitor-media-services-data-reference.md)listelenmiştir.
 
 ## <a name="analyzing-metrics"></a>Ölçümler çözümleniyor
 
-**Azure izleyici** menüsünden **ölçümler** ' i açarak Ölçüm Gezgini 'ni kullanarak diğer Azure hizmetlerinden ölçümlerle Media Services için ölçümleri çözümleyebilirsiniz. Bu aracı kullanma hakkında ayrıntılı bilgi için bkz. [Azure Ölçüm Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) kullanmaya başlama.
+**Azure izleyici** menüsünden **ölçümler** ' i açarak Ölçüm Gezgini 'ni kullanarak diğer Azure hizmetlerinden ölçümlerle Media Services için ölçümleri çözümleyebilirsiniz. Bu aracı kullanma hakkında ayrıntılı bilgi için bkz. [Azure Ölçüm Gezgini](../../../azure-monitor/essentials/metrics-getting-started.md) kullanmaya başlama.
 
 Media Services için toplanan ölçümlerin bir listesi için bkz. [Media Services veri başvurusunu izleme](monitor-media-services-data-reference.md).
 
@@ -83,11 +84,11 @@ Media Services için toplanan ölçümlerin bir listesi için bkz. [Media Servic
 
 Azure Izleyici günlüklerindeki veriler, her tablonun kendine ait benzersiz özellikler kümesine sahip olduğu tablolarda depolanır.  
 
-Azure Izleyici 'deki tüm kaynak günlüklerine aynı alanlar ve hizmete özgü alanlar gelir. Ortak şema, [Azure izleyici kaynak günlüğü şemasında](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-schema#top-level-resource-logs-schema)özetlenmiştir.
+Azure Izleyici 'deki tüm kaynak günlüklerine aynı alanlar ve hizmete özgü alanlar gelir. Ortak şema, [Azure izleyici kaynak günlüğü şemasında](../../../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema)özetlenmiştir.
 
 Media Services kaynak günlükleri şeması, [izleme Media Services veri başvurusunda](monitor-media-services-data-reference.md)bulunur.
 
-Etkinlik günlüğü, Azure 'da abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir platform [Günlüğliğidir](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log) . Bunu bağımsız olarak görüntüleyebilir veya Azure Izleyici günlüklerine yönlendirebilirsiniz, burada Log Analytics kullanarak çok daha karmaşık sorgular yapabilirsiniz.
+Etkinlik günlüğü, Azure 'da abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir platform [Günlüğliğidir](../../../azure-monitor/essentials/activity-log.md) . Bunu bağımsız olarak görüntüleyebilir veya Azure Izleyici günlüklerine yönlendirebilirsiniz, burada Log Analytics kullanarak çok daha karmaşık sorgular yapabilirsiniz.
 
 Media Services için toplanan kaynak günlüklerinin türlerinin listesi için bkz. [izleme Media Services veri başvurusu](monitor-media-services-data-reference.md).
 
@@ -102,7 +103,7 @@ Tanılama günlükleri ile inceleyebileceğiniz bazı şeyler şunlardır:
 
 ## <a name="alerts"></a>Uyarılar
 
-İzleme verilerinizde önemli koşullar bulunduğunda Azure Izleyici uyarıları size önceden bildirimde bulunur. Bunlar, müşterilerinizin sorunları fark etmeden önce sisteminizdeki sorunları tanımlamanızı ve ele belirlemenizi sağlar. [Ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview), [Günlükler](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)ve [etkinlik günlüğü](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-alerts)hakkında uyarı ayarlayabilirsiniz.
+İzleme verilerinizde önemli koşullar bulunduğunda Azure Izleyici uyarıları size önceden bildirimde bulunur. Bunlar, müşterilerinizin sorunları fark etmeden önce sisteminizdeki sorunları tanımlamanızı ve ele belirlemenizi sağlar. [Ölçümler](../../../azure-monitor/alerts/alerts-metric-overview.md), [Günlükler](../../../azure-monitor/alerts/alerts-unified-log.md)ve [etkinlik günlüğü](../../../azure-monitor/alerts/activity-log-alerts.md)hakkında uyarı ayarlayabilirsiniz.
 
 Media Services ölçümler, değerin değişip değişmediğini düzenli aralıklarla toplanır. Bunlar, sık örneklenebilir olmaları nedeniyle uyarı için faydalıdır. Bir uyarı görece basit mantık ile hızlı bir şekilde tetiklenebilir.
 

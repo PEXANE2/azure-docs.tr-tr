@@ -2,14 +2,14 @@
 title: Azure Resource Manager genel bakış
 description: Azure’daki kaynakların dağıtımı, yönetimi ve erişim denetimi için Azure Resource Manager’ın nasıl kullanılacağı açıklanmaktadır.
 ms.topic: overview
-ms.date: 09/01/2020
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: fad49db94195bbd2f9e5e32f8596f33fab586752
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.custom: contperf-fy21q1,contperf-fy21q3-portal
+ms.openlocfilehash: 6cd9aa82ad2f8a821ae82a361b3f11b72ca25f7a
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97858527"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608553"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager nedir?
 
@@ -91,7 +91,7 @@ Kaynak gruplarınızı tanımlarken göz önüne almanız gereken bazı önemli 
 
 * Bir kaynak grubunu sildiğinizde, kaynak grubundaki tüm kaynaklar da silinir. Azure Resource Manager Bu silmeleri nasıl düzenleyen hakkında daha fazla bilgi için bkz. [Azure Resource Manager kaynak grubu ve kaynak silme](delete-resource-group.md).
 
-* Her kaynak grubunda bir kaynak türünün en fazla 800 örneğini dağıtabilirsiniz. Bazı kaynak türleri [800 örnek sınırından muaf](resources-without-resource-group-limit.md)tutulur.
+* Her kaynak grubunda bir kaynak türünün en fazla 800 örneğini dağıtabilirsiniz. Bazı kaynak türleri [800 örnek sınırından muaf](resources-without-resource-group-limit.md)tutulur. Daha fazla bilgi için bkz. [kaynak grubu sınırları](azure-subscription-service-limits.md#resource-group-limits).
 
 * Bazı kaynaklar bir kaynak grubunun dışında bulunabilir. Bu kaynaklar [aboneliğe](../templates/deploy-to-subscription.md), [yönetim grubuna](../templates/deploy-to-management-group.md)veya [kiracıya](../templates/deploy-to-tenant.md)dağıtılır. Bu kapsamlarda yalnızca belirli kaynak türleri desteklenir.
 
@@ -112,6 +112,8 @@ Azure Resource Manager hizmeti dayanıklılık ve sürekli kullanılabilirlik i�
 Bu dayanıklılık, Kaynak Yöneticisi aracılığıyla istek alan hizmetler için geçerlidir. Örneğin, bu dayanıklılık avantajlarından yararlanın Key Vault.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+* Azure hizmetleri genelinde uygulanan sınırlar hakkında bilgi edinmek için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](azure-subscription-service-limits.md).
 
 * Kaynakları taşıma hakkında bilgi edinmek için bkz. [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](move-resource-group-and-subscription.md).
 

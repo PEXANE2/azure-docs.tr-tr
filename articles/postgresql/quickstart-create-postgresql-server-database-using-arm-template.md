@@ -1,18 +1,18 @@
 ---
 title: 'Hızlı başlangıç: PostgreSQL için Azure DB-ARM şablonu oluşturma'
 description: Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak PostgreSQL için Azure veritabanı oluşturma hakkında bilgi edinin.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 02/11/2021
-ms.openlocfilehash: fb9f12b3b31f1049cd4d9306294783e514331229
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: db65a4bb5137da23f125d67920a2ff9a1a801141
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100382200"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606732"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: bir ARM şablonu kullanarak PostgreSQL için Azure veritabanı oluşturma-tek sunucu
 

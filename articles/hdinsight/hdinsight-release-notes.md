@@ -4,13 +4,13 @@ description: Azure HDInsight için en son sürüm notları. Hadoop, Spark, R Ser
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/08/2021
-ms.openlocfilehash: 6addd7cffdd7001b5767a471fc9e0514749b18d1
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.date: 03/23/2021
+ms.openlocfilehash: 324d8b4c9fc53ca24e62fe339065d4452577cb1f
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105564900"
+ms.locfileid: "105607227"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -22,44 +22,38 @@ Azure HDInsight, Azure üzerinde açık kaynaklı analizler için kurumsal müş
 
 Sürüm notlarında abone olmak istiyorsanız, [Bu GitHub deposundaki](https://github.com/hdinsight/release-notes/releases)yayınları izleyin.
 
-## <a name="release-date-02052021"></a>Yayın tarihi: 02/05/2021
+## <a name="release-date-03242021"></a>Yayın tarihi: 03/24/2021
 
 Bu sürüm hem HDInsight 3,6 hem de HDInsight 4,0 için geçerlidir. HDInsight yayını, birkaç gün boyunca tüm bölgeler için kullanılabilir hale getirilir. Burada Yayımlanma tarihi, ilk bölgenin yayın tarihini gösterir. Değişiklikleri aşağıda görmüyorsanız, bölgenin bölgeniz için birkaç gün içinde canlı olmasını bekleyin.
 
 ## <a name="new-features"></a>Yeni özellikler
-### <a name="dav4-series-support"></a>Dav4 serisi desteği
-HDInsight bu sürümde Dav4 serisi destek ekledi. [Burada Dav4-Series](../virtual-machines/dav4-dasv4-series.md)hakkında daha fazla bilgi edinin.
+### <a name="spark-30-preview"></a>Spark 3,0 Önizleme
+HDInsight, HDInsight 4,0 'e bir önizleme özelliği olarak [Spark 3.0.0](https://spark.apache.org/docs/3.0.0/) desteği ekledi. 
 
-### <a name="kafka-rest-proxy-ga"></a>Kafka REST proxy GA 
-Kafka REST proxy, HTTPS üzerinden bir REST API aracılığıyla Kafka kümeniz ile etkileşim kurmanıza olanak sağlar. Kafka Rest proxy, bu sürümden itibaren genel kullanıma sunulmuştur. [Kafka Rest proxy](./kafka/rest-proxy.md)hakkında daha fazla bilgi edinin.
+### <a name="kafka-24-preview"></a>Kafka 2,4 Önizleme
+HDInsight, [Kafka 2.4.1](http://kafka.apache.org/24/documentation.html) desteğini HDInsight 4,0 ' ye önizleme özelliği olarak ekledi.
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
 HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Hizmet giderek [Azure sanal makine ölçek kümelerine geçiş yapar](../virtual-machine-scale-sets/overview.md). İşlemin tamamı ayda sürebilir. Bölgelerinizden ve abonelikleriniz geçirildikten sonra, yeni oluşturulan HDInsight kümeleri, müşteri eylemleri olmadan sanal makine ölçek kümelerinde çalışır. Hiçbir bölme değişikliği beklenmez.
 
 ## <a name="deprecation"></a>Kullanımdan kaldırma
-### <a name="disabled-vm-sizes"></a>Devre dışı VM boyutları
-HDInsight, 9 2021 Ocak 'Tan başlayarak standand_A8, standand_A9, standand_A10 ve standand_A11 VM boyutlarını kullanarak küme oluşturan tüm müşterileri engelleyecek. Mevcut kümeler olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 4,0 ' ye geçmeyi düşünün.
+Bu yayında kullanımdan kaldırma yok.
 
 ## <a name="behavior-changes"></a>Davranış değişiklikleri
-### <a name="default-cluster-vm-size-changes-to-ev3-series"></a>Varsayılan küme VM boyutu Ev3-Series olarak değişir 
-Varsayılan küme VM boyutları, D serisinden Ev3-Series ' e değiştirilecektir. Bu değişiklik, baş düğümler ve çalışan düğümleri için geçerlidir. Bu değişikliğin test edilen iş akışlarınızı etkileyerek etkilenmesinden kaçınmak için ARM şablonunda kullanmak istediğiniz VM boyutlarını belirtin.
+### <a name="default-cluster-version-is-changed-to-40"></a>Varsayılan küme sürümü 4,0 olarak değiştirilmiştir
+HDInsight kümesinin varsayılan sürümü 3,6 ' den 4,0 ' e değiştirilmiştir. Kullanılabilir sürümler hakkında daha fazla bilgi için bkz. [kullanılabilir sürümler](./hdinsight-component-versioning.md). [Hdınsight 4,0](./hdinsight-version-release.md)' deki yenilikler hakkında daha fazla bilgi edinin.
+
+### <a name="default-cluster-vm-sizes-are-changed-to-ev3-series"></a>Varsayılan küme VM boyutları Ev3-Series olarak değiştirilir 
+Varsayılan küme VM boyutları D serisinden Ev3 serisi olarak değiştirilir. Bu değişiklik, baş düğümler ve çalışan düğümleri için geçerlidir. Bu değişikliğin test edilen iş akışlarınızı etkileyerek etkilenmesinden kaçınmak için ARM şablonunda kullanmak istediğiniz VM boyutlarını belirtin.
 
 ### <a name="network-interface-resource-not-visible-for-clusters-running-on-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerinde çalışan kümeler için ağ arabirimi kaynağı görünmüyor
 HDInsight, giderek Azure sanal makine ölçek kümelerine geçiş yapar. Sanal makineler için ağ arabirimleri artık, Azure sanal makine ölçek kümeleri kullanan kümeler için müşterilere görünmez.
 
-
-### <a name="breaking-change-for-net-for-apache-spark-100"></a>Apache Spark 1.0.0 için .NET için son değişiklik
-HDInsight, en son sürümde, ["Apache Spark için .net](https://github.com/dotnet/spark) " kitaplığının ilk resmi sürüm v 1.0.0 ' ni tanıtır. Spark 2.4. x ve Spark 3.0. x için, [Diğer özelliklerin](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md)bir ana bilgisayarıyla birlikte DATAFRAME API 'si için bir tam sayı sağlar. Bu ana sürüm için önemli değişiklikler olacaktır, kodunuzu ve işlem hatlarınızı güncelleştirmek için gereken adımları anlamak üzere [Apache Spark için .net geçiş kılavuzuna](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) bakın. Daha fazla bilgi edinmek için [Azure HDInsight 'ta Apache Spark v 1.0 için bu .net](./spark/spark-dotnet-version-update.md#using-net-for-apache-spark-v10-in-hdinsight)bölümüne bakın.
-
-
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
 Gelecek sürümlerde aşağıdaki değişiklikler olur.
 
-### <a name="default-cluster-version-will-be-changed-to-40"></a>Varsayılan küme sürümü 4,0 olarak değiştirilecek
-2021 Şubat tarihinden itibaren, HDInsight kümesinin varsayılan sürümü 3,6 ' den 4,0 ' ye değiştirilecek. Kullanılabilir sürümler hakkında daha fazla bilgi için bkz. [kullanılabilir sürümler](./hdinsight-component-versioning.md). [Hdınsight 4,0](./hdinsight-version-release.md)' deki yenilikler hakkında daha fazla bilgi edinin.
-
 ### <a name="os-version-upgrade"></a>İşletim sistemi sürümü yükseltme
-HDInsight, işletim sistemi sürümünü Ubuntu 16,04 ' den 18,04 ' e yükseltiyor. Yükseltme, 2021 Nisan 'dan önce tamamlanır.
+HDInsight, işletim sistemi sürümünü Ubuntu 16,04 ' den 18,04 ' ye yükseltecek. Yükseltme, 2021 Nisan 'dan önce tamamlanır.
 
 ### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>HDInsight 3,6 30 2021 Haziran 'da destek bitişi
 HDInsight 3,6, destek sonu olacaktır. Form Haziran 30 2021 ' den itibaren, müşteriler yeni HDInsight 3,6 kümeleri oluşturamaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 4,0 ' ye geçmeyi düşünün.
@@ -68,4 +62,4 @@ HDInsight 3,6, destek sonu olacaktır. Form Haziran 30 2021 ' den itibaren, mü�
 HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam eder. 
 
 ## <a name="component-version-change"></a>Bileşen sürümü değişikliği
-Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](./hdinsight-component-versioning.md)bulabilirsiniz.
+Inceleme olarak Spark 3.0.0 ve Kafka 2.4.1 desteği eklendi. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](./hdinsight-component-versioning.md)bulabilirsiniz.

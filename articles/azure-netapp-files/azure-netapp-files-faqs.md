@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: b-juche
-ms.openlocfilehash: f7d1e3bebf2fbdea3075d97e3829e38a3930909b
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 3ca4938d8666fd60ebac9e75bb2da1780e0914d3
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105566141"
+ms.locfileid: "105608009"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -208,9 +208,9 @@ Hayır. Azure NetApp Files Azure Depolama Gezgini tarafından desteklenmez.
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>Nasıl yaparım?, bir dizinin sınır boyutuna yaklaşıp yaklaştığını mi belirlemektir?
 
-Bir `stat` dizinin dizin meta verileri için en büyük boyut sınırına yaklaşıp yaklaşmadığını görmek için bir istemciden komutunu kullanabilirsiniz (320 MB).
+Bir `stat` dizinin dizin meta verileri için en büyük boyut sınırına yaklaşıp yaklaşmadığını görmek için bir istemciden komutunu kullanabilirsiniz (320 MB).   
 
-320 MB 'lik bir dizin için, blok sayısı 655360 ' dir ve her blok boyutu 512 bayttır.  (Yani, 320x1024x1024/512.)  
+320 MB 'lik bir dizin için, blok sayısı 655360 ' dir ve her blok boyutu 512 bayttır.  (Yani, 320x1024x1024/512.)  Bu sayı, 320 MB 'lik bir dizin için yaklaşık 4.000.000 dosya için en fazla. Ancak, dizinde ASCII olmayan karakterler içeren dosya sayısı gibi etkenlere bağlı olarak, en fazla dosya sayısının gerçek sayısı daha düşük olabilir. Bu nedenle, `stat` dizininizin sınırına yaklaşıp yaklaştığını öğrenmek için komutunu aşağıdaki şekilde kullanmalısınız.  
 
 Örnekler:
 

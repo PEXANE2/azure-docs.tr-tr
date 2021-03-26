@@ -1,19 +1,19 @@
 ---
 title: Azure CLI Betiği - PostgreSQL için Azure Veritabanı oluşturma
 description: Örnek Azure CLI Betiği - PostgreSQL için Azure Veritabanı sunucusu oluşturur ve sunucu düzeyinde bir güvenlik duvarı kuralı yapılandırır.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.custom: mvc, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/28/2018
-ms.openlocfilehash: 959873d68f8812acb08ef0c7194f53b61404c918
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e20e9481c86db639a1e68b3e3d7d5c2146605afb
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94660500"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608485"
 ---
 # <a name="create-an-azure-database-for-postgresql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Azure CLI kullanarak PostgreSQL için Azure Veritabanı sunucusu oluşturun ve bir güvenlik duvarı kuralı yapılandırın
 Bu örnek CLI Betiği, PostgreSQL için Azure Veritabanı sunucusu oluşturur ve sunucu düzeyinde bir güvenlik duvarı kuralı yapılandırır. Betik başarılı şekilde çalıştırıldıktan sonra, PostgreSQL sunucusuna tüm Azure hizmetlerinden ve yapılandırılmış IP adresinden erişilebilir.

@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/23/2021
-ms.openlocfilehash: 8caac0a111c3a1bdd88e0d5f43a4629ad4221496
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 2de60880b511e43ffb2949a15fec2cf2a94f62fa
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888949"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567161"
 ---
 # <a name="discover-sql-server-instances-in-an-existing-project"></a>Var olan bir projede SQL Server örnekleri bulma 
 
@@ -41,7 +41,7 @@ Bu makalede, Azure SQL değerlendirme özelliğinin önizlemesinden önce oluşt
     - Gereç üzerinde çalışan hizmetlerin en son sürümlere güncelleştirildiğini doğrulayın. Bunu yapmak için gereç sunucusundan gereç Yapılandırma Yöneticisini başlatın ve Kurulum önkoşulları panelinden gereç hizmetlerini görüntüle ' yi seçin.
         - Gereç ve bileşenleri otomatik olarak güncelleştirilerek :::image type="content" source="./media/how-to-discover-sql-existing-project/appliance-services-version.png" alt-text="gereç sürümünü denetleyin":::
     - Gereç Yapılandırma Yöneticisi 'nin kimlik bilgilerini ve keşif kaynaklarını yönet panelinde, SQL Server örneği ve keşfedilecek veritabanları üzerinde sysadmin erişimi olan etki alanı veya SQL Server kimlik doğrulaması bilgilerini ekleyin.
-    Gerecin otomatik kimlik bilgisi eşleme özelliğinden yararlanabilir veya [burada](/azure/migrate/tutorial-discover-vmware#start-continuous-discovery)vurgulanan kimlik bilgilerini ilgili sunucuyla el ile eşleyebilirsiniz.
+    Gerecin otomatik kimlik bilgisi eşleme özelliğinden yararlanabilir veya [burada](./tutorial-discover-vmware.md#start-continuous-discovery)vurgulanan kimlik bilgilerini ilgili sunucuyla el ile eşleyebilirsiniz.
 
     Bazı noktalara işaret eder:
     - Yazılım envanterinin zaten etkinleştirildiğinden emin olun veya aynı etkinleştirmek için etki alanı ya da etki alanı dışı kimlik bilgileri sağlayın. SQL Server örnekleri bulması için yazılım envanteri gerçekleştirilmelidir.

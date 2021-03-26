@@ -63,6 +63,54 @@ Aşamalı indirme|Yes|Yes
 
 <sup>1</sup> yalnızca CDN uç noktasında etkin olmadığında doğrudan akış uç noktasında kullanılır.<br/>
 
+### <a name="versions"></a>Sürümler
+
+|Tür|Streammingendpointversion|Ölçek birimleri|CDN|Faturalandırma|
+|--------------|----------|-----------------|-----------------|-----------------|
+|Klasik|1.0|0|NA|Ücretsiz|
+|Standart akış uç noktası (Önizleme)|2.0|0|Yes|Ücretli|
+|Premium Akış Birimleri|1.0|>0|Yes|Ücretli|
+|Premium Akış Birimleri|2.0|>0|Yes|Ücretli|
+
+### <a name="features"></a>Özellikler
+
+Özellik|Standart|Premium
+---|---|---
+Aktarım hızı |600 Mbps 'e kadar, bir CDN kullanıldığında çok daha yüksek bir verimlilik sağlar.|akış birimi başına 200 Mbps (SU). , Bir CDN kullanıldığında daha yüksek etkili bir verimlilik sağlayabilir.
+CDN|Azure CDN, üçüncü taraf CDN veya CDN yok.|Azure CDN, üçüncü taraf CDN veya CDN yok.
+Faturalandırma eşit olarak dağıtılır| Günlük|Günlük
+Dinamik şifreleme|Yes|Yes
+Dinamik paketleme|Yes|Yes
+Ölçek|Hedeflenen işleme kadar otomatik olarak ölçeklendirin.|Ek akış birimleri.
+IP filtreleme/G20/özel ana bilgisayar <sup>1</sup>|Yes|Yes
+Aşamalı indirme|Yes|Yes
+Önerilen kullanım |Akış senaryolarının çoğunluğu için önerilir.|Profesyonel kullanım. 
+
+<sup>1</sup> yalnızca CDN bitiş noktasında etkin olmadığında doğrudan akış uç noktasında kullanılır.<br/>
+
+SLA bilgileri için bkz. [fiyatlandırma ve SLA](https://azure.microsoft.com/pricing/details/media-services/).
+
+## <a name="migration-between-types"></a>Türler arasında geçiş
+
+Kaynak | Amaç | Eylem
+---|---|---
+Klasik|Standart|Kabul etmeniz gerekiyor
+Klasik|Premium| Ölçek (ek akış birimleri)
+Standart/Premium|Klasik|Kullanılamıyor (akış uç noktası sürümü 1,0 ise). Ölçek birimleri "0" olarak ayarlanarak klasik olarak değiştirilmesine izin verilir.
+Standart (CDN ile/olmadan)|Aynı yapılandırmalara sahip Premium|**Başlangıç** durumunda izin verilir. (Azure portal aracılığıyla)
+Premium (CDN ile/olmadan)|Aynı yapılandırmalara sahip standart|**Başlama** durumunda izin verildi (Azure Portal aracılığıyla)
+Standart (CDN ile/olmadan)|Farklı bir yapılandırmaya sahip Premium|**Durdurulmuş** durumda (Azure Portal aracılığıyla) izin verilir. Çalışma durumunda izin verilmiyor.
+Premium (CDN ile/olmadan)|Farklı bir yapılandırmaya sahip standart|**Durdurulmuş** durumda (Azure Portal aracılığıyla) izin verilir. Çalışma durumunda izin verilmiyor.
+CDN ile SU >= 1 ile sürüm 1,0|CDN olmadan standart/Premium|**Durdurulma** durumunda izin verildi. **Başlangıç** durumunda izin verilmiyor.
+CDN ile SU >= 1 ile sürüm 1,0|CDN ile/ve olmadan standart|**Durdurulma** durumunda izin verildi. **Başlangıç** durumunda izin verilmiyor. Sürüm 1,0 CDN silinecek ve yeni bir oluşturulup başlatılacak.
+CDN ile SU >= 1 ile sürüm 1,0|CDN ve CDN olmadan Premium|**Durdurulma** durumunda izin verildi. **Başlangıç** durumunda izin verilmiyor. Klasik CDN silinecek ve yeni bir oluşturulup başlatılacak.
+
+
+
+
+
+
+
 ## <a name="streaming-endpoint-properties"></a>Akış uç noktası özellikleri
 
 Bu bölüm bazı akış uç noktasının özellikleriyle ilgili ayrıntıları sağlar. Yeni bir akış uç noktası ve tüm özelliklerin açıklamalarını oluşturma örnekleri için bkz. [akış uç noktası](/rest/api/media/streamingendpoints/create).
@@ -83,7 +131,7 @@ Bu bölüm bazı akış uç noktasının özellikleriyle ilgili ayrıntıları s
 - `crossSiteAccessPolicies`: Çeşitli istemciler için çapraz site erişim ilkeleri belirtmek için kullanılır. Daha fazla bilgi için bkz. [etki alanları arası ilke dosyası belirtimi](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) ve [bir hizmetin etki alanı sınırları genelinde kullanılabilir hale getirilmesi](/previous-versions/azure/azure-services/gg185950(v=azure.100)). Ayarlar yalnızca Kesintisiz Akış için geçerlidir.
 - `customHostNames`: Bir akış uç noktasını, özel bir ana bilgisayar adına yönlendirilmiş trafiği kabul edecek şekilde yapılandırmak için kullanılır. Bu özellik standart ve Premium akış uç noktaları için geçerlidir ve şu durumlarda ayarlanabilir `cdnEnabled` : false.
 
-    Etki alanı adının sahipliğinin Media Services tarafından onaylanması gerekir. Media Services, `CName` kullanımda olan etki alanına eklenecek bir bileşen olarak Media Services hesap kimliğini içeren bir kayıt isteyerek etki alanı adı sahipliğini doğrular. Örnek olarak, "sports.contoso.com" için, akış uç noktası için özel bir ana bilgisayar adı olarak kullanılmak üzere, için bir kayıt `<accountId>.contoso.com` Media Services doğrulama ana bilgisayar adlarından birine işaret etmek üzere yapılandırılmalıdır. Doğrulama ana bilgisayar adı, verifydns ' den oluşur \<mediaservices-dns-zone> .
+    Etki alanı adının sahipliğinin Media Services tarafından onaylanması gerekir. Media Services, `CName` kullanımda olan etki alanına eklenecek bir bileşen olarak Media Services hesap kimliğini içeren bir kayıt isteyerek etki alanı adı sahipliğini doğrular. Örnek olarak, "sports.contoso.com" için, akış uç noktası için özel bir ana bilgisayar adı olarak kullanılmak üzere, için bir kayıt `<accountId>.contoso.com` Media Services doğrulama ana bilgisayar adlarından birine işaret etmek üzere yapılandırılmalıdır. Doğrulama ana bilgisayar adı, verifydns ' den oluşur `\<mediaservices-dns-zone>` .
 
     Aşağıda, farklı Azure bölgeleri için doğrulama kaydında kullanılacak beklenen DNS bölgeleri verilmiştir.
   

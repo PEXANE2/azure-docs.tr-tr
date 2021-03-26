@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: ab2c56b5e5cfc3dcb7411db27e7faabb2589be6c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bfe197befc781548dc41ff389f2d9558af7a8aae
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704336"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567411"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Izleyici ile kaynak gruplarını izleme (Önizleme)
 
@@ -43,7 +43,7 @@ Varsayılan olarak, kaynaklar uygulama katmanına ve kaynak türüne göre grupl
 
 Kaynak grubu öngörüleri sayfası, sorunları tanılamanıza yardımcı olacak çeşitli diğer araçlar sağlar
 
-   |         |          |
+   | Araç | Açıklama |
    | ---------------- |:-----|
    | [**Uyarılar**](../alerts/alerts-overview.md)      |  Uyarılarınızı görüntüleyin, oluşturun ve yönetin. |
    | [**Ölçümler**](../data-platform.md) | Ölçüm tabanlı verilerinizi görselleştirin ve araştırın.    |

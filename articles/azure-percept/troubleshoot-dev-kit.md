@@ -5,25 +5,22 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 313ea98da0426af945dfdea00d33440ab2955cc7
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: c9c62ec07873272b956877ec51d8765ae0bbd100
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023087"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605646"
 ---
-# <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Azure Percept DK (geliştirme seti) sorunlarını giderme
+# <a name="azure-percept-dk-troubleshooting"></a>Azure Percept DK sorunlarını giderme
 
 Azure Percept DK için genel sorun giderme ipuçları için aşağıdaki kılavuza bakın.
 
 ## <a name="general-troubleshooting-commands"></a>Genel sorun giderme komutları
 
-Bu komutları çalıştırmak için 
-1. [Dev kit Wi-Fi AP](./quickstart-percept-dk-set-up.md) 'ye bağlanma
-1. [Geliştirme Seti içine SSH](./how-to-ssh-into-percept-dk.md)
-1. SSH terminalinde komutları girin
+Bu komutları çalıştırmak için, [Geliştirme Seti ' ne SSH ekleyin](./how-to-ssh-into-percept-dk.md) ve SSH istemci istemine komutları girin.
 
 Daha fazla analiz için herhangi bir çıktıyı bir. txt dosyasına yönlendirmek için aşağıdaki sözdizimini kullanın:
 
@@ -43,7 +40,7 @@ sudo chmod 666 [file name].txt
 scp [remote username]@[IP address]:[remote file path]/[file name].txt [local host file path]
 ```
 
-```[local host file path]``` ,. txt dosyasını kopyalamak istediğiniz ana bilgisayar bilgisayarınızdaki konuma başvurur. ```[remote username]``` , [kurulum deneyimi](./quickstart-percept-dk-set-up.md)sırasında SSH Kullanıcı adı seçilir. OOBE sırasında bir SSH oturum açma ayarı yapmadıysanız, uzak kullanıcı adınız olur ```root``` .
+```[local host file path]``` ,. txt dosyasını kopyalamak istediğiniz ana bilgisayar bilgisayarınızdaki konuma başvurur. ```[remote username]``` , [kurulum deneyimi](./quickstart-percept-dk-set-up.md)sırasında SSH Kullanıcı adı seçilir.
 
 Azure IoT Edge komutları hakkında daha fazla bilgi için bkz. [Azure IoT Edge cihaz sorun giderme belgeleri](../iot-edge/troubleshoot.md).
 
@@ -88,11 +85,11 @@ sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u 
 |```sudo docker image prune``` |[Tüm sallaştırılmış görüntüleri kaldırır](https://docs.docker.com/engine/reference/commandline/image_prune/) |
 |```sudo watch docker ps``` <br> ```watch ifconfig [interface]``` |Docker kapsayıcısı indirme durumunu denetle |
 
-## <a name="usb-updating"></a>USB güncelleştirme
+## <a name="usb-updates"></a>USB güncelleştirmeleri
 
 |Hata:                                    |Çözüm:                                               |
 |------------------------------------------|--------------------------------------------------------|
-|UıUU aracılığıyla USB Flash sırasında LIBUSB_ERROR_XXX |Bu hata, UıUU güncelleştirmesi sırasında USB bağlantı hatasının sonucudur. USB kablosu PC veya PE-10X üzerindeki USB bağlantı noktalarına düzgün bir şekilde bağlı değilse, bu formdan bir hata meydana gelir. USB kablosunun her iki ucunu da sökmeyi ve güvenli bir bağlantı sağlamak için kabloyu jiggze yapmayı deneyin. Bu neredeyse her zaman sorunu çözer. |
+|UıUU aracılığıyla USB Flash sırasında LIBUSB_ERROR_XXX |Bu hata, UıUU güncelleştirmesi sırasında USB bağlantı hatasının sonucudur. USB kablosu PC veya Percept DK taşıyıcı panosundaki USB bağlantı noktalarına düzgün şekilde bağlı değilse, bu formdan bir hata oluşur. USB kablosunun her iki ucunu da yeniden bağlamayı ve güvenli bir bağlantı sağlamak için kabloyu jiggze yapmayı deneyin. Bu neredeyse her zaman sorunu çözer. |
 
 ## <a name="azure-percept-dk-carrier-board-led-states"></a>Azure Percept DK taşıyıcı panosu LED durumları
 

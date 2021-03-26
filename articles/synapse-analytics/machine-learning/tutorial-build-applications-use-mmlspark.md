@@ -7,23 +7,23 @@ ms.subservice: machine-learning
 ms.topic: tutorial
 ms.reviewer: ''
 ms.date: 03/08/2021
-author: ruxu
+author: ruixinxu
 ms.author: ruxu
-ms.openlocfilehash: a3899b83133b3f951547fae0b11c044bfa85a5fc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 928e2ef8b373626a91a291b1798f3ebb7ef290e8
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589608"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608842"
 ---
 # <a name="tutorial-build-machine-learning-applications-using-microsoft-machine-learning-for-apache-spark-preview"></a>Öğretici: Apache Spark için Microsoft Machine Learning kullanarak makine öğrenimi uygulamaları oluşturma (Önizleme)
 
 Bu makalede, makine öğrenimi uygulamaları oluşturmak için Apache Spark ([Mmlspark](https://github.com/Azure/mmlspark)) için Microsoft Machine Learning kullanmayı öğreneceksiniz. MMLSpark, Azure bilişsel [Hizmetler](../../cognitive-services/big-data/cognitive-services-for-big-data.md), [OpenCV](https://opencv.org/), [lightgbm](https://github.com/Microsoft/LightGBM) ve daha fazlası gibi birçok derin öğrenme ve veri bilimi aracı ekleyerek Apache Spark dağıtılmış makine öğrenimi çözümünü genişletir.  MMLSpark, çeşitli Spark veri kaynaklarından güçlü ve yüksek düzeyde ölçeklenebilir tahmine dayalı ve analitik modeller oluşturmanızı sağlar.
 SYNAPSE Spark aşağıdakiler dahil yerleşik MMLSpark kitaplıklarını sağlar:
 
-- [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit) – makine öğrenimi 'nde yaklaşım analizi gibi metin analizlerini etkinleştirmek üzere Machine Learning için Kitaplık Hizmetleri.
-- [Spark üzerinde](../../cognitive-services/big-data/cognitive-services-for-big-data.md) bilişsel hizmetler – anomali algılama gibi bilişsel veri modelleme Hizmetleri için çözüm tasarımı elde etmek amacıyla, Azure bilişsel hizmetler 'In, Mini erişimli bir ml işlem hattı içinde özelliklerini birleştirmek için
-- [Lightbgm](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) – BIR yüz kimlik algılaması gibi tahmine dayalı analiz için model eğitimi etkinleştirmek üzere makine öğrenimi modeli.
+- [Vowpal Wabbit](https://github.com/Azure/mmlspark/blob/master/docs/vw.md) – makine öğrenimi 'nde yaklaşım analizi gibi metin analizlerini etkinleştirmek üzere Machine Learning için Kitaplık Hizmetleri.
+- [Spark üzerinde](https://github.com/Azure/mmlspark/blob/master/docs/cogsvc.md) bilişsel hizmetler – anomali algılama gibi bilişsel veri modelleme Hizmetleri için çözüm tasarımı elde etmek amacıyla, Azure bilişsel hizmetler 'In, Mini erişimli bir ml işlem hattı içinde özelliklerini birleştirmek için
+- [Lightbgn](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) – lightgbm, ağaç tabanlı öğrenme algoritmaları kullanan bir gradyan artırma çerçevesidir. Dağıtılması ve daha yüksek verimlilik sağlamak üzere tasarlanmıştır.
 - Koşullu KNN-koşullu sorgularla ölçeklenebilir KNN modelleri.
 - [Spark üzerinde http](https://github.com/Azure/mmlspark/blob/master/docs/http.md) – Spark ve http protokol tabanlı erişilebilirliği tümleştirerek dağıtılmış mikro hizmetleri düzenlemeye izin vermez.
 
@@ -44,7 +44,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 
 ## <a name="get-started"></a>başlarken
-Başlamak için, mmlspark ve yapılandırılaate hizmet anahtarlarını içeri aktarın.
+Başlamak için, mmlspark ve yapılandırılaate hizmet anahtarlarını içeri aktarın. 
 
 ```python
 import mmlspark
@@ -59,13 +59,16 @@ service_key =  "ADD_YOUR_SUBSCRIPION_KEY"
 bing_search_key = "ADD_YOUR_SUBSCRIPION_KEY" 
 # An Anomaly Dectector subscription key
 anomaly_key =  "ADD_YOUR_SUBSCRIPION_KEY" 
+# Your linked key vault for Synapse workspace
+key_vault = "YOUR_KEY_VAULT_NAME"
 
 
-cognitive_service_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", service_key)
-bingsearch_service_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", bing_search_key)
-anomalydetector_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", anomaly_key)
+cognitive_service_key = mssparkutils.credentials.getSecret(key_vault, service_key)
+bingsearch_service_key = mssparkutils.credentials.getSecret(key_vault, bing_search_key)
+anomalydetector_key = mssparkutils.credentials.getSecret(key_vault, anomaly_key)
 
 ```
+
 
 ## <a name="text-analytics-sample"></a>Metin analizi örneği
 

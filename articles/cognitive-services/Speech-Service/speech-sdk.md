@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: afba973570d75eace8cae8d1ed6ed470db21ef0e
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 65e55d8e9d81f4045dde29c943f034ed0a24bf4c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043266"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608094"
 ---
 # <a name="about-the-speech-sdk"></a>Konuşma SDK'sı hakkında
 
@@ -67,17 +67,17 @@ Konuşma SDK 'sını kullanan [sesli yardımcılar](voice-assistants.md) , uygul
   - Java/Windows & Linux & macOS & Android (konuşma cihazları SDK)
   - Go
 
-#### <a name="keyword-spotting"></a>Anahtar sözcük biriktirme
+#### <a name="keyword-recognition"></a>Anahtar sözcük tanıma
 
-[Anahtar sözcük biriktirme](./custom-keyword-basics.md) listesi kavramı konuşma SDK 'sında desteklenir. Anahtar sözcük biriktirme listesi, konuşma içinde bir anahtar sözcük tanımlama ve anahtar sözcüğü işitme işlemi sırasında bir eylem tarafından yapılır. Örneğin, "Hey Cortana" Cortana yardımcısını etkinleştirir.
+[Anahtar sözcük tanıma](./custom-keyword-basics.md) kavramı, konuşma SDK 'sında desteklenir. Anahtar sözcük tanıma, konuşma içinde bir anahtar sözcüğü tanımlama ve anahtar sözcüğü işitme işlemi sırasında bir eylem tarafından yapılacak bir işlemdir. Örneğin, "Hey Cortana" Cortana yardımcısını etkinleştirir.
 
-**Anahtar sözcük biriktirme (KWS)** aşağıdaki platformlarda kullanılabilir:
+**Anahtar sözcük tanıma** özelliği aşağıdaki platformlarda kullanılabilir:
 
   - C++/Windows & Linux
   - C#/Windows & Linux
   - Python/Windows & Linux
   - Java/Windows & Linux & Android (konuşma cihazları SDK)
-  - Anahtar sözcük biriktirme (KWS) işlevi herhangi bir mikrofon türü ile çalışabilir, ancak resmi KWS desteği şu anda Azure Kinect DK donanımında veya konuşma cihazları SDK 'sında bulunan mikrofon dizileri ile sınırlıdır
+  - Anahtar sözcük tanıma işlevselliği herhangi bir mikrofon türü ile çalışabilir, ancak resmi anahtar sözcük tanıma desteği, şu anda Azure Kinect DK donanımında veya konuşma cihazları SDK 'sında bulunan mikrofon dizileri ile sınırlıdır
 
 ### <a name="meeting-scenarios"></a>Toplantı senaryoları
 

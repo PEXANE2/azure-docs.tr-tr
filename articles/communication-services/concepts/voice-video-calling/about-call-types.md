@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 03/25/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4ecc7033007361e27908e0881b80091ac660398e
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 6ec616047a99465bace0b401f659765e4399634b
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108407"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604575"
 ---
 # <a name="voice-and-video-concepts"></a>Ses ve görüntü kavramları
 
@@ -44,14 +44,10 @@ Azure Iletişim hizmetlerinde bir bire bir çağrı, kullanıcılarınızın SDK
 Azure Iletişim hizmetlerinde bir grup çağrısı, üç veya daha fazla katılımcı birbirine bağlandığında oluşur. VoIP ve PSTN bağlantılı kullanıcıların herhangi bir birleşimi bir grup çağrısında bulunabilir. Bire bir çağrı, çağrıya daha fazla katılımcı eklenerek bir grup çağrısına dönüştürülebilir. Bu katılımcılardan biri bir bot olabilir.
 
 ### <a name="supported-video-standards"></a>Desteklenen video standartları
-H. ula 'yi destekliyoruz (MPEG-4)
+H. (MPEG-4) destekliyoruz.
 
 ### <a name="video-quality"></a>Video kalitesi 
 Yerel (iOS, Android) SDK 'larda tam HD 1080p ' i destekliyoruz. Web (JS) SDK 'Sı için standart HD 720p 'yi destekliyoruz. Kalite, kullanılabilir bant genişliğine bağlıdır.
-
-### <a name="rooms-concept"></a>Oda kavramı
-Odalar, Web sitenize veya yerel uygulamanıza ses, video, ekran paylaşımı, PSTN ve SMS etkileşimlerini kolayca eklemenize olanak tanıyan bir API ve SDK kümesidir.
-Önizleme sırasında, aynı konuşmaya katmak için Grup KIMLIĞINI kullanabilirsiniz. İhtiyaç duyduğunuz sayıda grup kimliği oluşturabilir ve kullanıcıları "Odalar" ile ayırabilirsiniz. İleriye doğru taşımak "Odalar" etrafında daha fazla denetim sağlar
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

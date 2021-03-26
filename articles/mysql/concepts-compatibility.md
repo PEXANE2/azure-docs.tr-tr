@@ -6,14 +6,15 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: c2faf8e8b6a814989fa9e1693fddeedb525df13a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cba9615a8c76387b593109bc2174ab4718f1750a
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100006862"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609318"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL için Azure veritabanı ile uyumlu MySQL sürücüleri ve yönetim araçları
+[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 Bu makalede, MySQL için Azure veritabanı ile uyumlu olan sürücüler ve yönetim araçları açıklanmaktadır.
 
 ## <a name="mysql-drivers"></a>MySQL sürücüleri
@@ -50,7 +51,7 @@ Uyumluluk avantajı veritabanı yönetim araçlarına da genişletilir. Veritaba
 | **SQL sorgu otomatik tamamlama** | X | X |  | X |
 | **Verileri içeri ve dışarı aktarma** | X | X | X | X |
 | **Birden çok biçime aktar** | X | X | X | X |
-| **Yedekleme ve geri yükleme** |  | X |  | X |
+| **Yedekleme ve Geri Yükleme** |  | X |  | X |
 | **Sunucu parametrelerini görüntüle** | X | X | X | X |
 | **Istemci bağlantılarını görüntüle** | X | X | X | X |
 

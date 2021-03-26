@@ -6,17 +6,18 @@ ms.author: inhenkel
 manager: femila
 ms.topic: reference
 ms.service: media-services
+ms.custom: subject-monitoring
 ms.date: 03/17/2021
-ms.openlocfilehash: 866b2faf473f06fc3f85cdb434d6555504a7f6a8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 66fce608515d16c5418ddd18e00319a3cbf088f7
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598193"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609097"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Media Services veri başvurusunu izleme
 
-Bu makale Media Services izlemek için yararlı olan verileri içerir. Azure Izleyici 'de desteklenen tüm platform ölçümleri hakkında daha fazla bilgi için [Azure izleyici Ile desteklenen ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)gözden geçirin.
+Bu makale Media Services izlemek için yararlı olan verileri içerir. Azure Izleyici 'de desteklenen tüm platform ölçümleri hakkında daha fazla bilgi için [Azure izleyici Ile desteklenen ölçümleri](../../../azure-monitor/essentials/metrics-supported.md)gözden geçirin.
 
 ## <a name="media-services-metrics"></a>Media Services ölçümleri
 
@@ -59,7 +60,7 @@ Aşağıdaki Media Services [akış uç noktası](/rest/api/media/streamingendpo
 
 ## <a name="metric-dimensions"></a>Ölçüm boyutları
 
-Ölçüm boyutları hakkında daha fazla bilgi için bkz. [çok boyutlu ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics).
+Ölçüm boyutları hakkında daha fazla bilgi için bkz. [çok boyutlu ölçümler](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
 <!--**PLACEHOLDER** for dimensions table.-->
 
@@ -67,7 +68,7 @@ Aşağıdaki Media Services [akış uç noktası](/rest/api/media/streamingendpo
 
 ## <a name="media-services-diagnostic-logs"></a>Tanılama günlüklerini Media Services
 
-Tanılama günlükleri, bir Azure kaynağının çalışması hakkında zengin ve sık veriler sağlar. Daha fazla bilgi için bkz. [Azure kaynaklarınızdan günlük verilerini toplama ve kullanma](https://docs.microsoft.com/azure/azure-monitor/essentials/platform-logs-overview.md).
+Tanılama günlükleri, bir Azure kaynağının çalışması hakkında zengin ve sık veriler sağlar. Daha fazla bilgi için bkz. [Azure kaynaklarınızdan günlük verilerini toplama ve kullanma](../../../azure-monitor/essentials/platform-logs-overview.md).
 
 Media Services aşağıdaki tanılama günlüklerini destekler:
 
@@ -81,7 +82,7 @@ Media Services aşağıdaki tanılama günlüklerini destekler:
 
 ## <a name="schemas"></a>Şemalar
 
-Üst düzey tanılama günlükleri şemasının ayrıntılı açıklaması için bkz. [Azure tanılama günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](https://docs.microsoft.com/azure/azure-monitor/essentials/resource-logs-schema.md).
+Üst düzey tanılama günlükleri şemasının ayrıntılı açıklaması için bkz. [Azure tanılama günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../../../azure-monitor/essentials/resource-logs-schema.md).
 
 ## <a name="key-delivery-log-schema-properties"></a>Anahtar teslim günlüğü şema özellikleri
 

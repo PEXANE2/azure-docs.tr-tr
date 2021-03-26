@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: f7e12567269304b33a98ff1eb9727cfdf0afbdc4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9468b3b53e0f7c435bf84b6ef99eb1e0f85d0c8e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103418649"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105560276"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Ubuntu Server 18,04 x64 üzerinde paket aracısını kullanarak Azure IoT Hub öğreticisi için cihaz güncelleştirmesi
 
@@ -32,13 +32,9 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Paket güncelleştirmesi dağıtma
 > * Güncelleştirme dağıtımını izleme
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-
 ## <a name="prerequisites"></a>Önkoşullar
 
-* IoT Hub erişim. Bir S1 (Standart) katmanını veya üstünü kullanmanız önerilir.
-* IoT Hub bağlı bir cihaz güncelleştirme örneği ve hesabı.
-  * Daha önce yapmadıysanız [bir cihaz güncelleştirme hesabı oluşturmak ve bağlamak](create-device-update-account.md) için Kılavuzu izleyin.
+* Daha önce yapmadıysanız, IoT Hub yapılandırma dahil bir [cihaz güncelleştirme hesabı ve örneği](create-device-update-account.md)oluşturun.
 * [IoT Edge cihazının bağlantı dizesi](../iot-edge/how-to-register-device.md?view=iotedge-2020-11&preserve-view=true#view-registered-devices-and-retrieve-connection-strings).
 
 ## <a name="prepare-a-device"></a>Cihaz hazırlama

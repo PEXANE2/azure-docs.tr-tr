@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 316b513f761aa422f87c83658e6c50efec25efb4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2386a7f03508be2a3e6c57111ae206807efaf3ed
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94961150"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567874"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>StorSimple 5000-7000 serisindeki verileri geçirme seçenekleri 
 
@@ -69,8 +69,7 @@ Nasuni sayesinde geçişinizi kolay bir şekilde kullanmaya başlayın: https://
 
 Talon, StorSimple 5000-7000 müşterilerinin çok daha büyük bir işlev ile StorSimple platformunda (sınırsız bulut kaynaklarıyla desteklenen küçük yerinde parmak izi) büyük bir avantajdan yararlanmaya devam etmesini kolaylaştırır.  HıZLı çözüm sayesinde, müşteriler Azure 'da verilerini geçirebilir ve koruyabilir, böylece artık daha küçük bir yazılıma sahip olan ve genel dosya kilitleme, genel ad alanı ve çok siteli işbirliği gibi avantajlar ekleyebilirsiniz.  Talon, önde gelen bir Azure ekosistem çözümüdür ve şirket içi dosya sunucusu iş yüklerini, Kullanıcı iş akışı veya deneyiminden ödün vermeden birleştirilmiş, Azure tabanlı bir ayak izine geçirmeye yönelik olarak çalışır.  
 
-' De bulutta birleştirilmiş bir kuruluşa nasıl geliştireceğinizi öğrenin https://www.talonstorage.com/alliances/microsoft-storsimple .
-
+Buluta birleştirilmiş bir kuruluşa nasıl geliştireceğinizi öğrenin.
 
 ## <a name="migration---frequently-asked-questions"></a>Geçiş-sık sorulan sorular
 

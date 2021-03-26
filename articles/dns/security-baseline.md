@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b870a0325646b01ae3a72bdd28d3ae33cba45b09
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 64a93cfea9d470ba45e59a56d4855e374f7fb704
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101733134"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559936"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>Azure DNS için Azure Güvenlik temeli
 
@@ -34,7 +34,7 @@ Endpoint cihazları, ağ kaynakları ve diğer güvenlik sistemleri tarafından 
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](/azure/azure-monitor/platform/diagnostic-settings)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Sorumluluk**: Müşteri
 
@@ -52,9 +52,9 @@ Endpoint cihazları, ağ kaynakları ve diğer güvenlik sistemleri tarafından 
 
 **Kılavuz**: Azure izleyici 'de kuruluşunuzun uyumluluk düzenlemelerine göre Log Analytics çalışma alanı saklama süresini ayarlayın. Uzun süreli ve arşiv depolama için Azure depolama hesaplarını kullanın.
 
-- [Log Analytics veri saklama süresini değiştirme](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics veri saklama süresini değiştirme](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Sorumluluk**: Müşteri
 
@@ -68,9 +68,9 @@ Alternatif olarak, Azure Sentinel veya bir üçüncü taraf sistem bilgileri ve 
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics sorguları ile çalışmaya başlama](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Log Analytics sorguları ile çalışmaya başlama](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](/azure/azure-monitor/log-query/get-started-queries)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/get-started-queries.md)
 
 **Sorumluluk**: Müşteri
 
@@ -86,7 +86,7 @@ Alternatif olarak, Azure Sentinel 'de ve yerleşik verileri etkinleştirebilir.
 
 - [Azure Güvenlik Merkezi 'nde uyarıları yönetme](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics günlük verilerinde uyarı alma](/azure/azure-monitor/learn/tutorial-response)
+- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/alerts/tutorial-response.md)
 
 **Sorumluluk**: Müşteri
 
@@ -102,11 +102,11 @@ Alternatif olarak, Azure Sentinel 'de ve yerleşik verileri etkinleştirebilir.
 
 Azure DNS, DNS bölgesi katkıda bulunan rolünün yanı sıra bölge düzeyi ve kayıt kümesi düzeyi Azure RBAC ' i de vardır. Daha ayrıntılı denetim sağlamak için kendi özel Azure rollerinizi oluşturmak da mümkündür. Özel DNS bölge kaynakları, Özel DNS bölgeye katkıda bulunan farklı bir rol adı kullanır.
 
-- [PowerShell ile Azure Active Directory (Azure AD) içinde dizin rolü alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [PowerShell ile Azure Active Directory (Azure AD) içinde dizin rolü alma](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
-- [Azure DNS 'de Azure RBAC 'yi anlama](https://docs.microsoft.com/azure/dns/dns-protect-zones-recordsets#azure-role-based-access-control)
+- [Azure DNS 'de Azure RBAC 'yi anlama](./dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 **Sorumluluk**: Müşteri
 
@@ -131,7 +131,7 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 
 Ayrıca, Azure Active Directory (Azure AD) Privileged Identity Management ve Azure Resource Manager kullanarak Yönetimsel hesaplara tam zamanında erişimi de etkinleştirebilirsiniz.
 
-- [Privileged Identity Management hakkında daha fazla bilgi edinin](/azure/active-directory/privileged-identity-management/)
+- [Privileged Identity Management hakkında daha fazla bilgi edinin](../active-directory/privileged-identity-management/index.yml)
 
 - [Azure Ilkesini kullanma](../governance/policy/tutorials/create-and-manage.md)
 
@@ -213,7 +213,7 @@ Ayrıca, Azure Active Directory (Azure AD) Privileged Identity Management ve Azu
 
 **Rehberlik**: Azure Active Directory (Azure AD) eski hesapların keşfedilmesine yardımcı olmak için Günlükler sağlar. Ayrıca, grup üyeliklerini verimli bir şekilde yönetmek, kurumsal uygulamalara erişmek ve rol atamaları için Azure AD kimlik ve erişim gözden geçirmeleri ' nı kullanın. Yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için, Kullanıcı erişimi düzenli olarak incelenebilir.
 
-- [Azure AD raporlamayı anlama](/azure/active-directory/reports-monitoring/)
+- [Azure AD raporlamayı anlama](../active-directory/reports-monitoring/index.yml)
 
 - [Azure AD kimlik ve erişim gözden geçirmelerini kullanma](../active-directory/governance/access-reviews-overview.md)
 
@@ -227,7 +227,7 @@ Ayrıca, Azure Active Directory (Azure AD) Privileged Identity Management ve Azu
 
 Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturarak ve Log Analytics çalışma alanına denetim günlüklerini ve oturum açma günlüklerini göndererek kolaylaştırabilirsiniz. İstenen uyarıları Log Analytics çalışma alanı içinde yapılandırabilirsiniz.
 
-- [Azure Izleyici ile Azure etkinlik günlüklerini tümleştirme](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure Izleyici ile Azure etkinlik günlüklerini tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Sorumluluk**: Müşteri
 
@@ -271,7 +271,7 @@ Daha ayrıntılı denetim sağlamak için kendi özel Azure rollerinizi oluştur
 
 - [Azure RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md) 
 
-- [Azure DNS 'de Azure RBAC 'yi anlama](https://docs.microsoft.com/azure/dns/dns-protect-zones-recordsets#azure-role-based-access-control)
+- [Azure DNS 'de Azure RBAC 'yi anlama](./dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 - [Azure 'da Azure RBAC 'yi anlama Özel DNS](dns-protect-private-zones-recordsets.md)
 
@@ -283,7 +283,7 @@ Daha ayrıntılı denetim sağlamak için kendi özel Azure rollerinizi oluştur
 
 **Kılavuz**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak, değişikliklerin Azure DNS gerçekleştiği zamana ve diğer önemli veya ilgili kaynaklara yönelik uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -301,7 +301,7 @@ Klasik Azure kaynakları Azure Resource Graph Explorer aracılığıyla bulunabi
 
 - [Azure Kaynak Grafı Gezgini ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
-- [Azure aboneliklerinizi görüntüleme](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Azure RBAC 'yi anlama](../role-based-access-control/overview.md)
 
@@ -368,7 +368,7 @@ Aboneliklerinizin içindeki kaynakları sorgulamak veya bulmayı sağlamak için
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../governance/policy/samples/built-in-policies.md#general)
 
 **Sorumluluk**: Müşteri
 
@@ -392,7 +392,7 @@ Aboneliklerinizin içindeki kaynakları sorgulamak veya bulmayı sağlamak için
 
 **Rehberlik**: Azure ilkesiyle Azure DNS için standart güvenlik yapılandırması tanımlayın ve uygulayın. Kurtarma Hizmetleri Kasalarınızın yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. Network" ad alanındaki Azure Ilke diğer adlarını kullanın.
 
-- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
@@ -422,9 +422,9 @@ Ayrıca, Azure Resource Manager başka bir tür güvenlik denetimini destekler, 
 
 **Kılavuz**: özel Azure ilke tanımları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek Için Azure DevOps veya Azure Repos kullanın.
 
-- [Azure DevOps 'da kod depolama](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos belgeleri](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos belgeleri](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Sorumluluk**: Müşteri
 
@@ -566,5 +566,5 @@ Ayrıca, abonelikleri kullanarak abonelikleri işaretleyin ve Azure kaynakların
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

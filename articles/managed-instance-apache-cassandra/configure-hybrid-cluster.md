@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: 6c6bbdefe666cf0dd2f1c96d783917e1874ae93d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b022bff9db87c248881cd18cc21569aaef8f404a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588707"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562146"
 ---
 # <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>Hızlı başlangıç: Apache Cassandra için Azure yönetilen örneği ile karma küme yapılandırma (Önizleme)
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, Azure CLı komutlarının karma bir kümeyi yapıland
 
 * Bu makale, Azure CLı sürüm 2.12.1 veya üstünü gerektirir. Azure Cloud Shell kullanıyorsanız, en son sürüm zaten yüklüdür.
 
-* Şirket içinde barındırılan veya şirket içi ortamınıza bağlantısı olan [Azure sanal ağı](../virtual-network/virtual-networks-overview.md) . Şirket içi ortamları Azure 'a bağlama hakkında daha fazla bilgi için bkz. Şirket [içi ağı Azure 'A bağlama](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) makalesi.
+* Şirket içinde barındırılan veya şirket içi ortamınıza bağlantısı olan [Azure sanal ağı](../virtual-network/virtual-networks-overview.md) . Şirket içi ortamları Azure 'a bağlama hakkında daha fazla bilgi için bkz. Şirket [içi ağı Azure 'A bağlama](/azure/architecture/reference-architectures/hybrid-networking/) makalesi.
 
 ## <a name="configure-a-hybrid-cluster"></a><a id="create-account"></a>Karma küme yapılandırma
 

@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 03/08/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 1ea87d40430dbf3edabd557b80ab1456b49f4605
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 821c50b5cb48bddb586c3589326a7f31c7bafded
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102507883"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604541"
 ---
 # <a name="availability-options-for-azure-virtual-machines"></a>Azure sanal makineleri için kullanılabilirlik seçenekleri
 Bu makalede, Azure sanal makineleri (VM 'Ler) için kullanılabilirlik seçeneklerine genel bakış sunulmaktadır.
@@ -57,6 +57,6 @@ Site Recovery, şunlar için çoğaltmayı yönetebilir:
 - Şirket içi VM 'Ler, Azure Stack VM 'Ler ve fiziksel sunucular.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Kullanılabilirlik bölgesinde bir sanal makine oluşturma](/linux/create-cli-availability-zone.md)
-- [Kullanılabilirlik kümesinde sanal makine oluşturma](/linux/tutorial-availability.md)
+- [Kullanılabilirlik bölgesinde bir sanal makine oluşturma](/azure/virtual-machines/linux/create-cli-availability-zone)
+- [Kullanılabilirlik kümesinde sanal makine oluşturma](/azure/virtual-machines/linux/tutorial-availability-sets)
 - [Sanal makine ölçek kümesi oluşturma](../virtual-machine-scale-sets/quick-create-portal.md)

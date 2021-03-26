@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: aldomel
-ms.openlocfilehash: 512694d75bace40f33e346d28289f62e2adb04b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bd46a09653f4d479ed0a09b73868d938aff1b825
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98221026"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605221"
 ---
 # <a name="virtual-network-traffic-routing"></a>Sanal ağ trafiğini yönlendirme
 
@@ -96,6 +96,36 @@ Kullanıcı tanımlı bir yol oluştururken belirtebileceğiniz sonraki atlama t
 
 Kullanıcı tanımlı yollarda sonraki atlama türü olarak **VNet eşlemesi** veya **VirtualNetworkServiceEndpoint** seçeneğini belirtemezsiniz. Sonraki atlama türü **VNet eşlemesi** veya **VirtualNetworkServiceEndpoint** olan yollar yalnızca bir sanal ağ eşlemesi ya da hizmet uç noktası yapılandırdığınızda Azure tarafından oluşturulur.
 
+### <a name="service-tags-for-user-defined-routes-public-preview"></a>Kullanıcı tanımlı yollar için hizmet etiketleri (Genel Önizleme)
+
+Artık açık bir IP aralığı yerine Kullanıcı tanımlı bir yolun adres ön eki olarak bir [hizmet etiketi](service-tags-overview.md) belirtebilirsiniz. Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir ve Kullanıcı tanımlı yollarla sık yapılan güncelleştirmelerin karmaşıklığını en aza indirir ve oluşturmanız gereken yolların sayısını azaltır. Şu anda her yol tablosunda hizmet etiketleri ile 25 veya daha az yol oluşturabilirsiniz. </br>
+
+
+#### <a name="exact-match"></a>Tam eşleşme
+Açık bir IP öneki ve bir hizmet etiketi olan bir rota arasında tam bir ön ek eşleşmesi olduğunda, tercihe açık ön eke sahip rota verilir. Hizmet etiketlerinin birden çok yolu eşleşen IP öneklerine sahip olduğunda, rotalar aşağıdaki sırayla değerlendirilir: 
+
+   1. Bölgesel Etiketler (örn. Storage. EastUS, AppService. AustraliaCentral)
+   2. Üst düzey Etiketler (örn. Depolama, AppService)
+   3. Azurecyüksek bölgesel etiketleri (örn. Azurecyüksek. canadamerkezi, Azurecyüksek. eastasıya)
+   4. Azurecyüksek etiketi </br></br>
+
+Bu özelliği kullanmak için rota tablosu komutlarında adres öneki parametresi için bir hizmet etiketi adı belirtin. Örneğin, PowerShell 'de, kullanarak bir Azure depolama IP ön ekine gönderilen trafiği bir sanal gerece yönlendirmek için yeni bir yol oluşturabilirsiniz: </br>
+
+```azurepowershell-interactive
+New-AzRouteConfig -Name "StorageRoute" -AddressPrefix “Storage” -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.100.4"
+```
+
+CLı için aynı komut şu şekilde olacaktır: </br>
+
+```azurecli-interactive
+az network route-table route create -g MyResourceGroup --route-table-name MyRouteTable -n StorageRoute --address-prefix Storage --next-hop-type VirtualAppliance --next-hop-ip-address 10.0.100.4
+```
+</br>
+
+
+> [!NOTE] 
+> Genel önizlemede, bazı sınırlamalar vardır. Özelliği Azure portalında Şu anda desteklenmemektedir ve yalnızca PowerShell ve CLı ile kullanılabilir. Kapsayıcılarla kullanım desteği yoktur. 
+
 ## <a name="next-hop-types-across-azure-tools"></a>Azure araçlarında sonraki atlama türleri
 
 Sonraki atlama türleri için gösterilen ve başvurulan ad, Azure portalı ile komut satırı araçları ve Azure Resource Manager ile klasik dağıtım modelleri arasında farklıdır. Aşağıdaki tabloda farklı araçlar ve [dağıtım modelleri](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ile her bir sonraki atlama türüne başvurmak için kullanılan adlar listelenir:
@@ -109,6 +139,8 @@ Sonraki atlama türleri için gösterilen ve başvurulan ad, Azure portalı ile 
 |Yok                            |Yok                                            |Null (asm modunda klasik CLI’de kullanılamaz)|
 |Sanal ağ eşleme         |VNet eşlemesi                                    |Uygulanamaz|
 |Sanal ağ hizmet uç noktası|VirtualNetworkServiceEndpoint                   |Uygulanamaz|
+
+
 
 ### <a name="border-gateway-protocol"></a>Sınır ağ geçidi protokolü
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.openlocfilehash: af371a8f7da5ef32e95d4096b69c5d52ce3e3700
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9342e0c39b558cf8b6ff5773d623ce55062f9ab5
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510586"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607482"
 ---
 # <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM yeniden başlatmaları anlama-bakım ve kapalı kalma süresi
 Azure 'daki sanal makinelere etkilenmesine neden olan üç senaryo vardır: planlanmamış donanım bakımı, beklenmedik kapalı kalma süresi ve planlı bakım.
@@ -34,7 +34,7 @@ Bu olayların bir veya daha fazlası nedeniyle kapalı kalma süresinin etkisini
 
 * Veri merkezi hatalarından korumak için [kullanılabilirlik alanları](../availability-zones/az-overview.md) kullanma
 * Bir [kullanılabilirlik kümesindeki](availability-set-overview.md) birden fazla sanal makineyi artıklık için yapılandırma
-* [Windows Için](/windows/scheduled-events.md) Linux veya zamanlanan olaylar [için ZAMANLANMıŞ](/linux/scheduled-events.md) olayları, VM etkileyen olaylara önceden yanıt vermeye yönelik olarak kullanın
+* [Windows Için](/azure/virtual-machines/windows/scheduled-events) Linux veya zamanlanan olaylar [için ZAMANLANMıŞ](/azure/virtual-machines/linux/scheduled-events) olayları, VM etkileyen olaylara önceden yanıt vermeye yönelik olarak kullanın
 * Her uygulama katmanını ayrı kullanılabilirlik kümeleri halinde yapılandırma
 * Bir [Yük dengeleyiciyi](../load-balancer/load-balancer-overview.md) kullanılabilirlik alanları veya kümeleriyle birleştirme
 

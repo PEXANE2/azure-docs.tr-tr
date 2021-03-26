@@ -1,25 +1,25 @@
 ---
-title: HBv3 serisi VM boyutu performansı
-description: Azure 'da HBv3 serisi VM boyutları için performans testi sonuçları hakkında bilgi edinin.
+title: HBv3 serisi VM boyutlarının performansı ve ölçeklenebilirliği
+description: Azure 'da HBv3 serisi VM boyutlarının performansı ve ölçeklenebilirliği hakkında bilgi edinin.
 services: virtual-machines
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: workloads
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 03/12/2021
+ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 87c3e4e9b509589624a228ea2e1f4b68e86e3fa8
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: bf64cfc8ad00fc7f761019ed2fa66089434a96ba
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721137"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604779"
 ---
 # <a name="hbv3-series-virtual-machine-performance"></a>HBv3 serisi sanal makine performansı
 
-HBv3 VM 'lerinin erken erişim kullanıcıları, yaygın HPC mikro kıyaslamalar üzerinde aşağıdaki performans rakamlarını bekleyebilir
+Yaygın HPC mikro kıyaslamaları kullanılarak performans beklentileri şunlardır:
 
 | İş Yükü                                        | HBv3                                                              |
 |-------------------------------------------------|-------------------------------------------------------------------|
@@ -30,7 +30,7 @@ HBv3 VM 'lerinin erken erişim kullanıcıları, yaygın HPC mikro kıyaslamalar
 
 ## <a name="process-pinning"></a>İşlem sabitleme
 
-İşlem sabitleme, HBv3 serisi VM 'lerde düzgün çalışarak, temel bir Silicon as 'yi konuk VM 'de kullanıma sunduk. En iyi performans ve tutarlılık için işlem sabitlenmesini önemle öneririz.
+[İşlem sabitleme](compiling-scaling-applications.md#process-pinning) , HBv3 serisi VM 'lerde düzgün çalışarak, temel bir Silicon as 'YI Konuk VM 'de kullanıma sunduk. En iyi performans ve tutarlılık için işlem sabitlenmesini önemle öneririz.
 
 ## <a name="mpi-latency"></a>MPı gecikmesi
 
@@ -45,11 +45,12 @@ OSU mikro kıyaslama paketinden MPı bant genişliği testi, aşağıda her şek
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 ## <a name="mellanox-perftest"></a>Mellanox Perftest
-[Mellanox Perftest paketinin](https://community.mellanox.com/s/article/perftest-package) gecikme süresi (ib_send_lat) ve bant genişliği (ib_send_bw) gibi birçok InfiniBand testi vardır. Örnek bir komut aşağıda verilmiştir. 
+[Mellanox Perftest paketinin](https://community.mellanox.com/s/article/perftest-package) gecikme süresi (ib_send_lat) ve bant genişliği (ib_send_bw) gibi birçok InfiniBand testi vardır. Örnek bir komut aşağıda verilmiştir.
 ```console
 numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
 - [MPI uygulamalarını ölçeklendirme](compiling-scaling-applications.md)hakkında bilgi edinin.
+- [Techcommunity makalesindeki](https://techcommunity.microsoft.com/t5/azure-compute/hpc-performance-and-scalability-results-with-azure-hbv3-vms/bc-p/2235843)HBv3 VM 'lerinde HPC uygulamalarının performans ve ölçeklenebilirlik sonuçlarını gözden geçirin.
 - [Azure Işlem Tech Community bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)en son Duyurular, HPC iş yükü örnekleri ve performans sonuçları hakkında bilgi edinin.
 - HPC iş yüklerini çalıştırmanın daha üst düzey mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](/azure/architecture/topics/high-performance-computing/).

@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: mbaldwin
-ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 5365ba8c4fbc07c487dd40cfcdc9d566990c493c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91359163"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607056"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure ayrılmış HSM ağı
 
@@ -84,6 +84,60 @@ Küresel olarak dağıtılan uygulamalarda veya yüksek kullanılabilirlik bölg
 > Genel VNET eşlemesi Şu anda adanmış HSM 'ler ile bölgeler arası bağlantı senaryolarında kullanılamaz ve bunun yerine VPN Gateway kullanılmalıdır. 
 
 ![Diyagramda iki sanal P N Ağ Geçidi ile bağlanmış iki bölge gösterilmektedir. Her bölge eşlenmiş sanal ağlar içerir.](media/networking/global-vnet.png)
+
+## <a name="networking-restrictions"></a>Ağ kısıtlamaları
+> [!NOTE]
+> Alt ağ temsili kullanan adanmış HSM hizmeti kısıtlaması, bir HSM dağıtımı için hedef ağ mimarisi tasarlarken göz önünde bulundurmanız gereken kısıtlamalardır. Alt ağ temsilcisinin kullanımı, NSG 'ler, UDRs ve küresel VNet eşlemesi adanmış HSM için desteklenmez. Aşağıdaki bölümler, bu yetenekler için aynı veya benzer bir sonuca ulaşmak için alternatif teknikler sağlar. 
+
+Adanmış HSM VNet 'te bulunan HSM NIC 'i ağ güvenlik gruplarını veya Kullanıcı tanımlı yolları kullanamaz. Bu, varsayılan reddetme ilkelerinin adanmış HSM VNet açısından ayarlanmayacağı ve ayrılmış HSM hizmetine erişim kazanmak için diğer ağ kesimlerinin allowlistelendiğinden olması gerektiği anlamına gelir. 
+
+Ağ sanal gereçleri (NVA) proxy çözümü, Ayrıca, transit/DMZ hub 'ındaki bir NVA güvenlik duvarının, HSM NIC 'nin önüne mantıksal olarak yerleştirilmesi ve bu sayede NSG 'ler ve UDRs için gerekli alternatifi sağlaması de sağlar.
+
+### <a name="solution-architecture"></a>Çözüm Mimarisi
+Bu ağ tasarımı aşağıdaki öğeleri gerektirir:
+1.  NVA proxy katmanı içeren bir transit veya DMZ hub VNet. İdeal olarak iki veya daha fazla NVA 'lar vardır. 
+2.  Özel eşleme etkin olan bir ExpressRoute bağlantı hattı ve transit hub VNet bağlantısı.
+3.  Transit hub VNet ve adanmış HSM VNet arasındaki VNet eşlemesi.
+4.  Bir NVA güvenlik duvarı veya Azure Güvenlik Duvarı, bir seçenek olarak hub 'da DMZ hizmetleri sunmaktadır. 
+5.  Ek iş yükü sanal ağları hub VNet 'e eşlenebilir. Gemalto istemcisi, hub VNet üzerinden adanmış HSM hizmetine erişebilir.
+
+![Diyagram, NSG ve UDR geçici çözümü için NVA proxy katmanı içeren bir DMZ hub VNet gösterir](media/networking/network-architecture.png)
+
+NVA proxy çözümünü eklemek Ayrıca, transit/DMZ hub 'ındaki NVA güvenlik duvarının, HSM NIC 'nin önüne mantıksal olarak yerleştirilmesi ve bu sayede gerekli varsayılan reddetme ilkelerini sağlaması de sağlar. Bizim örneğimizde, bu amaçla Azure Güvenlik duvarını kullanacağız ve aşağıdaki öğelere sahip olacak:
+1. DMZ hub VNet 'te "AzureFirewallSubnet" alt ağına dağıtılan bir Azure Güvenlik Duvarı
+2. Azure Güvenlik Duvarı 'na trafik uçlu Azure ıDB özel uç noktasına yönlendiren bir UDR içeren bir yönlendirme tablosu. Bu yönlendirme tablosu, Customer ExpressRoute sanal ağ geçidinin bulunduğu GatewaySubnet öğesine uygulanır
+3. AzureFirewall içindeki ağ güvenlik kuralları, TCP bağlantı noktası 1792 ' te dinleme yapan bir güvenilen kaynak aralığı ve Azure ıTıL özel uç noktası arasında iletmeyi sağlar. Bu güvenlik mantığı, adanmış HSM hizmetine yönelik gerekli "varsayılan reddetme" ilkesini ekler. Yani, adanmış HSM hizmetine yalnızca güvenilen kaynak IP aralıklarına izin verilir. Diğer tüm aralıklar bırakılacak.  
+4. UDR ile trafik yoğunluğunu Azure Güvenlik Duvarı 'na şirket içi olarak yönlendiren bir yönlendirme tablosu. Bu yönlendirme tablosu NVA proxy alt ağına uygulanır. 
+5. Kaynak olarak yalnızca Azure Güvenlik duvarının alt ağ aralığına güvenmek ve yalnızca TCP bağlantı noktası 1792 üzerinden HSM NIC IP adresine iletme izni vermek için proxy NVA alt ağına uygulanan bir NSG. 
+
+> [!NOTE]
+> NVA proxy katmanı, HSM NIC 'sine ilettiğinden istemci IP adresini SNAT olarak alacak olduğundan, HSM VNet ve DMZ hub VNet arasında UDRs gerekmez.  
+
+### <a name="alternative-to-udrs"></a>UDRs 'ye alternatif
+Yukarıda bahsedilen NVA katmanı çözümü, UDRs 'ye alternatif olarak işe yarar. Dikkat edilmesi için bazı önemli noktaları vardır.
+1.  Dönüş trafiğinin doğru şekilde yönlendirilmesine izin vermek için NVA 'da ağ adresi çevirisi yapılandırılmalıdır.
+2. Müşteriler, bir NAT için VNA kullanmak üzere Luna HSM yapılandırmasında istemci IP 'sini iade etmelidir. Aşağıdaki komutlar örnek olarak servce.
+```
+Disable:
+[hsm01] lunash:>ntls ipcheck disable
+NTLS client source IP validation disabled
+Command Result : 0 (Success)
+
+Show:
+[hsm01] lunash:>ntls ipcheck show
+NTLS client source IP validation : Disable
+Command Result : 0 (Success)
+```
+3.  NVA katmanına giriş trafiği için UDRs dağıtın. 
+4. Tasarıma göre, HSM alt ağları platform katmanına giden bir bağlantı isteği başlatmaz.
+
+### <a name="alternative-to-using-global-vnet-peering"></a>Küresel Sanal Ağ Eşleme kullanımı için alternatif
+Küresel VNet eşlemesi için alternatif olarak kullanabileceğiniz birkaç mimarinin vardır.
+1.  [VNET-vnet VPN Gateway bağlantısını](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) kullanma 
+2.  HSM VNET 'i bir ER devresi ile başka bir VNET ile bağlayın. Bu, doğrudan şirket içi bir yol gerektiğinde veya VPN VNET olduğunda en iyi şekilde geçerlidir. 
+
+#### <a name="hsm-with-direct-express-route-connectivity"></a>Doğrudan Express Route bağlantısı ile HSM
+![Diyagramda doğrudan Express Route bağlantısı ile HSM gösterilmektedir](media/networking/expressroute-connectivity.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

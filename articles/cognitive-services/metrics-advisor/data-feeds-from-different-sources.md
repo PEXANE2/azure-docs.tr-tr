@@ -10,22 +10,22 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: mbullwin
-ms.openlocfilehash: c4d1d23da5fd9678cc5b9477ddeed0daf4f5ac36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4fd01256d94fbcb18fe8437be00c84e49d98f7d0
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96348628"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606156"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Farklı veri kaynaklarından ölçüm Danışmanı 'na veri akışları ekleme
 
-Farklı türlerde veri kaynaklarını ölçüm Danışmanı 'na bağlamaya yönelik ayarları ve gereksinimleri bulmak için bu makaleyi kullanın. Verilerinizi ölçüm Danışmanı ile kullanmaya yönelik temel kavramlar hakkında bilgi edinmek için [verilerinizi](how-tos/onboard-your-data.md) nasıl ekleyeceğinizi okuduğunuzdan emin olun. 
+Farklı türlerde veri kaynaklarını ölçüm Danışmanı 'na bağlamaya yönelik ayarları ve gereksinimleri bulmak için bu makaleyi kullanın. Verilerinizi ölçüm Danışmanı ile kullanmaya yönelik temel kavramlar hakkında bilgi edinmek için [verilerinizi](how-tos/onboard-your-data.md) nasıl ekleyeceğinizi okuduğunuzdan emin olun. \
 
 ## <a name="supported-authentication-types"></a>Desteklenen kimlik doğrulama türleri
 
 | Kimlik doğrulaması türleri | Description |
 | ---------------------|-------------|
-|**Temel** | Veri kaynaklarına erişmek için temel parametreleri sağlayabilmeniz gerekir. Örneğin bir bağlantı dizesi veya anahtar. Veri akışı yöneticileri bu kimlik bilgilerini görüntüleyebiliyor. |
+|**Temel** | Veri kaynaklarına erişmek için temel parametreleri sağlayabilmeniz gerekir. Örneğin, bir bağlantı dizesi veya anahtar. Veri akışı yöneticileri bu kimlik bilgilerini görüntüleyebiliyor. |
 | **AzureManagedIdentity** | Azure kaynakları için [Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) Azure Active Directory özelliğidir. Azure hizmetleri 'ni Azure AD 'de otomatik olarak yönetilen bir kimlikle sağlar. Kimliği, Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz.|
 | **Azuressqlconnectionstring**| AzureSQL Bağlantı dizenizi ölçüm Danışmanı 'nda bir **kimlik bilgisi varlığı** olarak depolayın ve ölçüm verilerini her seferinde doğrudan kullanın. Yalnızca kimlik bilgileri varlığının yöneticileri bu kimlik bilgilerini görüntüleyebilir, ancak yetkili görüntüleyicilerin kimlik bilgileri için ayrıntıları bilmeleri gerekmeden veri akışları oluşturmalarına olanak sağlar. |
 | **DataLakeGen2SharedKey**| Data Lake hesabı anahtarınızı, ölçüm Danışmanı 'nda bir **kimlik bilgisi varlığı** olarak depolayın ve ölçüm verilerini her seferinde doğrudan kullanın. Yalnızca kimlik bilgisi varlığının yöneticileri bu kimlik bilgilerini görüntüleyebilir, ancak yetkili görüntüleyicilerin kimlik bilgisi ayrıntılarını bilmeleri gerekmeden veri akışı oluşturmalarına olanak sağlar.|
@@ -51,7 +51,7 @@ Farklı türlerde veri kaynaklarını ölçüm Danışmanı 'na bağlamaya yöne
 |[**MySQL**](#mysql) | Temel |
 |[**PostgreSQL**](#pgsql)| Temel|
 
-Bir **kimlik bilgisi varlığı** oluşturun ve veri kaynaklarınızda kimlik doğrulaması yapmak için kullanın. Aşağıdaki bölümler, *temel* kimlik doğrulaması için gereken parametreleri belirtir. 
+Bir kimlik bilgisi varlığı * * oluşturun ve veri kaynaklarınızda kimlik doğrulaması yapmak için kullanın. Aşağıdaki bölümler, *temel* kimlik doğrulaması için gereken parametreleri belirtir. 
 
 ## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application Insights</span>
 
@@ -159,7 +159,7 @@ JSON dosyası başına yalnızca bir zaman damgasına izin verilir.
   * `%h` saat olarak biçimlendirilir `HH`
   * `%M` dakika olarak biçimlendirilir `mm`
 
-Şu anda ölçüm Danışmanı, JSON dosyalarındaki veri şemasını aşağıda gösterildiği gibi destekler. Örnek:
+Şu anda ölçüm Danışmanı JSON dosyalarındaki veri şemasını aşağıda gösterildiği gibi destekler. Örnek:
 
 ``` JSON
 [
@@ -212,15 +212,14 @@ The timestamp field must match one of these two formats:
 
 ## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure Tablo depolama</span>
 
-* **Bağlantı dizesi**: Azure Tablo depolamadan bağlantı dizesinin nasıl alınacağını öğrenmek için lütfen [bir bağlantı dizesini görüntüleme ve kopyalama](../../storage/common/storage-account-keys-manage.md?tabs=azure-portal&toc=%2fazure%2fstorage%2ftables%2ftoc.json#view-account-access-keys) bölümüne bakın.
+* **Bağlantı dizesi**: lütfen bir SAS (paylaşılan erişim imzası) URL 'si oluşturun ve buraya girin. SAS URL 'SI oluşturmanın en kolay yolu Azure portalını kullanmaktır. Azure portal kullanarak grafik sayfasına gidebilirsiniz. Azure portal aracılığıyla bir SAS URL 'SI oluşturmak için, önce ayarlar bölümü altında erişmek istediğiniz depolama hesabına gidin ve paylaşılan erişim imzası ' na tıklayın. En az "Tablo" ve "nesne" onay kutularını işaretleyin ve ardından SAS ve bağlantı dizesi oluştur düğmesine tıklayın. Tablo hizmeti SAS URL 'SI, ölçüm Danışmanı çalışma alanındaki metin kutusunu kopyalamanız ve doldurmanız gereken şeydir.
 
 * **Tablo adı**: sorgulanacak bir tablo belirtin. Bu, Azure depolama hesabı Örneğinizde bulunabilir. **Tablo hizmeti** bölümünde **Tablolar** ' a tıklayın.
 
-* **Sorgu** Sorgunuzda ' i kullanabilirsiniz `@StartTime` . `@StartTime` betikte bir yyyy-MM-ddTHH: mm: ss biçim dizesiyle değiştirilmiştir.
+* **Sorgu** Sorgunuzda ' i kullanabilirsiniz `@StartTime` . `@StartTime` betikte bir yyyy-MM-ddTHH: mm: ss biçim dizesiyle değiştirilmiştir. İpucu: belirli bir zaman aralığına sahip bir sorgu oluşturmak için Azure Depolama Gezgini 'ni kullanın ve çalışır durumda olduğundan emin olun ve ardından değişikliği yapın.
 
     ``` mssql
-    let StartDateTime = datetime(@StartTime); let EndDateTime = StartDateTime + 1d; 
-    SampleTable | where Timestamp >= StartDateTime and Timestamp < EndDateTime | project Timestamp, Market, RPM
+    date ge datetime'@StartTime' and date lt datetime'@EndTime'
     ```
 
 ## <a name="span-ideselasticsearchspan"></a><span id="es">Elasticsearch</span>
@@ -232,7 +231,7 @@ The timestamp field must match one of these two formats:
 
 ## <a name="span-idhttphttp-requestspan"></a><span id="http">HTTP isteği</span>
 
-* **İstek URL 'si**: bir JSON DÖNDÜREBILEN bir http url 'si. % Y,% m,% d,% h,% M yer tutucuları desteklenir:% Y = yıl, biçim yyyy,% m = ay,% d = gün,% m = şu biçimde Örneğin: `http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M`.
+* **İstek URL 'si**: JSON DÖNDÜRESAĞLAYAN bir http url 'si. % Y,% m,% d,% h,% M yer tutucuları desteklenir:% Y = yıl, biçim yyyy,% m = ay,% d = gün,% m = şu biçimde Örneğin: `http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M`.
 * **Istek HTTP yöntemi**: get veya post kullanın.
 * **İstek üst bilgisi**: temel kimlik doğrulaması eklenemiyor. 
 * **İstek yükü**: yalnızca JSON yükü desteklenir. Yer tutucu @StartTime , yükte desteklenir. Yanıt şu JSON biçiminde olmalıdır: [{"timestamp": "2018-01-01T00:00:00Z", "Pazar": "en-US", "say": 11, "gelir": 1,23}, {"timestamp": "2018-01-01T00:00:00Z", "Pazar": "zh-CN", "Count": 22, "gelir": 4.56}]. (örneğin, 2020-06-21T00:00:00Z verileri yapıldığında @StartTime = 2020-06-21T00:00:00.0000000 + 00:00)

@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18, devx-track-azurepowershell
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/14/2020
-ms.author: mbaldwin
-ms.openlocfilehash: 52b62e463edc51b3d93d7af69623a88abd9cc6be
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 5ed5ac90f446f74c54488f6d0cf23adbd63a3e1e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98108611"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606887"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Öğretici: PowerShell kullanarak var olan bir sanal ağa HSM 'leri dağıtma
 
@@ -68,7 +68,7 @@ Devam etmeden önce, komut "kayıtlı" (aşağıda gösterildiği gibi) durumunu
 
 ### <a name="creating-hsm-resources"></a>HSM kaynakları oluşturma
 
-Bir HSM cihazı, müşterilerin sanal ağına temin edilir. Bu, bir alt ağ gereksinimini gösterir. Sanal ağ ile fiziksel cihaz arasında iletişimi etkinleştirmek için HSM 'nin bağımlılığı bir ExpressRoute ağ geçididir ve son olarak, HSM cihazına Gemalto istemci yazılımını kullanarak erişmek için bir sanal makine gerekir. Bu kaynaklar, kullanım kolaylığı için karşılık gelen parametre dosyası ile birlikte bir şablon dosyasına toplanır. Dosyalar, Microsoft 'ta doğrudan iletişim kurarak kullanılabilir HSMrequest@Microsoft.com .
+Bir HSM cihazı, müşterilerin sanal ağına temin edilir. Bu, bir alt ağ gereksinimini gösterir. Sanal ağ ile fiziksel cihaz arasında iletişimi etkinleştirmek için HSM 'nin bağımlılığı bir ExpressRoute ağ geçididir ve son olarak Thales istemci yazılımını kullanarak HSM cihazına erişmek için bir sanal makine gerekir. Bu kaynaklar, kullanım kolaylığı için karşılık gelen parametre dosyası ile birlikte bir şablon dosyasına toplanır. Dosyalar, Microsoft 'ta doğrudan iletişim kurarak kullanılabilir HSMrequest@Microsoft.com .
 
 Dosyalar alındıktan sonra, kaynaklar için tercih ettiğiniz adları eklemek üzere parametre dosyasını düzenlemeniz gerekir. Bu, satırları "değer": "" ile düzenlemeniz anlamına gelir.
 
@@ -235,14 +235,14 @@ SSH kullanarak HSM cihazına bağlandığınızda, HSM 'nin çalışır durumda 
 
 ![HSM Show komutunun çıkışını gösteren ekran görüntüsü.](media/tutorial-deploy-hsm-powershell/output.png)
 
-Bu noktada, yüksek oranda kullanılabilir, iki HSM dağıtımı ve doğrulanan erişim ve işlemsel durum için tüm kaynakları ayırmış olursunuz. Daha fazla yapılandırma veya test, HSM cihazının kendisi ile daha fazla iş içerir. Bu şekilde, HSM 'yi başlatmak ve bölüm oluşturmak için Gemalto Luna ağ HSM 7 Yönetim Kılavuzu Bölüm 7 ' deki yönergeleri izlemelisiniz. Tüm belgeler ve yazılımlar, Gemalto müşteri destek portalına kaydolduktan ve müşterinin KIMLIĞI varsa, doğrudan Gemalto yüklenmek üzere kullanılabilir. Gerekli tüm bileşenleri almak için Istemci yazılımı 7,2 sürümünü indirin.
+Bu noktada, yüksek oranda kullanılabilir, iki HSM dağıtımı ve doğrulanan erişim ve işlemsel durum için tüm kaynakları ayırmış olursunuz. Daha fazla yapılandırma veya test, HSM cihazının kendisi ile daha fazla iş içerir. Bunun için, HSM 'yi başlatmak ve bölüm oluşturmak üzere Thales Luna 7 HSM Yönetim Kılavuzu Bölüm 7 ' deki yönergeleri izlemelisiniz. [Thales müşteri destek portalına](https://supportportal.thalesgroup.com/csm) kaydolduktan ve müşterinin kimliği varsa, tüm belgeler ve yazılımlar doğrudan karşıdan yüklenmek üzere kullanılabilir. Gerekli tüm bileşenleri almak için Istemci yazılımı 7,2 sürümünü indirin.
 
 ## <a name="delete-or-clean-up-resources"></a>Kaynakları silme veya temizleme
 
 Yalnızca HSM cihazını tamamladıysanız, kaynak olarak silinebilir ve ücretsiz havuza geri döndürülebilecek. Bu, cihazdaki önemli müşteri verileri olduğunda bu sorunu giderin. Bir cihazı "sıfırlama" yapmanın en iyi yolu, HSM Yönetici parolasının yanlış 3 kez alınacağını (Not: Bu gereç Yöneticisi değil, gerçek HSM Yöneticisi). Anahtar malzemesini korumanın bir güvenlik önlemi olarak, cihaz, sıfırlama durumunda olana kadar bir Azure kaynağı olarak silinemez.
 
 > [!NOTE]
-> herhangi bir Gemalto cihaz yapılandırmasıyla ilgili sorun yaşıyorsanız, [Gemalto müşteri desteği](https://safenet.gemalto.com/technical-support/)'ne başvurmalısınız.
+> herhangi bir Thales cihaz yapılandırmasıyla ilgili sorun yaşıyorsanız [Thales müşteri desteği](https://supportportal.thalesgroup.com/csm)'ne başvurmalısınız.
 
 Azure 'da HSM kaynağını kaldırmak istiyorsanız, "$" değişkenlerini benzersiz parametrelerinizle değiştirerek aşağıdaki komutu kullanabilirsiniz:
 

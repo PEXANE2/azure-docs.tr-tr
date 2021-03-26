@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.author: mbaldwin
-ms.openlocfilehash: 85aa9d355b2440535ea13c8c15e95500bac22352
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: c46ccbda35936ed94079a21e3e9c72405875b961
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98567263"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608876"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure adanmış HSM yüksek kullanılabilirlik
 
@@ -25,7 +25,7 @@ Azure adanmış HSM, Microsoft 'un yüksek oranda kullanılabilir veri merkezler
 
 ## <a name="high-availability-example"></a>Yüksek kullanılabilirlik örneği
 
-Yazılım düzeyinde yüksek kullanılabilirlik için HSM cihazlarının nasıl yapılandırılacağı hakkında bilgi ' Thales Luna 7 HSM Yönetim Kılavuzu ' nda bulunur. Bu belge  [Thales HSM sayfasında](https://thalesdocs.com/gphsm/Content/luna/network/luna_network_releases.htm)bulunur.
+Yazılım düzeyinde yüksek kullanılabilirlik için HSM cihazlarının nasıl yapılandırılacağı hakkında bilgi ' Thales Luna 7 HSM Yönetim Kılavuzu ' nda bulunur. Bu belge  [Thales HSM sayfasında](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms)bulunur.
 
 Aşağıdaki diyagramda, yüksek oranda kullanılabilir bir mimari gösterilmektedir. Bölgede birden çok cihazı ve ayrı bir bölgede eşleştirilmiş birden çok cihazı kullanır. Bu mimari en az dört HSM cihaz ve sanal ağ bileşeni kullanır.
 
@@ -42,4 +42,4 @@ Daha fazla kavram düzeyi konuları:
 * [Desteklenebilirlik](supportability.md)
 * [İzleme](monitoring.md)
 
-Yüksek kullanılabilirlik için HSM cihazlarını yapılandırma hakkında ayrıntılı bilgi için, lütfen yönetici kılavuzlarına yönelik Thales müşteri destek portalına başvurun ve Bölüm 6 ' yı inceleyin.
+Yüksek kullanılabilirlik için HSM cihazlarını yapılandırma hakkında ayrıntılı bilgi için, lütfen yönetici kılavuzlarına yönelik [Thales müşteri destek portalına](https://supportportal.thalesgroup.com/csm) başvurun ve Bölüm 6 ' yı inceleyin.

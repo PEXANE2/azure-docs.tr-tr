@@ -13,19 +13,22 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 472b0d2886d9177c6507c84d5a8b6da6e99e65e5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2d14ca2423d34926a9e297823a6515c2c5dde06a
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597972"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607125"
 ---
 # <a name="virtual-network-service-tags"></a>Sanal ağ hizmeti etiketleri
 <a name="network-service-tags"></a>
 
 Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir ve ağ güvenlik kuralları için sık sık güncelleştirmelerin karmaşıklığını en aza indirir.
 
-[Ağ güvenlik gruplarında](./network-security-groups-overview.md#security-rules) veya [Azure Güvenlik duvarında](../firewall/service-tags.md)ağ erişim denetimleri tanımlamak için hizmet etiketlerini kullanabilirsiniz. Güvenlik kuralları oluştururken belirli IP adreslerinin yerine hizmet etiketleri kullanın. Bir kuralın uygun *kaynak* veya *hedef* alanında **apimanayönetimi** gibi hizmet etiketi adını belirterek, ilgili hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz.
+[Ağ güvenlik gruplarında](./network-security-groups-overview.md#security-rules) veya [Azure Güvenlik duvarında](../firewall/service-tags.md)ağ erişim denetimleri tanımlamak için hizmet etiketlerini kullanabilirsiniz. Güvenlik kuralları oluştururken belirli IP adreslerinin yerine hizmet etiketleri kullanın. Bir kuralın uygun *kaynak* veya *hedef* alanında **apimanayönetimi** gibi hizmet etiketi adını belirterek, ilgili hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. 
+
+> [!NOTE] 
+> 2021 Mart itibariyle, [Kullanıcı tanımlı rotalarda](./virtual-networks-udr-overview.md)açık IP aralıkları yerine hizmet etiketleri de kullanabilirsiniz. Bu özellik şu anda Genel Önizlemededir. 
 
 Hizmet etiketlerini kullanarak, genel uç noktalarından oluşan Azure hizmetlerine erişirken ağ yalıtımı elde edebilir ve Azure kaynaklarınızı genel Internet üzerinden koruyabilirsiniz. **Internet** **'ten gelen** /giden trafiği reddetmek ve belirli Azure hizmetlerinin diğer [kullanılabilir hizmet etiketlerine](#available-service-tags) /sayısına giden trafiğe izin vermek için gelen/giden ağ güvenlik grubu kuralları oluşturun.
 

@@ -11,28 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc, seodec18
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: 6eb82400b2f598b4b54da4b238f4bce71d83de6b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 0e07839c3c5ce542335eeadc92e6a3c98fe87856
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90970205"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606989"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Azure Ayrılmış HSM nedir?
 
 Azure adanmış HSM, Azure 'da şifreleme anahtar depolaması sağlayan bir Azure hizmetidir. Adanmış HSM en katı güvenlik gereksinimlerini karşılar. FIPS 140-2 düzey 3 tarafından doğrulanan cihazlar ve HSM gerecinin tam ve dışlamalı denetimini gerektiren müşteriler için ideal bir çözümdür. 
 
- HSM cihazları, çeşitli Azure bölgelerinde küresel olarak dağıtılır. Bunlar, cihaz çifti olarak kolayca sağlanabilir ve yüksek kullanılabilirlik için yapılandırılabilir. Ayrıca, bölgesel düzeyde yük devretmeye karşı güvence altına almak için bölgeler arasında HSM cihazları sağlanabilir. Microsoft, Gemalto 'dan [SafeNet Luna ağ HSM 7 (model A790)](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) gereci kullanarak adanmış HSM hizmetini sunar. Bu cihaz en yüksek performans ve şifreleme tümleştirme seçeneklerini sunar. 
+ HSM cihazları, çeşitli Azure bölgelerinde küresel olarak dağıtılır. Bunlar, cihaz çifti olarak kolayca sağlanabilir ve yüksek kullanılabilirlik için yapılandırılabilir. Ayrıca, bölgesel düzeyde yük devretmeye karşı güvence altına almak için bölgeler arasında HSM cihazları sağlanabilir. Microsoft, [Thales Luna 7 HSM model A790 gereçlerini](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) kullanarak adanmış HSM hizmetini sunar. Bu cihaz en yüksek performans ve şifreleme tümleştirme seçeneklerini sunar. 
 
-Bunlar sağlandıktan sonra, HSM cihazları doğrudan bir müşterinin sanal ağına bağlanır. Ayrıca, Noktadan siteye veya siteden siteye VPN bağlantısı yapılandırdığınızda şirket içi uygulama ve yönetim araçları tarafından da erişilebilir. Müşteriler, HSM cihazlarını Gemalto 'ın destek portalından yapılandırmak ve yönetmek için yazılım ve belgeleri alırlar.
+Bunlar sağlandıktan sonra, HSM cihazları doğrudan bir müşterinin sanal ağına bağlanır. Ayrıca, Noktadan siteye veya siteden siteye VPN bağlantısı yapılandırdığınızda şirket içi uygulama ve yönetim araçları tarafından da erişilebilir. Müşteriler, [Thales müşteri destek PORTALıNDAN](https://supportportal.thalesgroup.com/csm)HSM cihazlarını yapılandırmak ve yönetmek için yazılım ve belgeleri alırlar.
 
 ## <a name="why-use-azure-dedicated-hsm"></a>Azure ayrılmış HSM neden kullanılmalıdır?
 
 ### <a name="fips-140-2-level-3-compliance"></a>FIPS 140-2 düzey-3 uyumluluğu
 
-Birçok kuruluşun, şifreleme anahtarı depolamanın [fıps 140-2 düzey 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) gereksinimlerini karşıladığını belirten katı sektör düzenlemeleri vardır. Microsoft 'un çok kiracılı Azure Key Vault hizmeti şu anda yalnızca FIPS 140-2 düzey 2 sertifikası sağlıyor. Azure adanmış HSM, finansal hizmetler sektörünün, devlet kurumlarının ve FIPS 140-2 düzey 3 gereksinimlerini karşılaması gereken diğer kişilere gerçek bir ihtiyacı karşılar.
+Birçok kuruluşta, şifreleme anahtarlarının [fıps 140-2 düzey 3 tarafından](https://csrc.nist.gov/publications/detail/fips/140/2/final) doğrulanan HSM 'lerde depolanması gerektiğini belirten katı sektör düzenlemeleri vardır. Azure ayrılmış HSM ve yeni bir tek kiracılı teklif, [Azure Key Vault YÖNETILEN HSM (Önizleme)](https://docs.microsoft.com/azure/key-vault/managed-hsm), finansal hizmetler sektör, kamu kurumları ve DIĞER kişilerin FIPS 140-2 düzey 3 gereksinimlerini karşıladığından farklı sektör segmentlerinden müşterilere yardımcı olma. Microsoft 'un çok kiracılı [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) hizmeti şu anda FIPS 140-2 düzey 2 tarafından doğrulanan HSM 'leri kullanmaktadır. 
 
 ### <a name="single-tenant-devices"></a>Tek kiracılı cihazlar
 
@@ -48,7 +48,7 @@ Birçok müşteri, yönetim amacıyla cihazlarına tam yönetim denetimi ve tek 
 
 ### <a name="high-performance"></a>Yüksek performans
 
-Bu hizmet için farklı nedenlerle Gemalto cihazı seçildi. Geniş kapsamlı bir şifreleme algoritması desteği, desteklenen çeşitli işletim sistemleri ve geniş API desteği sunar. Dağıtılan özel model, RSA-2048 için saniyede 10.000 işlem ile mükemmel performans sunar. Benzersiz uygulama örnekleri için kullanılabilen 10 bölümü destekler. Bu cihaz düşük gecikme süreli, yüksek kapasiteli ve yüksek performanslı bir cihazdır.
+Bu hizmet için Thales cihazı çeşitli nedenlerle seçildi. Geniş kapsamlı bir şifreleme algoritması desteği, desteklenen çeşitli işletim sistemleri ve geniş API desteği sunar. Dağıtılan özel model, RSA-2048 için saniyede 10.000 işlem ile mükemmel performans sunar. Benzersiz uygulama örnekleri için kullanılabilen 10 bölümü destekler. Bu cihaz düşük gecikme süreli, yüksek kapasiteli ve yüksek performanslı bir cihazdır.
 
 ### <a name="unique-cloud-based-offering"></a>Bulut tabanlı benzersiz teklif
 
@@ -72,7 +72,7 @@ Azure ayrılmış HSM aşağıdaki tür senaryoya uygun değildir: Azure adanmı
 
 ### <a name="it-depends"></a>Duruma göre değişir
 
-Azure ayrılmış HSM 'nin sizin için çalışıp çalışmadığına göre, gereksinimlerinize ve yapamayacaksınız. FIPS 140-2 düzey 3 gereksinimi bir örnektir. Bu gereksinim ortaktır ve adanmış HSM Şu anda bu uygulamayı toplantı için tek seçenektir. Bu uygulanan gereksinimleri ilgili değilse, genellikle Azure Key Vault ve adanmış HSM arasında bir seçimdir. Karar vermeden önce gereksinimlerinizi değerlendirin.
+Azure ayrılmış HSM 'nin sizin için çalışıp çalışmadığına göre, gereksinimlerinize ve yapamayacaksınız. FIPS 140-2 düzey 3 gereksinimi bir örnektir. Bu gereksinim ortak ve Azure adanmış HSM ve yeni bir tek kiracılı tekliftir, [Azure Key Vault YÖNETILEN HSM (Önizleme)](https://docs.microsoft.com/azure/key-vault/managed-hsm) , şu anda bu dosyayı toplantıya yönelik seçeneklerdir. Bu uygulanan gereksinimleri ilgili değilse, genellikle Azure Key Vault ve Azure adanmış HSM arasında bir seçimdir. Karar vermeden önce gereksinimlerinizi değerlendirin.
 
 Seçenekleriniz için gereken durumlar şunlardır: 
 
@@ -85,7 +85,7 @@ Seçenekleriniz için gereken durumlar şunlardır:
 
 Bu, son derece özelleştirilmiş bir hizmettir. Bu nedenle, fiyatlandırma, destek ve hizmet düzeyi sözleşmeleri dahil olmak üzere bu belge kümesindeki temel kavramları tam olarak anlamanız önerilir. 
 
-[Gemalto tümleştirme kılavuzlarından](https://safenet.gemalto.com/partners/microsoft/) , HSM 'lerin mevcut bir sanal ağ ortamına sağlanması kolaylaştırılmasına yardımcı olur. Ayrıca, dağıtım mimarinizi nasıl ayarlayabileceğiniz konusunda yardım almak için nasıl yapılır kılavuzlarından de yer vardır.
+[Thales tümleştirme kılavuzlarında](https://cpl.thalesgroup.com/partners/overview) , HSM 'lerin mevcut bir sanal ağ ortamına sağlanması kolaylaştırılmasına yardımcı olur. Dağıtım mimarinizi ayarlamayı saptamanıza yardımcı olacak nasıl yapılır kılavuzlarından de yararlanın.
 
 * [Yüksek kullanılabilirlik](high-availability.md)
 * [Fiziksel güvenlik](physical-security.md)
