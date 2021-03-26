@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 240bdaee9073ab18e175e2911ac1c23ae49b3d7e
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 31b8e2e9a8e69fd730edb2c826005104f5f82bdc
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562418"
+ms.locfileid: "105609199"
 ---
 # <a name="calling-sdk-overview"></a>SDK 'ya genel bakış
 
@@ -72,17 +72,17 @@ Aşağıdaki liste, şu anda SDK 'Ları çağıran Azure Iletişim hizmetlerinde
 |                   | Ölçek modunu ayarla/Güncelleştir                                                                                           | ✔️   | ✔️            | ✔️ 
 |                   | Uzak video akışını işle                                                                                          | ✔️   | ✔️            | ✔️
 
-## <a name="calling-client-library-streaming-support"></a>İstemci kitaplığı akış desteğini çağırma
-İstemci kitaplığını çağıran Iletişim Hizmetleri aşağıdaki akış yapılandırmasını destekler:
+## <a name="calling-sdk-streaming-support"></a>SDK akış desteğini çağırma
+SDK 'Yı çağıran Iletişim Hizmetleri aşağıdaki akış yapılandırmasını destekler:
 
 | Sınır          |Web | Android/iOS|
 |-----------|----|------------|
 |**aynı anda gönderilebilecek giden akış sayısı** |1 video + 1 ekran paylaşımı | 1 video + 1 ekran paylaşımı|
 |**aynı anda işlenebilen gelen akış sayısı** |1 video + 1 ekran paylaşımı| 6 video + 1 ekran paylaşımı |
 
-## <a name="calling-client-library-timeouts"></a>İstemci kitaplığı zaman aşımlarını çağırma
+## <a name="calling-sdk-timeouts"></a>SDK zaman aşımlarını çağırma
 
-İstemci kitaplıklarını çağıran Iletişim Hizmetleri için aşağıdaki zaman aşımları geçerlidir:
+SDK 'Ları çağıran Iletişim Hizmetleri için aşağıdaki zaman aşımları geçerlidir:
 
 | Eylem           | Saniye olarak zaman aşımı |
 | -------------- | ---------- |
