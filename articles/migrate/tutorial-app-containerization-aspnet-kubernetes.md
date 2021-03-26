@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: 422a911c2c0bb6aa1252ebb649368b61aa350b6e
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 464e2450b4d4dea9fc650ad8869af4215d3db1a7
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025586"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561806"
 ---
 # <a name="aspnet-app-containerization-and-migration-to-azure-kubernetes-service"></a>Azure Kubernetes hizmetine ASP.NET uygulama kapsayıcılama ve geçiş
 
@@ -60,7 +60,7 @@ Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlard
 **Gereksinim** | **Ayrıntılar**
 --- | ---
 **Aracı yüklemek için bir makine tanımla** | Azure geçişi: uygulama Kapsayıcılama aracı 'nı yüklemek ve çalıştırmak için bir Windows makinesi. Windows makinesi bir sunucu (Windows Server 2016 veya üzeri) veya istemci (Windows 10) işletim sistemi olabilir. Bu, aracın masaüstünüzde da çalıştırılabileceği anlamına gelir. <br/><br/> Aracı çalıştıran Windows makinesinin, kapsayıcıya alınacak ASP.NET uygulamalarını barındıran sunuculara/sanal makinelere ağ bağlantısı olmalıdır.<br/><br/> Uygulama yapıtlarını depolamak için Azure geçişi: uygulama Kapsayıcılama aracı 'nı çalıştıran Windows makinesinde 6 GB 'lık alanın kullanılabilir olduğundan emin olun. <br/><br/> Windows makinesinin doğrudan veya ara sunucu üzerinden İnternet erişimi olmalıdır. <br/> <br/>Uygulama Kapsayıcılama Yardımcısı aracı 'nı çalıştıran makineye Microsoft Web Dağıtımı aracını ve henüz yüklenmemişse uygulama sunucusunu yükleme. Aracı [buradan](https://aka.ms/webdeploy3.6) indirebilirsiniz
-**Uygulama sunucuları** | Uygulama sunucularında PowerShell uzaktan iletişimini etkinleştir: uygulama sunucusunda oturum açın ve PowerShell uzaktan iletişimini açmak için [Bu](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/enable-psremoting) yönergeleri izleyin. <br/><br/> Uygulama sunucusu Windows Server 2008 R2 çalıştırıyorsa, PowerShell 5,1 ' nin uygulama sunucusunda yüklü olduğundan emin olun. Uygulama sunucusuna PowerShell 5,1 indirmek ve yüklemek için [buradaki](https://docs.microsoft.com/powershell/scripting/windows-powershell/wmf/setup/install-configure) yönergeleri izleyin. <br/><br/> Uygulama Kapsayıcılama Yardımcısı aracı 'nı çalıştıran makineye Microsoft Web Dağıtımı aracını ve henüz yüklenmemişse uygulama sunucusunu yükleme. Aracı [buradan](https://aka.ms/webdeploy3.6) indirebilirsiniz
+**Uygulama sunucuları** | Uygulama sunucularında PowerShell uzaktan iletişimini etkinleştir: uygulama sunucusunda oturum açın ve PowerShell uzaktan iletişimini açmak için [Bu](/powershell/module/microsoft.powershell.core/enable-psremoting) yönergeleri izleyin. <br/><br/> Uygulama sunucusu Windows Server 2008 R2 çalıştırıyorsa, PowerShell 5,1 ' nin uygulama sunucusunda yüklü olduğundan emin olun. Uygulama sunucusuna PowerShell 5,1 indirmek ve yüklemek için [buradaki](/powershell/scripting/windows-powershell/wmf/setup/install-configure) yönergeleri izleyin. <br/><br/> Uygulama Kapsayıcılama Yardımcısı aracı 'nı çalıştıran makineye Microsoft Web Dağıtımı aracını ve henüz yüklenmemişse uygulama sunucusunu yükleme. Aracı [buradan](https://aka.ms/webdeploy3.6) indirebilirsiniz
 **ASP.NET uygulaması** | Araç şu anda destekliyor <br/><br/> -Microsoft .NET Framework 3,5 veya üstünü kullanan uygulamalar ASP.NET.<br/> -Windows Server 2008 R2 veya üstünü çalıştıran uygulama sunucuları (uygulama sunucuları PowerShell sürüm 5,1 çalıştırmalıdır). <br/> -Internet Information Services (IIS) 7,5 veya üzeri sürümlerde çalışan uygulamalar. <br/><br/> Araç şu anda desteklenmiyor <br/><br/> -Windows kimlik doğrulaması gerektiren uygulamalar (AKS Şu anda gMSA 'Yı desteklemez). <br/> -IIS dışında barındırılan diğer Windows hizmetlerine bağımlı uygulamalar.
 
 
@@ -180,7 +180,7 @@ Yapılandırma parametreleştirilmesi, bir dağıtım süresi parametresi olarak
 
 ### <a name="externalize-file-system-dependencies"></a>Externalize dosya sistemi bağımlılıkları
 
- Uygulamanızın kullandığı diğer klasörleri ekleyebilirsiniz. Azure dosya paylaşımındaki kalıcı birimler aracılığıyla kapsayıcı görüntüsünün parçası mı yoksa externalized mi olduğunu belirtin. Kalıcı birimleri kullanmak, durumu kapsayıcının dışında depolayan veya dosya sisteminde başka statik içerik bulunan durum bilgisi olan uygulamalar için harika bir şekilde çalışabilir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/aks/concepts-storage)
+ Uygulamanızın kullandığı diğer klasörleri ekleyebilirsiniz. Azure dosya paylaşımındaki kalıcı birimler aracılığıyla kapsayıcı görüntüsünün parçası mı yoksa externalized mi olduğunu belirtin. Kalıcı birimleri kullanmak, durumu kapsayıcının dışında depolayan veya dosya sisteminde başka statik içerik bulunan durum bilgisi olan uygulamalar için harika bir şekilde çalışabilir. [Daha fazla bilgi edinin](../aks/concepts-storage.md)
 
 1. Algılanan uygulama klasörlerini gözden geçirmek için uygulama klasörleri bölümünde **Düzenle** ' ye tıklayın. Algılanan uygulama klasörleri, uygulamanın gerektirdiği zorunlu yapıtlar olarak tanımlandı ve kapsayıcı görüntüsüne kopyalanacaktır.
 
@@ -195,7 +195,7 @@ Yapılandırma parametreleştirilmesi, bir dağıtım süresi parametresi olarak
 ## <a name="build-container-image"></a>Kapsayıcı görüntüsü oluşturma
 
 
-1. **Azure Container Registry seçin**: açılan listeyi kullanarak uygulamalar için kapsayıcı görüntülerini derlemek ve depolamak için kullanılacak bir [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) seçin. Mevcut bir Azure Container Registry kullanabilir veya yeni kayıt defteri oluştur seçeneğini kullanarak yeni bir tane oluşturmayı seçebilirsiniz.
+1. **Azure Container Registry seçin**: açılan listeyi kullanarak uygulamalar için kapsayıcı görüntülerini derlemek ve depolamak için kullanılacak bir [Azure Container Registry](../container-registry/index.yml) seçin. Mevcut bir Azure Container Registry kullanabilir veya yeni kayıt defteri oluştur seçeneğini kullanarak yeni bir tane oluşturmayı seçebilirsiniz.
 
     ![Uygulama ACR seçimi için ekran görüntüsü.](./media/tutorial-containerize-apps-aks/build-aspnet-app.png)
 

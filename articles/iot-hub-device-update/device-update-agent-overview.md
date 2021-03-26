@@ -6,18 +6,18 @@ ms.author: valls
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e932238849baf267983fb3ca1ebb082db169d9fd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: efe5d0171463668bda19a0d0445fc67f3734aaee
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101680104"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561245"
 ---
 # <a name="device-update-for-iot-hub-agent-overview"></a>IoT Hub Aracısı için Cihaz Güncelleştirmesi'ne Genel Bakış
 
 Cihaz Güncelleştirme Aracısı iki kavramsal katmandan oluşur:
 
-* Arabirim katmanı, cihaz Güncelleştirme Aracısı ile cihaz güncelleştirme hizmetleri arasında ileti akışına izin veren [Azure ıot Tak ve kullan (PnP)](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play) üzerinde oluşturulur.
+* Arabirim katmanı, cihaz Güncelleştirme Aracısı ile cihaz güncelleştirme hizmetleri arasında ileti akışına izin veren [Azure ıot Tak ve kullan (PnP)](../iot-pnp/overview-iot-plug-and-play.md) üzerinde oluşturulur.
 * Platform katmanı, platform veya cihaza özgü olabilecek Indirme, yükleme ve uygulama işlemlerinin üst düzey güncelleştirme eylemleriyle sorumludur.
 
 :::image type="content" source="media/understand-device-update/client-agent-reference-implementations.png" alt-text="Aracı uygulamaları." lightbox="media/understand-device-update/client-agent-reference-implementations.png":::
@@ -72,8 +72,7 @@ APT güncelleştirme Işleyicisi, bir APT 'e özgü güncelleştirme bildirimini
 
 ## <a name="self-update-device-update-agent"></a>Self-Update cihaz Güncelleştirme Aracısı
 
-Cihaz Güncelleştirme Aracısı ve bağımlılıkları IoT Hub işlem hattı için cihaz güncelleştirmesi aracılığıyla güncelleştirilebilen olabilir. Görüntü tabanlı bir güncelleştirme kullanıyorsanız, yeni yansımanıza en son cihaz güncelleştirme aracısını ekleyin. Paket tabanlı güncelleştirme kullanıyorsanız, cihaz güncelleştirme aracısını ve istenen sürümünü, diğer tüm paketler gibi apt bildirimine ekleyin. Apt bildirimi hakkında [daha fazla bilgi edinin](device-update-apt-manifest.md) . Cihaz güncelleştirme aracısının ve teslim Iyileştirme aracısının yüklü sürümünü [IoT cihazınızın](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)cihaz özellikleri bölümünde kontrol edebilirsiniz. [ADU Core Interface altında cihaz özellikleri hakkında daha fazla bilgi edinin](device-update-plug-and-play.md#device-properties).
+Cihaz Güncelleştirme Aracısı ve bağımlılıkları IoT Hub işlem hattı için cihaz güncelleştirmesi aracılığıyla güncelleştirilebilen olabilir. Görüntü tabanlı bir güncelleştirme kullanıyorsanız, yeni yansımanıza en son cihaz güncelleştirme aracısını ekleyin. Paket tabanlı güncelleştirme kullanıyorsanız, cihaz güncelleştirme aracısını ve istenen sürümünü, diğer tüm paketler gibi apt bildirimine ekleyin. Apt bildirimi hakkında [daha fazla bilgi edinin](device-update-apt-manifest.md) . Cihaz güncelleştirme aracısının ve teslim Iyileştirme aracısının yüklü sürümünü [IoT cihazınızın](../iot-hub/iot-hub-devguide-device-twins.md)cihaz özellikleri bölümünde kontrol edebilirsiniz. [ADU Core Interface altında cihaz özellikleri hakkında daha fazla bilgi edinin](device-update-plug-and-play.md#device-properties).
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 [Cihaz Güncelleştirme Aracısı yapılandırma dosyasını anlama](device-update-configuration-file.md)
-

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 6054e7e79acaa6abf304508221c63143b9d14a45
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c11a89d91693075ca54c0689223dcf2af06df521
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102436541"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568520"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Azure Stack Edge Pro GPU cihazınızda VM 'Leri Azure portal aracılığıyla dağıtın
 
@@ -52,7 +52,7 @@ Dağıtım iş akışının üst düzey özeti aşağıdaki gibidir:
 
 Azure portal aracılığıyla cihazınızda VM 'Leri oluşturmaya ve yönetmeye başlamadan önce şunları yaptığınızdan emin olun:
 
-1. Azure Stack Edge Pro cihazınızdaki ağ ayarlarını [Adım 1: yapılandırma Azure Stack Edge Pro cihazı](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)bölümünde açıklandığı gibi tamamladınız.
+1. Azure Stack Edge Pro cihazınızdaki ağ ayarlarını [Adım 1: yapılandırma Azure Stack Edge Pro cihazı](./azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)bölümünde açıklandığı gibi tamamladınız.
 
     1. İşlem için bir ağ arabirimini etkinleştirdiniz. Bu ağ arabirimi IP 'si, VM dağıtımı için bir sanal anahtar oluşturmak üzere kullanılır. Cihazınızın yerel kullanıcı arabiriminde, **işlem**' a gidin. Sanal anahtar oluşturmak için kullanacağınız ağ arabirimini seçin.
 

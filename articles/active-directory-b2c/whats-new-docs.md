@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: 00be0a18984f1ad3eacf86a2cf3477d8b0d9065f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 3fcc4f01d926f5c624adabd51e6215e0106af1fa
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102454626"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557879"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: yenilikler
 
@@ -73,7 +73,7 @@ Azure Active Directory B2C belgelerindeki yenilikler 'e hoş geldiniz. Bu makale
 
 ### <a name="new-articles"></a>Yeni makaleler
 
-- [Azure Active Directory B2C bir Kullanıcı akışı oluşturma](create-user-flow.md)
+- [Azure Active Directory B2C bir Kullanıcı akışı oluşturma](add-sign-up-and-sign-in-policy.md)
 - [Kullanıcı akışları için telefon kaydı ve oturum açma ayarlama (Önizleme)](phone-authentication-user-flows.md)
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
@@ -114,7 +114,7 @@ Azure Active Directory B2C belgelerindeki yenilikler 'e hoş geldiniz. Bu makale
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 - [Azure Active Directory B2C için yeniden yönlendirme URL 'Lerini b2clogin.com olarak ayarlayın](b2clogin.md)
 - [Azure Active Directory B2C özel ilkesinde OpenID Connect Teknik profili tanımlama](openid-connect-technical-profile.md)
-- [Azure AD B2C özel ilkelerle telefon kayıt ve oturum açma ayarlama](phone-authentication.md)
+- [Azure AD B2C özel ilkelerle telefon kayıt ve oturum açma ayarlama](phone-authentication-user-flows.md)
 
 
 ## <a name="august-2020"></a>Ağustos 2020

@@ -4,7 +4,7 @@ description: Azure Hibrit Avantajı Azure 'da çalışan Linux sanal makinelerin
 services: virtual-machines
 documentationcenter: ''
 author: mathapli
-manager: westonh
+manager: rochakm
 ms.service: virtual-machines
 ms.subservice: azure-hybrid-benefit
 ms.collection: linux
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 17b2e260f9a90ddda6e246058cefb1bec8b1ac5e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73747222b9131fa85ae6ac01c9dedd5b0bbe1d63
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101695490"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543423"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Azure Hibrit Avantajı Linux sanal makineleri için nasıl uygulanır
 
@@ -39,7 +39,7 @@ Ayrıca, avantajı etkin olan bir VM 'yi bir PAYG faturalama modeline geri dön�
 
 Azure Hibrit Avantajı Azure Marketi 'ndeki tüm RHEL ve SLES PAYG görüntüleri için kullanılabilir. Avantaj, Azure Marketi 'nden RHEL veya SLES BYOS görüntüleri veya özel görüntüleri için henüz kullanılamamaktadır.
 
-Linux VM 'lerle avantajı zaten kullanıyorsanız, ayrılmış örnekler, Azure adanmış konak örnekleri ve SQL hibrit avantajları Azure Hibrit Avantajı için uygun değildir.
+Linux VM 'lerle avantajını zaten kullanıyorsanız, Azure adanmış konak örnekleri ve SQL hibrit avantajları Azure Hibrit Avantajı için uygun değildir.
 
 ## <a name="get-started"></a>başlarken
 
@@ -90,11 +90,8 @@ Sol taraftaki **yapılandırma** seçeneğini ziyaret ederek mevcut VM 'lerde av
 1. Soldaki **yapılandırma** seçeneğine gidin. Lisanslama bölümünü görürsünüz. AHB dönüştürmesini etkinleştirmek için ' Evet ' radyo düğmesini işaretleyin ve onay onay kutusunu işaretleyin.
 ![Oluşturmaktan sonra AHB yapılandırma dikey penceresi](./media/azure-hybrid-benefit/create-configuration-blade.png)
 
-
 >[!NOTE]
 > Bir RHEL veya SLES PAYG marketi görüntüsünün **özel bir anlık görüntüsünü** veya **PAYLAŞıLAN görüntüsünü (SIG)** oluşturduysanız, Azure hibrit avantajı ETKINLEŞTIRMEK için yalnızca Azure CLI kullanabilirsiniz. Bu, bilinen bir kısıtlamadır ve şu anda bu özelliği Azure portalında sağlamak için zaman çizelgesi bulunmamaktadır.
-
-
 
 ## <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Azure CLı 'de avantajı etkinleştirme ve devre dışı bırakma
 
@@ -179,6 +176,15 @@ Red Hat abonelik uyumluluğu, yazılım güncelleştirmeleri ve Azure Hibrit Ava
 
 SLES sanal makinelerinize yönelik Azure Hibrit Avantajı kullanmak için ve SLES PAYG 'lerden KCG 'ye geçme veya SLES BYOS 'den PAYG 'ye geçme hakkında bilgi için bkz. [SUSE Linux Enterprise ve Azure hibrit avantajı](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/). 
 
+## <a name="azure-hybrid-benefit-on-reserved-instances-is-in-preview"></a>Ayrılmış örneklere Azure Hibrit Avantajı önizleme aşamasındadır
+
+Azure ayırmaları (Azure ayrılmış sanal makine örnekleri), birden çok ürün için bir yıllık veya üç yıllık planlara göre tasarruf etmenize yardımcı olur. [Ayrılmış örnekler hakkında buradan](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)daha fazla bilgi edinebilirsiniz. Azure Hibrit Avantajı, [ayrılmış sanal makine örneği (RIS)](https://review.docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations#charges-covered-by-reservation)için önizlemede kullanılabilir. Bu, RI kullanarak indirimli bir fiyata işlem maliyeti satın aldıysanız, en üstündeki RHEL ve SUSE için lisanslama maliyetlerine AHB avantajı uygulayabilirsiniz. Bir RI örneği için AHB avantajını uygulama adımları, normal bir VM için olduğu kadar tam olarak aynı kalır.
+![RIS için AHB](./media/azure-hybrid-benefit/reserved-instances.png)
+
+>[!NOTE]
+>Azure Marketi 'nde RHEL veya SUSE PAYG yazılımı için daha önceden ayırmalar satın aldıysanız, lütfen Azure Hibrit Avantajı kullanmadan önce ayırma işleminin tamamlanmasını bekleyin.
+
+
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 *S: bir lisans türünü `RHEL_BYOS` BIR SLES görüntüsü ile kullanabilir miyim veya bunun tersini yapabilir miyim?*
 
@@ -206,11 +212,11 @@ Y: Evet, bunu yapabilirsiniz. `RHEL_BYOS`RHEL VM 'leri için lisans türünü ve
 
 *S: RHEL ve SLES için sanal makine ölçek kümelerinde Azure Hibrit Avantajı kullanabilir miyim?*
 
-Y: Hayır, bunu yapamazsınız. Sanal Makine Ölçek Kümeleri Şu anda RHEL ve SLES için Azure Hibrit Avantajı kapsamında değildir.
+Y: Evet, RHEL için sanal makine ölçek kümelerinde Azure Hibrit Avantajı ve SLES önizleme aşamasındadır. [Bu avantaj ve nasıl kullanılacağı hakkında daha fazla bilgi](https://docs.microsoft.com/azure/virtual-machine-scale-sets/azure-hybrid-benefit-linux-vmss)edinebilirsiniz. 
 
 *S: RHEL ve SLES için ayrılmış örneklerde Azure Hibrit Avantajı kullanabilir miyim?*
 
-Y: Hayır, bunu yapamazsınız. Ayrılmış örnekler şu anda RHEL ve SLES için Azure Hibrit Avantajı kapsamında değildir.
+Y: Evet, RHEL ve SLES için ayrılmış örnekte Azure Hibrit Avantajı önizlemededir. [Bu avantaj ve nasıl kullanılacağı hakkında daha fazla bilgi](#azure-hybrid-benefit-on-reserved-instances-is-in-preview)edinebilirsiniz.
 
 *S: RHEL görüntülerinde SQL Server için dağıtılan bir sanal makinede Azure Hibrit Avantajı kullanabilir miyim?*
 

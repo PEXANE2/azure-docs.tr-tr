@@ -1,18 +1,18 @@
 ---
 title: Azure Percept genel bakış
 description: Azure Percept platformu hakkında daha fazla bilgi edinin
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: overview
 ms.date: 03/23/2021
 ms.custom: template-overview
-ms.openlocfilehash: 12ca7dff7d106941cc8947d9d3040bcefefde00a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 09ee8346b62f868be3811ebfb6b3dc36ff9d0f83
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953615"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567670"
 ---
 # <a name="introduction-to-azure-percept"></a>Azure Percept 'a giriş
 
@@ -28,21 +28,21 @@ Sınır AI çözümlerini ölçekte dağıtmaya çalışırken bir yüzü tümle
 
 Azure Percept ana bileşenleri şunlardır:
 
-1. [Azure Percept DK.](./overview-azure-percept-dk.md)
+- [Azure Percept DK.](./overview-azure-percept-dk.md)
 
     - Cihaz oluşturucular, çözüm oluşturucular ve müşteriler için çok çeşitli prototip yazma senaryolarını desteklemeye yetecek kadar esnek bir geliştirme seti.
 
         > [!div class="nextstepaction"]
         > [Hemen satın alın](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
-1. Edge AI modelini ve çözüm geliştirmeyi hızlandıran hizmetler ve iş akışları.
+- Edge AI modelini ve çözüm geliştirmeyi hızlandıran hizmetler ve iş akışları.
 
     - Geliştirme iş akışları ve önceden oluşturulmuş modeller [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)'dan erişilebilir.
     - Model geliştirme hizmetleri.
     - Ölçeklendirme için cihaz yönetim hizmetleri.
     - Uçtan uca güvenlik.
 
-1. AI donanım başvuru tasarımı ve sertifika programları.
+- AI donanım başvuru tasarımı ve sertifika programları.
 
     - , Azure AI ve IoT hizmetleriyle kolayca tümleştirilebilen Edge AI donanımı geliştirmeye yönelik desenler ve en iyi uygulamalar için, yazılım geliştiricilerinin ekosistemini sağlar.
 

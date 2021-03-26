@@ -7,12 +7,12 @@ ms.author: v-mibufo
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: b11aedb52be3c263c781c2ac68d1d5197ba4def2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3d1a1135db0421d89d4c6c9f278c86e02cb5cb32
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101746744"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558967"
 ---
 # <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>Azure 'a bir bulut hizmeti (klasik) dağıttığınızda LocationNotFoundForRoleSize sorunlarını giderme
 
@@ -47,7 +47,7 @@ Bu senaryoda, bulut hizmetinizi (klasik) dağıtmak için farklı bir bölge vey
 
 ### <a name="list-skus-in-region-using-azure-cli"></a>Azure CLı kullanarak bölgedeki SKU 'Ları listeleme
 
-[Az VM List-SKU](https://docs.microsoft.com/cli/azure/vm.html#az_vm_list_skus) komutunu kullanabilirsiniz.
+[Az VM List-SKU](/cli/azure/vm.html#az_vm_list_skus) komutunu kullanabilirsiniz.
 
 - Kullanmakta olduğunuz `--location` konuma çıktıyı filtrelemek için parametresini kullanın.
 - `--size`Kısmi bir boyut adına göre arama yapmak için parametresini kullanın.
@@ -63,7 +63,7 @@ Bu senaryoda, bulut hizmetinizi (klasik) dağıtmak için farklı bir bölge vey
 
 #### <a name="list-skus-in-region-using-powershell"></a>PowerShell kullanarak bölgedeki SKU 'Ları listeleme
 
-[Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) komutunu kullanabilirsiniz.
+[Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) komutunu kullanabilirsiniz.
 
 - Sonuçları konuma göre filtreleyin.
 - Bu komut için en son PowerShell sürümüne sahip olmanız gerekir.
@@ -91,7 +91,7 @@ Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.Res
 
 #### <a name="list-skus-in-region-using-rest-api"></a>REST API kullanarak bölgede SKU 'Ları listeleme
 
-[Kaynak SKU 'ları-listeleme](https://docs.microsoft.com/rest/api/compute/resourceskus/list) işlemini kullanabilirsiniz. Kullanılabilir SKU 'Ları ve bölgeleri aşağıdaki biçimde döndürür:
+[Kaynak SKU 'ları-listeleme](/rest/api/compute/resourceskus/list) işlemini kullanabilirsiniz. Kullanılabilir SKU 'Ları ve bölgeleri aşağıdaki biçimde döndürür:
 
 ```json
 {

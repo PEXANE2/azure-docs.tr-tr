@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 3/08/2021
-ms.openlocfilehash: 1a1d415b374818d9a51c87e78e7ac422fa374bc5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 47ef56a770ca9965cef3e50630be4b69342a038d
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102509603"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559868"
 ---
 # <a name="media-players-for-media-services"></a>Media Services için medya yürütücüleri
 
@@ -21,7 +21,7 @@ Media Services ile birkaç medya oynatıcı kullanabilirsiniz.
 
 Azure Media Player, çok çeşitli tarayıcılar ve cihazlar için bir video oynatıcı olur. Azure Media Player, zenginleştirilmiş bir uyarlamalı akış deneyimi sağlamak üzere HTML5, medya kaynağı uzantıları (MSE) ve şifreli Medya Uzantıları (EME) gibi sektör standartlarını kullanır. Bu standartlar bir cihazda veya bir tarayıcıda kullanılabilir olmadığında, Azure Media Player Flash ve Silverlight 'ı geri dönüş teknolojisi olarak kullanır. Kullanılan kayıttan yürütme teknolojisinden her ne kadar, geliştiricilerin API 'Lere erişmek için birleştirilmiş bir JavaScript arabirimi vardır. Azure Media Services tarafından sunulan içerikler, ek bir çaba olmadan çok çeşitli cihazlarda ve tarayıcılarda çalınabilir.
 
-[Azure Media Player belgelerine](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview)bakın.
+[Azure Media Player belgelerine](../azure-media-player/azure-media-player-overview.md)bakın.
 
 ## <a name="shaka"></a>Shaka
 

@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: Azure CLI ile bir şema oluşturma'
 description: Bu hızlı başlangıçta, Azure CLı kullanarak yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanırsınız.
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 6ce3031c93f973c2efb251fad371a6f3750ae0fd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fbe5c12f1c94d4b59dbdc2a97b6a4cb9af5a2328
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98920249"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563676"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure Blueprint tanımlama ve atama
 
@@ -311,7 +311,7 @@ az blueprint publish --blueprint-name 'MyBlueprint' --version '{BlueprintVersion
 
 Şema, Azure CLI kullanılarak yayımlandıktan sonra bir aboneliğe atanabilir. Oluşturduğunuz şemayı yönetim grubu hiyerarşinizdeki aboneliklerden birine atayın. Şema bir aboneliğe kaydedilirse, bu aboneliğe yalnızca atanabilir. **Şema-Name** parametresi, atanacak şema öğesini belirtir. Ad, konum, kimlik, kilit ve şema parametreleri sağlamak için, komutta eşleşen Azure CLı parametrelerini kullanın `az blueprint assignment create` veya **parametreleri** json dosyasında belirtin.
 
-1. Bir aboneliğe atayarak şema dağıtımını çalıştırın. **Katkıda bulunanlar** ve **sahipler** parametreleri, sorumluların bir dizi tanıtıcısından rol ataması verilmesini gerektirdiğinden, kendi kullanıcılarınızın, gruplarınız veya hizmet sorumluları Için **parametrelerde** kullanmak üzere objectıds 'yi toplamak için [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) kullanın.
+1. Bir aboneliğe atayarak şema dağıtımını çalıştırın. **Katkıda bulunanlar** ve **sahipler** parametreleri, sorumluların bir dizi tanıtıcısından rol ataması verilmesini gerektirdiğinden, kendi kullanıcılarınızın, gruplarınız veya hizmet sorumluları Için **parametrelerde** kullanmak üzere objectıds 'yi toplamak için [Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist) kullanın.
 
    - JSON dosyası-blueprintAssignment.json
 

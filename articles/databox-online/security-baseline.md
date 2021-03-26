@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 460fd66ed4651248639334caa55eb8facbce866d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d88284f3b9759ce04af9e44ae591c4796dde4e84
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452382"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565206"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>Azure Stack Edge için Azure Güvenlik temeli
 
@@ -38,7 +38,7 @@ Azure Stack kenarının Azure Güvenlik kıyaslaması ile tamamen nasıl eşlend
 
 Ek bilgiler başvurulan bağlantılarda bulunabilir.
  
-- [Windows istemcilerinde TLS 1,2 'yi Yapılandırma Azure Stack Edge Pro GPU cihazına erişme](azure-stack-edge-j-series-configure-tls-settings.md)
+- [Windows istemcilerinde TLS 1,2 'yi Yapılandırma Azure Stack Edge Pro GPU cihazına erişme](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [Hızlı başlangıç-GPU ile Azure Stack Edge Pro ile çalışmaya başlama](azure-stack-edge-gpu-quickstart.md)
 
@@ -54,7 +54,7 @@ Müşteriler, Azure Stack Edge cihazında Azure portal veya Azure PowerShell ara
 
 - [Azure Stack Edge Pro R ve Azure Stack Edge Mini R için Azure PowerShell betiği aracılığıyla Azure VPN 'yi yapılandırma](azure-stack-edge-mini-r-configure-vpn-powershell.md)
 
-- [Windows istemcilerinde TLS 1,2 'yi Yapılandırma Azure Stack Edge Pro GPU cihazına erişme](azure-stack-edge-j-series-configure-tls-settings.md)
+- [Windows istemcilerinde TLS 1,2 'yi Yapılandırma Azure Stack Edge Pro GPU cihazına erişme](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [Öğretici: Azure Stack Edge Pro R 'niz için sertifikaları yapılandırma](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)
 
@@ -68,7 +68,7 @@ Müşteriler, Azure Stack Edge cihazında Azure portal veya Azure PowerShell ara
 
 - [Azure Stack Edge Pro R ve Azure Stack Edge Mini R için Azure PowerShell betiği aracılığıyla Azure VPN 'yi yapılandırma](azure-stack-edge-mini-r-configure-vpn-powershell.md)
 
-- [Windows istemcilerinde TLS 1,2 'yi Yapılandırma Azure Stack Edge Pro GPU cihazına erişme](azure-stack-edge-j-series-configure-tls-settings.md)
+- [Windows istemcilerinde TLS 1,2 'yi Yapılandırma Azure Stack Edge Pro GPU cihazına erişme](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [Öğretici: Azure Stack Edge Pro R 'niz için sertifikaları yapılandırma](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)
 
@@ -298,7 +298,7 @@ Güvenlik Okuyucusu izinleri kiracının tamamına (Kök Yönetim Grubu) geniş 
 
 **Rehberlik**: yalnızca yetkili kullanıcılar (örneğin, ' EdgeArmUser ', Azure Stack Edge cihaz API 'lerine yerel Azure Resource Manager aracılığıyla erişebilir. Kullanıcı hesabı parolaları yalnızca Azure portal yönetilebilir. 
 
-- [Azure Resource Manager parolasını ayarlama](azure-stack-edge-j-series-set-azure-resource-manager-password.md)
+- [Azure Resource Manager parolasını ayarlama](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 

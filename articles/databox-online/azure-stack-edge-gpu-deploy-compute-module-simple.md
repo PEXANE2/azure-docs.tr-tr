@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 6c067fb5f39e82bb1601ce7b4d9dc5e2ce4ac624
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 73d3b6dc85f94aba63e614c03294c054047ccb89
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102440148"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568588"
 ---
 # <a name="tutorial-run-a-compute-workload-with-iot-edge-module-on-azure-stack-edge-pro-gpu"></a>Öğretici: Azure Stack Edge Pro GPU üzerinde IoT Edge modülüyle işlem yükünü çalıştırma
 
@@ -84,9 +84,9 @@ Bu öğreticide basit dağıtım için iki paylaşım gerekir: bir kenar paylaş
 
 ## <a name="add-a-module"></a>Modül Ekle
 
-Özel veya önceden oluşturulmuş bir modül ekleyebilirsiniz. Cihaz önceden oluşturulmuş veya özel modüller ile birlikte gelmez. Özel bir modül oluşturmayı öğrenmek için [Azure Stack Edge Pro cihazınız Için C# modülü geliştirme](azure-stack-edge-j-series-create-iot-edge-module.md)bölümüne gidin.
+Özel veya önceden oluşturulmuş bir modül ekleyebilirsiniz. Cihaz önceden oluşturulmuş veya özel modüller ile birlikte gelmez. Özel bir modül oluşturmayı öğrenmek için [Azure Stack Edge Pro cihazınız Için C# modülü geliştirme](./azure-stack-edge-gpu-create-iot-edge-module.md)bölümüne gidin.
 
-Bu bölümde, [Azure Stack Edge Pro Için C# modülü geliştirme](azure-stack-edge-j-series-create-iot-edge-module.md)bölümünde oluşturduğunuz IoT Edge cihazına özel bir modül eklersiniz. Bu özel modül, uç cihazdaki bir uç yerel paylaşımından dosya alır ve bunları cihazdaki bir kenar (bulut) paylaşımıyla taşımalıdır. Ardından bulut paylaşımından, dosyaları bulut paylaşımıyla ilişkili Azure depolama hesabına iter.
+Bu bölümde, [Azure Stack Edge Pro Için C# modülü geliştirme](./azure-stack-edge-gpu-create-iot-edge-module.md)bölümünde oluşturduğunuz IoT Edge cihazına özel bir modül eklersiniz. Bu özel modül, uç cihazdaki bir uç yerel paylaşımından dosya alır ve bunları cihazdaki bir kenar (bulut) paylaşımıyla taşımalıdır. Ardından bulut paylaşımından, dosyaları bulut paylaşımıyla ilişkili Azure depolama hesabına iter.
 
 Modül eklemek için aşağıdaki adımları uygulayın:
 

@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: b6d51e05598f60de0e9c8fb85472b7c14bba990e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 114635722a0a131fc146eb2ab69984effb211a88
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598397"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559766"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>Adım 1-Media Services API v3 'e geçiş avantajlarından yararlanın
 
@@ -23,6 +23,8 @@ ms.locfileid: "104598397"
 <hr color="#5ea0ef" size="10">
 
 ![geçiş adımları 2](./media/migration-guide/steps-1.svg)
+
+## <a name="use-the-latest-api"></a>En son API 'YI kullanma
 
 Yeni özellikler, işlevler ve performans iyileştirmeleri yalnızca geçerli v3 API 'sinde bulunduğundan avantajlara ulaşmak için Azure Media Services v3 API 'sinin 2020-05-01 sürümünü kullanmaya başlamanız önerilir.
 
@@ -60,7 +62,3 @@ V3 ile Media Services yönelik önemli iyileştirmeler yapılmıştır.
 | **İzleme** | |
 | [Azure EventGrid](monitoring/reacting-to-media-services-events.md) bildirim desteği | EventGrid bildirimleri daha zengin özelliktir. Daha fazla türde bildirim, kendi uygulamanızda bildirimleri almak için daha geniş SDK desteği ve olay işleyicileri gibi davranan mevcut Azure hizmetleri. |
 | [Azure portal Azure Izleyici desteği ve tümleştirmesi](monitoring/monitor-events-portal-how-to.md) | Bu, müşterilerin Media Services hesap kota kullanımını, akış uç noktalarının gerçek zamanlı istatistiklerini ve canlı olaylar için alma ve arşivleme istatistiklerini görselleştirmesini sağlar. Müşteriler artık uyarıları ayarlayabiliyor ve gerçek zamanlı ölçüm verilerine göre gerekli eylemleri gerçekleştirebilir. |
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

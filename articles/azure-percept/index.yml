@@ -3,19 +3,19 @@ title: Azure Percept belgeleri
 summary: Azure Percept, uçta Perception tabanlı AI oluşturmaya ve dağıtmaya yönelik uçtan uca bir çözümdür.
 metadata:
   title: Azure Percept belgeleri
-  description: Azure Percept, uçtan uca bir Edge AI platformudur.
+  description: Azure Percept, uçtan uca bir uç AI platformu ve geliştirme settir.
   services: azure-percept
   ms.service: azure-percept
   ms.topic: landing-page
-  author: elqu20
-  ms.author: v-elqu
-  ms.date: 02/11/2021
-  ms.openlocfilehash: b979f147c67e8e877b5bb0e9d3dc557317c7aa50
-  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+  author: mimcco
+  ms.author: mimcco
+  ms.date: 03/25/2021
+  ms.openlocfilehash: 61e9d784d899cb8f0741f27aee0bdb7031bb37d1
+  ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102097504"
+  ms.lasthandoff: 03/26/2021
+  ms.locfileid: "105562554"
 landingContent:
 - title: Azure Percept nedir?
   linkLists:
@@ -31,6 +31,8 @@ landingContent:
       url: overview-azure-percept-studio.md
     - text: Azure Percept güvenliğine genel bakış
       url: overview-percept-security.md
+    - text: 80/20 tümleştirmesi
+      url: overview-8020-integration.md
 - title: Azure Percept DK ile çalışmaya başlama
   linkLists:
   - linkListType: quickstart

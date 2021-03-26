@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 28988af0c1b3b5e4e5ce359abb617a66af816d69
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90925f30e84ec3c06e715669ebd982c823dfaf5a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439825"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568333"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell"></a>Azure PowerShell aracılığıyla Azure Stack Edge cihazınızda VM 'Leri dağıtma
 
@@ -127,7 +127,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> Azure Resource Manager kullanarak, yerel olarak yedekli depolama (Standart veya Premium) gibi yalnızca yerel depolama hesapları oluşturabilirsiniz. Katmanlı depolama hesapları oluşturmak için bkz. [öğretici: Azure Stack Edge Pro ile depolama hesapları aracılığıyla veri aktarma GPU 'su](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
+> Azure Resource Manager kullanarak, yerel olarak yedekli depolama (Standart veya Premium) gibi yalnızca yerel depolama hesapları oluşturabilirsiniz. Katmanlı depolama hesapları oluşturmak için bkz. [öğretici: Azure Stack Edge Pro ile depolama hesapları aracılığıyla veri aktarma GPU 'su](./azure-stack-edge-gpu-deploy-add-storage-accounts.md).
 
 İşte örnek bir çıktı:
 
@@ -179,7 +179,7 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 ## <a name="add-the-blob-uri-to-the-host-file"></a>Blob URI 'sini ana bilgisayar dosyasına ekleyin
 
-Blob URI 'sini, Azure Blob depolama alanına bağlanmak için kullandığınız istemcinin Hosts dosyasına, [Azure PowerShell aracılığıyla Azure Stack Edge cihazınızda VM 'Leri dağıtma](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)' nın "Adım 5: uç nokta adı çözümlemesi için konak dosyasını değiştirme" bölümünde zaten eklemiş olursunuz. Bu giriş, blob URI 'sini eklemek için kullanıldı:
+Blob URI 'sini, Azure Blob depolama alanına bağlanmak için kullandığınız istemcinin Hosts dosyasına, [Azure PowerShell aracılığıyla Azure Stack Edge cihazınızda VM 'Leri dağıtma](./azure-stack-edge-gpu-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)' nın "Adım 5: uç nokta adı çözümlemesi için konak dosyasını değiştirme" bölümünde zaten eklemiş olursunuz. Bu giriş, blob URI 'sini eklemek için kullanıldı:
 
 \<Azure consistent network services VIP \>\<storage name\>. blob. \<appliance name\>\<dnsdomain\>
 

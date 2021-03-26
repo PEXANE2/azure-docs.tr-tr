@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d1c2fd2ac7f809b4a70a0edffbddfb6e733fed57
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: b9a4c15c0942a0a5dffe2cfdb30dbea4184057ed
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104871410"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565597"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 hakkında sık sorulan sorular
 
@@ -31,7 +31,7 @@ Bu makalede, Azure Media Services v3 hakkında sık sorulan sorulara yanıtlar v
 - Müşteriler kendi depolama hesaplarını Azure Media Services hesaplarına ekler.  Tüm varlık verileri bu ilişkili depolama hesaplarında depolanır ve müşteri bu depolamanın konumunu ve çoğaltma türünü denetler.
 - Media Services hesapla ilişkili ek veriler (Içerik şifreleme anahtarları, belirteç doğrulama anahtarları, Jobınputhttp URL 'leri ve diğer varlık meta verileri dahil), Media Services hesabı için seçilen bölge içinde Microsoft 'un sahip olduğu depolama alanında depolanır.
     - Brezilya Güney ve Güneydoğu Asya 'daki [veri fazlalığı](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) nedeniyle ek hesap verileri, bölgesel olarak yedekli bir biçimde depolanır ve tek bir bölgede yer alır. Güneydoğu Asya için, tüm ek hesap verileri Singapur 'da ve Brezilya Güney için veriler Brezilya 'da depolanır.
-    - Brezilya Güney ve Güneydoğu Asya dışındaki bölgelerde ek hesap verileri de Microsoft 'un sahip olduğu depolamada [eşleştirilmiş bölgede](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)depolanabilir.
+    - Brezilya Güney ve Güneydoğu Asya dışındaki bölgelerde ek hesap verileri de Microsoft 'un sahip olduğu depolamada [eşleştirilmiş bölgede](../../best-practices-availability-paired-regions.md)depolanabilir.
 - Azure Media Services bölgesel bir hizmettir ve [yüksek kullanılabilirlik](media-services-high-availability-encoding.md) veya veri çoğaltması sağlamaz. Bu özelliklere ihtiyaç duyan müşterilerin birden çok bölgede Media Services hesapları kullanarak bir çözüm oluşturması son derece önerilir.  Isteğe bağlı Media Services video ile bir kılavuz olarak kullanılabilir, yüksek kullanılabilirlik için nasıl çözüm oluşturulacağını gösteren bir örnek.
 
 ### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Media Services v3 için Azure portal sınırlamaları nelerdir?

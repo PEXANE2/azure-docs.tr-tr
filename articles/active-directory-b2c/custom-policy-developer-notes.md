@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 76dcb9aec935dd4ea4f57a1362953d9741d8eaf0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c175a6d225be268f27854b9ab63886892cf029fb
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095808"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557284"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler için geliştirici notları
 
@@ -68,7 +68,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 | [OAuth2 yetkilendirme kodu](authorization-code-flow.md) |  |  | X |  |
 | OAuth2 yetkilendirme kodu, PKI CE |  |  | X | [Ortak istemciler ve tek sayfalı uygulamalar](authorization-code-flow.md)  |
 | [OAuth2 örtük akış](implicit-flow-single-page-application.md) |  |  | X |  |
-| [OAuth2 kaynak sahibi parolası kimlik bilgileri](ropc-custom.md) |  | X |  |  |
+| [OAuth2 kaynak sahibi parolası kimlik bilgileri](add-ropc-policy.md) |  | X |  |  |
 | [OıDC Connect](openid-connect.md) |  |  | X |  |
 | [SAML2](saml-service-provider.md)  |  |  |X  | Bağlamaları GÖNDERIN ve yeniden yönlendirin. |
 | OAuth1 |  |  |  | Desteklenmez. |

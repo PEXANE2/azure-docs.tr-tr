@@ -78,6 +78,9 @@
     - name: CIS Microsoft Azure Yönetim Temelleri Kıyaslama v1.1.0
       displayName: 'standards, cis'
       href: ./samples/cis-azure-1-1-0.md
+    - name: CMMC düzey 3
+      displayName: 'standards, cmmc'
+      href: ./samples/cmmc-l3.md
     - name: DoD Etki Düzeyi 4
       items:
         - name: Genel Bakış
@@ -268,7 +271,7 @@
   href: ./troubleshoot/general.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/ext/blueprint/blueprint
     - name: Azure PowerShell
       href: /powershell/module/az.blueprint/#blueprint

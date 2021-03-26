@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/01/2021
-ms.openlocfilehash: c1d4c9be1f76e62be3c17d4dec22479db003b77a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 31c19f62f0328fca05562eaa2f19b7a79c0f3e15
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102608266"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562707"
 ---
 # <a name="pre-certification-checklist-for-iot-edge-modules"></a>IoT Edge modülleri için ön sertifika denetim listesi
 
@@ -55,7 +55,7 @@ Sertifika ekibi, farklı mimarilerde yansımaları doğrulamak için aşağıdak
 #### <a name="steps"></a>Adımlar
 
 1. Oluşturulan cihazların/VM 'nin Putty aracılığıyla erişilebilir olduğundan emin olun.
-1. [IoT Edge çalışma zamanını](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge) cihaza indirin.
+1. [IoT Edge çalışma zamanını](../iot-edge/how-to-install-iot-edge.md) cihaza indirin.
 1. 5. adımda kopyaladığınız bağlantı dizesini config. YAML dosyasına güncelleştirin.
 1. Edge modülünü ile yeniden başlatın `sudo systemctl restart iotedge` .
 1. Modülün cihazda dağıtılıp dağıtılmadığını kontrol edin `sudo iotedge list` ; çalışır durumda olmalıdır.
@@ -78,6 +78,6 @@ Aşağıdakileri doğrulayın:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ticari Market 'ten modüller dağıtma](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal#deploy-from-azure-marketplace)
-- [Edge modülünü Iş Ortağı Merkezi 'nde yayımlama](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)
-- [IoT Edge modülünü dağıtma](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)  
+- [Ticari Market 'ten modüller dağıtma](../iot-edge/how-to-deploy-modules-portal.md#deploy-from-azure-marketplace)
+- [Edge modülünü Iş Ortağı Merkezi 'nde yayımlama](./partner-center-portal/azure-iot-edge-module-creation.md)
+- [IoT Edge modülünü dağıtma](../iot-edge/quickstart-linux.md)

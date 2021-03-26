@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 33196af2f3544733715ece501cceec0366d2a47c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7569f98b1a721ecc9bd8e41a7d55cfbb80a2bc88
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101716265"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564628"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>Data Lake Analytics için Azure Güvenlik temeli
 
@@ -64,9 +64,9 @@ Alternatif olarak, Azure Sentinel veya bir üçüncü taraf sistem bilgileri ve 
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md) 
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](/azure/azure-monitor/learn/quick-collect-azurevm) 
+- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](../azure-monitor/vm/quick-collect-azurevm.md) 
 
 - [Azure Izleyici ve üçüncü taraf SıEM tümleştirmesi ile çalışmaya başlama](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools)
 
@@ -78,13 +78,13 @@ Alternatif olarak, Azure Sentinel veya bir üçüncü taraf sistem bilgileri ve 
 
 **Rehberlik**: denetim ve istek günlüklerine erişmek Için Data Lake Analytics tanılama ayarlarını etkinleştirin. Bunlar olay kaynağı, tarih, Kullanıcı, zaman damgası ve diğer yararlı öğeler gibi verileri içerir. 
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](/azure/azure-monitor/platform/platform-logs-overview)
+- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Sorumluluk**: Müşteri
 
-**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) planı gerektirebilir.
+**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/azure/governance/policy/samples/azure-security-benchmark) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/azure/security-center/security-center-recommendations)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/azure/security-center/azure-defender) planı gerektirebilir.
 
 **Azure ilkesi yerleşik tanımları-Microsoft. DataLakeAnalytics**:
 
@@ -94,9 +94,9 @@ Alternatif olarak, Azure Sentinel veya bir üçüncü taraf sistem bilgileri ve 
 
 **Kılavuz**: Azure izleyici 'de kuruluşunuzun uyumluluk düzenlemelerine göre Log Analytics çalışma alanı saklama süresini ayarlayın. Uzun süreli ve arşiv depolama için Azure depolama hesaplarını kullanın.
 
-- [Log Analytics veri saklama süresini değiştirme](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period) 
+- [Log Analytics veri saklama süresini değiştirme](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
 
-- [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Sorumluluk**: Müşteri
 
@@ -108,9 +108,9 @@ Alternatif olarak, Azure Sentinel veya bir üçüncü taraf sistem bilgileri ve 
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics çalışma alanı hakkında daha fazla bilgi için](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Log Analytics çalışma alanı hakkında daha fazla bilgi için](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](/azure/azure-monitor/log-query/get-started-queries)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/get-started-queries.md)
 
 **Sorumluluk**: Müşteri
 
@@ -122,7 +122,7 @@ Alternatif olarak, Azure Sentinel veya bir üçüncü taraf sistem bilgileri ve 
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics günlük verilerinde uyarı alma](/azure/azure-monitor/learn/tutorial-response)  
+- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/alerts/tutorial-response.md)  
 
 - [Azure Data Lake Analytics’te tanılama günlüklerine erişim](data-lake-analytics-diagnostic-logs.md)
 
@@ -162,7 +162,7 @@ Alternatif olarak, Azure Sentinel veya bir üçüncü taraf sistem bilgileri ve 
 
 Ayrıca, Azure Active Directory (Azure AD) Privileged Identity Management ve Azure Resource Manager kullanarak tam zamanında erişimi de etkinleştirebilirsiniz.
 
-- [Privileged Identity Management hakkında daha fazla bilgi edinin](/azure/active-directory/privileged-identity-management/)
+- [Privileged Identity Management hakkında daha fazla bilgi edinin](../active-directory/privileged-identity-management/index.yml)
 
 **Sorumluluk**: Müşteri
 
@@ -240,7 +240,7 @@ Ayrıca, Azure Active Directory (Azure AD) Privileged Identity Management ve Azu
 
 **Rehberlik**: Azure Active Directory (Azure AD) eski hesapların keşfedilmesine yardımcı olmak için Günlükler sağlar. Ayrıca, grup üyeliklerini verimli bir şekilde yönetmek, kurumsal uygulamalara erişmek ve rol atamaları için Azure AD kimlik ve erişim gözden geçirmeleri ' nı kullanın. Yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için, Kullanıcı erişimi düzenli olarak incelenebilir.
 
-- [Azure AD raporlamayı anlama](/azure/active-directory/reports-monitoring/)
+- [Azure AD raporlamayı anlama](../active-directory/reports-monitoring/index.yml)
 
 - [Azure AD kimlik ve erişim gözden geçirmelerini kullanma](../active-directory/governance/access-reviews-overview.md)
 
@@ -252,7 +252,7 @@ Ayrıca, Azure Active Directory (Azure AD) Privileged Identity Management ve Azu
 
 **Rehberlik**: tüm günlükleri bir Log Analytics çalışma alanına göndererek Data Lake Analytics ve Azure Active Directory (Azure AD) için tanılama ayarlarını etkinleştirin. Log Analytics içindeki istenen uyarıları (devre dışı parolalara erişim girişimleri gibi) yapılandırın.
 
-- [Azure AD günlüklerini Azure Izleyici günlükleriyle tümleştirme](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure AD günlüklerini Azure Izleyici günlükleriyle tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Sorumluluk**: Müşteri
 
@@ -296,7 +296,7 @@ Ayrıca, Azure Active Directory (Azure AD) Privileged Identity Management ve Azu
 
 - [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure rol tabanlı Access Control yönetme](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-azure-role-based-access-control)
+- [Azure rol tabanlı Access Control yönetme](./data-lake-analytics-manage-use-portal.md#manage-azure-role-based-access-control)
 
 - [Güvenlik duvarı kuralları](/rest/api/datalakeanalytics/firewallrules)
 
@@ -344,7 +344,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 **Rehberlik**: kullanıcıların hizmetle nasıl etkileşime gireceğini denetlemek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın.
 
-- [Azure RBAC 'yi yönetme](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-azure-role-based-access-control)
+- [Azure RBAC 'yi yönetme](./data-lake-analytics-manage-use-portal.md#manage-azure-role-based-access-control)
 
 **Sorumluluk**: Müşteri
 
@@ -364,7 +364,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 **Kılavuz**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak, Azure Data Lake Analytics kaynakların üretim örneklerine yapılan değişikliklerin ne zaman gerçekleştiği hakkında uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -477,7 +477,7 @@ Başvurulan bağlantılarda ek bilgiler mevcuttur
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../governance/policy/samples/built-in-policies.md#general)
 
 **Sorumluluk**: Müşteri
 
@@ -713,5 +713,5 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

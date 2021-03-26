@@ -5,12 +5,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 3ea5168641f233f2e9580612a2f245fd8fef860f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6addd7cffdd7001b5767a471fc9e0514749b18d1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101699360"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564900"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -28,10 +28,10 @@ Bu sürüm hem HDInsight 3,6 hem de HDInsight 4,0 için geçerlidir. HDInsight y
 
 ## <a name="new-features"></a>Yeni özellikler
 ### <a name="dav4-series-support"></a>Dav4 serisi desteği
-HDInsight bu sürümde Dav4 serisi destek ekledi. [Burada Dav4-Series](/azure/virtual-machines/dav4-dasv4-series)hakkında daha fazla bilgi edinin.
+HDInsight bu sürümde Dav4 serisi destek ekledi. [Burada Dav4-Series](../virtual-machines/dav4-dasv4-series.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="kafka-rest-proxy-ga"></a>Kafka REST proxy GA 
-Kafka REST proxy, HTTPS üzerinden bir REST API aracılığıyla Kafka kümeniz ile etkileşim kurmanıza olanak sağlar. Kafka Rest proxy, bu sürümden itibaren genel kullanıma sunulmuştur. [Kafka Rest proxy](/azure/hdinsight/kafka/rest-proxy)hakkında daha fazla bilgi edinin.
+Kafka REST proxy, HTTPS üzerinden bir REST API aracılığıyla Kafka kümeniz ile etkileşim kurmanıza olanak sağlar. Kafka Rest proxy, bu sürümden itibaren genel kullanıma sunulmuştur. [Kafka Rest proxy](./kafka/rest-proxy.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
 HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Hizmet giderek [Azure sanal makine ölçek kümelerine geçiş yapar](../virtual-machine-scale-sets/overview.md). İşlemin tamamı ayda sürebilir. Bölgelerinizden ve abonelikleriniz geçirildikten sonra, yeni oluşturulan HDInsight kümeleri, müşteri eylemleri olmadan sanal makine ölçek kümelerinde çalışır. Hiçbir bölme değişikliği beklenmez.
@@ -49,7 +49,7 @@ HDInsight, giderek Azure sanal makine ölçek kümelerine geçiş yapar. Sanal m
 
 
 ### <a name="breaking-change-for-net-for-apache-spark-100"></a>Apache Spark 1.0.0 için .NET için son değişiklik
-HDInsight, en son sürümde, ["Apache Spark için .net](https://github.com/dotnet/spark) " kitaplığının ilk resmi sürüm v 1.0.0 ' ni tanıtır. Spark 2.4. x ve Spark 3.0. x için, [Diğer özelliklerin](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md)bir ana bilgisayarıyla birlikte DATAFRAME API 'si için bir tam sayı sağlar. Bu ana sürüm için önemli değişiklikler olacaktır, kodunuzu ve işlem hatlarınızı güncelleştirmek için gereken adımları anlamak üzere [Apache Spark için .net geçiş kılavuzuna](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) bakın. Daha fazla bilgi edinmek için [Azure HDInsight 'ta Apache Spark v 1.0 için bu .net](/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight)bölümüne bakın.
+HDInsight, en son sürümde, ["Apache Spark için .net](https://github.com/dotnet/spark) " kitaplığının ilk resmi sürüm v 1.0.0 ' ni tanıtır. Spark 2.4. x ve Spark 3.0. x için, [Diğer özelliklerin](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md)bir ana bilgisayarıyla birlikte DATAFRAME API 'si için bir tam sayı sağlar. Bu ana sürüm için önemli değişiklikler olacaktır, kodunuzu ve işlem hatlarınızı güncelleştirmek için gereken adımları anlamak üzere [Apache Spark için .net geçiş kılavuzuna](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) bakın. Daha fazla bilgi edinmek için [Azure HDInsight 'ta Apache Spark v 1.0 için bu .net](./spark/spark-dotnet-version-update.md#using-net-for-apache-spark-v10-in-hdinsight)bölümüne bakın.
 
 
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler

@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 5764a8df862610fc076ce2810fcc0d4bf8dbda3c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dec29dc92f70a3f02f3fb598659aa86477fb59bf
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99094565"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558253"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Azure SQL için Azure Active Directory Directory okuyucuları rolü
 
@@ -25,7 +25,7 @@ ms.locfileid: "99094565"
 
 Azure Active Directory (Azure AD), [Azure Active Directory (Önizleme) içindeki rol atamalarını yönetmek için bulut grupları kullanarak](../../active-directory/roles/groups-concept.md)tanıtılmıştır. Bu, Azure AD rollerinin gruplara atanmasını sağlar.
 
-Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SYNAPSE Analytics için [yönetilen bir kimlik](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) etkinleştirilirken, Azure AD [**Dizin okuyucuları**](../../active-directory/roles/permissions-reference.md#directory-readers) rolü, [Azure AD Graph API](../../active-directory/develop/active-directory-graph-api.md)okuma erişimine izin vermek için kimliğe atanmalıdır. SQL Database ve Azure SYNAPSE yönetilen kimliği sunucu kimliği olarak adlandırılır. SQL yönetilen örneğinin yönetilen kimliği, yönetilen örnek kimliği olarak adlandırılır ve örnek oluşturulduğunda otomatik olarak atanır. SQL veritabanı veya Azure SYNAPSE 'a sunucu kimliği atama hakkında daha fazla bilgi için bkz. [Azure AD kullanıcıları oluşturmak için hizmet sorumlularını etkinleştirme](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users).
+Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SYNAPSE Analytics için [yönetilen bir kimlik](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) etkinleştirilirken, Azure AD [**Dizin okuyucuları**](../../active-directory/roles/permissions-reference.md#directory-readers) rolü, [Azure AD Graph API](/graph/migrate-azure-ad-graph-planning-checklist)okuma erişimine izin vermek için kimliğe atanmalıdır. SQL Database ve Azure SYNAPSE yönetilen kimliği sunucu kimliği olarak adlandırılır. SQL yönetilen örneğinin yönetilen kimliği, yönetilen örnek kimliği olarak adlandırılır ve örnek oluşturulduğunda otomatik olarak atanır. SQL veritabanı veya Azure SYNAPSE 'a sunucu kimliği atama hakkında daha fazla bilgi için bkz. [Azure AD kullanıcıları oluşturmak için hizmet sorumlularını etkinleştirme](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users).
 
 **Dizin okuyucuları** rolü şunları yapmak için gereklidir:
 

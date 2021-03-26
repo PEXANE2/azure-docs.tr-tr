@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: aada418b4f74c38a2a35c793deb85b94b703fb89
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 88c0d88a1d3119ef2fa00eb49da447749fde3221
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97629366"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543848"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure sayfa bloblarına genel bakış
 
@@ -141,7 +141,7 @@ Aşağıdaki diyagramda, 2 ayrı yazma işlemi gösterilmektedir:
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-Sayfaları okumak için, sayfa blobundan bir dizi bayt okumak üzere [Pageblobclient. Download](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.download) metodunu kullanın. 
+Sayfaları okumak için, sayfa blobundan bir dizi bayt okumak üzere [Pageblobclient. Download](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadto) metodunu kullanın. 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadFromPageBlob":::
 

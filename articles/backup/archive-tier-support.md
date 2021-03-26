@@ -3,12 +3,12 @@ title: Arşiv katmanı desteği (Önizleme)
 description: Azure Backup için Arşiv katmanı desteği hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 6c597d640f24dc4c680bfd5db16f9df09017ee54
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 322bc9d7e2160cc9156c793859b9fda833b3df09
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102609861"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563982"
 ---
 # <a name="archive-tier-support-preview"></a>Arşiv katmanı desteği (Önizleme)
 
@@ -46,7 +46,7 @@ Desteklenen istemciler:
     install-module -name Az.RecoveryServices -Repository PSGallery -RequiredVersion 4.0.0-preview -AllowPrerelease -force
     ```
 
-1. [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 'Ini kullanarak Azure 'a bağlanın.
+1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 'Ini kullanarak Azure 'a bağlanın.
 1. Aboneliğinizde oturum açın:
 
    `Set-AzContext -Subscription "SubscriptionName"`
@@ -128,7 +128,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm
 
 Arşivdeki kurtarma noktaları için, Azure Backup tümleşik bir geri yükleme yöntemi sağlar.
 
-Tümleşik geri yükleme iki adımlı bir işlemdir. İlk adım, arşivde depolanan kurtarma noktalarını yeniden doldurma ve 10 ila 30 gün boyunca bir süre (yeniden doldurma süresi olarak da bilinir) için kasa standart katmanında geçici olarak depolama içerir. Varsayılan değer 15 gündür. İki farklı yeniden doldurma derecesi vardır: Standart ve yüksek öncelik. [Yeniden doldurma önceliği](https://docs.microsoft.com/azure/storage/blobs/storage-blob-rehydration#rehydrate-an-archived-blob-to-an-online-tier)hakkında daha fazla bilgi edinin.
+Tümleşik geri yükleme iki adımlı bir işlemdir. İlk adım, arşivde depolanan kurtarma noktalarını yeniden doldurma ve 10 ila 30 gün boyunca bir süre (yeniden doldurma süresi olarak da bilinir) için kasa standart katmanında geçici olarak depolama içerir. Varsayılan değer 15 gündür. İki farklı yeniden doldurma derecesi vardır: Standart ve yüksek öncelik. [Yeniden doldurma önceliği](../storage/blobs/storage-blob-rehydration.md#rehydrate-an-archived-blob-to-an-online-tier)hakkında daha fazla bilgi edinin.
 
 >[!NOTE]
 >

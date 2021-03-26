@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: 9b85caa3611c484fc17423637dc36ce20b48b823
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 7f5afc05a8d03d33366a2f76318bcf5e039d4d30
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868486"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561670"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>Azure portal kullanarak özel eşleme için IPv6 desteği ekleme (Önizleme)
 
 Bu makalede, Azure portal kullanarak Azure 'daki kaynaklarınıza ExpressRoute aracılığıyla bağlanmak üzere IPv6 desteğinin nasıl ekleneceği açıklanmaktadır. 
 
 > [!Note]
-> Bu özellik şu anda [kullanılabilirlik alanları olan Azure bölgelerinde](https://docs.microsoft.com/azure/availability-zones/az-region#azure-regions-with-availability-zones)önizleme için kullanılabilir. Bu nedenle, ExpressRoute bağlantı hattı herhangi bir eşleme konumu kullanılarak oluşturulabilir, ancak bağlandığı IPv6 tabanlı dağıtımlar Kullanılabilirlik Alanları bir bölgede olmalıdır.
+> Bu özellik şu anda [kullanılabilirlik alanları olan Azure bölgelerinde](../availability-zones/az-region.md#azure-regions-with-availability-zones)önizleme için kullanılabilir. Bu nedenle, ExpressRoute bağlantı hattı herhangi bir eşleme konumu kullanılarak oluşturulabilir, ancak bağlandığı IPv6 tabanlı dağıtımlar Kullanılabilirlik Alanları bir bölgede olmalıdır.
 
 ## <a name="register-for-public-preview"></a>Genel önizlemeye kaydolun
 IPv6 desteği eklemeden önce aboneliğinizi kaydetmeniz gerekir. Kaydolmak için Azure PowerShell aracılığıyla aşağıdaki komutları çalıştırın:

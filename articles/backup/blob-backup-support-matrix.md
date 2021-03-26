@@ -4,12 +4,12 @@ description: Azure Blobları yedeklenirken destek ayarlarının ve sınırlamala
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: references_regions
-ms.openlocfilehash: ade43350bbe3fa1bcf58f47e93b948db3a5b21bc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 12d289fdc3f84e7cbb3489a3ece283179e51772c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101746504"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561908"
 ---
 # <a name="support-matrix-for-azure-blobs-backup-in-preview"></a>Azure Blobları için destek matrisi yedekleme (önizlemede)
 
@@ -27,9 +27,9 @@ Blobların işletimsel yedeklemesi, blob 'un zaman içinde geri yüklenmesi, blo
 
 **Diğer sınırlamalar:**
 
-- Saklama döneminde bir kapsayıcıyı sildiyseniz, bu kapsayıcı, zaman içinde geri yükleme işlemi ile geri yüklenmez. Silinen bir kapsayıcıda blob 'ları içeren bir dizi blobu geri yüklemeye çalışırsanız, zaman içinde geri yükleme işlemi başarısız olur. Kapsayıcıları silinmeye karşı koruma hakkında daha fazla bilgi için bkz. [kapsayıcılar Için geçici silme (Önizleme)](https://docs.microsoft.com/azure/storage/blobs/soft-delete-container-overview).
-- Bir blob, mevcut bir süre ve geri yükleme noktası arasındaki dönemdeki sık ve seyrek katmanlar arasında taşınırsa, blob önceki katmanına geri yüklenir. Arşiv katmanındaki blok bloblarının geri yüklenmesi desteklenmez. Örneğin, sık kullanılan katmandaki bir blob arşiv katmanına iki gün önce taşınmışsa ve geri yükleme işlemi üç gün önce bir noktaya geri yüklenirse, blob etkin katmana geri yüklenmez. Arşivlenmiş bir blobu geri yüklemek için önce Arşiv katmanının dışına taşıyın. Daha fazla bilgi için bkz. [Arşiv katmanından blob verilerini yeniden doldurma](https://docs.microsoft.com/azure/storage/blobs/storage-blob-rehydration).
-- [URL 'den](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [PUT bloğu veya](https://docs.microsoft.com/rest/api/storageservices/put-block) put bloğu aracılığıyla karşıya yüklenen ancak [PUT bloğu listesi](https://docs.microsoft.com/rest/api/storageservices/put-block-list)aracılığıyla kaydedilmemiş olan bir blok, blob 'un bir parçası değildir ve bu nedenle geri yükleme işleminin bir parçası olarak geri yüklenmez.
+- Saklama döneminde bir kapsayıcıyı sildiyseniz, bu kapsayıcı, zaman içinde geri yükleme işlemi ile geri yüklenmez. Silinen bir kapsayıcıda blob 'ları içeren bir dizi blobu geri yüklemeye çalışırsanız, zaman içinde geri yükleme işlemi başarısız olur. Kapsayıcıları silinmeye karşı koruma hakkında daha fazla bilgi için bkz. [kapsayıcılar Için geçici silme (Önizleme)](../storage/blobs/soft-delete-container-overview.md).
+- Bir blob, mevcut bir süre ve geri yükleme noktası arasındaki dönemdeki sık ve seyrek katmanlar arasında taşınırsa, blob önceki katmanına geri yüklenir. Arşiv katmanındaki blok bloblarının geri yüklenmesi desteklenmez. Örneğin, sık kullanılan katmandaki bir blob arşiv katmanına iki gün önce taşınmışsa ve geri yükleme işlemi üç gün önce bir noktaya geri yüklenirse, blob etkin katmana geri yüklenmez. Arşivlenmiş bir blobu geri yüklemek için önce Arşiv katmanının dışına taşıyın. Daha fazla bilgi için bkz. [Arşiv katmanından blob verilerini yeniden doldurma](../storage/blobs/storage-blob-rehydration.md).
+- [URL 'den](/rest/api/storageservices/put-block-from-url) [PUT bloğu veya](/rest/api/storageservices/put-block) put bloğu aracılığıyla karşıya yüklenen ancak [PUT bloğu listesi](/rest/api/storageservices/put-block-list)aracılığıyla kaydedilmemiş olan bir blok, blob 'un bir parçası değildir ve bu nedenle geri yükleme işleminin bir parçası olarak geri yüklenmez.
 - Etkin kiralamaya sahip bir blob geri yüklenemez. Etkin kiralamaya sahip bir blob geri yüklenecek blob aralığına dahil edilmezse geri yükleme işlemi otomatik olarak başarısız olur. Geri yükleme işlemini başlatmadan önce tüm etkin kiraları kesin.
 - Anlık görüntüler, geri yükleme işleminin bir parçası olarak oluşturulmaz veya silinmez. Yalnızca temel blob önceki durumuna geri yüklendi.
 

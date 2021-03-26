@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4024d2b1357f3dda8216e9ebdd2055b28b064d33
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9758b026ef205e6608f7fc4110219dc5f267369e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101677479"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568724"
 ---
 # <a name="managed-disk-bursting"></a>Yönetilen disk patlaması
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting.md)]
@@ -27,10 +27,10 @@ Ayrıca, [yönetilen disklerin performans katmanı değiştirilebilir](disks-cha
 
 |  |Kredi tabanlı patlama  |İsteğe bağlı patlama  |Performans katmanını değiştirme  |
 |---------|---------|---------|---------|
-| Senaryolar|Kısa vadeli ölçeklendirme için idealdir (30 dakika veya daha az).|Kısa vadeli ölçeklendirme için idealdir (sınırlı süre).|İş yükünüz başka bir şekilde patlaması halinde çalışmaya devam ediyorsa idealdir.|
-|Maliyet     |Ücretsiz         |Maliyet değişkeni, Ayrıntılar için [Faturalama](#billing) bölümüne bakın.        |Her performans katmanının maliyeti sabittir, Ayrıntılar için bkz. [yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/) .         |
-|Kullanılabilirlik     |Yalnızca Premium SSDs 512 GiB ve daha küçük bir sitede kullanılabilir.         |Yalnızca 512 GiB 'den büyük Premium SSD 'Ler için kullanılabilir.         |Tüm Premium SSD boyutları için kullanılabilir.         |
-|Geçerlilik     |Uygun disklerde varsayılan olarak etkindir.         |Kullanıcı tarafından etkinleştirilmelidir.         |Kullanıcının katmanını el ile değiştirmesi gerekir.         |
+| **Senaryolar**|Kısa vadeli ölçeklendirme için idealdir (30 dakika veya daha az).|Kısa vadeli ölçeklendirme için idealdir (sınırlı süre).|İş yükünüz başka bir şekilde patlaması halinde çalışmaya devam ediyorsa idealdir.|
+|**Maliyet**     |Ücretsiz         |Maliyet değişkeni, Ayrıntılar için [Faturalama](#billing) bölümüne bakın.        |Her performans katmanının maliyeti sabittir, Ayrıntılar için bkz. [yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/) .         |
+|**Kullanılabilirlik**     |Yalnızca Premium SSDs 512 GiB ve daha küçük bir sitede kullanılabilir.         |Yalnızca 512 GiB 'den büyük Premium SSD 'Ler için kullanılabilir.         |Tüm Premium SSD boyutları için kullanılabilir.         |
+|**Etkinleştirme**     |Uygun disklerde varsayılan olarak etkindir.         |Kullanıcı tarafından etkinleştirilmelidir.         |Kullanıcının katmanını el ile değiştirmesi gerekir.         |
 
 ## <a name="common-scenarios"></a>Genel senaryolar
 Aşağıdaki senaryolar büyük ölçüde patlanabilir:

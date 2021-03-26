@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 8083b9edd49f65f29fe9c9b2cfa30edfacf89507
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d8f9d4e0b002348f286f45c6b45c96531c5d6530
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102614896"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558236"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure 'a geçiş için şirket içi makineleri hazırlama
 
@@ -86,7 +86,7 @@ Gerekli değişiklikler tabloda özetlenmiştir.
 --- | --- | --- | ---
 **SAN ilkesini çevrimiçi olarak yapılandırma**<br/><br/> Bu, Azure VM 'deki Windows birimlerinin, şirket içi VM ile aynı sürücü harfi atamalarını kullanmasını sağlar. | Windows Server 2008 R2 veya üstünü çalıştıran makineler için otomatik olarak ayarlayın.<br/><br/> Daha önceki işletim sistemleri için el ile yapılandırın. | Çoğu durumda otomatik olarak ayarlayın. | El ile yapılandırın.
 **Hyper-V Konuk tümleştirmesi 'ni yükler** | Windows Server 2003 çalıştıran makinelere [El Ile yükler](prepare-windows-server-2003-migration.md#install-on-vmware-vms) . | Windows Server 2003 çalıştıran makinelere [El Ile yükler](prepare-windows-server-2003-migration.md#install-on-vmware-vms) . | Windows Server 2003 çalıştıran makinelere [El Ile yükler](prepare-windows-server-2003-migration.md#install-on-hyper-v-vms) .
-**Azure seri konsolunu etkinleştirin**.<br/><br/>Sorun gidermeye yardımcı olması için Azure VM 'lerinde [konsolunu etkinleştirin](../virtual-machines/troubleshooting/serial-console-windows.md) . VM 'yi yeniden başlatmanız gerekmez. Azure VM, disk görüntüsü kullanılarak önyüklenir. Disk görüntüsü önyüklemesi, yeni VM için bir yeniden başlatma ile eşdeğerdir. | El ile etkinleştir | El ile etkinleştir | El ile etkinleştir
+**Azure seri konsolunu etkinleştirin**.<br/><br/>Sorun gidermeye yardımcı olması için Azure VM 'lerinde [konsolunu etkinleştirin](/troubleshoot/azure/virtual-machines/serial-console-windows) . VM 'yi yeniden başlatmanız gerekmez. Azure VM, disk görüntüsü kullanılarak önyüklenir. Disk görüntüsü önyüklemesi, yeni VM için bir yeniden başlatma ile eşdeğerdir. | El ile etkinleştir | El ile etkinleştir | El ile etkinleştir
 **Geçişten sonra Bağlan**<br/><br/> Geçişten sonra bağlanmak için, geçirmeden önce yapmanız gereken birkaç adım vardır. | El ile [ayarlayın](#prepare-to-connect-to-azure-windows-vms) . | El ile [ayarlayın](#prepare-to-connect-to-azure-windows-vms) . | El ile [ayarlayın](#prepare-to-connect-to-azure-windows-vms) .
 
 
@@ -126,7 +126,7 @@ Diğer sürümler için, makineleri tabloda özetlenen şekilde hazırlayın.
 **Eylem** | **Ayrıntılar** | **Linux sürümü**
 --- | --- | ---
 **Hyper-V Linux Tümleştirme Hizmetleri 'ni yükler** | Linux init görüntüsünü, gerekli Hyper-V sürücülerini içerecek şekilde yeniden derleyin. İnit görüntüsünü yeniden oluşturmak, VM 'nin Azure 'da önyüklenebilmesini sağlar. | Linux dağıtımların çoğu yeni sürümü bu varsayılan olarak eklenmiştir.<br/><br/> Dahil edilmedikçe, yukarıda çağrılanlar hariç tüm sürümler için el ile yükleyebilirsiniz.
-**Azure seri konsol günlüğünü etkinleştirme** | Konsol günlüğünü etkinleştirmek, sorun gidermenize yardımcı olur. VM 'yi yeniden başlatmanız gerekmez. Azure VM, disk görüntüsü kullanılarak önyüklenir. Disk görüntüsü önyüklemesi, yeni VM için bir yeniden başlatma ile eşdeğerdir.<br/><br/> ' İ etkinleştirmek için [Bu yönergeleri](../virtual-machines/troubleshooting/serial-console-linux.md) izleyin.
+**Azure seri konsol günlüğünü etkinleştirme** | Konsol günlüğünü etkinleştirmek, sorun gidermenize yardımcı olur. VM 'yi yeniden başlatmanız gerekmez. Azure VM, disk görüntüsü kullanılarak önyüklenir. Disk görüntüsü önyüklemesi, yeni VM için bir yeniden başlatma ile eşdeğerdir.<br/><br/> ' İ etkinleştirmek için [Bu yönergeleri](/troubleshoot/azure/virtual-machines/serial-console-linux) izleyin.
 **Cihaz eşleme dosyasını güncelleştir** | Cihaz eşleme dosyasını cihaz adı-birim ilişkilendirmeleriyle güncelleştirin, böylece kalıcı cihaz tanımlayıcılarını kullanırsınız. | Yukarıdaki çağrılanlar hariç tüm sürümler için el ile yükler. (Yalnızca aracı tabanlı VMware senaryosunda geçerlidir)
 **Fstab girdilerini Güncelleştir** |  Kalıcı birim tanımlayıcılarını kullanmak için girişleri güncelleştirin.    | Yukarıdaki çağrılanlar dışındaki tüm sürümler için el ile güncelleştirin.
 **Uıdev kuralını kaldır** | Arabirim adlarını ayrılmış olan tüm udev kurallarını MAC adresine göre kaldırın vb. | Yukarıdaki çağrılanlar dışındaki tüm sürümler için el ile kaldırın.
@@ -148,7 +148,7 @@ Aşağıdaki tabloda, yukarıda listelenen işletim sistemleri için otomatik ol
 
 [Azure 'Da LINUX VM çalıştırma](../virtual-machines/linux/create-upload-generic.md)adımları hakkında daha fazla bilgi edinin ve popüler Linux dağıtımlarından bazılarına yönelik yönergeler edinin.
 
-Linux VM Aracısı 'nı yüklemek için [gerekli paketlerin](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) listesini gözden geçirin. Azure geçişi, VMware geçiş 'nin aracısız yöntemi kullanılırken RHEL6 için Linux VM aracısını otomatik olarak, RHEL7, CentOS7 (6 ' da RHEL 'ye benzer şekilde desteklenmelidir), Ubuntu 14,04, Ubuntu 16,04, Ubuntu 18.04 ' yi otomatik olarak yüklüyor.
+Linux VM Aracısı 'nı yüklemek için [gerekli paketlerin](../virtual-machines/extensions/agent-linux.md#requirements) listesini gözden geçirin. Azure geçişi, VMware geçiş 'nin aracısız yöntemi kullanılırken RHEL6 için Linux VM aracısını otomatik olarak, RHEL7, CentOS7 (6 ' da RHEL 'ye benzer şekilde desteklenmelidir), Ubuntu 14,04, Ubuntu 16,04, Ubuntu 18.04 ' yi otomatik olarak yüklüyor.
 
 ## <a name="check-azure-vm-requirements"></a>Azure VM gereksinimlerini denetleme
 
@@ -187,7 +187,7 @@ Geçişten sonra, oluşturulan Azure VM 'lerde şu adımları uygulayın:
 
 1. SANAL makineye internet üzerinden bağlanmak için, VM 'ye bir genel IP adresi atayın. Azure VM için, şirket içi makineniz için kullanılandan farklı bir genel IP adresi kullanmanız gerekir. [Daha fazla bilgi edinin](../virtual-network/virtual-network-public-ip-address.md).
 2. VM 'deki ağ güvenlik grubu (NSG) kurallarının RDP veya SSH bağlantı noktasına gelen bağlantılara izin verin.
-3. VM 'yi görüntülemek için [önyükleme tanılamalarını](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) denetleyin.
+3. VM 'yi görüntülemek için [önyükleme tanılamalarını](/troubleshoot/azure/virtual-machines/boot-diagnostics#enable-boot-diagnostics-on-existing-virtual-machine) denetleyin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -200,4 +200,4 @@ VMware VM 'Leri için, sunucu geçişi [aracısız veya aracı tabanlı geçişi
 
 - **VMware VM 'leri**: VMware VM 'leri için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-vmware-migration.md) doğrulayın.
 - **Hyper-v VM 'leri**: Hyper-v VM 'lerinin [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-hyper-v-migration.md) doğrulayın.
-- **Fiziksel makineler**: şirket içi fiziksel makineler ve diğer sanallaştırılmış sunucular için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-physical-migration.md) doğrulayın. 
+- **Fiziksel makineler**: şirket içi fiziksel makineler ve diğer sanallaştırılmış sunucular için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-physical-migration.md) doğrulayın.

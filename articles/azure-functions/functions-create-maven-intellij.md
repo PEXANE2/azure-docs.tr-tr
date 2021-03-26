@@ -1,17 +1,17 @@
 ---
 title: IntelliJ kullanarak Azure Işlevleri 'nde Java işlevi oluşturma
 description: IntelliJ kullanarak, daha sonra Azure 'da sunucusuz bir ortamda çalıştırmak üzere yayımladığınız basit bir HTTP ile tetiklenen Java işlevi oluşturma hakkında bilgi edinin.
-author: jeffhollan
+author: yucwan
 ms.topic: how-to
 ms.date: 07/01/2018
-ms.author: jehollan
+ms.author: yucwan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 1edfbca2f2a16aeebc1244b298426dc46d72c6d5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 45fb62b446e6b589dc0cb9287a8aebe7f4e699b1
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708824"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543677"
 ---
 # <a name="create-your-first-java-function-in-azure-using-intellij"></a>IntelliJ kullanarak Azure 'da ilk Java işlevinizi oluşturma
 
@@ -104,17 +104,9 @@ Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Azure Toolkit
 
     ![Projeyi Azure 'a dağıtma](media/functions-create-first-java-intellij/deploy-functions-to-azure.png)
 
-1. Henüz bir İşlev Uygulaması yoksa, *kullanılabilir bir Işlev yok ' a tıklayın, yeni bir tane oluşturmak için tıklayın*.
+1. Henüz İşlev Uygulaması yoksa, *+* *işlev* satırına tıklayın. İşlev uygulaması adını yazın ve uygun platformu seçin, burada yalnızca varsayılanı kabul edebiliyoruz. *Tamam* ' a tıklayın ve az önce oluşturduğunuz yeni işlev uygulaması otomatik olarak seçilir. İşlevlerinizi dağıtmak için *Çalıştır* ' a tıklayın.
 
     ![Azure 'da işlev uygulaması oluşturma](media/functions-create-first-java-intellij/deploy-functions-create-app.png)
-
-1. İşlev uygulaması adı ' nı yazın ve uygun abonelik/platform/kaynak grubu/App Service planı ' nı seçin, buradan kaynak grubu/App Service planı da oluşturabilirsiniz. Ardından, uygulama ayarlarını değişmeden tutun, *Tamam* ' a tıklayın ve yeni işlev uygulamasının oluşturulması için birkaç dakika bekleyin. *Yeni işlev uygulaması* oluşturulduktan sonra... ilerleme çubuğu kaybolur.
-
-    ![İşlev uygulamasını Azure uygulama oluşturma Sihirbazı 'na dağıtma](media/functions-create-first-java-intellij/deploy-functions-create-app-wizard.png)
-
-1. Dağıtmak istediğiniz işlev uygulamasını seçin (az önce oluşturduğunuz yeni işlev uygulaması otomatik olarak seçilir). İşlevlerinizi dağıtmak için *Çalıştır* ' a tıklayın.
-
-    ![Ekran görüntüsünde Azure Işlevleri dağıtma iletişim kutusu gösterilir.](media/functions-create-first-java-intellij/deploy-functions-run.png)
 
     ![İşlev uygulamasını Azure günlüğüne dağıtma](media/functions-create-first-java-intellij/deploy-functions-log.png)
 

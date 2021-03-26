@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: mathapli
 ms.author: mathapli
 ms.date: 01/18/2021
-ms.openlocfilehash: adcd91d58b3bb5fde3ffa81c828c58d4b6db48d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7a9fa4a6f44e88caa6f98d5e1c56adaa065fa29a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721166"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558719"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Sanal makine sertifikası sorunlarını giderme
 
@@ -620,11 +620,10 @@ Yayımlama işlemini gerçekleştirmek için bkz. [teklifleri inceleme ve yayım
 * 2,8 üzerinde Python sürümü 
 
 
-Daha fazla bilgi için lütfen [VM uzantısını](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux)ziyaret edin.
+Daha fazla bilgi için lütfen [VM uzantısını](../virtual-machines/extensions/diagnostics-linux.md)ziyaret edin.
      
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [VM teklifi özelliklerini yapılandırma](azure-vm-create-properties.md)
 - [Etkin Market 'teki ödüller](partner-center-portal/marketplace-rewards.md)
 - Geliştirme için sorularınız veya geri bildiriminiz varsa, [Iş Ortağı Merkezi desteğiyle](https://aka.ms/marketplacepublishersupport)iletişim kurun.
- 

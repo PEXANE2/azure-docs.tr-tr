@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: b108e757ed9fe9ab7038cae4240f0f749ac19675
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a58146c2c8121f3f0e3b564caafbb09396d39672
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036053"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568554"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Öğretici: Azure Stack Edge Pro 'YU GPU ile dağıtmaya hazırlanma 
 
@@ -47,8 +47,8 @@ Azure Stack Edge Pro dağıtımı için öncelikle ortamınızı hazırlamanız 
 |**[6. Azure Stack Edge Pro için güvenlik ayarlarını yapılandırma](azure-stack-edge-gpu-deploy-configure-certificates.md)** |Cihazınız için sertifikaları yapılandırın. Cihaz tarafından oluşturulan sertifikaları kullanın veya kendi sertifikalarınızı getirin.   |
 |**[7. Azure Stack Edge Pro 'Yu etkinleştirin](azure-stack-edge-gpu-deploy-activate.md)** |Cihazı etkinleştirmek için hizmetten etkinleştirme anahtarını kullanın. Cihaz, SMB veya NFS paylaşımlarını ayarlamaya veya REST aracılığıyla bağlamaya hazırlanıyor. |
 |**[8. işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md)** |Cihazınızda işlem rolünü yapılandırın. Bir Kubernetes kümesi de oluşturulur. |
-|**[9A. Kenar paylaşımları ile veri aktarma](azure-stack-edge-j-series-deploy-add-shares.md)** |Paylaşımları ekleyin ve SMB veya NFS üzerinden paylaşımlara bağlanın. |
-|**[9B. Edge depolama hesaplarıyla veri aktarma](azure-stack-edge-j-series-deploy-add-storage-accounts.md)** |Depolama hesapları ekleyin ve REST API 'Ler aracılığıyla blob depolamaya bağlanın. |
+|**[9A. Kenar paylaşımları ile veri aktarma](./azure-stack-edge-gpu-deploy-add-shares.md)** |Paylaşımları ekleyin ve SMB veya NFS üzerinden paylaşımlara bağlanın. |
+|**[9B. Edge depolama hesaplarıyla veri aktarma](./azure-stack-edge-gpu-deploy-add-storage-accounts.md)** |Depolama hesapları ekleyin ve REST API 'Ler aracılığıyla blob depolamaya bağlanın. |
 
 
 Artık Azure Stack Edge Pro cihazınız için yazılım yapılandırmasıyla ilgili bilgi toplamaya başlayabilirsiniz.

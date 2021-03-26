@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 39331cb83b233f6b91344e6e299ed81f187fe9d9
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 240bdaee9073ab18e175e2911ac1c23ae49b3d7e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108409"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562418"
 ---
 # <a name="calling-sdk-overview"></a>SDK 'ya genel bakış
 
@@ -72,13 +72,33 @@ Aşağıdaki liste, şu anda SDK 'Ları çağıran Azure Iletişim hizmetlerinde
 |                   | Ölçek modunu ayarla/Güncelleştir                                                                                           | ✔️   | ✔️            | ✔️ 
 |                   | Uzak video akışını işle                                                                                          | ✔️   | ✔️            | ✔️
 
+## <a name="calling-client-library-streaming-support"></a>İstemci kitaplığı akış desteğini çağırma
+İstemci kitaplığını çağıran Iletişim Hizmetleri aşağıdaki akış yapılandırmasını destekler:
 
+| Sınır          |Web | Android/iOS|
+|-----------|----|------------|
+|**aynı anda gönderilebilecek giden akış sayısı** |1 video + 1 ekran paylaşımı | 1 video + 1 ekran paylaşımı|
+|**aynı anda işlenebilen gelen akış sayısı** |1 video + 1 ekran paylaşımı| 6 video + 1 ekran paylaşımı |
+
+## <a name="calling-client-library-timeouts"></a>İstemci kitaplığı zaman aşımlarını çağırma
+
+İstemci kitaplıklarını çağıran Iletişim Hizmetleri için aşağıdaki zaman aşımları geçerlidir:
+
+| Eylem           | Saniye olarak zaman aşımı |
+| -------------- | ---------- |
+| Yeniden bağlanma/kaldırma Katılımcısı | 120 |
+| Bir çağrıdan yeni modlılık ekleme veya kaldırma (video veya ekran paylaşımını Başlat/Durdur) | 40 |
+| Çağrı aktarımı işlem zaman aşımı | 60 |
+| 1:1 çağrı kurma zaman aşımı | 85 |
+| Grup çağrısı kurma zaman aşımı | 85 |
+| PSTN çağrısı kurma zaman aşımı | 115 |
+| Bir grup çağrısı zaman aşımı için 1:1 çağrısını yükseltin | 115 |
 
 ## <a name="javascript-calling-sdk-support-by-os-and-browser"></a>OS ve tarayıcı tarafından SDK desteğini çağıran JavaScript
 
 Aşağıdaki tablo şu anda kullanılabilir olan desteklenen tarayıcıların kümesini temsil eder. Aksi belirtilmedikçe tarayıcının en son üç sürümünü destekliyoruz.
 
-|                                  | Chrome | Uygulamasını  | Edge (Kmıum) | 
+| Platform                         | Chrome | Uygulamasını  | Edge (Kmıum) | 
 | -------------------------------- | -------| ------  | --------------  |
 | Android                          |  ✔️    | ❌     | ❌             |
 | iOS                              |  ❌    | ✔️**** | ❌             |
@@ -114,15 +134,6 @@ Uygulamanın bir parçasını farklı bir etki alanından barındırmak için bi
 ```html
 <iframe allow="camera *; microphone *">
 ```
-
-## <a name="calling-sdk-streaming-support"></a>SDK akış desteğini çağırma
-SDK 'Yı çağıran Iletişim Hizmetleri aşağıdaki akış yapılandırmasını destekler:
-
-|           |Web | Android/iOS|
-|-----------|----|------------|
-|**aynı anda gönderilebilecek giden akış sayısı** |1 video veya 1 ekran paylaşımı | 1 video + 1 ekran paylaşımı|
-|**aynı anda işlenebilen gelen akış sayısı** |1 video veya 1 ekran paylaşımı| 6 video + 1 ekran paylaşımı |
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,12 +4,12 @@ description: Azure Özel Görüntü İşleme kullanarak bir oyunsuna algılayan 
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: e6b911ad555c4ce10a9576861e1c2e650e63cd94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1abf123883a89bb41909e8aa67aedfadffc3d37e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101698816"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561228"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Öğretici: IoT Edge ve Azure Özel Görüntü İşleme canlı video analizi ile canlı videoyu çözümleyin
 
@@ -77,7 +77,7 @@ Bu öğreticide, bu tür oyunları algılamak ve ilişkili çıkarım olayların
 
 Bu diyagramda, sinyallerin Bu öğreticide nasıl akagösterdiği gösterilmektedir. [Edge modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , Real-Time Akış Protokolü (RTSP) sunucusunu BARıNDıRAN bir IP kamerasına benzetir. Bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü, bu sunucudan video akışını çeker ve [http uzantısı işlemci](media-graph-concept.md#http-extension-processor) düğümüne video çerçeveleri gönderir.
 
-HTTP uzantısı düğümü bir ara sunucu rolünü yürütür.  Bu, alanı kullanarak ayarlanan gelen video çerçevelerini örnekler `samplingOptions` ve ayrıca video çerçevelerini belirtilen görüntü türüne dönüştürür. Ardından, görüntüyü REST üzerinden bir HTTP uç noktasının arkasında bulunan bir AI modeli çalıştıran başka bir Edge modülüne geçirir. Bu örnekte, bu Edge modülü Özel Görüntü İşleme kullanılarak oluşturulan oyunker algılayıcı modelidir. HTTP uzantısı işlemci düğümü, algılama sonuçlarını toplar ve olayları [Azure IoT Hub havuzu](media-graph-concept.md#iot-hub-message-sink) düğümüne yayımlar. Düğüm daha sonra bu olayları [IoT Edge hub 'ına](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)gönderir.
+HTTP uzantısı düğümü bir ara sunucu rolünü yürütür.  Bu, alanı kullanarak ayarlanan gelen video çerçevelerini örnekler `samplingOptions` ve ayrıca video çerçevelerini belirtilen görüntü türüne dönüştürür. Ardından, görüntüyü REST üzerinden bir HTTP uç noktasının arkasında bulunan bir AI modeli çalıştıran başka bir Edge modülüne geçirir. Bu örnekte, bu Edge modülü Özel Görüntü İşleme kullanılarak oluşturulan oyunker algılayıcı modelidir. HTTP uzantısı işlemci düğümü, algılama sonuçlarını toplar ve olayları [Azure IoT Hub havuzu](media-graph-concept.md#iot-hub-message-sink) düğümüne yayımlar. Düğüm daha sonra bu olayları [IoT Edge hub 'ına](../../iot-fundamentals/iot-glossary.md#iot-edge-hub)gönderir.
 
 ## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Özel Görüntü İşleme oyunnı algılama modeli oluşturun ve dağıtın 
 

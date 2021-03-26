@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerini yedekleme ve geri yükleme il
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 2cda13ea089ac08dff7c1ba5ca93ba56ab3c23cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2d09081533cdb2de5ee97cb000e9844b41a85ac3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97831559"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559375"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarının sorunlarını giderme
 
@@ -139,7 +139,7 @@ Doğrulamak için, ***sistem ve Olay Görüntüleyicisi uygulama günlükleri***
 
 Çözüm:
 
-* Yükü VM disklerinde dağıtmak için olanaklar olup olmadığını denetleyin. Bu, tek disklerdeki yükü azaltır. [Depolama düzeyinde tanılama ölçümlerini etkinleştirerek IOPS azaltmasını kontrol](../virtual-machines/troubleshooting/performance-diagnostics.md#install-and-run-performance-diagnostics-on-your-vm)edebilirsiniz.
+* Yükü VM disklerinde dağıtmak için olanaklar olup olmadığını denetleyin. Bu, tek disklerdeki yükü azaltır. [Depolama düzeyinde tanılama ölçümlerini etkinleştirerek IOPS azaltmasını kontrol](/troubleshoot/azure/virtual-machines/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)edebilirsiniz.
 * VM üzerindeki yük en düşük düzeyde olduğunda, yedekleme ilkesini yoğun saatlerde yedeklemeler gerçekleştirmek üzere değiştirin.
 * Azure disklerini, daha yüksek IOPS 'yi destekleyecek şekilde yükseltin. [Daha fazla bilgi edinin](../virtual-machines/disks-types.md)
 
@@ -371,12 +371,12 @@ Genellikle, VM Aracısı Azure galerisinden oluşturulan VM 'lerde zaten mevcutt
 #### <a name="windows-vms---set-up-the-agent"></a>Windows VM 'Leri-aracıyı ayarlama
 
 * [Aracı MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) dosyasını indirip yükleyin. Yüklemeyi bitirebilmeniz için yönetici ayrıcalıklarına sahip olmanız gerekir.
-* Klasik dağıtım modeli kullanılarak oluşturulan sanal makineler için, aracının yüklü olduğunu belirtmek üzere [VM özelliğini güncelleştirin](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) . Bu adım Azure Resource Manager sanal makineler için gerekli değildir.
+* Klasik dağıtım modeli kullanılarak oluşturulan sanal makineler için, aracının yüklü olduğunu belirtmek üzere [VM özelliğini güncelleştirin](/troubleshoot/azure/virtual-machines/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) . Bu adım Azure Resource Manager sanal makineler için gerekli değildir.
 
 #### <a name="linux-vms---set-up-the-agent"></a>Linux VM 'Leri-aracıyı ayarlama
 
 * Dağıtım deposundan aracının en son sürümünü yükler. Paket adı hakkında daha fazla bilgi için bkz. [Linux aracı deposu](https://github.com/Azure/WALinuxAgent).
-* Klasik dağıtım modeli kullanılarak oluşturulan VM 'Ler için [VM özelliğini güncelleştirin](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) ve aracının yüklü olduğunu doğrulayın. Bu adım Kaynak Yöneticisi sanal makineler için gerekli değildir.
+* Klasik dağıtım modeli kullanılarak oluşturulan VM 'Ler için [VM özelliğini güncelleştirin](/troubleshoot/azure/virtual-machines/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) ve aracının yüklü olduğunu doğrulayın. Bu adım Kaynak Yöneticisi sanal makineler için gerekli değildir.
 
 ### <a name="update-the-vm-agent"></a>VM aracısını güncelleştirme
 

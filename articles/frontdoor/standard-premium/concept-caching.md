@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 73b2e8e59774e12ddb9aa684382510d1f2c151b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 63ea252a4b4c673ae3028adb7ab793ac21fb2e99
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101100555"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564594"
 ---
 # <a name="caching-with-azure-front-door-standardpremium-preview"></a>Azure ön kapı standardı/Premium ile önbelleğe alma (Önizleme)
 
@@ -26,6 +26,10 @@ Bu makalede, ön kapı Standart/Premium (Önizleme) yollarının ve kural kümes
 > Azure ön kapı Standart/Premium (Önizleme) Şu anda genel önizleme aşamasındadır.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="request-methods"></a>İstek yöntemleri
+
+Yalnızca GET isteği yöntemi Azure ön kapıda önbelleğe alınmış içerik oluşturabilir. Tüm diğer istek yöntemleri her zaman ağ üzerinden dağıtılır.
 
 ## <a name="delivery-of-large-files"></a>Büyük dosyaların teslimi
 

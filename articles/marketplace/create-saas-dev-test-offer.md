@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: dbf284305aa3201faeb77668af4198bafbf578b5
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 893d38d7dcf2ef0910bc46d3e9bfd168c2a89162
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110551"
+ms.locfileid: "105543372"
 ---
 # <a name="create-a-test-offer"></a>Test teklifi oluşturma
 
@@ -27,7 +27,7 @@ Aşağıdaki bölümlerde GELIŞTIRME ve ÜRETIM teklifleri arasındaki yapılan
 
 Her iki teklifin de **diğer** ad kutusunda aynı diğer adı kullanmanızı öneririz, daha sonra dev teklifinin diğer adına "_test" ekleyin. Örneğin, ÜRETIM teklifinizin diğer adı "contososolution" ise, DEV teklifinin diğer adı "contososolution_test" olmalıdır. Bu şekilde, ÜRETIM teklifinizden hangi GELIŞTIRME teklifinizi teklifinizi kolayca belirleyebilirsiniz.
 
-**Müşteri adayları** bölümünde, geliştirme teklifi Için ve Azure tablosu ya da bır test CRM ortamı kullanın. ÜRETIM teklifi için amaçlanan müşteri adayı yönetim sistemini kullanın.
+**Müşteri adayları** bölümünde, dev teklifi Için bir Azure tablosu veya BIR test CRM ortamı kullanın. ÜRETIM teklifi için amaçlanan müşteri adayı yönetim sistemini kullanın.
 
 ## <a name="properties-page"></a>Özellikler sayfası
 
@@ -39,7 +39,7 @@ Bu sayfayı hem GELIŞTIRME hem de ÜRETIM tekliflerle aynı şekilde yapıland�
 
 ## <a name="preview-audience"></a>İzleyiciyi Önizle
 
-GELIŞTIRME teklifinde, geliştiriciler ve test ediciler için kendi kendinize dahil Azure Active Directory (AAD) Kullanıcı asıl adı veya Microsoft hesabı (MSA) e-posta adresini ekleyin. Lütfen AAD 'deki bir kullanıcının Kullanıcı asıl adı, kullanıcının e-postaından farklı olabilir. Örneğin, jane.doe@contoso.com çalışmayacak ancak çalışacaktır janedoe@contoso.com . Geliştirme ve test aşamasında **Önizleme** bağlantısını paylaştığınızda dev teklifine erişimi olan kişiler şunlardır.
+GELIŞTIRME teklifinde, geliştiriciler ve Test edicilerin, sizin de dahil Azure Active Directory (AAD) Kullanıcı asıl adlarını veya Microsoft hesabı (MSA) e-posta adreslerini ekleyin. AAD 'deki bir kullanıcının Kullanıcı asıl adı, söz konusu kullanıcının e-postaından farklı olabilir. Örneğin, jane.doe@contoso.com çalışmaz ancak janedoe@contoso.com olacaktır. Geliştirme ve test aşamasında **Önizleme** bağlantısını paylaştığınızda, BELIRLEDIĞINIZ kullanıcıların dev teklifine erişimi olur.
 
 ÜRETIM teklifinde, teklifi doğrulamak için **canlı çalış düğmesini** seçmeden önce teklifi doğrulayacak KULLANıCıLARıN Azure AD Kullanıcı asıl adını veya Microsoft hesabı e-postasını dahil edin.
 
@@ -77,10 +77,10 @@ GELIŞTIRME ve ÜRETIM teklifleri için aynı pazarları seçin.
 
 Fiyatlandırma modelleriyle denemeler yapmak için GELIŞTIRME teklifini kullanın. Hangi fiyatlandırma modelinin veya modellerinin en iyi şekilde çalıştığını doğruladıktan sonra, ÜRETIM teklifinde istediğiniz fiyatlandırma modellerini ve fiyatlarını içeren planlar oluşturacaksınız.
 
-DEV teklifinin, planlarda sıfır veya çok düşük fiyatlara sahip planları olmalıdır. ÜRETIM teklifi, müşterilere ücretlendirmenize istediğiniz fiyatlara sahip olacaktır.
+DEV teklifinin, planlarda sıfır veya düşük fiyatlara sahip planları olmalıdır. ÜRETIM teklifi, müşterilere ücretlendirmenize istediğiniz fiyatlara sahip olacaktır.
 
-> [!NOTE]
-> Önizlemede yapılan satın alma işlemleri hem GELIŞTIRME hem de ÜRETIM teklifleri için işlenir. Bir teklifin $100/ay fiyatı varsa şirketiniz ücretlendirilir $100. Bu durumda, bir [destek bileti](support.md) açabilirsiniz ve tüm miktar için bir ödeme (ve bir acenteücret ödemesiz) olarak ödersiniz.
+> [!IMPORTANT]
+> Önizlemede yapılan satın alma işlemleri hem GELIŞTIRME hem de ÜRETIM teklifleri için işlenir. Bir teklifin $100/ay fiyatı varsa şirketiniz ücretlendirilir $100. Bu durumda, bir [destek bileti](support.md) açabilirsiniz ve tam miktar için bir ödeme veriyoruz (ve mağaza servisi ücreti almaz).
 
 #### <a name="pricing-model"></a>Fiyatlandırma modeli
 
@@ -97,7 +97,7 @@ Market özel ölçüm boyutları da dahil olmak üzere fiyatlandırma modellerin
 | $50,00 ve üzeri | Bu fiyat aralığını, ödeme test etmek için kullanın. Ödeme zamanlamamız hakkında daha fazla bilgi için bkz. [ödeyen zamanlamalar ve süreçler](/partner-center/payout-policy-details). |
 |||
 
-Testinizde bir işleme ücreti ücretlendirmeden kaçınmak için bir [destek bileti](support.md)açın.
+Testinizde bir mağaza hizmeti ücreti ücretlendirmeden kaçınmak için bir [destek bileti](support.md)açın.
 
 #### <a name="free-trial"></a>Ücretsiz deneme sürümü
 

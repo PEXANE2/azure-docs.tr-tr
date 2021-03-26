@@ -1,22 +1,22 @@
 ---
 title: Azure Percept güvenliğine genel bakış
 description: Azure Percept güvenliği hakkında daha fazla bilgi edinin
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/24/2021
 ms.custom: template-concept
-ms.openlocfilehash: 9575c0aec4a1b45f9099bff1dc4209c63529ddf6
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 93884fb87f87651054ffff0a04c4910de634a5eb
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025552"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567653"
 ---
 # <a name="azure-percept-security-overview"></a>Azure Percept güvenliğine genel bakış
 
-Azure Percept DK cihazları, bir güven donanım köküyle tasarlanmıştır: her cihazda ek yerleşik güvenlik. Kameralar ve mikrofonlar, çıkarım verileri gibi gizlilik açısından duyarlı algılayıcıları korumanıza yardımcı olur ve Azure Percept Studio Hizmetleri için cihaz kimlik doğrulaması ve yetkilendirmesini sağlar.
+Azure Percept cihazları, bir güven donanım köküyle tasarlanmıştır. Bu yerleşik güvenlik, kamera ve mikrofonlar gibi çıkarım verilerini ve gizlilik açısından duyarlı algılayıcıları korumanıza yardımcı olur ve Azure Percept Studio Hizmetleri için cihaz kimlik doğrulaması ve yetkilendirmesini sağlar.
 
 > [!NOTE]
 > Azure Percept DK yalnızca geliştirme ve test ortamlarında kullanılmak üzere lisanslanır.
@@ -25,52 +25,28 @@ Azure Percept DK cihazları, bir güven donanım köküyle tasarlanmıştır: he
 
 ### <a name="azure-percept-dk"></a>Azure Percept DK
 
-Azure Percept DK, cihazı Azure cihaz sağlama hizmetlerine ek güvenlikle bağlamak için kullanılabilecek Güvenilir Platform Modülü (TPM) 2,0 sürümünü içerir. TPM, Trusted Computing Group bir sektör genelinde, ISO standardıdır ve TPM hakkında daha fazla bilgi edinmek için [tam tpm 2,0 belirtiminde](https://trustedcomputinggroup.org/resource/tpm-library-specification/) veya ISO/IEC 11889 belirtiminde daha fazla bilgi edinebilirsiniz. DPS cihazları güvenli bir şekilde nasıl sağlayabildiği hakkında daha fazla bilgi için bkz. [Azure IoT Hub cihaz sağlama hizmeti-TPM kanıtlama](../iot-dps/concepts-tpm-attestation.md).
+Azure Percept DK, cihazı Azure cihaz sağlama hizmetleri 'ne (DPS) ek güvenlikle bağlamak için kullanılabilecek Güvenilir Platform Modülü (TPM) 2,0 sürümünü içerir. TPM, Trusted Computing Group bir sektör genelinde ISO standardıdır. Tüm TPM 2,0 belirtimi veya ISO/ıEC 11889 belirtimi hakkında daha fazla bilgi için [Trusted Computing Group Web sitesine](https://trustedcomputinggroup.org/resource/tpm-library-specification/) göz atın. DPS cihazları güvenli bir şekilde nasıl sağlayabildiği hakkında daha fazla bilgi için bkz. [Azure IoT Hub cihaz sağlama hizmeti-TPM kanıtlama](../iot-dps/concepts-tpm-attestation.md).
 
-### <a name="azure-percept-system-on-module-som"></a>Modül üzerinde Azure Percept System (SOM)
+### <a name="azure-percept-system-on-modules-soms"></a>Azure Percept System-on-modüller (SoMs)
 
-Azure Percept DK Vision-etkinleştirilmiş sistem modülü (SOM) ve Azure Percept Audio donatısı SOM, gömülü AI algılayıcılarının erişimini korumak için mikro denetleyici birimi (MCU) içerir. Her önyüklemede, MCU bellenimi, cihaz tanımlayıcı bileşim altyapısı (zar) mimarisini kullanarak Azure Percept Studio Hizmetleri ile AI hızlandırıcısının kimliğini doğrular ve yetkilendirir. ZAR, katmanlara önyükleme gerçekleştirerek ve benzersiz bir cihaz gizli dizisi (UDS) temelinde her bir katmana ve yapılandırmaya özgü gizli dizileri oluşturarak çalışır. Farklı kod veya yapılandırma önyüklenmiyorsa, zincirdeki herhangi bir noktada gizlilikler farklı olur. Zar [çalışma grubu belirtiminde](https://trustedcomputinggroup.org/work-groups/dice-architectures/), zar hakkında daha fazla bilgi edinebilirsiniz. Azure Percept Studio ve gerekli hizmetlere erişimi yapılandırmak için aşağıdaki **Azure için güvenlik duvarlarını yapılandırma PERCEPT dk** bölümüne bakın.
+Azure Percept Vision System-on-Module (SoM) ve Azure Percept Audio SoM, gömülü AI sensörlerinden erişimi korumak için bir mikro denetleyici birimi (MCU) içerir. Her önyüklemede, MCU bellenimi, cihaz tanımlayıcı bileşim altyapısı (zar) mimarisini kullanarak Azure Percept Studio Hizmetleri ile AI hızlandırıcısının kimliğini doğrular ve yetkilendirir. ZAR, katmanlara önyükleme gerçekleştirerek ve her katman ve yapılandırma için benzersiz cihaz gizli dizileri (UDS) oluşturarak çalışır. Zincirdeki herhangi bir noktada farklı kod veya yapılandırma önyüklenmiyorsa, gizlilikler farklı olur. Zar [çalışma grubu belirtiminde](https://trustedcomputinggroup.org/work-groups/dice-architectures/), zar hakkında daha fazla bilgi edinebilirsiniz. Azure Percept Studio ve gerekli hizmetlere erişimi yapılandırmak için [Azure PERCEPT dk için güvenlik duvarlarını yapılandırma](concept-security-configuration.md)makalesine bakın.
 
-Azure Percept cihazları, bellenimi güvenli hale getirmek için donanım kök güvenini kullanır. Önyükleme ROM 'U, ROM ve işletim sistemi (OS) yükleyicisi arasındaki üretici yazılımının bütünlüğünü sağlar ve bu da bir güven zinciri oluşturan diğer yazılım bileşenlerinin bütünlüğünü sağlar.
+Azure Percept cihazları, bellenimin güvenliğini sağlamak için güvenin donanım kökünü kullanır. Önyükleme ROM 'U, ROM ve işletim sistemi (OS) yükleyicisi arasındaki üretici yazılımının bütünlüğünü sağlar; bu da diğer yazılım bileşenlerinin bütünlüğünü sağlar ve bir güven zinciri oluşturur.
 
 ## <a name="services"></a>Hizmetler
 
 ### <a name="iot-edge"></a>IoT Edge
 
-Azure Percept DK, Aktarım Katmanı Güvenliği (TLS) protokolü kullanan ek güvenlik ve diğer Azure hizmetleriyle Azure Percept Studio 'ya bağlanır. Azure Percept DK, Azure IoT Edge özellikli bir cihazdır. IoT Edge Runtime, bir cihazı IoT Edge cihazına veren bir programlar koleksiyonudur. Toplu olarak, IoT Edge çalışma zamanı bileşenleri, IoT Edge cihazların kenarda çalışacak kodu almasını ve sonuçları iletmelerini sağlar. Azure Percept DK, ana bilgisayar işletim sistemi ve kenar özellikli uygulamalardan IoT Edge iş yüklerini yalıtmak için Docker kapsayıcılarını kullanır. Azure IoT Edge güvenlik çerçevesi hakkında daha fazla bilgi için [IoT Edge Güvenlik Yöneticisi](../iot-edge/iot-edge-security-manager.md)hakkında makalesini okuyun.
+Azure Percept DK, Aktarım Katmanı Güvenliği (TLS) protokolü kullanan ek güvenlik ve diğer Azure hizmetleriyle Azure Percept Studio 'ya bağlanır. Azure Percept DK, Azure IoT Edge özellikli bir cihazdır. IoT Edge Runtime, bir cihazı IoT Edge cihazına veren bir programlar koleksiyonudur. Toplu olarak, IoT Edge çalışma zamanı bileşenleri, IoT Edge cihazların kenarda çalışacak kodu almasını ve sonuçları iletmelerini sağlar. Azure Percept DK, ana bilgisayar işletim sisteminden ve kenar özellikli uygulamalardan IoT Edge iş yüklerini yalıtmak için Docker kapsayıcılarını kullanır. Azure IoT Edge güvenlik çerçevesi hakkında daha fazla bilgi için [IoT Edge Güvenlik Yöneticisi](../iot-edge/iot-edge-security-manager.md)hakkında makalesini okuyun.
 
 ### <a name="device-update-for-iot-hub"></a>IoT Hub için cihaz güncelleştirmesi
 
 IoT Hub cihaz güncelleştirmesi, Azure Percept cihazlarına yenilenebilir güvenlik sağlayan, daha güvenli, ölçeklenebilir ve güvenilir, kablosuz bir güncelleştirme sağlar. Öngörüler aracılığıyla zengin yönetim denetimleri ve güncelleştirme uyumluluğu sağlar. Azure Percept DK, üretici yazılımından işletim sistemi katmanlarına dayanıklı güncelleştirme (A/B) sağlayan önceden tümleştirilmiş bir cihaz güncelleştirme çözümü içerir.
 
-<!---I think the below topics need to be somewhere else, (i.e. not on the main page)
---->
-
-## <a name="configuring-firewalls-for-azure-percept-dk"></a>Azure Percept DK için güvenlik duvarlarını yapılandırma
-
-Ağ Kurulum, Azure Percept DK cihazlarından yapılan bağlantılara açıkça izin vermenizi gerektiriyorsa, aşağıdaki bileşen listesini gözden geçirin.
-
-Bu denetim listesi, güvenlik duvarı kuralları için bir başlangıç noktasıdır:
-
-|URL (* = joker karakter) |Giden TCP bağlantı noktaları|    Kullanım|
-|-------------------|------------------|---------|
-|*. auth.azureperceptdk.azure.net|   443|    Azure DK SOM kimlik doğrulaması ve yetkilendirme|
-|*. auth.projectsantacruz.azure.net| 443|    Azure DK SOM kimlik doğrulaması ve yetkilendirme|
-
-Ayrıca, [Azure IoT Edge tarafından kullanılan bağlantıların](../iot-edge/production-checklist.md#allow-connections-from-iot-edge-devices)listesini gözden geçirin.
-
-<!---
-## Additional Recommendations for Deployment to Production
-
-Azure Percept DK offers a great variety of security capabilities out of the box. In addition to those powerful security features included in the current release, Microsoft also suggests the following guidelines when considering production deployments:
-
-- Strong physical protection of the device itself
-- Ensuring data at rest encryption is enabled
-- Continuously monitoring the device posture and quickly responding to alerts
-- Limiting the number of administrators who have access to the device
---->
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanılabilir [Azure PERCEPT AI modelleri](./overview-ai-models.md)hakkında bilgi edinin.
+> [!div class="nextstepaction"]
+> [Güvenlik Duvarı konfigürasyonları ve güvenlik önerileri hakkında daha fazla bilgi edinin](concept-security-configuration.md)
+
+> [!div class="nextstepaction"]
+> [Microsoft Online Mağazası 'ndan bir Azure Percept DK satın alma](https://go.microsoft.com/fwlink/p/?LinkId=2155270)

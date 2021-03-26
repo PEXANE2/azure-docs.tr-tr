@@ -4,12 +4,12 @@ description: Sayfa görüntüleme ve oturum sayıları, Web istemcisi verileri, 
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b8824a0f73f3a79ab70810c529cb0ed9331a797
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 04cda044b002e226c49f8647d4705d7c0f2a514e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102485495"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565274"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -107,7 +107,7 @@ Tüm yapılandırma seçenekleri, yanlışlıkla SDK 'nın yüklenmesine neden o
 Her yapılandırma seçeneği, yukarıdaki yeni bir satırda gösterilir. [isteğe bağlı] olarak listelenen bir öğenin varsayılan değerini geçersiz kılmak istemiyorsanız, döndürülen sayfanızın elde edilen boyutunu en aza indirmek için bu satırı kaldırabilirsiniz.
 
 Kullanılabilir yapılandırma seçenekleri şunlardır
-
+ 
 | Ad | Tür | Description
 |------|------|----------------
 | src | dize **[gerekli]** | SDK 'nın yükleneceği yerin tam URL 'SI. Bu değer, dinamik olarak eklenen bir betiğin/etiketin "src" özniteliği için kullanılır &lt; &gt; . Genel CDN konumunu veya kendi özel olarak barındırılan birini kullanabilirsiniz.
@@ -171,52 +171,87 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Yapılandırma
 Çoğu yapılandırma alanı, varsayılan olarak false olarak ayarlanabilecek şekilde adlandırılır. Tüm alanlar, hariç olarak isteğe bağlıdır `instrumentationKey` .
 
-| Name | Varsayılan | Description |
-|------|---------|-------------|
-| ınstrumentationkey | null | **Gerekli**<br>Azure portal aldığınız izleme anahtarı. |
-| accountId | null | Uygulamanız kullanıcıları hesaplara gruplayan isteğe bağlı hesap KIMLIĞI. Boşluk, virgül, noktalı virgül, eşittir veya dikey çubuklar yok |
-| sessionRenewalMs | 1800000 | Kullanıcı bu süre boyunca devre dışı bırakılırsa, bir oturum günlüğe kaydedilir. Varsayılan değer 30 dakikadır |
-| sessionExpirationMs | 86400000 | Bu süre boyunca milisaniye cinsinden devam eden bir oturum günlüğe kaydedilir. Varsayılan değer 24 saattir |
-| Maxbatchsizeınbytes | 10000 | Telemetri toplu işinin en büyük boyutu. Bir toplu iş bu sınırı aşarsa, hemen gönderilir ve yeni bir toplu işlem başlatılır |
-| Maxbatchınterval | 15000 | Göndermeden önce toplu iş telemetrisi için ne kadar süre (milisaniye) |
-| disableExceptionTracking | yanlış | True ise, özel durumlar tekrar toplanmamıştır. Varsayılan değer false’tur. |
-| Disabletelemetri | yanlış | True ise telemetri toplanmaz veya gönderilmez. Varsayılan değer false’tur. |
-| enableDebug | yanlış | True ise, **iç** hata ayıklama VERILERI, SDK günlüğü ayarlarından bağımsız olarak, günlüğe kaydedilmesi **yerine** bir özel durum olarak oluşturulur. Varsayılan değer false’tur. <br>**_Note:_** Bu ayarın etkinleştirilmesi, bir iç hata oluştuğunda telemetri oluşmasına neden olur. Bu, yapılandırma veya SDK kullanımınız ile ilgili sorunları hızlı bir şekilde tanımlamak için yararlı olabilir. Hata ayıklama sırasında Telemetriyi kaybetmek istemiyorsanız, veya yerine kullanmayı düşünün `consoleLoggingLevel` `telemetryLoggingLevel` `enableDebug` . |
-| loggingLevelConsole | 0 | **İç** Application Insights hatalarını konsola kaydeder. <br>0: kapalı, <br>1: yalnızca kritik hatalar, <br>2: her şey (hata & uyarı) |
-| Loggingleveltelemetri | 1 | **İç** Application Insights hatalarını telemetri olarak gönderir. <br>0: kapalı, <br>1: yalnızca kritik hatalar, <br>2: her şey (hata & uyarı) |
-| Diagnosticlogınterval | 10000 | iç İç günlük kuyruğu için yoklama aralığı (MS cinsinden) |
-| samplingPercentage | 100 | Gönderilecek olayların yüzdesi. Varsayılan değer 100 ' dir, yani tüm olaylar gönderilir. Büyük ölçekli uygulamalar için veri ucunu korumak isterseniz bunu ayarlayın. |
-| Oto Trackpagevisittime | yanlış | True ise, bir PageView üzerinde, önceki belgelenmiş sayfanın görünüm süresi izlenir ve telemetri olarak gönderilir ve geçerli PageView için yeni bir Zamanlayıcı başlatılır. Varsayılan değer false’tur. |
-| disableAjaxTracking | yanlış | True ise, Ajax çağrıları tekrar toplanmamıştır. Varsayılan değer false’tur. |
-| disableFetchTracking | true | True ise, Fetch istekleri tekrar toplanmaz. Varsayılan değer true 'dur |
-| overridePageViewDuration | yanlış | True ise trackPageView 'ın varsayılan davranışı sayfa görüntüleme süresi aralığının sonuna, trackPageView çağrıldığında bir kayıt olarak değiştirilmiştir. Yanlış olursa ve trackPageView için özel süre sağlanmamışsa, sayfa görünümü performansı, gezinti zamanlaması API 'SI kullanılarak hesaplanır. Varsayılan değer false’tur. |
-| maxAjaxCallsPerView | 500 | Varsayılan 500-sayfa görünümü başına kaç Ajax çağrısının izleneceğini denetler. Sayfadaki tüm (sınırsız) AJAX çağrılarını izlemek için-1 olarak ayarlayın. |
-| disableDataLossAnalysis | true | Yanlışsa, iç telemetri gönderici arabellekleri henüz gönderilmemiş öğeler için başlangıçta denetlenir. |
-| disableCorrelationHeaders | yanlış | Yanlış ise, SDK, sunucu tarafındaki ilgili isteklerle ilişkilendirmek üzere tüm bağımlılık isteklerine iki üst bilgi (' Istek-kimlik ' ve ' Istek-bağlam ') ekler. Varsayılan değer false’tur. |
-| correlationHeaderExcludedDomains |  | Belirli etki alanları için bağıntı üstbilgilerini devre dışı bırak |
-| correlationHeaderDomains |  | Belirli etki alanları için bağıntı üstbilgilerini etkinleştir |
-| disableFlushOnBeforeUnload | yanlış | Varsayılan yanlış. True ise, onBeforeUnload olay tetikleyicileri sırasında temizleme yöntemi çağrılmayacak |
-| enableSessionStorageBuffer | true | Varsayılan değer. Doğru ise, tüm gönderilmemiş Telemetriyi içeren arabellek oturum depolama alanında depolanır. Arabellek sayfa yüküne geri yüklendi |
-| Idite ıeusedisabled | yanlış | Varsayılan yanlış. True ise SDK, tanımlama bilgilerinden herhangi bir veriyi depolamaz veya okummaz. Bunun, Kullanıcı ve oturum tanımlama bilgilerini devre dışı bıraktığını ve kullanım dikey pencerelerini ve deneyimlerin kullanılamaz olduğunu unutmayın. |
-| Pişirme etki alanı | null | Özel tanımlama bilgisi etki alanı. Bu, alt etki alanları arasında Application Insights tanımlama bilgilerini paylaştırmak istiyorsanız yararlı olur. |
-| ıretrydisabled | yanlış | Varsayılan yanlış. Yanlışsa, 206 (kısmi başarı), 408 (zaman aşımı), 429 (çok fazla istek), 500 (iç sunucu hatası), 503 (hizmet kullanılamıyor) ve 0 (yalnızca algılanırsa) üzerinde yeniden deneyin |
-| ıstorageusedisabled | yanlış | True ise, SDK yerel ve oturum depolamadan hiçbir veriyi depolamaz veya okummaz. Varsayılan değer false’tur. |
-| ıconlanapidisabled | true | False ise, SDK, [Işaret API](https://www.w3.org/TR/beacon) 'sini kullanarak tüm telemetrileri gönderir |
-| Onunloaddisableişaret | yanlış | Varsayılan yanlış. sekme kapatıldığında SDK, [Işaret API](https://www.w3.org/TR/beacon) 'sini kullanarak kalan tüm telemetrileri gönderir |
-| SDK uzantısı | null | SDK uzantısının adını ayarlar. Yalnızca alfabetik karakterlere izin verilir. Uzantı adı ' AI. Internal. sdkVersion ' etiketinin öneki olarak eklenir (örneğin, ' ext_javascript: 2.0.0 '). Varsayılan değer null. |
-| isBrowserLinkTrackingEnabled | yanlış | Varsayılan değer false’tur. Doğru ise, SDK tüm [tarayıcı bağlantısı](/aspnet/core/client-side/using-browserlink) isteklerini izler. |
-| appId | null | Uygulama kimliği, istemci tarafında sunucu tarafı istekleri ile oluşan AJAX bağımlılıkları arasındaki bağıntı için kullanılır. Işaret API 'SI etkinleştirildiğinde, otomatik olarak kullanılamaz, ancak yapılandırmada el ile ayarlanabilir. Varsayılan değer null |
-| enableCorsCorrelation | yanlış | Doğru ise, SDK giden AJAX bağımlılıklarını sunucu tarafındaki ilgili isteklerle ilişkilendirmek için tüm CORS isteklerine iki üst bilgi (' Istek-kimliği ' ve ' Istek-bağlam ') ekler. Varsayılan değer false şeklindedir |
-| namePrefix | tanımlayan | LocalStorage ve tanımlama bilgisi adı için ad soneki olarak kullanılacak isteğe bağlı bir değer.
-| Enableoto Routetracking | yanlış | Rota değişikliklerini tek sayfalı uygulamalarda (SPA) otomatik olarak izleyin. True ise, her yol değişikliği Application Insights yeni bir PageView gönderir. Karma yol değişiklikleri ( `example.com/foo#bar` ) de yeni sayfa görünümleri olarak kaydedilir.
-| enableRequestHeaderTracking | yanlış | True ise, AJAX & getirme isteği üst bilgileri izlenir, varsayılan değer false 'dur.
-| enableResponseHeaderTracking | yanlış | True ise, AJAX & getirme isteğinin yanıt üst bilgileri izlenir, varsayılan değer false 'dur.
-| distributedTracingMode | `DistributedTracingModes.AI` | Dağıtılmış izleme modunu ayarlar. AI_AND_W3C Mode veya W3C modu ayarlandıysa, W3C Trace bağlam üstbilgileri (traceparent/tracestate) oluşturulur ve tüm giden isteklere dahil edilir. AI_AND_W3C, eski Application Insights belgelenmiş hizmetlerle geri uyumluluk için sağlanır. Örneğe [buraya](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)bakın.
-| enableAjaxErrorStatusText | yanlış | Varsayılan yanlış. Doğru ise, başarısız AJAX isteklerinde bağımlılık olayına yanıt hatası veri metnini ekleyin.
-| enableAjaxPerfTracking | yanlış | Varsayılan yanlış. Ek tarayıcı penceresi için arama ve dahil etme özelliğini etkinleştirme bayrağı. bildirilen `ajax` (XHR ve fetch) bildirilen ölçümlerde performans zamanlamaları.
-| maxAjaxPerfLookupAttempts | 3 | Varsayılan olarak 3 ' e döner. Pencerenin aranacağı en fazla sayı. performans zamanlamaları (varsa), tüm tarayıcılar pencereyi doldurmadığından bu gereklidir. XHR isteğinin sonunu ve getirme isteklerini raporlamadan önce bu, tamamlandıktan sonra eklenir.
-| ajaxPerfLookupDelay | 25 | Varsayılan olarak 25 MS olur. Bir istek için Windows. Performance zamanlamalarını bulmayı yeniden denemeden önce beklenecek süre `ajax` (süre milisaniye cinsinden) ve doğrudan setTimeout () öğesine geçirilir.
-| enableUnhandledPromiseRejectionTracking | yanlış | Doğru ise, işlenmeyen Promise reddi sayısı, yeniden toplanacak ve bir JavaScript hatası olarak raporlanır. DisableExceptionTracking true olduğunda (özel durumları izlememeyin), yapılandırma değeri yok sayılır ve işlenmemiş Promise geri alma raporlanmaz.
+| Ad | Açıklama | Varsayılan |
+|------|-------------|---------|
+| ınstrumentationkey | **Gerekli**<br>Azure portal aldığınız izleme anahtarı. | string<br/>null |
+| accountId | Uygulamanız kullanıcıları hesaplara gruplayan isteğe bağlı hesap KIMLIĞI. Boşluk, virgül, noktalı virgül, eşittir veya dikey çubuklar yok | string<br/>null |
+| sessionRenewalMs | Kullanıcı bu süre boyunca devre dışı bırakılırsa, bir oturum günlüğe kaydedilir. | sayısal<br/>1800000<br/>(30 dakika) |
+| sessionExpirationMs | Bu süre boyunca milisaniye cinsinden devam eden bir oturum günlüğe kaydedilir. | sayısal<br/>86400000<br/>(24 saat) |
+| Maxbatchsizeınbytes | Telemetri toplu işinin en büyük boyutu. Bir toplu iş bu sınırı aşarsa, hemen gönderilir ve yeni bir toplu işlem başlatılır | sayısal<br/>10000 |
+| Maxbatchınterval | Göndermeden önce toplu iş telemetrisi için ne kadar süre (milisaniye) | sayısal<br/>15000 |
+| ExceptionTracking&#8203;devre dışı bırak | True ise, özel durumlar tekrar toplanmamıştır. | boolean<br/> yanlış |
+| Disabletelemetri | True ise telemetri toplanmaz veya gönderilmez. | boolean<br/>yanlış |
+| enableDebug | True ise, **iç** hata ayıklama VERILERI, SDK günlüğü ayarlarından bağımsız olarak, günlüğe kaydedilmesi **yerine** bir özel durum olarak oluşturulur. Varsayılan değer false’tur. <br>**_Note:_** Bu ayarın etkinleştirilmesi, bir iç hata oluştuğunda telemetri oluşmasına neden olur. Bu, yapılandırma veya SDK kullanımınız ile ilgili sorunları hızlı bir şekilde tanımlamak için yararlı olabilir. Hata ayıklama sırasında Telemetriyi kaybetmek istemiyorsanız, veya yerine kullanmayı düşünün `consoleLoggingLevel` `telemetryLoggingLevel` `enableDebug` . | boolean<br/>yanlış |
+| loggingLevelConsole | **İç** Application Insights hatalarını konsola kaydeder. <br>0: kapalı, <br>1: yalnızca kritik hatalar, <br>2: her şey (hata & uyarı) | sayısal<br/> 0 |
+| Loggingleveltelemetri | **İç** Application Insights hatalarını telemetri olarak gönderir. <br>0: kapalı, <br>1: yalnızca kritik hatalar, <br>2: her şey (hata & uyarı) | sayısal<br/> 1 |
+| Diagnosticlogınterval | iç İç günlük kuyruğu için yoklama aralığı (MS cinsinden) | sayısal<br/> 10000 |
+| samplingPercentage | Gönderilecek olayların yüzdesi. Varsayılan değer 100 ' dir, yani tüm olaylar gönderilir. Büyük ölçekli uygulamalar için veri ucunu korumak isterseniz bunu ayarlayın. | sayısal<br/>100 |
+| Oto Trackpagevisittime | True ise, bir PageView üzerinde, önceki belgelenmiş sayfanın görünüm süresi izlenir ve telemetri olarak gönderilir ve geçerli PageView için yeni bir Zamanlayıcı başlatılır. | boolean<br/>yanlış |
+| disableAjaxTracking | True ise, Ajax çağrıları tekrar toplanmamıştır. | boolean<br/> yanlış |
+| disableFetchTracking | True ise, Fetch istekleri tekrar toplanmaz.|boolean<br/>true |
+| overridePageViewDuration | True ise trackPageView 'ın varsayılan davranışı sayfa görüntüleme süresi aralığının sonuna, trackPageView çağrıldığında bir kayıt olarak değiştirilmiştir. Yanlış olursa ve trackPageView için özel süre sağlanmamışsa, sayfa görünümü performansı, gezinti zamanlaması API 'SI kullanılarak hesaplanır. |boolean<br/>
+| maxAjaxCallsPerView | Varsayılan 500-sayfa görünümü başına kaç Ajax çağrısının izleneceğini denetler. Sayfadaki tüm (sınırsız) AJAX çağrılarını izlemek için-1 olarak ayarlayın. | sayısal<br/> 500 |
+| disableDataLossAnalysis | Yanlışsa, iç telemetri gönderici arabellekleri henüz gönderilmemiş öğeler için başlangıçta denetlenir. | boolean<br/> true |
+| &#8203;CorrelationHeaders 'i devre dışı bırak | Yanlış ise, SDK, sunucu tarafındaki ilgili isteklerle ilişkilendirmek üzere tüm bağımlılık isteklerine iki üst bilgi (' Istek-kimlik ' ve ' Istek-bağlam ') ekler. | boolean<br/> yanlış |
+| correlationHeader&#8203;ExcludedDomains | Belirli etki alanları için bağıntı üstbilgilerini devre dışı bırak | String []<br/>tanımlayan |
+| correlationHeader&#8203;ExcludePatterns desenleri | Normal ifadeler kullanarak bağıntı üstbilgilerini devre dışı bırakma | Regex []<br/>tanımlayan |
+| correlationHeader&#8203;etki alanları | Belirli etki alanları için bağıntı üstbilgilerini etkinleştir | String []<br/>tanımlayan |
+| disableFlush&#8203;OnBeforeUnload | True ise, onBeforeUnload olay tetikleyicileri sırasında temizleme yöntemi çağrılmayacak | boolean<br/> yanlış |
+| enableSessionStorageBuffer | Doğru ise, tüm gönderilmemiş Telemetriyi içeren arabellek oturum depolama alanında depolanır. Arabellek sayfa yüküne geri yüklendi | boolean<br />true |
+| Tanımlama bilgisi Ecfg | Varsayılan olarak tanımlama bilgisi kullanımı etkindir: tam varsayılanlar için [ıokiecfgconfig](#icookiemgrconfig) ayarları ' na bakın. | [Iokiecfgconfig](#icookiemgrconfig)<br>(2.6.0 beri)<br/>tanımlayan |
+| ~~Idite ıeusedisabled~~<br>disableCookiesUsage | True ise SDK, tanımlama bilgilerinden herhangi bir veriyi depolamaz veya okummaz. Bunun, Kullanıcı ve oturum tanımlama bilgilerini devre dışı bıraktığını ve kullanım dikey pencerelerini ve deneyimlerin kullanılamaz olduğunu unutmayın. ıdıalsel ıeusedisable, her ikisi de disableCookiesUsage tarafından sağlansa da, disableCookiesUsage kullanım dışı bırakılmıştır.<br>(V 2.6.0 beri) `cookieCfg.enabled` Ayrıca tanımlıysa, bu değerlere göre öncelikli olur. GetCookie (). setEnabled (true) aracılığıyla başlatma sonrasında tanımlama bilgisi kullanımı yeniden etkinleştirilebilir. | için diğer ad [`cookieCfg.enabled`](#icookiemgrconfig)<br>yanlış |
+| Pişirme etki alanı | Özel tanımlama bilgisi etki alanı. Bu, alt etki alanları arasında Application Insights tanımlama bilgilerini paylaştırmak istiyorsanız yararlı olur.<br>(V 2.6.0 beri) `cookieCfg.domain` Tanımlanmışsa, bu değerden öncelikli olur. | için diğer ad [`cookieCfg.domain`](#icookiemgrconfig)<br>null |
+| Tanımlama, ıepath | Özel tanımlama bilgisi yolu. Bu, bir uygulama ağ geçidinin arkasında Application Insights tanımlama bilgilerini paylaştırmak istiyorsanız yararlı olur.<br>`cookieCfg.path`Tanımlanmışsa, bu değerden öncelikli olur. | için diğer ad [`cookieCfg.path`](#icookiemgrconfig)<br>(2.6.0 beri)<br/>null |
+| ıretrydisabled | Yanlışsa, 206 (kısmi başarı), 408 (zaman aşımı), 429 (çok fazla istek), 500 (iç sunucu hatası), 503 (hizmet kullanılamıyor) ve 0 (yalnızca algılanırsa) üzerinde yeniden deneyin | boolean<br/>yanlış |
+| ıstorageusedisabled | True ise, SDK yerel ve oturum depolamadan hiçbir veriyi depolamaz veya okummaz. | boolean<br/> yanlış |
+| ıconlanapidisabled | False ise, SDK, [Işaret API](https://www.w3.org/TR/beacon) 'sini kullanarak tüm telemetrileri gönderir | boolean<br/>true |
+| Onunloaddisableişaret | Sekme kapatıldığında SDK, [Işaret API](https://www.w3.org/TR/beacon) 'sini kullanarak kalan tüm telemetrileri gönderir | boolean<br/> yanlış |
+| SDK uzantısı | SDK uzantısının adını ayarlar. Yalnızca alfabetik karakterlere izin verilir. Uzantı adı ' AI. Internal. sdkVersion ' etiketinin öneki olarak eklenir (örneğin, ' ext_javascript: 2.0.0 '). | string<br/> null |
+| isBrowserLink&#8203;TrackingEnabled | Doğru ise, SDK tüm [tarayıcı bağlantısı](/aspnet/core/client-side/using-browserlink) isteklerini izler. | boolean<br/>yanlış |
+| appId | Uygulama kimliği, istemci tarafında sunucu tarafı istekleri ile oluşan AJAX bağımlılıkları arasındaki bağıntı için kullanılır. Işaret API 'SI etkinleştirildiğinde, otomatik olarak kullanılamaz, ancak yapılandırmada el ile ayarlanabilir. |string<br/> null |
+| &#8203;CorsCorrelation etkinleştir | Doğru ise, SDK giden AJAX bağımlılıklarını sunucu tarafındaki ilgili isteklerle ilişkilendirmek için tüm CORS isteklerine iki üst bilgi (' Istek-kimliği ' ve ' Istek-bağlam ') ekler. | boolean<br/>yanlış |
+| namePrefix | LocalStorage ve tanımlama bilgisi adı için ad soneki olarak kullanılacak isteğe bağlı bir değer. | string<br/>tanımlayan |
+| &#8203;oto&#8203;Izlemeyi etkinleştir | Rota değişikliklerini tek sayfalı uygulamalarda (SPA) otomatik olarak izleyin. True ise, her yol değişikliği Application Insights yeni bir PageView gönderir. Karma yol değişiklikleri ( `example.com/foo#bar` ) de yeni sayfa görünümleri olarak kaydedilir.| boolean<br/>yanlış |
+| enableRequest&#8203;HeaderTracking | True ise, AJAX & getirme isteği üst bilgileri izlenir. | boolean<br/> yanlış |
+| Enableresle&#8203;HeaderTracking | True ise, AJAX & getirme isteğinin yanıt üst bilgileri izlenir. | boolean<br/> yanlış |
+| distributedTracingMode | Dağıtılmış izleme modunu ayarlar. AI_AND_W3C Mode veya W3C modu ayarlandıysa, W3C Trace bağlam üstbilgileri (traceparent/tracestate) oluşturulur ve tüm giden isteklere dahil edilir. AI_AND_W3C, eski Application Insights belgelenmiş hizmetlerle geri uyumluluk için sağlanır. Örneğe [buraya](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)bakın.| `DistributedTracingModes`veya<br/>sayısal<br/>(V 2.6.0 beri) `DistributedTracingModes.AI_AND_W3C`<br />(v 2.5.11 veya önceki sürümler) `DistributedTracingModes.AI` |
+| &#8203;AjaxErrorStatusText 'i etkinleştir | Doğru ise, başarısız AJAX isteklerinde bağımlılık olayına yanıt hatası veri metnini ekleyin. | boolean<br/> yanlış |
+| &#8203;AjaxPerfTracking etkinleştirin |Ek tarayıcı penceresi için arama ve dahil etme özelliğini etkinleştirme bayrağı. bildirilen `ajax` (XHR ve fetch) bildirilen ölçümlerde performans zamanlamaları. | boolean<br/> yanlış |
+| maxAjaxPerf&#8203;LookupAttempts | Pencerenin aranacağı en fazla sayı. performans zamanlamaları (varsa), tüm tarayıcılar pencereyi doldurmadığından bu gereklidir. XHR isteğinin sonunu ve getirme isteklerini raporlamadan önce bu, tamamlandıktan sonra eklenir.| sayısal<br/> 3 |
+| ajaxPerfLookupDelay | Bir istek için Windows. Performance zamanlamalarını bulmayı yeniden denemeden önce beklenecek süre `ajax` (süre milisaniye cinsinden) ve doğrudan setTimeout () öğesine geçirilir. | sayısal<br/> 25 MS |
+| Enableişlenmemiş&#8203;PromiseRejection&#8203;Izleme | Doğru ise, işlenmeyen Promise reddi sayısı, yeniden toplanacak ve bir JavaScript hatası olarak raporlanır. DisableExceptionTracking true olduğunda (özel durumları izlememeyin), yapılandırma değeri yok sayılır ve işlenmemiş Promise geri alma raporlanmaz. | boolean<br/> yanlış |
+| &#8203;ınstrumentationkey&#8203;doğrulamayı devre dışı bırak | Doğru ise, izleme anahtarı doğrulama denetimi atlanır. | boolean<br/>yanlış |
+| enablePerfMgr | Etkinleştirildiğinde (true), bu, perfEvents (doPerf () Yardımcısı aracılığıyla) yayma için işaretlenmiş kod için yerel bir perfEvents oluşturur. Bu, kullanımınız veya isteğe bağlı olarak kendi belgelenmiş kodunuzda SDK içindeki performans sorunlarını belirlemek için kullanılabilir. [Temel belgelerde daha fazla ayrıntı bulabilirsiniz](https://github.com/microsoft/ApplicationInsights-JS/blob/master/docs/PerformanceMonitoring.md). V 2.5.7 beri | boolean<br/>yanlış |
+| perfEvtsSendAll | _Enableperfmgr_ etkin olduğunda ve [ıperfmanager](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfManager.ts) bir [ınocertificate](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/INotificationManager.ts). perfevent () tetiklendiğinde, bu bayrak tüm olaylar (true) veya yalnızca ' Parent ' olayları için bir olayın tetikedilip edilmeyeceğini (tüm dinleyicilerine gönderileceğini) belirler (yanlış &lt; varsayılan &gt; ).<br />Üst [ıperfevent](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfEvent.ts) , bu olayın oluşturulması sırasında başka bir ıperfevent hala çalıştırılmadığından ve _üst_ özelliği null veya tanımsız olmadığı bir olaydır. V 2.5.7 beri |  boolean<br />yanlış |
+| ıdlength | Yeni rastgele oturum ve Kullanıcı kimliği değerleri oluşturmak için kullanılan varsayılan uzunluğu tanımlar. Varsayılan değer 22 ' dir, önceki varsayılan değer 5 ' tir (v 2.5.8 veya daha az), önceki en büyük uzunluğu tutmanız gerekiyorsa bu değeri 5 olarak ayarlamanız gerekir. |  sayısal<br />22 |
+
+## <a name="cookie-handling"></a>Tanımlama bilgisi Işleme
+
+2.6.0 sürümünden, tanımlama bilgisi yönetimi artık doğrudan örnekten kullanılabilir ve başlatma sonrasında devre dışı bırakılabilir ve yeniden etkinleştirilebilir.
+
+Veya yapılandırması aracılığıyla başlatma sırasında devre dışı bırakılmışsa `disableCookiesUsage` `cookieCfg.enabled` , artık [ıokiemgr](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts) işlevi aracılığıyla yeniden etkinleştirebilirsiniz `setEnabled` .
+
+Örnek tabanlı tanımlama bilgisi yönetimi,, ve ' nin önceki coreutils genel işlevlerinin yerini alır `disableCookies()` `setCookie(...)` `getCookie(...)` `deleteCookie(...)` . Ayrıca, sürüm 2.6.0 'nin bir parçası olarak da sunulan Tree-gerçekleşmesi geliştirmelerinden faydalanmak için, artık genel işlevleri kullanmamalısınız.
+
+### <a name="icookiemgrconfig"></a>Iokiemgrconfig
+
+Örnek tabanlı tanımlama bilgisi yönetimi için tanımlama bilgisi yapılandırması 2.6.0 sürümüne eklenmiştir.
+
+| Ad | Açıklama | Tür ve varsayılan |
+|------|-------------|------------------|
+| enabled | SDK tarafından tanımlama bilgilerinin kullanılması geçerli örnek tarafından etkinleştirilip etkinleştirilmeyeceğini belirten bir Boole değeri. False ise, bu yapılandırma tarafından başlatılan SDK 'nın örneği, tanımlama bilgilerinden verileri depolamaz veya okummaz | boolean<br/> true |
+| etki alanı | Özel tanımlama bilgisi etki alanı. Bu, alt etki alanları arasında Application Insights tanımlama bilgilerini paylaştırmak istiyorsanız yararlı olur. Sağlanmazsa, kök değerden değeri kullanır `cookieDomain` . | string<br/>null |
+| path | Tanımlama bilgisi için kullanılacak yolu belirtir, sağlanmazsa kök değerden herhangi bir değer kullanacaktır `cookiePath` . | string <br/> / |
+| getCookie | Adlandırılmış tanımlama bilgisi değerini getirmek için işlevi, sağlanmazsa iç tanımlama bilgisi ayrıştırma/önbelleğe alma işlemini kullanacaktır. | `(name: string) => string` <br/> null |
+| setCookie | Adlandırılmış tanımlama bilgisini, yalnızca tanımlama bilgisi eklenirken veya güncelleştirilirken çağrılan belirtilen değerle ayarlamak için işlev. | `(name: string, value: string) => void` <br/> null |
+| delCookie | Adlandırılmış tanımlama bilgisini, belirtilen değere sahip, setCookie ile ayrılmış olarak silmek için işlev, tanımlama bilgisinin eklenip eklenmeyeceğini veya kaldırılıp kaldırılmadığını belirleme gereksinimini ortadan kaldırmak için. Sağlanmazsa, iç tanımlama bilgisi ayrıştırma/önbelleğe alma kullanılır. | `(name: string, value: string) => void` <br/> null |
+
+### <a name="simplified-usage-of-new-instance-cookie-manager"></a>Yeni örnek tanımlama bilgisi Yöneticisi 'nin Basitleştirilmiş kullanımı
+
+- appınsights. [Gettanımlama bilgisi EMGR ()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts). SetEnabled (true/false);
+- appınsights. [GetCookie EMGR ()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts). set ("MyCookie", "% 20encoded% 20value");
+- appınsights. [GetCookie EMGR ()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts). Get ("MyCookie");
+- appınsights. [GetCookie EMGR ()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts). del ("MyCookie");
 
 ## <a name="enable-time-on-page-tracking"></a>Sayfa üzerinde zamanı izlemeyi etkinleştir
 

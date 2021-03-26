@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/19/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: af6234a81e8f79424cc3b1ec4178a175d9ff0146
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b0eeb73ffb5436284f4f23cef943db0a3307a2b2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98706708"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564577"
 ---
 # <a name="repairing-an-import-job"></a>Bir içeri aktarma işini onarma
 Microsoft Azure İçeri/Dışarı Aktarma hizmeti, bazı dosyalarınızı veya bir dosyanın bazı bölümlerini Windows Azure Blob hizmetine kopyalayamayabilir. Hatalar şunlardan kaynaklanabilir:  
@@ -30,7 +30,7 @@ Microsoft Azure İçeri/Dışarı Aktarma aracını içeri aktarma işinin kopya
 
 Aşağıdaki parametreler **Repairımport** ile belirtilebilir: 
   
-|||  
+| Parametre | Açıklama |  
 |-|-|  
 |**/r:**<repairFile\>|**Gerekli.** Onarımın ilerlemesini izleyen ve kesilen bir onarımı sürdürmeye devam etmenizi sağlayan onarım dosyasının yolu. Her sürücünün bir ve yalnızca bir onarım dosyası olmalıdır. Belirli bir sürücü için onarım başlattığınızda, yolu henüz mevcut olmayan bir onarım dosyasına geçirin. Kesilen bir onarımın sürdürülmesi için, var olan bir onarım dosyasının adını geçirmeniz gerekir. Her zaman hedef sürücüye karşılık gelen onarım dosyasını belirtin.|  
 |**/logdir:**<LogDirectory\>|**Seçim.** Günlük dizini. Ayrıntılı günlük dosyaları bu dizine yazılır. Günlük dizini belirtilmemişse, geçerli dizin günlük dizini olarak kullanılır.|  

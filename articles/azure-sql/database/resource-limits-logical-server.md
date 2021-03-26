@@ -10,42 +10,42 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 02/02/2021
-ms.openlocfilehash: 34613633b6b27fc3387e6a9fa63caf4a194ba963
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: 5e95bc50a74413389bd2583beb90128b3fd0810a
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101691238"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543525"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics sunucuları için kaynak sınırları
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Bu makalede, Azure SQL veritabanı ve Azure SYNAPSE Analytics tarafından kullanılan mantıksal sunucu için kaynak sınırlarına genel bir bakış sunulmaktadır. Bu kaynak limitleri isabet edildiğinde veya aşıldığında ne olacağı ve bu sınırları zorlamak için kullanılan kaynak idare mekanizmalarını açıklayan bilgiler sağlar.
+Bu makalede, Azure SQL veritabanı ve Azure SYNAPSE Analytics tarafından kullanılan [mantıksal sunucu](logical-servers.md) için kaynak sınırlarına genel bir bakış sunulmaktadır. Bu kaynak limitleri isabet edildiğinde veya aşıldığında ne olacağı ve bu sınırları zorlamak için kullanılan kaynak idare mekanizmalarını açıklayan bilgiler sağlar.
 
 > [!NOTE]
-> Azure SQL yönetilen örnek sınırları için bkz. [yönetilen örnekler Için SQL veritabanı kaynak sınırları](../managed-instance/resource-limits.md).
+> Azure SQL yönetilen örnek sınırları için bkz. [yönetilen örnekler için kaynak sınırları](../managed-instance/resource-limits.md).
 
 ## <a name="maximum-resource-limits"></a>En fazla kaynak sınırı
 
 | Kaynak | Sınır |
 | :--- | :--- |
-| Sunucu başına veritabanları | 5000 |
-| Herhangi bir bölgedeki abonelik başına varsayılan sunucu sayısı | 20 |
-| Herhangi bir bölgedeki abonelik başına en fazla sunucu sayısı | 200 |  
-| Sunucu başına DTU/eDTU kotası | 54.000 |  
-| sunucu/örnek başına sanal çekirdek kotası | 540 |
-| Sunucu başına en fazla havuz | DTU sayısıyla veya sanal çekirdekler ile sınırlıdır. Örneğin, her havuz 1000 DTU ise, bir sunucu 54 havuzlarını destekleyebilir.|
+| Mantıksal sunucu başına veritabanları | 5000 |
+| Bir bölgedeki abonelik başına varsayılan mantıksal sunucu sayısı | 20 |
+| Bir bölgedeki abonelik başına en fazla mantıksal sunucu sayısı | 200 |  
+| Mantıksal sunucu başına DTU/eDTU kotası | 54.000 |  
+| mantıksal sunucu başına sanal çekirdek kotası | 540 |
+| Mantıksal sunucu başına en fazla havuz | DTU sayısıyla veya sanal çekirdekler ile sınırlıdır. Örneğin, her havuz 1000 DTU ise, bir sunucu 54 havuzlarını destekleyebilir.|
 |||
 
 > [!IMPORTANT]
-> Veritabanı sayısı, sunucu başına sınıra yaklaşırsa, şunlar olabilir:
+> Veritabanı sayısı mantıksal sunucu başına sınıra yaklaşırsa, şunlar olabilir:
 >
-> - Ana veritabanına karşı sorguları çalıştırırken gecikme süresini artırma.  Bu, sys.resource_stats gibi kaynak kullanımı istatistiklerinin görünümlerini içerir.
+> - Ana veritabanına karşı sorguları çalıştırırken gecikme süresini artırma.  Bu, gibi kaynak kullanımı istatistiklerinin görünümlerini içerir `sys.resource_stats` .
 > - Sunucuda veritabanlarının listesini oluşturmayı içeren Yönetim işlemlerinde ve işleme portalı görüntüleme noktalarında gecikme süresini artırma.
 
 > [!NOTE]
-> Varsayılan miktardan daha fazla DTU/eDTU kotası, vCore kotası veya daha fazla sunucu almak için Azure portal yeni bir destek isteği gönderebilirsiniz. Daha fazla bilgi için bkz. [Azure SQL veritabanı Için istek kotası artışları](quota-increase-request.md).
+> Varsayılan miktardan daha fazla DTU/eDTU kotası, vCore kotası veya daha fazla mantıksal sunucu almak için Azure portal yeni bir destek isteği gönderebilirsiniz. Daha fazla bilgi için bkz. [Azure SQL veritabanı Için istek kotası artışları](quota-increase-request.md).
 
 ### <a name="storage-size"></a>Depolama boyutu
 

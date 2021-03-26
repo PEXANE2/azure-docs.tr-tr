@@ -2,13 +2,13 @@
 title: Dağıtım için şablonları bağlama
 description: Modüler şablon çözümü oluşturmak için bir Azure Resource Manager şablonunda (ARM şablonu) bağlantılı şablonların nasıl kullanılacağını açıklar. Parametre değerlerinin nasıl geçirileceğini, bir parametre dosyası ve dinamik olarak oluşturulan URL 'Leri gösterir.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 6076cbae43e420ac354b5c9d7d101a9c541c078d
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.date: 03/25/2021
+ms.openlocfilehash: 981e9f10e118012911108d634fbb8bdb9524cb88
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889187"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543984"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure kaynaklarını dağıtırken bağlı ve iç içe şablonları kullanma
 
@@ -444,6 +444,8 @@ HTTP veya HTTPS içeren parametreleri kullanarak şablonlara başvurabilirsiniz.
 GitHub 'daki bir şablona bağlanıyorsanız ham URL 'YI kullanın. Bağlantı şu biçimdedir: `https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-with-templates/quickstart-template/azuredeploy.json` . Ham bağlantıyı almak için **RAW**' ı seçin.
 
 :::image type="content" source="./media/linked-templates/select-raw.png" alt-text="Ham URL seçin":::
+
+[!INCLUDE [Deploy templates in private GitHub repo](../../../includes/resource-manager-private-github-repo-templates.md)]
 
 ### <a name="parameters-for-linked-template"></a>Bağlantılı şablon parametreleri
 
@@ -882,7 +884,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 Aşağıdaki örneklerde, bağlantılı şablonların yaygın kullanımları gösterilmektedir.
 
-|Ana şablon  |Bağlantılı şablon |Açıklama  |
+|Ana şablon  |Bağlantılı şablon |Description  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[bağlantılı şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Bağlantılı şablondan dize döndürür. |
 |[Genel IP adresi ile Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[bağlantılı şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Bağlı şablondan ortak IP adresini döndürür ve yük dengeleyicide bu değeri ayarlar. |

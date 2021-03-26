@@ -3,12 +3,12 @@ title: Şablon işlevleri-kaynaklar
 description: Kaynaklarla ilgili değerleri almak için bir Azure Resource Manager şablonunda (ARM şablonu) kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: da85308e7d214f198b29b40bc380a4d33947c865
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: efd7c554e6da8b60d4834d1a1290407a6b9e94d4
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100364571"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544120"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM şablonları için kaynak işlevleri
 
@@ -245,9 +245,9 @@ Listenin olası kullanımları aşağıdaki tabloda gösterilmiştir.
 | Microsoft. DevTestLab/Labs/zamanlamaları | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
 | Microsoft. DevTestLab/Labs/Users/Serviceyapılar | [Listapperepblezamanlamalar](/rest/api/dtl/servicefabrics/listapplicableschedules) |
 | Microsoft. DevTestLab/Labs/virtualMachines | [Listapperepblezamanlamalar](/rest/api/dtl/virtualmachines/listapplicableschedules) |
-| UmentDB/databaseAccounts Microsoft.Doc | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listconnectionstrings) |
-| UmentDB/databaseAccounts Microsoft.Doc | [ListKeys 'i al](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listkeys) |
-| Microsoft.DocumentDB/databaseAccounts/Not Bookworkspaces | [Listconnectionınfo](/rest/api/cosmos-db-resource-provider/2020-06-01/notebookworkspaces/listconnectioninfo) |
+| UmentDB/databaseAccounts Microsoft.Doc | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/databaseaccounts/listconnectionstrings) |
+| UmentDB/databaseAccounts Microsoft.Doc | [ListKeys 'i al](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/databaseaccounts/listkeys) |
+| Microsoft.DocumentDB/databaseAccounts/Not Bookworkspaces | [Listconnectionınfo](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/notebookworkspaces/listconnectioninfo) |
 | Microsoft. DomainRegistration | [Listdomainönerilere](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft. DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
 | Microsoft. EventGrid/Domains | [ListKeys 'i al](/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
@@ -287,7 +287,7 @@ Listenin olası kullanımları aşağıdaki tabloda gösterilmiştir.
 | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules | [ListKeys 'i al](/rest/api/notificationhubs/notificationhubs/listkeys) |
 | Microsoft. Operationalınsights/çalışma alanları | [list](/rest/api/loganalytics/workspaces/list) |
 | Microsoft. Operationalınsights/çalışma alanları | ListKeys 'i al |
-| Microsoft. Poliyeleghts/düzeltmelere | [Listdağıtımlar](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
+| Microsoft. Poliyeleghts/düzeltmelere | [Listdağıtımlar](/rest/api/policy/remediations/listdeploymentsatresourcegroup) |
 | Microsoft. Redhatopenshıft/openShiftClusters | [listCredentials](/rest/api/openshift/openshiftclusters/listcredentials) |
 | Microsoft. Relay/Namespace/authorizationRules | [ListKeys 'i al](/rest/api/relay/namespaces/listkeys) |
 | Microsoft. Relay/namespaces/Disyıldız Recoveryconfigs/authorizationRules | ListKeys 'i al |

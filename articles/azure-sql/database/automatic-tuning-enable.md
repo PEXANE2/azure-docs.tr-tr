@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 03/03/2021
-ms.openlocfilehash: d60810c291984e0f57df1968f69678de8179273c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1362d8c1f15b64b9d76b28fd354cdae8919504b0
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042530"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558287"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Sorguları izlemek ve iş yükü performansını geliştirmek için Azure portal otomatik ayarlamayı etkinleştirin
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -120,7 +120,7 @@ Otomatikleştirilmiş öneri yönetiminin devre dışı bırakıldığı veya si
 - Ayrılan depolama alanını kullandığı için sorgu deposu çalışmayı durdurdu.
 
 Bu sorunu düzeltmek için aşağıdaki adımlar kabul edilebilir:
-- Sorgu deposunu temizleyin veya veri saklama süresini T-SQL kullanarak "otomatik" olarak değiştirin. [Sorgu deposu için önerilen saklama ve yakalama ilkesini yapılandırma](/azure/azure-sql/database/query-performance-insight-use#recommended-retention-and-capture-policy)konusuna bakın.
+- Sorgu deposunu temizleyin veya veri saklama süresini T-SQL kullanarak "otomatik" olarak değiştirin. [Sorgu deposu için önerilen saklama ve yakalama ilkesini yapılandırma](./query-performance-insight-use.md#recommended-retention-and-capture-policy)konusuna bakın.
 - SQL Server Management Studio (SSMS) kullanın ve şu adımları izleyin:
   - Azure SQL veritabanına bağlanma
   - Veritabanına sağ tıklayın

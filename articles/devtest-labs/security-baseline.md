@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 13585173b54c79158161da54f968ba66eb018f6a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27a0d5b809480b2ce4aff36c5acd43c149ed5bb3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705747"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562843"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs için Azure Güvenlik temeli
 
@@ -78,11 +78,11 @@ Tehdit zekası etkinleştirilmiş ve kötü amaçlı ağ trafiği için "uyarı 
 
 - [Azure DevTest Labs için sanal ağ yapılandırma](devtest-lab-configure-vnet.md)
 
-- [DDoS korumasını yapılandırma](/azure/virtual-network/manage-ddos-protection)
+- [DDoS korumasını yapılandırma](../ddos-protection/manage-ddos-protection.md)
 
 - [Azure Güvenlik duvarını dağıtma](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](/azure/security-center/threat-protection)
+- [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../security-center/azure-defender.md)
 
 - [Azure Güvenlik Merkezi Uyarlamalı ağ sağlamlaştırma 'yi anlama](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -144,7 +144,7 @@ Ayrıca, karmaşık güvenlik yapılandırmasını basitleştirmeye yardımcı o
 
 - [Hizmet etiketlerini anlama ve kullanma](../virtual-network/service-tags-overview.md)
 
-- [Uygulama güvenlik gruplarını anlama ve kullanma](/azure/virtual-network/security-overview#application-security-groups)
+- [Uygulama güvenlik gruplarını anlama ve kullanma](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 **Sorumluluk**: Müşteri
 
@@ -158,7 +158,7 @@ Azure şemaları, Azure kaynakları Yöneticisi şablonları, RBAC denetimleri v
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-- [Ağ için Azure Ilke örnekleri](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [Ağ için Azure Ilke örnekleri](../governance/policy/samples/built-in-policies.md#network)
 
 - [Azure Blueprint oluşturma](../governance/blueprints/create-blueprint-portal.md)
 
@@ -188,9 +188,9 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak kaynak yapılandırmalarının yanı sıra Azure kaynaklarınızda yapılan değişiklikleri tespit edin. Kritik kaynaklardaki değişiklikler gerçekleşirken tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Izleyici 'de uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -214,7 +214,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 **Kılavuz**: Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. Etkinlik günlükleri, yönetim düzlemi düzeyinde Azure DevTest Labs örneklerinizin üzerinde gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Azure etkinlik günlüğü verilerini kullanarak, DevTest Labs örnekleriniz için yönetim düzlemi düzeyinde herhangi bir yazma işlemi (PUT, POST, DELETE) için "ne, kim ve ne zaman" belirleyebilirsiniz.
 
-- [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için tanılama ayarlarını oluşturma](/azure/azure-monitor/platform/diagnostic-settings)
+- [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için tanılama ayarlarını oluşturma](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Sorumluluk**: Müşteri
 
@@ -224,7 +224,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 **Kılavuz**: Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. Etkinlik günlükleri, yönetim düzlemi düzeyinde Azure DevTest Labs örneklerinizin üzerinde gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Azure etkinlik günlüğü verilerini kullanarak, DevTest Labs örnekleriniz için yönetim düzlemi düzeyinde herhangi bir yazma işlemi (PUT, POST, DELETE) için "ne, kim ve ne zaman" seçeneğini belirleyebilirsiniz.
 
-- [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için tanılama ayarlarını oluşturma](/azure/azure-monitor/platform/diagnostic-settings)
+- [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için tanılama ayarlarını oluşturma](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Sorumluluk**: Müşteri
 
@@ -236,7 +236,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
-- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Azure Güvenlik Merkezi veri toplamayı anlama](../security-center/security-center-enable-data-collection.md)
 
@@ -248,7 +248,7 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 **Kılavuz**: Azure izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre Azure DevTest Labs örneklerinize ilişkin Log Analytics çalışma alanları için günlük tutma süresi ayarlayın.
 
-- [Daha fazla bilgi için aşağıdaki makaleye bakın](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Daha fazla bilgi için aşağıdaki makaleye bakın](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Sorumluluk**: Müşteri
 
@@ -260,9 +260,9 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](/azure/azure-monitor/platform/diagnostic-settings)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure Izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplama ve çözümleme](/azure/azure-monitor/platform/activity-log)
+- [Azure Izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplama ve çözümleme](../azure-monitor/essentials/activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -272,7 +272,7 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 **Kılavuz**: Azure Log Analytics çalışma alanını, Güvenlik günlüklerine ve Azure DevTest Labs ilgili olaylara yönelik anormal etkinlikleri izlemek ve uyarmak için kullanın.
 
-- [Log Analytics günlük verilerinde uyarı alma](/azure/azure-monitor/learn/tutorial-response)
+- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/alerts/tutorial-response.md)
 
 **Sorumluluk**: Müşteri
 
@@ -333,7 +333,7 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 - Kaynak yönetimi: kaynakları yönetmek (VM oluşturma, ortamlar oluşturma, başlatma, durdurma, yeniden başlatma, silme ve yapıları uygulama vb.) için Azure portal erişim sağlar. Azure rol tabanlı erişim denetimi (Azure RBAC) kullanılarak kaynak yönetimi Azure 'da yapılır. Kullanıcılara roller atarsınız ve kaynak ve erişim düzeyi izinlerini ayarlarsınız.
 - Sanal makineler (ağ düzeyi): Varsayılan yapılandırmada VM 'Ler bir yerel yönetici hesabı kullanır. Kullanılabilir bir etki alanı (Azure Active Directory Domain Services (Azure AD DS), şirket içi etki alanı veya bulut tabanlı etki alanı) varsa, makineler etki alanına katılabilir. Kullanıcılar, makinelere bağlanmak için etki alanına yönelik bir yapıt kullanarak etki alanı tabanlı kimlikleri kullanabilir.
 
-- [DevTest Labs için başvuru mimarisi](https://docs.microsoft.com/azure/devtest-labs/devtest-lab-reference-architecture#architecture)
+- [DevTest Labs için başvuru mimarisi](./devtest-lab-reference-architecture.md#architecture)
 
 - [Azure AD ile SSO 'yu anlama](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -463,7 +463,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Rehberlik**: değişikliklerin DevTest Labs örneklerine ve diğer kritik veya ilgili kaynaklara ne zaman gerçekleştiği hakkında uyarı oluşturmak Için Azure etkinlik günlüğü Ile Azure izleyici 'yi kullanın.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [DevTest Labs etkinlik günlüğü olayları için uyarı oluşturma](create-alerts.md)
 
@@ -481,7 +481,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 - [Azure Graph ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
-- [Azure aboneliklerinizi görüntüleme](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Azure RBAC 'yi anlama](../role-based-access-control/overview.md)
 
@@ -595,7 +595,7 @@ Başvuru malzemeleri:
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../governance/policy/samples/built-in-policies.md#general)
 
 **Sorumluluk**: Müşteri
 
@@ -625,7 +625,7 @@ Başvuru malzemeleri:
 
 **Kılavuz**: betiklerin türüne bağlı olarak, kullanıcıların DevTest Labs 'de barındırılan VM 'ler içinde betikleri yürütme yeteneğini sınırlamak için sisteme özgü işletim yapılandırmalarına veya üçüncü taraf kaynaklarına sahip olabilirsiniz. Ayrıca, Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerini yalnızca yetkili yazılımın yürütüldüğünü ve tüm yetkisiz yazılımların temel alınan Azure VM 'lerinde yürütülmesini engellediği şekilde kullanabilirsiniz.
 
-- [Windows ortamlarında PowerShell betiği yürütmeyi denetleme](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7&amp;preserve-view=true)
+- [Windows ortamlarında PowerShell betiği yürütmeyi denetleme](/powershell/module/microsoft.powershell.security/set-executionpolicy?preserve-view=true&view=powershell-7)
 
 - [Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerini kullanma](../security-center/security-center-adaptive-application.md)
 
@@ -665,7 +665,7 @@ Ayrıca, Azure Resource Manager, yapılandırmanın kuruluşunuzun güvenlik ger
 
 Azure Güvenlik Merkezi 'nin önerilerini Azure kaynaklarınız için güvenli bir yapılandırma temeli olarak da kullanabilirsiniz.
 
-- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Öğretici: uyumluluğu zorlamak için ilke oluşturma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
@@ -721,7 +721,7 @@ Ayrıca, Microsoft tarafından yayımlanan Azure Market sanal makine görüntül
 
 - [Azure Otomasyonu durum yapılandırmasına genel bakış](../automation/automation-dsc-overview.md)
 
-- [Bir VHD’yi Azure’a yüklemek ve yeni bir sanal makine oluşturmak için örnek betik](/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
+- [Bir VHD’yi Azure’a yüklemek ve yeni bir sanal makine oluşturmak için örnek betik](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 - [DevTest Labs 'de görüntü fabrikası oluşturma](image-factory-create.md)
 
@@ -735,7 +735,7 @@ Ayrıca, Microsoft tarafından yayımlanan Azure Market sanal makine görüntül
 
 - [Git öğreticisi Azure Repos](/azure/devops/repos/git/gitworkflow)
 
-- [İzinler ve gruplar hakkında](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&amp;tabs=preview-page&amp;preserve-view=true)
+- [İzinler ve gruplar hakkında](/azure/devops/organizations/security/about-permissions?preserve-view=true&tabs=preview-page&view=azure-devops)
 
 - [Azure DevTest Labs ile Azure DevOps iş akışı arasında tümleştirme](devtest-lab-dev-ops.md)
 
@@ -765,7 +765,7 @@ Ayrıca, Microsoft tarafından yayımlanan Azure Market sanal makine görüntül
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-- [Diğer adları kullanma](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Diğer adları kullanma](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Sorumluluk**: Müşteri
 
@@ -853,7 +853,7 @@ Ayrıca, Microsoft tarafından yayımlanan Azure Market sanal makine görüntül
 
 - [Azure için Microsoft Antimalware 'i yapılandırma](../security/fundamentals/antimalware.md) 
 
-- [Azure Güvenlik Merkezi’nde tehdit koruması](/azure/security-center/threat-protection)
+- [Azure Güvenlik Merkezi’nde tehdit koruması](../security-center/azure-defender.md)
 
 **Sorumluluk**: Müşteri
 
@@ -869,7 +869,7 @@ Depolama hesaplarına yüklenen kötü amaçlı yazılımları algılamak için 
 
 - [Azure için Microsoft Antimalware 'i anlama](../security/fundamentals/antimalware.md) 
 
-- [Azure Güvenlik Merkezi 'nin veri Hizmetleri tehdit algılamasını anlama](/azure/security-center/security-center-alerts-data-services)
+- [Azure Güvenlik Merkezi 'nin veri Hizmetleri tehdit algılamasını anlama](../security-center/azure-defender.md)
 
 **Sorumluluk**: Müşteri
 
@@ -913,7 +913,7 @@ Hedef Azure VM 'lerinde, istenen sıklık ve bekletme dönemlerinde Azure Backup
 
 - [Azure VM yedeklemesine genel bakış](../backup/backup-azure-vms-introduction.md)
 
-- [Azure 'da Key Vault anahtarlarını yedekleme](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure 'da Key Vault anahtarlarını yedekleme](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Sorumluluk**: Müşteri
 
@@ -929,7 +929,7 @@ Azure Disk Şifrelemesi kullanıyorsanız, Azure VM 'yi disk şifreleme anahtarl
 
 - [Azure VM yedeğinden dosyaları kurtarma](../backup/backup-azure-restore-files-from-vm.md)
 
-- [Azure 'da Anahtar Kasası anahtarlarını geri yükleme](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure 'da Anahtar Kasası anahtarlarını geri yükleme](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 - [Şifrelenmiş bir VM 'yi yedekleme ve geri yükleme](../backup/backup-azure-vms-encryption.md)
 
@@ -975,7 +975,7 @@ Ayrıca, abonelikleri kullanarak abonelikleri işaretleyin ve Azure kaynakların
 
 - [Azure Güvenlik Merkezi'nde güvenlik uyarıları](../security-center/security-center-alerts-overview.md) 
 
-- [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -1041,5 +1041,5 @@ Ayrıca, abonelikleri kullanarak abonelikleri işaretleyin ve Azure kaynakların
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

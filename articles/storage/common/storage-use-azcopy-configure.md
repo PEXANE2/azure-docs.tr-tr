@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 244012f0945f467fe79e95d652ba22e3b62a1b7a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9c699cd865746bf430193eba38ec6fa79575692e
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100596937"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105543457"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy 'i yapılandırma, iyileştirme ve sorun giderme
 
@@ -103,14 +103,16 @@ Bu değişkeni ayarlamadan önce, bir kıyaslama testi çalıştırmanızı öne
 
 ### <a name="optimize-memory-use"></a>Bellek kullanımını iyileştirme
 
-`AZCOPY_BUFFER_GB`Dosya indirme ve karşıya yükleme sırasında AzCopy 'in kullanmasını istediğiniz en fazla sistem belleği miktarını belirtmek için ortam değişkenini ayarlayın.
-Bu değeri gigabayt (GB) cinsinden ifade edin.
+`AZCOPY_BUFFER_GB`Dosya indirme ve karşıya yükleme sırasında AzCopy 'in arabelleğe alma için kullanmasını istediğiniz en fazla sistem belleği miktarını belirtmek için ortam değişkenini ayarlayın. Bu değeri gigabayt (GB) cinsinden ifade edin.
 
 | İşletim sistemi | Komut  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
 | **macOS** | `export AZCOPY_BUFFER_GB=<value>` |
+
+> [!NOTE]
+> İş izleme, bellek kullanımında her zaman ek yük getirir. Miktar, bir işteki aktarımların sayısına göre değişir. Arabellekler, bellek kullanımının en büyük bileşenidir. Gereksinimlerinizi yaklaşık olarak karşılamak için kullanarak ek yükün denetimine yardımcı olabilirsiniz `AZCOPY_BUFFER_GB` , ancak tamamen büyük genel bellek kullanımı için hiçbir bayrak kullanılabilir.
 
 ### <a name="optimize-file-synchronization"></a>Dosya eşitlemesini iyileştirme
 

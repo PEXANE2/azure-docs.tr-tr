@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5f9cf6dba0a1e670e3a27cb3546de9237466e7ce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dead43f2e9f2e8913bcebde43d543b8df8d33ced
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101659435"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565682"
 ---
 # <a name="azure-security-baseline-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Güvenlik temeli
 
@@ -44,7 +44,7 @@ Ayrıca, IP güvenlik duvarlarını kullanarak Azure Cosmos hesabınızda depola
 
 **Sorumluluk**: Müşteri
 
-**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) planı gerektirebilir.
+**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/azure/governance/policy/samples/azure-security-benchmark) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/azure/security-center/security-center-recommendations)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/azure/security-center/azure-defender) planı gerektirebilir.
 
 **Azure ilke yerleşik tanımları-Microsoft.DocumentDB**:
 
@@ -84,9 +84,9 @@ DDoS saldırılarına karşı koruma sağlamak için Azure Cosmos DB örnekları
 
 - [Gelişmiş tehdit koruması Azure Cosmos DB nasıl yapılandırılır](cosmos-db-advanced-threat-protection.md)
 
-- [DDoS korumasını yapılandırma](/azure/virtual-network/manage-ddos-protection)
+- [DDoS korumasını yapılandırma](../ddos-protection/manage-ddos-protection.md)
 
-- [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](/azure/security-center/security-center-alerts-service-layer)
+- [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../security-center/azure-defender.md)
 
 **Sorumluluk**: Müşteri
 
@@ -146,7 +146,7 @@ Ayrıca, Azure Resource Manager şablonları, Azure rol tabanlı erişim denetim
 
 **Rehberlik**: bir taksonomiyle mantıksal olarak organize etmek için Azure Cosmos DB dağıtımınız ile ilişkili ağ kaynakları için Etiketler kullanın.
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -156,9 +156,9 @@ Ayrıca, Azure Resource Manager şablonları, Azure rol tabanlı erişim denetim
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını izleyin ve Azure Cosmos DB örneklerinizin ilişkili olduğu ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun. 
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](/azure/azure-monitor/platform/activity-log-view)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Izleyici 'de uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -172,7 +172,7 @@ Ayrıca, Azure Resource Manager şablonları, Azure rol tabanlı erişim denetim
 
 **Rehberlik**: Azure Cosmos DB tarafından oluşturulan güvenlik verilerini toplamak Için Azure izleyici aracılığıyla günlükleri alma. Azure Izleyici 'de, Log Analytics çalışma alanlarını kullanarak Analizi sorgulayın ve gerçekleştirin ve uzun süreli/arşiv depolama için depolama hesaplarını kullanın. Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf güvenlik olayına ve olay yönetimine (SıEM) Pano verileri ekleyebilirsiniz. 
 
-- [Azure Cosmos DB için tanılama günlüklerini etkinleştirme](/azure/cosmos-db/logging)
+- [Azure Cosmos DB için tanılama günlüklerini etkinleştirme](./monitor-cosmos-db.md)
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
@@ -186,9 +186,9 @@ Ayrıca, Azure Resource Manager şablonları, Azure rol tabanlı erişim denetim
 
 Ayrıca, Azure etkinlik günlüğü tanılama ayarlarını etkinleştirebilir ve bu günlükleri Azure Cosmos DB günlükleri için kullandığınız Log Analytics çalışma alanına gönderebilirsiniz.
 
-- [Azure Cosmos DB için tanılama ayarlarını etkinleştirme](/azure/cosmos-db/logging)
+- [Azure Cosmos DB için tanılama ayarlarını etkinleştirme](./monitor-cosmos-db.md)
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -198,7 +198,7 @@ Ayrıca, Azure etkinlik günlüğü tanılama ayarlarını etkinleştirebilir ve
 
 **Kılavuz**: Azure izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre Azure Cosmos DB örneklerinize ilişkin Log Analytics çalışma alanları için günlük tutma süresini ayarlayın.
 
-- [Günlük tutma parametrelerini ayarlama](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Günlük tutma parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Sorumluluk**: Müşteri
 
@@ -222,11 +222,11 @@ Ayrıca, Azure etkinlik günlüğü tanılama ayarlarını etkinleştirebilir ve
 
 Ayrıca, bir güvenlik Orchestration otomatik yanıtı (SOAR) çözümü sağladığından Log Analytics çalışma alanınızı Azure Sentinel 'e ekleyebilirsiniz. Bu, güvenlik sorunlarını gidermek için PlayBook 'ları (otomatikleştirilmiş çözümlerin) oluşturulmasına ve kullanılmasına olanak tanır. Ayrıca, Azure Izleyici 'yi kullanarak Log Analytics çalışma alanınızda özel günlük uyarıları da oluşturabilirsiniz.
 
-- [Azure Cosmos DB için tehdit koruması uyarıları listesi](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos)
+- [Azure Cosmos DB için tehdit koruması uyarıları listesi](../security-center/alerts-reference.md#alerts-azurecosmos)
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme](/azure/azure-monitor/platform/alerts-log)
+- [Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/alerts/alerts-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -248,13 +248,13 @@ Ayrıca, Azure Cosmos DB bazı eylemler Azure AD ve hesaba özgü ana anahtarlar
 
 - [Azure Cosmos DB 'de rol tabanlı erişim denetimini anlama](role-based-access-control.md)
 
-- [Azure Cosmos DB eylemleri kullanarak kendi özel rollerinizi oluşturun (Microsoft.DocumentDB ad alanı)](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb)
+- [Azure Cosmos DB eylemleri kullanarak kendi özel rollerinizi oluşturun (Microsoft.DocumentDB ad alanı)](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
 
 - [Azure AD 'de yeni bir rol oluşturma](../role-based-access-control/custom-roles.md)
 
-- [Azure AD 'de PowerShell ile dizin rolü alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Azure AD 'de PowerShell ile dizin rolü alma](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 - [Kullanıcı erişimini yalnızca veri işlemleriyle sınırlama](how-to-restrict-user-data.md)
 
@@ -268,7 +268,7 @@ Ayrıca, Azure Cosmos DB bazı eylemler Azure AD ve hesaba özgü ana anahtarlar
 
 - [Azure Cosmos DB verilere güvenli erişimi anlama](secure-access-to-data.md)
 
-- [Azure Cosmos DB anahtarlarını yeniden oluşturma](https://docs.microsoft.com/azure/cosmos-db/manage-with-powershell#regenerate-keys)
+- [Azure Cosmos DB anahtarlarını yeniden oluşturma](./manage-with-powershell.md#regenerate-keys)
 
 - [Azure AD kullanarak tuşlara programlı olarak erişme](certificate-based-authentication.md)
 
@@ -330,7 +330,7 @@ Riskli Kullanıcı davranışında uyarıları ve raporları görüntülemek iç
 
 - [Privileged Identity Management dağıtma (PıM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Azure AD risk algılamalarını anlama](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Azure AD risk algılamalarını anlama](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Sorumluluk**: Müşteri
 
@@ -352,7 +352,7 @@ Riskli Kullanıcı davranışında uyarıları ve raporları görüntülemek iç
 
 - [Azure AD örneği oluşturma ve yapılandırma](../active-directory-domain-services/tutorial-create-instance.md)
 
-- [Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme](/azure/sql-database/sql-database-aad-authentication-configure)
+- [Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme](../azure-sql/database/authentication-aad-configure.md)
 
 **Sorumluluk**: Müşteri
 
@@ -384,7 +384,7 @@ Riskli Kullanıcı davranışında uyarıları ve raporları görüntülemek iç
 
 Ayrıca, Kullanıcı kimlikleriyle ilgili şüpheli eylemleri tespit etmek üzere otomatik yanıtları yapılandırmak için Azure Active Directory (Azure AD) kimlik koruması ve risk algılamaları özelliğini de kullanabilirsiniz. Ayrıca, daha fazla araştırma için günlükleri Azure Sentinel 'e aktarabilirsiniz.
 
-- [Azure AD riskli oturum açma işlemlerini görüntüleme](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD riskli oturum açma işlemlerini görüntüleme](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -402,7 +402,7 @@ Ayrıca, Kullanıcı kimlikleriyle ilgili şüpheli eylemleri tespit etmek üzer
 
 **Rehberlik**: hassas bilgileri depolayan veya işleyen Azure Cosmos DB örnekleri izlemeye yardımcı olması için Etiketler kullanın.
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -412,11 +412,11 @@ Ayrıca, Kullanıcı kimlikleriyle ilgili şüpheli eylemleri tespit etmek üzer
 
 **Rehberlik**: geliştirme, test ve üretim için ayrı abonelikler ve/veya yönetim grupları uygulayın. Azure Cosmos DB örnekleri, sanal ağ/alt ağ tarafından ayrılır, uygun şekilde etiketlenebilir ve bir ağ güvenlik grubu (NSG) veya Azure Güvenlik duvarı içinde güvenli hale getirilir. Hassas verileri depolayan Azure Cosmos DB örneklerin yalıtılmalıdır. Azure özel bağlantısı ' nı kullanarak, bir Azure Cosmos DB örneği hesabına özel bir uç nokta aracılığıyla bağlanabilirsiniz. Özel uç nokta, sanal ağınız içindeki bir alt ağda bulunan özel IP adresleri kümesidir. Ardından, seçilen özel IP adreslerine erişimi sınırlayabilirsiniz. 
 
-- [Ek Azure abonelikleri oluşturma](/azure/billing/billing-create-subscription)
+- [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-- [Yönetim grupları oluşturma](/azure/governance/management-groups/create)
+- [Yönetim grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 - [Azure Cosmos DB için özel bir uç nokta yapılandırma](how-to-configure-private-endpoints.md)
 
@@ -450,7 +450,7 @@ Ayrıca, Azure Cosmos DB örneklerinizi erişmek için sanal makineler kullanıl
 
 Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm müşteri içeriklerini gizli olarak değerlendirir ve müşteri veri kaybına ve açığa çıkmasına karşı koruma sağlamak için harika uzunluklara gider. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için Microsoft, bir dizi güçlü veri koruma denetimi ve özelliği uygulamıştır ve bakımını yapar.
 
-- [Azure Bilişsel Arama ile Azure Cosmos DB verileri dizin oluştur](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&amp;bc=/azure/cosmos-db/breadcrumb/toc.json)
+- [Azure Bilişsel Arama ile Azure Cosmos DB verileri dizin oluştur](../search/search-howto-index-cosmosdb.md?bc=%2fazure%2fcosmos-db%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcosmos-db%2ftoc.json)
 
 - [Azure’da müşteri verilerinin korunmasını anlama](../security/fundamentals/protection-customer-data.md)
 
@@ -476,7 +476,7 @@ Varsayılan olarak, Microsoft, Azure Cosmos hesabınızdaki verileri şifrelemek
 
 - [Azure Cosmos DB ile bekleyen şifrelemeyi anlama](database-encryption-at-rest.md)
 
-- [Azure Cosmos DB ile bekleyen şifreleme için anahtar yönetimini anlama](/azure/cosmos-db/cosmos-db-security-controls)
+- [Azure Cosmos DB ile bekleyen şifreleme için anahtar yönetimini anlama]()
 
 - [Azure Cosmos DB hesabınız için müşteri tarafından yönetilen anahtarları yapılandırma](how-to-setup-cmk.md)
 
@@ -488,9 +488,9 @@ Varsayılan olarak, Microsoft, Azure Cosmos hesabınızdaki verileri şifrelemek
 
 **Kılavuz**: Azure Cosmos DB üretim örneklerinde değişiklik gerçekleşirken uyarı oluşturmak Için Azure etkinlik günlüğü Ile Azure izleyici 'yi kullanın.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -506,7 +506,7 @@ Varsayılan olarak, Microsoft, Azure Cosmos hesabınızdaki verileri şifrelemek
 
 Microsoft, Azure Cosmos DB örneklerinizi destekleyen temel ana bilgisayarlarda sistem düzeltme eki ve güvenlik açığı yönetimi gerçekleştirir. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için Microsoft, bir dizi güçlü veri koruma denetimi ve özelliği uygulamıştır ve bakımını yapar.
 
-- [Azure Güvenlik Merkezi’nde sunulan desteklenen özellikler](https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows)
+- [Azure Güvenlik Merkezi’nde sunulan desteklenen özellikler](../security-center/security-center-services.md?tabs=features-windows)
 
 **Sorumluluk**: Paylaşılan
 
@@ -524,7 +524,7 @@ Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri do�
 
 - [Azure Kaynak Graf ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
-- [Azure aboneliklerinizi görüntüleme](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Azure rol tabanlı erişim denetimini anlama](../role-based-access-control/overview.md)
 
@@ -536,9 +536,9 @@ Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri do�
 
 **Rehberlik**: Azure Cosmos DB örneklerinizin ve ilgili kaynaklarınızın etiketlerini, mantıksal olarak bir taksonomi halinde düzenlemek için meta verilerle uygulayın.
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
-- [Hangi Azure Cosmos DB kaynakları etiketleri destekler](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftdocumentdb)
+- [Hangi Azure Cosmos DB kaynakları etiketleri destekler](../azure-resource-manager/management/tag-support.md#microsoftdocumentdb)
 
 **Sorumluluk**: Müşteri
 
@@ -548,11 +548,11 @@ Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri do�
 
 **Rehberlik**: Azure Cosmos DB kaynaklarıyla sınırlı olmamak üzere, varlıkları düzenlemek ve izlemek için etiketleme, yönetim grupları ve ayrı abonelikler kullanın. Envanterin düzenli olarak mutabakatını yapın ve yetkisiz kaynakların aboneliğin zamanında silindiğinden emin olun.
 
-- [Ek Azure abonelikleri oluşturma](/azure/billing/billing-create-subscription)
+- [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-- [Yönetim Grupları oluşturma](/azure/governance/management-groups/create)
+- [Yönetim Grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -584,7 +584,7 @@ Ayrıca, aboneliklerdeki kaynakları sorgulamak ve saptamak için Azure Kaynak g
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../governance/policy/samples/built-in-policies.md#general)
 
 **Sorumluluk**: Müşteri
 
@@ -610,7 +610,7 @@ Ayrıca, aboneliklerdeki kaynakları sorgulamak ve saptamak için Azure Kaynak g
 - Cosmos DB hesapları için Gelişmiş tehdit koruması dağıtma
 - Cosmos DB bir sanal ağ hizmeti uç noktası kullanmalıdır
 
-- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
@@ -668,7 +668,7 @@ Ayrıca, aboneliklerdeki kaynakları sorgulamak ve saptamak için Azure Kaynak g
 
 - [Azure yönetilen kimliklerle tümleştirme](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [Key Vault oluşturma](/azure/key-vault/quick-create-portal)
+- [Key Vault oluşturma](../key-vault/secrets/quick-create-portal.md)
 
 - [Key Vault kimlik doğrulaması yapma](../key-vault/general/authentication.md)
 
@@ -728,7 +728,7 @@ Cosmos DB örneklerinizin kimlik bilgilerini depolamak için Key Vault kullanıy
 
 - [Otomatik yedeklemeleri Azure Cosmos DB anlama](online-backup-and-restore.md)
 
-- [Azure Cosmos DB verileri geri yükleme](/azure/cosmos-db/how-to-backup-and-restore)
+- [Azure Cosmos DB verileri geri yükleme](./online-backup-and-restore.md)
 
 - [Key Vault anahtarlarını yedekleme](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
@@ -744,9 +744,9 @@ PowerShell kullanarak Azure Key Vault depolanan Sırlarınızın sınamasını g
 
 - [Otomatik yedeklemeleri Azure Cosmos DB anlama](online-backup-and-restore.md)
 
-- [Azure Cosmos DB verileri geri yükleme](/azure/cosmos-db/how-to-backup-and-restore)
+- [Azure Cosmos DB verileri geri yükleme](./online-backup-and-restore.md)
 
-- [Azure Key Vault parolaları geri yükleme](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure Key Vault parolaları geri yükleme](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Sorumluluk**: Paylaşılan
 
@@ -760,7 +760,7 @@ Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için K
 
 - [Azure Cosmos DB 'de veri şifrelemeyi anlama](database-encryption-at-rest.md)
 
-- [Key Vault Soft-Delete etkinleştirme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Key Vault Soft-Delete etkinleştirme](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Sorumluluk**: Paylaşılan
 
@@ -856,5 +856,5 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) ve
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

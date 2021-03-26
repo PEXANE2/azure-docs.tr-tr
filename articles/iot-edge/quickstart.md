@@ -10,12 +10,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: aa8c4abf57308ca3da05db6ecede7a330af04bdb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5444f6adb9d441cb6253c180cf2d079c1c36316c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103463553"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562690"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü bir Windows cihazına dağıtma (Önizleme)
 

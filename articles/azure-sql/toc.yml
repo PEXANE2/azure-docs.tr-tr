@@ -686,7 +686,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Örnekler
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -1021,7 +1021,7 @@
           href: managed-instance/log-replay-service-migrate.md
     - name: Örnekler
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
@@ -1062,18 +1062,26 @@
                   href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
                 - name: Kullanılabilirlik grubu (KG)
                   href: virtual-machines/windows/availability-group-overview.md
-                - name: Yük devretme kümesi örneği
+                - name: Yük devretme kümesi örneği (FCI)
                   href: virtual-machines/windows/failover-cluster-instance-overview.md
             - name: En iyi uygulamalar
               items:
-                - name: Performans
-                  href: virtual-machines/windows/performance-guidelines-best-practices.md
                 - name: Güvenlik
                   href: virtual-machines/windows/security-considerations-best-practices.md
                 - name: Küme yapılandırması
                   href: virtual-machines/windows/hadr-cluster-best-practices.md
                 - name: Uygulama desenleri
                   href: virtual-machines/windows/application-patterns-development-strategies.md
+                - name: Performans
+                  items:
+                    - name: Hızlı denetim listesi
+                      href: virtual-machines/windows/performance-guidelines-best-practices-checklist.md
+                    - name: VM boyutu
+                      href: virtual-machines/windows/performance-guidelines-best-practices-vm-size.md
+                    - name: Depolama
+                      href: virtual-machines/windows/performance-guidelines-best-practices-storage.md
+                    - name: Taban çizgisini topla
+                      href: virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md
             - name: Yönetim
               items:
                 - name: SQL IaaS Aracısı uzantısı

@@ -1,18 +1,18 @@
 ---
 title: Azure Percept Studio 'ya genel bakış
 description: Azure Percept Studio hakkında daha fazla bilgi edinin
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: 8aae976e94ebbef22a86e19f00bfe6248338c4d0
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: e6f9641179a9c2490dcb65316a80b4ba7fd4b639
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953681"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567704"
 ---
 # <a name="azure-percept-studio-overview"></a>Azure Percept Studio 'Ya genel bakış
 
@@ -23,6 +23,8 @@ Studio 'da, Edge AI özellikli cihazlarınızı, ilk ve devam eden eğitim veril
 Azure Percept Studio 'daki iş akışları Azure IoT Hub, Özel Görüntü İşleme, konuşma Studio ve Azure ML gibi birçok Azure AI ve IoT hizmetini tümleştirmenize olanak sağlar. bu sayede, bu hizmetleri kullanarak, önceden var olan önemli bilgileri olmayan bir uçtan uca çözüm oluşturabilirsiniz. Bu Azure hizmetlerini zaten biliyorsanız, Azure Percept Studio dışında mevcut Azure hizmet kaynaklarına da bağlanabilir ve bunları değiştirebilirsiniz.
 
 Bir başlangıç veya gelişmiş bir AI modeli ve çözüm geliştiricisiyseniz, bir prototip üzerinde çalışırken veya bir üretim çözümüne geçerek, Azure Percept Studio, Edge AI çözümleri oluşturma konusunda bir savunma sağlamak için kullanabileceğiniz iş akışlarına erişim sağlar.
+
+## <a name="video-walkthrough"></a>Görüntülü kılavuz
 
 </br>
 

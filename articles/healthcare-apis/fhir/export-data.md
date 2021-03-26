@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 3/18/2021
 ms.author: cavoeg
-ms.openlocfilehash: aefb2b4a70fae4ad082243529c8eaf877fb35f22
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: a5b3daa499546f3a30b5a4d133d77786a1916b6a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045322"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559205"
 ---
 # <a name="how-to-export-fhir-data"></a>FHıR verilerini dışa aktarma
 
@@ -47,8 +47,7 @@ Ayrıca, aktarım sırasında konum üst bilgisi tarafından döndürülen URL a
 
 Şu anda ADLS 2. etkin depolama hesapları için aşağıdaki sınırlamalara sahip $export destekliyoruz:
 
-- Kullanıcı [hiyerarşik ad alanlarından](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)yararlanamaz, ancak kapsayıcı içindeki belirli bir alt dizine dışarı aktarmayı hedeflemek için bir yol yoktur. Yalnızca belirli bir kapsayıcıyı hedefleyebilme olanağı sunuyoruz (her dışarı aktarma için yeni bir klasör oluşturacağız).
-
+- Kullanıcı [hiyerarşik ad alanlarından](../../storage/blobs/data-lake-storage-namespace.md)yararlanamaz, ancak kapsayıcı içindeki belirli bir alt dizine dışarı aktarmayı hedeflemek için bir yol yoktur. Yalnızca belirli bir kapsayıcıyı hedefleyebilme olanağı sunuyoruz (her dışarı aktarma için yeni bir klasör oluşturacağız).
 - Dışarı aktarma işlemi tamamlandıktan sonra, aynı kapsayıcıya yönelik sonraki dışarı aktarmalar yeni oluşturulan bir klasörde yer aldığı için hiçbir şeyi bu klasöre yeniden aktardık.
 
 

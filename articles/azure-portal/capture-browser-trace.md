@@ -1,14 +1,14 @@
 ---
 title: Sorun giderme için bir tarayıcı izlemesi yakalama
 description: Azure portal sorunları gidermeye yardımcı olması için bir tarayıcı izağından ağ bilgilerini yakalayın.
-ms.date: 05/11/2020
+ms.date: 03/25/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 504a32fb63022f97e8049c7c1ccc7721bbac31ab
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 63bc3e93187274db607b5f60216de461729801dc
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96746004"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563505"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Sorun giderme için bir tarayıcı izlemesi yakalama
 
@@ -190,13 +190,13 @@ Aşağıdaki adımlarda, Firefox 'ta Geliştirici araçlarının nasıl kullanı
 
     ![Tarayıcı izleme sonuçlarının ekran görüntüsü](media/capture-browser-trace/firefox-browser-trace-results.png)
 
-1. Beklenmeyen Portal davranışını yeniden oluşturduktan sonra, **har dışarı aktar/al** ' ı seçin, sonra **Tümünü har olarak kaydedin**.
+1. Beklenmeyen Portal davranışını yeniden oluşturduktan sonra **Tümünü har olarak kaydet**' i seçin.
 
     !["Dışarı aktarma HAR" ekran görüntüsü](media/capture-browser-trace/firefox-network-export-har.png)
 
 1. Windows 'da veya Mac 'teki ekran kaydındaki adımları kaydediciden durdurun ve kaydı kaydedin.
 
-1. Tarayıcı geliştirici araçları bölmesine geri dönerek **konsol** sekmesini seçin. İletilerden birine sağ tıklayın, ardından **görünür Iletiyi gönder**' i seçin ve konsol çıkışını bir metin dosyasına kaydedin.
+1. Tarayıcı geliştirici araçları bölmesine geri dönerek **konsol** sekmesini seçin. İletilerden birine sağ tıklayın, ardından **görünür Iletileri dışarı aktar**' ı seçin ve konsol çıkışını bir metin dosyasına kaydedin.
 
     ![Konsol çıktısının ekran görüntüsü](media/capture-browser-trace/firefox-console-select.png)
 

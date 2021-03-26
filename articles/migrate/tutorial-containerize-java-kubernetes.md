@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: ea7cdfbd30cf698cecbb14a1d70916764ad3247a
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 2c1a0ee78e866a12105eca77653b1063943d06db
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023121"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561075"
 ---
 # <a name="java-web-app-containerization-and-migration-to-azure-kubernetes-service"></a>Java Web uygulaması kapsayıcılama ve Azure Kubernetes hizmetine geçiş
 
@@ -59,7 +59,7 @@ Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlard
 
 **Gereksinim** | **Ayrıntılar**
 --- | ---
-**Aracı yüklemek için bir makine tanımla** | Azure geçişi: uygulama Kapsayıcılama aracı 'nı yüklemek ve çalıştırmak için bir Windows makinesi. Windows makinesi bir sunucu (Windows Server 2016 veya üzeri) veya istemci (Windows 10) işletim sistemi olabilir. Bu, aracın masaüstünüzde da çalıştırılabileceği anlamına gelir. <br/><br/> Aracı çalıştıran Windows makinesinin, kapsayıcıya alınacak ASP.NET uygulamalarını barındıran sunuculara/sanal makinelere ağ bağlantısı olmalıdır.<br/><br/> Uygulama yapıtlarını depolamak için Azure geçişi: uygulama Kapsayıcılama aracı 'nı çalıştıran Windows makinesinde 6 GB 'lık alanın kullanılabilir olduğundan emin olun. <br/><br/> Windows makinesinin doğrudan veya ara sunucu üzerinden İnternet erişimi olmalıdır. <br/> <br/>Uygulama Kapsayıcılama Yardımcısı aracı 'nı çalıştıran makineye Microsoft Web Dağıtımı aracını ve henüz yüklenmemişse uygulama sunucusunu yükleme. Aracı [buradan](https://aka.ms/webdeploy3.6) indirebilirsiniz
+**Aracı yüklemek için bir makine tanımla** | Azure geçişi: uygulama Kapsayıcılama aracı 'nı yüklemek ve çalıştırmak için bir Windows makinesi. Windows makinesi bir sunucu (Windows Server 2016 veya üzeri) veya istemci (Windows 10) işletim sistemi olabilir. Bu, aracın masaüstünüzde da çalıştırılabileceği anlamına gelir. <br/><br/> Aracı çalıştıran Windows makinesi, Kapsayıcılı olması için Java Web uygulamalarını barındıran sunucularla/sanal makinelere ağ bağlantısına sahip olmalıdır.<br/><br/> Uygulama yapıtlarını depolamak için Azure geçişi: uygulama Kapsayıcılama aracı 'nı çalıştıran Windows makinesinde 6 GB 'lık alanın kullanılabilir olduğundan emin olun. <br/><br/> Windows makinesinin doğrudan veya ara sunucu üzerinden İnternet erişimi olmalıdır.
 **Uygulama sunucuları** | -Kapsayıcıya eklenecek Java uygulamalarının çalıştırıldığı sunucu (lar) da bağlantı noktası 22 ' de Secure Shell (SSH) bağlantısını etkinleştirin. <br/>
 **Java Web uygulaması** | Araç şu anda destekliyor <br/><br/> -Tomcat 8 veya üzeri sürümlerde çalışan uygulamalar.<br/> -Ubuntu Linux 16.04/18.04/20.04, detem 7/8, CentOS 6/7, Red Hat Enterprise Linux 5/6/7 üzerindeki uygulama sunucuları. <br/> -Java sürüm 7 veya üstünü kullanan uygulamalar.  <br/><br/> Araç şu anda desteklenmiyor <br/><br/> -Birden çok Tomcat örneği çalıştıran uygulama sunucuları <br/>  
 
@@ -178,7 +178,7 @@ Yapılandırma parametreleştirilmesi, bir dağıtım süresi parametresi olarak
 
 ### <a name="externalize-file-system-dependencies"></a>Externalize dosya sistemi bağımlılıkları
 
- Uygulamanızın kullandığı diğer klasörleri ekleyebilirsiniz. Azure dosya paylaşımındaki kalıcı birimler aracılığıyla kapsayıcı görüntüsünün parçası mı yoksa externalized mi olduğunu belirtin. Kalıcı birimleri kullanmak, durumu kapsayıcının dışında depolayan veya dosya sisteminde başka statik içerik bulunan durum bilgisi olan uygulamalar için harika bir şekilde çalışabilir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/aks/concepts-storage)
+ Uygulamanızın kullandığı diğer klasörleri ekleyebilirsiniz. Azure dosya paylaşımındaki kalıcı birimler aracılığıyla kapsayıcı görüntüsünün parçası mı yoksa externalized mi olduğunu belirtin. Kalıcı birimleri kullanmak, durumu kapsayıcının dışında depolayan veya dosya sisteminde başka statik içerik bulunan durum bilgisi olan uygulamalar için harika bir şekilde çalışabilir. [Daha fazla bilgi edinin](../aks/concepts-storage.md)
 
 1. Algılanan uygulama klasörlerini gözden geçirmek için uygulama klasörleri bölümünde **Düzenle** ' ye tıklayın. Algılanan uygulama klasörleri, uygulamanın gerektirdiği zorunlu yapıtlar olarak tanımlandı ve kapsayıcı görüntüsüne kopyalanacaktır.
 
@@ -194,7 +194,7 @@ Yapılandırma parametreleştirilmesi, bir dağıtım süresi parametresi olarak
 ## <a name="build-container-image"></a>Kapsayıcı görüntüsü oluşturma
 
 
-1. **Azure Container Registry seçin**: açılan listeyi kullanarak uygulamalar için kapsayıcı görüntülerini derlemek ve depolamak için kullanılacak bir [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) seçin. Mevcut bir Azure Container Registry kullanabilir veya yeni kayıt defteri oluştur seçeneğini kullanarak yeni bir tane oluşturmayı seçebilirsiniz.
+1. **Azure Container Registry seçin**: açılan listeyi kullanarak uygulamalar için kapsayıcı görüntülerini derlemek ve depolamak için kullanılacak bir [Azure Container Registry](../container-registry/index.yml) seçin. Mevcut bir Azure Container Registry kullanabilir veya yeni kayıt defteri oluştur seçeneğini kullanarak yeni bir tane oluşturmayı seçebilirsiniz.
 
     ![Uygulama ACR seçimi için ekran görüntüsü.](./media/tutorial-containerize-apps-aks/build-java-app.png)
 

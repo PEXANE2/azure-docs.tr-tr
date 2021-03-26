@@ -3,12 +3,12 @@ title: Özel Uç Noktalar
 description: Azure Backup için özel uç noktalar oluşturma sürecini anlayın ve özel uç noktaları kullanmanın kaynaklarınızın güvenliğini sağlamaya yardımcı olur.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 7423157abbc0833394af055f5e31f724caa10b46
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1775ec2c337dba0a618f9e7d186af9ed11a0e303
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224716"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559392"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup için özel uç noktalar
 
@@ -24,7 +24,7 @@ Bu makale, Azure Backup için özel uç noktalar oluşturma sürecini anlamanız
 - Yedekleme için özel bir uç nokta bağlantısı, depolama için Azure Backup tarafından kullanılanlarla birlikte alt ağınızdaki toplam 11 özel IP 'yi kullanır. Bu sayı, belirli Azure bölgeleri için daha yüksek (25 ' e kadar) olabilir. Bu nedenle, yedekleme için özel uç noktalar oluşturmaya çalıştığınızda yeterli sayıda özel IP 'nin kullanılabilir olmasını öneririz.
 - Bir kurtarma hizmetleri Kasası (her ikisi de) Azure Backup ve Azure Site Recovery tarafından kullanıldığında, bu makalede yalnızca Azure Backup için özel uç noktaların kullanımı ele alınmaktadır.
 - Azure Active Directory şu anda özel uç noktaları desteklemez. Bu nedenle Azure Active Directory bir bölgede çalışması için gereken IP 'Leri ve FQDN 'lerin, Azure VM 'lerinde veritabanlarının yedeklenmesi sırasında ve MARS Aracısı kullanılarak yedeklendiğinden güvenli ağdan giden erişime izin verilmesi gerekir. Ayrıca, geçerli olduğu şekilde Azure AD 'ye erişim izni vermek için NSG etiketlerini ve Azure Güvenlik Duvarı etiketlerini de kullanabilirsiniz.
-- Ağ Ilkelerine sahip sanal ağlar özel uç noktalar için desteklenmez. Devam etmeden önce [ağ ilkelerini devre dışı bırakmanız](https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy) gerekir.
+- Ağ Ilkelerine sahip sanal ağlar özel uç noktalar için desteklenmez. Devam etmeden önce [ağ ilkelerini devre dışı bırakmanız](../private-link/disable-private-endpoint-network-policy.md) gerekir.
 - Kurtarma Hizmetleri kaynak sağlayıcısını, aboneliği 1 2020 Mayıs tarihinden önce kaydettirdiğiniz takdirde yeniden kaydetmeniz gerekir. Sağlayıcıyı yeniden kaydetmek için Azure portal aboneliğinize gidin, sol gezinti çubuğunda **kaynak sağlayıcısı** ' na gidin, ardından **Microsoft. recoveryservices** ' i seçin ve **yeniden kaydet**' i seçin.
 - Kasa için özel uç noktalar etkinse SQL ve SAP HANA veritabanı yedeklemeleri için [çapraz bölge geri yükleme](backup-create-rs-vault.md#set-cross-region-restore) desteklenmez.
 - Zaten özel uç noktaları kullanarak bir kurtarma hizmetleri kasasını yeni bir kiracıya taşıdığınızda, kasasının yönetilen kimliğini yeniden oluşturmak ve yeniden yapılandırmak ve gerektiğinde yeni özel uç noktalar oluşturmak için kurtarma hizmetleri kasasını güncelleştirmeniz gerekir (yeni kiracıda olması gerekir). Bu yapılmazsa, yedekleme ve geri yükleme işlemleri başarısız olur. Ayrıca, abonelik içinde ayarlanmış tüm rol tabanlı erişim denetimi (RBAC) izinlerinin yeniden yapılandırılması gerekir.
@@ -299,7 +299,7 @@ Ancak bir MARS Aracısı kaydedildikten sonra kasa için özel uç noktalar kald
 
 ## <a name="deleting-private-endpoints"></a>Özel uç noktaları silme
 
-Özel uç noktaları silmeyi öğrenmek için [Bu bölüme](https://docs.microsoft.com/rest/api/virtualnetwork/privateendpoints/delete) bakın.
+Özel uç noktaları silmeyi öğrenmek için [Bu bölüme](/rest/api/virtualnetwork/privateendpoints/delete) bakın.
 
 ## <a name="additional-topics"></a>Ek konu başlıkları
 

@@ -4,12 +4,12 @@ description: Bu öğreticide, (benzetimli) bir IP kamerasından canlı video ak�
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 68b5b7561cc31e156a745bcfb07e3203de10d425
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5751184493fffeeaf647507e9e9b00834f63ab5e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702224"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557267"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Öğretici: OpenVINO™ model sunucusunu kullanarak canlı videoyu çözümleyin – Intel 'ten AI uzantısı 
 
@@ -51,7 +51,7 @@ Bu hızlı başlangıçta, IoT Edge üzerinde canlı video analizlerini kullanar
 
 Bu diyagramda, sinyallerin bu hızlı başlangıçta nasıl akagösterdiği gösterilmektedir. [Edge modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , Real-Time Akış Protokolü (RTSP) sunucusunu BARıNDıRAN bir IP kamerasına benzetir. Bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü, bu sunucudan video akışını çeker ve [http uzantısı işlemci](media-graph-concept.md#http-extension-processor) düğümüne video çerçeveleri gönderir. 
 
-HTTP uzantısı düğümü bir ara sunucu rolünü yürütür. Bu BT, sizin tarafınızdan ayarlanan gelen video çerçevelerini örneklerle `samplingOptions` aynı zamanda video çerçevelerini belirtilen görüntü türüne dönüştürür. Daha sonra görüntüyü REST üzerinden bir HTTP uç noktası arkasında bulunan AI modellerini çalıştıran başka bir uç modülüne geçirir. Bu örnekte, bu Edge modülü, Intel 'teki OpenVINO™ model sunucusu – AI uzantısıdır. HTTP uzantısı işlemci düğümü, algılama sonuçlarını toplar ve olayları [IoT Hub havuz](media-graph-concept.md#iot-hub-message-sink) düğümüne yayımlar. Düğüm daha sonra bu olayları [IoT Edge hub 'ına](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)gönderir.
+HTTP uzantısı düğümü bir ara sunucu rolünü yürütür. Bu BT, sizin tarafınızdan ayarlanan gelen video çerçevelerini örneklerle `samplingOptions` aynı zamanda video çerçevelerini belirtilen görüntü türüne dönüştürür. Daha sonra görüntüyü REST üzerinden bir HTTP uç noktası arkasında bulunan AI modellerini çalıştıran başka bir uç modülüne geçirir. Bu örnekte, bu Edge modülü, Intel 'teki OpenVINO™ model sunucusu – AI uzantısıdır. HTTP uzantısı işlemci düğümü, algılama sonuçlarını toplar ve olayları [IoT Hub havuz](media-graph-concept.md#iot-hub-message-sink) düğümüne yayımlar. Düğüm daha sonra bu olayları [IoT Edge hub 'ına](../../iot-fundamentals/iot-glossary.md#iot-edge-hub)gönderir.
 
 Bu öğreticide şunları yapacaksınız:
 

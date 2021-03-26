@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: a0201882b74d2acf57c246d2dc63530ca8b1f010
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5956b7b74d27a4f9a2b79ee3950c8ac765610c70
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101692710"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558491"
 ---
 # <a name="device-update-for-iot-hub-resource-management"></a>IoT Hub Kaynak Yönetimi için Cihaz Güncelleştirmesi
 
@@ -127,7 +127,11 @@ Diğer kullanıcıların cihaz güncelleştirmesine erişimi olması için kulla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[IoT Hub için cihaz güncelleştirmesini kullanarak bir güncelleştirmeyi içeri aktarın.](import-update.md)
+Aşağıdaki hızlı öğreticilerden birini kullanarak bir cihazı güncelleştirmeyi deneyin:
+
+ - [Simülatör üzerinde cihaz güncelleştirme](device-update-simulator.md)
+ - [Raspberry PI üzerinde cihaz güncelleştirmesi](device-update-raspberry-pi.md)
+ - [Ubuntu Server 18,04 x64 paket aracısında cihaz güncelleştirmesi](device-update-ubuntu-agent.md)
 
 [Cihaz güncelleştirme hesabı ve örneği hakkında bilgi edinin.](device-update-resources.md) 
 

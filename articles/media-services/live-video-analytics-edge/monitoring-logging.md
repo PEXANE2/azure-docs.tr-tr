@@ -3,12 +3,12 @@ title: İzleme ve günlüğe kaydetme-Azure
 description: Bu makalede, IoT Edge üzerindeki canlı video analizlerinde izleme ve günlüğe kaydetme konusunda genel bir bakış sunulmaktadır.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: e81b1e98fb30bb8876c78c8c911585f5448db8f2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 08b2f5cce80581d71ce73e97ab30900aa8957c77
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730255"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564492"
 ---
 # <a name="monitoring-and-logging"></a>İzleme ve günlüğe kaydetme
 
@@ -312,7 +312,7 @@ IoT Edge modülündeki canlı video analizinden ölçüm toplamayı etkinleştir
    Bu durumda, Azure portal IoT Hub 'ına gidin ve sol bölmedeki **ölçümler** ' i seçin. Ölçümleri burada görmeniz gerekir.
 
 ### <a name="log-analytics-metrics-collection"></a>Log Analytics ölçümleri koleksiyonu
-[Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial)birlikte [Prometheus uç noktasını](https://prometheus.io/docs/practices/naming/) kullanarak, kullanılan Cpupercent, memoryusedpercent gibi ölçümleri oluşturabilir ve [izleyebilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) .   
+[Log Analytics](../../azure-monitor/logs/log-analytics-tutorial.md)birlikte [Prometheus uç noktasını](https://prometheus.io/docs/practices/naming/) kullanarak, kullanılan Cpupercent, memoryusedpercent gibi ölçümleri oluşturabilir ve [izleyebilirsiniz](../../azure-monitor/essentials/metrics-supported.md) .   
 
 > [!NOTE]
 > Aşağıdaki yapılandırma günlükleri toplamaz, **yalnızca ölçümler**. Ayrıca, günlükleri toplamak ve karşıya yüklemek için toplayıcı modülünü genişletmek uygulanabilir.

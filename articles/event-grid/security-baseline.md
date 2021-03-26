@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 80b630bb2f06d3eb634b9d9d32649ea8a47c0b0b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1bc1df4582c83b093b6ed25d03cc73aef9a81483
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739152"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563948"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Event Grid için Azure Güvenlik temeli
 
@@ -32,15 +32,15 @@ Azure Event Grid Azure Güvenlik kıyaslaması ile tamamen nasıl eşlendiğini 
 
 Azure Event Grid Ayrıca, konulara ve etki alanlarına yayımlama için genel IP tabanlı erişim denetimlerini destekler. IP tabanlı denetimlerle, yayımcıları bir konu veya etki alanıyla yalnızca onaylanmış bir makine ve bulut hizmetleri kümesiyle sınırlayabilirsiniz. Bu özellik Event Grid tarafından desteklenen kimlik doğrulama mekanizmalarını tamamlar. 
 
-- [Event Grid özel uç noktaları hakkında daha fazla bilgi](https://docs.microsoft.com/azure/event-grid/network-security#private-endpoints)
+- [Event Grid özel uç noktaları hakkında daha fazla bilgi](./network-security.md#private-endpoints)
 
-- [Event Grid IP Güvenlik Duvarı hakkında daha fazla bilgi](https://docs.microsoft.com/azure/event-grid/network-security#ip-firewall)
+- [Event Grid IP Güvenlik Duvarı hakkında daha fazla bilgi](./network-security.md#ip-firewall)
 
 - [Azure Event Grid ağ güvenliği](network-security.md) 
 
 - [Azure Özel Bağlantı'ya Genel Bakış](../private-link/private-link-overview.md)
 
-- [Azure ağ güvenlik grubu](/azure/virtual-network/security-overview)
+- [Azure ağ güvenlik grubu](../virtual-network/network-security-groups-overview.md)
 
 **Sorumluluk**: Müşteri
 
@@ -80,7 +80,7 @@ Bu sanal ağlarda, dağıtılmış hizmet reddi (DDoS) saldırılarına karşı 
 
 - [DDoS korumasını yapılandırma](../ddos-protection/manage-ddos-protection.md)
 
-- [Azure Güvenlik Merkezi tümleşik tehdit bilgileri hakkında daha fazla bilgi için](/azure/security-center/security-center-alerts-service-layer)
+- [Azure Güvenlik Merkezi tümleşik tehdit bilgileri hakkında daha fazla bilgi için](../security-center/azure-defender.md)
 
 **Sorumluluk**: Müşteri
 
@@ -132,7 +132,7 @@ Kötü amaçlı trafiği algılamak ve/veya engellemek için kuruluşunuzun ağ 
 
 **Kılavuz**: Azure Event Grid kaynaklarınıza erişmesi gereken sanal ağlardaki kaynaklar için ağ güvenlik gruplarında veya Azure Güvenlik duvarında ağ erişim denetimleri tanımlamak üzere sanal ağ hizmeti etiketlerini kullanın. Hizmet etiketlerini güvenlik kuralı oluştururken belirli IP adreslerinin yerine kullanabilirsiniz. Bir kuralın uygun kaynak veya hedef alanındaki hizmet etiketi adını (örneğin, AzureEventGrid) belirterek, karşılık gelen hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir.
 
-- [Azure Event Grid için hizmet etiketi kullanma](https://docs.microsoft.com/azure/event-grid/network-security#service-tags)
+- [Azure Event Grid için hizmet etiketi kullanma](./network-security.md#service-tags)
 
 - [Hizmet etiketlerini kullanma hakkında daha fazla bilgi için](../virtual-network/service-tags-overview.md)
 
@@ -149,7 +149,7 @@ Ayrıca, Azure Event Grid ile ilgili yerleşik ilke tanımlarından da yararlana
 - Azure Event Grid etki alanları özel bağlantıları kullanmalıdır
 
 - Azure Event Grid konular özel bağlantıları Azure kullanmalıdır
-- [Event Grid kaynaklar için yerleşik ilkeler](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-grid)
+- [Event Grid kaynaklar için yerleşik ilkeler](../governance/policy/samples/built-in-policies.md#event-grid)
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
@@ -161,7 +161,7 @@ Ayrıca, Azure Event Grid ile ilgili yerleşik ilke tanımlarından da yararlana
 
 **Rehberlik**: bir taksonomiyle mantıksal olarak organize etmek için Azure Event Grid kaynaklarınızla ilişkili ağ kaynakları için Etiketler kullanın.
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -171,9 +171,9 @@ Ayrıca, Azure Event Grid ile ilgili yerleşik ilke tanımlarından da yararlana
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını izleyin ve Azure Event Grid ilgili ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](/azure/azure-monitor/platform/activity-log-view)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Izleyici 'de uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -217,7 +217,7 @@ Ayrıca, Azure Event Grid ile ilgili yerleşik ilke tanımlarından da yararlana
 
 **Kılavuz**: Azure izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre Azure Event Grid kaynaklarınızla ilişkili Log Analytics çalışma alanları için günlük tutma süresini ayarlayın.
 
-- [Günlük tutma parametrelerini ayarlama](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Günlük tutma parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Sorumluluk**: Müşteri
 
@@ -235,9 +235,9 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics sorguları ile çalışmaya başlama](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Log Analytics sorguları ile çalışmaya başlama](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](/azure/azure-monitor/log-query/get-started-queries)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/get-started-queries.md)
 
 **Sorumluluk**: Müşteri
 
@@ -257,7 +257,7 @@ Ayrıca, bir güvenlik Orchestration otomatik yanıtı (SOAR) çözümü sağlad
 
 - [Event Grid tanılama günlüğü şemasının ayrıntıları](diagnostic-logs.md)
 
-- [Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme](/azure/azure-monitor/platform/alerts-log)
+- [Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/alerts/alerts-log.md)
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
@@ -329,7 +329,7 @@ Event Grid, Azure Event Grid konuları veya etki alanları için yönetilen bir 
 
 - [Yayımlama istemcilerinin kimliğini doğrulama (Azure Event Grid)](security-authenticate-publishing-clients.md)
 
-- [Privileged Identity Management hakkında daha fazla bilgi edinin](/azure/active-directory/privileged-identity-management/)
+- [Privileged Identity Management hakkında daha fazla bilgi edinin](../active-directory/privileged-identity-management/index.yml)
 
 **Sorumluluk**: Müşteri
 
@@ -363,7 +363,7 @@ Event Grid, Azure Event Grid konuları veya etki alanları için yönetilen bir 
 
 **Rehberlik**: ortamda şüpheli veya güvenli olmayan etkinliklerin ne zaman oluştuğunu algılamak için Azure Active Directory (Azure AD) güvenlik raporları ve izleme kullanın. Kimlik ve erişim etkinliğini izlemek için Azure Güvenlik Merkezi 'ni kullanın.
 
-- [Riskli etkinlik bayrağıyla işaretlenen Azure AD kullanıcılarını belirleme](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Riskli etkinlik bayrağıyla işaretlenen Azure AD kullanıcılarını belirleme](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Azure Güvenlik Merkezi’nde kullanıcıların kimliğini ve erişim etkinliğini izleme](../security-center/security-center-identity-access.md)
 
@@ -401,11 +401,11 @@ Event Grid, Azure Event Grid konuları veya etki alanları için yönetilen bir 
 
 Ortamda şüpheli veya güvenli olmayan bir etkinlik olduğunda günlüklerin ve uyarıların oluşturulması için Azure AD Privileged Identity Management (PıM) kullanın.
 
-- [Azure AD raporlamayı anlama](/azure/active-directory/reports-monitoring)
+- [Azure AD raporlamayı anlama](../active-directory/reports-monitoring/index.yml)
 
 - [Azure AD kimlik ve erişim gözden geçirmelerini kullanma](../active-directory/governance/access-reviews-overview.md)
 
-- [Azure AD Privileged Identity Management dağıtma (PıM)](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Azure AD Privileged Identity Management dağıtma (PıM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Sorumluluk**: Müşteri
 
@@ -417,7 +417,7 @@ Ortamda şüpheli veya güvenli olmayan bir etkinlik olduğunda günlüklerin ve
 
 Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturarak ve Log Analytics çalışma alanına denetim günlüklerini ve oturum açma günlüklerini göndererek kolaylaştırabilirsiniz. İstenen uyarıları Log Analytics çalışma alanı içinde yapılandırabilirsiniz.
 
-- [Azure Izleyici ile Azure etkinlik günlüklerini tümleştirme](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure Izleyici ile Azure etkinlik günlüklerini tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Sorumluluk**: Müşteri
 
@@ -427,7 +427,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Rehberlik**: otomatik yanıtları yapılandırmak için Azure Active Directory (Azure AD) kimlik koruması özelliklerini kullanın, Kullanıcı kimlikleriyle ilgili şüpheli eylemleri tespit edin. Ayrıca, daha fazla araştırma için verileri Azure Sentinel 'e aktarabilirsiniz.
 
-- [Azure AD riskli oturum açma işlemlerini görüntüleme](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD riskli oturum açma işlemlerini görüntüleme](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -455,7 +455,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
  
  
  
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -465,11 +465,11 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Rehberlik**: ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanları için ayrı abonelikler ve yönetim grupları kullanarak yalıtım uygulayın. Uygulamalarınızın ve kurumsal ortamların talep ettiği Azure kaynaklarınıza erişim düzeyini kısıtlayabilirsiniz. Azure RBAC aracılığıyla Azure kaynaklarına erişimi denetleyebilirsiniz.
 
-- [Ek Azure abonelikleri oluşturma](/azure/billing/billing-create-subscription)
+- [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-- [Yönetim grupları oluşturma](/azure/governance/management-groups/create)
+- [Yönetim grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -519,7 +519,7 @@ Microsoft tarafından yönetilen temel platform için, Microsoft tüm müşteri 
 
 **Rehberlik**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak, Azure Event Grid kaynakların üretim örneklerine ve diğer önemli veya ilgili kaynaklara yönelik değişikliklerin ne zaman gerçekleştiği hakkında uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -569,7 +569,7 @@ Microsoft tarafından yönetilen temel platform için, Microsoft tüm müşteri 
 
 **Kılavuz**: Azure kaynaklarına Etiketler uygulayarak bunları bir taksonomi halinde mantıksal olarak organize etmek için meta veriler verirsiniz.
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -581,11 +581,11 @@ Microsoft tarafından yönetilen temel platform için, Microsoft tüm müşteri 
  
  
  
-- [Ek Azure abonelikleri oluşturma](/azure/billing/billing-create-subscription)
+- [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-- [Yönetim grupları oluşturma](/azure/governance/management-groups/create)
+- [Yönetim grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -764,7 +764,7 @@ Azure Resource Manager, yapılandırmaların dağıtımlardan önce kuruluşunuz
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-- [Diğer adları kullanma](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Diğer adları kullanma](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Sorumluluk**: Müşteri
 
@@ -930,7 +930,7 @@ Bulut uygulamalarınız için gizli yönetimi basitleştirmek üzere Azure Key V
 
 - [Azure Güvenlik Merkezi'nde güvenlik uyarıları](../security-center/security-center-alerts-overview.md)
 
-- [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -1000,5 +1000,5 @@ Bulut uygulamalarınız için gizli yönetimi basitleştirmek üzere Azure Key V
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

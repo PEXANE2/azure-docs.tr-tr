@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 08/25/2020
-ms.openlocfilehash: 9b02b0e5d9e3229aafec9b8a4ca21b14c0e596a6
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 62b1924a1aeb1c1e5bc06ec0783d83d6918d162c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105022288"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557930"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-database"></a>Geçiş Kılavuzu: Oracle 'dan Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -143,7 +143,7 @@ Veritabanlarınızı değerlendirmek ve tutarsızlıkları doğruladıktan sonra
 
 Alternatif olarak, geçişi gerçekleştirmek için SQL Server Integration Services (SSIS) de kullanabilirsiniz. Daha fazla bilgi edinmek için şu makalelere bakın: 
 
-- [SQL Server Integration Services kullanmaya başlama](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services)
+- [SQL Server Integration Services kullanmaya başlama](/sql/integration-services/sql-server-integration-services)
 - [SQL Server Integration Services: SSIS for Azure ve hibrit veri hareketi](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx)
 
 
@@ -196,7 +196,7 @@ Bu kaynaklar, Azure veri grubu Mühendisliği ekibi tarafından sponsorlu Data S
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Çeşitli veritabanı ve veri geçişi senaryolarında ve özel görevlerin yanı sıra size yardımcı olmak için kullanabileceğiniz Microsoft ve üçüncü taraf hizmet ve araçların bir matrisi için, [veri geçişi Için hizmet ve araçlar](https://docs.microsoft.com/azure/dms/dms-tools-matrix)makalesine bakın.
+- Çeşitli veritabanı ve veri geçişi senaryolarında ve özel görevlerin yanı sıra size yardımcı olmak için kullanabileceğiniz Microsoft ve üçüncü taraf hizmet ve araçların bir matrisi için, [veri geçişi Için hizmet ve araçlar](../../../dms/dms-tools-matrix.md)makalesine bakın.
 
 - Azure SQL veritabanı hakkında daha fazla bilgi edinmek için bkz.: 
   - [Azure SQL veritabanı 'na genel bakış](../../database/sql-database-paas-overview.md)
@@ -209,5 +209,3 @@ Bu kaynaklar, Azure veri grubu Mühendisliği ekibi tarafından sponsorlu Data S
 
 - Video içeriği için bkz.: 
     - [Değerlendirme ve geçiş gerçekleştirmek için önerilen geçiş yolculuğuna ve araç/hizmetlere genel bakış](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)
-
-

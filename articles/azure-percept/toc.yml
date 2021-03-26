@@ -18,7 +18,7 @@
       href: overview-percept-security.md
     - name: 80/20 tümleştirmesi
       href: overview-8020-integration.md
-    - name: Percept cihazlarınızı güncelleştirme
+    - name: Cihaz güncelleştirmeleri
       href: overview-update-experience.md
 - name: Hızlı Başlangıçlar
   items:
@@ -44,6 +44,10 @@
       items:
         - name: LED ve Button davranışı
           href: audio-button-led-behavior.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik duvarı yapılandırması ve güvenlik önerileri
+          href: concept-security-configuration.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure Percept DK ile Vision çözüm geliştirme

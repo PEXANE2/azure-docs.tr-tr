@@ -4,27 +4,30 @@ titleSuffix: Azure Machine Learning
 description: Çalışma alanlarınızın gereksinimlerinize uygun olduğundan emin olmak üzere Azure Machine Learning için yerleşik ilkeleri kullanmak üzere Azure Ilkesi 'ni nasıl kullanacağınızı öğrenin.
 author: aashishb
 ms.author: aashishb
-ms.date: 03/12/2021
+ms.date: 03/25/2021
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 21b07130e99ad4fac9a0a9b2d11aca852a1f205f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f708e2181511da97ecffcd6f1636a2b232b4fbc6
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584321"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544375"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Azure Ilkesi kullanarak Azure Machine Learning denetleme ve yönetme
 
 [Azure ilkesi](../governance/policy/index.yml) , Azure kaynaklarının ilkelerinizle uyumlu olduğundan emin olmanızı sağlayan bir idare aracıdır. Azure Machine Learning, aşağıdaki ilkeleri atayabilirsiniz:
 
-* **Müşteri tarafından yönetilen anahtar**: çalışma alanlarının müşteri tarafından yönetilen anahtar kullanması gerekip gerekmediğini denetleyin veya zorlayın.
-* **Özel bağlantı**: çalışma alanlarının bir sanal ağla iletişim kurmak için özel uç nokta kullanıp kullanmadığını denetleyin veya zorlayın.
-* **Özel uç nokta**: özel uç noktanın oluşturulması gereken Azure sanal ağ alt ağını yapılandırın.
-* **Özel DNS bölgesi**: özel bağlantı için kullanılacak özel DNS bölgesini yapılandırın.
+| İlke | Description |
+| ----- | ----- |
+| **Müşteri tarafından yönetilen anahtar** | Çalışma alanlarının müşterinin yönettiği anahtar kullanması gerekip gerekmediğini denetleyin veya zorlayın. |
+| **Özel bağlantı** | Çalışma alanlarının bir sanal ağla iletişim kurmak için özel uç nokta kullanıp kullanmadığını denetleyin veya zorlayın. |
+| **Özel uç nokta** | Özel uç noktanın oluşturulması gereken Azure sanal ağ alt ağını yapılandırın. |
+| **Özel DNS bölgesi** | Özel bağlantı için kullanılacak özel DNS bölgesini yapılandırın. |
+| **Kullanıcı tarafından atanan yönetilen kimlik** | Çalışma alanlarının Kullanıcı tarafından atanan yönetilen kimlik kullanıp kullanmadığını denetleyin veya zorlayın. |
 
 İlkeler, abonelik veya kaynak grubu düzeyinde gibi farklı kapsamlardan ayarlanabilir. Daha fazla bilgi için bkz. [Azure ilkesi belgeleri](../governance/policy/overview.md).
 
@@ -62,12 +65,20 @@ Bu ilkeyi yapılandırmak için, efekt parametresini __Denetim__ veya __reddetme
 
 Bir Azure sanal ağının belirtilen alt ağı içinde özel bir uç nokta oluşturmak için bir çalışma alanı yapılandırır.
 
-Bu ilkeyi yapılandırmak için, efekt parametresini __Deployifnotexists__ olarak ayarlayın. __Privateendpointsubnetıd__ 'yi alt AĞıN Azure Resource Manager kimliği olarak ayarlayın.
+Bu ilkeyi yapılandırmak için, efekt parametresini __Deployifnotexists__ olarak ayarlayın. __Privateendpointsubnetıd__ öğesini alt AĞıN Azure Resource Manager kimliği olarak ayarlayın.
 ## <a name="workspace-should-use-private-dns-zones"></a>Çalışma alanı özel DNS bölgelerini kullanmalıdır
 
 Özel bir uç nokta için varsayılan DNS çözümlemesini geçersiz kılarak özel bir DNS bölgesi kullanmak üzere bir çalışma alanı yapılandırır.
 
 Bu ilkeyi yapılandırmak için, efekt parametresini __Deployifnotexists__ olarak ayarlayın. __PrivateDnsZoneId__ öğesini kullanmak IÇIN özel DNS BÖLGESININ Azure Resource Manager kimliği olarak ayarlayın. 
+
+## <a name="workspace-should-use-user-assigned-managed-identity"></a>Çalışma alanı kullanıcı tarafından atanan yönetilen kimliği kullanmalıdır
+
+Bir çalışma alanının, sistem tarafından atanan yönetilen kimlik (varsayılan) veya Kullanıcı tarafından atanan yönetilen kimlik kullanılarak oluşturulup oluşturulmayacağını denetler. Çalışma alanının yönetilen kimliği, Azure depolama, Azure Container Registry, Azure Key Vault ve Azure Application Insights gibi ilişkili kaynaklara erişmek için kullanılır. Daha fazla bilgi için bkz. [Azure Machine Learning ile yönetilen kimlikler kullanma](how-to-use-managed-identities.md).
+
+Bu ilkeyi yapılandırmak için, efekt parametresini __Denetim__, __reddetme__ veya __devre dışı__ olarak ayarlayın. __Denetim__ olarak ayarlanırsa, Kullanıcı tarafından atanan yönetilen kimlik belirtmeden bir çalışma alanı oluşturabilirsiniz. Sistem tarafından atanan bir kimlik kullanılır ve etkinlik günlüğünde bir uyarı olayı oluşturulur.
+
+İlke __Reddet__ olarak ayarlandıysa, oluşturma işlemi sırasında Kullanıcı tarafından atanan bir kimlik sağlamadığınız sürece bir çalışma alanı oluşturamazsınız. Kullanıcı tarafından atanan kimlik sağlamadan bir çalışma alanı oluşturma girişimi bir hatayla sonuçlanır. Hata ayrıca etkinlik günlüğüne kaydedilir. İlke tanımlayıcısı bu hatanın bir parçası olarak döndürülür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

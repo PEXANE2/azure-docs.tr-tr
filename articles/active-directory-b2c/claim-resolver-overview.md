@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b69492dc41786a677043df5e77c9d12aa26893f6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 929463e346311d58da5ac75b28c774bcfe258f08
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102119782"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557539"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde talep çözücüler hakkında
 
@@ -72,12 +72,12 @@ Aşağıdaki bölümlerde, kullanılabilir talep çözücüler listelenmektedir.
 | {OıDC: Loginipucu} |  `login_hint`Sorgu dizesi parametresi. | someone@contoso.com |
 | {OıDC: MaxAge} | `max_age`. | Yok |
 | {OıDC: nonce} |`Nonce`Sorgu dizesi parametresi. | defaultNonce |
-| {OıDC: Password}| [Kaynak sahibi parola kimlik bilgileri](ropc-custom.md) kullanıcının parolasını akışa.| Parola1| 
+| {OıDC: Password}| [Kaynak sahibi parola kimlik bilgileri](add-ropc-policy.md) kullanıcının parolasını akışa.| Parola1| 
 | {OıDC: Prompt} | `prompt`Sorgu dizesi parametresi. | oturum aç |
 | {OıDC: RedirectUri} |`redirect_uri`Sorgu dizesi parametresi. | https://jwt.ms |
 | {OıDC: kaynak} |`resource`Sorgu dizesi parametresi. | Yok |
 | {OıDC: scope} |`scope`Sorgu dizesi parametresi. | OpenID |
-| {OıDC: username}| [Kaynak sahibi parola kimlik bilgileri](ropc-custom.md) kullanıcının Kullanıcı adını Flow.| emily@contoso.com| 
+| {OıDC: username}| [Kaynak sahibi parola kimlik bilgileri](add-ropc-policy.md) kullanıcının Kullanıcı adını Flow.| emily@contoso.com| 
 
 ### <a name="context"></a>Bağlam
 

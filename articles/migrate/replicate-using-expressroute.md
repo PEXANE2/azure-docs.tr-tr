@@ -6,19 +6,19 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: 5dd27e4502ac70ef10f2623ed6dfb2f62de37f06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9aa9a42422f3c114490d1dbb28a146b6e76ca8cd
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102448837"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558627"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Azure geçişi ile ExpressRoute üzerinden veri çoğaltma: sunucu geçişi
 
-Bu makalede, sunucuları Azure 'a geçirirken ExpressRoute bağlantı hattı üzerinden verileri çoğaltmak için [Azure geçişi](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-migration-tool) 'nin nasıl yapılandırılacağını öğreneceksiniz.
+Bu makalede, sunucuları Azure 'a geçirirken ExpressRoute bağlantı hattı üzerinden verileri çoğaltmak için [Azure geçişi](./migrate-services-overview.md#azure-migrate-server-migration-tool) 'nin nasıl yapılandırılacağını öğreneceksiniz.
 
 ## <a name="understand-azure-expressroute-circuits"></a>Azure ExpressRoute devreleri anlama
-ExpressRoute (ER) devresi, şirket içi altyapınızı bir bağlantı sağlayıcısı üzerinden Microsoft 'a bağlar. ExpressRoute devreleri, özel eşleme, Microsoft eşleme veya her ikisini de kullanacak şekilde yapılandırılabilir. ExpressRoute ile kullanılabilen çeşitli eşleme seçenekleri hakkında daha fazla bilgi edinmek için [ExpressRoute devreleri ve eşleme](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#peeringcompare) makalesindeki makaleyi gözden geçirin.
+ExpressRoute (ER) devresi, şirket içi altyapınızı bir bağlantı sağlayıcısı üzerinden Microsoft 'a bağlar. ExpressRoute devreleri, özel eşleme, Microsoft eşleme veya her ikisini de kullanacak şekilde yapılandırılabilir. ExpressRoute ile kullanılabilen çeşitli eşleme seçenekleri hakkında daha fazla bilgi edinmek için [ExpressRoute devreleri ve eşleme](../expressroute/expressroute-circuit-peerings.md#peeringcompare) makalesindeki makaleyi gözden geçirin.
 
 Azure geçişi 'nin sunucu geçiş aracı, şirket içi sunucuları ve sunucuları diğer bulutlardan Azure sanal makinelerine geçirmenize yardımcı olur. Araç, Azure aboneliğinizdeki yönetilen disklere geçirilecek olan sunuculardan veri çoğaltmak için devam eden bir çoğaltma akışı ayarlayarak çalışır. Sunucuları geçirmeye hazırsanız, sunucuları geçirmek için Azure 'daki çoğaltılan veriler kullanılır.
 
@@ -104,7 +104,7 @@ Yalnızca bir Genel Amaçlı v2 (GPv2) depolama hesabında özel uç noktalar ol
     > [!Note]
     > Sanal ağın ExpressRoute ağ geçidi uç noktasını içermesi veya ExpressRoute ağ geçidi ile sanal ağa bağlı olması gerekir. 
 
-    **Özel DNS tümleştirme** bölümünde **Evet** ' i SEÇIN ve özel bir DNS bölgesi ile tümleştirin. **Evet** seçildiğinde DNS bölgesi seçili sanal ağa otomatik olarak bağlanır ve yeni IP 'lerin DNS çözümlemesi IÇIN gereken DNS kayıtları ve özel uç nokta için oluşturulan tam etki alanı adları eklenir. [Özel DNS bölgeleri](https://docs.microsoft.com/azure/dns/private-dns-overview) hakkında daha fazla bilgi edinin.
+    **Özel DNS tümleştirme** bölümünde **Evet** ' i SEÇIN ve özel bir DNS bölgesi ile tümleştirin. **Evet** seçildiğinde DNS bölgesi seçili sanal ağa otomatik olarak bağlanır ve yeni IP 'lerin DNS çözümlemesi IÇIN gereken DNS kayıtları ve özel uç nokta için oluşturulan tam etki alanı adları eklenir. [Özel DNS bölgeleri](../dns/private-dns-overview.md) hakkında daha fazla bilgi edinin.
 
     ![privatednszone](./media/replicate-using-expressroute/private-dns-zone.png)
 
@@ -144,14 +144,14 @@ Yalnızca bir Genel Amaçlı v2 (GPv2) depolama hesabında özel uç noktalar ol
     b. **Kayıt kümesi Ekle** sayfasında, tam etki alanı adı için bir giriş ve bir tür kaydı olarak özel IP ekleyin.
 
 > [!Important]
-> Kaynak ortamdan, depolama hesabının özel uç noktasının özel IP adresini çözümlemek için ek DNS ayarları gerekebilir. Gereken DNS yapılandırmasını anlamak için [Bu makaleyi gözden geçirin](https://docs.microsoft.com/azure/private-link/private-endpoint-dns#on-premises-workloads-using-a-dns-forwarder) .
+> Kaynak ortamdan, depolama hesabının özel uç noktasının özel IP adresini çözümlemek için ek DNS ayarları gerekebilir. Gereken DNS yapılandırmasını anlamak için [Bu makaleyi gözden geçirin](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder) .
 
 ## <a name="replicate-data-using-an-expressroute-circuit-with-microsoft-peering"></a>Microsoft eşlemesiyle ExpressRoute bağlantı hattını kullanarak verileri çoğaltma
 
 Aşağıdaki diyagramda gösterildiği gibi, çoğaltma trafiğinizi bir ExpressRoute bağlantı hattı üzerinden yönlendirmek için Microsoft eşlemesini veya var olan bir genel eşleme etki alanını (yeni ExpressRoute bağlantıları için kullanım dışı) kullanabilirsiniz.
 ![replicationwithmicrosofteşlemesi](./media/replicate-using-expressroute/replication-with-microsoft-peering.png)
 
-Çoğaltma verileri Microsoft eşlenmiş devre üzerinden geçmekle birlikte, yine de Azure geçişi hizmeti ile şirket içi siteden diğer iletişimler (denetim düzlemi) için internet bağlantısına sahip olmanız gerekir. ExpressRoute üzerinden erişilebilen bazı ek URL 'Ler vardır. Bu, çoğaltma gereci/Hyper-V konağının çoğaltma işlemini yönetmek için erişmesi gerekir. Geçiş senaryosuna, [VMware aracısız geçişlerine](https://docs.microsoft.com/azure/migrate/migrate-appliance#public-cloud-urls) veya [aracı tabanlı GEÇIŞLERE](https://docs.microsoft.com/azure/migrate/migrate-replication-appliance)göre URL gereksinimlerini gözden geçirebilirsiniz.  
+Çoğaltma verileri Microsoft eşlenmiş devre üzerinden geçmekle birlikte, yine de Azure geçişi hizmeti ile şirket içi siteden diğer iletişimler (denetim düzlemi) için internet bağlantısına sahip olmanız gerekir. ExpressRoute üzerinden erişilebilen bazı ek URL 'Ler vardır. Bu, çoğaltma gereci/Hyper-V konağının çoğaltma işlemini yönetmek için erişmesi gerekir. Geçiş senaryosuna, [VMware aracısız geçişlerine](./migrate-appliance.md#public-cloud-urls) veya [aracı tabanlı GEÇIŞLERE](./migrate-replication-appliance.md)göre URL gereksinimlerini gözden geçirebilirsiniz.  
 
 Şirket içi sitenizde bir ara sunucu kullanıyor ve çoğaltma trafiği için ExpressRoute 'u kullanmak istiyorsanız, şirket içi gereç üzerinde ilgili URL 'Ler için bir proxy atlama yapılandırmanız gerekir. 
 
@@ -172,7 +172,7 @@ Aşağıdaki diyagramda gösterildiği gibi, çoğaltma trafiğinizi bir Express
 
 Yapılandırma sunucusu ve Işlem sunucularındaki proxy atlama listesini yapılandırmak için aşağıdaki adımları izleyin:
 
-1. Sistem Kullanıcı bağlamına erişmek için [PsExec aracını indirin](https://docs.microsoft.com/sysinternals/downloads/psexec) .
+1. Sistem Kullanıcı bağlamına erişmek için [PsExec aracını indirin](/sysinternals/downloads/psexec) .
 2. Aşağıdaki komut satırı PsExec-s-i "%ProgramFiles%\Internet Explorer\iexplore.exe" komutunu çalıştırarak Internet Explorer 'ı sistem kullanıcı bağlamında açın
 3. Proxy ayarlarını IE 'ye ekleyin.
 4. Atlama listesinde, Azure depolama URL 'sini ekleyin. *. blob. Core. Windows. net.  
@@ -185,10 +185,10 @@ Ayrıca, Azure geçişi çoğaltma trafiğinizi internet yerine bir ExpressRoute
 - Hedef Azure bölgesi (geçiş için bölge) için bölgesel BGP topluluğu
 - Azure Active Directory için BGP topluluğu (12076:5060)
 
-[Yol filtreleri](https://docs.microsoft.com/azure/expressroute/how-to-routefilter-portal) ve [ExpressRoute için BGP toplulukları](https://docs.microsoft.com/azure/expressroute/expressroute-routing#bgp)listesi hakkında daha fazla bilgi edinin. 
+[Yol filtreleri](../expressroute/how-to-routefilter-portal.md) ve [ExpressRoute için BGP toplulukları](../expressroute/expressroute-routing.md#bgp)listesi hakkında daha fazla bilgi edinin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [ExpressRoute devreleri](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings)hakkında daha fazla bilgi edinin.
-- [ExpressRoute yönlendirme etki alanları](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#peeringcompare)hakkında daha fazla bilgi edinin.
-- [Özel uç noktalar](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)hakkında daha fazla bilgi edinin.
+- [ExpressRoute devreleri](../expressroute/expressroute-circuit-peerings.md)hakkında daha fazla bilgi edinin.
+- [ExpressRoute yönlendirme etki alanları](../expressroute/expressroute-circuit-peerings.md#peeringcompare)hakkında daha fazla bilgi edinin.
+- [Özel uç noktalar](../private-link/private-endpoint-overview.md)hakkında daha fazla bilgi edinin.

@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 6d54216d8992b5bb233c79919284f96b24385651
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 6cb4abd536cc0d4177df424ac6a774e4e2e328d7
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104865596"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564764"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>ARM şablonları kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtma
 
@@ -29,15 +29,15 @@ Bu öğreticide, [ARM şablonları](../azure-resource-manager/templates/overview
 
 1. Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](deploy-prerequisite.md) gözden geçirin ve ilişkili kaynakları oluşturun.
 
-2. [Azure Portal](/azure/azure-resource-manager/management/manage-resource-groups-portal) veya [PowerShell](/azure/azure-resource-manager/management/manage-resource-groups-powershell)kullanarak yeni bir kaynak grubu oluşturun. Mevcut bir kaynak grubu kullanıyorsanız, bu adım isteğe bağlıdır.
+2. [Azure Portal](../azure-resource-manager/management/manage-resource-groups-portal.md) veya [PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md)kullanarak yeni bir kaynak grubu oluşturun. Mevcut bir kaynak grubu kullanıyorsanız, bu adım isteğe bağlıdır.
  
-3. [Azure Portal](/azure/storage/common/storage-account-create?tabs=azure-portal) veya [PowerShell](/azure/storage/common/storage-account-create?tabs=azure-powershell)'i kullanarak yeni bir depolama hesabı oluşturun. Mevcut bir depolama hesabı kullanıyorsanız, bu adım isteğe bağlıdır.
+3. [Azure Portal](../storage/common/storage-account-create.md?tabs=azure-portal) veya [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell)'i kullanarak yeni bir depolama hesabı oluşturun. Mevcut bir depolama hesabı kullanıyorsanız, bu adım isteğe bağlıdır.
 
-4. Hizmet tanımı (. csdef) ve hizmet yapılandırma (. cscfg) dosyalarınızı [Azure Portal](/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob), [AzCopy](/azure/storage/common/storage-use-azcopy-blobs-upload?toc=/azure/storage/blobs/toc.json) veya [PowerShell](/azure/storage/blobs/storage-quickstart-blobs-powershell#upload-blobs-to-the-container)kullanarak depolama hesabına yükleyin. Bu öğreticide daha sonra ARM şablonuna eklenecek her iki dosyanın SAS URI 'Lerini alın.
+4. Hizmet tanımı (. csdef) ve hizmet yapılandırma (. cscfg) dosyalarınızı [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) veya [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container)kullanarak depolama hesabına yükleyin. Bu öğreticide daha sonra ARM şablonuna eklenecek her iki dosyanın SAS URI 'Lerini alın.
 
 5. Seçim Bir Anahtar Kasası oluşturun ve sertifikaları karşıya yükleyin.
 
-    -  Sertifikalar, hizmete veya hizmetten güvenli iletişim sağlamak için bulut hizmetlerine iliştirilebilir. Sertifikaları kullanabilmeniz için, kendi parmak izleri hizmet yapılandırma (. cscfg) dosyanızda belirtilmelidir ve bir anahtar kasasında karşıya yüklenmelidir. Bir Anahtar Kasası [Azure Portal](/azure/key-vault/general/quick-create-portal) veya [PowerShell](/azure/key-vault/general/quick-create-powershell)aracılığıyla oluşturulabilir.
+    -  Sertifikalar, hizmete veya hizmetten güvenli iletişim sağlamak için bulut hizmetlerine iliştirilebilir. Sertifikaları kullanabilmeniz için, kendi parmak izleri hizmet yapılandırma (. cscfg) dosyanızda belirtilmelidir ve bir anahtar kasasında karşıya yüklenmelidir. Bir Anahtar Kasası [Azure Portal](../key-vault/general/quick-create-portal.md) veya [PowerShell](../key-vault/general/quick-create-powershell.md)aracılığıyla oluşturulabilir.
     - İlişkili anahtar Kasası, bulut hizmeti ile aynı bölgede ve abonelikte bulunmalıdır.
     - Cloud Services (genişletilmiş destek) kaynağının Key Vault sertifikaları alabilmesi için ilgili Anahtar Kasası için uygun izinler etkinleştirilmelidir. Daha fazla bilgi için bkz. [Sertifikalar ve Key Vault](certificates-and-key-vault.md)
     - Anahtar kasasının, aşağıdaki adımlarda gösterilen ARM şablonunun OsProfile bölümünde başvurulması gerekir.

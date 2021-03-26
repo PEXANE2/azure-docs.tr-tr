@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: cshoe
-ms.openlocfilehash: 57c83a94925e94088085efacf1192416f63e6383
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d561c72bb1c6e6e67de7698d7b21901fcf8d1f7c
+ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103232048"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105544426"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için GitHub eylemleri iş akışları
 
@@ -136,11 +136,7 @@ with:
     ###### End of Repository/Build Configurations ######
 ```
 
-| Özellik | Açıklama | Gerekli |
-|---|---|---|
-| `app_location` | Uygulama kodunuzun konumu.<br><br>Örneğin, `/` uygulamanızın kaynak kodu deponun kökünde veya `/app` uygulama kodunuz adlı bir dizinde ise girin `app` . | Yes |
-| `api_location` | Azure Işlevleri kodunuzun konumu.<br><br>Örneğin, `/api` uygulama kodunuz adlı bir klasörde ise yazın `api` . Klasörde hiçbir Azure Işlevleri uygulaması algılanmazsa, derleme başarısız olmaz, iş akışı bir API istemediğinizi varsayar. | No |
-| `output_location` | Derleme çıkış dizininin öğesine göre konumu `app_location` .<br><br>Örneğin, uygulama kaynak kodunuz adresinde bulunuyorsa `/app` ve derleme betiği dosyaları klasörüne çıktıdaysa `/app/build` `build` değer olarak ayarlanır `output_location` . | No |
+[!INCLUDE [static-web-apps-folder-structure](../../includes/static-web-apps-folder-structure.md)]
 
 `repo_token`, `action` , Ve `azure_static_web_apps_api_token` değerleri Azure static tarafından sizin için ayarlanır Web Apps el ile değiştirilmemelidir.
 

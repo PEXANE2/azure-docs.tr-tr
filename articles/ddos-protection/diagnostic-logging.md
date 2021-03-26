@@ -3,7 +3,7 @@ title: Azure DDoS koruması standart raporları ve akış günlükleri
 description: Raporların ve akış günlüklerinin nasıl yapılandırılacağını öğrenin.
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: cc5b3b85d6d13fda532da0993fa7f733126b8eae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7f8e3df927b74cff7e4dc8bf1456600740c07088
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100591881"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567687"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>DDoS tanılama günlüğünü görüntüleme ve yapılandırma
 
@@ -130,7 +130,7 @@ Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 
 Bu [şablon](https://aka.ms/ddosdiaglogs) , tanımlı bir kapsamdaki tüm genel IP günlüklerinde tanılama günlüğünü otomatik olarak etkinleştirmek Için bir Azure ilke tanımı oluşturur.
 
-[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FEnable%2520Diagnostic%2520Logging%2FAzure%2520Policy%2FDDoSLogs.json)
+[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%20DDoS%20Protection%2FPolicy%20-%20DDOS%20Enable%20Diagnostic%20Logging%2FAzure%20Policy%2FDDoSLogs.json)
 
 ## <a name="view-log-data-in-workbooks"></a>Çalışma kitaplarında günlük verilerini görüntüleme
 
@@ -144,7 +144,7 @@ Günlükleri Azure Sentinel 'e bağlayabilirsiniz, çalışma kitaplarında veri
 
 [Bu Azure Resource Manager (ARM) şablonunu](https://aka.ms/ddosworkbook) , bir saldırı Analizi çalışma kitabını dağıtmak için kullanabilirsiniz. Bu çalışma kitabı, farklı filtrelenebilir panolar genelinde saldırı verilerini görselleştirmenize olanak tanır. 
 
-[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
+[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%20DDoS%20Protection%2FWorkbook%20-%20Azure%20DDOS%20monitor%20workbook%2FAzureDDoSWorkbook_ARM.json)
 
 ![DDoS koruması çalışma kitabı](./media/ddos-attack-telemetry/ddos-attack-analytics-workbook.png)
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 922480eb2f4795729919c6ed039ccf61f19875b3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 84bf14caeec163c31004a430fa954fc36f4be68b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102630376"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562792"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 sürüm notları
 
@@ -49,7 +49,7 @@ Aşağıdaki tabloda, 2101 sürümündeki bilinen sorunların bir özeti verilmi
 |**3.**|Kubernetes |Web proxy etkinleştirildiğinde kenar kapsayıcısı kayıt defteri çalışmıyor.|İşlevsellik gelecekteki bir sürümde kullanılabilir olacaktır. |
 |**4.**|Kubernetes |Kenar kapsayıcısı kayıt defteri IoT Edge modüllerle çalışmaz.| |
 |**e.**|Kubernetes |Kubernetes, .NET uygulamaları tarafından kullanılan ortam değişkeni adlarında ":" öğesini desteklemez. Bu ayrıca Event Grid IoT Edge modülünün Azure Stack Edge cihazında ve diğer uygulamalarda çalışması için de gereklidir. Daha fazla bilgi için bkz. [ASP.NET Core documentation](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables).|":" Öğesini çift alt çizgi ile değiştirin. Daha fazla bilgi için bkz. [Kubernetes sorunu](https://github.com/kubernetes/kubernetes/issues/53201)|
-|**inç.** |Azure Arc + Kubernetes kümesi |Varsayılan olarak, `yamls` Git deposundan kaynak silindiğinde, ilgili kaynaklar Kubernetes kümesinden silinmez.  |Git deposundan silindiklerinde kaynakların silinmesine izin vermek için `--sync-garbage-collection` yay OperatorParams ' de ayarlayın. Daha fazla bilgi için bkz. [yapılandırmayı silme](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
+|**inç.** |Azure Arc + Kubernetes kümesi |Varsayılan olarak, `yamls` Git deposundan kaynak silindiğinde, ilgili kaynaklar Kubernetes kümesinden silinmez.  |Git deposundan silindiklerinde kaynakların silinmesine izin vermek için `--sync-garbage-collection` yay OperatorParams ' de ayarlayın. Daha fazla bilgi için bkz. [yapılandırmayı silme](../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md#additional-parameters). |
 |**7.**|NFS |NFS kullanan uygulamalar, verileri yazmak için cihazınızda paylaşılan takar ve özel yazma kullanmalıdır. Bu sayede yazma işlemleri diske yazılır.| |
 |**240.**|İşlem yapılandırması |İşlem yapılandırması, ağ geçitlerinde ağ geçitleri veya anahtarların veya yönlendiricilerin ağda bulunmayan sistemler için Adres Çözümleme Protokolü (ARP) isteklerine yanıt verdiği ağ yapılandırmalarında başarısız olur.| |
 |**tuşlarına.**|İşlem ve Kubernetes |İlk olarak cihazınızda Kubernetes ayarlandıysa, tüm kullanılabilir GPU 'ları ister. Bu nedenle, Kubernetes 'i ayarladıktan sonra GPU 'ları kullanarak Azure Resource Manager VM 'Ler oluşturmak mümkün değildir. |Cihazınızda 2 GPU varsa, GPU 'YU kullanan 1 VM oluşturabilir ve sonra Kubernetes 'i yapılandırabilirsiniz. Bu durumda, Kubernetes, kalan kullanılabilir 1 GPU 'YU kullanacaktır. |

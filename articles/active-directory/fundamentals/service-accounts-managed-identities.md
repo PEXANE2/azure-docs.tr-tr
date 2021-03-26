@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4584b0a605bd63c1f71082014d3c0622ca7d2c37
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 16cd14aa447fb56af4cd9dd809696aecdc0c47a5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587840"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557845"
 ---
 # <a name="securing-managed-identities"></a>Yönetilen kimliklerin güvenliğini sağlama
 
@@ -38,7 +38,7 @@ Yönetilen kimlikler, Azure AD kimlik doğrulamasını destekleyen hizmetler ara
 
 Kaynak sistem bir hedef hizmete erişim istiyor. Herhangi bir Azure kaynağı bir kaynak sistem olabilir. Örneğin, bir Azure VM, Azure Işlev örneği ve Azure App Services örnekleri yönetilen kimlikleri destekler.
 
-[!VIDEO https://www.youtube.com/embed/5lqayO_oeEo]
+   > [!VIDEO https://www.youtube.com/embed/5lqayO_oeEo]
 
 ### <a name="how-authentication-and-authorization-work"></a>Kimlik doğrulama ve yetkilendirme çalışması
 
@@ -86,7 +86,7 @@ Yönetilen kimlikleri bulmak için çeşitli yollar vardır:
 
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
-1. Azure AD 'de kurumsal uygulama ' yı seçin.
+1. Azure Active Directory Kurumsal uygulamalar ' ı seçin.
 
 2. "Yönetilen kimlikler" için filtreyi seçin 
 
@@ -120,7 +120,7 @@ Bunu, son derece ayrıcalıklı gruplarınızın üyelerini PowerShell ile numar
 
 ## <a name="move-to-managed-identities"></a>Yönetilen kimliklere taşı
 
-Bir hizmet sorumlusu veya bir Azure AD Kullanıcı hesabı kullanıyorsanız, kimlik bilgilerini koruma, döndürme ve yönetme ihtiyacını ortadan kaldırmak için bunun yerine yönetilen bir yönetim kullanıp kullanbileceğinizi değerlendirin. 
+Hizmet sorumlusu veya bir Azure AD Kullanıcı hesabı kullanıyorsanız, kimlik bilgilerini koruma, döndürme ve yönetme ihtiyacını ortadan kaldırmak için bunun yerine yönetilen bir kimlik kullanıp kullanbileceğinizi değerlendirin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2021
-ms.openlocfilehash: 77927472dae6c8e7e6fddacf9088b479636edd37
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 41b327e793c6b35a2b2aeae825c493a484d84fb4
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224353"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562775"
 ---
 # <a name="train-model-module"></a>Model modülünü eğitme
 
@@ -71,7 +71,7 @@ Azure Machine Learning, makine öğrenimi modelinin oluşturulması ve kullanıl
 
 Model yorumlanma, ML modelini anlarsınız ve karar vermek için, insanların daha fazla anlaşılabilir olmasını sağlamak için temel alınan temeli sunar.
 
-Şu anda **eğitme modeli** modülü, [ml modellerini açıklamak için ıntertability Package kullanımını](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs)destekler. Aşağıdaki yerleşik algoritmalar desteklenir:
+Şu anda **eğitme modeli** modülü, [ml modellerini açıklamak için ıntertability Package kullanımını](../how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)destekler. Aşağıdaki yerleşik algoritmalar desteklenir:
 
 - Çizgisel Regresyon
 - Sinir Ağı Regresyonu
@@ -87,7 +87,7 @@ Model açıklamalarını oluşturmak için model oluşturma modülündeki **mode
 
 ![Model açıklaması grafiklerini gösteren ekran görüntüsü](./media/module/train-model-explanations-tab.gif)
 
-Azure Machine Learning model açıklamalarını kullanma hakkında daha fazla bilgi edinmek için [ml modellerini yorumlama](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs)hakkında nasıl yapılır makalesine başvurun.
+Azure Machine Learning model açıklamalarını kullanma hakkında daha fazla bilgi edinmek için [ml modellerini yorumlama](../how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)hakkında nasıl yapılır makalesine başvurun.
 
 ## <a name="results"></a>Sonuçlar
 
@@ -101,4 +101,4 @@ Model eğitilirken:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın.

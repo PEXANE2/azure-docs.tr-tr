@@ -12,6 +12,8 @@
       href: device-update-simulator.md
     - name: 'Ubuntu Server 18,04 x64 üzerinde paket güncelleştirmesi'
       href: device-update-ubuntu-agent.md
+    - name: Azure gerçek zamanlı Işletim sistemi için Azure IoT Hub öğreticisi için cihaz güncelleştirmesi
+      href: device-update-azure-real-time-operating-system.md
 - name: Kavramlar
   items:
     - name: Cihaz güncelleştirme hesabı ve örneği

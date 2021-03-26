@@ -5,126 +5,122 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: b5add466a60bc855e08917d02fecaf60a35deeb1
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: d0bb5c55d3f7ba0573dfe9b511f4d31dcc64ed85
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889578"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567840"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>SQL Insights ile SQL dağıtımlarınızı izleme (Önizleme)
-SQL Insights, SQL dağıtımlarınızın performansını ve sistem durumunu izler.  Performans sorunlarını ve sorunlarını tanımlayarak bir SQL arka ucunun çevresinde oluşturduğunuz önemli iş yüklerinin öngörülebilir bir performans ve kullanılabilirliğini sunmaya yardımcı olabilir. SQL Insights, verilerini [Azure Izleyici günlüklerinde](../logs/data-platform-logs.md)depolar ve bu sayede güçlü toplama ve filtreleme olanağı sunar ve zaman içinde veri eğilimlerini analiz edebilir. Bu verileri Azure Izleyici 'den bu teklifin bir parçası olarak gönderdiğimiz görünümlerde görüntüleyebilir ve sorguları çalıştırmak ve eğilimleri çözümlemek için doğrudan günlük verilerine Delve yapabilirsiniz.
+SQL Insights, [Azure SQL ailesinden](../../azure-sql/index.yml)herhangi bir ürünü izlemeye yönelik kapsamlı bir çözümdür. SQL Insights, sistem durumunu izlemek, sorunları tanılamak ve performansı ayarlamak için ihtiyaç duyduğunuz verileri göstermek için [dinamik yönetim görünümlerini](../../azure-sql/database/monitoring-with-dmvs.md) kullanır.  
 
-SQL Insights, SQL IaaS dağıtımlarınıza hiçbir şey yüklemez. Bunun yerine, SQL PaaS ve SQL IaaS dağıtımları için verileri uzaktan toplamak üzere adanmış izleme sanal makineleri kullanır.  SQL Insights izleme profili, Azure SQL VERITABANı, Azure SQL yönetilen örneği ve bir Azure sanal makinesinde çalışan SQL Server dahil olmak üzere SQL türüne göre toplanacak veri kümelerini yönetmenizi sağlar.
+SQL Insights, tüm izlemeyi uzaktan gerçekleştirir. Adanmış sanal makinelerdeki izleme aracıları SQL kaynaklarınıza bağlanır ve uzaktan veri toplar. Toplanan veriler [Azure Izleyici günlüklerinde](../logs/data-platform-logs.md)depolanır ve kolay toplama, filtreleme ve eğilim analizi etkinleştirir. Toplanan verileri SQL Insights [çalışma kitabı şablonundan](../visualize/workbooks-overview.md)görüntüleyebilir veya [günlük sorgularını](../logs/get-started-queries.md)kullanarak doğrudan verilere Delve yapabilirsiniz.
 
 ## <a name="pricing"></a>Fiyatlandırma
+SQL Insights için doğrudan maliyet yoktur. Tüm maliyetler, verileri toplayan sanal makineler, verileri depolayan Log Analytics çalışma alanları ve verilerde yapılandırılan tüm uyarı kuralları tarafından gerçekleştirilir. 
 
-SQL Insights için doğrudan maliyet yoktur, ancak Log Analytics çalışma alanındaki etkinliği için ücretlendirilirsiniz. [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)yayınlanan fiyatlandırmaya bağlı olarak, SQL Insights için faturalandırılır:
+**Sanal makineler**
 
-- Aracılardan alınan ve çalışma alanında depolanan veriler.
-- Günlük verilerine göre uyarı kuralları.
-- Uyarı kurallarından gönderilen bildirimler.
+Sanal makineler için, [sanal makineler fiyatlandırma sayfasında](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/)yayınlanan fiyatlandırmaya göre ücretlendirilirsiniz. Gerekli sanal makine sayısı, izlemek istediğiniz bağlantı dizeleri sayısına göre değişir. Her 100 bağlantı dizesi için 1 boyutlu Standard_B2s sanal makine ayırmanız önerilir. Daha fazla ayrıntı için bkz. [Azure sanal makine gereksinimleri](sql-insights-enable.md#azure-virtual-machine-requirements) .
 
-Günlük boyutu, toplanan verilerin dize uzunluklarına göre değişir ve veritabanı etkinliğinin miktarı ile artabilir. 
+**Log Analytics çalışma alanları**
+
+Log Analytics çalışma alanları için, [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)yayınlanan fiyatlandırmaya göre ücretlendirilirsiniz. SQL Insights tarafından kullanılan Log Analytics çalışma alanları, veri alma, veri saklama ve (isteğe bağlı olarak) veri dışa aktarma maliyetlerine tabi olacaktır. Tam ücretler, alınan, tutulan ve verilecek veri miktarına göre değişir. Daha sonra bu verilerin miktarı, veritabanı etkinliğinizdeki ve [izleme profilleriniz](sql-insights-enable.md#create-sql-monitoring-profile)tarafından tanımlanan koleksiyon ayarları temelinde farklılık gösterecektir.
+
+**Uyarı kuralları**
+
+Azure Izleyici 'deki uyarı kuralları için, [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)yayınlanan fiyatlandırmaya göre ücretlendirilirsiniz. [SQL Insights ile uyarı oluşturmayı](sql-insights-alerts.md)seçerseniz, oluşturulan tüm uyarı kuralları ve gönderilen bildirimler için ücret ödersiniz.
 
 ## <a name="supported-versions"></a>Desteklenen sürümler 
 SQL Insights, SQL Server aşağıdaki sürümlerini destekler:
-
 - SQL Server 2012 ve üzeri
 
 SQL Insights, aşağıdaki ortamlarda çalışan SQL Server destekler:
-
 - Azure SQL Veritabanı
 - Azure SQL Yönetilen Örnek
-- Azure SQL VM 'Leri
-- Azure VM’leri
+- Azure sanal makinelerinde SQL Server ( [SQL sanal makine](../../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) sağlayıcısına kayıtlı sanal makinelerde çalışan SQL Server)
+- Azure VM 'Leri ( [SQL sanal makine](../../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) sağlayıcısına kayıtlı olmayan sanal makinelerde çalışan SQL Server)
 
 SQL Insights, aşağıdakiler için destek veya sınırlı destek içermez:
-
-- Azure dışındaki sanal makinelerde çalışan SQL Server şu anda desteklenmiyor.
-- Azure SQL veritabanı elastik havuzları: genel önizleme sırasında sınırlı destek. Genel kullanıma göre tam olarak desteklenecektir.  
-- Azure SQL sunucusuz dağıtımlar: etkin coğrafi-DR gibi, geçerli izleme aracıları sunucusuz dağıtımın uykuya geçmesini engeller. Bu, sunucusuz dağıtımlardan beklenen maliyetlerin daha yüksek olmasına neden olabilir.  
-- Okunabilir Ikincil öğeler: Şu anda yalnızca tek bir okunabilir ikincil uç nokta (İş Açısından Kritik veya Hyperscale) olan dağıtım türleri desteklenecektir. Hiper ölçekli dağıtımlar adlandırılmış çoğaltmaları destekledikleri zaman, tek bir mantıksal veritabanı için birden çok okunabilir ikincil uç nokta desteklenebilecek olacaktır.  
-- Azure Active Directory: Şu anda yalnızca Izleme Aracısı için SQL oturum açmaları destekliyoruz. Gelecek bir sürümde Azure Active Directory 'yi desteklemeyi planlıyoruz ve bir Bespoke etki alanı denetleyicisindeki Active Directory 'yi kullanarak SQL VM kimlik doğrulaması için geçerli bir destek sunarız.  
-
+- **Azure dışı örnekler**: Azure dışındaki sanal makinelerde çalışan SQL Server desteklenmez
+- **Azure SQL veritabanı elastik havuzlar**: elastik havuzlar için ölçümler toplanamaz. Elastik havuzların içindeki veritabanları için ölçümler toplanamaz.
+- **Azure SQL veritabanı düşük hizmet katmanları**: temel, S0, S1 ve S2 [hizmeti katmanlarında](../../azure-sql/database/resource-limits-dtu-single-databases.md) veritabanları için ölçümler toplanamaz
+- **Azure SQL veritabanı sunucusuz katmanı**: sunucusuz işlem katmanını kullanan veritabanları için ölçümler toplanmaktadır. Ancak, ölçüm toplama işlemi otomatik duraklatma gecikmesi zamanlayıcısını sıfırlar ve veritabanının otomatik duraklatılmış duruma girmesini önler
+- **İkincil çoğaltmalar**: ölçümler yalnızca, veritabanı başına tek bir ikincil çoğaltma için toplanabilir. Bir veritabanında 1 ' den fazla ikincil çoğaltma varsa, yalnızca 1 izlenebilir.
+- **Azure Active Directory Ile kimlik doğrulaması**: izleme için desteklenen tek [KIMLIK doğrulama](../../azure-sql/database/logins-create-manage.md#authentication-and-authorization) yöntemi SQL kimlik doğrulamadır. Azure VM 'de SQL Server için, özel bir etki alanı denetleyicisindeki Active Directory kullanarak kimlik doğrulaması desteklenmez.  
 
 ## <a name="open-sql-insights"></a>SQL Insights 'ı aç
 Azure portal **Azure izleyici** menüsünün **Öngörüler** bölümünde **SQL (Önizleme)** öğesini seçerek SQL Insights 'ı açın. İzlemekte olduğunuz SQL türüne yönelik deneyimi yüklemek için bir kutucuğa tıklayın.
 
 :::image type="content" source="media/sql-insights/portal.png" alt-text="Azure portal 'de SQL Insights.":::
 
-
 ## <a name="enable-sql-insights"></a>SQL Insights 'ı etkinleştir 
-Sorun gidermeye yönelik adımlara ek olarak SQL Insights 'ı etkinleştirmek için ayrıntılı yordam için bkz. [SQL Insights 'ı etkinleştirme](sql-insights-enable.md) .
+Bkz. SQL Insights 'ı etkinleştirme yönergeleri için [SQL Insights 'ı etkinleştirme](sql-insights-enable.md) .
 
+## <a name="troubleshoot-sql-insights"></a>SQL Insights sorunlarını giderme 
+Bkz. SQL Insights sorunlarını giderme yönergeleri için [SQL Insights sorunlarını giderme](sql-insights-troubleshoot.md) .
 
 ## <a name="data-collected-by-sql-insights"></a>SQL Insights tarafından toplanan veriler
+SQL Insights, tüm izlemeyi uzaktan gerçekleştirir. SQL Server çalıştıran sanal makinelere hiçbir aracı yüklemeiyoruz. 
 
-SQL Insights yalnızca SQL izleme uzak yöntemini destekler. SQL Server çalıştıran VM 'Lere hiçbir aracı yüklemeiyoruz. SQL kaynaklarınızdan verileri uzaktan toplamak için kullandığımız bir veya daha fazla adanmış izleme sanal makinesi gereklidir. 
+SQL Insights, SQL kaynaklarınızdan verileri uzaktan toplamak için adanmış izleme sanal makineleri kullanır. Her izleme sanal makinesinde [Azure izleyici Aracısı](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview) ve iş yükü öngörüleri (wli) uzantısı yüklenir. WLI uzantısı açık kaynak [telegraf aracısını](https://www.influxdata.com/time-series-platform/telegraf/)içerir. SQL Insights, telegraf 'in [SQL Server eklentisi](https://www.influxdata.com/integration/microsoft-sql-server/)için veri toplama ayarlarını belirtmek üzere [veri toplama kurallarını](https://docs.microsoft.com/azure/azure-monitor/agents/data-collection-rule-overview) kullanır.
 
-Bu izleme VM 'lerinin her biri, [Azure izleyici aracısının](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview) üzerinde iş yükü öngörüleri (wli) uzantısıyla birlikte yüklü olacaktır. 
+Azure SQL veritabanı, Azure SQL yönetilen örneği ve SQL Server için farklı veri kümeleri kullanılabilir. Aşağıdaki tablolar kullanılabilir verileri anlatmaktadır. Hangi veri kümelerinin toplanacağını ve [bir izleme profili oluştururken](sql-insights-enable.md#create-sql-monitoring-profile)koleksiyonun sıklığını özelleştirebilirsiniz.
 
-WLI uzantısı açık kaynak [telegraf aracısını](https://www.influxdata.com/time-series-platform/telegraf/)içerir.  Azure SQL VERITABANı, Azure SQL yönetilen örneği ve Azure VM 'de çalışan SQL Server toplanacak verileri belirtmek üzere [SqlServer giriş eklentisini](https://www.influxdata.com/integration/microsoft-sql-server/) yapılandırmak için [veri toplama kurallarını](https://docs.microsoft.com/azure/azure-monitor/agents/data-collection-rule-overview) kullanırız. 
+Aşağıdaki tablolar aşağıdaki sütunlara sahiptir:
+- **Kolay ad**: bir izleme profili oluştururken Azure Portal gösterildiği gibi sorgunun adı
+- **Yapılandırma adı**: bir izleme profili düzenlenirken Azure Portal gösterildiği gibi sorgunun adı
+- **Ad alanı**: Log Analytics çalışma alanında bulunan sorgunun adı. Bu tanımlayıcı, sütunundaki özellikte bulunan **ınsighstölçümlerini** tablosunda görüntülenir `Namespace` `Tags`
+- **DMVs**: veri kümesini oluşturmak için kullanılan dinamik yönetilen görünümler
+- **Varsayılan olarak etkin**: verilerin varsayılan olarak toplanıp toplanmayacağı
+- **Varsayılan toplama sıklığı**: varsayılan olarak verilerin ne sıklıkta toplandığını
 
-Aşağıdaki tablolarda aşağıdakiler özetlenmektedir:
+### <a name="data-for-azure-sql-database"></a>Azure SQL veritabanı için veriler 
+| Kolay ad | Yapılandırma adı | Ad Alanı | DMV'ler | Varsayılan olarak etkin | Varsayılan toplama sıklığı |
+|:---|:---|:---|:---|:---|:---|
+| DB bekleme istatistikleri | Azuresddbwaitstats | sqlserver_azuredb_waitstats | sys.dm_db_wait_stats | No | NA |
+| DBO bekleme istatistikleri | AzureSQLDBOsWaitstats | sqlserver_waitstats |sys.dm_os_wait_stats | Yes | 60 saniye |
+| Bellek yazıcıları | AzureSQLDBMemoryClerks | sqlserver_memory_clerks | sys.dm_os_memory_clerks | Yes | 60 saniye |
+| Veritabanı GÇ | Azuressqldbdatabaseıo | sqlserver_database_io | sys.dm_io_virtual_file_stats<br>sys.database_files<br>tempdb.sys .database_files | Yes | 60 saniye |
+| Sunucu özellikleri | Azuresddbserverproperties | sqlserver_server_properties | sys.dm_os_job_object<br>sys.database_files<br>dosyasında. erişebileceğiniz<br>dosyasında. [database_service_objectives] | Yes | 60 saniye |
+| Performans sayaçları | Azuresddbperformancecounters | sqlserver_performance | sys.dm_os_performance_counters<br>sys.databases | Yes | 60 saniye |
+| Kaynak istatistikleri | Azuresddbresourcestats | sqlserver_azure_db_resource_stats | sys.dm_db_resource_stats | Yes | 60 saniye |
+| Kaynak idaresi | Azuressqldbresourceidare | sqlserver_db_resource_governance | sys.dm_user_db_resource_governance | Yes | 60 saniye |
+| İstekler | Azuresddbrequests | sqlserver_requests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | No | NA |
+| Zamanlayıcılar| AzureSQLDBSchedulers | sqlserver_schedulers | sys.dm_os_schedulers | No | NA  |
 
-- SqlServer telegraf eklentisindeki sorgunun adı
-- Sorgu çağrılarının dinamik yönetilen görünümleri
-- Ad alanı verileri *ınsighstölçümlerini* tablosunda görünür
-- Verilerin varsayılan olarak toplanıp toplanmayacağı
-- Verilerin varsayılan olarak ne sıklıkta toplandığı
- 
-İzleme profilinizi oluştururken hangi sorguların çalıştırılacağını ve veri toplama sıklığını değiştirebilirsiniz. 
+### <a name="data-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için veriler 
 
-### <a name="azure-sql-db-data"></a>Azure SQL DB verileri 
+| Kolay ad | Yapılandırma adı | Ad Alanı | DMV'ler | Varsayılan olarak etkin | Varsayılan toplama sıklığı |
+|:---|:---|:---|:---|:---|:---|
+| Bekleme istatistikleri | AzureSQLMIOsWaitstats | sqlserver_waitstats | sys.dm_os_wait_stats | Yes | 60 saniye |
+| Bellek yazıcıları | AzureSQLMIMemoryClerks | sqlserver_memory_clerks | sys.dm_os_memory_clerks | Yes | 60 saniye |
+| Veritabanı GÇ | Azuressqlmıdatabaseıo | sqlserver_database_io | sys.dm_io_virtual_file_stats<br>sys.master_files | Yes | 60 saniye |
+| Sunucu özellikleri | Azuressqlmiserverproperties | sqlserver_server_properties | sys.server_resource_stats | Yes | 60 saniye |
+| Performans sayaçları | Azuressqlmıperformancecounters | sqlserver_performance | sys.dm_os_performance_counters<br>sys.databases| Yes | 60 saniye |
+| Kaynak istatistikleri | Azuressqlmıresourcestats | sqlserver_azure_db_resource_stats | sys.server_resource_stats | Yes | 60 saniye |
+| Kaynak idaresi | Azuressqlmıresourceidare | sqlserver_instance_resource_governance | sys.dm_instance_resource_governance | Yes | 60 saniye |
+| İstekler | Azuressqlmırequests | sqlserver_requests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | No | NA |
+| Zamanlayıcılar | Azuressqlmischedulers | sqlserver_schedulers | sys.dm_os_schedulers | No | NA |
 
-| Sorgu adı | DMV | Ad Alanı | Varsayılan olarak etkin | Varsayılan toplama sıklığı |
-|:---|:---|:---|:---|:---|
-| Azuresddbwaitstats |  sys.dm_db_wait_stats | sqlserver_azuredb_waitstats | Hayır | NA |
-| Azuresddbresourcestats | sys.dm_db_resource_stats | sqlserver_azure_db_resource_stats | Yes | 60 saniye |
-| Azuressqldbresourceidare | sys.dm_user_db_resource_governance | sqlserver_db_resource_governance | Yes | 60 saniye |
-| Azuressqldbdatabaseıo | sys.dm_io_virtual_file_stats<br>sys.database_files<br>tempdb.sys .database_files | sqlserver_database_io | Yes | 60 saniye |
-| Azuresddbserverproperties | sys.dm_os_job_object<br>sys.database_files<br>dosyasında. erişebileceğiniz<br>dosyasında. [database_service_objectives] | sqlserver_server_properties | Yes | 60 saniye |
-| AzureSQLDBOsWaitstats | sys.dm_os_wait_stats | sqlserver_waitstats | Yes | 60 saniye |
-| AzureSQLDBMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Yes | 60 saniye |
-| Azuresddbperformancecounters | sys.dm_os_performance_counters<br>sys.databases | sqlserver_performance | Yes | 60 saniye |
-| Azuresddbrequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | Hayır | NA |
-| AzureSQLDBSchedulers | sys.dm_os_schedulers | sqlserver_schedulers | Hayır | NA  |
+### <a name="data-for-sql-server"></a>SQL Server için veriler
 
-### <a name="azure-sql-managed-instance-data"></a>Azure SQL yönetilen örnek verileri 
-
-| Sorgu adı | DMV | Ad Alanı | Varsayılan olarak etkin | Varsayılan toplama sıklığı |
-|:---|:---|:---|:---|:---|
-| Azuressqlmıresourcestats | sys.server_resource_stats | sqlserver_azure_db_resource_stats | Yes | 60 saniye |
-| Azuressqlmıresourceidare | sys.dm_instance_resource_governance | sqlserver_instance_resource_governance | Yes | 60 saniye |
-| Azuressqlmıdatabaseıo | sys.dm_io_virtual_file_stats<br>sys.master_files | sqlserver_database_io | Yes | 60 saniye |
-| Azuressqlmiserverproperties | sys.server_resource_stats | sqlserver_server_properties | Yes | 60 saniye |
-| AzureSQLMIOsWaitstats | sys.dm_os_wait_stats | sqlserver_waitstats | Yes | 60 saniye |
-| AzureSQLMIMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Yes | 60 saniye |
-| Azuressqlmıperformancecounters | sys.dm_os_performance_counters<br>sys.databases | sqlserver_performance | Yes | 60 saniye |
-| Azuressqlmırequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | Hayır | NA |
-| Azuressqlmischedulers | sys.dm_os_schedulers | sqlserver_schedulers | Hayır | NA |
-
-### <a name="sql-server-data"></a>SQL Server verileri
-
-| Sorgu adı | DMV | Ad Alanı | Varsayılan olarak etkin | Varsayılan toplama sıklığı |
-|:---|:---|:---|:---|:---|
-| SQLServerPerformanceCounters | sys.dm_os_performance_counters | sqlserver_performance | Yes | 60 saniye |
-| Sqlserverwaitstatskategorize | sys.dm_os_wait_stats | sqlserver_waitstats | Yes | 60 saniye | 
-| Sqlserverdatabaseıo | sys.dm_io_virtual_file_stats<br>sys.master_files | sqlserver_database_io | Yes | 60 saniye |
-| SQLServerProperties | sys.dm_os_sys_info | sqlserver_server_properties | Yes | 60 saniye |
-| SQLServerMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Yes | 60 saniye |
-| SQLServerSchedulers | sys.dm_os_schedulers | sqlserver_schedulers | Hayır | NA |
-| SQLServerRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | Hayır | NA |
-| SQLServerVolumeSpace | sys.master_files | sqlserver_volume_space | Yes | 60 saniye |
-| SQLServerCpu | sys.dm_os_ring_buffers | sqlserver_cpu | Yes | 60 saniye |
-| Sqlserverkullanılabilirliği Bilityreplicastates | sys.dm_hadr_availability_replica_states<br>sys.availability_replicas<br>sys.availability_groups<br>sys.dm_hadr_availability_group_states | sqlserver_hadr_replica_states | | 60 saniye |
-| SQLServerDatabaseReplicaStates | sys.dm_hadr_database_replica_states<br>sys.availability_replicas | sqlserver_hadr_dbreplica_states | | 60 saniye |
-
-
-
+| Kolay ad | Yapılandırma adı | Ad Alanı | DMV'ler | Varsayılan olarak etkin | Varsayılan toplama sıklığı |
+|:---|:---|:---|:---|:---|:---|
+| Bekleme istatistikleri | Sqlserverwaitstatskategorize | sqlserver_waitstats | sys.dm_os_wait_stats | Yes | 60 saniye | 
+| Bellek yazıcıları | SQLServerMemoryClerks | sqlserver_memory_clerks | sys.dm_os_memory_clerks | Yes | 60 saniye |
+| Veritabanı GÇ | Sqlserverdatabaseıo | sqlserver_database_io | sys.dm_io_virtual_file_stats<br>sys.master_files | Yes | 60 saniye |
+| Sunucu özellikleri | SQLServerProperties | sqlserver_server_properties | sys.dm_os_sys_info | Yes | 60 saniye |
+| Performans sayaçları | SQLServerPerformanceCounters | sqlserver_performance | sys.dm_os_performance_counters | Yes | 60 saniye |
+| Birim alanı | SQLServerVolumeSpace | sqlserver_volume_space | sys.master_files | Yes | 60 saniye |
+| SQL Server CPU | SQLServerCpu | sqlserver_cpu | sys.dm_os_ring_buffers | Yes | 60 saniye |
+| Zamanlayıcılar | SQLServerSchedulers | sqlserver_schedulers | sys.dm_os_schedulers | No | NA |
+| İstekler | SQLServerRequests | sqlserver_requests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | No | NA |
+| Kullanılabilirlik çoğaltması durumları | Sqlserverkullanılabilirliği Bilityreplicastates | sqlserver_hadr_replica_states | sys.dm_hadr_availability_replica_states<br>sys.availability_replicas<br>sys.availability_groups<br>sys.dm_hadr_availability_group_states | No | 60 saniye |
+| Kullanılabilirlik veritabanı çoğaltmaları | SQLServerDatabaseReplicaStates | sqlserver_hadr_dbreplica_states | sys.dm_hadr_database_replica_states<br>sys.availability_replicas | No | 60 saniye |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL öngörülerini etkinleştirmek için ayrıntılı yordam için bkz. [SQL Insights 'ı etkinleştirme](sql-insights-enable.md) .
-SQL Insights hakkında sık sorulan sorular için [sık sorulan sorular](../faq.md#sql-insights-preview) bölümüne bakın.
+- Bkz. SQL Insights 'ı etkinleştirme yönergeleri için [SQL Insights](sql-insights-enable.md) 'ı etkinleştirme
+- SQL Insights hakkında sık sorulan sorular için bkz. [sık sorulan sorular](../faq.md#sql-insights-preview)

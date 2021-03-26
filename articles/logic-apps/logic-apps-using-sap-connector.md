@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 03/24/2021
 tags: connectors
-ms.openlocfilehash: 86bc43e043e7d67ff149391b111831df8171f34e
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: c81e40f769ab9eefdd919f3336591dc065d6cfc9
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048774"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564122"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps’ten SAP sistemlerine bağlanma
 
@@ -568,7 +568,7 @@ Ağ [geçidinizin yapılandırma ve hizmet günlüklerinizi](/data-integration/g
 
 #### <a name="capture-etw-events"></a>ETW olaylarını yakala
 
-İsteğe bağlı olarak, gelişmiş kullanıcılar ETW olaylarını doğrudan yakalayabilir. Daha sonra [Event Hubs Azure tanılama verilerinizi kullanabilir](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md) veya [verilerinizi Azure izleyici günlüklerine toplayabilirsiniz](/azure/azure-monitor/agents/diagnostics-extension-logs). Daha fazla bilgi için bkz. [veri toplama ve depolama için en iyi uygulamalar](/azure/architecture/best-practices/monitoring#collecting-and-storing-data). Elde edilen ETL dosyalarıyla çalışmak için [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) kullanabilirsiniz veya kendi programınızı yazabilirsiniz. Bu izlenecek yol PerfView kullanır:
+İsteğe bağlı olarak, gelişmiş kullanıcılar ETW olaylarını doğrudan yakalayabilir. Daha sonra [Event Hubs Azure tanılama verilerinizi kullanabilir](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md) veya [verilerinizi Azure izleyici günlüklerine toplayabilirsiniz](../azure-monitor/agents/diagnostics-extension-logs.md). Daha fazla bilgi için bkz. [veri toplama ve depolama için en iyi uygulamalar](/azure/architecture/best-practices/monitoring#collecting-and-storing-data). Elde edilen ETL dosyalarıyla çalışmak için [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) kullanabilirsiniz veya kendi programınızı yazabilirsiniz. Bu izlenecek yol PerfView kullanır:
 
 1. PerfView menüsünde, olayları yakalamak için **Collect topla ' yı seçin** &gt;  .
 
@@ -763,7 +763,7 @@ SAP 'yi, toplu işler veya IDoc grupları olan [paketlerdeki IDoc 'ları gönder
 
    ![Logic App 'e SAP tetikleyicisi ekleme](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
-1. SAP isteğinizin durumuyla hemen yanıtlamak için [mantıksal uygulamanıza bir yanıt eylemi ekleyin](/azure/connectors/connectors-native-reqres#add-a-response-action) . Bu eylemi, bir iletişim kanalını SAP sunucunuz ile boşaltmak için tetikleyicinizin hemen arkasına eklemek en iyi uygulamadır. `statusCode`Yanıt eyleminiz içinde kullanmak için aşağıdaki durum kodlarından birini () seçin:
+1. SAP isteğinizin durumuyla hemen yanıtlamak için [mantıksal uygulamanıza bir yanıt eylemi ekleyin](../connectors/connectors-native-reqres.md#add-a-response-action) . Bu eylemi, bir iletişim kanalını SAP sunucunuz ile boşaltmak için tetikleyicinizin hemen arkasına eklemek en iyi uygulamadır. `statusCode`Yanıt eyleminiz içinde kullanmak için aşağıdaki durum kodlarından birini () seçin:
 
     * **kabul edilen 202**, bu, isteğin işleme için kabul edildiği anlamına gelir ancak işlem henüz tamamlanmaz.
 

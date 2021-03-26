@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/29/2020
-ms.openlocfilehash: d59f08fc061bace55a7cd3d774380046055828ae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b88c7aabe135b8e64869980b806852d92191440b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618619"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568690"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: BACPAC dosyasını Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanına aktarma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -147,7 +147,7 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 ## <a name="cancel-the-import-request"></a>İçeri aktarma isteğini iptal et
 
-[Database Operations-Cancel API](https://docs.microsoft.com/rest/api/sql/databaseoperations/cancel) veya PowerShell [stop-AzSqlDatabaseActivity komutunu](https://docs.microsoft.com/powershell/module/az.sql/Stop-AzSqlDatabaseActivity)kullanın, burada PowerShell komutuna bir örnektir.
+[Database Operations-Cancel API](/rest/api/sql/databaseoperations/cancel) veya PowerShell [stop-AzSqlDatabaseActivity komutunu](/powershell/module/az.sql/Stop-AzSqlDatabaseActivity)kullanın, burada PowerShell komutuna bir örnektir.
 
 ```cmd
 Stop-AzSqlDatabaseActivity -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -OperationId $Operation.OperationId

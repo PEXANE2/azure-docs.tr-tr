@@ -4,14 +4,14 @@ description: Azure Data Factory için yönetilen kimlik hakkında bilgi edinin.
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 03/25/2021
 ms.author: jingwang
-ms.openlocfilehash: 89da1a22bb3fd0eff22a7bed7ed70b72f220fbf9
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 65512f8e46b5545929a798392ac5f19ddeab39ed
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889000"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562469"
 ---
 # <a name="managed-identity-for-data-factory"></a>Data Factory için yönetilen kimlik
 
@@ -28,8 +28,7 @@ Bir veri fabrikası oluştururken, yönetilen bir kimlik, fabrika oluşturma ile
 Data Factory yönetilen kimliği, aşağıdaki özellikleri avantajlarına yöneliktir:
 
 - [Kimlik bilgilerini](store-credentials-in-key-vault.md), Azure Key Vault kimlik doğrulaması için veri fabrikası tarafından yönetilen kimliğin kullanıldığı Azure Key Vault depolayın.
-- [Azure Blob depolama](connector-azure-blob-storage.md), [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md), [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md), [Azure SQL veritabanı](connector-azure-sql-database.md)ve [Azure SYNAPSE Analytics](connector-azure-sql-data-warehouse.md)dahil olmak üzere bağlayıcılar.
-- [Web etkinliği](control-flow-web-activity.md).
+- Azure Blob depolama, Azure Veri Gezgini, Azure Data Lake Storage 1., Azure Data Lake Storage 2., Azure SQL veritabanı, Azure SQL yönetilen örneği, Azure SYNAPSE Analytics, REST, Databricks etkinliği, Web etkinliği ve daha fazlası dahil olmak üzere yönetilen kimlik kimlik doğrulaması kullanarak veri depolarına veya hesaplayacağından erişin. Ayrıntılar için bağlayıcı ve etkinlik makalelerini inceleyin.
 
 ## <a name="generate-managed-identity"></a>Yönetilen kimlik oluştur
 
@@ -157,11 +156,10 @@ Data Factory-> özelliklerinizi Azure portal > yönetilen kimlik bilgilerini bul
 
 - Yönetilen kimlik nesnesi KIMLIĞI
 - Yönetilen kimlik kiracısı
-- Yönetilen kimlik uygulama KIMLIĞI
 
 Yönetilen kimlik bilgileri, Azure blob, Azure Data Lake Storage, Azure Key Vault vb. gibi yönetilen kimlik doğrulamasını destekleyen bağlı hizmet oluştururken de görüntülenir.
 
-İzin verirken, bu kimliği bulmak için nesne KIMLIĞINI veya Veri Fabrikası adını (yönetilen kimlik adı olarak) kullanın.
+İzin verirken, Azure kaynağının Access Control (ıAM) sekmesinde > rol ataması ekleyin-> > erişim ata-Data Factory sistem tarafından atanan yönetilen kimlik altında > seçin; fabrika adına göre seçin; veya genel olarak, bu kimliği bulmak için nesne KIMLIĞINI veya Veri Fabrikası adını (yönetilen kimlik adı olarak) kullanabilirsiniz. Yönetilen kimliğin uygulama KIMLIĞI ' ni almanız gerekiyorsa PowerShell kullanabilirsiniz.
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>PowerShell kullanarak yönetilen kimlik alma
 
