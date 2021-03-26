@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: e4c9124ebd0b61b8db1b1da964355a3c36b5bba5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a5e623b0429194db6d03beb674679bd10e337844
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930561"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869488"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 'ta ML hizmetleri kümesini yönetme
 
@@ -26,7 +26,7 @@ Bu makalede, birden çok eşzamanlı kullanıcı ekleme, bir ML Hizmetleri küme
 
 RStudio Community sürümünün çalıştığı Edge düğümüne daha fazla kullanıcı ekleyerek HDInsight üzerinde ML Hizmetleri kümesi için birden fazla eşzamanlı kullanıcıyı etkinleştirebilirsiniz. Bir HDInsight kümesi oluşturduğunuzda bir HTTP kullanıcısı ve bir SSH kullanıcısı olmak üzere iki kullanıcı sağlamanız gerekir:
 
-![HDI Azure portal oturum açma parametreleri](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
+:::image type="content" source="./media/r-server-hdinsight-manage/hdi-concurrent-users1.png" alt-text="HDI Azure portal oturum açma parametreleri" border="true":::
 
 - **Küme oturum açma kullanıcı adı**: Oluşturduğunuz HDInsight kümelerini korumak için kullanılan HDInsight ağ geçidinden kimlik doğrulaması yapmak için kullanılan HTTP kullanıcısı. Bu HTTP kullanıcısı, Apache ambarı Kullanıcı arabirimine, Apache Hadoop YARN Kullanıcı arabirimine ve diğer UI bileşenlerine erişmek için kullanılır.
 - **Secure Shell (SSH) Kullanıcı adı**: güvenli kabuk aracılığıyla kümeye erişmek IÇIN bir SSH kullanıcısı. Bu kullanıcı Linux sisteminde tüm baş düğümler, çalışan düğümleri ve kenar düğümler için kullanılan kullanıcıdır. Bu sayede uzak kümedeki düğümlere erişmek için Secure Shell kullanabilirsiniz.
@@ -63,7 +63,7 @@ sudo passwd <yournewusername>
 
 Aşağıdaki ekran görüntüsünde çıktılar gösterilmektedir.
 
-![ekran görüntüsü çıkışı eşzamanlı kullanıcıları](./media/r-server-hdinsight-manage/hdi-concurrent-users2.png)
+:::image type="content" source="./media/r-server-hdinsight-manage/hdi-concurrent-users2.png" alt-text="ekran görüntüsü çıkışı eşzamanlı kullanıcıları" border="true":::
 
 "Geçerli Kerberos parolası:" sorulduğunda, bunu yoksaymak için yalnızca **ENTER** tuşuna basın. `useradd` komutundaki `-m` seçeneği, sistemin RStudio Topluluk sürümü için gerekli olan kullanıcı ana klasörünü oluşturacağını belirtir.
 
@@ -211,7 +211,7 @@ Kümenin çalışan düğümlerine R paketleri yüklemek için bir betik eylemi 
    > 2. Bazı R paketleri için ek Linux sistem kitaplıkları gerekir. HDInsight ML Hizmetleri, kolaylık sağlaması için en popüler 100 R paketi için gereken bağımlılıklarla önceden yüklenmiş olarak sunulur. Ancak, yüklediğiniz R paketleri bunların dışında kitaplıklar gerektirirse, burada kullanılan temel betiği indirmeniz ve adımları ekleyerek sistem kitaplıklarını yüklemeniz gerekir. Ardından, değiştirilmiş betiği Azure depolama hizmetindeki ortak bir blob kapsayıcıya yüklemeniz ve değiştirilmiş betiği kullanarak paketleri yüklemeniz gerekir.
    >    Betik eylemleri geliştirme hakkında daha fazla bilgi için bkz. [betik eylemi geliştirme](../hdinsight-hadoop-script-actions-linux.md).
 
-   ![Betik eylemini Azure portal gönder](./media/r-server-hdinsight-manage/submit-script-action.png)
+   :::image type="content" source="./media/r-server-hdinsight-manage/submit-script-action.png" alt-text="Betik eylemini Azure portal gönder" border="true":::
 
 4. Betiği çalıştırmak için **Oluştur**’u seçin. Betik tamamlandıktan sonra R paketleri tüm çalışan düğümlerinde kullanılabilir.
 

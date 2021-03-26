@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: d2054058bb00b0801aa1c3694c73b6a2edb46c80
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 224ebae58a5688f81d1b64b4a9c81d5abd8a9690
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930034"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868860"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Machine Learning uygulaması derlemek ve bir veri kümesini çözümlemek için Apache Spark MLlib kullanın
 
@@ -175,7 +175,7 @@ Veri kümesinin neleri içerdiğini bir fikir almaya başlayalım.
 
     Çıkış şöyle olur:
 
-    ![SQL sorgu çıktısı](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL sorgu çıktısı")
+    :::image type="content" source="./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png " alt-text="SQL sorgu çıktısı" border="true":::
 
 3. Ayrıca, bir çizim oluşturmak için veri görselleştirmesini oluşturmak için kullanılan bir kitaplık olan Matplotlib ' ı da kullanabilirsiniz. Çizimin yerel olarak kalıcı **Countresultsdf** dataframe 'den oluşturulması gerektiğinden, kod parçacığının Magic ile başlaması gerekir `%%local` . Bu eylem, kodun Jupyıter sunucusunda yerel olarak çalıştırılmasını sağlar.
 
@@ -348,7 +348,7 @@ Artık bu testin sonuçları hakkında neden olacak bir son görselleştirme olu
 
     Aşağıdaki çıkışı görmeniz gerekir:
 
-    ![Spark Machine Learning uygulama çıkışı-başarısız yiyecek incelemeleri için pasta grafik yüzdeleri.](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark Machine Learning sonuç çıkışı")
+    :::image type="content" source="./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png " alt-text="Spark Machine Learning uygulama çıkışı-başarısız yiyecek incelemeleri için pasta grafik yüzdeleri." border="true":::
 
     Bu grafikte, "pozitif" bir sonuç başarısız yiyecek incelemesini ifade ederken, negatif bir sonuç de geçen bir inceleme anlamına gelir.
 

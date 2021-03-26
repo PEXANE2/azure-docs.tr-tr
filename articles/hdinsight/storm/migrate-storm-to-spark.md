@@ -4,12 +4,12 @@ description: Apache Storm iş yüklerini Spark akışına veya Spark yapılandı
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
-ms.openlocfilehash: aa57c01558cfdcf069b17fad9e86f7640553dcfd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b8b054d06c9c0987508abfdf03bbcf9470572bd1
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944788"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868775"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Azure HDInsight 3,6 Apache Storm HDInsight 4,0 Apache Spark geçirin
 
@@ -25,8 +25,7 @@ HDInsight 3,6 ' den Apache Storm geçirmek istiyorsanız, birden çok seçeneği
 
 Bu belge, Apache Storm Spark akışına ve Spark yapılandırılmış akışa geçiş için bir kılavuz sağlar.
 
-> [!div class="mx-imgBorder"]
-> ![HDInsight fırtınası geçiş yolu](./media/migrate-storm-to-spark/storm-migration-path.png)
+:::image type="content" source="./media/migrate-storm-to-spark/storm-migration-path.png" alt-text="HDInsight fırtınası geçiş yolu" border="false":::
 
 ## <a name="comparison-between-apache-storm-and-spark-streaming-spark-structured-streaming"></a>Apache Storm ile Spark akışı, Spark yapılandırılmış akışı arasında karşılaştırma
 
@@ -36,7 +35,7 @@ Apache Storm farklı düzeylerde garantili ileti işleme sağlayabilir. Örneği
 |---|---|---|---|
 |**Olay işleme garantisi**|En az bir kez <br> Tek bir kez (Trident) |[Tam olarak bir kez](https://spark.apache.org/docs/latest/streaming-programming-guide.html)|[Tam olarak bir kez](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**İşlem modeli**|Gerçek zamanlı <br> Mikro Batch (Trident) |Mikro Batch |Mikro Batch |
-|**Olay saati desteği**|[Evet](https://storm.apache.org/releases/2.0.0/Windowing.html)|No|[Evet](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
+|**Olay saati desteği**|[Evet](https://storm.apache.org/releases/2.0.0/Windowing.html)|Hayır|[Evet](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**Diller**|Java, vb.|Scala, Java, Python|Python, R, Scala, Java, SQL|
 
 ### <a name="spark-streaming-vs-spark-structured-streaming"></a>Spark akışı ile Spark yapılandırılmış akışı
@@ -47,8 +46,7 @@ Spark yapısal akışı Spark akışını (DStreams) değiştiriyor. Yapılandı
 
 Fırtınası, tek bir olayı işleyen bir model sağlar. Bu, tüm gelen kayıtların geldikçe hemen işleneceği anlamına gelir. Spark akış uygulamaları, bu toplu işi işlenmek üzere göndermeden önce her bir mikro-toplu olay toplamanız gerekir. Buna karşılık, olay temelli bir uygulama her olayı hemen işler. Spark akış gecikmesi genellikle birkaç saniye altında. Mikro Batch yaklaşımının avantajları daha verimli veri işleme ve daha basit toplu hesaplamalardır.
 
-> [!div class="mx-imgBorder"]
-> ![akış ve mikro-Batch işleme](./media/migrate-storm-to-spark/streaming-and-micro-batch-processing.png)
+:::image type="content" source="./media/migrate-storm-to-spark/streaming-and-micro-batch-processing.png" alt-text="akış ve mikro-Batch işleme" border="false":::
 
 ## <a name="storm-architecture-and-components"></a>Fırtınası mimarisi ve bileşenleri
 
@@ -59,19 +57,17 @@ Storm topolojileri döngüsel olmayan yönlü grafikte (DAG) düzenlenmiş birde
 |Spout|Verileri bir topolojiye getirir. Bu bileşenler topolojiye bir veya daha fazla akış yayar.|
 |Sü|Spout veya diğer cıvatlardan yayılan akışları kullanır. Boltlar topolojiye isteğe bağlı olarak akışlar yayabilir. Boltlar ayrıca HDFS, Kafka veya HBase gibi dış hizmetlere veya depolama alanlarına veri yazmaktan sorumludur.|
 
-> [!div class="mx-imgBorder"]
-> ![fırtınası bileşenleri etkileşimi](./media/migrate-storm-to-spark/apache-storm-components.png)
+:::image type="content" source="./media/migrate-storm-to-spark/apache-storm-components.png" alt-text="fırtınası bileşenleri etkileşimi" border="false":::
 
 Fırtınası, fırtınası kümesinin çalışmasını tutan aşağıdaki üç Daemon 'ları oluşur.
 
-|İnin |Description |
+|İnin |Açıklama |
 |---|---|
 |Nimbus|Hadoop JobTracker 'e benzer şekilde, kodu kümeye dağıtmaktan ve makinelere görevler atamaya ve hatalara yönelik izlemeye karşı sorumludur.|
 |Zookeeper|Küme düzenlemesi için kullanılır.|
 |Gözetmen|Makinesine atanan işleri dinler ve Nimbus ' deki yönergeleri temel alarak çalışan süreçlerini başlatır ve sonlandırır. Her çalışan işlemi bir topolojinin alt kümesini yürütür. Kullanıcının uygulama mantığı (Spomalar ve sürgüsü) burada çalıştırılır.|
 
-> [!div class="mx-imgBorder"]
-> ![Nimbus, Zookeeper ve gözetmen Daemon 'ları](./media/migrate-storm-to-spark/nimbus-zookeeper-supervisor.png)
+:::image type="content" source="./media/migrate-storm-to-spark/nimbus-zookeeper-supervisor.png" alt-text="Nimbus, Zookeeper ve gözetmen Daemon 'ları" border="false":::
 
 ## <a name="spark-streaming-architecture-and-components"></a>Spark akış mimarisi ve bileşenleri
 
@@ -83,15 +79,13 @@ Aşağıdaki adımlarda, bileşenlerin Spark akışı (DStreams) ve Spark yapıl
 * Veri blokları diğer yürüticilerine çoğaltılır.
 * İşlenen veriler daha sonra hedef veri deposunda depolanır.
 
-> [!div class="mx-imgBorder"]
-> ![çıkış için Spark akış yolu](./media/migrate-storm-to-spark/spark-streaming-to-output.png)
+:::image type="content" source="./media/migrate-storm-to-spark/spark-streaming-to-output.png" alt-text="çıkış için Spark akış yolu" border="false":::
 
 ## <a name="spark-streaming-dstream-workflow"></a>Spark streaming (DStream) iş akışı
 
 Her toplu iş aralığı geçtiğinde, bu aralıktaki tüm verileri içeren yeni bir RDD oluşturulur. Sürekli RDDs kümeleri bir DStream 'e toplanır. Örneğin, toplu iş aralığı bir ikinci uzunsa DStream, saniye içinde alınan tüm verileri içeren bir RDD 'yi içeren bir toplu işlem yayar. DStream işlenirken, sıcaklık olayı Bu toplu işlemlerden birinde görünür. Spark akış uygulaması olayları içeren toplu işleri işler ve sonunda her bir RDD 'de depolanan veriler üzerinde işlem yapar.
 
-> [!div class="mx-imgBorder"]
-> ![Spark akış işleme toplu işlemleri](./media/migrate-storm-to-spark/spark-streaming-batches.png)
+:::image type="content" source="./media/migrate-storm-to-spark/spark-streaming-batches.png" alt-text="Spark akış işleme toplu işlemleri" border="false":::
 
 Spark akışı ile kullanılabilen farklı dönüşümlerle ilgili ayrıntılar için bkz. [DStreams üzerindeki dönüşümler](https://spark.apache.org/docs/latest/streaming-programming-guide.html#transformations-on-dstreams).
 
@@ -105,11 +99,9 @@ Sorgu çıktısı sorgunuzun sonuçlarını içeren bir *sonuç tablosu* oluştu
 
 Giriş tablosundan verilerin işlendiği zaman zamanlaması, tetikleyici aralığı tarafından denetlenir. Varsayılan olarak, tetikleyici aralığı sıfırdır, bu nedenle yapılandırılmış akış, verileri ulaştığı anda işlemeye çalışır. Uygulamada, bu, yapılandırılmış akış önceki sorgunun çalışmasını işlemeyi tamamladıktan sonra, yeni alınan tüm verilere karşı başka bir işlem çalıştırması başlattığı anlamına gelir. Tetikleyiciyi, zaman tabanlı toplu işlerle işlenmek üzere bir aralıkta çalışacak şekilde yapılandırabilirsiniz.
 
-> [!div class="mx-imgBorder"]
-> ![yapılandırılmış akışta verilerin işlenmesi](./media/migrate-storm-to-spark/structured-streaming-data-processing.png)
+:::image type="content" source="./media/migrate-storm-to-spark/structured-streaming-data-processing.png" alt-text="yapılandırılmış akışta verilerin işlenmesi" border="false":::
 
-> [!div class="mx-imgBorder"]
-> ![yapılandırılmış akış için programlama modeli](./media/migrate-storm-to-spark/structured-streaming-model.png)
+:::image type="content" source="./media/migrate-storm-to-spark/structured-streaming-model.png" alt-text="yapılandırılmış akış için programlama modeli" border="false":::
 
 ## <a name="general-migration-flow"></a>Genel geçiş akışı
 
@@ -119,30 +111,25 @@ Geçiş işleminden Spark 'a önerilen geçiş akışı, aşağıdaki ilk mimari
 * Kafka ve fırtınası aynı sanal ağa dağıtıldı
 * Fırtınası tarafından işlenen veriler, Azure depolama veya Azure Data Lake Storage 2. gibi bir veri havuzuna yazılır.
 
-    > [!div class="mx-imgBorder"]
-    > ![kabul eden geçerli ortamın diyagramı](./media/migrate-storm-to-spark/presumed-current-environment.png)
+   :::image type="content" source="./media/migrate-storm-to-spark/presumed-current-environment.png" alt-text="kabul eden geçerli ortamın diyagramı"  border="false":::
 
 Uygulamanızı fırtınası 'dan Spark akış API 'Lerinden birine geçirmek için aşağıdakileri yapın:
 
 1. **Yeni bir küme dağıtın.** Aynı sanal ağa yeni bir HDInsight 4,0 Spark kümesi dağıtın ve Spark akışını veya Spark yapılandırılmış akış uygulamanızı bu kümeye dağıtın ve tamamen test edin.
 
-    > [!div class="mx-imgBorder"]
-    > ![HDInsight 'ta yeni Spark dağıtımı](./media/migrate-storm-to-spark/new-spark-deployment.png)
+   :::image type="content" source="./media/migrate-storm-to-spark/new-spark-deployment.png" alt-text="HDInsight 'ta yeni Spark dağıtımı" border="false":::
 
 1. **Eski fırtınası kümesinde kullanmayı durdurun.** Mevcut bir fırtınası içinde, akış veri kaynağından veri tüketmeyi durdurun ve verilerin hedef havuza yazılmasını tamamlamasını bekleyin.
 
-    > [!div class="mx-imgBorder"]
-    > ![geçerli kümede kullanmayı durdur](./media/migrate-storm-to-spark/stop-consuming-current-cluster.png)
+   :::image type="content" source="./media/migrate-storm-to-spark/stop-consuming-current-cluster.png" alt-text="geçerli kümede kullanmayı durdur" border="false":::
 
 1. **Yeni Spark kümesinde kullanmayı başlatın.** Yeni dağıtılan HDInsight 4,0 Spark kümesinden veri akışı başlatın. Şu anda, işlem en son Kafka uzaklığında tüketerek alınır.
 
-    > [!div class="mx-imgBorder"]
-    > ![yeni kümede kullanmayı Başlat](./media/migrate-storm-to-spark/start-consuming-new-cluster.png)
+   :::image type="content" source="./media/migrate-storm-to-spark/start-consuming-new-cluster.png" alt-text="yeni kümede kullanmayı Başlat" border="false":::
 
 1. **Eski kümeyi gerektiği gibi kaldırın.** Anahtar tamamlandıktan ve düzgün şekilde çalışmaya başladıktan sonra eski HDInsight 3,6 fırtınası kümesini gerektiği gibi kaldırın.
 
-    > [!div class="mx-imgBorder"]
-    > ![gerekli olan eski HDInsight kümelerini kaldırın](./media/migrate-storm-to-spark/remove-old-clusters1.png)
+   :::image type="content" source="./media/migrate-storm-to-spark/remove-old-clusters1.png" alt-text="gerekli olan eski HDInsight kümelerini kaldırın" border="false":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

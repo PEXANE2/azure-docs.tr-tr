@@ -4,12 +4,12 @@ description: Azure HDInsight ağ geçidi üzerinden Hive sorguları çalıştır
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 63484d882d8ccd387257c6f246c2048a09c77bc8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 549eab1547b75eb9461b23df2c157290943b4ed9
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933105"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869795"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive için ağ geçidi derinlemesine bakış ve en iyi uygulamalar
 
@@ -21,7 +21,7 @@ HDInsight ağ geçidi, Internet üzerinden genel olarak erişilebilen bir HDInsi
 
 Aşağıdaki diyagramda, ağ geçidinin HDInsight 'taki tüm farklı ana bilgisayar çözümleme olasılıklarının önünde nasıl soyutlama sağladığını gösteren kaba bir şekil sunulmaktadır.
 
-![Ana bilgisayar çözümleme diyagramı](./media/gateway-best-practices/host-resolution-diagram.png "Ana bilgisayar çözümleme diyagramı")
+:::image type="content" source="./media/gateway-best-practices/host-resolution-diagram.png " alt-text="Ana bilgisayar çözümleme diyagramı" border="true":::
 
 ## <a name="motivation"></a>Motivasyon
 
@@ -39,7 +39,7 @@ Ağ geçidinin performansı, büyük boyuttaki sorgular etrafında düşeceğind
 
 Aşağıdaki diyagramda bir SELECT sorgusunda yer alan adımlar gösterilmektedir.
 
-![Sonuç diyagramı](./media/gateway-best-practices/result-retrieval-diagram.png "Sonuç diyagramı")
+:::image type="content" source="./media/gateway-best-practices/result-retrieval-diagram.png " alt-text="Sonuç diyagramı" border="true":::
 
 Apache Hive,, bir, bir,, Bu soyutlama, Hive içindeki **Select** deyimlerinin dosya sisteminde **okuma** işlemlerine karşılık geldiğini gösterir. **Okuma** işlemleri, kullanıcıya bildirilmeden önce uygun şemaya çevrilir. Bu işlemin gecikmesi, veri boyutu ve son kullanıcıya ulaşmak için gereken toplam atlama sayısını artırır.
 

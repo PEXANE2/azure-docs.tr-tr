@@ -2,17 +2,17 @@
 title: Azure Linux VM 'Leri için kıyaslama puanlarını hesaplama
 description: Linux çalıştıran Azure VM 'Leri için CoreMark işlem kıyaslama puanlarını karşılaştırın.
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: benchmark
 ms.collection: linux
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.reviewer: davberg
-ms.openlocfilehash: ef60bbfe19e10dcd98ca3691e1fdf0d03d07be24
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04581e34444f929f32af647850766d4df50bf98b
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102558671"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954080"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux sanal makineleri için kıyaslama puanlarını hesaplama
 Aşağıdaki CoreMark kıyaslama puanları, Ubuntu çalıştıran Azure 'un yüksek performanslı VM sıralaması için işlem performansını gösterir. İşlem kıyaslama puanları [Windows VM 'leri](../windows/compute-benchmark-scores.md)için de kullanılabilir.

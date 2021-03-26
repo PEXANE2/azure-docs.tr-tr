@@ -3,19 +3,14 @@ title: Azure disk yedekleme 'ye Genel Bakış
 description: Azure disk yedekleme çözümü hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 4db2a5f3f02322f18fcf9203c3560905cde86996
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9449fdc57909cb143d381ae074913c79d24c8893
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98915517"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107304"
 ---
-# <a name="overview-of-azure-disk-backup-in-preview"></a>Azure disk yedekleme 'ye Genel Bakış (önizlemede)
-
->[!IMPORTANT]
->Azure disk yedekleme, bir hizmet düzeyi sözleşmesi olmadan önizlemededir ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Bölge kullanılabilirliği için bkz. [destek matrisi](disk-backup-support-matrix.md).
->
->Önizlemeye kaydolmak için [Bu formu doldurun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) .
+# <a name="overview-of-azure-disk-backup"></a>Azure disk yedekleme 'ye Genel Bakış
 
 Azure disk yedekleme, yönetilen disklerde verilerinizi koruyan yerel, bulut tabanlı bir yedekleme çözümüdür. Bu, birkaç adımda yönetilen diskler için korumayı yapılandırmanızı sağlayan basit, güvenli ve ekonomik bir çözümdür. Verilerinizi bir olağanüstü durum senaryosunda kurtarmanıza de sağlar.
 

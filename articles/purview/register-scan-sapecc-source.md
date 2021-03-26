@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: b72538c61d1a68bca655b0d9529f654068727f86
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: af3f54778882df9aaa06297f291c12a0f4b1577c
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101696196"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046054"
 ---
 # <a name="register-and-scan-sap-ecc-source-preview"></a>SAP ECC kaynağını kaydetme ve tarama (Önizleme)
 
@@ -25,7 +25,7 @@ SAP ECC kaynağı, bir SAP ECC örneğinden meta verileri ayıklamak için **tam
 ## <a name="prerequisites"></a>Önkoşullar
 
 1.  En son [kendi kendine barındırılan tümleştirme çalışma zamanını](https://www.microsoft.com/download/details.aspx?id=39717)ayarlayın.
-    Daha fazla bilgi için, bkz. [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
+    Daha fazla bilgi için, bkz. [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](../data-factory/create-self-hosted-integration-runtime.md).
 
 2.  Şirket içinde barındırılan tümleştirme çalışma zamanının yüklü olduğu sanal makinenizde [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) ' in yüklü olduğundan emin olun.
 
@@ -80,7 +80,7 @@ Veri kataloğunuza yeni bir SAP ECC kaynağı kaydetmek için aşağıdakileri y
 
 Yeni bir tarama oluşturup çalıştırmak için aşağıdakileri yapın:
 
-1.  Yönetim Merkezi 'nde tümleştirme çalışma zamanları ' na tıklayın. Şirket içinde barındırılan bir tümleştirme çalışma zamanının ayarlandığından emin olun. Ayarlanmamışsa, şirket içinde barındırılan bir tümleştirme çalışma zamanı oluşturmak için [burada](https://docs.microsoft.com/azure/purview/manage-integration-runtimes) bahsedilen adımları kullanın.
+1.  Yönetim Merkezi 'nde tümleştirme çalışma zamanları ' na tıklayın. Şirket içinde barındırılan bir tümleştirme çalışma zamanının ayarlandığından emin olun. Ayarlanmamışsa, şirket içinde barındırılan bir tümleştirme çalışma zamanı oluşturmak için [burada](./manage-integration-runtimes.md) bahsedilen adımları kullanın.
 
 2.  **Kaynaklara** git
 

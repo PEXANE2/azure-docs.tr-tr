@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 8fbbe137ece7aac2dd2196c5ebec435e118297ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c3f912b4f4c2e78c44425f489927cee185b3d312
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929811"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868724"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Betik Eylemi kullanarak Azure HDInsight üzerinde Python ortamını güvenli bir şekilde yönetin
 
@@ -104,7 +104,7 @@ HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıd�
 
     1. Ambarı Kullanıcı arabirimini açın, Spark2 Page, configs sekmesine gidin.
 
-        ![Spark ve Livy yapılandırmasını, ambarı aracılığıyla değiştirme](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png" alt-text="Spark ve Livy yapılandırmasını, ambarı aracılığıyla değiştirme" border="true":::
 
     2. Advanced livy2-env ' yi genişletin, altta aşağıdaki deyimleri ekleyin. Sanal ortamı farklı bir önek ile yüklediyseniz, yolu karşılık gelenle değiştirin.
 
@@ -113,7 +113,7 @@ HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıd�
         export PYSPARK_DRIVER_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         ```
 
-        ![Ambarı aracılığıyla Livy yapılandırmasını değiştirme](./media/apache-spark-python-package-installation/ambari-livy-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-livy-config.png" alt-text="Ambarı aracılığıyla Livy yapılandırmasını değiştirme" border="true":::
 
     3. Advanced spark2-env ' ı genişletin, en altta bulunan dışarı aktarma PYSPARK_PYTHON ifadesini değiştirin. Sanal ortamı farklı bir önek ile yüklediyseniz, yolu karşılık gelenle değiştirin.
 
@@ -121,11 +121,11 @@ HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıd�
         export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35new/bin/python}
         ```
 
-        ![Spark config 'i ambarı aracılığıyla değiştirme](./media/apache-spark-python-package-installation/ambari-spark-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-spark-config.png" alt-text="Spark config 'i ambarı aracılığıyla değiştirme" border="true":::
 
     4. Değişiklikleri kaydedin ve etkilenen hizmetleri yeniden başlatın. Bu değişikliklerin Spark2 hizmetinin yeniden başlatılması gerekir. Ambarı Kullanıcı arabirimi gerekli bir yeniden başlatma anımsatıcısı ister, tüm etkilenen hizmetleri yeniden başlatmak için yeniden Başlat 'a tıklayın.
 
-        ![Hizmetleri yeniden Başlat](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-restart-services.png" alt-text="Hizmetleri yeniden Başlat" border="true":::
 
     5. İşin güncelleştirilmiş Spark yapılandırmasına işaret ettiğini sağlamak için Spark oturumunuzla iki özellik ayarlayın: `spark.yarn.appMasterEnv.PYSPARK_PYTHON` ve `spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON` . 
 
@@ -153,7 +153,7 @@ HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıd�
 
     Aşağıdaki kodu çalıştırarak Jupyter Notebook Python ortamını iki kez doğrulayabilirsiniz:
 
-    ![Jupyter Notebook Python sürümünü denetle](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
+    :::image type="content" source="./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png" alt-text="Jupyter Notebook Python sürümünü denetle" border="true":::
 
 ## <a name="known-issue"></a>Bilinen sorun
 

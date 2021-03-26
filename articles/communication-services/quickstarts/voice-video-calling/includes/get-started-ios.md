@@ -1,22 +1,22 @@
 ---
 title: Hızlı başlangıç-Azure Iletişim hizmetlerini kullanarak bir iOS uygulamasına çağrı ekleme
-description: Bu hızlı başlangıçta iOS için istemci kitaplığı 'nı çağıran Azure Iletişim hizmetlerini kullanmayı öğreneceksiniz.
+description: Bu hızlı başlangıçta, iOS için SDK 'Yı çağıran Azure Iletişim hizmetlerini kullanmayı öğreneceksiniz.
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 6cdd38f1e849efc416d62f22bd85ed7efb2e6349
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5d3a282d108d197ea0c5c616e9ee84fb7b952026
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104719968"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108323"
 ---
-Bu hızlı başlangıçta, iOS için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni kullanarak bir çağrı başlatmayı öğreneceksiniz.
+Bu hızlı başlangıçta, iOS için SDK 'Yı çağıran Azure Iletişim Hizmetleri 'ni kullanarak bir çağrı başlatmayı öğreneceksiniz.
 
 > [!NOTE]
-> Bu belge, çağıran istemci kitaplığının 1.0.0-Beta. 8 sürümünü kullanır.
+> Bu belge, çağıran SDK 'nın 1.0.0-Beta. 8 sürümünü kullanır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -119,11 +119,11 @@ struct ContentView: View {
 
 ## <a name="object-model"></a>Nesne modeli
 
-Aşağıdaki sınıflar ve arabirimler, istemci Kitaplığı çağıran Azure Iletişim Hizmetleri 'nin bazı önemli özelliklerinden bazılarını işler:
+Aşağıdaki sınıflar ve arabirimler, Azure Communication Service 'ın SDK 'yi çağıran bazı önemli özelliklerinden bazılarını işler:
 
 | Ad                                  | Açıklama                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient | CallClient, çağıran istemci kitaplığı için ana giriş noktasıdır.|
+| CallClient | CallClient, çağıran SDK 'ya ana giriş noktasıdır.|
 | CallAgent | CallAgent, çağrıları başlatmak ve yönetmek için kullanılır. |
 | CommunicationTokenCredential | CommunicationTokenCredential, CallAgent örneğini oluşturmak için belirteç kimlik bilgileri olarak kullanılır.| 
 | Communicationuserıdentifier | Communicationuserıdentifier, aşağıdakilerin biri olabilecek Kullanıcı kimliğini temsil etmek için kullanılır: Communicationuserıdentifier/Phonenumberıdentifier/CallingApplication. |

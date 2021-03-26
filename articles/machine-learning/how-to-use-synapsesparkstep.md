@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, synapse-azureml
-ms.openlocfilehash: 2a9f0a8c943f539166f18a1e41a36136fbb63a6f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b03915608c6143a9e205ba1a1e08e411b8aa9093
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584298"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868656"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>Machine Learning işlem hattınızda Apache Spark (Azure SYNAPSE Analytics tarafından desteklenir) kullanma (Önizleme)
 
@@ -92,6 +92,8 @@ synapse_compute.wait_for_completion()
 Yapılandırma oluşturulduktan sonra,,, `ComputeTarget` `Workspace` `ComputeTargetAttachConfiguration` ve Machine Learning çalışma alanındaki işlem için başvurmak istediğiniz adı geçirerek bir makine öğrenimi oluşturursunuz. ' A çağrı `ComputeTarget.attach()` zaman uyumsuzdur, bu nedenle çağrı tamamlanana kadar örnek bloklar olur.
 
 ## <a name="create-a-synapsesparkstep-that-uses-the-linked-apache-spark-pool"></a>`SynapseSparkStep`Bağlı Apache Spark havuzunu kullanan bir oluşturma
+
+[Apache Spark havuzundaki](https://github.com/azure/machinelearningnotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb) örnek Not defteri Spark işi basit bir makine öğrenimi ardışık düzeni tanımlar. İlk olarak, Not defteri, önceki adımda tanımlanan tarafından desteklenen bir veri hazırlama adımını tanımlar `synapse_compute` . Daha sonra, Not defteri bir işlem hedefi tarafından desteklenen bir eğitim adımını eğitim için daha uygun bir şekilde tanımlar. Örnek Not defteri, veri girişini ve çıktıyı göstermek için Titanic acil durum veritabanını kullanır; Aslında verileri temizetmez veya tahmine dayalı bir model yapmaz. Bu örnekte gerçek eğitim olmadığından, eğitim adımında pahalı, CPU tabanlı bir işlem kaynağı kullanılmaktadır.
 
 Veriler `DatasetConsumptionConfig` , tablo verilerini veya dosya kümelerini içerebilen nesneler aracılığıyla makine öğrenimi ardışık düzenine akar. Veriler genellikle bir çalışma alanının veri deposundaki blob depolamadaki dosyalardan gelir. Aşağıdaki kod, bir makine öğrenimi ardışık düzeni için giriş oluşturmak üzere bazı tipik kodları göstermektedir:
 

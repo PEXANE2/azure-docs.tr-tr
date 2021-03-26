@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6586375d7db71274f40eb62aeb24f9daad0d7c2e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e247e372237572586e5a4647d24d9ed6067ea823
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101688306"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949796"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc etkin PostgreSQL hiper ölçek sunucu grubunda PostgreSQL uzantılarını kullanma
 
@@ -55,7 +55,7 @@ Bu kılavuz, bu uzantıların ikisini kullanmak için bir senaryo alır:
 ## <a name="add-extensions-to-the-shared_preload_libraries"></a>Shared_preload_libraries uzantıları ekleme
 Bunun hakkındaki ayrıntılar için shared_preload_libraries lütfen PostgreSQL [belgelerini okuyun](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES):
 - Bu adım, bir parçası olan uzantılar için gerekli değildir `contrib`
-- shared_preload_libraries tarafından önceden yüklenmesi gerekmeyen uzantılar için bu adım gerekli değildir. Bu uzantılar için sonraki sonraki paragrafa [Uzantı oluşturma](https://docs.microsoft.com/azure/azure-arc/data/using-extensions-in-postgresql-hyperscale-server-group#create-extensions)' ya geçebilirsiniz.
+- shared_preload_libraries tarafından önceden yüklenmesi gerekmeyen uzantılar için bu adım gerekli değildir. Bu uzantılar için sonraki sonraki paragrafa [Uzantı oluşturma](#create-extensions)' ya geçebilirsiniz.
 
 ### <a name="add-an-extension-at-the-creation-time-of-a-server-group"></a>Sunucu grubunun oluşturulma zamanına uzantı ekleme
 ```console

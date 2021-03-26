@@ -26,7 +26,7 @@
 - name: Öğreticiler
   items:
     - name: IoT cihazlarını buluta güvenli bir şekilde bağlama
-      href: /learn/paths/securely-connect-iot-devices/
+      href: /learn/paths/securely-connect-iot-devices/?wt.mc_id=iothub_connect_docs_tutorials
 - name: Kavramlar
   items:
     - name: Cihaz geliştiricileri için bağlantı seçenekleri
@@ -35,7 +35,7 @@
       href: concepts-iot-device-types.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
       href: /powershell/module/az.iothub#iothub

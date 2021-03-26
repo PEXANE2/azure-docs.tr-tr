@@ -9,19 +9,19 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 81956a16142f314f54afd9d5a1b9055a559e906c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fd03ebc87a1c0ef0a55b0e6ac0be6d841fee4b0a
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103565335"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027304"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>Geçiş Kılavuzu: SAP aşırı Azure SQL veritabanı 'na
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 Bu kılavuz, SAP ASE veritabanlarınızı SQL Server Geçiş Yardımcısı for SAP Adapter Server Enterprise ' i kullanarak Azure SQL veritabanı 'na geçirmenize öğretir.
 
-Diğer geçiş kılavuzlarında, bkz. [Veritabanı geçişi](https://datamigration.microsoft.com/). 
+Diğer geçiş kılavuzlarında, bkz. [Veritabanı geçişi](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Önkoşullar 
 
@@ -29,6 +29,8 @@ SAP, veritabanınızı Azure SQL veritabanı 'na geçirmek için şunlar gerekir
 
 - Kaynak ortamınızın desteklendiğini doğrulamak için. 
 - [SAP Uyarlamalı Server Enterprise için SQL Server Geçiş Yardımcısı (eski ADıYLA SAP Sybase ASE)](https://www.microsoft.com/en-us/download/details.aspx?id=54256). 
+- Hem kaynak hem de hedefe erişmek için bağlantı ve yeterli izinler. 
+
 
 ## <a name="pre-migration"></a>Geçiş öncesi
 
@@ -44,10 +46,10 @@ Bir değerlendirme oluşturmak için aşağıdaki adımları izleyin:
 1. **Dosya** ' yı ve ardından **Yeni proje**' yi seçin. 
 1. Projenizin kaydedileceği bir konum belirtin ve ardından açılan listeden geçiş hedefi olarak Azure SQL veritabanı ' nı seçin. **Tamam**’ı seçin.
 1. **Sybase 'e Bağlan** ILETIŞIM kutusunda SAP bağlantısı ayrıntıları için değerler girin. 
-1. Geçirmek istediğiniz SAP veritabanına sağ tıklayın ve ardından **rapor oluştur**' u seçin. Bu bir HTML raporu oluşturur.
-1. Dönüştürme istatistiklerini ve hataları ya da uyarıları anlamak için HTML raporunu gözden geçirin. Ayrıca, DB2 nesnelerinin envanterini almak için raporu Excel 'de açabilir ve şema dönüştürmeleri gerçekleştirmek için gereken çaba da yapabilirsiniz. Rapor için varsayılan konum SSMAProjects içindeki rapor klasöründedir.
+1. Geçirmek istediğiniz SAP veritabanına sağ tıklayın ve ardından **rapor oluştur**' u seçin. Bu bir HTML raporu oluşturur. Alternatif olarak, veritabanını seçtikten sonra gezinti çubuğundan **rapor oluştur** ' u de seçebilirsiniz:
+1. Dönüştürme istatistiklerini ve hataları ya da uyarıları anlamak için HTML raporunu gözden geçirin. Ayrıca, bir SAP Ao nesnelerinin envanterini almak için raporu Excel 'de açabilir ve şema dönüştürmeleri gerçekleştirmek için gereken çabadan ulaşabilirsiniz. Rapor için varsayılan konum SSMAProjects içindeki rapor klasöründedir.
 
-   Örneğin: `drive:\<username>\Documents\SSMAProjects\MyDB2Migration\report\report_<date>`. 
+   Örneğin: `drive:\<username>\Documents\SSMAProjects\MySAPMigration\report\report_<date>`. 
 
 
 ### <a name="validate-type-mappings"></a>Tür eşlemelerini doğrula
@@ -66,19 +68,19 @@ Bir değerlendirme oluşturmak için aşağıdaki adımları izleyin:
 
    Şema dönüşümden sonra, çevrimdışı bir şema düzeltme alıştırması için bu projeyi yerel olarak kaydedebilirsiniz. **Dosya** menüsünden **projeyi kaydet** ' i seçin. Bu sayede, Azure SQL veritabanı 'nda şemayı yayımlamadan önce, kaynak ve hedef şemaları çevrimdışı olarak değerlendirme ve düzeltme yapma olanağı sunar.
 
-Daha fazla bilgi için bkz. [Şemayı dönüştürme](/sql/ssma/sybase/converting-sybase-ase-database-objects-sybasetosql)
-
+1. Çıkış bölmesinde **sonuçları gözden geçir** ' i seçin ve **hata listesi** bölmesindeki hataları gözden geçirin. 
+1. Çevrimdışı şema düzeltme alıştırması için projeyi yerel olarak kaydedin. **Dosya** menüsünden **projeyi kaydet** ' i seçin. Bu, şemayı SQL veritabanı 'na yayımlamadan önce kaynak ve hedef şemaları çevrimdışına almak ve düzeltmeyi gerçekleştirmek için bir fırsat sağlar.
 
 ## <a name="migrate"></a>Geçiş 
 
 Gerekli önkoşullara sahip olduktan ve **geçiş öncesi** aşamalandırmayla ilişkili görevleri tamamladıktan sonra şema ve veri geçişini gerçekleştirmeye hazırlanın.
 
-Şemayı yayımlamak ve verileri geçirmek için şu adımları izleyin: 
+Şemanızı yayımlamak ve verileri geçirmek için şu adımları izleyin: 
 
-1. **Azure SQL veritabanı meta veri Gezgini** ' nde veritabanına sağ tıklayın ve **veritabanıyla Synchronize**' ı seçin.  Bu eylem, SAP Ao şemasını Azure SQL veritabanı örneğine yayınlar.
-1. SAP asa **meta veri Gezgini** 'NDE SAP asa şemasına sağ tıklayın ve **veri geçişi**' ni seçin.  Alternatif olarak, üst çizgi gezinti çubuğundan **veri geçişini** seçebilirsiniz.  
+1. Şemayı yayımlama: **Azure SQL veritabanı meta veri Gezgini** ' nde veritabanına sağ tıklayın ve **veritabanıyla Synchronize**' ı seçin.  Bu eylem, SAP Ao şemasını Azure SQL veritabanı örneğine yayınlar.
+1. Verileri geçirme: **SAP asa meta veri Gezgini**'nde geçirmek istediğiniz veritabanına veya nesneye sağ tıklayın ve **veri geçişi**' ni seçin. Alternatif olarak, üst çizgi gezinti çubuğundan **veri geçişini** seçebilirsiniz. Tüm bir veritabanının verilerini geçirmek için veritabanı adının yanındaki onay kutusunu işaretleyin. Ayrı tablolardan verileri geçirmek için veritabanını genişletin, tablolar ' ı genişletin ve ardından tablonun yanındaki onay kutusunu işaretleyin. Ayrı tablolardaki verileri atlamak için onay kutusunu temizleyin: 
 1. Geçiş tamamlandıktan sonra, **veri geçiş raporunu** görüntüleyin: 
-1. Azure SQL veritabanı Management Studio (SSMS) kullanarak Azure SQL veritabanı örneğindeki verileri ve şemayı inceleyerek geçişi doğrulayın.
+1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) kullanarak Azure SQL veritabanınıza bağlanın ve verileri ve şemayı inceleyerek geçişi doğrulayın. 
 
 
 ## <a name="post-migration"></a>Geçiş sonrası 

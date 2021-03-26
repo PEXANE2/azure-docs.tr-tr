@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 0de25b29dc1e930956c01f342ca2614d1a9082ca
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2dc94ea904da128be01decf36e2d36dc9510c2a5
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102557514"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043895"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Windows Sanal Makineleri hakkında sık sorulan sorular
 Bu makalede, Azure 'da Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan Windows sanal makineleri hakkında bazı yaygın soruların ele alınmaktadır. Bu konunun Linux sürümü için bkz. [Linux sanal makineleri hakkında sık sorulan sorular](../linux/faq.md).
@@ -33,7 +33,7 @@ Azure depolama hesapları, işletim sistemi diski ve tüm veri diskleri için de
 ## <a name="how-can-i-access-my-virtual-machine"></a>Sanal makinime nasıl erişebilirim?
 Bir Windows sanal makinesi için Uzak Masaüstü Bağlantısı (RDP) kullanarak uzak bağlantı kurun. Yönergeler için bkz. [Windows çalıştıran bir Azure sanal makinesine bağlanma ve oturum açma](connect-logon.md). Sunucu bir Uzak Masaüstü Hizmetleri oturumu ana bilgisayarı olarak yapılandırılmadığı sürece en fazla iki eşzamanlı bağlantı desteklenir.  
 
-Uzak Masaüstü ile ilgili sorun yaşıyorsanız, bkz. [Windows tabanlı bir Azure sanal makinesine yönelik uzak masaüstü bağlantılarında sorun giderme](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json). 
+Uzak Masaüstü ile ilgili sorun yaşıyorsanız, bkz. [Windows tabanlı bir Azure sanal makinesine yönelik uzak masaüstü bağlantılarında sorun giderme](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
 Hyper-V ' y i kullandıysanız, VMConnect 'e benzer bir araç arıyor olabilirsiniz. Azure, bir sanal makineye konsol erişimi desteklenmediğinden benzer bir araç sunmaz.
 

@@ -10,16 +10,20 @@ services: time-series-insights
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.custom: seodec18
-ms.openlocfilehash: 56f7ac6f4403867e5e4e53b55b241912cdc57454
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 09068d966df871d4b6804978a543db50bccbee37
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103464515"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952856"
 ---
 # <a name="create-an-azure-time-series-insights-gen2-environment-using-the-azure-portal"></a>Azure portal kullanarak Azure Time Series Insights Gen2 ortamı oluşturma
 
 Bu makalede [Azure Portal](https://portal.azure.com/)kullanılarak Azure Time Series Insights Gen2 ortamının nasıl oluşturulacağı açıklanmaktadır.
+
+Ortam sağlama öğreticisi, süreç boyunca size yol gösterecektir. Doğru zaman serisi KIMLIĞINI seçme ve iki JSON yükten örnekleri görüntüleme hakkında bilgi edineceksiniz.</br>
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWzk3P]
 
 ## <a name="overview"></a>Genel Bakış
 

@@ -7,18 +7,20 @@ ms.topic: overview
 ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: soru-cevap Oluşturucu, düşük kod sohbeti botları, çok yönlü konuşmalar
-ms.openlocfilehash: a75b5939e8848ca898d7279b55ab2c4faa4ed72a
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 8df9daa213156fc38ed08bced44ea919da95e6a4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919570"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869217"
 ---
 # <a name="what-is-qna-maker"></a>Soru-Cevap Oluşturma nedir?
 
 Soru-Cevap Oluşturma, verileriniz üzerinde doğal bir konuşma katmanı oluşturmanıza olanak tanıyan, bulut tabanlı bir doğal dil Işleme (NLP) hizmetidir. Özel Bilgi Bankası (KB) bilgilerinizin herhangi bir girişi için en uygun yanıtı bulmak için kullanılır.
 
 Soru-Cevap Oluşturma, sosyal medya uygulamaları, sohbet botları ve konuşma özellikli masaüstü uygulamaları dahil olmak üzere konuşma istemci uygulamaları oluşturmak için yaygın olarak kullanılır.
+
+Soru-Cevap Oluşturma müşteri verilerini depolamaz. Tüm müşteri verileri (soru yanıtları ve chatlogs) müşterinin bağımlı hizmet örneklerini dağıttığı bölgede depolanır. Bağımlı hizmetler hakkında daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/plan?tabs=v1)bakın.
 
 ## <a name="when-to-use-qna-maker"></a>Ne zaman kullanılacağı Soru-Cevap Oluşturma
 

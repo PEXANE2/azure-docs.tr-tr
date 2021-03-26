@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: ff2ef8970afa21c0218da20a5b79ea2fb782dd5c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f6d2696a68643f87de0fcaf2e723da9365d9953e
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99053593"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953859"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>VM'leri çalışma saatleri dışında başlat/durdur sorunlarını giderme
 
@@ -149,7 +149,7 @@ Olası çözümler için aşağıdaki listeyi gözden geçirin:
   ```
 
 * VM 'Leri başlatmak ve durdurmak için, Otomasyon hesabının farklı çalıştır hesabı VM 'de uygun izinlere sahip olmalıdır. Bir kaynaktaki izinleri nasıl denetleyeceğinizi öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir kullanıcıya atanan rolleri görüntüleme](../../role-based-access-control/check-access.md). Farklı Çalıştır hesabı tarafından kullanılan hizmet sorumlusu için uygulama KIMLIĞINI sağlamanız gerekir. Azure portal Otomasyon hesabınıza giderek bu değeri alabilirsiniz. **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçin ve uygun farklı çalıştır hesabını seçin.
-* VM 'de başlatma veya ayırmayı kaldırma konusunda bir sorun varsa, sanal makinenin kendisi üzerinde bir sorun olabilir. Örnekler, sanal makine kapanmaya çalışırken uygulanan bir güncelleştirmedir, askıda olan bir hizmet ve daha fazlasını sağlar. Günlüklerde hata olup olmadığını görmek için VM kaynağına gidin ve **etkinlik günlükleri** ' ne bakın. Ayrıca, olay günlüklerinde herhangi bir hata olup olmadığını görmek için VM 'de oturum açma girişiminde bulunabilir. VM 'nizin sorunlarını giderme hakkında daha fazla bilgi edinmek için bkz. [Azure sanal makinelerinde sorun giderme](../../virtual-machines/troubleshooting/index.yml).
+* VM 'de başlatma veya ayırmayı kaldırma konusunda bir sorun varsa, sanal makinenin kendisi üzerinde bir sorun olabilir. Örnekler, sanal makine kapanmaya çalışırken uygulanan bir güncelleştirmedir, askıda olan bir hizmet ve daha fazlasını sağlar. Günlüklerde hata olup olmadığını görmek için VM kaynağına gidin ve **etkinlik günlükleri** ' ne bakın. Ayrıca, olay günlüklerinde herhangi bir hata olup olmadığını görmek için VM 'de oturum açma girişiminde bulunabilir. VM 'nizin sorunlarını giderme hakkında daha fazla bilgi edinmek için bkz. [Azure sanal makinelerinde sorun giderme](/troubleshoot/azure/virtual-machines/welcome-virtual-machines).
 * Herhangi bir hata bulmak için [iş akışlarını](../automation-runbook-execution.md#job-statuses) denetleyin. Portalda Otomasyon hesabınıza gidin ve **Işlem Otomasyonu** altında **işler** ' i seçin.
 
 ## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>Senaryo: özel runbook sunucum sanal makinelerimi başlatamıyor veya durdurabilir

@@ -2,39 +2,39 @@
 title: Azure VMware çözümü için platform güncelleştirmeleri
 description: Azure VMware çözümüne yönelik platform güncelleştirmeleri hakkında bilgi edinin.
 ms.topic: reference
-ms.date: 03/16/2021
-ms.openlocfilehash: ce25df2cb221c032f6dd430f292522fe86e69ceb
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.date: 03/24/2021
+ms.openlocfilehash: da6317d49edd3f40e1a8f2518f91fe353bbae285
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771779"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045221"
 ---
 # <a name="platform-updates-for-azure-vmware-solution"></a>Azure VMware çözümü için platform güncelleştirmeleri
 
-Azure VMware çözümünde önemli güncelleştirmeler, Mart 2021 ' den itibaren uygulanacak. Azure hizmet durumu ile bakım zaman çizelgesini içeren bir bildirim alacaksınız. Azure VMware çözümünde anahtar yükseltme işlemleri ve özellikleri hakkında daha fazla bilgi için bkz. [Azure VMware çözümü özel bulut güncelleştirmeleri ve yükseltmeleri](concepts-upgrades.md).
+Azure VMware çözümü, Mart 2021 ' den itibaren önemli güncelleştirmeleri uygular. Azure hizmet durumu ile bakım zaman çizelgesini içeren bir bildirim alırsınız. Daha fazla bilgi için bkz. [Azure VMware çözümü özel bulut güncelleştirmeleri ve yükseltmeleri](concepts-upgrades.md).
+
+## <a name="march-24-2021"></a>24 Mart 2021
+Tüm yeni Azure VMware çözümü özel bulutları, VMware vCenter Version 6.7 U3l ve NSX-T Version 3.1.1 ile dağıtılır. Var olan tüm özel bulutlar güncelleştirilir ve yukarıda bahsedilen sürümlere **2021 Haziran 'dan** yükseltilir.
+
+Planlı bakım tarihi ve saatine sahip bir e-posta alacaksınız. Bir yükseltmeyi yeniden zamanlayabilirsiniz. E-posta Ayrıca yükseltilen bileşen, iş yükleri üzerindeki etkisi, özel bulut erişimi ve diğer Azure hizmetleri için de ayrıntılar sağlar.  Yükseltmeden önceki bir saat, bir bildirim ve sonra tamamlandığında yeniden gönderilir.
 
 ## <a name="march-15-2021"></a>15 Mart 2021 
 
-- Azure VMware çözüm hizmeti, 2021 Mart ' e kadar, özel bulutunuzda vCenter Server 'ı güncelleştirme 3l sürümünü 6,7 vCenter Server.
+- Azure VMware çözüm hizmeti, özel bulutunuzda vCenter Server 'ı vCenter Server 6,7 güncelleştirme 3l sürümüne güncelleştirmek için **19 mart 2021 ' e kadar** bakım işi yapacaktır.
 
-- Bu süre boyunca VMware vCenter kullanılamaz ve VM 'Leri yönetemeyeceksiniz (durdurma, başlatma, oluşturma, silme). Özel bulut Ölçeklendirmesi (sunucu ve küme ekleme/kaldırma) de kullanılamaz. VMware yüksek kullanılabilirlik (HA), mevcut VM 'Ler için koruma sağlamak üzere çalışmaya devam edecektir. 
+- VMware vCenter, bu süre içinde kullanılamayacak.  Bu nedenle, VM 'lerinizi (durdurma, başlatma, oluşturma, silme) veya özel bulut ölçeklendirmeyi (sunucu ve küme ekleme/kaldırma) yönetemeyeceksiniz. Ancak, VMware yüksek kullanılabilirlik (HA), mevcut VM 'Leri korumak için çalışmaya devam edecektir. 
  
 Bu vCenter sürümü hakkında daha fazla bilgi için bkz. [VMware vCenter Server 6,7 güncelleştirme 3l sürüm notları](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-vcenter-server-67u3l-release-notes.html).
 
 ## <a name="march-4-2021"></a>4 Mart 2021
 
-- Azure VMware çözümleri, 2021 Mart ' e kadar, var olan özel bulutlardaki ESXi 'e [VMware ESXi 6,7, Patch Release ESXi670-202011002](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/esxi670-202011002.html)' e kadar olan düzeltmeleri uygular.
+- Azure VMware çözümü, **15 mart 2021 ' e kadar** [6,7 VMware ESXi, düzeltme eki ESXi670-202011002 sürümünü](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/esxi670-202011002.html) mevcut Privates uygulayacak.
 
-- VSphere Stack için, [VMSA-2021-0002](https://www.vmware.com/security/advisories/VMSA-2021-0002.html)tarihine kadar belgelenen geçici çözümler, 15 Mart 2021 tarihine kadar de uygulanır.
+- VSphere Stack için, [VMSA-2021-0002](https://www.vmware.com/security/advisories/VMSA-2021-0002.html)tarihine kadar belgelenen geçici çözümler, **15 Mart 2021** tarihine kadar de uygulanır.
 
 >[!NOTE]
 >Bu, kesintiye uğramamış ve Azure VMware hizmetleri 'ni veya iş yüklerini etkilemeyecek olmalıdır. Bakım sırasında, dvports üzerinde _kayıp ağ bağlantısı_ ve _dvports üzerinde kayıp yukarı_ bağlantı gibi çeşitli VMware uyarıları, vCenter 'da görünür ve bakım ilerledikçe otomatik olarak temizlenir.
 
 ## <a name="post-update"></a>Güncelleştirme sonrası
 Tamamlandıktan sonra, VMware bileşenlerinin daha yeni sürümleri görüntülenir. Herhangi bir sorunla karşılaşırsanız veya herhangi bir sorunuz olursa destek bileti açarak destek ekibimize başvurun.
-
-
-
-
-
