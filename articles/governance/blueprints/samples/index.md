@@ -1,14 +1,14 @@
 ---
 title: Şema örnekleri dizini
 description: Azure Blueprints ile ortamlar, ilkeler ve Bulut Benimseme Çerçevesi temelleri dağıtmak için uyumluluk ve standart örnek dizini.
-ms.date: 03/11/2021
+ms.date: 03/24/2021
 ms.topic: sample
-ms.openlocfilehash: 06dc65ca601c938f6610df3ed22b4ea0f3826208
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 1758c684dca93089c69c1a06ed77b60a09f6579c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799471"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558049"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints örnekleri
 
@@ -24,6 +24,7 @@ Aşağıdaki tabloda Azure Blueprints'e ait örneklerin bağlantıları yer alı
 | [Kanada Federal PBMM](./canada-federal-pbmm/index.md) | Kanada Federal Tarafından Korunan B, Orta Düzeyde Bütünlük, Orta Düzeyde Kullanılabilirlik (PBMM) için uyumluluğa yönelik koruma sağlar. |
 | [CIS Microsoft Azure temel geçişleri kıyaslama v 1.3.0](./cis-azure-1-3-0.md)| , Yönetim ve kıyaslama v 1.3.0 önerilerini temel alarak Microsoft Azure CIS ile uyumlu olmanıza yardımcı olacak bir ilke kümesi sağlar. |
 | [CIS Microsoft Azure Yönetim Temelleri Kıyaslama v1.1.0](./cis-azure-1-1-0.md)| , Yönetim ve kıyaslama v 1.1.0 önerilerini temel alarak Microsoft Azure CIS ile uyumlu olmanıza yardımcı olacak bir ilke kümesi sağlar. |
+| [CMMC düzey 3](./cmmc-l3.md)| CMMC düzey 3 ile uyumluluk için guardrayları sağlar. |
 | [DoD Etki Düzeyi 4](./dod-impact-level-4/index.md) | DoD Etki Düzeyi 4 ile uyumluluk sağlamaya yardımcı olmak için bir dizi ilke sağlar. |
 | [DoD Etki Düzeyi 5](./dod-impact-level-5/index.md) | DoD Etki Düzeyi 5 ile uyumluluk sağlamaya yardımcı olmak için bir dizi ilke sağlar. |
 | [FedRAMP Moderate](./fedramp-m/index.md) | FedRAMP Moderate ile uyumluluk sağlamaya yardımcı olmak için bir dizi ilke sağlar. |

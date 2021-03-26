@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 019f0bc98de45fa1fe6f9b8c72ef74beb50ea2c2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 801d810a82e4e484ca1ab30c5c6d510860dbab6b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103017367"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566039"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services sürüm notları
 
@@ -64,7 +64,7 @@ Sürüm 3 şunları sağlar:
 
 #### <a name="action-required"></a>Eylem gerekiyor:
 
-İş yüklerinizde kesinti olasılığını en aza indirmek için, sürüm 2 API 'SI ve SDK 'Ları sürüm 3 API 'sine ve SDK 'sına 2024 Şubat ' den önce olan [geçiş kılavuzunu](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409) gözden geçirin.
+İş yüklerinizde kesinti olasılığını en aza indirmek için, sürüm 2 API 'SI ve SDK 'Ları sürüm 3 API 'sine ve SDK 'sına 2024 Şubat ' den önce olan [geçiş kılavuzunu](../latest/migrate-v-2-v-3-migration-introduction.md) gözden geçirin.
 **29 şubat 2024**' den sonra, Azure Media Services sürüm 2 REST API, ARM hesap yönetimi apı sürümü 2015-10-01 veya sürüm 2 .NET istemci SDK 'larından trafiği kabul etmez. Buna sürüm 2 API 'sini çağırabilen 3. taraf açık kaynaklı istemci SDK 'LARı dahildir.  
 
 Bkz. resmi [Azure güncelleştirmeleri duyurusu](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/).

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 887aaf32592c74a5884916bc7ad63d79544fb554
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7deba32eb9d0e098b75f98cc81fac2c01b8bb7f8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99575864"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567262"
 ---
 # <a name="azure-stack-edge-blob-storage-requirements"></a>Azure Stack Edge BLOB depolama gereksinimleri
 
@@ -70,7 +70,7 @@ PHP istemcisini besteci aracılığıyla yüklemek için:
 
 ## <a name="endpoint-declaration"></a>Uç nokta bildirimi
 
-Azure Stack Edge BLOB depolama SDK 'Sı, uç nokta son eki- `<device serial number>.microsoftdatabox.com` Azure Stack Edge etki alanını tanımlar. Blob hizmeti uç noktası hakkında daha fazla bilgi için [Azure Stack Edge Pro GPU ile depolama hesapları aracılığıyla veri aktarımı](azure-stack-edge-j-series-deploy-add-storage-accounts.md)konusuna gidin.
+Azure Stack Edge BLOB depolama SDK 'Sı, uç nokta son eki- `<device serial number>.microsoftdatabox.com` Azure Stack Edge etki alanını tanımlar. Blob hizmeti uç noktası hakkında daha fazla bilgi için [Azure Stack Edge Pro GPU ile depolama hesapları aracılığıyla veri aktarımı](./azure-stack-edge-gpu-deploy-add-storage-accounts.md)konusuna gidin.
 
 
 ## <a name="examples"></a>Örnekler

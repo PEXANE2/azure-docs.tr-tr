@@ -3,12 +3,12 @@ title: Eğitim-şirket içi ortamlarından özel bir buluta
 description: Azure VMware çözümünde özel buluta ExpressRoute Global Reach eşlemesi oluşturmayı öğrenin.
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 08a461ab7d441eb813d435086dfcea121ef4a7f1
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 59ddc2dd4aed850328807a4543d2fabd6f5a99f1
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786915"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564509"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Öğretici: şirket içi ortamlar için özel bir buluta
 
@@ -71,7 +71,7 @@ ExpressRoute Global Reach kullanarak iki ExpressRoute bağlantı hattı arasınd
 [CLI komutlarını](../expressroute/expressroute-howto-set-global-reach-cli.md) , şirket içi ortamlar arasında Azure VMware Çözüm özel bulutuna yönelik expressroute Global Reach eşlemeyi yapılandırmanıza yardımcı olacak belirli Ayrıntılar ve örneklerle genişlettik.
 
 >[!TIP]
->Azure CLı komut çıkışında bu yönergeler, yalnızca gerekli sonuçları göstermek için bir JMESPath sorgusu yürütmek üzere bir [ `–query` bağımsız değişken](https://docs.microsoft.com/cli/azure/query-azure-cli) kullanabilir.
+>Azure CLı komut çıkışında bu yönergeler, yalnızca gerekli sonuçları göstermek için bir JMESPath sorgusu yürütmek üzere bir [ `–query` bağımsız değişken](/cli/azure/query-azure-cli) kullanabilir.
 
 1. Şirket içi ExpressRoute devresi ile aynı aboneliği kullanarak [Azure Portal](https://portal.azure.com) oturum açın. 
 

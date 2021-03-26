@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 29cc0a3201b7c4ce1c685029de2a40f115b23e82
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fa91644eab9d28ffb20de8ec8c0fe00488922b67
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606965"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563387"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -80,7 +80,7 @@ Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyd
 
 ### <a name="how-do-i-retrieve-log-data"></a>Günlük verilerini almak Nasıl yaparım??
 Tüm veriler, kusto sorgu dili (KQL) kullanılarak yazılmış bir günlük sorgusu kullanarak bir Log Analytics çalışma alanından alınır. Kendi sorgularınızı yazabilir veya belirli bir uygulama veya hizmete ait günlük sorgularını içeren çözüm ve Öngörüler kullanabilirsiniz. Bkz. [Azure izleyici 'de günlük sorgularına genel bakış](logs/log-query-overview.md).
-p
+
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Log Analytics çalışma alanındaki verileri silebilir miyim?
 Veriler, [bekletme dönemine](logs/manage-cost-storage.md#change-the-data-retention-period)göre çalışma alanından kaldırılır. Gizlilik veya uyumluluk nedenleriyle belirli verileri silebilirsiniz. Daha fazla bilgi için bkz. [özel verileri dışarı ve silme](logs/personal-data-mgmt.md#how-to-export-and-delete-private-data) .
 
@@ -828,26 +828,27 @@ Bu koşulun altında, VM 'yi açıp, zaten VM 'ye yüklendikten sonra bile sol b
 ## <a name="sql-insights-preview"></a>SQL Insights (Önizleme)
 
 ### <a name="what-versions-of-sql-server-are-supported"></a>Hangi SQL Server sürümleri desteklenir?
-Desteklenen SQL sürümleri için [Desteklenen sürümler](insights/sql-insights-overview.md#supported-versions) bölümüne bakın.
+SQL Server 2012 ve daha yeni sürümleri destekliyoruz. Daha fazla ayrıntı için bkz. [Desteklenen sürümler](insights/sql-insights-overview.md#supported-versions) .
 
 ### <a name="what-sql-resource-types-are-supported"></a>Hangi SQL kaynak türleri destekleniyor?
+- Azure SQL Veritabanı
+- Azure SQL Yönetilen Örnek
+- Azure sanal makinelerinde SQL Server ( [SQL sanal makine](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) sağlayıcısına kayıtlı sanal makinelerde çalışan SQL Server)
+- Azure VM 'Leri ( [SQL sanal makine](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) sağlayıcısına kayıtlı olmayan sanal makinelerde çalışan SQL Server)
 
-- Azure SQL Veritabanı. Bir Elastik Havuz veritabanları değil yalnızca tek veritabanı.
-- Azure SQL Yönetilen Örnek 
-- SQL Server yüklü Azure SQL sanal makineleri ([Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms), [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create)) ve Azure sanal makineleri.
+Daha ayrıntılı bilgi edinmek ve destek veya sınırlı destek içermeyen senaryolar hakkında ayrıntılar için bkz. [Desteklenen sürümler](insights/sql-insights-overview.md#supported-versions) .
 
-### <a name="what-operating-systems-for-the-machine-running-sql-server-are-supported"></a>SQL Server çalıştıran makine için hangi işletim sistemleri destekleniyor?
-Desteklenen SQL sürümünün çalıştırılmasını destekleyen herhangi bir işletim sistemi.
+### <a name="what-operating-systems-for-the-virtual-machine-running-sql-server-are-supported"></a>SQL Server çalıştıran sanal makine için hangi işletim sistemleri destekleniyor?
+Azure sanal makinelerinde SQL Server için [Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms) ve [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create) belgeleri tarafından belirtilen tüm işletim sistemlerini destekliyoruz.
 
-### <a name="what-operating-system-for-the-remote-monitoring-server-are-supported"></a>Uzaktan izleme sunucusu için hangi işletim sistemi destekleniyor?
+### <a name="what-operating-system-for-the-monitoring-virtual-machine-are-supported"></a>İzleme sanal makinesi için hangi işletim sistemi destekleniyor?
+Ubuntu 18,04 Şu anda izleme sanal makinesi için desteklenen tek işletim sistemidir.
 
-Ubuntu 18,04 Şu anda desteklenen tek işletim sistemidir.
-
-### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>İzleme verilerinin Log Analytics nerede depolanacağı 
-Tüm izleme verileri, **ınsightsölçümlerini** tablosunda depolanır. **Kaynak** sütununun *Solutions.AZM.MS/telegraf/SqlInsights* değeri vardır. **Ad alanı** sütununda *sqlserver_* başlayan değerler vardır.
+### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>İzleme verileri Log Analytics içinde depolanacak mi?
+Tüm izleme verileri, **ınsightsölçümlerini** tablosunda depolanır. **Kaynak** sütununun değeri vardır `solutions.azm.ms/telegraf/SqlInsights` . **Ad alanı** sütununda ile başlayan değerler vardır `sqlserver_` .
 
 ### <a name="how-often-is-data-collected"></a>Veriler ne sıklıkta toplanır? 
-Farklı verilerin toplandığı sıklığa ilişkin ayrıntılar için bkz. [SQL Insights tarafından toplanan veriler](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights) .
+Veri toplama sıklığı özelleştirilebilir. Varsayılan sıklıklardan Ayrıntılar için bkz. [SQL Insights tarafından toplanan veriler](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights) ve frekansları özelleştirme yönergeleri için bkz. [SQL izleme profili oluşturma](../insights/../azure-monitor/insights/sql-insights-enable.md#create-sql-monitoring-profile) . 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sorunuz burada yanıtlanmazsa, ek sorular ve yanıtlar için aşağıdaki forumlara başvurabilirsiniz.

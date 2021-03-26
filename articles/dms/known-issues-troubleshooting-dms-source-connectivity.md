@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 93ac6ae3c8aed61557a239bb9c84d3587dce1daa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cffa8d9a0647ff5fe970801d5da98e23be0b2aaf
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94962340"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567334"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>Kaynak veritabanlarına bağlanırken DMS hatalarını giderme
 
@@ -74,8 +74,8 @@ Kaynak AWS RDS SQL Server veritabanına bağlanma ile ilgili olası sorunlar ve 
 | **Hata 53** -SQL bağlantısı başarısız oldu. SQL Server ile bağlantı kurulmaya çalışılırken ağ ile ilişkili veya örneğe özgü bir hata oluştu. Sunucu bulunamadı veya erişilebilir durumda değil. Örnek adının doğru olduğundan ve SQL Server uzak bağlantılara izin verecek şekilde yapılandırıldığından emin olun. (sağlayıcı: adlandırılmış kanallar sağlayıcısı, hata: 40-SQL Server bağlantı açılamıyor | Hizmet kaynak sunucuya bağlanamıyorsa bu hata oluşur. Sorunu gidermek için, bu tablonun altındaki notta listelenen sorun giderme belgelerine başvurun ve sonra yeniden deneyin. |
 | **Hata 18456** -oturum açma başarısız. ' {User} ' kullanıcısı için oturum açma başarısız | Hizmet, kaynak veritabanına, belirtilen T-SQL kimlik bilgileriyle bağlanamıyorsa bu hata oluşur. Sorunu gidermek için, girilen kimlik bilgilerini doğrulayın. Ayrıca, bu tablonun altındaki notta listelenen [MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017) veya sorun giderme belgelerine de başvurabilirsiniz ve yeniden deneyin. |
 | **Hata 87** -bağlantı dizesi geçerli değil. SQL Server ile bağlantı kurulmaya çalışılırken ağ ile ilişkili veya örneğe özgü bir hata oluştu. Sunucu bulunamadı veya erişilebilir değildi. Örnek adının doğru olduğundan ve SQL Server uzak bağlantılara izin verecek şekilde yapılandırıldığından emin olun. (sağlayıcı: SQL ağ arabirimleri, hata: 25 bağlantı dizesi geçerli değil) | Bu hata, hizmet geçersiz bir bağlantı dizesi nedeniyle kaynak sunucuya bağlanamıyorsa oluşur. Sorunu gidermek için, belirtilen bağlantı dizesini doğrulayın. Sorun devam ederse, bu tablonun altındaki notta listelenen sorun giderme belgelerine başvurun ve sonra yeniden deneyin. |
-| **Hata-sunucu sertifikasına güvenilmiyor.** Sunucuyla başarıyla bağlantı kurdu, ancak oturum açma işlemi sırasında bir hata oluştu. (sağlayıcı: SSL sağlayıcısı, hata: 0-sertifika zinciri, güvenilmeyen bir yetkili tarafından verilmiş.) | Kullanılan sertifika güvenilir değilse bu hata oluşur. Sorunu gidermek için, güvenilir olabilecek bir sertifika bulmanız ve sonra sunucuda etkinleştirebilmeniz gerekir. Alternatif olarak, bağlanırken güven sertifikası seçeneğini de belirleyebilirsiniz. Bu eylemi yalnızca kullanılan sertifika hakkında bilginiz varsa ve ona güveniyorsanız yapın. <br> Kendinden imzalı bir sertifika kullanılarak şifrelenen TLS bağlantıları güçlü güvenlik sağlamaz; Bu kişiler, ortadaki adam saldırılarına maruz kalabilir. Bir üretim ortamında veya internet 'e bağlı sunuculardaki otomatik olarak imzalanan sertifikalar kullanarak TLS 'ye güvenmeyin. <br> Daha fazla bilgi için, bkz. [MICROSOFT SQL Server DB örneği veya öğreticiyle SSL kullanmak](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.Concepts.General.SSL.Using.html) IÇIN, [DMS kullanarak RDS SQL Server 'Yi Azure 'a geçirin](./tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md#prerequisites). |
-| **Hata 300** -Kullanıcı gerekli izinlere sahip değil. ' {Database} ' adlı veritabanındaki ' {Server} ' nesnesi üzerinde sunucu durumunu görüntüle izni reddedildi | Bu hata, kullanıcının geçiş gerçekleştirme izni yoksa oluşur. Sorunu gidermek için bkz. [sunucu Izinleri verme-Transact-SQL](/sql/t-sql/statements/grant-server-permissions-transact-sql?view=sql-server-2017) veya öğretici: daha fazla ayrıntı için [DMS kullanarak RDS SQL Server Azure 'a geçirme](./tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md#prerequisites) . |
+| **Hata-sunucu sertifikasına güvenilmiyor.** Sunucuyla başarıyla bağlantı kurdu, ancak oturum açma işlemi sırasında bir hata oluştu. (sağlayıcı: SSL sağlayıcısı, hata: 0-sertifika zinciri, güvenilmeyen bir yetkili tarafından verilmiş.) | Kullanılan sertifika güvenilir değilse bu hata oluşur. Sorunu gidermek için, güvenilir olabilecek bir sertifika bulmanız ve sonra sunucuda etkinleştirebilmeniz gerekir. Alternatif olarak, bağlanırken güven sertifikası seçeneğini de belirleyebilirsiniz. Bu eylemi yalnızca kullanılan sertifika hakkında bilginiz varsa ve ona güveniyorsanız yapın. <br> Kendinden imzalı bir sertifika kullanılarak şifrelenen TLS bağlantıları güçlü güvenlik sağlamaz; Bu kişiler, ortadaki adam saldırılarına maruz kalabilir. Bir üretim ortamında veya internet 'e bağlı sunuculardaki otomatik olarak imzalanan sertifikalar kullanarak TLS 'ye güvenmeyin. <br> Daha fazla bilgi için, bkz. [MICROSOFT SQL Server DB örneği veya öğreticiyle SSL kullanmak](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.Concepts.General.SSL.Using.html) IÇIN, [DMS kullanarak RDS SQL Server 'Yi Azure 'a geçirin](./index.yml). |
+| **Hata 300** -Kullanıcı gerekli izinlere sahip değil. ' {Database} ' adlı veritabanındaki ' {Server} ' nesnesi üzerinde sunucu durumunu görüntüle izni reddedildi | Bu hata, kullanıcının geçiş gerçekleştirme izni yoksa oluşur. Sorunu gidermek için bkz. [sunucu Izinleri verme-Transact-SQL](/sql/t-sql/statements/grant-server-permissions-transact-sql?view=sql-server-2017) veya öğretici: daha fazla ayrıntı için [DMS kullanarak RDS SQL Server Azure 'a geçirme](./index.yml) . |
 
 > [!NOTE]
 > Bir kaynak AWS RDS SQL Server bağlanmayla ilgili sorunları giderme hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
@@ -85,7 +85,7 @@ Kaynak AWS RDS SQL Server veritabanına bağlanma ile ilgili olası sorunlar ve 
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-* [Azure SQL veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](./known-issues-azure-sql-online.md)
+* [Azure SQL veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](./index.yml)
 * [MySQL için Azure veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](./known-issues-azure-mysql-online.md)
 * [PostgreSQL için Azure veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](./known-issues-azure-postgresql-online.md)
 

@@ -3,16 +3,16 @@ title: gRPC uzantı Protokolü-Azure
 description: Bu makalede, canlı video analizi modülü ile AI veya CV özel uzantısı arasında ileti göndermek için gRPC uzantı protokolünü kullanma hakkında bilgi edineceksiniz.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: f7b5be859702199b07dfa0d6a43a09ca8ff0c42f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8d153b472e54b221b60a2b584043ffaf68e8ff82
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455865"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565818"
 ---
 # <a name="grpc-extension-protocol"></a>gRPC uzantısı protokolü
 
-IoT Edge üzerinde canlı video analizi, bir [grafik uzantısı düğümü](/azure/media-services/live-video-analytics-edge/media-graph-extension-concept)aracılığıyla medya grafiği işleme yeteneklerini genişletmenizi sağlar. GRPC uzantı işlemcisini uzantı düğümü olarak kullanırsanız, canlı video analizi modülü ile AI veya CV modülünüz arasındaki iletişim, gRPC tabanlı, yüksek performanslı yapılandırılmış protokoldedir.
+IoT Edge üzerinde canlı video analizi, bir [grafik uzantısı düğümü](./media-graph-extension-concept.md)aracılığıyla medya grafiği işleme yeteneklerini genişletmenizi sağlar. GRPC uzantı işlemcisini uzantı düğümü olarak kullanırsanız, canlı video analizi modülü ile AI veya CV modülünüz arasındaki iletişim, gRPC tabanlı, yüksek performanslı yapılandırılmış protokoldedir.
 
 Bu makalede, canlı video analizi modülü ile AI veya CV özel uzantısı arasında ileti göndermek için gRPC uzantı protokolünü kullanma hakkında bilgi edineceksiniz.
 
@@ -25,7 +25,7 @@ GRPC oturumu, gRPC istemcisinden TCP/TLS bağlantı noktası üzerinden gRPC sun
 
 Tek bir oturumda: istemci, gRPC akış oturumu üzerinde [prototipsiz](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) bir ileti olarak bir medya akış tanımlayıcısı ve ardından sunucuya video çerçeveleri gönderir. Sunucu akış tanımlayıcısını doğrular, video çerçevesini analiz edin ve çıkarım sonuçlarını bir prototipme iletisi olarak döndürür. 
 
-Yanıtların, [çıkarım meta veri şeması nesne modeli](/azure/media-services/live-video-analytics-edge/inference-metadata-schema)için tanımlanmış önceden oluşturulan şemanın ardından geçerli JSON belgeleri kullanılarak döndürülmesi önemle önerilir. Bu, diğer bileşenlerle birlikte çalışabilirliğini ve canlı video analizi modülüne eklenen olası gelecekteki özellikleri daha iyi sağlar.
+Yanıtların, [çıkarım meta veri şeması nesne modeli](./inference-metadata-schema.md)için tanımlanmış önceden oluşturulan şemanın ardından geçerli JSON belgeleri kullanılarak döndürülmesi önemle önerilir. Bu, diğer bileşenlerle birlikte çalışabilirliğini ve canlı video analizi modülüne eklenen olası gelecekteki özellikleri daha iyi sağlar.
 
 ![gRPC uzantı sözleşmesi](./media/grpc-extension-protocol/grpc.png)
 

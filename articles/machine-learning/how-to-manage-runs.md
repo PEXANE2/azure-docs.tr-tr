@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 26880fd6e3688dd95cc9f16072a35d5c4ce7c31e
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: f148a5b267edd3fc1dd33ef17d5ad01005b4a903
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110279"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566294"
 ---
 # <a name="start-monitor-and-track-run-history"></a>Çalıştırma geçmişini başlatma, izleme ve izleme 
 
@@ -211,7 +211,7 @@ Aşağıdaki öğeler gerekir:
     1. **Hedef ayrıntılarında** **Log Analytics gönder çalışma alanını** seçin ve **aboneliği** ve **Log Analytics çalışma alanını** belirtin. 
 
     > [!NOTE]
-    > **Azure Log Analytics çalışma alanı** , **Azure Machine Learning hizmeti çalışma alanından** farklı bir Azure kaynağı türüdür. Bu listede hiçbir seçenek yoksa, [bir Log Analytics çalışma alanı oluşturabilirsiniz](https://docs.microsoft.com/azure/azure-monitor/logs/quick-create-workspace). 
+    > **Azure Log Analytics çalışma alanı** , **Azure Machine Learning hizmeti çalışma alanından** farklı bir Azure kaynağı türüdür. Bu listede hiçbir seçenek yoksa, [bir Log Analytics çalışma alanı oluşturabilirsiniz](../azure-monitor/logs/quick-create-workspace.md). 
     
     ![E-posta bildiriminin kaydedileceği yer](./media/how-to-manage-runs/log-location.png)
 
@@ -219,7 +219,7 @@ Aşağıdaki öğeler gerekir:
 
     ![Yeni uyarı kuralı](./media/how-to-manage-runs/new-alert-rule.png)
 
-1. Bkz. [Azure izleyici kullanarak günlük uyarıları oluşturma ve yönetme](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-log).
+1. Bkz. [Azure izleyici kullanarak günlük uyarıları oluşturma ve yönetme](../azure-monitor/alerts/alerts-log.md).
 
 ## <a name="run-description"></a>Çalıştırma açıklaması 
 

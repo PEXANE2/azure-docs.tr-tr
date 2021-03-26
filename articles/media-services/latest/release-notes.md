@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9e5a6737d2e37392efd305910ff5370adc84940f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9fe49f44e157708c3083e2c73757988877fbfcb5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104596748"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563472"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -86,9 +86,9 @@ Sürüm 3 şunları sağlar:
 - ARM REST API 'Leri, .NET Core için istemci SDK 'Ları, Node.js, Python, Java, Go ve Ruby.
 - Müşteri tarafından yönetilen anahtarlar, güvenilen depolama tümleştirmesi, özel bağlantı desteği ve [daha fazlası](https://docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
 
-#### <a name="action-required"></a>Eylem gerekiyor
+#### <a name="action-required"></a>Eylem Gerekiyor
 
-İş yüklerinizde kesinti olasılığını en aza indirmek için, sürüm 2 API 'SI ve SDK 'Ları sürüm 3 API 'sine ve SDK 'sına 2024 Şubat ' den önce olan [geçiş kılavuzunu](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409) gözden geçirin.
+İş yüklerinizde kesinti olasılığını en aza indirmek için, sürüm 2 API 'SI ve SDK 'Ları sürüm 3 API 'sine ve SDK 'sına 2024 Şubat ' den önce olan [geçiş kılavuzunu](./migrate-v-2-v-3-migration-introduction.md) gözden geçirin.
 **29 şubat 2024**' den sonra, Azure Media Services sürüm 2 REST API, ARM hesap yönetimi apı sürümü 2015-10-01 veya sürüm 2 .NET istemci SDK 'larından trafiği kabul etmez. Buna sürüm 2 API 'sini çağırabilen 3. taraf açık kaynaklı istemci SDK 'LARı dahildir.  
 
 Bkz. resmi [Azure güncelleştirmeleri duyurusu](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/).
@@ -134,7 +134,7 @@ Node.js örnekleri en son isomorphic SDK 'sını kullanacak şekilde güncelleş
 
 Canlı olaylar artık "Stand" için daha düşük maliyetli faturalandırma modunu desteklemektedir. Bu, müşterilerin "etkin havuzlar" oluşturmak için daha düşük bir maliyetle canlı olayları önceden ayırmasını sağlar. Müşteriler daha sonra, oluşturma sırasında soğuk 'ten başlayarak çalışır duruma geçiş yapmak için tek başına canlı olayları kullanabilir.  Bu, kanalın önemli ölçüde başlatılması için geçen süreyi azaltır ve daha düşük bir fiyat modunda çalışan makinelerin hızlı etkin havuz ayırması için izin verir.
 En son [fiyatlandırma ayrıntılarına bakın](https://azure.microsoft.com/pricing/details/media-services).
-Bekleme durumu hakkında daha fazla bilgi ve canlı olaylardaki diğer durumlar hakkında daha fazla bilgi için bkz [. canlı olay durumları ve faturalama makalesi.](https://docs.microsoft.com/azure/media-services/latest/live-event-states-billing)
+Bekleme durumu hakkında daha fazla bilgi ve canlı olaylardaki diğer durumlar hakkında daha fazla bilgi için bkz [. canlı olay durumları ve faturalama makalesi.](./live-event-states-billing.md)
 
 ## <a name="december-2020"></a>Aralık 2020
 

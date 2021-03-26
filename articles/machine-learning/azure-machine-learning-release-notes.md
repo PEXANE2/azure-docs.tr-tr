@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 04ed2e76797474a65d5c7c669066926225c1c1f9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a21411e4d1ee30e4f79687bfc07a53575497ca1f
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471749"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562231"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -56,9 +56,9 @@ __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine ya
 ## <a name="2021-02-28"></a>2021-02-28
 ### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Azure Machine Learning Studio Not defteri deneyimi (Şubat güncelleştirmesi)
 + **Yeni özellikler**
-  + [Yerel Terminal (GA)](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal). Kullanıcılar artık tümleşik Terminal aracılığıyla bir tümleşik terminale ve git işlemine erişime sahip olur.
+  + [Yerel Terminal (GA)](./how-to-access-terminal.md). Kullanıcılar artık tümleşik Terminal aracılığıyla bir tümleşik terminale ve git işlemine erişime sahip olur.
   + [Not defteri parçacıkları (Önizleme)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). Ortak Azure ML kodu alıntıları artık parmaklarınızın ucunda. Araç çubuğu aracılığıyla erişilebilen kod parçacıkları paneline gidin veya Ctrl + Space ' i kullanarak kod içi parçacıkları menüsünü etkinleştirin.  
-  + [Klavye kısayolları](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys). Jupyter 'da kullanılabilen klavye kısayollarıyla tam eşlik. 
+  + [Klavye kısayolları](./how-to-run-jupyter-notebooks.md#useful-keyboard-shortcuts). Jupyter 'da kullanılabilen klavye kısayollarıyla tam eşlik. 
   + Hücre parametrelerini belirtin. Bir not defterindeki hücrelerin parametre hücreleri olduğunu ve Işlem örneği üzerinde [Papermill](https://github.com/nteract/papermill) aracılığıyla parametreli not defterlerini çalıştırabileceği kullanıcıları gösterir.
   + Terminal ve çekirdek oturum Yöneticisi: kullanıcılar, işlem sırasında çalışan tüm kerls ve Terminal oturumlarını yönetebilecektir.
   + Paylaşma düğmesi. Kullanıcılar artık dosyayı sağ tıklayıp paylaşma düğmesini kullanarak not defteri Dosya Gezgininde herhangi bir dosyayı paylaşabilir.
@@ -68,7 +68,7 @@ __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine ya
   + Geliştirilmiş sayfa yükleme süreleri
   + Geliştirilmiş performans 
   + Gelişmiş hız ve çekirdek güvenilirliği
-  + Tüm devam eden [Işlem örneği işlemlerinin](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#status-indicators)ilerlemesini göstermek için dönen tekerlek eklendi.
+  + Tüm devam eden [Işlem örneği işlemlerinin](./how-to-run-jupyter-notebooks.md#status-indicators)ilerlemesini göstermek için dönen tekerlek eklendi.
   + Dosya Gezgini 'ne sağ tıklayın. Dosya işlemlerini açmak için herhangi bir dosyaya sağ tıklayın. 
 
 
@@ -79,7 +79,7 @@ __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine ya
   + **azureml-core**
     + [Deneysel özellik] SYNAPSE çalışma alanını bir bağlı hizmet olarak AML 'ye bağlama desteği ekleme
     + [Deneysel özellik] SYNAPSE Spark havuzunu bir işlem olarak AML 'ye eklemek için destek ekleme
-    + [Deneysel özellik] Kimlik tabanlı veri erişimi için destek ekleyin. Kullanıcılar, kimlik bilgilerini sağlamadan veri deposunu veya veri kümelerini kaydedebilir. Böyle bir durumda, kimlik doğrulaması için kullanıcıların AAD belirteci veya yönetilen kimliği işlem hedefini kullanılacaktır. [Daha fazla bilgi edinin](https://aka.ms/data-access).
+    + [Deneysel özellik] Kimlik tabanlı veri erişimi için destek ekleyin. Kullanıcılar, kimlik bilgilerini sağlamadan veri deposunu veya veri kümelerini kaydedebilir. Böyle bir durumda, kimlik doğrulaması için kullanıcıların AAD belirteci veya yönetilen kimliği işlem hedefini kullanılacaktır. [Daha fazla bilgi edinin](./how-to-identity-based-data-access.md).
   + **azureml-pipeline-steps**
     + [Deneysel özellik] [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep) için destek ekleme
   + **azureml-synapse**

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: ecb9d1e25647e197614817116921140f0d7fbdf4
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 54c1b8c189264fb2e127ff04b0fdd9125f4c9aeb
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105024974"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563149"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-database"></a>Geçişe genel bakış: Azure SQL veritabanı 'na SQL Server
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -104,7 +104,7 @@ Aşağıdaki tabloda önerilen geçiş araçları listelenmektedir:
 
 |Teknoloji | Açıklama|
 |---------|---------|
-| [Azure Geçişi](/azure/migrate/how-to-create-azure-sql-assessment) | Azure SQL için Azure geçişi, VMware 'de SQL verilerinizi keşfetmenize ve değerlendirmenize, Azure SQL dağıtım önerileri, hedef boyutlandırma ve aylık tahminler sağlar. | 
+| [Azure Geçişi](../../../migrate/how-to-create-azure-sql-assessment.md) | Azure SQL için Azure geçişi, VMware 'de SQL verilerinizi keşfetmenize ve değerlendirmenize, Azure SQL dağıtım önerileri, hedef boyutlandırma ve aylık tahminler sağlar. | 
 |[Data Migration Yardımcısı (DMA)](/sql/dma/dma-migrateonpremsqltosqldb)|Data Migration Yardımcısı, Azure SQL veritabanı 'na (şema ve veri) yönelik SQL Server ve geçişlere yönelik sorunsuz değerlendirmeler sağlayan bir masaüstü aracıdır. Araç, şirket içi veya kaynak veritabanlarınıza bağlantısı olan yerel makinenizde bir sunucuya yüklenebilir. Geçiş işlemi, kaynak ve hedef veritabanındaki nesneler arasındaki mantıksal bir veri taşıdır. </br> -Tek veritabanlarını geçirme (şema ve veri)|
 |[Azure Veritabanı Geçiş Hizmeti (DMS)](../../../dms/tutorial-sql-server-to-azure-sql.md)|PowerShell ile Azure portal veya otomatik kullanarak SQL Server veritabanlarınızı Azure SQL veritabanı 'na geçirebilen birinci taraf bir Azure hizmeti. Azure DMS, kaynak SQL Server veritabanlarınıza bağlantı olduğundan emin olmak için sağlama sırasında tercih edilen bir Azure sanal ağı (VNet) seçmenizi gerektirir. </br> -Tek veritabanlarını veya ölçeklendirmeye geçirin. |
 | | |
@@ -195,7 +195,7 @@ Gelişmiş Yönetim ve güvenlik özelliklerine ek olarak SQL veritabanı, [iş 
 
 Ek Yardım için, gerçek dünya geçiş projeleri için geliştirilen aşağıdaki kaynaklara bakın.
 
-|Varlık  |Açıklama  |
+|Varlık  |Description  |
 |---------|---------|
 |[Veri iş yükü değerlendirmesi modeli ve aracı](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Bu araç, belirli bir iş yükü için önerilen "en uygun" hedef platformları, bulut hazırlığı ve uygulama/veritabanı düzeltme düzeyini sağlar. Otomatikleştirilmiş ve Tekdüzen hedef platformu karar süreci sağlayarak büyük Emlak değerlendirmelerine yardımcı olan basit, tek tıklamayla hesaplama ve rapor oluşturma işlemlerini sunar.|
 |[DBLoader yardımcı programı](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader, sınırlandırılmış metin dosyalarından SQL Server içine veri yüklemek için kullanılabilir. Bu Windows konsol yardımcı programı, Azure SQL veritabanı da dahil olmak üzere tüm SQL Server sürümleri üzerinde çalışan SQL Server Native Client BulkLoad arabirimini kullanır.|

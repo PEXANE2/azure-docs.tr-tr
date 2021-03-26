@@ -3,12 +3,12 @@ title: Yerel paylaşılan disklerle Azure VMware Çözüm vSAN üzerinde Windows
 description: Azure VMware çözümünde Windows Server yük devretme kümesi (WSFC) ayarlayın ve WSFC özelliği gerektiren çözümlerin avantajlarından yararlanın.
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: 8cb2fdd8d519c665840390a41c95121218750a95
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 8162e15675d8bbde9267126c785f152d1cb860bd
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025977"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562248"
 ---
 # <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Yerel paylaşılan disklerle Azure VMware Çözüm vSAN üzerinde Windows Server yük devretme kümesi
 
@@ -30,7 +30,7 @@ Desteklenen bir WSFC yapılandırması dağıtmak önemlidir. Çözümünüzü v
 
 Bu makalede Windows Server 2016 ve Windows Server 2019 ' de WSFC 'ye odaklanılır. Eski Windows Server sürümleri, [temel destekten](https://support.microsoft.com/lifecycle/search?alpha=windows%20server) oluşur ve bu nedenle bunları burada kabul etmezsiniz.
 
-Önce [BIR wsfc oluşturmanız](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)gerekir. WSFC hakkında daha fazla bilgi için bkz. [Windows Server 'Da Yük Devretme Kümelemesi](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview). Azure VMware çözümünde bir WSFC dağıtımının özellikleri için bu makalede sağladığımız bilgileri kullanın.
+Önce [BIR wsfc oluşturmanız](/windows-server/failover-clustering/create-failover-cluster)gerekir. WSFC hakkında daha fazla bilgi için bkz. [Windows Server 'Da Yük Devretme Kümelemesi](/windows-server/failover-clustering/failover-clustering-overview). Azure VMware çözümünde bir WSFC dağıtımının özellikleri için bu makalede sağladığımız bilgileri kullanın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -150,7 +150,7 @@ Aşağıdaki etkinlikler desteklenmez ve WSFC düğümü yük devretmesine neden
 
 ## <a name="related-information"></a>İlgili bilgiler
 
-- [Windows Server'da Yük Devretme Kümelemesi](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
+- [Windows Server'da Yük Devretme Kümelemesi](/windows-server/failover-clustering/failover-clustering-overview)
 - [VSphere üzerinde Microsoft Kümelemesi için yönergeler (1037959) (vmware.com)](https://kb.vmware.com/s/article/1037959)
 - [Yük Devretme Kümelemesi ve Microsoft Cluster hizmeti (vmware.com) kurulumu hakkında](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.mscs.doc/GUID-1A2476C0-CA66-4B80-B6F9-8421B6983808.html)
 - [vSAN 6,7 U3-WSFC paylaşılan diskler &amp; SCSI-3 kalıcı ayırmalar (VMware.com)](https://blogs.vmware.com/virtualblocks/2019/08/23/vsan67-u3-wsfc-shared-disksupport/)
@@ -162,5 +162,5 @@ Azure VMware çözümünde bir WSFC ayarlamayı artık kapsadığınıza göre �
 
 - WSFC özelliği gerektiren daha fazla uygulama ekleyerek yeni WSFC 'nizi ayarlama. Örneğin, SQL Server ve SAP yoks.
 - Bir yedekleme çözümü kurma.
-  - [Azure VMware çözümü için Azure Backup Sunucusu ayarlama](https://docs.microsoft.com/azure/azure-vmware/set-up-backup-server-for-azure-vmware-solution)
-  - [Azure VMware çözümü sanal makineleri için yedekleme çözümleri](https://docs.microsoft.com/azure/azure-vmware/ecosystem-back-up-vms)
+  - [Azure VMware çözümü için Azure Backup Sunucusu ayarlama](./set-up-backup-server-for-azure-vmware-solution.md)
+  - [Azure VMware çözümü sanal makineleri için yedekleme çözümleri](./ecosystem-back-up-vms.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0a05a4692bb4a09213532ed29b2501f6b8056857
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 63b99cdeb7606798caa1b1d997dbb9f609c033b0
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721999"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562197"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure Data Box için Azure Güvenlik temeli
 
@@ -88,7 +88,7 @@ Sipariş ilk oluşturulduğunda, siparişinizi kimlerin erişebileceğini kontro
 
 - [Çalışma kitapları için Azure RBAC yapılandırma](../sentinel/quickstart-get-visibility.md)
 
-- [Sıraya göre erişim denetimi ayarlamayı anlayın](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+- [Sıraya göre erişim denetimi ayarlamayı anlayın](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Sorumluluk**: Müşteri
 
@@ -172,7 +172,7 @@ Ayrıca, riskli Kullanıcı davranışında uyarıları ve raporları görüntü
 
 Data Box gereç için bu, gerçek zamanlı olarak desteklenmez. İşin sonundaki günlükleri gözden geçirebilirsiniz.
 
-- [Azure AD raporlamayı anlama](/azure/active-directory/reports-monitoring/)
+- [Azure AD raporlamayı anlama](../active-directory/reports-monitoring/index.yml)
 
 - [Azure kimlik erişimi Incelemelerini kullanma](../active-directory/governance/access-reviews-overview.md)
 
@@ -190,7 +190,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 Azure Data Box hizmet günlükleri Log Analytics çalışma alanına yazılmadı.
 
-- [Azure Etkinlik Günlüklerini Azure İzleyici ile tümleştirme](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure Etkinlik Günlüklerini Azure İzleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Yerleşik Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -216,7 +216,7 @@ Azure Data Box hizmet günlükleri Log Analytics çalışma alanına yazılmadı
 
 **Rehberlik**: yakında kullanılabilir; Müşteri Kasası, Azure Data Box için henüz desteklenmiyor. 
 
-- [Müşteri Kasası tarafından desteklenen hizmetler listesi](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Müşteri Kasası tarafından desteklenen hizmetler listesi](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Sorumluluk**: Müşteri
 
@@ -254,7 +254,7 @@ Azure Data Box hizmet günlükleri Log Analytics çalışma alanına yazılmadı
 
 - [Azure Data Box kullanmaya başlama hakkında bilgi edinin](data-box-quickstart-portal.md)
 
-- [Erişim denetimini ayarlamayı anlama](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+- [Erişim denetimini ayarlamayı anlama](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Sorumluluk**: Müşteri
 
@@ -281,7 +281,7 @@ Ayrıca, Azure Data Box cihazı bir şifreleme anahtarı aracılığıyla kilitl
 
 **Kılavuz**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak, değişikliklerin Azure Data Box gerçekleştiği zamana ve diğer önemli veya ilgili kaynaklara yönelik uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -459,5 +459,5 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

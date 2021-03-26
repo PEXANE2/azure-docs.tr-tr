@@ -7,17 +7,17 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: b8f5fbc076859be9f5ff5a215f92811d543ed7e4
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 21ccafe3e15f902e35657a9aa31516bbaeb3b4c8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800117"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558015"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>VM görüntüsü için SAS URI 'SI oluşturma
 
 > [!NOTE]
-> VM 'nizi yayımlamak için SAS URI 'sine ihtiyacınız yoktur. Yalnızca bir görüntüyü parter merkezinde paylaşabilirsiniz. Onaylanan bir [temel kullanarak sanal makine oluşturma](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-approved-base) veya [kendi görüntü yönergelerinizi kullanarak bir sanal makine oluşturma](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-own-image) bölümüne bakın.
+> VM 'nizi yayımlamak için SAS URI 'sine ihtiyacınız yoktur. Yalnızca bir görüntüyü parter merkezinde paylaşabilirsiniz. Onaylanan bir [temel kullanarak sanal makine oluşturma](./azure-vm-create-using-approved-base.md) veya [kendi görüntü yönergelerinizi kullanarak bir sanal makine oluşturma](./azure-vm-create-using-own-image.md) bölümüne bakın.
 
 VHD 'niz için SAS URI 'Lerinin oluşturulması şu gereksinimlere sahiptir:
 

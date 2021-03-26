@@ -4,12 +4,12 @@ description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaları
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 655a90ebc3164f076c333760beffcef5acefcd91
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2877b0085f31f39849e04678d5e0ddd65e3888e2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103225556"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564482"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -40,7 +40,7 @@ Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanma
 **Kasaları arasında veri taşıma** | Yedeklenen verilerin kasaların arasına taşınması desteklenmez.
 **Kasa depolama türünü değiştir** | Yedeklemeler depolanmadan önce bir kasa için depolama çoğaltma türünü (coğrafi olarak yedekli depolama veya yerel olarak yedekli depolama) değiştirebilirsiniz. Yedekler kasada başladıktan sonra çoğaltma türü değiştirilemez.
 **Alanlar arası yedekli depolama (ZRS)** | UK Güney (UKS) ve Güney Doğu Asya (SEA) bölgelerinde kullanılabilir.
-**Özel uç noktalar** | Bir kurtarma hizmeti Kasası için özel uç noktalar oluşturma gereksinimlerinin için [Bu bölüme](https://docs.microsoft.com/azure/backup/private-endpoints#before-you-start) bakın.  
+**Özel uç noktalar** | Bir kurtarma hizmeti Kasası için özel uç noktalar oluşturma gereksinimlerinin için [Bu bölüme](./private-endpoints.md#before-you-start) bakın.  
 
 ## <a name="on-premises-backup-support"></a>Şirket içi yedekleme desteği
 

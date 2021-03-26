@@ -3,12 +3,12 @@ title: MABS (Azure Backup Sunucusu) v3 UR1 koruma matrisi
 description: Bu makalede, Azure Backup Sunucusu koruduğu tüm iş yükleri, veri türleri ve yüklemelerin listelendiği bir destek matrisi sunulmaktadır.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: d8f2a38db468ec57cdc0a4f0813fe7ae8e341d52
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cfdd227135a2124e22a604bad4bd41594a38fb37
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102609779"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561279"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Sunucusu) v3 UR1 koruma matrisi
 
@@ -127,7 +127,7 @@ Azure Backup Sunucusu, MABS sunucusuyla aynı etki alanında ve alt veya güveni
   * Dosya Sunucusu
   * Hyper-V
 
-  Bu iş yükleri, tek bir sunucuda veya küme yapılandırmasında çalışıyor olabilir. Güvenilen bir etki alanında olmayan bir iş yükünü korumak için, nelerin desteklendiklerinin ve hangi kimlik doğrulamasının gerektiği hakkında tam Ayrıntılar için bkz. [çalışma gruplarında ve güvenilmeyen etki alanlarında bilgisayarları hazırlama](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm) .
+  Bu iş yükleri, tek bir sunucuda veya küme yapılandırmasında çalışıyor olabilir. Güvenilen bir etki alanında olmayan bir iş yükünü korumak için, nelerin desteklendiklerinin ve hangi kimlik doğrulamasının gerektiği hakkında tam Ayrıntılar için bkz. [çalışma gruplarında ve güvenilmeyen etki alanlarında bilgisayarları hazırlama](/system-center/dpm/prepare-environment-for-dpm) .
 
 ## <a name="unsupported-data-types"></a>Desteklenmeyen veri türleri
 

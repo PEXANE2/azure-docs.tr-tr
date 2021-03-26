@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: .NET için Soru-Cevap Oluşturma istemci kitaplı�
 description: Bu hızlı başlangıçta, .NET için Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlama gösterilmektedir. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.  Soru-Cevap Oluşturma, SSS belgeleri, URL'ler ve ürün kılavuzları gibi yarı yapılandırılmış içeriklerinizden bir soru cevap hizmeti oluşturmanızı sağlar.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 86c4f5c0633a2e547071cbf102d34e385391570e
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 292d0ee4f7462f9c49a08e35bb44822b7a317cfa
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104414"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105582349"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/version-1)
 
@@ -138,16 +138,15 @@ Uygulamanın `Main` yönteminde, bu hızlı başlangıçtaki ortak görevleri ku
 
 # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/version-1)
 
-> [!IMPORTANT]
-> Azure portal gidin ve önkoşullarda oluşturduğunuz Soru-Cevap Oluşturma kaynak için anahtar ve uç noktayı bulun. Kaynak **yönetimi** altında kaynağın **anahtar ve uç nokta** sayfasında yer alır. 
-
 Abonelik anahtarı ve yazma anahtarı ınterchangabkullanın. Yazma anahtarı hakkında daha fazla ayrıntı için [soru-cevap oluşturma anahtarları](../concepts/azure-resources.md?tabs=v1#keys-in-qna-maker)izleyin.
 
-- QNA_MAKER_ENDPOINT değeri biçimindedir `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Azure portal Soru-Cevap Oluşturma kaynağına gidin ve yazma (abonelik) anahtarını ve Soru-Cevap Oluşturma uç noktasını bulmak için **anahtarlar ve uç nokta** ' a tıklayın.
+- QNA_MAKER_ENDPOINT değeri biçimindedir `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Azure portal gidin ve önkoşullarda oluşturduğunuz Soru-Cevap Oluşturma kaynak için anahtar ve uç noktayı bulun. Yazma (abonelik) anahtarını ve Soru-Cevap Oluşturma uç noktasını bulmak için **kaynak yönetimi** altındaki **anahtarlar ve uç nokta** sayfasına tıklayın.
 
  ![Soru-Cevap Oluşturma yazma uç noktası](../media/keys-endpoint.png)
 
-- QNA_MAKER_RUNTIME_ENDPOINT değeri biçimindedir `https://YOUR-RESOURCE-NAME.azurewebsites.net` .  
+- QNA_MAKER_RUNTIME_ENDPOINT değeri biçimindedir `https://YOUR-RESOURCE-NAME.azurewebsites.net` . Azure portal gidin ve önkoşullarda oluşturduğunuz Soru-Cevap Oluşturma kaynağını bulun. Çalışma zamanı anahtarını bulmak için **Otomasyon** altında **şablonu dışarı aktar** ' a tıklayın.
+
+ ![Soru-Cevap Oluşturma çalışma zamanı uç noktası](../media/runtime-endpoint.png)
       
 - Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Örneğin, [Azure Anahtar Kasası](../../../key-vault/general/overview.md) güvenli anahtar depolama alanı sağlar.
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 696faaecd2227c9b9ef74f20763e36661991ff67
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 62767898b52ef9d8c0a61fb5025dc59d06a00bd5
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438992"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568197"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazındaki sorunları giderme 
 
@@ -144,9 +144,9 @@ Cihazınıza erişmek için Azure Resource Manager yapılandırması sırasında
 |------------|-----------------|
 |Genel sorunlar|<li>[Sınır cihazının düzgün şekilde yapılandırıldığını doğrulayın](#verify-the-device-is-configured-properly).<li> [İstemcinin düzgün yapılandırıldığını doğrulama](#verify-the-client-is-configured-properly)|
 |Add-AzureRmEnvironment: istek gönderilirken bir hata oluştu.<br>Şu satırda: 1 char: 1<br>+ Add-AzureRmEnvironment-adı Az3-Ermenistan " https://management.dbe ...|Bu hata, Azure Stack Edge Pro cihazınızın ulaşılamaz veya düzgün şekilde yapılandırılmadığı anlamına gelir. Sınır cihazının ve istemcisinin doğru şekilde yapılandırıldığını doğrulayın. Rehberlik için, bu tablodaki **genel sorunlar** satırına bakın.|
-|Hizmet hata döndürdü. Daha fazla ayrıntı için InnerException öğesine bakın: temel alınan bağlantı kapatıldı: SSL/TLS güvenli kanalı için güven ilişkisi kurulamadı. |   Bu hata, büyük olasılıkla kendi sertifika adımlarınızı bir veya daha fazla getirme işlemi yanlış gerçekleştirdi. Kılavuza [buradan](./azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)ulaşabilirsiniz. |
+|Hizmet hata döndürdü. Daha fazla ayrıntı için InnerException öğesine bakın: temel alınan bağlantı kapatıldı: SSL/TLS güvenli kanalı için güven ilişkisi kurulamadı. |   Bu hata, büyük olasılıkla kendi sertifika adımlarınızı bir veya daha fazla getirme işlemi yanlış gerçekleştirdi. Kılavuza [buradan](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates)ulaşabilirsiniz. |
 |İşlem geçersiz bir durum kodu döndürdü ' ServiceUnavailable ' <br> Yanıt durum kodu başarılı olduğunu göstermiyor: 503 (hizmet kullanılamıyor). | Bu hata, bu koşullardan herhangi birinin sonucu olabilir.<li>ArmStsPool durdurulmuş durumda.</li><li>Azure Resource Manager/güvenlik belirteci Hizmetleri Web sitelerinden biri çalışmıyor.</li><li>Azure Resource Manager küme kaynağı çalışmıyor.</li><br><strong>Note:</strong> Gereci yeniden başlatmak sorunu çözebilir, ancak daha fazla hata ayıklayabilmeniz için destek paketini toplamanız gerekir.|
-|AADSTS50126: Geçersiz Kullanıcı adı veya parola.<br>İzleme KIMLIĞI: 29317dav9-52fc-4ba0-9778-446ae5625e5a<br>Bağıntı KIMLIĞI: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Zaman damgası: 2019-11-15 09:21:57Z: uzak sunucu bir hata döndürdü: (400) hatalı Istek.<br>Şu satırda: 1 char: 1 |Bu hata, bu koşullardan herhangi birinin sonucu olabilir.<li>Geçersiz Kullanıcı adı ve parola için, [buradaki](./azure-stack-edge-j-series-set-azure-resource-manager-password.md) adımları izleyerek ve ardından doğru parolayı kullanarak müşterinin Azure Portal parolayı değiştirdiğini doğrulayın.<li>Geçersiz bir kiracı KIMLIĞI için kiracı KIMLIĞI sabit bir GUID 'dir ve şu şekilde ayarlanmalıdır `c0257de7-538f-415c-993a-1b87a031879d`</li>|
+|AADSTS50126: Geçersiz Kullanıcı adı veya parola.<br>İzleme KIMLIĞI: 29317dav9-52fc-4ba0-9778-446ae5625e5a<br>Bağıntı KIMLIĞI: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Zaman damgası: 2019-11-15 09:21:57Z: uzak sunucu bir hata döndürdü: (400) hatalı Istek.<br>Şu satırda: 1 char: 1 |Bu hata, bu koşullardan herhangi birinin sonucu olabilir.<li>Geçersiz Kullanıcı adı ve parola için, [buradaki](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password) adımları izleyerek ve ardından doğru parolayı kullanarak müşterinin Azure Portal parolayı değiştirdiğini doğrulayın.<li>Geçersiz bir kiracı KIMLIĞI için kiracı KIMLIĞI sabit bir GUID 'dir ve şu şekilde ayarlanmalıdır `c0257de7-538f-415c-993a-1b87a031879d`</li>|
 |Connect-AzureRmAccount: AADSTS90056: kaynak devre dışı veya yok. Erişmeye çalıştığınız kaynağın tam kaynak URL 'sini belirttiğinizden emin olmak için uygulamanızın kodunu kontrol edin.<br>İzleme KIMLIĞI: e19bdbc9-5dc8-4a74-85c3-ac6abdfda115<br>Bağıntı KIMLIĞI: 75c8ef5a-830e-48B5-b039-595a96488ff9 zaman damgası: 2019-11-18 07:00:51Z: uzak sunucu bir hata döndürdü: (400) kötü |Komutta kullanılan kaynak uç noktaları `Add-AzureRmEnvironment` yanlış.|
 |Buluttan uç noktalar alınamıyor.<br>Lütfen ağ bağlantınız olduğundan emin olun. Hata ayrıntısı: HTTPSConnectionPool (Konak = ' Management. dbg-of4k6suvm.microsoftdatabox.com ', bağlantı noktası = 30005): en fazla yeniden deneme URL:/Metadata/endpoints ile aşıldı? api-Version = 2015-01-01 (SSLError ("Hatalı el sıkışma: hata ([(' SSL yordamları ', ' tls_process_server_certificate ', ' sertifika doğrulaması başarısız ')],)",),) |Bu hata çoğunlukla bir Mac/Linux ortamında görünür ve aşağıdaki sorunlardan kaynaklanır:<li>Python sertifika deposuna bir pek biçim sertifikası eklenmedi.</li> |
 
@@ -154,7 +154,7 @@ Cihazınıza erişmek için Azure Resource Manager yapılandırması sırasında
 
 1. Yerel kullanıcı arabiriminden, cihaz ağının doğru şekilde yapılandırıldığını doğrulayın.
 
-2. [Burada](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)bahsedilen tüm uç noktalar için sertifikaların güncelleştirildiğinden emin olun.
+2. [Burada](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates)bahsedilen tüm uç noktalar için sertifikaların güncelleştirildiğinden emin olun.
 
 3. Yerel Kullanıcı arabirimindeki **cihaz** sayfasından Azure Resource Manager Yönetimi ve oturum açma uç noktası alın.
 
@@ -163,18 +163,18 @@ Cihazınıza erişmek için Azure Resource Manager yapılandırması sırasında
 
 ### <a name="verify-the-client-is-configured-properly"></a>İstemcinin düzgün yapılandırıldığını doğrulama
 
-1. [Burada](azure-stack-edge-j-series-connect-resource-manager.md#step-3-install-powershell-on-the-client)bahsedilen doğru PowerShell sürümünün yüklü olduğunu doğrulayın.
+1. [Burada](./azure-stack-edge-gpu-connect-resource-manager.md#step-3-install-powershell-on-the-client)bahsedilen doğru PowerShell sürümünün yüklü olduğunu doğrulayın.
 
-2. Doğru PowerShell modüllerinin [burada](azure-stack-edge-j-series-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client)bahsedilen şekilde yüklendiğini doğrulayın.
+2. Doğru PowerShell modüllerinin [burada](./azure-stack-edge-gpu-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client)bahsedilen şekilde yüklendiğini doğrulayın.
 
 3. Azure Resource Manager ve oturum açma uç noktalarına erişilebildiğini doğrulayın. Uç noktalara ping yapmayı deneyebilirsiniz. Örnek:
 
    `ping management.28bmdw2-bb9.microsoftdatabox.com`
    `ping login.28bmdw2-bb9.microsoftdatabox.com`
    
-   Ulaşılamıyorsa, [burada](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)belirtilen DNS/ana bilgisayar dosya girdilerini ekleyin.
+   Ulaşılamıyorsa, [burada](./azure-stack-edge-gpu-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)belirtilen DNS/ana bilgisayar dosya girdilerini ekleyin.
    
-4. İstemci sertifikalarının [burada](azure-stack-edge-j-series-connect-resource-manager.md#import-certificates-on-the-client-running-azure-powershell)bahsedilen şekilde yüklendiğini doğrulayın.
+4. İstemci sertifikalarının [burada](./azure-stack-edge-gpu-connect-resource-manager.md#import-certificates-on-the-client-running-azure-powershell)bahsedilen şekilde yüklendiğini doğrulayın.
 
 5. Müşteri PowerShell kullanıyorsa, bu PowerShell komutunu çalıştırarak ayrıntılı iletileri görmek için hata ayıklama tercihini etkinleştirmeniz gerekir. 
 

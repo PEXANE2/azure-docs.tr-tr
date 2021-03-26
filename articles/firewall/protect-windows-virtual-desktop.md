@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: ad4f42d0e33f6d70c75abfcd1daab4f5aa9a515f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d5320f44aa5d922cea852ab09e5141fad277e2b0
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94654992"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566035"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Windows Sanal Masaüstü dağıtımlarını korumak için Azure Güvenlik Duvarı'nı kullanın
 
@@ -54,7 +54,7 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri, düzgün
 - Ağ kuralı koleksiyonu oluşturma aşağıdaki kuralları ekleyin:
 
    - DNS 'ye izin ver – TCP ve UDP bağlantı noktaları 53 için özel IP adresi ekleme işleminden gelen trafiğe izin ver.
-   - KMS 'ye izin ver – Windows Sanal Masaüstü sanal makinelerinizi Windows etkinleştirme hizmeti TCP bağlantı noktası 1688 ' e giden trafiğe izin verin Hedef IP adresleri hakkında daha fazla bilgi için bkz. [Zorlamalı tünel senaryosunda Windows etkinleştirme başarısız oluyor](../virtual-machines/troubleshooting/custom-routes-enable-kms-activation.md#solution).
+   - KMS 'ye izin ver – Windows Sanal Masaüstü sanal makinelerinizi Windows etkinleştirme hizmeti TCP bağlantı noktası 1688 ' e giden trafiğe izin verin Hedef IP adresleri hakkında daha fazla bilgi için bkz. [Zorlamalı tünel senaryosunda Windows etkinleştirme başarısız oluyor](/troubleshoot/azure/virtual-machines/custom-routes-enable-kms-activation#solution).
 
 > [!NOTE]
 > Bazı dağıtımlar DNS kurallarına ihtiyaç duymayabilir, örneğin Azure Active Directory etki alanı denetleyicileri DNS sorgularını 168.63.129.16 adresinde Azure DNS.

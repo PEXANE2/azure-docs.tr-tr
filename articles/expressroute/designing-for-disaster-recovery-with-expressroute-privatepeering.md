@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 03/22/2021
 ms.author: duau
-ms.openlocfilehash: 8b1691dc7358c03b924d710684ecd73841b4832d
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 3da044057784763df8d071af6c101f7baffbefc6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105044609"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562316"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>ExpressRoute özel eşlemesi ile olağanüstü durum kurtarma için tasarlama
 
@@ -43,11 +43,11 @@ Bununla birlikte, coğrafi olarak yedekli paralel yollar arasında trafiği deng
 
 ### <a name="same-metro"></a>Aynı metro
 
-Aynı metro 'yı kullanırken, bu yapılandırmanın çalışması için ikinci yolun ikincil konumunu kullanmanız gerekir. Aynı metro ile bir örnek, *Amsterdam* ve *Amsterdam2* olacaktır. Aynı metro 'yı seçmenin avantajı, uygulama yük devretmesinin ne zaman, şirket içi uygulamalarınız arasında uçtan uca gecikme süresinin ve Microsoft 'un aynı kalmasını sağlar. Ancak, doğal bir olağanüstü durum varsa her iki yol için de bağlantı kullanılamaz. 
+[Birçok Metros](expressroute-locations-providers.md#global-commercial-azure) Iki ExpressRoute konumu vardır. Örneğin, *Amsterdam* ve *Amsterdam2* bir örnektir. Artıklığı tasarlarken, aynı metro 'daki her iki konumdan Azure 'a iki paralel yol oluşturabilirsiniz. Bu tasarımın avantajı, uygulama yük devretmesinin ne zaman, şirket içi uygulamalarınız arasındaki uçtan uca gecikme süresinin ve Microsoft 'un yaklaşık olarak aynı kalmasını sağlar. Ancak, deprem gibi doğal bir olağanüstü durum varsa her iki yol için de bağlantı kullanılamaz.
 
 ### <a name="different-metros"></a>Farklı Metros
 
-Standart SKU devreleri için farklı Metros kullanıldığında, ikincil konum aynı [coğrafi politik bölgede](expressroute-locations-providers.md#locations)olmalıdır. Coğrafi politik bölgenin dışında bir konum seçmek için, paralel yollarda her iki devrede Premium SKU kullanmanız gerekir. Bu yapılandırmanın avantajı doğal bir olağanüstü durum olma ihtimaline yol açar, ancak her iki bağlantı da kesintiye neden olur ancak gecikme süresi uçtan uca artar.
+Artıklık için farklı Metros kullanılırken, ikincil konum aynı [coğrafi politik bölgede](expressroute-locations-providers.md#locations)olmalıdır. Coğrafi politik bölgenin dışında bir konum seçmek için, paralel yollarda her iki devrede Premium SKU kullanmanız gerekir. Bu yapılandırmanın avantajı doğal bir olağanüstü durum olma ihtimaline yol açar, ancak her iki bağlantı da kesintiye neden olur ancak gecikme süresi uçtan uca artar.
 
 Bu makalede, coğrafi olarak yedekli yolları yapılandırırken karşılaşabileceğiniz sorunları nasıl ele vertiğimizden bahsedelim.
 

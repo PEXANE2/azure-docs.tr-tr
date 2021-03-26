@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ca689df97e7268a5c0f7c0479e6514b98ffda9f2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 74709d970f624f2d4cefaab77e8466361e4102cc
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443463"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563438"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Raspberry Pi 3 B + başvuru görüntüsünü kullanarak Azure IoT Hub öğreticisi için cihaz güncelleştirmesi
 
@@ -30,10 +30,8 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Görüntü güncelleştirme dağıtımı
 > * Güncelleştirme dağıtımını izleme
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-
 ## <a name="prerequisites"></a>Önkoşullar
-* IoT Hub erişim. Bir S1 (Standart) katmanını veya üstünü kullanmanız önerilir.
+* Daha önce yapmadıysanız, IoT Hub yapılandırma dahil bir [cihaz güncelleştirme hesabı ve örneği](create-device-update-account.md)oluşturun.
 
 ## <a name="download-image"></a>Resmi indir
 

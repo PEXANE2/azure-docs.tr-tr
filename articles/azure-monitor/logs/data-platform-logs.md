@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 5066264777c66369205489fb27a6f9206c5da521
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6cb85bc1da7d98d3e2ad46229588a91d971ce014
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708008"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567299"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure İzleyici Günlükleri'ne genel bakış
 Azure Izleyici günlükleri, [izlenen kaynaklardan](../monitor-reference.md)gelen günlük ve performans verilerini toplayan ve düzenleyen bir Azure izleyici özelliğidir. Azure hizmetlerinden gelen [Platform günlükleri](../essentials/platform-logs-overview.md) , [sanal makine aracılarından](../agents/agents-overview.md)gelen günlük ve performans verileri ve [uygulamalardan](../app/app-insights-overview.md) kullanım ve performans verileri gibi farklı kaynaklardaki veriler tek bir çalışma alanında birleştirilebilir ve bu sayede milyonlarca kaydı hızlı bir şekilde analiz etme yeteneğine sahip olan gelişmiş bir sorgu dili kullanılarak analiz edilebilir. Yalnızca belirli bir kayıt kümesini alan basit bir sorgu gerçekleştirebilir veya izleme verilerinizde kritik desenleri belirlemek için gelişmiş veri analizi gerçekleştirebilirsiniz. Log Analytics kullanarak günlük sorgularıyla ve sonuçlarıyla etkileşimli olarak çalışın, sorunları önceden bilgilendirmeye yönelik bir uyarı kurallarında kullanın veya sonuçları bir çalışma kitabı veya panoda görselleştirin.
@@ -23,7 +23,7 @@ Azure Izleyici günlükleri, [izlenen kaynaklardan](../monitor-reference.md)gele
 ## <a name="what-can-you-do-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile neler yapabilirsiniz?
 Aşağıdaki tabloda Azure Izleyici 'de günlükleri kullanmanın farklı yolları açıklanmaktadır:
 
-|  |  |
+|  | Description |
 |:---|:---|
 | **Analiz** | [Günlük sorgularını](./log-query-overview.md) yazmak ve güçlü bir analiz altyapısı kullanarak günlük verilerini etkileşimli olarak çözümlemek için Azure Portal [Log Analytics](./log-analytics-tutorial.md) kullanın |
 | **Uyarı** | Sorgu sonuçları belirli bir sonuçla eşleşiyorsa bildirim gönderen veya [otomatik eylem](../alerts/action-groups.md) alan bir [günlük uyarı kuralı](../alerts/alerts-log.md) yapılandırın. |

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/4/2020
-ms.openlocfilehash: b13e8e088eff95071247a53ad1a4a18879f94053
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 43d616bc82c608918f5e7ee51481a393dd55a284
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742203"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566079"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive iş yüklerini HDInsight 'a geçirme 4,0
 
@@ -71,7 +71,7 @@ Bu adım, [`Hive Schema Tool`](https://cwiki.apache.org/confluence/display/Hive/
     > [!NOTE]
     > Bu yardımcı program `beeline` IÇINDEKI SQL betiklerini yürütmek için istemcisini kullanır `/usr/hdp/$STACK_VERSION/hive/scripts/metastore/upgrade/mssql/upgrade-*.mssql.sql` .
     >
-    > Bu betiklerdeki SQL sözdizimi diğer istemci araçlarıyla uyumlu değildir. Örneğin, [Azure portalında](../../azure-sql/database/connect-query-portal.md) [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) ve sorgu Düzenleyicisi `GO` her komuttan sonra anahtar sözcük gerektirir.
+    > Bu betiklerdeki SQL sözdizimi diğer istemci araçlarıyla uyumlu değildir. Örneğin, [Azure portalında](../../azure-sql/database/connect-query-portal.md) [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) ve sorgu Düzenleyicisi `GO` her komuttan sonra anahtar sözcük gerektirir.
     >
     > Kaynak kapasitesi veya işlem zaman aşımları nedeniyle herhangi bir betik başarısız olursa, SQL veritabanını ölçeklendirin.
 
