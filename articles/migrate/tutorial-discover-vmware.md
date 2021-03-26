@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.custom: mvc
-ms.openlocfilehash: 1a0ad751a216e8da772fd5fdc96a0dc67cb27d01
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 9f433815838cc4d8dd41f3b95fc1bd6fe0acc955
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105109870"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562741"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Öğretici: Azure geçişi: bulma ve değerlendirme ile VMware ortamında çalışan sunucuları bulma
 
@@ -106,7 +106,7 @@ VSphere Web Istemcisinde bir hesabı aşağıdaki şekilde ayarlayın:
 
 Yüklü uygulamalar bulmayı, aracısız bağımlılık analizini ve SQL Server örnekleri ve veritabanlarını bulmayı gerçekleştirmek için sunucularda gerekli ayrıcalıklara sahip bir kullanıcı hesabına ihtiyacınız vardır. Kullanıcı hesabını gereç Yapılandırma Yöneticisi ' nde sağlayabilirsiniz. Gereç, sunuculara hiçbir aracı yüklemez.
 
-1. Windows Server 'lar için sunucularda yönetim izinlerine sahip bir hesap (yerel veya etki alanı) oluşturun. SQL Server örnekleri ve veritabanlarını öğrenmek için, Windows veya SQL Server hesabının sysadmin sunucu rolünün bir üyesi olması gerekir. Kullanıcı hesabına gerekli rolü atama hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) .
+1. Windows Server 'lar için sunucularda yönetim izinlerine sahip bir hesap (yerel veya etki alanı) oluşturun. SQL Server örnekleri ve veritabanlarını öğrenmek için, Windows veya SQL Server hesabının sysadmin sunucu rolünün bir üyesi olması gerekir. Kullanıcı hesabına gerekli rolü atama hakkında [daha fazla bilgi edinin](/sql/relational-databases/security/authentication-access/server-level-roles) .
 2. Linux sunucuları için kök ayrıcalıklarına sahip bir hesap oluşturun. Alternatif olarak,/bin/netstat ve/bin/ls dosyalarında şu izinlere sahip bir hesap oluşturabilirsiniz: CAP_DAC_READ_SEARCH ve CAP_SYS_PTRACE.
 
 > [!NOTE]
@@ -292,8 +292,8 @@ Bu özellikleri kullanmak istiyorsanız, aşağıdaki adımları izleyerek sunuc
 1. Yazılım envanteri sırasında, eklenen sunucu kimlik bilgileri sunuculara göre tekrarlanacaktır ve aracısız bağımlılık analizi için onaylanır. Sunucular için aracısız bağımlılık analizini portaldan etkinleştirebilirsiniz. Aracısız bağımlılık analizini etkinleştirmek için yalnızca doğrulamanın başarılı olduğu sunucular seçilebilir.
 
 > [!Note]
->Azure geçişi, Azure geçişi gereci ve kaynak SQL Server örnekleri (şifreleme bağlantısı özelliği TRUE olarak ayarlanır) arasındaki iletişimi şifreler. Bu bağlantılar [**TrustServerCertificate**](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) ile ŞIFRELENIR (true olarak ayarlanır); Aktarım katmanı, kanalı şifrelemek ve güveni doğrulamak üzere sertifika zincirini atlamak için SSL kullanır. Gereç sunucusunun, [**sertifikanın kök yetkilisine güvenecek**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)şekilde ayarlanması gerekir.<br/>
-Sunucu başlatıldığında sunucuda bir sertifika sağlanmadıysa SQL Server, oturum açma paketlerini şifrelemek için kullanılan kendinden imzalı bir sertifika oluşturur. [**Daha fazla bilgi edinin**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
+>Azure geçişi, Azure geçişi gereci ve kaynak SQL Server örnekleri (şifreleme bağlantısı özelliği TRUE olarak ayarlanır) arasındaki iletişimi şifreler. Bu bağlantılar [**TrustServerCertificate**](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) ile ŞIFRELENIR (true olarak ayarlanır); Aktarım katmanı, kanalı şifrelemek ve güveni doğrulamak üzere sertifika zincirini atlamak için SSL kullanır. Gereç sunucusunun, [**sertifikanın kök yetkilisine güvenecek**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)şekilde ayarlanması gerekir.<br/>
+Sunucu başlatıldığında sunucuda bir sertifika sağlanmadıysa SQL Server, oturum açma paketlerini şifrelemek için kullanılan kendinden imzalı bir sertifika oluşturur. [**Daha fazla bilgi edinin**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
 
 Bulma işlemi aşağıdaki gibi çalışmaktadır:
 

@@ -3,12 +3,12 @@ title: Azure Stack Edge üzerinde canlı video analizi dağıtma
 description: Bu makalede, Azure Stack Kenarunuzda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: d49167890009d58b21c3678cb89f608bad665abd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b5be85e93b81f5cf50284533f21e688384558494
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730278"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561160"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Azure Stack Edge üzerinde canlı video analizi dağıtma
 
@@ -236,7 +236,7 @@ Azure IoT araçları uzantısını kullanarak IoT Hub 'ınıza bağlanmak için 
 
 * **Kubernetes API erişimi (kubectl)**
 
-    * Makinenizi [Kubernetes kümesine erişmek](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-create-kubernetes-cluster)üzere yapılandırmak için belgeleri izleyin.
+    * Makinenizi [Kubernetes kümesine erişmek](../../databox-online/azure-stack-edge-gpu-create-kubernetes-cluster.md)üzere yapılandırmak için belgeleri izleyin.
     * Dağıtılan tüm IoT Edge modülleri `iotedge` ad alanını kullanır. Kubectl kullanırken bunu eklediğinizden emin olun.  
 
 * **Modül günlükleri**

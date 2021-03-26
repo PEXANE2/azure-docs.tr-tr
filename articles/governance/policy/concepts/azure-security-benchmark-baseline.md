@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9916ad6d3b6cb1a63d34004915666226b7836490
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e8bb4cf715c6cb8d0729399c1985376de18687b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740367"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105561296"
 ---
 # <a name="azure-security-baseline-for-azure-policy"></a>Azure Ilkesi için Azure Güvenlik temeli
 
@@ -30,9 +30,9 @@ Azure Ilkesi _sorumluluk_ yerine terim _sahipliğini_ kullanır. _Sahiplik_ hakk
 
 **Kılavuz**: Azure ilkesi olay kaynağını, tarihi, kullanıcıyı, zaman damgasını, kaynak adreslerini, hedef adreslerini ve diğer yararlı öğeleri içerecek şekilde otomatik olarak etkinleştirilen etkinlik günlüklerini kullanır.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](/azure/azure-monitor/platform/diagnostic-settings)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](/azure/azure-monitor/platform/platform-logs-overview)
+- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Sorumluluk**: Müşteri
 
@@ -48,7 +48,7 @@ Azure Ilkesi _sorumluluk_ yerine terim _sahipliğini_ kullanır. _Sahiplik_ hakk
 
 **Sorumluluk**: Müşteri
 
-**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) planı gerektirebilir.
+**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/azure/governance/policy/samples/azure-security-benchmark) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/azure/security-center/security-center-recommendations)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/azure/security-center/azure-defender) planı gerektirebilir.
 
 **Azure ilkesi yerleşik tanımları-Microsoft. GuestConfiguration**:
 
@@ -74,7 +74,7 @@ Azure Ilkesi _sorumluluk_ yerine terim _sahipliğini_ kullanır. _Sahiplik_ hakk
 
 **Kılavuz**: Azure ilkesine erişimi denetlemek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın.
 
-- [Azure Ilkesinde Azure RBAC izinleri](https://docs.microsoft.com/azure/governance/policy/overview#azure-rbac-permissions-in-azure-policy)
+- [Azure Ilkesinde Azure RBAC izinleri](../overview.md#azure-rbac-permissions-in-azure-policy)
 
 - [Azure RBAC 'yi yapılandırma](../../../role-based-access-control/role-assignments-portal.md)
 
@@ -86,7 +86,7 @@ Azure Ilkesi _sorumluluk_ yerine terim _sahipliğini_ kullanır. _Sahiplik_ hakk
 
 **Kılavuz**: Azure ilkesinde değişiklik gerçekleşirken uyarı oluşturmak için etkinlik günlükleri Ile Azure izleyici 'yi kullanın.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -128,5 +128,5 @@ Azure Ilkesi _sorumluluk_ yerine terim _sahipliğini_ kullanır. _Sahiplik_ hakk
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](../../../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../../../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

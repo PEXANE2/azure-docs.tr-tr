@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b6bc00af8d54c8748dd82b934974282e0e8da0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 87792b8469c78e20a8716bd925d71933f9d97c5e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102426969"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105560497"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketi için değişiklik isteği ayarları
 
@@ -85,7 +85,7 @@ Dizininizdeki kullanıcıların bu erişim paketini isteyebilmesini sağlamak is
 
 1. Aşağıdaki seçeneklerden birini belirtin:
 
-    |  |  |
+    |  | Description |
     | --- | --- |
     | **Belirli kullanıcılar ve gruplar** | Yalnızca dizininizdeki Kullanıcı ve grupların bu erişim paketini isteyebilmesini istiyorsanız bu seçeneği belirleyin. |
     | **Tüm Üyeler (konuklar hariç)** | Dizininizdeki tüm üye kullanıcılarının bu erişim paketini isteyebilmesini istiyorsanız bu seçeneği belirleyin. Bu seçenek, dizininize davet ettiğiniz tüm konuk kullanıcılarını içermez. |
@@ -122,7 +122,7 @@ Dizininizdeki kullanıcıların bu erişim paketini istemesi için izin vermek i
 
 1. Aşağıdaki seçeneklerden birini belirtin:
 
-    |  |  |
+    |  | Description |
     | --- | --- |
     | **Belirli bağlı kuruluşlar** | Yöneticinizin daha önce eklediği kuruluşların listesinden seçim yapmak istiyorsanız bu seçeneği belirleyin. Seçili kuruluşların tüm kullanıcıları bu erişim paketini isteyebilir. |
     | **Tüm yapılandırılmış bağlı kuruluşlar** | Tüm yapılandırılmış bağlı kuruluşlarınızın tüm kullanıcıları bu erişim paketini talep edebilir ise bu seçeneği belirleyin. Yalnızca yapılandırılan bağlı kuruluşların kullanıcıları, yapılandırılmış tüm kuruluşlardan kullanıcılara gösterilen erişim paketleri isteyebilir. |

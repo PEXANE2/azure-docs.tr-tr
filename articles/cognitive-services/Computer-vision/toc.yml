@@ -48,13 +48,13 @@
     - name: Videoları gerçek zamanlı olarak analiz etme
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
     - name: Sanal ağları yapılandırma
-      href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
+      href: ../cognitive-services-virtual-networks.md?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
     - name: Okuma 2.x sürümünden Okuma 3.x sürümüne yükseltme
       href: upgrade-api-versions.md
     - name: AAD kimlik doğrulamasını yapılandırma
-      href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
+      href: ../authentication.md?tabs=powershell%3fcontext%3d%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
     - name: Müşteri tarafından yönetilen anahtarları kullanma
-      href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
+      href: ../encryption/cognitive-services-encryption-keys-portal.md?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
     - name: Görüntü İşleme dağıt
       items:
         - name: Kapsayıcılar
@@ -155,7 +155,7 @@
     - name: Bölge desteği
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Modülleri öğrenın
-      href: 'https://docs.microsoft.com/en-us/learn/paths/explore-computer-vision-microsoft-azure/'
+      href: /learn/paths/explore-computer-vision-microsoft-azure/
     - name: Destek & yardım
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
     - name: Uyumluluk
