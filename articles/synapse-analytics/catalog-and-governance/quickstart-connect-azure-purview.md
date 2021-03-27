@@ -2,18 +2,18 @@
 title: Azure Purview Hesabı bağlama 
 description: Bir Azure purview hesabını bir Synapse çalışma alanına bağlayın.
 services: synapse-analytics
-author: ArnoMicrosoft
+author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 12/16/2020
-ms.author: acomet
+ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 55f0d2e8df36cc11f26c5ff6259ebe2215aaffc6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73ea2f43591d1c7ca2d42591e14b4ff04eb7e496
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98880551"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628637"
 ---
 # <a name="quickstartconnect-an-azure-purview-account-to-a-synapse-workspace"></a>Hızlı başlangıç: bir Azure purview hesabını bir Synapse çalışma alanına bağlama 
 

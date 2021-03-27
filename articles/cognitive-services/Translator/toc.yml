@@ -148,6 +148,22 @@
       items:
         - name: Belge çevirisi REST API
           href: /rest/api/cognitiveservices/translator/documenttranslation
+        - name: Belge biçimlerini al
+          href: document-translation/reference/get-document-formats.md
+        - name: Sözlük biçimlerini al
+          href: document-translation/reference/get-glossary-formats.md
+        - name: Belge depolama kaynağını al
+          href: document-translation/reference/get-document-storage-source.md
+        - name: Toplu istek gönder
+          href: document-translation/reference/submit-batch-request.md
+        - name: İşlem belgelerinin durumunu al
+          href: document-translation/reference/get-operation-documents-status.md
+        - name: Belge durumunu al
+          href: document-translation/reference/get-document-status.md
+        - name: İşlemleri al
+          href: document-translation/reference/get-operations.md
+        - name: İşlemi iptal et
+          href: document-translation/reference/cancel-operation.md
 - name: Çevirmen kaynakları
   items:
     - name: Destek ve yardım seçenekleri

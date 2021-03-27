@@ -16,22 +16,29 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: effdd156858caf5717aac92433e8bc5f4f6147ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8e81cb9018d817fb206915a81fdc3bdd60f6b08c
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101686878"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105611897"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Microsoft 365 ve Azure Active Directory için Federasyon sertifikalarını yenileme
 ## <a name="overview"></a>Genel Bakış
 Azure Active Directory (Azure AD) ve Active Directory Federasyon Hizmetleri (AD FS) (AD FS) arasında başarılı bir Federasyon için, Azure AD 'de güvenlik belirteçlerini imzalamak üzere AD FS tarafından kullanılan sertifikaların Azure AD 'de yapılandırıldıklarıyla aynı olması gerekir. Herhangi bir uyuşmazlık, kopuk güvene yol açabilir. Azure AD, AD FS ve Web uygulaması ara sunucusu (extranet erişimi için) dağıtırken bu bilgilerin eşitlenmiş durumda kalmasını sağlar.
+
+> [!NOTE]
+> Bu makalede, Federasyon sertifikalarınızın yönetimi hakkında bilgi sağlanır.  Acil durum dönüşüyle ilgili bilgi için bkz [. AD FS sertifikalarının acil bir dönüşü](how-to-connect-emergency-ad-fs-certificate-rotation.md)
 
 Bu makalede, aşağıdaki durumlarda belirteç imzalama sertifikalarınızı yönetmek ve Azure AD ile eşitlenmiş halde tutmak için ek bilgiler sağlanmaktadır:
 
 * Web uygulaması ara sunucusunu dağıtmıyor ve bu nedenle Federasyon meta verileri extranet 'te kullanılamıyor.
 * Belirteç imzalama sertifikaları için AD FS varsayılan yapılandırmasını kullandeğilsiniz.
 * Bir üçüncü taraf kimlik sağlayıcısı kullanıyorsunuz.
+
+> [!IMPORTANT]
+> Microsoft, sertifikaları korumak ve güvenli hale getirmek için bir donanım güvenlik modülü (HSM) kullanmanızı çok öneriyor.
+> Daha fazla bilgi için, AD FS güvenli hale getirmek için en iyi yöntemler altında [donanım güvenlik modülüne](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm) bakın
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>Belirteç imzalama sertifikaları için AD FS varsayılan yapılandırması
 Belirteç imzalama ve belirteç şifre çözme sertifikaları genellikle kendinden imzalı sertifikalardır ve bir yıl boyunca iyidir. Varsayılan olarak, AD FS **AutoCertificateRollover** adlı otomatik yenileme işlemini içerir. AD FS 2,0 veya sonraki bir sürümü kullanıyorsanız, Microsoft 365 ve Azure AD süresi dolmadan önce sertifikanızı otomatik olarak güncelleştirir.

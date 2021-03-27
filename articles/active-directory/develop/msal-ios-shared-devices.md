@@ -1,7 +1,7 @@
 ---
 title: iOS cihazlar için paylaşılan cihaz modu
 titleSuffix: Microsoft identity platform | Azure
-description: Frontline çalışanlarının bir iOS cihazını paylaşmasına izin vermek için paylaşılan cihaz modunu etkinleştirmeyi öğrenin
+description: Saflarda çalışanlarının bir iOS cihazını paylaşmasına izin vermek için paylaşılan cihaz modunu etkinleştirmeyi öğrenin
 services: active-directory
 author: brandwe
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: c67c5d7b46c04e7f1aea020127ee798878c43d60
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3353d87291492563acbd3a85bbae266c711377f2
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578796"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105611812"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>iOS cihazlar için paylaşılan cihaz modu
 
@@ -230,6 +230,6 @@ signoutParameters.signoutFromBrowser = YES; // Only needed for Public Preview.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Paylaşılan cihaz modunu çalışırken görmek için GitHub 'daki aşağıdaki kod örneği, paylaşılan cihaz modundaki bir iOS cihazında Frontline çalışan uygulaması çalıştırmaya ilişkin bir örnek içerir:
+Paylaşılan cihaz modunu çalışırken görmek için GitHub 'daki aşağıdaki kod örneği, paylaşılan cihaz modundaki bir iOS cihazında saflarda çalışan uygulaması çalıştırmaya ilişkin bir örnek içerir:
 
 [MSAL iOS Swift Microsoft Graph API örneği](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc)

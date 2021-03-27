@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.custom: references_regions
-ms.openlocfilehash: be72cae8d109bfeccd60e8c821625f75357568e3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 52ac3ee4ea2f71e285d21c7b6d082e84fa090da1
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103232367"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625917"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>Bilişsel Arama sorgulara yazım denetimi ekleme
 
@@ -25,7 +25,7 @@ Arama altyapısına ulaşmadan önce tek tek arama sorgu koşullarını yazım i
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-+ Ingilizce içerik içeren mevcut bir arama dizini
++ Ingilizce içerik içeren mevcut bir arama dizini. Şu anda yazım denetimi, [eş anlamlılar](search-synonyms.md)ile çalışmaz. Herhangi bir alan tanımında bir eş anlamlı eşleme belirten dizinlerde kullanmaktan kaçının.
 
 + Sorgu göndermek için bir arama istemcisi
 

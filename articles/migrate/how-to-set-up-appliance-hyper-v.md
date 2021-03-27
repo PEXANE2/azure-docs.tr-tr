@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 71fe30212b31e810bfe3e1ba10f80be6b09ad4fc
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 8f0e7ec2566928897d2b84357b599506520e8d95
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104863692"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612033"
 ---
 # <a name="set-up-an-appliance-for-servers-on-hyper-v"></a>Hyper-V üzerinde sunucular için bir gereç ayarlama
 
@@ -39,7 +39,7 @@ Bir VHD şablonu kullanarak gereci ayarlamak için:
 
 1. **Geçiş hedefleri**  >  **Windows, Linux ve SQL Server**  >  **Azure geçişi: bulma ve değerlendirme** bölümünde **bul**' u seçin.
 2. Sunucuları **bul**' da  >  **sunucularınız sanallaştırılır mi?**, **Hyper-V ile Evet '** i seçin.
-3. **1: proje anahtarı oluştur**' da, Hyper-V ' d i sunucu keşfi Için ayarlanacak Azure geçiş gereci için bir ad sağlayın. ad 14 karakter veya daha az olmalıdır.
+3. **1: proje anahtarı oluştur**' da, Hyper-V ' d i sunucu keşfi Için ayarladığınız Azure geçiş gereci için bir ad sağlayın. Ad 14 karakter veya daha kısa bir harf olmalıdır.
 1. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Kaynak oluşturma sırasında sunucuları keşfet sayfasını kapatmayın.
 1. Azure kaynakları başarıyla oluşturulduktan sonra bir **Proje anahtarı** oluşturulur.
 1. Yapılandırma sırasında gereç kaydını tamamlamamak için gerekli olacak şekilde anahtarı kopyalayın.
@@ -53,7 +53,6 @@ Bir VHD şablonu kullanarak gereci ayarlamak için:
 
    ![Anahtar oluştur seçimleri](./media/tutorial-assess-hyper-v/generate-key-hyperv.png)
 
-
 ### <a name="verify-security"></a>Güvenliği doğrulama
 
 Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
@@ -63,9 +62,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Örnek kullanım: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
-
-
-
+Yukarıdaki komutun sonucunu [burada](https://docs.microsoft.com/azure/migrate/tutorial-discover-hyper-v#verify-security) belgelenen değerle karşılaştırarak en son karma değeri doğrulayın
 
 ## <a name="create-the-appliance"></a>Gereç oluşturma
 
@@ -85,7 +82,6 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 5. **Ağ seçin** bölümünde, sunucunun kullanacağı sanal anahtarı belirtin. Anahtar, verileri Azure 'a göndermek için internet bağlantısı gerektirir.
 6. **Özet** bölümünde ayarları gözden geçirin. Ardından, **Son**'a tıklayın.
 7. Hyper-V Yöneticisi 'nde **sanal makineler**>, VM 'yi başlatın.
-
 
 ### <a name="verify-appliance-access-to-azure"></a>Azure 'a gereç erişimini doğrulama
 
@@ -128,8 +124,6 @@ Gereci ilk kez ayarlayın.
 1. Başarıyla oturum açtıktan sonra, Gereç Yapılandırma Yöneticisi ile önceki sekmeye geri dönün.
 4. Günlüğe kaydetme için kullanılan Azure Kullanıcı hesabının, anahtar üretimi sırasında oluşturulan Azure kaynakları üzerinde doğru [izinleri](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account) varsa, Gereç kaydı başlatılır.
 1. Gereç başarıyla kaydedildikten sonra, **Ayrıntıları görüntüle**' ye tıklayarak kayıt ayrıntılarına bakabilirsiniz.
-
-
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>SMB VHD 'leri için temsilci kimlik bilgileri
 

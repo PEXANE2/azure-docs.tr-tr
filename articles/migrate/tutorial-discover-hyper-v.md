@@ -5,18 +5,18 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/10/2021
+ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: d108774aea2d7ac7773dab06efc977dd9e501eb5
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: f461778f988fafeacc480e100b00be7d4c165dfb
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108783"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612526"
 ---
 # <a name="tutorial-discover-servers-running-on-hyper-v-with-azure-migrate-discovery-and-assessment"></a>Öğretici: Azure geçişi: bulma ve değerlendirme ile Hyper-V üzerinde çalışan sunucuları bulma
 
-Azure 'a geçiş sürecinizin bir parçası olarak şirket içi envanterinizi ve iş yüklerinizi keşfedeceksiniz. 
+Azure 'a geçiş sürecinizin bir parçası olarak şirket içi envanterinizi ve iş yüklerinizi keşfedeceksiniz.
 
 Bu öğreticide, basit bir Azure geçişi gereci kullanarak Azure geçişi: bulma ve değerlendirme aracı ile Hyper-V konaklarındaki şirket içi sunucuları nasıl keşfedebileceğiniz gösterilmektedir. Cihazı, makine ve performans meta verilerini sürekli olarak bulacak şekilde Hyper-V konağına bir sunucu olarak dağıtırsınız.
 
@@ -42,7 +42,7 @@ Bu öğreticiye başlamadan önce, bu önkoşulların yerinde olup olmadığın�
 --- | ---
 **Hyper-V konağı** | Sunucuların bulunduğu Hyper-V konakları tek başına veya bir kümede olabilir.<br/><br/> Konağın Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2 çalıştırması gerekir.<br/><br/> BT 'nin Genel Bilgi Modeli (CıM) oturumu kullanarak çekme sunucusu meta verileri ve performans verilerine bağlanabilmesi için WinRM bağlantı noktası 5985 ' de (HTTP) gelen bağlantılara izin verildiğini doğrulayın.
 **Gereç dağıtımı** | Hyper-V ana bilgisayarı, Gereç için bir sunucu ayırmak üzere kaynaklara ihtiyaç duyuyor:<br/><br/> -16 GB RAM, 8 vCPU ve yaklaşık 80 GB disk depolaması.<br/><br/> -Bir dış sanal anahtar ve doğrudan ya da bir proxy aracılığıyla gereç üzerinde internet erişimi.
-**Sunucular** | Sunucular herhangi bir Windows veya Linux işletim sistemi çalıştırıyor olabilir. 
+**Sunucular** | Sunucular herhangi bir Windows veya Linux işletim sistemi çalıştırıyor olabilir.
 
 ## <a name="prepare-an-azure-user-account"></a>Azure Kullanıcı hesabı hazırlama
 
@@ -56,7 +56,7 @@ Bir proje oluşturmak ve Azure geçişi gerecini kaydettirmek için, şu bir hes
 
     ![Azure aboneliğini aramak için arama kutusu](./media/tutorial-discover-hyper-v/search-subscription.png)
 
-2. **Abonelikler** sayfasında, bir proje oluşturmak istediğiniz aboneliği seçin. 
+2. **Abonelikler** sayfasında, bir proje oluşturmak istediğiniz aboneliği seçin.
 3. Abonelikte **erişim denetimi (IAM)**  >  **erişimi denetle**' yi seçin.
 4. **Erişimi denetle**' de ilgili Kullanıcı hesabını arayın.
 5. **Rol ataması Ekle**' de, **Ekle**' ye tıklayın.
@@ -176,7 +176,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
         **Senaryo** | **İndir** | **SHA256**
         --- | --- | ---
-        Hyper-V (8,91 GB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140422) |  40aa037987771794428b1c6ebee2614b092e6d69ac56d48a2bbc75eeef86c99a
+        Hyper-V (8,91 GB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d61360402324dc8d8a14f47772da351b46d9127
 
     - Azure Kamu için:
 
@@ -293,5 +293,3 @@ Bulma işlemi tamamlandıktan sonra, sunucuların portalda göründüğünü do�
 
 - Azure VM 'lerine geçiş için [Hyper-V ortamındaki sunucuları değerlendirin](tutorial-assess-hyper-v.md) .
 - Bulma sırasında gereç tarafından toplanan [verileri gözden geçirin](migrate-appliance.md#collected-data---hyper-v) .
-
-

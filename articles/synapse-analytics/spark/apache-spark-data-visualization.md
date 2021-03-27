@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: f11693b34048b11c02668e086561b9a6521a5213
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7e57cdca1d212e6077d685d95a8f869c12e546a8
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98121535"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627957"
 ---
 # <a name="visualize-data"></a>Verileri görselleştirme
 Azure SYNAPSE, veri ambarlarında ve büyük veri analizi sistemlerinde fikir süresini hızlandıran tümleşik bir analiz hizmetidir. Veri görselleştirme, verilerinize ilişkin Öngörüler elde edebilmekte olan bir temel bileşendir. İnsanların anlaşılması büyük ve küçük verilerin daha kolay olmasına yardımcı olur. Ayrıca, veri gruplarındaki desenleri, eğilimleri ve aykırı değerleri algılamayı kolaylaştırır. 
@@ -34,6 +34,7 @@ Grafik seçeneklerine erişmek için:
    ![yerleşik grafikler](./media/apache-spark-development-using-notebooks/synapse-built-in-charts.png#lightbox)
 
 3. Artık görselleştirmenizi aşağıdaki değerleri belirterek özelleştirebilirsiniz:
+
    | Yapılandırma | Açıklama |
    |--|--| 
    | Grafik Türü | ```display```İşlevi çubuk grafikler, dağılım çizimleri, çizgi grafikler ve daha fazlası dahil olmak üzere çok çeşitli grafik türlerini destekler |
@@ -148,6 +149,37 @@ svg
 ## <a name="popular-libraries"></a>Popüler kitaplıklar
 Veri görselleştirmesine geldiğinde, Python birçok farklı özellik ile paketlenmiş birden çok grafikleme kitaplığı sunar. Varsayılan olarak, Azure SYNAPSE Analytics 'teki tüm Apache Spark havuzları, bir dizi seçkin ve popüler açık kaynak kitaplık içerir. Ayrıca, Azure SYNAPSE Analytics kitaplığı yönetim özelliklerini kullanarak ek kitaplıklar & sürümleri ekleyebilir veya yönetebilirsiniz. 
 
+### <a name="matplotlib"></a>Matplotlib
+Her kitaplık için yerleşik işleme işlevlerini kullanarak, Matplotlib gibi standart çizim kitaplıklarını işleyebilirsiniz.
+
+Aşağıdaki görüntü, **Matplotlib** kullanarak bir çubuk grafik oluşturma örneğidir.
+   ![Çizgi grafik örneği.](./media/apache-spark-data-viz/matplotlib-example.png#lightbox)
+
+Yukarıdaki görüntüyü çizmek için aşağıdaki örnek kodu çalıştırın.
+
+```python
+# Bar chart
+
+import matplotlib.pyplot as plt
+
+x1 = [1, 3, 4, 5, 6, 7, 9]
+y1 = [4, 7, 2, 4, 7, 8, 3]
+
+x2 = [2, 4, 6, 8, 10]
+y2 = [5, 6, 2, 6, 2]
+
+plt.bar(x1, y1, label="Blue Bar", color='b')
+plt.bar(x2, y2, label="Green Bar", color='g')
+plt.plot()
+
+plt.xlabel("bar number")
+plt.ylabel("bar height")
+plt.title("Bar Chart Example")
+plt.legend()
+plt.show()
+```
+
+
 ### <a name="bokeh"></a>Bokeh
 Kullanarak **bokeh** gibi HTML veya etkileşimli kitaplıkları işleyebilirsiniz ```displayHTML(df)``` . 
 
@@ -186,41 +218,49 @@ html = file_html(p, CDN, "my plot1")
 displayHTML(html)
 ```
 
-### <a name="matplotlib"></a>Matplotlib
-Her kitaplık için yerleşik işleme işlevlerini kullanarak, Matplotlib gibi standart çizim kitaplıklarını işleyebilirsiniz.
 
-Aşağıdaki görüntü, **Matplotlib** kullanarak bir çubuk grafik oluşturma örneğidir.
-   ![Çizgi grafik örneği.](./media/apache-spark-data-viz/matplotlib-example.png#lightbox)
+### <a name="plotly"></a>Plotly
+**Plotly** gibi HTML veya etkileşimli kitaplıkları **displayhtml ()** kullanarak işleyebilirsiniz.
 
-Yukarıdaki görüntüyü çizmek için aşağıdaki örnek kodu çalıştırın.
+Aşağıdaki örnek kodu aşağıda bulunan görüntüyü çizmek için çalıştırın.
+
+   ![plotly-örnek](./media/apache-spark-development-using-notebooks/synapse-plotly-image.png#lightbox)
+
 
 ```python
-# Bar chart
+from urllib.request import urlopen
+import json
+with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
+    counties = json.load(response)
 
-import matplotlib.pyplot as plt
+import pandas as pd
+df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
+                   dtype={"fips": str})
 
-x1 = [1, 3, 4, 5, 6, 7, 9]
-y1 = [4, 7, 2, 4, 7, 8, 3]
+import plotly.express as px
 
-x2 = [2, 4, 6, 8, 10]
-y2 = [5, 6, 2, 6, 2]
+fig = px.choropleth(df, geojson=counties, locations='fips', color='unemp',
+                           color_continuous_scale="Viridis",
+                           range_color=(0, 12),
+                           scope="usa",
+                           labels={'unemp':'unemployment rate'}
+                          )
+fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 
-plt.bar(x1, y1, label="Blue Bar", color='b')
-plt.bar(x2, y2, label="Green Bar", color='g')
-plt.plot()
+# create an html document that embeds the Plotly plot
+h = plotly.offline.plot(fig, output_type='div')
 
-plt.xlabel("bar number")
-plt.ylabel("bar height")
-plt.title("Bar Chart Example")
-plt.legend()
-plt.show()
+# display this html
+displayHTML(h)
 ```
+
 
 ### <a name="additional-libraries"></a>Ek kitaplıklar 
 Bu kitaplıkların ötesinde Azure SYNAPSE Analytics Runtime, veri görselleştirme için genellikle kullanılan aşağıdaki kitaplık kümesini de içerir:
 - [Matplotlib](https://matplotlib.org/)
 - [Bokeh](https://bokeh.org/)
 - [Seaborn](https://seaborn.pydata.org/) 
+- [Plotly](https://plotly.com/)
 
 Kullanılabilir kitaplıklar ve sürümlerle ilgili en güncel bilgiler için Azure SYNAPSE Analytics çalışma zamanı [belgelerini](./spark/../apache-spark-version-support.md) ziyaret edebilirsiniz.
 

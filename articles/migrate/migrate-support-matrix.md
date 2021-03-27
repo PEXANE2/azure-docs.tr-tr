@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: b9ea447b0204ad91065f27d265584c8787167fc2
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: af0b8a4d3dfbce32e412f5294fb19ade61fd7661
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104870730"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628178"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure geçişi destek matrisi
 
@@ -44,7 +44,7 @@ Azure geçişi: sunucu geçişi | Yok | [VMware VM 'leri](tutorial-migrate-vmwar
 [Cloudamize](https://www.cloudamize.com/platform#tab-0)| VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular ve diğer bulut iş yüklerini değerlendirin. | Yok
 [Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) | VMware VM 'lerini, Hyper-V sanal makinelerini, fiziksel sunucu diğer bulut iş yüklerini değerlendirin. |  VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri geçirin.
 [Cihaz 42](https://go.microsoft.com/fwlink/?linkid=2097158) | VMware VM 'lerini, Hyper-V VM 'lerini, fiziksel sunucuları ve diğer bulut iş yüklerini değerlendirin.| Yok
-[DMA](/sql/dma/dma-overview?view=sql-server-2017) | SQL Server veritabanlarını değerlendirin. | Yok
+[DMA](/sql/dma/dma-overview) | SQL Server veritabanlarını değerlendirin. | Yok
 [DMS](../dms/dms-overview.md) | Yok | SQL Server, Oracle, MySQL, PostgreSQL, MongoDB geçirin. 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Sanal Masaüstü altyapısını (VDı) değerlendirme | Yok
 [Movere](https://www.movere.io/) | VMware VM 'leri, Hyper-V VM 'Leri, Xen VM 'leri, fiziksel sunucular, iş istasyonları (VDı dahil) ve diğer bulut iş yükleri değerlendirin. | Yok

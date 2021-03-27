@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 1c210eab0332d01fc6514edc790d729172ed2174
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: a14f8e0ba3ae5cca75cf6518320023703a6d1700
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889068"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626393"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için yüksek kullanılabilirlik
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,22 +48,22 @@ Veritabanı altyapısı veya işletim sistemi yükseltildiğinde ya da bir hata 
 
 ## <a name="general-purpose-service-tier-zone-redundant-availability-preview"></a>Genel Amaçlı hizmet katmanı bölgesi gereksiz kullanılabilirliği (Önizleme)
 
-Genel amaçlı hizmet katmanının bölge yedekli yapılandırması, [](../../availability-zones/az-overview.md)   veritabanlarını bir Azure bölgesindeki birden çok fiziksel konumda çoğaltmak için Azure kullanılabilirlik alanları kullanır.Bölge artıklığı ' nı seçerek, yeni ve mevcut genel amaçlı tek veritabanlarınızı ve esnek havuzlarınızı, uygulama mantığındaki herhangi bir değişiklik yapmadan çok daha büyük bir veri merkezi kesintileri dahil olmak üzere çok daha büyük bir başarısızlık kümesiyle esnek hale getirebilirsiniz.
+Genel amaçlı hizmet katmanı için bölgesel olarak yedekli yapılandırma hem sunucusuz hem de sağlanan işlem için sunulmaktadır. Bu yapılandırma, [](../../availability-zones/az-overview.md)   bir Azure bölgesindeki birden çok fiziksel konumda bulunan veritabanlarını çoğaltmak için Azure kullanılabilirlik alanları kullanır.Bölge artıklığı ' nı seçerek, yeni ve mevcut sunuculesss 'leri ve sağlanan genel amaçlı tek veritabanlarını ve esnek havuzları, uygulama mantığındaki herhangi bir değişiklik yapmadan çok daha büyük bir veri merkezi kesintileri dahil olmak üzere çok daha büyük bir başarısızlık kümesiyle dayanıklı hale getirebilirsiniz.
 
 Genel amaçlı katmanın bölge yedekli yapılandırması iki katmana sahiptir:  
 
-- ZRS PFS 'de depolanan veritabanı dosyaları (. mdf/. ldf) ile durum bilgisi olan bir veri katmanı (bölgesel olarak yedekli [depolama Premium dosya paylaşımında](../../storage/files/storage-how-to-create-file-share.md)). Bölgesel olarak [yedekli depolamayı](../../storage/common/storage-redundancy.md) kullanarak, veri ve günlük dosyaları, fiziksel olarak yalıtılmış üç Azure kullanılabilirlik alanı arasında zaman uyumlu olarak kopyalanır.
-- sqlservr.exe sürecini çalıştıran ve yalnızca geçici ve önbelleğe alınmış veriler (örneğin, eklenen SSD üzerinde model veritabanları, bağlı SSD üzerinde model veritabanları, ve bellek olarak plan önbelleği, arabellek havuzu ve columnstore havuzu) içeren durum bilgisiz işlem katmanı. Bu durum bilgisiz düğüm, sqlservr.exe Başlatan, düğümün sistem durumunu denetleyen ve gerekirse başka bir düğüme yük devretme gerçekleştiren Azure Service Fabric tarafından çalıştırılır. Bölgesel olarak yedekli genel amaçlı veritabanlarında, yedek kapasiteye sahip düğümler diğer Kullanılabilirlik Alanları yük devretme için kullanıma hazırdır.
+- ZRS 'de (bölge yedekli depolama) depolanan veritabanı dosyaları (. mdf/. ldf) ile durum bilgisi olan bir veri katmanı. [ZRS](../../storage/common/storage-redundancy.md) kullanma veri ve günlük dosyaları, fiziksel olarak yalıtılmış üç Azure kullanılabilirlik alanı arasında zaman uyumlu olarak kopyalanır.
+- sqlservr.exe sürecini çalıştıran ve yalnızca geçici ve önbelleğe alınmış veriler (örneğin, eklenen SSD üzerinde model veritabanları, bağlı SSD üzerinde model veritabanları, ve bellek olarak plan önbelleği, arabellek havuzu ve columnstore havuzu) içeren durum bilgisiz işlem katmanı. Bu durum bilgisiz düğüm, sqlservr.exe Başlatan, düğümün sistem durumunu denetleyen ve gerekirse başka bir düğüme yük devretme gerçekleştiren Azure Service Fabric tarafından çalıştırılır. Bölgesel olarak yedekli sunucusuz ve sağlanan genel amaçlı veritabanları için, yedek kapasiteye sahip düğümler diğer Kullanılabilirlik Alanları yük devretme için kullanıma hazırdır.
 
 Genel amaçlı hizmet katmanı için yüksek kullanılabilirlik mimarisinin bölge yedekli sürümü aşağıdaki diyagramda gösterilmiştir:
 
 ![Genel amaçlı bölge yedekli yapılandırması](./media/high-availability-sla/zone-redundant-for-general-purpose.png)
 
 > [!IMPORTANT]
-> Bölge yedekli yapılandırma yalnızca 5. nesil işlem donanımı seçildiğinde kullanılabilir. Bu özellik SQL yönetilen örneği 'nde kullanılamaz. Genel amaçlı katman için bölge yedekli yapılandırma yalnızca şu bölgelerde kullanılabilir: Doğu ABD, Doğu ABD 2, Batı ABD 2, Kuzey Avrupa, Batı Avrupa, Güneydoğu Asya, Avustralya Doğu, Japonya Doğu, UK Güney ve Fransa Orta.
+> Bölge yedekli yapılandırma yalnızca 5. nesil işlem donanımı seçildiğinde kullanılabilir. Bu özellik SQL yönetilen örneği 'nde kullanılamaz. Sunucusuz ve sağlanan genel amaçlı katman için bölge yedekli yapılandırma yalnızca şu bölgelerde kullanılabilir: Doğu ABD, Doğu ABD 2, Batı ABD 2, Kuzey Avrupa, Batı Avrupa, Güneydoğu Asya, Avustralya Doğu, Japonya Doğu, UK Güney ve Fransa Orta.
 
 > [!NOTE]
-> 80 sanal çekirdek boyutundaki Genel Amaçlı veritabanları, bölgesel olarak yedekli yapılandırma ile performans düşüşü yaşayabilir. Ayrıca, yedekleme, geri yükleme, veritabanı kopyalama ve coğrafi-DR ilişkilerini ayarlama gibi işlemler 1 TB 'den büyük olan tek veritabanları için daha yavaş performans yaşayabilir. 
+> 80 sanal çekirdek boyutundaki Genel Amaçlı veritabanları, bölgesel olarak yedekli yapılandırma ile performans düşüşü yaşayabilir. Ayrıca, yedekleme, geri yükleme, veritabanı kopyalama, coğrafi-DR ilişkilerini ayarlama ve bir bölge yedekli veritabanını İş Açısından Kritik 'ten Genel Amaçlı daha eski sürüme indirme gibi işlemler, 1 TB 'tan daha büyük veritabanları için daha yavaş performans yaşayabilir. Daha fazla bilgi için lütfen [bir veritabanını ölçeklendirirken gecikme süreli belgelerimize](single-database-scale.md) bakın.
 > 
 > [!NOTE]
 > Önizleme, ayrılmış örnek kapsamında değil

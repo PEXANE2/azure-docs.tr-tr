@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 3f41a68feafe2f0a3eae1e0026a4c350b0959aec
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 4bc9ed87a243a1efb45d7db660ccdd86a19d9801
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105036994"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628246"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
@@ -180,7 +180,7 @@ Veri bilimcisi, işlem örneğini başlatabilir, durdurabilir ve yeniden başlat
 Test/hata ayıklama senaryoları için, işlem örneğini yerel bir ınırm dağıtım hedefi olarak kullanabilirsiniz.
 
 > [!TIP]
-> İşlem örneğinde 12GB işletim sistemi diski vardır. Disk alanını tükenseniz, işlem örneğini durdurmayı/yeniden başlatmayı denemeden önce yeterli alanı temizleyin.
+> İşlem örneğinde 12GB işletim sistemi diski vardır. Disk alanı tükenseniz, işlem örneğini [durdurmadan veya yeniden başlatmadan](how-to-create-manage-compute-instance.md#manage) önce en az 1-2 GB 'yi temizlemek için [terminali kullanın](how-to-access-terminal.md) .
 
 
 ## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Not defteri VM 'sine ne oldu?

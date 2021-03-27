@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
-ms.date: 01/20/2020
+ms.date: 03/26/2021
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: bdd59c80408910bf8ca51bf787c8ff15dc2a4893
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 4d037bdf266e70a2621b2627bc88abce30af652c
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889765"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612628"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 
@@ -470,6 +470,7 @@ Azure rol tabanlı erişim denetimi (Azure RBAC) kullanırken dikkat etmeniz ger
     Ağ ile Azure RBAC hakkında daha fazla bilgi için bkz. [ağ yerleşik rolleri](../role-based-access-control/built-in-roles.md#networking).
 
 - Yeni rol atamalarınızın yığın genelinde önbelleğe alınmış izinlerle etkili olması için bazen 1 saate kadar zaman alabilir.
+- [Koşullu erişim](../role-based-access-control/conditional-access-azure-management.md) şu anda Azure Machine Learning desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

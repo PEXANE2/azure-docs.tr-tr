@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 120335a7bce83bc3d4771ea64f665d67c7d1079a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d41b06bb0c2b26776f9d9c195c3a713e4dae9f82
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98572808"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626647"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler'de pe ve ölçek (Azure İşlevleri)
 
@@ -40,7 +40,7 @@ Dayanıklı İşlevler görev hub 'ı başına bir iş öğesi kuyruğu vardır.
 
 ### <a name="control-queues"></a>Denetim kuyrukları
 
-Dayanıklı İşlevler görev hub 'ı başına birden fazla *Denetim kuyruğu* vardır. *Denetim kuyruğu* daha basit iş öğesi sırasından daha karmaşıktır. Denetim kuyrukları, durum bilgisi olan Orchestrator ve varlık işlevlerini tetiklemek için kullanılır. Orchestrator ve Entity işlev örnekleri durum bilgisi olmayan tekton olduğundan, VM 'Ler arasında yük dağıtmak için rekabet eden bir tüketici modeli kullanılması mümkün değildir. Bunun yerine, Orchestrator ve varlık iletileri denetim kuyrukları arasında yük dengelidir. Bu davranış hakkında daha fazla ayrıntı, sonraki bölümlerde bulunabilir.
+Dayanıklı İşlevler görev hub 'ı başına birden fazla *Denetim kuyruğu* vardır. *Denetim kuyruğu* daha basit iş öğesi sırasından daha karmaşıktır. Denetim kuyrukları, durum bilgisi olan Orchestrator ve varlık işlevlerini tetiklemek için kullanılır. Orchestrator ve varlık işlev örnekleri durum bilgisi içeren tek tonlar olduğundan, her bir düzenleme veya varlığın aynı anda yalnızca bir çalışan tarafından işlenmesi önemlidir. Bunu başarmak için, her orchestration örneği veya varlığı tek bir denetim kuyruğuna atanır. Bu denetim kuyrukları, her kuyruğun tek seferde yalnızca bir çalışan tarafından işlendiğinden emin olmak için çalışanlar arasında yük dengelenir. Bu davranış hakkında daha fazla ayrıntı, sonraki bölümlerde bulunabilir.
 
 Denetim kuyrukları çeşitli düzenleme yaşam döngüsü ileti türlerini içerir. [Orchestrator denetim iletilerini](durable-functions-instance-management.md), etkinlik işlevi *Yanıt* iletilerini ve Zamanlayıcı iletilerini içeren örneklere örnek olarak verilebilir. 32 ' den fazla ileti, tek bir yoklamada denetim sırasından kaldırılır. Bu iletiler, yük verilerinin yanı sıra hangi düzenleme örneğini amaçladığı dahil meta verileri içerir. Aynı düzenleme örneği için birden fazla sıraya alınmış ileti tasarlanıyorsa, bunlar toplu işlem olarak işlenir.
 
@@ -56,7 +56,7 @@ En fazla yoklama gecikmesi `maxQueuePollingInterval` [ dosyadakihost.js](../func
 ### <a name="orchestration-start-delays"></a>Orchestration başlangıç gecikmeleri
 Düzenleme örnekleri `ExecutionStarted` , görev merkezinin denetim kuyruklarından birine bir ileti yerleştirerek başlatılır. Belirli koşullar altında, bir Orchestration 'un çalışmak üzere zamanlandığı zaman ve gerçekten çalışmaya başladığı durumlar arasında çok saniyelik gecikmeler gözlemleyebilirsiniz. Bu zaman aralığı boyunca düzenleme örneği `Pending` durumunda kalır. Bu gecikmenin iki olası nedeni vardır:
 
-1. **Biriktirme listesindeki denetim kuyrukları**: Bu örneğin denetim kuyruğu çok sayıda ileti içeriyorsa, `ExecutionStarted` ileti çalışma zamanı tarafından alınmadan ve işlenmeden önce zaman alabilir. Düzenlemeler aynı anda çok sayıda olayı işlerken ileti biriktirme listeleri gerçekleşebilir. Denetim kuyruğuna gidecek olaylar, düzenleme başlangıç olayları, etkinlik tamamlamalar, dayanıklı zamanlayıcılar, sonlandırma ve dış olayları içerir. Bu gecikme normal koşullarda oluşursa, daha fazla sayıda bölüm içeren yeni bir görev merkezi oluşturmayı düşünün. Daha fazla bölüm yapılandırmak çalışma zamanının yük dağıtımı için daha fazla denetim kuyruğu oluşturmasına neden olur.
+1. **Biriktirme listesindeki denetim kuyrukları**: Bu örneğin denetim kuyruğu çok sayıda ileti içeriyorsa, `ExecutionStarted` ileti çalışma zamanı tarafından alınmadan ve işlenmeden önce zaman alabilir. Düzenlemeler aynı anda çok sayıda olayı işlerken ileti biriktirme listeleri gerçekleşebilir. Denetim kuyruğuna gidecek olaylar, düzenleme başlangıç olayları, etkinlik tamamlamalar, dayanıklı zamanlayıcılar, sonlandırma ve dış olayları içerir. Bu gecikme normal koşullarda oluşursa, daha fazla sayıda bölüm içeren yeni bir görev merkezi oluşturmayı düşünün. Daha fazla bölüm yapılandırmak çalışma zamanının yük dağıtımı için daha fazla denetim kuyruğu oluşturmasına neden olur. Her bölüm, en fazla 16 bölümden oluşan bir denetim kuyruğu ile 1:1 'e karşılık gelir.
 
 2. **Geri dönme yoklama gecikmeleri**: düzenleme gecikmelerinin diğer yaygın nedeni, [Denetim kuyrukları için önceden açıklanan geri dönüş yoklama davranışıdır](#queue-polling). Ancak, bu gecikme yalnızca bir uygulama iki veya daha fazla örneğe göre ölçeklendirildiğinde beklenir. Yalnızca bir uygulama örneği varsa veya Orchestration 'u başlatan uygulama örneği aynı zamanda hedef denetim kuyruğunu yoklayarak aynı örnekten bir sıra yoklama gecikmesi olmaz. Daha önce açıklandığı gibi, ayarlarda **host.js** güncellemeden geri dönme yoklama gecikmeleri azaltılabilir.
 
@@ -94,7 +94,12 @@ Belirtilmemişse, varsayılan `AzureWebJobsStorage` depolama hesabı kullanılı
 
 ## <a name="orchestrator-scale-out"></a>Orchestrator ölçeği genişletme
 
-Etkinlik işlevleri durum bilgisiz ve VM 'Ler eklenerek otomatik olarak ölçeklendirilir. Diğer yandan Orchestrator işlevleri ve varlıkları bir veya daha fazla denetim kuyruğuna göre *bölümlenmiştir* . Denetim sıralarının sayısı dosyadaki **host.js** tanımlanmıştır. Aşağıdaki örnek kod parçacığında host.js, `durableTask/storageProvider/partitionCount` Özelliği (veya `durableTask/partitionCount` dayanıklı işlevler 1. x) olarak ayarlar `3` .
+Etkinlik işlevleri daha fazla VM esnek eklenerek sonsuz olarak ölçeklendirilebilir, tek bir bölüm ve varlık, tek bir bölüme göre sınırlandırılır ve en fazla bölüm sayısı, `partitionCount` içindeki ayara göre sınırlanır `host.json` . 
+
+> [!NOTE]
+> Genellikle, Orchestrator işlevlerinin hafif olması amaçlanmıştır ve büyük miktarlarda bilgi işlem gücü gerektirmemelidir. Bu nedenle, düzenleme için harika verimlilik sağlamak üzere çok sayıda denetim kuyruğu bölümü oluşturmak gerekli değildir. Ağır çalışmanın çoğu, sonsuz bir şekilde ölçeklenebilen, durumsuz etkinlik işlevlerinde yapılmalıdır.
+
+Denetim sıralarının sayısı dosyadaki **host.js** tanımlanmıştır. Aşağıdaki örnek kod parçacığında host.js, `durableTask/storageProvider/partitionCount` Özelliği (veya `durableTask/partitionCount` dayanıklı işlevler 1. x) olarak ayarlar `3` . Bölümler olduğu kadar çok denetim kuyruğu olduğunu unutmayın.
 
 ### <a name="durable-functions-2x"></a>Dayanıklı İşlevler 2. x
 
@@ -124,11 +129,25 @@ Etkinlik işlevleri durum bilgisiz ve VM 'Ler eklenerek otomatik olarak ölçekl
 
 Bir görev hub 'ı, 1 ile 16 arasında bölüm arasında yapılandırılabilir. Belirtilmemişse, varsayılan bölüm sayısı **4**' dir.
 
-Birden çok işlev ana bilgisayar örneğine (genellikle farklı VM 'lerde) ölçeklendirirken, her örnek denetim kuyruklarından birinde bir kilit alır. Bu kilitler, BLOB depolama kiraları olarak dahili olarak uygulanır ve bir düzenleme örneğinin veya varlığının aynı anda yalnızca tek bir konak örneği üzerinde çalıştığından emin olun. Bir görev hub 'ı üç denetim kuyruğu ile yapılandırıldıysa, düzenleme örnekleri ve varlıklar, üç VM 'ye kadar fazla yük dengeli olabilir. Etkinlik işlev yürütmesinin kapasitesini artırmak için ek VM 'Ler eklenebilir.
+Düşük trafikli senaryolar sırasında uygulamanız ölçeklenerek çok az sayıda çalışan tarafından yönetilecektir. Örnek olarak, aşağıdaki diyagramı düşünün.
+
+![Ölçek Genişletme diyagramı](./media/durable-functions-perf-and-scale/scale-progression-1.png)
+
+Önceki diyagramda, 1 ile 6 arasındaki düzenleyicilerinin bölümler arasında yük dengeli olduğunu görüyoruz. Benzer şekilde, aktiviteler gibi bölümler, çalışanlar arasında yük dengedir. Bölümler, çalışmaya başlamış olan düzenleyen sayısına bakılmaksızın çalışanlar arasında yük dengelemesi yapılır.
+
+Azure Işlevleri tüketimine veya elastik Premium planlarda çalıştırıyorsanız veya yapılandırılmış yük tabanlı Otomatik ölçeklendirmeye sahipseniz, trafik arttıkça daha fazla çalışan ayrılır ve bölümler son olarak tüm çalışanlar üzerinden yük dengelenecektir. Ölçeği ölçeklendirmeye devam ediyoruz, sonunda her bölüm son olarak tek bir çalışan tarafından yönetilir. Diğer yandan etkinlikler, tüm çalışanlar arasında yük dengeolmaya devam edecektir. Bu, aşağıdaki görüntüde gösterilmiştir.
+
+![İlk ölçeklendirilen düzenleme diyagramı](./media/durable-functions-perf-and-scale/scale-progression-2.png)
+
+*Belirli bir* anda en fazla eşzamanlı _etkin_ düzenleme sayısının üst sınırı _, uygulamanıza yönelik_ değer için ayrılan çalışan sayısına eşittir `maxConcurrentOrchestratorFunctions` . Bu üst sınır, bölümleriniz çalışanlar arasında tamamen ölçeklendirildiğinde daha kesin hale getirilebilir. Tam olarak ölçeklendirildiğinde ve her çalışan yalnızca tek bir Işlev ana bilgisayar örneğine sahip olduğundan, en fazla _etkin_ eşzamanlı Orchestrator örneği sayısı, sizin değer _olan bölüm sayısı_ kadar olan bölümlerinizin sayısına eşit olacaktır `maxConcurrentOrchestratorFunctions` . Aşağıdaki görüntümiz, daha fazla düzenleyicinin eklendiği, ancak bazıları gri bir şekilde gösterildiği gibi tamamen ölçeklendirilmemiş bir senaryoyu göstermektedir.
+
+![İkinci ölçekli genişleme diyagramı](./media/durable-functions-perf-and-scale/scale-progression-3.png)
+
+Genişleme sırasında denetim kuyruğu kilitleri, bölümlerin eşit şekilde dağıtılmasını sağlamak için Işlevler konak örnekleri arasında yeniden dağıtılabilir. Bu kilitler, BLOB depolama kiraları olarak dahili olarak uygulanır ve tek bir düzenleme örneğinin veya varlığının aynı anda tek bir konak örneği üzerinde çalıştığından emin olun. Bir görev hub 'ı üç bölüm (ve bu nedenle üç denetim kuyruğu) ile yapılandırıldıysa, düzenleme örnekleri ve varlıklar üç kira tutan konak örneği arasında yük dengelenebilir. Etkinlik işlev yürütmesinin kapasitesini artırmak için ek VM 'Ler eklenebilir.
 
 Aşağıdaki diyagramda, Azure Işlevleri 'nin genişleme ortamında depolama varlıklarıyla nasıl etkileşim kurduğu gösterilmektedir.
 
-![Diyagramı Ölçeklendir](./media/durable-functions-perf-and-scale/scale-diagram.png)
+![Diyagramı Ölçeklendir](./media/durable-functions-perf-and-scale/scale-interactions-diagram.png)
 
 Önceki diyagramda gösterildiği gibi, tüm VM 'Ler iş öğesi sırasındaki iletiler için rekabet ediyor. Ancak, denetim kuyruklarından yalnızca üç VM tarafından ileti alabilir ve her VM tek bir denetim kuyruğunu kilitler.
 

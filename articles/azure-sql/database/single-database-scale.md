@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 02/22/2021
-ms.openlocfilehash: ce8d4bf36524e3e7e7b3b8c974aa189fa000d845
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 5852899175f9cc9f2725b875c6e1ce9fd682768d
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773258"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625287"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL Veritabanında tek veritabanı kaynaklarını ölçeklendirme
 
@@ -61,7 +61,10 @@ Hizmet katmanını değiştirmek, tek bir veritabanının veya elastik havuzun i
 > Ayrıca, standart (S2-S12) ve Genel Amaçlı veritabanları için, veritabanı Premium dosya paylaşma ([PFS](../../storage/files/storage-files-introduction.md)) depolaması kullanıyorsa, bir veritabanını elastik havuzun içine/dışına veya elastik havuzlar arasında taşıma gecikmesi veritabanı boyutuyla orantılıdır.
 >
 > Bir veritabanının PFS depolama kullanıp kullanmadığını anlamak için, veritabanı bağlamında aşağıdaki sorguyu yürütün. AccountType sütunundaki değer `PremiumFileStorage` veya ise `PremiumFileStorage-ZRS` , veritabanı PFS depolama alanını kullanıyor demektir.
- 
+
+[!NOTE]
+ Bölge yedekli özelliği, İş Açısından Kritik Genel Amaçlı katmanına ölçeklendirilirken varsayılan olarak aynı kalacaktır. Bölge yedekliliği etkinleştirildiğinde bu düşürme için gecikme süresi ve Genel Amaçlı katmanının bölge yedekliliğe geçiş gecikmesi veritabanı boyutuyla orantılıdır.
+
 ```sql
 SELECT s.file_id,
        s.type_desc,

@@ -2,13 +2,13 @@
 title: Bıcep geliştirme ve dağıtım ortamlarını ayarlama
 description: Bıcep geliştirme ve dağıtım ortamlarını yapılandırma
 ms.topic: conceptual
-ms.date: 03/25/2021
-ms.openlocfilehash: 9a35355d1035943081ac58b36623af772fb8d547
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.date: 03/26/2021
+ms.openlocfilehash: 0e62e6a4633bee09fcbe8b783118cc95ccd5702e
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612594"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626110"
 ---
 # <a name="install-bicep-preview"></a>Bıcep 'yi (Önizleme) yükler
 
@@ -19,21 +19,25 @@ Bıcep geliştirme ve dağıtım ortamlarını ayarlamayı öğrenin.
 En iyi bicep yazma deneyimini almak için iki bileşene ihtiyacınız vardır:
 
 - **Visual Studio Code Için Bıcep uzantısı**. Bicep dosyaları oluşturmak için, iyi bir Bıcep Düzenleyicisi gerekir. [Bıcep uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep)ile [Visual Studio Code](https://code.visualstudio.com/) önerilir. Bu araçlar, dil desteği ve kaynak otomatik tamamlama sağlar. Bicep dosyalarını oluşturma ve doğrulamaya yardımcı olurlar. Visual Studio Code ve Bıcep uzantısını kullanma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Visual Studio Code Ile bıcep dosyaları oluşturma](./quickstart-create-bicep-use-visual-studio-code.md).
-- **Bıcep CLI**. Bıcep CLı kullanarak bicep dosyalarını ARM JSON şablonlarına derleyin ve ARM JSON şablonlarını Bıcep dosyalarına derlemeyi bozun. Daha fazla bilgi için bkz. [Bıcep CLI 'Yı yüklemeyin](#install-bicep-cli).
+- **Bıcep CLI**. Bıcep CLı kullanarak bicep dosyalarını ARM JSON şablonlarına derleyin ve ARM JSON şablonlarını Bıcep dosyalarına derlemeyi bozun. Yükleme yönergeleri için bkz. [Bıcep CLI yükleme](#install-manually).
 
 ## <a name="deployment-environment"></a>Dağıtım ortamı
 
-Azure CLı veya Azure PowerShell kullanarak Bıcep dosyalarını dağıtabilirsiniz. Azure CLı için sürüm 2.20.0 veya daha yeni bir sürüme ihtiyacınız vardır; Azure PowerShell için sürüm 5.6.0 veya sonraki bir sürüme ihtiyacınız vardır. Yükleme yönergeleri için bkz.:
+Yerel bicep dosyalarını dağıtmak için iki bileşene ihtiyacınız vardır:
 
-- [Azure PowerShell’i yükleme](/powershell/azure/install-az-ps)
-- [Windows'da Azure CLI'yi yükleme](/cli/azure/install-azure-cli-windows)
-- [Linux 'ta Azure CLı 'yı yükler](/cli/azure/install-azure-cli-linux)
-- [macOS’ta Azure CLI'yi yükleme](/cli/azure/install-azure-cli-macos)
+- **Azure CLI sürüm 2.20.0 veya üzeri veya Azure PowerShell sürüm 5.6.0 veya üzeri**. Yükleme yönergeleri için bkz.:
 
-> [!NOTE]
-> Şu anda hem Azure CLı hem de Azure PowerShell yalnızca yerel bicep dosyalarını dağıtabilir. Azure CLı kullanarak Bıcep dosyalarını dağıtma hakkında daha fazla bilgi için bkz. [Deploy-CLI](./deploy-cli.md#deploy-remote-template). Azure PowerShell kullanarak Bıcep dosyalarını dağıtma hakkında daha fazla bilgi için bkz. [Deploy-PowerShell]( ./deploy-powershell.md#deploy-remote-template).
+  - [Azure PowerShell’i yükleme](/powershell/azure/install-az-ps)
+  - [Windows'da Azure CLI'yi yükleme](/cli/azure/install-azure-cli-windows)
+  - [Linux 'ta Azure CLı 'yı yükler](/cli/azure/install-azure-cli-linux)
+  - [macOS’ta Azure CLI'yi yükleme](/cli/azure/install-azure-cli-macos)
 
-Azure PowerShell veya Azure CLı 'nin desteklenen sürümü yüklendikten sonra bir Bıcep dosyasını şu ile dağıtabilirsiniz:
+  > [!NOTE]
+  > Şu anda hem Azure CLı hem de Azure PowerShell yalnızca yerel bicep dosyalarını dağıtabilir. Azure CLı kullanarak Bıcep dosyalarını dağıtma hakkında daha fazla bilgi için bkz. [Deploy-CLI](./deploy-cli.md#deploy-remote-template). Azure PowerShell kullanarak Bıcep dosyalarını dağıtma hakkında daha fazla bilgi için bkz. [Deploy-PowerShell]( ./deploy-powershell.md#deploy-remote-template).
+
+- **Bıcep CLI**. Bıcep CLı, dağıtımdan önce Bıcep dosyalarını JSON şablonlarına derlemek için gereklidir. Yükleme yönergeleri için bkz. [Bıcep CLI yükleme](#install-bicep-cli).
+
+Bileşenler yüklendikten sonra, ile bir Bıcep dosyası dağıtabilirsiniz:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -59,11 +63,23 @@ az deployment group create \
 
 ## <a name="install-bicep-cli"></a>Bıcep CLı 'yı yükler
 
-Azure PowerShell veya el ile Azure CLı kullanarak Bıcep CLı yükleyebilirsiniz.
+- Bıcep dosyalarını derlemek ve derlemek için bicep CLı 'yi kullanmak için bkz. [El Ile Install](#install-manually).
+- Bıcep dosyalarını dağıtmak için Azure CLı 'yi kullanmak için bkz. [Azure CLI Ile kullanma](#use-with-azure-cli).
+- Bicep dosyalarını dağıtmak üzere Azure PowerShell kullanmak için, bkz. [Azure PowerShell Ile kullanma](#use-with-azure-powershell).
 
-### <a name="use-azure-cli"></a>Azure CLI kullanma
+### <a name="use-with-azure-cli"></a>Azure CLı ile kullanma
 
-Az CLı Version 2.20.0 veya üzeri yüklü olduğunda, kendisine bağımlı bir komut yürütüldüğünde Bıcep CLı otomatik olarak yüklenir. Örneğin `az deployment ... -f *.bicep` veya `az bicep ...` olabilir.
+Azure CLı sürüm 2.20.0 veya üzeri yüklü olduğunda, kendisine bağımlı bir komut yürütüldüğünde Bıcep CLı otomatik olarak yüklenir. Örnek:
+
+```azurecli
+az deployment group create --template-file azuredeploy.bicep --resource-group myResourceGroup
+```
+
+veya
+
+```azurecli
+az bicep ...
+```
 
 Ayrıca, yerleşik komutları kullanarak CLı 'yı el ile yükleyebilirsiniz:
 
@@ -80,17 +96,11 @@ az bicep upgrade
 Belirli bir sürümü yüklemek için:
 
 ```bash
-az bicep install --version v0.2.212
+az bicep install --version v0.3.126
 ```
 
-> [!NOTE]
-> Az CLı, Bıcep CLı 'nin sahip olduğunuz herhangi bir bicep yüklemesi ile çakışmadan ayrı bir sürümünü yüklerse ve az CLı, yolunuza bicep eklemez.
-
-Yüklü sürümleri göstermek için:
-
-```bash
-az bicep version
-```
+> [!IMPORTANT]
+> Azure CLı, Bıcep CLı 'nın sahip olduğunuz herhangi bir bicep yüklemesi ile çakışmadan ayrı bir sürümünü yüklüyor ve Azure CLı, yolunuza Bıcep CLı eklemez. Bıcep dosyalarını derlemek/derlemek veya Bıcep dosyalarını dağıtmak üzere Azure PowerShell kullanmak için bicep CLı 'yi kullanmak için, bkz. [el ile](#install-manually) veya [Azure PowerShell ile kullanma](#use-with-azure-powershell).
 
 Bıcep CLı 'nın tüm kullanılabilir sürümlerini listelemek için:
 
@@ -98,9 +108,30 @@ Bıcep CLı 'nın tüm kullanılabilir sürümlerini listelemek için:
 az bicep list-versions
 ```
 
-### <a name="use-azure-powershell"></a>Azure PowerShell kullanma
+Yüklü sürümleri göstermek için:
 
-Azure PowerShell, Bıcep CLı 'yı henüz yükleyeme yeteneğine sahip değil. Azure PowerShell (v 5.6.0 veya üzeri), Bıcep CLı 'nın yolunda zaten yüklü ve kullanılabilir olmasını bekler. [El ile yüklenen yöntemlerden](#install-manually)birini izleyin. Bıcep CLı yüklendikten sonra, bir dağıtım cmdlet 'i için gerektiğinde Bıcep CLı çağırılır. Örneğin, `New-AzResourceGroupDeployment ... -TemplateFile main.bicep`.
+```bash
+az bicep version
+```
+
+### <a name="use-with-azure-powershell"></a>Azure PowerShell ile kullanma
+
+Azure PowerShell, Bıcep CLı 'yı henüz yükleyeme yeteneğine sahip değil. Azure PowerShell (v 5.6.0 veya üzeri), Bıcep CLı 'nın yolunda zaten yüklü ve kullanılabilir olmasını bekler. [El ile yüklenen yöntemlerden](#install-manually)birini izleyin.
+
+Bıcep dosyalarını dağıtmak için Bıcep CLı sürüm 0.3.1 veya üzeri gereklidir. Bicep CLı sürümünü denetlemek için:
+
+```cmd
+bicep --version
+```
+
+> [!IMPORTANT]
+> Azure CLı, Bıcep CLı 'nın kendi kendine içerilen bir sürümünü yüklüyor. Azure CLı için gerekli sürümler yüklü olsa bile Azure PowerShell dağıtım başarısız olur.
+
+Bıcep CLı yüklendikten sonra, bir dağıtım cmdlet 'i için gerektiğinde Bıcep CLı çağırılır. Örnek:
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName myResourceGroup -TemplateFile azuredeploy.bicep
+```
 
 ### <a name="install-manually"></a>El ile yükleme
 

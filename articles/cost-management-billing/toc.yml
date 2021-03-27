@@ -206,6 +206,8 @@
               href: manage/transfer-subscriptions-subscribers-csp.md
             - name: Aboneliği iptal etme
               href: manage/cancel-azure-subscription.md
+            - name: Abonelik ilkelerini yönetme
+              href: manage/manage-azure-subscription-policy.md
         - name: Program aracılığıyla abonelik oluşturma
           items:
             - name: Program aracılığıyla abonelik oluşturma

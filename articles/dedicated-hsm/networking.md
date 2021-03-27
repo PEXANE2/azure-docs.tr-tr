@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 5365ba8c4fbc07c487dd40cfcdc9d566990c493c
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 3370389027805cfb5a68b5b0551d14dc31154804
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105607056"
+ms.locfileid: "105611846"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure ayrılmış HSM ağı
 
@@ -133,7 +133,7 @@ Command Result : 0 (Success)
 
 ### <a name="alternative-to-using-global-vnet-peering"></a>Küresel Sanal Ağ Eşleme kullanımı için alternatif
 Küresel VNet eşlemesi için alternatif olarak kullanabileceğiniz birkaç mimarinin vardır.
-1.  [VNET-vnet VPN Gateway bağlantısını](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) kullanma 
+1.  [VNET-vnet VPN Gateway bağlantısını](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) kullanma 
 2.  HSM VNET 'i bir ER devresi ile başka bir VNET ile bağlayın. Bu, doğrudan şirket içi bir yol gerektiğinde veya VPN VNET olduğunda en iyi şekilde geçerlidir. 
 
 #### <a name="hsm-with-direct-express-route-connectivity"></a>Doğrudan Express Route bağlantısı ile HSM

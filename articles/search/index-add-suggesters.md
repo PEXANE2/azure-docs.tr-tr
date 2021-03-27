@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6bf5e53d9f4a867c146cb01376fcd28d2797819c
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: a03ca4bcad9bb577db68e2728ff9dbebb5779a7a
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105606224"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626835"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Sorgu için otomatik tamamlamayı ve önerilen sonuçları etkinleştirmek üzere bir öneri aracı oluşturun
 
-Azure Bilişsel Arama 'de, typeahead veya "sizin yazarken arama" bir *öneri aracı* aracılığıyla etkinleştirilir. Bir öneri aracı, alanlar koleksiyonundan oluşan bir iç veri yapısıdır. Alanlar, kısmi şartlarda eşleşmeleri desteklemek için önek dizileri oluşturarak ek simgeleştirme özelliğine sahiptir. Örneğin, bir şehir alanı içeren bir öneri aracı "Seattle" teriminin "Sea", "koltuk", "Seatt" ve "seattl" önek birleşimlerine sahip olacaktır.
+Azure Bilişsel Arama 'de, typeahead veya "sizin yazarken arama" bir *öneri aracı* aracılığıyla etkinleştirilir. Bir öneri aracı, ek simgeleştirme sağlayan alanların bir listesini sağlar ve kısmi şartlarda eşleşmeleri desteklemek için önek dizileri oluşturuyor. Örneğin, "Seattle" için değer içeren bir şehir alanı içeren bir öneri aracı, typeahead 'i desteklemek için "Sea", "koltuk", "Seatt" ve "seattl" önek birleşimlerine sahip olur.
 
 Kısmi şartlardan eşleşme bir oto tamamlanmış sorgu veya önerilen eşleşme olabilir. Aynı öneri aracı her iki deneyimde desteklemektedir.
 
@@ -171,11 +171,13 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 
 ## <a name="sample-code"></a>Örnek kod
 
-+ [C# ' de ilk uygulamanızı oluşturma (Ders 3-bir arama-yazma)](tutorial-csharp-type-ahead-and-suggestions.md) örneği örnek, önerilen sorguları, otomatik tamamlamayı ve çok yönlü gezintiyi gösterir. Bu kod örneği, korumalı alan Azure Bilişsel Arama hizmetinde çalışır ve önceden yüklenmiş bir öneri aracı dizini kullanır. bu nedenle, tüm yapmanız gerekir, uygulamayı çalıştırmak için F5 'e basın. Abonelik ya da oturum açma gerekli değildir.
++ [Bir Web sitesine arama ekleme (JavaScript)](tutorial-javascript-search-query-integration.md#azure-function-suggestions-from-the-catalog) , istemci uygulamasındaki kısmi dönem tamamlaması için açık kaynak öneriler paketini kullanır.
+
++ [C# ' de ilk uygulamanızı oluşturma (Ders 3-bir arama-yazma)](tutorial-csharp-type-ahead-and-suggestions.md) örneği örnek, önerilen sorguları, otomatik tamamlamayı ve çok yönlü gezintiyi gösterir. Bu kod, pencere öğesi kullanmak yerine typeahead için yerel destek sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İsteklerin formül oluşturma hakkında daha fazla bilgi edinmek için aşağıdaki makaleye önerilir.
+İstekler/formül hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [İstemci koduna otomatik tamamlama ve öneriler ekleme](search-add-autocomplete-suggestions.md)
