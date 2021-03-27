@@ -1,17 +1,17 @@
 ---
-title: Azure için Azure IoT Hub öğreticisi için cihaz güncelleştirmesi-gerçek zamanlı Işletim sistemi | Microsoft Docs
-description: Azure ile gerçek zamanlı Işletim sistemini kullanarak Azure IoT Hub cihaz güncelleştirmesi ile çalışmaya başlama
+title: Azure gerçek zamanlı işletim sistemi için cihaz güncelleştirmesi | Microsoft Docs
+description: Azure gerçek zamanlı işletim sistemi için cihaz güncelleştirme ile çalışmaya başlama
 author: valls
 ms.author: valls
 ms.date: 3/18/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: aaf954642fb276e16dfe4581c2675f817a708f3b
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 66da860a5cdae1f5c7c18e4136b1f2d960492ca8
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105572652"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629062"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-azure-real-time-operating-system-rtos"></a>Azure gerçek zamanlı Işletim sistemi (RTOS) kullanarak Azure IoT Hub öğreticisi için cihaz güncelleştirmesi
 

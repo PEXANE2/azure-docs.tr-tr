@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: a0fafad208d97e2a4d24036e226b4044764bccb4
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 7aa1982fc880ac5733cc4453808c18956969572f
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105047091"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627022"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>Öğretici: mevcut bir özel etki alanını Azure Spring Cloud ile eşleme
 
@@ -27,6 +27,14 @@ Sertifikalar Web trafiğini şifreler. Bu TLS/SSL sertifikaları, Azure Key Vaul
 * GoDaddy gibi etki alanı sağlayıcısı için DNS kayıt defterine erişimi olan bir etki alanı adı.
 * Bir üçüncü taraf sağlayıcıdan özel bir sertifika (otomatik olarak imzalanan sertifikanız). Sertifika, etki alanıyla aynı olmalıdır.
 * [Azure Key Vault](../key-vault/general/overview.md) dağıtılan bir örnek
+
+## <a name="keyvault-private-link-considerations"></a>Anahtar Kasası özel bağlantı konuları
+
+Azure Spring Cloud Management IP 'Leri, Azure güvenilir Microsoft hizmetlerinin bir parçası değildir. Bu nedenle, Azure Spring Cloud 'ın özel uç nokta bağlantılarıyla korunan bir Key Vault sertifika yüklemesine izin vermek için aşağıdaki IP 'Leri Azure Key Vault güvenlik duvarı 'na eklemeniz gerekir:
+
+```
+20.53.123.160 52.143.241.210 40.65.234.114 52.142.20.14 20.54.40.121 40.80.210.49 52.253.84.152 20.49.137.168 40.74.8.134 51.143.48.243
+```
 
 ## <a name="import-certificate"></a>Sertifikayı içeri aktarma
 ### <a name="prepare-your-certificate-file-in-pfx-optional"></a>Sertifika dosyanızı PFX 'de hazırlama (isteğe bağlı)

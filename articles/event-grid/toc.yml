@@ -144,7 +144,7 @@
               href: event-schema-azure-signalr.md
             - name: Azure abonelikleri
               href: event-schema-subscriptions.md
-            - name: Redis için Azure Önbelleği
+            - name: Redis için Azure Cache
               href: event-schema-azure-cache.md
     - name: İş Ortağı Olayları
       items:
@@ -188,6 +188,8 @@
           href: delivery-and-retry.md
         - name: Web kancası olay teslimi
           href: webhook-event-delivery.md
+        - name: Teslim özellikleri
+          href: delivery-properties.md
     - name: Olağanüstü durum kurtarma
       items:
         - name: Coğrafi olağanüstü durum kurtarma
@@ -271,7 +273,15 @@
         - name: Bir özel bağlantı üzerinden güvenle olay yayımlama
           href: configure-private-endpoints.md
         - name: Yönetilen kimlik kullanarak olay sunma
-          href: managed-service-identity.md
+          items:
+            - name: Özel bir konu veya etki alanı için yönetilen kimliği etkinleştirme
+              href: enable-identity-custom-topics-domains.md
+            - name: Bir sistem konusu için yönetilen kimliği etkinleştirme
+              href: enable-identity-system-topics.md
+            - name: Hedeflere Azure rollerine kimlik ekleme
+              href: add-identity-roles.md
+            - name: Kimlik kullanan olay abonelikleri oluşturma
+              href: managed-service-identity.md
         - name: Özel bir bağlantı üzerinden olayları güvenli bir şekilde sunun
           href: consume-private-endpoints.md
         - name: IP güvenlik duvarını yapılandırma

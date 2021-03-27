@@ -2,15 +2,15 @@
 title: Şablon belirtimlerini oluşturma ve dağıtma
 description: Şablon özelliklerinin nasıl oluşturulduğunu ve kuruluşunuzdaki diğer kullanıcılarla nasıl paylaşılacağını açıklar.
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 76573e4415dffb2212dd025ed486d834446d3851
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2f4aec6d9fa07edf36dea68a23ba12eb5f72d308
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043907"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626093"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager şablonu özellikleri (Önizleme)
 
@@ -25,9 +25,16 @@ ms.locfileid: "102043907"
 
 ## <a name="why-use-template-specs"></a>Şablon özellikleri neden kullanılmalıdır?
 
-Şu anda bir GitHub deposu veya depolama hesabında şablonunuz varsa, şablonları paylaşmaya ve kullanmaya çalışırken çeşitli güçlükler çalıştırın. Bir kullanıcının dağıtması için, şablonun yerel olması ya da şablonun URL 'SI herkese açık olmalıdır. Bu kısıtlamayı aşmak için, şablonun kopyalarını dağıtması gereken kullanıcılarla paylaşabilir veya depo veya depolama hesabına erişim açmanız gerekebilir. Kullanıcılar bir şablonun yerel kopyalarına sahip olduğunda, bu kopyalar sonunda özgün şablondan ayrılmış olabilir. Bir depoyu veya depolama hesabını genel olarak erişilebilir yaptığınızda, istenmeyen kullanıcıların şablona erişmesine izin verebilirsiniz.
+Şablon özellikleri aşağıdaki avantajları sağlar:
 
-Şablon özelliklerini kullanmanın avantajı, kurallı şablonlar oluşturabileceğiniz ve bunları kuruluşunuzdaki ekiplerle paylaşabilir. Şablon özellikleri güvenli hale getiriyoruz çünkü dağıtım için Azure Resource Manager, ancak Azure RBAC izni olmayan kullanıcılar tarafından erişilebilir durumda değil. Kullanıcıların şablonunu dağıtmak için yalnızca şablon belirtimine okuma erişimi olması gerekir, böylece şablonu başkalarının değiştirmesine izin vermeden paylaşabilirsiniz.
+* Şablon spec için standart ARM şablonları kullanırsınız.
+* Erişimi, SAS belirteçleri yerine Azure RBAC üzerinden yönetirsiniz.
+* Kullanıcılar şablon belirtimini, şablona yazma erişimi olmadan dağıtabilir.
+* Şablon belirtimini, PowerShell betiği veya DevOps işlem hattı gibi mevcut bir dağıtım işlemiyle tümleştirebilirsiniz.
+
+Şablon Özellikleri, kurallı şablonlar oluşturmanızı ve bunları kuruluşunuzdaki takımlarla paylaşmanızı sağlar. Şablon özellikleri güvenli hale getiriyoruz çünkü dağıtım için Azure Resource Manager kullanılabilir, ancak doğru izin olmadan kullanıcılar için erişilebilir durumda değil. Kullanıcıların şablonunu dağıtmak için yalnızca şablon belirtimine okuma erişimi olması gerekir, böylece şablonu başkalarının değiştirmesine izin vermeden paylaşabilirsiniz.
+
+Şu anda bir GitHub deposu veya depolama hesabında şablonunuz varsa, şablonları paylaşmaya ve kullanmaya çalışırken çeşitli güçlükler çalıştırın. Şablonu dağıtmak için, şablonu genel olarak erişilebilir yapmanız veya SAS belirteçleriyle erişimi yönetmeniz gerekir. Bu kısıtlamayı aşmak için, kullanıcılar, son olarak orijinal şablonınızdan ayrılan yerel kopyalar oluşturabilir. Şablon Özellikleri, şablonları paylaşmayı basitleştirir.
 
 Bir Template spec 'e dahil ettiğiniz şablonlar, kuruluşunuzun gereksinimlerini ve kılavuzunu izlemek için kuruluşunuzdaki yöneticiler tarafından doğrulanmalıdır.
 

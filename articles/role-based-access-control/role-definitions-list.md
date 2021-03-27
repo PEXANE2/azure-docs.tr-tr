@@ -2,24 +2,19 @@
 title: Azure rol tanımlarını listeleme-Azure RBAC
 description: Azure portal, Azure PowerShell, Azure CLı veya REST API kullanarak Azure yerleşik ve özel rolleri nasıl listeleyeceğinizi öğrenin.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/17/2020
+ms.date: 03/26/2021
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 3c9018322c9e5075ff59024f9d791e7431035e3d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f354e3bb7fc0f7ced17d43acacf29c726ce1329c
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100555954"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629165"
 ---
 # <a name="list-azure-role-definitions"></a>Azure rol tanımlarını listeleyin
 
@@ -33,6 +28,10 @@ Azure Active Directory için Yönetici rollerinin listesini görmek için, [Azur
 
 Azure portal tüm rolleri listelemek için aşağıdaki adımları izleyin.
 
+Güncelleştirilmiş bir rol deneyimini görüntülemeyi ilgileniyorsanız, şu anda genel önizleme aşamasında olan **Roller (Önizleme)** sekmesine göz atın. **Roller (Önizleme)** sekmesi, bazı ek özelliklerle **Roller sekmesi olarak** aynı rol listesini görüntüler. Rolleriniz ile çalışmak için roller sekmesini kullanabilirsiniz, ancak özel roller oluşturur veya silerseniz, en son değişiklikleri görmek için sayfayı el ile yenilemeniz gerekebilir.
+
+#### <a name="roles"></a>[Roller](#tab/roles/)
+
 1. Azure portal, **tüm hizmetler** ' e tıklayın ve ardından herhangi bir kapsamı seçin. Örneğin, **Yönetim grupları**, **abonelikler**, **kaynak grupları** veya bir kaynak seçebilirsiniz.
 
 1. Belirli kaynağa tıklayın.
@@ -43,7 +42,29 @@ Azure portal tüm rolleri listelemek için aşağıdaki adımları izleyin.
 
    Geçerli kapsamdaki her bir role atanan kullanıcı ve grup sayısını görebilirsiniz.
 
-   ![Rolleri listesi](./media/role-definitions-list/roles-list.png)
+   ![Rolleri listesi](./media/role-definitions-list/roles-list-current.png)
+
+#### <a name="roles-preview"></a>[Roller (Önizleme)](#tab/roles-preview/)
+
+1. Azure portal, **tüm hizmetler** ' e tıklayın ve ardından herhangi bir kapsamı seçin. Örneğin, **Yönetim grupları**, **abonelikler**, **kaynak grupları** veya bir kaynak seçebilirsiniz.
+
+1. Belirli kaynağa tıklayın.
+
+1. **Erişim denetimi (IAM)** öğesine tıklayın.
+
+1. Tüm yerleşik ve özel rollerin listesini görmek için **Roller (Önizleme)** sekmesine tıklayın.
+
+   ![Önizleme deneyimini kullanarak rol listesi](./media/role-definitions-list/roles-list.png)
+
+1. Belirli bir rolün izinlerini görmek için, **Ayrıntılar** sütununda **Görünüm** bağlantısına tıklayın.
+
+    İzinler bölmesi görüntülenir.
+
+1. Seçili rolün izinlerini görüntülemek ve aramak için **izinler** sekmesine tıklayın.
+
+   ![Önizleme deneyimini kullanarak rol izinleri](./media/role-definitions-list/role-permissions.png)
+
+---
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

@@ -146,11 +146,14 @@
           href: content-aware-encoding.md
         - name: Medya ayrılmış birimleri
           href: concept-media-reserved-units.md
-    - name: İçerik çözümleme (Video Indexer)
+    - name: Analiz ve redaksiyon
       items:
         - name: Genel Bakış
           href: analyzing-video-audio-files-concept.md
           displayName: 'analyze, analyzing, presets, jobs'
+        - name: Yüzeyleri algılama ve Redaksiyoni (Bulanıklaştırma)
+          href: analyze-face-redaction-concept.md
+          displayName: 'analyze, redact, face, detect, presets, jobs, blur, faces, redaction'
     - name: Dönüşümler ve işler
       href: transforms-jobs-concept.md
     - name: Canlı akış
@@ -159,9 +162,9 @@
           href: live-streaming-overview.md
         - name: Canlı etkinlikler ve canlı çıkışlar
           href: live-events-outputs-concept.md
-          displayName: 'vanity, ingest'
+          displayName: 'vanity, ingest, static, hostname, rtmp, ingest'
         - name: Test edilmiş şirket içi gerçek zamanlı kodlayıcılar
-          displayName: recommended
+          displayName: 'recommended, on-premises, live, encoder, OBS, FFMPEG, Wirecast'
           href: recommended-on-premises-live-encoders.md
         - name: Zaman kaydırma ve canlı VOD
           displayName: 'archive, dvr'

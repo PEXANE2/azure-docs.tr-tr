@@ -1,16 +1,14 @@
 ---
 title: Azure Izleyici günlükleri ile Azure Service Fabric olay Analizi
 description: Azure Service Fabric kümelerini izleme ve tanılamaya yönelik Azure Izleyici günlüklerini kullanarak olayları görselleştirme ve çözümleme hakkında bilgi edinin.
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.author: srrengar
-ms.openlocfilehash: 678e96c9b5611cd6d72abd7c4582691b55ffe479
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f1e22213c857b400cc36c51cefb90e2379352893
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100581546"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628977"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile olay Analizi ve görselleştirme
  Azure Izleyici günlükleri, bulutta barındırılan uygulama ve hizmetlerden Telemetriyi toplayıp analiz eder ve kullanılabilirlik ve performansını en üst düzeye çıkarmanıza yardımcı olacak analiz araçları sağlar. Bu makalede, Azure Izleyici günlüklerinde sorguların nasıl çalıştırılacağı özetlenmektedir ve kümenizde neler olduğunu gidermeye yönelik bilgiler verilmektedir. Aşağıdaki sık sorulan sorular giderilmiştir:

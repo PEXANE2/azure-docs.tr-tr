@@ -2,13 +2,13 @@
 title: Kapsayıcı öngörülerini giderme | Microsoft Docs
 description: Bu makalede, kapsayıcı öngörüleri ile ilgili sorunları nasıl giderebileceğiniz ve giderebileceğiniz açıklanır.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 60a6e76d43d954b27336b9631c48328aeff0b69b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: b7618e9073308da67a8e17c82375a0f05925a542
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708314"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627124"
 ---
 # <a name="troubleshooting-container-insights"></a>Kapsayıcı öngörüleri sorunlarını giderme
 
@@ -113,6 +113,54 @@ Container Insights Aracısı pods, performans ölçümlerini toplamak için dü�
 ## <a name="non-azure-kubernetes-cluster-are-not-showing-in-container-insights"></a>Azure olmayan Kubernetes kümesi, kapsayıcı öngörülerine gösterilmiyor
 
 Kapsayıcı öngörüleri içindeki Azure Kubernetes kümesini görüntülemek için, bu Öngörüyi destekleyen Log Analytics çalışma alanında ve kapsayıcı öngörüleri çözüm kaynak **containerınsights (*çalışma alanı*)** üzerinde okuma erişimi gereklidir.
+
+## <a name="metrics-arent-being-collected"></a>Ölçümler toplanmıyor
+
+1. Kümenin [özel ölçümler için desteklenen bir bölgede](../essentials/metrics-custom-overview.md#supported-regions)olduğunu doğrulayın.
+
+2. Aşağıdaki CLı komutunu kullanarak **Izleme ölçümleri yayımcı** rolü atamasının mevcut olduğunu doğrulayın:
+
+    ``` azurecli
+    az role assignment list --assignee "SP/UserassignedMSI for omsagent" --scope "/subscriptions/<subid>/resourcegroups/<RG>/providers/Microsoft.ContainerService/managedClusters/<clustername>" --role "Monitoring Metrics Publisher"
+    ```
+    MSI ile kümeler için, her izleme etkinleştirildiğinde ve devre dışı bırakıldığında, omsagent için istemci kimliğini atanan kullanıcı, geçerli MSI İstemci kimliğinde rol atamasının mevcut olması gerekir. 
+
+3. Azure Active Directory Pod kimliği etkin ve MSI kullanan kümeler için:
+
+   - Kubernetes.Azure.com/ManagedBy etiketini doğrulayın: aşağıdaki komutu kullanarak omsagent pod üzerinde **aks**  mevcuttur:
+
+        `kubectl get pods --show-labels -n kube-system | grep omsagent`
+
+    - Üzerinde desteklenen yöntemlerden birini kullanarak Pod kimliği etkinken özel durumların etkinleştirildiğini doğrulayın https://github.com/Azure/aad-pod-identity#1-deploy-aad-pod-identity .
+
+        Doğrulamak için aşağıdaki komutu çalıştırın:
+
+        `kubectl get AzurePodIdentityException -A -o yaml`
+
+        Aşağıdakine benzer bir çıktı almalısınız:
+
+        ```
+        apiVersion: "aadpodidentity.k8s.io/v1"
+        kind: AzurePodIdentityException
+        metadata:
+        name: mic-exception
+        namespace: default
+        spec:
+        podLabels:
+        app: mic
+        component: mic
+        ---
+        apiVersion: "aadpodidentity.k8s.io/v1"
+        kind: AzurePodIdentityException
+        metadata:
+        name: aks-addon-exception
+        namespace: kube-system
+        spec:
+        podLabels:
+        kubernetes.azure.com/managedby: aks
+        ```
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

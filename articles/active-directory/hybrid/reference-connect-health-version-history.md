@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 408e972eb5950baa75fa1bdf33fb2cd507154bcb
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89279423"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612849"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Sürüm Yayınlama Geçmişi
 Azure Active Directory ekibi, yeni özellikler ve işlevlerle Azure AD Connect Health düzenli olarak güncelleştirir. Bu makalede, yayımlanan sürümleri ve özellikler listelenir.  
@@ -32,12 +32,25 @@ Azure Active Directory ekibi, yeni özellikler ve işlevlerle Azure AD Connect H
 
 Eşitleme için Azure AD Connect Health Azure AD Connect yüklemesiyle tümleşiktir. Özellik geri bildirimi [Azure AD Connect yayın geçmişi](./reference-connect-version-history.md) hakkında daha fazla bilgi edinin, [Connect Health Kullanıcı ses kanalı](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591) ' nı oylayın
 
+## <a name="march-2021"></a>Mart 2021
+**Aracı güncelleştirmesi**
+
+- AD FS için Azure AD Connect Health Aracısı (sürüm 3.1.95.0)
+
+  - NT4 biçimli Kullanıcı adını, oturum açma olayları sırasında UPN olarak çözümlemek için bu sorunu giderin.
+  - Ayrılmış bir hata kodu ile yanlış uygulama tanımlayıcı senaryolarını belirlemek için düzeltilir.
+  - OAuth istemci tanımlayıcısı için yeni bir özellik eklemek için değişiklikler.
+  - Belirli oturum açma senaryoları için Azure AD Sign-In raporundaki **protokol** ve **kimlik doğrulama türü** alanlarında doğru değerleri göstermek için düzeltin.
+  - Azure AD Sign-In raporun IP zinciri alanındaki IP adreslerini istek sırasına göre göstermek için düzeltilir.
+  - Bir oturum açma işlemi sırasında ikincil kimlik doğrulamasının istenmediğini ayırt etmek için yeni bir alan ortaya çıkaracak değişiklikler.
+  - Azure AD Sign-In raporunda görüntülenecek AD FS uygulama tanımlayıcısı özelliğinin düzeltilmesi.
+
 ## <a name="april-2020"></a>Nisan 2020
 **Aracı güncelleştirmesi**
 
 - AD FS için Azure AD Connect Health Aracısı (sürüm 3.1.77.0)
 
-   1.   Uyarının yanlış bir şekilde raporlanması için "AD FS hizmeti için geçersiz hizmet asıl adı (SPN)" uyarısıyla ilgili hata düzeltildi.
+   - Uyarının yanlış bir şekilde raporlanması için "AD FS hizmeti için geçersiz hizmet asıl adı (SPN)" uyarısıyla ilgili hata düzeltildi.
 
 
 ## <a name="july-2019"></a>Temmuz 2019

@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 6c29bf87c5f0ecaaeb6d608069791431a949c89b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2778f52b312e5d2fda7879b834fcd204285b7144
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103009972"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628960"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği oluşturma ve yönetme
 
@@ -127,6 +127,9 @@ Veri bilimcisi, işlem örneğini başlatabilir, durdurabilir ve yeniden başlat
 
 Bir işlem örneğini başlatın, durdurun, yeniden başlatın ve silin. İşlem örneği otomatik olarak ölçeklenmez, bu nedenle devam eden ücretleri engellemek için kaynağı durdurmayı unutmayın.
 
+> [!TIP]
+> İşlem örneğinde 12GB işletim sistemi diski vardır. Disk alanı tükenseniz, işlem örneğini durdurmadan veya yeniden başlatmadan önce en az 1-2 GB 'yi temizlemek için [terminali kullanın](how-to-access-terminal.md) .
+
 # <a name="python"></a>[Python](#tab/python)
 
 Aşağıdaki örneklerde, işlem örneği adı **örnek**
@@ -225,6 +228,7 @@ Oluşturduğunuz (veya sizin için oluşturduğunuz) çalışma alanınızdaki h
 * IP adresi ve bölge gibi belirli bir işlem örneği hakkındaki ayrıntıları alın.
 
 ---
+
 
 [Azure RBAC](../role-based-access-control/overview.md) , çalışma alanındaki hangi kullanıcıların bir bilgi işlem örneği oluşturabileceğinizi, silebileceği, başlatabileceği, durdurabileceğinizi denetlemenize olanak tanır. Çalışma alanı katılımcısı ve sahip rolündeki tüm kullanıcılar çalışma alanı genelinde işlem örnekleri oluşturabilir, silebilir, başlatabilir, durdurabilir ve yeniden başlatabilir. Bununla birlikte, yalnızca belirli bir işlem örneği veya kendi adına oluşturulmuşsa atanan kullanıcı atanmış bir işlem örneği üzerinde Jupyıter, Jupiterlab ve RStudio erişimine izin verilir. Bir işlem örneği, kök erişimi olan tek bir kullanıcıya ayrılmıştır ve jupi/Jupiterlab/RStudio aracılığıyla oturum açabilir. İşlem örneğinde tek kullanıcı oturum açma işlemi olur ve tüm eylemler, bu kullanıcının Azure RBAC ve deneme çalıştırmaları için kimliğini kullanır. SSH erişimi, ortak/özel anahtar mekanizması aracılığıyla denetlenir.
 

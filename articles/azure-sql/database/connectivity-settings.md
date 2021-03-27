@@ -9,17 +9,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: 84fdca96f2ce42c608e7def98f6a3400964cfe46
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0c45a48e6cafa722945400554f2f81916da13775
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101691935"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627617"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL bağlantı ayarları
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Bu makalede, Azure SQL veritabanı ve Azure SYNAPSE Analytics için sunucuya bağlantıyı denetleyen ayarlar açıklanır. Bu ayarlar, sunucuyla ilişkili tüm SQL veritabanı ve Azure SYNAPSE Analytics veritabanları için geçerlidir.
+Bu makalede, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'te [ADANMıŞ SQL Havuzu (eski ADıYLA SQL DW)](../../synapse-analytics\sql-data-warehouse\sql-data-warehouse-overview-what-is.md) için sunucuya bağlantıyı denetleyen ayarlar açıklanır. Bu ayarlar, sunucu ile ilişkili tüm SQL veritabanı ve adanmış SQL Havuzu (eski adıyla SQL DW) veritabanları için geçerlidir.
 
 > [!IMPORTANT]
 > Bu makale, Azure SQL yönetilen örneği için geçerlidir.

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 author: mingshen-ms
 ms.author: krsh
-ms.date: 10/20/2020
-ms.openlocfilehash: c60d2a9b13cce9251ff0f730081a9d677206770d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: 8898a762e8a1e7a2d5c104f99d12032c676a5ca4
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102630121"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105630057"
 ---
 ## <a name="generalize-the-image"></a>Görüntüyü genelleştirin
 
@@ -52,7 +52,9 @@ VM 'niz çalışmaya başladıktan sonra Azure Paylaşılan görüntü galerisin
 8. Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin.
 9. Doğrulama başarılı olduktan sonra **Oluştur**' u seçin.
 
-Yayımlamak için yayımcı hesabının, SıG öğesine sahip erişimi olması gerekir. Erişim vermek için:
+Imza içeren Azure aboneliğinin, yayımlamak için yayımcı hesabıyla aynı kiracı altında olması gerekir. Ayrıca, yayımcı hesabının SıG 'a sahip erişimi olması gerekir. 
+
+Erişim vermek için:
 
 1. Paylaşılan görüntü galerisine gidin.
 2. Sol panelde **erişim denetimi** (IAM) seçeneğini belirleyin.

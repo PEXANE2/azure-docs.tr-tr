@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 8b725b7fcde8ad24934d74d3ce849260312d2f5f
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 24fe28eafc1d1da90b6a7b7f9d41b7e645e62855
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043623"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625781"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ile Microsoft Dynamics 365 sahtekarlık korumasını yapılandırma
 
-Bu örnek öğreticide, [Microsoft Dynamics 365 sahtekarlık korumasını](/dynamics365/fraud-protection/overview) (dfp) Azure ACTIVE DIRECTORY (ad) B2C ile tümleştirme hakkında rehberlik sağlıyoruz.
+Bu örnek öğreticide, [Microsoft Dynamics 365 sahtekarlık korumasını](https://docs.microsoft.com/dynamics365/fraud-protection/overview) (dfp) Azure ACTIVE DIRECTORY (ad) B2C ile tümleştirme hakkında rehberlik sağlıyoruz.
 
 Microsoft DFP istemcilere yeni hesap oluşturma ve istemcinin ekosisteminde oturum açma girişimleri için deneme riski olup olmadığını değerlendirme yeteneği sağlar. Yeni sahte hesaplar oluşturmaya veya var olan hesapların güvenliğinin aşılmasına yönelik şüpheli girişimleri engellemek veya zorluk yapmak için Microsoft DFP değerlendirmesi, müşteri tarafından kullanılabilir. Hesap koruması, yapay zeka uyumlu cihaz parmak izlerini, gerçek zamanlı risk değerlendirmesi, kural ve liste deneyimi için API 'Leri, istemci iş gereksinimlerine göre risk stratejisini iyileştirmek için kural ve liste deneyimini ve istemci ekosistemindeki sahtekarlık koruma verimliliğini ve eğilimlerini izlemek için bir karneyi içerir.
 
@@ -103,7 +103,7 @@ Daha fazla bilgi için bkz. [App Service belgeleri](../app-service/app-service-w
 |FraudProtectionSettings: InstanceId | Microsoft DFP yapılandırması |     |
 |FraudProtectionSettings: Deviceparmak Izi \ müşteri kimliği | Microsoft cihaz parmak izi müşteri KIMLIĞINIZ |     |
 | FraudProtectionSettings: ApiBaseUrl |  Microsoft DFP portalından temel URL 'niz   | Bunun yerine üretim API 'sini çağırmak için '-int ' öğesini kaldırın|
-|  TokenProviderConfig: kaynak  |     | Bunun yerine üretim API 'sini çağırmak için '-int ' öğesini kaldırın|
+|  TokenProviderConfig: kaynak  | Taban URL 'niz- https://api.dfp.dynamics-int.com     | Bunun yerine üretim API 'sini çağırmak için '-int ' öğesini kaldırın|
 |   TokenProviderConfig: ClientID       |Sahtekarlık koruması ticari Azure AD istemci uygulaması KIMLIĞI      |       |
 | TokenProviderConfig: Authority | https://login.microsoftonline.com/<directory_ID> | Sahtekarlık koruması ticari Azure AD kiracı yetkiliniz |
 | TokenProviderConfig: CertificateThumbprint * | Ticari Azure AD İstemci uygulamanızda kimlik doğrulaması yapmak için kullanılan sertifikanın parmak izi |

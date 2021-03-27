@@ -1,16 +1,14 @@
 ---
 title: Ortak FabricClient özel durumları oluşturuldu
 description: Uygulama ve küme yönetim işlemlerini gerçekleştirirken FabricClient API 'Leri tarafından oluşturulabilecek ortak özel durumları ve hataları açıklar.
-author: georgewallace
 ms.topic: conceptual
 ms.date: 06/20/2018
-ms.author: gwallace
-ms.openlocfilehash: 7f3c3e072a3a2e4f7723f84b2c70ba0d0ddb9d03
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c2b5418729855ce366512d9718e22124e5cd837a
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86258832"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627719"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>FabricClient API'leriyle çalışırken sık karşılaşılan özel durumlar ve hatalar
 [FabricClient](/dotnet/api/system.fabric.fabricclient) API 'leri, küme ve uygulama yöneticilerinin bir Service Fabric uygulama, hizmet veya küme üzerinde yönetim görevleri gerçekleştirmesini sağlar. Örneğin, uygulama dağıtımı, yükseltme ve kaldırma, bir kümenin sistem durumunu denetleme veya bir hizmeti test etme. Uygulama geliştiricileri ve küme yöneticileri, Service Fabric kümesini ve uygulamalarını yönetmek için Araçlar geliştirmek üzere FabricClient API 'Lerini kullanabilir.

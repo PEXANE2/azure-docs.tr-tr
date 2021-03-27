@@ -3,12 +3,12 @@ title: Azure Backup’taki yenilikler
 description: Azure Backup yeni özellikler hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 48c8c189d956c4003d24511a54975fe86a982832
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c5e6734c6a962fa43d79fc90fdfaa85923b6339f
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095723"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612492"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup’taki yenilikler
 
@@ -19,6 +19,7 @@ Yeni yayınlar hakkında daha fazla bilgi edinmek için bu sayfayı kitap halind
 ## <a name="updates-summary"></a>Güncelleştirme Özeti
 
 - Mart 2021
+  - [Azure disk yedekleme artık genel kullanıma sunuldu](#azure-disk-backup-is-now-generally-available)
   - [Yedekleme merkezi genel kullanıma sunuldu](#backup-center-is-now-generally-available)
   - [Azure Backup için Arşiv katmanı desteği (önizlemede)](#archive-tier-support-for-azure-backup-in-preview)
 - Şubat 2021
@@ -39,6 +40,12 @@ Yeni yayınlar hakkında daha fazla bilgi edinmek için bu sayfayı kitap halind
   - [RHEL Azure sanal makinelerinde yedekleme SAP HANA (önizlemede)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [Yedekleme verileri için bölge yedekli depolama (ZRS) (önizlemede)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Azure VM 'lerinde SQL Server ve SAP HANA iş yükleri için geçici silme](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-disk-backup-is-now-generally-available"></a>Azure disk yedekleme artık genel kullanıma sunuldu
+
+Azure Backup düzenli anlık görüntü oluşturmayı otomatikleştirerek ve yedekleme ilkesini kullanarak bunları yapılandırılmış süreler boyunca tutarak Azure yönetilen disklere anlık görüntü yaşam döngüsü yönetimi sunar.
+
+Daha fazla bilgi için bkz. [Azure disk yedekleme 'ye genel bakış](disk-backup-overview.md).
 
 ## <a name="backup-center-is-now-generally-available"></a>Yedekleme merkezi genel kullanıma sunuldu
 

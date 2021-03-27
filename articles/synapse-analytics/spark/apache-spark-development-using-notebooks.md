@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: d5ff3fb988a7e907308ccccc8d0900d45a0601c0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c5dfd442bb52a5b1d319bd0a40b656d549134e7e
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101671596"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612334"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE Studio Not defterleri oluşturma, geliştirme ve bakımını yapma
 
@@ -41,9 +41,6 @@ SYNAPSE ekibi, Microsoft müşterileri için tutarlı Not defteri deneyimi sağl
 |%% HTML| Desteklenmez |&#9745;|
 |Hücreyi taşımak için sürükle ve bırak| Desteklenmez |&#9745;|
 |Kalıcı görüntü () çıkışı|&#9745;| Kullanılamaz |
-|Tümünü iptal et| &#9745;| Kullanılamaz|
-|Yukarıdaki tüm hücreleri Çalıştır|&#9745;| Kullanılamaz |
-|Aşağıdaki tüm hücreleri Çalıştır|&#9745;| Kullanılamaz |
 |Araç çubuğu düğmeleriyle metin hücresini Biçimlendir|&#9745;| Kullanılamaz |
 |Hücre işlemini geri al| &#9745;| Kullanılamaz |
 
@@ -273,28 +270,38 @@ Geçerli not defterindeki tüm hücreleri sırayla çalıştırmak için **Tüm�
    ![tüm hücreleri Çalıştır](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
 
 
-# <a name="classical-notebook"></a>[Klasik Not defteri](#tab/classical)
-
 ### <a name="run-all-cells-above-or-below"></a>Yukarıdaki veya altındaki tüm hücreleri Çalıştır
+
+# <a name="classical-notebook"></a>[Klasik Not defteri](#tab/classical)
 
 En sağdaki Ek hücre eylemleri menüsüne erişmek için üç nokta (**...**) simgesini seçin. Ardından, geçerli sıradaki tüm hücreleri çalıştırmak için **yukarıdaki hücreleri Çalıştır** ' ı seçin. Sıradaki geçerli olan tüm hücreleri çalıştırmak için **aşağıdaki hücreleri Çalıştır** ' ı seçin.
 
    ![çalışma--veya-aşağı hücreleri](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
+# <a name="preview-notebook"></a>[İnceleme Not defteri](#tab/preview)
+
+**Tümünü Çalıştır** düğmesini seçerek açılan listeyi genişletin, sonra geçerli sırada bulunan tüm hücreleri çalıştırmak için **yukarıdaki hücreleri Çalıştır** ' ı seçin. Sıradaki geçerli olan tüm hücreleri çalıştırmak için **aşağıdaki hücreleri Çalıştır** ' ı seçin.
+
+   ![Azure-Not defteri-çalışma--veya-aşağı hücreleri](./media/apache-spark-development-using-notebooks/synapse-aznb-run-cells-above-or-below.png)
+
+---
 
 ### <a name="cancel-all-running-cells"></a>Tüm çalışan hücreleri iptal et
+
+# <a name="classical-notebook"></a>[Klasik Not defteri](#tab/classical)
 Çalışan hücreleri veya sırada bekleyen hücreleri iptal etmek için **Tümünü Iptal et** düğmesini seçin. 
    ![iptal-tümünü-hücreler](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
 # <a name="preview-notebook"></a>[İnceleme Not defteri](#tab/preview)
 
-Tüm çalışan hücreleri iptal etme, henüz önizleme Not defteri deneyimi için kullanılamaz. 
+Çalışan hücreleri veya sırada bekleyen hücreleri iptal etmek için **Tümünü Iptal et** düğmesini seçin. 
+   ![Azure-Not defteri-iptal-tümünü-hücreler](./media/apache-spark-development-using-notebooks/synapse-aznb-cancel-all.png) 
 
 ---
 
 
 
-### <a name="reference-notebook"></a>Başvuru Not defteri
+### <a name="notebook-reference"></a>Not defteri başvurusu
 
 # <a name="classical-notebook"></a>[Klasik Not defteri](#tab/classical)
 
@@ -305,6 +312,11 @@ Desteklenmez.
 ```%run <notebook path>```Geçerli not defteri 'nin bağlamı içindeki başka bir not defterine başvurmak için Magic komutunu kullanabilirsiniz. Başvuru not defterinde tanımlanan tüm değişkenler geçerli not defterinde kullanılabilir. ```%run``` Magic komutu, iç içe çağrıları destekler ancak özyinelemeli çağrıları desteklemez. Deyimin derinliği beşten fazlaysa bir özel durum alırsınız. ```%run``` komut şu anda yalnızca bir not defteri yolunu parametre olarak geçirmek desteklemektedir. 
 
 Örnek: ``` %run /path/notebookA ```.
+
+> [!NOTE]
+> SYNAPSE ardışık düzeninde Not defteri başvurusu desteklenmez.
+>
+>
 
 ---
 
@@ -346,7 +358,10 @@ Ayrıca, bir Magic komutu **%% yapılandırması** aracılığıyla Spark oturum
     }
 }
 ```
-
+> [!NOTE]
+> Spark oturum config Magic komutu, SYNAPSE ardışık düzeninde desteklenmez.
+>
+>
 
 ## <a name="bring-data-to-a-notebook"></a>Verileri bir not defterine getirme
 
@@ -420,6 +435,11 @@ Not defteri özelliklerinde, kaydetme sırasında hücre çıkışının eklenip
 ## <a name="magic-commands"></a>MAGIC komutları
 Azure SYNAPSE Studio not defterlerinde tanıdık Jupyıter Magic komutlarını kullanabilirsiniz. Geçerli kullanılabilir sihirli komutları olarak aşağıdaki listeyi gözden geçirin. İhtiyaçlarınızı karşılamak için daha fazla sihirli komut oluşturmaya devam edebilmemiz için [kullanım durumlarınızı GitHub 'da](https://github.com/MicrosoftDocs/azure-docs/issues/new) bize söyleyin.
 
+> [!NOTE]
+> SYNAPSE ardışık düzeninde yalnızca şu sihirli komutlar desteklenir:%% pyspark,%% Spark,%% CSharp,%% SQL. 
+>
+>
+
 # <a name="classical-notebook"></a>[Klasik Not defteri](#tab/classical)
 
 Kullanılabilir satır mıknatıcs: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% timeIt](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
@@ -430,7 +450,7 @@ Kullanılabilir hücre mıknatıcs: [%% Time](https://ipython.readthedocs.io/en/
 
 # <a name="preview-notebook"></a>[İnceleme Not defteri](#tab/preview)
 
-Kullanılabilir satır mıknatıcs: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% timeIt](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [% History](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history), [% Run](#reference-notebook), [% Load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
+Kullanılabilir satır mıknatıcs: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% timeIt](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [% History](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history), [% Run](#notebook-reference), [% Load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
 
 Kullanılabilir hücre mıknatıcs: [%% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%% timeIt](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%% Capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture),%% [WriteFile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile),%% [SQL](#use-multiple-languages), [%% pyspark](#use-multiple-languages),%% [Spark](#use-multiple-languages), [%% CSharp](#use-multiple-languages),%% [HTML](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-html),%% [Configure](#spark-session-config-magic-command)
 

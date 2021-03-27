@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: error-reference
-ms.date: 02/12/2020
+ms.date: 03/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5463f1d8376cbe1a6e81d17c1f95a84e67f3b418
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7c30649fe3486f812569cb51f609356a6cbfd58f
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581091"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627549"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services canlı olay hata kodları
 
@@ -83,7 +83,8 @@ Canlı bir olay için [Event Grid](../../event-grid/index.yml) olaylarına abone
 >| Description|Kodlayıcı verileri çok hızlı gönderiyor. |
 >| Önerilen çözüm|Bu, kodlayıcı kısa bir süre içinde büyük bir parça kümesi patlayamadığında oluşur.  Bu, kodlayıcı bir ağ sorunundan kaynaklanan verileri veri gönderemeden ve ağ kullanılabilir olduğunda verileri dışarı gönderemeden bu da teorik olarak gerçekleşir. Kodlayıcı günlüğünden veya sistem günlüğünden nedeni bulun. |
 >|**Bilinmeyen hata kodları** |
->| Description| Bu hata kodları, karma eşlemesindeki girdileri yinelemek için bellek hatasından değişebilir. |
+>| Description| Bu hata kodları, karma eşlemesindeki girdileri yinelemek için bellek hatasından değişebilir. Bu, kodlayıcı kısa bir dönemde büyük bir parçalar kümesi gönderdiğinde meydana gelebilir.  Bu durum, kodlayıcı bir ağ sorunundan dolayı sırasında verileri gönderemediği zaman da gerçekleşebilir ve ağ kullanılabilir hale geldiğinde tüm gecikmeli parçaları bir kerede gönderir. |
+>|Önerilen çözüm| Kodlayıcı günlüklerini denetleyin.|
 
 ## <a name="other-error-codes"></a>Diğer hata kodları
 
@@ -95,13 +96,13 @@ Canlı bir olay için [Event Grid](../../event-grid/index.yml) olaylarına abone
 >|Önerilen çözüm| Yok.||
 >|**MPI_SYSTEM_MAINTENANCE** ||Yes|
 >| Description|Kodlayıcı, hizmet güncelleştirmesi veya sistem bakımı nedeniyle kesildi. ||
->|Önerilen çözüm|Kodlayıcının ' Auto Connect ' sağladığından emin olun. Bu, beklenmeyen oturum bağlantısının kesilmesinin kurtarılması için Kodlayıcı özelliğidir. ||
+>|Önerilen çözüm|Kodlayıcının ' Auto Connect ' sağladığından emin olun. Kodlayıcının bakımda olmayan canlı etkinlik uç noktasına yeniden bağlanmasına olanak sağlar. ||
 >|**MPE_BAD_URL_SYNTAX** ||Yes|
 >| Description|Alma URL 'SI yanlış biçimlendirilmiş. ||
 >|Önerilen çözüm|Alma URL 'sinin doğru biçimlendirildiğinden emin olun. RTMP için `rtmp[s]://hostname:port/live/GUID_APPID/streamname` ||
 >|**MPE_CLIENT_TERMINATED_SESSION** ||Yes|
 >| Description|Kodlayıcı oturumu kesti.  ||
->|Önerilen çözüm|Bu hata değil. Bu, kodlayıcının bağlantısının kesilmesi sırasında düzgün şekilde kesilmesinin başlatıldığı durumdur. Bu beklenmeyen bir bağlantı kesildiğinde kodlayıcı günlüğünü veya sistem günlüğünü kontrol edin. |
+>|Önerilen çözüm|Bu hata değil. Kodlayıcı, düzgün bağlantı kesilmesi da dahil olmak üzere bağlantı kesmeyi başlattı. Bu beklenmeyen bir bağlantı kesildiğinde kodlayıcı günlüklerine bakın. |
 >|**MPE_INGEST_BITRATE_NOT_MATCH** ||Hayır|
 >| Açıklama|Gelen veri hızı beklenen bit hızına uymuyor. ||
 >|Önerilen çözüm|Bu, gelen veri hızı çok yavaş veya hızlı olduğunda gerçekleşen bir uyarıdır. Kodlayıcı günlüğünü veya sistem günlüğünü kontrol edin.||

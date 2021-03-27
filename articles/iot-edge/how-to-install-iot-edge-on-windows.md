@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 9eeb30d8d3ab0c884472a001149021c4d5cc362c
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 8b549d868aed443e19d639ba6f6df7db20e014b1
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105558729"
+ms.locfileid: "105612131"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Windows cihazı üzerinde Linux için Azure IoT Edge'i yükleme ve sağlama (Önizleme)
 
@@ -117,7 +117,16 @@ Yerel cihazınız yerine uzak bir hedef cihaza dağıtmak istiyorsanız ve liste
 
    ![Desteklendiğini doğrulamak için cihazınızı seçin](./media/how-to-install-iot-edge-on-windows/evaluate-supported-device.png)
 
-1. **2,2 ayarları** sekmesindeki varsayılan ayarları kabul edin.
+1. **2,2 ayarları** sekmesinde, dağıtımınızın yapılandırma ayarlarını gözden geçirin. Ayarlardan memnun olduktan sonra **İleri**' yi seçin.
+
+   ![Dağıtımınızın yapılandırma ayarlarını gözden geçirin](./media/how-to-install-iot-edge-on-windows/default-deployment-configuration-settings.png)
+
+   >[!NOTE]
+   >Bir Windows sanal makinesi kullanıyorsanız, dağıtımda oluşturulan Linux sanal makinesinin bir IP adresi alabileceğinden emin olmak için harici anahtar yerine varsayılan bir anahtar kullanmanız önerilir.
+   >
+   >Varsayılan anahtar kullanılması, Linux sanal makinesini bir iç IP adresi olarak atar. Bu iç IP adresine Windows sanal makinesi dışından ulaşılamıyor, ancak Windows sanal makinesinde oturum açıkken yerel olarak bağlanabilir.
+   >
+   >Windows Server kullanıyorsanız, lütfen Windows üzerinde Linux için Azure IoT Edge varsayılan anahtarı otomatik olarak desteklemediğini unutmayın. Yerel bir Windows Server sanal makinesi için Linux sanal makinesinin dış anahtar aracılığıyla bir IP adresi alabileceği emin olun. Azure 'daki bir Windows Server sanal makinesi için, Windows 'da Linux için IoT Edge dağıtılmadan önce bir iç anahtar ayarlayın.
 
 1. **2,3 dağıtım** sekmesinde, dağıtımın ilerlemesini izleyebilirsiniz. Tam işlem, Windows paketinde Linux için Azure IoT Edge indirmeyi, paketi yüklemeyi, ana bilgisayar cihazını yapılandırmayı ve Linux sanal makinesini ayarlamayı içerir. Bu işlemin tamamlanması birkaç dakika sürebilir. Başarılı bir dağıtım aşağıda verilmiştir.
 
@@ -168,7 +177,7 @@ Henüz yoksa, Windows üzerinde Linux için IoT Edge 'i hedef cihazınıza yükl
    ```
 
    > [!NOTE]
-   > Bu komutu parametresiz veya isteğe bağlı olarak parametrelerle özelleştirmeniz için özelleştirebilirsiniz. Anlamlarını görmek için [Windows PowerShell betik başvurusunda Linux için IoT Edge](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow) başvurabilirsiniz.
+   > Bu komutu parametresiz veya isteğe bağlı olarak parametrelerle özelleştirmeniz için özelleştirebilirsiniz. Parametre anlamlarını ve varsayılan değerleri görmek için [Windows PowerShell betik başvurusunda Linux için IoT Edge](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow) başvurabilirsiniz.
 
 1. Lisans koşullarını kabul etmek için ' Y ' girin.
 

@@ -2,14 +2,14 @@
 title: Sanal ağda havuz sağlama
 description: Bir Azure sanal ağında, işlem düğümlerinin bir dosya sunucusu gibi ağdaki diğer VM 'lerle güvenli bir şekilde iletişim kurabilmesi için bir Batch havuzu oluşturma.
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/26/2021
 ms.custom: seodec18
-ms.openlocfilehash: d6e5de75164e098fc95f6c086d9f98a652dcee4a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7213637e89cfccd1352861002c47a696d942d30f
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561926"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629317"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Sanal ağda Azure Batch havuzu oluşturma
 
@@ -56,6 +56,8 @@ Havuzunuzdaki düğümlerin Zorlamalı tünel etkin olan bir VNet 'te çalışt�
 - Batch hizmetinin, görevleri zamanlamak için düğümlerle iletişim kurması gerekir. Bu iletişimi etkinleştirmek için Batch hesabınızın bulunduğu bölgedeki Batch hizmeti tarafından kullanılan her IP adresi için bir UDR ekleyin. Batch hizmetinin IP adreslerinin listesini almak için bkz. [Şirket Içi hizmet etiketleri](../virtual-network/service-tags-overview.md).
 
 - Azure Storage 'a giden trafiğin (özellikle, formun URL 'Leri, `<account>.table.core.windows.net` `<account>.queue.core.windows.net` ve `<account>.blob.core.windows.net` ) Şirket içi ağınız tarafından engellenmediğinden emin olun.
+
+- Sanal dosya takmaları kullanıyorsanız, [ağ gereksinimlerini](virtual-file-mount.md#networking-requirements) gözden geçirin ve gerekli trafiğin engellenmediğinden emin olun.
 
 Bir UDR eklediğinizde, ilgili her Batch IP adresi ön eki için yolu tanımlayın ve **sonraki atlama türünü** **Internet** olarak ayarlayın.
 

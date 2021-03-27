@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric olay deposu
 description: Bir kümenin veya iş yükünün durumunu dilediğiniz zaman anlamak ve izlemek için bir yol olan Azure Service Fabric EventStore hakkında bilgi edinin.
-author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
-ms.author: srrengar
-ms.openlocfilehash: 0b6258e160794eaf7d0c05775f8fd3b796e3ba47
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ef5049fd934a29fa1d96514c334b13358e6600cf
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91354828"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626563"
 ---
 # <a name="eventstore-overview"></a>EventStore 'A genel bakış
 

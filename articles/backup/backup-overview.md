@@ -4,12 +4,12 @@ description: Azure Backup hizmetine genel bir bakış sağlar ve iş süreklili�
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 2879d104d534733651ba76ab5521541adad0a51c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 07fc6ee0afb29f9d6c701c7eb2c65be988971eaf
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101725365"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612645"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup hizmeti nedir?
 
@@ -21,7 +21,7 @@ Azure Backup hizmeti, Microsoft Azure bulutundaki verilerinizi yedekleyip kurtar
 
 - **Şirket içi** - [Microsoft Azure kurtarma hizmetleri (mars) Aracısı](backup-support-matrix-mars-agent.md)'nı kullanarak dosyaları, klasörleri, sistem durumunu yedekleyin. Ya da şirket içi VM 'Leri ([Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) ve [VMware](backup-azure-backup-server-vmware.md)) ve diğer [Şirket ıçı iş yüklerini](backup-mabs-protection-matrix.md) korumak için DPM veya Azure Backup sunucusu (mabs) aracısını kullanın
 - **Azure VM 'leri**  -  [Mars Aracısı](backup-azure-manage-mars.md)'Nı kullanarak [Windows/Linux VM 'lerinin tamamını yedekleyin](backup-azure-vms-introduction.md) (yedekleme uzantıları kullanarak) veya dosyaları, klasörleri ve sistem durumunu yedekleyin.
-- **Azure yönetilen diskler**  -  [Azure yönetilen disklerini yedekleme (önizlemede)](backup-managed-disks.md)
+- **Azure yönetilen diskler**  -  [Azure yönetilen disklerini yedekleme](backup-managed-disks.md)
 - **Azure dosya paylaşımları**  -  [Azure dosya paylaşımlarını bir depolama hesabına yedekleme](backup-afs.md)
 - **Azure VM**  -   'lerinde SQL Server [Azure VM 'lerinde çalışan SQL Server veritabanları yedekleme](backup-azure-sql-database.md)
 - **Azure VM**  -  'lerinde SAP HANA veritabanları [Azure VM 'lerinde çalışan SAP HANA veritabanları yedekleme](backup-azure-sap-hana-database.md)

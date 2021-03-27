@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 11118c9bd745480dc88380e718a9ab348ab1a3e3
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 0791f2e8d5119c2087286a24cf83b4259ee9e7af
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105606955"
+ms.locfileid: "105611659"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Azure ayrılmış HSM hizmeti sorunlarını giderme
 
@@ -33,7 +33,7 @@ Adanmış HSM, bulutta donanım kaynakları sunarken kullanım için ücretsiz o
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Adanmış HSM 'ye erişim sağlama
 
-Önce kendinize hangi kullanım örneklerinin [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/general/overview) veya [Azure tarafından yönetilen HSM](https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/overview)tarafından giderilemediğini sorun. Daha sonra yalnızca adanmış HSM 'nin anahtar depolama gereksinimlerinize uygun olduğunu düşünmenize ve erişim istemek için e-posta adresine inirsiniz HSMrequest@microsoft.com . Uygulamanızın ve kullanım durumlarınızın yanı sıra, HSM 'leri istediğiniz bölgeleri ve aradığınız MSMS hacmini ana hatlarıyla yapın. Örneğin, hesap yöneticisi veya bulut çözümü mimarı gibi bir Microsoft temsilcisiyle çalışıyorsanız, bunları herhangi bir isteğe dahil edin.
+Önce kendinize hangi kullanım örneklerinin [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) veya [Azure tarafından yönetilen HSM](https://docs.microsoft.com/azure/key-vault/managed-hsm/overview)tarafından giderilemediğini sorun. Daha sonra yalnızca adanmış HSM 'nin anahtar depolama gereksinimlerinize uygun olduğunu düşünmenize ve erişim istemek için e-posta adresine inirsiniz HSMrequest@microsoft.com . Uygulamanızın ve kullanım durumlarınızın yanı sıra, HSM 'leri istediğiniz bölgeleri ve aradığınız MSMS hacmini ana hatlarıyla yapın. Örneğin, hesap yöneticisi veya bulut çözümü mimarı gibi bir Microsoft temsilcisiyle çalışıyorsanız, bunları herhangi bir isteğe dahil edin.
 
 ## <a name="hsm-provisioning"></a>HSM sağlama
 

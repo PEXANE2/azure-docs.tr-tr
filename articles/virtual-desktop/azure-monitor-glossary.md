@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 3/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 29c49ceb3647964030f53c94276e831dc0f648c7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7b824bc13bc4f553d22358b69237173effb51594
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100576631"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627141"
 ---
 # <a name="azure-monitor-for-windows-virtual-desktop-preview-glossary"></a>Windows sanal masaüstü için Azure Izleyici (Önizleme) sözlüğü
 
@@ -24,7 +24,7 @@ Bu makalede, Windows sanal masaüstü için Azure Izleyici (Önizleme) ile ilgil
 
 ## <a name="alerts"></a>Uyarılar
 
-Abonelikte yapılandırdığınız ve [önem derecesi 1](#severity-1-alerts) olarak sınıflandırdığınız etkin Azure Izleyici uyarıları Genel Bakış sayfasında görünür. Uyarıları ayarlamayı öğrenmek için bkz. [Azure Izleyici uyarıları ile olaylara yanıt verme](../azure-monitor/alerts/tutorial-response.md).
+Abonelikte yapılandırdığınız ve [önem derecesi 0](#severity-0-alerts) olarak sınıflandırdığınız etkin Azure Izleyici uyarıları Genel Bakış sayfasında görünür. Uyarıları ayarlamayı öğrenmek için bkz. [Azure Izleyici uyarıları ile olaylara yanıt verme](../azure-monitor/alerts/tutorial-response.md).
 
 ## <a name="available-sessions"></a>Kullanılabilir oturumlar
 
@@ -40,7 +40,7 @@ Son 24 saat içinde bir oturum başlatan Toplam Kullanıcı sayısı.
 
 ## <a name="daily-alerts"></a>Günlük uyarılar
 
-Son 24 saat içinde tetiklenen toplam [önem derecesi 1 uyarı](#severity-1-alerts) sayısı.
+Her gün tetiklenen toplam uyarı sayısı.
 
 ## <a name="daily-connections-and-reconnections"></a>Günlük bağlantılar ve yeniden bağlantılar
 
@@ -78,7 +78,7 @@ Her bir tanılama sorunu veya hatası, neyin yanlış olduğunu açıklayan bir 
 
 ## <a name="input-delay"></a>Giriş gecikmesi
 
-Windows sanal masaüstü için Azure Izleyici 'de "giriş gecikmesi", her oturum için işlem performans sayacı başına giriş gecikmesi anlamına gelir. <aka.ms/azmonwvdi> konumundaki konak performansı sayfasında, bu performans sayacı, her 30 saniyede bir rapor gönderecek şekilde yapılandırılmıştır. Bu 30 saniyelik aralıklar "örnekler" olarak adlandırılır ve bu pencerede en kötü durumu raporlar. Ortanca ve P95 değerleri, tüm örneklerde medyan ve 95. yüzdebirlik değerini yansıtır.
+Windows sanal masaüstü için Azure Izleyici 'de "giriş gecikmesi", her oturum için işlem performans sayacı başına giriş gecikmesi anlamına gelir. [Aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)adresindeki konak performansı sayfasında, bu performans sayacı, her 30 saniyede bir raporu hizmete gönderecek şekilde yapılandırılmıştır. Bu 30 saniyelik aralıklar "örnekler" olarak adlandırılır ve bu pencerede en kötü durumu raporlar. Ortanca ve P95 değerleri, tüm örneklerde medyan ve 95. yüzdebirlik değerini yansıtır.
 
 **Ana bilgisayara göre giriş gecikmesi** altında, sayfadaki diğer tüm görselleri bu konağa filtrelemek için bir oturum ana bilgisayar satırı seçebilirsiniz. Ayrıca, zaman içinde ortanca giriş gecikmesini filtrelemek için bir işlem adı seçebilirsiniz.
 
@@ -114,16 +114,11 @@ Aşağıdaki tabloda, Azure Izleyicisinin Windows sanal masaüstü için kulland
 |\*FizikselDisk () \\ Ortalama Disk sn/okuma|30 saniye|
 |\*FizikselDisk () \\ Ortalama Disk sn/Aktarım|30 saniye|
 |\*FizikselDisk () \\ Ortalama Disk sn/yazma|30 saniye|
-|İşlem ( \* ) \\ % İşlemci Zamanı|20 saniye|
-|İşlem ( \* ) \\ % Kullanıcı saati|30 saniye|
-|Process ( \* ) \\ Iş parçacığı sayısı|30 saniye|
-|Process ( \* ) \\ GÇ yazma işlemi/sn|30 saniye|
-|Process ( \* ) \\ GÇ okuma işlemi/sn|30 saniye|
 |İşlemci bilgileri (_Total) \\ % Işlemci zamanı|30 saniye|
 |Terminal Hizmetleri ( \* ) \\ etkin oturumlar|60 saniye|
 |Terminal Hizmetleri ( \* ) \\ etkin olmayan oturumlar|60 saniye|
 |Terminal Hizmetleri ( \* ) \\ Toplam oturum sayısı|60 saniye|
-|\*Işlem başına kullanıcı girişi gecikmesi ( \* ) \\ en fazla giriş dela|30 saniye|
+|\*Işlem başına kullanıcı girişi gecikmesi ( \* ) \\ en fazla giriş gecikmesi|30 saniye|
 |\*Oturum başına kullanıcı girişi gecikmesi ( \* ) \\ en fazla giriş gecikmesi|30 saniye|
 |RemoteFX ağı ( \* ) \\ GEÇERLI TCP RTT|30 saniye|
 |RemoteFX ağı ( \* ) \\ geçerli UDP bant genişliği|30 saniye|
@@ -149,13 +144,13 @@ Ek bilgileri görüntülemek için de girdileri seçebilirsiniz. Sorunla hangi k
 
 ## <a name="round-trip-time-rtt"></a>Gidiş dönüş süresi (RTT)
 
-Gidiş dönüş süresi (RTT), bağlantının, son kullanıcının konumu ile VM 'nin Azure bölgesi arasındaki gidiş dönüş süresinin tahminidir. Hangi konumların en iyi gecikme süresine sahip olduğunu görmek için, [Windows sanal masaüstü deneyimi Estimator aracında](https://azure.microsoft.com/services/virtual-desktop/assessment/)istediğiniz konumu bulun.
+Gidiş dönüş süresi (RTT), bağlantının, son kullanıcının konumu ile oturum ana bilgisayarının Azure bölgesi arasındaki gidiş dönüş süresinin tahminidir. Hangi konumların en iyi gecikme süresine sahip olduğunu görmek için, [Windows sanal masaüstü deneyimi Estimator aracında](https://azure.microsoft.com/services/virtual-desktop/assessment/)istediğiniz konumu bulun.
 
 ## <a name="session-history"></a>Oturum geçmişi
 
 **Oturumlar** öğesi, bağlı ve bağlantısı kesilen tüm oturumların durumunu gösterir. **Boştaki oturumlar** yalnızca bağlantısı kesilen oturumları gösterir.
 
-## <a name="severity-1-alerts"></a>Önem derecesi 1 uyarıları
+## <a name="severity-0-alerts"></a>Önem derecesi 0 uyarıları
 
 Hemen yapmanız gereken en acil öğeler. Bu sorunları ele mazsanız, Windows sanal masaüstü dağıtımınızın çalışmayı durdurmasına neden olabilir.
 
@@ -171,11 +166,11 @@ Kullanıcı raporu sayfası, belirli bir kullanıcının bağlantı geçmişini 
 
 Bu, her bir sanal makine çekirdeğinizdeki kullanıcı sayısıdır. Zamana göre çekirdek başına en fazla kullanıcı sayısını izlemek, ortamın sürekli olarak yüksek, düşük veya bir çekirdek başına kaç kullanıcı sayısına göre çalıştığını belirlemenize yardımcı olabilir. Kaç kullanıcının etkin olduğunu bilmek, ortamı verimli bir şekilde sağlamanıza ve ölçeklendirmenize yardımcı olur.
 
-## <a name="windows-events"></a>Windows olayları
+## <a name="windows-event-logs"></a>Windows Olay Günlükleri
 
 Windows olay günlükleri, Windows sanal makinelerinde Log Analytics aracıları tarafından toplanan veri kaynaklarıdır. Sistem ve uygulama gibi standart günlüklerdeki olayları, izlemeniz gereken uygulamalar tarafından oluşturulan özel günlükleri de toplayabilirsiniz.
 
-Aşağıdaki tabloda, Windows sanal masaüstü için Azure Izleyici için gerekli Windows olayları listelenmektedir:
+Aşağıdaki tabloda, Windows sanal masaüstü için Azure Izleyici için gerekli Windows olay günlükleri listelenmektedir:
 
 |Olay adı|Olay türü|
 |---|---|
@@ -186,7 +181,7 @@ Aşağıdaki tabloda, Windows sanal masaüstü için Azure Izleyici için gerekl
 | Microsoft-FSLogix-Apps/Işletimsel|Hata, uyarı ve bilgi|
 |Microsoft-FSLogix-uygulamalar/yönetici|Hata, uyarı ve bilgi|
 
-Windows olayları hakkında daha fazla bilgi için bkz. [Windows olay kayıtları özellikleri](../azure-monitor/agents/data-sources-windows-events.md).
+Windows olay günlükleri hakkında daha fazla bilgi için bkz. [Windows olay kayıtları özellikleri](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -203,4 +198,4 @@ Yardıma ihtiyacınız varsa veya sorularınız varsa topluluk kaynaklarımıza 
    
 - Geri bildirimleri nasıl bırakacağınızı öğrenmek için bkz. [sorun giderme genel bakış, geri bildirim ve Windows sanal masaüstü desteği](troubleshoot-set-up-overview.md#report-issues).
 
-- Windows sanal masaüstü [Geri Bildirim Hub 'ında](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) veya [UserVoice forumumuzdan](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)Windows sanal masaüstü için geri bildirim de bırakabilirsiniz.
+- Windows sanal masaüstü [Geri Bildirim Hub 'ında](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) Windows sanal masaüstü için geri bildirimde bulunda bırakabilirsiniz

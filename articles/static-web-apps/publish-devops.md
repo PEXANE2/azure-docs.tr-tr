@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: apedward
-ms.openlocfilehash: af359734ff5bfe90dedbb7f8389aecdc6e056654
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.openlocfilehash: 701f999427d743c18f5dbcadb00cf303f97a8f53
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105543576"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627340"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>Öğretici: Azure DevOps ile Azure statik Web Apps yayımlama
 
@@ -36,35 +36,13 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 1. Azure DevOps deponuza gidin.
 
-1. Mevcut bir depoyu kullanın veya _bir depoyu_ aşağıda gösterildiği gibi içeri aktarın.
+1. Örnek bir uygulamayı içeri aktarmaya başlamak için **Içeri aktar** ' ı seçin.
   
     :::image type="content" source="media/publish-devops/devops-repo.png" alt-text="DevOps deposu":::
 
-1. Ön uç Web uygulamanız için yeni bir dosya oluşturun.
+1. **Kopya URL**'sinde, girin `https://github.com/staticwebdev/vanilla-api.git` .
 
-1. Aşağıdaki HTML işaretlemesini kopyalayıp yeni dosyanıza yapıştırın:
-
-    ```html
-    <!DOCTYPE html>
-    <html lang="en">
-  
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="styles.css">
-      <title>Hello World!</title>
-    </head>
-  
-    <body>
-      <main>
-        <h1>Hello World!</h1>
-      </main>
-    </body>
-  
-    </html>
-    ```
-
-1. Dosyayı kaydedin.
+1. **İçeri aktar**'ı seçin.
 
 ## <a name="create-a-static-web-app"></a>Statik web uygulaması oluşturma
 
@@ -85,7 +63,9 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
     :::image type="content" source="media/publish-devops/create-resource.png" alt-text="Dağıtım ayrıntıları-diğer":::
 
-1. Dağıtım başarılı olduktan sonra **dağıtım belirtecini Yönet**' i seçin.
+1. Dağıtım başarılı olduktan sonra yeni statik Web Apps kaynağına gidin.
+
+1. **Dağıtım belirtecini Yönet**' i seçin.
 
 1. **Dağıtım belirtecini** kopyalayın ve başka bir ekranda kullanmak üzere bir metin düzenleyicisine yapıştırın.
 
@@ -96,16 +76,17 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 ## <a name="create-the-pipeline-task-in-azure-devops"></a>Azure DevOps 'da işlem hattı görevi oluşturma
 
-1. Daha önce oluşturulan Azure DevOps projesine gidin.
+1. Daha önce oluşturulan Azure DevOps deposuna gidin.
 
-2. Yeni bir **derleme Işlem hattı** oluşturun ve **derlemeyi ayarla**' yı seçin.
+1. **Derlemeyi ayarla**' yı seçin.
 
     :::image type="content" source="media/publish-devops/azdo-build.png" alt-text="Derleme işlem hattı":::
 
-3. Aşağıdaki YAML 'yi kopyalayıp işlem hattınızla yapıştırın.
+1. *Ardışık düzeni yapılandırın* ekranında **Başlatıcı işlem hattı**' nı seçin.
 
-    > [!NOTE]
-    > _App_location_,_api_location_ ve _output_location_ için girilen değerlerin uygulamanız için değiştirilmesi gerekir.  
+    :::image type="content" source="media/publish-devops/configure-pipeline.png" alt-text="İşlem hattını yapılandırma":::
+
+1. Aşağıdaki YAML 'yi kopyalayıp işlem hattınızla yapıştırın.
 
     ```yaml
     trigger:
@@ -117,40 +98,47 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
     steps:
       - task: AzureStaticWebApp@0
         inputs:
-          app_location: frontend 
-          api_location: api
-          output_location: build
+          app_location: "/" 
+          api_location: "api"
+          output_location: ""
         env:
           azure_static_web_apps_api_token: $(deployment_token)
     ```
 
-    Azure statik Web uygulaması girişlerini uygulamanızın klasör yapısına göre yapılandırın.
+    > [!NOTE]
+    > Örnek uygulamayı kullanmıyorsanız,, `app_location` `api_location` ve değerlerinin `output_location` uygulamanızdaki değerlerle eşleşecek şekilde değiştirilmesi gerekir.
 
     [!INCLUDE [static-web-apps-folder-structure](../../includes/static-web-apps-folder-structure.md)]
 
     `azure_static_web_apps_api_token`Değer kendi kendine yönetilir ve el ile yapılandırılır.
 
-4. **Değişkenler**' i seçin.
+1. **Değişkenler**' i seçin.
 
-5. Yeni bir değişken oluşturun.
+1. Yeni bir değişken oluşturun.
 
-6. Değişkeni **deployment_token** (iş akışındaki ad ile eşleşen) adlandırın.
+1. Değişkeni **deployment_token** (iş akışındaki ad ile eşleşen) adlandırın.
 
-7. Daha önce bir metin düzenleyicisine yapıştırdığınız dağıtım belirtecini kopyalayın.
+1. Daha önce bir metin düzenleyicisine yapıştırdığınız dağıtım belirtecini kopyalayın.
 
-8. _Değer_ kutusuna dağıtım belirtecine yapıştırın.
+1. _Değer_ kutusuna dağıtım belirtecine yapıştırın.
 
     :::image type="content" source="media/publish-devops/variable-token.png" alt-text="Değişken belirteci":::
 
-9. **Tamam**’ı seçin.
+1. **Bu değeri gizli tut ' u** seçin.
 
-10. **Kaydet '** i seçin ve işlem hattını çalıştırın.
+1. **Tamam**’ı seçin.
+
+1. İşlem hattınızda YAML 'ye geri dönmek için **Kaydet** ' i seçin.
+
+1. Kaydet _ve Çalıştır iletişim kutusunu_ açmak için **Kaydet ve Çalıştır ' ı** seçin.
 
     :::image type="content" source="media/publish-devops/save-and-run.png" alt-text="İşlem Hattı":::
 
-11. Dağıtım başarılı olduktan sonra dağıtım yapılandırmasına bağlantılar içeren Azure statik Web Apps **genel bakışa** gidin.
+1. Komut zinciri çalıştırmak için **Kaydet ve Çalıştır ' ı** seçin.
 
-12. Yeni dağıtılan Web sitenizi görmek için **URL 'yi** seçin. _Kaynak_ bağlantının artık Azure DevOps deposunun dalını ve konumunu nasıl işaret ettiğini unutmayın.
+1. Dağıtım başarılı olduktan sonra dağıtım yapılandırmasına bağlantılar içeren Azure statik Web Apps **genel bakışa** gidin. _Kaynak_ bağlantının artık Azure DevOps deposunun dalını ve konumunu nasıl işaret ettiğini unutmayın.
+
+1. Yeni dağıtılan Web sitenizi görmek için **URL 'yi** seçin.
 
     :::image type="content" source="media/publish-devops/deployment-location.png" alt-text="Dağıtım konumu":::
 

@@ -5,14 +5,14 @@ services: attestation
 author: msmbaldwin
 ms.service: attestation
 ms.topic: overview
-ms.date: 08/31/2020
+ms.date: 03/26/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 92080f119567d185ca6a5bccf0e89d8d10213f3b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8ff2e73a8557c6b1761c852ac58a46037a122ddb
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732318"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628535"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak özel uç nokta oluşturma
 
@@ -21,7 +21,7 @@ Azure kanıtlama ile güvenli bir şekilde bağlanmak için özel bir uç nokta 
 Bu hızlı başlangıçta, Azure kanıtlama için özel bir uç nokta oluşturacak ve özel bağlantıyı test etmek için bir sanal makine dağıtacaksınız.  
 
 > [!NOTE]
-> Geçerli uygulama yalnızca otomatik onay seçeneğini içerir. Özel uç nokta oluşturma işlemiyle devam edebilmek için aboneliğin beyaz listelenmesi gerekir. Aşağıdaki adımlara geçmeden önce lütfen hizmet ekibine ulaşın veya [Azure destek sayfasında](https://azure.microsoft.com/support/options/) bir Azure destek isteği gönderebilirsiniz.
+> Geçerli uygulama yalnızca otomatik onay seçeneğini içerir. Özel uç nokta oluşturma işlemiyle devam edebilmek için aboneliğin izin verilenler listesine eklenmesi gerekir. Aşağıdaki adımlara geçmeden önce lütfen hizmet ekibine ulaşın veya [Azure destek sayfasında](https://azure.microsoft.com/support/options/) bir Azure destek isteği gönderebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

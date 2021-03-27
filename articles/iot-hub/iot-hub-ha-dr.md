@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: c665e30ed9b284f7c93cf8588b710c9f22457a0a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9d2ffac813456398c02066c978c37bdb09501aeb
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92151673"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628994"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub yüksek kullanılabilirlik ve olağanüstü durum kurtarma
 
@@ -64,7 +64,7 @@ IoT Hub 'ı için yük devretme işlemi tamamlandıktan sonra, cihazdaki ve arka
 >
 > - Yerleşik olaylar uç noktasına bağlanmak için Azure Işlevleri veya Azure Stream Analytics kullanıyorsanız, **yeniden başlatma** gerçekleştirmeniz gerekebilir. Bunun nedeni yük devretme sırasında önceki uzaklıklar artık geçerli değildir.
 >
-> - Depolama alanına yönlendirirken, tüm Blobların veya dosyaların bölüm üzerinde herhangi bir varsayımından okunmalarını sağlamak için Blobları veya dosyaları listeleyip daha sonra bunları yinelemenizi öneririz. Bölüm aralığı, Microsoft tarafından başlatılan bir yük devretme veya el ile yük devretme sırasında değişebilir. Dosya listesi için Blobların listesini veya [ADLS 2. API](/rest/api/storageservices/datalakestoragegen2/path/list) listesini listelemek Için, [LISTE bloblarını API](/rest/api/storageservices/list-blobs) 'sini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure depolama, yönlendirme uç noktası olarak](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
+> - Depolama alanına yönlendirirken, tüm Blobların veya dosyaların bölüm üzerinde herhangi bir varsayımından okunmalarını sağlamak için Blobları veya dosyaları listeleyip daha sonra bunları yinelemenizi öneririz. Bölüm aralığı, Microsoft tarafından başlatılan bir yük devretme veya el ile yük devretme sırasında değişebilir. Dosya listesi için Blobların listesini veya [ADLS 2. API](/rest/api/storageservices/datalakestoragegen2/filesystem/listpaths) listesini listelemek Için, [LISTE bloblarını API](/rest/api/storageservices/list-blobs) 'sini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure depolama, yönlendirme uç noktası olarak](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft tarafından başlatılan yük devretme
 

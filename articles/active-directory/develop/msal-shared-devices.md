@@ -1,7 +1,7 @@
 ---
 title: Paylaşılan cihaz moduna genel bakış
 titleSuffix: Microsoft identity platform | Azure
-description: Frontline çalışanlarınız için cihaz paylaşımını etkinleştirmek üzere paylaşılan cihaz modu hakkında bilgi edinin.
+description: Saflarda çalışanlarınız için cihaz paylaşımını etkinleştirmek üzere paylaşılan cihaz modu hakkında bilgi edinin.
 services: active-directory
 author: brandwe
 manager: CelesteDG
@@ -13,27 +13,27 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 9e48d8f55efa8bc4c82eaa973a6feaeb42390064
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cf8869002fb3e0170331709af3da5b971a098740
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578783"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612407"
 ---
 # <a name="overview-of-shared-device-mode"></a>Paylaşılan cihaz moduna genel bakış
 
-Paylaşılan cihaz modu, Frontline çalışanları destekleyen ve bunlara dağıtılan cihazlarda paylaşılan cihaz modunu etkinleştiren uygulamalar oluşturmanıza olanak sağlayan bir Azure Active Directory özelliğidir.
+Paylaşılan cihaz modu, saflarda çalışanları destekleyen ve bunlara dağıtılan cihazlarda paylaşılan cihaz modunu etkinleştiren uygulamalar oluşturmanıza olanak sağlayan bir Azure Active Directory özelliğidir.
 
 >[!IMPORTANT]
 > İOS için paylaşılan cihaz modu [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-## <a name="what-are-frontline-workers"></a>Frontline çalışanları nelerdir?
+## <a name="what-are-frontline-workers"></a>Saflarda çalışanları nelerdir?
 
-Önde gelen çalışanlar, perakende çalışanları, bakım ve alan aracıları, tıp personeli ve bir bilgisayarın başında oturmama veya işbirliği için kurumsal e-posta kullanan diğer kullanıcılardır. Aşağıdaki bölümler, önde gelen çalışanları desteklemeye yönelik yönleri ve zorlukları ve ardından, uygulamanızın bir kuruluşun Frontline çalışanları tarafından kullanılmasını sağlayan Microsoft tarafından sunulan özelliklere giriş yapmanızı sağlar.
+Önde gelen çalışanlar, perakende çalışanları, bakım ve alan aracıları, tıp personeli ve bir bilgisayarın başında oturmama veya işbirliği için kurumsal e-posta kullanan diğer kullanıcılardır. Aşağıdaki bölümler, önde gelen çalışanları desteklemeye yönelik yönleri ve zorlukları ve ardından, uygulamanızın bir kuruluşun saflarda çalışanları tarafından kullanılmasını sağlayan Microsoft tarafından sunulan özelliklere giriş yapmanızı sağlar.
 
-### <a name="challenges-of-supporting-frontline-workers"></a>Frontline çalışanları destekleme sorunları
+### <a name="challenges-of-supporting-frontline-workers"></a>Saflarda çalışanları destekleme sorunları
 
-Frontline Worker iş akışlarının etkinleştirilmesi, genellikle tipik bilgi çalışanları tarafından sunulan güçlükleri içerir. Bu tür sorunlar, bir kuruluşun temel üretkenlik araçlarıyla yüksek ciro ücreti ve daha az benzerlik içerebilir. Frontline çalışanlarının güçlenmesini sağlamak için kuruluşlar farklı stratejiler benimseme. Bazıları, çalışanlarının kendi kişisel telefonlarındaki iş uygulamalarını kullandığı bir kendi cihazını getir (BYOD) stratejisini benimseirken, diğer bir deyişle, çalışanları iPads veya Android tabletler gibi paylaşılan cihazları sağlıyor.
+Saflarda Worker iş akışlarının etkinleştirilmesi, genellikle tipik bilgi çalışanları tarafından sunulan güçlükleri içerir. Bu tür sorunlar, bir kuruluşun temel üretkenlik araçlarıyla yüksek ciro ücreti ve daha az benzerlik içerebilir. Saflarda çalışanlarının güçlenmesini sağlamak için kuruluşlar farklı stratejiler benimseme. Bazıları, çalışanlarının kendi kişisel telefonlarındaki iş uygulamalarını kullandığı bir kendi cihazını getir (BYOD) stratejisini benimseirken, diğer bir deyişle, çalışanları iPads veya Android tabletler gibi paylaşılan cihazları sağlıyor.
 
 ### <a name="supporting-multiple-users-on-devices-designed-for-one-user"></a>Tek bir kullanıcı için tasarlanan cihazlarda birden çok kullanıcıyı destekleme
 
@@ -49,12 +49,12 @@ Azure Active Directory, **paylaşılan cihaz modu** adlı bir özellik ile bu se
 
 Belirtildiği gibi, paylaşılan cihaz modu, aşağıdakileri yapmanızı sağlayan Azure Active Directory bir özelliğidir:
 
-* Frontline çalışanlarını destekleyen uygulamalar oluşturun
-* Cihazları Frontline çalışanlara dağıtın ve paylaşılan cihaz modunu açın
+* Saflarda çalışanlarını destekleyen uygulamalar oluşturun
+* Cihazları saflarda çalışanlara dağıtın ve paylaşılan cihaz modunu açın
 
-### <a name="build-applications-that-support-frontline-workers"></a>Frontline çalışanlarını destekleyen uygulamalar oluşturun
+### <a name="build-applications-that-support-frontline-workers"></a>Saflarda çalışanlarını destekleyen uygulamalar oluşturun
 
-*Paylaşılan cihaz modu* adlı bir cihaz durumunun etkinleştirilmesi Için Microsoft kimlik doğrulama KITAPLıĞı (msal) ve [Microsoft Authenticator uygulamasını](../user-help/user-help-auth-app-overview.md) kullanarak uygulamalarınızda bulunan Frontline çalışanlarını destekleyebilirsiniz. Bir cihaz paylaşılan cihaz modundayken, Microsoft, uygulamanın cihazdaki Kullanıcı durumuna bağlı olarak davranışını değiştirmesine izin vermek için bilgileri sağlar ve Kullanıcı verilerini koruyor.
+*Paylaşılan cihaz modu* adlı bir cihaz durumunun etkinleştirilmesi için Microsoft kimlik doğrulama kitaplığı (msal) ve [Microsoft Authenticator uygulamasını](../user-help/user-help-auth-app-overview.md) kullanarak uygulamalarınızda bulunan saflarda çalışanlarını destekleyebilirsiniz. Bir cihaz paylaşılan cihaz modundayken, Microsoft, uygulamanın cihazdaki Kullanıcı durumuna bağlı olarak davranışını değiştirmesine izin vermek için bilgileri sağlar ve Kullanıcı verilerini koruyor.
 
 Desteklenen özellikler şunlardır:
 
@@ -69,15 +69,15 @@ Kullanıcılarınız, verilerinin başka bir kullanıcıya sızmasını sağlama
 
 Uygulamalarınızı paylaşılan cihaz modunu destekleyecek şekilde değiştirme hakkında daha fazla bilgi için, bu makalenin sonundaki [sonraki adımlar](#next-steps) bölümüne bakın.
 
-### <a name="deploy-devices-to-frontline-workers-and-turn-on-shared-device-mode"></a>Cihazları Frontline çalışanlara dağıtın ve paylaşılan cihaz modunu açın
+### <a name="deploy-devices-to-frontline-workers-and-turn-on-shared-device-mode"></a>Cihazları saflarda çalışanlara dağıtın ve paylaşılan cihaz modunu açın
 
-Uygulamalarınız paylaşılan cihaz modunu destekledikten ve gerekli verileri ve güvenlik değişikliklerini dahil ederek, bunları Frontline çalışanları tarafından kullanılabilir olarak tanıtabilirsiniz.
+Uygulamalarınız paylaşılan cihaz modunu destekledikten ve gerekli verileri ve güvenlik değişikliklerini dahil ederek, bunları saflarda çalışanları tarafından kullanılabilir olarak tanıtabilirsiniz.
 
 Bir kuruluşun cihaz yöneticileri, cihazlarını ve uygulamalarınızı, Microsoft Intune gibi bir mobil cihaz yönetimi (MDM) çözümü aracılığıyla mağazalarına ve iş konumlarına dağıtabiyor. Sağlama sürecinin bir parçası, cihazı *paylaşılan bir cihaz* olarak işaretliyor. Yöneticiler, [Microsoft Authenticator uygulamasını](../user-help/user-help-auth-app-overview.md) dağıtarak ve paylaşılan cihaz modunu yapılandırma parametreleri aracılığıyla ayarlayarak paylaşılan cihaz modunu yapılandırır. Bu adımları gerçekleştirdikten sonra, paylaşılan cihaz modunu destekleyen tüm uygulamalar, Kullanıcı durumunu yönetmek ve cihaz ve kuruluşa yönelik güvenlik özellikleri sağlamak için Microsoft Authenticator uygulamasını kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Paylaşılan cihaz modu için iOS ve Android platformlarını destekliyoruz. Uygulamalarınızda bulunan Frontline çalışanları desteklemeye başlamak için, platformunuzun aşağıdaki belgelerini inceleyin.
+Paylaşılan cihaz modu için iOS ve Android platformlarını destekliyoruz. Uygulamalarınızda bulunan saflarda çalışanları desteklemeye başlamak için, platformunuzun aşağıdaki belgelerini inceleyin.
 
 * [İOS için paylaşılan cihaz modunu destekleme](msal-ios-shared-devices.md)
 * [Android için paylaşılan cihaz modunu destekleme](msal-android-shared-devices.md)

@@ -4,12 +4,12 @@ description: Azure blok zinciri hizmetinde akıllı bir sözleşme oluşturmak, 
 ms.date: 11/30/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
-ms.openlocfilehash: f7605a0c118a40e52210582d2411569795fb25ee
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4c2df952480d2c30de10838c3d0f7714fc7e6126
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96763698"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628654"
 ---
 # <a name="tutorial-create-build-and-deploy-smart-contracts-on-azure-blockchain-service"></a>Öğretici: Azure blok zinciri hizmetinde akıllı sözleşmeler oluşturma, derleme ve dağıtma
 
@@ -82,27 +82,104 @@ Azure blok zinciri geliştirme seti, sözleşmeleri blok zincirine dağıtmak ü
 ![Sözleşme başarıyla dağıtıldı](./media/send-transaction/deploy-contract.png)
 
 ## <a name="call-a-contract-function"></a>Sözleşme işlevini çağırma
+**Helloblockzincirleri** sözleşmesinin **SendRequest** işlevi **RequestMessage** durum değişkenini değiştirir. Bir blok zinciri ağının durumunun değiştirilmesi bir işlem aracılığıyla yapılır. **SendRequest** işlevini bir işlem aracılığıyla yürütmek için bir komut dosyası oluşturabilirsiniz.
 
-**Helloblockzincirleri** sözleşmesinin **SendRequest** işlevi **RequestMessage** durum değişkenini değiştirir. Bir blok zinciri ağının durumunun değiştirilmesi bir işlem aracılığıyla yapılır. Bir işlem aracılığıyla **SendRequest** işlevini çağırmak Için Azure blok zinciri geliştirme seti Akıllı sözleşme etkileşimi sayfasını kullanabilirsiniz.
+1. Truffle projenizin kökünde yeni bir dosya oluşturun ve bunu adlandırın `sendrequest.js` . Aşağıdaki Web3 JavaScript kodunu dosyaya ekleyin.
 
-1. Akıllı sözleşmeniz ile etkileşime geçmek için, **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **akıllı sözleşme etkileşimi sayfasını göster** ' i seçin.
+    ```javascript
+    var HelloBlockchain = artifacts.require("HelloBlockchain");
+        
+    module.exports = function(done) {
+      console.log("Getting the deployed version of the HelloBlockchain smart contract")
+      HelloBlockchain.deployed().then(function(instance) {
+        console.log("Calling SendRequest function for contract ", instance.address);
+        return instance.SendRequest("Hello, blockchain!");
+      }).then(function(result) {
+        console.log("Transaction hash: ", result.tx);
+        console.log("Request complete");
+        done();
+      }).catch(function(e) {
+        console.log(e);
+        done();
+      });
+    };
+    ```
 
-    ![Menüden akıllı sözleşme etkileşimi sayfasını göster ' i seçin](./media/send-transaction/contract-interaction.png)
+1. Azure blok zinciri geliştirme seti bir proje oluşturduğunda, Truffle yapılandırma dosyası, Consortium blok zinciri ağ uç noktası ayrıntılarınız ile oluşturulur. Projenizdeki **truffle-config.js** açın. Yapılandırma dosyasında iki ağ listelenir: bir tane geliştirme ve bir tane, konsorsiyum ile aynı ada sahip.
+1. VS Code Terminal bölmesinde, komut dosyasını Konsorsiyumu blok zinciri ağınızda yürütmek için Truffle ' yi kullanın. Terminal bölmesi menü çubuğunda açılan menüde **Terminal** sekmesini ve **PowerShell** ' i seçin.
 
-1. Etkileşim sayfası, dağıtılan bir sözleşme sürümü seçmenize, işlevleri çağıralmanıza, geçerli durumu görüntülemenize ve meta verileri görüntülemenize olanak sağlar.
+    ```PowerShell
+    truffle exec sendrequest.js --network <blockchain network>
+    ```
 
-    ![Örnek akıllı sözleşme etkileşimi sayfası](./media/send-transaction/interaction-page.png)
+    \<blockchain network\> **truffle-config.js** tanımlanan blok zinciri ağının adıyla değiştirin.
 
-1. Akıllı sözleşme işlevini çağırmak için, sözleşme eylemini seçin ve bağımsız değişkenlerinizi geçirin. **SendRequest** sözleşme eylemini seçin ve **Merhaba, blok zinciri! girin!** **RequestMessage** parametresi için. Bir işlem aracılığıyla **SendRequest** işlevini çağırmak için **Yürüt** ' ü seçin.
+Truffle, betiği blok zinciri ağınızda yürütür.
 
-    ![SendRequest eylemini Yürüt](./media/send-transaction/sendrequest-action.png)
+![İşlemin gönderildiğini gösteren çıkış](./media/send-transaction/execute-transaction.png)
 
-İşlem işlendikten sonra, etkileşim bölümü durum değişikliklerini yansıtır.
+Bir sözleşmenin işlevini bir işlem aracılığıyla yürüttüğünüzde, bir blok oluşturuluncaya kadar işlem işlenmez. Bir işlem yoluyla yürütülmesi amaçlanan işlevler, dönüş değeri yerine bir işlem KIMLIĞI döndürür.
 
-![Sözleşme durumu değişiklikleri](./media/send-transaction/contract-state.png)
+## <a name="query-contract-state"></a>Sözleşme durumunu sorgula
 
-SendRequest işlevi **RequestMessage** ve **State** alanlarını ayarlar. **RequestMessage** için geçerli durum, **Hello, blockzincirine** geçirilen bağımsız değişkendir. **Durum** alanı değeri **istek** olarak kalmaya devam eder.
+Akıllı sözleşme işlevleri, durum değişkenlerinin geçerli değerini döndürebilir. Bir durum değişkeninin değerini döndürecek bir işlev ekleyelim.
 
+1. **Helloblockzincirine. Nuevo** Içinde, **helloblockzincirine** akıllı sözleşmeye bir **GetMessage** işlevi ekleyin.
+
+    ``` solidity
+    function getMessage() public view returns (string memory)
+    {
+        if (State == StateType.Request)
+            return RequestMessage;
+        else
+            return ResponseMessage;
+    }
+    ```
+
+    İşlevi, sözleşmenin geçerli durumuna bağlı olarak bir durum değişkeninde depolanan iletiyi döndürür.
+
+1. Akıllı sözleşmede değişiklikleri derlemek için **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **sözleşmeleri derle** ' yi seçin.
+1. Dağıtmak için, **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **sözleşmeleri dağıt** ' ı seçin. İstendiğinde, komut paletinde Azure blok zinciri Konsorsiyumu ağınızı seçin.
+1. Sonra, **GetMessage** işlevini çağırmak için kullanarak bir betik oluşturun. Truffle projenizin kökünde yeni bir dosya oluşturun ve bunu adlandırın `getmessage.js` . Aşağıdaki Web3 JavaScript kodunu dosyaya ekleyin.
+
+    ```javascript
+    var HelloBlockchain = artifacts.require("HelloBlockchain");
+    
+    module.exports = function(done) {
+      console.log("Getting the deployed version of the HelloBlockchain smart contract")
+      HelloBlockchain.deployed().then(function(instance) {
+        console.log("Calling getMessage function for contract ", instance.address);
+        return instance.getMessage();
+      }).then(function(result) {
+        console.log("Request message value: ", result);
+        console.log("Request complete");
+        done();
+      }).catch(function(e) {
+        console.log(e);
+        done();
+      });
+    };
+    ```
+
+1. VS Code, Terminal bölmesinde, blok zinciri ağınızda betiği yürütmek için Truffle kullanın. Terminal bölmesi menü çubuğunda açılan menüde **Terminal** sekmesini ve **PowerShell** ' i seçin.
+
+    ```bash
+    truffle exec getmessage.js --network <blockchain network>
+    ```
+
+    \<blockchain network\> **truffle-config.js** tanımlanan blok zinciri ağının adıyla değiştirin.
+
+Betik, getMessage işlevini çağırarak akıllı sözleşmeyi sorgular. **RequestMessage** durum değişkeninin geçerli değeri döndürüldü.
+
+![RequestMessage durum değişkeninin geçerli değerini gösteren GetMessage sorgusundan alınan çıkış](./media/send-transaction/execute-get.png)
+
+Değerin **Merhaba, blok zinciri!** olmadığına dikkat edin. Bunun yerine, döndürülen değer bir yer tutucudur. Sözleşmeyi değiştirdiğinizde ve dağıttığınızda, değiştirilen sözleşme yeni bir adreste dağıtılır ve durum değişkenlerine akıllı sözleşme oluşturucusunda değerler atanır. Truffle örnek **2_deploy_contracts.js** geçiş betiği, akıllı sözleşmeyi dağıtır ve bir yer tutucu değerini bağımsız değişken olarak geçirir. Oluşturucu **RequestMessage** durum değişkenini yer tutucu değerine ayarlar ve döndürülen değer.
+
+1. **RequestMessage** durum değişkenini ayarlamak ve değeri sorgulamak için **sendrequest.js** ve **getmessage.js** betikleri yeniden çalıştırın.
+
+    ![İstek Iletisini gösteren SendRequest ve GetMessage betikleri çıkışı ayarlandı](./media/send-transaction/execute-set-get.png)
+
+    **sendrequest.js** **RequestMessage** durum değişkenini **Merhaba, blok zinciri!** olarak ayarlar **getmessage.js** , **isteği RequestMessage** durum değişkeninin değeri için sorgular ve **Merhaba, blok zinciri!** döndürür.
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık gerekli değilse, `myResourceGroup` *blok zinciri üye önkoşulu oluştur* hızlı başlangıcı ' nda oluşturduğunuz kaynak grubunu silerek kaynakları silebilirsiniz.

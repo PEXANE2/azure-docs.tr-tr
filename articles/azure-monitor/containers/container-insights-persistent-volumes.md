@@ -3,12 +3,12 @@ title: BD izlemesini kapsayıcı öngörüleri ile yapılandırma | Microsoft Do
 description: Bu makalede, kapsayıcı öngörüleri ile kalıcı birimler ile Kubernetes kümelerini izlemeyi nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 16c87177a8911a7b88284606f54f7bf6e0e0daa3
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 7c6ddd62bf06d313987289e444962378cea43fc8
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026113"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627906"
 ---
 # <a name="configure-pv-monitoring-with-container-insights"></a>BD izlemesini kapsayıcı öngörüleri ile yapılandırma
 
@@ -17,7 +17,9 @@ Aracı sürümü *ciprod10052020* ile başlayarak, kapsayıcılar Için Azure iz
 
 Kapsayıcı öngörüleri otomatik olarak, 60-sn aralıklarında aşağıdaki ölçümleri toplayarak ve bunları **ınsi\ölçüm** tablosunda depolayarak BD kullanımını izlemeye başlar.
 
-| Ölçüm adı | Ölçüm boyutu (Etiketler) | Ölçüm açıklaması | | `pvUsedBytes`| poduıd, podName, pvcName, pvcNamespace, capacityBytes, Clusterıd, clusterName | Belirli bir pod tarafından kullanılan talebe sahip belirli bir kalıcı birim için bayt cinsinden kullanılan alan. `capacityBytes` , veri alma maliyetini azaltmak ve sorguları basitleştirmek için Etiketler alanında bir boyut olarak ikiye katlanır. |
+| Ölçüm adı | Ölçüm boyutu (Etiketler) | Ölçüm açıklaması |
+|-----|-----------|----------|
+| `pvUsedBytes`| Poduıd, podName, pvcName, pvcNamespace, capacityBytes, Clusterıd, clusterName| Belirli bir pod tarafından kullanılan talebe sahip belirli bir kalıcı birim için bayt cinsinden kullanılan alan. `capacityBytes` , veri alma maliyetini azaltmak ve sorguları basitleştirmek için Etiketler alanında bir boyut olarak ikiye katlanır.|
 
 Toplanan [BD ölçümlerini yapılandırma](./container-insights-agent-config.md)hakkında daha fazla bilgi edinin.
 
@@ -27,7 +29,7 @@ Kapsayıcılar için Azure Izleyici, aşağıdaki bilgileri 60 sn aralıklarla t
 
 |Veriler |Veri Kaynağı| Veri Türü| Alanlar|
 |-----|-----------|----------|-------|
-|Bir Kubernetes kümesindeki kalıcı birimlerin envanterini oluşturma |Kuin API 'SI |`KubePVInventory` | PVName, PVCapacityBytes, PVCName, PVCNamespace, Pvdurum, PVAccessModes, PVType, Pvtypeınfo, PVStorageClassName, PVCreationTimestamp, TimeGenerated, Clusterıd, ClusterName, _ResourceId |
+|Bir Kubernetes kümesindeki kalıcı birimlerin envanterini oluşturma |Kuin API 'SI |`KubePVInventory` |    PVName, PVCapacityBytes, PVCName, PVCNamespace, Pvdurum, PVAccessModes, PVType, Pvtypeınfo, PVStorageClassName, PVCreationTimestamp, TimeGenerated, Clusterıd, ClusterName, _ResourceId |
 
 ## <a name="monitor-persistent-volumes"></a>Kalıcı birimleri izleme
 

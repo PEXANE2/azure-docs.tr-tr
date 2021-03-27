@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: c2ffa85ed6cb007dd766d4517a86783d21d4913e
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 685d7f0a0aaab2f38967e0eb6c32c3fb4067dbe3
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110517"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612832"
 ---
 # <a name="set-up-an-appliance-for-servers-in-vmware-environment"></a>VMware ortamındaki sunucular için bir gereç ayarlama
 
@@ -67,7 +67,6 @@ Dağıtım yapmadan önce OVA dosyasının güvenli olup olmadığını denetley
         --- | --- | ---
         VMware (11,9 GB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
 
-
 ### <a name="3-create-the-appliance-server"></a>3. gereç sunucusunu oluşturma
 
 İndirilen dosyayı içeri aktarın ve VMware ortamında bir sunucu oluşturun
@@ -81,11 +80,9 @@ Dağıtım yapmadan önce OVA dosyasının güvenli olup olmadığını denetley
 8. **Ağ eşlemesinde**, sunucunun bağlanacağı ağı belirtin. Ağ, Azure geçişi 'ne meta veri göndermek için internet bağlantısı gerektirir.
 9. Ayarları gözden geçirip onayladıktan sonra **Son**’a tıklayın.
 
-
 ### <a name="verify-appliance-access-to-azure"></a>Azure 'a gereç erişimini doğrulama
 
 Gereç sunucusunun [ortak](migrate-appliance.md#public-cloud-urls) ve [kamu](migrate-appliance.md#government-cloud-urls) bulutları için Azure URL 'lerine bağlanabildiğinizden emin olun.
-
 
 ### <a name="4-configure-the-appliance"></a>4. gereci yapılandırma
 
@@ -114,7 +111,6 @@ Gereci ilk kez ayarlayın.
 1. İsterseniz, gerecin tüm önkoşulları karşılayıp karşılamadığını denetlemek için gereç yapılandırması sırasında dilediğiniz zaman **Önkoşulları yeniden çalıştırabilirsiniz** .
 
     :::image type="content" source="./media/tutorial-discover-vmware/appliance-prerequisites.png" alt-text="Gereç Yapılandırma Yöneticisi 'nde Panel 1":::
-
 
 ## <a name="register-the-appliance-with-azure-migrate"></a>Gereci Azure geçişi ile kaydetme
 

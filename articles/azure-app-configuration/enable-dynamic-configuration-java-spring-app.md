@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/09/2020
 ms.custom: devx-track-java
 ms.author: mametcal
-ms.openlocfilehash: 076ab0bb7dbc85a31b626a24d977e6fea558143e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 590f221b0a4980d462267dd8c3a73ca7d02583fd
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102636547"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625526"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Öğretici: bir Java Spring uygulamasında dinamik yapılandırma kullanma
 
@@ -89,6 +89,7 @@ Sonra, *pom.xml* dosyasını bir metin düzenleyicisinde açın ve için bir ekl
     ```
 
 1. Dinamik yapılandırmayı test etmek için uygulamanızla ilişkili Azure uygulama yapılandırma portalını açın. **Yapılandırma Gezgini**' ni seçin ve görüntülenmiş anahtarın değerini güncelleştirin, örneğin:
+
     | Anahtar | Değer |
     |---|---|
     | uygulama/yapılandırma. ileti | Merhaba-güncelleştirildi |

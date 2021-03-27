@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 8bb858bc29ac18d110f2679c3681fd4d27b72baa
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: ac5ed0e5941c6251d632d029fe4c9f80bbcf12df
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105607788"
+ms.locfileid: "105612560"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'larınızı güncelleştirin 
 
@@ -112,7 +112,7 @@ Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Cihaz
 
 8. Cihaz güncelleştirmelerinin kullanılabildiğini belirten bir bildirim başlığı görürsünüz. Cihazınızda Kubernetes yazılımını güncelleştirmeye başlamak için bu başlığı seçin. 
 
-    ![Güncelleştirme 13 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-13.png) 
+    ![Güncelleştirme 13A 'dan sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-13.png) 
 
 
     ![Güncelleştirme 14 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-14-a.png) 

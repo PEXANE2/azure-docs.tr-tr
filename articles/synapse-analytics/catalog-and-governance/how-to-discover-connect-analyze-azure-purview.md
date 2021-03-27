@@ -2,18 +2,18 @@
 title: Azure purview kullanarak SYNAPSE içindeki verileri bulma, bağlama ve keşfetme
 description: Verileri bulma, bunları bağlama ve SYNAPSE içinde keşfetme hakkında rehberlik
 services: synapse-analytics
-author: ArnoMicrosoft
+author: Rodrigossz
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.date: 12/16/2020
-ms.author: acomet
+ms.author: rosouz
 ms.reviewer: jrasnick
-ms.openlocfilehash: a3ed7979584787627c97cfec3bb2e19c147f7152
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 79090bfbf08cde3f18b1ca734b8af22d16e7e0ea
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98872678"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628671"
 ---
 # <a name="discover-connect-and-explore-data-in-synapse-using-azure-purview"></a>Azure purview kullanarak SYNAPSE içindeki verileri bulma, bağlama ve keşfetme 
 
