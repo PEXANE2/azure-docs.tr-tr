@@ -84,6 +84,22 @@
       href: tutorial-firmware-update.md
     - name: Cihaz bağlantısını test etme
       href: tutorial-connectivity.md
+    - name: X. 509.440 sertifikalarını kullanma
+      items:
+        - name: Giriş
+          href: tutorial-x509-introduction.md
+        - name: Sertifika alanları
+          href: tutorial-x509-certificates.md
+        - name: Sağlanan betikleri kullanma
+          href: tutorial-x509-scripts.md
+        - name: OpenSSL kullanma
+          href: tutorial-x509-openssl.md
+        - name: Otomatik olarak imzalanan sertifikalar oluşturma
+          href: tutorial-x509-self-sign.md
+        - name: Elinde bulunan
+          href: tutorial-x509-prove-possession.md
+        - name: Sınama kimlik doğrulaması
+          href: tutorial-x509-test-certificate.md
 - name: Kavramlar
   items:
     - name: TLS desteği
@@ -319,8 +335,6 @@
               href: iot-hub-configure-file-upload-powershell.md
             - name: Azure CLI kullanma
               href: iot-hub-configure-file-upload-cli.md
-        - name: X.509 sertifikası ile merkezinizi güvenli hale getirme
-          href: iot-hub-security-x509-get-started.md
         - name: IoT hub’ı yükseltme
           href: iot-hub-upgrade.md
         - name: IP filtrelemeyi yapılandırma

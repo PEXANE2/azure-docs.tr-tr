@@ -3,42 +3,41 @@ title: Windows sanal masaüstü Izleyici önizlemeyi kullan-Azure
 description: Windows sanal masaüstü için Azure Izleyicisi 'ni kullanma.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e9da1071686dafa003a5a49d0864b77644493344
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1c87763cb2ca482fc8ee15588d7287f0d9275fff
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100594462"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105627175"
 ---
 # <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment-preview"></a>Dağıtımınızı izlemek için Windows sanal masaüstü için Azure Izleyicisini kullanın (Önizleme)
 
 >[!IMPORTANT]
 >Windows sanal masaüstü için Azure Izleyici Şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Windows sanal masaüstü için Azure Izleyici (Önizleme), BT uzmanlarının Windows sanal masaüstü ortamlarını anlamasına yardımcı olan Azure Izleyici çalışma kitaplarında oluşturulmuş bir panodur. Bu konu, Windows sanal masaüstü ortamlarınızı izlemek üzere Windows sanal masaüstü için Azure Izleyici 'yi ayarlama konusunda size kılavuzluk eder.
+Windows sanal masaüstü için Azure Izleyici (Önizleme), BT uzmanlarının Windows sanal masaüstü ortamlarını anlamasına yardımcı olan Azure Izleyici çalışma kitaplarında oluşturulmuş bir panodur. Bu makalede, Windows sanal masaüstü ortamlarınızı izlemek üzere Windows sanal masaüstü için Azure Izleyici 'yi ayarlama işleminde size yol gösterilir.
 
 ## <a name="requirements"></a>Gereksinimler
 
 Windows sanal masaüstü için Azure Izleyici 'yi kullanmaya başlamadan önce, aşağıdaki şeyleri ayarlamanız gerekir:
 
 - İzlemeniz gereken tüm Windows sanal masaüstü ortamları, Azure Resource Manager ile uyumlu olan en son Windows sanal masaüstü sürümünü temel almalıdır.
-
-- En az bir yapılandırılmış Log Analytics çalışma alanı.
-
+- En az bir yapılandırılmış Log Analytics çalışma alanı. Performans sayaçlarının ve olaylarının yalnızca Windows sanal masaüstü dağıtımınızdaki oturum konaklarından toplanmasını sağlamak için, Windows sanal masaüstü oturum ana bilgisayarları için tasarlanmış bir Log Analytics çalışma alanı kullanın.
 - Log Analytics çalışma alanınızdaki şu şeyler için veri toplamayı etkinleştirin:
-    - Tüm gerekli performans sayaçları
-    - Windows sanal masaüstü için Azure Izleyici 'de kullanılan tüm performans sayaçları veya olayları
-    - İzlemek istediğiniz ortamdaki tüm nesneler için tanılama aracı verileri.
-    - İzlemek istediğiniz ortamdaki sanal makineler (VM).
+    - Windows sanal masaüstü ortamınızdan tanılama
+    - Windows sanal masaüstü oturumu konaklarınızdaki önerilen performans sayaçları
+    - Windows sanal masaüstü oturumu konaklarınızdaki önerilen Windows olay günlükleri
+
+ Bu makalede açıklanan veri kurulum işlemi, Windows sanal masaüstünü izlemeniz gereken tek bir işlemdir. Maliyetleri kaydetmek için Log Analytics çalışma alanınıza veri gönderen diğer tüm öğeleri devre dışı bırakabilirsiniz.
 
 Ortamınız için Windows sanal masaüstü için Azure Izleyicisini izleyen herkesin, aşağıdaki okuma erişim izinlerine de ihtiyacı vardır:
 
-- Ortamın kaynaklarının bulunduğu kaynak grubuna yönelik okuma erişimi.
-
-- Ortamın oturum ana bilgisayarlarının bulunduğu kaynak gruplarına yönelik okuma erişimi
+- Windows sanal masaüstü kaynaklarınızı tutan Azure aboneliklerine yönelik okuma erişimi
+- Windows sanal masaüstü oturumu konaklarınızı tutan aboneliğin kaynak gruplarına okuma erişimi
+- Log Analytics çalışma alanına veya çalışma alanlarına okuma erişimi
 
 >[!NOTE]
 > Okuma erişimi yalnızca yöneticilerin verileri görüntülemesini sağlar. Windows sanal masaüstü portalındaki kaynakları yönetmek için farklı izinlere sahip olmaları gerekir.
@@ -48,130 +47,138 @@ Ortamınız için Windows sanal masaüstü için Azure Izleyicisini izleyen herk
 Windows sanal masaüstü için Azure Izleyici 'yi aşağıdaki yöntemlerden biriyle açabilirsiniz:
 
 - [Aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)adresine gidin.
-
 - Azure portal **Windows sanal masaüstü** araması yapın ve seçin ve ardından **Öngörüler**' i seçin.
-
-- Azure portal **Azure izleyici** araması yapın ve seçin. **Öngörüler**' ın altında **Öngörüler hub** ' ı seçin ve **diğer** **Windows sanal masaüstü** ' nün altında panoyu Azure İzleyici sayfasında açmak için seçin.
-
-Windows sanal masaüstü için Azure Izleyicisi 'ni açık olduktan sonra, izlemek istediğiniz ortama göre **abonelik**, **kaynak grubu**, **ana bilgisayar havuzu** ve **zaman aralığı** etiketli bir veya daha fazla onay kutusunu seçin.
+- Azure portal **Azure izleyici** araması yapın ve seçin. **Öngörüler altında** **Öngörüler hub** ' ı seçin ve ardından **Windows sanal masaüstü**' nü seçin.
+Sayfayı açtıktan sonra, izlemek istediğiniz ortamın **aboneliğini**, **kaynak grubunu**, **ana bilgisayar havuzunu** ve **zaman aralığını** girin.
 
 >[!NOTE]
->Windows sanal masaüstü Şu anda yalnızca bir abonelik, kaynak grubu ve konak havuzunun aynı anda izlenmesini destekliyor. İzlemek istediğiniz ortamı bulamıyorsanız, bilinen özellik istekleri ve sorunları için [sorun giderme belgelerimize](troubleshoot-azure-monitor.md) bakın.!
+>Windows sanal masaüstü Şu anda yalnızca bir abonelik, kaynak grubu ve konak havuzunun aynı anda izlenmesini destekliyor. İzlemek istediğiniz ortamı bulamıyorsanız, bilinen özellik istekleri ve sorunları için [sorun giderme belgelerimize](troubleshoot-azure-monitor.md) bakın.
 
-## <a name="set-up-with-the-configuration-workbook"></a>Yapılandırma çalışma kitabıyla birlikte ayarlama
+## <a name="log-analytics-settings"></a>Log Analytics Ayarları
 
-Windows sanal masaüstü için Azure Izleyici 'yi ilk kez açtığınızda, Windows sanal masaüstü kaynaklarınız için Azure Izleyici 'yi yapılandırmanız gerekir. Kaynaklarınızı yapılandırmak için:
+Windows sanal masaüstü için Azure Izleyici 'yi kullanmaya başlamak için en az bir Log Analytics çalışma alanına ihtiyacınız olacaktır. Performans sayaçlarının ve olaylarının yalnızca Windows sanal masaüstü dağıtımınızdaki form oturumu konaklarının toplandığından emin olmak için Windows sanal masaüstü oturum ana bilgisayarları için belirlenmiş bir Log Analytics çalışma alanı kullanın. Zaten ayarlanmış bir çalışma alanınız varsa, [yapılandırma çalışma kitabını kullanarak ayarlamaya](#set-up-using-the-configuration-workbook)devam edin. Bir tane ayarlamak için, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/logs/quick-create-workspace.md).
 
-1. Çalışma kitabınızı Azure portal açın.
-2. **Yapılandırma çalışma kitabını aç**' ı seçin.
+>[!NOTE]
+>Log Analytics için standart veri depolama ücretleri uygulanır. Başlamak için Kullandıkça Öde modelini seçmenizi ve dağıtımınızı ölçeklendirdiğiniz ve daha fazla veri alacak şekilde ayarlamanız önerilir. Daha fazla bilgi için bkz. [Azure izleyici fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/).
 
-Yapılandırma çalışma kitabı, izleme ortamınızı ayarlar ve kurulum işlemini tamamladıktan sonra yapılandırmayı denetlemenizi sağlar. Panodaki öğeler doğru görüntülenmiyorsa veya ürün grubu ek veri noktaları gerektiren güncelleştirmeler yayımladığında, yapılandırmanızı denetlemeniz önemlidir.
+## <a name="set-up-using-the-configuration-workbook"></a>Yapılandırma çalışma kitabını kullanarak ayarlama
 
-## <a name="host-pool-diagnostic-settings"></a>Konak havuzu tanılama ayarları
+Windows sanal masaüstü için Azure Izleyici 'yi ilk kez açtığınızda, Windows sanal masaüstü ortamınız için Azure Izleyiciyi ayarlamanız gerekir. Kaynaklarınızı yapılandırmak için:
 
-Bu özelliği destekleyen Windows sanal masaüstü ortamı içindeki tüm nesnelerde Azure Izleyici tanılama ayarlarını etkinleştirmeniz gerekir.
+1. [Aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)adresindeki Windows sanal masaüstü Için Azure izleyici Azure Portal açın ve sonra **yapılandırma çalışma kitabı**' nı seçin.
+2. **Abonelik**, **kaynak grubu** ve **konak havuzu** altında yapılandırılacak bir ortam seçin.
 
-1. Windows sanal masaüstü için Azure Izleyici [aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)adresinde açın ve sonra **yapılandırma çalışma kitabı**' nı seçin.
+Yapılandırma çalışma kitabı, izleme ortamınızı ayarlar ve kurulum işlemini tamamladıktan sonra yapılandırmayı denetlemenizi sağlar. Panodaki öğeler doğru görüntülenmiyorsa veya ürün grubu yeni ayarlar gerektiren güncelleştirmeler yayımladığında, yapılandırmanızı denetlemeniz önemlidir.
 
-2. **Abonelik**, **kaynak grubu** ve **konak havuzu** altında izlenecek bir ortam seçin.
+### <a name="resource-diagnostic-settings"></a>Kaynak Tanılama ayarları
 
-3. **Konak havuzu Tanılama ayarları** altında, konak havuzu Için Windows sanal masaüstü tanılama 'nın etkin olup olmadığını denetleyin. Bu değillerse, "seçili konak havuzu için var olan tanılama yapılandırması bulunamadı" ifadesini içeren bir hata iletisi görüntülenir. 
-   
-   Aşağıdaki tablolar etkinleştirilmelidir:
+Windows sanal masaüstü altyapınızda bilgi toplamak için Windows sanal masaüstü konak Havuzlarınızda ve çalışma alanlarınızda birkaç tanılama ayarını etkinleştirmeniz gerekir (Bu, Log Analytics çalışma alanınızın değil, Windows sanal masaüstü çalışma alanım). Konak havuzları, çalışma alanları ve diğer Windows Sanal Masaüstü kaynak nesneleri hakkında daha fazla bilgi edinmek için [ortam kılavuzumuza](environment-setup.md)bakın.
+
+Windows sanal masaüstü tanılama ve desteklenen tanılama tabloları hakkında daha fazla bilgi [Için Windows sanal masaüstü tanılama 'yı Log Analytics gönder](diagnostics-log-analytics.md)' i kullanabilirsiniz.
+
+Yapılandırma çalışma kitabında kaynak tanılama ayarlarınızı yapmak için: 
+
+1. Yapılandırma çalışma kitabındaki **kaynak Tanılama ayarları** sekmesini seçin. 
+2. Windows sanal masaüstü tanılamayı göndermek için **Log Analytics çalışma alanı** seçin. 
+
+#### <a name="host-pool-diagnostic-settings"></a>Konak havuzu tanılama ayarları
+
+Yapılandırma çalışma kitabındaki kaynak Tanılama Ayarları bölümünü kullanarak konak havuzu tanılamayı ayarlamak için:
+
+1. **Konak havuzu** altında Windows sanal masaüstü tanılamaları 'nın etkin olup olmadığını denetleyin. Bu değillerse, "seçili konak havuzu için var olan tanılama yapılandırması bulunamadı" ifadesini içeren bir hata iletisi görüntülenir. Aşağıdaki desteklenen tanılama tablolarını etkinleştirmeniz gerekir:
 
     - Checkpoint
     - Hata
     - Yönetim
     - Bağlantı
     - HostRegistration
-
+    - Yazılım durumu
+    
     >[!NOTE]
-    > Hata iletisini görmüyorsanız 4. adımı uygulamanız gerekmez.
+    > Hata iletisini görmüyorsanız 2 ile 4 arasındaki adımları uygulamanız gerekmez.
 
-4. **Konak havuzunu Yapılandır**' ı seçin.
+2. **Konak havuzunu Yapılandır**' ı seçin.
+3. **Dağıt**'ı seçin.
+4. Yapılandırma çalışma kitabını yenileyin.
 
-5. **Dağıt**'ı seçin.
+#### <a name="workspace-diagnostic-settings"></a>Çalışma alanı Tanılama ayarları 
 
-6. Çalışma kitabını yenileyin.
+Yapılandırma çalışma kitabındaki kaynak Tanılama Ayarları bölümünü kullanarak çalışma alanı tanılamayı ayarlamak için:
 
-Windows Sanal Masaüstü ortamındaki tüm nesnelerde tanılamayı etkinleştirme hakkında daha fazla bilgi edinebilirsiniz veya [Windows sanal masaüstü tanılama 'yı Log Analytics gönderme](diagnostics-log-analytics.md)sırasında Log Analytics çalışma alanına erişebilirsiniz.
+ 1. **Çalışma alanı** altında Windows sanal masaüstü tanılama 'nın Windows sanal masaüstü çalışma alanı için etkinleştirilip etkinleştirilmediğini denetleyin. Bu değillerse, "seçili çalışma alanı için mevcut tanılama yapılandırması bulunamadı" ifadesini içeren bir hata iletisi görüntülenir. Aşağıdaki desteklenen tanılama tablolarını etkinleştirmeniz gerekir:
+ 
+    - Checkpoint
+    - Hata
+    - Yönetim
+    - Akış
+    
+    >[!NOTE]
+    > Hata iletisini görmüyorsanız, 2-4 adımlarını uygulamanız gerekmez.
 
-## <a name="configure-log-analytics"></a>Log Analytics’i Yapılandırma
+2. **Çalışma alanını Yapılandır**' ı seçin.
+3. **Dağıt**'ı seçin.
+4. Yapılandırma çalışma kitabını yenileyin.
 
-Windows sanal masaüstü için Azure Izleyici 'yi kullanmaya başlamak için, izlemeyi planladığınız ortamdan veri toplamak ve çalışma kitabına sağlamak için en az bir Log Analytics çalışma alanına ihtiyacınız olacaktır. Zaten bir ayarladıysanız, [performans sayaçlarını ayarlamaya](#set-up-performance-counters)devam edin. Windows sanal masaüstü ortamınızı içeren Azure aboneliği için yeni bir Log Analytics çalışma alanı ayarlamak için, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/logs/quick-create-workspace.md).
+### <a name="session-host-data-settings"></a>Oturum Ana bilgisayar veri ayarları
 
->[!NOTE]
->Log Analytics için standart veri depolama ücretleri uygulanır. Başlamak için Kullandıkça Öde modelini seçmenizi ve dağıtımınızı ölçeklendirdiğiniz ve daha fazla veri alacak şekilde ayarlamanız önerilir. Daha fazla bilgi için bkz. [Azure izleyici fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/).
+Windows sanal masaüstü oturumu konaklarınız hakkında bilgi toplamak için konak havuzundaki tüm oturum konaklarına Log Analytics aracısını yüklemeniz, oturum ana bilgisayarlarının bir Log Analytics çalışma alanına gönderdiğinizden emin olmanız ve Log Analytics Aracısı ayarlarınızı performans verilerini ve Windows olay günlüklerini toplayacak şekilde yapılandırmanız gerekir.
 
-### <a name="set-up-performance-counters"></a>Performans sayaçlarını ayarlama
+Oturum Ana bilgisayar verilerinin gönderileceği Log Analytics çalışma alanının, tanılama verilerini göndereceğiniz bir aynı olması gerekmez. Windows sanal masaüstü ortamınızın dışında Azure oturum Konakları varsa, Windows sanal masaüstü oturumu konakları için belirlenmiş bir Log Analytics çalışma alanı olmasını öneririz. 
 
-Log Analytics çalışma alanındaki karşılık gelen örnek aralıktaki koleksiyon için belirli performans sayaçlarını etkinleştirmeniz gerekir. Bu performans sayaçları, Windows sanal masaüstünü izlemeniz için gereken tek sayaçlardır. Maliyetleri kaydetmek için diğerlerinin tümünü devre dışı bırakabilirsiniz.
+Oturum Ana bilgisayar verilerini toplamak istediğiniz Log Analytics çalışma alanını ayarlamak için: 
 
-Performans sayaçlarınız zaten etkinse ve bunları kaldırmak istiyorsanız, performans Sayaçlarınızı yeniden yapılandırmak için [performans sayaçlarını yapılandırma](../azure-monitor/agents/data-sources-performance-counters.md) konusundaki yönergeleri izleyin. Bu makale sayaçların nasıl ekleneceğini açıklar ancak aynı konumda da kaldırabilirsiniz.
+1. Yapılandırma çalışma kitabındaki **oturum konak verileri ayarları** sekmesini seçin. 
+2. Oturum Ana bilgisayar verilerini göndermek istediğiniz **Log Analytics çalışma alanını** seçin. 
 
-Daha önce performans sayaçlarını ayarlamadıysanız, Windows sanal masaüstü için Azure Izleyici için nasıl yapılandırılacağı aşağıda verilmiştir:
+#### <a name="session-hosts"></a>Oturum Konakları
 
-1. [Aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)adresine gidin ve ardından pencerenin **yapılandırma çalışma kitabını** seçin.
-
-2. **Log Analytics yapılandırma** altında, aboneliğiniz için ayarladığınız çalışma alanını seçin.
-
-3. **Çalışma alanı performans sayaçları**' nda, izleme için gereken sayaçların listesini görürsünüz. Bu listenin sağ tarafında, çalışma alanınızı izlemeye başlamak için ihtiyacınız olan sayaçları etkinleştirmek üzere **eksik sayaçlar** listesindeki öğeleri kontrol edin.
-
-4. **Performans sayaçlarını Yapılandır**' ı seçin.
-
-5. **Yapılandırma Uygula**' yı seçin.
-
-6. Yapılandırma çalışma kitabını yenileyin ve ortamınızı ayarlamaya devam edin.
-
-Ayrıca, hizmet her güncelleştirildiğinde ilk yapılandırmadan sonra yeni performans sayaçları ekleyebilir ve yeni izleme araçları gerekir. Tüm gerekli sayaçların devre dışı olduğunu, **eksik sayaçlar** listesinden seçerek doğrulayabilirsiniz.
-
->[!NOTE]
->Giriş gecikmesi performans sayaçları yalnızca Windows 10 RS5 ve üzeri ya da Windows Server 2019 ve üzeri sürümlerle uyumludur.
-
-Koleksiyon için önceden etkinleştirilmemiş performans sayaçlarını el ile ekleme hakkında daha fazla bilgi edinmek için bkz. [performans sayaçlarını yapılandırma](../azure-monitor/agents/data-sources-performance-counters.md).
-
-### <a name="set-up-windows-events"></a>Windows olaylarını ayarlama
-
-Daha sonra, Log Analytics çalışma alanında koleksiyon için belirli Windows olaylarını etkinleştirmeniz gerekir. Bu bölümde açıklanan olaylar, Windows sanal masaüstü ihtiyaçlarına yönelik tek Azure Izleyicisine yöneliktir. Maliyetleri kaydetmek için diğerlerinin tümünü devre dışı bırakabilirsiniz.
-
-Windows olaylarını ayarlamak için:
-
-1. Zaten etkinleştirilmiş Windows olayları varsa ve bunları kaldırmak istiyorsanız, izleme için gerekli kümeyi etkinleştirmek üzere yapılandırma çalışma kitabını kullanmadan önce istemediğiniz olayları kaldırın.
-
-2. [Aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)adresindeki Windows sanal masaüstü Için Azure İzleyicisi ' ne gidin ve ardından pencerenin alt kısmındaki **yapılandırma çalışma kitabı** ' nı seçin.
-
-3. **Windows olayları yapılandırması**'nda, izleme için gerekli olan Windows olaylarının bir listesi vardır. Bu listenin sağ tarafında, gerekli olay adlarını ve şu anda çalışma alanınız için etkin olmayan olay türlerini bulacağınız **eksik olaylar** listesi bulunur. Bu adların her birini daha sonra kaydedin.
-
-4. **Açık çalışma alanları yapılandırması**' nı seçin.
-
-5. **Veri** seçin.
-
-6. **Windows olay günlükleri**' ni seçin.
-
-7. Adım 3 ' ten eksik olay adlarını ve her biri için gerekli olay türünü ekleyin.
-
-8. Yapılandırma çalışma kitabını yenileyin ve ortamınızı ayarlamaya devam edin.
-
-İzleme aracı güncelleştirmeleri yeni olayların etkinleştirilmesini gerektiriyorsa, ilk yapılandırmadan sonra yeni Windows olayları ekleyebilirsiniz. Tüm gerekli olaylarınızın etkin olduğundan emin olmak için **eksik olaylar** listesine geri dönün ve burada gördüğünüz eksik olayları etkinleştirin.
-
-## <a name="install-the-log-analytics-agent-on-all-hosts"></a>Log Analytics aracısını tüm konaklara yükler
-
-Son olarak, konaklardan seçili çalışma alanına veri göndermek için konak havuzundaki tüm konaklara Log Analytics aracısını yüklemeniz gerekir.
-
-Log Analytics aracısını yüklemek için:
-
-1. [Aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)adresindeki Windows sanal masaüstü Için Azure İzleyicisi ' ne gidin ve ardından pencerenin alt kısmındaki **yapılandırma çalışma kitabı** ' nı seçin.
-
-2. Konak havuzundaki tüm konaklar için Log Analytics yapılandırılmamışsa, "konak havuzundaki bazı konaklar seçili Log Analytics çalışma alanına veri göndermiyor" iletisiyle birlikte Log Analytics yapılandırma bölümünün en altında bir hata görürsünüz. Seçilen konakları eklemek için **çalışma alanına konaklar Ekle** ' yi seçin. Hata iletisini görmüyorsanız buradan durun.
-
-3. Yapılandırma çalışma kitabını yenileyin.
+Konak havuzundaki tüm oturum konaklarına Log Analytics aracısını yüklemeniz ve bu konaklardan seçtiğiniz Log Analytics çalışma alanınıza veri göndermeniz gerekir. Konak havuzundaki tüm oturum konakları için Log Analytics yapılandırılmamışsa, **oturum ana bilgisayar veri ayarlarının** üst kısmında oturum **Konakları** bölümü görürsünüz. "konak havuzundaki bazı konaklar seçili Log Analytics çalışma alanına veri göndermiyor."
 
 >[!NOTE]
->Log Analytics uzantısını yüklemek için konak makinenin çalışıyor olması gerekir. Bir konakta otomatik dağıtım başarısız olursa, uzantıyı her zaman bir konağa el ile yükleyebilirsiniz. Uzantıyı el ile yüklemeyi öğrenmek için bkz. [Windows için sanal makine uzantısı Log Analytics](../virtual-machines/extensions/oms-windows.md).
+> **Oturum ana bilgisayarları** bölümünü veya hata iletisini görmüyorsanız, tüm oturum Konakları doğru şekilde ayarlanır. [Çalışma alanı performans sayaçları](#workspace-performance-counters)için yönergeleri ayarlamayı ileri atlayın.
+
+Kalan oturum konaklarınızı yapılandırma çalışma kitabını kullanarak ayarlamak için:
+
+1. **Çalışma alanına ana bilgisayar Ekle**' yi seçin. 
+2. Yapılandırma çalışma kitabını yenileyin.
+
+>[!NOTE]
+>Log Analytics uzantısını yüklemek için konak makinenin çalışıyor olması gerekir. Otomatik dağıtım işe yaramazsa, uzantıyı bir konağa el ile yükleyebilirsiniz. Uzantıyı el ile yüklemeyi öğrenmek için bkz. [Windows için sanal makine uzantısı Log Analytics](../virtual-machines/extensions/oms-windows.md).
+
+#### <a name="workspace-performance-counters"></a>Çalışma alanı performans sayaçları
+
+Oturum konaklarınızdaki performans bilgilerini toplamak ve Log Analytics çalışma alanına göndermek için belirli performans sayaçlarını etkinleştirmeniz gerekir.
+
+Performans sayaçlarınız zaten etkinse ve bunları kaldırmak istiyorsanız, [performans sayaçlarını yapılandırma](../azure-monitor/agents/data-sources-performance-counters.md)konusundaki yönergeleri izleyin. Aynı konumda performans sayaçlarını ekleyebilir ve kaldırabilirsiniz.
+
+Yapılandırma çalışma kitabını kullanarak performans sayaçlarını ayarlamak için: 
+
+1. Yapılandırma çalışma kitabındaki **çalışma alanı performans sayaçları** ' nın altında, Log Analytics çalışma alanına göndermek için etkinleştirilmiş olan sayaçları görmek üzere **yapılandırılan sayaçlar** ' ı işaretleyin. Gerekli tüm sayaçları etkinleştirdiğinizden emin olmak için **eksik sayaçları** denetleyin.
+2. Eksik sayaçlarınız varsa, **performans sayaçlarını Yapılandır**' ı seçin.
+3. **Yapılandırma Uygula**' yı seçin.
+4. Yapılandırma çalışma kitabını yenileyin.
+5. **Eksik sayaç** listesini denetleyerek tüm gerekli sayaçların etkinleştirildiğinden emin olun. 
+
+#### <a name="configure-windows-event-logs"></a>Windows olay günlüklerini yapılandırma
+
+Ayrıca, oturum konaklarından hata, uyarı ve bilgi toplamak ve bunları Log Analytics çalışma alanına göndermek için belirli Windows olay günlüklerini etkinleştirmeniz gerekir.
+
+Windows olay günlüklerini zaten etkinleştirdiyseniz ve kaldırmak istiyorsanız, [Windows olay günlüklerini yapılandırma](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs)bölümündeki yönergeleri izleyin.  Windows olay günlüklerini aynı konuma ekleyebilir ve kaldırabilirsiniz.
+
+Yapılandırma çalışma kitabını kullanarak Windows olay günlüklerini ayarlamak için:
+
+1. **Windows olay günlüğü yapılandırması** altında, Log Analytics çalışma alanına göndermek için etkinleştirilmiş olan olay günlüklerini görmek Için **yapılandırılan olay günlüklerini** denetleyin. Tüm Windows olay günlüklerini etkinleştirdiğinizden emin olmak için **eksik olay günlüklerini** denetleyin.
+2. Windows Olay günlüklerinizi kaçırdıysanız **olayları Yapılandır**' ı seçin.
+3. **Dağıt**'ı seçin.
+4. Yapılandırma çalışma kitabını yenileyin.
+5. **Eksik olay günlükleri** listesini denetleyerek tüm gerekli Windows olay günlüklerinin etkinleştirildiğinden emin olun. 
+
+>[!NOTE]
+>Otomatik olay dağıtımı başarısız olursa, eksik Windows olay günlüklerini el ile eklemek için yapılandırma çalışma kitabındaki **Aracı yapılandırmasını aç** ' ı seçin. 
 
 ## <a name="optional-configure-alerts"></a>İsteğe bağlı: uyarıları yapılandırma
 
-Windows sanal masaüstü için Azure Izleyici 'yi, seçtiğiniz aboneliğinizde önemli bir Azure Izleyici uyarısı gerçekleştiğinde size bildirecek şekilde yapılandırabilirsiniz. Bunu yapmak için [Azure Izleyici uyarıları ile olaylara yanıt verme](../azure-monitor/alerts/tutorial-response.md)bölümündeki yönergeleri izleyin.
+Windows sanal masaüstü için Azure Izleyici, seçili aboneliğinizde yer alan Azure Izleyici uyarılarını Windows sanal masaüstü verileriniz bağlamında izlemenizi sağlar. Azure Izleyici uyarıları, Azure aboneliklerinizde isteğe bağlı bir özelliktir ve bunları Windows sanal masaüstü için Azure Izleyici 'den ayrı olarak ayarlamanız gerekir. Windows sanal masaüstü olayları, tanılama ve kaynakları üzerinde özel uyarılar ayarlamak için Azure Izleyici uyarıları çerçevesini kullanabilirsiniz. Azure Izleyici uyarıları hakkında daha fazla bilgi edinmek için bkz. [Azure Izleyici uyarıları ile olaylara yanıt verme](../azure-monitor/alerts/tutorial-response.md).
 
 ## <a name="diagnostic-and-usage-data"></a>Tanılama ve kullanım verileri
 
@@ -186,7 +193,7 @@ Veri toplama ve kullanım hakkında daha fazla bilgi için [Microsoft Online Ser
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Windows sanal masaüstü Azure portal yapılandırdığınıza göre, aşağıda size yardımcı olabilecek bazı kaynaklar verilmiştir:
+Artık Windows sanal masaüstü ortamınız için Azure Izleyicisini yapılandırdığınıza göre, ortamınızı izlemeye başlamanıza yardımcı olabilecek bazı kaynaklar aşağıda verilmiştir:
 
 - Windows sanal masaüstü için Azure Izleyici ile ilgili hüküm ve kavramlar hakkında daha fazla bilgi edinmek için [sözlüğümüze](azure-monitor-glossary.md) göz atın.
-- Bir sorunla karşılaşırsanız yardım için [sorun giderme kılavuzumuzu](troubleshoot-azure-monitor.md) inceleyin.
+- Bir sorunla karşılaşırsanız, yardım ve bilinen sorunlar için [sorun giderme kılavuzumuzu](troubleshoot-azure-monitor.md) inceleyin.

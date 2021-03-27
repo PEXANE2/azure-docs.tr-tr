@@ -3,12 +3,12 @@ title: Azure Event Grid teslimi ve yeniden dene
 description: Azure Event Grid olayların nasıl teslim edildiğini ve teslim edilmemiş iletileri nasıl işlediğini açıklar.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 3c4ed6ec2c9eae4dbcf70a831e3e7f70a28a57a0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e7fa627464ddb85ebded3ae99229b7fe8dd3fde3
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98247378"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629283"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>İleti teslimini Event Grid ve yeniden deneyin
 
@@ -25,7 +25,7 @@ Her bir olayı abonelere ayrı olarak göndermek Event Grid varsayılan değer. 
 
 Toplu teslimin iki ayarı vardır:
 
-* **Toplu işlem başına en fazla olay** sayısı-Event Grid toplu işlem başına teslim edilir. Bu sayı hiçbir zaman aşılmayacak, ancak yayımlama sırasında başka hiçbir olay yoksa daha az olay teslim edilebilir. Daha az etkinlik varsa Batch oluşturmak için olayları gecikmez Event Grid. 1 ile 5.000 arasında olmalıdır.
+* **Toplu işlem başına en fazla olay** sayısı-Event Grid toplu işlem başına teslim edilir. Bu sayı hiçbir zaman aşılmayacak, ancak yayımlama sırasında başka hiçbir olay yoksa daha az olay teslim edilebilir. Event Grid daha az etkinlik varsa Batch oluşturmak için olayları gecikmez. 1 ile 5.000 arasında olmalıdır.
 * Kilobayt cinsinden toplu iş boyutu için **tercih edilen yığın boyutu** (kilobayt cinsinden). En yüksek olaylara benzer şekilde, yayımlama sırasında daha fazla olay yoksa, toplu iş boyutu daha küçük olabilir. Tek bir olay tercih edilen boyuttan daha büyükse bir toplu iş, tercih edilen toplu *iş boyutundan daha* büyük olabilir. Örneğin, tercih edilen boyut 4 KB ise ve 10 KB 'lik bir olay Event Grid 'e itiliyorsa, 10 KB 'lik olay bırakılması yerine kendi toplu işinde de teslim edilir.
 
 Portal, CLı, PowerShell veya SDK 'lar aracılığıyla olay başına abonelik temelinde yapılandırılmış toplu teslim.
@@ -57,7 +57,7 @@ Azure CLı 'yı Event Grid kullanma hakkında daha fazla bilgi için bkz. [Azure
 
 EventGrid bir olay teslim girişimi için bir hata aldığında, EventGrid teslim mi yoksa atılacak harfi mi yeniden denemeli ya da hatanın türüne göre olayı bırakmaya karar verir. 
 
-Abone olunan uç nokta tarafından döndürülen hata, yeniden denemeler ile çözülebilecek yapılandırma ile ilgili hata ise (örneğin, uç nokta silinirse), EventGrid olayı iptal eder veya atılacak harf yapılandırılmamışsa olayı yapmaz.
+Abone olunan uç nokta tarafından döndürülen hata, yeniden denemeler ile çözülebilecek yapılandırmayla ilgili bir hata ise (örneğin, uç nokta silinirse), EventGrid olayı iptal eder ya da kullanılmayan harf yapılandırılmamışsa olayı yapmaz.
 
 Yeniden deneme gerçekleşmeyen uç nokta türleri aşağıda verilmiştir:
 
@@ -97,7 +97,7 @@ Varsayılan olarak Event Grid, 24 saat içinde teslim edilmeyen tüm olayları s
 
 Bir uç nokta teslim hatalarıyla karşılaşıyorsa, Event Grid bu uç noktada olayların teslimini ve yeniden denenmesini geciktirmeyi dener. Örneğin, bir uç noktada yayımlanan ilk 10 olay başarısız olursa Event Grid, uç noktanın sorun yaşadığını varsayar ve sonraki tüm yeniden denemeleri *ve yeni* teslimler için birkaç saate kadar bir süre sonra geciktirecek olur.
 
-Gecikmeli teslimin işlevsel amacı, sağlıksız uç noktaların yanı sıra Event Grid sistemini de koruyasağlamaktır. Arka arkaya ve sağlıklı uç noktalara teslim olmadan, Event Grid yeniden deneme ilkesi ve birim özellikleri bir sistemi kolayca açabilir.
+Gecikmeli teslimin işlevsel amacı, sağlıksız uç noktaları ve Event Grid sistemini koruyasağlamaktır. Arka arkaya ve sağlıklı uç noktalara teslim olmadan, Event Grid yeniden deneme ilkesi ve birim özellikleri bir sistemi kolayca açabilir.
 
 ## <a name="dead-letter-events"></a>Atılacak mektup olayları
 Event Grid belirli bir süre içinde veya olayı belirli bir sayıda teslim etmeye çalıştıktan sonra, teslim edilmemiş olayı bir depolama hesabına gönderebilir. Bu işlem, **atılacak** olarak bilinir. **Aşağıdaki koşullardan biri** karşılandığında bir olay atılacak Event Grid. 
@@ -288,6 +288,15 @@ Yukarıdaki küme içinde olmayan diğer tüm kodlar (200-204) başarısızlık 
 | 503 Hizmet Kullanılamıyor | 30 saniye veya daha uzun bir süre sonra yeniden deneyin |
 | Tüm diğerleri | 10 saniye veya daha fazla süre sonra yeniden deneyin |
 
+## <a name="delivery-with-custom-headers"></a>Özel üstbilgileriyle teslim
+Olay abonelikleri, teslim edilen olaylara dahil edilen HTTP üstbilgilerini ayarlamanıza olanak sağlar. Bu özellik, bir hedef için gereken özel üstbilgileri ayarlamanıza olanak sağlar. Bir olay aboneliği oluştururken en fazla 10 üst bilgi ayarlayabilirsiniz. Her üst bilgi değeri 4.096 (4K) bayttan büyük olmamalıdır. Aşağıdaki hedeflere teslim edilen olaylar üzerinde özel üstbilgiler belirleyebilirsiniz:
+
+- Web Kancaları
+- Azure Service Bus konuları ve kuyrukları
+- Azure Event Hubs
+- Geçiş Karma Bağlantılar
+
+Daha fazla bilgi için bkz. [özel üstbilgileriyle teslim](delivery-properties.md). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,12 +4,12 @@ description: Destek ayarları ve kısıtlamaları için Azure disk yedekleme 'ni
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 38c35824118979c900dacd9c103ae8f9ec11ad65
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 88ec26837cc8f69c1e84c77ea6b57ce16e462e0a
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107287"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612866"
 ---
 # <a name="azure-disk-backup-support-matrix"></a>Azure Disk Yedekleme destek matrisi
 
@@ -51,7 +51,7 @@ Kullanılabilir olduklarında daha fazla bölge duyurulacaktır.
 
 - Şu anda, disklerin yedeklenmesini yapılandırmak için Azure portal deneyimi aynı abonelikte en fazla 20 diskle sınırlıdır.
 
-- Şu anda (Önizleme sırasında), diskleri yedeklemeyi ve geri yüklemeyi yapılandırmak için PowerShell ve Azure CLı kullanımı desteklenmez.
+- Azure disk yedekleme, PowerShell 'i destekler. Şu anda Azure CLı desteklenmez.
 
 - Yedekleme yapılandırılırken, yedeklenmek üzere seçilen disk ve anlık görüntülerin depolanacağı anlık görüntü kaynak grubu aynı aboneliğin bir parçası olmalıdır. Bu diskin aboneliği dışındaki belirli bir disk için artımlı bir anlık görüntü oluşturamazsınız. Yönetilen disk için [Artımlı anlık görüntüler](../virtual-machines/disks-incremental-snapshots.md#restrictions) hakkında daha fazla bilgi edinin. Anlık görüntü kaynak grubu seçme hakkında daha fazla bilgi için bkz.  [yedeklemeyi yapılandırma](backup-managed-disks.md#configure-backup).
 
@@ -61,7 +61,7 @@ Kullanılabilir olduklarında daha fazla bölge duyurulacaktır.
 
 - Yönetilen diskler için [özel bağlantılar](../virtual-machines/disks-enable-private-links-for-import-export-portal.md) desteği, yönetilen disklerin içeri ve dışarı aktarılmasını yalnızca Azure sanal ağınızda gerçekleşmeyecek şekilde kısıtlamanıza olanak tanır. Azure disk yedekleme, Özel uç noktaları etkin olan disklerin yedeklenmesini destekler. Bu, Özel uç nokta aracılığıyla erişilebilen yedekleme verilerini veya anlık görüntüleri içermez.
 
-- Önizleme sırasında yedeklemeyi devre dışı bırakamazsanız, yedeklemeyi **Durdur ve yedekleme verilerini koruma** seçeneği desteklenmez. Yalnızca yedeklemeyi durdurmayacak, ancak tüm yedekleme verilerini silen bir yedekleme örneğini silebilirsiniz.
+- Yedekleme örneğini silebilirsiniz, bu da yedeklemeyi durdurur ve tüm yedekleme verilerini de siler. Şu anda, yedeklemeyi **durdurma ve yedekleme verilerini koruma** seçeneği desteklenmediğinden yedeklemeyi devre dışı bırakamıyoruz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

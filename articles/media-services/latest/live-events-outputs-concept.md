@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: a66532856263d31e9070bc99f297ae105ca48312
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1ef49b66e6bba7c829abd35f6c8cc4169a2c14a0
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102454796"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625305"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Canlı etkinlikler ve canlı çıktılar Media Services
 
@@ -117,47 +117,68 @@ Ayrıca bkz. [akış uç noktaları adlandırma kuralları](streaming-endpoint-c
 Canlı olay oluşturulduktan sonra, canlı şirket içi kodlayıcıya sağlayacağınız içe alma URL 'Leri edinebilirsiniz. Gerçek zamanlı kodlayıcı bu URL'leri canlı akış girişi için kullanır. Daha fazla bilgi için bkz. [Önerilen şirket içi canlı kodlayıcılar](recommended-on-premises-live-encoders.md).
 
 >[!NOTE]
-> 2020-05-01 API sürümünün itibariyle, Gösterim URL 'leri statik ana bilgisayar adları olarak bilinir
+> 2020-05-01 API sürümü itibariyle, "Vanity" URL 'Leri statik ana bilgisayar adları olarak bilinir (useStaticHostname: true)
 
-Gösterim amaçlı olmayan URL'leri veya gösterim URL'lerini kullanabilirsiniz.
 
 > [!NOTE]
-> Tahmine dayalı bir URL 'nin tahmin alınması için, "Vanity" modunu ayarlayın.
+> Alma URL 'sinin bir donanım Kodlayıcısı kurulumunda statik ve öngörülebilir olması için, **useStaticHostname** özelliğini true olarak ayarlayın ve **accesstoken** özelliğini her oluşturma sırasında aynı GUID 'ye ayarlayın. 
 
-* Gelişmiş olmayan URL
+### <a name="example-liveevent-and-liveeventinput-configuration-settings-for-a-static-non-random-ingest-rtmp-url"></a>Statik (rastgele olmayan) bir ınest RTMP URL 'SI için örnek LiveEvent ve Liveeventınput yapılandırma ayarları.
 
-    Yol olmayan URL, Media Services v3 ' de varsayılan moddur. Canlı olayı hızlı bir şekilde alabilirsiniz, ancak alma URL 'SI yalnızca canlı olay başlatıldığında bilinir. Canlı etkinliği durdurup başlatırsanız URL değişir. Bir son kullanıcı, uygulamanın canlı bir olay ASAP almak istediği ve dinamik alma URL 'sinin bir sorun olmaması gereken bir uygulamayı kullanarak akış yapmak istediğinde, senaryolar için yararlı değildir.
+```csharp
+             LiveEvent liveEvent = new LiveEvent(
+                    location: mediaService.Location,
+                    description: "Sample LiveEvent from .NET SDK sample",
+                    // Set useStaticHostname to true to make the ingest and preview URL host name the same. 
+                    // This can slow things down a bit. 
+                    useStaticHostname: true,
+
+                    // 1) Set up the input settings for the Live event...
+                    input: new LiveEventInput(
+                        streamingProtocol: LiveEventInputProtocol.RTMP,  // options are RTMP or Smooth Streaming ingest format.
+                                                                         // This sets a static access token for use on the ingest path. 
+                                                                         // Combining this with useStaticHostname:true will give you the same ingest URL on every creation.
+                                                                         // This is helpful when you only want to enter the URL into a single encoder one time for this Live Event name
+                        accessToken: "acf7b6ef-8a37-425f-b8fc-51c2d6a5a86a",  // Use this value when you want to make sure the ingest URL is static and always the same. If omitted, the service will generate a random GUID value.
+                        accessControl: liveEventInputAccess, // controls the IP restriction for the source encoder.
+                        keyFrameIntervalDuration: "PT2S" // Set this to match the ingest encoder's settings
+                    ),
+```
+
+* Statik olmayan konak adı
+
+    Statik olmayan bir ana bilgisayar adı, bir **Liveevent** oluştururken Media Services v3 ' de varsayılan moddur. Canlı olayı biraz daha hızlı bir şekilde alabilirsiniz, ancak canlı kodlama donanımınız veya yazılımınız için ihtiyaç duyduğunuz alma URL 'SI rastgele hale getirilir. Canlı etkinliği durdurup başlatırsanız URL değişir. Statik olmayan ana bilgisayar adları yalnızca, bir son kullanıcının canlı bir olaya çok hızlı bir şekilde alınması ve dinamik alma URL 'sinin bir sorun olmaması için gereken bir uygulamayı kullanarak akışa almak istediği senaryolarda faydalıdır.
 
     Bir istemci uygulamanın canlı etkinlik oluşturulmadan önce alma URL 'sini önceden oluşturması gerekmiyorsa, canlı olay için erişim belirtecini otomatik olarak oluşturmaya Media Services.
 
-* Vanity URL 'SI
+* Statik konak adları 
 
-    Vanity modu, donanım yayını kodlayıcıları kullanan büyük medya yayımcılar tarafından tercih edilir ve canlı olayını başlatırken kodlayıcılarını yeniden yapılandırmak istemiyor. Bu yayımcılar, zaman içinde değişmeyen bir tahmine dayalı alma URL 'SI istiyor.
+    Statik konak adı modu, canlı kodlama donanımını veya yazılımlarını, belirli bir canlı etkinliğin oluşturulması veya durdurulması üzerinde hiçbir değişiklik yapılmasın bir RTMP alma URL 'SI ile önceden yapılandırmak isteyen çoğu operatör tarafından tercih edilir. Bu işleçler, zaman içinde değişmeyen bir tahmine dayalı RTMP içe alma URL 'SI ister. Bu, Ayrıca, bir statik RTMP alma URL 'sini, BlackICE Magic Adıtem Mini Pro gibi bir donanım kodlama cihazının yapılandırma ayarlarına veya benzer donanım kodlamasıyla ve üretim araçlarına göndermeniz gerektiğinde çok yararlı olur. 
 
     > [!NOTE]
-    > Azure portal, yol URL 'SI "*statik konak adı öneki*" olarak adlandırılmıştır.
+    > Azure portal statik ana bilgisayar adı URL 'SI "*statik konak adı öneki*" olarak adlandırılır.
 
     Bu modu API 'de belirtmek için, `useStaticHostName` `true` oluşturma zamanı (varsayılan) olarak ayarlayın `false` . `useStaticHostname`True olarak ayarlandığında, `hostnamePrefix` ana bilgisayar adının canlı etkinlik önizlemesine ve içe alma uç noktalarına atanan ilk kısmını belirtir. Son ana bilgisayar adı bu ön ek, medya hizmeti hesap adı ve Azure Media Services veri merkezi için kısa bir kod olacaktır.
 
     URL 'deki rastgele bir belirteci önlemek için, oluşturma zamanında kendi erişim belirtecinizi de () geçirmeniz gerekir `LiveEventInput.accessToken` .  Erişim belirtecinin geçerli bir GUID dizesi olması (tire ile veya kısa çizgi olmadan) vardır. Mod ayarlandıktan sonra, bu güncelleştirilemiyor.
 
-    Erişim belirtecinin, veri merkezinizde benzersiz olması gerekir. Uygulamanızın bir gösterim URL kullanması gerekiyorsa, erişim belirteciniz için her zaman yeni bir GUID örneği oluşturmanız önerilir (varolan GUID 'yi yeniden kullanmak yerine).
+    Erişim belirtecinin Azure bölgenizde ve Media Services hesabınızda benzersiz olması gerekir. Uygulamanızın statik bir ana bilgisayar adı alma URL 'SI kullanması gerekiyorsa, belirli bir bölge, medya Hizmetleri hesabı ve canlı etkinlik birleşimiyle kullanılmak üzere her zaman yeni bir GUID örneği oluşturmanız önerilir.
 
-    Aşağıdaki API 'Leri kullanarak Vanity URL 'sini etkinleştirin ve erişim belirtecini geçerli bir GUID (örneğin,) olarak ayarlayın `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` .  
+    Statik konak adı URL 'sini etkinleştirmek ve erişim belirtecini geçerli bir GUID (örneğin,) olarak ayarlamak için aşağıdaki API 'Leri kullanın `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` .  
 
-    |Dil|Gösterim URL 'sini etkinleştir|Erişim belirteci ayarlama|
+    |Dil|Statik konak adı URL 'sini etkinleştir|Erişim belirteci ayarlama|
     |---|---|---|
-    |REST|[Properties. vanityUrl 'Si](/rest/api/media/liveevents/create#liveevent)|[Liveeventınput. accessToken](/rest/api/media/liveevents/create#liveeventinput)|
-    |CLI|[--Vanity-URL](/cli/azure/ams/live-event#az-ams-live-event-create)|[--erişim-belirteç](/cli/azure/ams/live-event#optional-parameters)|
-    |.NET|[LiveEvent. VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[Liveeventınput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |REST|[Properties. useStaticHostname](/rest/api/media/liveevents/create#liveevent)|[Liveeventınput. useStaticHostname](/rest/api/media/liveevents/create#liveeventinput)|
+    |CLI|[--Use-static-hostname](/cli/azure/ams/live-event#az-ams-live-event-create)|[--erişim-belirteç](/cli/azure/ams/live-event#optional-parameters)|
+    |.NET|[LiveEvent. useStaticHostname](/dotnet/api/microsoft.azure.management.media.models.liveevent.usestatichostname?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_UseStaticHostname)|[Liveeventınput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
 
 ### <a name="live-ingest-url-naming-rules"></a>Canlı alma URL'si adlandırma kuralları
 
 * Aşağıdaki *rastgele* dize, 128 bit bir onaltılık sayıdır (0-9 a-f arası 32 karakterden oluşur).
-* *erişim belirteciniz*: Gösterim modunu kullanırken ayarladığınız geçerli GUID dizesi. Örneğin, `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
+* *erişim belirteciniz*: statik konak adı ayarı kullanılırken AYARLADıĞıNıZ geçerli GUID dizesi. Örneğin, `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
 * *akış adı*: belirli bir bağlantı için akış adını gösterir. Akış adı değeri genellikle kullandığınız canlı kodlayıcı tarafından eklenir. Canlı kodlayıcı 'yı bağlantıyı anlatmak için herhangi bir ad kullanacak şekilde yapılandırabilirsiniz, örneğin: "video1_audio1", "video2_audio1", "Stream".
 
-#### <a name="non-vanity-url"></a>Gelişmiş olmayan URL
+#### <a name="non-static-hostname-ingest-url"></a>Statik olmayan ana bilgisayar adı alma URL 'SI
 
 ##### <a name="rtmp"></a>RTMP
 
@@ -171,7 +192,7 @@ Gösterim amaçlı olmayan URL'leri veya gösterim URL'lerini kullanabilirsiniz.
 `http://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 `https://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 
-#### <a name="vanity-url"></a>Vanity URL 'SI
+#### <a name="static-hostname-ingest-url"></a>Statik konak adı alma URL 'SI
 
 Aşağıdaki yollarda, `<live-event-name>` olaya verilen ad veya canlı etkinliğin oluşturulmasında kullanılan özel ad anlamına gelir.
 

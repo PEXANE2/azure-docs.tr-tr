@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/24/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a46c7f35e30b2dda7b4800ed553447cef5bb5d33
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 6bc45bb6eec9dbf46e039dd1e2c32197820bb09d
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609364"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626716"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Azure Bilişsel Arama kullanarak istemci uygulamalarına otomatik tamamlama ve öneriler ekleme
 
@@ -81,13 +81,15 @@ Aşağıdaki ek parametreler hem otomatik tamamlama hem de öneriler için geçe
 
 Bir sorgu terimini otomatik olarak doldurma veya eşleşen bağlantıların bir listesini bırakma, Kullanıcı etkileşim kodu, tipik olarak JavaScript, bir Azure Search bilişsel dizine karşı otomatik tamamlama veya öneri sorguları gibi dış kaynaklardan gelen istekleri kullanabilen Kullanıcı etkileşimi kodu gerektirir.
 
-Bu kodu yerel olarak yazabilseniz de, mevcut JavaScript kitaplığındaki işlevleri kullanmak çok daha kolay. Bu makalede, biri öneriler için ve diğeri otomatik tamamlama için olmak üzere iki değinmektedir. 
+Bu kodu yerel olarak yazabilseniz de, aşağıdakilerden biri gibi mevcut JavaScript kitaplığındaki işlevleri kullanmak çok daha kolay. 
 
 + [Otomatik tamamlama pencere öğesi (jQuery kullanıcı arabirimi)](https://jqueryui.com/autocomplete/) , öneri kodu parçacığında görüntülenir. Bir arama kutusu oluşturabilir ve sonra otomatik tamamlama pencere öğesini kullanan bir JavaScript işlevinde buna başvurabilirsiniz. Pencere öğesi üzerindeki özellikler, kaynak (otomatik tamamlama veya öneriler işlevi), eylem yapılmadan önce en az giriş karakteri uzunluğu ve konumlandırmayı ayarlar.
 
 + [Xdsoft AutoComplete eklentisi](https://xdsoft.net/jqplugins/autocomplete/) , otomatik tamamlama kod parçacığında görünür.
 
-Bu kitaplıkları, hem önerileri hem de otomatik tamamlamayı destekleyen arama kutusunu oluşturmak için kullanırız. Arama kutusunda toplanan girişler, öneriler ve otomatik tamamlama eylemleriyle eşleştirilir.
++ [öneriler](https://www.npmjs.com/package/suggestions) , [JavaScript öğreticisi](tutorial-javascript-overview.md) ve kod örneği ' nde görünür.
+
+Hem önerileri hem de otomatik tamamlamayı destekleyen bir arama kutusu oluşturmak için istemcideki bu kitaplıkları kullanın. Arama kutusunda toplanan girişler daha sonra arama hizmetindeki önerilerle ve otomatik tamamlama eylemleriyle eşleştirilebilir.
 
 ## <a name="suggestions"></a>Öneriler
 
@@ -247,7 +249,7 @@ AutoComplete işlevi, arama terimi girişini alır. Yöntemi bir [AutoCompletePa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uçtan uca yönergeler veya hem arama hem de arama-yazma deneyimlerini gösteren kod için bu bağlantıları izleyin. Örnek, önerilerin karma uygulamalarını ve birlikte otomatik tamamlamayı gösterir.
+Uçtan uca yönergeler veya hem arama hem de arama-yazma deneyimlerini gösteren kod için bu bağlantıları izleyin. Örnek, önerilerin karma uygulamasını ve birlikte otomatik tamamlamayı gösterir.
 
-+ [Öğretici: C# ' de ilk uygulamanızı oluşturma (Ders 3)](tutorial-csharp-type-ahead-and-suggestions.md)
-+ [C# kod örneği: Azure-Search-DotNet-Samples/Create-First-App/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)
++ [Bir Web sitesine arama ekleme (JavaScript)](tutorial-javascript-search-query-integration.md#azure-function-suggestions-from-the-catalog) , istemci uygulamasındaki kısmi dönem tamamlaması için açık kaynak öneriler paketini kullanır.
++ [Öğretici: c# ' de (Ders 3) ilk uygulamanızı](tutorial-csharp-type-ahead-and-suggestions.md) , Ilişkili  [C# kod örneğiyle oluşturun: Azure-Search-DotNet-Samples/Create-First-App/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead) typeahead için yerel desteği gösterir.

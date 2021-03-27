@@ -3,15 +3,15 @@ title: Windows sanal masaüstü önizlemesi Izleme sorunlarını giderme-Azure
 description: Windows sanal masaüstü için Azure Izleyici ile ilgili sorunları giderme.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 12/01/2020
+ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c335c1cf7e5319b812345714dbdc6b87ddc4e81b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a07d7536d3d71b121c1dde761d8c290b8be01fe7
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101709181"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628467"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Windows sanal masaüstü için Azure Izleyici sorunlarını giderme (Önizleme)
 
@@ -25,28 +25,26 @@ Bu makalede, Windows sanal masaüstü (Önizleme) için Azure Izleyici 'de yayg�
 Yapılandırma çalışma kitabı kurulumu otomatik hale getirmek için düzgün çalışmıyorsa, ortamınızı el ile ayarlamak için bu kaynakları kullanabilirsiniz:
 
 - Tanılamayı el ile etkinleştirmek veya Log Analytics çalışma alanına erişmek için bkz. [Log Analytics Için Windows sanal masaüstü tanılaması gönderme](diagnostics-log-analytics.md).
-- Log Analytics uzantısını bir konağa el ile yüklemek için, bkz. [Windows için Log Analytics sanal makine uzantısı](../virtual-machines/extensions/oms-windows.md).
+- Log Analytics uzantısını bir oturum konağına el ile yüklemek için, bkz. [Windows için Log Analytics sanal makine uzantısı](../virtual-machines/extensions/oms-windows.md).
 - Yeni bir Log Analytics çalışma alanı ayarlamak için, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/logs/quick-create-workspace.md).
-- Performans sayaçlarını eklemek veya kaldırmak için bkz. [performans sayaçlarını yapılandırma](../azure-monitor/agents/data-sources-performance-counters.md).
-- Log Analytics çalışma alanı için olayları yapılandırmak için, bkz. [Log Analytics aracısıyla Windows olay günlüğü veri kaynakları toplama](../azure-monitor/agents/data-sources-windows-events.md).
+- Performans sayaçlarını eklemek, kaldırmak veya düzenlemek için bkz. [performans sayaçlarını yapılandırma](../azure-monitor/agents/data-sources-performance-counters.md).
+- Log Analytics çalışma alanı için Windows olay günlüklerini yapılandırmak için, bkz. [Log Analytics aracısıyla Windows olay günlüğü veri kaynakları toplama](../azure-monitor/agents/data-sources-windows-events.md).
 
 ## <a name="my-data-isnt-displaying-properly"></a>Verilerim doğru görüntülenmiyor
 
-Verileriniz doğru görüntülenmiyorsa, yapılandırmanızı, izinlerinizi denetleyin ve gerekli IP adreslerinin engellemesi kaldırılmış olup olmadığını denetleyin. 
+Verileriniz doğru şekilde görüntülenmiyorsa, aşağıdaki ortak çözümleri denetleyin:
 
-- İlk olarak, [dağıtımınızı izlemek Için Windows sanal masaüstü Için Azure İzleyicisi 'Ni kullanma](azure-monitor.md)başlığı altında açıklandığı gibi yapılandırma çalışma kitabındaki tüm alanları doldurduğunuzdan emin olun. Herhangi bir sayaç veya olay eksikse, bunlarla ilişkili veriler Azure portal görünmez.
-
+- İlk olarak, [dağıtımınızı izlemek Için Windows sanal masaüstü Için Azure İzleyicisi 'Ni kullanma](azure-monitor.md)başlığı altında açıklandığı gibi yapılandırma çalışma kitabıyla doğru şekilde ayarladığınızdan emin olun. Herhangi bir sayaç veya olay eksikse, bunlarla ilişkili veriler Azure portal görünmez.
 - Erişim izinlerinizi denetleyin & eksik izinler istemek için kaynak sahipleriyle iletişime geçin; Windows sanal masaüstünü izleyen herkes aşağıdaki izinleri gerektirir:
-
     - Windows sanal masaüstü kaynaklarınızı tutan Azure aboneliklerine yönelik okuma erişimi
     - Windows sanal masaüstü oturumu konaklarınızı tutan aboneliğin kaynak gruplarına okuma erişimi 
-    - Log Analytics çalışma alanına okuma erişimi
-
-- Azure Izleyici 'nin portala veri göndermesini sağlamak için sunucunuzun güvenlik duvarında giden bağlantı noktalarını açmanız gerekebilir. bkz. [giden bağlantı noktaları](../azure-monitor/app/ip-addresses.md). 
-
+    - Kullanmakta olduğunuz Log Analytics çalışma alanlarına okuma erişimi
+- Azure Izleyiciyi ve Log Analytics portala veri göndermesini sağlamak için sunucunuzun güvenlik duvarında giden bağlantı noktalarını açmanız gerekebilir. Bunu nasıl yapacağınızı öğrenmek için aşağıdaki makalelere bakın:
+      - [Azure Izleyici giden bağlantı noktaları](../azure-monitor/app/ip-addresses.md)
+      - [Güvenlik duvarı gereksinimleri Log Analytics](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements). 
 - Son etkinlikten veriler görmüyor musunuz? 15 dakika beklemek ve akışı yenilemek isteyebilirsiniz. Azure Izleyici, günlük verilerinin doldurulmasına yönelik 15 dakikalık bir gecikme süresine sahiptir. Daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük verisi alma süresi](../azure-monitor/logs/data-ingestion-time.md).
 
-Herhangi bir bilgi eksik değilse ancak verileriniz doğru şekilde görüntülenmiyorsa, sorguda veya veri kaynaklarında bir sorun olabilir. Bilinen sorunlarınızı ve sınırlamaları gözden geçirin. 
+Herhangi bir bilgi eksik değilse ancak verileriniz doğru şekilde görüntülenmiyorsa, sorguda veya veri kaynaklarında bir sorun olabilir. [Bilinen sorunları ve sınırlamaları](#known-issues-and-limitations)gözden geçirin. 
 
 ## <a name="i-want-to-customize-azure-monitor-for-windows-virtual-desktop"></a>Windows sanal masaüstü için Azure Izleyicisini özelleştirmek istiyorum
 
@@ -60,7 +58,7 @@ Tasarım yaparak, özel çalışma kitabı şablonları ürün grubundan güncel
 
 ## <a name="the-data-i-need-isnt-available"></a>İhtiyacım olan veriler kullanılamıyor
 
-Daha fazla performans sayacını veya olayını izlemek isterseniz, bu kullanıcıların Log Analytics çalışma alanınıza gönderilmesini ve bunları konak Tanılama: konak tarayıcısı 'nda izlemenizi sağlayabilirsiniz. 
+Daha fazla performans sayacı veya Windows olay günlüğü izlemek isterseniz, bu kullanıcıların Log Analytics çalışma alanınıza tanılama bilgileri göndermesini ve bunları **konak Tanılama: konak tarayıcısı**'nda izlemenizi sağlayabilirsiniz. 
 
 - Performans sayaçlarını eklemek için bkz. [performans sayaçlarını yapılandırma](../azure-monitor/agents/data-sources-performance-counters.md#configuring-performance-counters)
 - Windows olayları eklemek için bkz. [Windows olay günlüklerini yapılandırma](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs)
@@ -68,26 +66,19 @@ Daha fazla performans sayacını veya olayını izlemek isterseniz, bu kullanıc
 Bir sorunu tanılamaya yardımcı olmak için bir veri noktası bulunamıyor musunuz? Bize geri bildirim gönderin!
 
 - Geri bildirimleri nasıl bırakacağınızı öğrenmek için bkz. [sorun giderme genel bakış, geri bildirim ve Windows sanal masaüstü desteği](troubleshoot-set-up-overview.md).
-- Windows sanal masaüstü [Geri Bildirim Hub 'ında](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) veya [UserVoice forumumuzdan](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)Windows sanal masaüstü için geri bildirim de bırakabilirsiniz.
+- Windows sanal masaüstü [Geri Bildirim Hub 'ında](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)Windows sanal masaüstü geri bildirimini de bırakabilirsiniz.
 
 ## <a name="known-issues-and-limitations"></a>Bilinen sorunlar ve sınırlamalar
 
-Bunlar, şu anda farkında olduğumuz ve düzeltiyoruz olan sorunlar ve kısıtlamalardır:
+Aşağıda, farkındayız ve düzeltilmesi için çalıştık sorunlar ve sınırlamalar verilmiştir:
 
 - Tek seferde yalnızca bir konak havuzunu izleyebilirsiniz. 
-
 - Sık kullanılan ayarları kaydetmek için çalışma kitabının özel bir şablonunu kaydetmeniz gerekir. Özel şablonlar ürün grubundan güncelleştirmeleri otomatik olarak benimsemez.
-
-- Bazı hata iletileri, Kullanıcı dostu bir şekilde phrased değildir ve tüm hata iletileri belgelerde açıklanmaz.
-
+- Yapılandırma çalışma kitabı bazen seçimlerinizi yüklerken "sorgu başarısız oldu" hatalarını gösterir. Sorguyu yenileyin, gerekirse seçiminizi yeniden girin ve hata kendi kendine çözümlenmelidir. 
+- Bazı hata iletileri Kullanıcı dostu bir şekilde phrased değildir ve tüm hata iletileri belgelerde açıklanmaz.
 - Toplam oturumlar performans sayacı oturumları küçük bir sayıya göre sayabilir ve toplam oturumlarınız, en fazla oturum sınırınız üzerinde bulunabilir.
-
-- Kullanılabilir oturum sayısı, konak havuzundaki ölçeklendirme ilkelerini yansıtmıyor. 
-    
-- Nadir olarak bir bağlantının tamamlanma olayı eksik olabilir ve bu, zaman içindeki bağlantılar ve kullanıcının bağlantı durumu gibi bazı görselleri etkileyebilir.  
-    
-- Yapılandırma çalışma kitabı yalnızca kaynak grubuyla aynı bölgedeki Konakları yapılandırmayı destekler. 
-
+- Kullanılabilir oturum sayısı, konak havuzundaki ölçeklendirme ilkelerini yansıtmıyor.   
+- Çakışan veya beklenmedik bağlantı zamanlarını mi görüyorsunuz? Nadir bir bağlantı, bir bağlantının tamamlanma olayı eksik olabilir ve bazı görselleri ve ölçümleri etkileyebilir.
 - Bağlanma süresi, kullanıcıların kimlik bilgilerini girmesi için gereken süreyi içerir; Bu deneyimle ilişkili olmakla kalmaz, bazı durumlarda yanlış Peaks gösterilebilir. 
     
 

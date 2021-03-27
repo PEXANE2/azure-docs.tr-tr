@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 42e263a47c6c771d2b1fef6586468cfc5a698e28
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 9faaf79958443c252a8d913fbd7448389c610e09
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105047924"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105628586"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL Yönetilen Örneği hakkında sık sorulan sorular (SSS)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -135,7 +135,7 @@ Yönetilen örnek, Azure SQL veritabanı 'nın diğer dağıtım seçenekleri ol
 
 Bir seçenek, [bir veritabanını BACPAC 'e aktarmak](../database/database-export.md) ve ardından [bacpac dosyasını içeri aktaryıdır](../database/database-import.md). Veritabanınız 100 GB 'den küçükse bu önerilen yaklaşımdır.
 
-Veritabanındaki tüm tablolarda *birincil* anahtarlar varsa ve veritabanında bellek içi OLTP nesneleri yoksa, [İşlemsel çoğaltma](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true) kullanılabilir.
+Veritabanındaki tüm tablolarda *birincil* anahtarlar varsa ve veritabanında bellek içi OLTP nesneleri yoksa, [İşlemsel çoğaltma](replication-two-instances-and-sql-server-configure-tutorial.md) kullanılabilir.
 
 Yönetilen örnekten alınan yerel COPY_ONLY yedeklemeleri, SQL Server kıyasla daha yüksek bir veritabanı sürümüne sahip olduğundan SQL Server geri yüklenemez. Daha fazla ayrıntı için bkz. [yalnızca kopya yedekleme](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15).
 
@@ -171,7 +171,7 @@ Yönetilen örnek ve SQL Server arasındaki bir performans karşılaştırması 
 
 Yönetilen örneğinizin performansını şu şekilde iyileştirebilirsiniz:
 - AI ve makine öğrenimine dayalı sürekli performans ayarlaması aracılığıyla en yüksek performans ve kararlı iş yükleri sağlayan [otomatik ayarlama](../database/automatic-tuning-overview.md) .
--   İşlemsel işleme iş yükleri üzerinde işleme ve gecikme süresini artıran ve daha hızlı iş öngörüleri sunan [bellek ıçı OLTP](../in-memory-oltp-overview.md) . 
+-    İşlemsel işleme iş yükleri üzerinde işleme ve gecikme süresini artıran ve daha hızlı iş öngörüleri sunan [bellek ıçı OLTP](../in-memory-oltp-overview.md) . 
 
 Performansı daha da ayarlamak için, [uygulama ve veritabanı ayarlama](../database/performance-guidance.md#tune-your-database)için *en iyi uygulamalardan* bazılarını uygulamayı düşünün.
 İş yükünüz çok sayıda küçük işlem içeriyorsa, düşük gecikme süresi ve daha yüksek aktarım hızı için [bağlantı türünü proxy 'den yeniden yönlendirme moduna geçirmeyi](connection-types-overview.md#changing-connection-type) düşünün.
@@ -263,9 +263,9 @@ Evet. Yönetilen bir örnek sağlandıktan sonra, 1433 numaralı bağlantı nokt
 **NVA veya şirket içi güvenlik duvarını, FQDN 'Lere göre giden yönetim trafiğini filtrelemek için ayarlayabilir miyim?**
 
 Hayır. Bu, birkaç nedenden dolayı desteklenmez:
--   Gelen yönetim isteğine yanıtı temsil eden yönlendirme trafiği asimetrik olur ve çalışmayabilir.
--   Depolama alanına giden yönlendirme trafiği aktarım hızı kısıtlamalarından ve gecikmeden etkilenerek beklenen hizmet kalitesini ve kullanılabilirliğini sağlayamayacağız.
--   Deneyim temelinde, bu yapılandırmalarda hata yaşılır ve supportable değildir.
+-    Gelen yönetim isteğine yanıtı temsil eden yönlendirme trafiği asimetrik olur ve çalışmayabilir.
+-    Depolama alanına giden yönlendirme trafiği aktarım hızı kısıtlamalarından ve gecikmeden etkilenerek beklenen hizmet kalitesini ve kullanılabilirliğini sağlayamayacağız.
+-    Deneyim temelinde, bu yapılandırmalarda hata yaşılır ve supportable değildir.
 
 **Giden yönetim dışı trafik için NVA veya güvenlik duvarını ayarlayabilir miyim?**
 
@@ -416,9 +416,9 @@ SQL yönetilen örneği, [sanal çekirdek tabanlı satın alma modeli](sql-manag
 **SQL yönetilen örneği için hangi maliyet avantajları mevcuttur?**
 
 Azure SQL avantajları ile maliyetleri aşağıdaki yollarla kaydedebilirsiniz:
--   Şirket içi lisanslarda mevcut yatırımlarını en üst düzeye çıkarın ve [Azure hibrit avantajı](../azure-hybrid-benefit.md?tabs=azure-powershell)yüzde 55 ' ye kadar tasarruf edin. 
--   İşlem kaynakları için bir ayırmaya işleyin ve [ayrılmış örnek avantajı](../database/reserved-capacity-overview.md)ile yüzde 33 ' a kadar tasarruf edin. Bunu, yüzde 82 ' e varan tasarruf için Azure hibrit avantajı ile birleştirin. 
--   Devam eden geliştirme ve test iş yükleriniz için indirimli ücretler sunan [Azure geliştirme ve test fiyatlandırma avantajına](https://azure.microsoft.com/pricing/dev-test/) göre yüzde 55 ' a varan bir ücret kazanın.
+-    Şirket içi lisanslarda mevcut yatırımlarını en üst düzeye çıkarın ve [Azure hibrit avantajı](../azure-hybrid-benefit.md?tabs=azure-powershell)yüzde 55 ' ye kadar tasarruf edin. 
+-    İşlem kaynakları için bir ayırmaya işleyin ve [ayrılmış örnek avantajı](../database/reserved-capacity-overview.md)ile yüzde 33 ' a kadar tasarruf edin. Bunu, yüzde 82 ' e varan tasarruf için Azure hibrit avantajı ile birleştirin. 
+-    Devam eden geliştirme ve test iş yükleriniz için indirimli ücretler sunan [Azure geliştirme ve test fiyatlandırma avantajına](https://azure.microsoft.com/pricing/dev-test/) göre yüzde 55 ' a varan bir ücret kazanın.
 
 **Ayrılmış örnek avantajı kimler için uygun?**
 

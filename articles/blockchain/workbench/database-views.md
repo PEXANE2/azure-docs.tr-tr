@@ -4,16 +4,16 @@ description: Kullanılabilir Azure blok zinciri 'nin önizlemesine genel bakış
 ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
-ms.openlocfilehash: e715bd2297c1e051ae92b15d73c945c9e80c3d94
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6c7fba590c9c8951e1862c28cb24dbde52c8da8d
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87003330"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625543"
 ---
 # <a name="azure-blockchain-workbench-database-views"></a>Azure blok zinciri çalışma ekranı veritabanı görünümleri
 
-Azure blok zinciri çalışma ekranı önizlemesi, dağıtılmış bağış *zincirlerden zincir dışı* BIR SQL DB veritabanına veri sağlar. Zincir dışı veritabanı, blok zinciri verileriyle etkileşim kurmak için SQL ve [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)gibi mevcut araçları kullanmayı mümkün kılar.
+Azure blok zinciri çalışma ekranı önizlemesi, dağıtılmış bağış *zincirlerden zincir dışı* BIR SQL DB veritabanına veri sağlar. Zincir dışı veritabanı, blok zinciri verileriyle etkileşim kurmak için SQL ve [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)gibi mevcut araçları kullanmayı mümkün kılar.
 
 Azure blok zinciri çalışma ekranı, sorgularınızı gerçekleştirirken yararlı olacak verilere erişim sağlayan bir veritabanı görünümleri kümesi sağlar. Bu görünümler, kolayca rapor, analiz oluşturmaya ve mevcut araçlarla blok zinciri verilerini kullanmaya ve veritabanı personelini yeniden eğmenize gerek kalmadan hızlı bir şekilde daha kolay hale getirilir.
 

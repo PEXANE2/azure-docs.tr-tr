@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 6ec0b32e487739c33b1b2b49bd0645130fc88581
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7b295c6dabfce6a624d93d75991163f464cfd46e
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104729541"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625237"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Azure Iletişim hizmetlerindeki telefon numarası türleri
 
@@ -31,7 +31,7 @@ Azure Iletişim Hizmetleri, sesli aramalar yapmak ve ortak anahtarlı telefon a�
 
 ## <a name="azure-subscriptions-eligibility"></a>Azure aboneliklerine uygunluk
 
-Telefon numarası almak için ücretli bir Azure aboneliğinde olmanız gerekir. Telefon numaraları, deneme hesaplarında veya Azure Ücretsiz kredilerine göre alınamıyor. 
+Telefon numarası almak için ücretli bir Azure aboneliğinde olmanız gerekir. Telefon numaraları, deneme hesaplarında veya Azure Ücretsiz kredilerine göre alınamıyor.
 
 Telefon numarası kullanılabilirliği Şu anda, ABD veri konumuna sahip Birleşik Devletler ve Iletişim Hizmetleri kaynaklarında faturalama adresine sahip Azure abonelikleri ile kısıtlıdır.
 
@@ -59,13 +59,13 @@ Aşağıdaki tabloda bu telefon numarası türleri özetlenmektedir:
 | Toll-Free         | + 1 (ücretsiz alan *kodu*) xxx xx xx | ABD                      | Çağırma (giden), SMS (gelen/giden)| Telefon numaralarını etkileşimli sesli yanıt (ıVR) sistemleri/botlar, SMS uygulamalarına atama                                        |
 
 
-### <a name="phone-number-features-in-azure-communication-services"></a>Azure Iletişim hizmetlerindeki telefon numarası özellikleri
+### <a name="phone-number-capabilities-in-azure-communication-services"></a>Azure Iletişim hizmetlerinde telefon numarası özellikleri
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
-Çoğu telefon numarası için "a la carte" özellik kümesini yapılandırmanıza izin veririz. Bu özellikler, Azure Iletişim Hizmetleri içindeki telefon numaralarınızı kiralayan şekilde seçilebilir.
+Çoğu telefon numarası için "a la carte" özellik kümesini yapılandırmanıza izin veririz. Bu yetenekler, Azure Iletişim Hizmetleri içindeki telefon numaralarınızı kiralayan şekilde seçilebilir.
 
-Sizin için kullanılabilir olan özellikler, kullandığınız ülkeye, kullanım servis talebine ve seçtiğiniz telefon numarası türüne bağlıdır. Bu özellikler, yasal gereksinimler nedeniyle ülkeye göre farklılık gösterir. Azure Iletişim Hizmetleri aşağıdaki telefon numarası özelliklerini sunar:
+Sizin için kullanılabilir olan yetenekler, kullandığınız ülkeye, kullanım servis talebine ve seçtiğiniz telefon numarası türüne bağlıdır. Bu yetenekler, yasal gereksinimler nedeniyle ülkeye göre farklılık gösterir. Azure Iletişim Hizmetleri aşağıdaki telefon numarası yeteneklerini sunar:
 
 - **Tek yönlü gıden SMS** Bu seçenek kullanıcılarınıza SMS iletileri göndermenizi sağlar. Bu, bildirim ve iki öğeli kimlik doğrulama senaryolarında yararlı olabilir.
 - **İki yönlü gelen ve gıden SMS** Bu seçenek, telefon numaralarını kullanarak kullanıcılarınızın iletilerinizi göndermenizi ve almanızı sağlar. Bu, müşteri hizmeti senaryolarında yararlı olabilir.

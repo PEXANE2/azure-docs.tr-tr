@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: 70c8bce840bca6f2e99b29dc32f5e71bbad8d379
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 780e6defe4f7d09e2d136c080525447ffd29bbb4
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105047244"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612390"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Belge çevirisi 'ni kullanmaya başlama (Önizleme)
 
@@ -37,8 +37,8 @@ Başlamak için şunlar gerekir:
 
 > [!IMPORTANT]
 >
-> * Belge çevirisi için HTTP istekleri yapmak üzere Azure portal kaynak _anahtarlarınız ve uç_ nokta sayfanızda veya küresel çevirmen uç noktasında bulunan uç noktayı kullanamazsınız `api.cognitive.microsofttranslator.com` .
 > * **Belge çevirisi hizmetine yönelik tüm API istekleri özel bir etki alanı uç noktası gerektirir**.
+> * Belge çevirisi için HTTP istekleri yapmak üzere Azure portal kaynak _anahtarlarınız ve uç_ nokta sayfanızda veya küresel çevirmen uç noktasında bulunan uç noktayı kullanamazsınız `api.cognitive.microsofttranslator.com` .
 
 ### <a name="what-is-the-custom-domain-endpoint"></a>Özel etki alanı uç noktası nedir?
 
@@ -93,7 +93,7 @@ Kaynak, hedef ve isteğe bağlı sözlük dosyaları için [**Azure Blob depolam
 
 * Yeni bir proje oluşturma.
 * Program. cs ' i aşağıda gösterilen C# kodu ile değiştirin.
-* Uç noktanızı ayarlayın. Program. cs dosyasındaki abonelik anahtarı ve kapsayıcı URL 'SI değerleri.
+* Program. cs ' de uç noktanızı, abonelik anahtarınızı ve kapsayıcı URL değerlerinizi ayarlayın.
 * JSON verilerini işlemek için [ .net CLI kullanarak paketeNewtonsoft.Js](https://www.nuget.org/packages/Newtonsoft.Json/)ekleyin.
 * Programı proje dizininden çalıştırın.
 
@@ -101,7 +101,7 @@ Kaynak, hedef ve isteğe bağlı sözlük dosyaları için [**Azure Blob depolam
 
 * Yeni bir Node.js projesi oluşturun.
 * Axios kitaplığını ile birlikte yükler `npm i axios` .
-* Kopyala aşağıdaki kodu projenize yapıştırın.
+* Aşağıdaki kodu kopyalayıp projenize yapıştırın.
 * Uç noktanızı, abonelik anahtarınızı ve kapsayıcı URL değerlerinizi ayarlayın.
 * Programı çalıştırın.
 
@@ -174,7 +174,7 @@ gradle run
 * Uç noktanızı, abonelik anahtarınızı ve kapsayıcı URL değerlerinizi ayarlayın.
 * Dosyayı '.go' uzantısıyla kaydedin.
 * Go yüklü bir bilgisayarda bir komut istemi açın.
-* Dosyayı oluşturun, örneğin: ' Go Build example-Code. go '.
+* Dosyayı oluşturun. Örneğin: ' Go Build example-Code. go '.
 * Dosyayı çalıştırın, örneğin: ' example-Code '.
 
  ---
@@ -207,26 +207,49 @@ Her belge çevirisi API isteğine aşağıdaki üstbilgiler dahildir:
 ## <a name="post-a-translation-request"></a>Çeviri isteği gönder
 
 <!-- markdownlint-disable MD024 -->
-### <a name="post-request-body-without-optional-glossaryurl"></a>İsteğe bağlı bir ışaryurl 'Si olmadan istek gövdesini GÖNDERIN
+### <a name="post-request-body-to-translate-all-documents-in-a-container"></a>Bir kapsayıcıdaki tüm belgeleri çevirmek için istek gövdesini GÖNDERIN
 
 ```json
 {
     "inputs": [
         {
             "source": {
-                "sourceUrl": "<https://YOUR-SOURCE-URL-WITH-READ-LIST-ACCESS-SAS>",
-                "storageSource": "AzureBlob",
-                "filter": {
-                    "prefix": "News",
-                    "suffix": ".txt"
-                },
-                "language": "en"
+                "sourceUrl": https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D
             },
             "targets": [
                 {
-                    "targetUrl": "<https://YOUR-SOURCE-URL-WITH-WRITE-LIST-ACCESS-SAS>",
-                    "storageSource": "AzureBlob",
-                    "category": "general",
+                    "targetUrl": https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D,
+                    "language": "fr"
+                }
+            ]
+        }
+    ]
+}
+```
+
+
+### <a name="post-request-body-to-translate-a-specific-document-in-a-container"></a>Kapsayıcıda belirli bir belgeyi çevirmek için istek gövdesini GÖNDERIN
+
+* "StorageType" belirttiğinizden emin olun: "dosya"
+* Belirli bir blob/belge (kapsayıcı için değil) için SAS belirteci & kaynak URL 'SI oluşturduğunuzdan emin olun 
+* Hedef dosya adını hedef URL 'nin bir parçası olarak belirttiğinizden emin olun; ancak SAS belirteci hala kapsayıcı için olur.
+* Aşağıdaki örnek istek, iki hedef dile çevrilen tek bir belgeyi göstermektedir
+
+```json
+{
+    "inputs": [
+        {
+            "storageType": "File",
+            "source": {
+                "sourceUrl": https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D
+            },
+            "targets": [
+                {
+                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
+                    "language": "es"
+                },
+                {
+                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
                     "language": "de"
                 }
             ]
@@ -235,44 +258,10 @@ Her belge çevirisi API isteğine aşağıdaki üstbilgiler dahildir:
 }
 ```
 
-### <a name="post-request-body-with-optional-glossaryurl"></a>İsteğe bağlı bir ışaryurl 'Si ile istek gövdesini GÖNDERIN
-
-```json
-{
-  "inputs":[
-    {
-      "source":{
-        "sourceUrl":"<https://YOUR-SOURCE-URL-WITH-READ-LIST-ACCESS-SAS>",
-        "storageSource":"AzureBlob",
-        "filter":{
-          "prefix":"News",
-          "suffix":".txt"
-        },
-        "language":"en"
-      },
-      "targets":[
-        {
-          "targetUrl":"<https://YOUR-SOURCE-URL-WITH-WRITE-LIST-ACCESS-SAS>",
-          "storageSource":"AzureBlob",
-          "category":"general",
-          "language":"de",
-          "glossaries":[
-            {
-              "glossaryUrl":"<https://YOUR-GLOSSARY-URL-WITH-READ-LIST-ACCESS-SAS>",
-              "format":"xliff",
-              "version":"1.2"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
 
 > [!IMPORTANT]
 >
-> Aşağıdaki kod örnekleri için, belirttiğiniz yerlerde anahtarınızı ve uç noktanızı sabit kodlarız. İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin.  Kimlik bilgilerinizi güvenli bir şekilde depolamanıza ve erişmenize yönelik yollar için bkz. Azure bilişsel [Hizmetler güvenliği](../../cognitive-services-security.md?tabs=command-line%2ccsharp) .
+> Aşağıdaki kod örnekleri için, belirttiğiniz yerlerde anahtarınızı ve uç noktanızı sabit kodlarız. İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin.  Kimlik bilgilerinizi güvenli bir şekilde depolamanıza ve erişmenize yönelik yollar için bkz. Azure bilişsel [Hizmetler güvenliği](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) .
 >
 > İşleme bağlı olarak aşağıdaki alanları güncelleştirmeniz gerekebilir:
 >>>
@@ -1247,7 +1236,7 @@ func main() {
 
 ## <a name="content-limits"></a>İçerik sınırları
 
-Aşağıdaki tabloda belge çevirisine göndereceğiniz verilerin sınırları listelenmektedir.
+Aşağıdaki tabloda belge çevirisi 'ne (Önizleme) göndereceğiniz verilerin sınırları listelenmektedir.
 
 |Öznitelik | Sınır|
 |---|---|

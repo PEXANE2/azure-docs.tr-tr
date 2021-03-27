@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 9b2333e38415a2c0ad50ce36c213ead711c70ab4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 15aead5c9f93205baac28e8b93a88015c9689e3a
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96928809"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625322"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Hızlı başlangıç: SSMS ile bir veritabanını Azure SQL yönetilen örneği 'ne geri yükleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ Bu hızlı başlangıç:
   - [Şirket IÇINDEN SQL yönetilen örneği için Noktadan siteye bağlantı yapılandırın](point-to-site-p2s-configure.md).
 
 > [!NOTE]
-> Azure Blob depolama ve [paylaşılan erişim imzası (SAS) anahtarı](../../storage/common/storage-sas-overview.md)kullanarak bir SQL Server veritabanını yedekleme ve geri yükleme hakkında daha fazla bilgi için bkz. [SQL Server yedekleme URL 'si](/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017).
+> Azure Blob depolama ve [paylaşılan erişim imzası (SAS) anahtarı](../../storage/common/storage-sas-overview.md)kullanarak bir SQL Server veritabanını yedekleme ve geri yükleme hakkında daha fazla bilgi için bkz. [SQL Server yedekleme URL 'si](/sql/relational-databases/backup-restore/sql-server-backup-to-url).
 
 ## <a name="restore-from-a-backup-file"></a>Bir yedekleme dosyasından geri yükleme
 

@@ -5,14 +5,14 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/17/2021
+ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: 9f433815838cc4d8dd41f3b95fc1bd6fe0acc955
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 2e9dafc111478f35263dc9db0cc07d913327c936
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562741"
+ms.locfileid: "105612067"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Öğretici: Azure geçişi: bulma ve değerlendirme ile VMware ortamında çalışan sunucuları bulma
 
@@ -34,11 +34,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
-
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce, bu önkoşulların yerinde olup olmadığını kontrol edin.
-
 
 **Gereksinim** | **Ayrıntılar**
 --- | ---
@@ -97,7 +95,6 @@ VSphere Web Istemcisinde bir hesabı aşağıdaki şekilde ayarlayın:
 6. Ayrıca yüklü uygulamalar bulmayı ve aracısız bağımlılık analizini yapmak istiyorsanız, **Roller** ' e gidin > **salt oku** rolünü seçin ve **ayrıcalıklar** bölümünde **Konuk işlemler**' i seçin. "Alt öğelere yay" onay kutusunu seçerek ayrıcalıkları vCenter Server altındaki tüm nesnelere yayabilirsiniz.
 
     :::image type="content" source="./media/tutorial-discover-vmware/guest-operations.png" alt-text="Salt okuma rolünde Konuk işlemlere izin vermek için onay kutusu":::
-
 
 > [!NOTE]
 > Bulmayı belirli vCenter Server veri merkezleri, kümeler, bir küme klasörü, konaklar, konaklar klasörü veya vCenter Server hesabını tanımlayarak tek tek sunucular ile sınırlayabilirsiniz. VCenter Server Kullanıcı hesabının kapsamını belirleme hakkında [**daha fazla bilgi edinin**](set-discovery-scope.md) .
@@ -197,11 +194,9 @@ Dağıtım yapmadan önce OVA dosyasının güvenli olup olmadığını denetley
 8. **Ağ eşlemesinde**, sunucunun bağlanacağı ağı belirtin. Ağ, Azure geçişi 'ne meta veri göndermek için internet bağlantısı gerektirir.
 9. Ayarları gözden geçirip onayladıktan sonra **Son**’a tıklayın.
 
-
 ### <a name="verify-appliance-access-to-azure"></a>Azure 'a gereç erişimini doğrulama
 
 Gereç sunucusunun [ortak](migrate-appliance.md#public-cloud-urls) ve [kamu](migrate-appliance.md#government-cloud-urls) bulutları için Azure URL 'lerine bağlanabildiğinizden emin olun.
-
 
 ### <a name="4-configure-the-appliance"></a>4. gereci yapılandırma
 

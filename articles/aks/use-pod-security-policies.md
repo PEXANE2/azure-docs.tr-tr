@@ -3,27 +3,20 @@ title: Azure Kubernetes Service (AKS) içinde Pod güvenlik ilkeleri kullanma
 description: Azure Kubernetes Service (aks) içinde Pod SecurityPolicy kullanarak Pod sayede denetimini nasıl denetleyeceğinizi öğrenin
 services: container-service
 ms.topic: article
-ms.date: 02/12/2021
-ms.openlocfilehash: cf520f4b0dc2f51e6431d65ef178b6635d7fd857
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.date: 03/25/2021
+ms.openlocfilehash: d95cdb51136511bdd8529c829c3f680d19e14ba9
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105544256"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105611778"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de Pod güvenlik ilkelerini kullanarak kümenizin güvenliğini sağlama
 
 > [!WARNING]
-> **Bu belgede açıklanan özellik, Pod güvenlik ilkesi (Önizleme) kullanımdan kaldırma için ayarlanmıştır ve bu,** [aks için Azure Ilkesi için](use-azure-policy.md)30 Haziran 2021 ' den sonra kullanılabilir olmayacaktır. Kullanımdan kaldırma tarihi, 15 Ekim 2020 ' in önceki tarihinden itibaren genişletilmiştir.
+> **Bu belgede açıklanan özellik, Pod güvenlik ilkesi (Önizleme), Kubernetes sürüm 1,21 ile kullanımdan kalkmaya başlayacak ve sürüm 1,25 ' de kaldırılır.** Kubernetes yukarı akış, kilometre taşına yaklaşırsa, Kubernetes topluluğu, önemli alternatifleri belgelemek için çalışır. Önceki kullanımdan kaldırma duyurusu, müşteriler için uygun bir seçenek olmadığından zamanında yapılmıştır. Kubernetes Community bir alternatif üzerinde çalıştık. artık Kubernetes 'in önüne geçmek için bir basmayla ilgili değildir.
 >
 > Pod güvenlik ilkesi (Önizleme) kullanım dışı olduktan sonra, gelecekteki küme yükseltmelerini gerçekleştirmek ve Azure desteği içinde kalmak için kullanımdan kaldırılan özelliği kullanarak mevcut kümelerin özelliğini devre dışı bırakmanız gerekir.
->
-> Aks için Azure ilkesiyle test etme işlemini başlatmak önemle önerilir, bu da Pod güvenlik ilkeleriyle eşlenen Pod ve yerleşik girişimleri güvenli hale getirmek için yerleşik ilkeler sunar. Pod güvenlik ilkesinden geçiş yapmak için, bir kümede aşağıdaki işlemleri gerçekleştirmeniz gerekir.
-> 
-> 1. Kümede [Pod güvenlik Ilkesini devre dışı bırak](#clean-up-resources)
-> 1. [Azure Ilke eklentisini][azure-policy-add-on] etkinleştirin
-> 1. İstenen Azure ilkelerini [kullanılabilir yerleşik ilkelerden][policy-samples] etkinleştirin
-> 1. [Pod güvenlik ilkesi Ile Azure ilkesi arasındaki davranış değişikliklerini](#behavior-changes-between-pod-security-policy-and-azure-policy) gözden geçirme
 
 AKS kümenizin güvenliğini artırmak için, hangi yığınların zamanlanabileceği ile sınırlı olabilirsiniz. İzin vermeyenleri isteyen kaynaklar AKS kümesinde çalıştırılamaz. Bu erişimi Pod güvenlik ilkelerini kullanarak tanımlarsınız. Bu makalede, AKS 'deki yığınların dağıtımını sınırlamak için pod güvenlik ilkelerinin nasıl kullanılacağı gösterilmektedir.
 

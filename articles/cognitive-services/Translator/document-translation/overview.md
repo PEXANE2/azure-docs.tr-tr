@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: 692033e323880db1699d7265a991775d41b05f7f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f84dc66828f2ebf13316b3348fd93933a2223b5a
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656014"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612288"
 ---
 # <a name="what-is-document-translation-preview"></a>Belge çevirisi nedir (Önizleme)?
 
@@ -52,7 +52,7 @@ Aşağıdaki belge dosyası türleri belge çevirisi tarafından desteklenir:
 |Microsoft Outlook|. msg|Microsoft Outlook içinde oluşturulan veya kaydedilen bir e-posta iletisi.|
 |Microsoft PowerPoint|.pptx| Bir slayt gösterisi biçiminde içerik göstermek için kullanılan bir sunum dosyası.|
 |Microsoft Word|.docx| Bir metin belgesi dosyası.|
-|Sekmeyle ayrılmış değerler/sekme|. tsv/. Tab| elektronik tablo programları tarafından kullanılan sekmeyle ayrılmış ham veri dosyası.|
+|Sekmeyle ayrılmış değerler/sekme|. tsv/. Tab| Elektronik tablo programları tarafından kullanılan sekmeyle ayrılmış ham veri dosyası.|
 |Metin|.txt| Biçimlendirilmemiş metin belgesi.|
 |Çeviri belleği değişimi|. tmx|Bilgisayar destekli çeviri (CAT) ve yerelleştirme uygulamaları tarafından oluşturulan çeviri belleği (TM) verilerini değiş tokuş etmek için kullanılan açık bir XML standardı.|
 
@@ -63,7 +63,7 @@ Aşağıdaki sözlük dosyası türleri belge çevirisi tarafından desteklenir:
 | Dosya türü| Dosya uzantısı|Description|
 |---|---|--|
 |Yerelleştirme değişim dosyası biçimi|. xlf. , XLIFF| Bir paralel belge biçimi, çeviri belleği sistemlerini dışarı aktarma. Kullanılan diller dosya içinde tanımlanmıştır.|
-|Sekmeyle ayrılmış değerler/sekme|. tsv/. Tab| elektronik tablo programları tarafından kullanılan sekmeyle ayrılmış ham veri dosyası.|
+|Sekmeyle ayrılmış değerler/sekme|. tsv/. Tab| Elektronik tablo programları tarafından kullanılan sekmeyle ayrılmış ham veri dosyası.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

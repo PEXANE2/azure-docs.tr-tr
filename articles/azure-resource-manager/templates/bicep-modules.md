@@ -2,15 +2,15 @@
 title: Bıcep modülleri
 description: Modülün nasıl tanımlanacağını ve kullanılacağını ve modül kapsamlarının nasıl kullanılacağını açıklar.
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: 2edeb5c96f771867f964963b2d27768291ae2d4a
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.date: 03/25/2021
+ms.openlocfilehash: 7a680e8aa0fa4d5ef9cac7f9e7ba07a3aa4ee1e2
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889714"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105611744"
 ---
-# <a name="use-bicep-modules"></a>Bıcep modüllerini kullanma
+# <a name="use-bicep-modules-preview"></a>Bıcep modüllerini kullanma (Önizleme)
 
 Bıcep, karmaşık bir çözümü modüllerle bozar etmenizi sağlar. Bir Bıcep modülü birlikte dağıtılacak bir veya daha fazla kaynak kümesidir. Modüller, ham kaynak bildiriminin, okunabilirliği artıran karmaşık ayrıntılarını soyutlar. Bu modülleri yeniden kullanabilir ve diğer kişilerle paylaşabilirsiniz. [Şablon Özellikleri](./template-specs.md)ile birlikte kullanıldığında, modülerlik ve kod yeniden kullanımı için bir yol oluşturur. Öğretici için bkz. [öğretici: Bıcep modülleri ekleme](./bicep-tutorial-add-modules.md).
 

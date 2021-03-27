@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: e3b04563b0da3255c63208b73c9ecdbd62ff0cf7
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 60edbcf97b43747246e84517cc65bb0dca4ff546
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609306"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105626852"
 ---
 # <a name="servers---azure-database-for-postgresql---flexible-server"></a>Sunucular-PostgreSQL için Azure veritabanı-esnek sunucu
 
@@ -42,8 +42,8 @@ PostgreSQL için Azure veritabanı sunucusunda bir veya daha fazla veritabanı o
 
 Aşağıdaki öğeler veritabanınıza güvenli erişimin sağlanmasına yardımcı olur:
 
-|||
-|:--|:--|
+| Güvenlik kavramı | Description |
+| :-- | :-- |
 | **Kimlik doğrulaması ve yetkilendirme** | PostgreSQL için Azure Veritabanı sunucusu, yerel PostgreSQL kimlik doğrulamasını destekler. Sunucunun yönetici hesabını kullanarak sunucuya bağlanabilir ve kimlik doğrulaması gerçekleştirebilirsiniz. |
 | **Protokol** | Hizmet, PostgreSQL tarafından kullanılan ileti tabanlı bir protokolü destekler. |
 | **TCP/IP** | Protokol TCP/IP üzerinden ve UNIX-etki alanı Yuvaları üzerinden desteklenir. |

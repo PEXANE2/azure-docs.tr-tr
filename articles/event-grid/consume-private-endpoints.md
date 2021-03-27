@@ -3,12 +3,12 @@ title: Özel bağlantı hizmetini kullanarak olay sunma
 description: Bu makalede, özel bağlantı hizmeti kullanılarak olayları teslim edemeyecek sınırlamanın nasıl giderileceği açıklanmaktadır.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: 7ca15a76d56d9cdcdee741b661981b80c914d0e9
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9df78e1cc7734ba9e455ed686286658006f9445e
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722336"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629300"
 ---
 # <a name="deliver-events-using-private-link-service"></a>Özel bağlantı hizmetini kullanarak olay sunma
 Şu anda [Özel uç noktalar](../private-link/private-endpoint-overview.md)kullanarak olay teslim etmek mümkün değildir. Diğer bir deyişle, teslim edilen olaylarınızın trafiğinden özel IP alanının olmaması gereken katı ağ yalıtımı gereksinimleriniz varsa destek yoktur. 
@@ -27,7 +27,7 @@ Bu yapılandırma altında trafik, Event Hubs, Service Bus veya Azure Storage 'a
 ## <a name="deliver-events-to-event-hubs-using-managed-identity"></a>Yönetilen kimlik kullanarak Event Hubs olaylar sunma
 Yönetilen kimlik kullanarak Event Hubs ad alanındaki Olay Hub 'larına olayları teslim etmek için şu adımları izleyin:
 
-1. [Bir konu veya etki alanı için sistem tarafından atanan kimliği etkinleştirin](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity). 
+1. Sistem tarafından atanan kimliği etkinleştir: [sistem konuları](enable-identity-system-topics.md), [özel konular ve etki alanları](enable-identity-custom-topics-domains.md).  
 1. [Kimliği, Event Hubs ad alanındaki **Azure Event Hubs Data sender** rolüne ekleyin](../event-hubs/authenticate-managed-identity.md#to-assign-azure-roles-using-the-azure-portal).
 1. [Event Hubs ad alanındaki **Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına izin ver** ayarını etkinleştirin](../event-hubs/event-hubs-service-endpoints.md#trusted-microsoft-services). 
 1. Sistem tarafından atanan kimliği kullanmak için bir olay hub 'ı bir uç nokta olarak kullanan [olay aboneliğini yapılandırın](managed-service-identity.md#create-event-subscriptions-that-use-an-identity) .
@@ -35,16 +35,16 @@ Yönetilen kimlik kullanarak Event Hubs ad alanındaki Olay Hub 'larına olaylar
 ## <a name="deliver-events-to-service-bus-using-managed-identity"></a>Yönetilen kimlik kullanarak Service Bus olaylar sunma
 Yönetilen kimlik kullanarak Service Bus ad uzayındaki Service Bus kuyruklara veya konulara olay göndermek için şu adımları izleyin:
 
-1. [Bir konu veya etki alanı için sistem tarafından atanan kimliği etkinleştirin](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity). 
-1. Kimliği Service Bus ad alanındaki [Azure Service Bus Data sender](/service-bus-messaging/service-bus-managed-service-identity#azure-built-in-roles-for-azure-service-bus) rolüne ekleyin
+1. Sistem tarafından atanan kimliği etkinleştir: [sistem konuları](enable-identity-system-topics.md), [özel konular ve etki alanları](enable-identity-custom-topics-domains.md). 
+1. Kimliği Service Bus ad alanındaki [ **Azure Service Bus Data sender** rolüne ekleyin](/service-bus-messaging/service-bus-managed-service-identity#azure-built-in-roles-for-azure-service-bus)
 1. [Service Bus ad alanındaki **Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına izin ver** ayarını etkinleştirin](../service-bus-messaging/service-bus-service-endpoints.md#trusted-microsoft-services). 
-1. Bir Service Bus kuyruğu veya konuyu kullanan [olay aboneliğini,](managed-service-identity.md#create-event-subscriptions-that-use-an-identity) sistem tarafından atanan kimliği kullanmak için uç nokta olarak yapılandırın.
+1. Bir Service Bus kuyruğu veya konuyu kullanan [olay aboneliğini,](managed-service-identity.md) sistem tarafından atanan kimliği kullanmak için uç nokta olarak yapılandırın.
 
 ## <a name="deliver-events-to-storage"></a>Olayları depolamaya teslim etme 
 Yönetilen kimlik kullanarak olayları depolama sıralarına teslim etmek için şu adımları izleyin:
 
-1. [Bir konu veya etki alanı için sistem tarafından atanan kimliği etkinleştirin](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity).
-1. Azure depolama sırasındaki [depolama kuyruğu veri Iletisi gönderici](../storage/common/storage-auth-aad-rbac-portal.md) rolüne kimliği ekleyin.
+1. Sistem tarafından atanan kimliği etkinleştir: [sistem konuları](enable-identity-system-topics.md), [özel konular ve etki alanları](enable-identity-custom-topics-domains.md). 
+1. Azure depolama sırasındaki [ **depolama kuyruğu veri iletisi gönderici** rolüne kimliği ekleyin](../storage/common/storage-auth-aad-rbac-portal.md) .
 1. Bir Service Bus kuyruğu veya konuyu kullanan [olay aboneliğini,](managed-service-identity.md#create-event-subscriptions-that-use-an-identity) sistem tarafından atanan kimliği kullanmak için uç nokta olarak yapılandırın.
 
 

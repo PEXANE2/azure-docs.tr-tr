@@ -8,13 +8,13 @@
       href: bicep-overview.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: Şablon oluşturma - portal
-      href: quickstart-create-templates-use-the-portal.md
-    - name: Şablon oluşturma - VS Code
+    - name: JSON şablonları oluşturma-VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
-    - name: Bicep-VS Code oluşturma
+    - name: Bicep şablonları oluşturma-VS Code
       href: quickstart-create-bicep-use-visual-studio-code.md
-    - name: Şablon belirtimlerini oluşturma ve dağıtma
+    - name: JSON şablonları oluşturma-Portal
+      href: quickstart-create-templates-use-the-portal.md
+    - name: Şablon özellikleri oluşturma
       href: quickstart-create-template-specs.md
 - name: Öğreticiler
   items:
@@ -43,24 +43,34 @@
     - name: Başlangıç bicep
       items:
         - name: 1 - İlk şablonu oluşturma
+          displayName: Bicep
           href: bicep-tutorial-create-first-bicep.md
         - name: 2-parametre ekleme
+          displayName: Bicep
           href: bicep-tutorial-add-parameters.md
         - name: 3-Şablon işlevleri ekleme
+          displayName: Bicep
           href: bicep-tutorial-add-functions.md
         - name: 4-değişken ekleme
+          displayName: Bicep
           href: bicep-tutorial-add-variables.md
         - name: 5-çıkış ekleme
+          displayName: Bicep
           href: bicep-tutorial-add-outputs.md
         - name: 6-aktarılmış şablon kullan
+          displayName: Bicep
           href: bicep-tutorial-export-template.md
         - name: 7-hızlı başlangıç şablonunu kullanma
+          displayName: Bicep
           href: bicep-tutorial-quickstart-template.md
         - name: 8-etiket ekleme
+          displayName: Bicep
           href: bicep-tutorial-add-tags.md
         - name: 9-parametre dosyası kullan
+          displayName: Bicep
           href: bicep-tutorial-use-parameter-file.md
         - name: 10-modüller ekleme
+          displayName: Bicep
           href: bicep-tutorial-add-modules.md
     - name: Dağıtım
       items:

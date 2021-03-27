@@ -4,7 +4,7 @@ titleSuffix: Azure App Configuration
 description: Bu öğreticide, anında yenileme kullanarak .NET Core uygulamaları için yapılandırma verilerini dinamik olarak güncelleştirme hakkında bilgi edineceksiniz.
 services: azure-app-configuration
 documentationcenter: ''
-author: abarora
+author: GrantMeStrength
 manager: zhenlan
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/25/2020
-ms.author: abarora
-ms.openlocfilehash: 977982bf1a36b4b85524df2513f2272fe4a8d1bf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.author: jken
+ms.openlocfilehash: f330e69d37ac36e2a374e81fbffc6235c86feedd
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101701527"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105625730"
 ---
 # <a name="tutorial-use-dynamic-configuration-using-push-refresh-in-a-net-core-app"></a>Öğretici: .NET Core uygulamasında anında yenileme kullanarak dinamik yapılandırma kullanma
 

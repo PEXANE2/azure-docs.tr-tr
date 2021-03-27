@@ -6,37 +6,72 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 83758f63b7e60d08a31f1da9da4a6eec6ba7d4a4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 35513abdfb61d889abdbd4af7125b1fbb556d7b8
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102632076"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612764"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service ve Azure Işlevlerinde kimlik doğrulama ve yetkilendirme
 
-Azure App Service, yerleşik kimlik doğrulaması ve yetkilendirme desteği (bazen "kolay kimlik doğrulaması" olarak adlandırılır) sağlar. böylece, Web uygulamanızda, yeniden derlenen API 'de ve mobil arka uçta ve ayrıca [Azure işlevlerinde](../azure-functions/functions-overview.md)en az veya hiç kod yazmadan kullanıcılara oturum açabilir ve verilere erişebilirsiniz. Bu makalede, App Service uygulamanızın kimlik doğrulama ve yetkilendirme işlemlerini basitleştirmeye nasıl yardımcı olduğu açıklanır.
+Azure App Service, yerleşik kimlik doğrulama ve yetkilendirme özellikleri (bazen "kolay kimlik doğrulaması" olarak adlandırılır) sağlar. böylece, Web uygulamanızda, yeniden derlenen API 'de ve mobil arka uçta ve ayrıca [Azure işlevlerinde](../azure-functions/functions-overview.md)en az veya hiç kod yazmadan kullanıcılara oturum açabilir ve verilere erişebilirsiniz. Bu makalede, App Service uygulamanızın kimlik doğrulama ve yetkilendirme işlemlerini basitleştirmeye nasıl yardımcı olduğu açıklanır.
 
-Güvenli kimlik doğrulama ve yetkilendirme, Federasyon, şifreleme, [JSON Web belirteçleri (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) yönetimi, [izin verme](https://oauth.net/2/grant-types/)vb. gibi güvenlik konusunda ayrıntılı bilgiler gerektirir. App Service, müşterinize iş değeri sağlamaya yönelik daha fazla zaman ve enerji harcayabilmeniz için bu yardımcı programları sağlar.
+## <a name="why-use-the-built-in-authentication"></a>Yerleşik kimlik doğrulaması neden kullanılmalıdır?
 
-> [!IMPORTANT]
-> Kimlik doğrulama ve yetkilendirme için bu özelliği kullanmanız gerekli değildir. Seçtiğiniz Web çerçevesindeki paketlenmiş güvenlik özelliklerini kullanabilir veya kendi yardımcı programlarını yazabilirsiniz. Bununla birlikte, Chrome 80 ' in, farklı tanımlama bilgileri için (2020 Mart 'ta Yayın tarihi) ve özel uzaktan kimlik doğrulama veya siteler arası tanımlama bilgisine bağlı diğer senaryolar, istemci Chrome tarayıcıları güncelleştirilirken kesintiye uğrayabilecek [şekilde değişiklik yapıyor](https://www.chromestatus.com/feature/5088147346030592) . Farklı tarayıcılar için farklı SameSite davranışlarını desteklemesi gerektiğinden geçici çözüm karmaşıktır. 
->
-> App Service tarafından barındırılan ASP.NET Core 2,1 ve üzeri sürümleri, bu son değişiklik için zaten düzeltme eki uygulanmış ve Chrome 80 ve daha eski tarayıcıları uygun şekilde işleyecek. Ayrıca, ASP.NET Framework 4.7.2 için de aynı düzeltme eki, 2020 Ocak boyunca App Service örneklerine dağıtılır. Daha fazla bilgi için bkz. [Azure App Service SameSite tanımlama bilgisi güncelleştirmesi](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/).
->
+Kimlik doğrulama ve yetkilendirme için bu özelliği kullanmanız gerekli değildir. Seçtiğiniz Web çerçevesindeki paketlenmiş güvenlik özelliklerini kullanabilir veya kendi yardımcı programlarını yazabilirsiniz. Ancak, en son güvenlik, protokol ve tarayıcı güncelleştirmeleriyle çözümünüzün güncel kalmasını sağladığınızdan emin olmanız gerekir.
+
+Kimlik doğrulaması için güvenli bir çözüm (oturum açma kullanıcıları) ve yetkilendirme (güvenli verilere erişim sağlamak) uygulamak çok önemli bir çaba alabilir. Sektörde en iyi uygulamaları ve standartları izlediğinizden emin olmanız ve uygulamanızı güncel tutmanız gerekir. App Service ve Azure Işlevleri için yerleşik kimlik doğrulama özelliği, Federasyon kimlik sağlayıcıları ile kullanıma hazır kimlik doğrulama sağlayarak uygulamanızın geri kalanına odaklanmanızı sağlayarak zaman ve çaba tasarrufu sağlayabilir.
+
+- Azure App Service, çeşitli kimlik doğrulama yeteneklerini Web uygulamanız veya API 'niz için kendi kendinize uygulamadan tümleştirmenize imkan tanır.
+- Doğrudan platformda oluşturulmuştur ve belirli bir dil, SDK, güvenlik uzmanlığı veya hatta kullanmak için herhangi bir kod gerektirmez.
+- Birden çok oturum açma sağlayıcısıyla tümleştirilebilir. Örneğin, Azure AD, Facebook, Google, Twitter.
+
+## <a name="identity-providers"></a>Kimlik sağlayıcıları
+
+App Service, üçüncü taraf bir kimlik sağlayıcısının sizin için Kullanıcı kimliklerini ve kimlik doğrulama akışını yönettiği [Federal Kimlik](https://en.wikipedia.org/wiki/Federated_identity)kullanır. Aşağıdaki kimlik sağlayıcıları varsayılan olarak kullanılabilir:
+
+| Sağlayıcı | Oturum açma uç noktası | How-To Kılavuzu |
+| - | - | - |
+| [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` | [Azure AD oturum açma App Service](configure-authentication-provider-aad.md) |
+| [Microsoft Hesabı](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` | [Microsoft hesabı oturum açma App Service](configure-authentication-provider-microsoft.md) |
+| [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` | [Facebook oturum App Service](configure-authentication-provider-facebook.md) |
+| [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` | [Google oturum App Service](configure-authentication-provider-google.md) |
+| [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` | [App Service Twitter oturumu açma](configure-authentication-provider-twitter.md) |
+| Herhangi bir [OpenID Connect](https://openid.net/connect/) sağlayıcısı (Önizleme) | `/.auth/login/<providerName>` | [App Service OpenID Connect oturum açma](configure-authentication-provider-openid-connect.md) |
+
+Kimlik doğrulama ve yetkilendirmeyi bu sağlayıcılardan biriyle etkinleştirdiğinizde, oturum açma uç noktası Kullanıcı kimlik doğrulaması ve sağlayıcıdan kimlik doğrulama belirteçleri doğrulaması için kullanılabilir. Kullanıcılarınıza, bu oturum açma seçeneklerinin herhangi bir sayısını sağlayabilirsiniz.
+
+## <a name="considerations-for-using-built-in-authentication"></a>Yerleşik kimlik doğrulaması kullanma konuları
+
+Bu özelliği etkinleştirmek, HTTPS 'yi zorlamak için App Service yapılandırma ayarından bağımsız olarak, uygulamanıza yönelik tüm isteklerin otomatik olarak HTTPS 'ye yönlendirilmesini sağlar. Bunu  `requireHttps` v2 yapılandırmasındaki ayarla devre dışı bırakabilirsiniz. Bununla birlikte, HTTPS ile bir çıkartma önereceğiz ve güvenli olmayan HTTP bağlantıları üzerinden hiçbir güvenlik belirtecinin iletilmemesini güvence altına almalısınız.
+
+App Service, site içeriklerinize ve API 'Lerine erişimi kısıtlamadan veya olmadan kimlik doğrulaması için kullanılabilir. Uygulama erişimini yalnızca kimliği doğrulanmış kullanıcılarla kısıtlamak için, isteğin kimliği doğrulanmamış olarak, yapılandırılmış kimlik sağlayıcılarından biriyle oturum açmak üzere **kimlik doğrulaması yapıldığında gerçekleştirilecek eylemi** ayarlayın. Kimlik doğrulaması yapmak ancak erişimi kısıtlamak için, isteğin kimliği doğrulanmamış "anonim isteklere Izin ver (eylem yok)" olarak **doğrulanmadığında gerçekleştirilecek eylemi** ayarlayın.
 
 > [!NOTE]
-> Bu özelliği etkinleştirmek, [https 'yi zorlamak](configure-ssl-bindings.md#enforce-https)için App Service yapılandırma ayarından bağımsız olarak, uygulamanıza yönelik **Tüm** güvenli olmayan http isteklerinin otomatik olarak https 'ye yönlendirilmesini sağlar. Gerekirse, `requireHttps` [kimlik doğrulama ayarları yapılandırma dosyasındaki](app-service-authentication-how-to.md#configuration-file-reference)ayarı aracılığıyla bunu devre dışı bırakabilirsiniz, ancak bundan böyle hiçbir güvenlik BELIRTECININ güvenli olmayan http bağlantıları üzerinden iletilmemesini sağlamak için dikkatli olmanız gerekir.
-
-Yerel mobil uygulamalara özgü bilgiler için, bkz. [Azure App Service ile mobil uygulamalar Için Kullanıcı kimlik doğrulaması ve yetkilendirme](/previous-versions/azure/app-service-mobile/app-service-mobile-auth).
+> Her uygulamaya kendi iznini ve onayını vermeniz gerekir. Ayrı dağıtım yuvaları için ayrı uygulama kayıtları kullanarak ortamlar arasında izin paylaşımını önleyin. Yeni kodu sınarken, bu uygulama sorunların üretim uygulamasını etkilemesini önlemeye yardımcı olabilir.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-### <a name="on-windows"></a>Windows üzerinde
+[Windows üzerinde özellik mimarisi (kapsayıcı olmayan dağıtım)](#feature-architecture-on-windows-non-container-deployment))
+
+[Linux ve kapsayıcılarda Özellik mimarisi](#feature-architecture-on-linux-and-containers)
+
+[Kimlik doğrulama akışı](#authentication-flow)
+
+[Yetkilendirme davranışı](#authorization-behavior)
+
+[Kullanıcı ve uygulama talepleri](#user-and-application-claims)
+
+[Belirteç deposu](#token-store)
+
+[Günlüğe kaydetme ve izleme](#logging-and-tracing)
+
+#### <a name="feature-architecture-on-windows-non-container-deployment"></a>Windows üzerinde özellik mimarisi (kapsayıcı olmayan dağıtım)
 
 Kimlik doğrulama ve yetkilendirme modülü, uygulama kodunuzla aynı korumalı alanda çalışır. Etkin olduğunda, her gelen HTTP isteği, uygulama kodunuz tarafından işlenemeden önce üzerinden geçirilir.
 
-![Dağıtılan sitede trafiğe izin vermeden önce kimlik sağlayıcılarıyla etkileşen site korumalı bir işlem tarafından kesilen istekleri gösteren bir mimari diyagramı](media/app-service-authentication-overview/architecture.png)
+:::image type="content" source="media/app-service-authentication-overview/architecture.png" alt-text="Dağıtılan sitede trafiğe izin vermeden önce kimlik sağlayıcılarıyla etkileşen site korumalı bir işlem tarafından kesilen istekleri gösteren bir mimari diyagramı" lightbox="media/app-service-authentication-overview/architecture.png":::
 
 Bu modül, uygulamanız için çeşitli şeyleri işler:
 
@@ -47,66 +82,18 @@ Bu modül, uygulamanız için çeşitli şeyleri işler:
 
 Modül, uygulama kodınızdan ayrı olarak çalışır ve uygulama ayarları kullanılarak yapılandırılır. SDK, belirli dil veya uygulama kodunuzda değişiklik yapılması gerekmez. 
 
-### <a name="on-containers"></a>Kapsayıcılar üzerinde
+#### <a name="feature-architecture-on-linux-and-containers"></a>Linux ve kapsayıcılarda Özellik mimarisi
 
 Kimlik doğrulama ve yetkilendirme modülü, uygulama kodınızdan yalıtılmış ayrı bir kapsayıcıda çalışır. [Amelçi deseninin](/azure/architecture/patterns/ambassador)bilindiğinin kullanılması, Windows 'da olduğu gibi benzer işlevleri gerçekleştirmek üzere gelen trafikle etkileşime girer. İşlem içinde çalıştırılmadığından, belirli dil çerçeveleri ile doğrudan tümleştirme mümkün değildir; Ancak, uygulamanızın ihtiyaç duyacağı ilgili bilgiler, aşağıda açıklandığı gibi istek üstbilgileri kullanılarak geçirilir.
 
-### <a name="userapplication-claims"></a>Kullanıcı/uygulama talepleri
-
-Tüm dil çerçeveleri için App Service, gelen belirteçteki talepleri (kimliği doğrulanmış bir son kullanıcının veya bir istemci uygulamasından mi olsun), istek üst bilgilerine ekleme göre kodunuzun kullanımına sunar. ASP.NET 4,6 uygulamaları için App Service [ClaimsPrincipal. Current](/dotnet/api/system.security.claims.claimsprincipal.current) 'ı kimliği doğrulanmış kullanıcının taleplerine göre doldurur. böylece, özniteliği de dahil olmak üzere standart .NET kod modelini izleyebilirsiniz `[Authorize]` . Benzer şekilde, PHP uygulamaları için App Service değişkeni doldurur `_SERVER['REMOTE_USER']` . Java uygulamaları için, talepler [Tomcat servlet 'ten erişilebilir](configure-language-java.md#authenticate-users-easy-auth).
-
-[Azure işlevleri](../azure-functions/functions-overview.md)için, `ClaimsPrincipal.Current` .NET kodu için doldurulmamış, ancak istek üst bilgilerinde kullanıcı taleplerini bulabilir veya istek `ClaimsPrincipal` bağlamından ya da bir bağlama parametresi aracılığıyla nesne alabilirsiniz. Daha fazla bilgi için bkz. [istemci kimlikleriyle çalışma](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) .
-
-Daha fazla bilgi için bkz. [Kullanıcı taleplerine erişme](app-service-authentication-how-to.md#access-user-claims).
-
-> [!NOTE]
-> Şu anda ASP.NET Core, geçerli kullanıcıyı kimlik doğrulama/yetkilendirme özelliğiyle doldurmayı desteklememektedir. Ancak, bu boşluğun doldurulmasına yardımcı olmak için bazı [üçüncü taraf, açık kaynaklı ara yazılım bileşenleri](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) bulunur.
->
-
-### <a name="token-store"></a>Belirteç deposu
-
-App Service, Web uygulamalarınızın, API 'lerin veya yerel mobil uygulamalarınızın kullanıcılarıyla ilişkili belirteçlerin bir deposu olan yerleşik bir belirteç deposu sağlar. Herhangi bir sağlayıcı ile kimlik doğrulamasını etkinleştirdiğinizde, bu belirteç deposu uygulamanız için hemen kullanılabilir. Uygulama kodunuzun Kullanıcı adına bu sağlayıcılardan veriye erişmesi gerekiyorsa, örneğin: 
-
-- kimliği doğrulanmış kullanıcının Facebook zaman çizelgesinde gönderi
-- Microsoft Graph API 'sini kullanarak kullanıcının şirket verilerini okuyun
-
-Uygulamanızda bu belirteçleri toplamak, depolamak ve yenilemek için genellikle kod yazmanız gerekir. Belirteç deposu ile, ihtiyacınız olduğunda [belirteçleri alır](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) ve geçersiz hale geldiklerinde [bunları yenilemek App Service söyleyin](app-service-authentication-how-to.md#refresh-identity-provider-tokens) . 
-
-KIMLIK belirteçleri, erişim belirteçleri ve yenileme belirteçleri kimliği doğrulanmış oturum için önbelleğe alınır ve yalnızca ilişkili kullanıcı tarafından erişilebilir.  
-
-Uygulamanızdaki belirteçlerle çalışmanız gerekmiyorsa, uygulamanızın **kimlik doğrulama/yetkilendirme** sayfasında belirteç deposunu devre dışı bırakabilirsiniz.
-
-### <a name="logging-and-tracing"></a>Günlüğe kaydetme ve izleme
-
-[Uygulama günlüğünü etkinleştirirseniz](troubleshoot-diagnostic-logs.md), kimlik doğrulama ve yetkilendirme izlemelerini doğrudan günlük dosyalarınızda görürsünüz. Beklemediğiniz bir kimlik doğrulama hatası görürseniz, mevcut uygulama günlüklerinizi inceleyerek tüm ayrıntıları rahat bir şekilde bulabilirsiniz. [Başarısız istek izlemeyi](troubleshoot-diagnostic-logs.md)etkinleştirirseniz, kimlik doğrulama ve yetkilendirme modülünün başarısız bir istekte hangi rol oynadığını tam olarak görebilirsiniz. İzleme günlüklerinde adlı bir modüle başvuruları arayın `EasyAuthModule_32/64` . 
-
-## <a name="identity-providers"></a>Kimlik sağlayıcıları
-
-App Service, üçüncü taraf bir kimlik sağlayıcısının sizin için Kullanıcı kimliklerini ve kimlik doğrulama akışını yönettiği [Federal Kimlik](https://en.wikipedia.org/wiki/Federated_identity)kullanır. Beş kimlik sağlayıcısı varsayılan olarak kullanılabilir: 
-
-| Sağlayıcı | Oturum açma uç noktası |
-| - | - |
-| [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` |
-| [Microsoft Hesabı](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` |
-| [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
-| [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
-| [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
-| Herhangi bir [OpenID Connect](https://openid.net/connect/) sağlayıcısı (Önizleme) | `/.auth/login/<providerName>` |
-
-Kimlik doğrulama ve yetkilendirmeyi bu sağlayıcılardan biriyle etkinleştirdiğinizde, oturum açma uç noktası Kullanıcı kimlik doğrulaması ve sağlayıcıdan kimlik doğrulama belirteçleri doğrulaması için kullanılabilir. Kullanıcılarınıza dilediğiniz sayıda bu oturum açma seçeneğini kolayca sağlayabilirsiniz.
-
-Diğer kimlik sağlayıcıları veya özel bir kimlik doğrulama çözümüyle tümleştirmek için [eski bir genişletilebilirlik yolu][custom-auth] vardır, ancak bu önerilmez. Bunun yerine, OpenID Connect desteğini kullanmayı göz önünde bulundurun.
-
-## <a name="authentication-flow"></a>Kimlik doğrulaması akışı
+#### <a name="authentication-flow"></a>Kimlik doğrulaması akışı
 
 Kimlik doğrulama akışı tüm sağlayıcılar için aynıdır, ancak sağlayıcının SDK 'Sı ile oturum açmak isteyip istemediğinize bağlı olarak farklılık gösterir:
 
-- Sağlayıcı SDK 'Sı olmadan: uygulama App Service için Federasyon oturum açma temsilcisi sağlar. Bu durum genellikle, sağlayıcının oturum açma sayfasını kullanıcıya sunmanızı sağlayan tarayıcı uygulamaları ile aynıdır. Sunucu kodu, oturum açma işlemini yönetir, bu nedenle _sunucu yönlendirmeli akış_ veya _sunucu akışı_ olarak da adlandırılır. Bu durum tarayıcı uygulamaları için geçerlidir. SDK, kullanıcıların App Service kimlik doğrulamasıyla oturum açmasını sağlamak üzere bir Web görünümü açtığından Mobile Apps istemci SDK 'sını kullanarak kullanıcıları imzalayasağlayan yerel uygulamalar için de geçerlidir. 
+- Sağlayıcı SDK 'Sı olmadan: uygulama App Service için Federasyon oturum açma temsilcisi sağlar. Bu durum genellikle, sağlayıcının oturum açma sayfasını kullanıcıya sunmanızı sağlayan tarayıcı uygulamaları ile aynıdır. Sunucu kodu, oturum açma işlemini yönetir, bu nedenle _sunucu yönlendirmeli akış_ veya _sunucu akışı_ olarak da adlandırılır. Bu durum tarayıcı uygulamaları için geçerlidir. SDK, kullanıcıların App Service kimlik doğrulamasıyla oturum açmasını sağlamak üzere bir Web görünümü açtığından Mobile Apps istemci SDK 'sını kullanarak kullanıcıları imzalayasağlayan yerel uygulamalar için de geçerlidir.
 - Sağlayıcı SDK ile: uygulama, kullanıcıları sağlayıcıya el ile imzalar ve doğrulama için App Service kimlik doğrulama belirtecini gönderir. Bu durum genellikle, sağlayıcının oturum açma sayfasını kullanıcıya sunamıyoruz ve tarayıcı tarafından daha az uygulamalar için kullanılır. Uygulama kodu, oturum açma işlemini yönetir, bu nedenle _istemci yönlendirmeli akış_ veya _istemci akışı_ olarak da adlandırılır. Bu durum REST API 'Leri, [Azure işlevleri](../azure-functions/functions-overview.md)ve JavaScript tarayıcı istemcileri için, oturum açma sürecinde daha fazla esneklik gerektiren tarayıcı uygulamaları için de geçerlidir. Ayrıca, sağlayıcının SDK 'sını kullanarak kullanıcıları imzalayasağlayan yerel mobil uygulamalar için de geçerlidir.
 
-> [!NOTE]
-> App Service bir güvenilen tarayıcı uygulamasından App Service veya [Azure işlevlerinde](../azure-functions/functions-overview.md) başka bir REST API olan çağrılar, sunucu ile yönlendirilen Flow kullanılarak doğrulanabilir. Daha fazla bilgi için bkz. [App Service kimlik doğrulaması ve yetkilendirmeyi özelleştirme](app-service-authentication-how-to.md).
->
+App Service bir güvenilen tarayıcı uygulamasından App Service veya [Azure işlevlerinde](../azure-functions/functions-overview.md) başka bir REST API olan çağrılar, sunucu ile yönlendirilen Flow kullanılarak doğrulanabilir. Daha fazla bilgi için bkz. [App Service kimlik doğrulaması ve yetkilendirmeyi özelleştirme](app-service-authentication-how-to.md).
 
 Aşağıdaki tabloda, kimlik doğrulama akışı adımları gösterilmektedir.
 
@@ -121,7 +108,7 @@ Aşağıdaki tabloda, kimlik doğrulama akışı adımları gösterilmektedir.
 
 <a name="authorization"></a>
 
-## <a name="authorization-behavior"></a>Yetkilendirme davranışı
+#### <a name="authorization-behavior"></a>Yetkilendirme davranışı
 
 [Azure Portal](https://portal.azure.com), gelen isteğin kimliği doğrulanmamış bir dizi davranışla App Service yetkilendirmeyi yapılandırabilirsiniz.
 
@@ -129,13 +116,13 @@ Aşağıdaki tabloda, kimlik doğrulama akışı adımları gösterilmektedir.
 
 Aşağıdaki başlıklar seçenekleri anlatmaktadır.
 
-### <a name="allow-anonymous-requests-no-action"></a>Anonim isteklere izin ver (eylem yok)
+**Anonim isteklere izin ver (eylem yok)**
 
-Bu seçenek, uygulama kodunuza kimliği doğrulanmamış trafik yetkilendirmesini erteler. Kimliği doğrulanmış istekler için, App Service HTTP üstbilgilerinde kimlik doğrulama bilgileri boyunca de geçirilir. 
+Bu seçenek, uygulama kodunuza kimliği doğrulanmamış trafik yetkilendirmesini erteler. Kimliği doğrulanmış istekler için, App Service HTTP üstbilgilerinde kimlik doğrulama bilgileri boyunca de geçirilir.
 
-Bu seçenek, anonim istekleri işlemek için daha fazla esneklik sağlar. Örneğin, kullanıcılarınıza [birden çok oturum açma sağlayıcısı sunmanıza](app-service-authentication-how-to.md#use-multiple-sign-in-providers) olanak tanır. Ancak, kod yazmanız gerekir. 
+Bu seçenek, anonim istekleri işlemek için daha fazla esneklik sağlar. Örneğin, kullanıcılarınıza [birden çok oturum açma sağlayıcısı sunmanıza](app-service-authentication-how-to.md#use-multiple-sign-in-providers) olanak tanır. Ancak, kod yazmanız gerekir.
 
-### <a name="allow-only-authenticated-requests"></a>Yalnızca kimliği doğrulanmış isteklere izin ver
+**Yalnızca kimliği doğrulanmış isteklere izin ver**
 
 Seçeneği **\<provider> Ile oturum açın**. App Service, tüm anonim istekleri `/.auth/login/<provider>` seçtiğiniz sağlayıcıya yönlendirir. Anonim istek yerel bir mobil uygulamadan geliyorsa, döndürülen yanıt bir olur `HTTP 401 Unauthorized` .
 
@@ -147,35 +134,41 @@ Bu seçenekle, uygulamanızda herhangi bir kimlik doğrulama kodu yazmanız gere
 > [!NOTE]
 > Varsayılan olarak, Azure AD kiracınızdaki herhangi bir Kullanıcı Azure AD 'den uygulamanız için bir belirteç talep edebilir. Uygulamanıza erişimi tanımlı bir Kullanıcı kümesiyle kısıtlamak istiyorsanız [, Azure AD 'de uygulamayı yapılandırabilirsiniz](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) .
 
+
+#### <a name="user-and-application-claims"></a>Kullanıcı ve uygulama talepleri
+
+Tüm dil çerçeveleri için App Service, gelen belirteçteki talepleri (kimliği doğrulanmış bir son kullanıcının veya bir istemci uygulamasından mi olsun), istek üst bilgilerine ekleme göre kodunuzun kullanımına sunar. ASP.NET 4,6 uygulamaları için App Service [ClaimsPrincipal. Current](/dotnet/api/system.security.claims.claimsprincipal.current) 'ı kimliği doğrulanmış kullanıcının taleplerine göre doldurur. böylece, özniteliği de dahil olmak üzere standart .NET kod modelini izleyebilirsiniz `[Authorize]` . Benzer şekilde, PHP uygulamaları için App Service değişkeni doldurur `_SERVER['REMOTE_USER']` . Java uygulamaları için, talepler [Tomcat servlet 'ten erişilebilir](configure-language-java.md#authenticate-users-easy-auth).
+
+[Azure işlevleri](../azure-functions/functions-overview.md)için, `ClaimsPrincipal.Current` .NET kodu için doldurulmamış, ancak istek üst bilgilerinde kullanıcı taleplerini bulabilir veya istek `ClaimsPrincipal` bağlamından ya da bir bağlama parametresi aracılığıyla nesne alabilirsiniz. Daha fazla bilgi için bkz. [istemci kimlikleriyle çalışma](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) .
+
+Daha fazla bilgi için bkz. [Kullanıcı taleplerine erişme](app-service-authentication-how-to.md#access-user-claims).
+
+Şu anda ASP.NET Core, geçerli kullanıcıyı kimlik doğrulama/yetkilendirme özelliğiyle doldurmayı desteklememektedir. Ancak, bu boşluğun doldurulmasına yardımcı olmak için bazı [üçüncü taraf, açık kaynaklı ara yazılım bileşenleri](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) bulunur.
+
+#### <a name="token-store"></a>Belirteç deposu
+
+App Service, Web uygulamalarınızın, API 'lerin veya yerel mobil uygulamalarınızın kullanıcılarıyla ilişkili belirteçlerin bir deposu olan yerleşik bir belirteç deposu sağlar. Herhangi bir sağlayıcı ile kimlik doğrulamasını etkinleştirdiğinizde, bu belirteç deposu uygulamanız için hemen kullanılabilir. Uygulama kodunuzun Kullanıcı adına bu sağlayıcılardan veriye erişmesi gerekiyorsa, örneğin:
+
+- kimliği doğrulanmış kullanıcının Facebook zaman çizelgesinde gönderi
+- Microsoft Graph API 'sini kullanarak kullanıcının şirket verilerini okuyun
+
+Uygulamanızda bu belirteçleri toplamak, depolamak ve yenilemek için genellikle kod yazmanız gerekir. Belirteç deposu ile, ihtiyacınız olduğunda [belirteçleri alır](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) ve geçersiz hale geldiklerinde [bunları yenilemek App Service söyleyin](app-service-authentication-how-to.md#refresh-identity-provider-tokens) . 
+
+KIMLIK belirteçleri, erişim belirteçleri ve yenileme belirteçleri kimliği doğrulanmış oturum için önbelleğe alınır ve yalnızca ilişkili kullanıcı tarafından erişilebilir.  
+
+Uygulamanızdaki belirteçlerle çalışmanız gerekmiyorsa, uygulamanızın **kimlik doğrulama/yetkilendirme** sayfasında belirteç deposunu devre dışı bırakabilirsiniz.
+
+#### <a name="logging-and-tracing"></a>Günlüğe kaydetme ve izleme
+
+[Uygulama günlüğünü etkinleştirirseniz](troubleshoot-diagnostic-logs.md), kimlik doğrulama ve yetkilendirme izlemelerini doğrudan günlük dosyalarınızda görürsünüz. Beklemediğiniz bir kimlik doğrulama hatası görürseniz, mevcut uygulama günlüklerinizi inceleyerek tüm ayrıntıları rahat bir şekilde bulabilirsiniz. [Başarısız istek izlemeyi](troubleshoot-diagnostic-logs.md)etkinleştirirseniz, kimlik doğrulama ve yetkilendirme modülünün başarısız bir istekte hangi rol oynadığını tam olarak görebilirsiniz. İzleme günlüklerinde adlı bir modüle başvuruları arayın `EasyAuthModule_32/64` .
+
 ## <a name="more-resources"></a>Diğer kaynaklar
 
-* [Öğretici: Azure depolama ve Microsoft Graph erişen bir Web uygulamasındaki kullanıcıların kimliğini doğrulama ve yetkilendirme](scenario-secure-app-authentication-app-service.md)
-* [Öğretici: kullanıcıların Azure App Service (Windows) ile uçtan uca kimlik doğrulama ve yetkilendirme](tutorial-auth-aad.md)  
-* [Öğretici: Linux için Azure App Service Kullanıcı tarafından uçtan uca kimlik doğrulama ve yetkilendirme](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
-* [App Service kimlik doğrulaması ve yetkilendirmeyi özelleştirme](app-service-authentication-how-to.md)
-* [Azure AppService EasyAuth (3. taraf) .NET Core tümleştirmesi](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
-* [.NET Core ile çalışan Azure App Service kimlik doğrulaması alma (3. taraf)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
+- [Nasıl yapılır: App Service veya Azure Işlevleri uygulamanızı Azure AD oturum açma bilgilerini kullanacak şekilde yapılandırma](configure-authentication-provider-aad.md)
+- [Azure App Service 'da gelişmiş kimlik doğrulama ve yetkilendirme kullanımı](app-service-authentication-how-to.md)
 
-Sağlayıcıya özgü nasıl yapılır Kılavuzu:
-
-* [Uygulamanızı Azure Active Directory oturum açma bilgilerini kullanacak şekilde yapılandırma][AAD]
-* [Uygulamanızı Facebook oturum açma bilgilerini kullanacak şekilde yapılandırma][Facebook]
-* [Uygulamanızı Google oturum açma bilgilerini kullanacak şekilde yapılandırma][Google]
-* [Uygulamanızı Microsoft Hesabı oturum açma bilgilerini kullanacak şekilde yapılandırma][MSA]
-* [Uygulamanızı Twitter oturum açma bilgilerini kullanacak şekilde yapılandırma][Twitter]
-* [Uygulamanızı, oturum açmak için bir OpenID Connect sağlayıcısı kullanacak şekilde yapılandırma (Önizleme)][OIDC]
-* [Uygulamanızı Apple ile oturum açma kullanacak şekilde yapılandırma (Önizleme)][Apple]
-
-[AAD]: configure-authentication-provider-aad.md
-[Facebook]: configure-authentication-provider-facebook.md
-[Google]: configure-authentication-provider-google.md
-[MSA]: configure-authentication-provider-microsoft.md
-[Twitter]: configure-authentication-provider-twitter.md
-[OIDC]: configure-authentication-provider-openid-connect.md
-[Apple]: configure-authentication-provider-apple.md
-
-[custom-auth]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#custom-auth
-
-[ADAL-Android]: /previous-versions/azure/app-service-mobile/app-service-mobile-android-how-to-use-client-library#adal
-[ADAL-iOS]: /previous-versions/azure/app-service-mobile/app-service-mobile-ios-how-to-use-client-library#adal
-[ADAL-dotnet]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#adal
+Lerinizi
+- [Öğretici: Azure App Service üzerinde çalışan Web uygulamanıza kimlik doğrulaması ekleme](scenario-secure-app-authentication-app-service.md)
+- [Öğretici: kullanıcıların Azure App Service (Windows veya Linux) uçtan uca kimlik doğrulama ve yetkilendirme](tutorial-auth-aad.md)
+- [Azure AppService EasyAuth (3. taraf) .NET Core tümleştirmesi](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
+- [.NET Core ile çalışan Azure App Service kimlik doğrulaması alma (3. taraf)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)

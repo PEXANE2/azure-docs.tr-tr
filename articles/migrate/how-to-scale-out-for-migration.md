@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 634eb2d22e3fa570ac9412d4fb8afd917b5c2eaa
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 5ca821cb4f85deb77595e4a9029cc10298dbb884
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105564016"
+ms.locfileid: "105611982"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>VMware sanal makinelerinin aracısız geçişini Azure 'a ölçeklendirin
 
@@ -43,8 +43,8 @@ Yukarıdaki işlemleri yapmayı öğrenmek için, [VMware sanal makinelerini ara
 
 Bir genişleme gereci eklemek için aşağıda bahsedilen adımları izleyin:
 
-1. **Bul**' a tıklayarak  >  **makineler sanallaştırılmış mı?** 
-1. **VMware VSphere Hiper Yöneticisi Ile Evet ' i seçin.**
+1.   >  **Makineleriniz sanallaştırılmış mı?** 
+1. **VMware vSphere hiper yöneticiyle Evet ' i seçin.**
 1. Sonraki adımda aracısız çoğaltma ' yı seçin.
 1. Gereç türünü seçin menüsünde **var olan bir birincil** gerecin ölçeğini Seç ' i seçin.
 1. Genişletmek istediğiniz birincil gereci (bulmayı kullanan gereç) seçin.
@@ -54,7 +54,7 @@ Bir genişleme gereci eklemek için aşağıda bahsedilen adımları izleyin:
 ### <a name="1-generate-the-azure-migrate-project-key"></a>1. Azure geçişi proje anahtarını oluşturma
 
 1. **Azure geçişi proje anahtarı oluştur**' da, genişleme gereci için bir sonek adı sağlayın. Sonek yalnızca alfasayısal karakterler içerebilir ve uzunluğu 14 karakter olabilir.
-2. Gerekli Azure kaynaklarının oluşturulmasını başlatmak için **anahtar oluştur** ' a tıklayın. Lütfen kaynak oluşturma sırasında bul sayfasını kapatmayın.
+2. Gerekli Azure kaynaklarının oluşturulmasını başlatmak için **anahtar oluştur** ' a tıklayın. Kaynak oluşturma sırasında bul sayfasını kapatmayın.
 3. Oluşturulan anahtarı kopyalayın. Ölçek Genişletme gerecinin kaydını tamamlaması için daha sonra anahtara ihtiyacınız olacak.
 
 ### <a name="2-download-the-installer-for-the-scale-out-appliance"></a>2. genişleme gereci için yükleyiciyi indirin
@@ -68,8 +68,8 @@ Bir genişleme gereci eklemek için aşağıda bahsedilen adımları izleyin:
 > 1. Komut istemi 'ni yönetici olarak aç
 > 2. Daraltılmış dosyanın karmasını oluşturmak için aşağıdaki komutu çalıştırın:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Genel bulut için örnek kullanım: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-> 3. Hesaplanan karma değeri şu dizeyle eşleşmiyorsa, portaldan genişleme gereç yükleyicisinin en son sürümünü indirin: e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
+    - Genel bulut için örnek kullanım: ```C:\>Get-FileHash -Path .\AzureMigrateInstaller-VMware-Public-Scaleout.zip -Algorithm SHA256 ```
+> 3. Hesaplanan karma değeri şu dizeyle eşleşmiyorsa, portaldan genişleme gereç yükleyicisinin en son sürümünü indirin: 1E6B6E3EE8B2A800818B925F5DA67EF7874DAD87E32847120B32F3E21F5960F9
 
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3. Azure geçişi yükleyici betiğini çalıştırın
 Yükleyici betiği şunları yapar:
@@ -108,7 +108,7 @@ Başlamadan önce, [Bu Azure uç noktalarına](migrate-appliance.md#public-cloud
 - **Lisans koşullarını** kabul edin ve üçüncü taraf bilgilerini okuyun.
 - Configuration Manager > **önkoşulları ayarlama** bölümünde şunları yapın:
    - **Bağlantı**: gereç, sunucunun internet erişimi olup olmadığını denetler. Sunucu bir proxy kullanıyorsa:
-     1. Proxy adresini belirtmek için **proxy ayarla** ' ya tıklayın (formdaki http://ProxyIPAddress veya http://ProxyFQDN) dinleme bağlantı noktasında).
+     1. Ara sunucu adresini belirtmek için **Ara sunucu** ' ya tıklayın (formdaki http://ProxyIPAddress veya http://ProxyFQDN) dinleme bağlantı noktasında).
      2. Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
      3. Yalnızca HTTP proxy’si desteklenir.
      4. Proxy ayrıntıları eklediyseniz veya proxy ve/veya kimlik doğrulamasını devre dışı bırakırsanız, bağlantıyı tetiklemek için **Kaydet** 'e tıklayarak bağlantı denetimini yeniden başlatın.
@@ -124,7 +124,7 @@ Başlamadan önce, [Bu Azure uç noktalarına](migrate-appliance.md#public-cloud
 :::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="Cihaz kodunu kalıcı olarak gösterme":::
 
 1. Cihaz kodunu kopyalamak ve yeni bir tarayıcı sekmesinde bir Azure oturum açma istemi açmak için **kodu kopyala & oturum** aç ' a tıklayın. Görünmüyorsa, tarayıcıda açılır pencere engelleyicisini devre dışı bırakmış olduğunuzdan emin olun.
-1. Yeni sekmede, cihaz kodunu yapıştırın ve Azure Kullanıcı adınızı ve parolanızı kullanarak oturum açın.
+1. Yeni sekmede, Azure Kullanıcı adınızı ve parolanızı kullanarak cihaz kodunu yapıştırın ve oturum açın.
    
    PIN ile oturum açma desteklenmez.
 3. Oturum açmadan oturum açma sekmesini yanlışlıkla kapatırsanız, oturum açma düğmesini yeniden etkinleştirmek için gereç Yapılandırma Yöneticisi 'nin tarayıcı sekmesini yenilemeniz gerekir.

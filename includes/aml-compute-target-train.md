@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/17/2020
-ms.openlocfilehash: 7c89527218e34bea0819a1e2446441216cde45ae
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 3eb5ea468a234aea228539c2390ab6cae9352948
+ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105105514"
+ms.lasthandoff: 03/27/2021
+ms.locfileid: "105629916"
 ---
 **İşlem hedefleri bir eğitim işinden sonrakine yeniden kullanılabilir.** Örneğin, çalışma alanınıza uzak bir VM iliştirdikten sonra, birden fazla iş için onu yeniden kullanabilirsiniz. Makine öğrenimi ardışık düzenleri için, her işlem hedefi için uygun işlem [hattı adımını](/python/api/azureml-pipeline-steps/azureml.pipeline.steps) kullanın.
 
@@ -32,4 +32,4 @@ ms.locfileid: "105105514"
 |[Azure Batch](../articles/machine-learning/how-to-attach-compute-targets.md#azbatch) | &nbsp; | Yes | &nbsp; |
 
 > [!TIP]
-> İşlem örneğinde 12GB işletim sistemi diski vardır. Disk alanını tükenseniz, işlem örneğini durdurmayı/yeniden başlatmayı denemeden önce yeterli alanı temizleyin.
+> İşlem örneğinde 12GB işletim sistemi diski vardır. Disk alanı tükenseniz, işlem örneğini [durdurmadan veya yeniden başlatmadan](../articles/machine-learning/how-to-create-manage-compute-instance.md#manage) önce en az 1-2 GB 'yi temizlemek için [terminali kullanın](../articles/machine-learning/how-to-access-terminal.md) .

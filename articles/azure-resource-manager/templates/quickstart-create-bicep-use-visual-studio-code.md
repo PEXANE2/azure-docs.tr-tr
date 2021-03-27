@@ -2,19 +2,21 @@
 title: Bicep dosyaları oluşturma-Visual Studio Code
 description: Azure kaynaklarını dağıtmak için Bıcep dosyalarına Visual Studio Code ve bicep uzantısı kullanın
 author: mumian
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a5b5533cd87c417d03db960c477392c24fa59f8a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4d1064351ddfacdebfa67fd9b2f517f592de3a7c
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102504159"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612900"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code bicep dosyaları oluşturma
 
 Visual Studio Code için Bıcep uzantısı, dil desteği ve kaynak otomatik tamamlama sağlar. Bu araçlar, [bicep](./bicep-overview.md) dosyalarını oluşturma ve doğrulamaya yardımcı olur. Bu hızlı başlangıçta, uzantıyı sıfırdan bir bicep dosyası oluşturmak için kullanacaksınız. Bunu yaparken, doğrulama ve tamamlamalar gibi uzantı özelliklerine de karşılaşırsınız.
+
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 Bu hızlı başlangıcı tamamlayabilmeniz için, [Bıcep uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) yüklüyken [Visual Studio Code](https://code.visualstudio.com/)gerekir. Ayrıca en son [Azure CLI](/cli/azure/) veya en son [Azure PowerShell modülünün](/powershell/azure/new-azureps-module-az) yüklü ve kimliği doğrulanmış olması gerekir.
 

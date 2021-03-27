@@ -2,13 +2,13 @@
 title: Şablon yapısı ve sözdizimi
 description: Bildirim temelli JSON sözdizimini kullanarak Azure Resource Manager şablonlarının yapısını ve özelliklerini açıklar (ARM şablonları).
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: da64eb8abeaf45f58933dfbddaf954cad8e66f4a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/26/2021
+ms.openlocfilehash: 42b893e25155bb3ebe66e0deac180698446a2c9b
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102120428"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612186"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>ARM şablonlarının yapısını ve söz dizimini anlama
 
@@ -193,6 +193,7 @@ Kaynakları aşağıdaki yapıyla tanımlarsınız:
           "capacity": <sku-capacity>
       },
       "kind": "<type-of-resource>",
+      "scope": "<target-scope-for-extension-resources>",
       "copy": {
           "name": "<name-of-copy-loop>",
           "count": <number-of-iterations>,
@@ -235,6 +236,7 @@ Kaynakları aşağıdaki yapıyla tanımlarsınız:
 | etiketler |No |Kaynakla ilişkili Etiketler. Aboneliğiniz genelinde kaynakları mantıksal olarak düzenlemek için etiketleri uygulayın. |
 | isteyin | No | Bazı kaynaklar, dağıtılacak SKU 'YU tanımlayan değerlere izin verir. Örneğin, bir depolama hesabı için artıklık türünü belirtebilirsiniz. |
 | denetlenmesi | No | Bazı kaynaklar, dağıttığınız kaynak türünü tanımlayan bir değere izin verir. Örneğin, oluşturulacak Cosmos DB türünü belirtebilirsiniz. |
+| scope | No | Scope özelliği yalnızca [uzantı kaynak türleri](../management/extension-resource-types.md)için kullanılabilir. Dağıtım kapsamından farklı bir kapsam belirtirken bunu kullanın. [ARM şablonlarındaki uzantı kaynakları için kapsam ayarlama](scope-extension-resources.md)bölümüne bakın. |
 | kopyalama |No |Birden fazla örnek gerekliyse, oluşturulacak kaynak sayısı. Varsayılan mod paraleldir. Tüm veya kaynakların aynı anda dağıtılmasını istemiyorsanız seri modunu belirtin. Daha fazla bilgi için bkz. [Azure Resource Manager çeşitli kaynak örnekleri oluşturma](copy-resources.md). |
 | plan | No | Bazı kaynaklar, dağıtılacak planı tanımlayan değerlere izin verir. Örneğin, bir sanal makine için Market görüntüsünü belirtebilirsiniz. |
 | properties |No |Kaynağa özgü yapılandırma ayarları. Özelliklerin değerleri, kaynağı oluşturmak için REST API işlem (PUT yöntemi) için istek gövdesinde sağladığınız değerlerle aynıdır. Ayrıca, bir özelliğin birkaç örneğini oluşturmak için bir kopya dizisi belirtebilirsiniz. Kullanılabilir değerleri anlamak için bkz. [şablon başvurusu](/azure/templates/). |

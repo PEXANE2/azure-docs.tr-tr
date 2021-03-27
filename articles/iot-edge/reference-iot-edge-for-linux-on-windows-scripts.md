@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 5286362369e0c4881cdf0c56bc13d1d340056be1
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 41827c5db58f3d4755fb34e46067357cd0255676
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562520"
+ms.locfileid: "105612781"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>Windows üzerinde Linux için IoT Edge PowerShell betikleri
 
@@ -46,12 +46,15 @@ Bu makalede açıklanan komutlar `AzureEFLOW.psm1` , altında dizininizde buluna
 | vmSizeDefintion | En fazla 30 karakter uzunluğunda | Sanal makine için çekirdek sayısının ve kullanılabilir RAM 'in tanımı. **Varsayılan değer**: Standard_K8S_v1. |
 | vmDiskSize | 8 GB ile 256 GB arasında | Dinamik olarak genişleyen sanal sabit diskin en büyük disk boyutu. **Varsayılan değer**: 16 GB. |
 | vmUser | En fazla 30 karakter uzunluğunda | Sanal makinede oturum açmak için Kullanıcı adı. |
-| vnetType | **Saydam** veya **ICS** | Sanal anahtar türü. **Varsayılan değer**: saydam. |
+| vnetType | **Saydam** veya **ICS** | Sanal anahtar türü. **Varsayılan değer**: saydam. Saydam bir dış anahtara başvurur, ancak ICS bir iç anahtara başvurur. |
 | vnetName | 64 karakterden daha uzun | Sanal anahtarın adı. **Varsayılan değer**: dış. |
 | enableVtpm | Yok | **Anahtar parametresi**. TPM etkin veya devre dışı olan sanal makineyi oluşturun. |
 | mobyPackageVersion | En fazla 30 karakter uzunluğunda |  Sanal makinede doğrulanacak veya yüklenecek Moby paketinin sürümü.  **Varsayılan değer:** 19.03.11. |
 | iotedgePackageVersion | En fazla 30 karakter uzunluğunda | Sanal makinede doğrulanacak veya yüklenecek IoT Edge paketinin sürümü. **Varsayılan değer:** 1.1.0. |
 | InstallPackages | Yok | **Anahtar parametresi**. Bu işlem açıldığında, komut dosyası yalnızca paketlerin mevcut olduğunu doğrulamak yerine Moby ve IoT Edge paketlerini yüklemeyi dener. |
+
+>[!NOTE]
+>Varsayılan olarak, işlem ada sahip bir dış anahtar bulamazsa `External` , BIR IP adresi almak için mevcut herhangi bir dış anahtarı arar. Kullanılabilir dış anahtar yoksa, bir iç anahtar arar. Kullanılabilir bir iç anahtar yoksa, bir IP adresi almak için varsayılan anahtarı oluşturmaya çalışır.
 
 ## <a name="verify-eflowvm"></a>Verify-EflowVm
 

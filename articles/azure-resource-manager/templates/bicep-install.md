@@ -2,15 +2,15 @@
 title: Bıcep geliştirme ve dağıtım ortamlarını ayarlama
 description: Bıcep geliştirme ve dağıtım ortamlarını yapılandırma
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: 7cd3721aca83488de61494a94826bfcd0b6acc26
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.date: 03/25/2021
+ms.openlocfilehash: 9a35355d1035943081ac58b36623af772fb8d547
+ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105543746"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105612594"
 ---
-# <a name="setup-bicep-development-and-deployment-environment"></a>Bıcep geliştirme ve dağıtım ortamını ayarlama
+# <a name="install-bicep-preview"></a>Bıcep 'yi (Önizleme) yükler
 
 Bıcep geliştirme ve dağıtım ortamlarını ayarlamayı öğrenin.
 
