@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc
-ms.openlocfilehash: 6e8effee91eed73193319238c2ad2f6eaf6d0473
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8768f7f4ca898f3f1f81cdd2611679e62d999ef8
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211286"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645190"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>Öğretici: PostgreSQL için Azure veritabanı ile AKS 'de Docgo uygulaması dağıtma-esnek sunucu
 
@@ -378,7 +378,7 @@ Quit the server with CONTROL-C.
 
 ## <a name="clean-up-the-resources"></a>Kaynakları temizleme
 
-Azure ücretlerinden kaçınmak için gereksiz kaynakları temizlemeniz gerekir.  Kümeye artık ihtiyacınız yoksa [az group delete](/cli/azure/group&preserve-view=true#az_group_delete) komutunu kullanarak kaynak grubunu, kapsayıcı hizmetini ve ilgili tüm kaynakları kaldırın.
+Azure ücretlerinden kaçınmak için gereksiz kaynakları temizlemeniz gerekir.  Kümeye artık ihtiyacınız yoksa [az group delete](/cli/azure/group?view=azure-cli-latest#az_group_delete) komutunu kullanarak kaynak grubunu, kapsayıcı hizmetini ve ilgili tüm kaynakları kaldırın.
 
 ```azurecli-interactive
 az group delete --name django-project --yes --no-wait

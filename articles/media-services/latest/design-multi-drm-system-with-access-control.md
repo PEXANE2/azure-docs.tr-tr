@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: bb43396260e1b914f9f5b9e9ae489e87042a3154
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 057a284f99dd7c3713249b19e8fc39212d9e6003
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101092434"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640272"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Erişim denetimi ile çoklu DRM'ye sahip içerik koruma sistemi tasarlama
 
@@ -53,7 +53,7 @@ Aşağıdaki tabloda farklı platformlarda yerel DRM desteği ve farklı tarayı
 | **Windows 10** | PlayReady | PlayReady için Microsoft Edge/ıE11|
 | **Android cihazlar (telefon, tablet, TV)** |Widevine |Widevine için Chrome |
 | **iOS** | FairPlay | FairPlay için Safari (iOS 11,2 ' den itibaren) |
-| **macOS** | FairPlay | FairPlay için Safari (Mac OS X 10.11 + El Capitan üzerinde Safari 9 + bu yana)|
+| **macOS** | FairPlay | FairPlay için Safari (macOS X 10.11 + El Capitan 'da Safari 9 + bu yana)|
 | **tvOS** | FairPlay | |
 
 Her DRM için dağıtımın geçerli durumunu göz önünde bulundurarak, bir hizmet genellikle iki veya üç DRMs uygulamak istiyor ve en iyi şekilde tüm uç nokta türlerini adreslediğinizden emin olmanızı sağlar.
@@ -357,9 +357,3 @@ Aşağıdaki ekran görüntüsünde, bir x509 sertifikası aracılığıyla asim
 ![Asimetrik anahtarla özel STS](./media/design-multi-drm-system-with-access-control/media-services-running-sts2.png)
 
 Her iki durumda da, Kullanıcı kimlik doğrulaması aynı kalır. Azure AD aracılığıyla gerçekleşir. Tek fark, JWTs 'nin Azure AD yerine özel STS tarafından verilme sayısıdır. Dinamik CENC korumasını yapılandırdığınızda, lisans teslimi hizmeti kısıtlaması, bir simetrik veya asimetrik anahtar olan JWT türünü belirtir.
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-* [Sık sorulan sorular](frequently-asked-questions.md)
-* [İçerik korumasına genel bakış](content-protection-overview.md)
-* [DRM ile içeriğinizi koruyun](protect-with-drm.md)

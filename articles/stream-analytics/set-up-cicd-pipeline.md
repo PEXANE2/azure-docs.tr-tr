@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: dbd6a1a0c8643adc4918cc15e214e903dfb1ccb6
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 82a2c3047f851c9fbc273cd13e730572c38b6bcd
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104775944"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640377"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Stream Analytics işi için bir CI/CD işlem hattı oluşturmak için Azure DevOps kullanın
 
@@ -26,21 +26,21 @@ Bu makaledeki adımlarda Stream Analytics Visual Studio Code projesi kullanılı
 
 ## <a name="create-a-build-pipeline"></a>Derleme işlem hattı oluşturma
 
-Bu bölümde, derleme işlem hattı oluşturmayı öğreneceksiniz. Azure DevOps 'da Bu örnek [otomatik derleme ve test](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo/_build) işlem hattına başvurabilirsiniz.
+Bu bölümde, derleme işlem hattı oluşturmayı öğreneceksiniz. 
 
 1. Bir Web tarayıcısı açın ve Azure DevOps 'da projenize gidin.  
 
-1. Sol gezinti menüsünde işlem **hatları** ' nın altında, **yapılar**' ı seçin. Ardından yeni işlem **hattı**' nı seçin.
+2. Sol gezinti menüsünde işlem **hatları** ' nın altında, **yapılar**' ı seçin. Ardından yeni işlem **hattı**' nı seçin.
 
    :::image type="content" source="media/set-up-cicd-pipeline/new-pipeline.png" alt-text="Yeni Azure işlem hattı oluşturma":::
 
-1. YAML olmadan bir işlem hattı oluşturmak için **Klasik düzenleyiciyi kullan** ' ı seçin.
+3. YAML olmadan bir işlem hattı oluşturmak için **Klasik düzenleyiciyi kullan** ' ı seçin.
 
-1. Kaynak türü, takım projesi ve deponuzu seçin. Sonra **devam**' ı seçin.
+4. Kaynak türü, takım projesi ve deponuzu seçin. Sonra **devam**' ı seçin.
 
    :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="Azure Stream Analytics projesi seçin":::
 
-1. **Şablon seçin** sayfasında **boş iş**' ı seçin.
+5. **Şablon seçin** sayfasında **boş iş**' ı seçin.
 
 ## <a name="install-npm-package"></a>NPM paketini yükler
 
@@ -155,7 +155,7 @@ Test Özet dosyası ve Azure Resource Manager şablonu dosyaları **yayımlanan*
 
 ## <a name="release-with-azure-pipelines"></a>Azure Pipelines yayın
 
-Bu bölümde, bir yayın işlem hattı oluşturmayı öğreneceksiniz. Azure DevOps 'da Bu örnek [yayın](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo/_release?_a=releases&view=mine&definitionId=2) işlem hattına başvurabilirsiniz.
+Bu bölümde, bir yayın işlem hattı oluşturmayı öğreneceksiniz. 
 
 Bir Web tarayıcısı açın ve Azure Stream Analytics Visual Studio Code projenize gidin.
 

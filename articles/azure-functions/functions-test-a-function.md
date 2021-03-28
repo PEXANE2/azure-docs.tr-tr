@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: f75f42f3879f551a945bdeb2d88450ae3b9d6106
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27bc8171509e16f25c508dd71515d8cb25a11b0b
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98674159"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639873"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure İşlevleri'nde kodunuzu test etmeye yönelik stratejiler
 
@@ -41,7 +41,7 @@ Ortamınızı ayarlamak için bir Işlev ve test uygulaması oluşturun. Aşağ�
 3. [Şablondan bir Zamanlayıcı Işlevi oluşturun](./functions-create-scheduled-function.md) ve **mytimertrigger** olarak adlandırın.
 4. Çözümde [bir xUnit test uygulaması oluşturun](https://xunit.net/docs/getting-started/netcore/cmdline) ve bunu **Functions. Tests** olarak adlandırın.
 5. Test uygulamasından [Microsoft. AspNetCore. Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 'ye bir başvuru eklemek için NuGet kullanın
-6. [](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) Functions *. Tests* uygulamasındaki Functions uygulamasına başvurun.
+6. [](/visualstudio/ide/managing-references-in-a-project) Functions *. Tests* uygulamasındaki Functions uygulamasına başvurun.
 
 ### <a name="create-test-classes"></a>Test sınıfları oluşturma
 

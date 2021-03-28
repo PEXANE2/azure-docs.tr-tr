@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 11/12/2020
-ms.openlocfilehash: a225989f0670e9b62b00a35bac719c9357c8a130
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/24/2021
+ms.openlocfilehash: ccfda4975b6453ed67edc2640520bc0a76df5709
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96017058"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644889"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Öğretici: Azure Veri Paylaşımı’nı kullanarak veri kabul etme ve alma  
 
@@ -42,23 +42,10 @@ Bir veri paylaşma davetini kabul etmeden önce tüm önkoşulların tümünün 
 Azure SQL veritabanı 'na veri almayı seçerseniz Azure SYNAPSE Analytics, önkoşul listesidir. 
 
 #### <a name="prerequisites-for-receiving-data-into-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Azure SQL veritabanı veya Azure SYNAPSE Analytics 'e veri alma önkoşulları (eski adıyla Azure SQL DW)
-Önkoşulları yapılandırmak için [adım adım demo](https://youtu.be/aeGISgK1xro) ' i takip edebilirsiniz.
 
 * Azure SQL veritabanı veya Azure SYNAPSE Analytics (eski adıyla Azure SQL DW).
 * *Microsoft. SQL/Servers/veritabanları/Write*'TA bulunan SQL Server 'da veritabanlarına yazma izni. Bu izin **Katkıda Bulunan** rolünde vardır. 
-* Azure SQL veritabanı veya Azure SYNAPSE Analytics 'e erişmek için veri paylaşımının yönetilen kimliği izni. Bu, aşağıdaki adımlarla yapılabilir: 
-    1. Azure portal, SQL Server 'a gidin ve kendiniz **Azure Active Directory Yöneticisi** olarak ayarlayın.
-    1. [Sorgu Düzenleyicisi](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) 'Ni kullanarak Azure SQL veritabanı/veri ambarı 'na bağlanın veya Azure Active Directory kimlik doğrulamasıyla SQL Server Management Studio. 
-    1. Veri paylaşımının yönetilen kimliğini bir ' db_datareader, db_datawriter, db_ddladmin ' olarak eklemek için aşağıdaki betiği yürütün. SQL Server kimlik doğrulaması değil Active Directory kullanarak bağlanmanız gerekir. 
-
-        ```sql
-        create user "<share_acc_name>" from external provider; 
-        exec sp_addrolemember db_datareader, "<share_acc_name>"; 
-        exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
-        exec sp_addrolemember db_ddladmin, "<share_acc_name>";
-        ```      
-        *<share_acc_name>* veri paylaşma kaynağınızın adı olduğunu unutmayın. Henüz bir veri paylaşma kaynağı oluşturmadıysanız, bu ön koşul daha sonra geri dönebilirsiniz.         
-
+* SQL Server **Azure Active Directory Yöneticisi**
 * Güvenlik duvarı erişimi SQL Server. Bu, aşağıdaki adımlarla yapılabilir: 
     1. Azure portal 'deki SQL Server 'da *güvenlik duvarları ve sanal ağlar* ' a gidin.
     1. *Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin vermek* için **Evet** ' i tıklatın.
@@ -92,7 +79,6 @@ Azure SQL veritabanı 'na veri almayı seçerseniz Azure SYNAPSE Analytics, önk
 
 * Veri sağlayıcısının Veri Gezgini kümesiyle aynı Azure veri merkezindeki bir Azure Veri Gezgini kümesi: henüz yoksa bir [azure Veri Gezgini kümesi](/azure/data-explorer/create-cluster-database-portal)oluşturabilirsiniz. Veri sağlayıcısının kümesinin Azure veri merkezini bilmiyorsanız, kümeyi daha sonra işlem içinde oluşturabilirsiniz.
 * *Microsoft. kusto/kümeler/Write* Içinde bulunan Azure Veri Gezgini kümesine yazma izni. Bu izin Katkıda Bulunan rolünde vardır. 
-* *Microsoft. Authorization/role atamalar/Write*' de bulunan Azure Veri Gezgini kümesine rol ataması ekleme izni. Bu izin Sahip rolünde vardır. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -175,13 +161,13 @@ Verileri almak istediğiniz yeri yapılandırmak için aşağıdaki adımları i
 
    ![Hedefle eşle](./media/dataset-map-target.png "Hedefle eşle") 
 
-1. Verilerin içinde olmasını istediğiniz hedef veri deposu türünü seçin. Hedef veri deposundaki tüm veri dosyaları veya tablolar aynı yol ve ada sahip olacak şekilde üzerine yazılır. 
+1. Verilerin içinde olmasını istediğiniz hedef veri deposu türünü seçin. Hedef veri deposundaki tüm veri dosyaları veya tablolar aynı yol ve ada sahip olacak şekilde üzerine yazılır. Azure SQL veritabanı veya Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) için veri alıyorsanız, **veri paylaşımının "Kullanıcı oluşturma" komut dosyasını benim yerime çalıştırmasına Izin ver** onay kutusunu işaretleyin.
 
    Yerinde paylaşım için, belirtilen konumda bir veri deposu seçin. Konum, veri sağlayıcısının kaynak veri deposunun bulunduğu Azure veri merkezindedir. Veri kümesi eşlendikten sonra, verilere erişmek için Hedef yoldaki bağlantıyı takip edebilirsiniz.
 
    ![Hedef depolama hesabı](./media/dataset-map-target-sql.png "Hedef depolama") 
 
-1. Anlık görüntü tabanlı paylaşım için, veri sağlayıcısı verilere düzenli güncelleştirme sağlamak üzere bir anlık görüntü zamanlaması oluşturmışsa, anlık görüntü **zamanlama** sekmesini seçerek de anlık görüntü zamanlamasını etkinleştirebilirsiniz. Anlık görüntü zamanlamasının yanındaki kutuyu işaretleyin ve **+ Etkinleştir**' i seçin.
+1. Anlık görüntü tabanlı paylaşım için, veri sağlayıcısı verilere düzenli güncelleştirme sağlamak üzere bir anlık görüntü zamanlaması oluşturmışsa, anlık görüntü **zamanlama** sekmesini seçerek de anlık görüntü zamanlamasını etkinleştirebilirsiniz. Anlık görüntü zamanlamasının yanındaki kutuyu işaretleyin ve **+ Etkinleştir**' i seçin. Zamanlanan ilk anlık görüntünün, zamanlama zamanının bir dakikası içinde ve sonraki anlık görüntülerin zamanlanan sürenin saniye içinde başlatılacağını unutmayın.
 
    ![Anlık görüntü zamanlamasını etkinleştir](./media/enable-snapshot-schedule.png "Anlık görüntü zamanlamasını etkinleştir")
 

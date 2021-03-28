@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 188df9564905443b8f975eb743b24885b5d03c32
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38fd5b779c3a8ae71c2e4fafcaf65921b1be3f93
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618211"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642264"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma
 
@@ -89,7 +89,7 @@ from azureml.core import Dataset
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
 
-Ara veriler (veya bir adımın çıktısı) bir [Outputfiledatasetconfig](/python/api/azureml-pipeline-core/azureml.data.output_dataset_config.outputfiledatasetconfig) nesnesiyle temsil edilir. `output_data1` bir adımın çıktısı olarak üretilir. İsteğe bağlı olarak, bu veriler çağırarak bir veri kümesi olarak kaydedilebilir `register_on_complete` . Tek bir adımda oluşturun `OutputFileDatasetConfig` ve bunu başka bir adıma giriş olarak kullanırsanız, adımlar arasındaki veri bağımlılığı işlem hattında örtük bir yürütme sırası oluşturur.
+Ara veriler (veya bir adımın çıktısı) bir [Outputfiledatasetconfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig) nesnesiyle temsil edilir. `output_data1` bir adımın çıktısı olarak üretilir. İsteğe bağlı olarak, bu veriler çağırarak bir veri kümesi olarak kaydedilebilir `register_on_complete` . Tek bir adımda oluşturun `OutputFileDatasetConfig` ve bunu başka bir adıma giriş olarak kullanırsanız, adımlar arasındaki veri bağımlılığı işlem hattında örtük bir yürütme sırası oluşturur.
 
 `OutputFileDatasetConfig` nesneler bir dizin döndürür ve varsayılan olarak çıktıyı çalışma alanının varsayılan veri deposuna yazar.
 
@@ -106,7 +106,7 @@ output_data_dataset = output_data1.register_on_complete(name = 'prepared_output_
 > İşlem hattı çalıştırmasının sonunda ara verileri program aracılığıyla silmeniz, kısa veri saklama ilkesiyle bir veri deposu kullanmanız veya el ile temizlemeniz düzenli olarak yapmanız gerekir.
 
 > [!TIP]
-> Yalnızca elinizde işe uygun dosyaları karşıya yükleyin. Veri dizinindeki dosyalardaki herhangi bir değişiklik, yeniden kullanım sırasında işlem hattının bir sonraki çalıştırılışında bu adımı yeniden çalıştırma nedeni olarak görülür. 
+> Yalnızca elinizde işe uygun dosyaları karşıya yükleyin. Veri dizinindeki dosyalarda yapılan her değişiklik, yeniden kullanım belirtilmiş olsa bile işlem hattının bir sonraki çalıştırılması sırasında adımı yeniden çalıştırma nedeni olarak görülür. 
 
 ## <a name="set-up-a-compute-target"></a>İşlem hedefi ayarlama
 
@@ -247,7 +247,7 @@ pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 
 ### <a name="use-a-dataset"></a>Veri kümesi kullanma 
 
-Azure Blob depolama, Azure dosyaları, Azure Data Lake Storage 1., Azure Data Lake Storage 2., Azure SQL veritabanı ve PostgreSQL için Azure veritabanı 'nda oluşturulan veri kümeleri herhangi bir işlem hattı adımına giriş olarak kullanılabilir. Çıktıyı bir [Datatransferstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep), [databricksstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep)öğesine yazabilir veya belirli bir veri deposuna veri yazmak Istiyorsanız [outputfiledatasetconfig](/python/api/azureml-pipeline-core/azureml.data.outputfiledatasetconfig)komutunu kullanın. 
+Azure Blob depolama, Azure dosyaları, Azure Data Lake Storage 1., Azure Data Lake Storage 2., Azure SQL veritabanı ve PostgreSQL için Azure veritabanı 'nda oluşturulan veri kümeleri herhangi bir işlem hattı adımına giriş olarak kullanılabilir. Çıktıyı bir [Datatransferstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep), [databricksstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep)öğesine yazabilir veya belirli bir veri deposuna veri yazmak Istiyorsanız [outputfiledatasetconfig](/python/api/azureml-core/azureml.data.outputfiledatasetconfig)komutunu kullanın. 
 
 > [!IMPORTANT]
 > Kullanılarak bir veri deposuna çıkış verileri yazmak `OutputFileDatasetConfig` yalnızca Azure blob, Azure dosya paylaşımında, ADLS Gen 1 ve Gen 2 veri depolarında desteklenir. 

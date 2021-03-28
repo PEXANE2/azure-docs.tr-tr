@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 5af681b6edf8abc8145caf599fc0fb3c4daf5c15
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 6fe1e092e1db4ad283f9d0096ea431a1e983f87c
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107071"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645346"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
@@ -250,7 +250,7 @@ Message sent!, message id:<number>
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Sohbet iş parçacığından sohbet iletileri alma
 
-Gerçek zamanlı sinyalle, yeni gelen iletileri dinlemek ve bellekteki geçerli iletileri uygun şekilde güncelleştirmek üzere abone olabilirsiniz. Azure Iletişim Hizmetleri, [abone olabileceğiniz olayların bir listesini](../../../concepts/chat/concepts.md#real-time-signaling)destekler.
+Gerçek zamanlı sinyalle, yeni gelen iletileri dinlemek ve bellekteki geçerli iletileri uygun şekilde güncelleştirmek üzere abone olabilirsiniz. Azure Iletişim Hizmetleri, [abone olabileceğiniz olayların bir listesini](../../../concepts/chat/concepts.md#real-time-notifications)destekler.
 
 ```JavaScript
 // open notifications channel
@@ -286,17 +286,6 @@ Sekmeden yenileyin, konsolunda bu sohbet iş parçacığında gönderilen iletil
 `listMessages` ve kullanarak iletide gerçekleşen tüm düzenleme veya silme işlemleri dahil olmak üzere iletinin en son sürümünü döndürür `updateMessage` `deleteMessage` .
 Silinen iletiler için `chatMessage.deletedOn` , iletinin silindiğini gösteren bir tarih saat değeri döndürür. Düzenlenen iletiler için, `chatMessage.editedOn` iletinin ne zaman düzenlendiğini gösteren bir tarih saat döndürür. İleti oluşturmaya yönelik özgün saate, `chatMessage.createdOn` iletileri sıralamak için kullanılabilecek kullanılarak erişilebilir.
 
-`listMessages` tarafından tanımlanabilecek farklı ileti türlerini döndürür `chatMessage.type` . Bu türler şunlardır:
-
-- `Text`: Bir iş parçacığı katılımcısı tarafından gönderilen düzenli sohbet iletisi.
-
-- `ThreadActivity/TopicUpdate`: Konunun güncelleştirildiğini belirten sistem iletisi.
-
-- `ThreadActivity/AddParticipant`: Sohbet iş parçacığına bir veya daha fazla katılımcı eklendiğini belirten sistem iletisi.
-
-- `ThreadActivity/RemoveParticipant`: Bir katılımcının sohbet iş parçacığından kaldırıldığını belirten sistem iletisi.
-
-Daha ayrıntılı bilgi için bkz. [Ileti türleri](../../../concepts/chat/concepts.md#message-types).
 
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Sohbet iş parçacığına katılımcı olarak Kullanıcı ekleme
 

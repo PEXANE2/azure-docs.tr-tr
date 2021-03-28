@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4747c958b5e592458c14bbf4244953564c252678
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3e6ed6bc8ba426a981b7a2390e7d00d9c3b1e785
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98790132"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643453"
 ---
 # <a name="about-azure-key-vault"></a>Azure Key Vault hakkında
 
@@ -71,8 +71,8 @@ Ayrıca, Azure Anahtar Kasalarını kullanarak uygulama gizli dizilerini ayırab
 
 Azure 'da güvenli bir mağaza olarak, şunun gibi senaryoları basitleştirmek için Key Vault kullanılmıştır:
 -  [Azure Disk Şifrelemesi](../../security/fundamentals/encryption-overview.md)
--  SQL Server ve Azure SQL veritabanı 'nda [her zaman şifrelenmiş]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) ve [Saydam veri şifrelemesi]( https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15) işlevi
-- [Azure App Service]( https://docs.microsoft.com/azure/app-service/configure-ssl-certificate). 
+-  SQL Server ve Azure SQL veritabanı 'nda [her zaman şifrelenmiş](/sql/relational-databases/security/encryption/always-encrypted-database-engine) ve [Saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption) işlevi
+- [Azure App Service](/azure/app-service/configure-ssl-certificate).
 
 Key Vault, depolama hesapları, olay hub’ları ve günlük analizi ile tümleştirilebilir.
 

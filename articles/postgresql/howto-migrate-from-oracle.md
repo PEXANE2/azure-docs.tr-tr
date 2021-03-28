@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 03/18/2021
-ms.openlocfilehash: b41f894a7e4742b75ea06684a960221d4a5b7641
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 1a20ffd7150ac75721b2affc2f4375301c4754c8
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105024770"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643572"
 ---
 # <a name="migrate-oracle-to-azure-database-for-postgresql"></a>Oracle 'ı PostgreSQL için Azure veritabanı 'na geçirme
 
@@ -324,7 +324,7 @@ Bu geçiş senaryosunu tamamlamaya yönelik ek yardım için, lütfen gerçek d�
 | [Oracle 'dan Azure 'a PostgreSQL geçiş geçici çözümleri](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf) | Bu belge amacı, çalışma yüklerini Oracle 'dan PostgreSQL için Azure veritabanı 'na geçirirken sorunları hızlı bir şekilde düzeltmeye/gidermeye yönelik bir kılavuz ile Mimarlar, danışmanlar, DBAs ve ilgili roller sağlamaktır. |
 | [Windows veya Linux 'ta ora2pg yüklemek için adımlar](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)                       | Bu belge, Windows veya Linux 'ta ora2pg Aracı kullanılarak, Oracle 'daki şema & verilerinin, PostgreSQL için Azure veritabanı 'na geçirilmesini etkinleştirmek üzere bir hızlı yükleme kılavuzu olarak kullanılmak üzere tasarlanmıştır. Araçla ilgili tüm ayrıntıları adresinde bulabilirsiniz http://ora2pg.darold.net/documentation.html . |
 
-Bu kaynaklar, Azure veri grubu Mühendisliği ekibi tarafından sponsorlu Data SQL Dokja programının bir parçası olarak geliştirilmiştir. Data SQL Dokja programının temel kreter, Microsoft 'un Azure veri platformuna yönelik karmaşık modernleştirme ve rekabet veri platformu geçiş fırsatlarını engellemeyi ve hızlandırmanızı sağlar. Kuruluşunuzun Data SQL Dokja programına katılım ile ilgilenmesini düşünüyorsanız, lütfen hesap ekibinize başvurarak bir aday göndermesini isteyin.
+Veri SQL Mühendisliği ekibi bu kaynakları geliştirdik. Bu takımın temel kurucu, veri platformu geçiş projelerini Microsoft 'un Azure veri platformu 'na yönelik karmaşık modernleştirmeyi engellemeyi ve hızlandırmanızı sağlar.
 
 
 ### <a name="contact-support"></a>Desteğe başvurun

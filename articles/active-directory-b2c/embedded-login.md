@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4fbb09a2687673ef96252d8bdb0523d0c5f235ae
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: ccad323c1834894367cca0ef0d3f98eb1b1b1ec3
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772034"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639925"
 ---
 # <a name="embedded-sign-in-experience"></a>Ekli oturum açma deneyimi
 
@@ -45,7 +45,7 @@ Daha basit bir oturum açma deneyimi için, kullanıcıların ayrı bir oturum a
 İframe kullanırken şunları göz önünde bulundurun:
 
 - Yerleşik oturum açma yalnızca yerel hesapları destekler. Çoğu sosyal kimlik sağlayıcısı (örneğin, Google ve Facebook), oturum açma sayfalarının satır içi çerçevelerde işlenmesini engeller.
-- Bir iframe içindeki Azure AD B2C oturum tanımlama bilgileri üçüncü taraf tanımlama bilgileri olarak kabul edildiğinden, bazı tarayıcılar (ör. ınbilito modunda Safari veya Chrome) Bu tanımlama bilgilerini engeller ya da temizler, böylece istenmeyen bir kullanıcı deneyimi elde edilir. Bu sorunu engellemek için, uygulama etki alanı adınızın ve Azure AD B2C etki alanının *aynı kaynağa* sahip olduğundan emin olun. Aynı kaynağı kullanmak için, Azure AD B2C kiracı için [özel etki alanlarını etkinleştirin](custom-domain.md) ve sonra Web uygulamanızı aynı kaynaktan yapılandırın. Örneğin, üzerinde barındırılan bir uygulama https://app.contoso.com üzerinde çalışan Azure AD B2C aynı kaynağa sahiptir https://login.contoso.com .
+- Bir iframe içindeki Azure AD B2C oturum tanımlama bilgileri üçüncü taraf tanımlama bilgileri olarak kabul edildiğinden, bazı tarayıcılar (ör. ınbilito modunda Safari veya Chrome) Bu tanımlama bilgilerini engeller ya da temizler, böylece istenmeyen bir kullanıcı deneyimi elde edilir. Bu sorunu engellemek için, uygulama etki alanı adınızın ve Azure AD B2C etki alanının *aynı kaynağa* sahip olduğundan emin olun. Aynı kaynağı kullanmak için, Azure AD B2C kiracı için [özel etki alanlarını etkinleştirin](custom-domain.md) ve sonra Web uygulamanızı aynı kaynaktan yapılandırın. Örneğin, ' ' üzerinde barındırılan bir uygulama https://app.contoso.com , ' ' üzerinde çalışan Azure AD B2C aynı kaynağa sahip https://login.contoso.com .
 
 ## <a name="prerequisites"></a>Önkoşullar
 

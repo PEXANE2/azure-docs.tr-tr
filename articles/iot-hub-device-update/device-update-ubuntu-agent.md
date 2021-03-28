@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 9468b3b53e0f7c435bf84b6ef99eb1e0f85d0c8e
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: ee09928cab6419d799d06de9cf2f69987e42d157
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105560276"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644443"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Ubuntu Server 18,04 x64 üzerinde paket aracısını kullanarak Azure IoT Hub öğreticisi için cihaz güncelleştirmesi
 
@@ -44,7 +44,7 @@ Bu öğreticide kolaylık sağlaması için, bir Ubuntu 18,04 LTS sanal makinesi
 
 1. Başlangıç olarak aşağıdaki düğmeye tıklayın:
 
-   [![iotedge-vm-deploy için Azure Düğmesini dağıtma](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2F1.2.0-rc4%2FedgeDeploy.json)
+   [![iotedge-vm-deploy için Azure Düğmesini dağıtma](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fdevice-update-tutorial%2FedgeDeploy.json)
 
 1. Yeni başlatılan penceresinde, kullanılabilir form alanlarını girin:
 
@@ -126,9 +126,9 @@ Paket kullanmadan önce lisans koşullarını okuyun. Bir paketi yüklemeniz ve 
 
 1. GitHub 'daki [cihaz güncelleştirme sürümleri](https://github.com/Azure/iot-hub-device-update/releases) ' ne gidin ve "varlıklar" açılan düğmesine tıklayın.
 
-3. `apt-update-import-samples.zip`Üzerine tıklayarak indirin.
+3. `Edge.package.update.samples.zip`Üzerine tıklayarak indirin.
 
-5. Çeşitli güncelleştirme örneklerini ve bunlara karşılık gelen içeri aktarma bildirimlerini saptamak için klasörün içeriğini ayıklayın. 
+5. Güncelleştirme örneğini ve buna karşılık gelen içeri aktarma bildirimlerini bulacak şekilde klasörün içeriğini ayıklayın. 
 
 2. Azure portal ' de, IoT Hub sol taraftaki Gezinti çubuğundan otomatik cihaz yönetimi altında cihaz güncelleştirmeleri seçeneğini belirleyin.
 
@@ -136,10 +136,8 @@ Paket kullanmadan önce lisans koşullarını okuyun. Bir paketi yüklemeniz ve 
 
 4. "+ Yeni güncelleştirme al" seçeneğini belirleyin.
 
-5. "Içeri aktarma bildirim dosyası seçin" altında klasör simgesini veya metin kutusunu seçin. Bir dosya Seçicisi iletişim kutusu görürsünüz. `sample-package-update-1.0.1-importManifest.json`Daha önce indirdiğiniz klasörden içeri aktarma bildirimi ' ni seçin. Sonra, "bir veya daha fazla güncelleştirme dosyası seçin" altında klasör simgesini veya metin kutusunu seçin. Bir dosya Seçicisi iletişim kutusu görürsünüz. `sample-1.0.1-libcurl4-doc-apt-manifest.json`Daha önce indirdiğiniz klasörden apt bildirim güncelleştirme dosyasını seçin.
-Bu güncelleştirme, en son kullanılabilir sürümünü cihazınıza yükleyecek `libcurl4-doc package` .
-
-   Alternatif olarak, `sample-package-update-2-2.0.1-importManifest.json` `sample-2.0.1-libcurl4-doc-7.58-apt-manifest.json` önceden indirdiğiniz klasörden bildirim dosyasını ve apt bildirim güncelleştirme dosyasını da seçebilirsiniz. Bu işlem, aygıtınıza ait belirli bir v 7.58.0 sürümünü yükler `libcurl4-doc package` .
+5. "Içeri aktarma bildirim dosyası seçin" altında klasör simgesini veya metin kutusunu seçin. Bir dosya Seçicisi iletişim kutusu görürsünüz. `sample-1.0.1-aziot-edge-importManifest.json`Daha önce indirdiğiniz klasörden içeri aktarma bildirimi ' ni seçin. Sonra, "bir veya daha fazla güncelleştirme dosyası seçin" altında klasör simgesini veya metin kutusunu seçin. Bir dosya Seçicisi iletişim kutusu görürsünüz. `sample-1.0.1-aziot-edge-apt-manifest.json`Daha önce indirdiğiniz klasörden apt bildirim güncelleştirme dosyasını seçin.
+Bu güncelleştirme, `aziot-identity-service` ve `aziot-edge` paketlerini cihazınızda 1.2.0 ~ RC4-1 sürümüne güncelleştirecek.
 
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="Güncelleştirme dosyası seçimini gösteren ekran görüntüsü." lightbox="media/import-update/select-update-files.png":::
 
@@ -211,12 +209,6 @@ Etiket ekleme ve güncelleştirme grupları oluşturma hakkında [daha fazla bil
 1. En son durum ayrıntılarını görüntülemek için Yenile ' yi seçin. Durum başarılı olana kadar bu işleme devam edin.
 
 Bir Ubuntu Server 18,04 x64 cihazında IoT Hub için cihaz güncelleştirmesini kullanarak başarılı bir uçtan uca paket güncelleştirmesini tamamladınız. 
-
-## <a name="bonus-steps"></a>Ödül adımları
-
-1. "Güncelleştirme Içeri aktarma" ve "güncelleştirme dağıtma" bölümlerini yineleyin
-
-3. "Güncelleştirme Içeri aktar" adımı sırasında `sample-package-update-1.0.2-importManifest.json` daha önce indirdiğiniz klasörden bildirim dosyasını içeri aktar ve `sample-1.0.2-libcurl4-doc-remove-apt-manifest.json` apt bildirim güncelleştirme dosyasını seçin. Bu güncelleştirme cihazınızdan yüklenmiş olarak kaldırılacak `libcurl4-doc package` .
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

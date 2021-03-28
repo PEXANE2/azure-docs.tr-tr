@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: f3c34526fd4005dbbb0be7e763721e125ed7828e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9e7b337d4358f9685d683c308d6df9110607207a
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103201211"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643412"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme
 
@@ -115,7 +115,7 @@ SQL yönetilen örneğinizi Azure portal kullanarak Azure AD Okuma iznini vermek
 
     Yöneticiyi değiştirme işlemi birkaç dakika sürebilir. Ardından yeni yönetici Active Directory yönetici kutusunda görünür.
 
-SQL yönetilen örneğiniz için bir Azure AD yöneticisi sağlamaktan sonra, <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">create LOGIN</a> sözdizimi Ile Azure AD Server sorumlularını (oturum açma) oluşturmaya başlayabilirsiniz. Daha fazla bilgi için bkz. [SQL yönetilen örneğe genel bakış](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration).
+SQL yönetilen örneğiniz için bir Azure AD yöneticisi sağlamaktan sonra, [create LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) sözdizimi Ile Azure AD Server sorumlularını (oturum açma) oluşturmaya başlayabilirsiniz. Daha fazla bilgi için bkz. [SQL yönetilen örneğe genel bakış](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration).
 
 > [!TIP]
 > Bir yöneticiyi daha sonra kaldırmak için, Active Directory yönetici sayfasının üst kısmında, **Yöneticiyi Kaldır**' ı seçin ve ardından **Kaydet**' i seçin.
@@ -345,8 +345,8 @@ Uygulamalarınızın veya kullanıcılarınızın Azure AD kimliklerini kullanar
 - .NET Framework 4,6 veya sonraki bir sürümü [https://msdn.microsoft.com/library/5a4x27ek.aspx](/dotnet/framework/install/guide-for-developers) .
 - SQL Server için Azure Active Directory kimlik doğrulama kitaplığı (*ADAL.DLL*). Aşağıda, *ADAL.DLL* kitaplığını içeren en son SSMS, ODBC ve OLE DB sürücüsünü yüklemek için karşıdan yükleme bağlantıları verilmiştir.
   - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
-  - [SQL Server için ODBC sürücüsü 17](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)
-  - [SQL Server için 18 OLE DB sürücüsü](/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15)
+  - [SQL Server için ODBC sürücüsü 17](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
+  - [SQL Server için 18 OLE DB sürücüsü](/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
 
 Bu gereksinimleri şu şekilde karşılayabilirsiniz:
 
@@ -357,7 +357,7 @@ Bu gereksinimleri şu şekilde karşılayabilirsiniz:
 
 ## <a name="create-contained-users-mapped-to-azure-ad-identities"></a>Azure AD kimliklerine eşlenen bağımsız kullanıcılar oluşturma
 
-SQL yönetilen örneği Azure AD sunucu sorumlularını (oturumlar) desteklediğinden, kapsanan veritabanı kullanıcıları kullanılması gerekli değildir. Azure AD sunucu sorumluları (oturum açma), Azure AD kullanıcılarından, gruplarından veya uygulamalarından oturum açma bilgileri oluşturmanıza olanak tanır. Bu, kapsanan bir veritabanı kullanıcısı yerine Azure AD sunucusu oturum açma bilgilerini kullanarak SQL yönetilen örneğinizle kimlik doğrulayabilmeniz anlamına gelir. Daha fazla bilgi için bkz. [SQL yönetilen örneğe genel bakış](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration). Azure AD Server sorumlularını (oturum açma) oluşturma hakkında sözdizimi için bkz. <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">oturum oluşturma</a>.
+SQL yönetilen örneği Azure AD sunucu sorumlularını (oturumlar) desteklediğinden, kapsanan veritabanı kullanıcıları kullanılması gerekli değildir. Azure AD sunucu sorumluları (oturum açma), Azure AD kullanıcılarından, gruplarından veya uygulamalarından oturum açma bilgileri oluşturmanıza olanak tanır. Bu, kapsanan bir veritabanı kullanıcısı yerine Azure AD sunucusu oturum açma bilgilerini kullanarak SQL yönetilen örneğinizle kimlik doğrulayabilmeniz anlamına gelir. Daha fazla bilgi için bkz. [SQL yönetilen örneğe genel bakış](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration). Azure AD Server sorumlularını (oturum açma) oluşturma hakkında sözdizimi için bkz. [oturum oluşturma](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 Ancak, SQL veritabanı ve Azure SYNAPSE ile Azure Active Directory kimlik doğrulaması kullanmak için Azure AD kimliğine göre kapsanan veritabanı kullanıcılarının kullanılması gerekir. Kapsanan bir veritabanı kullanıcısının ana veritabanında oturum açma bilgileri yoktur ve Azure AD 'de veritabanıyla ilişkili bir kimlikle eşlenir. Azure AD kimliği, tek bir kullanıcı hesabı ya da bir grup olabilir. Kapsanan veritabanı kullanıcıları hakkında daha fazla bilgi için bkz. [Kapsanan Veritabanı kullanıcıları-veritabanınızı taşınabilir hale getirme](/sql/relational-databases/security/contained-database-users-making-your-database-portable).
 

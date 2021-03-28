@@ -2,25 +2,19 @@
 title: Akış Widevine Android çevrimdışı
 description: Bu konu başlığı altında, Wıdevine korunan içeriğin çevrimdışı akışı için Azure Media Services v3 hesabınızı yapılandırma gösterilmektedir.
 services: media-services
-keywords: DASH, DRM, Widevine çevrimdışı modu, Exooynatıcı, Android
-documentationcenter: ''
 author: willzhan
-manager: steveng
-editor: ''
+manager: femila
 ms.service: media-services
 ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.author: willzhan
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 4c7adab9c14075e12cf5656f9e798e78ff26ff0b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: inhenkel
+ms.openlocfilehash: c19a8dd4f9a4b715b5f81a5a349edbffc2f7dea2
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955216"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640696"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Android için Media Services v3 ile çevrimdışı Widevine akışı
 
@@ -47,7 +41,7 @@ Makalede ayrıca Wıdevine korumalı içeriğin çevrimdışı akışı ile ilgi
 > [!NOTE]
 > Çevrimdışı DRM yalnızca içeriği indirdiğinizde lisans için tek bir istek yapmak üzere faturalandırılır. Tüm hatalar faturalandırılmaz.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Önkoşullar
 
 Android cihazlarda Widevine için çevrimdışı DRM uygulamadan önce, önce şunları yapmalısınız:
 
@@ -158,14 +152,8 @@ Yukarıdaki açık kaynaklı PWA uygulaması Node.js yazılır. Bir Ubuntu sunuc
     - Sertifika, güvenilir bir CA 'ya sahip olmalı ve kendinden imzalı bir geliştirme sertifikası çalışmıyor
     - Sertifika, Web sunucusunun veya ağ geçidinin DNS adıyla eşleşen bir CN 'ye sahip olmalıdır
 
-## <a name="faqs"></a>SSS
+## <a name="more-information"></a>Daha fazla bilgi
 
-Daha fazla bilgi için bkz. [Widevine SSS](frequently-asked-questions.md#widevine-streaming-for-android).
-
-## <a name="additional-notes"></a>Ek notlar
+Daha fazla bilgi için bkz. [sorular koleksiyonundaki Widevine](questions-collection.md#widevine-streaming-for-android).
 
 Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
-
-## <a name="summary"></a>Özet
-
-Bu makalede, Android cihazlarda Widevine tarafından korunan DASH içeriği için çevrimdışı modda kayıttan yürütmeyi nasıl uygulayacağınızı ele alınmaktadır.  Ayrıca, Widevine korumalı içeriğin çevrimdışı akışı ile ilgili bazı yaygın sorulara da yanıt verdi.

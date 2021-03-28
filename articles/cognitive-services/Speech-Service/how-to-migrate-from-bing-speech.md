@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: d0ffd786d3fb6bb5f0d70095d947c81caa070518
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d6b7b298e7e4d18e68985ec3cf536c90ef773608
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96499144"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644395"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Konuşma konuşma hizmetine geçirme
 
@@ -26,7 +26,7 @@ Bu makalede, Bing Konuşma API 'Leri ile konuşma hizmeti arasındaki farklar ö
 Tek bir konuşma hizmeti abonelik anahtarı aşağıdaki özelliklere erişim verir. Hepsinin kullanımı bağımsız bir şekilde ölçüldüğünden yalnızca kullandığınız hizmetler için ödeme yapmış olursunuz.
 
 * [Konuşmayı metne dönüştürme](speech-to-text.md)
-* [Özel konuşmayı metne dönüştürme](https://cris.ai)
+* [Özel konuşmayı metne dönüştürme](/azure/cognitive-services/speech-service/custom-speech-overview)
 * [Metin okuma](text-to-speech.md)
 * [Özel metin okuma sesleri](./how-to-custom-voice-create-voice.md)
 * [Konuşma çevirisi ](speech-translation.md) ([Metin çevirisi](../translator/translator-info-overview.md) özelliğini kapsamaz)

@@ -3,12 +3,12 @@ title: Azure DevTest Labs Uzak Masaüstü Ağ Geçidi kullanmak için laboratuva
 description: RDP bağlantı noktasını açığa çıkarmak zorunda kalmadan laboratuvar VM 'lerine güvenli erişim sağlamak için Azure DevTest Labs bir laboratuvarı Uzak Masaüstü ağ geçidiyle nasıl yapılandıracağınızı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: dcf5191dea64c3d7bf28b9ce1c616d3d2defb73e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b15d4d39199c1a30eae292ece67f4553b656f530
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97695687"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639594"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Azure DevTest Labs ' de laboratuvarınızı Uzak Masaüstü Ağ geçidini kullanacak şekilde yapılandırma
 Azure DevTest Labs, laboratuvarınız için bir Uzak Masaüstü Ağ Geçidi yapılandırarak, RDP bağlantı noktasını açığa çıkarmak zorunda kalmadan laboratuvar sanal makinelerine (VM 'Ler) güvenli erişim sağlayabilirsiniz. Laboratuvar, laboratuvar kullanıcılarınızın erişimi olan tüm sanal makineleri görüntülemesi ve bunlara bağlanabilmesi için merkezi bir yer sağlar. **Sanal makine** sayfasındaki **Bağlan** düğmesi, makineye bağlanmak için AÇABILECEĞINIZ makineye özel bir RDP dosyası oluşturur. Laboratuvarınızı Uzak Masaüstü ağ geçidine bağlayarak RDP bağlantısını daha da özelleştirebilir ve koruyabilirsiniz. 
@@ -36,7 +36,7 @@ DevTest Labs belirteç kimlik doğrulama özelliğiyle çalışmak için, ağ ge
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>Uzak Masaüstü Ağ Geçidi makineleri için gereksinimler
 - HTTPS trafiğini işlemek için ağ geçidi makinesinde TLS/SSL sertifikası yüklü olmalıdır. Sertifika, ağ geçidi grubu için yük dengeleyicinin tam etki alanı adı (FQDN) veya yalnızca bir makine varsa makinenin FQDN 'SI ile aynı olmalıdır. Joker karakter-kart TLS/SSL sertifikaları çalışmıyor.  
 - Ağ Geçidi makinbir imzalama sertifikası yüklendi. [Create-SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) betiği kullanarak bir imza sertifikası oluşturun.
-- Uzak Masaüstü Ağ Geçidi için belirteç kimlik doğrulamasını destekleyen [takılabilir kimlik doğrulama](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) modülünü yükler. Bu tür bir modüle bir örnek, `RDGatewayFedAuth.msi` [System Center VIRTUAL MACHINE Manager (VMM) görüntüleriyle](/system-center/vmm/install-console?view=sc-vmm-1807)birlikte gelir. System Center hakkında daha fazla bilgi için bkz. [System Center belgeleri](/system-center/) ve [fiyatlandırma ayrıntıları](https://www.microsoft.com/cloud-platform/system-center-pricing).  
+- Uzak Masaüstü Ağ Geçidi için belirteç kimlik doğrulamasını destekleyen [takılabilir kimlik doğrulama](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) modülünü yükler. Bu tür bir modüle bir örnek, `RDGatewayFedAuth.msi` [System Center VIRTUAL MACHINE Manager (VMM) görüntüleriyle](/system-center/vmm/install-console?view=sc-vmm-1807&preserve-view=true)birlikte gelir. System Center hakkında daha fazla bilgi için bkz. [System Center belgeleri](/system-center/) ve [fiyatlandırma ayrıntıları](https://www.microsoft.com/cloud-platform/system-center-pricing).  
 - Ağ Geçidi sunucusu, öğesine yapılan istekleri işleyebilir `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` .
 
     Ağ geçidi-ana bilgisayar adı, yalnızca bir makine varsa, ağ geçidi grubunun yük dengeleyicinin FQDN 'sidir veya makinenin kendisi FQDN 'sidir. , `{lab-machine-name}` Bağlanmaya çalıştığınız laboratuvar makinesinin adı ve `{port-number}` bağlantının oluşturulacağı bağlantı noktasıdır...  Varsayılan olarak, bu bağlantı noktası 3389 ' dir.  Ancak, sanal makine DevTest Labs 'de [PAYLAŞıLAN IP](devtest-lab-shared-ip.md) özelliğini kullanıyorsa, bağlantı noktası farklı olur.
@@ -105,14 +105,14 @@ Uzak Masaüstü Ağ Geçidi grubuna yönelik örnek bir çözüm kurmak için a�
 
     ```powershell
     $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate;
-    $cer.Import(‘path-to-certificate’);
+    $cer.Import('path-to-certificate');
     $hash = $cer.GetCertHashString()
     ```
 
     PowerShell kullanarak Base64 kodlamayı almak için aşağıdaki komutu kullanın.
 
     ```powershell
-    [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes(‘path-to-certificate’))
+    [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes('path-to-certificate'))
     ```
 3. Dosyaları şuradan indirin [https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway) .
 

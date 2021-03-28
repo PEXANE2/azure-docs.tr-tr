@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: e0736e58983d4c28b8f2f4a20241cd36ac84fdfa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 09e8ef85b6df48b6b442351135d4ae4ed55e9b45
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96445388"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641074"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Azure SQL veritabanı ve Azure SYNAPSE 'de mantıksal SQL Server nedir?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -147,10 +147,10 @@ Transact-SQL ile sunucu, veritabanları ve güvenlik duvarları oluşturup yöne
 
 | Komut | Açıklama |
 | --- | --- |
-|[VERITABANı oluşturma (Azure SQL veritabanı)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Azure SQL veritabanı 'nda yeni bir veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmanız gerekir.|
-|[VERITABANı oluşturma (Azure SYNAPSE)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | Azure SYNAPSE 'te yeni bir veri ambarı veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmanız gerekir.|
-| [ALTER DATABASE (Azure SQL veritabanı)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Veritabanını veya elastik havuzu değiştirir. |
-|[ALTER DATABASE (Azure SYNAPSE Analytics)](/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Azure SYNAPSE 'de bir veri ambarı veritabanını değiştirir.|
+|[VERITABANı oluşturma (Azure SQL veritabanı)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true) | Azure SQL veritabanı 'nda yeni bir veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmanız gerekir.|
+|[VERITABANı oluşturma (Azure SYNAPSE)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Azure SYNAPSE 'te yeni bir veri ambarı veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmanız gerekir.|
+| [ALTER DATABASE (Azure SQL veritabanı)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Veritabanını veya elastik havuzu değiştirir. |
+|[ALTER DATABASE (Azure SYNAPSE Analytics)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest&preserve-view=true&tabs=sqlpool)|Azure SYNAPSE 'de bir veri ambarı veritabanını değiştirir.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Bir veritabanını siler.|
 |[sys.database_service_objectives (Azure SQL veritabanı)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Bir veritabanı için sürüm (hizmet katmanı), hizmet hedefi (Fiyatlandırma Katmanı) ve elastik havuz adı döndürür. Bir sunucu için ana veritabanında oturum açarsa, tüm veritabanlarına bilgi döndürür. Azure SYNAPSE için ana veritabanına bağlı olmanız gerekir.|
 |[sys.dm_db_resource_stats (Azure SQL veritabanı)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Azure SQL veritabanı 'nda bir veritabanı için CPU, GÇ ve bellek tüketimi döndürür. Veritabanında etkinlik olmasa bile, her 15 saniyede bir satır vardır.|

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: af5ec07a8fb2db0bd4b9b8f1af556ef54199400d
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 49054d9bbde67dc3670ec444e4b60c3ddf503db5
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609393"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645342"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -21,10 +21,10 @@ ms.locfileid: "105609393"
 ## <a name="install-the-sdk"></a>SDK Yükleme
 
 > [!NOTE]
-> Bu belge, çağıran SDK 'nın 1.0.0-Beta. 6 sürümünü kullanır.
+> Bu belge, çağıran SDK 'nın 1.0.0-Beta. 10 sürümünü kullanır.
 
 `npm install`JavaScript için çağrı ve ortak SDK 'ları çağıran Azure Iletişim hizmetlerini yüklemek için komutunu kullanın.
-Bu belge, çağıran kitaplığın 1.0.0-Beta. 5 sürümündeki türlere başvurur.
+Bu belge, çağıran kitaplığın 1.0.0-Beta. 10 sürümündeki türlere başvurur.
 
 ```console
 npm install @azure/communication-common --save
@@ -54,6 +54,10 @@ Bir `CallClient` örneğiniz olduğunda, örnek `CallAgent` üzerinde yöntemini
 Bir örnek oluşturduktan sonra `callAgent` , `getDeviceManager` `CallClient` öğesine erişmek için örneğinde yöntemini kullanabilirsiniz `deviceManager` .
 
 ```js
+// Set the logger's log level
+setLogLevel('verbose');
+// Redirect logger output to wherever desired. By default it logs to console
+AzureLogger.log = (...args) => { console.log(...args) };
 const userToken = '<user token>';
 callClient = new CallClient(options);
 const tokenCredential = new AzureCommunicationTokenCredential(userToken);
@@ -113,8 +117,8 @@ Bir kamerayı seçtikten sonra bir örnek oluşturmak için bunu kullanın `Loca
 ```js
 const deviceManager = await callClient.getDeviceManager();
 const cameras = await deviceManager.getCameras();
-videoDeviceInfo = cameras[0];
-localVideoStream = new LocalVideoStream(videoDeviceInfo);
+const camera = cameras[0]
+localVideoStream = new LocalVideoStream(camera);
 const placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
 const call = callAgent.startCall(['acsUserId'], placeCallOptions);
 
@@ -168,14 +172,26 @@ const call = callAgent.join(locator);
 
 ```js
 const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
-    //Get information about caller
+
+    //Get incoming call ID
+    var incomingCallId = incomingCall.id
+
+    // Get information about caller
     var callerInfo = incomingCall.callerInfo
 
-    //Accept the call
+    // Accept the call
     var call = await incomingCall.accept();
 
-    //Reject the call
+    // Reject the call
     incomingCall.reject();
+
+    // Subscribe to callEnded event and get the call end reason
+     incomingCall.on('callEnded', args => {
+        console.log(args.callEndReason);
+    });
+
+    // callEndReason is also a property of IncomingCall
+    var callEndReason = incomingCall.callEndReason;
 };
 callAgentInstance.on('incomingCall', incomingCallHander);
 ```
@@ -194,7 +210,7 @@ Bir çağrının benzersiz KIMLIĞINI (dize) al:
     const callId: string = call.id;
    ```
 
-Koleksiyonu inceleyerek çağrı içindeki diğer katılımcılar hakkında bilgi edinin `remoteParticipant` :
+' Call ' örneğindeki koleksiyonu inceleyerek, çağrı içindeki diğer katılımcılar hakkında bilgi edinin `remoteParticipants` :
 
    ```js
    const remoteParticipants = call.remoteParticipants;
@@ -217,7 +233,6 @@ Bir çağrının durumunu al:
    Bu, çağrının geçerli durumunu temsil eden bir dize döndürür:
 
   - `None`: İlk çağrı durumu.
-  - `Incoming`: Bir çağrının gelen olduğunu gösterir. Kabul veya reddedildi olmalıdır.
   - `Connecting`: Bir çağrı yerleştirildiğinde veya kabul edildiğinde ilk geçiş durumu.
   - `Ringing`: Giden bir çağrı için, uzak katılımcılar için bir çağrının çaldırılacağını belirtir. Bu `Incoming` , tarafındadır.
   - `EarlyMedia`: Çağrı bağlanmadan önce bir duyurunun yürütüldüğü durumu gösterir.
@@ -231,8 +246,8 @@ Bir çağrının durumunu al:
 
    ```js
    const callEndReason = call.callEndReason;
-   // callEndReason.code (number) code associated with the reason
-   // callEndReason.subCode (number) subCode associated with the reason
+   const callEndReasonCode = callEndReason.code // (number) code associated with the reason
+   const callEndReasonSubCode = callEndReason.subCode // (number) subCode associated with the reason
    ```
 
 Özelliği inceleyerek geçerli çağrının gelen veya giden olduğunu öğrenin `direction` . Döndürür `CallDirection` .
@@ -245,7 +260,7 @@ Bir çağrının durumunu al:
 Geçerli mikrofonun kapalı olup olmadığını denetle. Döndürür `Boolean` .
 
    ```js
-   const muted = call.isMicrophoneMuted;
+   const muted = call.isMuted;
    ```
 
 Özelliği denetleyerek, ekran paylaşım akışının belirli bir uç noktadan gönderilip gönderilmediğini öğrenin `isScreenSharingOn` . Döndürür `Boolean` .
@@ -291,7 +306,10 @@ await call.unmute();
 Bir videoyu başlatmak için nesne üzerindeki metodunu kullanarak kameraları belirtmeniz gerekir `getCameras` `deviceManager` . Ardından, `LocalVideoStream` istenen kamerayı `startVideo` bağımsız değişken olarak yöntemine geçirerek yeni bir örneğini oluşturun:
 
 ```js
-const localVideoStream = new LocalVideoStream(videoDeviceInfo);
+const deviceManager = await callClient.getDeviceManager();
+const cameras = await deviceManager.getCameras();
+const camera = cameras[0]
+const localVideoStream = new LocalVideoStream(camera);
 await call.startVideo(localVideoStream);
 ```
 
@@ -311,12 +329,13 @@ Bir örnek üzerinde çağırarak video gönderirken farklı bir kamera cihazın
 
 ```js
 const cameras = await callClient.getDeviceManager().getCameras();
-localVideoStream.switchSource(cameras[1]);
+const camera = cameras[1];
+localVideoStream.switchSource(camera);
 ```
 
 ## <a name="manage-remote-participants"></a>Uzak katılımcıları yönetme
 
-Tüm uzak katılımcılar tarafından temsil edilir `remoteParticipant` ve `remoteParticipants` bir çağrı örneğindeki koleksiyon üzerinden kullanılabilir.
+Tüm uzak katılımcılar, tür ile temsil edilir `RemoteParticipant` ve `remoteParticipants` bir çağrı örneği üzerinde koleksiyon aracılığıyla kullanılabilir.
 
 ### <a name="list-the-participants-in-a-call"></a>Bir çağrıda katılımcıları listeleyin
 
@@ -341,6 +360,7 @@ Uzak katılımcılar, ilişkili özellikler ve koleksiyonlar kümesine sahiptir:
   - `{ communicationUserId: '<ACS_USER_ID'> }`: ACS kullanıcısını temsil eden nesne.
   - `{ phoneNumber: '<E.164>' }`: E. 164 biçimindeki telefon numarasını temsil eden nesne.
   - `{ microsoftTeamsUserId: '<TEAMS_USER_ID>', isAnonymous?: boolean; cloud?: "public" | "dod" | "gcch" }`: Takımlar kullanıcısını temsil eden nesne.
+  - `{ id: string }`: nesne, diğer tanımlayıcı türlerine uymayan tanımlayıcıyı yeniden denerek
 
 - `state`: Uzak bir katılımcının durumunu alın.
 
@@ -362,8 +382,8 @@ Uzak katılımcılar, ilişkili özellikler ve koleksiyonlar kümesine sahiptir:
 
   ```js
   const callEndReason = remoteParticipant.callEndReason;
-  // callEndReason.code (number) code associated with the reason
-  // callEndReason.subCode (number) subCode associated with the reason
+  const callEndReasonCode = callEndReason.code // (number) code associated with the reason
+  const callEndReasonSubCode = callEndReason.subCode // (number) subCode associated with the reason
   ```
 
 - `isMuted` durum: uzak bir katılımcının kapalı olup olmadığını öğrenmek Için, özelliği kontrol edin `isMuted` . Döndürür `Boolean` .
@@ -382,6 +402,11 @@ Uzak katılımcılar, ilişkili özellikler ve koleksiyonlar kümesine sahiptir:
 
   ```js
   const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
+  ```
+- `displayName`: Bu uzak katılımcının görünen adını almak için, `displayName` dizeyi döndüren özelliği inceleyin. 
+
+  ```js
+  const displayName = remoteParticipant.displayName;
   ```
 
 ### <a name="add-a-participant-to-a-call"></a>Çağrıya katılımcı ekleme
@@ -415,22 +440,22 @@ const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStr
 const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
 
-İşlemek için `RemoteVideoStream` bir olaya abone olmanız gerekir `isAvailableChanged` . `isAvailable`Özelliği olarak değişirse `true` , uzak katılımcı bir akış gönderiyor. Bu durumda, yeni bir örneğini oluşturun `Renderer` ve ardından `RendererView` zaman uyumsuz yöntemi kullanarak yeni bir örnek oluşturun `createView` .  Daha sonra `view.target` herhangi bir kullanıcı arabirimi öğesine ekleyebilirsiniz.
+İşlemek için `RemoteVideoStream` bir olaya abone olmanız gerekir `isAvailableChanged` . `isAvailable`Özelliği olarak değişirse `true` , uzak katılımcı bir akış gönderiyor. Bu durumda, yeni bir örneğini oluşturun `VideoStreamRenderer` ve ardından `VideoStreamRendererView` zaman uyumsuz yöntemi kullanarak yeni bir örnek oluşturun `createView` .  Daha sonra `view.target` herhangi bir kullanıcı arabirimi öğesine ekleyebilirsiniz.
 
-Uzak akışın kullanılabilirliği değiştiğinde, `Renderer` belirli bir örneği yok edebilir, yok edebilir `RendererView` veya tümünü tutabilirsiniz. Kullanılamayan bir akışa eklenen işleyiciler boş bir video çerçevesine neden olur.
+Uzak bir akış değişikliklerinin kullanılabilirliği her kullanıldığında, belirli bir veya tek tek yok etme seçeneğini belirleyebilir `VideoStreamRenderer` `VideoStreamRendererView` , ancak bu, boş video çerçevesinin görüntülenmesine neden olur.
 
 ```js
 function subscribeToRemoteVideoStream(remoteVideoStream: RemoteVideoStream) {
-    let renderer: Renderer = new Renderer(remoteVideoStream);
+    let videoStreamRenderer: VideoStreamRenderer = new VideoStreamRenderer(remoteVideoStream);
     const displayVideo = () => {
-        const view = await renderer.createView();
+        const view = await videoStreamRenderer.createView();
         htmlElement.appendChild(view.target);
     }
-    remoteVideoStream.on('availabilityChanged', async () => {
+    remoteVideoStream.on('isAvailableChanged', async () => {
         if (remoteVideoStream.isAvailable) {
             displayVideo();
         } else {
-            renderer.dispose();
+            videoStreamRenderer.dispose();
         }
     });
     if (remoteVideoStream.isAvailable) {
@@ -449,12 +474,6 @@ Uzak video akışları aşağıdaki özelliklere sahiptir:
   const id: number = remoteVideoStream.id;
   ```
 
-- `Stream.size`: Uzak video akışının yüksekliği ve genişliği.
-
-  ```js
-  const size: {width: number; height: number} = remoteVideoStream.size;
-  ```
-
 - `mediaStreamType`: Veya olabilir `Video` `ScreenSharing` .
 
   ```js
@@ -467,32 +486,32 @@ Uzak video akışları aşağıdaki özelliklere sahiptir:
   const type: boolean = remoteVideoStream.isAvailable;
   ```
 
-### <a name="renderer-methods-and-properties"></a>İşleyici yöntemleri ve özellikleri
+### <a name="videostreamrenderer-methods-and-properties"></a>VideoStreamRenderer yöntemleri ve özellikleri
 
-`rendererView`Uzak video akışını işlemek için uygulama kullanıcı arabirimine iliştirilebilecek bir örnek oluşturun:
-
-  ```js
-  renderer.createView()
-  ```
-
-`renderer`Ve tüm ilişkili örnekleri atma `rendererView` :
+`VideoStreamRendererView`Uygulama kullanıcı arabirimine eklenebilecek bir örnek oluşturma uzak video akışını işleyebilir, zaman uyumsuz `createView()` yöntemi kullanın, Stream işleme için ne zaman kullanılabilir olduğunda ÇÖZÜMLENIR ve `target` `video` Dom ağacının herhangi bir yerinden eklenebilir öğeyi temsil eden özelliği olan bir nesne döndürür
 
   ```js
-  renderer.dispose()
+  videoStreamRenderer.createView()
   ```
 
-### <a name="rendererview-methods-and-properties"></a>RendererView yöntemleri ve özellikleri
+`videoStreamRenderer`Ve tüm ilişkili örnekleri atma `VideoStreamRendererView` :
 
-Oluşturduğunuzda `rendererView` , `scalingMode` ve `isMirrored` özelliklerini belirtebilirsiniz. `scalingMode``Stretch`, veya olabilir `Crop` `Fit` . `isMirrored`Belirtilmişse, işlenen akış dikey olarak çevrilmiş.
+  ```js
+  videoStreamRenderer.dispose()
+  ```
+
+### <a name="videostreamrendererview-methods-and-properties"></a>VideoStreamRendererView yöntemleri ve özellikleri
+
+Bir oluşturduğunuzda `VideoStreamRendererView` , `scalingMode` ve `isMirrored` özelliklerini belirtebilirsiniz. `scalingMode``Stretch`, veya olabilir `Crop` `Fit` . `isMirrored`Belirtilmişse, işlenen akış dikey olarak çevrilmiş.
 
 ```js
-const rendererView: RendererView = renderer.createView({ scalingMode, isMirrored });
+const videoStreamRendererView: VideoStreamRendererView = await videoStreamRenderer.createView({ scalingMode, isMirrored });
 ```
 
-Her `RendererView` örnek, `target` işleme yüzeyini temsil eden bir özelliğe sahiptir. Bu özelliği uygulama kullanıcı arabirimine ekleyin:
+Her `VideoStreamRendererView` örnek, `target` işleme yüzeyini temsil eden bir özelliğe sahiptir. Bu özelliği uygulama kullanıcı arabirimine ekleyin:
 
 ```js
-document.body.appendChild(rendererView.target);
+htmlElement.appendChild(view.target);
 ```
 
 `scalingMode`Yöntemini çağırarak güncelleştirebilirsiniz `updateScalingMode` :
@@ -506,9 +525,6 @@ view.updateScalingMode('Crop')
 `deviceManager`' De, ses ve video akışlarınızı bir çağrıda aktarabilecek yerel cihazları belirtebilirsiniz. Ayrıca, yerel tarayıcı API 'sini kullanarak başka bir kullanıcının mikrofonuna ve kameraya erişme izni isteyebilmenizi de sağlar.
 
 `deviceManager`Yöntemini çağırarak erişebilirsiniz `callClient.getDeviceManager()` :
-
-> [!IMPORTANT]
-> `callAgent`Erişebilmek için bir nesneniz olması gerekir `deviceManager` .
 
 ```js
 const deviceManager = await callClient.getDeviceManager();
@@ -538,26 +554,26 @@ const localSpeakers = await deviceManager.getSpeakers(); // [AudioDeviceInfo, Au
 const defaultMicrophone = deviceManager.selectedMicrophone;
 
 // Set the microphone device to use.
-await deviceManager.selectMicrophone(AudioDeviceInfo);
+await deviceManager.selectMicrophone(localMicrophones[0]);
 
 // Get the speaker device that is being used.
 const defaultSpeaker = deviceManager.selectedSpeaker;
 
 // Set the speaker device to use.
-await deviceManager.selectSpeaker(AudioDeviceInfo);
+await deviceManager.selectSpeaker(localSpeakers[0]);
 ```
 
 ### <a name="local-camera-preview"></a>Yerel kamera önizlemesi
 
-`deviceManager` `Renderer` Yerel kameranızdan akışları işlemeye başlamak için ve kullanabilirsiniz. Bu akış diğer katılımcılara gönderilmez; Bu, yerel bir önizleme akışımıza sahiptir.
+`deviceManager` `VideoStreamRenderer` Yerel kameranızdan akışları işlemeye başlamak için ve kullanabilirsiniz. Bu akış diğer katılımcılara gönderilmez; Bu, yerel bir önizleme akışımıza sahiptir.
 
 ```js
 const cameras = await deviceManager.getCameras();
-const localVideoDevice = cameras[0];
-const localCameraStream = new LocalVideoStream(localVideoDevice);
-const renderer = new Renderer(localCameraStream);
-const view = await renderer.createView();
-document.body.appendChild(view.target);
+const camera = cameras[0];
+const localCameraStream = new LocalVideoStream(camera);
+const videoStreamRenderer = new VideoStreamRenderer(localCameraStream);
+const view = await videoStreamRenderer.createView();
+htmlElement.appendChild(view.target);
 
 ```
 

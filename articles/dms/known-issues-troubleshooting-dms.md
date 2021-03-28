@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 785567685b77183df0f212897b923d911ac045f6
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: ce53e8a77186f96801879e5c9d8f8c65809470d0
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105567316"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639791"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Yaygın Azure veritabanı geçiş hizmeti sorunlarını ve hatalarını giderme
 
@@ -132,7 +132,7 @@ Azure veritabanı geçiş hizmeti 'ni adlandırılmış örnek veya dinamik bir 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure veritabanı geçiş hizmeti PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)makalesini görüntüleyin.
+* [Azure veritabanı geçiş hizmeti PowerShell](/powershell/module/azurerm.datamigration#data_migration)makalesini görüntüleyin.
 * [Azure Portal kullanarak MySQL Için Azure veritabanı 'nda sunucu parametrelerini yapılandırma](../mysql/howto-server-parameters.md)makalesini görüntüleyin.
 * [Azure veritabanı geçiş hizmeti 'ni kullanmaya yönelik önkoşullara genel bakış](./pre-reqs.md)makalesini görüntüleyin.
 * [Azure veritabanı geçiş hizmeti 'ni kullanma hakkında SSS](./faq.md)bölümüne bakın.

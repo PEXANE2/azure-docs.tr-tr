@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: d2fe8f32ec854e1e6db644a039e6a249cfbddcaa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 07bbd50dbc415b86aa0c511d46ead9f0612df107
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103012896"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642500"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma
 
@@ -71,7 +71,7 @@ Toplu iş iletileri IoT Hub ve yığın belirli bir boyuta ulaştığında veya 
 
 Herhangi bir dosya adlandırma kuralını kullanabilirsiniz, ancak listelenen tüm belirteçleri kullanmanız gerekir. Yazılacak veri yoksa IoT Hub boş bir bloba yazılır.
 
-Tüm Blobların veya dosyaların bölüm varsayımlarını yapmadan okunmalarını sağlamak için Blobları veya dosyaları listeleyip daha sonra bu dosyaların üzerinde değişiklik yapmanızı öneririz. Bölüm aralığı, [Microsoft tarafından başlatılan bir yük devretme](iot-hub-ha-dr.md#microsoft-initiated-failover) veya [el ile yük devretme](iot-hub-ha-dr.md#manual-failover)IoT Hub değişebilir. Dosya listesi için Blobların listesini veya [ADLS 2. API](/rest/api/storageservices/datalakestoragegen2/path/list) listesini listelemek Için, [LISTE bloblarını API](/rest/api/storageservices/list-blobs) 'sini kullanabilirsiniz. Lütfen kılavuz olarak aşağıdaki örneğe bakın.
+Tüm Blobların veya dosyaların bölüm varsayımlarını yapmadan okunmalarını sağlamak için Blobları veya dosyaları listeleyip daha sonra bu dosyaların üzerinde değişiklik yapmanızı öneririz. Bölüm aralığı, [Microsoft tarafından başlatılan bir yük devretme](iot-hub-ha-dr.md#microsoft-initiated-failover) veya [el ile yük devretme](iot-hub-ha-dr.md#manual-failover)IoT Hub değişebilir. Dosya listesi için Blobların listesini veya [ADLS 2. API](/rest/api/storageservices/datalakestoragegen2/path) listesini listelemek Için, [LISTE bloblarını API](/rest/api/storageservices/list-blobs) 'sini kullanabilirsiniz. Lütfen kılavuz olarak aşağıdaki örneğe bakın.
 
 ```csharp
 public void ListBlobsInContainer(string containerName, string iothub)

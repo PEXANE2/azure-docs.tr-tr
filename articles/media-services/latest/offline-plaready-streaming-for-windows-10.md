@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ea3d895970c6a18286d719471a693f774efaa387
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aecae72b0bea07a0d8e240b3dcae7ee9b9662f95
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955247"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640710"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Media Services v3 ile Windows 10 için çevrimdışı PlayReady akışı
 
@@ -34,7 +34,7 @@ Azure Media Services, DRM koruması ile çevrimdışı indirmeyi/kayıttan yür�
 > [!NOTE]
 > Çevrimdışı DRM yalnızca içeriği indirdiğinizde lisans için tek bir istek yapmak üzere faturalandırılır. Tüm hatalar faturalandırılmaz.
 
-## <a name="overview"></a>Genel Bakış
+## <a name="background-on-offline-mode-playback"></a>Çevrimdışı modda kayıttan yürütme arka planı
 
 Bu bölüm, çevrimdışı modda Kayıttan yürütmede bazı arka plan sağlar, özellikle neden:
 
@@ -61,12 +61,12 @@ Aşamalı indirme için PlayReady korumalı MP4 barındırmak için iki seçenek
 
 Aşağıda, birinci bir Azure VM 'de barındırılan PlayReady lisans sunucusu kullanılırken AMS 'de PlayReady lisans teslimini kullanan iki test varlığı kümesi verilmiştir:
 
-Varlık #1:
+## <a name="asset-1"></a>Varlık #1
 
 * Aşamalı indirme URL 'SI: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * PlayReady LA_URL (AMS): `https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/`
 
-Varlık #2:
+## <a name="asset-2"></a>Varlık #2
 
 * Aşamalı indirme URL 'SI: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * PlayReady LA_URL (Şirket içi): `https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
@@ -124,7 +124,3 @@ Video PlayReady koruması altında olduğundan, ekran görüntüsü videoyu dahi
 * İçerik, aşamalı indirme için Azure Media Services veya Azure Storage 'da barındırılabilir;
 * PlayReady lisans teslimi Azure Media Services veya başka bir yerde olabilir;
 * Hazırlanan kesintisiz akış içeriği, DRM olarak PlayReady ile DASH veya pürüzsüz aracılığıyla çevrimiçi akış için de kullanılabilir.
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-[Erişim denetimi ile çoklu DRM'ye sahip içerik koruma sistemi tasarlama](design-multi-drm-system-with-access-control.md)

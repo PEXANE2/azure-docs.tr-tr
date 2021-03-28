@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 02/23/2021
-ms.openlocfilehash: dc309e85373193e4f5d431f543ff3e59ea5bebc7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c94d6f7d4d06d7dbaa6a2ad54f94575a6cc85d33
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739271"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644657"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Azure Blob Depolama ve Azure Data Lake Storage'dan verileri paylaşma ve alma
 
@@ -178,7 +178,7 @@ Veri alacak bir konum yapılandırmak için bu bölümdeki adımları izleyin.
 
    ![Hedef depolama hesabının nerede seçileceğini gösteren ekran görüntüsü.](./media/map-target.png "Hedef depolama alanı.") 
 
-1. Anlık görüntü tabanlı paylaşım için, veri sağlayıcısı verileri düzenli olarak güncelleştirmek üzere bir anlık görüntü zamanlaması kullanıyorsa, zamanlamayı **anlık görüntü zamanlaması** sekmesinden etkinleştirebilirsiniz. Anlık görüntü zamanlamasının yanındaki kutuyu seçin. Ardından **Etkinleştir**' i seçin.
+1. Anlık görüntü tabanlı paylaşım için, veri sağlayıcısı verileri düzenli olarak güncelleştirmek üzere bir anlık görüntü zamanlaması kullanıyorsa, zamanlamayı **anlık görüntü zamanlaması** sekmesinden etkinleştirebilirsiniz. Anlık görüntü zamanlamasının yanındaki kutuyu seçin. Ardından **Etkinleştir**' i seçin. Zamanlanan ilk anlık görüntünün, zamanlama zamanının bir dakikası içinde ve sonraki anlık görüntülerin zamanlanan sürenin saniye içinde başlatılacağını unutmayın.
 
    ![Anlık görüntü zamanlamasının nasıl etkinleştirileceğini gösteren ekran görüntüsü.](./media/enable-snapshot-schedule.png "Anlık görüntü zamanlamasını etkinleştirin.")
 

@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: bertong
-ms.openlocfilehash: b0a173d605da859830e288aebf355117b928090a
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 8fe8b853fe07af40603950a61c0dd2a1df74d14e
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110392"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644303"
 ---
 SMS mesajları göndermek için Iletişim Hizmetleri JavaScript SMS SDK 'sını kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
@@ -72,15 +72,15 @@ Aşağıdaki sınıflar ve arabirimler, Node.js için Azure Communication Servic
 | Ad                                  | Açıklama                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | SmsClient | Bu sınıf tüm SMS işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve SMS mesajları göndermek için kullanabilirsiniz. |
-| SmsSendResult               | Bu sınıf, SMS hizmetinden elde edilen sonucu içerir.                                          |
-| Smssendoseçenekleri | Bu arabirim, teslim raporlamayı yapılandırmak için seçenekler sağlar. `enableDeliveryReport`Olarak ayarlanırsa `true` , teslim başarılı olduğunda bir olay yayınlanır. |
 | SmsSendRequest | Bu arabirim, SMS isteği oluşturmaya yönelik modeldir (örn. telefon numaralarını ve SMS içeriğini yapılandırın. |
+| Smssendoseçenekleri | Bu arabirim, teslim raporlamayı yapılandırmak için seçenekler sağlar. `enableDeliveryReport`Olarak ayarlanırsa `true` , teslim başarılı olduğunda bir olay yayınlanır. |
+| SmsSendResult               | Bu sınıf, SMS hizmetinden elde edilen sonucu içerir.                                          |
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-SDK 'dan **SmsClient** içeri aktarın ve bağlantı dizeniz ile örneğini oluşturun. Aşağıdaki kod, adlı bir ortam değişkeninden kaynak için bağlantı dizesini alır `COMMUNICATION_SERVICES_CONNECTION_STRING` . [Kaynak bağlantı dizesini yönetme](../../create-communication-resource.md#store-your-connection-string)hakkında bilgi edinin.
+SDK 'dan **SmsClient** içeri aktarın ve bağlantı dizeniz ile örneğini oluşturun. Aşağıdaki kod, adlı bir ortam değişkeninden kaynak için bağlantı dizesini alır `COMMUNICATION_SERVICES_CONNECTION_STRING` . [Kaynağınızın bağlantı dizesini yönetme](../../create-communication-resource.md#store-your-connection-string)hakkında bilgi edinin.
 
-Aşağıdaki kodu **send-sms.js** ekleyin:
+**send-sms.js** adlı bir dosya oluşturun ve açın ve aşağıdaki kodu ekleyin:
 
 ```javascript
 const { SmsClient } = require('@azure/communication-sms');
@@ -118,7 +118,10 @@ async function main() {
 
 main();
 ```
-`<from-phone-number>`Iletişim Hizmetleri kaynağınız ile ILIŞKILI SMS özellikli telefon numarasıyla ve `<to-phone-number>` ileti göndermek istediğiniz telefon numarasıyla değiştirmelisiniz.
+`<from-phone-number>`Iletişim Hizmetleri kaynağınız ile ILIŞKILI SMS özellikli bir telefon numarasıyla ve `<to-phone-number-1>` `<to-phone-number-2>` ileti göndermek istediğiniz telefon sayısıyla değiştirmelisiniz.
+
+> [!WARNING]
+> Telefon numaralarının E. 164 uluslararası standart biçiminde sağlanması gerektiğini unutmayın. (ör: + 14255550123).
 
 ## <a name="send-a-1n-sms-message-with-options"></a>Seçeneklerle 1: N SMS ileti gönderin
 
@@ -127,12 +130,12 @@ Ayrıca, teslim raporunun etkinleştirilip etkinleştirilmeyeceğini ve özel Et
 ```javascript
 
 async function main() {
-  await smsClient.send({
+  const sendResults = await smsClient.send({
     from: "<from-phone-number>",
     to: ["<to-phone-number-1>", "<to-phone-number-2>"],
     message: "Weekly Promotion!"
   }, {
-    //Optional parameter
+    //Optional parameters
     enableDeliveryReport: true,
     tag: "marketing"
   });
@@ -150,6 +153,11 @@ async function main() {
 
 main();
 ```
+
+`<from-phone-number>`Iletişim Hizmetleri kaynağınız ile ILIŞKILI SMS özellikli bir telefon numarasıyla ve `<to-phone-number-1>` `<to-phone-number-2>` ileti göndermek istediğiniz telefon numarası ile değiştirmelisiniz.
+
+> [!WARNING]
+> Telefon numaralarının E. 164 uluslararası standart biçiminde sağlanması gerektiğini unutmayın. (ör: + 14255550123).
 
 `enableDeliveryReport`Parametresi, teslim raporlamayı yapılandırmak için kullanabileceğiniz isteğe bağlı bir parametredir. Bu, SMS iletileri teslim edildiğinde olayları yayma isteyebileceğiniz senaryolar için yararlıdır. SMS iletilerinize yönelik teslim raporlamayı yapılandırmak için [SMS olayları](../handle-sms-events.md) Hızlı Başlangıç Kılavuzu ' na bakın.
 `tag` , teslim raporuna bir etiket uygulamak için kullanabileceğiniz isteğe bağlı bir parametredir.

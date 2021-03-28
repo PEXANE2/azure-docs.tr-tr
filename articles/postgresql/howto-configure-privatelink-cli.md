@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b8aaebdd37f835201ef549e3f97e0c0b657e4fe9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3452bfee1e9228926bb687d1b9dc7fb26dfff85a
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96020135"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642186"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>For PostgreSQL için Azure veritabanı-CLı kullanarak tek sunucu için özel bağlantı oluşturma ve yönetme
 
@@ -124,7 +124,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 ```
 
 > [!NOTE] 
-> Müşteri DNS ayarındaki FQDN, yapılandırılan özel IP 'ye çözümlenmez. [Burada](../dns/dns-operations-recordsets-portal.md)gösterildiği gibi, yapılandırılmış FQDN IÇIN bir DNS bölgesi oluşturmanız gerekir.
+> Müşterinin DNS ayarındaki FQDN, yapılandırılmış özel IP'ye çözümlenmiyor. [Burada](../dns/dns-operations-recordsets-portal.md)gösterildiği gibi, yapılandırılmış FQDN IÇIN bir DNS bölgesi oluşturmanız gerekir.
 
 > [!NOTE]
 > Bazı durumlarda PostgreSQL için Azure veritabanı ve sanal ağ alt ağı farklı aboneliklerde bulunur. Bu durumlarda, aşağıdaki yapılandırmalardan emin olmanız gerekir:
@@ -171,7 +171,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
    Address:  10.1.3.4
    ```
 
-3. Kullanılabilir herhangi bir istemciyi kullanarak PostgreSQL sunucusu için özel bağlantı bağlantısını test edin. Aşağıdaki örnek, işlemi yapmak için [Azure Data Studio 'yu](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) kullanır.
+3. Kullanılabilir herhangi bir istemciyi kullanarak PostgreSQL sunucusu için özel bağlantı bağlantısını test edin. Aşağıdaki örnek, işlemi yapmak için [Azure Data Studio 'yu](/sql/azure-data-studio/download) kullanır.
 
 4. **Yeni bağlantı**' da bu bilgileri girin veya seçin:
 

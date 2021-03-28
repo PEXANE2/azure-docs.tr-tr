@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: 727e2166bad7f0d8980ffe4fa18c292a206c37d7
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: aba9b71ec2fbfedecf08577c7bd2eae7a28a5588
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110385"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644367"
 ---
 SMS mesajları göndermek için Iletişim Hizmetleri Python SMS SDK 'sını kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
@@ -79,7 +79,7 @@ Aşağıdaki sınıflar ve arabirimler, Python için Azure Communication Service
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Bağlantı dizeniz ile bir **SmsClient** örneği oluşturun. [Kaynak bağlantı dizesini yönetme](../../create-communication-resource.md#store-your-connection-string)hakkında bilgi edinin.
+Bağlantı dizeniz ile bir **SmsClient** örneği oluşturun. [Kaynağınızın bağlantı dizesini yönetme](../../create-communication-resource.md#store-your-connection-string)hakkında bilgi edinin.
 
 ```python
 # Create the SmsClient object which will be used to send SMS messages
@@ -107,7 +107,7 @@ sms_responses = sms_client.send(
 `<from-phone-number>`İletişim hizmetinize ve `<to-phone-number>` ileti göndermek istediğiniz telefon numarasıyla ILIŞKILI bir SMS etkin telefon numarasıyla değiştirmelisiniz. 
 
 > [!WARNING]
-> Telefon numaralarının E. 164 uluslararası standart biçiminde sağlanması gerektiğini unutmayın. (ör: + 12223334444).
+> Telefon numaralarının E. 164 uluslararası standart biçiminde sağlanması gerektiğini unutmayın. (ör: + 14255550123).
 
 ## <a name="send-a-1n-sms-message"></a>1: N SMS Iletisi gönder
 
@@ -125,13 +125,16 @@ sms_responses = sms_client.send(
 
 ```
 
-`<from-phone-number>`İletişim hizmetinize ve `<to-phone-number-1>` `<to-phone-number-2>` ileti göndermek istediğiniz telefon NUMARALARıYLA ilişkili bir SMS etkin telefon numarasıyla değiştirmelisiniz. 
+`<from-phone-number>`İletişim hizmetinize ve `<to-phone-number-1>` `<to-phone-number-2>` ileti göndermek istediğiniz telefon NUMARASıNA sahip bir SMS etkin telefon numarasıyla değiştirmelisiniz. 
+
+> [!WARNING]
+> Telefon numaralarının E. 164 uluslararası standart biçiminde sağlanması gerektiğini unutmayın. (ör: + 14255550123).
 
 ## <a name="optional-parameters"></a>İsteğe Bağlı Parametreler
 
 `enable_delivery_report`Parametresi, teslim raporlamayı yapılandırmak için kullanabileceğiniz isteğe bağlı bir parametredir. Bu, SMS iletileri teslim edildiğinde olayları yayma isteyebileceğiniz senaryolar için yararlıdır. SMS iletilerinize yönelik teslim raporlamayı yapılandırmak için [SMS olayları](../handle-sms-events.md) Hızlı Başlangıç Kılavuzu ' na bakın.
 
-`tag`Parametresi, özel etiketleme yapılandırmak için kullanabileceğiniz isteğe bağlı bir parametredir.
+`tag`Parametresi, teslim raporuna bir etiket uygulamak için kullanabileceğiniz isteğe bağlı bir parametredir.
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 Uygulamayı komut ile uygulama dizininizden çalıştırın `python` .

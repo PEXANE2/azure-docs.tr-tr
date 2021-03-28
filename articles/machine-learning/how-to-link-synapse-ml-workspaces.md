@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 9d2b416955234cae7a30ac65dff7d64dedad3b1d
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: dd62fb5e3c7450d50b9837ee5484ca480cab78aa
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889119"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640830"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Azure SYNAPSE Analytics ve Azure Machine Learning çalışma alanlarını bağlama (Önizleme)
 
@@ -35,9 +35,9 @@ Ayrıca, çalışma alanlarını bağlayabilir ve tek bir [Azure Resource Manage
 
 * [Azure Machine Learning çalışma alanı oluşturun](how-to-manage-workspace.md?tabs=python).
 
-* [Azure Portal bir Synapse çalışma alanı oluşturun](/synapse-analytics/quickstart-create-workspace.md).
+* [Azure Portal bir Synapse çalışma alanı oluşturun](/azure/synapse-analytics/quickstart-create-workspace).
 
-* [Azure portal, Web araçları veya SYNAPSE Studio kullanarak Apache Spark havuzu oluşturma](/synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+* [Azure portal, Web araçları veya SYNAPSE Studio kullanarak Apache Spark havuzu oluşturma](/azure/synapse-analytics/quickstart-create-apache-spark-pool-studio)
 
 * [Azure Machine Learning Python SDK 'sını](/python/api/overview/azure/ml/intro) yükler
 

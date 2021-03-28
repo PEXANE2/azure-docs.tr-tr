@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/26/2017
+ms.date: 03/26/2021
 ms.author: aldomel
-ms.openlocfilehash: bd46a09653f4d479ed0a09b73868d938aff1b825
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: c8d188c7bb7034cda450049c3d4912cc1517dae5
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605221"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645272"
 ---
 # <a name="virtual-network-traffic-routing"></a>Sanal ağ trafiğini yönlendirme
 
@@ -96,10 +96,12 @@ Kullanıcı tanımlı bir yol oluştururken belirtebileceğiniz sonraki atlama t
 
 Kullanıcı tanımlı yollarda sonraki atlama türü olarak **VNet eşlemesi** veya **VirtualNetworkServiceEndpoint** seçeneğini belirtemezsiniz. Sonraki atlama türü **VNet eşlemesi** veya **VirtualNetworkServiceEndpoint** olan yollar yalnızca bir sanal ağ eşlemesi ya da hizmet uç noktası yapılandırdığınızda Azure tarafından oluşturulur.
 
-### <a name="service-tags-for-user-defined-routes-public-preview"></a>Kullanıcı tanımlı yollar için hizmet etiketleri (Genel Önizleme)
+### <a name="service-tags-for-user-defined-routes-preview"></a>Kullanıcı tanımlı yollar için hizmet etiketleri (Önizleme)
 
 Artık açık bir IP aralığı yerine Kullanıcı tanımlı bir yolun adres ön eki olarak bir [hizmet etiketi](service-tags-overview.md) belirtebilirsiniz. Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir ve Kullanıcı tanımlı yollarla sık yapılan güncelleştirmelerin karmaşıklığını en aza indirir ve oluşturmanız gereken yolların sayısını azaltır. Şu anda her yol tablosunda hizmet etiketleri ile 25 veya daha az yol oluşturabilirsiniz. </br>
 
+> [!IMPORTANT]
+> Kullanıcı tanımlı yolların hizmet etiketleri şu anda önizlemededir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 #### <a name="exact-match"></a>Tam eşleşme
 Açık bir IP öneki ve bir hizmet etiketi olan bir rota arasında tam bir ön ek eşleşmesi olduğunda, tercihe açık ön eke sahip rota verilir. Hizmet etiketlerinin birden çok yolu eşleşen IP öneklerine sahip olduğunda, rotalar aşağıdaki sırayla değerlendirilir: 

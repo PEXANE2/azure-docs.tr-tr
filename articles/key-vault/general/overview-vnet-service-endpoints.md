@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 148f67fb87072a8ffd25f0fe1dfdb444be052173
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: ae22f07a70f3317b62776e5024b7a3d1084516a1
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771626"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643494"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault için sanal ağ hizmet uç noktaları
 
@@ -48,7 +48,7 @@ Hizmet uç noktalarını nasıl kullanabileceğinizi gösteren bazı örnekler �
 |Exchange Online & SharePoint Online|[Müşteri anahtarına](/microsoft-365/compliance/customer-key-overview)sahip Azure depolama hizmeti şifrelemesi müşteri anahtarına erişime izin verin.|
 |Azure Information Protection|Azure Information Protection için kiracı anahtarına erişime izin ver [.](/azure/information-protection/what-is-information-protection)|
 |Azure App Service|[Key Vault aracılığıyla Azure Web uygulaması sertifikasını dağıtın](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
-|Azure SQL Veritabanı|[Azure SQL veritabanı ve Azure SYNAPSE Analytics için kendi anahtarını getir desteğiyle saydam veri şifrelemesi](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&preserve-view=true&viewFallbackFrom=azuresqldb-current).|
+|Azure SQL Veritabanı|[Azure SQL veritabanı ve Azure SYNAPSE Analytics için kendi anahtarını getir desteğiyle saydam veri şifrelemesi](../../azure-sql/database/transparent-data-encryption-byok-overview.md).|
 |Azure Depolama|[Depolama Hizmeti Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarları kullanma](../../storage/common/customer-managed-keys-configure-key-vault.md).|
 |Azure Data Lake Store|Müşteri tarafından yönetilen bir anahtarla [Azure Data Lake Store verilerin şifrelenmesi](../../data-lake-store/data-lake-store-encryption.md) .|
 |Azure Synapse Analytics|[Azure Key Vault 'de müşteri tarafından yönetilen anahtarlar kullanılarak verilerin şifrelenmesi](../../synapse-analytics/security/workspaces-encryption.md)|

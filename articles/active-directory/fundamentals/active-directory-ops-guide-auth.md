@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 90e215ea445c8c700e351149e9c7a91d9a595252
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0d425111e151d60ab38a60e38cd1805cef39f606
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96859530"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641777"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory kimlik doğrulaması yönetim işlemleri başvuru kılavuzu
 
@@ -365,8 +365,8 @@ Oturum açma etkinliğine erişim, Azure AD için denetimler ve risk olayları, 
 
 #### <a name="logs-recommended-reading"></a>Günlük okuma önerilir
 
-- [Azure Active Directory Denetim API 'SI başvurusu](/graph/api/resources/directoryaudit?view=graph-rest-beta%3fview%3dgraph-rest-beta)
-- [Azure Active Directory oturum açma etkinliği rapor API 'SI başvurusu](/graph/api/resources/signin?view=graph-rest-beta%3fview%3dgraph-rest-beta)
+- [Azure Active Directory Denetim API 'SI başvurusu](/graph/api/resources/directoryaudit?view=graph-rest-beta)
+- [Azure Active Directory oturum açma etkinliği rapor API 'SI başvurusu](/graph/api/resources/signin?view=graph-rest-beta)
 - [Sertifikalarla Azure AD Raporlama API’sini kullanarak veri alma](../reports-monitoring/tutorial-access-api-with-certificates.md)
 - [Azure Active Directory Kimlik Koruması için Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md)
 - [Office 365 yönetimi etkinlik API 'SI başvurusu](/office/office-365-management-api/office-365-management-activity-api-reference)

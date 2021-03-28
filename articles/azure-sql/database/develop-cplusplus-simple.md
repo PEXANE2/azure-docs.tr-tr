@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: e891c5797c9ce93e6cab7a07d2f68de1a9157249
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0460317a47a1cf01707990b6f92532d4ade01439
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92674764"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643291"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>C ve C++ kullanarak SQL veritabanı 'na bağlanma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
 * Etkin bir Azure hesabı. Bir aboneliğiniz yoksa [Ücretsiz Azure Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 * [Visual Studio](https://www.visualstudio.com/downloads/). Bu örneği derlemek ve çalıştırmak için C++ dil bileşenlerini yüklemelisiniz.
-* [Visual Studio Linux geliştirme](/cpp/linux/?view=vs-2019). Linux üzerinde geliştiriyorsanız, Visual Studio Linux uzantısını da yüklemelisiniz.
+* [Visual Studio Linux geliştirme](/cpp/linux/). Linux üzerinde geliştiriyorsanız, Visual Studio Linux uzantısını da yüklemelisiniz.
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Sanal makinelerde Azure SQL veritabanı ve SQL Server
 

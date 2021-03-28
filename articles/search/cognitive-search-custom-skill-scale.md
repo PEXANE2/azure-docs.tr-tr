@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: ccee8537c2543b67c1bb60711737ec761ebc8cbf
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 4fdc222fa20aef6639bf6d5d485f7dcf6b6ca535
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043079"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641148"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>Özel bir yeteneğin etkin bir şekilde ölçeğini genişletme
 
@@ -26,7 +26,7 @@ ms.locfileid: "105043079"
 
 + Özel bir yeteneğin uygulanması gereken giriş/çıkış arabirimine giriş için [özel beceri arabirimini](cognitive-search-custom-skill-interface.md) gözden geçirin.
 
-+ Ortamınızı ayarlayın. Visual Studio Code ve Python uzantılarını kullanarak sunucusuz Azure Işlevini ayarlamak için [Bu öğreticiden uçtan uca](/python/tutorial-vs-code-serverless-python-01) başlayabilirsiniz.
++ Ortamınızı ayarlayın. Visual Studio Code ve Python uzantılarını kullanarak sunucusuz Azure Işlevini ayarlamak için [Bu öğreticiden uçtan uca](/azure/azure-functions/create-first-function-vs-code-python) başlayabilirsiniz.
 
 ## <a name="skillset-configuration"></a>Beceri yapılandırması
 

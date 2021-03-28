@@ -4,12 +4,12 @@ description: 'Tümleştirme görevleri için optimize edilmiş Microsoft bulut h
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 95167791efe13526b0a70c28fa89771542a9d220
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e6bd97469a6b7b6c42427e130ac103954377c652
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98685570"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643373"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Azure’da doğru tümleştirme ve otomasyon hizmetlerini seçme
 
@@ -57,7 +57,7 @@ Düzenleme oluşturduğunuzda, mantıksal uygulamalardan işlev çağırdığın
 | **Bağlantı** | [Bir düzine yerleşik bağlama türü hakkında](functions-triggers-bindings.md#supported-bindings), özel bağlamalar için kod yazın | [Büyük bağlayıcılar koleksiyonu](../connectors/apis-list.md), [B2B senaryoları için Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md), [özel bağlayıcılar oluşturma](../logic-apps/custom-connector-overview.md) |
 | **Eylemler** | Her etkinlik bir Azure işlevidir; eylem işlevleri için kod yazma |[Hazır eylemlerden oluşan büyük koleksiyon](../logic-apps/logic-apps-workflow-actions-triggers.md)|
 | **İzleme** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure izleyici günlükleri](../logic-apps/monitor-logic-apps.md)|
-| **Yönetim** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2019) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](/rest/api/logic/), [PowerShell](/powershell/module/az.logicapp), [Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
+| **Yönetim** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](/rest/api/logic/), [PowerShell](/powershell/module/az.logicapp), [Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
 | **Yürütme bağlamı** | [Yerel olarak](functions-runtime-overview.md) veya bulutta çalışabilir | Yalnızca bulutta çalışır|
 
 <a name="function"></a>

@@ -5,18 +5,18 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 50f71ee1ce59f5809fe8905c58f0399cf484f11a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fb1b9e3458d08b8387c7f3978ff83c097fad2375
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94659718"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644023"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>SQL Server yönetmek ve geliştirmek için bir laboratuvar kurun
 
 Bu makalede, Azure Lab Services bir temel SQL Server Yönetim ve geliştirme sınıfı için bir laboratuvarın nasıl ayarlanacağı açıklanır.  Veritabanı kavramları, üniversite içindeki bilgisayar bilimi departmanlarından birçoğu için tanıtım kurslarından biridir. Yapılandırılmış Sorgu Dili (SQL) uluslararası bir standarttır.  SQL, bir veritabanında içerik ekleme, erişme ve yönetme dahil olmak üzere, ilişki veritabanı yönetimine yönelik standart dildir.  Bu en çok, hızlı işleme, kanıtlanmış güvenilirlik, kolaylıklar ve kullanım esnekliği için belirtilmiştir.
 
-Bu makalede, [Visual Studio 2019](https://visualstudio.microsoft.com/vs/), [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)ve [Azure Data Studio](https://github.com/microsoft/azuredatastudio)ile laboratuvarda bir sanal makine şablonu ayarlamayı göstereceğiz.  Bu laboratuvar için, tüm laboratuvarın tek bir paylaşılan [SQL Server veritabanı](../azure-sql/database/sql-database-paas-overview.md) kullanacağız. [Azure SQL veritabanı](../azure-sql/database/sql-database-paas-overview.md) , Azure 'Dan bir hizmet olarak platform (PaaS) veritabanı altyapısı sunuyor.
+Bu makalede, [Visual Studio 2019](https://visualstudio.microsoft.com/vs/), [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)ve [Azure Data Studio](https://github.com/microsoft/azuredatastudio)ile laboratuvarda bir sanal makine şablonu ayarlamayı göstereceğiz.  Bu laboratuvar için, tüm laboratuvarın tek bir paylaşılan [SQL Server veritabanı](../azure-sql/database/sql-database-paas-overview.md) kullanacağız. [Azure SQL veritabanı](../azure-sql/database/sql-database-paas-overview.md) , Azure 'Dan bir hizmet olarak platform (PaaS) veritabanı altyapısı sunuyor.
 
 ## <a name="lab-configuration"></a>Laboratuvar yapılandırması
 
@@ -82,9 +82,9 @@ Artık laboratuvarımız oluşturduğumuza göre, şablon makinesini ihtiyaç du
 
 ## <a name="visual-studio"></a>Visual Studio
 
-Yukarıda seçilen görüntü, [Visual Studio 2019 Community](https://visualstudio.microsoft.com/vs/community/)içerir.  Tüm iş yükleri ve araç kümeleri görüntüde zaten yüklü.  İstediğiniz [isteğe bağlı araçları yüklemek](/visualstudio/install/modify-visual-studio?view=vs-2019) için Visual Studio yükleyicisi kullanın.  Community sürümünün kilidini açmak için [Visual Studio 'Da oturum açın](/visualstudio/ide/signing-in-to-visual-studio?view=vs-2019#how-to-sign-in-to-visual-studio) .
+Yukarıda seçilen görüntü, [Visual Studio 2019 Community](https://visualstudio.microsoft.com/vs/community/)içerir.  Tüm iş yükleri ve araç kümeleri görüntüde zaten yüklü.  İstediğiniz [isteğe bağlı araçları yüklemek](/visualstudio/install/modify-visual-studio?view=vs-2019&preserve-view=true) için Visual Studio yükleyicisi kullanın.  Community sürümünün kilidini açmak için [Visual Studio 'Da oturum açın](/visualstudio/ide/signing-in-to-visual-studio?view=vs-2019&preserve-view=true#how-to-sign-in-to-visual-studio) .
 
-Visual Studio, SQL Server Veri Araçları (SSDT) içeren **veri depolama ve işleme** aracı kümesini içerir.  SSDT 'nin özellikleri hakkında daha fazla bilgi için bkz. [SQL Server veri araçları genel bakış](/sql/ssdt/sql-server-data-tools?view=sql-server-ver15).  Sınıfın paylaşılan SQL Server bağlantısını doğrulamak için, bkz. [bir veritabanına bağlanma ve var olan nesnelere gözatmaya](/sql/ssdt/how-to-connect-to-a-database-and-browse-existing-objects?view=sql-server-ver15)yönelik. İstenirse, SQL Server örneğinize bağlanabilecek [izin verilen bilgisayarlar listesine](../azure-sql/database/firewall-configure.md) şablon makinesini ekleyin.
+Visual Studio, SQL Server Veri Araçları (SSDT) içeren **veri depolama ve işleme** aracı kümesini içerir.  SSDT 'nin özellikleri hakkında daha fazla bilgi için bkz. [SQL Server veri araçları genel bakış](/sql/ssdt/sql-server-data-tools).  Sınıfın paylaşılan SQL Server bağlantısını doğrulamak için, bkz. [bir veritabanına bağlanma ve var olan nesnelere gözatmaya](/sql/ssdt/how-to-connect-to-a-database-and-browse-existing-objects)yönelik. İstenirse, SQL Server örneğinize bağlanabilecek [izin verilen bilgisayarlar listesine](../azure-sql/database/firewall-configure.md) şablon makinesini ekleyin.
 
 Visual Studio, mobil iş yükleri & **Web & bulut** ve **Masaüstü** gibi birçok iş yükünü destekler.  Bu iş yüklerinin her ikisi de veri kaynağı olarak SQL Server destekler. SQL Server ASP.NET Core kullanma hakkında daha fazla bilgi için bkz. Azure App Service öğreticide [ASP.NET Core ve SQL veritabanı uygulaması oluşturma](../app-service/tutorial-dotnetcore-sqldb-app.md) .  [Xamarin](/xamarin) UYGULAMASıNDAN bir SQL veritabanına bağlanmak için [System. Data. SqlClient](/dotnet/api/system.data.sqlclient) kitaplığını kullanın.
 
@@ -113,7 +113,7 @@ Artık Azure Data Studio yüklediğimiz için Azure SQL veritabanı bağlantıs�
 
 ## <a name="install-sql-server-management-studio"></a>SQL Server Management Studio yüklensin
 
-[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15) , HERHANGI bir SQL altyapısını yönetmeye yönelik tümleşik bir ortamdır.  SSMS, veritabanı yöneticilerinin veri altyapısını dağıtmak, izlemek ve yükseltmek için kullanılan bir araçtır.
+[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) , HERHANGI bir SQL altyapısını yönetmeye yönelik tümleşik bir ortamdır.  SSMS, veritabanı yöneticilerinin veri altyapısını dağıtmak, izlemek ve yükseltmek için kullanılan bir araçtır.
 
 1. [SQL Server Management Studio indirin](https://aka.ms/ssmsfullsetup). İndirildikten sonra yükleyiciyi başlatın.
 2. **Hoş geldiniz** sayfasında, **yükler**' e tıklayın.

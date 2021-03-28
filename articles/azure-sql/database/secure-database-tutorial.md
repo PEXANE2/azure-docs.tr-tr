@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 8cdf95dd3c0e801896328136b15e4bd4efe53005
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 306a8d78caf36291573d021ed1d814aa4f7a2164
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102563821"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642781"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Öğretici: Azure SQL veritabanında bir veritabanını güvenli hale getirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -109,7 +109,7 @@ Veritabanı düzeyinde bir güvenlik duvarı kuralı kurmak için:
 1. Araç çubuğundan **Çalıştır** ' ı seçerek güvenlik duvarı kuralı oluşturun.
 
 > [!NOTE]
-> Ayrıca, SSMS 'de [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database?view=azuresqldb-current) komutunu kullanarak sunucu düzeyinde bir güvenlik duvarı kuralı oluşturabilirsiniz, ancak *ana* veritabanına bağlı olmanız gerekir.
+> Ayrıca, SSMS 'de [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database?view=azuresqldb-current&preserve-view=true) komutunu kullanarak sunucu düzeyinde bir güvenlik duvarı kuralı oluşturabilirsiniz, ancak *ana* veritabanına bağlı olmanız gerekir.
 
 ## <a name="create-an-azure-ad-admin"></a>Azure AD Yöneticisi oluşturma
 

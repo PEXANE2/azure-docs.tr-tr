@@ -9,12 +9,12 @@ ms.date: 03/12/2021
 ms.author: msangapu
 ms.custom: seodec18
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: bc36325b55f049eebef823d836768fccc39a7615
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 654b0f842a3165926242d1ef03f2dfe4e5bacfdc
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103472169"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643354"
 ---
 # <a name="continuous-deployment-with-custom-containers-in-azure-app-service"></a>Azure App Service özel kapsayıcılarla sürekli dağıtım
 
@@ -32,7 +32,7 @@ Sol menüden **Dağıtım Merkezi**  >  **ayarları**' na tıklayın.
 Dağıtım kaynağını **seçin** senaryonuza bağlıdır:
 - **Kapsayıcı kayıt defteri** , kapsayıcı kayıt defteriniz ve App SERVICE arasında CI/CD 'yi ayarlar.
 - GitHub 'da kapsayıcı görüntünüz için kaynak kodu korumanız durumunda **GitHub eylemleri** seçeneği sizin için yapılır. GitHub deponuzda yeni işlemeler tarafından tetiklenen dağıtım eylemi, `docker build` `docker push` doğrudan kapsayıcı Kayıt defterinize çalışabilir ve ardından App Service uygulamanızı yeni görüntüyü çalıştıracak şekilde güncelleştirebilir. Daha fazla bilgi için bkz. [CI/CD 'Nin GitHub eylemleri Ile nasıl çalıştığı](#how-cicd-works-with-github-actions).
-- **Azure Pipelines** ile CI/CD 'yi ayarlamak için, bkz. [Azure Pipelines Azure Web uygulaması kapsayıcısı dağıtma](/devops/pipelines/targets/webapp-on-container-linux).
+- **Azure Pipelines** ile CI/CD 'yi ayarlamak için, bkz. [Azure Pipelines Azure Web uygulaması kapsayıcısı dağıtma](/azure/devops/pipelines/targets/webapp-on-container-linux).
 
 > [!NOTE]
 > Docker Compose uygulama için **Container Registry**' ı seçin.

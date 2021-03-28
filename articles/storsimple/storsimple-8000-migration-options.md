@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 2386a7f03508be2a3e6c57111ae206807efaf3ed
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: cc67b678fabeb2a7878490a4ea713acb5709cdbc
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105567874"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643786"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>StorSimple 5000-7000 serisindeki verileri geçirme seçenekleri 
 
@@ -63,7 +63,7 @@ Cohesity, geçerli StorSimple 5000 – 7000 ' ten verileri Azure 'daki Cohesity 
 
 Nasuni, StorSimple 5000-7000 müşterilerinin verileri Azure 'da geçirmesini ve tutmasını kolaylaştırır.  Nasuni, önde gelen Azure tabanlı bir NAS depolama çözümüdür ve müşterilere, şirket içi çözümlerden beklenen performans ve güvenlik, bulut ekonomiki ve ölçeklendirilmesine sahip olur.  Yüksek performanslı dosya depolama, Nasuni ve Azure 'ın yedekleme ve DR işleme yanı sıra, merkezi dosya depolama yönetimi sayesinde dünyanın dört bir yanındaki verilerinizi paylaşmanıza ve bunlarla işbirliği yapmanıza olanak sağlar. 
 
-Nasuni sayesinde geçişinizi kolay bir şekilde kullanmaya başlayın: https://info.nasuni.com/nasuni-storsimple-migration
+Nasuni sayesinde geçişinizi kolay bir şekilde kullanmaya başlayın: https://www.nasuni.com/blog-migrating-off-storsimple/
 
 #### <a name="migrate-to-talon-fast"></a>HıZLı bir şekilde geçiş yapın
 

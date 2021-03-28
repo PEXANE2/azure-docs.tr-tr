@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 author: cweining
 ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: b0c26aa95d8c3aba5df164fb0707b4833accd052
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 57a417948d23d40801eb34cf10aab1e6f17037e6
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786490"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644090"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET uygulamalarında özel durumlarda anlık görüntü hatalarını ayıklama
 Bir özel durum oluştuğunda, Canlı Web uygulamanızdan otomatik olarak bir hata ayıklama anlık görüntüsü toplayabilirsiniz. Anlık görüntü, kaynak kodu ve değişkenlerin durumunu özel durumun oluşturulduğu anda gösterir. [Azure Application Insights](./app-insights-overview.md) Snapshot Debugger Web uygulamanızdan özel durum telemetrisini izler. Üretim aşamasındaki sorunları tanılamak için ihtiyaç duyduğunuz bilgilere sahip olmanız için, en önemli özel durumlarınızın anlık görüntülerini toplar. [Anlık görüntü toplayıcısı NuGet paketini](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) uygulamanıza ekleyin ve isteğe bağlı olarak [ApplicationInsights.config](./configuration-with-applicationinsights-config.md)koleksiyon parametrelerini yapılandırın. Anlık görüntüler Application Insights portalındaki [özel durumlar](./asp-net-exceptions.md) üzerinde görünür.
@@ -124,7 +124,7 @@ Visual Studio 2017 sürüm 15,2 (veya üzeri), yayın derlemeleri için App Serv
 Azure Işlem ve diğer türler için, sembol dosyalarının ana uygulama. dll ' de aynı klasörde (genellikle, `wwwroot/bin` ) veya geçerli yolda kullanılabilir olduğundan emin olun.
 
 > [!NOTE]
-> Kullanılabilir farklı sembol seçenekleri hakkında daha fazla bilgi için [Visual Studio belgelerine](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+> Kullanılabilir farklı sembol seçenekleri hakkında daha fazla bilgi için [Visual Studio belgelerine](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019&preserve-view=true#output
 )başvurun. En iyi sonuçlar için, "tam", "taşınabilir" veya "katıştırılmış" kullanmanızı öneririz.
 
 ### <a name="optimized-builds"></a>İyileştirilmiş derlemeler

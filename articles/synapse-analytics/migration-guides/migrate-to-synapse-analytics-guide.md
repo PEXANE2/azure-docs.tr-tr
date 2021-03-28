@@ -10,12 +10,12 @@ author: julieMSFT
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.date: 03/10/2021
-ms.openlocfilehash: 8a76a637c4862032b100308d8b02bced76af38fe
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: e27e7e0bb4616508c8f137260bde68de9420f9cf
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023410"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644963"
 ---
 # <a name="migrating-a-data-warehouse-to-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te bir veri ambarını adanmış bir SQL havuzuna geçirme 
 Aşağıdaki bölümlerde, var olan bir veri ambarı çözümünü Azure SYNAPSE Analytics adanmış SQL havuzu 'na geçirme ile ilgili yenilikler hakkında genel bir bakış sağlanmaktadır.
@@ -89,14 +89,14 @@ Başarılı bir geçiş gerçekleştirmek için tablo şemalarınızı, kodunuzu
 ## <a name="migration-assets-from-real-world-engagements"></a>Gerçek dünyada görevlendirmelere geçiş varlıkları
 Bu geçiş senaryosunu tamamlamaya yönelik ek yardım için, lütfen gerçek dünyada geçiş projesi katılımı desteğiyle geliştirilen aşağıdaki kaynaklara bakın.
 
-| Başlık/bağlantı                              | Açıklama                                                                                                                       |
+| Başlık/bağlantı                              | Description                                                                                                                       |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | [Veri Iş yükü değerlendirmesi modeli ve aracı](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Bu araç, belirli bir iş yükü için önerilen "en uygun" hedef platformları, bulut hazırlığı ve uygulama/veritabanı düzeltme düzeyini sağlar. Basit, tek tıklamayla hesaplama ve rapor oluşturma işlemlerini ve otomatikleştirilmiş ve Tekdüzen hedef platformu karar sürecini sağlayarak büyük Emlak değerlendirmelerinin hızlandırmasına büyük ölçüde yardımcı olur. |
 | [Verileri Azure SYNAPSE Analytics 'e yüklerken veri kodlama sorunlarını işleme](https://azure.microsoft.com/en-us/blog/handling-data-encoding-issues-while-loading-data-to-sql-data-warehouse/) | Bu blog, verileri SQL veri ambarı 'na yüklemek için PolyBase kullanırken karşılaşabileceğiniz bazı veri kodlama sorunları hakkında öngörü sağlamaya yöneliktir. Bu makale ayrıca, bu tür sorunları aşmak ve verileri başarıyla yüklemek için kullanabileceğiniz bazı seçenekler sağlar. |
 | [Azure SYNAPSE Analytics adanmış SQL havuzunda tablo boyutlarını alma](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Getting%20table%20sizes%20in%20SQL%20DW.pdf) | Bir mimarın yürütme gerçekleştirmesi gereken önemli görevlerden biri, yeni bir ortam geçişi sonrası için ölçümleri almak için: Şirket içinden buluta yük süreleri toplama, PolyBase yükleme süreleri toplama vb. Bu görevlerden biri, en önemli bir deyişle, müşterinin geçerli platformuna kıyasla SQL veri ambarı 'nda depolama boyutunu belirlemektir. |
 | [Şirket Içi SQL Server oturumlarını Azure SYNAPSE Analytics 'e taşımaya yönelik yardımcı program](https://github.com/Microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins) | Oturum açma işlemlerini yeniden oluşturmak ve bir "Şirket içi" SQL Server veritabanı kullanıcılarını Azure SQL PaaS hizmetine seçmek için bir T-SQL komut betiği oluşturan bir PowerShell betiği. Araç Windows AD hesaplarının otomatik olarak Azure AD hesaplarına eşlenmesini sağlar veya şirket içi Windows Active Directory karşı her oturum açma için UPN araması yapabilir. Araç isteğe bağlı olarak SQL Server yerel oturum açmaları da geçer. Özel sunucu ve veritabanı rollerinin yanı sıra rol üyeliği ve veritabanı rolü ve Kullanıcı izinleri de kullanılır. Kapsanan veritabanları henüz desteklenmiyor ve yalnızca olası SQL Server izinlerinin bir alt kümesi betikleştirilmiş; Yani, izin verme izni verme desteklenmez (karmaşık izin ağaçları). Destek belgesinde daha fazla ayrıntı mevcuttur ve kodun anlaşılmasına yönelik açıklamalar vardır. |
 
-Bu kaynaklar, Azure veri grubu Mühendisliği ekibi tarafından sponsorlu Data SQL Dokja programının bir parçası olarak geliştirilmiştir. Data SQL Dokja programının temel kreter, Microsoft 'un Azure veri platformuna yönelik karmaşık modernleştirme ve rekabet veri platformu geçiş fırsatlarını engellemeyi ve hızlandırmanızı sağlar. Kuruluşunuzun Data SQL Dokja programına katılım ile ilgilenmesini düşünüyorsanız, lütfen hesap ekibinize başvurarak bir aday göndermesini isteyin.
+Veri SQL Mühendisliği ekibi bu kaynakları geliştirdik. Bu takımın temel kurucu, veri platformu geçiş projelerini Microsoft 'un Azure veri platformu 'na yönelik karmaşık modernleştirmeyi engellemeyi ve hızlandırmanızı sağlar.
 
 ## <a name="videos"></a>Videolar
 - [Walgrekinin, Retail Inventory System 'ın,](https://www.youtube.com/watch?v=86dhd8N1lH4) Netezza 'Den Azure SYNAPSE Analytics 'e (eskı ADıYLA SQL DW) kadar yaklaşık 100 TB veri ile nasıl geçirildiğini izleyin. 

@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: 6383c0fa3aad15da8abaea79136a75732ce9ea01
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: a0e9cc9967509eba05bd26f3bad86eefeeb6ca3e
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605782"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639481"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL Veritabanı’na, SQL Yönetilen Örneği’ne ve Azure Synapse Analytics’e veritabanı erişimini yetkilendirme
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -85,7 +85,7 @@ Bu noktada, sunucunuz veya yönetilen örneğiniz yalnızca tek bir SQL oturum a
 
   - Ana veritabanında ek bir SQL oturum açma oluşturun.
   - [Alter Server role](/sql/t-sql/statements/alter-server-role-transact-sql) deyimini kullanarak [sysadmin sabit sunucu rolüne](/sql/relational-databases/security/authentication-access/server-level-roles) oturum açma ekleyin. Bu oturum açma tam yönetim izinlerine sahip olacaktır.
-  - Alternatif olarak, [create LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) sözdizimini kullanarak BIR [Azure AD oturum açma bilgisi](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) oluşturun.
+  - Alternatif olarak, [create LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) sözdizimini kullanarak BIR [Azure AD oturum açma bilgisi](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) oluşturun.
 
 - **SQL veritabanı 'nda, sınırlı yönetim izinleriyle SQL oturumları oluşturun**
 
@@ -122,9 +122,9 @@ Yönetici olmayan kullanıcılar için, iki yöntemden birini kullanarak hesap o
 
 Oturum açma ve Kullanıcı oluşturma işlemlerini gösteren örnekler için bkz.:
 
-- [Azure SQL veritabanı için oturum açma oluştur](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
-- [Azure SQL yönetilen örneği için oturum açma oluştur](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
-- [Azure SYNAPSE için oturum açma oluşturma](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
+- [Azure SQL veritabanı için oturum açma oluştur](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)
+- [Azure SQL yönetilen örneği için oturum açma oluştur](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true#examples-2)
+- [Azure SYNAPSE için oturum açma oluşturma](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples-3)
 - [Kullanıcı Oluştur](/sql/t-sql/statements/create-user-transact-sql#examples)
 - [Azure AD kapsanan kullanıcılar oluşturuluyor](authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)
 

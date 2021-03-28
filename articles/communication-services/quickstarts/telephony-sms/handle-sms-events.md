@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-SMS olaylarını Işleme
+title: Hızlı başlangıç-teslim raporları ve gelen Iletiler için SMS olaylarını Işleme
 titleSuffix: An Azure Communication Services quickstart
 description: Azure Iletişim hizmetlerini kullanarak SMS olaylarını nasıl işleyeceğinizi öğrenin.
 author: mikben
@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6db817999b415ebe2c4bb7cb4216ed1e9ad9c325
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6d16a4d9ecd2e9246933b2543da3b05239ac2f7f
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655997"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644645"
 ---
-# <a name="quickstart-handle-sms-events"></a>Hızlı başlangıç: SMS olaylarını Işleme
+# <a name="quickstart-handle-sms-events-for-delivery-reports-and-inbound-messages"></a>Hızlı başlangıç: teslim raporları ve gelen Iletiler için SMS olaylarını Işleme
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
@@ -117,6 +117,7 @@ Bu hızlı başlangıçta SMS olaylarını nasıl kullanacağınızı öğrendin
 > [SMS gönder](../telephony-sms/send.md)
 
 Ayrıca şunları yapmak isteyebilirsiniz:
+
 
  - [Olay işleme kavramları hakkında bilgi edinin](../../../event-grid/event-schema-communication-services.md)
  - [Event Grid hakkında bilgi edinin](../../../event-grid/overview.md)

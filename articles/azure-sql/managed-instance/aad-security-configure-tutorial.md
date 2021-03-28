@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 9161bf4f99ddfed479451d2091458ab309aa2c17
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 50544507f9d83c216bb6c18e004c5ce7ad1ca346
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92788630"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639843"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Öğretici: Azure AD Server sorumlularını (oturum açma) kullanarak Azure SQL yönetilen örneği 'nde güvenlik
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -106,7 +106,7 @@ SQL yönetilen örneğine bağlanma örnekleri için aşağıdaki makalelere bak
 
     ![Yeni eklenen oturum açmanın adını, principal_id, SID 'sini, türünü ve type_desc gösteren S S s Nesne Gezgini sonuçları sekmesinin ekran görüntüsü.](./media/aad-security-configure-tutorial/native-login.png)
 
-Daha fazla bilgi için bkz. [oturum oluşturma](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
+Daha fazla bilgi için bkz. [oturum oluşturma](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 ## <a name="grant-permissions-to-create-logins"></a>Oturum açma işlemleri oluşturmak için izin verme
 
@@ -182,7 +182,7 @@ Azure AD Server sorumlusu (oturum açma) oluşturulduktan ve ayrıcalıklarla sa
     GO
     ```
 
-1. [Veritabanı oluştur](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current) sözdizimini kullanarak yönetilen örnekte bir veritabanı oluşturun. Bu veritabanı, sonraki bölümde kullanıcı oturumlarını test etmek için kullanılacaktır.
+1. [Veritabanı oluştur](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) sözdizimini kullanarak yönetilen örnekte bir veritabanı oluşturun. Bu veritabanı, sonraki bölümde kullanıcı oturumlarını test etmek için kullanılacaktır.
     1. **Nesne Gezgini**, sunucuya sağ tıklayın ve **Yeni sorgu**' yı seçin.
     1. Sorgu penceresinde, **Mymitestdb** adlı bir veritabanı oluşturmak için aşağıdaki sözdizimini kullanın.
 
@@ -264,7 +264,7 @@ Veritabanı izinleri verme hakkında daha fazla bilgi için bkz. [veritabanı al
     > [!IMPORTANT]
     > Bir Azure AD sunucu sorumlusu 'ndan (oturum açma) bir **Kullanıcı** oluştururken, user_name **oturum açma** işleminden aynı login_name olarak belirtin.
 
-    Daha fazla bilgi için bkz. [Kullanıcı oluşturma](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current).
+    Daha fazla bilgi için bkz. [Kullanıcı oluşturma](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 1. Yeni bir sorgu penceresinde, aşağıdaki T-SQL komutunu kullanarak bir test tablosu oluşturun:
 

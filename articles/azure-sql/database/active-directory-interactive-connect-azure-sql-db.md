@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: MirekS
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: 93831ec4c1dc3e34c2ea144e71b67dae711ee870
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e2fa09ac8609310d4579590214bc25e5d7ee309f
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94841657"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641567"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication Azure SQL veritabanı 'na bağlanma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -113,7 +113,7 @@ C# örneği [`System.Data.SqlClient`](/dotnet/api/system.data.sqlclient) ad alan
   Azure AD Kullanıcı adı ve parolası gerektiren kimlik doğrulaması için bu değeri kullanın. Azure SQL veritabanı kimlik doğrulaması yapar. Bu yöntem Multi-Factor Authentication desteklemez.
 
 > [!NOTE]
-> .NET Core kullanıyorsanız, [Microsoft. Data. SqlClient](/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) ad alanını kullanmak isteyeceksiniz. Daha fazla bilgi için aşağıdaki [bloga](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)bakın.
+> .NET Core kullanıyorsanız, [Microsoft. Data. SqlClient](/dotnet/api/microsoft.data.sqlclient) ad alanını kullanmak isteyeceksiniz. Daha fazla bilgi için aşağıdaki [bloga](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)bakın.
 
 ## <a name="set-c-parameter-values-from-the-azure-portal"></a>Azure portal C# parametre değerlerini ayarlama
 
@@ -148,7 +148,7 @@ Daha fazla bilgi için bkz. [SSMS ve Azure AD için Multi-Factor Authentication 
 ## <a name="c-code-example"></a>C# kod örneği
 
 > [!NOTE]
-> .NET Core kullanıyorsanız, [Microsoft. Data. SqlClient](/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) ad alanını kullanmak isteyeceksiniz. Daha fazla bilgi için aşağıdaki [bloga](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)bakın.
+> .NET Core kullanıyorsanız, [Microsoft. Data. SqlClient](/dotnet/api/microsoft.data.sqlclient) ad alanını kullanmak isteyeceksiniz. Daha fazla bilgi için aşağıdaki [bloga](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)bakın.
 
 Örnek C# programı, [*Microsoft. IdentityModel. clients. ActiveDirectory*](/dotnet/api/microsoft.identitymodel.clients.activedirectory) dll derlemesini temel alır.
 

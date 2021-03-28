@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1ef49b66e6bba7c829abd35f6c8cc4169a2c14a0
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 0eff5b13a79f64de1863e82a2c9285788accf6fc
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105625305"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641536"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Canlı etkinlikler ve canlı çıktılar Media Services
 
@@ -225,14 +225,6 @@ Akışın canlı olayına akışını tamamladıktan sonra bir [varlık](/rest/a
 
 Canlı çıktılar hakkında ayrıntılı bilgi için bkz. [Cloud DVR kullanma](live-event-cloud-dvr.md).
 
-## <a name="frequently-asked-questions"></a>Sık sorulan sorular
+## <a name="live-event-output-questions"></a>Canlı olay çıkış soruları
 
-[Sık sorulan sorular](frequently-asked-questions.md#live-streaming) makalesine bakın.
-
-## <a name="ask-questions-and-get-updates"></a>Soru sorun ve güncelleştirme al
-
-Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştirmeler almak için [Azure Media Services Community](media-services-community.md) makalesine göz atın.
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-[Canlı akış öğreticisi](stream-live-tutorial-with-api.md)
+[Canlı olay çıkış soruları](questions-collection.md#live-streaming) makalesine bakın.

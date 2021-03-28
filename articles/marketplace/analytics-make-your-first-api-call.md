@@ -7,12 +7,12 @@ ms.topic: article
 author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 65ee0847e6a59976eec223b68b1f3e0c464674e8
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 9e5fbdfca80d19f026a014a89ffbf137bacb521c
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105563812"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639575"
 ---
 # <a name="make-your-first-api-call-to-access-commercial-marketplace-analytics-data"></a>Ticari Market Analytics verilerine erişmek için ilk API çağrısını yapın
 
@@ -337,5 +337,5 @@ Curl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Swagger API URL 'si](https://partneranalytics-api.azure-api.net/analytics/cmp/swagger/index.html) aracılığıyla API 'leri deneyebilirsiniz
+- [Swagger API URL 'si](https://swagger.io/docs/specification/api-host-and-base-path/) aracılığıyla API 'leri deneyebilirsiniz
 - [Programlı erişim paradigması](analytics-programmatic-access.md)

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: ce575a67552c89b17ff4ed9b44ab43a4bd12d67f
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 417b6099a6b52fecf6f11e1074b346e9a63255c3
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110777"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645394"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-java"></a>Iletişim Hizmetleri çözümünüze yönetilen kimlik ekleme (Java)
 
@@ -47,7 +47,7 @@ import java.io.IOException;
 import java.util.*;
 ```
 
-Aşağıdaki örneklerde [DefaultAzureCredential](/java/api/azure.identity.defaultazurecredential)kullanılmaktadır. Bu kimlik bilgisi üretim ve geliştirme ortamları için uygundur.
+Aşağıdaki örneklerde [DefaultAzureCredential](/java/api/com.azure.identity.defaultazurecredential)kullanılmaktadır. Bu kimlik bilgisi üretim ve geliştirme ortamları için uygundur.
 
 `AZURE_CLIENT_SECRET``AZURE_CLIENT_ID`ve `AZURE_TENANT_ID` bir nesne oluşturmak için ortam değişkenleri gereklidir `DefaultAzureCredential` . Geliştirme ortamında kayıtlı bir uygulama oluşturmak ve ortam değişkenlerini ayarlamak için bkz. [yönetilen kimlik ile erişim yetkisi verme](../managed-identity-from-cli.md).
 

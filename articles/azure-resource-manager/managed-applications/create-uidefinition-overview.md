@@ -3,14 +3,14 @@ title: Portal bölmesi için dosya CreateUiDefinition.js
 description: Azure portal için Kullanıcı arabirimi tanımlarının nasıl oluşturulacağını açıklar. Azure yönetilen uygulamaları tanımlarken kullanılır.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 03/26/2021
 ms.author: tomfitz
-ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 586237c6dd909312780163cf316220d2f3fddd8c
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89319585"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641657"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Azure tarafından yönetilen uygulamanın oluşturma deneyimi için CreateUiDefinition.json
 
@@ -63,25 +63,29 @@ Createuıdefinition 'nizi oluşturmak için bir JSON Düzenleyicisi kullanabilir
             "constraints": {
                 "validations": [
                     {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid subscription."
+                        "isValid": "[not(contains(subscription().displayName, 'Test'))]",
+                        "message": "Can't use test subscription."
                     },
                     {
-                        "permission": "<Resource Provider>/<Action>",
-                        "message": "Must have correct permission to complete this step."
+                        "permission": "Microsoft.Compute/virtualmachines/write",
+                        "message": "Must have write permission for the virtual machine."
+                    },
+                    {
+                        "permission": "Microsoft.Compute/virtualMachines/extensions/write",
+                        "message": "Must have write permission for the extension."
                     }
                 ]
             },
             "resourceProviders": [
-                "<Resource Provider>"
+                "Microsoft.Compute"
             ]
         },
         "resourceGroup": {
             "constraints": {
                 "validations": [
                     {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid resource group."
+                        "isValid": "[not(contains(resourceGroup().name, 'test'))]",
+                        "message": "Resource group name can't contain 'test'."
                     }
                 ]
             },
@@ -103,11 +107,13 @@ Createuıdefinition 'nizi oluşturmak için bir JSON Düzenleyicisi kullanabilir
 },
 ```
 
+Özelliği için `isValid` , true veya false olarak çözümlenen bir ifade yazın. Özelliği için `permission` , [kaynak sağlayıcısı eylemleriyle](../../role-based-access-control/resource-provider-operations.md)birini belirtin.
+
 ### <a name="wizard"></a>Ekleme
 
 `isWizard`Özelliği, bir sonraki adıma geçmeden önce her adımın başarılı bir şekilde doğrulanmasını zorunlu kılmanıza olanak sağlar. `isWizard`Özellik belirtilmediğinde, varsayılan değer **false**'dur ve adım adım doğrulama gerekli değildir.
 
-`isWizard`Etkinleştirildiğinde, **doğru** olarak ayarlandığında **temel kavramlar** sekmesi kullanılabilir ve diğer tüm sekmeler devre dışı bırakılır. Bir **sonraki** düğme seçildiğinde sekmenin simgesi, bir sekmenin doğrulamasının geçtiğini veya başarısız olduğunu gösterir. Sekmenin gerekli alanları tamamlandıktan ve doğrulandıktan sonra **İleri düğmesi bir sonraki sekmeye** gidilmesine izin verir. Tüm sekmeler doğrulamadan geçene zaman, **Gözden geçirme ve oluşturma** sayfasına gidebilir ve **Oluştur** düğmesini seçerek dağıtıma başlayabilirsiniz.
+`isWizard`Etkinleştirildiğinde, **doğru** olarak ayarlandığında **temel kavramlar** sekmesi kullanılabilir ve diğer tüm sekmeler devre dışı bırakılır. Bir **sonraki** düğme seçildiğinde sekmenin simgesi, bir sekmenin doğrulamasının geçtiğini veya başarısız olduğunu gösterir. Sekmenin gerekli alanları tamamlanıp doğrulandıktan sonra, **İleri** düğmesi bir sonraki sekmeye gidilmesine izin verir. Tüm sekmeler doğrulamadan geçene zaman, **Gözden geçirme ve oluşturma** sayfasına gidebilir ve **Oluştur** düğmesini seçerek dağıtıma başlayabilirsiniz.
 
 :::image type="content" source="./media/create-uidefinition-overview/tab-wizard.png" alt-text="Sekme Sihirbazı":::
 
@@ -117,7 +123,7 @@ Temel bilgiler yapılandırması, temel kavramlar adımını özelleştirmenize 
 
 İçin `description` kaynağını açıklayan markaşağı etkin bir dize sağlayın. Çok satırlı biçim ve bağlantılar desteklenir.
 
-`subscription`Ve `resourceGroup` öğeleri ek doğrulamalar belirtmenize olanak tanır. Doğrulamaları belirtmenin sözdizimi, [metin kutusu](microsoft-common-textbox.md)için özel doğrulama ile aynıdır. Ayrıca `permission` , abonelik veya kaynak grubunda doğrulama belirtebilirsiniz.  
+`subscription`Ve `resourceGroup` öğeleri daha fazla doğrulama belirtmenize olanak tanır. Doğrulamaları belirtmenin sözdizimi, [metin kutusu](microsoft-common-textbox.md)için özel doğrulama ile aynıdır. Ayrıca `permission` , abonelik veya kaynak grubunda doğrulama belirtebilirsiniz.  
 
 Abonelik denetimi, kaynak sağlayıcısı ad alanlarının listesini kabul eder. Örneğin, **Microsoft. COMPUTE** belirtebilirsiniz. Kullanıcı kaynak sağlayıcısını desteklemeyen bir abonelik seçtiğinde bir hata iletisi gösterir. Bu hata, kaynak sağlayıcısı bu abonelikte kayıtlı olmadığında ve kullanıcının kaynak sağlayıcısını kaydetme izni yoksa oluşur.  
 
@@ -150,7 +156,7 @@ Aşağıdaki örnek, varsayılan öğelere eklenen bir metin kutusunu gösterir.
 
 ## <a name="steps"></a>Adımlar
 
-Steps özelliği, temel esadan sonra görüntülenecek sıfır veya daha fazla ek adım içerir. Her adım bir veya daha fazla öğe içerir. Dağıtılan uygulamanın rol veya katmanına göre adımları eklemeyi düşünün. Örneğin, ana düğüm girişleri için bir adım ve bir kümedeki çalışan düğümlerine yönelik bir adım ekleyin.
+Steps özelliği, temel esadan sonra görüntülenecek sıfır veya daha fazla adım içerir. Her adım bir veya daha fazla öğe içerir. Dağıtılan uygulamanın rol veya katmanına göre adımları eklemeyi düşünün. Örneğin, birincil düğüm girişleri için bir adım ve bir kümedeki çalışan düğümlerine yönelik bir adım ekleyin.
 
 ```json
 "steps": [

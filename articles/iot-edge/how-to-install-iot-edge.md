@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 03/26/2021
 ms.author: kgremban
-ms.openlocfilehash: 6a64bb2801830440dc49e72786c9c00a6e4796b3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a98eed61904b580988fe34302999f3ec6a24ac9e
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103201610"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640917"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Linux için Azure IoT Edge yükleme veya kaldırma
 
@@ -398,6 +398,8 @@ IoT Edge sistem hizmetinin çalışıp çalışmadığını denetleyin.
    sudo iotedge system status
    ```
 
+Başarılı bir durum yanıtı `Ok` .
+
 ::: moniker-end
 
 Hizmetle ilgili sorunları gidermeniz gerekirse hizmet günlüklerini alın.
@@ -491,7 +493,7 @@ Kıvrımlı komutlarını kullanarak bileşen dosyalarını doğrudan IoT Edge G
    2. Kimlik hizmetinin bu sürümünü yüklemek için aşağıdaki komutta bulunan kopyalanmış bağlantıyı kullanın:
 
       ```bash
-      curl -L <identity service link> -o aziot-identity-service.deb && sudo dpkg -i ./aziot-identity-service.deb
+      curl -L <identity service link> -o aziot-identity-service.deb && sudo apt-get install ./aziot-identity-service.deb
       ```
 
    3. IoT Edge cihazınızın mimarisiyle eşleşen **azıot Edge** dosyasını bulun. Dosya bağlantısına sağ tıklayıp bağlantı adresini kopyalayın.
@@ -499,7 +501,7 @@ Kıvrımlı komutlarını kullanarak bileşen dosyalarını doğrudan IoT Edge G
    4. Bu IoT Edge sürümünü yüklemek için aşağıdaki komutta bulunan kopyalanmış bağlantıyı kullanın.
 
       ```bash
-      curl -L <iotedge link> -o aziot-edge.deb && sudo dpkg -i ./aziot-edge.deb
+      curl -L <iotedge link> -o aziot-edge.deb && sudo apt-get install ./aziot-edge.deb
       ```
 
 <!-- end 1.2 -->

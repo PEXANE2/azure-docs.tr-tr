@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: e237cf09616cb645bfc4659af4439086979b2565
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 2702451aa3645b2702f8f38c37574a6601249dac
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023631"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641417"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Geçişe genel bakış: Azure VM 'lerinde SQL Server SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -131,7 +131,7 @@ SQL Server veritabanlarını Azure VM 'lerinde SQL Server geçirmeye hazırlanı
 
 Ek Yardım için, gerçek dünya geçiş projeleri için geliştirilen aşağıdaki kaynaklara bakın.
 
-|Varlık  |Açıklama  |
+|Varlık  |Description  |
 |---------|---------|
 |[Veri iş yükü değerlendirmesi modeli ve aracı](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Data%20Workload%20Assessment%20Model%20and%20Tool)| Bu araç, belirli bir iş yükü için önerilen "en uygun" hedef platformları, bulut hazırlığı ve uygulama/veritabanı düzeltme düzeyini sağlar. Basit ve tek tıklamayla bir hesaplama ve rapor oluşturma olanağı sunarak, ve otomatikleştirilmiş ve Tekdüzen hedef platformu karar süreci sağlayarak büyük Emlak değerlendirmelerini hızlandırmaya yardımcı olur.|
 |[Logman kullanarak PerfMon veri toplama Otomasyonu](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Geçiş hedefi önerisine yardımcı olan temel performansı anlamak için veri gerçekleştirme önerilerini toplayan bir araç. Bu araç, uzak bir SQL Server ayarlanan performans sayaçlarını oluşturacak, başlatacak, durdurmayacak ve silecek komutu oluşturmak için logman.exe kullanır.|
@@ -140,7 +140,7 @@ Ek Yardım için, gerçek dünya geçiş projeleri için geliştirilen aşağıd
 |[Birden çok-SQL-VM-VNet-ıLB](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/ARM%20Templates/Multiple-SQL-VM-VNet-ILB)|Bu teknik incelemede, SQL Server her zaman açık kullanılabilirlik grubu yapılandırmasında birden çok Azure sanal makinesi kurma adımları özetlenmektedir.|
 |[Bölge başına Ultra SSD destekleyen Azure sanal makineleri](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Find%20Azure%20VMs%20supporting%20Ultra%20SSD)|Bu PowerShell betikleri, Ultra SSD 'leri destekleyen Azure sanal makinelerini destekleyen bölgelerin listesini almak için programlı bir seçenek sağlar.|
 
-Bu kaynaklar, Azure veri grubu Mühendisliği ekibi tarafından sponsorlu Data SQL Dokja programının bir parçası olarak geliştirilmiştir. Data SQL Dokja programının temel kreter, Microsoft 'un Azure veri platformuna yönelik karmaşık modernleştirme ve rekabet veri platformu geçiş fırsatlarını engellemeyi ve hızlandırmanızı sağlar. Kuruluşunuzun Data SQL Dokja programına katılım ile ilgilenmesini düşünüyorsanız, lütfen hesap ekibinize başvurarak bir aday göndermesini isteyin.
+Veri SQL Mühendisliği ekibi bu kaynakları geliştirdik. Bu takımın temel kurucu, veri platformu geçiş projelerini Microsoft 'un Azure veri platformu 'na yönelik karmaşık modernleştirmeyi engellemeyi ve hızlandırmanızı sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

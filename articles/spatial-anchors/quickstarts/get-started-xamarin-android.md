@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1626dfa739df6b7cf971aa570f14d36ac6c532e7
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 874b59b7439621c9d2777a55065cd769a5434567
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96022624"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641328"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla bir Xamarin Android uygulaması oluşturma
 
@@ -37,7 +37,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emi
     - <a href="https://git-scm.com/download/win" target="_blank">Windows Için git</a>.
     - <a href="https://git-lfs.github.com/">GIT LFS</a>.
   - MacOS kullanılıyorsa:
-    - <a href="/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Mac için Visual Studio 8.1 +</a>' nin güncel sürümü.
+    - <a href="/visualstudio/mac/installation?view=vsmac-2019&preserve-view=true" target="_blank">Mac için Visual Studio 8.1 +</a>' nin güncel sürümü.
     - <a href="https://git-scm.com/download/mac" target="_blank">MacOS Için git</a>.
     - <a href="https://git-lfs.github.com/">GIT LFS</a>.
 - Xamarin. Android ' in en son sürümü, tercih ettiğiniz platformda yüklü ve çalışır. Xamarin. Android Yükleme Kılavuzu için [Xamarin. Android yükleme](/xamarin/android/get-started/installation/index) kılavuzlarını inceleyin.
@@ -75,13 +75,13 @@ Başlangıç projesini **Samplexamarin. Android** olarak ayarlayın, **çözüm 
 
 ![Windows 'da projeyi ve cihazı seçmek için menüyü gösteren ekran görüntüsü.](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
-**Debug**  >  Uygulamanızı dağıtmak ve başlatmak için hata **ayıklamayı Başlat** ' ı seçin.
+  >  Uygulamanızı dağıtmak ve başlatmak için hata **ayıklamayı Başlat** ' ı seçin.
 
 # <a name="macos"></a>[macOS](#tab/deploy-macos)
 
 ![Visual Studio yapılandırması](./media/get-started-xamarin-android/visual-studio-macos-configuration.jpg)
 
-**Run**  >  Uygulamanızı dağıtmak ve başlatmak için **hata ayıklama olmadan Başlat** ' ı seçin.
+  >  Uygulamanızı dağıtmak ve başlatmak için **hata ayıklama olmadan Başlat** ' ı seçin.
 
 ---
 
