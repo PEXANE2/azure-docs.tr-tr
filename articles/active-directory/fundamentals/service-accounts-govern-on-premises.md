@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ad7cf7fe2ca1ddcb592e895014b1d956e55e1b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 10ea524620f810e0bf1dddc230716031bbc10e69
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102557378"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642374"
 ---
 # <a name="governing-on-premises-service-accounts"></a>Şirket içi hizmet hesaplarını yöneten
 
@@ -60,7 +60,7 @@ Yeni bir hizmet hesabı oluştururken aşağıdaki ölçütleri kullanın.
 
 Hizmet hesapları olarak kullanılan kullanıcı hesaplarıyla aşağıdaki ayarları kullanın:
 
-* [**Hesap süre sonu**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): hizmet hesabını, gözden geçirme süresi dolduktan sonra, devam etmesi gerektiğini belirlenmediği takdirde otomatik olarak süre sonu olarak ayarlayın
+* [**Hesap süre sonu**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true): hizmet hesabını, gözden geçirme süresi dolduktan sonra, devam etmesi gerektiğini belirlenmediği takdirde otomatik olarak süre sonu olarak ayarlayın
 
 *  **Logonistasyonlarının**: hizmet hesabının oturum açabildiği konum için izinleri kısıtla. Bir makinede yerel olarak çalışır ve yalnızca o makinedeki kaynaklara erişirse, başka her yerde oturum açmasını kısıtlayın.
 
@@ -149,7 +149,7 @@ Ve belgelendikten sonra risk değerlendirmesi şu şekilde etkiye sahip olabilir
 
 Yalnızca ilgili bilgiler CMDB 'de belgelendikten ve risk değerlendirmesi gerçekleştirdikten sonra hizmet hesabı oluşturun. Hesap kısıtlamaları risk değerlendirmesine hizalanmalıdır. Değerlendirmeyle ilgili olarak aşağıdaki kısıtlamaları göz önünde bulundurun.:
 
-* [Hesap süre sonu](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
+* [Hesap süre sonu](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true)
 
    * Hizmet hesabı olarak kullanılan tüm Kullanıcı hesapları için, kullanım için gerçekçi ve kesin bir bitiş tarihi tanımlayın. Bunu "Account Expires" bayrağını kullanarak ayarlayın. Daha fazla ayrıntı için bkz.[ set-Adaccountexpiasyon](/powershell/module/addsadministration/set-adaccountexpiration). 
 
@@ -193,7 +193,7 @@ Tüm izinleri kaldırdıktan sonra, hesabı kaldırmak için bu işlemi kullanı
 
 3. Devre dışı bırakılan ilke karşılandıktan sonra hizmet hesabını silin. 
 
-   * MSAs için, PowerShell 'i kullanarak [kaldırabilir](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps) veya yönetilen hizmet hesabı kapsayıcısından el ile silebilirsiniz.
+   * MSAs için, PowerShell 'i kullanarak [kaldırabilir](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps&preserve-view=true) veya yönetilen hizmet hesabı kapsayıcısından el ile silebilirsiniz.
 
    * Bilgisayar veya Kullanıcı hesapları için Active Directory ' den hesabı el ile silebilirsiniz.
 

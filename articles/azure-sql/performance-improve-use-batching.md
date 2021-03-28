@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7f45e7d1515f0d6fc4467b36d95242ef8697c75d
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92792608"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641391"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örnek uygulama performansını artırmak için toplu işlem kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -93,7 +93,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-İşlemler aslında bu örneklerin her ikisinde de kullanılır. İlk örnekte, her bir çağrı örtük bir işlemdir. İkinci örnekte, açık bir işlem tüm çağrıları sarmalar. [Yazma öncesi işlem günlüğü](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)için belge başına, işlem tamamlandığında günlük kayıtları diske silinir. Bu nedenle, bir işleme daha fazla çağrı dahil ederek işlem günlüğüne yazma işlemi, işlem kaydedilene kadar geciktirebilirler. Aslında, sunucunun işlem günlüğüne yazma işlemleri için toplu işleme etkinleştiriliyor.
+İşlemler aslında bu örneklerin her ikisinde de kullanılır. İlk örnekte, her bir çağrı örtük bir işlemdir. İkinci örnekte, açık bir işlem tüm çağrıları sarmalar. [Yazma öncesi işlem günlüğü](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15&preserve-view=true#WAL)için belge başına, işlem tamamlandığında günlük kayıtları diske silinir. Bu nedenle, bir işleme daha fazla çağrı dahil ederek işlem günlüğüne yazma işlemi, işlem kaydedilene kadar geciktirebilirler. Aslında, sunucunun işlem günlüğüne yazma işlemleri için toplu işleme etkinleştiriliyor.
 
 Aşağıdaki tabloda bazı geçici test sonuçları gösterilmektedir. Testler, ve işlemleri olmadan aynı sıralı eklemeleri gerçekleştirdi. Daha fazla bakış için, ilk test kümesi bir dizüstü bilgisayardan Microsoft Azure içindeki veritabanına uzaktan çalışır. İkinci test kümesi, her ikisi de aynı Microsoft Azure veri merkezi (Batı ABD) içinde yer alan bir bulut hizmetinden ve veritabanından çalışır. Aşağıdaki tabloda, işlemleri ile ve olmayan sıralı ekleme süresinin milisaniye cinsinden gösterilmektedir.
 

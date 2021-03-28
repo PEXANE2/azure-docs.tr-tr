@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd4c1adddbf4b13f8e299bd656443c9aaab1d55b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f6f91adf499c62fef56a30c5f2945ba7a90a0b29
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101644836"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640067"
 ---
 # <a name="securing-group-managed-service-accounts"></a>Grup tarafından yönetilen hizmet hesaplarının güvenliğini sağlama
 
@@ -41,7 +41,7 @@ gMSAs, yönetim yükünü azaltarak daha fazla güvenlik sunarak tek bir kimlik 
 Yük Devretme Kümelemesi gibi bir hizmet bu hizmeti desteklemiyorsa, şirket içi hizmetler için gMSA 'Ları tercih edilen hesap türü olarak kullanın.
 
 > [!IMPORTANT]
-> Üretime dağıtım yapmadan önce hizmeti gMSAs ile test etmeniz gerekir. Bunu yapmak için, bir test ortamı ayarlayın ve uygulamanın gMSA 'yı kullanabilmesi ve erişmesi gereken kaynaklara erişebilmesi gerekir. Daha fazla bilgi için bkz. [Grup tarafından yönetilen hizmet hesapları Için destek](/system-center/scom/support-group-managed-service-accounts?view=sc-om-2019).
+> Üretime dağıtım yapmadan önce hizmeti gMSAs ile test etmeniz gerekir. Bunu yapmak için, bir test ortamı ayarlayın ve uygulamanın gMSA 'yı kullanabilmesi ve erişmesi gereken kaynaklara erişebilmesi gerekir. Daha fazla bilgi için bkz. [Grup tarafından yönetilen hizmet hesapları Için destek](/system-center/scom/support-group-managed-service-accounts).
 
 
 Bir hizmet gMSAs kullanımını desteklemiyorsa, bir sonraki en iyi seçeneğiniz tek başına yönetilen hizmet hesabı (sMSA) kullanmaktır. sMSAs, gMSA ile aynı işlevselliği sağlar, ancak yalnızca tek bir sunucuda dağıtıma yöneliktir.
@@ -86,7 +86,7 @@ Get-ADServiceAccount -Filter *
 
 # To filter results to only gMSAs:
 
-Get-ADServiceAccount –Filter * | where $_.ObjectClass -eq "msDS-GroupManagedServiceAccount”}
+Get-ADServiceAccount –Filter * | where $_.ObjectClass -eq "msDS-GroupManagedServiceAccount"}
 ```
 
 ## <a name="manage-gmsas"></a>GMSAs 'yi yönetme

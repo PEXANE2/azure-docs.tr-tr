@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: edf60a5c454d34a2424ef7981b02952ffbfd3bde
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 065127fbeaabc415dd9a5fbe74f90d5060909d5d
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097236"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641035"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Azure Cosmos DB zaman noktası geri yükleme özelliği için kaynak modeli (Önizleme)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -128,7 +128,7 @@ Bu kaynak, geri yüklenemeyebilecek bir veritabanı hesabı örneği içeriyor. 
 | Restorat konumları: creationTime | Bölgesel hesabın oluşturulduğu saat (UTC).|
 | Restorat konumları: deletionTime | Bölgesel hesap silindiğinde UTC olarak zaman. Bölgesel hesap canlı ise bu değer boştur.|
 
-Geri yüklenebilen tüm hesapların bir listesini almak için bkz. yeniden yüklenebilen [veritabanı hesapları-liste](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorabledatabaseaccounts/list) veya geri yüklenebilen [veritabanı hesapları-konuma göre liste](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorabledatabaseaccounts/listbylocation) makaleleri.
+Geri yüklenebilen tüm hesapların bir listesini almak için bkz. yeniden yüklenebilen [veritabanı hesapları-liste](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorabledatabaseaccounts/list) veya geri yüklenebilen [veritabanı hesapları-konuma göre liste](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorabledatabaseaccounts/listbylocation) makaleleri.
 
 ### <a name="restorable-sql-database"></a>Geri yüklenebilen SQL veritabanı
 
@@ -142,7 +142,7 @@ Her kaynak, SQL veritabanında oluşan oluşturma ve silme gibi bir mutasyon ola
 | operationType | Bu veritabanı olayının işlem türü. Olası değerler şunlardır:<br/><ul><li>Oluştur: veritabanı oluşturma olayı</li><li>Sil: veritabanı silme olayı</li><li>Değiştir: veritabanı değiştirme olayı</li><li>SystemOperation: sistem tarafından tetiklenen veritabanı değiştirme olayı. Bu olay kullanıcı tarafından başlatılmaz</li></ul> |
 | database |Olay sırasında SQL veritabanının özellikleri|
 
-Tüm veritabanı mutasyonlarının bir listesini almak için bkz. geri [yüklenebilen SQL veritabanları-liste](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqldatabases/list) makalesi.
+Tüm veritabanı mutasyonlarının bir listesini almak için bkz. geri [yüklenebilen SQL veritabanları-liste](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablesqldatabases/list) makalesi.
 
 ### <a name="restorable-sql-container"></a>Geri yüklenebilen SQL kapsayıcısı
 
@@ -156,7 +156,7 @@ Her kaynak, SQL kapsayıcısında oluşan oluşturma ve silme gibi bir mutasyon 
 | operationType | Bu kapsayıcı olayının işlem türü. Olası değerler şunlardır: <br/><ul><li>Oluşturma: kapsayıcı oluşturma olayı</li><li>Sil: kapsayıcı silme olayı</li><li>Değiştir: kapsayıcı değiştirme olayı</li><li>SystemOperation: sistem tarafından tetiklenen kapsayıcı değiştirme olayı. Bu olay kullanıcı tarafından başlatılmaz</li></ul> |
 | kapsayıcı | Olay sırasında SQL kapsayıcısının özellikleri.|
 
-Aynı veritabanı altındaki tüm kapsayıcı mutasyonlarının bir listesini almak için, bkz. yeniden yüklenebilen [SQL kapsayıcıları-liste](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqlcontainers/list) makalesi.
+Aynı veritabanı altındaki tüm kapsayıcı mutasyonlarının bir listesini almak için, bkz. yeniden yüklenebilen [SQL kapsayıcıları-liste](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablesqlcontainers/list) makalesi.
 
 ### <a name="restorable-sql-resources"></a>Geri yüklenebilen SQL kaynakları
 
@@ -167,7 +167,7 @@ Her kaynak tek bir veritabanını ve bu veritabanı altındaki tüm kapsayıcıl
 | Dosyasında  | SQL veritabanının adı.
 | collectionNames   | Bu veritabanı altındaki SQL kapsayıcıları listesi.|
 
-Hesapta verilen zaman damgasında ve konumda bulunan SQL veritabanı ve kapsayıcı Birleşik giriş listesinin bir listesini almak için, bkz. geri [yüklenebilen SQL kaynakları-liste](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqlresources/list) makalesi.
+Hesapta verilen zaman damgasında ve konumda bulunan SQL veritabanı ve kapsayıcı Birleşik giriş listesinin bir listesini almak için, bkz. geri [yüklenebilen SQL kaynakları-liste](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablesqlresources/list) makalesi.
 
 ### <a name="restorable-mongodb-database"></a>Yeniden yüklenebilen MongoDB veritabanı
 
@@ -180,7 +180,7 @@ Her kaynak, MongoDB veritabanında oluşan oluşturma ve silme gibi bir mutasyon
 | Ownerresourceıd   | MongoDB veritabanının kaynak KIMLIĞI. |
 | operationType |   Bu veritabanı olayının işlem türü. Olası değerler şunlardır:<br/><ul><li> Oluştur: veritabanı oluşturma olayı</li><li> Sil: veritabanı silme olayı</li><li> Değiştir: veritabanı değiştirme olayı</li><li> SystemOperation: sistem tarafından tetiklenen veritabanı değiştirme olayı. Bu olay kullanıcı tarafından başlatılmaz </li></ul> |
 
-Tüm veritabanı mutasyonlarının bir listesini almak için bkz. [Restorestomongodb veritabanları-liste](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbdatabases/list) makalesi.
+Tüm veritabanı mutasyonlarının bir listesini almak için bkz. [Restorestomongodb veritabanları-liste](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablemongodbdatabases/list) makalesi.
 
 ### <a name="restorable-mongodb-collection"></a>Yeniden yüklenebilen MongoDB koleksiyonu
 
@@ -193,7 +193,7 @@ Her kaynak, MongoDB koleksiyonunda oluşan oluşturma ve silme gibi bir mutasyon
 | Ownerresourceıd   | MongoDB koleksiyonunun kaynak KIMLIĞI. |
 | operationType |Bu koleksiyon olayının işlem türü. Olası değerler şunlardır:<br/><ul><li>Oluştur: koleksiyon oluşturma olayı</li><li>Sil: koleksiyon silme olayı</li><li>Değiştir: koleksiyon değiştirme olayı</li><li>SystemOperation: sistem tarafından tetiklenen koleksiyon değiştirme olayı. Bu olay kullanıcı tarafından başlatılmaz</li></ul> |
 
-Aynı veritabanı altındaki tüm kapsayıcı mutasyonların listesini almak için, bkz. [Restorestomongodb Collections-List](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbcollections/list) article.
+Aynı veritabanı altındaki tüm kapsayıcı mutasyonların listesini almak için, bkz. [Restorestomongodb Collections-List](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablemongodbcollections/list) article.
 
 ### <a name="restorable-mongodb-resources"></a>Yeniden yüklenebilen MongoDB kaynakları
 
@@ -204,7 +204,7 @@ Her kaynak tek bir veritabanını ve bu veritabanı altındaki tüm koleksiyonla
 | Dosyasında  |MongoDB veritabanının adı. |
 | collectionNames | Bu veritabanı altındaki MongoDB koleksiyonlarının listesi. |
 
-Hesapta verilen zaman damgasında ve konumda bulunan tüm MongoDB veritabanı ve koleksiyon birleşimlerinin listesini almak için bkz. [Restorestomongodb Resources-List](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbresources/list) makalesi.
+Hesapta verilen zaman damgasında ve konumda bulunan tüm MongoDB veritabanı ve koleksiyon birleşimlerinin listesini almak için bkz. [Restorestomongodb Resources-List](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablemongodbresources/list) makalesi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

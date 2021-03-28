@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: be202a6016842ee82b3230c2841d416d3b53ea15
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2641218fa9ddef65c45f2f1a9c9ce807cef35048
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102505588"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642741"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights Agent sorunlarını giderme (eski adıyla Durum İzleyicisi v2)
 
@@ -153,7 +153,15 @@ Bu cmdlet 'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama iç
 4. Uygulamanıza gözatmayı deneyin.
 5. Uygulamanız yüklendikten sonra PerfView ' a dönüp **toplamayı durdur**' u seçin.
 
+### <a name="how-to-capture-full-sql-command-text"></a>Tam SQL komut metnini yakalama
 
+Tam SQL komut metnini yakalamak için applicationinsights.config dosyasını aşağıdaki gibi değiştirmeniz gerekir:
+
+```xml
+<Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">,
+<EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
+</Add>
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

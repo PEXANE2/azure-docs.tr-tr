@@ -11,12 +11,12 @@ ms.topic: overview
 ms.service: azure-communication-services
 ms.custom: tracking-python, devx-track-js
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 70dce109ec751a5c14de539b9c7461857cedb941
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 9514f1616c0d70d7d195af2f052c604973709204
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110397"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644376"
 ---
 # <a name="quickstart-send-an-sms-message"></a>Hızlı başlangıç: SMS iletisi gönder
 
@@ -58,7 +58,7 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 Bu hızlı başlangıçta, Azure Iletişim hizmetlerini kullanarak SMS iletileri gönderme hakkında daha fazla öğrendiniz.
 
 > [!div class="nextstepaction"]
-> [SMS olaylarına abone olma](./handle-sms-events.md)
+> [SMS ve teslim raporu olayları alma](./handle-sms-events.md)
 
 > [!div class="nextstepaction"]
 > [Telefon numarası türleri](../../concepts/telephony-sms/plan-solution.md)

@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Metinden konuşmaya
-ms.openlocfilehash: e42f81ce0f06b3782972dbf4322f0590763d8704
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 45977faec9ab54fed0c1e7054c567b4d18b11f50
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026334"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645025"
 ---
 # <a name="what-is-text-to-speech"></a>Metin okuma nedir?
 
@@ -44,7 +44,7 @@ Bu genel bakışta, uygulamanızın, araçların veya cihazların metni insan be
 * Visemes- [visemes](how-to-speech-synthesis-viseme.md) , belirli bir phoneme oluştururken LIP 'ler, Jaw ve dil düzeyi dahil olmak üzere gözlemlenen konuşmayla ilgili önemli pozlardır. Visemes, sesler ve phonemes ile güçlü bir bağıntı vardır. Konuşma SDK 'sında viseme olaylarını kullanarak, LIP 'yi okuma, eğitim, eğlence ve müşteri hizmetleri gibi yüzlere animasyon eklemek için kullanılabilecek yüz animasyon verileri oluşturabilirsiniz.
 
 > [!NOTE]
-> Viseme `en-US-AriaNeural` , şimdilik yalnızca Voice for Batı ABD 2 ( `westus2` ) bölgesinde kullanılabilir.
+> Viseme, şimdilik yalnızca `en-US-AriaNeural` Ses için geçerlidir.
 
 ## <a name="get-started"></a>başlarken
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: a8f7e14500fb377b46f651b53e2704d8477aea7a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 3152fe0bf77b73e593ac61efb5f386827bdc96ef
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102520668"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643725"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>Azure PowerShell kullanarak SQL Server veritabanını Azure SQL veritabanı 'na geçirme
 
@@ -151,7 +151,7 @@ Son olarak, Azure veritabanı geçiş görevi oluşturun ve başlatın. Azure ve
 
 ### <a name="create-credential-parameters-for-source-and-target"></a>Kaynak ve hedef için kimlik bilgisi parametreleri oluşturma
 
-Bağlantı güvenliği kimlik bilgileri, [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) nesnesi olarak oluşturulabilir.
+Bağlantı güvenliği kimlik bilgileri, [PSCredential](/dotnet/api/system.management.automation.pscredential) nesnesi olarak oluşturulabilir.
 
 Aşağıdaki örnek, *$sourcePassword* ve *$targetPassword* dize değişkenleri olarak parola sağlayan hem kaynak hem de hedef bağlantı için *PSCredential* nesnelerinin oluşturulmasını gösterir.
 
@@ -195,8 +195,8 @@ $selectedDbs = New-AzDmsSelectedDB -MigrateSqlServerSqlDb -Name AdventureWorks20
 * *Görevadı*. Oluşturulacak görevin adı. 
 * *SourceConnection*. Kaynak SQL Server bağlantısını temsil eden Azdmsconnınfo nesnesi.
 * *TargetConnection*. Hedef Azure SQL veritabanı bağlantısını temsil eden Azdmsconnınfo nesnesi.
-* *Sourcecred*. Kaynak sunucuya bağlanmak için [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) nesnesi.
-* *Targetkimlik bilgileri*. Hedef sunucuya bağlanmak için [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) nesnesi.
+* *Sourcecred*. Kaynak sunucuya bağlanmak için [PSCredential](/dotnet/api/system.management.automation.pscredential) nesnesi.
+* *Targetkimlik bilgileri*. Hedef sunucuya bağlanmak için [PSCredential](/dotnet/api/system.management.automation.pscredential) nesnesi.
 * *Selecteddatabase*. Kaynak ve hedef veritabanı eşlemesini temsil eden AzDataMigrationSelectedDB nesnesi.
 * *Schemavalidation*. (isteğe bağlı, anahtar parametresi) Geçişin ardından, kaynak ve hedef arasında şema bilgilerini karşılaştırma işlemini gerçekleştirir.
 * *Dataintegrityvalidation*. (isteğe bağlı, anahtar parametresi) Geçişin ardından kaynak ve hedef arasında bir sağlama toplamı tabanlı veri bütünlüğü doğrulaması gerçekleştirir.

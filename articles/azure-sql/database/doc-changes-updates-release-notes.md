@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: sstein
-ms.openlocfilehash: 0ddd2c96be3513d253537cefd5b9eb83da2b3c12
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9827a40b2ebc91c17ad7b5457259b8d82565edee
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102634847"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640087"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>SQL yönetilen örneği & Azure SQL veritabanı 'ndaki yenilikler nelerdir?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -61,12 +61,12 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 
 | Özellik | Ayrıntılar |
 | ---| --- |
-| <a href="/azure/azure-sql/database/elastic-transactions-overview">Dağıtılmış işlemler</a> | Yönetilen örnekler arasında dağıtılmış işlemler. |
-| <a href="/azure/sql-database/sql-database-instance-pools">Örnek havuzları</a> | Daha küçük SQL örneklerini buluta geçirmek için kullanışlı ve uygun maliyetli bir yol. |
-| <a href="/en-gb/sql/t-sql/statements/create-login-transact-sql">Örnek düzeyi Azure AD sunucu sorumluları (oturum açmalar)</a> | <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true">Dış sağlayıcıdan BIR oturum açma oluştur</a> ifadesiyle örnek düzeyinde oturumlar oluşturun. |
+| [Dağıtılmış işlemler](/azure/azure-sql/database/elastic-transactions-overview) | Yönetilen örnekler arasında dağıtılmış işlemler. |
+| [Örnek havuzları](/azure/sql-database/sql-database-instance-pools) | Daha küçük SQL örneklerini buluta geçirmek için kullanışlı ve uygun maliyetli bir yol. |
+| [Örnek düzeyi Azure AD sunucu sorumluları (oturum açmalar)](/sql/t-sql/statements/create-login-transact-sql) | [Dış sağlayıcıdan BIR oturum açma oluştur](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) ifadesiyle örnek düzeyinde oturumlar oluşturun. |
 | [İşlemsel çoğaltma](../managed-instance/replication-transactional-overview.md) | Tablolardaki değişiklikleri SQL yönetilen örneği, SQL veritabanı veya SQL Server diğer veritabanlarına çoğaltın. Ya da diğer SQL yönetilen örneği veya SQL Server diğer örneklerinde bazı satırlar değiştirildiğinde tablolarınızı güncelleştirin. Daha fazla bilgi için bkz. [Azure SQL yönetilen örneği 'nde çoğaltmayı yapılandırma](../managed-instance/replication-between-two-instances-configure-tutorial.md). |
 | Tehdit algılama |Bilgi için bkz. [Azure SQL yönetilen örneği 'nde tehdit algılamayı yapılandırma](../managed-instance/threat-detection-configure.md).|
-| Uzun süreli yedek saklama | Daha fazla bilgi için, şu anda sınırlı genel önizleme aşamasında olan [Azure SQL yönetilen örneği 'nde uzun süreli yedek saklama süresini yapılandırma](../managed-instance/long-term-backup-retention-configure.md)konusuna bakın. | 
+| Uzun süreli yedek saklama | Daha fazla bilgi için, şu anda sınırlı genel önizleme aşamasında olan [Azure SQL yönetilen örneği 'nde uzun süreli yedek saklama süresini yapılandırma](../managed-instance/long-term-backup-retention-configure.md)konusuna bakın. |
 
 ---
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b58a1ae2a20afb357f6363077e70b692256d2ce7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8d39d54498872201afe2f705da1fc5654d8befb2
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103013508"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644997"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Media Encoder Premium Workflow ile gelişmiş kodlama
 
@@ -42,7 +42,8 @@ Bu makalede, .NET kullanarak **Media Encoder Premium Workflow** kodlama gösteri
 
 **Media Encoder Premium Workflow** için kodlama görevleri, iş akışı dosyası olarak adlandırılan ayrı bir yapılandırma dosyası gerektirir. Bu dosyaların bir. Workflow uzantısı vardır ve [iş akışı Tasarımcısı](media-services-workflow-designer.md) Aracı kullanılarak oluşturulur.
 
-Varsayılan iş akışı dosyalarını [buradan](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)da edinebilirsiniz. Klasör Ayrıca bu dosyaların açıklamasını içerir.
+Varsayılan iş akışı dosyalarını [buradan](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/media-services/previous/media-services-encode-with-premium-workflow.md
+)da edinebilirsiniz. Klasör Ayrıca bu dosyaların açıklamasını içerir.
 
 İş akışı dosyalarının Media Services hesabınıza bir varlık olarak yüklenmesi gerekir ve bu varlık kodlama görevine geçirilmelidir.
 

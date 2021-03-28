@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5d83f6585500316515139f937a56889dfc1f8fac
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96459674"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642700"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile ortak güvenlik gereksinimlerini ele almak için PlayBook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,7 +91,7 @@ Merkezi kimlik yönetimi aşağıdaki avantajları sunar:
 - Kaynaklara erişim haklarını Grup ataması aracılığıyla Azure AD sorumlularına atama: Azure AD grupları oluşturun, gruplara erişim izni verin ve gruplara ayrı ayrı Üyeler ekleyin. Veritabanınızda, Azure AD gruplarınızı eşleyen, kapsanan veritabanı kullanıcıları oluşturun. Veritabanına izin atamak için, Azure AD gruplarınızla ilişkilendirilen kullanıcıları, uygun izinlerle birlikte veritabanı rollerine koyun.
   - SQL ile [Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](authentication-aad-configure.md) ve [SQL ile kimlik doğrulaması Için Azure ad kullanma](authentication-aad-overview.md)makalelerini inceleyin.
   > [!NOTE]
-  > SQL yönetilen örneği 'nde, ana veritabanında Azure AD sorumluları ile eşlenen oturum açma işlemleri de oluşturabilirsiniz. Bkz. [oturum oluşturma (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
+  > SQL yönetilen örneği 'nde, ana veritabanında Azure AD sorumluları ile eşlenen oturum açma işlemleri de oluşturabilirsiniz. Bkz. [oturum oluşturma (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 - Azure AD gruplarının kullanılması, izin yönetimini ve her iki grup sahibini de basitleştirir ve kaynak sahibi gruba/gruptan üye ekleyip kaldırabilir.
 
@@ -136,7 +136,7 @@ Azure AD Multi-Factor Authentication, birden fazla kimlik doğrulama biçimi ger
 
 - Azure SQL veritabanı için Azure AD etkileşimli kimlik doğrulaması modunu ve bir parolanın etkileşimli olarak istendiği Azure SQL yönetilen örneğini, ardından Multi-Factor Authentication şunu kullanın:
   - SSMS 'de evrensel kimlik doğrulaması kullanın. [Azure SQL veritabanı, SQL yönetilen örneği, Azure Synapse (Multi-Factor Authentication IÇIN SSMS desteği) Ile Multi-Factor Azure AD kimlik doğrulamasını kullanma](authentication-mfa-ssms-overview.md)makalesine bakın.
-  - SQL Server Veri Araçları (SSDT) içinde desteklenen etkileşimli kimlik doğrulaması kullanın. [SQL Server veri araçları (SSDT) Azure Active Directory destek](/sql/ssdt/azure-active-directory?view=azuresqldb-current)makalesine bakın.
+  - SQL Server Veri Araçları (SSDT) içinde desteklenen etkileşimli kimlik doğrulaması kullanın. [SQL Server veri araçları (SSDT) Azure Active Directory destek](/sql/ssdt/azure-active-directory?view=azuresqldb-current&preserve-view=true)makalesine bakın.
   - Multi-Factor Authentication destekleyen diğer SQL araçlarını kullanın.
     - Dışarı aktarma/ayıklama/dağıtım veritabanı için SSMS Sihirbazı desteği  
     - [sqlpackage.exe](/sql/tools/sqlpackage): '/uA ' seçeneği
@@ -196,7 +196,7 @@ Parolaların kaçınılmaz olduğu durumlarda, bunların güvenli olduklarından
 
 - Parola veya gizli dizileri önleme mümkün değilse, Kullanıcı parolalarını ve uygulama gizli dizilerini Azure Key Vault depolayın ve Key Vault erişim ilkeleri aracılığıyla erişimi yönetin.
 
-- Çeşitli uygulama geliştirme çerçeveleri, uygulamadaki gizli dizileri korumak için çerçeveye özgü mekanizmalar de sunabilir. Örneğin: [ASP.NET Core uygulaması](/aspnet/core/security/app-secrets?tabs=windows&view=aspnetcore-2.1).
+- Çeşitli uygulama geliştirme çerçeveleri, uygulamadaki gizli dizileri korumak için çerçeveye özgü mekanizmalar de sunabilir. Örneğin: [ASP.NET Core uygulaması](/aspnet/core/security/app-secrets?tabs=windows).
 
 ### <a name="use-sql-authentication-for-legacy-applications"></a>Eski uygulamalar için SQL kimlik doğrulaması kullan
 

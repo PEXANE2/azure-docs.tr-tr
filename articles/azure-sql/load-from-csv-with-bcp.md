@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 216410d423a70037588a6fb596771a702a13c003
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 09ae46ec6455b6998bcf4da5648d2ceaef4d5b19
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103472245"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644791"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-or-sql-managed-instance-flat-files"></a>CSV 'den Azure SQL veritabanı 'na veya SQL yönetilen örneği 'ne (düz dosyalar) veri yükleme
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Bu makaledeki adımları tamamlayabilmeniz için şunlar gerekir:
 * bcp komut satırı yardımcı programının yüklü olması
 * sqlcmd komut satırı yardımcı programının yüklü olması
 
-Bcp ve sqlcmd yardımcı programlarını [Microsoft sqlcmd belgeleri] [] konumundan indirebilirsiniz https://docs.microsoft.com/sql/tools/sqlcmd-utility?view=sql-server-ver15 .
+Bcp ve sqlcmd yardımcı programlarını [Microsoft sqlcmd belgelerinden](/sql/tools/sqlcmd-utility?view=sql-server-ver15&preserve-view=true)indirebilirsiniz.
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>ASCII veya UTF-16 biçimindeki veriler
 

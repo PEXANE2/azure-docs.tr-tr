@@ -9,13 +9,13 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: a1bdb1b8ac1f545933a92e78fd13b745606f1da3
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+zone_pivot_groups: acs-plat-azp-azcli-net-ps
+ms.openlocfilehash: bdfd4dfef57721a24b4c6981ae653ab4f17562fa
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105563795"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644735"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Hızlı başlangıç: Iletişim Hizmetleri kaynaklarını oluşturma ve yönetme
 
@@ -23,8 +23,6 @@ ms.locfileid: "105563795"
 
 İlk Iletişim Hizmetleri kaynağınızı sağlayarak Azure Iletişim Hizmetleri ile çalışmaya başlayın. İletişim Hizmetleri kaynakları, [Azure Portal](https://portal.azure.com) veya .NET Yönetim SDK 'sı ile sağlanabilir. Yönetim SDK 'Sı ve Azure portal, Azure 'un dağıtım ve yönetim hizmeti [Azure Resource Manager](../../azure-resource-manager/management/overview.md), kaynaklarınızı ve arabirimlerinizi oluşturmanıza, yapılandırmanıza, güncelleştirmenize ve silmesine izin verir. SDK 'larda kullanılabilen tüm işlevler Azure portal kullanılabilir. 
 
-
-İlk Iletişim Hizmetleri kaynağınızı sağlayarak Azure Iletişim Hizmetleri ile çalışmaya başlayın. İletişim Hizmetleri kaynakları, [Azure Portal](https://portal.azure.com) veya .NET Yönetim SDK 'sı ile sağlanabilir. Yönetim SDK 'Sı ve Azure portal, Azure 'un dağıtım ve yönetim hizmeti [Azure Resource Manager](../../azure-resource-manager/management/overview.md), kaynaklarınızı ve arabirimlerinizi oluşturmanıza, yapılandırmanıza, güncelleştirmenize ve silmesine izin verir. SDK 'larda kullanılabilen tüm işlevler Azure portal kullanılabilir.
 
 > [!WARNING]
 > Iletişim Hizmetleri birden çok coğrafi konumda kullanıma sunulurken, bir telefon numarası alabilmek için kaynağın bir veri konumunun ' US ' olarak ayarlanmış olması gerekir. Ayrıca, genel önizleme sırasında iletişim kaynaklarının farklı bir aboneliğe aktarılamayacağını unutmayın.
@@ -40,6 +38,11 @@ ms.locfileid: "105563795"
 ::: zone pivot="platform-net"
 [!INCLUDE [.NET](./includes/create-resource-net.md)]
 ::: zone-end
+
+::: zone pivot="platform-powershell"
+[!INCLUDE [PowerShell](./includes/create-resource-powershell.md)]
+::: zone-end
+
 
 ## <a name="access-your-connection-strings-and-service-endpoints"></a>Bağlantı Dizeleriniz ve hizmet uç noktalarınıza erişin
 

@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 04aba71e49fedc8a4ca22aed576aaa978f733336
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 55b2fd911b32eae4f04ad9690de091e9dbd46ea4
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104783651"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643971"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak Data Factory izleyin ve uyarır
 
@@ -76,7 +76,7 @@ Veri fabrikanızın tanılama ayarlarını oluşturun veya ekleyin.
    ![Ayarlarınızı adlandırın ve bir Log Analytics çalışma alanı seçin](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Bir Azure günlük tablosunda 500 ' den fazla sütun olabileceğinden _kaynağa özgü mod_' u **seçmeniz önerilir.** Daha fazla bilgi için bkz. [AzureDiagnostics logs Reference](/azure-monitor/reference/tables/azurediagnostics#additionalfields-column).
+    > Bir Azure günlük tablosunda 500 ' den fazla sütun olabileceğinden _kaynağa özgü mod_' u **seçmeniz önerilir.** Daha fazla bilgi için bkz. [AzureDiagnostics logs Reference](/azure/azure-monitor/reference/tables/azurediagnostics).
 
 1. **Kaydet**’i seçin.
 
@@ -265,7 +265,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | --- | --- | --- |
 | **Storageaccountıd** |Dize | Tanılama günlükleri göndermek istediğiniz depolama hesabının kaynak KIMLIĞI. |
 | **Servicebusruleıd** |Dize | ' In, akış tanılama günlükleri için Event Hubs oluşturulmasını istediğiniz hizmet veri yolu ad alanının hizmet veri yolu kuralı KIMLIĞI. Kural KIMLIĞI biçimi vardır `{service bus resource ID}/authorizationrules/{key name}` .|

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 529bc5468c74ac9d50f64decad29fd070a7bda83
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: a3876b63e9dc41a22ac6e95b31f34665a0d0bdd8
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105566940"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642356"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>Geçişe genel bakış: Azure SQL yönetilen örneği 'ne SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -236,7 +236,7 @@ Ek Yardım için, gerçek dünya geçiş projeleri için geliştirilen aşağıd
 |[Logman kullanarak PerfMon veri toplama Otomasyonu](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Geçiş hedefi önerisine yardımcı olan temel performansı anlamak için veri gerçekleştirme önerilerini toplayan bir araç. Bu araç, uzak bir SQL Server ayarlanan performans sayaçlarını oluşturacak, başlatacak, durdurmayacak ve silecek komutu oluşturmak için logman.exe kullanır.|
 |[Teknik İnceleme-tam ve değişiklik yedeklemelerini geri yükleyerek Azure SQL yönetilen örneğine Veritabanı geçişi](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Database%20migrations%20to%20Azure%20SQL%20DB%20Managed%20Instance%20-%20%20Restore%20with%20Full%20and%20Differential%20backups.pdf)|Bu Teknik İnceleme, yalnızca tam ve fark yedeklemeleriniz varsa (ve günlük yedekleme özelliği yoksa) SQL Server ile Azure SQL yönetilen örneğine geçişleri hızlandırmaya yardımcı olmak için rehberlik ve adımlar sağlar.|
 
-Bu kaynaklar, Azure veri grubu Mühendisliği ekibi tarafından sponsorlu Data SQL Dokja programının bir parçası olarak geliştirilmiştir. Data SQL Dokja programının temel kreter, Microsoft 'un Azure veri platformuna yönelik karmaşık modernleştirme ve rekabet veri platformu geçiş fırsatlarını engellemeyi ve hızlandırmanızı sağlar. Kuruluşunuzun Data SQL Dokja programına katılım ile ilgilenmesini düşünüyorsanız, lütfen hesap ekibinize başvurarak bir aday göndermesini isteyin.
+Veri SQL Mühendisliği ekibi bu kaynakları geliştirdik. Bu takımın temel kurucu, veri platformu geçiş projelerini Microsoft 'un Azure veri platformu 'na yönelik karmaşık modernleştirmeyi engellemeyi ve hızlandırmanızı sağlar.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

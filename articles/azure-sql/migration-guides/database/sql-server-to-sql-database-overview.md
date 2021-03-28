@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 54c1b8c189264fb2e127ff04b0fdd9125f4c9aeb
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 5ef69b8cf0e51c6248862f4cabd4f4ce3598a811
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105563149"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640365"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-database"></a>Geçişe genel bakış: Azure SQL veritabanı 'na SQL Server
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -207,7 +207,7 @@ Ek Yardım için, gerçek dünya geçiş projeleri için geliştirilen aşağıd
 |[Logman kullanarak PerfMon veri toplama Otomasyonu](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Temel performansı anlamak için PerMon verilerini toplayan ve geçiş hedefi önerilerine yardım eden bir araç. Bu araç, uzak bir SQL Server ayarlanan performans sayaçlarını oluşturacak, başlatacak, durduracak ve silecektir komutunu oluşturmak için logman.exe kullanır|
 |[Teknik İnceleme-BACPAC kullanarak Azure SQL DB 'ye veritabanı geçişi](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Database%20migrations%20-%20Benchmarks%20and%20Steps%20to%20Import%20to%20Azure%20SQL%20DB%20Single%20Database%20from%20BACPAC.pdf)|Bu Teknik İnceleme, BACPAC dosyalarını kullanarak SQL Server geçişleri Azure SQL veritabanı 'na hızlandırmaya yardımcı olacak rehberlik ve adımlar sağlar.|
 
-Bu kaynaklar, Azure veri grubu Mühendisliği ekibi tarafından sponsorlu Data SQL Dokja programının bir parçası olarak geliştirilmiştir. Data SQL Dokja programının temel kreter, Microsoft 'un Azure veri platformuna yönelik karmaşık modernleştirme ve rekabet veri platformu geçiş fırsatlarını engellemeyi ve hızlandırmanızı sağlar. Kuruluşunuzun Data SQL Dokja programına katılım ile ilgilenmesini düşünüyorsanız, lütfen hesap ekibinize başvurarak bir aday göndermesini isteyin.
+Veri SQL Mühendisliği ekibi bu kaynakları geliştirdik. Bu takımın temel kurucu, veri platformu geçiş projelerini Microsoft 'un Azure veri platformu 'na yönelik karmaşık modernleştirmeyi engellemeyi ve hızlandırmanızı sağlar.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

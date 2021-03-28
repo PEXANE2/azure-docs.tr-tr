@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.author: normesta
-ms.openlocfilehash: 769163dd09ec29c2c206d0273e71de27732fb9db
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5c9eb1aa2e88019609f5ab26c2e995e4e43063ca
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100516287"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640819"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. Nesil'de kullanılabilen Blob depolama özellikleri
 
@@ -50,7 +50,7 @@ Aşağıdaki tabloda, her bir BLOB depolama özelliğinin Data Lake Storage 2. i
 |Anonim genel erişim |Genel kullanıma sunuldu|Genel kullanıma sunuldu| Bkz. [kapsayıcılar ve Bloblar için anonim genel okuma erişimini yapılandırma](anonymous-read-access-configure.md).|
 |Müşteri tarafından yönetilen hesap yük devretmesi|Henüz desteklenmiyor|Henüz desteklenmiyor|[Olağanüstü durum kurtarma ve hesap yük devretme](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Müşteri tarafından sunulan anahtarlar|Henüz desteklenmiyor|Henüz desteklenmiyor|[BLOB depolama için istekte bir şifreleme anahtarı sağlayın](encryption-customer-provided-keys.md)|
-|Şifreleme kapsamları|Henüz desteklenmiyor|Henüz desteklenmiyor|[Şifreleme kapsamları oluşturma ve yönetme (Önizleme)](encryption-scope-manage.md)|
+|Şifreleme kapsamları|Henüz desteklenmiyor|Henüz desteklenmiyor|[Şifreleme kapsamları oluşturma ve yönetme](encryption-scope-manage.md)|
 |Akışı değiştirme|Henüz desteklenmiyor|Henüz desteklenmiyor|[Azure Blob depolamada akış desteğini değiştirme](storage-blob-change-feed.md)|
 |Nesne çoğaltma|Henüz desteklenmiyor|Henüz desteklenmiyor|[Blok Blobları için nesne çoğaltmasını yapılandırma](object-replication-configure.md)|
 |Blob sürümü oluşturma|Henüz desteklenmiyor|Henüz desteklenmiyor|[Blob sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md)|

@@ -10,12 +10,12 @@ ms.date: 03/12/2021
 ms.topic: include
 ms.custom: include file
 ms.author: pvicencio
-ms.openlocfilehash: 4a9deded16de6b0de2ef5f88ffebd813b8e5b8c0
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 0a59b18fa2c09cff943dbccd2203027cd72e146a
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110386"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644335"
 ---
 SMS mesajları göndermek için Iletişim Hizmetleri Java SMS SDK 'sını kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
@@ -106,12 +106,12 @@ Aşağıdaki sınıflar ve arabirimler, Java için Azure Communication Services 
 | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | SmsClientBuilder              | Bu sınıf, SmsClient oluşturur. Bunu uç nokta, kimlik bilgileri ve bir http istemcisiyle sağlarsınız. |
 | SmsClient                    | Bu sınıf tüm SMS işlevleri için gereklidir. SMS mesajları göndermek için bunu kullanırsınız.                |
-| SmsSendResult                | Bu sınıf, SMS hizmetinden elde edilen sonucu içerir.                                          |
 | Smssendoseçenekleri               | Bu sınıf özel etiketler eklemek ve teslim raporlamayı yapılandırmak için seçenekler sağlar. DeliveryReportEnabled değeri true olarak ayarlanırsa, teslim başarılı olduğunda bir olay yayınlanır|                           |
+| SmsSendResult                | Bu sınıf, SMS hizmetinden elde edilen sonucu içerir.                                          |
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-`SmsClient`Bağlantı dizeniz ile bir örneğini oluşturun. (Kimlik bilgileri `Key` Azure Portal. [Kaynak bağlantı dizesini yönetme](../../create-communication-resource.md#store-your-connection-string)hakkında bilgi edinin.
+`SmsClient`Bağlantı dizeniz ile bir örneğini oluşturun. (Kimlik bilgileri `Key` Azure Portal. [Kaynağınızın bağlantı dizesini yönetme](../../create-communication-resource.md#store-your-connection-string)hakkında bilgi edinin.
 
 `main` yöntemine aşağıdaki kodu ekleyin:
 
@@ -160,6 +160,12 @@ System.out.println("Message Id: " + sendResult.getMessageId());
 System.out.println("Recipient Number: " + sendResult.getTo());
 System.out.println("Send Result Successful:" + sendResult.isSuccessful());
 ```
+
+`<from-phone-number>`Iletişim Hizmetleri kaynağınız ile ILIŞKILI SMS etkin telefon numarasıyla ve `<to-phone-number>` ileti göndermek istediğiniz telefon numarasıyla değiştirmelisiniz.
+
+> [!WARNING]
+> Telefon numaralarının E. 164 uluslararası standart biçiminde sağlanması gerektiğini unutmayın. (ör: + 14255550123).
+
 ## <a name="send-a-1n-sms-message-with-options"></a>Seçeneklerle 1: N SMS ileti gönderin
 Bir alıcı listesine SMS iletisi göndermek için, bir `send` alıcı telefon numarası listesiyle yöntemi çağırın. Ayrıca, teslim raporunun etkinleştirilip etkinleştirilmeyeceğini ve özel Etiketler ayarlayamayacağını belirtmek için isteğe bağlı parametreleri de geçirebilirsiniz.
 ```java
@@ -181,13 +187,14 @@ for (SmsSendResult result : sendResults) {
 }
 ```
 
-`<from-phone-number>`Iletişim Hizmetleri kaynağınız ile ILIŞKILI SMS etkin telefon numarasıyla ve `<to-phone-number>` ileti göndermek istediğiniz telefon numarası veya telefon numaralarının bir listesi ile değiştirmelisiniz.
+`<from-phone-number>`Iletişim Hizmetleri kaynağınız ile ILIŞKILI SMS etkin telefon numarasıyla `<to-phone-number-1>` ve `<to-phone-number-2>` ileti göndermek istediğiniz telefon numarası ile değiştirmelisiniz.
 
-## <a name="optional-parameters"></a>İsteğe Bağlı Parametreler
+> [!WARNING]
+> Telefon numaralarının E. 164 uluslararası standart biçiminde sağlanması gerektiğini unutmayın. (ör: + 14255550123).
 
-`deliveryReportEnabled`Parametresi, teslim raporlamayı yapılandırmak için kullanabileceğiniz isteğe bağlı bir parametredir. Bu, SMS iletileri teslim edildiğinde olayları yayma isteyebileceğiniz senaryolar için yararlıdır. SMS iletilerinize yönelik teslim raporlamayı yapılandırmak için [SMS olayları](../handle-sms-events.md) Hızlı Başlangıç Kılavuzu ' na bakın.
+`setDeliveryReportEnabled`Yöntemi, teslim raporlamayı yapılandırmak için kullanılır. Bu, SMS iletileri teslim edildiğinde olayları yayma isteyebileceğiniz senaryolar için yararlıdır. SMS iletilerinize yönelik teslim raporlamayı yapılandırmak için [SMS olayları](../handle-sms-events.md) Hızlı Başlangıç Kılavuzu ' na bakın.
 
-`tag`Parametresi, teslim raporuna bir etiket uygulamak için kullanabileceğiniz isteğe bağlı bir parametredir.
+`setTag`Yöntemi teslim raporuna bir etiket uygulamak için kullanılır.
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 

@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: e7038a4e06a96ac2df1a7f0918877db9c97cb71d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 44bcc27f877f6b2a547c51ecd3848214719cb085
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102502544"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643651"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (Otomatikml) nedir?
 
@@ -263,7 +263,7 @@ Azure Machine Learning, otomatik ML 'yi kullanarak bir Python modeli oluşturabi
 
 [Bu Jupyter Not defteri örneğinde,](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)bkz. onnx biçimine dönüştürme. [ONNX 'de hangi algoritmaların desteklendiğini](how-to-configure-auto-train.md#select-your-experiment-type)öğrenin.
 
-ONNX çalışma zamanı, C# ' yi de destekler, bu nedenle REST uç noktalarının tanıtılmasını gerektiren veya herhangi bir ağ gecikme süresi gerekmeden C# uygulamalarınızda otomatik olarak oluşturulan modeli kullanabilirsiniz. [Ml.NET ile bir .NET uygulamasında bir oto ml onnx modeli kullanma](./how-to-use-automl-onnx-model-dotnet.md) hakkında daha fazla bilgi EDININ ve [onnx çalışma zamanı C# API 'SI ile ınnx modellerini birlikte](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md)kullanın. 
+ONNX çalışma zamanı, C# ' yi de destekler, bu nedenle REST uç noktalarının tanıtılmasını gerektiren veya herhangi bir ağ gecikme süresi gerekmeden C# uygulamalarınızda otomatik olarak oluşturulan modeli kullanabilirsiniz. [Ml.NET ile bir .NET uygulamasında bir oto ml onnx modeli kullanma](./how-to-use-automl-onnx-model-dotnet.md) hakkında daha fazla bilgi EDININ ve [onnx çalışma zamanı C# API 'SI ile ınnx modellerini birlikte](https://github.com/plaidml/onnxruntime/blob/plaidml/docs/CSharp_API.md)kullanın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

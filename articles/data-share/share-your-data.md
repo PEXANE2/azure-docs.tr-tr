@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 11/12/2020
-ms.openlocfilehash: 89c2a725b853b5a2a7578dccc1fd503917e12962
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: 8e149270d8f98cbf72d3864d238a3d8ddfd61c67
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94659633"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639542"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Öğretici: Azure Veri Paylaşımı’nı kullanarak verileri paylaşma  
 
@@ -42,23 +42,10 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 SQL kaynağından veri paylaşmaya yönelik önkoşulların listesi aşağıda verilmiştir. 
 
 #### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Azure SQL veritabanı veya Azure SYNAPSE Analytics 'ten (eski adıyla Azure SQL DW) paylaşım önkoşulları
-Önkoşulları yapılandırmak için [adım adım demo](https://youtu.be/hIE-TjJD8Dc) ' i takip edebilirsiniz.
 
 * Paylaşmak istediğiniz tablolar ve görünümler içeren bir Azure SQL veritabanı veya Azure SYNAPSE Analytics (eski adıyla Azure SQL DW).
 * *Microsoft. SQL/Servers/veritabanları/Write*'TA bulunan SQL Server 'da veritabanlarına yazma izni. Bu izin **Katkıda Bulunan** rolünde vardır.
-* Veritabanına erişmek için veri paylaşımının yönetilen kimliği izni. Bu, aşağıdaki adımlarla yapılabilir: 
-    1. Azure portal, SQL Server 'a gidin ve kendiniz **Azure Active Directory Yöneticisi** olarak ayarlayın.
-    1. [Sorgu Düzenleyicisi](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) 'Ni kullanarak Azure SQL veritabanı/veri ambarı 'na bağlanın veya Azure Active Directory kimlik doğrulamasıyla SQL Server Management Studio. 
-    1. Veri paylaşımının kaynak yönetilen kimliğini bir db_datareader olarak eklemek için aşağıdaki betiği yürütün. SQL Server kimlik doğrulaması değil Active Directory kullanarak bağlanmanız gerekir. 
-    
-        ```sql
-        create user "<share_acct_name>" from external provider;     
-        exec sp_addrolemember db_datareader, "<share_acct_name>"; 
-        ```                   
-       *<share_acc_name>* veri paylaşma kaynağınızın adı olduğunu unutmayın. Henüz bir veri paylaşma kaynağı oluşturmadıysanız, bu ön koşul daha sonra geri dönebilirsiniz.  
-
-* **' Db_datareader '** erişimine sahip BIR Azure SQL veritabanı kullanıcısı, paylaşmak istediğiniz tablolar ve/veya görünümler üzerinde gezinmek ve bunları seçmek için. 
-
+* SQL Server **Azure Active Directory Yöneticisi**
 * Güvenlik duvarı erişimi SQL Server. Bu, aşağıdaki adımlarla yapılabilir: 
     1. Azure portal, SQL Server 'a gidin. Sol gezinmede *güvenlik duvarları ve sanal ağlar ' ı* seçin.
     1. *Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin vermek* için **Evet** ' i tıklatın.
@@ -90,7 +77,6 @@ SQL kaynağından veri paylaşmaya yönelik önkoşulların listesi aşağıda v
 ### <a name="share-from-azure-data-explorer"></a>Azure Veri Gezgini'nden paylaşma
 * Paylaşmak istediğiniz veritabanlarına sahip bir Azure Veri Gezgini kümesi.
 * *Microsoft. kusto/kümeler/Write* Içinde bulunan Azure Veri Gezgini kümesine yazma izni. Bu izin **Katkıda Bulunan** rolünde vardır.
-* *Microsoft. Authorization/role atamalar/Write*' de bulunan Azure Veri Gezgini kümesine rol ataması ekleme izni. Bu izin **Sahip** rolünde vardır.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -186,7 +172,7 @@ Kaynağı oluşturmak için şu komutları kullanın:
 
     ![Paylaşımınıza veri kümeleri ekleme](./media/datasets.png "Veri kümeleri")
 
-1. Eklemek istediğiniz veri kümesi türünü seçin. Önceki adımda seçtiğiniz paylaşma türüne (anlık görüntü veya yerinde) bağlı olarak farklı bir veri kümesi türleri listesi görürsünüz. Bir Azure SQL veritabanından veya Azure SYNAPSE Analytics 'ten (eskiden Azure SQL DW) paylaşıyorsanız, tabloları listelemek için SQL kimlik bilgileri istenir.
+1. Eklemek istediğiniz veri kümesi türünü seçin. Önceki adımda seçtiğiniz paylaşma türüne (anlık görüntü veya yerinde) bağlı olarak farklı bir veri kümesi türleri listesi görürsünüz. Bir Azure SQL veritabanından veya Azure SYNAPSE Analytics 'ten (eskiden Azure SQL DW) paylaşıyorsanız, tabloları listelemek için kimlik doğrulama yöntemi istenir. AAD kimlik doğrulaması ' nı seçin ve **veri paylaşımının "Kullanıcı oluşturma" komut dosyasını benim yerime çalıştırmasına Izin ver** onay kutusunu işaretleyin. 
 
     ![Adddataset 'ler](./media/add-datasets.png "Veri kümesi Ekle")    
 

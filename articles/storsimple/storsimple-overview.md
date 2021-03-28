@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/02/2021
 ms.author: timlt
-ms.openlocfilehash: 3f0ec053d806208b4a3c15604714f6bdb87399e7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e8fb6985da5046d0a1bad171cbc9742a15baf1af
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102613230"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643430"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 serisi: karma bulut depolama çözümü
 
@@ -255,7 +255,7 @@ Aşağıda, StorSimple ile çözüm oluşturmak için kullanılan diğer yazıl�
 | Yedekleme hedefi |Veeam |Veeab v 9 ve üzeri |[Veahar ile yedekleme hedefi olarak StorSimple](storsimple-configure-backup-target-veeam.md)|
 | Yedekleme hedefi |VERITAS Backup Exec |Backup Exec 16 ve üzeri |[Backup Exec ile bir yedekleme hedefi olarak StorSimple](storsimple-configure-backup-target-using-backup-exec.md)|
 | Yedekleme hedefi |VERITAS NetBackup |NetBackup 7.7. x ve üzeri  |[NetBackup ile bir yedekleme hedefi olarak StorSimple](storsimple-configure-backuptarget-netbackup.md)|
-| Genel dosya paylaşımı <br></br> İşbirliği |Talon  |[Talon ile StorSimple](https://www.talonstorage.com/products/archive/fast-deployment-azure-storsimple) | |
+| Genel dosya paylaşımı <br></br> İşbirliği |Talon  |[Talon ile StorSimple](https://www.theinfostride.com/talon-and-microsoft-to-host-azure-storsimple-web-conference-with-capita/) | |
 
 ## <a name="storsimple-terminology"></a>StorSimple terminolojisi
 Microsoft Azure StorSimple çözümünüzü dağıtmaya başlamadan önce, aşağıdaki hüküm ve tanımları incelemenizi öneririz.

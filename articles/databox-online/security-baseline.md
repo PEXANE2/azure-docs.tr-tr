@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d88284f3b9759ce04af9e44ae591c4796dde4e84
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 335056260ddea0c15db761df109e69333ef474f3
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105565206"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641376"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>Azure Stack Edge için Azure Güvenlik temeli
 
@@ -298,7 +298,7 @@ Güvenlik Okuyucusu izinleri kiracının tamamına (Kök Yönetim Grubu) geniş 
 
 **Rehberlik**: yalnızca yetkili kullanıcılar (örneğin, ' EdgeArmUser ', Azure Stack Edge cihaz API 'lerine yerel Azure Resource Manager aracılığıyla erişebilir. Kullanıcı hesabı parolaları yalnızca Azure portal yönetilebilir. 
 
-- [Azure Resource Manager parolasını ayarlama](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password)
+- [Azure Resource Manager parolasını ayarlama](/azure/databox-online/azure-stack-edge-gpu-set-azure-resource-manager-password)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 

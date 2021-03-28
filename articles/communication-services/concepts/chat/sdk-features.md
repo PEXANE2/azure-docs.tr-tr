@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b275c3af2e92dc5af677120b5082751d19676b2e
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 02cfb4abc4f553c8f4353d8488390ed45eb3a7e7
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110823"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642234"
 ---
 # <a name="chat-sdk-overview"></a>Sohbet SDK genel bakış 
 
@@ -28,7 +28,7 @@ Aşağıdaki listede, Iletişim Hizmetleri sohbet SDK 'lerinde Şu anda kullanı
 
 | Özellik grubu | Özellik | JavaScript  | Java | .NET | Python | iOS | Android |
 |-----------------|-------------------|---|-----|----|-----|----|----|
-| Temel yetenekler | 2 veya daha fazla kullanıcı arasında sohbet iş parçacığı oluşturma (en fazla 250 Kullanıcı)                                                       | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |    
+| Temel yetenekler | 2 veya daha fazla kullanıcı arasında sohbet iş parçacığı oluşturma                                                     | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |    
 |                   | Sohbet iş parçacığının konusunu güncelleştirme                                                                              | ✔️   | ✔️ | ✔️    | ✔️   |  ✔️    | ✔️   |   
 |                   | Sohbet iş parçacığından katılımcı ekleme veya kaldırma                                                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
 |                   | Sohbet iletisi geçmişini eklenmekte olan katılımcı ile paylaşıp paylaşmeyeceğinizi seçin                                   | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   | 
@@ -37,16 +37,16 @@ Aşağıdaki listede, Iletişim Hizmetleri sohbet SDK 'lerinde Şu anda kullanı
 |                   | Bir iletişim kullanıcısı verildiğinde, kullanıcının bir parçası olduğu sohbet iş parçacıklarının listesini alın                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
 |                   | Belirli bir sohbet iş parçacığı için bilgi alın                                                                              | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
 |                   | Sohbet iş parçacığında ileti gönderme ve alma                                                                            | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   |   
-|                   | Gönderilen iletinin içeriğini düzenleme                                                                                | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
-|                   | İleti silme                                                                                                       | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
-|                   | Sohbetteki diğer katılımcılar tarafından okunan iletiler için okundu bilgileri <br/> *Sohbet iş parçacığında 20 ' den fazla katılımcı varsa kullanılamaz*    | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |   
-|                   | Katılımcılar bir sohbet iş parçacığına etkin bir şekilde ileti yazarken bildirim alın <br/> *Sohbet iş parçacığında 20 ' den fazla üye varsa kullanılamaz*      | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
-|                   | Sohbet iş parçacığında tüm iletileri al <br/>                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|                   | Gönderilen iletinizin içeriğini güncelleştirme                                                                               | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
+|                   | Daha önce gönderdiğiniz bir iletiyi silme                                                                                                      | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
+|                   | Sohbetteki diğer katılımcılar tarafından okunan iletiler için okundu bilgileri                                        | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |   
+|                   | Katılımcılar bir sohbet iş parçacığına etkin bir şekilde ileti yazarken bildirim alın                                         | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
+|                   | Sohbet iş parçacığında tüm iletileri al                                                                        | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
 |                   | İleti içeriğinin bir parçası olarak Unicode emojıs gönder                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-|Gerçek zamanlı sinyal (özel sinyal paketi tarafından etkin * *)|  Gelen iletiler ve sohbet uygulamanızdaki diğer işlemlere yönelik gerçek zamanlı güncelleştirmeler almak için abone olun. Gerçek zamanlı sinyalte desteklenen güncelleştirmelerin listesini görmek için bkz. [sohbet kavramları](concepts.md#real-time-signaling)                                     | ✔️   | ❌    | ❌  | ❌  | ❌  | ❌  |    
-| Event Grid desteği             | Azure Event Grid tümleştirme kullanın ve iletişim hizmetinizi, sohbet etkinliğine göre iş mantığını veya özel bir anında iletme bildirimi hizmetini yürütmeye yönelik olarak yapılandırın   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
-| İzleme        | Panolar derlemek, sohbet uygulamanızın sistem durumunu izlemek ve tüm bunları anlamak için uyarıları ayarlamak üzere Azure portal yayılan API isteği ölçümlerini kullanın      | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-|                   | Iletişim Hizmetleri kaynağınızı, izleme ve tanılama amaçlarıyla sohbet operasyonel Günlükler alacak şekilde yapılandırın          | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|Gerçek zamanlı bildirimler (özel sinyal paketi tarafından etkin * *)|  Sohbet istemcileri gelen iletiler ve sohbet iş parçacığında gerçekleşen diğer işlemler için gerçek zamanlı güncelleştirmeler almak üzere abone olabilir. Gerçek zamanlı bildirimler için desteklenen güncelleştirmelerin listesini görmek için bkz. [sohbet kavramları](concepts.md#real-time-notifications)                                     | ✔️   | ❌    | ❌  | ❌  | ❌  | ❌  | 
+| Azure Event Grid ile tümleştirme             | Özel bildirim hizmetleri eklemek veya bu olayı bir Web kancasına göndermek için Azure Event Grid 'de bulunan sohbet olaylarını kullanarak bir sohbet tamamlandıktan sonra CRM kayıtlarını güncelleştirme gibi iş mantığını yürütün   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
+| Raporlama </br>(Bu bilgi, Azure portal üzerinde Iletişim Hizmetleri kaynağınızın Izleme sekmesinde kullanılabilir)      | Azure Ölçüm Gezgini yayımlanan ölçümleri izleyerek sohbet uygulamaınızdan API trafiğini anlayın ve tüm bunları tespit etmek için Uyarılar ayarlayın     | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|                   | Kaynağınız için tanılama günlüğü etkinleştirerek Iletişim Hizmetleri çözümünüzü izleyip hatalarını ayıklayın    | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
 
 
 * * Özel sinyal paketi Web Yuvaları kullanılarak uygulanır. Web Yuvaları desteklenmiyorsa uzun yoklamaya geri dönüş yapılır.  
@@ -68,3 +68,4 @@ Aşağıdaki tablo, şu anda kullanılabilir olan desteklenen tarayıcı ve sür
 
 Aşağıdaki belgeler sizin için ilginç olabilir:  
 - [Sohbet kavramları](../chat/concepts.md) hakkında bilgi edinin
+- [Fiyatlandırmanın](../pricing.md#chat) sohbet için nasıl çalıştığını anlayın

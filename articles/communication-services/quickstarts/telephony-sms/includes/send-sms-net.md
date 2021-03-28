@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: peiliu
-ms.openlocfilehash: caca5f5a05a136248f7453337629fdd2b22f956a
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: ff9d63459d0b645f14c62006a8f76f7dd4f986be
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110391"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644353"
 ---
 SMS mesajları göndermek için Iletişim Hizmetleri C# SMS SDK 'sını kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
@@ -82,12 +82,12 @@ Aşağıdaki sınıflar ve arabirimler, C# için Azure Communication Services SM
 | Ad                                       | Açıklama                                                                                                                                                       |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | SmsClient     | Bu sınıf tüm SMS işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve SMS mesajları göndermek için kullanabilirsiniz.                           |
-| SmsSendResult               | Bu sınıf, SMS hizmetinden elde edilen sonucu içerir.                                          |
 | Smssendoseçenekleri | Bu sınıf, teslim raporlamayı yapılandırmak için seçenekler sağlar. Enable_delivery_report true olarak ayarlanırsa, teslim başarılı olduğunda bir olay yayınlanır |
+| SmsSendResult               | Bu sınıf, SMS hizmetinden elde edilen sonucu içerir.                                          |
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
- **Program. cs** 'yi bir metin düzenleyicisinde açın ve `Main` `SmsClient` bağlantı dizeniz ile başlatmak için yöntemin gövdesini kodla değiştirin. Aşağıdaki kod, adlı bir ortam değişkeninden kaynak için bağlantı dizesini alır `COMMUNICATION_SERVICES_CONNECTION_STRING` . [Kaynak bağlantı dizesini yönetme](../../create-communication-resource.md#store-your-connection-string)hakkında bilgi edinin.
+ **Program. cs** 'yi bir metin düzenleyicisinde açın ve `Main` `SmsClient` bağlantı dizeniz ile başlatmak için yöntemin gövdesini kodla değiştirin. Aşağıdaki kod, adlı bir ortam değişkeninden kaynak için bağlantı dizesini alır `COMMUNICATION_SERVICES_CONNECTION_STRING` . [Kaynağınızın bağlantı dizesini yönetme](../../create-communication-resource.md#store-your-connection-string)hakkında bilgi edinin.
 
 
 ```csharp
@@ -104,8 +104,8 @@ Tek bir alıcıya SMS iletisi göndermek için, `Send` `SendAsync` SmsClient ' d
 
 ```csharp
 SmsSendResult sendResult = smsClient.Send(
-    from: "<from-phone-number>", // Your E.164 formatted from phone number used to send SMS
-    to: "<to-phone-number>", // E.164 formatted recipient phone number
+    from: "<from-phone-number>",
+    to: "<to-phone-number>",
     message: "Hello World via SMS"
 );
 
@@ -113,13 +113,16 @@ Console.WriteLine($"Sms id: {sendResult.MessageId}");
 ```
 `<from-phone-number>`Iletişim Hizmetleri kaynağınız ile ILIŞKILI SMS özellikli telefon numarasıyla ve `<to-phone-number>` ileti göndermek istediğiniz telefon numarasıyla değiştirmelisiniz.
 
+> [!WARNING]
+> Telefon numaralarının E. 164 uluslararası standart biçiminde sağlanması gerektiğini unutmayın. (ör: + 14255550123).
+
 ## <a name="send-a-1n-sms-message-with-options"></a>Seçeneklerle 1: N SMS ileti gönderin
 Bir alıcı listesine SMS iletisi göndermek için `Send` `SendAsync` alıcının telefon numaralarının bir listesiyle birlikte SmsClient 'deki veya işlevini çağırın. Ayrıca, teslim raporunun etkinleştirilip etkinleştirilmeyeceğini ve özel Etiketler ayarlayamayacağını belirtmek için isteğe bağlı parametreleri de geçirebilirsiniz.
 
 ```csharp
 Response<IEnumerable<SmsSendResult>> response = smsClient.Send(
-    from: "<from-phone-number>", // Your E.164 formatted from phone number used to send SMS
-    to: new string[] { "<to-phone-number-1>", "<to-phone-number-2>" }, // E.164 formatted recipient phone numbers
+    from: "<from-phone-number>",
+    to: new string[] { "<to-phone-number-1>", "<to-phone-number-2>" },
     message: "Weekly Promotion!",
     options: new SmsSendOptions(enableDeliveryReport: true) // OPTIONAL
     {
@@ -134,7 +137,14 @@ foreach (SmsSendResult result in results)
 }
 ```
 
+`<from-phone-number>`Iletişim Hizmetleri kaynağınız ile ILIŞKILI SMS özellikli bir telefon numarasıyla ve `<to-phone-number-1>` `<to-phone-number-2>` ileti göndermek istediğiniz telefon numarası ile değiştirmelisiniz.
+
+> [!WARNING]
+> Telefon numaralarının E. 164 uluslararası standart biçiminde sağlanması gerektiğini unutmayın. (ör: + 14255550123).
+
 `enableDeliveryReport`Parametresi, teslim raporlamayı yapılandırmak için kullanabileceğiniz isteğe bağlı bir parametredir. Bu, SMS iletileri teslim edildiğinde olayları yayma isteyebileceğiniz senaryolar için yararlıdır. SMS iletilerinize yönelik teslim raporlamayı yapılandırmak için [SMS olayları](../handle-sms-events.md) Hızlı Başlangıç Kılavuzu ' na bakın.
+
+`Tag` Teslim raporuna bir etiket uygulamak için kullanılır
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 

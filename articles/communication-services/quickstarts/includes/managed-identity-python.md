@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: b37ebebdb99530ab615a313d9b269b9ce937b7f1
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: cefdf77052e559853cc85d129799e288032186b8
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110783"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645392"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution"></a>Iletişim Hizmetleri çözümünüze yönetilen kimlik ekleme
 
@@ -24,7 +24,7 @@ pip install azure-communication-sms
 from azure.identity import DefaultAzureCredential
 ```
 
-Aşağıdaki örneklerde [DefaultAzureCredential](/python/api/azure.identity.defaultazurecredential)kullanılmaktadır. Bu kimlik bilgisi üretim ve geliştirme ortamları için uygundur.
+Aşağıdaki örneklerde [DefaultAzureCredential](/python/api/azure-identity/azure.identity.defaultazurecredential)kullanılmaktadır. Bu kimlik bilgisi üretim ve geliştirme ortamları için uygundur.
 
 Uygulamayı geliştirme ortamında kaydetmek ve ortam değişkenlerini ayarlamak için bkz. [yönetilen kimlikle erişimi yetkilendirme](../managed-identity-from-cli.md)
 

@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: e3e2aa055baf3dfb4bee0629040fc7c140844637
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1f6df64a66c0700f3a13a40ea5046515a2bf1a51
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101094023"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643839"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>SQL Server Integration Services paketlerini Azure SQL yönetilen örneği 'ne geçirme
 SQL Server Integration Services (SSIS) kullanıyorsanız ve SSIS projelerinizi/paketlerinizi, SQL Server tarafından barındırılan kaynak SSSıSDB 'den Azure SQL yönetilen örneği tarafından barındırılan hedef SSıSDB 'ye geçirmek istiyorsanız, Azure veritabanı geçiş hizmeti 'ni kullanabilirsiniz.
 
-SSIS 'nin kullandığınız sürümü 2012 'den daha eski veya SSIS projelerini/paketlerinizi geçirmeden önce, SSIS projelerinizi/paketlerinizi geçirmeden önce bunları, SSMS 'den başlatılabilen Tümleştirme Hizmetleri proje Dönüştürme Sihirbazı 'Nı kullanarak dönüştürmeniz gerekir. Daha fazla bilgi için [projeleri proje dağıtım modeline dönüştürme](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)makalesine bakın.
+SSIS 'nin kullandığınız sürümü 2012 'den daha eski veya SSIS projelerini/paketlerinizi geçirmeden önce, SSIS projelerinizi/paketlerinizi geçirmeden önce bunları, SSMS 'den başlatılabilen Tümleştirme Hizmetleri proje Dönüştürme Sihirbazı 'Nı kullanarak dönüştürmeniz gerekir. Daha fazla bilgi için [projeleri proje dağıtım modeline dönüştürme](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#convert)makalesine bakın.
 
 > [!NOTE]
 > Azure veritabanı geçiş hizmeti (DMS) Şu anda Azure SQL veritabanını hedef geçiş hedefi olarak desteklemiyor. SSIS projelerini/paketlerini Azure SQL veritabanı 'na yeniden dağıtmak için [SQL Server Integration Services paketlerini Azure SQL veritabanı 'na yeniden dağıtma](./how-to-migrate-ssis-packages.md)makalesine bakın.
@@ -39,7 +39,7 @@ Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
 * [ExpressRoute](../expressroute/expressroute-introduction.md) veya [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlayan Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için Microsoft Azure sanal ağ oluşturmak için. Daha fazla bilgi için [Azure veritabanı geçiş hizmeti 'ni kullanarak SQL yönetilen örnek geçişleri Için ağ topolojileri]( https://aka.ms/dmsnetworkformi)makalesine bakın. Sanal ağ oluşturma hakkında daha fazla bilgi için [sanal ağ belgelerine](../virtual-network/index.yml)ve özellikle adım adım ayrıntılarla birlikte hızlı başlangıç makalelerine bakın.
 * Sanal ağ ağ güvenlik grubu kurallarınızın, ServiceBus, Storage ve AzureMonitor için ServiceTag giden bağlantı noktası 443 ' i engellemediğinden emin olmak için. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](../virtual-network/virtual-network-vnet-plan-design-arm.md)makalesine bakın.
-* [Kaynak veritabanı altyapısı erişimi Için Windows Güvenlik duvarınızı](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017)yapılandırmak için.
+* [Kaynak veritabanı altyapısı erişimi Için Windows Güvenlik duvarınızı](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)yapılandırmak için.
 * Azure veritabanı geçiş hizmeti 'nin kaynak SQL Server erişmesine izin vermek üzere Windows Güvenlik duvarınızı açmak için, varsayılan olarak TCP bağlantı noktası 1433 ' dir.
 * Dinamik bağlantı noktası kullanarak birden fazla adlandırılmış SQL Server örneği çalıştırıyorsanız Azure Veritabanı Geçiş Hizmeti'nin kaynak sunucunuzdaki adlandırılmış örneğe bağlanabilmesi için SQL Browser Hizmeti'ni etkinleştirebilir ve güvenlik duvarınızda 1434 numaralı UDP bağlantı noktasına erişim izni verebilirsiniz.
 * Kaynak veritabanlarınızın önünde bir güvenlik duvarı cihazı kullanıyorsanız Azure Veritabanı Geçiş Hizmeti'nin geçiş amacıyla kaynak veritabanlarına ve 445 numaralı SMB bağlantı noktası aracılığıyla dosyalara erişmesi için güvenlik duvarı kuralları eklemeniz gerekebilir.

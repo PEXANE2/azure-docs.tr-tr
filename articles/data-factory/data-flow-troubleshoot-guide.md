@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 03/18/2021
-ms.openlocfilehash: a475441a845300d74014924415a4e48ae4de16df
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 7678d0fde21cefc950e0ac64a58563425c606298
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105628297"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640226"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşleme sorunlarını giderme
 
@@ -317,24 +317,6 @@ Bu makalede, Azure Data Factory veri akışlarını eşlemek için ortak sorun g
 ### <a name="error-code-df-excel-invalidfile"></a>Hata kodu: DF-Excel-ınvalidfile
 - **İleti**: yalnızca. xlsx ve. xls desteklenirken geçersiz Excel dosyası sağlanır.
 
-### <a name="error-code-df-adobeintegration-invalidmaptofilter"></a>Hata kodu: DF-AdobeIntegration-ınvalidmaptofilter
-- **İleti**: özel kaynakta filtreye yalnızca bir anahtar/kimlik eşlenmiş olabilir.
-
-### <a name="error-code-df-adobeintegration-invalidpartitionconfiguration"></a>Hata kodu: DF-AdobeIntegration-ınvalidpartitionconfiguration
-- **İleti**: yalnızca tek bir bölüm desteklenir. Bölüm Şeması RoundRobin veya Hash olabilir.
-- **Öneri**: AdobeIntegration Settings içinde yalnızca tek bölümlerinizin olduğunu onaylayın. Bölüm Şeması RoundRobin veya Hash olabilir.
-
-### <a name="error-code-df-adobeintegration-keycolumnmissed"></a>Hata kodu: DF-AdobeIntegration-Keycolumnkaçırılan
-- **İleti**: Insertable olmayan işlemler için anahtar belirtilmelidir.
-- **Öneri**: insertable olmayan Işlemler için AdobeIntegration Settings içinde anahtar sütunlarınızı belirtin.
-
-### <a name="error-code-df-adobeintegration-invalidpartitiontype"></a>Hata kodu: DF-AdobeIntegration-ınvalidpartitiontype
-- **İleti**: Bölüm türünün roundRobin olması gerekebilir.
-- **Öneri**: AdobeIntegration Settings içinde bölüm türünün roundRobin olduğunu onaylayın.
-
-### <a name="error-code-df-adobeintegration-invalidprivacyregulation"></a>Hata kodu: DF-AdobeIntegration-ınvalidprivacyyönetmeliği
-- **İleti**: Şu anda desteklenen gizlilik düzenlemesi gdpr.
-- **Öneri**: AdobeIntegration Settings 'teki gizlilik Yönetmeliği **' GDPR '** olduğunu onaylayın.
 
 ## <a name="miscellaneous-troubleshooting-tips"></a>Çeşitli sorun giderme ipuçları
 - **Sorun**: beklenmeyen özel durum oluştu ve yürütme başarısız oldu.

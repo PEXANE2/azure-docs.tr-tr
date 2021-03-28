@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: b0a96443e1f8596c48882bbdd92b9bb4b910beff
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: c4e70c7f74c202b7de44a259b8a680f57aeaa041
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105567993"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645040"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma birleştirme biçimlendirme dili (SSML) ile senssıs 'yi geliştirme
 
@@ -877,7 +877,7 @@ Yer işareti öğelerini okuyacağız.
 Bookmark öğesi metin veya etiket dizisindeki belirli bir konuma başvurmak için kullanılabilir.
 
 > [!NOTE]
-> `bookmark` öğesi yalnızca `en-US-AriaNeural` Şu anda Batı ABD 2 () bölgesinde ses için geçerlidir `westus2` .
+> `bookmark` öğesi şimdilik yalnızca ses için geçerlidir `en-US-AriaNeural` .
 
 **Syntax**
 

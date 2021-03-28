@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 03/27/2021
 ms.author: alexeyo
-ms.openlocfilehash: 78e40250710c133cbed53c05137971247663b0df
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7fe2942250e165606175392d7749becda0cff23b
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564431"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645118"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Konuşma Hizmet Kotaları ve Sınırları
 
@@ -39,7 +39,7 @@ Aşağıdaki tablolarda, "ayarlanamaz" satırı olmayan parametreler, tüm fiyat
 #### <a name="batch-transcription"></a>Toplu iş dökümü
 | Kota | Ücretsiz (F0)<sup>1</sup> | Standart (S0) |
 |--|--|--|
-| REST API sınırı | Toplu iş dökümü F0 için kullanılamaz | dakikada 300 istek |
+| [Konuşmadan metne REST API v 2.0 ve v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) sınırı | Toplu iş dökümü F0 için kullanılamaz | dakikada 300 istek |
 | Maksimum ses girişi dosya boyutu | Yok | 1 GB |
 | Maksimum giriş blobu boyutu (örneğin, bir ZIP arşivinde birden fazla dosya içerebilir; yukarıdaki dosya boyutu sınırını aklınızda bulundurtığınızdan emin olun) | Yok | 2,5 GB |
 | En büyük blob kapsayıcısı boyutu | Yok | 5 GB |

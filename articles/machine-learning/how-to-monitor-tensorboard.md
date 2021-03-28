@@ -10,19 +10,19 @@ ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2af82734fb9e1571242eec016f36f691411a8f2e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 56b411a490fe1a0c45ea4dd183d88defd61a2fde
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518764"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640860"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard ve Azure Machine Learning deneme çalıştırmalarını ve ölçümlerini görselleştirin
 
 
 Bu makalede, deneme çalışmalarınızı ve ölçümlerini, ana Azure Machine Learning SDK 'daki [ `tensorboard` paketi](/python/api/azureml-tensorboard/) kullanarak tensorboard 'da görüntülemeyi öğreneceksiniz. Deneme çalışmalarınızı inceledikten sonra Machine Learning modellerinizi daha iyi ayarlayabilir ve yeniden eğitebilirsiniz.
 
-[Tensorboard](https://www.tensorflow.org/tensorboard/r1/overview) , deneme yapınızı ve performansınızı incelemek ve anlamak için bir Web uygulamaları paketidir.
+[Tensorboard](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py) , deneme yapınızı ve performansınızı incelemek ve anlamak için bir Web uygulamaları paketidir.
 
 Azure Machine Learning denemeleri ile TensorBoard 'ı nasıl başladığınıza, deneme türüne bağlıdır:
 + Denemeniz, PyTorch, Chainer ve TensorFlow denemeleri gibi TensorBoard tarafından tüketilebilir olan günlük dosyalarını yerel olarak çıktılarsam, [TensorBoard 'ı doğrudan](#launch-tensorboard) deneme 'nin çalıştırma geçmişinden başlatabilirsiniz. 

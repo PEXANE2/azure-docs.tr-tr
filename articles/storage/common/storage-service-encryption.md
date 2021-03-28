@@ -4,17 +4,17 @@ description: Azure depolama, verilerinizi buluta kalıcı yapmadan önce otomati
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 03/23/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b2471ccd2a412c7cbae9d4e59412ac055697e3d7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0688e14b77d885132d6c3fbaa44bed117cc7cf9d
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180369"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641122"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Bekleyen veri için Azure Depolama şifrelemesi
 
@@ -65,50 +65,9 @@ Hizmet düzeyi şifreleme, Azure Key Vault ile Microsoft tarafından yönetilen 
 
 Altyapı şifrelemesini sağlayan bir depolama hesabı oluşturma hakkında daha fazla bilgi için, bkz. [verilerin çift şifrelenmesi için altyapı şifrelemesi etkinleştirilmiş bir depolama hesabı oluşturma](infrastructure-encryption-enable.md).
 
-## <a name="encryption-scopes-for-blob-storage-preview"></a>BLOB depolama için şifreleme kapsamları (Önizleme)
-
-Varsayılan olarak, bir depolama hesabı depolama hesabı kapsamındaki bir anahtarla şifrelenir. Verilerinizi şifreleyen anahtara erişimi korumak ve denetlemek için, Microsoft tarafından yönetilen anahtarları veya Azure Key Vault depolanan müşteri tarafından yönetilen anahtarları kullanmayı seçebilirsiniz.
-
-Şifreleme kapsamları, kapsayıcının veya ayrı bir blob düzeyinde şifrelemeyi isteğe bağlı olarak yönetmenizi sağlar. Aynı depolama hesabında bulunan ancak farklı müşterilere ait olan veriler arasında güvenli sınırlar oluşturmak için şifreleme kapsamlarını kullanabilirsiniz.
-
-Azure depolama kaynak sağlayıcısı 'nı kullanarak bir depolama hesabı için bir veya daha fazla şifreleme kapsamı oluşturabilirsiniz. Bir şifreleme kapsamı oluşturduğunuzda, kapsamın Microsoft tarafından yönetilen bir anahtarla mi yoksa Azure Key Vault depolanan müşteri tarafından yönetilen bir anahtarla mi korunduğunu belirtin. Aynı depolama hesabındaki farklı şifreleme kapsamları, Microsoft tarafından yönetilen veya müşteri tarafından yönetilen anahtarları kullanabilir.
-
-Bir şifreleme kapsamı oluşturduktan sonra, bir kapsayıcı veya blob oluşturmak için bu şifreleme kapsamının bir istekte belirtebilirsiniz. Şifreleme kapsamı oluşturma hakkında daha fazla bilgi için bkz. [şifreleme kapsamları oluşturma ve yönetme (Önizleme)](../blobs/encryption-scope-manage.md).
-
-> [!NOTE]
-> Önizleme sırasında Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) ve Okuma Erişimli Coğrafi bölge-yedekli depolama (RA-GZRS) hesapları ile şifreleme kapsamları desteklenmez.
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
-
-> [!IMPORTANT]
-> Şifreleme kapsamları önizlemesi yalnızca üretim dışı kullanım için tasarlanmıştır. Üretim hizmet düzeyi sözleşmeleri (SLA 'Lar) Şu anda kullanılamıyor.
->
-> Beklenmeyen maliyetleri önlemek için, şu anda ihtiyaç duymayan tüm şifreleme kapsamlarını devre dışı bıraktığınızdan emin olun.
-
-### <a name="create-a-container-or-blob-with-an-encryption-scope"></a>Şifreleme kapsamı ile bir kapsayıcı veya blob oluşturma
-
-Bir şifreleme kapsamı altında oluşturulan Bloblar, bu kapsam için belirtilen anahtarla şifrelenir. Blob oluştururken tek bir blob için şifreleme kapsamı belirtebilir veya bir kapsayıcı oluştururken varsayılan bir şifreleme kapsamı belirtebilirsiniz. Bir kapsayıcı düzeyinde varsayılan bir şifreleme kapsamı belirtildiğinde, bu kapsayıcıdaki tüm Bloblar varsayılan kapsamla ilişkili anahtarla şifrelenir.
-
-Varsayılan şifreleme kapsamına sahip bir kapsayıcıda bir blob oluşturduğunuzda, kapsayıcı varsayılan şifreleme kapsamının geçersiz kılmalara izin verecek şekilde yapılandırıldıysa varsayılan şifreleme kapsamını geçersiz kılan bir şifreleme kapsamı belirtebilirsiniz. Varsayılan şifreleme kapsamının geçersiz kılmalarını engellemek için kapsayıcıyı tek bir blob için geçersiz kılmaları reddedecek şekilde yapılandırın.
-
-Şifreleme kapsamı devre dışı bırakılmadığı sürece, bir şifreleme kapsamına ait olan bir Blobun okuma işlemleri saydam bir şekilde gerçekleşir.
-
-### <a name="disable-an-encryption-scope"></a>Şifreleme kapsamını devre dışı bırakma
-
-Bir şifreleme kapsamını devre dışı bıraktığınızda, şifreleme kapsamıyla gerçekleştirilen sonraki okuma veya yazma işlemleri, HTTP hata kodu 403 (yasak) ile başarısız olur. Şifreleme kapsamını yeniden etkinleştirirseniz okuma ve yazma işlemleri normal olarak devam eder.
-
-Bir şifreleme kapsamı devre dışı bırakıldığında, artık bu için faturalandırılırsınız. Gereksiz ücretlerden kaçınmak için gerekli olmayan tüm şifreleme kapsamlarını devre dışı bırakın.
-
-Şifreleme kapsamınız Azure Key Vault için müşteri tarafından yönetilen anahtarlarla korunuyorsa, şifreleme kapsamını devre dışı bırakmak için anahtar kasasında ilişkili anahtarı da silebilirsiniz. Azure Key Vault içindeki müşteri tarafından yönetilen anahtarların geçici silme ve Temizleme koruması ile korunduğunu ve silinen bir anahtarın bu özellikler tarafından tanımlanan davranışa tabi olduğunu aklınızda bulundurun. Daha fazla bilgi için Azure Key Vault belgelerinde aşağıdaki konulardan birine bakın:
-
-- [PowerShell ile geçici silmeyi kullanma](../../key-vault/general/key-vault-recovery.md)
-- [CLı ile geçici silmeyi kullanma](../../key-vault/general/key-vault-recovery.md)
-
-> [!NOTE]
-> Bir şifreleme kapsamının silinmesi mümkün değildir.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Key Vault nedir?](../../key-vault/general/overview.md)
 - [Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarlar](customer-managed-keys-overview.md)
-- [BLOB depolama için şifreleme kapsamları (Önizleme)](../blobs/encryption-scope-overview.md)
+- [BLOB depolama için şifreleme kapsamları](../blobs/encryption-scope-overview.md)
+- [BLOB depolama için istekte bir şifreleme anahtarı sağlayın](../blobs/encryption-customer-provided-keys.md)

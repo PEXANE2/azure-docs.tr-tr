@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: cffa8d9a0647ff5fe970801d5da98e23be0b2aaf
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: edc420cb1e79ed6d99a55524764cb164bd2edaf5
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105567334"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641343"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>Kaynak veritabanlarına bağlanırken DMS hatalarını giderme
 
@@ -31,7 +31,7 @@ Kaynak SQL Server veritabanına bağlanma ile ilişkili olası sorunlar ve bunla
 | ------------- | ------------- |
 | SQL bağlantısı başarısız oldu. SQL Server ile bağlantı kurulmaya çalışılırken ağ ile ilişkili veya örneğe özgü bir hata oluştu. Sunucu bulunamadı veya erişilebilir değildi. Örnek adının doğru olduğundan ve SQL Server uzak bağlantılara izin verecek şekilde yapılandırıldığından emin olun.<br> | Bu hata, hizmet kaynak sunucuyu bulamıyorsa oluşur. Sorunu gidermek için [dinamik bağlantı noktası veya adlandırılmış örnek kullanılırken kaynak SQL Server bağlantı hatası](./known-issues-troubleshooting-dms.md#error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance)makalesine bakın. |
 | **Hata 53** -SQL bağlantısı başarısız oldu. (Ayrıca, hata kodları 1, 2, 5, 53, 233, 258, 1225, 11001 için)<br><br> | Hizmet kaynak sunucuya bağlanamıyorsa bu hata oluşur. Sorunu gidermek için aşağıdaki kaynaklara bakın ve sonra yeniden deneyin. <br><br>  [Bağlantı sorununu gidermek için etkileşimli Kullanıcı Kılavuzu](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)<br><br> [SQL Server Azure SQL veritabanı 'na geçirmek için Önkoşullar](./pre-reqs.md#prerequisites-for-migrating-sql-server-to-azure-sql-managed-instance) <br><br> [SQL Server Azure SQL yönetilen örneği 'ne geçirme önkoşulları](./pre-reqs.md#prerequisites-for-migrating-sql-server-to-azure-sql-managed-instance) |
-| **Hata 18456** -oturum açma başarısız.<br> | Bu hata, hizmet, kaynak veritabanına, belirtilen T-SQL kimlik bilgilerini kullanarak bağlanamıyorsa oluşur. Sorunu gidermek için, girilen kimlik bilgilerini doğrulayın. Ayrıca, bu tablonun altındaki notta listelenen [MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017) veya sorun giderme belgelerine de başvurabilirsiniz ve sonra yeniden deneyin. |
+| **Hata 18456** -oturum açma başarısız.<br> | Bu hata, hizmet, kaynak veritabanına, belirtilen T-SQL kimlik bilgilerini kullanarak bağlanamıyorsa oluşur. Sorunu gidermek için, girilen kimlik bilgilerini doğrulayın. Ayrıca, bu tablonun altındaki notta listelenen [MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error) veya sorun giderme belgelerine de başvurabilirsiniz ve sonra yeniden deneyin. |
 | Hatalı biçimlendirilmiş AccountName değeri ' {0} ' belirtildi. AccountName için beklenen biçim etkialanı \ Kullanıcı adı<br> | Kullanıcı Windows kimlik doğrulaması seçerse bu hata oluşur ancak kullanıcı adını geçersiz biçimde sağlar. Sorunu gidermek için, Windows kimlik doğrulaması için doğru biçimde Kullanıcı adı sağlayın ya da **SQL kimlik doğrulaması**' nı seçin. |
 
 ## <a name="aws-rds-mysql"></a>AWS RDS MySQL
@@ -48,8 +48,8 @@ Bir kaynak AWS RDS MySQL veritabanına bağlanma ile ilgili olası sorunlar ve b
 
 > [!NOTE]
 > Kaynak AWS RDS MySQL veritabanına bağlanmayla ilgili sorunları giderme hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
-> * [Amazon RDS bağlantı sorunları sorunlarını giderme](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html#CHAP_Troubleshooting.Connecting)
-> * [Nasıl yaparım? Amazon RDS veritabanı örneğine bağlanma sorunları çözümlensin mi?](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
+> *    [Amazon RDS bağlantı sorunları sorunlarını giderme](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html#CHAP_Troubleshooting.Connecting)
+> *    [Nasıl yaparım? Amazon RDS veritabanı örneğine bağlanma sorunları çözümlensin mi?](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
 
 ## <a name="aws-rds-postgresql"></a>AWS RDS PostgreSQL
 
@@ -62,8 +62,8 @@ Kaynak AWS RDS PostgreSQL veritabanına bağlanma ile ilişkili olası sorunlar 
 
 > [!NOTE]
 > Kaynak AWS RDS PostgreSQL veritabanına bağlanmayla ilgili sorunları giderme hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
-> * [Amazon RDS bağlantı sorunları sorunlarını giderme](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html#CHAP_Troubleshooting.Connecting)
-> * [Nasıl yaparım? Amazon RDS veritabanı örneğine bağlanma sorunları çözümlensin mi?](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
+> *    [Amazon RDS bağlantı sorunları sorunlarını giderme](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html#CHAP_Troubleshooting.Connecting)
+> *    [Nasıl yaparım? Amazon RDS veritabanı örneğine bağlanma sorunları çözümlensin mi?](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
 
 ## <a name="aws-rds-sql-server"></a>AWS RDS SQL Server
 
@@ -72,15 +72,15 @@ Kaynak AWS RDS SQL Server veritabanına bağlanma ile ilgili olası sorunlar ve 
 | Hata         | Neden ve sorun giderme ayrıntısı |
 | ------------- | ------------- |
 | **Hata 53** -SQL bağlantısı başarısız oldu. SQL Server ile bağlantı kurulmaya çalışılırken ağ ile ilişkili veya örneğe özgü bir hata oluştu. Sunucu bulunamadı veya erişilebilir durumda değil. Örnek adının doğru olduğundan ve SQL Server uzak bağlantılara izin verecek şekilde yapılandırıldığından emin olun. (sağlayıcı: adlandırılmış kanallar sağlayıcısı, hata: 40-SQL Server bağlantı açılamıyor | Hizmet kaynak sunucuya bağlanamıyorsa bu hata oluşur. Sorunu gidermek için, bu tablonun altındaki notta listelenen sorun giderme belgelerine başvurun ve sonra yeniden deneyin. |
-| **Hata 18456** -oturum açma başarısız. ' {User} ' kullanıcısı için oturum açma başarısız | Hizmet, kaynak veritabanına, belirtilen T-SQL kimlik bilgileriyle bağlanamıyorsa bu hata oluşur. Sorunu gidermek için, girilen kimlik bilgilerini doğrulayın. Ayrıca, bu tablonun altındaki notta listelenen [MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017) veya sorun giderme belgelerine de başvurabilirsiniz ve yeniden deneyin. |
+| **Hata 18456** -oturum açma başarısız. ' {User} ' kullanıcısı için oturum açma başarısız | Hizmet, kaynak veritabanına, belirtilen T-SQL kimlik bilgileriyle bağlanamıyorsa bu hata oluşur. Sorunu gidermek için, girilen kimlik bilgilerini doğrulayın. Ayrıca, bu tablonun altındaki notta listelenen [MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error) veya sorun giderme belgelerine de başvurabilirsiniz ve yeniden deneyin. |
 | **Hata 87** -bağlantı dizesi geçerli değil. SQL Server ile bağlantı kurulmaya çalışılırken ağ ile ilişkili veya örneğe özgü bir hata oluştu. Sunucu bulunamadı veya erişilebilir değildi. Örnek adının doğru olduğundan ve SQL Server uzak bağlantılara izin verecek şekilde yapılandırıldığından emin olun. (sağlayıcı: SQL ağ arabirimleri, hata: 25 bağlantı dizesi geçerli değil) | Bu hata, hizmet geçersiz bir bağlantı dizesi nedeniyle kaynak sunucuya bağlanamıyorsa oluşur. Sorunu gidermek için, belirtilen bağlantı dizesini doğrulayın. Sorun devam ederse, bu tablonun altındaki notta listelenen sorun giderme belgelerine başvurun ve sonra yeniden deneyin. |
 | **Hata-sunucu sertifikasına güvenilmiyor.** Sunucuyla başarıyla bağlantı kurdu, ancak oturum açma işlemi sırasında bir hata oluştu. (sağlayıcı: SSL sağlayıcısı, hata: 0-sertifika zinciri, güvenilmeyen bir yetkili tarafından verilmiş.) | Kullanılan sertifika güvenilir değilse bu hata oluşur. Sorunu gidermek için, güvenilir olabilecek bir sertifika bulmanız ve sonra sunucuda etkinleştirebilmeniz gerekir. Alternatif olarak, bağlanırken güven sertifikası seçeneğini de belirleyebilirsiniz. Bu eylemi yalnızca kullanılan sertifika hakkında bilginiz varsa ve ona güveniyorsanız yapın. <br> Kendinden imzalı bir sertifika kullanılarak şifrelenen TLS bağlantıları güçlü güvenlik sağlamaz; Bu kişiler, ortadaki adam saldırılarına maruz kalabilir. Bir üretim ortamında veya internet 'e bağlı sunuculardaki otomatik olarak imzalanan sertifikalar kullanarak TLS 'ye güvenmeyin. <br> Daha fazla bilgi için, bkz. [MICROSOFT SQL Server DB örneği veya öğreticiyle SSL kullanmak](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.Concepts.General.SSL.Using.html) IÇIN, [DMS kullanarak RDS SQL Server 'Yi Azure 'a geçirin](./index.yml). |
-| **Hata 300** -Kullanıcı gerekli izinlere sahip değil. ' {Database} ' adlı veritabanındaki ' {Server} ' nesnesi üzerinde sunucu durumunu görüntüle izni reddedildi | Bu hata, kullanıcının geçiş gerçekleştirme izni yoksa oluşur. Sorunu gidermek için bkz. [sunucu Izinleri verme-Transact-SQL](/sql/t-sql/statements/grant-server-permissions-transact-sql?view=sql-server-2017) veya öğretici: daha fazla ayrıntı için [DMS kullanarak RDS SQL Server Azure 'a geçirme](./index.yml) . |
+| **Hata 300** -Kullanıcı gerekli izinlere sahip değil. ' {Database} ' adlı veritabanındaki ' {Server} ' nesnesi üzerinde sunucu durumunu görüntüle izni reddedildi | Bu hata, kullanıcının geçiş gerçekleştirme izni yoksa oluşur. Sorunu gidermek için bkz. [sunucu Izinleri verme-Transact-SQL](/sql/t-sql/statements/grant-server-permissions-transact-sql) veya öğretici: daha fazla ayrıntı için [DMS kullanarak RDS SQL Server Azure 'a geçirme](./index.yml) . |
 
 > [!NOTE]
 > Bir kaynak AWS RDS SQL Server bağlanmayla ilgili sorunları giderme hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
 >
-> * [SQL Server’a bağlantı hatalarını çözme](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)
+> *    [SQL Server’a bağlantı hatalarını çözme](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)
 > * [Nasıl yaparım? Amazon RDS veritabanı örneğine bağlanma sorunları çözümlensin mi?](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
 
 ## <a name="known-issues"></a>Bilinen sorunlar
@@ -91,7 +91,7 @@ Kaynak AWS RDS SQL Server veritabanına bağlanma ile ilgili olası sorunlar ve 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure veritabanı geçiş hizmeti PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)makalesini görüntüleyin.
+* [Azure veritabanı geçiş hizmeti PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0&preserve-view=true#data_migration)makalesini görüntüleyin.
 * [Azure Portal kullanarak MySQL Için Azure veritabanı 'nda sunucu parametrelerini yapılandırma](../mysql/howto-server-parameters.md)makalesini görüntüleyin.
 * [Azure veritabanı geçiş hizmeti 'ni kullanmaya yönelik önkoşullara genel bakış](./pre-reqs.md)makalesini görüntüleyin.
 * [Azure veritabanı geçiş hizmeti 'ni kullanma hakkında SSS](./faq.md)bölümüne bakın.

@@ -5,14 +5,14 @@ author: linda33wj
 ms.service: data-factory
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/16/2021
+ms.date: 03/27/2021
 ms.author: jingwang
-ms.openlocfilehash: 12f7a87ce166be516d070b66b069f7a584a386c7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 59cd364e5568b3509d0c06d439d39b132b202df6
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563513"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641746"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Hızlı Başlangıç: .NET SDK’sını kullanarak veri fabrikası ve işlem hattı oluşturma
 
@@ -105,6 +105,9 @@ Ardından, Visual Studio 'da bir C# .NET konsol uygulaması oluşturun:
    string blobDatasetName = "BlobDataset";
    string pipelineName = "Adfv2QuickStartPipeline";
    ```
+> [!NOTE]
+> ABD Azure gov hesapları için, yerine BaseUri kullanın  *https://management.usgovcloudapi.net* *https://management.azure.com/* ve ardından Data Factory yönetim istemcisi oluşturun. 
+> 
 
 3. Aşağıdaki kodu **DataFactoryManagementClient** sınıfının bir örneğini oluşturan **Main** yöntemine ekleyin. Veri fabrikası, bağlı hizmet, veri kümeleri ve işlem hattı oluşturmak için bu nesneyi kullanırsınız. Bu nesneyi ayrıca işlem hattı ayrıntılarını izlemek için kullanabilirsiniz.
 
@@ -118,6 +121,7 @@ Ardından, Visual Studio 'da bir C# .NET konsol uygulaması oluşturun:
    var client = new DataFactoryManagementClient(cred) {
        SubscriptionId = subscriptionId };
    ```
+
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 

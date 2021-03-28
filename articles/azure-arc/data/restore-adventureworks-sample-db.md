@@ -9,16 +9,16 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d238a889648e789087a0803f6b50288318462c7b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a6b3577fe820c9dadcb3c8415aa7a951a3283284
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91629072"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641814"
 ---
 # <a name="restore-the-adventureworks-sample-database-into-sql-managed-instance---azure-arc"></a>AdventureWorks örnek veritabanını SQL yönetilen örneği-Azure yaya geri yükleme
 
-[AdventureWorks](/sql/samples/adventureworks-install-configure?view=sql-server-ver15&tabs=tsql&preserve-view=true) , genellikle öğreticiler ve örnekler IÇIN kullanılan OLTP veritabanını içeren örnek bir veritabanıdır. [SQL Server örnekleri GitHub deposunun](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases)bir parçası olarak Microsoft tarafından sağlanır ve sürdürülür.
+[AdventureWorks](/sql/samples/adventureworks-install-configure) , genellikle öğreticiler ve örnekler IÇIN kullanılan OLTP veritabanını içeren örnek bir veritabanıdır. [SQL Server örnekleri GitHub deposunun](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases)bir parçası olarak Microsoft tarafından sağlanır ve sürdürülür.
 
 Bu belgede, AdventureWorks örnek veritabanını SQL yönetilen örneğiniz-Azure yaya geri yüklemek için basit bir işlem açıklanmaktadır.
 

@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: adcbf4efc4dfaa7701c18440531327949640cb53
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fca5c1a0aee6e62890d734e3233177549d932672
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100581997"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643670"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Dağıtılmış izleme (Önizleme) ile Azure IoT cihazdan buluta iletileri izleme
 
@@ -93,7 +93,7 @@ Bu yönergeler, Windows üzerinde örnek oluşturmak içindir. Diğer ortamlar i
 
 ### <a name="clone-the-source-code-and-initialize"></a>Kaynak kodunu kopyala ve Başlat
 
-1. Visual Studio 2019 için ["C++ Ile masaüstü geliştirme" iş yükünü](/cpp/build/vscpp-step-0-installation?view=vs-2019) yükler. Visual Studio 2017 ve 2015 de desteklenir.
+1. Visual Studio 2019 için ["C++ Ile masaüstü geliştirme" iş yükünü](/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) yükler. Visual Studio 2017 ve 2015 de desteklenir.
 
 1. [CMake](https://cmake.org/)'i yükler. `PATH`Bir komut isteminden yazarak olduğunuzdan emin olun `cmake -version` .
 

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 660b5751e3b3cbc632331e99d797af3392a8aea4
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: HT
+ms.openlocfilehash: cb54c5f7334120f6cd01ed1704939c5c1a55e7c6
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "91371975"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645290"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Maliyet Yönetimi verilerine erişim atama
 
@@ -39,9 +39,9 @@ Azure EA aboneliklerine ait maliyet verilerini görüntülemek isteyen bir kulla
 | Faturalama hesabı<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | Kuruluş Yöneticisi | Hiçbiri | Kurumsal sözleşmedeki tüm abonelikler |
 | Bölüm | [https://ea.azure.com](https://ea.azure.com/) | Bölüm Yöneticisi | **DA ücretleri görüntüleme** etkinleştirildi | Bölüme bağlı olan kayıt hesabına ait olan tüm abonelikler |
 | Kayıt hesabı<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | Hesap Sahibi | **AO ücretleri görüntüleme** etkinleştirildi | Kayıt hesabındaki tüm abonelikler |
-| Yönetim grubu | [https://portal.azure.com](https://portal.azure.com/) | Maliyet Yönetimi Okuyucusu (veya Okuyucu) | **AO ücretleri görüntüleme** etkinleştirildi | Yönetim grubu altındaki tüm abonelikler |
-| Abonelik | [https://portal.azure.com](https://portal.azure.com/) | Maliyet Yönetimi Okuyucusu (veya Okuyucu) | **AO ücretleri görüntüleme** etkinleştirildi | Abonelikteki tüm kaynaklar/kaynak grupları |
-| Kaynak grubu | [https://portal.azure.com](https://portal.azure.com/) | Maliyet Yönetimi Okuyucusu (veya Okuyucu) | **AO ücretleri görüntüleme** etkinleştirildi | Kaynak grubundaki tüm kaynaklar |
+| Yönetim grubu | [https://portal.azure.com](https://portal.azure.com/) | Maliyet yönetimi okuyucusu (veya katkıda bulunan) | **AO ücretleri görüntüleme** etkinleştirildi | Yönetim grubu altındaki tüm abonelikler |
+| Abonelik | [https://portal.azure.com](https://portal.azure.com/) | Maliyet yönetimi okuyucusu (veya katkıda bulunan) | **AO ücretleri görüntüleme** etkinleştirildi | Abonelikteki tüm kaynaklar/kaynak grupları |
+| Kaynak grubu | [https://portal.azure.com](https://portal.azure.com/) | Maliyet yönetimi okuyucusu (veya katkıda bulunan) | **AO ücretleri görüntüleme** etkinleştirildi | Kaynak grubundaki tüm kaynaklar |
 
 <sup>1</sup> Ödeme hesabı genellikle Kurumsal Sözleşme veya Kayıt olarak da nitelenir.
 
@@ -52,8 +52,8 @@ Azure EA aboneliklerine ait maliyet verilerini görüntülemek isteyen bir kulla
 
 Diğer Azure aboneliklerine ait maliyet verilerini görüntülemek isteyen bir kullanıcının aşağıdaki kapsamlardan birine veya daha fazlasına en azından yazma erişimi olmalıdır:
 
-- Azure hesabı
 - Yönetim grubu
+- Abonelik
 - Kaynak grubu
 
 İş ortakları, müşterileri Microsoft Müşteri Sözleşmesi'ne eklediğinde ek kapsamlar sunulur. CSP müşterileri, CSP iş ortakları tarafından etkinleştirilmesi durumunda Maliyet Yönetimi özelliklerini kullanabilir. Daha fazla bilgi için bkz. [İş ortakları için Azure Maliyet Yönetimi'ni kullanmaya başlama](get-started-partners.md).

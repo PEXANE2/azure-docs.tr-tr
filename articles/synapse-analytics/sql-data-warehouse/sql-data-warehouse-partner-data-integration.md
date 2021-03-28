@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ba03fe86c126c76faf91a06a96aaea6d1ffeddc0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7eecacef7f678001c9d65da540432154305549e2
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594923"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645146"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure SYNAPSE Analytics veri tümleştirme iş ortakları
 
@@ -27,6 +27,7 @@ Azure SYNAPSE Analytics 'te adanmış SQL havuzunu kullanarak veri ambarı çöz
 | İş Ortağı | Description | Web sitesi/ürün bağlantısı |
 | ------- | ----------- | -------------------- |
 | ![AB Initio dili](./media/sql-data-warehouse-partner-data-integration/abinitio-logo.png) |**AB Initio dili**<br> AB Initio 'ın çevik dijital mühendislik platformu, kurumsal bilgi işlem 'da en zorlu veri işleme ve veri yönetimi sorunlarını çözmenize yardımcı olur. AB Initio 'nun Cloud-Native platformu, Azure 'da veya şirket içinde, eski sistemlere depolanmış veriler de dahil olmak üzere kurumsal ekosisteminizde her yerde verilere erişmenizi ve bunları kullanmanıza olanak sağlar. Güçlü otomasyon, veri kalitesi, veri yönetimi ve etkin meta veri özelliklerine sahip sezgisel bir arabirim birleşimi, hızlı geliştirme ve gerçek veri Self Servis sayesinde analistleri işleri hızla ve etkili bir şekilde işler. Büyük verileri anlamlı verilere dönüştürmek için dünyanın en büyük işletmelerini AB Initio kullanarak katın. |[Ürün sayfası](https://www.abinitio.com/) |
+| ![Akaydedilmiş geçici](./media/sql-data-warehouse-partner-data-integration/aecorsoft-logo.png) |**Akaydedilmiş geçici**<br> Hızlı, ölçeklenebilir ve gerçek zamanlı ELT/ETL yazılım çözümü, SAP müşterilerinin Azure SYNAPSE Analytics ve Azure veri platformuna yönelik karmaşık SAP verileri sunmalarına yardımcı olur. SAP uygulama katmanı güvenliği ile tam uyumluluk sayesinde, Akaydedilmiş geçici çözüm, SAP uygulamalarıyla tümleştirilebilen resmi SAP Premium sertifikalı bir uygulamadır. Akaydedilmiş geçici Delta ve değişiklik-veri yakalama özellikleri, SAP kullanıcılarının SAP saydam, havuz ve küme tablolarından Delta verilerini CSV, Parquet, avro, ORC veya GZIP biçiminde Azure 'a akışını sağlar. SAP tablolu verilerin yanı sıra, çok bant genişliği sorguları ve S/4HANA CD görünümleri gibi diğer iş kuralı ağır SAP nesneleri de tam olarak desteklenmektedir. |[Ürün sayfası](https://www.aecorsoft.com/products/dataintegrator)<br>[Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/aecorsoftinc1588038796343.aecorsoftintegrationservice_adf)<br>|
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> Alooma, veri ekiplerinin çeşitli veri silolarını gerçek zamanlı olarak bir Azure SYNAPSE veri ambarına tümleştirmesini, zenginleştirmesini ve akışını sağlayan bir ayıklama, dönüştürme ve yükleme (ETL) çözümüdür. |[Ürün sayfası](https://www.alooma.com/) |
 | ![Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png) |**Alteryx**<br> Alteryx Designer, geleneksel yaklaşımlardan tipik olarak değil, saatlerde daha derin Öngörüler elde eden, self servis veri analizine yönelik yinelenebilir bir iş akışı sağlar! Alteryx Designer, aynı sezgisel kullanıcı arabirimini kullanarak veri hazırlama, veri karıştırma ve analitik – tahmine dayalı, istatistiksel ve uzamsal bir şekilde veri analistlerine yardımcı olur. |[Ürün sayfası](https://www.alteryx.com/partners/microsoft/)<br>[Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/alteryx.alteryx-designer)<br>|
 | ![Attunity](./media/sql-data-warehouse-partner-data-integration/attunity_logo.png) |**Attunity (Cloudkirme)**<br>Attunity Cloudkir, Azure SYNAPSE veri ambarına veri yüklemeye yönelik otomatikleştirilmiş bir çözüm sunar. SQL Server, Oracle, DB2, Sybase, MySQL ve çok sayıda kaynaktan veri toplu yükleme ve artımlı çoğaltmayı basitleştirir. |[Ürün sayfası](http://www.attunity.com/attunity-cloudbeam-for-azure/)<br>[Azure Market](https://aws.amazon.com/marketplace/pp/Attunity-Attunity-CloudBeam/B00B5PB8IM) <br> |

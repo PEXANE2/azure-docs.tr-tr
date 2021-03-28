@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 3bc259f9ee6cb1e6fd927af82a1740403d3ae7d8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fc394550cf5eb28ce3a30af4afcb3deca4223fe3
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100587947"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642449"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure sanal makine ölçek kümeleri hakkında SSS
 
@@ -304,7 +304,7 @@ Bir VM oluşturup gizli anahtarı anahtar kasasında güncelleştirirseniz yeni 
 
 . Cer ortak anahtarlarını bir sanal makine ölçek kümesine dağıtmak için, yalnızca. cer dosyalarını içeren bir. pfx dosyası oluşturabilirsiniz. Bunu yapmak için kullanın `X509ContentType = Pfx` . Örneğin,. cer dosyasını C# veya PowerShell 'de bir x509Certificate2 nesnesi olarak yükleyin ve sonra yöntemi çağırın.
 
-Daha fazla bilgi için bkz [. X509Certificate. Export yöntemi (X509ContentType, String)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate.export?view=netcore-3.1#system_security_cryptography_x509certificates_x509certificate_export_system_security_cryptography_x509certificates_x509contenttype_system_string_).
+Daha fazla bilgi için bkz [. X509Certificate. Export yöntemi (X509ContentType, String)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate.export?#system_security_cryptography_x509certificates_x509certificate_export_system_security_cryptography_x509certificates_x509contenttype_system_string_).
 
 ### <a name="how-do-i-pass-in-certificates-as-base64-strings"></a>Sertifikalar Nasıl yaparım? Base64 dizeleri olarak mı?
 

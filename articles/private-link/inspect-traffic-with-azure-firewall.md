@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 4fe43ec7661cfad25c48819183742c3f33951d92
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: c3218d8781377e76f05d10a8da2c954ac0b685a7
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108154"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641984"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Azure Güvenlik Duvarı'nı kullanarak özel uç noktaya giden trafiği inceleme
 
@@ -117,6 +117,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 Adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirin:
 
 ### <a name="azure-firewall-network"></a>Azure Güvenlik Duvarı ağı
+
 | Parametre                   | Değer                 |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
@@ -127,6 +128,7 @@ Adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirin:
 | **\<subnet-address-range>** | 10.0.0.0/24          |
 
 ### <a name="virtual-machine-network"></a>Sanal makine ağı
+
 | Parametre                   | Değer                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
@@ -137,13 +139,14 @@ Adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirin:
 | **\<subnet-address-range>** | 10.1.0.0/24          |
 
 ### <a name="private-endpoint-network"></a>Özel uç nokta ağı
+
 | Parametre                   | Değer                 |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
 | **\<virtual-network-name>** | myPEVNet         |
 | **\<region-name>**          | Orta Güney ABD      |
 | **\<IPv4-address-space>**   | 10.2.0.0/16          |
-| **\<subnet-name>**          | PrivateEndpointSubnet    |        |
+| **\<subnet-name>**          | PrivateEndpointSubnet |
 | **\<subnet-address-range>** | 10.2.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
@@ -564,7 +567,7 @@ Bu bölümde, Özel uç noktasını kullanarak SQL veritabanına özel olarak ba
     Address: 10.2.0.4
     ```
 
-2. [SQL Server komut satırı araçlarını](/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver15#tools)yükler.
+2. [SQL Server komut satırı araçlarını](/sql/linux/quickstart-install-connect-ubuntu#tools)yükler.
 
 3. SQL Server bağlanmak için aşağıdaki komutu çalıştırın. Önceki adımlarda SQL Server oluştururken tanımladığınız sunucu yöneticisini ve parolayı kullanın.
 

@@ -4,11 +4,12 @@
   items:
     - name: Media Services hakkında
       href: media-services-overview.md
-    - name: Media Services yenilikleri
-      displayName: release notes
+    - name: Sürüm notları
       href: release-notes.md
     - name: Media Services uyumluluğu
       href: concept-compliance.md
+    - name: Sık sorulan sorular
+      href: frequently-asked-questions.yml
 - name: Hızlı Başlangıçlar
   items:
     - name: Ortamınızı ayarlama
@@ -262,9 +263,8 @@
       href: architectures-concept.md
     - name: Sorun giderme
       items:
-        - name: Sık sorulan sorular
-          displayName: faqs
-          href: frequently-asked-questions.md
+        - name: Soru koleksiyonu
+          href: questions-collection.md
         - name: Hata kodları
           items:
             - name: Akış uç noktası hata kodları
@@ -346,7 +346,7 @@
           href: how-to-create-copyallbitratenoninterleaved-transform.md
         - name: REST ile kodlama olmadan video kopyalama
           href: how-to-create-copy-video-audio-transform.md
-        - name: .NET ile iş oluşturma
+        - name: CLı ile iş oluşturma
           href: cli-create-jobs.md
         - name: Yerel dosya ve .NET ile iş girişi oluşturma
           displayName: upload

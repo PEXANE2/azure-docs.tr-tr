@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 23b9774f28f915596abafbd8c1f6c38fc4f55748
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 75defcf88128e1b100e403d74f76577525f0bdeb
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95995293"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642134"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>PostgreSQL için Azure veritabanı için özel bağlantı oluşturma ve yönetme-portalı kullanarak tek sunucu
 
@@ -179,7 +179,7 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
     :::image type="content" source="media/concepts-data-access-and-security-private-link/show-postgres-private-link.png" alt-text="Özel bağlantı oluşturuldu":::
 
     > [!NOTE] 
-    > Müşteri DNS ayarındaki FQDN, yapılandırılan özel IP 'ye çözümlenmez. [Burada](../dns/dns-operations-recordsets-portal.md)gösterildiği gibi, yapılandırılmış FQDN IÇIN bir DNS bölgesi oluşturmanız gerekir.
+    > Müşterinin DNS ayarındaki FQDN, yapılandırılmış özel IP'ye çözümlenmiyor. [Burada](../dns/dns-operations-recordsets-portal.md)gösterildiği gibi, yapılandırılmış FQDN IÇIN bir DNS bölgesi oluşturmanız gerekir.
 
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Uzak Masaüstü (RDP) kullanarak sanal makineye bağlanma
 
@@ -222,7 +222,7 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
     Address:  10.1.3.4
     ```
 
-3. Kullanılabilir herhangi bir istemciyi kullanarak PostgreSQL sunucusu için özel bağlantı bağlantısını test edin. Aşağıdaki örnekte, işlemi yapmak için [Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) kullandım.
+3. Kullanılabilir herhangi bir istemciyi kullanarak PostgreSQL sunucusu için özel bağlantı bağlantısını test edin. Aşağıdaki örnekte, işlemi yapmak için [Azure Data Studio](/sql/azure-data-studio/download) kullandım.
 
 4. **Yeni bağlantı**' da bu bilgileri girin veya seçin:
 

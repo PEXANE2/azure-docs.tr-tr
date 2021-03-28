@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 01/14/2021
-ms.openlocfilehash: dca4d699ac1253753c82949cb480d95a1dde26e2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5d49a5b57ff4b59005461f2bb13451822723b039
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594113"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644983"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği nedir?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -49,7 +49,7 @@ SQL yönetilen örneği, hem Azure SQL veritabanı hem de SQL Server veritabanı
 | --- | --- |
 |Donanım satın alma ve yönetimi yok <br>Temel altyapıyı yönetmeye yönelik yönetim yükü yok <br>Hızlı sağlama ve hizmet ölçeklendirme <br>Otomatik düzeltme eki uygulama ve sürüm yükseltme <br>Diğer PaaS veri hizmetleriyle tümleştirme |% 99,99 çalışma süresi SLA 'Sı  <br>Yerleşik [yüksek kullanılabilirlik](../database/high-availability-sla.md) <br>[Otomatik yedeklemelerle](../database/automated-backups-overview.md) korunan veriler <br>Müşteri yapılandırılabilir yedekleme Bekletme dönemi <br>Kullanıcı tarafından başlatılan [yedeklemeler](/sql/t-sql/statements/backup-transact-sql?preserve-view=true&view=azuresqldb-mi-current) <br>Bir [noktadan sonra veritabanı geri yükleme](../database/recovery-using-backups.md#point-in-time-restore) özelliği |
 |**Güvenlik ve uyumluluk** | **Yönetim**|
-|Yalıtılmış ortam ([VNET tümleştirmesi](connectivity-architecture-overview.md), tek kiracılı hizmet, adanmış işlem ve depolama) <br>[Saydam veri şifrelemesi (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure AD) kimlik doğrulaması](../database/authentication-aad-overview.md), çoklu oturum açma desteği <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true">Azure AD Server sorumluları (oturum açmalar)</a>  <br>Azure SQL veritabanı ile aynı uyumluluk standartlarına uyar <br>[SQL denetimi](auditing-configure.md) <br>[Gelişmiş Tehdit Koruması](threat-detection-configure.md) |Hizmet sağlamayı ve ölçeklendirmeyi otomatikleştirmek için API Azure Resource Manager <br>El ile hizmet sağlama ve ölçeklendirme için Azure portal işlevselliği <br>Veri Geçiş Hizmeti
+|Yalıtılmış ortam ([VNET tümleştirmesi](connectivity-architecture-overview.md), tek kiracılı hizmet, adanmış işlem ve depolama) <br>[Saydam veri şifrelemesi (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure AD) kimlik doğrulaması](../database/authentication-aad-overview.md), çoklu oturum açma desteği <br> [Azure AD Server sorumluları (oturum açmalar)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) <br>Azure SQL veritabanı ile aynı uyumluluk standartlarına uyar <br>[SQL denetimi](auditing-configure.md) <br>[Gelişmiş Tehdit Koruması](threat-detection-configure.md) |Hizmet sağlamayı ve ölçeklendirmeyi otomatikleştirmek için API Azure Resource Manager <br>El ile hizmet sağlama ve ölçeklendirme için Azure portal işlevselliği <br>Veri Geçiş Hizmeti
 
 > [!IMPORTANT]
 > Azure SQL yönetilen örneği, bir dizi uyumluluk standartlarına karşı sertifikalandırilmiştir. Daha fazla bilgi için, **SQL veritabanı** altında listelenen SQL yönetilen örnek uyumluluk sertifikalarının en güncel listesini bulabileceğiniz [Microsoft Azure uyumluluk tekliflerini](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuideV3?command=Download&downloadType=Document&downloadId=44bbae63-bf4d-4e3b-9d3d-c96fb25ec363&tab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb&docTab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb_FAQ_and_White_Papers)inceleyin.
@@ -161,7 +161,7 @@ Azure SQL yönetilen örneği, verilerinizi korumak için kullanılabilecek bir 
 
 SQL yönetilen örneği, Azure AD ile tümleştirilmiş geleneksel SQL Server veritabanı altyapısı oturumlarını ve oturum açmaları destekler. Azure AD Server sorumluları (oturum açmalar) (**genel önizleme**), şirket içi ortamınızda kullandığınız şirket içi veritabanı oturumlarının bir Azure bulut sürümüdür. Azure AD Server sorumluları (oturum açmalar), aynı yönetilen örnek içindeki çapraz veritabanı sorguları dahil olmak üzere, Azure AD kiracınızdan doğru örnek kapsamlı sorumlular olarak Kullanıcı ve grupları belirtmenize olanak tanır.
 
-**Dış sağlayıcıdan** Azure AD Server sorumlularını (oturum açma) oluşturmak için yeni bir sözdizimi sunulmuştur. Sözdizimi hakkında daha fazla bilgi için bkz. <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true">oturum oluştur</a>ve [SQL yönetilen örneği Için Azure Active Directory Yöneticisi sağlama](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) makalesini gözden geçirin.
+**Dış sağlayıcıdan** Azure AD Server sorumlularını (oturum açma) oluşturmak için yeni bir sözdizimi sunulmuştur. Sözdizimi hakkında daha fazla bilgi için bkz. [oturum oluştur](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)ve [SQL yönetilen örneği Için Azure Active Directory Yöneticisi sağlama](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) makalesini gözden geçirin.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory tümleştirmesi ve çok faktörlü kimlik doğrulaması
 

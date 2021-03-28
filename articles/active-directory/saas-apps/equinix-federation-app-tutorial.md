@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/27/2020
+ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: b0c772b3f30b211cf83512ca2ff2f10325fb4bc1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c1172cd818a3b40e908bbf5a133ea76d6b0d17b9
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98735105"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642874"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-equinix-federation-app"></a>Öğretici: Equinix Federasyon uygulamasıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu öğreticide, Equinix Federasyon uygulamasını Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Equinix Federasyon uygulamasını Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Equinix Federasyon uygulamasını Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Equinix Federasyon uygulamasını Azure AD ile tümleştirdiğinizde, şunları yapabilirsiniz:
 
 * Azure AD 'de Equinix Federasyon uygulamasına erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla Equinx Federasyon uygulamasına otomatik olarak oturum açmalarına olanak sağlayın.
@@ -37,7 +37,10 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Equinix Federasyon uygulaması, **SP** tarafından başlatılan SSO 'yu destekler
+* Equinix Federasyon uygulaması, **SP** tarafından başlatılan SSO 'yu destekler.
+
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
 ## <a name="adding-equinix-federation-app-from-the-gallery"></a>Galeriden Equinx Federasyon uygulaması ekleme
 
@@ -70,20 +73,16 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Azure portal, **Equinix Federasyon uygulaması** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.equinix.com/sp/ACS.saml2`
-
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`Equinix:<CUSTOM_IDENTIFIER>`
-
-    c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.equinix.com/sp/ACS.saml2`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<customerprefix>customerportal.equinix.com`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Equinix Federation App Client destek ekibine](mailto:prodsecops@equinix.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Oturum açma URL 'SI değeri gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Equinix Federation App Client destek ekibine](mailto:prodsecops@equinix.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -92,6 +91,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 1. **Equinix Federasyon uygulaması ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
@@ -128,13 +128,14 @@ Bu bölümde, Equinix Federasyon uygulamasında Britta Simon adlı bir Kullanıc
 
 Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Equinix Federasyon uygulaması oturum açma URL 'sine yeniden yönlendirilir. 
+Doğrudan Equinix Federasyon uygulaması oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-* Equinix Federation uygulaması oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
-
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içinde Equinix Federasyon uygulaması kutucuğuna tıkladığınızda, bu, Equinix Federasyon uygulaması oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
+ > [!NOTE]
+ > **Bu uygulamayı test et** bağlantısını kullanarak veya Equinix Federasyon uygulaması kutucuğuna tıklayarak Azure uygulamanızı test etmeye çalışırsanız, bu işlem çalışmaz, çünkü IOP tarafından başlatılan SSO, bu, varsayılan olarak desteklenmez.  Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Equinix Federasyon uygulamasını yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
+Equinix Federasyon uygulamasını yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/29/2020
-ms.openlocfilehash: b88c7aabe135b8e64869980b806852d92191440b
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 2412d3d2851d1b4d251b50ff3068b7dcafcccee8
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105568690"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642044"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: BACPAC dosyasını Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanına aktarma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,7 +48,7 @@ Bir veritabanını BACPAC dosyasından [Azure SQL yönetilen örneği](../manage
 
 1. BACPAC dosyası için depolama hesabını ve kapsayıcıyı seçin ve ardından İçeri aktarılacak BACPAC dosyasını seçin.
 
-1. Yeni veritabanı boyutunu (genellikle Origin ile aynı) belirtin ve hedef SQL Server kimlik bilgilerini sağlayın. Azure SQL veritabanı 'nda yeni bir veritabanının olası değerlerinin listesi için bkz. [veritabanı oluşturma](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).
+1. Yeni veritabanı boyutunu (genellikle Origin ile aynı) belirtin ve hedef SQL Server kimlik bilgilerini sağlayın. Azure SQL veritabanı 'nda yeni bir veritabanının olası değerlerinin listesi için bkz. [veritabanı oluşturma](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true).
 
    ![Veritabanı import2](./media/database-import/sql-server-import-database-settings.png)
 

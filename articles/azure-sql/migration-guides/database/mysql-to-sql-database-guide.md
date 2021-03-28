@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 1f1692aaa74f56c404a8fae7aa91e94baecbb7e1
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 8952e6e1bda8763d403c02dcd5815f1e1c0941e8
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105626495"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641871"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>Geçiş Kılavuzu: MySQL to Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -167,7 +167,7 @@ Bu geçiş senaryosunu tamamlamaya yönelik daha fazla yardım için aşağıdak
 | --- | --- |
 | [Veri iş yükü değerlendirmesi modeli ve aracı](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Belirtilen iş yükleri için önerilen "en uygun" hedef platformları, bulut hazırlığı ve uygulama/veritabanı düzeltme düzeylerini sağlar. Basit, tek tıklamayla hesaplama ve rapor oluşturma işlemleri sunarak, otomatik, Tekdüzen hedef platform karar süreci sağlayarak büyük Emlak değerlendirmelerini hızlandırmaya yardımcı olur. |
 
-Veri SQL Mühendisliği ekibi bu kaynağı geliştirdi. Ekibin temel kurucu, veri platformu geçiş projelerini Microsoft 'un Azure veri platformu 'na yönelik karmaşık modernleştirmeyi engellemeyi ve hızlandırmanızı sağlar.
+Veri SQL Mühendisliği ekibi bu kaynakları geliştirdik. Bu takımın temel kurucu, veri platformu geçiş projelerini Microsoft 'un Azure veri platformu 'na yönelik karmaşık modernleştirmeyi engellemeyi ve hızlandırmanızı sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
