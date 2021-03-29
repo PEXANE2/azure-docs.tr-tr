@@ -12,12 +12,12 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeff14e1676389eb2204cad45ea7b00d5aa9796b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e5189df623325578bb3b579f5c4c3456067986ff
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102566660"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709489"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu için Azure AD PowerShell örnekleri
 
@@ -32,7 +32,7 @@ Bu örneklerde kullanılan cmdlet 'ler hakkında daha fazla bilgi için bkz. [uy
 | [Tüm uygulama proxy uygulamaları için temel bilgileri listeleyin](scripts/powershell-get-all-app-proxy-apps-basic.md) | Dizininizdeki tüm uygulama proxy uygulamaları hakkında temel bilgileri (AppID, DisplayName, ObjId) listeler. |
 | [Tüm uygulama proxy uygulamaları için genişletilmiş bilgileri listeleyin](scripts/powershell-get-all-app-proxy-apps-extended.md) | Dizininizdeki tüm uygulama proxy uygulamaları hakkında genişletilmiş bilgileri (AppID, DisplayName, ExternalUrl, InternalUrl, ExternalAuthenticationType) listeler.  |
 | [Tüm uygulama proxy uygulamalarını bağlayıcı grubuna göre Listele](scripts/powershell-get-all-app-proxy-apps-by-connector-group.md) | Dizininizdeki tüm uygulama proxy uygulamalarıyla ilgili bilgileri ve uygulamaların hangi bağlayıcı gruplarına atandığını listeler. |
-| [Belirteç ömür ilkesi ile tüm uygulama proxy uygulamalarını edinme](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Bir belirteç ömür ilkesi ve ayrıntıları ile dizininizdeki tüm uygulama proxy uygulamalarını listeler. Bu örnek, [Graf modülü önizleme sürümü Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)'i gerektirir. |
+| [Belirteç ömür ilkesi ile tüm uygulama proxy uygulamalarını edinme](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Bir belirteç ömür ilkesi ve ayrıntıları ile dizininizdeki tüm uygulama proxy uygulamalarını listeler. Bu örnek, [Graf modülü önizleme sürümü Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)'i gerektirir. |
 |**Bağlayıcı grupları**||
 | [Dizindeki tüm bağlayıcı gruplarını ve bağlayıcıları al](scripts/powershell-get-all-connectors.md) | Dizininizdeki tüm bağlayıcı gruplarını ve bağlayıcıları listeler. |
 | [Bir bağlayıcı grubuna atanan tüm uygulamaları başka bir bağlayıcı grubuna Taşı](scripts/powershell-move-all-apps-to-connector-group.md) | Bir bağlayıcı grubuna şu anda atanmış olan tüm uygulamaları farklı bir bağlayıcı grubuna taşırlar. |

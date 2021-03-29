@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 54b1fd14f97855dd42afde9a4bb34795373ff229
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 81779d942b31f940d579de623ecb39c35d3a8b14
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103417646"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105642147"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -52,7 +52,7 @@ Veri kümeleri oluşturmak ve bunlarla çalışmak için şunlar gerekir:
     * Kendi Jupyter Not defteriniz üzerinde çalışın ve [bu yönergelerle](/python/api/overview/azure/ml/install)SDK 'yı kendiniz de yüklersiniz.
 
 > [!NOTE]
-> Bazı veri kümesi sınıflarının yalnızca 64 bitlik Python ile uyumlu olan [azureml-dataprep](/python/api/azureml-dataprep/) paketine bağımlılıkları vardır. Linux kullanıcıları için, bu sınıflar yalnızca şu dağıtımlara göre desteklenir: Red Hat Enterprise Linux (7, 8), Ubuntu (14,04, 16,04, 18,04), Fedora (27, 28), demı (8, 9) ve CentOS (7). Desteklenmeyen kaldırmalar kullanıyorsanız, devam etmek için lütfen [Bu kılavuzu](/dotnet/core/install/linux) Izleyerek .net Core 2,1 ' i yükleyebilirsiniz. 
+> Bazı veri kümesi sınıflarının yalnızca 64 bitlik Python ile uyumlu olan [azureml-dataprep](https://pypi.org/project/azureml-dataprep/) paketine bağımlılıkları vardır. Linux kullanıcıları için, bu sınıflar yalnızca şu dağıtımlara göre desteklenir: Red Hat Enterprise Linux (7, 8), Ubuntu (14,04, 16,04, 18,04), Fedora (27, 28), demı (8, 9) ve CentOS (7). Desteklenmeyen kaldırmalar kullanıyorsanız, devam etmek için lütfen [Bu kılavuzu](/dotnet/core/install/linux) Izleyerek .net Core 2,1 ' i yükleyebilirsiniz. 
 
 ## <a name="compute-size-guidance"></a>İşlem boyutu kılavuzu
 

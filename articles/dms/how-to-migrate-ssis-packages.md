@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: e6f94c006de8914fe3ae27cdb8ac4d75a0ac49cc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e42b5ab2bbdebb2584b38531bd6458a98563ef42
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94963003"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105643741"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>SSIS paketlerini Azure veritabanı geçiş hizmeti ile Azure SQL veritabanı 'na yeniden dağıtma
 
 SQL Server Integration Services (SSIS) kullanıyorsanız ve SSIS projelerinizi/paketlerinizi SQL Server tarafından barındırılan kaynak SSSıSDB 'den Azure SQL veritabanı tarafından barındırılan hedef SSıSDB 'ye geçirmek istiyorsanız, Tümleştirme Hizmetleri dağıtım Sihirbazı 'nı kullanarak bunları yeniden dağıtabilirsiniz. Sihirbazı SQL Server Management Studio (SSMS) içinden başlatabilirsiniz.
 
-SSIS 'nin kullandığınız sürümü 2012 'den daha eski ise, SSIS projelerinizi/paketlerinizi proje dağıtım modeline yeniden dağıtmadan önce, SSIS 'den de başlatılabilen Tümleştirme Hizmetleri proje Dönüştürme Sihirbazı 'Nı kullanarak bunları dönüştürmeniz gerekir. Daha fazla bilgi için [projeleri proje dağıtım modeline dönüştürme](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)makalesine bakın.
+SSIS 'nin kullandığınız sürümü 2012 'den daha eski ise, SSIS projelerinizi/paketlerinizi proje dağıtım modeline yeniden dağıtmadan önce, SSIS 'den de başlatılabilen Tümleştirme Hizmetleri proje Dönüştürme Sihirbazı 'Nı kullanarak bunları dönüştürmeniz gerekir. Daha fazla bilgi için [projeleri proje dağıtım modeline dönüştürme](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#convert)makalesine bakın.
 
 > [!NOTE]
 > Azure veritabanı geçiş hizmeti (DMS) Şu anda bir kaynak SSSıSDB 'nin Azure SQL veritabanı 'na geçişini desteklemez, ancak aşağıdaki işlemi kullanarak SSIS projelerinizi/paketlerinizi yeniden dağıtabilirsiniz.

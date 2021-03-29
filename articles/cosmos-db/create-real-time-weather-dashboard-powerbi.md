@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 07a3deaf67c4f269b01d62ea25ddb212c1e01f6f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73251fcbe9f149979d3fd62d14bbca86d77027f2
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101657545"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105640142"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Azure Cosmos DB ve Power BI kullanarak gerçek zamanlı pano oluşturma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -72,7 +72,7 @@ Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset?groups
    
    |Özellik  |Veri türü  |Filtre  |
    |---------|---------|---------|
-   |_ts     |   Sayısal      |  [_ts] > Duration. TotalSeconds (RangeStart-#datetime (1970, 1, 1, 0, 0, 0)) ve [_ts] < Duration. TotalSeconds (RangeEnd-#datetime (1970, 1, 1, 0, 0, 0)))       |
+   |_ts        |   Sayısal      |  [_ts] > Duration. TotalSeconds (RangeStart-#datetime (1970, 1, 1, 0, 0, 0)) ve [_ts] < Duration. TotalSeconds (RangeEnd-#datetime (1970, 1, 1, 0, 0, 0)))       |
    |Tarih (örneğin:-2019-08-19)     |   Dize      | [Document. Date] > DateTime. ToText (RangeStart, "yyyy-aa-gg") ve [Document. Date] < DateTime. ToText (RangeEnd, "yyyy-aa-gg")        |
    |Tarih (örneğin:-2019-08-11 12:00:00)   |  Dize       |  [Document. Date] > DateTime. ToText (RangeStart, "yyyy-mm-dd HH: mm: ss") ve [Document. Date] < DateTime. ToText (RangeEnd, "yyyy-AA-GG SS: DD: ss")       |
 
@@ -100,7 +100,7 @@ Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset?groups
 
 1. **Yeni bir Azure Analysis Services kümesi oluşturma**  -  Azure Analysis Services 'in Azure Cosmos hesabı ve Databricks kümesiyle aynı bölgede [bir örneğini oluşturun](../analysis-services/analysis-services-create-server.md) .
 
-1. **Visual Studio 'da yeni bir Analysis Services tablosal projesi oluşturma**  -   [SQL Server veri araçları (SSDT) yükleyip](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017&preserve-view=true) Visual Studio 'da bir Analysis Services tablosal projesi oluşturun.
+1. **Visual Studio 'da yeni bir Analysis Services tablosal projesi oluşturma**  -   [SQL Server veri araçları (SSDT) yükleyip](/sql/ssdt/download-sql-server-data-tools-ssdt) Visual Studio 'da bir Analysis Services tablosal projesi oluşturun.
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png" alt-text="Azure Analysis Services projesi oluştur":::
 

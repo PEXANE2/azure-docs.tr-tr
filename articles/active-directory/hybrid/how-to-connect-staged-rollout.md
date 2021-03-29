@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2038587aebe8fe98bd1adcccef6b895ec7370656
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5c7f3de20ea3e86e3b56dc71d698354f7eaf782d
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176867"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709727"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Hazırlanan piyasaya çıkma kullanarak bulut kimlik doğrulamasına geçiş (Önizleme)
 
@@ -98,7 +98,7 @@ Aşağıdaki senaryolar hazırlanan dağıtım için desteklenmez:
 
 Hazırlanan dağıtım kullanarak *Parola karması eşitlemesini* test etmek için, sonraki bölümde yer aldığı ön iş yönergelerini izleyin.
 
-Hangi PowerShell cmdlet 'lerinin kullanılacağı hakkında daha fazla bilgi için bkz. [Azure AD 2,0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+Hangi PowerShell cmdlet 'lerinin kullanılacağı hakkında daha fazla bilgi için bkz. [Azure AD 2,0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout).
 
 ## <a name="pre-work-for-password-hash-sync"></a>Parola karması eşitleme için önceden çalışma
 
@@ -251,9 +251,9 @@ Y: Hayır, bu özellik bulut kimlik doğrulamasını test etmek için tasarlanm�
 
 **S: PowerShell 'i, hazırlanan dağıtım gerçekleştirmek için kullanabilir miyim?**
 
-C: Evet. PowerShell kullanarak hazırlanan dağıtımı gerçekleştirme hakkında bilgi edinmek için bkz. [Azure AD önizleme](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+C: Evet. PowerShell kullanarak hazırlanan dağıtımı gerçekleştirme hakkında bilgi edinmek için bkz. [Azure AD önizleme](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure AD 2,0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Azure AD 2,0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout )
 - [Oturum açma yöntemini Parola karması eşitlemesi olarak değiştirme](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
 - [Geçiş kimlik doğrulaması için oturum açma yöntemini değiştirme](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)

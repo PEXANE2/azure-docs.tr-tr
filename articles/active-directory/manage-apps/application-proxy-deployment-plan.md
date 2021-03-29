@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: c08ce3bc8b722f2ea417c854a606f1060aa174e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6da003612d98d107390c9f20a5172786c30665a6
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100580056"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709761"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Uygulama Ara Sunucusu dağıtımı planlama
 
@@ -172,7 +172,7 @@ Uygulama ara sunucusunu dağıtma adımları bu [öğreticide, uzaktan erişim i
 
 Uygulamaları yayımlamak, tüm önkoşulların karşılandığını ve uygulama proxy 'Si sayfasında kayıtlı ve etkin olarak gösteren birkaç bağlayıcı olduğunu varsayar.
 
-Ayrıca, [PowerShell](/powershell/module/azuread/?view=azureadps-2.0-preview)kullanarak da uygulama yayımlayabilirsiniz.
+Ayrıca, [PowerShell](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)kullanarak da uygulama yayımlayabilirsiniz.
 
 Aşağıda, bir uygulamayı yayımlarken izlenecek en iyi yöntemler verilmiştir:
 

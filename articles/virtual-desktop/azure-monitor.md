@@ -1,24 +1,21 @@
 ---
-title: Windows sanal masaüstü Izleyici önizlemeyi kullan-Azure
+title: Windows sanal masaüstü Izleyiciyi Izlemeyi kullan-Azure
 description: Windows sanal masaüstü için Azure Izleyicisi 'ni kullanma.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/25/2020
+ms.date: 03/29/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1c87763cb2ca482fc8ee15588d7287f0d9275fff
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 1b93e0c0d61eaa390eda66da2a583a4f429ddd79
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105627175"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709557"
 ---
-# <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment-preview"></a>Dağıtımınızı izlemek için Windows sanal masaüstü için Azure Izleyicisini kullanın (Önizleme)
+# <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment"></a>Dağıtımınızı izlemek için Windows sanal masaüstü için Azure Izleyicisini kullanın
 
->[!IMPORTANT]
->Windows sanal masaüstü için Azure Izleyici Şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Windows sanal masaüstü için Azure Izleyici (Önizleme), BT uzmanlarının Windows sanal masaüstü ortamlarını anlamasına yardımcı olan Azure Izleyici çalışma kitaplarında oluşturulmuş bir panodur. Bu makalede, Windows sanal masaüstü ortamlarınızı izlemek üzere Windows sanal masaüstü için Azure Izleyici 'yi ayarlama işleminde size yol gösterilir.
+Windows sanal masaüstü için Azure Izleyici, BT uzmanlarının Windows sanal masaüstü ortamlarını anlamasına yardımcı olan Azure Izleyici çalışma kitaplarında oluşturulmuş bir panodur. Bu konu, Windows sanal masaüstü ortamlarınızı izlemek üzere Windows sanal masaüstü için Azure Izleyici 'yi ayarlama konusunda size kılavuzluk eder.
 
 ## <a name="requirements"></a>Gereksinimler
 

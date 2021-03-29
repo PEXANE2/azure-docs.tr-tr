@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/19/2021
+ms.date: 3/28/2021
 ms.author: gunnarc
-ms.openlocfilehash: f60df0c18368af46c5f2946b5668ac404c1fae90
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0bd0257c3b99e343f1aebba31867f687b522c6fb
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102124559"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709574"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure Konuk işletim sistemi sürümleri ve SDK uyumluluk matrisi
 Cloud Services için en son Azure Konuk işletim sistemi sürümleri hakkında güncel bilgiler sağlar. Bu bilgiler, Konuk işletim sistemi devre dışı bırakmadan önce yükseltme yolunuzu planlamanızı sağlar. Rollerinizi [Azure Konuk işletim sistemi güncelleştirme ayarlarında][Azure Guest OS Update Settings]açıklandığı şekilde *Otomatik* Konuk işletim sistemi güncelleştirmelerini kullanacak şekilde yapılandırırsanız, bu sayfayı okumanız çok önemli değildir.
@@ -41,6 +41,9 @@ Cloud Services için en son Azure Konuk işletim sistemi sürümleri hakkında g
 Konuk işletim sistemini nasıl güncelleştireceğinizden emin misiniz? [Bunu][cloud updates] kontrol edin.
 
 ## <a name="news-updates"></a>Haber güncelleştirmeleri
+
+###### <a name="march-28-2021"></a>**28 Mart 2021**
+Mart Konuk işletim sistemi serbest bırakıldı. 
 
 ###### <a name="february-19-2021"></a>**19 Şubat 2021**
 Şubat Konuk işletim sistemi yayımlandı. 
@@ -158,8 +161,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+|  WA-GUEST-OS-6.29 _202103-01 |  28 Mart 2021  |  6,31 sonrası  |  
 |  WA-GUEST-OS-6.28 _202102-01 |  19 Şubat 2021  |  6,30 sonrası  |  
-|  WA-GUEST-OS-6.27 _202101-01 |  5 Şubat 2021  |  6,29 sonrası  |  
+|~~WA-GUEST-OS-6.27 _202101-01~~|  5 Şubat 2021  |  28 Mart 2021  |  
 |~~WA-GUEST-OS-6.26 _202012-01~~|  15 Ocak 2021  |  19 Şubat 2021  |  
 |~~WA-GUEST-OS-6.25 _202011-01~~|  19 Aralık 2020  |  5 Şubat 2021  |  
 |~~WA-GUEST-OS-6.24 _202010-02~~|  17 Kasım 2020  |  15 Ocak 2021  |  
@@ -199,8 +203,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+|  WA-GUEST-OS-5.53 _202103-01  |  28 Mart 2021  |  5,55 sonrası  | 
 |  WA-GUEST-OS-5.52 _202102-01  |  19 Şubat 2021  |  5,54 sonrası  | 
-|  WA-GUEST-OS-5.51 _202101-01  |  5 Şubat 2021  |  5,53 sonrası  | 
+|~~WA-GUEST-OS-5.51 _202101-01~~|  5 Şubat 2021  |  28 Mart 2021  | 
 |~~WA-GUEST-OS-5.50 _202012-01~~|  15 Ocak 2021  |  19 Şubat 2021  | 
 |~~WA-GUEST-OS-5.49 _202011-01~~|  19 Aralık 2020  |  5 Şubat 2021  | 
 |~~WA-GUEST-OS-5.48 _202010-02~~|  17 Kasım 2020  |  15 Ocak 2021  | 
@@ -237,8 +242,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+|  WA-GUEST-OS-4.88 _202103-01  |  28 Mart 2021  |  4,90 sonrası  | 
 |  WA-GUEST-OS-4.87 _202102-01  |  19 Şubat 2021  |  4,89 sonrası  | 
-|  WA-GUEST-OS-4.86 _202101-01  |  5 Şubat 2021  |  4,88 sonrası  | 
+|~~WA-GUEST-OS-4.86 _202101-01~~|  5 Şubat 2021  |  28 Mart 2021  | 
 |~~WA-GUEST-OS-4.85 _202012-01~~|  15 Ocak 2021  |  19 Şubat 2021  | 
 |~~WA-GUEST-OS-4.84 _202011-01~~|  19 Aralık 2020  |  5 Şubat 2021  | 
 |~~WA-GUEST-OS-4.83 _202010-02~~|  17 Kasım 2020  |  15 Ocak 2021  | 
@@ -275,8 +281,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+|  WA-GUEST-OS-3.95 _202103-01  |  28 Mart 2021  |  3,97 sonrası  |
 |  WA-GUEST-OS-3.94 _202102-01  |  19 Şubat 2021  |  3,96 sonrası  |
-|  WA-GUEST-OS-3.93 _202101-01  |  5 Şubat 2021  |  3,95 sonrası  |
+|~~WA-GUEST-OS-3.93 _202101-01~~|  5 Şubat 2021  |  28 Mart 2021  |
 |~~WA-GUEST-OS-3.92 _202012-01~~|  15 Ocak 2021  |  19 Şubat 2021  |  
 |~~WA-GUEST-OS-3.91 _202011-01~~|  19 Aralık 2020  |  5 Şubat 2021  |  
 |~~WA-GUEST-OS-3.90 _202010-02~~|  17 Kasım 2020  |  15 Ocak 2021  |  
@@ -313,8 +320,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+|  WA-GUEST-OS-2.108 _202103-01  |  28 Mart 2021  |  2,110 sonrası  |
 |  WA-GUEST-OS-2.107 _202102-01  |  19 Şubat 2021  |  2,109 sonrası  |  
-|  WA-GUEST-OS-2.106 _202101-01  |  5 Şubat 2021  |  2,108 sonrası  |  
+|~~WA-GUEST-OS-2.106 _202101-01~~|  5 Şubat 2021  |  28 Mart 2021  |  
 |~~WA-GUEST-OS-2.105 _202012-01~~|  15 Ocak 2021  |  19 Şubat 2021  |  
 |~~WA-GUEST-OS-2.104 _202011-01~~|  19 Aralık 2020  |  5 Şubat 2021  |  
 |~~WA-GUEST-OS-2.103 _202010-02~~|  17 Kasım 2020  |  15 Ocak 2021  |  

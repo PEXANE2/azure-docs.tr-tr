@@ -420,7 +420,7 @@
           href: search-security-rbac.md
     - name: İzleme
       items:
-        - name: Temel Konular
+        - name: Genel Bakış
           href: search-monitor-usage.md
         - name: Tanılama günlüğüne kaydetme
           href: search-monitor-logs.md

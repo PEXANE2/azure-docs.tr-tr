@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: a63a468301a5b0d54abd474fd9bb62212b890f76
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 09d62ea5f2db77c14e8faff44de7fb3ce759c6fe
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102554424"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709744"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU için iyileştirilmiş sanal makine boyutları
 
@@ -31,11 +31,13 @@ GPU en iyileştirilmiş VM boyutları, tek, birden çok veya kısmi GPU 'Lar ile
 
 Azure N serisi VM 'lerin GPU yeteneklerini avantajlarından yararlanmak için NVıDıA veya AMD GPU sürücüleri yüklenmelidir.
 
-- NVıDıA GPU 'Lar tarafından desteklenen VM 'Ler için, [NVıDıA GPU sürücü uzantısı](./extensions/hpccompute-gpu-windows.md) uygun NVIDIA CUDA veya kılavuz sürücülerini yüklemiştir. Azure portal veya Azure PowerShell veya Azure Resource Manager şablonları gibi araçları kullanarak uzantıyı yükler veya yönetir. Desteklenen işletim sistemleri ve dağıtım adımları için [NVıDıA GPU sürücü uzantısı belgelerine](./extensions/hpccompute-gpu-windows.md) bakın. VM uzantıları hakkında genel bilgi için bkz. [Azure sanal makine uzantıları ve özellikleri](./extensions/overview.md).   
+- NVıDıA GPU 'Lar tarafından desteklenen VM 'Ler için, [NVıDıA GPU sürücü uzantısı](./extensions/hpccompute-gpu-windows.md) uygun NVIDIA CUDA veya kılavuz sürücülerini yüklemiştir. Azure portal veya Azure PowerShell veya Azure Resource Manager şablonları gibi araçları kullanarak uzantıyı yükler veya yönetir. Desteklenen işletim sistemleri ve dağıtım adımları için [NVıDıA GPU sürücü uzantısı belgelerine](./extensions/hpccompute-gpu-windows.md) bakın. VM uzantıları hakkında genel bilgi için bkz. [Azure sanal makine uzantıları ve özellikleri](./extensions/overview.md).
 
    Alternatif olarak, NVıDıA GPU sürücülerini el ile de yükleyebilirsiniz. Bkz. [Windows çalıştıran n serisi VM 'LERE NVıDıA GPU sürücülerini yükleme](./windows/n-series-driver-setup.md) veya desteklenen işletim sistemleri, sürücüler, yükleme ve doğrulama adımları için [Linux çalıştıran n SERISI VM 'lere NVIDIA GPU sürücülerini yükleme](./linux/n-series-driver-setup.md) .
 
-- AMD GPU 'Lar tarafından desteklenen VM 'Ler için bkz. desteklenen işletim sistemleri, sürücüler, yükleme ve doğrulama adımları için [Windows çalıştıran N serisi VM 'LERE AMD GPU sürücülerini yükleme](./windows/n-series-amd-driver-setup.md) .
+- AMD GPU 'Lar tarafından desteklenen VM 'Ler için, [AMD GPU sürücü uzantısı](./extensions/hpccompute-amd-gpu-windows.md) uygun AMD sürücülerini kurar. Azure portal veya Azure PowerShell veya Azure Resource Manager şablonları gibi araçları kullanarak uzantıyı yükler veya yönetir. VM uzantıları hakkında genel bilgi için bkz. [Azure sanal makine uzantıları ve özellikleri](./extensions/overview.md).
+
+   Alternatif olarak, AMD GPU sürücülerini el ile de yükleyebilirsiniz. Desteklenen işletim sistemleri, sürücüler, yükleme ve doğrulama adımları için [Windows çalıştıran N serisi VM 'LERDE AMD GPU sürücülerini yükleme](./windows/n-series-amd-driver-setup.md) bölümüne bakın.
 
 ## <a name="deployment-considerations"></a>Dağıtma konuları
 

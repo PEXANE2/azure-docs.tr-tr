@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 67a521886f5ff7e7e68f82c80004e0cf2649e652
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c2da1885d975ea6b4daf26714e430143dd89da42
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102565670"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709778"
 ---
 # <a name="get-all-application-proxy-apps-with-a-token-lifetime-policy"></a>Belirteç ömür ilkesi ile tüm uygulama proxy uygulamalarını edinme
 
@@ -40,8 +40,8 @@ Bu örnek, Graf modülü önizleme sürümü (azureadpreview) [Için Azuread v2 
 |---|---|
 |[Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) | Hizmet sorumlusu alır. |
 |[Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) | Bir Azure AD uygulaması alır. |
-|[Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) | Azure AD 'de bir ilke alır. |
-|[Get-Azureadservicesprincipalpolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview) | Azure AD 'de bir hizmet sorumlusu ilkesini alır. |
+|[Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Azure AD 'de bir ilke alır. |
+|[Get-Azureadservicesprincipalpolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Azure AD 'de bir hizmet sorumlusu ilkesini alır. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

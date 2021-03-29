@@ -1,24 +1,21 @@
 ---
-title: Windows sanal masaüstü önizlemesi Izleme sorunlarını giderme-Azure
+title: Windows sanal masaüstü 'Nü Izleme sorunlarını giderme-Azure
 description: Windows sanal masaüstü için Azure Izleyici ile ilgili sorunları giderme.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 03/25/2020
+ms.date: 03/29/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a07d7536d3d71b121c1dde761d8c290b8be01fe7
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: dda58868432248fe93a9fbc83d1e538dfc9b61ba
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105628467"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709455"
 ---
-# <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Windows sanal masaüstü için Azure Izleyici sorunlarını giderme (Önizleme)
+# <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop"></a>Windows sanal masaüstü için Azure Izleyici sorunlarını giderme
 
->[!IMPORTANT]
->Windows sanal masaüstü için Azure Izleyici Şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Bu makalede, Windows sanal masaüstü (Önizleme) için Azure Izleyici 'de yaygın sorunlara yönelik bilinen sorunlar ve çözümler sunulmaktadır.
+Bu makalede, Windows sanal masaüstü için Azure Izleyici 'de yaygın sorunlara yönelik bilinen sorunlar ve çözümler sunulmaktadır.
 
 ## <a name="issues-with-configuration-and-setup"></a>Yapılandırma ve kurulum ile ilgili sorunlar
 

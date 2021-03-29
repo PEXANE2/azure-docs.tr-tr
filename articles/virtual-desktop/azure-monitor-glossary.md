@@ -1,24 +1,21 @@
 ---
-title: Windows sanal masaüstü önizleme sözlüğünü izleme-Azure
+title: Windows sanal masaüstü sözlüğünü izleme-Azure
 description: Windows sanal masaüstü için Azure Izleyici ile ilgili hüküm ve kavramların sözlüğü.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 3/25/2020
+ms.date: 03/29/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7b824bc13bc4f553d22358b69237173effb51594
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 38f34324a0cda518645f8b9231e08bafbd75cca0
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105627141"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709540"
 ---
-# <a name="azure-monitor-for-windows-virtual-desktop-preview-glossary"></a>Windows sanal masaüstü için Azure Izleyici (Önizleme) sözlüğü
-
->[!IMPORTANT]
->Windows sanal masaüstü için Azure Izleyici Şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="azure-monitor-for-windows-virtual-desktop-glossary"></a>Windows sanal masaüstü sözlüğü için Azure Izleyici
 
 Bu makalede, Windows sanal masaüstü için Azure Izleyici (Önizleme) ile ilgili temel hüküm ve kavramlar listelenmektedir ve kısaca açıklanmaktadır.
 

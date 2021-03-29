@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 27443eb9c04c69567b3a1374f11e8b53837040f2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5914d5a54606f49f6fbd809a17e2b47375b58dcd
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100585414"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105641970"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 'da kullanılabilen güvenlik hizmetleri ve teknolojileri
 
@@ -59,8 +59,8 @@ Zaman içinde, bu liste Azure 'un yaptığı gibi değişir ve büyür. Güvenli
 | [Azure &nbsp; SQL &nbsp; güvenlik duvarı](../../azure-sql/database/firewall-configure.md)|Veritabanına yönelik ağ tabanlı saldırılara karşı koruma sağlayan bir ağ erişim denetimi özelliği. |
 |[Azure &nbsp; SQL &nbsp; hücre &nbsp; düzeyi şifreleme](/archive/blogs/sqlsecurity/recommendations-for-using-cell-level-encryption-in-azure-sql-database)| Parçalı düzeyde şifreleme sağlayan bir veritabanı güvenlik teknolojisi.  |
 | [Azure &nbsp; SQL &nbsp; bağlantı şifrelemesi](../../azure-sql/database/logins-create-manage.md)|SQL Veritabanı güvenliği sağlamak için erişimi IP adresine göre bağlantıyı sınırlayan güvenlik duvarı kuralları, kullanıcıların kimliğini kanıtlamasını gerektiren kimlik doğrulama sistemleri ve kullanıcıları belirli eylemler ve verilerle sınırlayan yetkilendirme sistemleriyle denetler. |
-| [Azure SQL her zaman şifreleme](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Azure SQL veritabanı veya SQL Server veritabanlarında depolanan kredi kartı numaraları veya ulusal tanımlama numaraları (örneğin, ABD sosyal güvenlik numaraları) gibi hassas verileri korur.  |
-| [Azure &nbsp; SQL &nbsp; Saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| Tüm veritabanının depolanmasını şifreleyen bir veritabanı güvenlik özelliği. |
+| [Azure SQL her zaman şifreleme](/sql/relational-databases/security/encryption/always-encrypted-database-engine)|Azure SQL veritabanı veya SQL Server veritabanlarında depolanan kredi kartı numaraları veya ulusal tanımlama numaraları (örneğin, ABD sosyal güvenlik numaraları) gibi hassas verileri korur.  |
+| [Azure &nbsp; SQL &nbsp; Saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)| Tüm veritabanının depolanmasını şifreleyen bir veritabanı güvenlik özelliği. |
 | [Azure SQL veritabanı denetimi](../../azure-sql/database/auditing-overview.md)|Veritabanı olaylarını izleyen ve bunları Azure Depolama hesabınızdaki bir denetim günlüğüne yazan bir veritabanı denetleme özelliği.  |
 
 

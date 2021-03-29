@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 3f348a5005f28fdd1d02be706ca2742d77368288
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa224a09317aafd49ae10c89ae0c50455ddd4602
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100592370"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709931"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Azure Bilişsel Arama işlemlerini ve etkinliklerini izleme
 
@@ -38,9 +38,9 @@ Aşağıdaki ekran görüntüsü Portalda izleme bilgilerini bulmanıza yardımc
 
 * **İzleme** sekmesi, ana genel bakış sayfasında sorgu hacmi, gecikme süresi ve hizmetin basınç altında olup olmadığı gösterilir.
 * Sol gezinti bölmesindeki **etkinlik günlüğü** Azure Resource Manager bağlıdır. Etkinlik günlüğü Kaynak Yöneticisi, hizmet kullanılabilirliği ve durumu, kapasiteye (çoğaltmalar ve bölümler) yapılan değişiklikler ve API tuşuyla ilgili etkinlikler üzerinde gerçekleştirilen eylemler hakkında rapor sağlar.
-* **İzleme** ayarları, daha sonra yapılandırılabilir uyarılar, ölçümler ve tanılama günlükleri sağlar. İhtiyacınız olduğunda bunları oluşturun. Veriler toplandıktan ve depolanıyorsa, Öngörüler hakkındaki bilgileri sorgulayabilir veya görselleştirebilirsiniz.
+* **İzleme** ayarları, daha sonra yapılandırılabilir uyarılar, ölçüm görselleştirme ve tanılama günlükleri sağlar. İhtiyacınız olduğunda bunları oluşturun. Veriler toplandıktan ve depolanıyorsa, Öngörüler hakkındaki bilgileri sorgulayabilir veya görselleştirebilirsiniz.
 
-![Arama hizmetinde Azure Izleyici tümleştirmesi](./media/search-monitor-usage/azure-monitor-search.png
+  ![Arama hizmetinde Azure Izleyici tümleştirmesi](./media/search-monitor-usage/azure-monitor-search.png
  "Arama hizmetinde Azure Izleyici tümleştirmesi")
 
 > [!NOTE]
@@ -94,7 +94,7 @@ Azure Izleyici kendi faturalandırma yapısına sahiptir ve bu bölümde başvur
 
 ## <a name="monitor-user-access"></a>Kullanıcı erişimini izleme
 
-Arama dizinleri daha büyük bir istemci uygulamasının bileşeni olduğundan, bir dizine Kullanıcı başına erişimi denetlemek veya izlemek için yerleşik bir yöntem yoktur. İsteklerin, yönetici ya da sorgu istekleri için bir istemci uygulamasından geldiği varsayılır. Yönetici okuma yazma işlemleri, tüm hizmet genelinde nesneleri oluşturma, güncelleştirme, silme işlemlerini içerir. Salt okuma işlemleri, tek bir dizin kapsamına alınmış belgeler koleksiyonuna yönelik sorgulardır. 
+Arama dizinleri daha büyük bir istemci uygulamasının bileşeni olduğundan, bir dizine Kullanıcı başına erişimi denetlemek veya izlemek için yerleşik bir yöntem yoktur. İsteklerin, yönetici ya da sorgu isteği sunan bir istemci uygulamasından geldiği varsayılır. Yönetici okuma yazma işlemleri, tüm hizmet genelinde nesneleri oluşturma, güncelleştirme, silme işlemlerini içerir. Salt okuma işlemleri, tek bir dizin kapsamına alınmış belgeler koleksiyonuna yönelik sorgulardır. 
 
 Bu nedenle, etkinlik günlüklerinde göreceğiniz özellikler, yönetici anahtarları veya sorgu anahtarları kullanılarak yapılan çağrılara başvurudur. İlgili anahtar, istemci kodundan kaynaklanan isteklere dahildir. Hizmet, kimlik belirteçlerini veya kimliğe bürünme işlemini işleyecek şekilde donatılmış değildir.
 

@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: c3a23276ce19f6d7b4cf341bac155ec84363fe5f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f95b9c1615cc58d9cc0589bad98c7315e571686e
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95018350"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709472"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows Sanal Masaüstü için grafik işlem birimi (GPU) hızlandırmasını yapılandırma
 
@@ -23,10 +23,10 @@ GPU ile iyileştirilmiş bir Azure sanal makinesi oluşturmak, konak havuzunuza 
 
 ## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>Uygun bir GPU iyileştirilmiş Azure sanal makine boyutu seçin
 
-Azure 'un [NV serisi](../virtual-machines/nv-series.md), [NVv3-Series](../virtual-machines/nvv3-series.md)veya [NVv4 serisi](../virtual-machines/nvv4-series.md) VM boyutlarından birini seçin. Bunlar uygulama ve masaüstü sanallaştırma için uyarlanmış ve uygulamaların ve Windows Kullanıcı arabiriminin GPU hızlandırılmasını sağlamak için tasarlanmıştır. Konak havuzunuzun sağ seçimi, belirli uygulama iş yükleriniz, istenen kullanıcı deneyimi kalitesi ve maliyet dahil olmak üzere çeşitli etkenlere bağlıdır. Genel olarak, daha büyük ve daha yetenekli GPU 'Lar belirli bir kullanıcı yoğunluğu üzerinde daha iyi bir kullanıcı deneyimi sunar. daha küçük ve kısmi GPU boyutları, maliyet ve kalite üzerinde daha ayrıntılı denetim sağlar.
+Azure 'un [NV serisi](../virtual-machines/nv-series.md), [NVv3-Series](../virtual-machines/nvv3-series.md)veya [NVv4 serisi](../virtual-machines/nvv4-series.md) VM boyutlarından birini seçin. Bunlar, uygulama ve masaüstü sanallaştırma için tasarlanmıştır ve çoğu uygulama ve Windows Kullanıcı arabiriminin GPU hızlandırmalı olmasını sağlar. Konak havuzunuzun sağ seçimi, belirli uygulama iş yükleriniz, istenen kullanıcı deneyimi kalitesi ve maliyet dahil olmak üzere çeşitli etkenlere bağlıdır. Genel olarak, daha büyük ve daha yetenekli GPU 'Lar belirli bir kullanıcı yoğunluğu üzerinde daha iyi bir kullanıcı deneyimi sunar. daha küçük ve kısmi GPU boyutları, maliyet ve kalite üzerinde daha ayrıntılı denetim sağlar.
 
 >[!NOTE]
->Azure 'un NC, NCv2, NCv3, ND ve NDv2 serisi VM 'Leri, Windows sanal masaüstü oturumu konakları için genellikle uygun değildir. Bu VM 'Ler, NVıDıA CUDA ile oluşturulan özel, yüksek performanslı bilgi işlem veya makine öğrenimi araçları için tasarlanmıştır. NVıDıA GPU 'Lar ile genel uygulama ve Masaüstü hızlandırma, NVıDıA GRID lisanslaması gerektirir; Bu, Azure tarafından önerilen VM boyutları için sağlanır, ancak NC/ND serisi VM 'Ler için ayrı olarak düzenlenmelidir.
+>Azure 'un NC, NCv2, NCv3, ND ve NDv2 serisi VM 'Leri, Windows sanal masaüstü oturumu konakları için genellikle uygun değildir. Bu VM 'Ler, NVıDıA CUDA ile oluşturulan özel, yüksek performanslı bilgi işlem veya makine öğrenimi araçları için tasarlanmıştır. Çoğu uygulama veya Windows Kullanıcı arabirimi için GPU hızlandırmasını desteklemez.
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>Bir konak havuzu oluşturun, sanal makinenizi sağlayın ve bir uygulama grubu yapılandırın
 
@@ -41,9 +41,10 @@ Ayrıca, yeni bir konak havuzu oluştururken otomatik olarak oluşturulan varsay
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Sanal makinenize desteklenen grafik sürücülerini yükler
 
-Windows sanal masaüstündeki Azure N serisi VM 'lerin GPU yetilerinden yararlanmak için uygun grafik sürücülerini yüklemelisiniz. Uygun grafik satıcısından sürücüleri el ile veya bir Azure VM uzantısı kullanarak yüklemek için [desteklenen işletim sistemleri ve sürücüler](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers) bölümündeki yönergeleri izleyin.
+Windows sanal masaüstündeki Azure N serisi VM 'lerin GPU yetilerinden yararlanmak için uygun grafik sürücülerini yüklemelisiniz. Sürücüleri yüklemek için [desteklenen işletim sistemleri ve sürücüler](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers) bölümündeki yönergeleri izleyin. Yalnızca Azure tarafından dağıtılan sürücüler desteklenir.
 
-Windows sanal masaüstü için yalnızca Azure tarafından dağıtılan sürücüler desteklenir. NVıDıA GPU 'lara sahip Azure NV serisi sanal makineleri için yalnızca [NVıDıA kılavuz sürücüleri](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)ve NVIDIA Tesla (CUDA) sürücüleri, genel amaçlı uygulamalar ve Masaüstü BILGISAYARLAR için GPU hızlandırmasını destekler.
+* Azure NV-Series veya NVv3 serisi VM 'Ler için, NVıDıA CUDA sürücüleri değil yalnızca NVıDıA KıLAVUZ sürücüleri, çoğu uygulama ve Windows Kullanıcı arabirimi için GPU hızlandırmasını destekler. Sürücüleri el ile yüklemeyi seçerseniz, KıLAVUZ sürücülerini yüklediğinizden emin olun. Azure VM uzantısını kullanarak sürücüleri yüklemeyi seçerseniz, bu VM boyutları için KıLAVUZ sürücüleri otomatik olarak yüklenir.
+* Azure NVv4 serisi VM 'Ler için, Azure tarafından sunulan AMD sürücülerini yükler. Azure VM uzantısını kullanarak bunları otomatik olarak yükleyebilirsiniz veya el ile yükleyebilirsiniz.
 
 Sürücü yüklemesinden sonra, bir VM yeniden başlatması gerekir. Grafik sürücülerinin başarıyla yüklendiğini doğrulamak için yukarıdaki yönergelerdeki doğrulama adımlarını kullanın.
 

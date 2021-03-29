@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e29e20d071e992b941b2f6bd803c8dade044fbfd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3c8dd5cd9da2fd1e741635a6471c0662066d147e
+ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100592473"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105709948"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Azure Bilişsel Arama günlük verilerini toplayın ve çözümleyin
 
-Tanılama veya işletimsel Günlükler Azure Bilişsel Arama ayrıntılı işlemlerine ilişkin öngörüler sağlar ve hizmet ve iş yükü işlemlerini izlemek için yararlıdır. Dahili olarak, bazı sistem bilgileri kısa bir süre için arka uçta bulunur, bir destek bileti dosyanız varsa araştırma ve analiz için yeterlidir. Ancak, işletimsel veriler üzerinde kendinden yönle isterseniz, günlük bilgilerinin nerede toplandığını belirtmek için bir tanılama ayarı yapılandırmanız gerekir.
+Tanılama veya işletimsel Günlükler Azure Bilişsel Arama ayrıntılı işlemlerine ilişkin öngörüler sağlar ve hizmet ve iş yükü işlemlerini izlemek için yararlıdır. Microsoft, bir destek bileti verirseniz araştırma ve analize yönelik olarak, sistem bilgilerini kısa bir süre (yaklaşık 30 gün) için arka uca korur. Ancak, işletimsel veriler üzerinde sahiplik istiyorsanız, günlüğe kaydetme bilgilerinin nerede toplandığını belirtmek için bir tanılama ayarı yapılandırmanız gerekir.
 
 Tanılama günlüğü, [Azure izleyici](../azure-monitor/index.yml)ile tümleştirme aracılığıyla etkinleştirilir. 
 
@@ -76,14 +76,14 @@ BLOB depolama için, kapsayıcının blob depolamada görünmesi için bir saat 
 
 1. Tablosal sonuç kümesi döndürmek için aşağıdaki sorguyu girin.
 
-   ```
+   ```kusto
    AzureMetrics
-    | project MetricName, Total, Count, Maximum, Minimum, Average
+   | project MetricName, Total, Count, Maximum, Minimum, Average
    ```
 
 1. Daha ilginç bilgiler çıkaran daha seçmeli bir sorgu ile, tüm sütunları bilgilendirme amacıyla döndürmek için **AzureDiagnostics** ile başlayan önceki adımları yineleyin.
 
-   ```
+   ```kusto
    AzureDiagnostics
    | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
    | where OperationName == "Query.Search" 
@@ -99,7 +99,7 @@ Tanılama günlük kaydını etkinleştirdiyseniz, hizmetinize ve ne zaman çal�
 
 İşlemlerin bir listesini ve her birinin sayımını döndürün.
 
-```
+```kusto
 AzureDiagnostics
 | summarize count() by OperationName
 ```
@@ -108,7 +108,7 @@ AzureDiagnostics
 
 Sorgu isteğini dizin oluşturma işlemleriyle ilişkilendirin ve işlemlerin çakıştığı görmek için veri noktalarını bir zaman grafiğinde işleme koyun.
 
-```
+```kusto
 AzureDiagnostics
 | summarize OperationName, Count=count()
 | where OperationName in ('Query.Search', 'Indexing.Index')

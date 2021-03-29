@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: 8173da37792948e267aae2078fee9f864bf7bdc9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 744d302afd21e6521fb17bf7bef6e68d21fb8372
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103011162"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639398"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>İş Akışı Tasarımcısı ile Gelişmiş Kodlama İş Akışları Oluşturma
 
@@ -45,7 +45,7 @@ Bu araç, [yayımlanan iş akışlarımızdan](media-services-workflow-designer.
 Bir iş akışı dosyası oluşturulduktan sonra bir varlık olarak karşıya yüklenebilir ve ardından medya dosyalarını kodlamak için kullanılabilir. **.Net** kullanarak **Media Encoder Premium Workflow** ile kodlama hakkında daha fazla bilgi için bkz. [Media Encoder Premium Workflow ile gelişmiş kodlama](media-services-encode-with-premium-workflow.md).
 
 ## <a name="modify-existing-workflows"></a><a id="existing_workflows"></a>Mevcut iş akışlarını değiştirme
-Varsayılan [yayımlanan iş akışları](media-services-workflow-designer.md#existing_workflows) tasarımcı aracı kullanılarak değiştirilebilir. Varsayılan iş akışı dosyalarını [buradan](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)edinebilirsiniz. Klasör Ayrıca bu dosyaların açıklamasını içerir.
+Varsayılan [yayımlanan iş akışları](media-services-workflow-designer.md#existing_workflows) tasarımcı aracı kullanılarak değiştirilebilir. Varsayılan iş akışı dosyalarını [buradan](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/media-services/previous/media-services-encode-with-premium-workflow.md)edinebilirsiniz. Klasör Ayrıca bu dosyaların açıklamasını içerir.
 
 Aşağıdaki videolar tasarımcı 'nın nasıl kullanılacağını göstermektedir.
 

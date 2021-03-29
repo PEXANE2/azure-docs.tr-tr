@@ -86,6 +86,10 @@
           href: concepts/telephony-sms/plan-solution.md
         - name: SIP arabirimi altyapı gereksinimleri
           href: concepts/telephony-sms/sip-interface-infrastructure.md
+        - name: SMS HAKKıNDA SSS
+          href: concepts/telephony-sms/sms-faq.md
+        - name: Mesajlaşma ilkesi
+          href: concepts/telephony-sms/messaging-policy.md
     - name: Sesli ve görüntülü arama
       items:
         - name: SDK 'ya genel bakış
