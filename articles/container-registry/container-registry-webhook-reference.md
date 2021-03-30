@@ -4,10 +4,10 @@ description: Web kancaları yapıt Push veya delete olayları için etkinleştir
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: 8354ef9db24d5825238155ac567d5d829f9b0d7f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74455967"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Web kancası başvurusunu Azure Container Registry
@@ -36,7 +36,7 @@ Bir kapsayıcı görüntüsü depoya gönderildiğinde Web kancası tetiklendi.
 
 ### <a name="push-event-payload"></a>Olay yükünü gönder
 
-|Öğe|Tür|Description|
+|Öğe|Tür|Açıklama|
 |-------------|----------|-----------|
 |`id`|Dize|Web kancası olayının KIMLIĞI.|
 |`timestamp`|DateTime|Web kancası olayının tetiklendiği zaman.|
@@ -46,7 +46,7 @@ Bir kapsayıcı görüntüsü depoya gönderildiğinde Web kancası tetiklendi.
 
 ### <a name="target"></a><a name="target"></a>hedef
 
-|Öğe|Tür|Description|
+|Öğe|Tür|Açıklama|
 |------------------|----------|-----------|
 |`mediaType`|Dize|Başvurulan nesnenin MIME türü.|
 |`size`|Int32|İçeriğin bayt sayısı. Length alanıyla aynı.|
@@ -57,7 +57,7 @@ Bir kapsayıcı görüntüsü depoya gönderildiğinde Web kancası tetiklendi.
 
 ### <a name="request"></a><a name="request"></a>isteyen
 
-|Öğe|Tür|Description|
+|Öğe|Tür|Açıklama|
 |------------------|----------|-----------|
 |`id`|Dize|Olayı başlatan isteğin KIMLIĞI.|
 |`host`|Dize|Gelen isteklerde HTTP ana bilgisayar üst bilgisi tarafından belirtilen şekilde, kayıt defteri örneğinin dışarıdan erişilebilen ana bilgisayar adı.|
@@ -100,7 +100,7 @@ Bir Helu grafiği depoya gönderildiğinde Web kancası tetiklendi.
 
 ### <a name="chart-push-event-payload"></a>Grafik gönderim olayı yükü
 
-|Öğe|Tür|Description|
+|Öğe|Tür|Açıklama|
 |-------------|----------|-----------|
 |`id`|Dize|Web kancası olayının KIMLIĞI.|
 |`timestamp`|DateTime|Web kancası olayının tetiklendiği zaman.|
@@ -109,7 +109,7 @@ Bir Helu grafiği depoya gönderildiğinde Web kancası tetiklendi.
 
 ### <a name="target"></a><a name="helm_target"></a>hedef
 
-|Öğe|Tür|Description|
+|Öğe|Tür|Açıklama|
 |------------------|----------|-----------|
 |`mediaType`|Dize|Başvurulan nesnenin MIME türü.|
 |`size`|Int32|İçeriğin bayt sayısı.|
@@ -150,7 +150,7 @@ Bir görüntü deposu veya bildirim silindiğinde Web kancası tetiklendi. Bir e
 
 ### <a name="delete-event-payload"></a>Olay yükünü Sil
 
-|Öğe|Tür|Description|
+|Öğe|Tür|Açıklama|
 |-------------|----------|-----------|
 |`id`|Dize|Web kancası olayının KIMLIĞI.|
 |`timestamp`|DateTime|Web kancası olayının tetiklendiği zaman.|
@@ -160,7 +160,7 @@ Bir görüntü deposu veya bildirim silindiğinde Web kancası tetiklendi. Bir e
 
 ### <a name="target"></a><a name="delete_target"></a> hedef
 
-|Öğe|Tür|Description|
+|Öğe|Tür|Açıklama|
 |------------------|----------|-----------|
 |`mediaType`|Dize|Başvurulan nesnenin MIME türü.|
 |`digest`|Dize|Kayıt defteri v2 HTTP API belirtiminde tanımlanan şekilde içeriğin özeti.|
@@ -168,7 +168,7 @@ Bir görüntü deposu veya bildirim silindiğinde Web kancası tetiklendi. Bir e
 
 ### <a name="request"></a><a name="delete_request"></a> isteyen
 
-|Öğe|Tür|Description|
+|Öğe|Tür|Açıklama|
 |------------------|----------|-----------|
 |`id`|Dize|Olayı başlatan isteğin KIMLIĞI.|
 |`host`|Dize|Gelen isteklerde HTTP ana bilgisayar üst bilgisi tarafından belirtilen şekilde, kayıt defteri örneğinin dışarıdan erişilebilen ana bilgisayar adı.|
@@ -212,7 +212,7 @@ Bir helb grafiği veya deposu silindiğinde Web kancası tetiklendi.
 
 ### <a name="chart-delete-event-payload"></a>Grafik olay yükünü silme
 
-|Öğe|Tür|Description|
+|Öğe|Tür|Açıklama|
 |-------------|----------|-----------|
 |`id`|Dize|Web kancası olayının KIMLIĞI.|
 |`timestamp`|DateTime|Web kancası olayının tetiklendiği zaman.|
@@ -221,7 +221,7 @@ Bir helb grafiği veya deposu silindiğinde Web kancası tetiklendi.
 
 ### <a name="target"></a><a name="chart_delete_target"></a> hedef
 
-|Öğe|Tür|Description|
+|Öğe|Tür|Açıklama|
 |------------------|----------|-----------|
 |`mediaType`|Dize|Başvurulan nesnenin MIME türü.|
 |`size`|Int32|İçeriğin bayt sayısı.|

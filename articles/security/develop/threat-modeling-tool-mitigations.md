@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 748d10b994080b667885e5d0d5f4d688269e86ab
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "68728041"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft Threat Modeling Tool azaltmaları
@@ -35,7 +35,7 @@ Threat Modeling Tool azaltmaları, aşağıdakilerden oluşan Web uygulaması g�
 | Kategori | Açıklama |
 | -------- | ----------- |
 | **[Denetleme ve günlüğe kaydetme](threat-modeling-tool-auditing-and-logging.md)** | Kim ve ne zaman? Denetim ve günlük kaydı, uygulamanızın güvenlikle ilgili olayları nasıl kayıtlarına başvurur |
-| **[Yetkilendirmesi](threat-modeling-tool-authentication.md)** | Kimsiniz? Kimlik doğrulaması, bir varlığın, genellikle Kullanıcı adı ve parola gibi kimlik bilgileri aracılığıyla başka bir varlığın kimliğini kanıtlayan işlemdir |
+| **[Kimlik Doğrulaması](threat-modeling-tool-authentication.md)** | Kimsiniz? Kimlik doğrulaması, bir varlığın, genellikle Kullanıcı adı ve parola gibi kimlik bilgileri aracılığıyla başka bir varlığın kimliğini kanıtlayan işlemdir |
 | **[Yetkilendirme](threat-modeling-tool-authorization.md)** | Ne yapabilirsiniz? Yetkilendirme, uygulamanızın kaynaklar ve işlemler için erişim denetimleri sağladığı bir uygulamadır |
 | **[İletişim güvenliği](threat-modeling-tool-communication-security.md)** | Kimler konuşuyor? İletişim güvenliği, yapılan tüm iletişimin olabildiğince güvenli olmasını sağlar |
 | **[Yapılandırma yönetimi](threat-modeling-tool-configuration-management.md)** | Uygulamanız ne gibi çalışıyor? Hangi veritabanlarına bağlanır? Uygulamanız nasıl yönetilir? Bu ayarların güvenliği nasıl sağlanır? Yapılandırma yönetimi, uygulamanızın bu işlem sorunlarını nasıl işleyeceğini belirtir |

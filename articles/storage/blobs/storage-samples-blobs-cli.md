@@ -9,17 +9,17 @@ ms.subservice: blobs
 ms.topic: sample
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 79ff7b3d174407da929f201bdce691cecf9b9a89
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88035051"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>Azure Blob depolama için Azure CLI örnekleri
 
 Aşağıdaki tablo, Azure CLI kullanılarak oluşturulan ve Azure Depolama örneği oluşturup yöneten Bash betiklerine yönelik bağlantılar içerir.
 
-| Komut Dosyası | Description |
+| Komut Dosyası | Açıklama |
 |---|---|
 |**Depolama hesapları**||
 | [Bir depolama hesabı oluşturma ve erişim anahtarlarını alma/döndürme](../scripts/storage-common-rotate-account-keys-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Bir Azure depolama hesabı oluşturur, erişim anahtarlarını alır ve döndürür. |

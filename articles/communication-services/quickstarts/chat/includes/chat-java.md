@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 3cbed124963fe6e56d6721669d0feedc6e34ffc6
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 800acddcb3527b9ca16d7fc664c2a3c27b528c25
+ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107058"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105726707"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -56,7 +56,7 @@ Pod dosyanızda, `azure-communication-chat` sohbet API 'leriyle pakete başvurun
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-chat</artifactId>
-    <version>1.0.0-beta.4</version> 
+    <version>1.0.0-beta.7</version> 
 </dependency>
 ```
 
@@ -89,12 +89,17 @@ Bir sohbet istemcisi oluşturmak için, Iletişim hizmeti uç noktasını ve ön
 İçeri aktarma deyimlerini eklerken, com. Azure. Communication. chat. Implementation ad alanından değil, com. Azure. Communication. chat ve com. Azure. Communication. chat. model ad alanlarından yalnızca içeri aktarmalar eklediğinizden emin olun. Maven aracılığıyla oluşturulan app. Java dosyasında, şununla başlamak için aşağıdaki kodu kullanabilirsiniz:
 
 ```Java
+package com.communication.quickstart;
+
 import com.azure.communication.chat.*;
 import com.azure.communication.chat.models.*;
 import com.azure.communication.common.*;
 import com.azure.core.http.HttpClient;
+import com.azure.core.http.netty.NettyAsyncHttpClientBuilder;
+import com.azure.core.http.rest.PagedIterable;
 
 import java.io.*;
+import java.util.*;
 
 public class App
 {
@@ -126,36 +131,51 @@ public class App
 }
 ```
 
-
 ## <a name="start-a-chat-thread"></a>Sohbet iş parçacığı başlatma
 
 `createChatThread`Bir sohbet iş parçacığı oluşturmak için yöntemini kullanın.
 `createChatThreadOptions` iş parçacığı isteğini tanımlamakta kullanılır.
 
-- `topic`Bu sohbete bir konu vermek için kullanın; Konu, işlevi kullanılarak sohbet iş parçacığı oluşturulduktan sonra güncelleştirilemeyebilir `UpdateThread` .
+- `topic`Bu sohbete bir konu vermek için oluşturucunun parametresini kullanın; Konu, işlevi kullanılarak sohbet iş parçacığı oluşturulduktan sonra güncelleştirilemeyebilir `UpdateThread` .
 - `participants`İş parçacığına eklenecek iş parçacığı katılımcılarını listelemek için kullanın. `ChatParticipant`[Kullanıcı erişim belirteci](../../access-tokens.md) hızlı başlangıç bölümünde oluşturduğunuz kullanıcıyı alır.
 
-Yanıt, `chatThreadClient` oluşturulan sohbet iş parçacığı üzerinde işlem gerçekleştirmek için kullanılır: sohbet iş parçacığına katılımcılar ekleme, ileti gönderme, ileti silme vb. `chatThreadId` Sohbet iş parçacığının BENZERSIZ kimliği olan bir özelliği içerir. Özelliğine public method. getChatThreadId () tarafından erişilebilir.
+`CreateChatThreadResult` Yanıt, sohbet iş parçacığı oluşturmaktan döndü. `getChatThread()` `ChatThread` Oluşturulan iş parçacığında işlemleri gerçekleştirmek için kullanabileceğiniz iş parçacığı istemcisini almak için kullanılabilecek nesneyi döndüren bir yöntem içerir `ChatThreadClient` : katılımcı ekleme, ileti gönderme vb. `ChatThread`Nesnesi ayrıca `getId()` iş PARÇACıĞıNıN benzersiz kimliğini alan yöntemini içerir.
 
 ```Java
-List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
-
 ChatParticipant firstThreadParticipant = new ChatParticipant()
     .setCommunicationIdentifier(firstUser)
     .setDisplayName("Participant Display Name 1");
-    
+
 ChatParticipant secondThreadParticipant = new ChatParticipant()
     .setCommunicationIdentifier(secondUser)
     .setDisplayName("Participant Display Name 2");
 
-participants.add(firstThreadParticipant);
-participants.add(secondThreadParticipant);
+CreateChatThreadOptions createChatThreadOptions = new CreateChatThreadOptions("Topic")
+    .addParticipant(firstThreadParticipant)
+    .addParticipant(secondThreadParticipant);
 
-CreateChatThreadOptions createChatThreadOptions = new CreateChatThreadOptions()
-    .setTopic("Topic")
-    .setParticipants(participants);
-ChatThreadClient chatThreadClient = chatClient.createChatThread(createChatThreadOptions);
-String chatThreadId = chatThreadClient.getChatThreadId();
+CreateChatThreadResult result = chatClient.createChatThread(createChatThreadOptions);
+String chatThreadId = result.getChatThread().getId();
+```
+
+## <a name="list-chat-threads"></a>Sohbet iş parçacıklarını Listele
+
+`listChatThreads`Mevcut sohbet iş parçacıklarının listesini almak için yöntemini kullanın.
+
+```java
+PagedIterable<ChatThreadItem> chatThreads = chatClient.listChatThreads();
+
+chatThreads.forEach(chatThread -> {
+    System.out.printf("ChatThread id is %s.\n", chatThread.getId());
+});
+```
+
+## <a name="get-a-chat-thread-client"></a>Sohbet iş parçacığı istemcisi al
+
+`getChatThreadClient`Yöntemi, zaten var olan bir iş parçacığı için bir iş parçacığı istemcisi döndürür. Oluşturulan iş parçacığında işlem gerçekleştirmek için kullanılabilir: katılımcı ekleme, ileti gönderme vb. `chatThreadId` , mevcut sohbet iş parçacığının benzersiz KIMLIĞIDIR.
+
+```Java
+ChatThreadClient chatThreadClient = chatClient.getChatThreadClient(chatThreadId);
 ```
 
 ## <a name="send-a-message-to-a-chat-thread"></a>Sohbet iş parçacığına ileti gönderin
@@ -179,84 +199,66 @@ SendChatMessageResult sendChatMessageResult = chatThreadClient.sendMessage(sendC
 String chatMessageId = sendChatMessageResult.getId();
 ```
 
-
-## <a name="get-a-chat-thread-client"></a>Sohbet iş parçacığı istemcisi al
-
-`getChatThreadClient`Yöntemi, zaten var olan bir iş parçacığı için bir iş parçacığı istemcisi döndürür. Oluşturulan iş parçacığında işlem gerçekleştirmek için kullanılabilir: katılımcı ekleme, ileti gönderme vb. `chatThreadId` , mevcut sohbet iş parçacığının benzersiz KIMLIĞIDIR.
-
-```Java
-String chatThreadId = "Id";
-ChatThread chatThread = chatClient.getChatThread(chatThreadId);
-```
-
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Sohbet iş parçacığından sohbet iletileri alma
 
 Sohbet `listMessages` iş parçacığı istemcisinde belirtilen aralıklarda yöntemi yoklayarak sohbet iletileri alabilirsiniz.
 
 ```Java
-chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
-    System.out.printf("Response headers are %s. Url %s  and status code %d %n", resp.getHeaders(),
-        resp.getRequest().getUrl(), resp.getStatusCode());
-    resp.getItems().forEach(message -> {
-        System.out.printf("Message id is %s.", message.getId());
-    });
+chatThreadClient.listMessages().forEach(message -> {
+    System.out.printf("Message id is %s.\n", message.getId());
 });
 ```
 
 `listMessages` ileti için. editMessage () ve. deleteMessage () kullanılarak gerçekleşen tüm düzenleme veya silme işlemleri dahil olmak üzere iletinin en son sürümünü döndürür. Silinen iletiler için, `chatMessage.getDeletedOn()` iletinin silindiğini gösteren bir tarih saat değeri döndürür. Düzenlenen iletiler için, `chatMessage.getEditedOn()` iletinin ne zaman düzenlendiğini gösteren bir tarih saat döndürür. İleti oluşturma özgün zamanına kullanılarak erişilebilir `chatMessage.getCreatedOn()` ve iletileri sıralamak için kullanılabilir.
 
-`listMessages` tarafından tanımlanabilecek farklı ileti türlerini döndürür `chatMessage.getType()` . Bu türler şunlardır:
+İleti türleri hakkında buradan daha fazla bilgi edinin: [Ileti türleri](../../../concepts/chat/concepts.md#message-types).
 
-- `text`: Bir iş parçacığı katılımcısı tarafından gönderilen düzenli sohbet iletisi.
+## <a name="send-read-receipt"></a>Okundu bilgisi gönder
 
-- `html`: Bir iş parçacığı katılımcısı tarafından gönderilen HTML sohbet iletisi.
+`sendReadReceipt`Kullanıcı adına bir sohbet iş parçacığına okundu bilgisi olayı göndermek için yöntemini kullanın.
+`chatMessageId` okunan sohbet iletisinin benzersiz KIMLIĞIDIR.
 
-- `topicUpdated`: Konunun güncelleştirildiğini belirten sistem iletisi.
+```Java
+String chatMessageId = message.getId();
+chatThreadClient.sendReadReceipt(chatMessageId);
+```
 
-- `participantAdded`: Sohbet iş parçacığına bir veya daha fazla katılımcı eklendiğini belirten sistem iletisi.
+## <a name="list-chat-participants"></a>Sohbet katılımcıları listeleyin
 
-- `participantRemoved`: Bir katılımcının sohbet iş parçacığından kaldırıldığını belirten sistem iletisi.
+`listParticipants`ChatThreadId tarafından tanımlanan sohbet iş parçacığının katılımcılarını içeren bir disk belleğine alma koleksiyonunu almak için kullanın.
 
-Daha ayrıntılı bilgi için bkz. [Ileti türleri](../../../concepts/chat/concepts.md#message-types).
+```Java
+PagedIterable<ChatParticipant> chatParticipantsResponse = chatThreadClient.listParticipants();
+chatParticipantsResponse.forEach(chatParticipant -> {
+    System.out.printf("Participant id is %s.\n", ((CommunicationUserIdentifier) chatParticipant.getCommunicationIdentifier()).getId());
+});
+```
 
 ## <a name="add-a-user-as-participant-to-the-chat-thread"></a>Sohbet iş parçacığına katılımcı olarak Kullanıcı ekleme
 
 Sohbet iş parçacığı oluşturulduktan sonra, bundan sonra kullanıcı ekleyebilir ve kaldırabilirsiniz. Kullanıcıları ekleyerek, onlara sohbet iş parçacığına ileti gönderme ve başka katılımcılar ekleme/kaldırma erişimi verirsiniz. Bu Kullanıcı için yeni bir erişim belirteci ve kimliği alarak başlamanız gerekir. Addkatılımcılar yöntemini çağırmadan önce, bu kullanıcı için yeni bir erişim belirteci ve kimliği aldığınızdan emin olun. Kullanıcının sohbet istemcisini başlatması için bu erişim belirtecine ihtiyacı olacak.
 
-`addParticipants`ThreadID tarafından tanımlanan iş parçacığına katılımcılar eklemek için yöntemini kullanın.
+`addParticipants`İş parçacığına katılımcılar eklemek için yöntemini kullanın.
 
-- `listParticipants`Sohbet iş parçacığına eklenecek katılımcıları listelemek için kullanın.
 - `communicationIdentifier`, gerekli, [Kullanıcı erişim belirteci](../../access-tokens.md) hızlı başlangıç bölümünde Communicationıdentityclient tarafından oluşturduğunuz Communicationıdentifier.
-- `display_name`, isteğe bağlı, iş parçacığı katılımcısı için görünen addır.
-- `share_history_time`, isteğe bağlı, sohbet geçmişinin katılımcının paylaştığı süredir. Sohbet iş parçacığının başlatılmasından bu yana geçmişi paylaşmak için, bu özelliği, iş parçacığı oluşturma zamanından daha küçük veya ona eşit bir tarih olarak ayarlayın. Katılımcının eklendiği tarihten önce geçmiş paylaşmak için, geçerli tarih olarak ayarlayın. Kısmi geçmişi paylaşmak için, bunu gerekli tarihe ayarlayın.
+- `displayName`, isteğe bağlı, iş parçacığı katılımcısı için görünen addır.
+- `shareHistoryTime`, isteğe bağlı, sohbet geçmişinin katılımcının paylaştığı süredir. Sohbet iş parçacığının başlatılmasından bu yana geçmişi paylaşmak için, bu özelliği, iş parçacığı oluşturma zamanından daha küçük veya ona eşit bir tarih olarak ayarlayın. Katılımcının eklendiği tarihten önce geçmiş paylaşmak için, geçerli tarih olarak ayarlayın. Kısmi geçmişi paylaşmak için, bunu gerekli tarihe ayarlayın.
 
 ```Java
 List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
-ChatParticipant firstThreadParticipant = new ChatParticipant()
-    .setCommunicationIdentifier(identity1)
-    .setDisplayName("Display Name 1");
+ChatParticipant thirdThreadParticipant = new ChatParticipant()
+    .setCommunicationIdentifier(user3)
+    .setDisplayName("Display Name 3");
 
-ChatParticipant secondThreadParticipant = new ChatParticipant()
-    .setCommunicationIdentifier(identity2)
-    .setDisplayName("Display Name 2");
+ChatParticipant fourthThreadParticipant = new ChatParticipant()
+    .setCommunicationIdentifier(user4)
+    .setDisplayName("Display Name 4");
 
-participants.add(firstThreadParticipant);
-participants.add(secondThreadParticipant);
+participants.add(thirdThreadParticipant);
+participants.add(fourthThreadParticipant);
 
-AddChatParticipantsOptions addChatParticipantsOptions = new AddChatParticipantsOptions()
-    .setParticipants(participants);
-chatThreadClient.addParticipants(addChatParticipantsOptions);
-```
-
-## <a name="remove-participant-from-a-chat-thread"></a>Bir sohbet iş parçacığından katılımcı kaldırma
-
-Bir iş parçacığına katılımcı eklemeye benzer şekilde, katılımcıları bir sohbet iş parçacığından kaldırabilirsiniz. Bunu yapmak için, eklediğiniz katılımcıların kimliklerini izlemeniz gerekir.
-
-`removeParticipant`Öğesini kullanın, burada `identifier` oluşturduğunuz Communicationıdentifier ' dır.
-
-```Java
-chatThreadClient.removeParticipant(identity);
+chatThreadClient.addParticipants(participants);
 ```
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
