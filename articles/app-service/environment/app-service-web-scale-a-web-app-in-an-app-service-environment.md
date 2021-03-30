@@ -8,10 +8,10 @@ ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 0e665ec27da0a898e754817f946b965ac7360fda
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86220567"
 ---
 # <a name="scaling-apps-in-an-app-service-environment-v1"></a>App Service Ortamı v1 'de Uygulamaları ölçeklendirme
@@ -57,7 +57,7 @@ ASP 'nizi bir çalışan havuzundan diğerine taşımadan önce ASP 'niz için y
 > 
 > 
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 App Service ortamları ile çalışmaya başlamak için bkz. [nasıl App Service ortamı oluşturma][HowtoCreateASE]
 
 <!--Image references-->

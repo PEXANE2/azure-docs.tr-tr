@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 2c91a59e57613934c946e3cd56089b330893a51a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86260346"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh secret
@@ -30,13 +30,13 @@ Belirtilen gizli kaynağı ve tüm adlandırılmış değerlerini siler.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Name-n [gerekli] | Gizli kaynağın adı. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -51,7 +51,7 @@ Belirli bir kaynak grubundaki tüm gizli kaynaklarla ilgili bilgileri alır. Bil
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -66,13 +66,13 @@ Verilen ada sahip gizli kaynakla ilgili bilgileri alır. Bilgiler, gizli dizinin
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Name-n [gerekli] | Gizli kaynağın adı. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |

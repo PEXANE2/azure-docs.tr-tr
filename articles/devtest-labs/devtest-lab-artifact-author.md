@@ -4,10 +4,10 @@ description: Bir sanal makine sağlamadıktan sonra uygulamaları dağıtmak ve 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 85acfcc3811e671e58fadab08a23951778e1323d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88270691"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>DevTest Labs sanal makineniz için özel yapılar oluşturma
@@ -44,14 +44,14 @@ Aşağıdaki örnek, bir tanım dosyasının temel yapısını oluşturan bölü
   }
 ```
 
-| Öğe adı | Gerekli mi? | Description |
+| Öğe adı | Gerekli mi? | Açıklama |
 | --- | --- | --- |
-| $schema |No |JSON Şema dosyasının konumu. JSON şema dosyası, tanım dosyasının geçerliliğini test etmenize yardımcı olabilir. |
+| $schema |Hayır |JSON Şema dosyasının konumu. JSON şema dosyası, tanım dosyasının geçerliliğini test etmenize yardımcı olabilir. |
 | başlık |Yes |Laboratuvarda görünen yapıt adı. |
 | açıklama |Yes |Laboratuvarda görünen yapının açıklaması. |
-| ıconuri |No |Laboratuvarda görünen simgenin URI 'SI. |
+| ıconuri |Hayır |Laboratuvarda görünen simgenin URI 'SI. |
 | targetOsType |Yes |Yapıtın yüklendiği VM 'nin işletim sistemi. Desteklenen seçenekler Windows ve Linux. |
-| parameters |No |Bir makinede yapıt install komutu çalıştırıldığında belirtilen değerler. Bu, yapıtı özelleştirmenize yardımcı olur. |
+| parameters |Hayır |Bir makinede yapıt install komutu çalıştırıldığında belirtilen değerler. Bu, yapıtı özelleştirmenize yardımcı olur. |
 | Eylemine |Yes |Bir VM üzerinde yürütülen yapıt install komutu. |
 
 ### <a name="artifact-parameters"></a>Yapıt parametreleri
@@ -69,7 +69,7 @@ Parametreleri tanımlamak için aşağıdaki yapıyı kullanın:
   }
 ```
 
-| Öğe adı | Gerekli mi? | Description |
+| Öğe adı | Gerekli mi? | Açıklama |
 | --- | --- | --- |
 | tür |Yes |Parametre değerinin türü. İzin verilen türler için aşağıdaki listeye bakın. |
 | displayName |Yes |Laboratuvardaki bir kullanıcıya görüntülenen parametrenin adı. |

@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: 5b2df194761ebc167e67498a985960a4fce35f19
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "76905294"
 ---
 # <a name="create-schemas-for-tracking-x12-messages-in-azure-logic-apps"></a>Azure Logic Apps 'de izleme x12 iletileri için şemalar oluşturma
@@ -55,7 +55,7 @@ ms.locfileid: "76905294"
 }
 ```
 
-| Özellik | Gerekli | Tür | Description |
+| Özellik | Gerekli | Tür | Açıklama |
 |----------|----------|------|-------------|
 | senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
 | receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |
@@ -74,7 +74,7 @@ ms.locfileid: "76905294"
 | isTechnicalAcknowledgmentExpected | Yes | Boole | Teknik bildirim x12 anlaşmasında yapılandırılıp yapılandırılmadığını belirtir |
 | isFunctionalAcknowledgmentExpected | Yes | Boole | X12 anlaşmasında işlevsel onay yapılandırılıp yapılandırılmadığını belirtir |
 | needAk2LoopForValidMessages | Yes | Boole | AK2 döngüsünün geçerli bir ileti için gerekli olup olmadığı |
-| segmentsCount | No | Tamsayı | X12 işlem kümesindeki parçaların sayısı |
+| segmentsCount | Hayır | Tamsayı | X12 işlem kümesindeki parçaların sayısı |
 |||||
 
 ## <a name="x12-transaction-set-acknowledgment-tracking-schema"></a>X12 işlem kümesi bildirim izleme şeması
@@ -111,7 +111,7 @@ ms.locfileid: "76905294"
 }
 ```
 
-| Özellik | Gerekli | Tür | Description |
+| Özellik | Gerekli | Tür | Açıklama |
 |----------|----------|------|-------------|
 | senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
 | receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |
@@ -169,7 +169,7 @@ ms.locfileid: "76905294"
 }
 ```
 
-| Özellik | Gerekli | Tür | Description |
+| Özellik | Gerekli | Tür | Açıklama |
 |----------|----------|------|-------------|
 | senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
 | receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |
@@ -220,7 +220,7 @@ ms.locfileid: "76905294"
 }
 ```
 
-| Özellik | Gerekli | Tür | Description |
+| Özellik | Gerekli | Tür | Açıklama |
 |----------|----------|------|-------------|
 | senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
 | receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |
@@ -273,7 +273,7 @@ ms.locfileid: "76905294"
 }
 ```
 
-| Özellik | Gerekli | Tür | Description |
+| Özellik | Gerekli | Tür | Açıklama |
 |----------|----------|------|-------------|
 | senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
 | receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |
@@ -329,7 +329,7 @@ ms.locfileid: "76905294"
 }
 ```
 
-| Özellik | Gerekli | Tür | Description |
+| Özellik | Gerekli | Tür | Açıklama |
 |----------|----------|------|-------------|
 | senderPartnerName | Hayır | Dize | X12 ileti göndericisinin iş ortağı adı |
 | receiverPartnerName | Hayır | Dize | X12 ileti alıcısının iş ortağı adı |

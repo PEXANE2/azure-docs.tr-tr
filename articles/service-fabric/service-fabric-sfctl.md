@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fc317345155a6807a20d342e2cefd0701b20f180
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86257062"
 ---
 # <a name="sfctl"></a>sfctl
@@ -18,7 +18,7 @@ Service Fabric kümelerini ve varlıklarını yönetmeye yönelik komutlar. Bu s
 Komutlar, isim-fiil modelini izler. Daha fazla bilgi için bkz. alt gruplar.
 
 ## <a name="subgroups"></a>Alt
-|Atama|Description|
+|Atama|Açıklama|
 | --- | --- |
 | [uygulama](service-fabric-sfctl-application.md) | Uygulamalar ve uygulama türleri oluşturun, silin ve yönetin. |
 | [Chaos](service-fabric-sfctl-chaos.md) | Chaos test hizmetini başlatın, durdurun ve rapor edin. |
