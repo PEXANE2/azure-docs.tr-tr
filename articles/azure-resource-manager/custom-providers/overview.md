@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80398469"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Azure özel kaynak sağlayıcılarına genel bakış
@@ -82,7 +82,7 @@ endpoint | *Yes* | İsteklerin yönlendirileceği uç nokta. Bu, yanıtın yanı
 
 Yukarıdaki örnek için Azure 'a eklenen API 'Ler:
 
-HttpMethod | Örnek URI | Description
+HttpMethod | Örnek URI | Açıklama
 ---|---|---
 PUT | /Subscriptions/{SubscriptionID}/ResourceGroups/{resourcegroupname}/<br>sağlayıcılar/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? api-Version = 2018-09 -01-Preview | Yeni bir kaynak oluşturmak için Azure REST API çağrısı.
 DELETE | /Subscriptions/{SubscriptionID}/ResourceGroups/{resourcegroupname}/<br>sağlayıcılar/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? api-Version = 2018-09 -01-Preview | Mevcut bir kaynağı silmek için Azure REST API çağrısı.
@@ -112,7 +112,7 @@ GET | /Subscriptions/{SubscriptionID}/ResourceGroups/{resourcegroupname}/<br>sa�
 
 Yukarıdaki örnek için Azure 'a eklenen API 'Ler:
 
-HttpMethod | Örnek URI | Description
+HttpMethod | Örnek URI | Açıklama
 ---|---|---
 POST | /Subscriptions/{SubscriptionID}/ResourceGroups/{resourcegroupname}/<br>sağlayıcılar/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomAction? api-Version = 2018-09 -01-Preview | Eylemi etkinleştirmek için Azure REST API çağrısı.
 

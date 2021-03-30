@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 835369116b07b74c666fba271476f1cba5a708b8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86259944"
 ---
 # <a name="sfctl-mesh-app"></a>sfctl mesh app
@@ -30,13 +30,13 @@ Ad tarafından tanımlanan uygulama kaynağını siler.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Name-n [gerekli] | Uygulamanın adı. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -51,7 +51,7 @@ Belirli bir kaynak grubundaki tüm uygulama kaynaklarıyla ilgili bilgileri alı
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -66,13 +66,13 @@ Verilen ada sahip uygulama kaynağıyla ilgili bilgileri alır. Bilgiler, uygula
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Name-n [gerekli] | Uygulamanın adı. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |

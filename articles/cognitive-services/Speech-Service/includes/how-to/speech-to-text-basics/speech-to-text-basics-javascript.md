@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: 7649f9c13db1a10bdb48d19f1019ec3b31244f45
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 5a8065daca11e5b79f02510f82ab622c8fb1af2d
+ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105105099"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105729767"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyabilme ve (genellikle konuşma-metin olarak adlandırılır). Bu hızlı başlangıçta, uygulama ve ürünlerinize yönelik konuşma SDK 'sını kullanarak yüksek kaliteli bir konuşmayı metne dönüştürme işlemini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
@@ -62,7 +62,7 @@ Konuşmayı bir mikrofondan tanıma **Node.jsdesteklenmez** ve yalnızca tarayı
 
 ## <a name="recognize-from-file"></a>Dosyadan tanı 
 
-Bir ses dosyasından konuşmayı tanımak için, `AudioConfig` `fromWavFileInput()` bir nesnesi kabul eden bir using oluşturun `Buffer` . Ardından, ve ' yi geçirerek bir başlatın [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) `audioConfig` `speechConfig` .
+Bir ses dosyasından konuşmayı tanımak için, `AudioConfig` `fromWavFileInput()` bir nesnesi kabul eden bir using oluşturun `Buffer` . Ardından, ve ' yi geçirerek bir başlatın [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) `audioConfig` `speechConfig` .
 
 ```javascript
 const fs = require('fs');

@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: e84b35ff3dfa7be0c848a4d7b906c622d9b88914
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86257337"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
@@ -32,7 +32,7 @@ Service Fabric oluşturma dağıtımı oluşturur.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Dağıtım-adı [gerekli] | Dağıtımın adı. |
 | --File-Path [gerekli] | Hedef Docker Compose dosyasının yolu. |
@@ -43,7 +43,7 @@ Service Fabric oluşturma dağıtımı oluşturur.
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -58,7 +58,7 @@ Service Fabric kümesinde oluşturulma sürecinde veya oluşturulurken oluşturu
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Devamlılık-belirteç | Devam belirteci parametresi, sonraki sonuç kümesini almak için kullanılır. Boş olmayan bir değere sahip devamlılık belirteci, sistemin sonuçları tek bir yanıta sığmıyor olduğunda API 'nin yanıtına dahil edilir. Bu değer sonraki API çağrısına geçirildiğinde, API sonraki sonuç kümesini döndürür. Başka sonuç yoksa devamlılık belirteci bir değer içermez. Bu parametrenin değeri, URL kodlamalı olmamalıdır. |
 | --en fazla sonuç | Disk belleği sorgularının bir parçası olarak döndürülecek en fazla sonuç sayısı. Bu parametre döndürülen sonuç sayısı üzerinde üst sınırı tanımlar. Döndürülen sonuçlar, yapılandırmada tanımlanan en fazla ileti boyutu kısıtlamalarına göre iletiye sığmıyor durumunda belirtilen en fazla sonuçtan daha az olabilir. Bu parametre sıfırsa veya belirtilmemişse, disk belleğine alınan sorgu, dönüş iletisine sığan mümkün olduğunca fazla sonuç içerir. |
@@ -66,7 +66,7 @@ Service Fabric kümesinde oluşturulma sürecinde veya oluşturulurken oluşturu
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -81,14 +81,14 @@ Var olan bir Service Fabric Compose dağıtımını siler.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Dağıtım-adı [gerekli] | Dağıtımın kimliği. |
 | --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -103,14 +103,14 @@ Oluşturulan veya Service Fabric kümesinde oluşturulma sürecinde ve adı para
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Dağıtım-adı [gerekli] | Dağıtımın kimliği. |
 | --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -125,7 +125,7 @@ Sağlanan yükseltme parametrelerini doğrular ve parametreler geçerliyse dağ�
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Dağıtım-adı [gerekli] | Dağıtımın adı. |
 | --File-Path [gerekli] | Hedef Docker Compose dosyasının yolu. |
@@ -150,7 +150,7 @@ Sağlanan yükseltme parametrelerini doğrular ve parametreler geçerliyse dağ�
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -165,14 +165,14 @@ Service Fabric oluşturma dağıtım yükseltmesini geri alın.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Dağıtım-adı [gerekli] | Dağıtımın kimliği. |
 | --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -187,14 +187,14 @@ Dağıtım yükseltmesinin oluşturma durumuyla birlikte, uygulama sistem durumu
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Dağıtım-adı [gerekli] | Dağıtımın kimliği. |
 | --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
