@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
 ms.openlocfilehash: ec8d4f5611425734974d07ae6ee7008b10b9b406
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85833783"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Şablon kullanarak Redsıs için bir Web uygulaması ve Azure önbelleği oluşturma
@@ -28,7 +28,7 @@ Tüm şablon için bkz. [redsıs şablonu Için Azure Cache Ile Web uygulaması]
 Bu şablonda şunları dağıtacaksınız:
 
 * Azure Web App
-* Redis için Azure Önbelleği
+* Redis için Azure Cache
 
 Dağıtımı otomatik olarak çalıştırmak için aşağıdaki düğmeye tıklayın:
 
@@ -54,7 +54,7 @@ Bu şablon, kaynakların adlarını oluşturmak için değişkenleri kullanır. 
 ## <a name="resources-to-deploy"></a>Dağıtılacak kaynaklar
 [!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
-### <a name="azure-cache-for-redis"></a>Redis için Azure Önbelleği
+### <a name="azure-cache-for-redis"></a>Redis için Azure Cache
 Web uygulamasıyla birlikte kullanılan redo için Azure önbelleğini oluşturur. Önbelleğin adı **CacheName** değişkeninde belirtilir.
 
 Şablon, kaynak grubuyla aynı konumda bulunan önbelleği oluşturur.

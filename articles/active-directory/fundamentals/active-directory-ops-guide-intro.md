@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: c815256e60e5ca6582220d247d587a4488c4a55a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74535320"
 ---
 # <a name="azure-active-directory-operations-reference-guide"></a>Azure Active Directory işlemler başvuru kılavuzu
@@ -36,7 +36,7 @@ Buradaki bazı öneriler, tüm müşterilerin ortamları için geçerli olmayabi
 
 Bu başvuru kılavuzundaki her bölüm, paydaşların anahtar görevlerini başarıyla planlamak ve uygulamak üzere atanmasını önerir. Aşağıdaki tabloda, bu kılavuzdaki tüm paydaşların listesi özetlenmektedir:
 
-| Paydaş | Description |
+| Paydaş | Açıklama |
 | :- | :- |
 | IAM Işlemler ekibi | Bu ekip, kimlik ve erişim yönetimi sisteminin günlük işlemlerini yönetmeyi işler |
 | Üretkenlik ekibi | Bu ekip, e-posta, dosya paylaşımı ve işbirliği, anlık mesajlaşma ve konferans gibi üretkenlik uygulamalarına sahiptir ve bunları yönetir. |

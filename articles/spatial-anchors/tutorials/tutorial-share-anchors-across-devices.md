@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3048eb1ca7f9312a43bc1ab5885bf19d4c2e7931
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ed9b18144bb727af751fbcbbdd5cc6631afc40f
+ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185466"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105727238"
 ---
 # <a name="tutorial-share-spatial-anchors-across-sessions-and-devices"></a>Öğretici: oturumlarda ve cihazlarda uzamsal bağlayıcıları paylaşma
 
@@ -86,7 +86,7 @@ Kaynak grubunu **Myresourcegroup** olarak adlandırın ve ardından **Tamam**' �
 
 Visual Studio Code açın ve ardından projeyi *Sharing\sharingservicesample* klasöründe açın. 
 
-Paylaşım hizmetini Visual Studio Code aracılığıyla dağıtmak için, <a href="/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">Visual Studio Code Ile Azure 'da ASP.NET Core uygulama yayımlama</a>bölümündeki yönergeleri izleyin. "Visual Studio Code ile aç" bölümünde başlatın. Zaten dağıtılacak ve yayımlanacak bir projeniz olduğundan, önceki adımda açıklandığı gibi başka bir ASP.NET projesi oluşturmayın: SharingServiceSample.
+Paylaşım hizmetini Visual Studio Code aracılığıyla dağıtmak için, <a href="/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2&preserve-view=true#open-it-with-visual-studio-code" target="_blank">Visual Studio Code Ile Azure 'da ASP.NET Core uygulama yayımlama</a>bölümündeki yönergeleri izleyin. "Visual Studio Code ile aç" bölümünde başlatın. Zaten dağıtılacak ve yayımlanacak bir projeniz olduğundan, önceki adımda açıklandığı gibi başka bir ASP.NET projesi oluşturmayın: SharingServiceSample.
 
 ---
 

@@ -15,10 +15,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5f987ab15201e4c4dabf147ac468184881e9ed17
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85551635"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>OAuth 2.0 kod verme akışını kullanarak Azure Active Directory web uygulamalarına erişimi yetkilendirme
@@ -78,7 +78,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &state=12345
 ```
 
-| Parametre | Tür | Description |
+| Parametre | Tür | Açıklama |
 | --- | --- | --- |
 | Kiracı |gerekli |`{tenant}`İsteğin yolundaki değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler kiracı tanımlayıcılarıdır, örneğin `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` veya `contoso.onmicrosoft.com` `common` kiracı bağımsız belirteçler için |
 | client_id |gerekli |Azure AD ile kaydettiğinizde uygulamanıza atanan uygulama KIMLIĞI. Bunu Azure portalında bulabilirsiniz. Hizmetler kenar çubuğunda **Azure Active Directory** ' a tıklayın, **uygulama kayıtları**' a tıklayın ve uygulamayı seçin. |
@@ -134,7 +134,7 @@ error=access_denied
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>Yetkilendirme uç noktası hataları için hata kodları
 Aşağıdaki tabloda, hata yanıtının parametresinde döndürülebilecek çeşitli hata kodları açıklanmaktadır `error` .
 
-| Hata Kodu | Description | İstemci eylemi |
+| Hata Kodu | Açıklama | İstemci eylemi |
 | --- | --- | --- |
 | invalid_request |Eksik gerekli bir parametre gibi protokol hatası. |İsteği onarın ve yeniden gönderin. Bu bir geliştirme hatasıdır ve genellikle ilk test sırasında yakalanır. |
 | unauthorized_client |İstemci uygulamasının bir yetkilendirme kodu istemesine izin verilmiyor. |Bu durum genellikle istemci uygulaması Azure AD 'ye kaydedilmediğinde veya kullanıcının Azure AD kiracısına eklenmediğinde oluşur. Uygulama kullanıcıya uygulamayı yükleme ve Azure AD 'ye ekleme yönergesini isteyebilir. |
@@ -163,7 +163,7 @@ grant_type=authorization_code
 //NOTE: client_secret only required for web apps
 ```
 
-| Parametre | Tür | Description |
+| Parametre | Tür | Açıklama |
 | --- | --- | --- |
 | Kiracı |gerekli |`{tenant}`İsteğin yolundaki değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler kiracı tanımlayıcılarıdır, örneğin `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` veya `contoso.onmicrosoft.com` `common` kiracı bağımsız belirteçler için |
 | client_id |gerekli |Azure AD ile kaydettiğinizde uygulamanıza atanan uygulama kimliği. Bunu Azure portal bulabilirsiniz. Uygulama kimliği, uygulama kaydının ayarlarında görüntülenir. |
@@ -240,7 +240,7 @@ Belirteç verme uç noktası hataları, istemci, belirteç verme uç noktasını
 #### <a name="http-status-codes"></a>HTTP durum kodu
 Aşağıdaki tabloda, belirteç verme uç noktasının döndürdüğü HTTP durum kodları listelenmektedir. Bazı durumlarda, yanıtı anlatmak için hata kodu yeterlidir, ancak hatalar varsa, eşlik eden JSON belgesini ayrıştırarak hata kodunu inceleyebilirsiniz.
 
-| HTTP Kodu | Description |
+| HTTP Kodu | Açıklama |
 | --- | --- |
 | 400 |Varsayılan HTTP kodu. Çoğu durumda kullanılır ve genellikle hatalı oluşturulmuş bir istek nedeniyle olur. İsteği onarın ve yeniden gönderin. |
 | 401 |Kimlik doğrulaması gerçekleştirilemedi. Örneğin, istekte client_secret parametresi eksik. |
@@ -248,7 +248,7 @@ Aşağıdaki tabloda, belirteç verme uç noktasının döndürdüğü HTTP duru
 | 500 |Hizmette bir iç hata oluştu. İsteği yeniden deneyin. |
 
 #### <a name="error-codes-for-token-endpoint-errors"></a>Belirteç uç noktası hataları için hata kodları
-| Hata Kodu | Description | İstemci eylemi |
+| Hata Kodu | Açıklama | İstemci eylemi |
 | --- | --- | --- |
 | invalid_request |Eksik gerekli bir parametre gibi protokol hatası. |İsteği onarın ve yeniden gönderin |
 | invalid_grant |Yetkilendirme kodu geçersiz veya süresi doldu. |Uç noktaya yeni bir istek deneyin `/authorize` |
@@ -290,7 +290,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 #### <a name="bearer-scheme-error-codes"></a>Taşıyıcı şeması hata kodları
 RFC 6750 belirtimi, yanıtta WWW-Authenticate üst bilgisini ve taşıyıcı şemasını kullanan kaynaklar için aşağıdaki hataları tanımlar.
 
-| HTTP durum kodu | Hata Kodu | Description | İstemci eylemi |
+| HTTP durum kodu | Hata Kodu | Açıklama | İstemci eylemi |
 | --- | --- | --- | --- |
 | 400 |invalid_request |İstek düzgün biçimlendirilmemiş. Örneğin, bir parametre eksik veya iki kez aynı parametreyi kullanıyor olabilir. |Hatayı düzeltip isteği yeniden deneyin. Bu tür bir hata yalnızca geliştirme sırasında ve başlangıç testinde algılanarak gerçekleştirilmelidir. |
 | 401 |invalid_token |Erişim belirteci eksik, geçersiz veya iptal edildi. Error_description parametresinin değeri ek ayrıntı sağlar. |Yetkilendirme sunucusundan yeni bir belirteç isteyin. Yeni belirteç başarısız olursa beklenmeyen bir hata oluştu. Kullanıcıya bir hata iletisi gönderin ve rastgele gecikmelerden sonra yeniden deneyin. |

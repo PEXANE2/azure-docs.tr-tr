@@ -4,10 +4,10 @@ description: Bir kurumsal ortamdaki sürekli tümleştirme (CI)/sürekli teslim 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8a5d35a541e079b7d39cae2ec43da608274533f5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85481077"
 ---
 # <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>Azure DevTest Labs ve Azure DevOps tümleştirmesi
@@ -32,12 +32,12 @@ Laboratuvar, bir özellik alanında çalışan bir takıma odaklanmalıdır. Bu 
 ## <a name="cicd-pipeline"></a>CI/CD işlem hattı 
 CI/CD işlem hattı, bir geliştiricinin çekme isteğinden kod taşıyan, mevcut kodla tümleştiren ve bunu üretim ekosistemine dağıtan, DevOps 'daki kritik bileşenlerden biridir. Tüm kaynakların laboratuvar dahilinde olması gerekmez. Örneğin, bir Jenkins ana bilgisayarı daha kalıcı bir kaynak olarak laboratuvar dışında ayarlanabilir. Labs 'in işlem hattına tümleştirilmesine özgü bazı örnekler aşağıda verilmiştir. 
 
-### <a name="build"></a>Oluşturma 
+### <a name="build"></a>Derleme 
 Yapı işlem hattı, sürüm ardışık düzenine dönmek için birlikte test edilecek bir bileşen paketi oluşturmaya odaklanır. Laboratuvarlar derleme işlem hattının parçası olarak yapı aracılarının ve diğer destek kaynaklarının bir parçası olabilir. Altyapıyı dinamik olarak oluşturma yeteneğinin daha fazla denetim sağlar. Laboratuarda birden çok ortam kullanabilme sayesinde her derleme zaman uyumsuz olarak çalıştırılabilir ve bu durumda, kaynakları belirli bir yapıda benzersiz şekilde tanımlamak için ortam bilgilerinin parçası olarak yapı KIMLIĞI kullanılıyor olabilir.   
 
 Yapı aracılarında, laboratuvarın erişimi kısıtlama özelliği güvenliği artırır ve yanlışlıkla bozulma olasılığını azaltır.  
 
-### <a name="test"></a>Test etme 
+### <a name="test"></a>Test 
 DevTest Labs, bir CI/CD işlem hattının otomatik ve el ile test için kullanılabilen Azure Kaynak (VM 'Ler, ortamlar) oluşturulmasını otomatik hale getirmeye olanak tanır. VM 'Ler, test için gereken farklı özel yapılandırmaların oluşturulması için derleme işlemindeki bilgileri kullanan yapıtlar veya formüller kullanılarak oluşturulur.   
 
 ### <a name="release"></a>Yayınla 

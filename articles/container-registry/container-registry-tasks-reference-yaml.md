@@ -4,10 +4,10 @@ description: Görev özellikleri, adım türleri, adım özellikleri ve yerleşi
 ms.topic: article
 ms.date: 07/08/2020
 ms.openlocfilehash: 042310d29f5561c2cd77b0b9cccfc587ca4aa767
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88067592"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR görevleri başvurusu: YAML
@@ -75,21 +75,21 @@ az configure --defaults acr=myregistry
 
 Görev özellikleri genellikle bir dosyanın en üstünde görünür `acr-task.yaml` ve görev adımlarının tam yürütülmesi boyunca uygulanan genel özelliklerdir. Bu genel özelliklerden bazıları, tek bir adım içinde geçersiz kılınabilir.
 
-| Özellik | Tür | İsteğe Bağlı | Description | Geçersiz kılma destekleniyor | Varsayılan değer |
+| Özellik | Tür | İsteğe Bağlı | Açıklama | Geçersiz kılma destekleniyor | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | string | Yes | `acr-task.yaml`ACR görevler hizmeti tarafından ayrıştırılabilen dosyanın sürümü. ACR görevleri geriye dönük uyumluluğu sürdürmeye devam ederken, bu değer ACR görevlerinin tanımlı bir sürüm içinde uyumluluğu korumasına olanak tanır. Belirtilmemişse, varsayılan olarak en son sürümü alır. | No | Yok |
+| `version` | string | Yes | `acr-task.yaml`ACR görevler hizmeti tarafından ayrıştırılabilen dosyanın sürümü. ACR görevleri geriye dönük uyumluluğu sürdürmeye devam ederken, bu değer ACR görevlerinin tanımlı bir sürüm içinde uyumluluğu korumasına olanak tanır. Belirtilmemişse, varsayılan olarak en son sürümü alır. | Hayır | Yok |
 | `stepTimeout` | int (saniye) | Yes | Bir adımın çalıştırılacağı en fazla saniye sayısı. Özellik bir görevde belirtilmişse, `timeout` tüm adımların varsayılan özelliğini ayarlar. `timeout`Özellik bir adımda belirtilmişse, görev tarafından sunulan özelliği geçersiz kılar. | Yes | 600 (10 dakika) |
 | `workingDirectory` | string | Yes | Çalışma zamanı sırasında kapsayıcının çalışma dizini. Özellik bir görevde belirtilmişse, `workingDirectory` tüm adımların varsayılan özelliğini ayarlar. Bir adımda belirtilmişse, görev tarafından sunulan özelliği geçersiz kılar. | Yes | `c:\workspace` Windows veya `/workspace` Linux 'ta |
 | `env` | [dize, dize,...] | Yes |  `key=value`Görevin ortam değişkenlerini tanımlayan biçimdeki dizeler dizisi. Özellik bir görevde belirtilmişse, `env` tüm adımların varsayılan özelliğini ayarlar. Bir adımda belirtilmişse, görevden devralınan tüm ortam değişkenlerini geçersiz kılar. | Yes | Yok |
-| `secrets` | [gizli, gizli,...] | Yes | [Gizli](#secret) nesneler dizisi. | No | Yok |
-| `networks` | [Ağ, ağ,...] | Yes | [Ağ](#network) nesneleri dizisi. | No | Yok |
-| `volumes` | [Birim, birim,...] | Yes | [Birim](#volume) nesnelerinin dizisi. Bir adıma bağlanacak kaynak içeriğe sahip birimleri belirtir. | No | Yok |
+| `secrets` | [gizli, gizli,...] | Yes | [Gizli](#secret) nesneler dizisi. | Hayır | Yok |
+| `networks` | [Ağ, ağ,...] | Yes | [Ağ](#network) nesneleri dizisi. | Hayır | Yok |
+| `volumes` | [Birim, birim,...] | Yes | [Birim](#volume) nesnelerinin dizisi. Bir adıma bağlanacak kaynak içeriğe sahip birimleri belirtir. | Hayır | Yok |
 
 ### <a name="secret"></a>gizli dizi
 
 Gizli nesne aşağıdaki özelliklere sahiptir.
 
-| Özellik | Tür | İsteğe Bağlı | Description | Varsayılan değer |
+| Özellik | Tür | İsteğe Bağlı | Açıklama | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------- |
 | `id` | dize | No | Gizli dizi tanımlayıcısı. | Yok |
 | `keyvault` | string | Yes | Azure Key Vault gizli URL 'SI. | Yok |
@@ -99,7 +99,7 @@ Gizli nesne aşağıdaki özelliklere sahiptir.
 
 Ağ nesnesi aşağıdaki özelliklere sahiptir.
 
-| Özellik | Tür | İsteğe Bağlı | Description | Varsayılan değer |
+| Özellik | Tür | İsteğe Bağlı | Açıklama | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | dize | No | Ağın adı. | Yok |
 | `driver` | string | Yes | Ağı yönetmek için sürücü. | Yok |
@@ -111,16 +111,16 @@ Ağ nesnesi aşağıdaki özelliklere sahiptir.
 
 Birim nesnesi aşağıdaki özelliklere sahiptir.
 
-| Özellik | Tür | İsteğe Bağlı | Description | Varsayılan değer |
+| Özellik | Tür | İsteğe Bağlı | Açıklama | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | dize | No | Takılacak birimin adı. Yalnızca alfasayısal karakterler, '-' ve ' _ ' içerebilir. | Yok |
-| `secret` | Map [dize] dizesi | No | Haritanın her anahtarı oluşturulan ve birimde doldurulmuş bir dosyanın adıdır. Her değer, gizli dizinin dize sürümüdür. Gizli değerlerin Base64 kodlamalı olması gerekir. | Yok |
+| `secret` | Map [dize] dizesi | Hayır | Haritanın her anahtarı oluşturulan ve birimde doldurulmuş bir dosyanın adıdır. Her değer, gizli dizinin dize sürümüdür. Gizli değerlerin Base64 kodlamalı olması gerekir. | Yok |
 
 ## <a name="task-step-types"></a>Görev adımı türleri
 
 ACR görevleri üç adım türünü destekler. Her adım türü, her adım türü için bölümünde ayrıntılı olarak açıklanan birkaç özelliği destekler.
 
-| Adım türü | Description |
+| Adım türü | Açıklama |
 | --------- | ----------- |
 | [`build`](#build) | Tanıdık sözdizimi kullanarak bir kapsayıcı görüntüsü oluşturur `docker build` . |
 | [`push`](#push) | `docker push`Yeni oluşturulmuş veya retagged görüntülerinin bir kapsayıcı kayıt defterine yürütülür. Azure Container Registry, diğer özel kayıt defterleri ve genel Docker Hub desteklenir. |
@@ -145,7 +145,7 @@ steps:
 | --------- | ----------- | :-------: |
 | `-t` &#124; `--image` | Oluşturulan görüntünün tam nitelikli olduğunu tanımlar `image:tag` .<br /><br />Görüntü, işlevsel testler gibi iç görev doğrulamaları için kullanılabilir, ancak tüm görüntülerin `push` bir kayıt defterine ihtiyacı yoktur. Ancak, bir görev yürütme içindeki bir görüntüyü örnek olarak, görüntünün başvuru için bir adı olması gerekir.<br /><br />Farklı olarak `az acr build` , ACR görevlerinin çalıştırılması varsayılan gönderme davranışı sağlamaz. ACR görevleri ile, varsayılan senaryo bir görüntüyü oluşturma, doğrulama ve gönderme özelliğini kabul eder. İsteğe bağlı olarak oluşturulan görüntüleri gönderme hakkında bilgi için bkz. [gönderim](#push) . | Yes |
 | `-f` &#124; `--file` | Geçirilen Dockerfile dosyasını belirtir `docker build` . Belirtilmemişse, bağlam kökündeki varsayılan Dockerfile varsayılır. Bir Dockerfile belirtmek için, dosya adını bağlamın köküne göre geçirin. | Yes |
-| `context` | Kök dizin geçildi `docker build` . Her görevin kök dizini paylaşılan bir [WorkingDirectory](#task-step-properties)olarak ayarlanır ve ilişkili git klonlanmış dizinin kökünü içerir. | No |
+| `context` | Kök dizin geçildi `docker build` . Her görevin kök dizini paylaşılan bir [WorkingDirectory](#task-step-properties)olarak ayarlanır ve ilişkili git klonlanmış dizinin kökünü içerir. | Hayır |
 
 ### <a name="properties-build"></a>Özellikler: derleme
 
@@ -381,7 +381,7 @@ az acr run -f mounts-secrets.yaml --set-secret mysecret=abcdefg123456 https://gi
 
 Her adım türü, türü için uygun olan birkaç özelliği destekler. Aşağıdaki tabloda, tüm kullanılabilir adım özellikleri tanımlanmaktadır. Tüm adım türleri tüm özellikleri desteklemez. Her adım türü için bu özelliklerden hangilerinin kullanılabildiğini görmek için, [cmd](#cmd), [Build](#build)ve [Push](#push) Step Type başvuru bölümlerine bakın.
 
-| Özellik | Tür | İsteğe Bağlı | Description | Varsayılan değer |
+| Özellik | Tür | İsteğe Bağlı | Açıklama | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------- |
 | `detach` | bool | Yes | Çalışma sırasında kapsayıcının ayrılmayacağı. | `false` |
 | `disableWorkingDirectoryOverride` | bool | Yes | Geçersiz kılma işlevselliğinin devre dışı bırakılıp başlatılmayacağını belirtir `workingDirectory` . `workingDirectory`Kapsayıcının çalışma dizini üzerinde tamamen denetim sağlamak için bunu ile birlikte kullanın. | `false` |
@@ -410,7 +410,7 @@ Her adım türü, türü için uygun olan birkaç özelliği destekler. Aşağı
 
 VolumeMount nesnesi aşağıdaki özelliklere sahiptir.
 
-| Özellik | Tür | İsteğe Bağlı | Description | Varsayılan değer |
+| Özellik | Tür | İsteğe Bağlı | Açıklama | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | dize | No | Takılacak birimin adı. Bir özellikten tam olarak bir adla eşleşmesi gerekir `volumes` . | Yok |
 | `mountPath`   | string | hayır | Kapsayıcıya dosya bağlamaya yönelik mutlak yol.  | Yok |

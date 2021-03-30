@@ -14,10 +14,10 @@ ms.reviewer: nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 977dfea28c5c0dc3f34ada0c138556d70c979e04
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85551715"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>İstemci kimlik bilgilerini kullanarak hizmet çağrıları (paylaşılan gizlilik veya sertifika)
@@ -52,7 +52,7 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>İlk durum: paylaşılan gizli dizi ile belirteç isteğine erişin
 Paylaşılan bir gizli dizi kullanılırken hizmetten hizmete erişim belirteci isteği aşağıdaki parametreleri içerir:
 
-| Parametre | Tür | Description |
+| Parametre | Tür | Açıklama |
 | --- | --- | --- |
 | grant_type |gerekli |İstenen izin türünü belirtir. Istemci kimlik bilgileri verme akışında, değerin **client_credentials** olması gerekir. |
 | client_id |gerekli |Çağıran Web hizmetinin Azure AD istemci kimliğini belirtir. Çağıran uygulamanın istemci KIMLIĞINI bulmak için, [Azure portal](https://portal.azure.com) **Azure Active Directory**, **uygulama kayıtları**' ye tıklayın, uygulamaya tıklayın. *Uygulama kimliği* client_id |
@@ -73,7 +73,7 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 ### <a name="second-case-access-token-request-with-a-certificate"></a>İkinci durum: bir sertifikayla erişim belirteci isteği
 Bir sertifikaya sahip hizmetten hizmete erişim belirteci isteği aşağıdaki parametreleri içerir:
 
-| Parametre | Tür | Description |
+| Parametre | Tür | Açıklama |
 | --- | --- | --- |
 | grant_type |gerekli |İstenen yanıt türünü belirtir. Istemci kimlik bilgileri verme akışında, değerin **client_credentials** olması gerekir. |
 | client_id |gerekli |Çağıran Web hizmetinin Azure AD istemci kimliğini belirtir. Çağıran uygulamanın istemci KIMLIĞINI bulmak için, [Azure portal](https://portal.azure.com) **Azure Active Directory**, **uygulama kayıtları**' ye tıklayın, uygulamaya tıklayın. *Uygulama kimliği* client_id |

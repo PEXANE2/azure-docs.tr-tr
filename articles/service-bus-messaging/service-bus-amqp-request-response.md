@@ -4,10 +4,10 @@ description: Bu makalede Microsoft Azure Service Bus içindeki AMQP istek/yanıt
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: b845f4086ee1ac4fe868571c1754caf6d29b9021
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88064426"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure Service Bus içindeki AMQP 1,0: istek-yanıt tabanlı işlemler
@@ -124,7 +124,7 @@ Bir iletinin kilidini varlık açıklamasında belirtilen zamana göre genişlet
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Yes|`com.microsoft:renew-lock`|  
-|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
   
  İstek iletisi gövdesi, aşağıdaki girdilerle bir eşleme içeren bir AMQP-Value bölümünden oluşmalıdır:  
   
@@ -162,7 +162,7 @@ Yanıt iletisi gövdesi, aşağıdaki girişlerle bir eşleme içeren bir AMQP-V
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Yes|`com.microsoft:peek-message`|  
-|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -203,7 +203,7 @@ Bir iletiyi temsil eden haritanın aşağıdaki girişleri içermesi gerekir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Yes|`com.microsoft:schedule-message`|  
-|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -247,7 +247,7 @@ Zamanlanan iletileri iptal eder.
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Yes|`com.microsoft:cancel-scheduled-message`|  
-|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -277,7 +277,7 @@ Bir iletinin kilidini varlık açıklamasında belirtilen zamana göre genişlet
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Yes|`com.microsoft:renew-session-lock`|  
-|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -311,7 +311,7 @@ Oturum iletilerini kilitlemeden atar.
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Yes|`com.microsoft:peek-message`|  
-|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -353,7 +353,7 @@ Bir oturumun durumunu ayarlar.
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Yes|`com.microsoft:set-session-state`|  
-|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -382,7 +382,7 @@ Bir oturumun durumunu alır.
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Yes|`com.microsoft:get-session-state`|  
-|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -416,7 +416,7 @@ Bir mesajlaşma varlığındaki oturumları numaralandırır.
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Yes|`com.microsoft:get-message-sessions`|  
-|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -453,7 +453,7 @@ Yanıt iletisi gövdesi, aşağıdaki girişlerle bir **eşleme** içeren bir **
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Yes|`com.microsoft:add-rule`|  
-|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -488,7 +488,7 @@ SQL-Filter eşlemesi aşağıdaki girdileri içermelidir:
 |oturum kimliği|dize|No||  
 |Yanıtla oturum kimliği|dize|No||  
 |içerik türü|dize|No||  
-|properties|map|No|Service Bus [Brokeredmessage. Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)ile eşlenir.|  
+|properties|map|Hayır|Service Bus [Brokeredmessage. Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)ile eşlenir.|  
   
 **SQL-Rule-Action** eşlemesi aşağıdaki girdileri içermelidir:  
   
@@ -514,7 +514,7 @@ Yanıt iletisi aşağıdaki uygulama özelliklerini içermelidir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Yes|`com.microsoft:remove-rule`|  
-|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -540,7 +540,7 @@ Yanıt iletisi aşağıdaki uygulama özelliklerini içermelidir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Yes|`com.microsoft:enumerate-rules`|  
-|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
 
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -623,7 +623,7 @@ Ertelenmiş iletileri sıra numarasına göre alır.
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Yes|`com.microsoft:receive-by-sequence-number`|  
-|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -665,7 +665,7 @@ Ertelenmiş iletilerin değerlendirme durumunu güncelleştirir. Bu işlem işle
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Yes|`com.microsoft:update-disposition`|  
-|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -675,7 +675,7 @@ Ertelenmiş iletilerin değerlendirme durumunu güncelleştirir. Bu işlem işle
 |kilit belirteçleri|UUID dizisi|Yes|Değerlendirme durumunu güncelleştirmek için ileti kilit belirteçleri.|  
 |sahipsiz neden|dize|No|, Değerlendirme durumu **askıya alındı** olarak ayarlandıysa ayarlanabilir.|  
 |sahipsiz-açıklama|dize|No|, Değerlendirme durumu **askıya alındı** olarak ayarlandıysa ayarlanabilir.|  
-|Özellikler-değiştirilecek|map|No|Değiştirilecek Service Bus aracılı ileti özellikleri listesi.|  
+|Özellikler-değiştirilecek|map|Hayır|Değiştirilecek Service Bus aracılı ileti özellikleri listesi.|  
   
 #### <a name="response"></a>Yanıt  
 
