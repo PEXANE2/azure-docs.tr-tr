@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: machine-learning
 ms.service: machine-learning
 ms.custom: include file
@@ -9,14 +9,14 @@ author: sgilley
 ms.author: sgilley
 ms.date: 11/06/2019
 ms.openlocfilehash: 754c9799ed4c2fd90cbcf1e9717b0be21edd54cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "75659890"
 ---
 >[!IMPORTANT]
->Diğer Azure Machine Learning öğreticileri ve nasıl yapılır makaleleri için önkoşul olarak oluşturduğunuz kaynakları kullanabilirsiniz.
+>Oluşturduğunuz kaynakları diğer Azure Machine Learning öğreticileri ve nasıl yapılır makaleleri için önkoşul olarak kullanabilirsiniz.
 
 ### <a name="delete-everything"></a>Her şeyi sil
 
@@ -36,7 +36,7 @@ Kaynak grubunun silinmesi, tasarımcıda oluşturduğunuz tüm kaynakları da si
 
 Denemenizi oluşturduğunuz tasarımcıda, her bir varlığı seçerek ve ardından **Sil** düğmesini seçerek tek tek varlıkları silin.
 
-Burada oluşturduğunuz işlem hedefi, kullanılmadıysa *otomatik olarak sıfır düğümlere otomatik olarak ölçeklendirilir* . Bu eylem, ücretleri en aza indirmek için yapılır.İşlem hedefini silmek istiyorsanız şu adımları uygulayın:
+Burada oluşturduğunuz işlem hedefi, kullanılmadıysa *otomatik olarak sıfır düğümlere otomatik olarak ölçeklendirilir* . Bu eylem, ücretleri en aza indirmek için yapılır. İşlem hedefini silmek istiyorsanız şu adımları uygulayın:
 
 ![Varlıkları Sil](./media/aml-ui-cleanup/delete-asset.png)
 

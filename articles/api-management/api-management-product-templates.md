@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4c8cd4aa3e91c5d69c40e47683818ed8bc9be338
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86249912"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API Management ürün şablonları
@@ -79,7 +79,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
   
 ### <a name="data-model"></a>Veri modeli  
   
-|Özellik|Tür|Description|  
+|Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
 |Sayfalama|[Sayfalama](api-management-template-data-model-reference.md#Paging) varlığı.|Ürünler koleksiyonu için sayfalama bilgileri.|  
 |Filtreleme|Varlık [filtreleme](api-management-template-data-model-reference.md#Filtering) .|Ürün listesi sayfası için filtreleme bilgileri.|  
@@ -204,7 +204,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
   
 ### <a name="data-model"></a>Veri modeli  
   
-|Özellik|Tür|Description|  
+|Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
 |Ürün|[Ürün](api-management-template-data-model-reference.md#Product)|Belirtilen ürün.|  
 |IsDeveloperSubscribed|boolean|Geçerli kullanıcının bu ürüne abone olup olmadığı.|  

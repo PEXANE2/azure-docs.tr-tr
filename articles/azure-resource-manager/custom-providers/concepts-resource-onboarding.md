@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: jobreen
 ms.openlocfilehash: 1846b036f12fe7e691021ec0248782cad946d9b7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75650415"
 ---
 # <a name="azure-custom-providers-resource-onboarding-overview"></a>Azure özel sağlayıcılar kaynak eklemeye genel bakış
@@ -54,7 +54,7 @@ Microsoft. CustomProviders/resourceProviders ve Microsoft. CustomProviders/Assoc
 }
 ```
 
-Özellik | Gerekli mi? | Description
+Özellik | Gerekli mi? | Açıklama
 ---|---|---
 name | Yes | Uç nokta tanımının adı. Kaynak ekleme için, adın "ilişkilendirmeler" olması gerekir.
 routingType | Yes | Uç nokta ile sözleşmenin türünü belirler. Kaynak ekleme için geçerli **Routingtypes** "proxy, önbellek, uzantı" ve "Web kancası, önbellek, uzantı" dır.
@@ -76,7 +76,7 @@ endpoint | Yes | İsteklerin yönlendirileceği uç nokta. Bu işlem, isteğin t
 }
 ```
 
-Özellik | Gerekli mi? | Description
+Özellik | Gerekli mi? | Açıklama
 ---|---|---
 Targetresourceıd | Yes | Microsoft. CustomProviders/resourceProviders veya Microsoft. Solutions/Applications kaynak KIMLIĞI.
 

@@ -8,10 +8,10 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 9f8e288f771b9d584a0fd3430115f5fa60f68e47
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88961814"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>App Service ortamından arka uç kaynaklarına güvenli bir şekilde bağlanma
@@ -80,7 +80,7 @@ Nihai sonuç, dış erişimi engelleyen bir güvenlik kuralları kümesidir ve V
 
 ![Varsayılan ağ güvenlik kuralları][DefaultNetworkSecurityRules]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 App Service ortamlarıyla çalışmaya başlamak için bkz. [giriş App Service ortamı][IntroToAppServiceEnvironment]
 
 App Service Ortamı gelen trafiği denetleme hakkında daha fazla bilgi için bkz. [bir App Service ortamı gelen trafiği denetleme][ControlInboundASE]

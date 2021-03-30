@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: bccf69362279afd9e8148b20b61ff3ea9b472a03
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "76906965"
 ---
 # <a name="create-schemas-for-tracking-as2-messages-in-azure-logic-apps"></a>Azure Logic Apps 'de izleme AS2 iletileri için şemalar oluşturma
@@ -52,7 +52,7 @@ ms.locfileid: "76906965"
 }
 ```
 
-| Özellik | Gerekli | Tür | Description |
+| Özellik | Gerekli | Tür | Açıklama |
 |----------|----------|------|-------------|
 | senderPartnerName | Hayır | Dize | AS2 ileti göndericisinin iş ortağı adı |
 | receiverPartnerName | Hayır | Dize | AS2 ileti alıcısının iş ortağı adı |
@@ -68,8 +68,8 @@ ms.locfileid: "76906965"
 | ımessageşifrelendi | Yes | Boole | AS2 iletisinin şifreli olup olmadığı |
 | ımessagecompressed | Yes | Boole | AS2 iletisinin sıkıştırılmış olup olmadığı |
 | Correlationmessageıd | Hayır | Dize | AS2 ileti KIMLIĞI, iletileri MDNs ile ilişkilendirmek için |
-| ıncomingheaders | No | JToken sözlüğü | Gelen AS2 ileti üst bilgisi ayrıntıları |
-| outgoingHeaders | No | JToken sözlüğü | Giden AS2 ileti üst bilgisi ayrıntıları |
+| ıncomingheaders | Hayır | JToken sözlüğü | Gelen AS2 ileti üst bilgisi ayrıntıları |
+| outgoingHeaders | Hayır | JToken sözlüğü | Giden AS2 ileti üst bilgisi ayrıntıları |
 | isNrrEnabled | Yes | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağını belirtir |
 | ımdnexted | Yes | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağını belirtir |
 | mdnType | Yes | Sabit listesi | İzin verilen değerler: `NotConfigured` , `Sync` , ve `Async` |
@@ -105,7 +105,7 @@ ms.locfileid: "76906965"
 }
 ```
 
-| Özellik | Gerekli | Tür | Description |
+| Özellik | Gerekli | Tür | Açıklama |
 |----------|----------|------|-------------|
 | senderPartnerName | Hayır | Dize | AS2 ileti göndericisinin iş ortağı adı |
 | receiverPartnerName | Hayır | Dize | AS2 ileti alıcısının iş ortağı adı |
@@ -122,8 +122,8 @@ ms.locfileid: "76906965"
 | statusCode | Yes | Sabit listesi | İzin verilen değerler: `Accepted` , `Rejected` , ve `AcceptedWithErrors` |
 | Micdoğrulamaları Icationstatus | Yes | Sabit listesi | İzin verilen değerler: `NotApplicable` , `Succeeded` , ve `Failed` |
 | Correlationmessageıd | Hayır | Dize | MDN yapılandırılmış özgün iletinin KIMLIĞI olan bağıntı KIMLIĞI |
-| ıncomingheaders | No | JToken sözlüğü | Gelen ileti üst bilgisi ayrıntıları |
-| outgoingHeaders | No | JToken sözlüğü | Giden ileti üst bilgisi ayrıntıları |
+| ıncomingheaders | Hayır | JToken sözlüğü | Gelen ileti üst bilgisi ayrıntıları |
+| outgoingHeaders | Hayır | JToken sözlüğü | Giden ileti üst bilgisi ayrıntıları |
 |||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B protokol izleme şemaları

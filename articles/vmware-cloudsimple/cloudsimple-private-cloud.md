@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: e2096e8c0ebfb233c7449510bf0bc8e80b56231e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88140726"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>CloudSimple özel buluta genel bakış
@@ -75,7 +75,7 @@ Satın alınan, Kullandıkça Öde düğümlerini veya ayrılmış, ayrılmış 
 
 Özel bulutu aşağıdaki bağlantıları kullanarak şirket içi ortamınıza ve Azure ağına bağlayabilirsiniz:
 
-* Güvenlik
+* Güvenliği Sağlama
 * Özel VPN
 * Azure ExpressRoute
 
