@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85554929"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>Hibrit Azure AD’ye katılmış cihazlar
@@ -29,7 +29,7 @@ Genellikle, şirket içi bir parmak izine sahip kuruluşlar cihazları sağlamak
 
 Ortamınızda şirket içi AD ayak izi varsa ve Azure Active Directory ile sağlanan özelliklerden yararlanmak istiyorsanız hibrit Azure AD’ye katılmış cihazları uygulayabilirsiniz. Bu cihazlar, şirket içi Active Directory katılmış ve Azure Active Directory kayıtlı cihazlardır.
 
-| Karma Azure AD katılımı | Description |
+| Karma Azure AD katılımı | Açıklama |
 | --- | --- |
 | **Tanım** | Şirket içi AD 'ye ve cihazda oturum açmak için kurumsal hesap gerektiren Azure AD 'ye katılmış |
 | **Birincil hedef kitle** | Mevcut şirket içi AD altyapısına sahip karma kuruluşlar için uygundur |

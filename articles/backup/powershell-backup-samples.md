@@ -5,17 +5,17 @@ ms.topic: sample
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: 592cb2016cd86a1a7075fca6dc04ea7ccc673ffc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88756036"
 ---
 # <a name="azure-backup-powershell-samples"></a>Azure Backup PowerShell örnekleri
 
 Aşağıdaki tablo, verileri yedekleyip geri yüklemek için Azure Backup kullanan PowerShell betik örneklerine bağlanır.
 
-| Komut Dosyası | Description |
+| Komut Dosyası | Açıklama |
 |---|---|
 | [Şifrelenmiş sanal makineyi Azure’a yedekleme](./scripts/backup-powershell-sample-backup-encrypted-vm.md) | Şifrelenmiş sanal makinedeki tüm verileri yedekleyin.|
 | [Kayıtlı depolama hesabını bul](./scripts/backup-powershell-script-find-recovery-services-vault.md) | Depolama hesabının kaydedildiği kurtarma hizmetleri kasasını bulma |

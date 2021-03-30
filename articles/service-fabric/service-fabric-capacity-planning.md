@@ -4,10 +4,10 @@ description: Bir Service Fabric uygulaması için gereken işlem düğümlerinin
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: cd5a5c55ff873e4891ac63361d0c4a0b56d70109
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75377217"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Service Fabric uygulamalar için kapasite planlaması

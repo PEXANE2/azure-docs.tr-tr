@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 0ae2261f8278c4d5e1944b01a9731afd293df20b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86171644"
 ---
 # <a name="output-batching"></a>Çıkışı toplu işleme
@@ -75,7 +75,7 @@ Event Grid toplu işlem davranışı, aşağıdaki iki ayarı ayırarak abone ba
 
 Aşağıdaki dağıtım zamanı ayarları, bir olay aboneliği oluştururken izin verilen en büyük değeri denetler.
 
-| Özellik Adı | Description |
+| Özellik Adı | Açıklama |
 | ------------- | ----------- | 
 | `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | Düğme için izin verilen en büyük değer `PreferredBatchSizeInKilobytes` . Varsayılan `1033` .
 | `api__deliveryPolicyLimits__maxEventsPerBatch` | Düğme için izin verilen en büyük değer `MaxEventsPerBatch` . Varsayılan `50` .
@@ -84,7 +84,7 @@ Aşağıdaki dağıtım zamanı ayarları, bir olay aboneliği oluştururken izi
 
 Aşağıdaki dağıtım zamanı ayarları, olay aboneliğinde belirtilmediğinde her düğmenin çalışma zamanı varsayılan değerini denetler. Yeniden tekrarlamayı sağlamak için, olay aboneliğinde en az bir düğme ayarlanmalıdır ve toplu işleme davranışını açmanız gerekir.
 
-| Özellik Adı | Description |
+| Özellik Adı | Açıklama |
 | ------------- | ----------- |
 | `broker__defaultMaxBatchSizeInBytes` | Yalnızca belirtilen en fazla teslim isteği boyutu `MaxEventsPerBatch` . Varsayılan `1_058_576` .
 | `broker__defaultMaxEventsPerBatch` | Yalnızca belirtildiğinde bir toplu işe eklenecek olay sayısı üst sınırı `MaxBatchSizeInBytes` . Varsayılan `10` .
