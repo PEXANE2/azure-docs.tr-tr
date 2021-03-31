@@ -4,10 +4,10 @@ description: Bu makale, Microsoft Azure Backup sunucusu (MABS) kullanarak sanal 
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.openlocfilehash: a020559229771fff1ecc8fb512a5b2af70240cdd
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102509515"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Azure Backup Sunucusu ile Hyper-V sanal makinelerini yedekleme
