@@ -227,7 +227,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
   
 ### <a name="data-model"></a>Veri modeli  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
 |referenceCode|string|Bu sayfa bir iç hatanın sonucu olarak görüntüleniyorsa kod oluşturulur.|  
 |Raporladı|string|Bu sayfa bir iç hatanın sonucu olarak görüntüleniyorsa kod oluşturulur.|  

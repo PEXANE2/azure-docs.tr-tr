@@ -69,7 +69,7 @@ Bir değişken oluşturabilir ve veri türünü ve başlangıç değerini, mant�
    |----------|----------|-------|--------------|
    | **Ad** | Yes | <*değişken adı*> | Artış değişkeninin adı |
    | **Tür** | Yes | <*değişken türü*> | Değişken için veri türü |
-   | **Değer** | Hayır | <*başlangıç-değer*> | Değişkeninizin ilk değeri <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizin başlangıç değerini her zaman bilirsiniz. |
+   | **Değer** | No | <*başlangıç-değer*> | Değişkeninizin ilk değeri <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizin başlangıç değerini her zaman bilirsiniz. |
    |||||
 
    Örnek:
@@ -208,7 +208,7 @@ Bir değişkeni sabit *bir değere göre artırmak veya arttırmak* için, mant�
    | Özellik | Gerekli | Değer |  Açıklama |
    |----------|----------|-------|--------------|
    | **Ad** | Yes | <*değişken adı*> | Artış değişkeninin adı |
-   | **Değer** | Hayır | <*artış değeri*> | Değişkeni artırma için kullanılan değer. Varsayılan değer bir değeridir. <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizi arttırmanın her zaman belirli bir değerini bilirsiniz. |
+   | **Değer** | No | <*artış değeri*> | Değişkeni artırma için kullanılan değer. Varsayılan değer bir değeridir. <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizi arttırmanın her zaman belirli bir değerini bilirsiniz. |
    ||||
 
    Örnek:
@@ -329,7 +329,7 @@ Bir değişkeni sabit *bir değere göre azaltmak veya azaltmak* için, değişk
 | Özellik | Gerekli | Değer |  Açıklama |
 |----------|----------|-------|--------------|
 | **Ad** | Yes | <*değişken adı*> | Azaltılacak değişkenin adı | 
-| **Değer** | Hayır | <*artış değeri*> | Değişkeni azaltma değeri. Varsayılan değer bir değeridir. <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizi azaltma için her zaman belirli bir değeri bilirsiniz. |
+| **Değer** | No | <*artış değeri*> | Değişkeni azaltma değeri. Varsayılan değer bir değeridir. <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizi azaltma için her zaman belirli bir değeri bilirsiniz. |
 ||||| 
 
 Tasarımcıdan kod görünümü düzenleyicisine geçiş yaparsanız, **azaltma değişkeni** EYLEMININ, JSON biçiminde olan mantıksal uygulama tanımınızda görünme yolu vardır.
