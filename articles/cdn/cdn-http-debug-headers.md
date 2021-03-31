@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84343029"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>X-EC-Azure CDN kuralları altyapısı için HTTP üstbilgilerini hata ayıkla
@@ -54,7 +54,7 @@ Aşağıdaki üst bilgi ve istekte belirtilen yönergeler eklenerek hata ayıkla
 ## <a name="cache-status-code-information"></a>Önbellek durum kodu bilgileri
 X-EC-Debug yanıt üst bilgisi, bir sunucuyu ve aşağıdaki yönergeler aracılığıyla yanıtı nasıl ele alındığını tanımlayabilir:
 
-Üst bilgi | Description
+Üst bilgi | Açıklama
 -------|------------
 X-EC-hata ayıklama: x-EC-önbellek | Bu üst bilgi, içerik CDN aracılığıyla her yönlendirildiğinde raporlanır. İsteği yerine getirdi POP sunucusunu tanımlar.
 X-EC-hata ayıklama: x-EC-Cache-Remote | Bu üst bilgi, yalnızca istenen içerik bir kaynak kalkan sunucusunda veya bir ADN Ağ Geçidi sunucusunda önbelleğe alındığında bildirilir.

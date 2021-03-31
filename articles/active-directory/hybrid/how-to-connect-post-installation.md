@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89657115"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Sonraki adımlar ve Azure AD Connect yönetme
@@ -72,7 +72,7 @@ Aşağıdaki tabloda, bu görevlerin bir özeti ve her görevin kısa bir açık
 
 ![Ek görevlerin listesi](./media/how-to-connect-post-installation/addtasks2.png)
 
-| Ek görev | Description |
+| Ek görev | Açıklama |
 | --- | --- |
 |**Gizlilik Ayarları**|Microsoft ile hangi Telemetri verilerinin paylaşıldığını görüntüleyin.|
 |**Geçerli yapılandırmayı görüntüle**|Geçerli Azure AD Connect çözümünüzü görüntüleyin.  Bu, genel ayarları, eşitlenen dizinleri ve eşitleme ayarlarını içerir. |

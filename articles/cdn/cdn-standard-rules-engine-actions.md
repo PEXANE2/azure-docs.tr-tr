@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
 ms.openlocfilehash: 051737a9f5e0d4092cda26a3f7ce3df1d7f535ef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87760133"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN için standart kurallar altyapısındaki eylemler
@@ -30,7 +30,7 @@ Kuralların eşleştiği talepler için uç noktanın yaşam süresi (TTL) değe
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Önbellek davranışı |  Description              
+Önbellek davranışı |  Açıklama              
 ---------------|----------------
 Atlama önbelleği | Bu seçenek belirlendiğinde ve kural eşleştiğinde, içerik önbelleğe alınmaz.
 Geçersiz kıl | Bu seçenek belirlendiğinde ve kural eşleştiğinde, kaynaktan döndürülen TTL değeri, eylemde belirtilen değerle üzerine yazılır. Bu davranış yalnızca yanıtın önbelleklenebilir olması durumunda uygulanır. "No-Cache", "Private", "No-Store" değerlerine sahip Cache-Control yanıt üst bilgisi için, eylem geçerli olmayacaktır.
@@ -48,7 +48,7 @@ Sorgu dizelerine göre önbellek anahtarını değiştirmek için bu eylemi kull
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Davranış | Description
+Davranış | Açıklama
 ---------|------------
 Şunları Dahil Et: | Bu seçenek belirlendiğinde ve kural eşleştiğinde, parametrelerde belirtilen sorgu dizeleri önbellek anahtarı oluşturulduğunda dahil edilir. 
 Her benzersiz URL'yi önbelleğe al | Bu seçenek belirlendiğinde ve kural eşleştiğinde, her benzersiz URL 'nin kendi önbellek anahtarı vardır. 

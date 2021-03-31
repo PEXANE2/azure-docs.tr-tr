@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: 8c4d37f67d89ad1b7973a85fb6c2a9f7e818a028
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89421671"
 ---
 # <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>P2S sertifikası kimlik doğrulaması bağlantıları için istemci sertifikaları 'nı yükler
@@ -26,7 +26,7 @@ Hangi istemci işletim sistemini bağlamak istediğinize bakılmaksızın, her z
 
 [!INCLUDE [Install on Windows](../../includes/vpn-gateway-certificates-install-client-cert-include.md)]
 
-## <a name="mac"></a><a name="installmac"></a>'İnizde
+## <a name="mac"></a><a name="installmac"></a>Mac
 
 >[!NOTE]
 >Mac VPN istemcileri yalnızca Kaynak Yöneticisi dağıtım modeli için desteklenir. Klasik dağıtım modeli için desteklenmez.
@@ -35,7 +35,7 @@ Hangi istemci işletim sistemini bağlamak istediğinize bakılmaksızın, her z
 
 [!INCLUDE [Install on Mac](../../includes/vpn-gateway-certificates-install-mac-client-cert-include.md)]
 
-## <a name="linux"></a><a name="installlinux"></a>'Un
+## <a name="linux"></a><a name="installlinux"></a>Linux
 
 Linux istemci sertifikası istemciye istemci yapılandırmasının bir parçası olarak yüklenir. Yönergeler için bkz. [istemci yapılandırması-Linux](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli) .
 
