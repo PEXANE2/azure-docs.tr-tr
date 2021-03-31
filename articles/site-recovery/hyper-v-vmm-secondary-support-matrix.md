@@ -56,10 +56,10 @@ Yalnızca aşağıdaki depolama alanına sahip Linux makineleri çoğaltılabili
 Konak-NIC Grubu oluşturma | Yes 
 Konak-VLAN | Yes 
 Ana bilgisayar-IPv4 | Yes 
-Ana bilgisayar-IPv6 | Hayır 
-Konuk VM-NIC ekibi oluşturma | Hayır
+Ana bilgisayar-IPv6 | No 
+Konuk VM-NIC ekibi oluşturma | No
 Konuk VM-IPv4 | Yes
-Konuk VM-IPv6 | Hayır
+Konuk VM-IPv6 | No
 Konuk VM-Windows/Linux-statik IP adresi | Yes
 Konuk VM-çoklu NIC | Yes
 
@@ -82,16 +82,16 @@ SAN (ISCSı) | Yes
 VMDK |  Yok
 VHD/VHDX | Evet (16 diske kadar)
 Gen 2 VM | Yes
-Paylaşılan küme diski | Hayır
-Şifrelenmiş disk | Hayır
+Paylaşılan küme diski | No
+Şifrelenmiş disk | No
 UEFı| Yok
-NFS | Hayır
-SMB 3.0 | Hayır
+NFS | No
+SMB 3.0 | No
 RDM | Yok
 Disk > 1 TB | Yes
 Dizili disk > 1 TB olan birim<br/><br/> LVM | Yes
 Depolama Alanları | Yes
-Dinamik disk Ekle/Kaldır | Hayır
+Dinamik disk Ekle/Kaldır | No
 Diski hariç tutma | Yes
 Çoklu yol (MPIO) | Yes
 
@@ -99,8 +99,8 @@ Diski hariç tutma | Yes
 
 **Eylem** | **Desteklenir**
 --- | --- 
-Kasalarını kaynak grupları arasında taşıma (veya abonelikler arasında) |  Hayır
-Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma (abonelikler içinde veya abonelikler arasında) | Hayır
+Kasalarını kaynak grupları arasında taşıma (veya abonelikler arasında) |  No
+Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma (abonelikler içinde veya abonelikler arasında) | No
 
 ## <a name="azure-site-recovery-provider"></a>Azure Site Recovery sağlayıcı
 

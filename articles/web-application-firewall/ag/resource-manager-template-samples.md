@@ -18,6 +18,6 @@ ms.locfileid: "87075464"
 
 Aşağıdaki tabloda, Azure Web uygulaması güvenlik duvarı için Azure Resource Manager şablonlarının bağlantıları yer almaktadır.
 
-| Şablon | Açıklama |
+| Şablon | Description |
 | -------- | ----------- |
 | [Web uygulaması güvenlik duvarı ile Application Gateway v2](https://azure.microsoft.com/resources/templates/ag-docs-wafv2/) | Web uygulaması güvenlik duvarı v2 ile Application Gateway v2 oluşturur.|

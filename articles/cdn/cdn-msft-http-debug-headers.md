@@ -26,7 +26,7 @@ Hata ayıklama yanıt üst bilgisi, `X-Cache` içerik tarafından HANGI CDN yı�
 
 ### <a name="response-header-format"></a>Yanıt üst bilgisi biçimi
 
-Üst bilgi | Açıklama
+Üst bilgi | Description
 -------|------------
 X-önbellek: TCP_HIT | Bu üst bilgi, içerik CDN Edge önbelleğinden sunulduğunda döndürülür. 
 X-önbellek: TCP_REMOTE_HIT | Bu üst bilgi, içerik CDN bölgesel önbelleğinden (kaynak kalkan katmanı) sunulduğunda döndürülür

@@ -16,7 +16,7 @@ ms.locfileid: "86257242"
 Service Fabric kafes uygulamalarını silin ve yönetin.
 
 ## <a name="subgroups"></a>Alt
-|Atama|Açıklama|
+|Atama|Description|
 | --- | --- |
 | [uygulamanızda](service-fabric-sfctl-mesh-app.md) | Uygulama kaynaklarını alın ve silin. |
 | [kod-paket-günlük](service-fabric-sfctl-mesh-code-package-log.md) | Verilen hizmet çoğaltması için belirtilen kod paketinin kapsayıcısına ait günlükleri al. |

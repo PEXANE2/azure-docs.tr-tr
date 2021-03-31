@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
 ms.openlocfilehash: 43d7a697b3cb013a73a0b14db8ec1758244ae3b9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97092202"
 ---
 # <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>Güvenlik tehditlerini avlamak için Jupyter Notebook kullanma
@@ -126,7 +126,7 @@ Dağıtımınız tamamlandıktan sonra, yeni Azure ML çalışma alanınızda No
     > [!div class="mx-imgBorder"]
     > ![Not defterini çalıştır](./media/notebooks/sentinel-azure-notebooks-run.png)
 
-Öneri
+Öneriler:
 
 - Azure Sentinel 'de verileri sorgulamaya yönelik hızlı bir giriş için [Azure ML not defterlerine Başlarken ve Azure Sentinel](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/A%20Getting%20Started%20Guide%20For%20Azure%20Sentinel%20ML%20Notebooks.ipynb) kılavuzuna bakın.
 
