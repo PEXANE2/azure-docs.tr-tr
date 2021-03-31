@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75650402"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>Azure REST API özel eylemler ekleme
@@ -113,10 +113,10 @@ Content-Type: application/json; charset=utf-8
 
 Özel bir eylemi özel bir kaynak sağlayıcısında çağırmanın iki ana yöntemi vardır:
 
-- Azure CLI’si
+- Azure CLI
 - Azure Resource Manager Şablonları
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 az resource invoke-action --action {actionName} \

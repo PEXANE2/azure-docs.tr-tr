@@ -172,7 +172,7 @@
           displayName: 'connections, Purdue, zoom, delete device'
         - name: Bir algılayıcı tarafından algılanan uyarılarla çalışma
           items:
-            - name: Algılayıcı uyarıları hakkında
+            - name: Algılayıcı uyarılarını anlama
               href: how-to-work-with-alerts-on-your-sensor.md
             - name: Uyarılar sayfasından uyarıları filtreleme ve yönetme
               href: how-to-view-alerts.md
@@ -181,11 +181,11 @@
               displayName: 'PCAP, metadata, alerts, link, device map,'
             - name: Uyarı türleri ve açıklamaları
               href: alert-engine-messages.md
-              displayName: 'alert, alerts, description, engine, anomaly, protocol, policy, malware, violation, operational'
-            - name: Uyarı olayını yönetme
+              displayName: 'alert, alerts, description, engine, anomaly, protocol, policy, malware, violation, operational, severity, minor, major, critical, warning, alerts list, security alerts,'
+            - name: Uyarı olaylarını yönetme
               href: how-to-manage-the-alert-event.md
               displayName: 'PCAP, acknowledge, learn, mute, policy'
-            - name: Uyarı olayı yanıtını hızlandırma
+            - name: Uyarı iş akışlarını hızlandırma
               href: how-to-accelerate-alert-incident-response.md
               displayName: 'custom, alerts, comments, groups'
             - name: Uyarı bilgilerini iletme

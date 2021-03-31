@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91313629"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect eşitleme: bildirime dayalı sağlamayı anlama
@@ -53,7 +53,7 @@ Bu resimdeki kapsam (departman = IT ve ülke = Danimarka) veya (ülke = Isveç) 
 
 Kapsam modülü aşağıdaki işlemleri destekler.
 
-| İşlem | Description |
+| İşlem | Açıklama |
 | --- | --- |
 | EŞITTIR, NOTEQUAL |Değerin öznitelikteki değere eşit olup olmadığını değerlendiren bir dize karşılaştırması. Birden çok değerli öznitelikler için bkz. ııN ve ıSNOTıN. |
 | LESSTHAN, LESSTHAN_OR_EQUAL |Değerin öznitelikteki değerden küçük olup olmadığını değerlendiren bir dize karşılaştırması. |
@@ -66,7 +66,7 @@ Kapsam modülü aşağıdaki işlemleri destekler.
 | ISBITSET, ISNOTBITSET |Belirli bir bitin ayarlanmış olup olmadığını değerlendirir. Örneğin, bir kullanıcının etkin veya devre dışı olup olmadığını görmek için userAccountControl içindeki bitleri değerlendirmek üzere kullanılabilir. |
 | ıMEMBEROF, ISNOTMEMBEROF |Değer, bağlayıcı alanındaki bir gruba bir DN içermelidir. Nesne belirtilen grubun üyesiyse, kural kapsamdadır. |
 
-## <a name="join"></a>Birleştir
+## <a name="join"></a>Katılın
 Eşitleme işlem hattındaki JOIN modülü, kaynak içindeki nesne ve hedefteki bir nesne arasındaki ilişkiyi bulmaktan sorumludur. Gelen kuralında, bu ilişki, meta veri deposundaki bir nesneyle ilişki bulan bağlayıcı alanındaki bir nesne olur.  
 ![CS ve MV arasında Birleştir](./media/concept-azure-ad-connect-sync-declarative-provisioning/join1.png)  
 Amaç, meta veri deposunda zaten başka bir bağlayıcı tarafından oluşturulmuş bir nesne olup olmadığını görebilmelidir. Örneğin, bir hesap-kaynak ormanında, hesap ormanındaki kullanıcının, kaynak ormandan Kullanıcı ile katılması gerekir.

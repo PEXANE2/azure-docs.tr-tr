@@ -8,10 +8,10 @@ ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: fe9326ea9ebd5afe981b7ba6c34b1a5d51e084b0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88962069"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>App Service Ortamı gelen trafiği denetleme
@@ -122,7 +122,7 @@ Her IP SSL adresi tarafından kullanılan her bir bağlantı noktası çiftini b
 
 Ao üzerindeki bir uygulama IP-SSL kullanmak üzere yapılandırıldığında, dış müşteriler özel bağlantı noktası çifti eşlemesi hakkında endişelenmez veya bu konuda endişelenmenize gerek kalmaz.  Uygulamalara giden trafik normal olarak yapılandırılan IP-SSL adresine akacaktır.  Özel bağlantı noktası çiftiyle çeviri, yönlendirme trafiğinin son bacağı Ao 'yu içeren alt ağa otomatik olarak yapılır. 
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 App Service ortamları ile çalışmaya başlamak için bkz. [App Service ortamı giriş][IntroToAppServiceEnvironment].
 
 Daha fazla bilgi için bkz. [App Service ortamı arka uç kaynaklarına güvenli bir şekilde bağlanma][SecurelyConnecttoBackend].

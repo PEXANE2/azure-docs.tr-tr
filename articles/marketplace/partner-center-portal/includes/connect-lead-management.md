@@ -10,10 +10,10 @@ ms.custom: include file
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 7709f26b30d41b932569227b8b6f05b5725dc98f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88815682"
 ---
 Teklifinizi Iş Ortağı Merkezi aracılığıyla ticari Market 'e yayımladığınızda teklifinizi CRM sisteminize bağlamanız gerekir. Bu şekilde, müşteri ilgili iletişim bilgilerini bir müşterinin ilgisini ifade ettikten veya ürününüzü dağıttığında hemen alabilirsiniz.

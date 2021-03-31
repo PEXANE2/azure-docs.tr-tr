@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86131161"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Hyper-V VM’lerinin ikincil bir siteye olağanüstü durum kurtarmasını gerçekleştirmeye yönelik destek matrisi
@@ -56,10 +56,10 @@ Yalnızca aşağıdaki depolama alanına sahip Linux makineleri çoğaltılabili
 Konak-NIC Grubu oluşturma | Yes 
 Konak-VLAN | Yes 
 Ana bilgisayar-IPv4 | Yes 
-Ana bilgisayar-IPv6 | No 
-Konuk VM-NIC ekibi oluşturma | No
+Ana bilgisayar-IPv6 | Hayır 
+Konuk VM-NIC ekibi oluşturma | Hayır
 Konuk VM-IPv4 | Yes
-Konuk VM-IPv6 | No
+Konuk VM-IPv6 | Hayır
 Konuk VM-Windows/Linux-statik IP adresi | Yes
 Konuk VM-çoklu NIC | Yes
 
@@ -82,16 +82,16 @@ SAN (ISCSı) | Yes
 VMDK |  Yok
 VHD/VHDX | Evet (16 diske kadar)
 Gen 2 VM | Yes
-Paylaşılan küme diski | No
-Şifrelenmiş disk | No
+Paylaşılan küme diski | Hayır
+Şifrelenmiş disk | Hayır
 UEFı| Yok
-NFS | No
-SMB 3.0 | No
+NFS | Hayır
+SMB 3.0 | Hayır
 RDM | Yok
 Disk > 1 TB | Yes
 Dizili disk > 1 TB olan birim<br/><br/> LVM | Yes
 Depolama Alanları | Yes
-Dinamik disk Ekle/Kaldır | No
+Dinamik disk Ekle/Kaldır | Hayır
 Diski hariç tutma | Yes
 Çoklu yol (MPIO) | Yes
 
@@ -99,8 +99,8 @@ Diski hariç tutma | Yes
 
 **Eylem** | **Desteklenir**
 --- | --- 
-Kasalarını kaynak grupları arasında taşıma (veya abonelikler arasında) |  No
-Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma (abonelikler içinde veya abonelikler arasında) | No
+Kasalarını kaynak grupları arasında taşıma (veya abonelikler arasında) |  Hayır
+Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma (abonelikler içinde veya abonelikler arasında) | Hayır
 
 ## <a name="azure-site-recovery-provider"></a>Azure Site Recovery sağlayıcı
 
