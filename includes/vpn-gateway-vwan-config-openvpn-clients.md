@@ -9,10 +9,10 @@ ms.date: 03/17/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 55fa01d100c60c6411774373428ff4bbd9a56822
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80986609"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows istemcileri
@@ -108,7 +108,7 @@ ms.locfileid: "80986609"
 
 13. OpenVPN uygulamasını başlatın ve anahtarı bağlamak için **profil** sayfasına sağ kaydırın
 
-    ![Bağlan](./media/vpn-gateway-vwan-config-openvpn-clients/ios8.png)
+    ![Bağlanma](./media/vpn-gateway-vwan-config-openvpn-clients/ios8.png)
 
 
 ## <a name="linux-clients"></a><a name="linux"></a>Linux istemcileri

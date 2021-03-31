@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 manager: dikamath
 ms.openlocfilehash: ae9c1ba5259e95ed030d7099e5dafe2d4f7935b4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89448027"
 ---
 # <a name="azure-vmware-solution-by-cloudsimple-september-2020-update"></a>CloudSimple Eylül 2020 güncelleştirmesine göre Azure VMware çözümü

@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84710380"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Azure Logic Apps veri işlemlerini gerçekleştirme
@@ -34,7 +34,7 @@ Bu eylemler, dizilerde verilerle çalışmanıza yardımcı olur.
 | [**CSV tablosu oluştur**](#create-csv-table-action) | Bir diziden bir virgülle ayrılmış değer (CSV) tablosu oluşturun. |
 | [**HTML tablosu oluştur**](#create-html-table-action) | Diziden bir HTML tablosu oluşturun. |
 | [**Diziyi filtrele**](#filter-array-action) | Belirtilen filtre veya koşula göre diziden bir dizi alt kümesi oluşturun. |
-| [**Ayrılma**](#join-action) | Bir dizideki tüm öğelerden bir dize oluşturun ve her öğeyi belirtilen karakterle ayırın. |
+| [**Katılın**](#join-action) | Bir dizideki tüm öğelerden bir dize oluşturun ve her öğeyi belirtilen karakterle ayırın. |
 | [**Şunu seçin:**](#select-action) | Farklı bir dizideki tüm öğeler için belirtilen özelliklerden bir dizi oluşturun. |
 ||| 
 

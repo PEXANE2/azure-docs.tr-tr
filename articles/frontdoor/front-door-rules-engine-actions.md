@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
 ms.openlocfilehash: ff61af192471bcfc9bdb9f1ce3970d5c22f39579
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91569776"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Azure Front Door Kural Altyapısı Eylemleri
@@ -92,14 +92,14 @@ Alan | Açıklama
 
 Sorgu dizeleri içeren istekler için dosyaların nasıl önbelleğe alınacağını denetlemek için bu ayarları kullanın. İçeriğinizi tüm parametrelere veya seçili parametrelere göre önbelleğe almak isteyip istemediğinizi belirtir. İçeriğin önbellekte ne kadar süreyle kalacağını denetlemek için yaşam süresi (TTL) değerinin üzerine yazmak üzere ek ayarları kullanabilirsiniz. Bir eylem olarak önbelleğe almayı zorlamak için, önbelleğe alma alanını "etkin" olarak ayarlayın. Önbelleğe almayı zorlarsanız, aşağıdaki seçenekler görünür: 
 
-Önbellek davranışı |  Description              
+Önbellek davranışı |  Açıklama              
 ---------------|----------------
 Sorgu dizelerini yoksay | Varlık önbelleğe alındıktan sonra, önbelleğe alınan varlık sona erene kadar tüm istekleri Sorgu dizelerini yoksayar.
 Her benzersiz URL'yi önbelleğe al | Sorgu dizesi dahil olmak üzere benzersiz bir URL 'SI olan her istek kendi önbelleğine sahip benzersiz bir varlık olarak değerlendirilir.
 Belirtilen Sorgu dizelerini yoksay | "Sorgu parametreleri" ayarında listelenen istek URL sorgusu dizeleri önbelleğe alma için yok sayılır.
 Belirtilen Sorgu dizelerini dahil et | "Sorgu parametreleri" ayarında listelenen istek URL sorgusu dizeleri önbelleğe alma için kullanılır.
 
-Ek alanlar |  Description 
+Ek alanlar |  Açıklama 
 ------------------|---------------
 Dinamik sıkıştırma | Ön kapı, kenardaki içeriği dinamik olarak sıkıştırarak daha küçük ve daha hızlı bir yanıt elde edebilir.
 Sorgu parametreleri | Önbelleğe alma için temel olarak kullanılacak izin verilen (veya izin verilmeyen) parametrelerin virgülle ayrılmış listesi.
