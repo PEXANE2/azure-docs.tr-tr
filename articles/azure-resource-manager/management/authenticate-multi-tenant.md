@@ -4,10 +4,10 @@ description: Azure Resource Manager kiracılar genelinde kimlik doğrulama istek
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.openlocfilehash: 7a13ba6f6cbfc10c52484c45e4011da7a0d8ee4c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75478831"
 ---
 # <a name="authenticate-requests-across-tenants"></a>Kiracılar genelinde isteklerin kimliğini doğrulama
@@ -18,7 +18,7 @@ ms.locfileid: "75478831"
 
 İstek aşağıdaki kimlik doğrulama üst bilgisi değerlerine sahiptir:
 
-| Üst bilgi adı | Description | Örnek değer |
+| Üst bilgi adı | Açıklama | Örnek değer |
 | ----------- | ----------- | ------------ |
 | Yetkilendirme | Birincil belirteç | Taşıyıcı &lt; birincil belirteç&gt; |
 | x-MS-yetkilendirme-yardımcı | Yardımcı belirteçler | Taşıyıcı &lt; yardımcı-token1 &gt; , encryptedtaşıyıcı &lt; yardımcı-token2 &gt; , taşıyıcı &lt; yardımcı-token3&gt; |

@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6c5f5b8e437ad2dc2e8a3be3f3f2ed03a613b44
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75650532"
 ---
 # <a name="adding-custom-resources-to-azure-rest-api"></a>Azure REST API özel kaynakları ekleme
@@ -80,10 +80,10 @@ Yalnızca " `Proxy, Cache` " **routingtype** proxy 'leri `PUT` ve `DELETE` özel
 
 Özel kaynak sağlayıcısından özel bir kaynak oluşturmanın iki ana yolu vardır:
 
-- Azure CLI’si
+- Azure CLI
 - Azure Resource Manager Şablonları
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Özel bir kaynak oluşturun:
 

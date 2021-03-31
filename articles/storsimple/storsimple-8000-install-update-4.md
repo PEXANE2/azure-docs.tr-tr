@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
 ms.openlocfilehash: ed6f9d58c5c54c88acf8e3a0e7fda7d2d65b8637
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85514326"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>StorSimple cihazınıza güncelleştirme 4 ' ü yükler
@@ -74,7 +74,7 @@ Düzeltme yöntemi aşağıdaki üç adımdan oluşur:
 
 Aşağıdaki düzeltmeleri önceden belirlenmiş sıraya ve önerilen klasörlere indirmeniz ve kurmanız gerekir:
 
-| Sipariş | KB | Description | Güncelleştirme türü | Yükleme saati |Klasöre yüklensin|
+| Sipariş | KB | Açıklama | Güncelleştirme türü | Yükleme saati |Klasöre yüklensin|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4011839 |Yazılım güncelleştirmesi |Düzenli <br></br>Kesintiye uğramamış |~ 25 dakika |FirstOrderUpdate|
 | 2A. |KB4011841 <br> KB4011842 |LSI sürücü ve bellenim güncelleştirmeleri <br> USMBELLENIM Güncelleştirmesi (sürüm 3,38) |Düzenli <br></br>Kesintiye uğramamış |~ 3 saat <br> (2A 'yı içerir. + 2B. + 2C.)|SecondOrderUpdate|
@@ -83,7 +83,7 @@ Aşağıdaki düzeltmeleri önceden belirlenmiş sıraya ve önerilen klasörler
 
 Ayrıca, önceki tablolarda gösterilen tüm güncelleştirmelerin üzerine disk üretici yazılımı güncelleştirmelerini yüklemeniz gerekebilir. Cmdlet 'ini çalıştırarak, disk üretici yazılımı güncelleştirmelerine ihtiyacınız olup olmadığını doğrulayabilirsiniz `Get-HcsFirmwareVersion` . Bu bellenim sürümlerini çalıştırıyorsanız:,,,,,,,,,,,,,,,, `XMGJ` `XGEG` `KZ50` `F6C2` `VR08` `N002` `0106` Bu güncelleştirmeleri yüklemeniz gerekmez.
 
-| Sipariş | KB | Description | Güncelleştirme türü | Yükleme saati | Klasöre yüklensin|
+| Sipariş | KB | Açıklama | Güncelleştirme türü | Yükleme saati | Klasöre yüklensin|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB3121899 |Disk üretici yazılımı |Bakım <br></br>Kesintiye uğratan |~ 30 dakika | Üçüncüorderupdate |
 

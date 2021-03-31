@@ -11,10 +11,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 02607c219cf39a20a40854632e961b3ce199d0d3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104588265"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure Depolama için şifreleme ve Azure Key Vault Client-Side
@@ -85,7 +85,7 @@ Sıra iletileri herhangi bir biçimde olduğundan, istemci kitaplığı, ileti m
 
 Şifre çözme sırasında, Sarmalanan anahtar kuyruk iletisinden ayıklanır ve sarmalanmamış. IV Ayrıca kuyruk iletisinden çıkarılır ve sıra ileti verilerinin şifresini çözmek için sarmalanmamış anahtarla birlikte kullanılır. Şifreleme meta verilerinin küçük olduğunu unutmayın (500 bayt altında), bu nedenle bir kuyruk iletisi için 64 KB sınırına doğru sayılır, etki alanı yönetilebilir olmalıdır. Şifrelenmiş iletinin, yukarıdaki kod parçacığında gösterildiği gibi Base64 kodlamalı olacağını unutmayın. Bu, gönderilen iletinin boyutunu da genişletecektir.
 
-### <a name="tables"></a>Tablolar
+### <a name="tables"></a>Tables
 
 > [!NOTE]
 > Tablo hizmeti, Azure depolama istemci kitaplığı 'nda yalnızca 9. x üzerinden desteklenir.
