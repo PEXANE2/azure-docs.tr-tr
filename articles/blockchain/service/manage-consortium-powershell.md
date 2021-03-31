@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: how-to
 ms.reviewer: zeyadr
 ms.openlocfilehash: d40e55f177bda9edb40383b6e2c61c32633cd005
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85211349"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>PowerShell kullanarak Azure blok zinciri hizmeti 'nde konsorsiyum üyelerini yönetme
@@ -139,7 +139,7 @@ Bu cmdlet 'i kullanarak, konsorsiyumun üye ayrıntılarını veya listesini al�
 
 | Parametre | Açıklama | Gerekli |
 |-----------|-------------|:--------:|
-| Name | Ayrıntılarını almak istediğiniz blok zinciri hizmeti üyesinin adı. Bir ad girildiğinde, üyenin ayrıntılarını döndürür. Bir ad atlandığında, tüm konsorsiyum üyelerinin bir listesini döndürür. | No |
+| Name | Ayrıntılarını almak istediğiniz blok zinciri hizmeti üyesinin adı. Bir ad girildiğinde, üyenin ayrıntılarını döndürür. Bir ad atlandığında, tüm konsorsiyum üyelerinin bir listesini döndürür. | Hayır |
 | Üyeler | Import-ConsortiumManagementContracts alınan Üyeler nesnesi | Yes |
 | Web3Client | New-Web3Connection elde edilen Web3Client nesnesi | Yes |
 
@@ -197,8 +197,8 @@ Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <St
 | Parametre | Açıklama | Gerekli |
 |-----------|-------------|:--------:|
 | Name | Blok zinciri üyesinin adı | Yes |
-| DisplayName | Yeni görünen ad | No |
-| AccountAddress | Hesap adresi | No |
+| DisplayName | Yeni görünen ad | Hayır |
+| AccountAddress | Hesap adresi | Hayır |
 | Üyeler | Import-ConsortiumManagementContracts alınan Üyeler nesnesi | Yes |
 | Web3Account | Import-Web3Account elde edilen Web3Account nesnesi | Yes |
 | Web3Client |  New-Web3Connection elde edilen Web3Client nesnesi| Yes |
@@ -248,7 +248,7 @@ Bu cmdlet 'i bir konsorsiyum üyesinin davetiye durumunu almak veya listelemek i
 
 | Parametre | Açıklama | Gerekli |
 |-----------|-------------|:--------:|
-| SubscriptionId | Davet edilecek üyenin Azure abonelik KIMLIĞI. Abonelik KIMLIĞI sağlanmışsa, abonelik KIMLIĞININ davet ayrıntılarını döndürür. Abonelik KIMLIĞI atlanırsa, tüm üye davetlerinin bir listesini döndürür. | No |
+| SubscriptionId | Davet edilecek üyenin Azure abonelik KIMLIĞI. Abonelik KIMLIĞI sağlanmışsa, abonelik KIMLIĞININ davet ayrıntılarını döndürür. Abonelik KIMLIĞI atlanırsa, tüm üye davetlerinin bir listesini döndürür. | Hayır |
 | Üyeler | Import-ConsortiumManagementContracts alınan Üyeler nesnesi | Yes |
 | Web3Client | New-Web3Connection elde edilen Web3Client nesnesi | Yes |
 
