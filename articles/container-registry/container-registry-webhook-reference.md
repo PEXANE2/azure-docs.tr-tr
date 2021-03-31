@@ -36,7 +36,7 @@ Bir kapsayıcı görüntüsü depoya gönderildiğinde Web kancası tetiklendi.
 
 ### <a name="push-event-payload"></a>Olay yükünü gönder
 
-|Öğe|Tür|Açıklama|
+|Öğe|Tür|Description|
 |-------------|----------|-----------|
 |`id`|Dize|Web kancası olayının KIMLIĞI.|
 |`timestamp`|DateTime|Web kancası olayının tetiklendiği zaman.|
@@ -46,7 +46,7 @@ Bir kapsayıcı görüntüsü depoya gönderildiğinde Web kancası tetiklendi.
 
 ### <a name="target"></a><a name="target"></a>hedef
 
-|Öğe|Tür|Açıklama|
+|Öğe|Tür|Description|
 |------------------|----------|-----------|
 |`mediaType`|Dize|Başvurulan nesnenin MIME türü.|
 |`size`|Int32|İçeriğin bayt sayısı. Length alanıyla aynı.|
@@ -57,7 +57,7 @@ Bir kapsayıcı görüntüsü depoya gönderildiğinde Web kancası tetiklendi.
 
 ### <a name="request"></a><a name="request"></a>isteyen
 
-|Öğe|Tür|Açıklama|
+|Öğe|Tür|Description|
 |------------------|----------|-----------|
 |`id`|Dize|Olayı başlatan isteğin KIMLIĞI.|
 |`host`|Dize|Gelen isteklerde HTTP ana bilgisayar üst bilgisi tarafından belirtilen şekilde, kayıt defteri örneğinin dışarıdan erişilebilen ana bilgisayar adı.|
@@ -100,7 +100,7 @@ Bir Helu grafiği depoya gönderildiğinde Web kancası tetiklendi.
 
 ### <a name="chart-push-event-payload"></a>Grafik gönderim olayı yükü
 
-|Öğe|Tür|Açıklama|
+|Öğe|Tür|Description|
 |-------------|----------|-----------|
 |`id`|Dize|Web kancası olayının KIMLIĞI.|
 |`timestamp`|DateTime|Web kancası olayının tetiklendiği zaman.|
@@ -109,7 +109,7 @@ Bir Helu grafiği depoya gönderildiğinde Web kancası tetiklendi.
 
 ### <a name="target"></a><a name="helm_target"></a>hedef
 
-|Öğe|Tür|Açıklama|
+|Öğe|Tür|Description|
 |------------------|----------|-----------|
 |`mediaType`|Dize|Başvurulan nesnenin MIME türü.|
 |`size`|Int32|İçeriğin bayt sayısı.|
@@ -150,7 +150,7 @@ Bir görüntü deposu veya bildirim silindiğinde Web kancası tetiklendi. Bir e
 
 ### <a name="delete-event-payload"></a>Olay yükünü Sil
 
-|Öğe|Tür|Açıklama|
+|Öğe|Tür|Description|
 |-------------|----------|-----------|
 |`id`|Dize|Web kancası olayının KIMLIĞI.|
 |`timestamp`|DateTime|Web kancası olayının tetiklendiği zaman.|
@@ -160,7 +160,7 @@ Bir görüntü deposu veya bildirim silindiğinde Web kancası tetiklendi. Bir e
 
 ### <a name="target"></a><a name="delete_target"></a> hedef
 
-|Öğe|Tür|Açıklama|
+|Öğe|Tür|Description|
 |------------------|----------|-----------|
 |`mediaType`|Dize|Başvurulan nesnenin MIME türü.|
 |`digest`|Dize|Kayıt defteri v2 HTTP API belirtiminde tanımlanan şekilde içeriğin özeti.|
@@ -168,7 +168,7 @@ Bir görüntü deposu veya bildirim silindiğinde Web kancası tetiklendi. Bir e
 
 ### <a name="request"></a><a name="delete_request"></a> isteyen
 
-|Öğe|Tür|Açıklama|
+|Öğe|Tür|Description|
 |------------------|----------|-----------|
 |`id`|Dize|Olayı başlatan isteğin KIMLIĞI.|
 |`host`|Dize|Gelen isteklerde HTTP ana bilgisayar üst bilgisi tarafından belirtilen şekilde, kayıt defteri örneğinin dışarıdan erişilebilen ana bilgisayar adı.|
@@ -212,7 +212,7 @@ Bir helb grafiği veya deposu silindiğinde Web kancası tetiklendi.
 
 ### <a name="chart-delete-event-payload"></a>Grafik olay yükünü silme
 
-|Öğe|Tür|Açıklama|
+|Öğe|Tür|Description|
 |-------------|----------|-----------|
 |`id`|Dize|Web kancası olayının KIMLIĞI.|
 |`timestamp`|DateTime|Web kancası olayının tetiklendiği zaman.|
@@ -221,7 +221,7 @@ Bir helb grafiği veya deposu silindiğinde Web kancası tetiklendi.
 
 ### <a name="target"></a><a name="chart_delete_target"></a> hedef
 
-|Öğe|Tür|Açıklama|
+|Öğe|Tür|Description|
 |------------------|----------|-----------|
 |`mediaType`|Dize|Başvurulan nesnenin MIME türü.|
 |`size`|Int32|İçeriğin bayt sayısı.|

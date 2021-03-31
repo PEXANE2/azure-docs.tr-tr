@@ -18,6 +18,6 @@ ms.locfileid: "86507259"
 
 Aşağıdaki tabloda, Azure Application Gateway için Azure PowerShell betik örneklerinin bağlantıları yer almaktadır.
 
-| Örnek | Açıklama |
+| Örnek | Description |
 | ------- | ----------- |
 |[WAF v2 özel kuralları](../scripts/waf-custom-rules-powershell.md)|Özel kurallarla Application Gateway Web uygulaması güvenlik duvarı v2 oluşturur. |

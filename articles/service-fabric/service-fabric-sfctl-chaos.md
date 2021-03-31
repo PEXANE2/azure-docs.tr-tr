@@ -16,7 +16,7 @@ ms.locfileid: "86260839"
 Chaos test hizmetini başlatın, durdurun ve rapor edin.
 
 ## <a name="subgroups"></a>Alt
-|Atama|Açıklama|
+|Atama|Description|
 | --- | --- |
 | [çizelgesini](service-fabric-sfctl-chaos-schedule.md) | Chaos zamanlamasını alın ve ayarlayın. |
 ## <a name="commands"></a>Komutlar
@@ -35,7 +35,7 @@ Chaos olaylarının bir sonraki segmentini almak için ContinuationToken ' ı be
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Devamlılık-belirteç | Devam belirteci parametresi, sonraki sonuç kümesini almak için kullanılır. Boş olmayan bir değere sahip devamlılık belirteci, sistemin sonuçları tek bir yanıta sığmıyor olduğunda API 'nin yanıtına dahil edilir. Bu değer sonraki API çağrısına geçirildiğinde, API sonraki sonuç kümesini döndürür. Başka sonuç yoksa devamlılık belirteci bir değer içermez. Bu parametrenin değeri, URL kodlamalı olmamalıdır. |
 | --bitiş-saat-UTC | Bir Chaos raporu oluşturulacak zaman aralığının bitiş saatini temsil eden Windows dosya zamanı. Ayrıntılar için [DateTime. ToFileTimeUtc yöntemine](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) başvurun. |
@@ -45,7 +45,7 @@ Chaos olaylarının bir sonraki segmentini almak için ContinuationToken ' ı be
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -60,13 +60,13 @@ Chaos 'ın çalışıp çalışmadığını gösteren Chaos 'in durumunu, Chaos 
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -81,7 +81,7 @@ Chaos kümede zaten çalıştırılmamakta değilse, geçirilen Chaos parametrel
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Uygulama-türü-sistem durumu-ilke-eşleme | Belirli uygulama türleri için en fazla sağlıksız uygulama olan dize kodlamalı sözlük (anahtar/değer) girdileri. Her sözlük girişi, belirtilen uygulama türünün uygulamalarını değerlendirmek için kullanılan Maxyüztunhealthyapplications yüzdesini temsil eden değer için uygulama türü adı ve bir tamsayı olarak belirtilir. <br><br> Belirli uygulama türleri için en fazla sağlıksız uygulama olan bir eşlemeyi tanımlar. Uygulama türü sistem durumu ilkesi eşlemesi, tek tek uygulama türlerini belirtmek için küme durumu değerlendirmesi sırasında kullanılabilir. Haritaya dahil olan uygulama türleri, küme sistem durumu ilkesinde tanımlanan genel Maxyüztunhealthyapplications ile değil, haritada belirtilen yüzdeye göre değerlendirilir. Haritada belirtilen uygulama türleri uygulamaları, genel uygulama havuzunda hesaba katılmaz. Örneğin, bir türün bazı uygulamaları kritik ise, Küme Yöneticisi bu uygulama türü için haritaya bir giriş ekleyebilir ve buna %0 değeri atayabilir (herhangi bir hatayla ilgilenmez). Diğer tüm uygulamalar, binlerce uygulama örneğinin dışına çıkan bazı hatalara sızmak için Maxyüztunhealthtoplications ile birlikte %20 olarak ayarlanabilir. Uygulama türü sistem durumu ilkesi eşlemesi yalnızca, küme bildirimi HealthManager/EnableApplicationTypeHealthEvaluation yapılandırma girişini kullanarak uygulama türü sistem durumu değerlendirmesi etkinleştirayarlanırsa kullanılır. <br><br> Örnek JSON kodlamalı dize: [{ \" Key \" : \" Fabric:/Oylama \" , \" değer \" : \" 0 \" }] |
 | --Chaos-Target-Filter | İki dize türü anahtarlı JSON kodlu sözlük. İki anahtar NodeType, ıonlist ve Applicationınary ıonlist ' dir. Bu anahtarların her ikisi için de değerler dize listesidir. chaos_target_filter, hedeflenen Chaos hatalarının tüm filtrelerini tanımlar, örneğin, yalnızca belirli düğüm türleri veya hatalı yalnızca belirli uygulamalarda hatalı. <br><br> Chaos_target_filter kullanılmazsa, Chaos tüm küme varlıklarını hata etmez. Chaos_target_filter kullanılıyorsa, Chaos yalnızca chaos_target_filter belirtimini karşılayan varlıkları hataları. Nodetypeınary ıonlist ve Applicationınary ıonlist yalnızca birleşim semantiğine izin veriyor. Nodetypeınary ıonlist ve Applicationınary ıonlist ' i bir kesişmesi belirtmek mümkün değildir. Örneğin, "Bu uygulama yalnızca bu düğüm türünde olduğunda hata." belirtmek mümkün değildir. Bir varlık Nodetypeary ıonlist veya Applicationary ıonlist öğesine eklendikten sonra, bu varlık ChaosTargetFilter kullanılarak dışlanamaz. ApplicationX, Applicationlarionlist içinde görünmese de, bazı Chaos yineleme applicationX içinde, Nodetypelarionlist içinde yer alan nodeTypeY düğümünde yer aldığı için hata oluşabilir. Hem NodeType, hem de Applicationınary ıonlist boşsa, bir ArgumentException atılır. Tüm hata türleri (düğümü yeniden Başlat, kod paketini yeniden Başlat, çoğaltmayı kaldır, çoğaltmayı yeniden Başlat, birincil taşı ve ikincil taşı) bu düğüm türlerinin düğümleri için etkinleştirilir. Düğüm türü (IF NodeTypeX) Nodetypeary ıonlist içinde görünmezse, ardından, düğüm düzeyi hataları (NodeRestart gibi) NodeTypeX düğümleri için hiçbir şekilde etkinleştirilmez, ancak Applicationlarionlist içindeki bir uygulama NodeTypeX düğümünde yer alıyorsa, kod paketi ve çoğaltma hataları NodeTypeX için de etkinleştirilebilir. En çok 100 düğüm türü adı bu listeye dahil edilebilir, bu sayıyı artırmak için MaxNumberOfNodeTypesInChaosEntityFilter yapılandırması için bir yapılandırma yükseltmesi gerekir. Bu uygulamaların hizmetlerine ait olan tüm çoğaltmalar, Chaos tarafından çoğaltma hatalarını (çoğaltmayı yeniden Başlat, çoğaltmayı kaldırma, birincil taşıma ve ikincil taşıma) düzeltiyor. Chaos yalnızca kod paketi yalnızca bu uygulamaların çoğaltmalarını barındırıyorsa bir kod paketini yeniden başlatabilir. Bir uygulama bu listede görünmezse, uygulama Nodetypeary ıonlist içine dahil edilen düğüm türünün bir düğümünde sonlanıyorsa, bazı Chaos yinelemeyle yine de hatalı olabilir. Ancak, applicationX, yerleştirme kısıtlamaları aracılığıyla nodeTypeY 'e bağlıysa ve applicationX 'in Applicationary ıonlist öğesinden ve nodeTypeY 'in Nodetypeary ıonlist öğesinden Ikisi de yoksa, applicationX hiçbir şekilde hata olmayacaktır. En fazla 1000 uygulama adı bu listeye eklenebilir, bu sayıyı artırmak için MaxNumberOfApplicationsInChaosEntityFilter yapılandırması için bir yapılandırma yükseltmesi gerekir. |
@@ -99,7 +99,7 @@ Chaos kümede zaten çalıştırılmamakta değilse, geçirilen Chaos parametrel
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -114,13 +114,13 @@ Chaos 'in yeni hata yürütmesini durduruyor. Uçuş hatası, tamamlanana kadar 
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
