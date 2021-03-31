@@ -11,10 +11,10 @@ ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
 ms.openlocfilehash: e5b07f8f7ae766d110c87a495a3e1623b815e526
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88795992"
 ---
 # <a name="what-is-the-additional-verification-page"></a>Ek doğrulama sayfası nedir?
@@ -60,7 +60,7 @@ Kuruluşunuz iki öğeli doğrulamayı etkinleştirdikten sonra, her oturum aç�
 
 2. **Ek güvenlik doğrulaması** sayfasında, iş veya okul hesabınızda oturum açarken söylediğinizi doğrulamak için kullanılacak iki öğeli doğrulama yöntemini seçin. Şunları seçebilirsiniz:
 
-    | İletişim yöntemi | Description |
+    | İletişim yöntemi | Açıklama |
     | --- | --- |
     | Mobil uygulama | <ul><li>**Doğrulama için bildirim alın.** Bu seçenek, Smartphone veya tabletinizdeki kimlik doğrulayıcı uygulamasına bir bildirim gönderir. Bildirimi görüntüleyin ve mümkünse, uygulamada **kimlik doğrulaması** ' nı seçin. Çalışmanız veya okulunuz, kimlik doğrulamasından önce bir PIN girmenizi gerektirebilir.</li><li>**Doğrulama kodunu kullanın.** Bu modda uygulama, her 30 saniyede bir doğrulama kodu oluşturur. Oturum açma ekranında en güncel doğrulama kodunu girin.<br>Microsoft Authenticator uygulaması [Android](https://go.microsoft.com/fwlink/?linkid=866594) ve [iOS](https://go.microsoft.com/fwlink/?linkid=866594)için kullanılabilir.</li></ul> |
     | Kimlik doğrulama telefonu | <ul><li>**Telefon araması** , sağladığınız telefon numarasına otomatik bir sesli çağrı koyar. Çağrıyı yanıtlayın ve kimlik doğrulaması için telefon tuş takımındaki kare tuşuna (#) basın.</li><li>**Kısa mesaj** , doğrulama kodu içeren bir kısa mesaj sonlandırır. Metinde istemden sonra, metin iletisini yanıtlayın ya da oturum açma arabirimine sunulan doğrulama kodunu girin.</li></ul> |

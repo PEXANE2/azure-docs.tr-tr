@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: aa0b3a05fb26f6be951b697145d7b22e03b7792d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86171627"
 ---
 # <a name="delivery-and-retry"></a>Teslim ve yeniden deneme
@@ -27,7 +27,7 @@ Event Grid bir ileti teslim edildikten sonra yanıt için 60 saniyeye kadar bekl
 
 Yeniden deneneceği zamanlamayı belirleyen, önceden yapılandırılmış iki geri dönüş kuyruğu vardır. Bunlar:
 
-| Zamanla | Description |
+| Zamanla | Açıklama |
 | ---------| ------------ |
 | 1 dakika | Burada biten iletiler her dakikada denenir.
 | 10 dakika | Burada sona eklenen iletiler her 10 dakikada bir denenir.
@@ -52,7 +52,7 @@ Yeniden deneme ilkesinin limitlerinin herhangi birine ulaşıldığında bir ola
 
 İki özellik vardır: `brokers__defaultMaxDeliveryAttempts` ve `broker__defaultEventTimeToLiveInSeconds` Event Grid dağıtımının bir parçası olarak yapılandırılabilirler ve bu da tüm aboneler için yeniden deneme ilkesi varsayılanlarını denetler.
 
-| Özellik Adı | Description |
+| Özellik Adı | Açıklama |
 | ---------------- | ------------ |
 | `broker__defaultMaxDeliveryAttempts` | Bir olayı teslim etmeye yönelik deneme sayısı üst sınırı. Varsayılan değer: 30.
 | `broker__defaultEventTimeToLiveInSeconds` | Bir olayın teslim edilmeden önce bırakılması gereken saniye cinsinden olay TTL 'SI. Varsayılan değer: **7200** saniye

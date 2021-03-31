@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fb2adafab88eb1d3855cdec8268601fb4e15dcbb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86257282"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
@@ -26,14 +26,14 @@ Service Fabric kafes kaynakları dağıtımı oluşturur.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Input-YAML-Files [gerekli] | Tüm YAML dosyalarının virgülle ayrılmış göreli veya mutlak dosya yolları veya YAML dosyalarını içeren dizinin (özyinelemeli) göreli ya da mutlak yolu. |
 | --Parametreler | YAML dosyasının veya geçersiz kılınabilmesi gereken parametreleri içeren bir JSON nesnesinin göreli veya mutlak yolu. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Description|
+|Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |

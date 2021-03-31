@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/16/2019
 ms.openlocfilehash: 7b7fff913c177703f959bfa103c8e310d01059e2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81391837"
 ---
 # <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Azure yönetilen uygulamalarında özel rol tanımı yapıtı
@@ -63,7 +63,7 @@ Bir rol ya bir veya ' den oluşur `$.properties.roleName` `id` :
 > [!NOTE]
 > `id`Ya da `roleName` alanını kullanabilirsiniz. Yalnızca bir tane gereklidir. Bu alanlar, uygulanması gereken rol tanımını aramak için kullanılır. Her ikisi de sağlanırsa, `id` alanı kullanılacaktır.
 
-|Özellik|Gerekli mi?|Description|
+|Özellik|Gerekli mi?|Açıklama|
 |---------|---------|---------|
 |kimlik|Yes|Yerleşik rolün KIMLIĞI. Tam KIMLIĞI veya yalnızca GUID 'YI kullanabilirsiniz.|
 |roleName|Yes|Yerleşik rolün adı.|

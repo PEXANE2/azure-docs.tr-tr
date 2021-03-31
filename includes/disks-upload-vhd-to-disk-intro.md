@@ -9,10 +9,10 @@ ms.date: 03/27/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e96d205ef1a8f94baa3a0cfe6c5127b6cf570e5a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80420969"
 ---
 Bu makalede, bir VHD 'YI yerel makinenizden Azure yönetilen diskine yükleme veya AzCopy kullanarak yönetilen bir diski başka bir bölgeye kopyalama işlemleri açıklanmaktadır. Bu işlem, doğrudan karşıya yükleme, bir VHD 'yi doğrudan yönetilen diske boyutundaki 32 TiB 'ye kadar karşıya yüklemenizi de sağlar. Şu anda, standart HDD, standart SSD ve Premium SSD tarafından yönetilen diskler için doğrudan karşıya yükleme desteklenir. Henüz Ultra diskler için desteklenmez.

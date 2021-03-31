@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/21/2016
 ms.author: rohink
 ms.openlocfilehash: fa2c1ced6405c967ca33562d6215b304b8507e5a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "76937247"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Azure DNS diğer Azure hizmetleriyle nasıl kullanılır
@@ -31,7 +31,7 @@ Azure DNS barındırılan bir DNS yönetimi ve ad çözümleme hizmetidir. Bu hi
 
 Aşağıdaki tabloda, çeşitli Azure hizmetleri için kullanabileceğiniz desteklenen kayıt türleri özetlenmektedir. Tabloda gösterildiği gibi, Azure DNS Internet 'e yönelik ağ kaynakları için yalnızca DNS kayıtlarını destekler. Azure DNS iç, özel adreslerin ad çözümlemesi için kullanılamaz.
 
-| Azure hizmeti | Ağ arabirimi | Description |
+| Azure hizmeti | Ağ arabirimi | Açıklama |
 | --- | --- | --- |
 | Azure Application Gateway |[Ön uç genel IP 'si](dns-custom-domain.md#public-ip-address) |DNS A veya CNAME kaydı oluşturabilirsiniz. |
 | Azure Load Balancer |[Ön uç genel IP 'si](dns-custom-domain.md#public-ip-address) |DNS A veya CNAME kaydı oluşturabilirsiniz. Load Balancer, dinamik olarak atanan IPv6 genel IP adresine sahip olabilir. Bir IPv6 adresi için CNAME kaydı oluşturun. |

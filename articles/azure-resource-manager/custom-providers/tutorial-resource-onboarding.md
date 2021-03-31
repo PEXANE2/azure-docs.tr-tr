@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
 ms.openlocfilehash: 22d1dcd997a4ddb94aba184c5dace4c00509054d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75649942"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Öğretici: Azure özel sağlayıcılarıyla kaynak ekleme
@@ -235,13 +235,13 @@ Bu öğreticide, dağıtılması gereken iki parça vardır: özel sağlayıcı 
 
 8. Gerekli alanların ayarlarını girin ve ardından abonelik ve kaynak grubunu seçin. **Özel kaynak sağlayıcısı kimliği** kutusunu boş bırakabilirsiniz.
 
-   | Ayar adı | Gerekli mi? | Description |
+   | Ayar adı | Gerekli mi? | Açıklama |
    | ------------ | -------- | ----------- |
    | Konum | Evet | Şablondaki kaynakların konumu. |
-   | Mantıksal uygulama adı | No | Mantıksal uygulamanın adı. |
-   | Özel kaynak sağlayıcısı adı | No | Özel kaynak sağlayıcısı adı. |
-   | Özel kaynak sağlayıcısı kimliği | No | İlişki kaynağını destekleyen mevcut bir özel kaynak sağlayıcısı. Burada bir değer belirtirseniz, mantıksal uygulama ve özel sağlayıcı dağıtımı atlanır. |
-   | İlişkilendirme adı | No | İlişkilendirme kaynağının adı. |
+   | Mantıksal uygulama adı | Hayır | Mantıksal uygulamanın adı. |
+   | Özel kaynak sağlayıcısı adı | Hayır | Özel kaynak sağlayıcısı adı. |
+   | Özel kaynak sağlayıcısı kimliği | Hayır | İlişki kaynağını destekleyen mevcut bir özel kaynak sağlayıcısı. Burada bir değer belirtirseniz, mantıksal uygulama ve özel sağlayıcı dağıtımı atlanır. |
+   | İlişkilendirme adı | Hayır | İlişkilendirme kaynağının adı. |
 
    Örnek parametreler:
 

@@ -9,10 +9,10 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 8c5c0c8f649e7cbab2c16688717de1aaabfb93c5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75477154"
 ---
 Bu başvuru, Azure depolama için ölçeklenebilirlik ve performans hedeflerini ayrıntılardır. Burada listelenen ölçeklenebilirlik ve performans hedefleri, yüksek kaliteli hedeflerdir, ancak ulaşılabilir ' dir. Her durumda, depolama hesabınız tarafından elde edilen istek hızı ve bant genişliği depolanan nesnelerin boyutuna, kullanılan erişim desenlerine ve uygulamanızın gerçekleştirdiği iş yükünün türüne bağlıdır.
