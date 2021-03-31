@@ -41,7 +41,7 @@ Bu API, belirtilen düğümdeki tüm mevcut yapılandırma geçersiz kılmaları
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --config-Parameter-override-List [gerekli] | Yapılandırma geçersiz kılma listesi ekleme açıklaması. |
 | --Node-Name [gerekli] | Düğümün adı. |
@@ -50,7 +50,7 @@ Bu API, belirtilen düğümdeki tüm mevcut yapılandırma geçersiz kılmaları
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -65,7 +65,7 @@ Service Fabric küme düğümünü belirtilen devre dışı bırakma amacına g�
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Node-Name [gerekli] | Düğümün adı. |
 | --devre dışı bırakma-amaç | Düğümü devre dışı bırakma amacını veya nedenini açıklar. Olası değerler aşağıda verilmiştir. |
@@ -73,7 +73,7 @@ Service Fabric küme düğümünü belirtilen devre dışı bırakma amacına g�
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -88,14 +88,14 @@ Service Fabric küme düğümünü belirtilen devre dışı bırakma amacına g�
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Node-Name [gerekli] | Düğümün adı. |
 | --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -110,14 +110,14 @@ Bu API, belirtilen düğümdeki tüm mevcut yapılandırma geçersiz kılmaları
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Node-Name [gerekli] | Düğümün adı. |
 | --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -132,7 +132,7 @@ Service Fabric düğümünün sistem durumunu alır. Düğümde bildirilen siste
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Node-Name [gerekli] | Düğümün adı. |
 | --Events-Sistem durumu-durum-filtre | Sistem durumu temelinde döndürülen HealthEvent nesnelerinin toplanmasını filtrelemeye izin verir. Bu parametre için olası değerler aşağıdaki sistem durumlarından birine ait tamsayı değerini içerir. Yalnızca filtreyle eşleşen olaylar döndürülür. Tüm olaylar, toplanan sistem durumunu değerlendirmek için kullanılır. Belirtilmezse, tüm girişler döndürülür. Durum değerleri bayrak tabanlı numaralandırmadır, bu nedenle değer bit düzeyinde ' OR ' işleci kullanılarak elde edilen bu değerlerin bir birleşimi olabilir. Örneğin, girilen değer 6 ise, HealthState değeri (2) ve uyarı (4) olan tüm olaylar döndürülür.  <br> -Varsayılan-varsayılan değer. Herhangi bir HealthState ile eşleşir. Değer sıfırdır.  <br> -None-hiçbir HealthState değerle eşleşmeyen filtre. Belirli bir durum koleksiyonuna sonuç döndürmek için kullanılır. Değer 1 ' dir.  <br> -Ok-HealthState değer ile girişle eşleşen filtre. Değer 2 ' dir.  <br> -Warning-değerle HealthState değer uyarısıyla eşleşen filtre. Değer 4 ' dir.  <br> -Error-bir değerle HealthState değer hatası ile eşleşen filtre. Değer 8 ' dir.  <br> -Bir HealthState değer ile girişle eşleşen All filtresi. Değer 65535 ' dir. |
@@ -140,7 +140,7 @@ Service Fabric düğümünün sistem durumunu alır. Düğümde bildirilen siste
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -155,14 +155,14 @@ Yanıt, ad, durum, KIMLIK, sistem durumu, çalışma süresi ve düğüm hakkın
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Node-Name [gerekli] | Düğümün adı. |
 | --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -177,7 +177,7 @@ Yanıt, ad, durum, KIMLIK, sistem durumu, çalışma süresi ve düğümlerle il
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Devamlılık-belirteç | Devam belirteci parametresi, sonraki sonuç kümesini almak için kullanılır. Boş olmayan bir değere sahip devamlılık belirteci, sistemin sonuçları tek bir yanıta sığmıyor olduğunda API 'nin yanıtına dahil edilir. Bu değer sonraki API çağrısına geçirildiğinde, API sonraki sonuç kümesini döndürür. Başka sonuç yoksa devamlılık belirteci bir değer içermez. Bu parametrenin değeri, URL kodlamalı olmamalıdır. |
 | --en fazla sonuç | Disk belleği sorgularının bir parçası olarak döndürülecek en fazla sonuç sayısı. Bu parametre döndürülen sonuç sayısı üzerinde üst sınırı tanımlar. Döndürülen sonuçlar, yapılandırmada tanımlanan en fazla ileti boyutu kısıtlamalarına göre iletiye sığmıyor durumunda belirtilen en fazla sonuçtan daha az olabilir. Bu parametre sıfırsa veya belirtilmemişse, disk belleğine alınan sorgu, dönüş iletisine sığan mümkün olduğunca fazla sonuç içerir. |
@@ -186,7 +186,7 @@ Yanıt, ad, durum, KIMLIK, sistem durumu, çalışma süresi ve düğümlerle il
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -201,14 +201,14 @@ Yük veya kapasite tanımlı tüm ölçümler için bir Service Fabric düğüm�
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Node-Name [gerekli] | Düğümün adı. |
 | --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -223,14 +223,14 @@ Bu API, belirtilen düğümdeki tüm mevcut yapılandırma geçersiz kılmaları
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Node-Name [gerekli] | Düğümün adı. |
 | --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -245,14 +245,14 @@ Bu, düğümün kalıcı durumunu kurtarmanın mümkün olmadığı anlamına ge
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Node-Name [gerekli] | Düğümün adı. |
 | --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -267,7 +267,7 @@ Belirtilen Service Fabric düğümünün sistem durumunu raporlar. Rapor, sistem
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Health-Property [gerekli] | Sistem durumu bilgilerinin özelliği. <br><br> Bir varlık, farklı özellikler için sistem durumu raporlarına sahip olabilir. Özelliği, rapor tetikleyen durum koşulunu kategorilere ayırmak için Raporlayıcı esnekliğine izin veren sabit bir sabit listesi olmayan bir dizedir. Örneğin, SourceId "Localizçi" olan bir Raporlayıcı, bir düğümdeki kullanılabilir diskin durumunu izleyebilir, bu nedenle söz konusu düğümdeki "AvailableDisk" özelliğini bildirebilirler. Aynı Reporter, düğüm bağlantısını izleyip aynı düğümde bir özelliği "bağlantı" bildirebilirler. Sistem durumu deposunda, bu raporlar belirtilen düğüm için ayrı sistem durumu olayları olarak kabul edilir. SourceID ile birlikte, özelliği sistem durumu bilgilerini benzersiz şekilde tanımlar. |
 | --sistem durumu-durumu [gerekli] | Olası değerler \: ' geçersiz ', ' Tamam ', ' uyarı ', ' Error ', ' Unknown ' değerleridir. |
@@ -282,7 +282,7 @@ Belirtilen Service Fabric düğümünün sistem durumunu raporlar. Rapor, sistem
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -297,7 +297,7 @@ Zaten başlatılmış bir Service Fabric küme düğümünü yeniden başlatır.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Node-Name [gerekli] | Düğümün adı. |
 | --Create-Fabric-dump | Doku düğümü işleminin dökümünü oluşturmak için true değerini belirtin. Bu, büyük/küçük harfe duyarlıdır.  Varsayılan \: yanlış. |
@@ -306,7 +306,7 @@ Zaten başlatılmış bir Service Fabric küme düğümünü yeniden başlatır.
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -321,7 +321,7 @@ Bir küme düğümünü başlatır veya sonlandırır.  Küme düğümü, işlet
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Node-Instance-id [gerekli] | Hedef düğümün düğüm örnek KIMLIĞI. Bu, Getnodeınfo API aracılığıyla belirlenebilir. |
 | --Node-Name [gerekli] | Düğümün adı. |
@@ -332,7 +332,7 @@ Bir küme düğümünü başlatır veya sonlandırır.  Küme düğümü, işlet
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -347,7 +347,7 @@ Belirtilen operationId kullanarak StartNodeTransition ile başlatılan bir işle
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Node-Name [gerekli] | Düğümün adı. |
 | --işlem kimliği [gerekli] | Bu API 'nin bir çağrısını tanımlayan GUID.  Bu, karşılık gelen GetProgress API 'sine geçirilir. |
@@ -355,7 +355,7 @@ Belirtilen operationId kullanarak StartNodeTransition ile başlatılan bir işle
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |

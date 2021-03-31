@@ -56,7 +56,7 @@ az sql midb restore -g $resource --mi $instance -n $managedDatabase --dest-name 
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
-| Komut Dosyası | Açıklama |
+| Komut Dosyası | Description |
 |---|---|
 | [az SQL mıdb](/cli/azure/sql/midb) | Yönetilen örnek veritabanı komutları. |
 

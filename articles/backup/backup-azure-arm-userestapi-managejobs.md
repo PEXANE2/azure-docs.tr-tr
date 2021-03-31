@@ -45,7 +45,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="response"></a>Yanıt
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |200 TAMAM     | [JobResource](/rest/api/backup/jobdetails/get#jobresource)        | Tamam        |
 

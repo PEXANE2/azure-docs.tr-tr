@@ -61,7 +61,7 @@ Sözleşmenin bulunduğu duruma bağlı olarak, Üyeler sözleşmenin bir sonrak
 
     ![Sözleşme ayrıntıları](./media/use/contract-details.png)
 
-    | Section  | Açıklama  |
+    | Section  | Description  |
     |---------|---------|
     | Durum | Sözleşme aşamaları dahilinde geçerli ilerlemeyi listeler |
     | Ayrıntılar | Sözleşmenin geçerli değerleri |

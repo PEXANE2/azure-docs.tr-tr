@@ -30,14 +30,14 @@ Küme yapılandırması küme üzerinde farklı düğüm türlerini, güvenlik y
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Configuration-api-Version [gerekli] | Tek başına küme JSON yapılandırmasının API sürümü. |
 | --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -52,7 +52,7 @@ Sağlanan yapılandırma yükseltme parametrelerini doğrulayın ve parametreler
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Cluster-config [gerekli] | Küme yapılandırması. |
 | --uygulama-sistem durumu-ilkeler | Hata dağıtılmadan önce uygulama türü adı çiftlerinin ve en yüksek yüzdelerin JSON kodlu sözlüğü. |
@@ -69,7 +69,7 @@ Sağlanan yapılandırma yükseltme parametrelerini doğrulayın ve parametreler
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -92,13 +92,13 @@ Service Fabric tek başına kümesinin küme yapılandırması yükseltme durumu
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan \: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |

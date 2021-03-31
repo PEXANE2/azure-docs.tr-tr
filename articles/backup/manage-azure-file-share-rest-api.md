@@ -54,7 +54,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 #### <a name="response"></a>Yanıt
 
-Ad  | Tür  |  Açıklama
+Ad  | Tür  |  Description
 --- | --- | ----
 200 TAMAM |  JobResource  | Tamam
 

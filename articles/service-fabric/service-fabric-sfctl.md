@@ -18,7 +18,7 @@ Service Fabric kümelerini ve varlıklarını yönetmeye yönelik komutlar. Bu s
 Komutlar, isim-fiil modelini izler. Daha fazla bilgi için bkz. alt gruplar.
 
 ## <a name="subgroups"></a>Alt
-|Atama|Açıklama|
+|Atama|Description|
 | --- | --- |
 | [uygulama](service-fabric-sfctl-application.md) | Uygulamalar ve uygulama türleri oluşturun, silin ve yönetin. |
 | [Chaos](service-fabric-sfctl-chaos.md) | Chaos test hizmetini başlatın, durdurun ve rapor edin. |

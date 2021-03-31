@@ -75,7 +75,7 @@ Sihirbazı çalıştırmadan önce bu tek tablo veya görünüm oluşturmanız g
 
 Sihirbaz, arka planda aşağıdaki nesneleri oluşturur, yapılandırır ve çağırır. Sihirbaz çalıştıktan sonra, çıktısını Portal sayfalarında bulabilirsiniz. Hizmetinizin Genel Bakış sayfasında Dizin, Dizin oluşturucular, veri kaynakları ve becerileri listeleri vardır. Dizin tanımları portalda tam JSON olarak görüntülenebilir. Diğer tanımlarda, belirli nesneleri almak için [REST API](/rest/api/searchservice/) kullanabilirsiniz.
 
-| Nesne | Açıklama | 
+| Nesne | Description | 
 |--------|-------------|
 | [Veri Kaynağı](/rest/api/searchservice/create-data-source)  | Bağlantı bilgilerini, kimlik bilgileri de dahil olmak üzere kaynak verilere devam ettirir. Veri kaynağı nesnesi yalnızca dizin oluşturucular ile kullanılır. | 
 | [Dizin oluşturma](/rest/api/searchservice/create-index) | Tam metin araması ve diğer sorgular için kullanılan fiziksel veri yapısı. | 

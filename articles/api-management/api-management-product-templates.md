@@ -79,7 +79,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
   
 ### <a name="data-model"></a>Veri modeli  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
 |Sayfalama|[Sayfalama](api-management-template-data-model-reference.md#Paging) varlığı.|Ürünler koleksiyonu için sayfalama bilgileri.|  
 |Filtreleme|Varlık [filtreleme](api-management-template-data-model-reference.md#Filtering) .|Ürün listesi sayfası için filtreleme bilgileri.|  
@@ -204,7 +204,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
   
 ### <a name="data-model"></a>Veri modeli  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
 |Ürün|[Ürün](api-management-template-data-model-reference.md#Product)|Belirtilen ürün.|  
 |IsDeveloperSubscribed|boolean|Geçerli kullanıcının bu ürüne abone olup olmadığı.|  
