@@ -9,10 +9,10 @@ ms.author: amjads
 ms.collection: linux
 ms.date: 02/05/2021
 ms.openlocfilehash: 4c4851ab28e5da74e7f1fa36f087ecfdabb1c638
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102560132"
 ---
 # <a name="use-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama uzantısı 4,0 kullanın
@@ -215,7 +215,7 @@ Uzantının en son sürümü, **Şu anda genel önizlemede olan 4,0 '** dir. **2
 > [!IMPORTANT]
 > 3. x ' ten uzantının bu yeni sürümüne geçiş yapmak için eski uzantıyı kaldırmalı ve ardından uzantının 4. sürümünü (Azure Izleyici havuzuna ölçüm göndermek için sistem tarafından atanan kimlik ve havuzlar için güncelleştirilmiş yapılandırmayla) yüklemelisiniz.
 
-Öneri
+Öneriler:
 
 * Uzantıyı otomatik ikincil sürüm yükseltmesi etkin olarak yükler.
   * Klasik dağıtım modeli VM 'lerinde, uzantıyı Azure XPLAT CLı veya PowerShell aracılığıyla yüklüyorsanız sürüm olarak ' 4. * ' belirtin.

@@ -7,10 +7,10 @@ ms.date: 06/19/2019
 ms.author: jobreen
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 4f425af7681b666b42fbcc70ac0e4c31d9df6d49
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87503761"
 ---
 # <a name="create-and-use-a-custom-provider"></a>Özel bir sağlayıcı oluşturma ve kullanma
@@ -35,7 +35,7 @@ Bir uç nokta oluşturduktan sonra, sağlayıcı ve uç nokta arasında bir söz
 Özellik | Gerekli | Açıklama
 ---|---|---
 **ada** | Yes | Uç nokta tanımının adı. Azure, bu adı API aracılığıyla/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders altında kullanıma sunar<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName}
-**routingType** | No | Uç nokta sözleşme türü. Değer belirtilmezse, varsayılan olarak "proxy" olur.
+**routingType** | Hayır | Uç nokta sözleşme türü. Değer belirtilmezse, varsayılan olarak "proxy" olur.
 **bkz** | Yes | İsteklerin yönlendirileceği uç nokta. Bu uç nokta, isteğin yanıtını ve tüm yan etkilerini işler.
 
 **Uç noktanın** değeri, Azure işlevi uygulamasının tetikleyici URL 'sidir. `<yourapp>`, `<funcname>` , Ve `<functionkey>` yer tutucular, oluşturduğunuz işlev uygulamanızın değerleriyle değiştirilmelidir.
@@ -128,7 +128,7 @@ Parametre | Gerekli | Açıklama
 ---|---|---
 *ön* | Yes | Özel sağlayıcıda tanımlanan eylemin adı
 *ayrılacak* | Yes | Özel sağlayıcının kaynak KIMLIĞI
-*İstek gövdesi* | No | Uç noktaya gönderilecek istek gövdesi
+*İstek gövdesi* | Hayır | Uç noktaya gönderilecek istek gövdesi
 
 # <a name="template"></a>[Şablon](#tab/template)
 

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
 ms.openlocfilehash: 4c56f8cba232220844a8a8f9c408a60c89c581cd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91613637"
 ---
 # <a name="feature-coverage-for-azure-paas-services"></a>Azure PaaS hizmetleri için özellik kapsamı <a name="paas-services"></a>
@@ -30,7 +30,7 @@ Aşağıdaki tabloda, desteklenen Azure PaaS kaynakları için Azure Güvenlik M
 |Azure Otomasyonu hesabı|✔|-|-|
 |Azure Batch hesabı|✔|-|-|
 |Azure Blob Depolama|✔|✔|-|
-|Redis için Azure Önbelleği|✔|-|-|
+|Redis için Azure Cache|✔|-|-|
 |Azure Cloud Services|✔|-|-|
 |Azure Bilişsel Arama|✔|-|-|
 |Azure Container Registry|-|-|✔|

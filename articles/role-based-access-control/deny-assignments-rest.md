@@ -16,10 +16,10 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 2f835c270930734bf9963a7c7c3168b873eddaf6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84791920"
 ---
 # <a name="list-azure-deny-assignments-using-the-rest-api"></a>REST API kullanarak Azure reddetme atamalarını listeleyin
@@ -80,7 +80,7 @@ Reddetme atama hakkında bilgi almak için, şunları yapmanız gerekir:
 1. *{Filter}* öğesini reddetme atama listesini filtrelemek için uygulamak istediğiniz koşulla değiştirin.
 
     > [!div class="mx-tableFixed"]
-    > | Filtre | Description |
+    > | Filtre | Açıklama |
     > | --- | --- |
     > | (filtre yok) | Belirtilen kapsamın üzerinde, üzerinde ve altında tüm reddetme atamalarını listeler. |
     > | `$filter=atScope()` | Yalnızca belirtilen kapsam ve yukarıya yönelik atamaları Reddet listeler. , Alt kapsamlardaki reddetme atamalarını içermez. |
@@ -102,7 +102,7 @@ Reddetme atama hakkında bilgi almak için, şunları yapmanız gerekir:
 1. *{Filter}* öğesini reddetme atama listesini filtrelemek için uygulamak istediğiniz koşulla değiştirin. Filtre gerekiyor.
 
     > [!div class="mx-tableFixed"]
-    > | Filtre | Description |
+    > | Filtre | Açıklama |
     > | --- | --- |
     > | `$filter=atScope()` | Yalnızca kök kapsamı için atamaları Reddet listesini listeleyin. , Alt kapsamlardaki reddetme atamalarını içermez. |
     > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | Belirtilen ada sahip atamaları Reddet listesini listeleyin. |
