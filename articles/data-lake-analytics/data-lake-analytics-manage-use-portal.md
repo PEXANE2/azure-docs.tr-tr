@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: c1057478d9ae7d63bef9477a0b1297fa2c507ffa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92218434"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure Data Lake Analytics'i Azure portalını kullanarak yönetme
@@ -52,7 +52,7 @@ Bir Data Lake Analytics hesabını silmeden önce varsayılan Data Lake Store he
 Data Lake Analytics aşağıdaki veri kaynaklarını destekler:
 
 * Data Lake Storage
-* Azure Storage
+* Azure Depolama
 
 Veri kaynaklarına gitmek ve temel dosya yönetimi işlemlerini gerçekleştirmek için Veri Gezgini kullanabilirsiniz. 
 
