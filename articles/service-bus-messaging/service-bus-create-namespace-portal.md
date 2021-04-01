@@ -4,10 +4,10 @@ description: Bu makalede Azure portal bir Azure Service Bus ad alanı oluşturma
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: c0844ca144b4303631a0015c06a9b37f3538875b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96498821"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Azure portalı ile Service Bus ad alanı oluşturma

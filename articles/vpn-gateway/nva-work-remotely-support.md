@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: scottnap
 ms.openlocfilehash: 70b5732e1293e35127a19fbe736d8562056a870b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96499688"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>Uzaktan çalışma: uzak çalışma için ağ sanal gereci (NVA) konuları
@@ -35,7 +35,7 @@ Azure Marketi 'ndeki tüm büyük NVA satıcıları, çözümlerini dağıttığ
 - **Örnek sayısı** -çok sayıda kullanıcı ve bağlantınız olması beklendiğinde, NVA örnek boyutlarınızın ne kadar ölçeklendirdiğini elde etmeniz için sınırlamalar vardır.  Birden çok VM örneği dağıtmak isteyebilirsiniz.
 - **IPSEC VPN vs SSL VPN** -genel IPSec VPN UYGULAMALARıNDA, SSL VPN uygulamalarından daha iyi bir uygulama gerçekleştirir.  
 - **Lisanslama** -NVA çözümü için satın aldığınız yazılım lisanslarının covıd-19 epidemıc sırasında karşılaşabileceğiniz ani büyümeyi kapsadığına emin olun.  Birçok NVA lisanslama programı, çözümün sahip olduğu bağlantı sayısını veya bant genişliğini sınırlar.
-- **Hızlandırılmış ağ** -hızlandırılmış ağ desteği olan bir NVA çözümü düşünün.  Hızlandırılmış ağ, bir VM 'ye tek köklü g/ç Sanallaştırması (SR-ıOV) sağlar ve ağ performansını büyük ölçüde geliştirir. Bu yüksek performanslı yol, desteklenen VM türlerindeki en zorlu ağ iş yükleri ile kullanım için gecikme süresi, değişim ve CPU kullanımını azaltan veri yolundan Konağı atlar. Hızlandırılmış ağ, iki veya daha fazla vCPU ile en genel amaçlı ve işlem için iyileştirilmiş örnek boyutlarında desteklenir.
+- **Hızlandırılmış ağ** -hızlandırılmış ağ desteği olan bir NVA çözümü düşünün.  Hızlandırılmış ağ, bir VM'ye tek köklü G/Ç sanallaştırmasını (SR-IOV) etkinleştirerek VM'nin ağ performansını büyük ölçüde geliştirir. Bu yüksek performanslı yol, desteklenen VM türlerindeki en zorlu ağ iş yükleri ile kullanım için gecikme süresi, değişim ve CPU kullanımını azaltan veri yolundan Konağı atlar. Hızlandırılmış ağ, iki veya daha fazla vCPU ile en genel amaçlı ve işlem için iyileştirilmiş örnek boyutlarında desteklenir.
 
 ## <a name="monitoring-resources"></a>İzleme kaynakları
 
