@@ -4,10 +4,10 @@ description: Kaynak grubu geçmişinde 800 ' den fazla dağıtıma sahip olma ha
 ms.topic: troubleshooting
 ms.date: 08/07/2020
 ms.openlocfilehash: 8996d7817eea2f8daf44fbc9b4416c884b05940f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87987061"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Dağıtım sayısı 800 ' i aştığında hatayı çözümle
@@ -30,7 +30,7 @@ Dağıtım sırasında, geçerli dağıtımın 800 dağıtım kotasını aşalac
 
 ## <a name="solution"></a>Çözüm
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Geçmişten dağıtımları silmek için [az Deployment Group Delete](/cli/azure/group/deployment) komutunu kullanın.
 

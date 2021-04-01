@@ -92,14 +92,14 @@ Alan | Açıklama
 
 Sorgu dizeleri içeren istekler için dosyaların nasıl önbelleğe alınacağını denetlemek için bu ayarları kullanın. İçeriğinizi tüm parametrelere veya seçili parametrelere göre önbelleğe almak isteyip istemediğinizi belirtir. İçeriğin önbellekte ne kadar süreyle kalacağını denetlemek için yaşam süresi (TTL) değerinin üzerine yazmak üzere ek ayarları kullanabilirsiniz. Bir eylem olarak önbelleğe almayı zorlamak için, önbelleğe alma alanını "etkin" olarak ayarlayın. Önbelleğe almayı zorlarsanız, aşağıdaki seçenekler görünür: 
 
-Önbellek davranışı |  Açıklama              
+Önbellek davranışı |  Description              
 ---------------|----------------
 Sorgu dizelerini yoksay | Varlık önbelleğe alındıktan sonra, önbelleğe alınan varlık sona erene kadar tüm istekleri Sorgu dizelerini yoksayar.
 Her benzersiz URL'yi önbelleğe al | Sorgu dizesi dahil olmak üzere benzersiz bir URL 'SI olan her istek kendi önbelleğine sahip benzersiz bir varlık olarak değerlendirilir.
 Belirtilen Sorgu dizelerini yoksay | "Sorgu parametreleri" ayarında listelenen istek URL sorgusu dizeleri önbelleğe alma için yok sayılır.
 Belirtilen Sorgu dizelerini dahil et | "Sorgu parametreleri" ayarında listelenen istek URL sorgusu dizeleri önbelleğe alma için kullanılır.
 
-Ek alanlar |  Açıklama 
+Ek alanlar |  Description 
 ------------------|---------------
 Dinamik sıkıştırma | Ön kapı, kenardaki içeriği dinamik olarak sıkıştırarak daha küçük ve daha hızlı bir yanıt elde edebilir.
 Sorgu parametreleri | Önbelleğe alma için temel olarak kullanılacak izin verilen (veya izin verilmeyen) parametrelerin virgülle ayrılmış listesi.

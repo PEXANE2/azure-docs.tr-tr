@@ -248,7 +248,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 Aşağıdaki tabloda, dosyasında *function.js* ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `NotificationHub` :
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** |yok| Olarak ayarlanmalıdır `notificationHub` . |
 |**Görünüm** |yok| Olarak ayarlanmalıdır `out` . | 

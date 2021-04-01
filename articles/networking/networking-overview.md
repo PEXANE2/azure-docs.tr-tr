@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: kumud
 ms.openlocfilehash: d02f85647d947c2f28527ba6f0397c2a98e73840
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98234197"
 ---
 # <a name="azure-networking-services-overview"></a>Azure ağ hizmetlerine genel bakış
@@ -93,7 +93,7 @@ Bu bölümde, Azure 'da ağ kaynaklarınızı korumaya yardımcı olan ağ hizme
 
 :::image type="content" source="./media/networking-overview/ddos-protection.png" alt-text="DDoS koruması":::
 
-### <a name="azure-private-link"></a><a name="privatelink"></a>Azure Özel Bağlantı
+### <a name="azure-private-link"></a><a name="privatelink"></a>Azure özel bağlantısı
 [Azure özel bağlantısı](../private-link/private-link-overview.md) , Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişmenizi sağlar.
 Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağını de dolaşır. Hizmetinizi genel İnternet 'e sunma artık gerekli değildir. Kendi özel bağlantı hizmetinizi sanal ağınızda oluşturabilir ve müşterilerinize iletebilirsiniz.
 
