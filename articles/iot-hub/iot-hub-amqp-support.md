@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81730745"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>AMQP protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
@@ -68,7 +68,7 @@ receive_client = uamqp.ReceiveClient(uri, debug=True)
 
 Hizmet ve IoT Hub ile cihaz ile IoT Hub arasındaki buluttan cihaza ileti alışverişi hakkında bilgi edinmek için bkz. [IoT Hub 'ınızdaki buluttan cihaza Ileti gönderme](iot-hub-devguide-messages-c2d.md). Hizmet istemcisi, aşağıdaki tabloda açıklandığı gibi cihazlarından daha önce gönderilen iletiler için ileti göndermek ve geri bildirim almak üzere iki bağlantı kullanır:
 
-| Oluşturan: | Bağlantı türü | Bağlantı yolu | Description |
+| Oluşturan: | Bağlantı türü | Bağlantı yolu | Açıklama |
 |------------|-----------|-----------|-------------|
 | Hizmet | Gönderen bağlantısı | `/messages/devicebound` | Cihazlara hedeflenen buluttan cihaza iletiler, hizmet tarafından bu bağlantıya gönderilir. Bu bağlantı üzerinden gönderilen iletilerin `To` özelliği hedef cihazın alıcı bağlantı yolu olarak ayarlanır `/devices/<deviceID>/messages/devicebound` . |
 | Hizmet | Alıcı bağlantısı | `/messages/serviceBound/feedback` | Hizmet tarafından bu bağlantıda alınan cihazlardan gelen tamamlama, reddetme ve bırakma geri bildirim iletileri. Geri bildirim iletileri hakkında daha fazla bilgi için bkz. [IoT Hub 'ından buluttan cihaza Ileti gönderme](./iot-hub-devguide-messages-c2d.md#message-feedback). |
@@ -262,7 +262,7 @@ send_client = uamqp.SendClient(uri, debug=True)
 
 Aşağıdaki bağlantı yolları cihaz işlemleri olarak desteklenir:
 
-| Oluşturan: | Bağlantı türü | Bağlantı yolu | Description |
+| Oluşturan: | Bağlantı türü | Bağlantı yolu | Açıklama |
 |------------|-----------|-----------|-------------|
 | Cihazlar | Alıcı bağlantısı | `/devices/<deviceID>/messages/devicebound` | Cihazlara hedeflenen buluttan cihaza iletiler, her hedef cihaz tarafından bu bağlantı üzerinden alınır. |
 | Cihazlar | Gönderen bağlantısı | `/devices/<deviceID>/messages/events` | Bir cihazdan gönderilen cihazdan buluta iletiler, bu bağlantı üzerinden gönderilir. |

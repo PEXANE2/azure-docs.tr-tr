@@ -50,7 +50,7 @@ ResNet hakkında daha fazla bilgi için [Bu incelemeye](https://pytorch.org/docs
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Name       | Aralık | Tür    | Varsayılan           | Açıklama                              |
+| Name       | Aralık | Tür    | Varsayılan           | Description                              |
 | ---------- | ----- | ------- | ----------------- | ---------------------------------------- |
 | Model adı | Herhangi biri   | Mod    | resnext101 \_ 32x8d | Belirli bir ResNet yapısının adı       |
 | Önceden eğitilen | Herhangi biri   | Boole | Doğru              | Imagenet üzerinde önceden eğitilen bir modelin kullanılıp kullanılmayacağını belirtir |
@@ -58,7 +58,7 @@ ResNet hakkında daha fazla bilgi için [Bu incelemeye](https://pytorch.org/docs
 
 ###  <a name="output"></a>Çıktı  
 
-| Ad            | Tür                    | Açıklama                              |
+| Ad            | Tür                    | Description                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Eğitilen model | Untraınedmodeldirectory | Pytorch modelini eğitebilmeniz için bağlanmayan bir eğitilen ResNet modeli. |
 

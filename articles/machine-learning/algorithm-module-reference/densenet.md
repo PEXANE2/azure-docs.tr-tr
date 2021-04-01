@@ -54,7 +54,7 @@ DenseNet hakkında daha fazla bilgi için bkz. Araştırma sayfası, daha [seyre
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Name             | Aralık | Tür    | Varsayılan     | Açıklama                              |
+| Name             | Aralık | Tür    | Varsayılan     | Description                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
 | Model adı       | Herhangi biri   | Mod    | densenet201 | Belirli bir DenseNet yapısının adı     |
 | Önceden eğitilen       | Herhangi biri   | Boole | Doğru        | Imagenet üzerinde önceden eğitilen bir modelin kullanılıp kullanılmayacağını belirtir |
@@ -62,7 +62,7 @@ DenseNet hakkında daha fazla bilgi için bkz. Araştırma sayfası, daha [seyre
 
 ###  <a name="output"></a>Çıktı  
 
-| Ad            | Tür                    | Açıklama                              |
+| Ad            | Tür                    | Description                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Eğitilen model | Untraınedmodeldirectory | Pytorch modelini eğitebilmeniz için bağlanmayan eğitilen bir model. |
 

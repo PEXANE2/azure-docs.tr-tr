@@ -31,7 +31,7 @@ Verilen bir ad altında belirtilen Service Fabric özelliğini siler. Bir özell
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --ad-kimliği [gerekli] | ' Fabric ' URI şeması olmadan Service Fabric adı \: . |
 | --Özellik-adı [gerekli] | Alınacak özelliğin adını belirtir. |
@@ -39,7 +39,7 @@ Verilen bir ad altında belirtilen Service Fabric özelliğini siler. Bir özell
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -54,7 +54,7 @@ Verilen bir ad altında belirtilen Service Fabric özelliğini alır. Bu, her za
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --ad-kimliği [gerekli] | ' Fabric ' URI şeması olmadan Service Fabric adı \: . |
 | --Özellik-adı [gerekli] | Alınacak özelliğin adını belirtir. |
@@ -62,7 +62,7 @@ Verilen bir ad altında belirtilen Service Fabric özelliğini alır. Bu, her za
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -77,7 +77,7 @@ Bir Service Fabric ad, özel bilgileri depolayan bir veya daha fazla adlandırı
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --ad-kimliği [gerekli] | ' Fabric ' URI şeması olmadan Service Fabric adı \: . |
 | --Devamlılık-belirteç | Devam belirteci parametresi, sonraki sonuç kümesini almak için kullanılır. Boş olmayan bir değere sahip devamlılık belirteci, sistemin sonuçları tek bir yanıta sığmıyor olduğunda API 'nin yanıtına dahil edilir. Bu değer sonraki API çağrısına geçirildiğinde, API sonraki sonuç kümesini döndürür. Başka sonuç yoksa devamlılık belirteci bir değer içermez. Bu parametrenin değeri, URL kodlamalı olmamalıdır. |
@@ -86,7 +86,7 @@ Bir Service Fabric ad, özel bilgileri depolayan bir veya daha fazla adlandırı
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -101,7 +101,7 @@ Verilen bir ad altında belirtilen Service Fabric özelliğini oluşturur veya g
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --ad-kimliği [gerekli] | ' Fabric ' URI şeması olmadan Service Fabric adı \: . |
 | --Özellik-adı [gerekli] | Service Fabric özelliğinin adı. |
@@ -111,7 +111,7 @@ Verilen bir ad altında belirtilen Service Fabric özelliğini oluşturur veya g
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
