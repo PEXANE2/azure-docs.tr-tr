@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 398d18642052726af4d4920443bad515ec0b5bef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91316571"
 ---
 # <a name="extract-data-with-entities"></a>Varlıkları olan verileri ayıklama
@@ -53,7 +53,7 @@ Aşağıdaki dört kuralı göz önünde bulundurun:
 
 |İfade|Amaç tahmin edildi|Ayıklanan varlıklar|Açıklama|
 |--|--|--|--|
-|Yardım|Yardım|-|Ayıklanacak bir şey yok.|
+|Help|Yardım|-|Ayıklanacak bir şey yok.|
 |Bir şey gönder|Sendbir şey|-|Ayıklanacak bir şey yok. Modelin bu bağlamda Ayıklanacak gerekli bir özelliği yok `something` ve belirtilen alıcı yok.|
 |Emre 'yi mevcut gönder|Sendbir şey|`Bob`, `present`|Model, `Bob` önceden oluşturulmuş varlığın gerekli bir özelliğini ekleyerek ayıklar `personName` . Ayıklamak için bir makine öğrenimi varlığı kullanılmıştır `present` .|
 |Emre 'nin bir çikolata kutusunu Gönder|Sendbir şey|`Bob`, `box of chocolates`|İki önemli veri parçası `Bob` ve, `box of chocolates` makine öğrenimi varlıkları tarafından ayıklanır.|
