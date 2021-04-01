@@ -26,8 +26,8 @@ Bir *gitRepo* birimi bağladığınızda, birimi yapılandırmak için üç öze
 | Özellik | Gerekli | Açıklama |
 | -------- | -------- | ----------- |
 | `repository` | Evet | `http://` `https://` Klonlanacak git deposunun dahil olduğu tam URL.|
-| `directory` | Hayır | Deponun klonlanacak dizin. Yol, "" ile içermemelidir veya başlamamalıdır `..` .  " `.` " Belirtirseniz, depo birimin dizinine kopyalanır. Aksi takdirde, git deposu birim dizini içindeki verilen adın alt dizinine kopyalanır. |
-| `revision` | Hayır | Klonlanacak düzeltmenin COMMIT karması. Belirtilmemişse, `HEAD` Düzeltme klonlanır. |
+| `directory` | No | Deponun klonlanacak dizin. Yol, "" ile içermemelidir veya başlamamalıdır `..` .  " `.` " Belirtirseniz, depo birimin dizinine kopyalanır. Aksi takdirde, git deposu birim dizini içindeki verilen adın alt dizinine kopyalanır. |
+| `revision` | No | Klonlanacak düzeltmenin COMMIT karması. Belirtilmemişse, `HEAD` Düzeltme klonlanır. |
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>GitRepo Volume bağlama: Azure CLı
 

@@ -74,7 +74,7 @@ Düzeltme yöntemi aşağıdaki üç adımdan oluşur:
 
 Aşağıdaki düzeltmeleri önceden belirlenmiş sıraya ve önerilen klasörlere indirmeniz ve kurmanız gerekir:
 
-| Sipariş | KB | Açıklama | Güncelleştirme türü | Yükleme saati |Klasöre yüklensin|
+| Sipariş | KB | Description | Güncelleştirme türü | Yükleme saati |Klasöre yüklensin|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4011839 |Yazılım güncelleştirmesi |Düzenli <br></br>Kesintiye uğramamış |~ 25 dakika |FirstOrderUpdate|
 | 2A. |KB4011841 <br> KB4011842 |LSI sürücü ve bellenim güncelleştirmeleri <br> USMBELLENIM Güncelleştirmesi (sürüm 3,38) |Düzenli <br></br>Kesintiye uğramamış |~ 3 saat <br> (2A 'yı içerir. + 2B. + 2C.)|SecondOrderUpdate|
@@ -83,7 +83,7 @@ Aşağıdaki düzeltmeleri önceden belirlenmiş sıraya ve önerilen klasörler
 
 Ayrıca, önceki tablolarda gösterilen tüm güncelleştirmelerin üzerine disk üretici yazılımı güncelleştirmelerini yüklemeniz gerekebilir. Cmdlet 'ini çalıştırarak, disk üretici yazılımı güncelleştirmelerine ihtiyacınız olup olmadığını doğrulayabilirsiniz `Get-HcsFirmwareVersion` . Bu bellenim sürümlerini çalıştırıyorsanız:,,,,,,,,,,,,,,,, `XMGJ` `XGEG` `KZ50` `F6C2` `VR08` `N002` `0106` Bu güncelleştirmeleri yüklemeniz gerekmez.
 
-| Sipariş | KB | Açıklama | Güncelleştirme türü | Yükleme saati | Klasöre yüklensin|
+| Sipariş | KB | Description | Güncelleştirme türü | Yükleme saati | Klasöre yüklensin|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB3121899 |Disk üretici yazılımı |Bakım <br></br>Kesintiye uğratan |~ 30 dakika | Üçüncüorderupdate |
 

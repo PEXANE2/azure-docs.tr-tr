@@ -4,10 +4,10 @@ description: Bu makalede, Azure Service Bus iletilerinin sıralama ve sıralamay
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: fdb18802e576ad114fd3f783d5efd7bb826a5f94
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85341171"
 ---
 # <a name="message-sequencing-and-timestamps"></a>İleti sıralama ve zaman damgaları
@@ -24,7 +24,7 @@ Mutlak varış siparişi, örneğin, en son tedarik edilirken sınırlı sayıda
 
 Zaman damgalama özelliği, bir iletinin, **Enqueuedtimeutc** ÖZELLIĞINDE yansıtılan UTC saatini doğru bir şekilde yakalayan, nötr ve güvenilir bir yetkili olarak davranır. Bir iş senaryosu, gece yarısından önce belirli bir tarihte gönderilip gönderilmediğine karşın işlem sıranın biriktirme listesinin en altında olduğundan, bu değer yararlı olur.
 
-## <a name="scheduled-messages"></a>Zamanlanan iletiler
+## <a name="scheduled-messages"></a>Zamanlanmış iletiler
 
 Bir kuyruğa veya konu başlığına daha sonra işlenmek; örneğin belirli bir işi belirli bir zamanda sistem tarafından işlenmeye uygun hale gelmesi için zamanlamak üzere ileti gönderebilirsiniz. Bu yetenek, güvenilir bir dağıtılmış zaman tabanlı Scheduler 'ı daha gerçekçi hale getirir.
 
