@@ -70,7 +70,7 @@ Bir tanımlayıcı, bir alanın adına veya bir filtre içindeki bir [koleksiyon
 
 Alan yollarının örnekleri aşağıdaki tabloda gösterilmiştir:
 
-| Alan yolu | Açıklama |
+| Alan yolu | Description |
 | --- | --- |
 | `HotelName` | Dizinin en üst düzey alanını ifade eder |
 | `Address/City` | `City`Dizindeki bir karmaşık alanın alt alanına başvurur; `Address` `Edm.ComplexType` Bu örnekte türdür |

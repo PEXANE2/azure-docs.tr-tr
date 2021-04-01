@@ -20,7 +20,7 @@ ms.locfileid: "88962715"
 
 Aşağıdaki tablo, teraform betiklerinin bağlantılarını içerir.
 
-| Komut Dosyası | Açıklama |
+| Komut Dosyası | Description |
 |-|-|
 |**Uygulama oluşturma**||
 | [Özel uç nokta ve VNet tümleştirmesiyle, iki uygulama oluşturun ve güvenli bir şekilde bağlanın](./scripts/terraform-secure-backend-frontend.md )| İki App Service uygulaması oluşturur ve özel uç nokta ve VNet tümleştirmesiyle uygulamaları birbirine bağlayın. |

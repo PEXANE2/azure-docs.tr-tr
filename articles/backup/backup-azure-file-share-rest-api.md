@@ -467,7 +467,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 İsteğe bağlı bir yedeklemeyi tetiklemek için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-| Ad       | Tür                       | Açıklama                       |
+| Ad       | Tür                       | Description                       |
 | ---------- | -------------------------- | --------------------------------- |
 | Özellikler | AzurefilesharebackupReques | BackupRequestResource özellikleri |
 

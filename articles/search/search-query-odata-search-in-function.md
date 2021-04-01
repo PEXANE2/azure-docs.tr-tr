@@ -74,7 +74,7 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 Parametreler aşağıdaki tabloda tanımlanmıştır:
 
-| Parametre adı | Tür | Açıklama |
+| Parametre adı | Tür | Description |
 | --- | --- | --- |
 | `variable` | `Edm.String` | Bir dize alanı başvurusu (veya bir veya ifadesi içinde kullanıldığı durumda bir dize koleksiyonu alanı üzerinde bir Aralık değişkeni `search.in` `any` `all` ). |
 | `valueList` | `Edm.String` | Parametresiyle eşleştirilecek bir değer listesi içeren bir dize `variable` . `delimiters`Parametresi belirtilmemişse, varsayılan sınırlayıcılar boşluk ve virgüldür. |
