@@ -53,7 +53,7 @@ Bu resimdeki kapsam (departman = IT ve ülke = Danimarka) veya (ülke = Isveç) 
 
 Kapsam modülü aşağıdaki işlemleri destekler.
 
-| İşlem | Açıklama |
+| İşlem | Description |
 | --- | --- |
 | EŞITTIR, NOTEQUAL |Değerin öznitelikteki değere eşit olup olmadığını değerlendiren bir dize karşılaştırması. Birden çok değerli öznitelikler için bkz. ııN ve ıSNOTıN. |
 | LESSTHAN, LESSTHAN_OR_EQUAL |Değerin öznitelikteki değerden küçük olup olmadığını değerlendiren bir dize karşılaştırması. |

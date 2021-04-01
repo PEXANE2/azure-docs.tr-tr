@@ -18,7 +18,7 @@ ms.locfileid: "91322589"
 
 Bu kılavuzda, bir Event Grid modülünün olası protokol yapılandırmalarının örnekleri verilmiştir. Event Grid modülü, yönetim ve çalışma zamanı işlemleri için API 'YI kullanıma sunar. Aşağıdaki tablo, protokolleri ve bağlantı noktalarını yakalar.
 
-| Protokol | Bağlantı noktası | Açıklama |
+| Protokol | Bağlantı noktası | Description |
 | ---------------- | ------------ | ------------ |
 | HTTP | 5888 | Varsayılan olarak kapalıdır. Yalnızca sınama sırasında yararlı olur. Üretim iş yükleri için uygun değildir.
 | HTTPS | 4438 | Varsayılan

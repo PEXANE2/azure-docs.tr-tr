@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/8/2020
 ms.author: allensu
 ms.openlocfilehash: e1080aea12e70f4312fbee07b063d5a5cfbd1201
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89596315"
 ---
 # <a name="azure-load-balancer-portal-settings"></a>Azure Load Balancer portalı ayarları
@@ -107,7 +107,7 @@ Yük dengeleyicisine bir sistem durumu araştırması eklemek istiyorsanız, Azu
 | Ayar | Ayrıntılar |
 | ---------- | ---------- |
 | Name | Sistem durumu araştırmanın adı. |
-| Protokol | Seçtiğiniz protokol, arka uç örneklerinin sağlıklı olup olmadığını belirlemek için kullanılan denetim türünü belirler. </br> Seçenekleriniz şunlardır: </br> **TCP** </br> **HTTPS** </br> **HTTP** </br> Doğru protokolü kullandığınızdan emin olun. Bu seçim, uygulamanızın yapısına göre değişir. </br> Sistem durumu araştırması ve araştırma yanıtlarının yapılandırması, hangi arka uç havuzu örneklerinin yeni akışlar alacağını belirler. </br> Bir arka uç uç noktasındaki uygulamanın başarısızlığını algılamak için sistem durumu araştırmalarını kullanabilirsiniz. </br> [Sistem durumu araştırmaları](load-balancer-custom-probe-overview.md)hakkında daha fazla bilgi edinin. |
+| Protokol | Seçtiğiniz protokol, arka uç örneklerinin sağlıklı olup olmadığını belirlemek için kullanılan denetim türünü belirler. </br> Seçenekleriniz şunlardır: </br> **TCP** </br> **'DIR** </br> **HTTP** </br> Doğru protokolü kullandığınızdan emin olun. Bu seçim, uygulamanızın yapısına göre değişir. </br> Sistem durumu araştırması ve araştırma yanıtlarının yapılandırması, hangi arka uç havuzu örneklerinin yeni akışlar alacağını belirler. </br> Bir arka uç uç noktasındaki uygulamanın başarısızlığını algılamak için sistem durumu araştırmalarını kullanabilirsiniz. </br> [Sistem durumu araştırmaları](load-balancer-custom-probe-overview.md)hakkında daha fazla bilgi edinin. |
 | Bağlantı noktası | Durum araştırması için hedef bağlantı noktası. </br> Bu ayar, durum araştırmasının, örneğin durumunu belirlemede kullanacağı arka uç örneğindeki bağlantı noktasıdır. |
 | Aralık | Yoklama denemeleri arasındaki saniye sayısı. </br> Aralık, sistem durumu araştırmasının ne sıklıkta arka uç örneğine ulaşmaya çalışacağını belirleyecek. </br> 5 ' i seçerseniz ikinci araştırma denemesi 5 saniye sonra yapılır ve bu şekilde devam eder. |
 | İyi durumda olmayan durum eşiği | Bir VM sağlıksız olarak kabul edilmeden önce gerçekleşmesi gereken arka arkaya araştırma hatalarının sayısı.</br> 2 ' yi seçerseniz, art arda iki hatadan sonra bu arka uç örneğine yeni akış ayarlanmayacak. |

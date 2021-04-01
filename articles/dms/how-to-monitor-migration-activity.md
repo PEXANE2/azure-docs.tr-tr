@@ -108,7 +108,7 @@ Dikey pencerenin alt kısmı tabloları listeler ve geçiş ilerlemesinin hızl�
 
 Aşağıdaki tabloda Tablo düzeyi ayrıntılarında gösterilen alanlar açıklanmaktadır.
 
-| Alan adı        | Açıklama       |
+| Alan adı        | Description       |
 | ------------- | ------------- |
 | **Tam yük tamamlandı**      | Tam veri yükünü tamamlayan tablo sayısı. |
 | **Tam yük sıraya alındı**      | Tam yük için sıraya alınan tablo sayısı.      |
@@ -129,7 +129,7 @@ Geçiş ilerlemesini tam yükleme ve artımlı veri eşitleme içinde gösteren 
 
 Aşağıdaki tabloda tablo düzeyinde geçiş ilerlemede gösterilen alanlar açıklanmaktadır.
 
-| Alan adı        | Açıklama       |
+| Alan adı        | Description       |
 | ------------- | ------------- |
 | **Durum-eşitleniyor**      | Sürekli eşitleme çalışıyor. |
 | **Ekle**      | Hedefe uygulanan CDC ekleme sayısı.      |

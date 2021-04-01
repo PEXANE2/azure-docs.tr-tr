@@ -108,7 +108,7 @@ Grafta şu bilgiler yer alır:
 
 Raporda şu bilgiler yer alır:
 
-| Rapor Öğesi | Açıklama |
+| Rapor Öğesi | Description |
 | --- | --- |
 | Kullanıcı Kimliği |Kullanılan kullanıcı kimliğini gösterir. Bu değer, kullanıcının ne yazdığıyla ilgilidir ve bazı durumlarda yanlış kullanıcı kimliği kullanılır. |
 | Başarısız Denemeler |Belirli bir kullanıcı kimliğine ait başarısız denemelerin toplam sayısını gösterir. Tablo, en fazla deneme sayısından en aza doğru azalan bir düzende sıralanır. |
