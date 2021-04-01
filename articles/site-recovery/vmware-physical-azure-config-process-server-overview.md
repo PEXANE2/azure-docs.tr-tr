@@ -4,10 +4,10 @@ description: Bu makalede, Azure Site Recovery ile şirket içi VMware VM 'lerini
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.openlocfilehash: cd5ded18d1a8f1f5fd96212d37725bb5db13002f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80062082"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Site Recovery bileşenleri (yapılandırma, işlem, ana hedef) hakkında

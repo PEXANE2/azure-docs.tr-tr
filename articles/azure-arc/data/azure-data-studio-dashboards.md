@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: a96be6d4da3d292b2e9881652aad28f318ccee8a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92107581"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio panoları
@@ -62,7 +62,7 @@ https://52.154.152.24:30080
 
 Bir sonraki adımda kullanacağınız için IP adresinizi göz önünde bulabilirsiniz.
 
-### <a name="connect"></a>Bağlan
+### <a name="connect"></a>Bağlanma
 
 1. Azure Data Studio açın
 

@@ -72,7 +72,7 @@ Aşağıdaki tabloda, bu görevlerin bir özeti ve her görevin kısa bir açık
 
 ![Ek görevlerin listesi](./media/how-to-connect-post-installation/addtasks2.png)
 
-| Ek görev | Açıklama |
+| Ek görev | Description |
 | --- | --- |
 |**Gizlilik Ayarları**|Microsoft ile hangi Telemetri verilerinin paylaşıldığını görüntüleyin.|
 |**Geçerli yapılandırmayı görüntüle**|Geçerli Azure AD Connect çözümünüzü görüntüleyin.  Bu, genel ayarları, eşitlenen dizinleri ve eşitleme ayarlarını içerir. |
