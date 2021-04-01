@@ -254,7 +254,7 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 ##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a> Enterpolasyonlarını ayarla  
  Ara değer, Puanlama için kullanılan eğim şeklini ayarlamanıza olanak sağlar. Puanlama yüksek ve düşük olduğundan, eğim her zaman azalabilir, ancak ilişkilendirme, aşağı doğru eğim eğrisini belirler. Aşağıdaki enterpolasyonda kullanılabilir:  
 
-| İlişkilendirme | Açıklama |  
+| İlişkilendirme | Description |  
 |-|-|  
 |`linear`|En büyük ve en düşük aralıktaki öğeler için, öğeye uygulanan arttırma sürekli azalan bir miktarda yapılır. Doğrusal, bir Puanlama profili için varsayılan enterpolasyon.|  
 |`constant`|Başlangıç ve bitiş aralığı içinde olan öğeler için, derece sonuçlarına sabit bir artırma uygulanır.|  

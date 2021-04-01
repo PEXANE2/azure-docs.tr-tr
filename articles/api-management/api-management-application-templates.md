@@ -80,7 +80,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
   
 ### <a name="data-model"></a>Veri modeli  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
 |`Paging`|[Sayfalama](api-management-template-data-model-reference.md#Paging) varlığı.|Uygulamalar koleksiyonu için sayfalama bilgileri.|  
 |`Applications`|[Uygulama](api-management-template-data-model-reference.md#Application) varlıklarının koleksiyonu.|Geçerli Kullanıcı tarafından görülebilen uygulamalar.|  

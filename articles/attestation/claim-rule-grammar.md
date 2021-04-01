@@ -90,7 +90,7 @@ Koşullar listesinin değerlendirmesi:
 
 İlkede izin verilen eylemler kümesi aşağıda açıklanmıştır.
 
-| Eylem fiili | Açıklama | Bunların uygulandığı ilke bölümleri |
+| Eylem fiili | Description | Bunların uygulandığı ilke bölümleri |
 |--|--|--|
 | izin ver () | Gelen talep kümesi **ıssuancerules**'yi hesaplamak için kullanılabilir. Parametre olarak hiçbir talep almaz | **authorizationrules** |
 | Deny () | Gelen talep kümesi, **ıssuancerules** 'in parametre olarak hiçbir talep almıyor olması için kullanılmamalıdır | **authorizationrules** |

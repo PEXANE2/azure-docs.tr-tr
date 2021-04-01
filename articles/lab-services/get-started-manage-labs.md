@@ -4,10 +4,10 @@ description: Bu makalede Azure Lab Services ile çalışmaya başlama açıklanm
 ms.topic: article
 ms.date: 11/18/2020
 ms.openlocfilehash: d260ace7d7819c3ca2db96d6c4984bf834e170da
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98165051"
 ---
 # <a name="get-started-with-lab-services"></a>Laboratuvar Hizmetleri 'ni kullanmaya başlama 
@@ -98,7 +98,7 @@ Bir öğrenciye sanal makineye bağlanma sorunları yaşanıyorsa veya başka bi
     > [!NOTE]
     > Öğrenci sanal makinesini açmak öğrenci kotasını etkilemez. Kullanıcılar için kotalar, kullanıcının zamanlanan sınıf süresi dışında kullanabileceği laboratuvar saatleri sayısını belirtir.
 
-### <a name="connect-to-vms"></a>VM 'lere bağlanma
+### <a name="connect-to-vms"></a>Sanal makinelere bağlanma
 
 Öğretmenler, açık olduğu sürece bir öğrenci VM 'sine bağlanabilir ve öğrenci sanal makineye bağlı DEĞILDIR. VM 'ye bağlanarak, sanal makinede yerel dosyalara erişebiliyor ve öğrencilerin sorunları gidermelerine yardımcı olacak.
 
