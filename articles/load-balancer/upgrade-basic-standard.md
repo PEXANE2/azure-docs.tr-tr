@@ -7,11 +7,11 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 125d4a02d06e2792f9a2a4e646c3788dcf223318
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: ef018e58f8336220b96eba568c94efc40a0fb0c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102612839"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure genel Load Balancer yükseltme
@@ -21,9 +21,6 @@ Bir yükseltmede iki aşama vardır:
 
 1. IP ayırma yöntemini dinamik iken statik olarak değiştirin.
 2. Yükseltme ve trafik geçişini gerçekleştirmek için PowerShell betiğini çalıştırın.
-
-> [!IMPORTANT]
-> Betik şu anda bakımda. Genel IP adreslerini temel SKU ve standart SKU 'dan nasıl yükselteceğiniz hakkında [buradaki](../virtual-network/virtual-network-public-ip-address-upgrade.md) yönergelere başvurabilirsiniz.
 
 ## <a name="upgrade-overview"></a>Yükseltmeye genel bakış
 

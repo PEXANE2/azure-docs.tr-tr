@@ -29,7 +29,7 @@ Genellikle, şirket içi bir parmak izine sahip kuruluşlar cihazları sağlamak
 
 Ortamınızda şirket içi AD ayak izi varsa ve Azure Active Directory ile sağlanan özelliklerden yararlanmak istiyorsanız hibrit Azure AD’ye katılmış cihazları uygulayabilirsiniz. Bu cihazlar, şirket içi Active Directory katılmış ve Azure Active Directory kayıtlı cihazlardır.
 
-| Karma Azure AD katılımı | Açıklama |
+| Karma Azure AD katılımı | Description |
 | --- | --- |
 | **Tanım** | Şirket içi AD 'ye ve cihazda oturum açmak için kurumsal hesap gerektiren Azure AD 'ye katılmış |
 | **Birincil hedef kitle** | Mevcut şirket içi AD altyapısına sahip karma kuruluşlar için uygundur |

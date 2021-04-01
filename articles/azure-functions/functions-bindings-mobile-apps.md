@@ -135,7 +135,7 @@ Yapılandırabileceğiniz öznitelik özellikleri hakkında daha fazla bilgi iç
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `MobileTable` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 | **türüyle**| yok | "MobileTable" olarak ayarlanmalıdır|
 | **Görünüm**| yok |"In" olarak ayarlanmalıdır|
@@ -293,7 +293,7 @@ Tam bir örnek için bkz. [output-C# örneği](#output---c-example).
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `MobileTable` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 | **türüyle**| yok | "MobileTable" olarak ayarlanmalıdır|
 | **Görünüm**| yok |"Out" olarak ayarlanmalıdır|
