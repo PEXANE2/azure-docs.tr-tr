@@ -355,12 +355,12 @@ Uygulama türünü ve sürümünü bildirimli olarak açıklar. Bileşen hizmetl
 ```
 ### <a name="content-element-details"></a>İçerik öğesi ayrıntıları
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 Bu uygulamayı açıklayan metin.
 
 |Öznitelik|Değer|
 |---|---|
-|name|Açıklama|
+|name|Description|
 |tür|xs: String|
 |Ayarlan|0|
 
@@ -1080,12 +1080,12 @@ Küme bildirim belgesi için Kullanıcı tanımlı sürüm dizesi.
 |name|Sürüm|
 |kullan|gerekli|
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 Küme bildiriminin açıklaması.
 
 |Öznitelik|Değer|
 |---|---|
-|name|Açıklama|
+|name|Description|
 
 ### <a name="content-element-details"></a>İçerik öğesi ayrıntıları
 
@@ -6609,12 +6609,12 @@ Bu hizmet bildiriminin tanıtıcısı, yapılandırılmamış bir dizedir.
 
 ### <a name="content-element-details"></a>İçerik öğesi ayrıntıları
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 Bu hizmeti açıklayan metin.
 
 |Öznitelik|Değer|
 |---|---|
-|name|Açıklama|
+|name|Description|
 |tür|xs: String|
 |Ayarlan|0|
 
@@ -6943,11 +6943,11 @@ Bu ServicePackage içeriğinin sağlama toplamı değeri.
 
 ### <a name="content-element-details"></a>İçerik öğesi ayrıntıları
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 |Öznitelik|Değer|
 |---|---|
-|name|Açıklama|
+|name|Description|
 |tür|xs: String|
 |Ayarlan|0|
 
