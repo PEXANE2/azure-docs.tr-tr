@@ -10,15 +10,15 @@ ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: a370a7f04e0e43b96e4a574313c4f24c4990ab6f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100390372"
 ---
 # <a name="soft-delete-for-blobs"></a>Bloblar için geçici silme
 
-Bloblara yönelik geçici silme, verilerinizin yanlışlıkla veya yanlışlıkla değiştirilmesini veya silinmesini önler. Blob 'lar için geçici silme etkin olduğunda, bu depolama hesabındaki blob 'lar, blob sürümleri ve anlık görüntüler, belirttiğiniz bir bekletme dönemi içinde silindikten sonra kurtarılabilir.
+Bloblar için geçici silme, verilerinizi yanlışlıkla değiştirilmeye veya silinmeye karşı korur. Depolama hesabı için bloblarda geçici silme etkinleştirildiğinde, söz konusu depolama hesabındaki bloblar, blob sürümleri ve anlık görüntüler silindikten sonra, sizin belirttiğiniz saklama süresi içinde kurtarılabilir.
 
 Verilerinizin yanlışlıkla bir uygulama veya başka bir depolama hesabı kullanıcısı tarafından değiştirilmesi veya silinmesi olasılığı varsa, Microsoft geçici silme özelliğini etkinleştirmeyi önerir. Geçici silmeyi etkinleştirme hakkında daha fazla bilgi için bkz. [Bloblar için geçici silmeyi etkinleştirme ve yönetme](./soft-delete-blob-enable.md).
 
