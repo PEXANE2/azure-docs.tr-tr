@@ -1,17 +1,17 @@
 ---
-title: Visual Studio kullanarak Azure İşlevleri geliştirme
+title: Visual Studio ile Azure İşlevleri geliştirme
 description: Visual Studio 2019 için Azure Işlevleri araçlarını kullanarak Azure Işlevleri geliştirmeyi ve test yapmayı öğrenin.
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.openlocfilehash: 877c82e375b0ea469071402b83fadbd634177f3f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97655824"
 ---
-# <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio kullanarak Azure İşlevleri geliştirme  
+# <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio ile Azure İşlevleri geliştirme  
 
 Visual Studio, C# sınıf kitaplığı işlevlerini geliştirmenize, test etmenize ve Azure 'a dağıtmanıza imkan tanır. Azure Işlevleri ile ilk kez bu deneyim varsa bkz. [Azure işlevleri 'ne giriş](functions-overview.md).
 
