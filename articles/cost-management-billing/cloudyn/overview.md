@@ -12,7 +12,7 @@ ms.custom: seodec18
 ROBOTS: NOINDEX
 ms.openlocfilehash: 74d171a4c694f6d720ec3882f97d18e43aecc63f
 ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/26/2020
 ms.locfileid: "92543296"
