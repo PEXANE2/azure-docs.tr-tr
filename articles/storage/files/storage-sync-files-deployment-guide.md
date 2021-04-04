@@ -8,10 +8,10 @@ ms.date: 11/05/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4814a12a870d5317ad91c3514327ba0daad7ed69
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99225379"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
@@ -226,7 +226,7 @@ Aracıyı [Microsoft Indirme merkezi](https://go.microsoft.com/fwlink/?linkid=85
 > [!Important]  
 > Azure Dosya Eşitleme bir yük devretme kümesiyle kullanmak istiyorsanız, Azure Dosya Eşitleme aracısının kümedeki her düğüme yüklenmesi gerekir. Azure Dosya Eşitleme çalışmak için kümedeki her düğümün kayıtlı olması gerekir.
 
-Aşağıdakileri yapmanızı öneririz:
+Şunları yapmanızı öneririz:
 - Sorun gidermeyi ve sunucu bakımını kolaylaştırmak için varsayılan yükleme yolunu (C:\Program Files\Azure\StorageSyncAgent) bırakın.
 - Azure Dosya Eşitleme güncel tutmak için Microsoft Update etkinleştirin. Azure Dosya Eşitleme aracısına yönelik, özellik güncelleştirmeleri ve düzeltmeler de dahil olmak üzere tüm güncelleştirmeler Microsoft Update oluşur. Azure Dosya Eşitleme için en son güncelleştirmeyi yüklemenizi öneririz. Daha fazla bilgi için [Azure dosya eşitleme güncelleştirme ilkesi](storage-sync-files-planning.md#azure-file-sync-agent-update-policy)bölümüne bakın.
 
