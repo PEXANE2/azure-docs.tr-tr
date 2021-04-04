@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 6d6b7122963b51619f26b8d02a8be4ad39261afb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92147703"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub iletilerini oluşturma ve okuma
@@ -80,7 +80,7 @@ Farklı protokoller kullanılarak gönderilen iletilerin kodlanması ve kodunun 
 
 Sistem özelliği adları, iletilerin yönlendirildiği uç noktaya göre farklılık gösterir. Lütfen bu adlarla ilgili ayrıntılar için aşağıdaki tabloya bakın.
 
-|Sistem özelliği adı|Event Hubs|Azure Storage|Service Bus|Event Grid|
+|Sistem özelliği adı|Event Hubs|Azure Depolama|Service Bus|Event Grid|
 |--------------------|----------|-------------|-----------|----------|
 |İleti KIMLIĞI|ileti kimliği|Ileti|Ileti|ileti kimliği|
 |Kullanıcı kimliği|user-id|userId|UserId|user-id|
