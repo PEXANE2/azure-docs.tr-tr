@@ -6,15 +6,15 @@ ms.date: 03/21/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: af0fa68436646c64e4caba41ac7be77509d9aede
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104801474"
 ---
 Bu kategoride **54** öneri vardır.
 
-|Öneri |Açıklama |Önem derecesi |
+|Öneri |Description |Önem derecesi |
 |---|---|---|
 |Sanal makinelerinizde bir güvenlik açığı değerlendirme çözümünün etkinleştirilmesi gerekir |Sanal makinelerinizde bir güvenlik açığı değerlendirme çözümünü etkinleştirmek için uzantıyı yükler.<br />(İlgili ilke: [bir güvenlik açığı değerlendirme çözümünün sanal makinelerinizde etkinleştirilmesi gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)) |Orta |
 |Güvenli uygulamaları tanımlamaya yönelik Uyarlamalı uygulama denetimleri, makinelerinizde etkinleştirilmelidir |Makinelerinizde çalışan bilinen güvenli uygulamaların listesini tanımlamak için uygulama denetimlerini etkinleştirin ve diğer uygulamalar çalıştırıldığında sizi uyarır. Bu, makinelerinizi kötü amaçlı yazılımlara karşı korumanıza yardımcı olur. Güvenlik Merkezi, kurallarınızı yapılandırma ve sürdürme sürecini basitleştirmek için makine öğrenimini kullanarak her makinede çalışan uygulamaları analiz eder ve bilinen güvenli uygulamalar listesini önerir.<br />(İlgili ilke: [güvenli uygulamaları tanımlamaya yönelik Uyarlamalı uygulama denetimleri, makinelerinizde etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f47a6b606-51aa-4496-8bb7-64b11cf66adc)) |Yüksek |
