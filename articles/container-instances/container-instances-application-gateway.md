@@ -4,10 +4,10 @@ description: Bir sanal ağda kapsayıcı grubu oluşturun ve bir Azure Applicati
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: 0131780fdb04a71837d5ae9bf5498bf2bd499f8a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98035062"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Bir kapsayıcı grubu için statik IP adresi kullanıma sunma
