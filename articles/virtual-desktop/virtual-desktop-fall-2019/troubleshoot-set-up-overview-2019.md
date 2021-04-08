@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7b2220ffe92446338e1b9db9b329847d93830334
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88005440"
 ---
 #  <a name="windows-virtual-desktop-classic-troubleshooting-overview-feedback-and-support"></a>Windows sanal masaüstü (klasik) sorun gidermeye genel bakış, geri bildirim ve destek
@@ -31,7 +31,7 @@ Uzak Masaüstü istemcisi 'ni kullanarak bir kiracı ortamı ayarlarken karşıl
 >[!NOTE]
 > Ürün ekibi ve etkin topluluk üyeleriyle ilgili sorunlarınızı tartışmak için ziyaret edebildikleri bir teknik topluluk forumumuz vardır. Bir tartışmaya başlamak için [Windows sanal masaüstü teknik Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
-| **Konuda**                                                            | **Önerilen çözüm**  |
+| **Sorun**                                                            | **Önerilen Çözüm**  |
 |----------------------------------------------------------------------|-------------------------------------------------|
 | Windows sanal masaüstü kiracısı oluşturma                                                    | Bir Azure kesintisi varsa, [bir Azure destek isteği açın](https://azure.microsoft.com/support/create-ticket/); Aksi halde [bir Azure destek isteği açın](https://azure.microsoft.com/support/create-ticket/), hizmet Için **Windows sanal masaüstü** ' nü seçin, sorun türü için **dağıtım** ' yi seçin ve ardından sorun alt türü Için **Windows sanal masaüstü kiracısı oluşturma sorunları** ' nı seçin.|
 | Azure portal Market şablonlarına erişme       | Bir Azure kesintisi varsa, [bir Azure destek isteği açın](https://azure.microsoft.com/support/create-ticket/). <br> <br> Azure Market Windows sanal masaüstü şablonları serbestçe kullanılabilir.|

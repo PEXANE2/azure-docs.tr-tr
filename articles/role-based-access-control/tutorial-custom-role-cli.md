@@ -15,10 +15,10 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 319bca74c8e781e5dc5022e9fb901b2edca24a80
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87485652"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>Öğretici: Azure CLı kullanarak Azure özel rolü oluşturma
@@ -52,7 +52,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 1. [Microsoft.Support kaynak sağlayıcısının](resource-provider-operations.md#microsoftsupport) işlem listesini gözden geçirin. İzinlerinizi oluşturmak için kullanabileceğiniz işlemleri bilmeniz yararlıdır.
 
-    | İşlem | Description |
+    | İşlem | Açıklama |
     | --- | --- |
     | Microsoft.Support/register/action | Destek Kaynağı Sağlayıcısı'na kayıt yapar |
     | Microsoft.Support/supportTickets/read | Durum, önem derecesi, kişi ayrıntıları ve iletişimler gibi Destek Biletleri ayrıntılarını alır veya aboneliklerdeki Destek Biletleri listesini alır. |
