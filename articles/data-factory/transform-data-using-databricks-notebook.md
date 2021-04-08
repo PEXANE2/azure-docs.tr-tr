@@ -154,12 +154,12 @@ Bu bölümde bir Databricks bağlı hizmetini yazacaksınız. Bu bağlı hizmet,
 
           ![Yeni not defterinin özelliklerini ayarlama](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image15.png)
 
-       1. Yeni oluşturulan "mynotebook" adlı not defterine aşağıdaki kodu ekleyin:
+       1. Yeni oluşturulan "mynotebook&quot; adlı not defterine aşağıdaki kodu ekleyin:
 
            ```
            # Creating widgets for leveraging parameters, and printing the parameters
 
-           dbutils.widgets.text("input", "","")
+           dbutils.widgets.text(&quot;input&quot;, &quot;&quot;,&quot;")
            y = dbutils.widgets.get("input")
            print ("Param -\'input':")
            print (y)
