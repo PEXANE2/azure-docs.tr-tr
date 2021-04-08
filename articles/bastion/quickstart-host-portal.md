@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 02/18/2021
 ms.author: cherylmc
 ms.openlocfilehash: 8aeba13954283ca35c3eb0060a0e588ba6a7adbe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101707178"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>Hızlı başlangıç: özel IP adresi aracılığıyla bir tarayıcı aracılığıyla güvenli bir şekilde VM 'ye bağlanma
@@ -100,7 +100,7 @@ Bir savunma konağını yapılandırmanın birkaç farklı yolu vardır. Aşağ�
    :::image type="content" source="./media/quickstart-host-portal/create-bastion.png" alt-text="3. adım ekran görüntüsü.":::
 1. Değerleri tamamladıktan sonra **Varsayılanları kullanarak Azure savunma oluştur**' u seçin. Azure ayarlarınızı doğrular ve ardından Konağı oluşturur. Ana bilgisayar ve kaynakları, oluşturulması ve dağıtılması yaklaşık 5 dakika sürer.
 
-## <a name="connect"></a><a name="connect"></a>Bağlanma
+## <a name="connect"></a><a name="connect"></a>Bağlanabilmeniz
 
 Sanal ağa bağlantı dağıtıldıktan sonra ekran bağlan sayfasına dönüşür.
 
