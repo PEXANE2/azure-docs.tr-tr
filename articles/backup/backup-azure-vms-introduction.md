@@ -4,10 +4,10 @@ description: Bu makalede, Azure Backup hizmetinin Azure sanal makinelerini nası
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.openlocfilehash: 691fe991ad141696c0c68e915d7225001a1befd0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98733580"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM yedeklemesine genel bakış
@@ -89,7 +89,7 @@ Aşağıdaki tabloda farklı türde anlık görüntü tutarlılığı açıklanm
 
 **Değerlendirme** | **Ayrıntılar**
 --- | ---
-**Dis** | VM disklerinin yedeklenmesi paralel. Örneğin, bir VM 'nin dört diski varsa, yedekleme hizmeti dört diski paralel olarak yedeklemeye çalışır. Yedekleme artımlı (yalnızca değiştirilen veriler).
+**Disk** | VM disklerinin yedeklenmesi paralel. Örneğin, bir VM 'nin dört diski varsa, yedekleme hizmeti dört diski paralel olarak yedeklemeye çalışır. Yedekleme artımlı (yalnızca değiştirilen veriler).
 **Zamanlama** |  Yedekleme trafiğini azaltmak için günün farklı saatlerinde farklı VM 'Leri yedekleyin ve zamanların çakışmadığından emin olun. VM'lerin aynı anda yedeklenmesi trafik yoğunluğuna neden olur.
 **Yedeklemeler hazırlanıyor** | Yedeklemenin hazırlanması için gereken süreyi göz önünde bulundurun. Hazırlık süresi, yedekleme uzantısının yüklenmesi veya güncelleştirilmesi ve yedekleme zamanlamasına göre bir anlık görüntünün tetiklenmesi adımlarını kapsar.
 **Veri aktarımı** | Önceki yedeklemeden artımlı değişiklikleri belirlemek için Azure Backup gereken süreyi göz önünde bulundurun.<br/><br/> Azure Backup, artımlı yedekleme sırasında değişiklikleri belirlemek için bloğun sağlama toplamını hesaplar. Değiştirilen bloklar kasaya aktarılmak üzere işaretlenir. Hizmet, aktarılacak veri miktarını en aza indirmek için belirlenen blokları analiz eder. Azure Backup, değiştirilen tüm blokları değerlendirdikten sonra değişiklikleri kasaya aktarır.<br/><br/> Anlık görüntünün alınması ile kasaya kopyalanması arasında bir gecikme olabilir. Yoğun zamanlarda, anlık görüntülerin kasaya aktarılması sekiz saate kadar sürebilir. Günlük yedeklemeler için bir VM'nin yedeklenme süresi 24 saatten kısa olacaktır.
@@ -137,7 +137,7 @@ Benzer şekilde, yedekleme depolama alanı faturanız, her kurtarma noktasındak
 
 Örneğin, her biri en fazla 32 TB boyutunda iki ek veri diskine sahip olan a2 standart boyutlu bir VM alın. Aşağıdaki tabloda, bu disklerin her birinde depolanan gerçek veriler gösterilmektedir:
 
-**Dis** | **En büyük boyut** | **Gerçek veriler var**
+**Disk** | **En büyük boyut** | **Gerçek veriler var**
 --- | --- | ---
 İşletim sistemi diski | 32 TB | 17 GB
 Yerel/geçici disk | 135 GB | 5 GB (yedeklemeye dahil değil)
