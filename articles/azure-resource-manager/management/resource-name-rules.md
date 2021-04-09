@@ -3,12 +3,12 @@ title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: 40e17e518baec40d31918d24ab5b61da741f540a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 20f7b6dc6c49b972b873ae3b275451829dec5c14
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700482"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934181"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -599,7 +599,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | dağıtımlar | kaynak grubu | 1-64 | Alfasayısal, alt çizgi, parantezler, tireler ve dönemler. |
-> | ResourceGroups | aboneliği | 1-90 | Alfasayısal [belgeleriyle](/rest/api/resources/resourcegroups/createorupdate)eşleşen alfasayısal, alt çizgi, parantezler, tire, nokta ve Unicode karakterleri.<br><br>Nokta ile bitemez. |
+> | ResourceGroups | aboneliği | 1-90 | Alfasayısal [belgeleriyle](/rest/api/resources/resources/resourcegroups/createorupdate)eşleşen alfasayısal, alt çizgi, parantezler, tire, nokta ve Unicode karakterleri.<br><br>Nokta ile bitemez. |
 > | tagNames | kaynak | 1-512 | Şu kullanılamıyor:<br>`<>%&\?/` |
 > | tagNames/tagValues | etiket adı | 1-256 | Tüm karakterler. |
 > | Templatespec | kaynak grubu | 1-90 | Alfasayısal, alt çizgi, parantezler, tireler ve dönemler. |

@@ -320,8 +320,8 @@
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: Kudu hizmeti
       href: resources-kudu.md
-    - name: Geçiş Yardımcısı kılavuzları
-      href: 'https://github.com/Azure/App-Service-Migration-Assistant/tree/master/MigrationDocs'
+    - name: Geçiş Yardımcısı
+      href: app-service-migration-assistant.md
     - name: En iyi uygulamalar
       href: app-service-best-practices.md
     - name: Örnekler
