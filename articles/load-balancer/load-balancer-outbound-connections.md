@@ -10,10 +10,10 @@ ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
 ms.openlocfilehash: 99f15afdab917fe28e22df8cb0e372b6c30c8526
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105027338"
 ---
 # <a name="using-source-network-address-translation-snat-for-outbound-connections"></a>Giden bağlantılar için kaynak ağ adresi çevirisini (SNAT) kullanma
@@ -70,7 +70,7 @@ Benzersiz akışları korumak için, ana bilgisayar her bir giden paketin kaynak
  | ---------- | ------ | ------------ |
  | Ortak yük dengeleyici veya tek başına | [SNAT (kaynak ağ adresi çevirisi)](#snat) </br> kullanılmıyor. | TCP (Iletim Denetim Protokolü) </br> UDP (Kullanıcı Datagram Protokolü) </br> ICMP (Internet Denetim Iletisi Protokolü) </br> ESP (Kapsüllenen Güvenlik Yükü) |
 
- #### <a name="description"></a>Açıklama
+ #### <a name="description"></a>Description
 
  Azure, tüm giden akışlar için örneğin NIC 'in IP yapılandırmasına atanan genel IP 'yi kullanır. Örnekte, tüm kısa ömürlü bağlantı noktaları kullanılabilir. VM 'nin yük dengeli olup olmadığı önemi yoktur. Bu senaryo diğerlerine göre önceliklidir. 
 
@@ -82,7 +82,7 @@ Benzersiz akışları korumak için, ana bilgisayar her bir giden paketin kaynak
  | ------------ | ------ | ------------ |
  | Standart genel yük dengeleyici | [SNAT](#snat)için yük dengeleyici ön uç IP 'leri kullanımı.| TCP </br> UDP |
 
- #### <a name="description"></a>Açıklama
+ #### <a name="description"></a>Description
 
  Yük dengeleyici kaynağı, SNAT 'yi sağlayan bir giden kuralı veya bir yük dengeleme kuralıyla yapılandırılır. Bu kural, arka uç havuzuyla genel IP ön ucu arasında bağlantı oluşturmak için kullanılır. 
 
@@ -105,7 +105,7 @@ Benzersiz akışları korumak için, ana bilgisayar her bir giden paketin kaynak
  | ------------ | ------ | ------------ |
  | Standart iç yük dengeleyici | İnternet bağlantısı yok.| Yok |
 
- #### <a name="description"></a>Açıklama
+ #### <a name="description"></a>Description
  
 Standart bir iç yük dengeleyici kullanırken, SNAT için kısa ömürlü IP adresleri kullanılamaz. Bu özellik varsayılan olarak güvenliği destekler. Bu özellik, kaynaklar tarafından kullanılan tüm IP adreslerinin yapılandırılabilir ve ayrılabilir olmasını sağlar. 
 
@@ -122,7 +122,7 @@ Diğer bir seçenek de arka uç örneklerini yapılandırılmış bir giden kura
  | ------------ | ------ | ------------ |
  |Yok </br> Temel yük dengeleyici | Örnek düzeyinde dinamik IP adresi ile [SNAT](#snat)| TCP </br> UDP | 
 
- #### <a name="description"></a>Açıklama
+ #### <a name="description"></a>Description
 
  VM bir giden akış oluşturduğunda, Azure Kaynak IP adresini dinamik olarak verilen bir ortak kaynak IP adresine dönüştürür. Bu genel IP adresi **yapılandırılamaz** ve ayrılamaz. Bu adres, aboneliğin genel IP kaynak sınırına göre sayılmaz. 
 
