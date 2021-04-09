@@ -8,10 +8,10 @@ ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
 ms.openlocfilehash: 59768e4fc04613a5ecac6a76059382499b7aaa86
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98986471"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Ticari Market Transact özellikleri
@@ -46,7 +46,7 @@ Microsoft, Transact seçeneğini kullanırken, üçüncü taraf yazılımların�
 
 ### <a name="billing-infrastructure-costs"></a>Faturalandırma altyapısı maliyetleri
 
-**Sanal makineler** ve **Azure uygulamaları** için Azure altyapı kullanım ücretleri müşterinin Azure aboneliğine faturalandırılır. Altyapı kullanım ücretleri fiyatlandırılır ve müşterinin faturasında yazılım sağlayıcısının lisanslama ücretlerinden ayrı olarak sunulur.
+**Sanal makineler** ve **Azure uygulamaları** için Azure altyapı kullanım ücretleri müşterinin Azure aboneliğine faturalandırılır. Altyapı kullanım ücretleri, müşterinin faturasında yazılım sağlayıcısının lisanslama ücretlerinden ayrı olarak fiyatlandırılır ve gösterilir.
 
 **SaaS uygulamaları** için, yayımcının tek bir maliyet öğesi olarak Azure altyapı kullanım ücretlerini ve yazılım lisanslama ücretlerini hesaba göre hesabı olması gerekir.  Müşteriye yönelik bir sabit ücret olarak gösterilir. Azure altyapı kullanımı yönetilir ve doğrudan yayımcıya faturalandırılır. Gerçek altyapı kullanım ücretleri müşteri tarafından görülmez. Yayımcılar genellikle Azure altyapı kullanım ücretlerini yazılım lisans fiyatlandırmasına paketlendirmeyi tercih edebilir. Yazılım Lisanslama ücretleri tarifeli değildir veya Kullanıcı tüketimine göre hesaplanır.
 
