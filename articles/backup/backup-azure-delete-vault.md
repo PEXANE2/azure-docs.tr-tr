@@ -4,10 +4,10 @@ description: Bu makalede, bağımlılıkları kaldırmayı ve sonra bir Azure Ba
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.openlocfilehash: 1526e9aeef1574f261dcb1a58ee12a12fbf08866
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104864967"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services kasasını silme

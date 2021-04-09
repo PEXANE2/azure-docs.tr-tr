@@ -7,12 +7,12 @@ ms.author: chpalm
 ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 99263695aa0842daf59f23cda115dcb5b27b7add
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: e55cfb1a4dff7bfda2323e68777d6f50514b1608
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104804134"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105930243"
 ---
 # <a name="teams-embed"></a>Ekip ekleme
 
@@ -21,7 +21,7 @@ ms.locfileid: "104804134"
 
 Ekip ekleme, ortak işletmeden işletmeye ve işletmeler arası çağrı etkileşimlerine odaklanan bir Azure Iletişim Hizmetleri özelliğidir. Takımlar ekleme sistemi, [video ve sesli çağrı](../voice-video-calling/calling-sdk-features.md), ancak takımlar, Microsoft ekipleri toplantılarına dayalı olarak tüm Kullanıcı deneyimini sunmak için Azure 'un arama temel elemanlarına sistem derlemeleri katıştırır.
 
-Ekip ekleme istemci kitaplıkları kapalı kaynağıdır ve bu özellikleri bir anahtar, bileşik biçimde kullanıma hazır hale getirir. Ekipleri uygulamanızın tuvaline gömdüğünüzde ve istemci kitaplığı, tüm Kullanıcı deneyimini oluşturur. Bu Kullanıcı deneyimi Microsoft ekipleri toplantılarına çok benzer olduğundan, aşağıdaki avantajlardan yararlanabilirsiniz:
+Ekipler ekleme SDK 'Ları kapalı kaynaktır ve bu özellikleri bir anahtar, bileşik biçimde kullanıma hazır hale getirir. Ekipleri uygulamanızın tuvaline gömdüğünüzde ve SDK, tüm Kullanıcı deneyimi oluşturuyor. Bu Kullanıcı deneyimi Microsoft ekipleri toplantılarına çok benzer olduğundan, aşağıdaki avantajlardan yararlanabilirsiniz:
 
 - Azaltılan geliştirme süresi ve mühendislik karmaşıklığı
 - Ekipler ile son kullanıcı hakkında benzerlik

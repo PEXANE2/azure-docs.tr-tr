@@ -4,10 +4,10 @@ description: Azure VMware çözümünün kimlik ve erişim kavramları hakkında
 ms.topic: conceptual
 ms.date: 03/22/2021
 ms.openlocfilehash: 7b1880ccdee1d4c3ce25e264c004b1a949134a96
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105026913"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Çözüm kimliği kavramları
@@ -41,7 +41,7 @@ Azure VMware Çözüm CloudAdmin rolüne verilen ayrıcalıkları Azure VMware �
 
 Azure VMware çözümünde CloudAdmin rolü vCenter üzerinde aşağıdaki ayrıcalıklara sahiptir. Daha fazla ayrıntı için bkz. [VMware ürün belgeleri](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html).
 
-| Privilege | Açıklama |
+| Privilege | Description |
 | --------- | ----------- |
 | **Alarmlar** | Alarmı kabul et<br />Alarm oluştur<br />Alarm eylemini devre dışı bırak<br />Uyarıyı Değiştir<br />Alarmı kaldır<br />Alarm durumunu ayarla |
 | **İçerik Kitaplığı** | Kitaplık öğesi Ekle<br />Yayımlanmış bir kitaplık için abonelik oluşturma<br />Yerel Kitaplık oluştur<br />Abone olunan Kitaplık oluştur<br />Kitaplık öğesini Sil<br />Yerel kitaplığı Sil<br />Abone olunan kitaplığı Sil<br />Yayımlanmış bir kitaplığın aboneliğini silme<br />Dosyaları indirme<br />Kitaplık öğelerini çıkar<br />Abone olunan kitaplığı çıkar<br />Depolama alanını içeri aktar<br />Araştırma aboneliği bilgileri<br />Bir kitaplık öğesini abonelere yayımlayın<br />Bir kitaplığı abonelerine yayımlama<br />Depolama alanını oku<br />Kitaplık öğesini Eşitle<br />Abone olunan kitaplığı Eşitle<br />İç denetim yazın<br />Yapılandırma ayarlarını Güncelleştir<br />Güncelleştirme dosyaları<br />Kitaplığı Güncelleştir<br />Kitaplık öğesini Güncelleştir<br />Yerel kitaplığı Güncelleştir<br />Abone olunan kitaplığı Güncelleştir<br />Yayımlanmış bir kitaplığın aboneliğini güncelleştirme<br />Yapılandırma ayarlarını görüntüle |

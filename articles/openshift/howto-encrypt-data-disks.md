@@ -8,10 +8,10 @@ ms.author: stkirk
 ms.service: azure-redhat-openshift
 keywords: şifreleme, bYok, Aro, CMK, OpenShift, Red Hat
 ms.openlocfilehash: cf028456cc8971678373d36214885c3f79df8e82
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105047074"
 ---
 # <a name="encrypt-persistent-volume-claims-with-a-customer-managed-key-cmk-on-azure-red-hat-openshift-aro-preview"></a>Azure Red Hat OpenShift (ARO) ile kalıcı birim taleplerini, müşteri tarafından yönetilen anahtar (CMK) ile şifreleme (Önizleme)

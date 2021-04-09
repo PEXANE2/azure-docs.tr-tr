@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/10/2021
-ms.openlocfilehash: 0e60ac6da55c11d45e8b691b4883b0f5f93a2498
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/26/2021
+ms.openlocfilehash: 313cca7a0db81502ac68a2cb7e9981f712a82548
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563947"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933121"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Eşleme veri akışındaki veri dönüştürme ifadeleri
 
@@ -143,13 +143,6 @@ Giriş kümesinden gelen ilk null değeri döndürür. Tüm girişler aynı tür
 * ``coalesce(10, 20) -> 10``  
 * ``coalesce(toString(null), toString(null), 'dumbo', 'bo', 'go') -> 'dumbo'``  
 ___
-### <code>collect</code>
-<code><b>collect(<i>&lt;value1&gt;</i> : any) => array</b></code><br/><br/>
-Toplanan gruptaki ifadenin tüm değerlerini bir dizi olarak toplar. Bu işlem sırasında yapılar toplanabilir ve alternatif yapılara dönüştürülebilirler. Öğe sayısı bu gruptaki satır sayısına eşit olacak ve null değerler içerebilir. Toplanan öğe sayısı küçük olmalıdır.  
-* ``collect(salesPerson)``
-* ``collect(firstName + lastName))``
-* ``collect(@(name = salesPerson, sales = salesAmount) )``
-___
 ### <code>columnNames</code>
 <code><b>columnNames(<i>&lt;value1&gt;</i> : string) => array</b></code><br/><br/>
 Bir akışın tüm çıktı sütunlarının adlarını alır. İkinci bağımsız değişken olarak isteğe bağlı bir akış adı geçirebilirsiniz.  
@@ -277,6 +270,10 @@ ___
 <code><b>escape(<i>&lt;string_to_escape&gt;</i> : string, <i>&lt;format&gt;</i> : string) => string</b></code><br/><br/>
 Bir dizeyi bir biçime göre çıkar. Kabul edilebilir biçim için değişmez değerler ' JSON ', ' XML ', ' ECMAScript ', ' HTML ', ' Java ' değerleridir.
 ___
+### <code>expr</code>
+<code><b>expr(<i>&lt;expr&gt;</i> : string) => any</b></code><br/><br/>
+Bir dizeden bir ifade sonucu oluşur. Bu ifade, değişmez değer olmayan bir biçimde yazılmasında aynıdır. Bu, parametreleri dize gösterimleri olarak geçirmek için kullanılabilir.
+*   Expr (' Price * indirim ') => any ___
 ### <code>factorial</code>
 <code><b>factorial(<i>&lt;value1&gt;</i> : number) => long</b></code><br/><br/>
 Bir sayının faktöriyelini hesaplar.  
@@ -856,6 +853,13 @@ ___
 Ölçütlere göre bir sütunun değerlerinin ortalamasını alır.  
 * ``avgIf(region == 'West', sales)``  
 ___
+### <code>collect</code>
+<code><b>collect(<i>&lt;value1&gt;</i> : any) => array</b></code><br/><br/>
+Toplanan gruptaki ifadenin tüm değerlerini bir dizi olarak toplar. Bu işlem sırasında yapılar toplanabilir ve alternatif yapılara dönüştürülebilirler. Öğe sayısı bu gruptaki satır sayısına eşit olacak ve null değerler içerebilir. Toplanan öğe sayısı küçük olmalıdır.  
+* ``collect(salesPerson)``
+* ``collect(firstName + lastName))``
+* ``collect(@(name = salesPerson, sales = salesAmount) )``
+___
 ### <code>count</code>
 <code><b>count([<i>&lt;value1&gt;</i> : any]) => long</b></code><br/><br/>
 Değerlerin toplam sayısını alır. İsteğe bağlı sütunlar belirtilmişse, sayımla NULL değerleri yoksayar.  
@@ -900,6 +904,10 @@ Bir sütun grubunun ilk değerini alır. IgnoreNulls ikinci parametresi atlanır
 * ``first(sales)``  
 * ``first(sales, false)``  
 ___
+### <code>isDistinct</code>
+<code><b>isDistinct(<i>&lt;value1&gt;</i> : any , <i>&lt;value1&gt;</i> : any) => boolean</b></code><br/><br/>
+Bir sütun veya sütun kümesinin farklı olup olmadığını bulur. Farklı bir değer olarak null sayılmaz *   ``isDistinct(custId, custName) => boolean``
+*   ___
 ### <code>kurtosis</code>
 <code><b>kurtosis(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 Bir sütunun basıklığını alır.  
@@ -1217,6 +1225,14 @@ ___
 
 Dönüştürme işlevleri veri türleri için veri dönüştürmek ve test etmek için kullanılır
 
+### <code>isBitSet</code>
+<code><b>isBitSet (<value1> : array, <value2>:integer ) => boolean</b></code><br/><br/>
+Bu bit kümesinde bir bit konumunun ayarlanmış olup olmadığını denetler * ``isBitSet(toBitSet([10, 32, 98]), 10) => true``
+___
+### <code>setBitSet</code>
+<code><b>setBitSet (<value1> : array, <value2>:array) => array</b></code><br/><br/>
+Bu bitset 'teki bit konumlarını ayarlar * ``setBitSet(toBitSet([10, 32]), [98]) => [4294968320L, 17179869184L]``
+___  
 ### <code>isBoolean</code>
 <code><b>isBoolean(<value1> : string) => boolean</b></code><br/><br/>
 Dize değerinin, kurallarına göre bir Boole değeri olup olmadığını denetler. ``toBoolean()``
@@ -1431,6 +1447,11 @@ Akışta ada göre bir sütun dizisi seçin. İkinci bağımsız değişken olar
 * ``toString(byNames(['a Column'], 'DeriveStream'))``
 * ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
 ___
+### <code>byPath</code>
+<code><b>byPath(<i>&lt;value1&gt;</i> : string, [<i>&lt;streamName&gt;</i> : string]) => any</b></code><br/><br/>
+Akışta ada göre hiyerarşik bir yol bulur. İkinci bağımsız değişken olarak isteğe bağlı bir akış adı geçirebilirsiniz. Böyle bir yol bulunmazsa null döndürür. Tasarım zamanında bilinen sütun adları/yolları yalnızca adına veya nokta gösterim yoluna göre yapılmalıdır. Hesaplanan girişler desteklenmez, ancak parametre değiştirmeler ' i kullanabilirsiniz.  
+* ``byPath('grandpa.parent.child') => column`` 
+___
 ### <code>byPosition</code>
 <code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
 Akışta göreli konumuna göre (1 tabanlı) bir sütun değeri seçer. Konum sınırların dışında ise, NULL bir değer döndürür. Döndürülen değer tür dönüştürme işlevlerinden biri tarafından dönüştürülmüş tür olmalıdır (TO_DATE, TO_STRING...) Hesaplanan girişler desteklenmez, ancak parametre değiştirmeler ' i kullanabilirsiniz.  
@@ -1439,6 +1460,11 @@ Akışta göreli konumuna göre (1 tabanlı) bir sütun değeri seçer. Konum s�
 * ``toBoolean(byName(4))``  
 * ``toString(byName($colName))``  
 * ``toString(byPosition(1234))``  
+___
+### <code>hasPath</code>
+<code><b>hasPath(<i>&lt;value1&gt;</i> : string, [<i>&lt;streamName&gt;</i> : string]) => boolean</b></code><br/><br/>
+Akıştaki ada göre belirli bir hiyerarşik yolun var olup olmadığını denetler. İkinci bağımsız değişken olarak isteğe bağlı bir akış adı geçirebilirsiniz. Tasarım zamanında bilinen sütun adları/yolları yalnızca adına veya nokta gösterim yoluna göre yapılmalıdır. Hesaplanan girişler desteklenmez, ancak parametre değiştirmeler ' i kullanabilirsiniz.  
+* ``hasPath('grandpa.parent.child') => boolean``
 ___
 ### <code>hex</code>
 <code><b>hex(<value1>: binary) => string</b></code><br/><br/>

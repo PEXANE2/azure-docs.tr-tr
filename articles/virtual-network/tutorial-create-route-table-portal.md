@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/16/2021
 ms.author: kumud
-ms.openlocfilehash: f8090ea9c0d307d1bd290c4cf4dac9bfaabf7c4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 63ea6821097327498803abc6577f28e595883bc0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104576362"
+ms.locfileid: "105932939"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak bir yönlendirme tablosu ile ağ trafiğini yönlendirme
 
@@ -34,7 +34,9 @@ Azure, varsayılan olarak bir sanal ağ içindeki tüm alt ağlar arasındaki tr
 
 Bu öğretici [Azure Portal](https://portal.azure.com)kullanır. [Azure CLI](tutorial-create-route-table-cli.md) veya [Azure PowerShell](tutorial-create-route-table-powershell.md)de kullanabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+## <a name="prerequisites"></a>Önkoşullar
+
+Başlamadan önce, etkin aboneliği olan bir Azure hesabı gerekir. Bir hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Önkoşullar
 

@@ -2,17 +2,17 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/14/2021
+ms.date: 03/29/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: fe1b9fc8754ae959abf088526b5d71e0e43c158e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 164c5e199bcb17dfe7a8ce92b169b26ecd389703
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103466230"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105957984"
 ---
-Bu kategoride **64** öneri vardır.
+Bu kategoride **65** öneri vardır.
 
 |Öneri |Description |Önem derecesi |
 |---|---|---|
@@ -24,6 +24,7 @@ Bu kategoride **64** öneri vardır.
 |SQL sunucuları için denetim bekletme en az 90 gün olarak ayarlanmalıdır |90 günden daha az bir denetim saklama süresi ile yapılandırılmış SQL sunucularını denetleyin.<br />(İlgili ilke: [SQL Server 'lar, 90 gün sonra bekletme veya daha yüksek bir denetim ile yapılandırılmalıdır.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f89099bee-89e0-4b26-a5f4-165451757743)) |Düşük |
 |SQL Server üzerinde denetim etkinleştirilmelidir |Sunucu üzerindeki tüm veritabanları genelinde veritabanı etkinliklerini izlemek ve bir denetim günlüğüne kaydetmek için SQL Server denetimi etkinleştirin.<br />(İlgili ilke: [SQL Server üzerinde denetim etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9)) |Düşük |
 |Log Analytics aracısının otomatik olarak sağlanması aboneliğinizde etkinleştirilmelidir |Azure Güvenlik Merkezi, güvenlik açıklarını ve tehditleri izlemek için Azure sanal makinelerinizden veri toplar. Veriler, makineden güvenlikle ilgili çeşitli yapılandırma ve olay günlüklerini okuyan ve verileri analiz için Log Analytics çalışma alanınıza kopyalayan, daha önce Microsoft Monitoring Agent (MMA) olarak bilinen Log Analytics Aracısı tarafından toplanır. Otomatik sağlamanın, aracıyı desteklenen tüm Azure VM 'lerine ve oluşturulan tüm yeni makinelere otomatik olarak dağıtması için etkinleştirmenizi öneririz.<br />(İlgili ilke: [Log Analytics aracısının otomatik olarak sağlanması aboneliğinizde etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f475aae12-b88a-4572-8b36-9b712b2b3a17)) |Düşük |
+|Azure Arc etkin Kubernetes kümelerinde Azure Defender 'ın uzantısı yüklü olmalıdır |Azure wiki 'nin Azure Arc için uzantısı, Arc etkin Kubernetes kümeleriniz için tehdit koruması sağlar. Uzantı kümedeki tüm denetim düzlemi (ana) düğümlerinden verileri toplar ve daha fazla analize yönelik olarak bulutta Kubernetes arka ucu için Azure Defender 'a gönderir. Daha fazla bilgi edinin https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc .<br />(İlgili ilke yok) |Yüksek |
 |Redo için Azure önbelleği bir sanal ağ içinde yer almalıdır |Azure sanal ağ (VNet) dağıtımı, Azure önbelleğiniz için gelişmiş güvenlik ve yalıtımın yanı sıra alt ağlar, erişim denetim ilkeleri ve diğer özellikler için erişimi daha da kısıtlamak sağlar. Redsıs örneği için bir Azure önbelleği bir sanal ağ ile yapılandırıldığında, bu, genel olarak adreslenebilir değildir ve yalnızca VNet içindeki sanal makineler ve uygulamalardan erişilebilir.<br />(İlgili ilke: [redo Için Azure önbelleği bir sanal ağ içinde yer almalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7d092e0a-7acd-40d2-a975-dca21cae48c4)) |Orta |
 |Azure Cosmos DB hesapların güvenlik duvarı kuralları olmalıdır |Yetkisiz kaynaklardan gelen trafiği engellemek için güvenlik duvarı kuralları Azure Cosmos DB hesaplarınız üzerinde tanımlanmalıdır. Sanal ağ filtresi etkin olarak tanımlanmış en az bir IP kuralına sahip hesaplara uyumlu olduğu kabul edilir. Ortak erişimi devre dışı bırakan hesaplar da uyumlu olarak kabul edilir.<br />(İlgili ilke: [Azure Cosmos DB hesapların güvenlik duvarı kuralları](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f862e97cf-49fc-4a5c-9de4-40d4e2e7c8eb)olmalıdır) |Orta |
 |Azure Cosmos DB hesaplar, bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları kullanmalıdır |Azure Cosmos DB geri kalanında şifrelemeyi yönetmek için müşteri tarafından yönetilen anahtarları kullanın. Varsayılan olarak, veriler hizmet tarafından yönetilen anahtarlarla birlikte şifrelenir, ancak yasal uyumluluk standartlarını karşılamak için genellikle müşteri tarafından yönetilen anahtarlar (CMK) gereklidir. CMKs, verilerin oluşturulmuş ve sizin tarafınızdan sahip olduğu bir Azure Key Vault anahtarla şifrelenmesini sağlar. Anahtar yaşam döngüsü için, döndürme ve yönetim de dahil olmak üzere tam denetim ve sorumluluğa sahipsiniz. Üzerinde CMK şifrelemesi hakkında daha fazla bilgi edinin https://aka.ms/cosmosdb-cmk .<br />(İlgili ilke: [Azure Cosmos DB hesaplar, bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarlar kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1f905d99-2ab7-462c-a6b0-f709acca6c8f)) |Yüksek |
