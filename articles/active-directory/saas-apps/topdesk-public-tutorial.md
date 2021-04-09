@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 3688dc2db67c0c1343a74be4652cb52466ef762e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520447"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Öğretici: Topmasa-genel ile tümleştirme Azure Active Directory
@@ -137,13 +137,13 @@ Azure AD çoklu oturum açmayı TOPdesk-public ile yapılandırmak için aşağ�
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-topdesk---public-single-sign-on"></a>TOPdesk-genel tek Sign-On yapılandırma
+### <a name="configure-topdesk---public-single-sign-on&quot;></a>TOPdesk-genel tek Sign-On yapılandırma
 
 1. **Topoloji-ortak** şirket sitenizde yönetici olarak oturum açın.
 
 2. **TopDesk** menüsünde **Ayarlar**' a tıklayın.
    
-    ![Ayarlar](./media/topdesk-public-tutorial/ic790598.png "Ayarlar")
+    ![Ayarlar](./media/topdesk-public-tutorial/ic790598.png &quot;Ayarlar")
 
 3. **Oturum açma ayarları**' na tıklayın.
    
@@ -247,17 +247,17 @@ Bu bölümde, Topmasa-herkese erişimi vererek Azure çoklu oturum açma özelli
 
 7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-topdesk---public-test-user"></a>Topmasa-ortak test kullanıcısı oluşturma
+### <a name="create-topdesk---public-test-user&quot;></a>Topmasa-ortak test kullanıcısı oluşturma
 
 Azure AD kullanıcılarının Topmasa-genel ' te oturum açmasını sağlamak için, bu kullanıcıların Topmasa-genel ' e sağlanması gerekir. Topmasa-genel durumunda, sağlama el ile gerçekleştirilen bir görevdir.
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Kullanıcı sağlamayı yapılandırmak için aşağıdaki adımları uygulayın:
+### <a name=&quot;to-configure-user-provisioning-perform-the-following-steps&quot;></a>Kullanıcı sağlamayı yapılandırmak için aşağıdaki adımları uygulayın:
 
 1. **Topoloji-ortak** şirket sitenizde yönetici olarak oturum açın.
 
 2. Üstteki menüde **TopDesk \> Yeni \> destek dosyaları \> kişisi**' ne tıklayın.
    
-    ![Kişi](./media/topdesk-public-tutorial/ic790628.png "Kişi")
+    ![Kişi](./media/topdesk-public-tutorial/ic790628.png &quot;Kişi")
 
 3. Yeni kişi iletişim kutusunda aşağıdaki adımları gerçekleştirin:
    
