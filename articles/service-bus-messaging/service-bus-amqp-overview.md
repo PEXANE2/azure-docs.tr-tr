@@ -4,10 +4,10 @@ description: Azure Service Bus bir açık standart protokol olan Gelişmiş İle
 ms.topic: article
 ms.date: 02/17/2021
 ms.openlocfilehash: b2ca126312f5fc3da2a7ff6e20a9ade252f489f1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100653892"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Service Bus 'da AMQP 1,0 desteği

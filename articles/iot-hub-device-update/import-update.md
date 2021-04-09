@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 3644f26f989fec05ee76afd9f930c31b25234c7f
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: ede0d279b8769f49afcdae1cb9352c1b47fb59b5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105608536"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932412"
 ---
 # <a name="import-new-update"></a>Yeni güncelleştirme al
 IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı öğrenin. Henüz yapmadıysanız, temel [içeri aktarma kavramlarını öğrendiğinizden](import-concepts.md)emin olun.
@@ -35,7 +35,7 @@ IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı 
 
 2. Güncelleştirme görüntü dosyanızın veya APT bildirim dosyasının bulunduğu dizinde **Aduupdate. psm1** adlı bir metin dosyası oluşturun. Daha sonra [Aduupdate. psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) PowerShell cmdlet 'ini açın, içeriği metin dosyanıza kopyalayın ve metin dosyasını kaydedin.
 
-3. PowerShell 'de adım 2 ' den PowerShell cmdlet 'ini oluşturduğunuz dizine gidin. Ardından şunu çalıştırın:
+3. PowerShell 'de adım 2 ' den PowerShell cmdlet 'ini oluşturduğunuz dizine gidin. Aşağıdaki kopyalama seçeneğini kullanın ve komutları çalıştırmak için PowerShell 'e yapıştırın:
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -63,7 +63,7 @@ IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı 
     | updateName | Bir güncelleştirme sınıfının tanımlayıcısı. Sınıf, seçtiğiniz herhangi bir şey olabilir. Genellikle bir cihaz veya model adı olacaktır.
     | updateVersion | Sürüm numarası, aynı sağlayıcıya ve ada sahip diğer başkalarından bu güncelleştirmeyi ayırt eder. , Cihazdaki bireysel Yazılım bileşenlerinden oluşan bir sürümle eşleşmiyor (ancak seçeneğini belirlerseniz).
     | Güncelleştirme türü | <ul><li>`microsoft/swupdate:1`Görüntü güncelleştirmesi için belirt</li><li>`microsoft/apt:1`Paket güncelleştirmesi için belirtin</li></ul>
-    | ınstalınstalbu ölçüt | <ul><li>Güncelleştirme türü için SWVersion değerini belirtin `microsoft/swupdate:1`</li><li>Güncelleştirme türü için önerilen değeri belirtin `microsoft/apt:1` .
+    | ınstalınstalbu ölçüt | <ul><li>Güncelleştirme türü için SWVersion değerini belirtin `microsoft/swupdate:1`</li><li>Ad **sürümü** belirtin; burada _ad_ apt bildiriminin adı ve _Sürüm_ apt bildiriminin sürümüdür. Örneğin, contoso-IoT-Edge-1.0.0.0.
     | updateFilePath | Bilgisayarınızdaki güncelleştirme dosyalarının yolu
 
 

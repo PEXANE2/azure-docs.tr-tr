@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: memildin
-ms.openlocfilehash: 5824457a9f2ce411a871b5e76802ecf2e2f106c3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9d917b3682d3b503743e706e8c952854e86fbc5e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099514"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727051"
 ---
 # <a name="security-alerts-and-incidents-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde güvenlik uyarıları ve olaylar
 
@@ -73,13 +73,12 @@ Güvenlik Merkezi, her uyarıya katılma sırasını önceliklendirmenize yardı
 > [!NOTE]
 > Uyarı önem derecesi, Portal 'da ve 01-01-2019 ön tarihlik REST API sürümlerinde farklı şekilde görüntülenir. API 'nin eski bir sürümünü kullanıyorsanız, aşağıda açıklanan tutarlı deneyime yükseltin.
 
-| Önem derecesi          | Önerilen yanıt                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Önem derecesi          | Önerilen yanıt      |
+|---|---|
 | **Yüksek**          | Kaynağınızın güvenliğinin tehlikeye girdiği büyük bir olasılık vardır. Hemen bir yere bakmanız gerekir. Güvenlik Merkezi, hem kötü amaçlı amaç hem de uyarı vermek için kullanılan bulgularda yüksek güvenilirliğe sahiptir. Örneğin, Mimikatz gibi bilinen kötü amaçlı bir aracın yürütülmesini algılayan bir uyarı, kimlik bilgilerinin çalınması için kullanılan ortak bir araçtır.                                                                                                               |
 | **Medium**        | Bu muhtemelen şüpheli bir etkinlik, bir kaynağın tehlikede olduğunu gösteriyor olabilir. Güvenlik Merkezi 'nin analitik veya bulma 'daki güvenilirliği orta ve kötü amaçlı amaç 'nin güvenilirliği orta ile yüksektir. Bunlar genellikle makine öğrenimi veya anomali tabanlı algılamalar olur. Örneğin, anormal bir konumdan oturum açma girişimi.                                                                                                                |
 | **Düşük**           | Bu bir zararsız veya engellenmiş saldırı olabilir. Güvenlik Merkezi, amacın kötü amaçlı olduğu ve etkinliğin masum olabileceğinden emin olmak için yeterli değildir. Örneğin, günlük Temizleme, bir saldırgan parçaları gizlemeyi denediğinde oluşabilecek bir eylemdir, ancak çoğu durumda Yöneticiler tarafından gerçekleştirilen bir rutin işlemdir. Güvenlik Merkezi, baktığımız ilginç bir durum olmadığı takdirde saldırı ne zaman engellendiğine ilişkin bilgi vermez. |
-| **Bilgilendirici** | Yalnızca bir güvenlik olayının detayına veya belirli bir uyarı KIMLIĞIYLE REST API kullandığınızda bilgilendirme uyarıları görürsünüz. Bir olay genellikle bilgilendirici bir dizi uyarıdan oluşur, bazıları yalnızca bilgilendirme amaçlıdır, ancak diğer uyarıların bağlamında daha yakından bir görünmeyebilir.                                                                                                                         |  |
-|                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Bilgilendirici** | Yalnızca bir güvenlik olayının detayına veya belirli bir uyarı KIMLIĞIYLE REST API kullandığınızda bilgilendirme uyarıları görürsünüz. Bir olay genellikle bilgilendirici bir dizi uyarıdan oluşur, bazıları yalnızca bilgilendirme amaçlıdır, ancak diğer uyarıların bağlamında daha yakından bir görünmeyebilir.                                                                                                                         |
 
 ## <a name="export-alerts"></a>Uyarıları dışarı aktarma
 
