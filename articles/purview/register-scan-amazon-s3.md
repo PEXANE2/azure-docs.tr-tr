@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/21/2021
 ms.custom: references_regions
 ms.openlocfilehash: f77bd69f8266d9461481cd0a12a7b70107622de5
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104773462"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Amazon için Azure purview Bağlayıcısı S3
@@ -352,7 +352,7 @@ Demetlerinizi takip etme veri kaynakları olarak ekledikten sonra, bir taramayı
 
     Yeni bir özel tarama kuralı kümesi oluşturmayı seçerseniz, aşağıdaki ayarları tanımlamak için Sihirbazı kullanın:
 
-    |Bölme  |Açıklama  |
+    |Bölme  |Description  |
     |---------|---------|
     |**Yeni tarama kuralı kümesi** /<br>**Tarama kuralı açıklaması**    |   Kural kümesi için anlamlı bir ad ve isteğe bağlı bir açıklama girin      |
     |**Dosya türlerini seçin**     | Taramaya dahil etmek istediğiniz tüm dosya türlerini seçin ve ardından **devam**' ı seçin.<br><br>Yeni dosya türü eklemek için **yeni dosya türü**' nü seçin ve aşağıdakileri tanımlayın: <br>-Eklemek istediğiniz dosya uzantısı <br>-İsteğe bağlı bir açıklama  <br>-Dosya içeriğinin özel bir sınırlayıcısı olup olmadığı veya bir sistem dosyası türü olup olmadığı. Ardından, özel sınırlayıcıyı girin veya sistem dosya türünü seçin. <br><br>Özel dosya türünü oluşturmak için **Oluştur** ' u seçin.     |
