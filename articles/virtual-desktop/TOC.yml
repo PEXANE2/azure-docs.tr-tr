@@ -160,8 +160,6 @@
       href: fslogix-containers-azure-files.md
     - name: FSLogix profil kapsayıcıları için depolama seçenekleri
       href: store-fslogix-profile.md
-    - name: İş ortağı tümleştirmeleri
-      href: partners.md
     - name: Windows Sanal Masaüstü hakkında SSS
       href: faq.md
     - name: Windows 10 Enterprise çoklu oturum hakkında SSS

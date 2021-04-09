@@ -6,10 +6,10 @@ ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 7b53b0bc8c7cc3df2123d327bf87a85081f88f50
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100589552"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
@@ -449,13 +449,13 @@ Uyarlamalı veya sabit oran örnekleme işlemi sırasında giriş örnekleme iş
 > [!WARNING]
 > Portal kutucuğunda gösterilen değer, alma örneklemesi için ayarladığınız değeri gösterir. Herhangi bir SDK örnekleme (Uyarlamalı veya sabit oran örnekleme) işleminde varsa, gerçek örnekleme hızını temsil etmez.
 
-## <a name="when-to-use-sampling"></a>Örnekleme ne zaman kullanılır?
+## <a name="when-to-use-sampling&quot;></a>Örnekleme ne zaman kullanılır?
 
 Genel olarak, çoğu küçük ve orta büyüklükte uygulamalar için örnekleme gerekmez. En yararlı tanılama bilgileri ve en doğru istatistikler, tüm Kullanıcı etkinliklerinizde veri toplanarak elde edilir. 
 
 Örnekleme 'nın başlıca avantajları şunlardır:
 
-* Uygulamanız kısa bir süre içinde çok yüksek düzeyde telemetri gönderdiğinde, hizmet bırakmaları ("kısıtlar") veri noktalarını Application Insights. Örnekleme, uygulamanızın azaltma işleminin oluşma olasılığını azaltır.
+* Uygulamanız kısa bir süre içinde çok yüksek düzeyde telemetri gönderdiğinde, hizmet bırakmaları (&quot;kısıtlar") veri noktalarını Application Insights. Örnekleme, uygulamanızın azaltma işleminin oluşma olasılığını azaltır.
 * Fiyatlandırma katmanınız için veri noktalarının [kotası](pricing.md) içinde tutulması. 
 * Telemetri koleksiyonundan ağ trafiğini azaltmak için. 
 
