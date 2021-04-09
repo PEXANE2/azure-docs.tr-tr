@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: a00c11924d2c0f6860c297ab7e58da21da5e1975
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5b3dd9ae4113c3c9fe4b0547f990dc7e912b99f5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102634711"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726422"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler için Arşiv mi var?
 
@@ -298,8 +298,8 @@ Kullandıkları tarayıcı türünden bağımsız olarak tüm kullanıcılar iç
 
 |Birleşik öneri|Açıklamayı Değiştir|
 |----|:----|
-|**Sanal makinelerinizde bir güvenlik açığı değerlendirme çözümünün etkinleştirilmesi gerekir**|Aşağıdaki iki öneriyi değiştirir:<br> **•** Sanal makinelerde yerleşik güvenlik açığı değerlendirme çözümünü etkinleştirin (Qualys (artık kullanım dışı) ile desteklenir (Standart katmana dahildir)<br> **•** Güvenlik açığı değerlendirme çözümünün sanal makinelerinizde yüklü olması gerekir (artık kullanım dışı) (Standart ve ücretsiz Katmanlar)|
-|**Sanal makinelerinizdeki güvenlik açıkları düzeltilmelidir**|Aşağıdaki iki öneriyi değiştirir:<br>**•** Sanal makinelerinizde bulunan güvenlik açıklarını düzeltin (Qualys tarafından desteklenir) (artık kullanım dışı)<br>**•** Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir (artık kullanım dışı)|
+|**Sanal makinelerinizde bir güvenlik açığı değerlendirme çözümünün etkinleştirilmesi gerekir**|Aşağıdaki iki öneriyi değiştirir:<br> Sanal makinelerde yerleşik güvenlik açığı değerlendirme çözümünü etkinleştirin (Qualys (artık kullanım dışı) ile desteklenir (Standart katmana dahildir)<br> Güvenlik açığı değerlendirme çözümünün sanal makinelerinizde yüklü olması gerekir (artık kullanım dışı) (Standart ve ücretsiz Katmanlar)|
+|**Sanal makinelerinizdeki güvenlik açıkları düzeltilmelidir**|Aşağıdaki iki öneriyi değiştirir:<br>Sanal makinelerinizde bulunan güvenlik açıklarını düzeltin (Qualys tarafından desteklenir) (artık kullanım dışı)<br>Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir (artık kullanım dışı)|
 |||
 
 Artık güvenlik merkezi 'nin güvenlik açığı değerlendirmesi uzantısını veya özel olarak lisanslı bir çözümü ("KLG") Qualys veya Rapid7 gibi bir ortaktan dağıtmak için aynı öneriyi kullanacaksınız.
@@ -312,20 +312,20 @@ Ayrıca, güvenlik açıkları bulunduğunda ve Güvenlik Merkezi 'ne bildirildi
 
 ##### <a name="before-august-2020"></a>Ağustos 2020 öncesi
 
-|Öneri|Kapsam|
+| Öneri|Kapsam|
 |----|:----|
 |**Sanal makinelerde yerleşik güvenlik açığı değerlendirme çözümünü etkinleştirin (Qualys tarafından desteklenir)**<br>Anahtar: 550e890b-e652-4d22-8274-60b3bdb24c63|Yerleşik|
 |**Sanal makinelerinizde bulunan güvenlik açıklarını düzeltin (Qualys tarafından desteklenir)**<br>Anahtar: 1195aff-c881-495E-9bc5-1486211ae03f|Yerleşik|
 |**Güvenlik açığı değerlendirme çözümünün sanal makinelerinizde yüklü olması gerekir**<br>Anahtar: 01b1ed4c-B733-4FEE-b145-f23236e70cf3|KLG|
 |**Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir**<br>Anahtar: 71992a2a-d168-42e0-b10e-6b45fa2ecddb|KLG|
-||||
+|||
 
 
 |İlke|Kapsam|
 |----|:----|
 |**Güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir**<br>İlke KIMLIĞI: 501541f7-f7e7-4cd6-868C-4190fdad3ac9|Yerleşik|
 |**Güvenlik açıkları bir güvenlik açığı değerlendirme çözümü tarafından düzeltilmelidir**<br>İlke KIMLIĞI: 760a85ff-6162-42b3-8d70-698e268f648c|KLG|
-||||
+|||
 
 
 ##### <a name="from-august-2020"></a>Ağustos 2020 ' den
@@ -334,12 +334,12 @@ Ayrıca, güvenlik açıkları bulunduğunda ve Güvenlik Merkezi 'ne bildirildi
 |----|:----|
 |**Sanal makinelerinizde bir güvenlik açığı değerlendirme çözümünün etkinleştirilmesi gerekir**<br>Anahtar: ffff0522-1e88-47fc-8382-2a80ba848f5d|Yerleşik + KLG|
 |**Sanal makinelerinizdeki güvenlik açıkları düzeltilmelidir**<br>Anahtar: 1195aff-c881-495E-9bc5-1486211ae03f|Yerleşik + KLG|
-||||
+|||
 
 |İlke|Kapsam|
 |----|:----|
 |[**Güvenlik açığı değerlendirmesi sanal makinelerde etkinleştirilmelidir**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>İlke KIMLIĞI: 501541f7-f7e7-4cd6-868C-4190fdad3ac9 |Yerleşik + KLG|
-||||
+|||
 
 
 ### <a name="new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only"></a>ASC_default Initiative 'e eklenen yeni AKS güvenlik ilkeleri – yalnızca özel önizleme müşterileri tarafından kullanılmak üzere
@@ -899,7 +899,7 @@ Azure depolama için tehdit koruması, Microsoft Threat Intelligence tarafından
 
 Merkezi olarak yönetilen güvenlik ve BT/işlem kuruluşları, ortamlarında tutarsızlıklar bulunduğunda kuruluştaki gerekli eylemi gerçekleştirmek için iç iş akışı süreçlerini uygular. Çoğu durumda, bu iş akışları tekrarlanabilir süreçler ve otomasyon, kuruluştaki süreçler büyük ölçüde kolaylaştırabilir.
 
-Günümüzde, güvenlik merkezi 'nde müşterilerin Azure Logic Apps kullanarak Otomasyon yapılandırması oluşturmalarına ve öneriler veya uyarılar gibi belirli ASC 'leri temel alarak otomatik olarak tetiklenecek ilkeler oluşturmalarına olanak tanıyan yeni bir özellik sunuyoruz. Azure Logic App, çok sayıda Logic App Bağlayıcısı tarafından desteklenen özel bir eylem yapmak veya bir e-posta gönderme ya da ServiceNow™ bileti açma gibi güvenlik merkezi tarafından sunulan şablonlardan birini kullanmak üzere yapılandırılabilir.
+Günümüzde, güvenlik merkezi 'nde müşterilerin Azure Logic Apps kullanarak Otomasyon yapılandırması oluşturmalarına ve öneriler veya uyarılar gibi belirli ASC 'leri temel alarak otomatik olarak tetiklenecek ilkeler oluşturmalarına olanak tanıyan yeni bir özellik sunuyoruz. Azure Logic App, çok sayıda Logic App Bağlayıcısı tarafından desteklenen özel bir eylem yapmak veya bir e-posta gönderme ya da ServiceNow bileti açma gibi güvenlik merkezi tarafından sunulan şablonlardan birini kullanmak üzere yapılandırılabilir &trade; .
 
 İş akışlarınızı çalıştırmaya yönelik otomatik ve el ile güvenlik merkezi özellikleri hakkında daha fazla bilgi için bkz. [iş akışı Otomasyonu](workflow-automation.md).
 

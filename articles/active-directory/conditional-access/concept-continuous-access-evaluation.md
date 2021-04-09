@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a2c83fc0f4776e1ded2c8c12cb990ab227f048b
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 44091cda479f2c0ccbe77bb9989ee2eda4c40f9d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105109021"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727102"
 ---
 # <a name="continuous-access-evaluation"></a>Sürekli erişim değerlendirmesi
 
@@ -167,7 +167,7 @@ Office Update kanallarının bir açıklaması için bkz. [Microsoft 365 uygulam
 
 Yöneticiler tarafından yapılan ilke değişikliklerinin etkili olması bir gün sürebilir. Gecikme süresi iki saate kadar azaltılacağı için bazı iyileştirme yapıldı. Ancak, henüz tüm senaryoları kapsamaz. 
 
-Bir acil durum varsa ve güncelleştirilmiş ilkelerinizin belirli kullanıcılara hemen uygulanması gerekiyorsa, kullanıcıların oturumunu iptal etmek için Kullanıcı profili sayfasında bu [PowerShell komutunu](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) veya "oturumu iptal et" i kullanmanız gerekir. Bu, güncelleştirilmiş ilkelerin hemen uygulandığından emin olmanızı sağlar.
+Bir acil durum varsa ve güncelleştirilmiş ilkelerinizin belirli kullanıcılara hemen uygulanması gerekiyorsa, kullanıcıların oturumunu iptal etmek için Kullanıcı profili sayfasında bu [PowerShell komutunu](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) veya "oturumu iptal et" i kullanmanız gerekir. Bu, güncelleştirilmiş ilkelerin hemen uygulandığından emin olmanızı sağlar.
 
 ### <a name="coauthoring-in-office-apps"></a>Office uygulamalarında birlikte yazma
 
