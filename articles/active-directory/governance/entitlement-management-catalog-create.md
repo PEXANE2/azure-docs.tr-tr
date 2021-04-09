@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21783f0ef32289aad4b7d136dc8200d61fc0852
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ad10cfc661b80eaac146087d85dc87002f6a455
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592940"
+ms.locfileid: "105960155"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde kaynakların kataloğunu oluşturma ve yönetme
 
@@ -81,7 +81,7 @@ Kaynakları bir erişim paketine dahil etmek için, kaynakların bir katalogda m
 
     Bu kaynaklar artık kataloğun içindeki erişim paketlerine dahil edilebilir.
 
-### <a name="add-a-multi-geo-sharepoint-site"></a>Çok coğrafi coğrafi SharePoint sitesi ekleme
+### <a name="add-a-multi-geo-sharepoint-site-preview"></a>Çok coğrafi coğrafi SharePoint sitesi ekleme (Önizleme)
 
 1. SharePoint için [Çoklu coğrafi bölge](/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365) özelliği etkinleştirilmişse, siteleri seçmek istediğiniz ortamı seçin.
     

@@ -11,10 +11,10 @@ ms.reviewer: vanto
 ms.date: 03/17/2021
 ms.custom: azure-synapse, sqldbrb=1
 ms.openlocfilehash: 8513127f4a79c9c94323140462ad2d2648a0130d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104577765"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için denetim
@@ -60,7 +60,7 @@ Bir denetim ilkesi, belirli bir veritabanı için veya Azure 'da varsayılan [su
 
 - Denetim ilkesi veritabanı düzeyinde bir Log Analytics çalışma alanına veya bir olay hub hedefine tanımlandığında, aşağıdaki işlemler kaynak veritabanı düzeyinde denetim ilkesini tutamaz:
     - [Veritabanı kopyalama](database-copy.md)
-    - [Zaman içindeki bir noktaya geri yükleme](recovery-using-backups.md)
+    - [Belirli bir noktaya geri yükleme](recovery-using-backups.md)
     - [Coğrafi çoğaltma](active-geo-replication-overview.md) (ikincil veritabanı, veritabanı düzeyinde denetime sahip olmaz)
 
 - Veritabanında etkinleştirmenin yanı sıra sunucu üzerinde denetimi etkinleştirmek, sunucu denetiminin ayarlarından *hiçbirini geçersiz kılmaz veya değiştirmez.* Her iki denetim de yan yana bulunur. Diğer bir deyişle, veritabanı paralel olarak iki kez denetlenir; sunucu ilkesi tarafından bir kez ve veritabanı ilkesi tarafından bir kez.

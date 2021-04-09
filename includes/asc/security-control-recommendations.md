@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/14/2021
+ms.date: 03/29/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 14655abc403248e0ce22d22aeca342032b930fb4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 635ce116509204726762127210923a408b62ea78
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103468011"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105957989"
 ---
 <table class="tg">
 <thead>
@@ -99,7 +99,7 @@ ms.locfileid: "103468011"
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">0</p></strong></td>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Gelişmiş tehdit korumasını etkinleştir</p></strong>Azure Güvenlik Merkezi 'nin isteğe bağlı Azure Defender tehdit koruması planları, ortamınız için kapsamlı savunma sağlar. Güvenlik Merkezi, ortamınızın herhangi bir alanında bir tehdit algıladığında bir uyarı oluşturur. Bu uyarılar, etkilenen kaynakların ayrıntılarını, önerilen düzeltme adımlarını ve bazı durumlarda bir mantıksal uygulamayı yanıt olarak tetiklemeye yönelik bir seçenek anlatmaktadır.<br>Her Azure Defender planı, bu güvenlik denetimindeki ilgili öneriyi kullanarak etkinleştirebileceğiniz ayrı, isteğe bağlı bir tekliftir.<br><a href="/azure/security-center/threat-protection">Güvenlik Merkezi 'nde tehdit koruması hakkında daha fazla bilgi edinin</a>.</td>
-    <td class="tg-lboi"; width=55%>- App Service için Azure Defender etkinleştirilmelidir<br />- Azure SQL veritabanı sunucuları için Azure Defender etkinleştirilmelidir<br />- Kapsayıcı kayıt defterleri için Azure Defender etkinleştirilmelidir<br />- Key Vault için Azure Defender etkinleştirilmelidir<br />- Kubernetes için Azure Defender etkinleştirilmelidir<br />- Sunucular için Azure Defender etkinleştirilmelidir<br />- Makinelerdeki SQL Server 'lar için Azure Defender etkinleştirilmelidir<br />- Depolama için Azure Defender etkinleştirilmelidir</td>
+    <td class="tg-lboi"; width=55%>- Azure Arc etkin Kubernetes kümelerinde Azure Defender 'ın uzantısı yüklü olmalıdır<br />- App Service için Azure Defender etkinleştirilmelidir<br />- Azure SQL veritabanı sunucuları için Azure Defender etkinleştirilmelidir<br />- Kapsayıcı kayıt defterleri için Azure Defender etkinleştirilmelidir<br />- Key Vault için Azure Defender etkinleştirilmelidir<br />- Kubernetes için Azure Defender etkinleştirilmelidir<br />- Sunucular için Azure Defender etkinleştirilmelidir<br />- Makinelerdeki SQL Server 'lar için Azure Defender etkinleştirilmelidir<br />- Depolama için Azure Defender etkinleştirilmelidir</td>
   </tr>
 </tbody>
 </table>

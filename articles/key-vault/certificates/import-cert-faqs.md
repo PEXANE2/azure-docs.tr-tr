@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 78ec0af0acbb74436af16abba75d64de061d5268
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d8a06471129f8d79e1ced150f7410392b91d498b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202174"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728037"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Azure Key Vault sertifikaları içeri aktarma hakkında SSS
 
@@ -28,7 +28,7 @@ Bu makalede Azure Key Vault sertifikalarını içeri aktarma hakkında sık soru
 Bir sertifika içeri aktarma işlemi için Azure Key Vault iki sertifika dosyası biçimini kabul eder: pek ve PFX. Yalnızca ortak bölümü olan ped dosyaları olsa da, Key Vault yalnızca özel anahtarı olan bir ped veya PFX dosyası gerektirir. Daha fazla bilgi için bkz. [Key Vault bir sertifikayı Içeri aktarma](./tutorial-import-certificate.md#import-a-certificate-to-key-vault).
 
 ### <a name="after-i-import-a-password-protected-certificate-to-key-vault-and-then-download-it-why-cant-i-see-the-password-thats-associated-with-it"></a>Parola korumalı bir sertifikayı Key Vault aldıktan sonra karşıdan yükledikten sonra, onunla ilişkili parolayı neden göremiyorum?
-    
+     
 Bir sertifika içeri aktarıldıktan ve Key Vault bir şekilde korunduktan sonra, ilişkili parolası kaydedilmez. Parola, içeri aktarma işlemi sırasında yalnızca bir kez gereklidir. Bu tasarıma göre yapılır, ancak [Azure PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)aracılığıyla parolayı ekleyerek sertifikayı her zaman gizli dizi olarak alabilir ve Base64 'den PFX 'e dönüştürebilirsiniz.
 
 ### <a name="how-can-i-resolve-a-bad-parameter-error-what-are-the-supported-certificate-formats-for-importing-to-key-vault"></a>"Hatalı parametre" hatasını nasıl çözebilirim? Key Vault aktarmak için desteklenen sertifika biçimleri nelerdir?
@@ -42,8 +42,8 @@ Daha fazla bilgi için bkz. [sertifika gereksinimleri](./certificate-scenarios.m
 Hayır, bir Azure Resource Manager (ARM) şablonu kullanarak sertifika işlemleri yapmak mümkün değildir. Önerilen bir geçici çözüm, Azure API 'SI, Azure CLı veya PowerShell 'deki sertifika içeri aktarma yöntemlerini kullanmaktır. Mevcut bir sertifikanız varsa, parolayı gizli dizi olarak içeri aktarabilirsiniz.
 
 ### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>Azure portal aracılığıyla bir sertifikayı içeri aktardığımda, "sorun oluştu" hatası alıyorum. Nasıl daha fazla araştırma yapabilirim?
-    
-Daha açıklayıcı bir hata görüntülemek için, [Azure CLI](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) veya [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)kullanarak sertifika dosyasını içeri aktarın.
+     
+Daha açıklayıcı bir hata görüntülemek için, [Azure CLI](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) veya [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate)kullanarak sertifika dosyasını içeri aktarın.
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>"Hata türü: erişim engellendi veya Kullanıcı sertifikayı içeri aktarma yetkisi yok" hatasını nasıl çözebilirim?
     
