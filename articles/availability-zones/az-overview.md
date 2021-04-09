@@ -9,10 +9,10 @@ ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
 ms.openlocfilehash: dad8661de55fc90c9f3d3782c402deb519d16536
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104596017"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 'da bölgeler ve Kullanılabilirlik Alanları
@@ -99,7 +99,7 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > | Azure Cosmos DB                        | Otomasyon                                        | 
 > | Azure Data Lake Storage Gen2           | Azure Active Directory Domain Services            | 
 > | Azure ExpressRoute                     | Azure Bastion                                     | 
-> | Azure Genel IP                        | Redis için Azure Önbelleği                             | 
+> | Azure Genel IP                        | Redis için Azure Cache                             | 
 > | Azure SQL Veritabanı                     | Azure Bilişsel Arama                            | 
 > | Azure SQL Yönetilen Örnek             | Azure Bilişsel Hizmetler                          | 
 > | Disk Depolama                           | Azure Bilişsel Hizmetler: Görüntü İşleme         | 
@@ -178,7 +178,7 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > | Azure NetApp Files                                   |
 > | Azure SignalR Hizmeti                                |
 > | Azure yay bulut hizmeti                           |
-> | Azure Zaman Serisi Görüşleri                           |
+> | Azure Time Series Insights                           |
 > | Azure VMware Çözümü                                |
 > | CloudSimple tarafından sunulan Azure VMware Çözümü                 |
 > | Data Lake Analytics                                  |

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/25/2020
 ms.author: jeedes
 ms.openlocfilehash: 77f72d6c63231f0854b58470f86c65ffc81c9775
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98731928"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Öğretici: Çevhouse ile tümleştirme Azure Active Directory
@@ -146,7 +146,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Çevhouse 'a er
     >[!NOTE]
     >Alternatif olarak, **Dosya Seç** seçeneğine tıklayarak **Federasyon meta veri XML** dosyasını da karşıya yükleyebilirsiniz.
 
-### <a name="create-greenhouse-test-user"></a>Doğa test kullanıcısı oluşturma
+### <a name="create-greenhouse-test-user&quot;></a>Doğa test kullanıcısı oluşturma
 
 Azure AD kullanıcılarının, Çevhouse 'da oturum açmasını sağlamak için, bunların bir Çevhouse 'a sağlanması gerekir. Büyük bir örnekte, sağlama işlemi el ile gerçekleştirilen bir görevdir.
 
@@ -159,7 +159,7 @@ Azure AD kullanıcılarının, Çevhouse 'da oturum açmasını sağlamak için,
 
 2. **Yeni kullanıcılar > yapılandırma > kullanıcılara** git
    
-    ![Kullanıcılar](./media/greenhouse-tutorial/create-user-1.png "Kullanıcılar")
+    ![Kullanıcılar](./media/greenhouse-tutorial/create-user-1.png &quot;Kullanıcılar")
 
 4. **Yeni Kullanıcı Ekle** bölümünde aşağıdaki adımları uygulayın:
    

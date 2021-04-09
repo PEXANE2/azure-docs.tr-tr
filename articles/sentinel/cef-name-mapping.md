@@ -9,10 +9,10 @@ ms.subservice: azure-sentinel
 ms.topic: reference
 ms.date: 03/16/2021
 ms.openlocfilehash: 6c23fe86af030d371e12914062bb9558e8db3484
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104776298"
 ---
 # <a name="cef-and-commonsecuritylog-field-mapping"></a>CEF ve CommonSecurityLog alan eşleme
@@ -23,7 +23,7 @@ Daha fazla bilgi için bkz. [ortak olay biçimini kullanarak dış çözümünü
 
 ## <a name="a---c"></a>A - C
 
-|CEF anahtar adı  |CommonSecurityLog alan adı  |Açıklama  |
+|CEF anahtar adı  |CommonSecurityLog alan adı  |Description  |
 |---------|---------|---------|
 | çalışanlarının    |    <a name="deviceaction"></a> DeviceAction     |  Olayda bahsedilen eylem.       |
 |   Uygulama  |    ApplicationProtocol     |  Uygulamada kullanılan protokol (HTTP, HTTPS, SSHv2, Telnet, POP, ıMPA, ıMAPS vb.).   |
@@ -32,7 +32,7 @@ Daha fazla bilgi için bkz. [ortak olay biçimini kullanarak dış çözümünü
 
 ## <a name="d"></a>D
 
-|CEF anahtar adı  |CommonSecurityLog adı  |Açıklama  |
+|CEF anahtar adı  |CommonSecurityLog adı  |Description  |
 |---------|---------|---------|
 |Cihaz satıcısı     |  Devicevençi       | Cihaz ürün ve sürüm tanımlarıyla birlikte, gönderen cihazın türünü benzersiz şekilde tanımlayan dize.       |
 |Cihaz ürünü     |   DeviceProduct      |   Cihaz satıcısı ve sürüm tanımlarıyla birlikte, gönderen cihazın türünü benzersiz şekilde tanımlayan dize.        |
@@ -70,7 +70,7 @@ Daha fazla bilgi için bkz. [ortak olay biçimini kullanarak dış çözümünü
 
 ## <a name="e---i"></a>E-ı
 
-|CEF anahtar adı  |CommonSecurityLog adı  |Açıklama  |
+|CEF anahtar adı  |CommonSecurityLog adı  |Description  |
 |---------|---------|---------|
 |end     |  EndTime       | Olayla ilgili etkinliğin sona erdiği zaman.        |
 |externalId    |   ExternalID      | Kaynak cihaz tarafından kullanılan bir KIMLIK. Genellikle, bu değerler bir olayla ilişkili değerleri artırır.        |
@@ -89,7 +89,7 @@ Daha fazla bilgi için bkz. [ortak olay biçimini kullanarak dış çözümünü
 
 ## <a name="m---p"></a>M-P
 
-|CEF anahtar adı  |CommonSecurityLog adı  |Açıklama  |
+|CEF anahtar adı  |CommonSecurityLog adı  |Description  |
 |---------|---------|---------|
 |msg   |  İleti       | Olayla ilgili daha fazla ayrıntı sağlayan bir ileti.        |
 |Name     |  Etkinlik       |   Olayın okunabilir ve anlaşılır bir açıklamasını temsil eden bir dize.     |
@@ -109,7 +109,7 @@ Daha fazla bilgi için bkz. [ortak olay biçimini kullanarak dış çözümünü
 
 ## <a name="r---t"></a>R-T
 
-|CEF anahtar adı  |CommonSecurityLog adı  |Açıklama  |
+|CEF anahtar adı  |CommonSecurityLog adı  |Description  |
 |---------|---------|---------|
 |Nedeni     |  Nedeni      |Bir denetim olayının oluşturulma nedeni. <br><br>Örneğin `Bad password` veya `Unknown user` olabilir.         |
 |İstek     |   RequestURL      | Protokol dahil olmak üzere bir HTTP isteği için erişilen URL. Örneğin, `http://www/secure.com`        |
@@ -141,7 +141,7 @@ Daha fazla bilgi için bkz. [ortak olay biçimini kullanarak dış çözümünü
 Aşağıdaki **Commonsecuritylog** alan adlarında CEF anahtarlarında eşlemeler yoktur:
 
 
-|CommonSecurityLog alan adı  |Açıklama  |
+|CommonSecurityLog alan adı  |Description  |
 |---------|---------|
 |**Originallogönem derecesi**     |  Her zaman boş, Cıcoasa tümleştirmesi için desteklenir. <br>Günlük önem derecesi değerleri hakkında daha fazla bilgi için bkz. [Logönem derecesi](#logseverity) alanı.       |
 |**RemoteIP**     |     Uzak IP adresi. <br>Bu değer, mümkünse, [Communicationdirection](#communicationdirection) alanını temel alır.     |
