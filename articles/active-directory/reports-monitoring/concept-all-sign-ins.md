@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 185638d683699403c304603d968cfe84e32a55b5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103574569"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory oturum açma etkinlik raporları-önizleme
@@ -102,7 +102,7 @@ Oturum açma raporu dikey penceresinde şunları yapabilirsiniz:
 
 
 
-## <a name="user-sign-ins"></a>Kullanıcı oturum açma işlemleri
+## <a name="user-sign-ins&quot;></a>Kullanıcı oturum açma işlemleri
 
 Oturum açma dikey penceresindeki her sekme aşağıdaki varsayılan sütunları gösterir. Bazı sekmelerin ek sütunları vardır:
 
@@ -120,7 +120,7 @@ Oturum açma dikey penceresindeki her sekme aşağıdaki varsayılan sütunları
 
 
 
-### <a name="interactive-user-sign-ins"></a>Etkileşimli kullanıcı oturum açma işlemleri
+### <a name=&quot;interactive-user-sign-ins&quot;></a>Etkileşimli kullanıcı oturum açma işlemleri
 
 
 Etkileşimli kullanıcı oturum açma işlemleri, kullanıcının Azure AD 'ye bir kimlik doğrulama faktörü sağladığı veya Microsoft Authenticator uygulaması gibi bir yardımcı uygulamayla doğrudan etkileşimde bulunduğu oturum açma yöntemlerdir. Kullanıcıların Azure AD 'ye veya bir yardımcı uygulamaya sağladığı bir kullanıcı tarafından sağlanan, MFA zorlukları, biyometrik faktörleri veya QR kodlarına yönelik parola ekleme faktörleri.
@@ -155,7 +155,7 @@ Varsayılan alanlara ek olarak, etkileşimli oturum açma işlemleri raporu da �
 
 Araç çubuğunda **Sütunlar**’a tıklayarak liste görünümünü özelleştirebilirsiniz.
 
-![Etkileşimli kullanıcı oturum açma sütunları](./media/concept-all-sign-ins/columns-interactive.png "Etkileşimli kullanıcı oturum açma sütunları")
+![Etkileşimli kullanıcı oturum açma sütunları](./media/concept-all-sign-ins/columns-interactive.png &quot;Etkileşimli kullanıcı oturum açma sütunları")
 
 
 
