@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 8c3d76f24cce860538dc3bd5dcf29b59708bdb5d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98726289"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>Öğretici: Zscaler Iki ile tümleştirme Azure Active Directory
@@ -200,14 +200,14 @@ Bu bölümde, Zscaler 'nun Iki erişimine izin vererek Azure çoklu oturum açma
 
     b. **Etkinleştir**' e tıklayın.
 
-## <a name="configuring-proxy-settings"></a>Ara sunucu ayarlarını yapılandırma
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Internet Explorer 'da proxy ayarlarını yapılandırmak için
+## <a name="configuring-proxy-settings&quot;></a>Ara sunucu ayarlarını yapılandırma
+### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>Internet Explorer 'da proxy ayarlarını yapılandırmak için
 
 1. **Internet Explorer 'ı** başlatın.
 
 2. **Internet** seçenekleri iletişim kutusunu açmak için **Araçlar** menüsünden **Internet seçenekleri** ' ni seçin.   
     
-     ![Internet seçenekleri](./media/zscaler-two-tutorial/ic769492.png "Internet seçenekleri")
+     ![Internet seçenekleri](./media/zscaler-two-tutorial/ic769492.png &quot;Internet seçenekleri")
 
 3. **Bağlantılar** sekmesine tıklayın.   
   
