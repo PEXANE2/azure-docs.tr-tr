@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
 ms.openlocfilehash: 77a8e208e463b8ab20d563421d447813b1ce84ee
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104772561"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel'de izinler
@@ -36,11 +36,11 @@ Azure Sentinel 'e uygun erişim sağlamak için güvenlik işlemleri ekibiniz da
 
 **Tüm Azure Sentinel yerleşik rolleri, Azure Sentinel çalışma alanınızdaki verilere yönelik okuma erişimi verir.**
 
-- [Azure Sentinel okuyucusu](../role-based-access-control/built-in-roles.md#azure-sentinel-reader) verileri, olayları, çalışma kitaplarını ve diğer Azure Sentinel kaynaklarını görüntüleyebilir.
+- [Azure Sentinel Okuyucusu](../role-based-access-control/built-in-roles.md#azure-sentinel-reader) verileri, olayları, çalışma kitaplarını ve diğer Azure Sentinel kaynaklarını görüntüleyebilir.
 
-- [Azure Sentinel Yanıtlayıcı](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) , yukarıdaki, olayları yönetme (ata, kapat vb.)
+- [Azure Sentinel Yanıtlayıcısı](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) yukarıdakilere ek olarak olayları yönetebilir (atayabilir, kapatabilir vb.)
 
-- [Azure Sentinel katılımcısı](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) , yukarıdaki ' a ek olarak, çalışma kitapları, analiz kuralları ve diğer Azure Sentinel kaynakları oluşturabilir ve düzenleyebilir.
+- [Azure Sentinel Katkıda Bulunanı](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) yukarıdakilere ek olarak çalışma kitaplarını, analiz kurallarını ve diğer Azure Sentinel kaynaklarını oluşturabilir ve düzenleyebilir.
 
 - [Azure Sentinel Otomasyonu katılımcısı](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) , Azure Sentinel 'in Otomasyon kurallarına PlayBook eklemesine olanak tanır. Kullanıcı hesapları için tasarlanmamıştır.
 
