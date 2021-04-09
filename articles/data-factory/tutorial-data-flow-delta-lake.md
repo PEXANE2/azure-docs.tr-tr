@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2021
 ms.date: 02/09/2021
 ms.openlocfilehash: cb8d44353e826df14ed3baab2c4ca66ffed4a569
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100418110"
 ---
 # <a name="transform-data-in-delta-lake-using-mapping-data-flows"></a>Veri akışlarını eşleme kullanarak Delta Gölü verileri dönüştürme
@@ -68,11 +68,11 @@ Bu adımda, bir veri akışı etkinliği içeren bir işlem hattı oluşturacaks
 
     ![Yeni bir veri akışı oluştururken veri akışınızı nerede bulabileceğiniz gösteren ekran görüntüsü.](media/tutorial-data-flow/activity2.png)
 
-## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Veri akışı tuvalinde dönüştürme mantığı oluşturma
+## <a name="build-transformation-logic-in-the-data-flow-canvas&quot;></a>Veri akışı tuvalinde dönüştürme mantığı oluşturma
 
 Bu öğreticide iki veri akışı oluşturacaksınız. Cist veri akışı, yukarıdaki filmler CSV dosyasından yeni bir Delta Gölü oluşturmak için havuza yönelik basit bir kaynaktır. Son olarak, bu akış tasarımını, Delta Gölü verileri güncelleştirmek için aşağıda oluşturacaksınız.
 
-![Son akış](media/data-flow/data-flow-tutorial-6.png "Son akış")
+![Son akış](media/data-flow/data-flow-tutorial-6.png &quot;Son akış")
 
 ### <a name="tutorial-objectives"></a>Öğretici amaçları
 

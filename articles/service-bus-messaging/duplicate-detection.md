@@ -4,10 +4,10 @@ description: Bu makalede Azure Service Bus iletilerinde yinelenenleri nasıl Alg
 ms.topic: article
 ms.date: 01/13/2021
 ms.openlocfilehash: 527c2dea34b02733907372b6e75a40a5ef5fc289
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101711935"
 ---
 # <a name="duplicate-detection"></a>Yineleme algılama
