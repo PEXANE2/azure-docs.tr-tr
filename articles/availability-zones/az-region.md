@@ -4,16 +4,16 @@ description: Azure 'da yüksek oranda kullanılabilir ve dayanıklı uygulamalar
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 03/30/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 5152b0ecf6eebe87031a2165d5d8ba11d99209cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a81f3a3c51ffd0e1e0937c077a07fcbde16f0513
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601194"
+ms.locfileid: "105961311"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Kullanılabilirlik Alanlarını destekleyen Azure Hizmetleri
 
@@ -50,15 +50,15 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 | Kuzey ve Güney Amerika           | Avrupa               | Afrika              | Asya Pasifik   |
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
-| Güney Brezilya       | Orta Fransa       | Güney Afrika Kuzey * | Doğu Japonya     |
-| Orta Kanada     | Almanya Orta Batı |                     | Güneydoğu Asya |
-| Central US         | Kuzey Avrupa         |                     | Doğu Avustralya |
-| Doğu ABD            | Güney Birleşik Krallık             |                     |                |
+| Güney Brezilya       | Orta Fransa       | Güney Afrika Kuzey * | Doğu Avustralya |
+| Orta Kanada     | Almanya Orta Batı |                     | Doğu Japonya     |
+| Central US         | Kuzey Avrupa         |                     | Kore Orta * |
+| Doğu ABD            | Güney Birleşik Krallık             |                     | Güneydoğu Asya |
 | Doğu ABD 2          | West Europe          |                     |                |
 | Orta Güney ABD |                      |                     |                |
-| US Gov Virginia     |                      |                     |                |
+| US Gov Virginia    |                      |                     |                |
 | Batı ABD 2        |                      |                     |                |
-
+| Batı ABD 3 *       |                      |                     |                |
 
 \* Bu bölgelerde Kullanılabilirlik Alanları ve kullanılabilir Hizmetler desteği hakkında daha fazla bilgi edinmek için Microsoft Sales veya müşteri temsilcinizle iletişime geçin. Kullanılabilirlik Alanları destekleyecek yaklaşan bölgeler için bkz. [Azure geographiler](https://azure.microsoft.com/en-us/global-infrastructure/geographies/).
 

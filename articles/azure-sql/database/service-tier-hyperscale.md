@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 1/13/2021
 ms.openlocfilehash: a167fedcb42560dec55cdbce40e36180d65e0179
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104951806"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
@@ -219,7 +219,7 @@ Etkin bölgeler:
 
 Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırlamalardır.  Mümkün olduğunca bu sınırlamaların çoğunu kaldırmak için etkin bir şekilde çalışıyoruz.
 
-| Sorun | Açıklama |
+| Sorun | Description |
 | :---- | :--------- |
 | Bir sunucunun Yedeklemeleri Yönet bölmesi, hiper ölçekli veritabanlarını göstermez. Bunlar görünümden filtrelenecektir.  | Hiper ölçek, yedeklemeleri yönetmek için ayrı bir yönteme sahiptir, bu nedenle Long-Term bekletme ve zaman içinde yedekleme bekletme ayarları uygulanmaz. Buna uygun olarak, hiper ölçekli veritabanları yedekleme bölmesini yönetme bölmesinde görünmez.<br><br>Diğer Azure SQL veritabanı hizmet katmanlarından hiper ölçeğe geçirilmiş veritabanları için, geçiş öncesi yedeklemeler kaynak veritabanının [yedekleme bekletme](automated-backups-overview.md#backup-retention) süresi boyunca tutulur. Bu yedeklemeler, kaynak veritabanını geçişten önceki bir zaman noktasına [geri yüklemek](recovery-using-backups.md#programmatic-recovery-using-automated-backups) için kullanılabilir.|
 | Belirli bir noktaya geri yükleme | Hiper olmayan bir veritabanı hiper ölçekli bir veritabanı olarak geri yüklenemez ve hiper ölçek veritabanı hiper olmayan bir veritabanı olarak geri yüklenemez. Hizmet katmanını değiştirerek hiper ölçeğe geçirilmiş hiper olmayan bir veritabanı için, geçiş işleminden önce ve veritabanının yedekleme saklama süresi içinde bir zaman noktasına geri [yükleyin.](recovery-using-backups.md#programmatic-recovery-using-automated-backups) Geri yüklenen veritabanı hiper olmayan ölçek olacaktır. |

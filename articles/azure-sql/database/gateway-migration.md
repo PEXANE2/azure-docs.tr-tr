@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 588c6548afb07fb8ee3de5152c240ddd9ea2293b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 62e2306abc2d3132651fb40aab8c2f5b4d5043f4
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102430199"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960886"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,6 +31,9 @@ En güncel bilgiler [Azure SQL veritabanı ağ GEÇIDI IP adresleri](connectivit
 # <a name="in-progress"></a>[Sürüyor](#tab/in-progress-ip)
 
 ## <a name="april-2021"></a>2021 Nisan
+Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor:
+- Doğu ABD 2:40.70.144.193 bu SQL ağ geçidi, 30 Nisan 2021 tarihinde müşteri trafiğini kabul etmeye başlayacaktır.
+
 Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor:
 - Norveç Doğu: 51.120.96.33
 - Güney Doğu Asya: 13.67.16.193
