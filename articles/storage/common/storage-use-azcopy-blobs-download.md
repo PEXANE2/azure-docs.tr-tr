@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 20da05399eed4cb9c5a4b69a82b0b1e799997751
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa9a415e7bf33409e804fb5503d7b608430098fb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98880127"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728921"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy ile v10 arasındaki kullanarak blob 'ları Azure Blob depolamadan indirin
 
@@ -37,7 +37,7 @@ AzCopy ['i indirmek Için AzCopy ile çalışmaya başlama](storage-use-azcopy-v
 > [!TIP]
 > Bu örnek tek tırnak (' ') ile yol bağımsız değişkenlerini barındırır. Windows komut kabuğu (cmd.exe) hariç tüm komut kabukta tek tırnak işaretleri kullanın. Bir Windows komut kabuğu (cmd.exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak (' ') yerine çift tırnak işareti ("") içine alın.
 
-|    |     |
+| Söz dizimi/örnek  |  Kod |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'` |
 | **Örnek** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt'` |
@@ -53,7 +53,7 @@ AzCopy ['i indirmek Için AzCopy ile çalışmaya başlama](storage-use-azcopy-v
 > [!TIP]
 > Bu örnek tek tırnak (' ') ile yol bağımsız değişkenlerini barındırır. Windows komut kabuğu (cmd.exe) hariç tüm komut kabukta tek tırnak işaretleri kullanın. Bir Windows komut kabuğu (cmd.exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak (' ') yerine çift tırnak işareti ("") içine alın.
 
-|    |     |
+| Söz dizimi/örnek  |  Kod |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>' '<local-directory-path>' --recursive` |
 | **Örnek** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
@@ -71,7 +71,7 @@ Joker karakter simgesini (*) kullanarak dizinin kendisini kopyalamadan içeriği
 > [!NOTE]
 > Şu anda, bu senaryo yalnızca hiyerarşik bir ad alanına sahip olmayan hesaplar için desteklenir.
 
-|    |     |
+| Söz dizimi/örnek  |  Kod |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<storage-account-name>.blob.core.windows.net/<container-name>/*' '<local-directory-path>/'` |
 | **Örnek** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory/*' 'C:\myDirectory'` |
@@ -89,7 +89,7 @@ Tüm dosya adlarını, joker karakterlerle kısmi adları (*) veya tarih ve saat
 
 Seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın `--include-path` . Tek blob adlarını bir semicolin () kullanarak ayırın `;` .
 
-|    |     |
+| Söz dizimi/örnek  |  Kod |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
 | **Örnek** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
@@ -103,7 +103,7 @@ Ayrıca, seçeneğini kullanarak blob 'ları hariç bırakabilirsiniz `--exclude
 
 Seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın `--include-pattern` . Joker karakterleri içeren kısmi adlar belirtin. Bir semicolin () kullanarak adları ayırın `;` .
 
-|    |     |
+| Söz dizimi/örnek  |  Kod |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
 | **Örnek** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
@@ -119,7 +119,7 @@ Veya seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kulla
 
 Aşağıdaki örnekler, belirtilen tarihte veya sonra değiştirilen dosyaları indirir.
 
-|    |     |
+| Söz dizimi/örnek  |  Kod |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>/*' '<local-directory-path>' --include-after <Date-Time-in-ISO-8601-format>` |
 | **Örnek** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
@@ -145,7 +145,7 @@ Sonra, seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kul
 
 Blob anlık görüntüsünün **Tarih saat** değerine başvurarak bir [BLOB anlık görüntüsü](../blobs/snapshots-overview.md) indirebilirsiniz. 
 
-|    |     |
+| Söz dizimi/örnek  |  Kod |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>?sharesnapshot=<DateTime-of-snapshot>' '<local-file-path>'` |
 | **Örnek** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |
