@@ -7,10 +7,10 @@ ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
 ms.openlocfilehash: 10bd2c4902157b9e01b1cb0ff10b3ebdf448568c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102244840"
 ---
 Aşağıdaki bölümlerde bir Terminal ayarlarsınız ve bir IoT Hub 'ı oluşturmak için Azure CLı 'yi kullanırsınız. Azure CLı komutlarını çalıştıran bir Terminal yapılandırmak için tarayıcı tabanlı Azure Cloud Shell kullanabilir ya da yerel bir Terminal kullanabilirsiniz.
