@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a0f2b971eae5d37e8fb0771e213075289af6c519
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1901104aa05b4e7ea3a318ee8e886c745f2a6eb4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98045266"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936053"
 ---
 # <a name="understand-event-data"></a>Olay verilerini anlama
 
@@ -23,6 +23,8 @@ Oluşturulabilecek birçok bildirim türü vardır ve bildirim iletileri, hangi 
 Bu grafik farklı bildirim türlerini gösterir:
 
 [!INCLUDE [digital-twins-notifications.md](../../includes/digital-twins-notifications.md)]
+
+## <a name="notification-structure"></a>Bildirim yapısı
 
 Genel olarak, bildirimler iki bölümden oluşur: başlık ve gövde. 
 
@@ -87,11 +89,58 @@ Yaşam döngüsü bildirim iletisi:
 }
 ```
 
-## <a name="message-format-detail-for-different-event-types"></a>Farklı olay türleri için ileti biçimi ayrıntısı
+Aşağıdaki bölümler IoT Hub ve Azure dijital TWINS (veya diğer Azure IoT Hizmetleri) tarafından yayınlanan farklı bildirim türleri hakkında daha ayrıntılı bilgi vermektedir. Her bildirim türünü tetikleyen şeyleri ve her bir bildirim gövdesi türüyle birlikte bulunan alan kümesini okuyacaksınız.
 
-Bu bölüm IoT Hub ve Azure dijital TWINS (veya diğer Azure IoT Hizmetleri) tarafından yayınlanan farklı bildirim türleri hakkında daha fazla ayrıntıya gider. Her bildirim türünü tetikleyen şeyleri ve her bir bildirim gövdesi türüyle birlikte bulunan alan kümesini okuyacaksınız.
+## <a name="digital-twin-change-notifications"></a>Dijital ikizi değişiklik bildirimleri
 
-### <a name="digital-twin-life-cycle-notifications"></a>Dijital ikizi yaşam döngüsü bildirimleri
+Dijital **ikizi değişiklik bildirimleri** , bir dijital ikizi güncelleştirilirken tetiklenir, örneğin:
+* Özellik değerleri veya meta veriler değiştiğinde.
+* Dijital ikizi veya bileşen meta verileri değiştiğinde. Bu senaryoya bir örnek, dijital bir ikizi modelini değiştiriyor.
+
+### <a name="properties"></a>Özellikler
+
+Dijital ikizi değişiklik bildiriminin gövdesinde yer alan alanlar aşağıda verilmiştir.
+
+| Name    | Değer |
+| --- | --- |
+| `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id` her farklı olay için benzersizdir |
+| `source` | *Myhub.Azure-Devices.net* veya *mydigitaltwins.westus2.azuredigitaltwins.net* gibi IoT Hub veya Azure dijital TWINS örneğinin adı
+| `specversion` | *1.0*<br>İleti, [Cloudevents belirtiminin](https://github.com/cloudevents/spec)bu sürümüne uyar. |
+| `type` | `Microsoft.DigitalTwins.Twin.Update` |
+| `datacontenttype` | `application/json` |
+| `subject` | Dijital ikizi KIMLIĞI |
+| `time` | İşlem dijital ikizi üzerinde gerçekleştiyse zaman damgası |
+| `traceparent` | Etkinlik için bir W3C Trace bağlamı |
+
+### <a name="body-details"></a>Gövde ayrıntıları
+
+Bildirimin gövdesi, `Twin.Update` dijital ikizi güncelleştirmesini içeren BIR JSON yama belgesidir.
+
+Örneğin, bir dijital ikizi, aşağıdaki düzeltme eki kullanılarak güncelleştirildiğini varsayalım.
+
+:::code language="json" source="~/digital-twins-docs-samples/models/patch-component-2.json":::
+
+Karşılık gelen bildirim (Azure Digital TWINS bir dijital ikizi güncelleştiren gibi hizmet tarafından zaman uyumlu olarak yürütülürse) şöyle bir gövdeye sahip olur:
+
+```json
+{
+    "modelId": "dtmi:example:com:floor4;2",
+    "patch": [
+      {
+        "value": 40,
+        "path": "/Temperature",
+        "op": "replace"
+      },
+      {
+        "value": 30,
+        "path": "/comp1/prop1",
+        "op": "add"
+      }
+    ]
+  }
+```
+
+## <a name="digital-twin-lifecycle-notifications"></a>Digital ikizi yaşam döngüsü bildirimleri
 
 Tüm [dijital TWINS](concepts-twins-graph.md) , [Azure dijital twıns 'de IoT Hub cihazları](how-to-ingest-iot-hub-data.md) temsil etmeksizin bağımsız olarak bildirimleri yayar. Bunun nedeni, dijital ikizi kendisi ile ilgili olan **yaşam döngüsü bildirimlerinin** bir kendisidir.
 
@@ -99,9 +148,9 @@ Yaşam döngüsü bildirimleri şu durumlarda tetiklenir:
 * Dijital bir ikizi oluşturulur
 * Dijital ikizi silindi
 
-#### <a name="properties"></a>Özellikler
+### <a name="properties"></a>Özellikler
 
-İşte bir yaşam döngüsü bildiriminin gövdesinde yer alan alanlar.
+Yaşam döngüsü bildiriminin gövdesinde yer alan alanlar aşağıda verilmiştir.
 
 | Name | Değer |
 | --- | --- |
@@ -114,7 +163,7 @@ Yaşam döngüsü bildirimleri şu durumlarda tetiklenir:
 | `time` | İkizi üzerinde işlem gerçekleştiği zaman damgası |
 | `traceparent` | Etkinlik için bir W3C Trace bağlamı |
 
-#### <a name="body-details"></a>Gövde ayrıntıları
+### <a name="body-details"></a>Gövde ayrıntıları
 
 Gövde, JSON biçiminde gösterilen etkilenen dijital ikizi. Bu, *dijital TWINS kaynağı 7,1*' dir.
 
@@ -181,11 +230,11 @@ Dijital ikizi başka bir örneği aşağıda verilmiştir. Bu, bir [modeli](conc
 }
 ```
 
-### <a name="digital-twin-relationship-change-notifications"></a>Digital ikizi ilişki değişikliği bildirimleri
+## <a name="digital-twin-relationship-change-notifications"></a>Digital ikizi ilişki değişikliği bildirimleri
 
 **İlişki değişikliği bildirimleri** , dijital ikizi herhangi bir ilişkisi oluşturulduğunda, güncelleştirilirken veya silindiğinde tetiklenir. 
 
-#### <a name="properties"></a>Özellikler
+### <a name="properties"></a>Özellikler
 
 Bir Edge değişiklik bildiriminin gövdesinde yer alan alanlar aşağıda verilmiştir.
 
@@ -200,7 +249,7 @@ Bir Edge değişiklik bildiriminin gövdesinde yer alan alanlar aşağıda veril
 | `time` | İlişki üzerinde işlem gerçekleştiği zaman damgası |
 | `traceparent` | Etkinlik için bir W3C Trace bağlamı |
 
-#### <a name="body-details"></a>Gövde ayrıntıları
+### <a name="body-details"></a>Gövde ayrıntıları
 
 Gövde, JSON biçiminde bir ilişkinin yüküyle aynı olur. Bu, `GET` [Digitaltwins API 'si](/rest/api/digital-twins/dataplane/twins)aracılığıyla bir ilişki isteğiyle aynı biçimi kullanır. 
 
@@ -233,55 +282,6 @@ Bir özelliği güncelleştirmek için bir güncelleştirme ilişkisi bildirimin
     "$targetId": "device2",
     "connectionType": "WIFI"
 }
-```
-
-### <a name="digital-twin-change-notifications"></a>Dijital ikizi değişiklik bildirimleri
-
-Dijital **ikizi değişiklik bildirimleri** , bir dijital ikizi güncelleştirilirken tetiklenir, örneğin:
-* Özellik değerleri veya meta veriler değiştiğinde.
-* Dijital ikizi veya bileşen meta verileri değiştiğinde. Bu senaryoya bir örnek, dijital bir ikizi modelini değiştiriyor.
-
-#### <a name="properties"></a>Özellikler
-
-Dijital ikizi değişiklik bildiriminin gövdesinde yer alan alanlar aşağıda verilmiştir.
-
-| Name    | Değer |
-| --- | --- |
-| `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id` her farklı olay için benzersizdir |
-| `source` | *Myhub.Azure-Devices.net* veya *mydigitaltwins.westus2.azuredigitaltwins.net* gibi IoT Hub veya Azure dijital TWINS örneğinin adı
-| `specversion` | *1.0*<br>İleti, [Cloudevents belirtiminin](https://github.com/cloudevents/spec)bu sürümüne uyar. |
-| `type` | `Microsoft.DigitalTwins.Twin.Update` |
-| `datacontenttype` | `application/json` |
-| `subject` | Dijital ikizi KIMLIĞI |
-| `time` | İşlem dijital ikizi üzerinde gerçekleştiyse zaman damgası |
-| `traceparent` | Etkinlik için bir W3C Trace bağlamı |
-
-#### <a name="body-details"></a>Gövde ayrıntıları
-
-Bildirimin gövdesi, `Twin.Update` dijital ikizi güncelleştirmesini içeren BIR JSON yama belgesidir.
-
-Örneğin, bir dijital ikizi, aşağıdaki düzeltme eki kullanılarak güncelleştirildiğini varsayalım.
-
-:::code language="json" source="~/digital-twins-docs-samples/models/patch-component-2.json":::
-
-Karşılık gelen bildirim (Azure Digital TWINS bir dijital ikizi güncelleştiren gibi hizmet tarafından zaman uyumlu olarak yürütülürse) şöyle bir gövdeye sahip olur:
-
-```json
-{
-    "modelId": "dtmi:example:com:floor4;2",
-    "patch": [
-      {
-        "value": 40,
-        "path": "/Temperature",
-        "op": "replace"
-      },
-      {
-        "value": 30,
-        "path": "/comp1/prop1",
-        "op": "add"
-      }
-    ]
-  }
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

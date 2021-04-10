@@ -1,14 +1,14 @@
 ---
 title: Bir müşteriyi Azure Lighthouse’a ekleme
 description: Bir müşteriyi Azure Mathouse 'a eklemeyi öğrenin. böylece, kaynakları Azure tarafından atanan kaynak yönetimi kullanılarak kendi kiracınız aracılığıyla erişilebilir ve yönetilebilir.
-ms.date: 02/16/2021
+ms.date: 03/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 4487dd82b30e14f9db2001dc10f7437a53e745f3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c02bbb789ffac262521c2f76c62081a21cd6602c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100556098"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934317"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Bir müşteriyi Azure Lighthouse’a ekleme
 
@@ -143,7 +143,7 @@ Seçtiğiniz şablon, bir aboneliğin tüm aboneliğini, kaynak grubunu veya bir
 |Abonelik (Azure Marketi 'Nde yayınlanan bir teklifi kullanırken)   |[ ÜzerindemarketplaceDelegatedResourceManagement.js](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[ ÜzerindemarketplaceDelegatedResourceManagement.parameters.js](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!TIP]
-> Bir yönetim grubunun tamamını tek bir dağıtımda eklemenize karşın, [bir ilkeyi yönetim grubu düzeyinde dağıtabilirsiniz](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups). İlke, yönetim grubundaki her aboneliğin belirtilen yönetim kiracıya devredildi olup olmadığını denetler ve yoksa, sağladığınız değerlere göre atamayı oluşturacaktır.
+> Bir yönetim grubunun tamamını tek bir dağıtımda eklemenize karşın, [bir ilkeyi yönetim grubu düzeyinde dağıtabilirsiniz](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups). İlke, yönetim grubundaki her bir aboneliğin belirtilen yönetim kiracısına devredildi olup olmadığını denetlemek için [Deployifnotexists efektini](../../governance/policy/concepts/effects.md#deployifnotexists) kullanır ve aksi takdirde, sağladığınız değerlere göre atamayı oluşturacaktır. Daha sonra, yönetim grubundaki tüm aboneliklere erişim sahibi olacaksınız, ancak bunlar üzerinde ayrı abonelikler (bir bütün olarak eylemler gerçekleştirmek yerine) üzerinde çalışmanız gerekir.
 
 Aşağıdaki örnek, bir aboneliği eklemek için kullanılabilecek **delegatedResourceManagement.parameters.js** değiştirilmiş bir dosya gösterir. Kaynak grubu parametre dosyaları ( [RG-Temsilcili-kaynak-yönetim](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) klasöründe bulunur) benzerdir, ancak aynı zamanda eklendi olacak belirli kaynak gruplarını belirlemek Için bir **RgName** parametresi de içerir.
 

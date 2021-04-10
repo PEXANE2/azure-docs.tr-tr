@@ -6,14 +6,14 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 02/09/2021
+ms.date: 03/29/2021
 ms.author: banders
-ms.openlocfilehash: 717cf5acb63ee04852ccbb9aae2f7aed2b3c179a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1523ca77b06281b84ed57fbc0e2e49ffede85fb4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392281"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934351"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure kaynakları için Rezervasyonları yönetme
 
@@ -57,8 +57,8 @@ Kapsam yalnızca kullandıkça öde fiyatının geçerliği olduğu tek tek abon
 
 Varsayılan olarak, aşağıdaki kullanıcılar rezervasyonları görüntüleyebilir ve yönetebilir:
 
-- Rezervasyonu satın alan kişi ve rezervasyonu satın almak için kullanılan faturalama aboneliğinin hesap yöneticisi rezervasyon siparişine eklenir.
-- Kurumsal Anlaşma ve Microsoft Müşteri Anlaşması faturalandırma yöneticileri.
+- Faturalandırma aboneliğine ait ayırmayı ve hesap sahibini satın alan kişi, rezervasyon siparişine Azure RBAC erişimi alır.
+-  Kurumsal Anlaşma ve Microsoft müşteri anlaşması faturalandırma katılımcıları, maliyet yönetimi + faturalandırma > rezervasyon işlemlerinden tüm rezervasyonları yönetebilir > mavi başlığı seçin.
 
 Diğer kişilerin rezervasyonları yönetmesine izin vermek için iki seçeneğiniz vardır:
 

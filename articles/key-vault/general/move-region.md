@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another region.
-ms.openlocfilehash: 54a1894c88d12cfac1a2d8062425de9549c4292e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1961d86e55f59233b1dc168e2de48b6b42b0cff0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93285211"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728122"
 ---
 # <a name="move-an-azure-key-vault-across-regions"></a>Bir Azure anahtar kasasını bölgeler arasında taşıma
 
@@ -35,7 +35,7 @@ Başlamadan önce aşağıdaki kavramları göz önünde bulundurun:
 
 ## <a name="option-1-use-the-key-vault-backup-and-restore-commands"></a>Seçenek 1: Anahtar Kasası yedekleme ve geri yükleme komutlarını kullanma
 
-Backup komutunu kullanarak kasaızdaki her bir gizli dizi, anahtar ve sertifikayı yedekleyebilirsiniz. Gizli dizileri şifreli bir blob olarak indirilir. Daha sonra blobu yeni anahtar kasanıza geri yükleyebilirsiniz. Komutların listesi için bkz. [Azure Key Vault komutları](/powershell/module/azurerm.keyvault/?view=azurermps-6.13.0#key_vault).
+Backup komutunu kullanarak kasaızdaki her bir gizli dizi, anahtar ve sertifikayı yedekleyebilirsiniz. Gizli dizileri şifreli bir blob olarak indirilir. Daha sonra blobu yeni anahtar kasanıza geri yükleyebilirsiniz. Komutların listesi için bkz. [Azure Key Vault komutları](/powershell/module/azurerm.keyvault#key_vault).
 
 Backup ve restore komutlarının kullanılması iki sınırlamalara sahiptir:
 
