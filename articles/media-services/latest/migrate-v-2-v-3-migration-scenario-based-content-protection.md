@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 7ef41b76f343d8997feebc4a366deda7ce6a2afa
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 9141fb025cb2c7976f88d894768972b10ea3a3d3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644070"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729414"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>Content Protection senaryo tabanlı geçiş kılavuzu
 
@@ -38,11 +38,11 @@ V3 API 'sine geçiş sırasında, v2 varlıklarınızdan bazı özelliklere veya
 
 Örneğin, daha önce **"NB: CID: UUID: 8cb39104-122c-496e-9ac5-7f9e2c2547b8"** kimliğine sahip bir v2 varlığınız varsa, daha sonra, eski v2 VARLıKLARıNı v3 API aracılığıyla listelerken, ad artık sonda GUID bölümü olacaktır (Bu durumda, **"8cb39104-122c-496e-9ac5-7f9e2c2547b8"**.)
 
-Varlık varlığındaki Yeni v3 yöntemi [Liststreamingkonumlandırıcı](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators) KULLANıLARAK v2 API 'Sinde oluşturulan varlıklarla Ilişkili **streamingkonumlandırıcı** 'yı sorgulayabilirsiniz.  Ayrıca [Liststreaminglocatorsasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?view=azure-dotnet) öğesinin .NET istemci SDK sürümüne başvur
+Varlık varlığındaki Yeni v3 yöntemi [Liststreamingkonumlandırıcı](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators) KULLANıLARAK v2 API 'Sinde oluşturulan varlıklarla Ilişkili **streamingkonumlandırıcı** 'yı sorgulayabilirsiniz.  Ayrıca [Liststreaminglocatorsasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?view=azure-dotnet&preserve-view=true) öğesinin .NET istemci SDK sürümüne başvur
 
 **Liststreaminglocator** yönteminin sonuçları, **Streamingpolicyname** Ile birlikte bulucunun **adını** ve **streaminglocatorıd** değerini sağlar.
 
-İçerik koruması için **Streaminglocator** ' de kullanılan **contentkeys** 'ı bulmak için [Streaminglocator. listcontentkeysasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet) yöntemini çağırabilirsiniz.  
+İçerik koruması için **Streaminglocator** ' de kullanılan **contentkeys** 'ı bulmak için [Streaminglocator. listcontentkeysasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet&preserve-view=true) yöntemini çağırabilirsiniz.  
 
 V2 API kullanılarak oluşturulan ve yayınlanan **varlıkların** , [akış ilkesinde](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept)varsayılan bir içerik anahtar ilkesi kullanmak yerine, hem bir [içerik anahtar ilkesi](https://docs.microsoft.com/azure/media-services/latest/content-key-policy-concept) hem de v3 API 'sinde tanımlanmış bir içerik anahtarı olacaktır.
 

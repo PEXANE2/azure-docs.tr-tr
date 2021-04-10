@@ -49,7 +49,7 @@
     - name: DDoS koruması
       href: front-door-ddos.md
     - name: Front Door hakkında SSS
-      href: front-door-faq.md
+      href: front-door-faq.yml
     - name: Coğrafi filtreleme
       href: front-door-geo-filtering.md
     - name: Sistem durumu araştırmaları

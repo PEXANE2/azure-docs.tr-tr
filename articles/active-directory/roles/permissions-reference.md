@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 03/13/2021
+ms.date: 03/29/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f74f3aff1153118c54c83bf526c036a775da40
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: f467fc739b3120fd43bec4e21e1e336c1cdf186f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104955266"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935422"
 ---
 # <a name="azure-ad-built-in-roles"></a>Azure AD yerleşik rolleri
 
@@ -241,7 +241,7 @@ Bu role sahip kullanıcılar, yönetici olmayanlar ve bazı roller için herhang
 >* Gizli veya özel bilgilere erişebilen Yöneticiler, yasal Counsel ve insan kaynakları çalışanları gibi yönetici olmayanlar.
 
 > [!IMPORTANT]
-> Bu rol, şu anda eski MFA yönetim portalındaki Kullanıcı başına MFA 'yı yönetme yeteneğine sahip değil. Aynı işlevler [set-MsolUser](/powershell/module/msonline/set-msoluser) komutunu Azure AD PowerShell modülü kullanılarak gerçekleştirilebilir.
+> Bu rol, eski MFA yönetim portalındaki veya donanım OATH belirteçlerinde MFA ayarlarını yönetemez. Aynı işlevler [set-MsolUser](/powershell/module/msonline/set-msoluser) komutunu Azure AD PowerShell modülü kullanılarak gerçekleştirilebilir.
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -267,7 +267,7 @@ Bu role sahip kullanıcılar, kimlik doğrulama yöntemleri ilkesini, kiracı ge
 | Kimlik doğrulama İlkesi Yöneticisi | Hayır | Hayır | Yes | Yes | Yes |
 
 > [!IMPORTANT]
-> Bu rol, şu anda eski MFA yönetim portalındaki MFA ayarlarını yönetme yeteneğine sahip değil.
+> Bu rol, eski MFA yönetim portalındaki veya donanım OATH belirteçlerinde MFA ayarlarını yönetemez. 
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
