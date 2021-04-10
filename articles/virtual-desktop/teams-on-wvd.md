@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 052d11fe0125de7970fb7d02931edfc7f3c2e4d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46796573e14dfc33d02d4faddd5504f3e8b7ee7b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743126"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935729"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma
 
@@ -120,7 +120,7 @@ WebSocket hizmetini ve takımlar masaüstü uygulamasını yükledikten sonra, t
 
 3. **Sürüm** seçin.
 
-      Medya iyileştirmesi yüklüyse, başlık, **WVD Media optimize edilmiş** olarak gösterilir. Başlıkta **WVD Media bağlı değil** görünüyorsa, takımlar uygulamasından çıkıp yeniden deneyin.
+      Medya iyileştirmesi yüklüyse, başlık **Windows sanal masaüstü medyası için iyileştirilmiş** olarak gösterilir. Başlık, **Windows sanal masaüstü medyasının bağlı olmadığını** gösteriyorsa, takımlar uygulamasından çıkıp yeniden deneyin.
 
 4. Kullanıcı profili görüntünüzü seçin ve ardından **Ayarlar**' ı seçin.
 

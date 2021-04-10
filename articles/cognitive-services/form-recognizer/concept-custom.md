@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: lajanuar
-ms.openlocfilehash: 74ced2ecadb5ccfe5cdb7966550e469ae4f8ab31
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.openlocfilehash: 8a29bc0d98c1286dcf09da59dc21ac2b2e09f478
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612271"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935626"
 ---
 # <a name="form-recognizer-custom-models"></a>Form tanıyıcı özel modeller
 
@@ -34,36 +34,37 @@ Form tanıyıcı sayesinde, kullanım örneklerinizle ilgili olan formlardan bil
 Yüksek düzeyde, özel modelinizi oluşturma, eğitim ve kullanma adımları aşağıdaki gibidir:
 
 > [!div class="nextstepaction"]
-> [1. eğitim veri kümenizi birleştirin](build-training-data-set.md#custom-model-input-requirements)
+>Eğitim veri kümenizi birleştirme] (derleme-eğitim-veri-kümesi. MD # Custom-model-Input-Requirements)
 
 Özel bir model oluşturmak, eğitim veri kümenizi oluşturmaya başlar. Örnek veri kümeniz için aynı türde en az beş tamamlanmış form gerekir. Bunlar farklı dosya türleri olabilir ve hem metin hem de el yazısı içerebilir. Formlarınızın aynı belge türünde olması ve form tanıyıcı için [giriş gereksinimlerini](build-training-data-set.md#custom-model-input-requirements) izlemesi gerekir.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
 
 > [!div class="nextstepaction"]
-> [2. eğitim veri kümenizi karşıya yükleyin](build-training-data-set.md#upload-your-training-data)
+> [Eğitim veri kümenizi karşıya yükleyin](build-training-data-set.md#upload-your-training-data)
 
 Eğitim verilerinizi bir Azure Blob depolama kapsayıcısına yüklemeniz gerekir. Bir kapsayıcı ile Azure depolama hesabı oluşturmayı bilmiyorsanız, *bkz* . [Azure Portal için Azure Storage hızlı](../../storage/blobs/storage-quickstart-blobs-portal.md)başlangıcı. Hizmeti denemek için ücretsiz fiyatlandırma katmanını (F0) kullanın ve daha sonra üretim için ücretli bir katmana yükseltin.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
 > [!div class="nextstepaction"]
-> [3. özel modelinize eğitme](quickstarts/client-library.md#train-a-custom-model)
+>[Özel modelinizi eğitme](quickstarts/client-library.md#train-a-custom-model)
 
 Modelinizi etiketli veri kümeleri [olmadan](quickstarts/client-library.md#train-a-model-without-labels) veya [bunlarla](quickstarts/client-library.md#train-a-model-with-labels) eğitebilirsiniz. Etiketsiz veri kümeleri, ek insan girişi olmadan önemli bilgileri algılamak ve tanımlamak için yalnızca Düzen API 'sine güvenir. Etiketli veri kümeleri de Düzen API 'sini kullanır, ancak belirli Etiketler ve alan konumlarınız gibi ek insan girişi dahildir. Hem etiketli hem de etiketsiz verileri kullanmak için, etiketli eğitim verileri için aynı türde en az beş tamamlanmış form ile başlayın ve ardından etiketli verileri gerekli veri kümesine ekleyin.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;  
 
 >[!div class="nextstepaction"]
-> [4. özel modelinizle belge çözümleyin](quickstarts/client-library.md#analyze-forms-with-a-custom-model)
+>[Özel modelinizle belge çözümleme](quickstarts/client-library.md#analyze-forms-with-a-custom-model)
 
 Eğitim veri kümesinin parçası olmayan bir form kullanarak yeni eğitilen modeli test edin. Özel modelinizin performansını geliştirmek için daha fazla eğitim yapmaya devam edebilirsiniz.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
 
 > [!div class="nextstepaction"]
-> [5. özel modellerinizi yönetin](quickstarts/client-library.md#manage-custom-models)
+>[Özel modellerinizi yönetin](quickstarts/client-library.md#manage-custom-models)
 
 Dilediğiniz zaman, aboneliğinizdeki tüm özel modellerin listesini görüntüleyebilir, belirli bir özel model hakkında bilgi alabilir veya hesabınızdan özel bir modeli silebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 API başvuru belgelerimizi inceleyerek form tanıyıcı istemci kitaplığı hakkında daha fazla bilgi edinin.
+
 > [!div class="nextstepaction"]
-> [Form tanıyıcı API başvurusu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9843c2794cbb1a96291)
+> [Form tanıyıcı API başvurusu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)
 >
