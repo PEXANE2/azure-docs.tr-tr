@@ -5,24 +5,24 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: overview
-ms.date: 05/08/2020
+ms.date: 04/01/2021
 ms.author: cshoe
-ms.openlocfilehash: f4e900c8bcdcb5febec39421e098b19ad10b8b00
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: e81f0a9e4fc50cf0d80f2905b9328af3c721865c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105558899"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166419"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi nedir?
 
-Azure statik Web Apps, tam yığın Web uygulamalarını otomatik olarak oluşturup bir GitHub deposundan Azure 'a dağıtan bir hizmettir.
+Azure statik Web Apps, tam yığın Web uygulamalarını otomatik olarak oluşturup bir kod deposundan Azure 'a dağıtan bir hizmettir.
 
-:::image type="content" source="media/overview/static-apps-overview.png" alt-text="Statik Web Apps genel bakış":::
+:::image type="content" source="media/overview/azure-static-web-apps-overview.png" alt-text="Azure statik Web Apps genel bakış Diyagramı":::
 
-Azure statik Web Apps iş akışı, geliştiricinin günlük iş akışına göre tasarlanmıştır. Uygulamalar GitHub etkileşimini temel alarak oluşturulup dağıtılır.
+Azure statik Web Apps iş akışı, geliştiricinin günlük iş akışına göre tasarlanmıştır. Uygulamalar kod değişikliklerinden oluşturulur ve dağıtılır.
 
-Bir Azure Statik Web Uygulamaları kaynağı oluşturduğunuzda Azure uygulamanın kaynak kodu deposunda bir GitHub Actions iş akışı ayarlar ve bu iş akışı seçtiğiniz dalı izler. Değişiklikleri izlenen dala her gönderişinizde veya çekme isteklerini kabul ettiğinizde, GitHub eylemi uygulamanızı ve API 'sini Azure 'a otomatik olarak oluşturur ve dağıtır.
+Azure statik Web Apps kaynağı oluşturduğunuzda, Azure seçtiğiniz bir dalı izlemek için GitHub veya Azure DevOps ile doğrudan etkileşime girer. Değişiklikleri izlenen dala her gönderişinizde veya çekme isteklerini kabul ettiğinizde, bir yapı otomatik olarak çalıştırılır ve uygulamanız ve API 'SI Azure 'a dağıtılır.
 
 Statik Web Apps, genellikle angular, tepki, svelte, Vue veya Blazor gibi sunucu tarafı işlemenin gerekmediği gibi kitaplıklar ve çerçeveler kullanılarak oluşturulmuştur. Bu uygulamalar, uygulamayı oluşturan HTML, CSS, JavaScript ve görüntü varlıklarını içerir. Geleneksel bir Web sunucusu ile, bu varlıklar, gerekli tüm API uç noktaları ile birlikte tek bir sunucudan sunulur.
 
@@ -32,7 +32,7 @@ Statik Web Apps, statik varlıklar geleneksel bir Web sunucusundan ayrılır ve 
 
 - HTML, CSS, JavaScript ve görüntüler gibi statik içerik için **Web barındırma** .
 - Azure Işlevleri tarafından sunulan **TÜMLEŞIK API** desteği.
-- Depo değişikliklerinin derlemeleri ve dağıtımları tetikleyen **birinci sınıf GitHub tümleştirmesi** .
+- **İlk sınıf GitHub ve Azure DevOps tümleştirmesi** depo değişikliklerinin derlemeleri ve dağıtımları tetiklemesi.
 - **Genel olarak dağıtılmış** statik içerik, içeriği kullanıcılarınıza yaklaştırır.
 - Otomatik olarak yenilenen **ÜCRETSIZ SSL sertifikaları**.
 - Uygulamanıza markalı özelleştirmeler sağlamak için **özel etki alanları** .

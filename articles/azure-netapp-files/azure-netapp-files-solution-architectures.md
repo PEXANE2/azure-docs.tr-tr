@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/25/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 03a29e121d3838404519045601d484a1875db9ce
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 47c641eedbbe096a75223286563acb0a2405b1a6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105557250"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935218"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files kullanan çözüm mimarileri
 Bu makalede, Azure NetApp Files kullanmaya yönelik çözüm mimarilerini anlamanıza yardımcı olabilecek en iyi yöntemlere başvurular sağlanmaktadır.  
@@ -101,6 +101,7 @@ Bu bölümde, Azure çözümlerinde SAP başvuruları sağlanmaktadır.
 * [HANA N + d Scale-Out mimarideki ANF yatırımınızı en üst düzeye çıkarmak için mimari kararlar-1. Bölüm](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
 * [HANA N + d Scale-Out mimarideki ANF yatırımınızı en üst düzeye çıkarmak için mimari kararlar-2. Bölüm](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
 * [HANA N + d Scale-Out mimarideki ANF yatırımınızı en üst düzeye çıkarmak için mimari kararlar-Bölüm 3](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2215948)
+* [Azure NetApp Files ile SAP yatay boyutlandırma ve birim birleştirme](https://techcommunity.microsoft.com/t5/sap-on-microsoft/sap-landscape-sizing-and-volume-consolidation-with-anf/m-p/2145572/highlight/true#M14)
 
 ## <a name="azure-vmware-solutions"></a>Azure VMware çözümleri
 
