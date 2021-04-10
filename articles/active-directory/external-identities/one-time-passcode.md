@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7961997c6a6736c154b6217ee3f21682d0c4c3fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101688476"
 ---
 # <a name="email-one-time-passcode-authentication"></a>E-posta bir kerelik geçiş kodu kimlik doğrulaması
@@ -66,13 +66,13 @@ Kullanıcının ayrıntılarında **kaynak** özelliğini görüntüleyerek bir 
 > [!NOTE]
 > Bir Kullanıcı bir kerelik geçiş kodunu ve daha sonra bir MSA, Azure AD hesabını ya da başka bir Federasyon hesabını aldığında, bir kerelik geçiş kodu kullanarak kimlik doğrulamasından devam eder. Kimlik doğrulama yöntemini güncelleştirmek istiyorsanız, Konuk Kullanıcı hesabını silip yeniden davet edebilirsiniz.
 
-### <a name="example"></a>Örnek
+### <a name="example&quot;></a>Örnek
 
 Konuk Kullanıcı teri@gmail.com , Google Federasyonu ayarlanmamış olan Fabrikam 'a davet edilir. Teri Microsoft hesabı yok. Kimlik doğrulaması için bir kerelik geçiş kodu alırlar.
 
-## <a name="disable-email-one-time-passcode"></a>E-posta bir kerelik geçiş kodunu devre dışı bırak
+## <a name=&quot;disable-email-one-time-passcode&quot;></a>E-posta bir kerelik geçiş kodunu devre dışı bırak
 
-2021 Ekim 'e başlayarak, tüm mevcut kiracılar için e-posta bir kerelik geçiş kodu özelliği açık olur ve yeni kiracılar için varsayılan olarak etkinleştirilir. Bu sırada, Microsoft, B2B işbirliği senaryolarında yönetilmeyen ("viral" veya "tam zamanında") Azure AD hesapları ve kiracılar oluşturarak davetlerin kullanımını desteklememektedir. Konuk kullanıcılarınız için sorunsuz bir geri dönüş kimlik doğrulama yöntemi sağladığından e-posta bir kerelik geçiş kodu özelliğini etkinleştiriyoruz. Ancak, bu özelliği kullanmayı tercih ederseniz bu özelliği devre dışı bırakma seçeneğiniz vardır.
+2021 Ekim 'e başlayarak, tüm mevcut kiracılar için e-posta bir kerelik geçiş kodu özelliği açık olur ve yeni kiracılar için varsayılan olarak etkinleştirilir. Bu sırada, Microsoft, B2B işbirliği senaryolarında yönetilmeyen (&quot;viral&quot; veya &quot;tam zamanında") Azure AD hesapları ve kiracılar oluşturarak davetlerin kullanımını desteklememektedir. Konuk kullanıcılarınız için sorunsuz bir geri dönüş kimlik doğrulama yöntemi sağladığından e-posta bir kerelik geçiş kodu özelliğini etkinleştiriyoruz. Ancak, bu özelliği kullanmayı tercih ederseniz bu özelliği devre dışı bırakma seçeneğiniz vardır.
 
 > [!NOTE]
 >
