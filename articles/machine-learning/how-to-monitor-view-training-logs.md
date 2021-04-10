@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 47531da9c1e508281a57074df7aa10ffffe78810
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c258ac62617cb6ac954e0b8c59928225c7f477b1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518747"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935587"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML çalıştırma günlüklerini ve ölçümlerini izleme ve görüntüleme
 
@@ -110,15 +110,16 @@ Ayrıca, çalışma listesi tablosunu, birden çok çalıştırma seçmek ve ça
 
 ![Azure Machine Learning Studio 'da ayrıntıları çalıştırma](media/how-to-track-experiments/experimentation-tab.gif)
 
-### <a name="view-log-files-for-a-run"></a>Bir çalıştırma için günlük dosyalarını görüntüleme 
+### <a name="view-and-download-log-files-for-a-run"></a>Bir çalıştırma için günlük dosyalarını görüntüleyin ve indirin 
 
 Günlük dosyaları, Azure ML iş yüklerinde hata ayıklamak için gereken önemli bir kaynaktır. Günlüklerini ve çıktılarını görüntülemek için belirli bir çalıştırmaya detaya gitme:  
 
 1. **Denemeleri** sekmesine gidin.
 1. Belirli bir çalıştırma için RunId 'yi seçin.
 1. Sayfanın üst kısmındaki **çıktılar ve Günlükler '** i seçin.
+2. Tüm günlüklerinizi bir zip klasörüne indirmek için **Tümünü İndir** ' i seçin.
 
-:::image type="content" source="media/how-to-monitor-view-training-logs/view-logs.png" alt-text="Bir çalıştırmanın çıkış ve Günlükler bölümünün ekran görüntüsü":::
+:::image type="content" source="media/how-to-monitor-view-training-logs/download-logs.png" alt-text="Bir çalıştırmanın çıkış ve Günlükler bölümünün ekran görüntüsü.":::
 
 Aşağıdaki tablolarda, bu bölümde göreceğiniz klasörlerdeki günlük dosyalarının içerikleri gösterilmektedir.
 

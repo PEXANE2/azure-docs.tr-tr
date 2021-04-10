@@ -10,10 +10,10 @@ ms.author: rolyon
 ms.date: 03/15/2021
 ms.custom: generated
 ms.openlocfilehash: ba5340fdc12bf3141c5e3f24b6b9d178a5db600d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104602528"
 ---
 # <a name="azure-built-in-roles"></a>Yerleşik Azure rolleri
@@ -140,7 +140,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Bilişsel hizmetler Soru-Cevap Oluşturma Düzenleyicisi](#cognitive-services-qna-maker-editor) | KB oluşturma, düzenleme, içeri aktarma ve dışarı aktarma işlemi yapmanızı sağlar. Bir KB yayımlayamaz veya silemezsiniz. | f4cc2bf9-21be-47a1-bdf1-5c5804381025 |
 > | [Bilişsel hizmetler Soru-Cevap Oluşturma okuyucu](#cognitive-services-qna-maker-reader) | Yalnızca bir KB 'yi okuyup test edelim. | 466ccd10-b268-4a11-b098-b4849f024126 |
 > | [Bilişsel hizmetler kullanıcısı](#cognitive-services-user) | Bilişsel hizmetler 'in anahtarlarını okuyup listelemenizi sağlar. | a97b65f3-24c7-4388-baec-2e87135dc908 |
-> | **Nesnelerin interneti** |  |  |
+> | **Nesnelerin İnterneti** |  |  |
 > | [Cihaz Güncelleştirme Yöneticisi](#device-update-administrator) | , Yönetim ve içerik işlemlerine tam erişim sağlar | 02ca0879-e8e4-47a5-a61e-5c618b76e64a |
 > | [Cihaz güncelleştirme Içerik Yöneticisi](#device-update-content-administrator) | , İçerik işlemlerine tam erişim sağlar | 0378884a-3af5-44ab-8323-f5b22f9f3c98 |
 > | [Cihaz güncelleştirme Içeriği okuyucusu](#device-update-content-reader) | İçerik işlemlerine yönelik okuma erişimi sağlar, ancak değişiklik yapmaya izin vermez | d1ee9a80-8b14-47f0-bdc2-f4a351625a7b |
