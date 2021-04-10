@@ -188,8 +188,6 @@
           href: rest-text-to-speech.md
     - name: Kaynaklar
       items:
-        - name: Standart ses desteği
-          href: language-support.md#standard-voices
         - name: Nöral ses desteği
           href: language-support.md#neural-voices
         - name: Bölge desteği
@@ -249,7 +247,7 @@
     - name: Amaç tanımaya genel bakış
       href: intent-recognition.md
     - name: Amaç tanıma hızlı başlangıcı
-      href: quickstarts/intent-recognition.md
+      href: get-started-intent-recognition.md
     - name: Nasıl yapılır kılavuzları
       items:
         - name: 'LUIS ile konuşma amaçlarını tanıma, C#'
@@ -464,6 +462,8 @@
       href: how-to-track-speech-sdk-memory-usage.md
     - name: Özel uç noktayı etkinleştirme
       href: speech-services-private-link.md
+    - name: VNet hizmet uç noktasını etkinleştir
+      href: speech-service-vnet-service-endpoint.md
     - name: Linux için OpenSSL’yi yapılandırma
       displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
       href: how-to-configure-openssl-linux.md

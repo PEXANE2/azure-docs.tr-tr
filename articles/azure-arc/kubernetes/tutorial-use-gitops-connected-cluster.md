@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 1459d4a0f15595c6f658d73fcb9cb533023f0eb8
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 987fb5745b6528eb96b4237f698b3ae371d69287
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025726"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731828"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Öğretici: Azure Arc etkin bir Kubernetes kümesinde giler kullanarak yapılandırma dağıtma 
 
@@ -21,7 +21,7 @@ Bu öğreticide, Azure Arc etkin bir Kubernetes kümesinde Gilar kullanarak yap�
 > [!div class="checklist"]
 > * Örnek bir git deposu kullanarak Azure Arc etkin bir Kubernetes kümesinde yapılandırma oluşturma.
 > * Yapılandırmanın başarıyla oluşturulduğunu doğrulayın.
-> * Yapılandırma formunu özel bir git deposu olarak uygulayın.
+> * Özel bir git deposundan yapılandırma uygulayın.
 > * Kubernetes yapılandırmasını doğrulayın.
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -235,7 +235,7 @@ Bir yapılandırma oluşturulduğunda veya güncelleştirilirken birkaç şey me
 
 Sağlama işlemi gerçekleşirken, yapılandırma kaynağı birkaç durum değişikliğine göre hareket eder. Yukarıdaki komutla ilerlemeyi izleyin `az k8s-configuration show ...` :
 
-| Aşama değişikliği | Açıklama |
+| Aşama değişikliği | Description |
 | ------------- | ------------- |
 | `complianceStatus`-> `Pending` | İlk ve devam eden durumları temsil eder. |
 | `complianceStatus` -> `Installed`  | `config-agent` küme başarıyla yapılandırıldı ve `flux` hata olmadan dağıtıldı. |

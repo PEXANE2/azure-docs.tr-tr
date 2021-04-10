@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/25/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 3ca4938d8666fd60ebac9e75bb2da1780e0914d3
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 81c28a3c64c81da8f6939d821c2bd61ba8617a7b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105608009"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935252"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -191,6 +191,10 @@ SMB istemcisi tarafından bildirilen birim boyutu, Azure NetApp Files biriminin 
 ### <a name="im-having-issues-connecting-to-my-smb-share-what-should-i-do"></a>SMB paylaşımma bağlanırken sorun yaşıyorum. Ne yapmalıyım?
 
 En iyi uygulama olarak, bilgisayar saati eşitlemesi için maksimum toleransı beş dakikaya ayarlayın. Daha fazla bilgi için bkz. [bilgisayar saati eşitlemesi Için maksimum tolerans](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj852172(v=ws.11)). 
+
+### <a name="can-i-manage-smb-shares-sessions-and-open-files-through-computer-management-console-mmc"></a>`SMB Shares`,, `Sessions` Ve `Open Files` Bilgisayar Yönetim Konsolu 'nu (MMC) yönetebilir miyim?
+
+`SMB Shares`, `Sessions` Ve `Open Files` Ile bilgisayar YÖNETIMI Konsolu (MMC) yönetimi şu anda desteklenmiyor.
 
 ### <a name="how-can-i-obtain-the-ip-address-of-an-smb-volume-via-the-portal"></a>Portal aracılığıyla bir SMB biriminin IP adresini nasıl alabilirim?
 
