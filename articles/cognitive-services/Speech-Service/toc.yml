@@ -456,7 +456,84 @@
                   href: windows-voice-assistants-best-practices.md
                 - name: Örnekler ve sık sorulan sorular
                   href: windows-voice-assistants-faq.md
-- name: Araçlar
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Günlü kaydını etkinleştir
+      href: how-to-use-logging.md
+    - name: Bellek kullanımını izleme
+      href: how-to-track-speech-sdk-memory-usage.md
+    - name: Özel uç noktayı etkinleştirme
+      href: speech-services-private-link.md
+    - name: Linux için OpenSSL’yi yapılandırma
+      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
+      href: how-to-configure-openssl-linux.md
+    - name: RHEL/CentOS 7’yi yapılandırma
+      href: how-to-configure-rhel-centos-7.md
+      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
+    - name: Kapsayıcılar
+      items:
+        - name: Konuşma kapsayıcılarını yükleme ve çalıştırma
+          displayName: 'containers,install container,run container'
+          href: speech-container-howto.md
+        - name: Konuşma kapsayıcılarını yapılandırma
+          displayName: 'containers,configure containers,container config,configuration'
+          href: speech-container-configuration.md
+        - name: Konuşma kapsayıcılarıyla toplu işlem
+          href: speech-container-batch-processing.md
+        - name: Kubernetes ve Helm ile konuşma kapsayıcıları
+          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
+          href: speech-container-howto-on-premises.md
+        - name: Azure kapsayıcı örneklerinde konuşma kapsayıcıları
+          displayName: 'ACI,azure container instances,container instances,containers'
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
+        - name: Kapsayıcılar hakkında SSS
+          href: speech-container-faq.md
+        - name: Bilişsel Hizmetler kapsayıcıları belgeleri
+          href: ../containers/index.yml
+    - name: Geçiş
+      items:
+        - name: Bing Konuşma’dan
+          href: how-to-migrate-from-bing-speech.md
+        - name: Translator Konuşma Çevirisi API’sinden
+          href: how-to-migrate-from-translator-speech-api.md
+- name: Cihazlar
+  items:
+    - name: Konuşma cihazları belgeleri
+      href: index-devices.yml
+    - name: Genel Bakış
+      items:
+        - name: Konuşma cihazları SDK’sı nedir?
+          href: speech-devices-sdk.md
+        - name: Konuşma cihazları SDK’sını alma
+          href: get-speech-devices-sdk.md
+        - name: Konuşma cihazları SDK’sı örnekleri (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
+    - name: Donanım
+      items:
+        - name: Mikrofon dizisi önerileri
+          href: speech-devices-sdk-microphone.md
+        - name: Roobo v1 ayrıntıları
+          href: speech-devices-sdk-roobo-v1.md
+        - name: Roobo v2 ayrıntıları
+          href: speech-devices-sdk-roobo-v2.md
+    - name: Nasıl yapılır kılavuzları
+      items:
+        - name: Mikrofon Dizisini yapılandırma
+          href: how-to-devices-microphone-array-configuration.md
+    - name: Hızlı Başlangıç
+      items:
+        - name: Konuşma cihazları SDK’sını kullanma
+          href: speech-devices-sdk-quickstart.md
+    - name: Kaynaklar
+      items:
+        - name: Konuşma cihazları SDK’sında sorun giderme
+          href: speech-devices-sdk-troubleshooting.md
+    - name: Başvuru
+      items:
+        - name: Konuşma cihazları SDK’sı sürüm notları
+          href: devices-sdk-release-notes.md
+- name: Kaynaklar
   items:
     - name: Konuşma SDK'sı
       items:
@@ -505,85 +582,6 @@
           href: 'https://speech.microsoft.com'
         - name: Speech Studio ile Özel Komutlar uygulaması oluşturma
           href: ./quickstart-custom-commands-application.md
-- name: Dağıtma
-  items:
-    - name: Günlü kaydını etkinleştir
-      href: how-to-use-logging.md
-    - name: Bellek kullanımını izleme
-      href: how-to-track-speech-sdk-memory-usage.md
-    - name: Özel uç noktayı etkinleştirme
-      href: speech-services-private-link.md
-    - name: Linux için OpenSSL’yi yapılandırma
-      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
-      href: how-to-configure-openssl-linux.md
-    - name: RHEL/CentOS 7’yi yapılandırma
-      href: how-to-configure-rhel-centos-7.md
-      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
-    - name: Kapsayıcılar
-      items:
-        - name: Konuşma kapsayıcılarını yükleme ve çalıştırma
-          displayName: 'containers,install container,run container'
-          href: speech-container-howto.md
-        - name: Konuşma kapsayıcılarını yapılandırma
-          displayName: 'containers,configure containers,container config,configuration'
-          href: speech-container-configuration.md
-        - name: Konuşma kapsayıcılarıyla toplu işlem
-          href: speech-container-batch-processing.md
-        - name: Kubernetes ve Helm ile konuşma kapsayıcıları
-          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
-          href: speech-container-howto-on-premises.md
-        - name: Azure kapsayıcı örneklerinde konuşma kapsayıcıları
-          displayName: 'ACI,azure container instances,container instances,containers'
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
-        - name: Kapsayıcılar hakkında SSS
-          href: speech-container-faq.md
-        - name: Bilişsel Hizmetler kapsayıcıları belgeleri
-          href: ../containers/index.yml
-- name: Cihazlar
-  items:
-    - name: Konuşma cihazları belgeleri
-      href: index-devices.yml
-    - name: Genel Bakış
-      items:
-        - name: Konuşma cihazları SDK’sı nedir?
-          href: speech-devices-sdk.md
-        - name: Konuşma cihazları SDK’sını alma
-          href: get-speech-devices-sdk.md
-        - name: Konuşma cihazları SDK’sı örnekleri (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-    - name: Donanım
-      items:
-        - name: Mikrofon dizisi önerileri
-          href: speech-devices-sdk-microphone.md
-        - name: Roobo v1 ayrıntıları
-          href: speech-devices-sdk-roobo-v1.md
-        - name: Roobo v2 ayrıntıları
-          href: speech-devices-sdk-roobo-v2.md
-    - name: Nasıl yapılır kılavuzları
-      items:
-        - name: Mikrofon Dizisini yapılandırma
-          href: how-to-devices-microphone-array-configuration.md
-    - name: Hızlı Başlangıç
-      items:
-        - name: Konuşma cihazları SDK’sını kullanma
-          href: speech-devices-sdk-quickstart.md
-    - name: Kaynaklar
-      items:
-        - name: Konuşma cihazları SDK’sında sorun giderme
-          href: speech-devices-sdk-troubleshooting.md
-    - name: Başvuru
-      items:
-        - name: Konuşma cihazları SDK’sı sürüm notları
-          href: devices-sdk-release-notes.md
-- name: Geçiş
-  items:
-    - name: Bing Konuşma’dan
-      href: how-to-migrate-from-bing-speech.md
-    - name: Translator Konuşma Çevirisi API’sinden
-      href: how-to-migrate-from-translator-speech-api.md
-- name: Kaynaklar
-  items:
     - name: Destek ve yardım seçenekleri
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context
     - name: Swagger belgeleri

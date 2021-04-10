@@ -1,18 +1,18 @@
 ---
 title: Azure Resource Manager için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Resource Manager için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: sample
 author: tfitzmac
 ms.author: tomfitz
 ms.service: azure-resource-manager
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 53b4911f9191c32abac08cdd8e3c1a285dfbbcc8
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 9b95a9e49cc331f43e6bedccec3fde93d2a637b5
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105037979"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106089120"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-resource-manager"></a>Azure Resource Manager için Azure Ilke mevzuat uyumluluk denetimleri
 
