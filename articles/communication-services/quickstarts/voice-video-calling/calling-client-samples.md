@@ -10,17 +10,14 @@ ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: b5ade06e8338dd810651ccd606c7dc9a313b6fa9
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 4f22b595fe3664ed840f147df94626d889b330d1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107773"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729227"
 ---
 # <a name="quickstart-use-the-communication-services-calling-sdk"></a>Hızlı başlangıç: SDK 'Yı çağıran Iletişim hizmetlerini kullanma
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
 
 Uygulamanıza ses ve video çağrısı eklemek için SDK 'Yı çağıran Iletişim hizmetlerini kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 

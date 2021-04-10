@@ -37,17 +37,17 @@ Hata ayıklama modu açık olduğunda, etkin bir Spark kümesi ile veri akışı
 > [!NOTE]
 > Kullanıcının ADF tarayıcı kullanıcı arabiriminden başlattığı her hata ayıklama oturumu, kendi Spark kümesi ile yeni bir oturumdur. Fabrika başına hata ayıklama oturumlarını görüntülemek ve yönetmek için yukarıdaki hata ayıklama oturumları için izleme görünümünü kullanabilirsiniz. Her bir hata ayıklama oturumunun, TTL saati dahil yürütüldüğü her saat için ücretlendirilirsiniz.
 
-## <a name="cluster-status"></a>Küme durumu
+## <a name="cluster-status&quot;></a>Küme durumu
 
 Küme hata ayıklamaya hazırlanışında tasarım yüzeyinin en üstündeki küme durumu göstergesi yeşil olur. Kümeniz zaten ısınma olursa yeşil gösterge neredeyse anında görünür. Hata ayıklama moduna girdiğinizde kümeniz zaten çalışmıyorsa, Spark kümesi soğuk bir önyükleme yapar. Bu gösterge, ortam etkileşimli hata ayıklama için hazırlanana kadar dönmesini sağlar.
 
 Hata ayıklamanız ile işiniz bittiğinde, Spark kümenizin sonlanabilir olması için hata ayıklama anahtarını kapatın ve artık hata ayıklama etkinliği için faturalandırılırsınız.
 
-## <a name="debug-settings"></a>Hata ayıklama ayarları
+## <a name=&quot;debug-settings&quot;></a>Hata ayıklama ayarları
 
-Hata ayıklama modunu etkinleştirdikten sonra, veri akışı verilerinin nasıl önizlebildiğini düzenleyebilirsiniz. Hata ayıklama ayarları, veri akışı tuvali araç çubuğunda "hata ayıklama ayarları" seçeneğine tıklanarak düzenlenebilirler. Burada kaynak dönüşümlerinizin her biri için kullanılacak satır sınırını veya dosya kaynağını seçebilirsiniz. Bu ayarda bulunan satır limitleri yalnızca geçerli hata ayıklama oturumu içindir. Azure SYNAPSE Analytics kaynağı için kullanılacak hazırlama bağlantılı hizmetini de seçebilirsiniz. 
+Hata ayıklama modunu etkinleştirdikten sonra, veri akışı verilerinin nasıl önizlebildiğini düzenleyebilirsiniz. Hata ayıklama ayarları, veri akışı tuvali araç çubuğunda &quot;hata ayıklama ayarları&quot; seçeneğine tıklanarak düzenlenebilirler. Burada kaynak dönüşümlerinizin her biri için kullanılacak satır sınırını veya dosya kaynağını seçebilirsiniz. Bu ayarda bulunan satır limitleri yalnızca geçerli hata ayıklama oturumu içindir. Azure SYNAPSE Analytics kaynağı için kullanılacak hazırlama bağlantılı hizmetini de seçebilirsiniz. 
 
-![Hata ayıklama ayarları](media/data-flow/debug-settings.png "Hata ayıklama ayarları")
+![Hata ayıklama ayarları](media/data-flow/debug-settings.png &quot;Hata ayıklama ayarları")
 
 Veri akışınızda veya başvurulan veri kümelerinde parametrelere sahipseniz, **Parametreler** sekmesini seçerek hata ayıklama sırasında kullanılacak değerleri belirtebilirsiniz.
 

@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: fd92eed127ec50a3d3a86f667d9aa764b79c190a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87f52bef07644370c268168c984a452d5ae3f9bd
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100585402"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279468"
 ---
 # <a name="trusted-storage-for-media-services"></a>Media Services için güvenilen depolama
 
@@ -29,7 +29,7 @@ Ancak, depolama hesabınızı güvenli hale getirmek ve güvenilen depolamayı e
 
 ## <a name="tutorial"></a>Öğretici
 
-Güvenilen depolamayı [Media Services güvenilir depolama](tutorial-trusted-storage-rest.md) öğreticisi ile etkinleştirme hakkında daha fazla bilgi edinebilirsiniz.
+Güvenilen depolamayı [Media Services güvenilir depolama](security-trusted-storage-rest-tutorial.md) öğreticisi ile etkinleştirme hakkında daha fazla bilgi edinebilirsiniz.
 
 > [!NOTE]
 > Media Services depolama hesabına okuyup yazabilmesi için AMS tarafından yönetilen kimlik Depolama Blobu veri katılımcısı erişimine izin vermeniz gerekir.  Genel katkıda bulunan rolünün verilmesi, veri düzleminde doğru izinleri etkinleştirmediğinden çalışmaz.
