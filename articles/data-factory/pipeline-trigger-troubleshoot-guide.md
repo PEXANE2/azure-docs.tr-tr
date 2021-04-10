@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
 ms.openlocfilehash: 72f2a5eec25b9acc2aedd7b006fe3380141781c8
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105563421"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Azure Data Factory 'da işlem hattı düzenleme ve Tetikleyicileri sorunlarını giderme
@@ -66,7 +66,7 @@ Kopyalama etkinliği oluştururken **Ikili kopya** seçeneğini belirleyin. Bu �
 
 ### <a name="a-pipeline-run-fails-when-you-reach-the-capacity-limit-of-the-integration-runtime-for-data-flow"></a>Veri akışı için tümleştirme çalışma zamanının kapasite sınırına ulaştığınızda işlem hattı çalıştırması başarısız olur
 
-**Konuda**
+**Sorun**
 
 Hata iletisi:
 
@@ -135,7 +135,7 @@ Başarısız Data Factory işlem hatlarını dakikalar içinde izlemeniz, 5 daki
  **Çözünürlük**
  
 * Eşzamanlılık sınırı: işlem hattınızda bir eşzamanlılık ilkesi varsa, devam eden eski bir işlem hattı çalıştırması olmadığını doğrulayın. Azure Data Factory izin verilen en fazla ardışık düzen eşzamanlılık 10 işlem hatdır. 
-* Sınırları izleme: ADF yazma tuvaline gidin, işlem hattınızı seçin ve kendisine atanmış bir eşzamanlılık özelliği olup olmadığını belirleyin. Varsa, Izleme görünümüne gidin ve devam eden son 45 gün içinde hiçbir şey olmadığından emin olun. Devam eden bir sorun varsa iptal edebilir ve yeni işlem hattı çalışmasının başlaması gerekir.
+* Sınırları izleme: ADF yazma tuvaline gidin, işlem hattınızı seçin ve kendisine atanmış bir eşzamanlılık özelliği olup olmadığını belirleyin. Varsa, İzleme görünümüne gidin ve son 45 gün içinde devam eden hiçbir şey olmadığından emin olun. Devam eden bir sorun varsa iptal edebilir ve yeni işlem hattı çalışmasının başlaması gerekir.
 * Geçici sorunlar: çalıştırmalarınızın geçici bir ağ sorunundan, kimlik bilgisi hatalarından, hizmet kesintilerine göre etkilenmesi mümkündür.  Bu durumda Azure Data Factory, tüm çalıştırmaları izleyen ve bir sorun olduğunu fark edildiğinde Başlatan bir iç kurtarma işlemine sahiptir. Bu işlem bir saat sonra gerçekleşir, bu nedenle çalıştırma bir saatten uzun bir süre boyunca takılırsa bir destek talebi oluşturun.
  
 ### <a name="longer-start-up-times-for-activities-in-adf-copy-and-data-flow"></a>ADF kopyalama ve veri akışı etkinliklerinin daha uzun süre başlangıç zamanı

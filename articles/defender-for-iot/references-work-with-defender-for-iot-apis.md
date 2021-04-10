@@ -4,10 +4,10 @@ description: Sensörler ve yönetim konsolları tarafından bulunan verilere eri
 ms.date: 12/14/2020
 ms.topic: reference
 ms.openlocfilehash: d509f2674a61af1d0ab03892186526b1cb109eee
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104778840"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>IoT algılayıcısı ve Yönetim Konsolu API 'Leri için Defender
@@ -106,15 +106,15 @@ Cihazları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **id** | Sayısal | Hayır | - |
+| **id** | Sayısal | No | - |
 | **IpAdresleri** | JSON dizisi | Yes | IP adresleri (Internet adresleri veya ikili NIC 'ler içeren bir cihaz olması durumunda birden fazla adres olabilir) |
-| **name** | Dize | Hayır | - |
-| **türüyle** | Dize | Hayır | Bilinmiyor, mühendislik Istasyonu, PLC, HMı, Historia, etki alanı denetleyicisi, DB sunucusu, kablosuz erişim noktası, yönlendirici, anahtar, sunucu, Iş Istasyonu, IP kamera, yazıcı, güvenlik duvarı, Terminal İstasyonu, VPN Gateway, Internet veya çok noktaya yayın ve yayın |
+| **name** | Dize | No | - |
+| **türüyle** | Dize | No | Bilinmiyor, mühendislik Istasyonu, PLC, HMı, Historia, etki alanı denetleyicisi, DB sunucusu, kablosuz erişim noktası, yönlendirici, anahtar, sunucu, Iş Istasyonu, IP kamera, yazıcı, güvenlik duvarı, Terminal İstasyonu, VPN Gateway, Internet veya çok noktaya yayın ve yayın |
 | **macAddresses** | JSON dizisi | Yes | MAC adresleri (çift NIC içeren bir cihaz olması durumunda birden fazla adres olabilir) |
 | **operatingSystem** | Dize | Yes | - |
-| **engineeringStation** | Boole | Hayır | True veya false |
-| **Tarayıcınız** | Boole | Hayır | True veya false |
-| **yetkisi** | Boole | Hayır | True veya false |
+| **engineeringStation** | Boole | No | True veya false |
+| **Tarayıcınız** | Boole | No | True veya false |
+| **yetkisi** | Boole | No | True veya false |
 | **satıcınıza** | Dize | Yes | - |
 | **ekledikten** | JSON dizisi | Yes | Protokol nesnesi |
 | **yazılımında** | JSON dizisi | Yes | Bellenim nesnesi |
@@ -123,21 +123,21 @@ Cihazları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **Ad** | Dize | Hayır |  |
+| **Ad** | Dize | No |  |
 | **Adresler** | JSON dizisi | Yes | Ana veya sayısal değerler |
 
 #### <a name="firmware-fields"></a>Bellenim alanları
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **ardışık** | Dize | Hayır | Yok veya gerçek değer |
-| **modelinizi** | Dize | Hayır | Yok veya gerçek değer |
-| **firmwareVersion** | Çift | Hayır | Yok veya gerçek değer |
-| **additionalData** | Dize | Hayır | Yok veya gerçek değer |
-| **moduleAddress** | Dize | Hayır | Yok veya gerçek değer |
-| **rafı** | Dize | Hayır | Yok veya gerçek değer |
-| **kumar** | Dize | Hayır | Yok veya gerçek değer |
-| **adrestir** | Dize | Hayır | Yok veya gerçek değer |
+| **ardışık** | Dize | No | Yok veya gerçek değer |
+| **modelinizi** | Dize | No | Yok veya gerçek değer |
+| **firmwareVersion** | Çift | No | Yok veya gerçek değer |
+| **additionalData** | Dize | No | Yok veya gerçek değer |
+| **moduleAddress** | Dize | No | Yok veya gerçek değer |
+| **rafı** | Dize | No | Yok veya gerçek değer |
+| **kumar** | Dize | No | Yok veya gerçek değer |
+| **adrestir** | Dize | No | Yok veya gerçek değer |
 
 #### <a name="response-example"></a>Yanıt örneği
 
@@ -331,19 +331,19 @@ Cihaz bağlantılarını temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **Firstdeviceıd** | Sayısal | Hayır | - |
-| **Seconddeviceıd** | Sayısal | Hayır | - |
-| **Lastgörüldü** | Sayısal | Hayır | Dönem (UTC) |
-| **tespit** | Sayısal | Hayır | Dönem (UTC) |
-| **adet** | Sayı dizisi | Hayır | - |
-| **ekledikten** | JSON dizisi | Hayır | Protokol alanı |
+| **Firstdeviceıd** | Sayısal | No | - |
+| **Seconddeviceıd** | Sayısal | No | - |
+| **Lastgörüldü** | Sayısal | No | Dönem (UTC) |
+| **tespit** | Sayısal | No | Dönem (UTC) |
+| **adet** | Sayı dizisi | No | - |
+| **ekledikten** | JSON dizisi | No | Protokol alanı |
 
 #### <a name="protocol-field"></a>Protokol alanı
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **name** | Dize | Hayır | - |
-| **komut** | Dize dizisi | Hayır | - |
+| **name** | Dize | No | - |
+| **komut** | Dize dizisi | No | - |
 
 #### <a name="response-example"></a>Yanıt örneği
 
@@ -495,11 +495,11 @@ IP adreslerinde tanımlanan Cvileri temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **Cveıd** | Dize | Hayır | - |
-| **Belirlenemiyor** | Dize | Hayır | IP Adresi |
-| **ınızı** | Dize | Hayır | 0,0-10,0 |
-| **Saldırıda Kvector** | Dize | Hayır | Ağ, bitişik ağ, yerel veya fiziksel |
-| **açıklaması** | Dize | Hayır | - |
+| **Cveıd** | Dize | No | - |
+| **Belirlenemiyor** | Dize | No | IP Adresi |
+| **ınızı** | Dize | No | 0,0-10,0 |
+| **Saldırıda Kvector** | Dize | No | Ağ, bitişik ağ, yerel veya fiziksel |
+| **açıklaması** | Dize | No | - |
 
 #### <a name="response-example"></a>Yanıt örneği
 
@@ -614,12 +614,12 @@ Uyarıları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **ID** | Sayısal | Hayır | - |
-| **ışınızda** | Sayısal | Hayır | Dönem (UTC) |
-| **başlık** | Dize | Hayır | - |
-| **message** | Dize | Hayır | - |
-| **inin** | Dize | Hayır | Uyarı, Ikincil, büyük veya kritik |
-| **altyapısına** | Dize | Hayır | Protokol Ihlali, Ilke Ihlali, kötü amaçlı yazılım, anomali veya operasyonel |
+| **ID** | Sayısal | No | - |
+| **ışınızda** | Sayısal | No | Dönem (UTC) |
+| **başlık** | Dize | No | - |
+| **message** | Dize | No | - |
+| **inin** | Dize | No | Uyarı, Ikincil, büyük veya kritik |
+| **altyapısına** | Dize | No | Protokol Ihlali, Ilke Ihlali, kötü amaçlı yazılım, anomali veya operasyonel |
 | **sourceDevice** | Sayısal | Yes | Cihaz Kimliği |
 | **Hedef cihaz** | Sayısal | Yes | Cihaz Kimliği |
 | **AdditionalInformation** | Ek bilgi nesnesi | Yes | - |
@@ -628,7 +628,7 @@ Uyarıları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **açıklaması** | Dize | Hayır | - |
+| **açıklaması** | Dize | No | - |
 | **bilgi** | JSON dizisi | Hayır | Dize |
 
 #### <a name="response-example"></a>Yanıt örneği
@@ -737,11 +737,11 @@ Uyarıları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|--|
-| **ilişkin** | Sayısal | Hayır | Dönem (UTC) |
-| **başlık** | Dize | Hayır | - |
-| **inin** | Dize | Hayır | BILGI, BILDIRIM veya uyarı |
+| **ilişkin** | Sayısal | No | Dönem (UTC) |
+| **başlık** | Dize | No | - |
+| **inin** | Dize | No | BILGI, BILDIRIM veya uyarı |
 | **inde** | Dize | Yes | Olay el ile oluşturulduysa, bu alan olayı oluşturan kullanıcı adını içerir |
-| **içerik** | Dize | Hayır | - |
+| **içerik** | Dize | No | - |
 
 #### <a name="response-example"></a>Yanıt örneği
 
@@ -850,13 +850,13 @@ Cihaz nesnesi şunları içerir:
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **name** | Dize | Hayır | - |
-| **IpAdresleri** | JSON dizisi | Hayır | - |
-| **securityScore** | Sayısal | Hayır | - |
+| **name** | Dize | No | - |
+| **IpAdresleri** | JSON dizisi | No | - |
+| **securityScore** | Sayısal | No | - |
 | **satıcınıza** | Dize | Yes |  |
 | **firmwareVersion** | Dize | Yes | - |
 | **modelinizi** | Dize | Yes | - |
-| **ıbılessaccesspoint** | Boole | Hayır | True veya false |
+| **ıbılessaccesspoint** | Boole | No | True veya false |
 | **operatingSystem** | İşletim sistemi nesnesi | Yes | - |
 | **'teki** | Güvenlik açıkları nesnesi | Yes | - |
 
@@ -876,48 +876,48 @@ Cihaz nesnesi şunları içerir:
 | **Antivirüsler** | JSON dizisi | Yes | Virüsten koruma adları |
 | **Plaintextparolalar** | JSON dizisi | Yes | Parola nesneleri |
 | **remoteAccess** | JSON dizisi | Yes | Uzaktan erişim nesneleri |
-| **isBackupServer** | Boole | Hayır | True veya false |
+| **isBackupServer** | Boole | No | True veya false |
 | **Openedport 'lar** | JSON dizisi | Yes | Açık bağlantı noktası nesneleri |
-| **isEngineeringStation** | Boole | Hayır | True veya false |
-| **isKnownScanner** | Boole | Hayır | True veya false |
+| **isEngineeringStation** | Boole | No | True veya false |
+| **isKnownScanner** | Boole | No | True veya false |
 | **cdirme** | JSON dizisi | Yes | CVE nesneleri |
-| **Isyetkilendirilmemiş** | Boole | Hayır | True veya false |
-| **Malwareındicationsalgılanan** | Boole | Hayır | True veya false |
+| **Isyetkilendirilmemiş** | Boole | No | True veya false |
+| **Malwareındicationsalgılanan** | Boole | No | True veya false |
 | **Dalgalı bir uthenticAtion** | JSON dizisi | Yes | Zayıf kimlik doğrulaması kullanan uygulamalar algılandı |
 
 #### <a name="password-fields"></a>Parola alanları
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **parola** | Dize | Hayır | - |
-| **Protocol** | Dize | Hayır | - |
-| **gücüyle** | Dize | Hayır | Çok zayıf, zayıf, orta veya güçlü |
+| **parola** | Dize | No | - |
+| **Protocol** | Dize | No | - |
+| **gücüyle** | Dize | No | Çok zayıf, zayıf, orta veya güçlü |
 
 #### <a name="remote-access-fields"></a>Uzaktan erişim alanları
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **bağ** | Sayısal | Hayır | - |
-| **Aktarım** | Dize | Hayır | TCP veya UDP |
-| **istemcilerinin** | Dize | Hayır | IP Adresi |
-| **clientSoftware** | Dize | Hayır | SSH, VNC, uzak masaüstü veya takım Görüntüleyicisi |
+| **bağ** | Sayısal | No | - |
+| **Aktarım** | Dize | No | TCP veya UDP |
+| **istemcilerinin** | Dize | No | IP Adresi |
+| **clientSoftware** | Dize | No | SSH, VNC, uzak masaüstü veya takım Görüntüleyicisi |
 
 #### <a name="open-port-fields"></a>Bağlantı noktası alanlarını aç
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **bağ** | Sayısal | Hayır | - |
-| **Aktarım** | Dize | Hayır | TCP veya UDP |
+| **bağ** | Sayısal | No | - |
+| **Aktarım** | Dize | No | TCP veya UDP |
 | **Protocol** | Dize | Yes | - |
-| **isConflictingWithFirewall** | Boole | Hayır | True veya false |
+| **isConflictingWithFirewall** | Boole | No | True veya false |
 
 #### <a name="cve-fields"></a>CVE alanları
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **ID** | Dize | Hayır | - |
-| **ınızı** | Sayısal | Hayır | Çift |
-| **açıklaması** | Dize | Hayır | - |
+| **ID** | Dize | No | - |
+| **ınızı** | Sayısal | No | Çift |
+| **açıklaması** | Dize | No | - |
 
 #### <a name="response-example"></a>Yanıt örneği
 
@@ -1538,8 +1538,8 @@ Bu API 'yi kullanmak için IoT erişim belirtecinin bir Defender 'a ihtiyacını
 
 | **Ad** | **Tür** | **Yapılamaz** |
 |--|--|--|
-| **nitelen** | Dize | Hayır |
-| **parola** | Dize | Hayır |
+| **nitelen** | Dize | No |
+| **parola** | Dize | No |
 
 #### <a name="request-example"></a>İstek örneği
 
@@ -1651,9 +1651,9 @@ response:
 
 | **Ad** | **Tür** | **Yapılamaz** |
 |--|--|--|
-| **nitelen** | Dize | Hayır |
-| **parola** | Dize | Hayır |
-| **new_password** | Dize | Hayır |
+| **nitelen** | Dize | No |
+| **parola** | Dize | No |
+| **new_password** | Dize | No |
 
 #### <a name="curl-command"></a>Curl komutu
 
@@ -1730,10 +1730,10 @@ response:
 
 | **Ad** | **Tür** | **Yapılamaz** |
 |--|--|--|
-| **admin_username** | Dize | Hayır |
-| **admin_password** | Dize | Hayır |
-| **nitelen** | Dize | Hayır |
-| **new_password** | Dize | Hayır |
+| **admin_username** | Dize | No |
+| **admin_password** | Dize | No |
+| **nitelen** | Dize | No |
+| **new_password** | Dize | No |
 
 #### <a name="curl-command"></a>Curl komutu
 
@@ -1823,17 +1823,17 @@ Cihazları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **Sensorıd** | Sayısal | Hayır | - |
+| **Sensorıd** | Sayısal | No | - |
 | **Bölge kimliği** | Sayısal | Yes | - |
 | **SiteId** | Sayısal | Yes | - |
 | **IpAdresleri** | JSON dizisi | Yes | IP adresleri (Internet adresleri veya ikili NIC 'ler içeren bir cihaz olması durumunda birden fazla adres olabilir) |
-| **name** | Dize | Hayır | - |
-| **türüyle** | Dize | Hayır | Bilinmiyor, mühendislik Istasyonu, PLC, HMı, Historia, etki alanı denetleyicisi, DB sunucusu, kablosuz erişim noktası, yönlendirici, anahtar, sunucu, Iş Istasyonu, IP kamera, yazıcı, güvenlik duvarı, Terminal İstasyonu, VPN Gateway, Internet veya çok noktaya yayın ve yayın |
+| **name** | Dize | No | - |
+| **türüyle** | Dize | No | Bilinmiyor, mühendislik Istasyonu, PLC, HMı, Historia, etki alanı denetleyicisi, DB sunucusu, kablosuz erişim noktası, yönlendirici, anahtar, sunucu, Iş Istasyonu, IP kamera, yazıcı, güvenlik duvarı, Terminal İstasyonu, VPN Gateway, Internet veya çok noktaya yayın ve yayın |
 | **macAddresses** | JSON dizisi | Yes | MAC adresleri (çift NIC içeren bir cihaz olması durumunda birden fazla adres olabilir) |
 | **operatingSystem** | Dize | Yes | - |
-| **engineeringStation** | Boole | Hayır | True veya false |
-| **Tarayıcınız** | Boole | Hayır | True veya false |
-| **yetkisi** | Boole | Hayır | True veya false |
+| **engineeringStation** | Boole | No | True veya false |
+| **Tarayıcınız** | Boole | No | True veya false |
+| **yetkisi** | Boole | No | True veya false |
 | **satıcınıza** | Dize | Yes | - |
 | **Protokoller** | JSON dizisi | Yes | Protokol nesnesi |
 | **yazılımında** | JSON dizisi | Yes | Bellenim nesnesi |
@@ -1842,21 +1842,21 @@ Cihazları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| Name | Dize | Hayır | - |
+| Name | Dize | No | - |
 | Adresler | JSON dizisi | Yes | Ana veya sayısal değerler |
 
 #### <a name="firmware-fields"></a>Bellenim alanları
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **ardışık** | Dize | Hayır | Yok veya gerçek değer |
-| **modelinizi** | Dize | Hayır | Yok veya gerçek değer |
-| **firmwareVersion** | Çift | Hayır | Yok veya gerçek değer |
-| **additionalData** | Dize | Hayır | Yok veya gerçek değer |
-| **moduleAddress** | Dize | Hayır | Yok veya gerçek değer |
-| **rafı** | Dize | Hayır | Yok veya gerçek değer |
-| **kumar** | Dize | Hayır | Yok veya gerçek değer |
-| **adrestir** | Dize | Hayır | Yok veya gerçek değer |
+| **ardışık** | Dize | No | Yok veya gerçek değer |
+| **modelinizi** | Dize | No | Yok veya gerçek değer |
+| **firmwareVersion** | Çift | No | Yok veya gerçek değer |
+| **additionalData** | Dize | No | Yok veya gerçek değer |
+| **moduleAddress** | Dize | No | Yok veya gerçek değer |
+| **rafı** | Dize | No | Yok veya gerçek değer |
+| **kumar** | Dize | No | Yok veya gerçek değer |
+| **adrestir** | Dize | No | Yok veya gerçek değer |
 
 #### <a name="response-example"></a>Yanıt örneği
 
@@ -2044,12 +2044,12 @@ Cihazları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **ID** | Sayısal | Hayır | - |
-| **ışınızda** | Sayısal | Hayır | Dönem (UTC) |
-| **başlık** | Dize | Hayır | - |
-| **message** | Dize | Hayır | - |
-| **inin** | Dize | Hayır | Uyarı, Ikincil, büyük veya kritik |
-| **altyapısına** | Dize | Hayır | Protokol Ihlali, Ilke Ihlali, kötü amaçlı yazılım, anomali veya operasyonel |
+| **ID** | Sayısal | No | - |
+| **ışınızda** | Sayısal | No | Dönem (UTC) |
+| **başlık** | Dize | No | - |
+| **message** | Dize | No | - |
+| **inin** | Dize | No | Uyarı, Ikincil, büyük veya kritik |
+| **altyapısına** | Dize | No | Protokol Ihlali, Ilke Ihlali, kötü amaçlı yazılım, anomali veya operasyonel |
 | **sourceDevice** | Sayısal | Yes | Cihaz Kimliği |
 | **Hedef cihaz** | Sayısal | Yes | Cihaz Kimliği |
 | **AdditionalInformation** | Ek bilgi nesnesi | Yes | - |
@@ -2058,7 +2058,7 @@ Cihazları temsil eden JSON nesneleri dizisi.
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **açıklaması** | Dize | Hayır | - |
+| **açıklaması** | Dize | No | - |
 | **bilgi** | JSON dizisi | Hayır | Dize |
 
 #### <a name="response-example"></a>Yanıt örneği
@@ -2206,7 +2206,7 @@ UUID 'yi içeren uyarı üzerinde gerçekleştirilecek eylemi temsil eden JSON n
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **ön** | Dize | Hayır | tanıtıcı veya Handleandöğren |
+| **ön** | Dize | No | tanıtıcı veya Handleandöğren |
 
 #### <a name="request-example"></a>İstek örneği
 
@@ -2228,13 +2228,13 @@ Cihazları temsil eden JSON nesneleri dizisi.
 #### <a name="response-fields"></a>Yanıt alanları
 
 
-| Ad | Tür | Null Atanabilir | Açıklama |
+| Ad | Tür | Null Atanabilir | Description |
 |--|--|--|--|
-| **içerik/hata** | Dize | Hayır | İstek başarılı olursa içerik özelliği görüntülenir. Aksi halde, Error özelliği görüntülenir. |
+| **içerik/hata** | Dize | No | İstek başarılı olursa içerik özelliği görüntülenir. Aksi halde, Error özelliği görüntülenir. |
 
 #### <a name="possible-content-values"></a>Olası içerik değerleri
 
-| Durum kodu | İçerik değeri | Açıklama |
+| Durum kodu | İçerik değeri | Description |
 |--|--|--|
 | 200 | Uyarı güncelleştirme isteği başarıyla tamamlandı. | Güncelleştirme isteği başarıyla tamamlandı. Açıklama yok. |
 | 200 | Uyarı zaten işlendi (**tanıtıcı**). | Uyarı için bir tanıtıcı isteği alındığında uyarı zaten işlendi.<br />Uyarı **işlenmeye** devam eder. |
@@ -2472,8 +2472,8 @@ request:
 
 | **Ad** | **Tür** | **Yapılamaz** |
 |--|--|--|
-| **nitelen** | Dize | Hayır |
-| **parola** | Dize | Hayır |
+| **nitelen** | Dize | No |
+| **parola** | Dize | No |
 
 #### <a name="response-example"></a>Yanıt örneği
 
@@ -2557,9 +2557,9 @@ response:
 
 | **Ad** | **Tür** | **Yapılamaz** |
 |--|--|--|
-| **nitelen** | Dize | Hayır |
-| **parola** | Dize | Hayır |
-| **new_password** | Dize | Hayır |
+| **nitelen** | Dize | No |
+| **parola** | Dize | No |
+| **new_password** | Dize | No |
 
 #### <a name="curl-command"></a>Curl komutu
 
@@ -2636,10 +2636,10 @@ response:
 
 | **Ad** | **Tür** | **Yapılamaz** |
 |--|--|--|
-| **admin_username** | Dize | Hayır |
-| **admin_password** | Dize | Hayır |
-| **nitelen** | Dize | Hayır |
-| **new_password** | Dize | Hayır |
+| **admin_username** | Dize | No |
+| **admin_password** | Dize | No |
+| **nitelen** | Dize | No |
+| **new_password** | Dize | No |
 
 #### <a name="curl-command"></a>Curl komutu
 
