@@ -12,18 +12,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fc3ab64a35c24df2af9d90a5ad348f840610d188
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ada86e0ce44977789eaa5d6327c0aad2883b47d
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102635850"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108855"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>Birden çok dönüşüm çıkışına sahip bir iş oluşturma
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Bu konu, iki dönüşüm çıkışına sahip bir dönüşümün nasıl oluşturulacağını gösterir. İlk bir giriş, yerleşik bir uyarlamalı [akış](encoding-concept.md#builtinstandardencoderpreset) ön ayarı ile Uyarlamalı bit hızı akışı için kodlanacak şekilde çağrı yapılır. İkinci bir, giriş videosunda ses sinyalini, [audioanalizin önayarıyla](analyzing-video-audio-files-concept.md#built-in-presets)işlenecek şekilde çağırır. Dönüşüm oluşturulduktan sonra, videonuzu uygun şekilde işleyecek bir iş gönderebilirsiniz. Bu örnekte, iki dönüşüm çıkışı belirttiğimiz için iki Iş çıkışı belirtmemiz gerekir. Her iki Iş çıkışını aynı kıymete (aşağıda gösterildiği gibi) doğrudan yönlendirmeye veya sonuçların ayrı varlıklara yazılmasına izin verebilirsiniz.
+Bu konu, iki dönüşüm çıkışına sahip bir dönüşümün nasıl oluşturulacağını gösterir. İlk bir giriş, yerleşik bir uyarlamalı [akış](encode-concept.md#builtinstandardencoderpreset) ön ayarı ile Uyarlamalı bit hızı akışı için kodlanacak şekilde çağrı yapılır. İkinci bir, giriş videosunda ses sinyalini, [audioanalizin önayarıyla](analyze-video-audio-files-concept.md#built-in-presets)işlenecek şekilde çağırır. Dönüşüm oluşturulduktan sonra, videonuzu uygun şekilde işleyecek bir iş gönderebilirsiniz. Bu örnekte, iki dönüşüm çıkışı belirttiğimiz için iki Iş çıkışı belirtmemiz gerekir. Her iki Iş çıkışını aynı kıymete (aşağıda gösterildiği gibi) doğrudan yönlendirmeye veya sonuçların ayrı varlıklara yazılmasına izin verebilirsiniz.
 
 > [!TIP]
 > Geliştirmeye başlamadan önce, [Media Services v3 API 'leri Ile geliştirmeyi](media-services-apis-overview.md) Inceleyin (API 'lere erişme hakkında bilgi, adlandırma kuralları vb.)

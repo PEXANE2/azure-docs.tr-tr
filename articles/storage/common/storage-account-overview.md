@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/02/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 24d955b0d1c53f57f5927f9e893b6ecd75fb3ca8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d7eca7d8f3cd40f4a3961f0ac478fba290be3041
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102561902"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279672"
 ---
 # <a name="storage-account-overview"></a>Depolama hesabına genel bakış
 
@@ -175,10 +175,6 @@ Aşağıdaki tabloda, her bir depolama hesabı türünde Bloblar için hangi eri
 > [!IMPORTANT]
 > Mevcut bir depolama hesabı veya Blobun erişim katmanını değiştirmek ek ücretler elde edebilir. Daha fazla bilgi için bkz. [depolama hesabı faturalandırması](#storage-account-billing).
 
-## <a name="encryption"></a>Şifreleme
-
-Depolama hesabınızdaki tüm veriler hizmet tarafında şifrelenir. Şifreleme hakkında daha fazla bilgi için bkz. [bekleyen veri Için Azure depolama hizmeti şifrelemesi](storage-service-encryption.md).
-
 ## <a name="storage-account-endpoints"></a>Depolama hesabı uç noktaları
 
 Depolama hesabı, Azure 'da verileriniz için benzersiz bir ad alanı sağlar. Azure Storage 'da depoladığınız her nesnenin benzersiz hesap adınızı içeren bir adresi vardır. Hesap adı ve Azure depolama hizmeti uç noktası birleşimi, depolama hesabınız için uç noktaları oluşturur.
@@ -200,22 +196,17 @@ Depolama hesabındaki nesnenin konumunu uç noktaya ekleyerek bir depolama hesab
 
 Ayrıca, depolama hesabınızı Bloblar için özel bir etki alanı kullanacak şekilde yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure depolama hesabınız için özel etki alanı adı yapılandırma](../blobs/storage-custom-domain-name.md).  
 
-## <a name="control-access-to-account-data"></a>Hesap verilerine erişimi denetleme
+## <a name="migrating-a-storage-account"></a>Depolama hesabını geçirme
 
-Varsayılan olarak, hesabınızdaki veriler yalnızca siz, yani hesap sahibi tarafından kullanılabilir. Verilerinize kimlerin erişebileceğini ve sahip oldukları izinleri denetleyin.
+Aşağıdaki tablo, bir depolama hesabını taşıma, yükseltme veya geçirme ile ilgili yönergeler özetler ve işaret eder:
 
-Depolama hesabınızda yapılan her isteği yetkilendirmelidir. Hizmetin düzeyinde, istek geçerli bir *Yetkilendirme* üst bilgisi içermelidir. Özellikle, bu üst bilgi, hizmeti yürütmeden önce isteği doğrulamak için gerekli tüm bilgileri içerir.
-
-Aşağıdaki yaklaşımlardan herhangi birini kullanarak Depolama hesabınızdaki verilere erişim izni verebilirsiniz:
-
-- **Azure Active Directory:** Blob ve kuyruk verilerine erişim için bir kullanıcının, grubun veya diğer kimliğin kimliğini doğrulamak üzere Azure Active Directory (Azure AD) kimlik bilgilerini kullanın. Kimlik doğrulaması başarılı olursa Azure AD, Azure Blob depolama veya kuyruk depolama için isteği yetkilendirmede kullanılacak bir belirteç döndürür. Daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure depolama 'ya erişim kimlik doğrulaması](storage-auth-aad.md).
-- **Paylaşılan anahtar yetkilendirmesi:** Azure depolama 'ya erişmek için uygulamanızın çalışma zamanında kullandığı bir bağlantı dizesi oluşturmak için depolama hesabı erişim anahtarınızı kullanın. Bağlantı dizesindeki değerler, Azure depolama 'ya geçirilen *Yetkilendirme* üst bilgisini oluşturmak için kullanılır. Daha fazla bilgi için bkz. [Azure Storage bağlantı dizelerini yapılandırma](storage-configure-connection-string.md).
-- **Paylaşılan erişim imzası:** Paylaşılan erişim imzası (SAS) Depolama hesabınızdaki kaynaklara temsilci erişimine izin veren bir belirteçtir. SAS belirteci, URL 'de Azure depolama 'ya bir istek yetkilendirmek için gereken tüm bilgileri kapsüller. SAS oluşturduğunuzda, SAS 'nin bir kaynağa verdiği izinleri ve izinlerin geçerli olduğu aralığı belirtebilirsiniz. Bir SAS belirteci, Azure AD kimlik bilgileriyle veya paylaşılan anahtarla imzalanabilir. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](storage-sas-overview.md).
-
-> [!NOTE]
-> Azure AD kimlik bilgilerini kullanarak kullanıcıların veya uygulamaların kimliğini doğrulamak, diğer yetkilendirme yolları üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Uygulamalarınızla paylaşılan anahtar yetkilendirmesi kullanmaya devam edebilirsiniz, ancak Azure AD atlama 'yi kullanarak hesap erişim anahtarınızı kodunuzla depolama gereksinimini ortadan kaldırabilirsiniz. Ayrıca, Depolama hesabınızdaki kaynaklara ayrıntılı erişim sağlamak için paylaşılan erişim imzaları (SAS) kullanmaya devam edebilirsiniz, ancak Azure AD SAS belirteçlerini yönetmeye gerek kalmadan veya güvenliği aşılmış bir SAS iptal etme gereksinimi olmadan benzer yetenekler sunmaktadır.
->
-> Microsoft, mümkün olduğunda Azure Depolama Blobu ve kuyruk uygulamaları için Azure AD yetkilendirmesi kullanılmasını önerir.
+| Geçiş senaryosu | Ayrıntılar |
+|--|--|
+| Bir depolama hesabını farklı bir aboneliğe taşıma | Azure Resource Manager bir kaynağı farklı bir aboneliğe taşımaya yönelik seçenekler sağlar. Daha fazla bilgi için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/management/move-resource-group-and-subscription.md). |
+| Bir depolama hesabını farklı bir kaynak grubuna taşıma | Azure Resource Manager bir kaynağı farklı bir kaynak grubuna taşımaya yönelik seçenekler sağlar. Daha fazla bilgi için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/management/move-resource-group-and-subscription.md). |
+| Bir depolama hesabını farklı bir bölgeye taşıma | Bir depolama hesabını taşımak için diğer bölgede depolama hesabının bir kopyasını oluşturun. Daha sonra, AzCopy veya seçtiğiniz başka bir aracı kullanarak verilerinizi bu hesaba taşıyın. Daha fazla bilgi için bkz. [Azure Storage hesabını başka bir bölgeye taşıma](storage-account-move.md). |
+| Genel amaçlı v2 depolama hesabına yükseltme | Genel amaçlı v1 depolama hesabını veya blob depolama hesabını genel amaçlı v2 hesabına yükseltebilirsiniz. Bu eylemin geri alınamayacağı unutulmamalıdır. Daha fazla bilgi için bkz. [genel amaçlı v2 depolama hesabına yükseltme](storage-account-upgrade.md). |
+| Klasik bir depolama hesabını Azure Resource Manager geçirme | Azure Resource Manager dağıtım modeli, işlevsellik, ölçeklenebilirlik ve güvenlik bakımından klasik dağıtım modeline göre belirlenir. Klasik bir depolama hesabını Azure Resource Manager geçirme hakkında daha fazla bilgi için, bkz. [depolama hesaplarını](../../virtual-machines/migration-classic-resource-manager-overview.md#migration-of-storage-accounts) **platform tarafından desteklenen IaaS kaynaklarının Azure Resource Manager klasik sürümüne** geçişi. |
 
 ## <a name="copying-data-into-a-storage-account"></a>Bir depolama hesabına veri kopyalama
 
@@ -239,6 +230,10 @@ Azure depolama REST API hakkında daha fazla bilgi için bkz. [Azure Storage Ser
 
 > [!IMPORTANT]
 > Bloblar, blobla birlikte istemci tarafı şifreleme depolama şifrelemesiyle ilgili meta veriler kullanılarak depolanır. İstemci tarafı şifreleme ile şifrelenmiş bir blobu kopyalarsanız, kopyalama işleminin başta şifreleme ile ilgili meta veriler olmak üzere blob meta verilerini koruduğundan emin olun. Bir blobu şifreleme meta verileri olmadan kopyalarsanız blob içeriği tekrar alınamaz. Şifrelemeyle ilgili meta veriler hakkında daha fazla bilgi için bkz. [Azure Depolama İstemci Tarafı Şifrelemesi](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+
+## <a name="encryption"></a>Şifreleme
+
+Depolama hesabınızdaki tüm veriler hizmet tarafında şifrelenir. Şifreleme hakkında daha fazla bilgi için bkz. [bekleyen veri Için Azure depolama hizmeti şifrelemesi](storage-service-encryption.md).
 
 ## <a name="storage-account-billing"></a>Depolama hesabı faturalama
 

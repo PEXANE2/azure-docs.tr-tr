@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44091cda479f2c0ccbe77bb9989ee2eda4c40f9d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 80ee161944a48135778d12942964a88455ab756e
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727102"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055782"
 ---
 # <a name="continuous-access-evaluation"></a>Sürekli erişim değerlendirmesi
 
@@ -163,11 +163,11 @@ Bu senaryo, sınırlı döngüden kaçınmak için ortamınızda varsa, Azure AD
 
 Office Update kanallarının bir açıklaması için bkz. [Microsoft 365 uygulamaları için güncelleştirme kanallarına genel bakış](/deployoffice/overview-update-channels). Kuruluşların web hesabı Yöneticisi 'Ni (WAM) devre dışı bırakmadığından önerilir.
 
-### <a name="policy-change-timing"></a>İlke değiştirme zamanlaması
+### <a name="group-membership-and-policy-update-effective-time"></a>Grup üyeliği ve Ilke güncelleştirme geçerlilik süresi
 
-Yöneticiler tarafından yapılan ilke değişikliklerinin etkili olması bir gün sürebilir. Gecikme süresi iki saate kadar azaltılacağı için bazı iyileştirme yapıldı. Ancak, henüz tüm senaryoları kapsamaz. 
+Yöneticiler tarafından yapılan grup üyeliği ve ilke güncelleştirmesinin etkili olması bir gün sürebilir. İlke güncelleştirmeleri için en iyi duruma getirme işlemi, gecikme süresi iki saate kadar azalır. Ancak, henüz tüm senaryoları kapsamaz. 
 
-Bir acil durum varsa ve güncelleştirilmiş ilkelerinizin belirli kullanıcılara hemen uygulanması gerekiyorsa, kullanıcıların oturumunu iptal etmek için Kullanıcı profili sayfasında bu [PowerShell komutunu](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) veya "oturumu iptal et" i kullanmanız gerekir. Bu, güncelleştirilmiş ilkelerin hemen uygulandığından emin olmanızı sağlar.
+Bir acil durum varsa ve ilkeleriniz veya grup üyeliği değişikliğini belirli kullanıcılara hemen uygulanmasını istiyorsanız, kullanıcıların oturumunu iptal etmek için Kullanıcı profili sayfasında bu [PowerShell komutunu](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) veya "oturumu iptal et" i kullanmanız gerekir. Bu, güncelleştirilmiş ilkelerin hemen uygulandığından emin olmanızı sağlar.
 
 ### <a name="coauthoring-in-office-apps"></a>Office uygulamalarında birlikte yazma
 

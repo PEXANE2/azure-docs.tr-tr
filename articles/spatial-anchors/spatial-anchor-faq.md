@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 01eb0ce83efa54366e027d35d9c3c3bbf86eff7b
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: b67dcf038dbe13b8c040f317bb117f3b7a7afdde
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95487376"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384247"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure uzamsal bağlantıları hakkında sık sorulan sorular
 
@@ -80,7 +80,7 @@ Y **:** Evet, Azure uzamsal bağlantıları genel kullanıma sunulmuştur ve sta
 
 **S: herhangi bir azaltma sınırlarınız var mı?**
 
-Y **: Evet**, azaltma sınırımız var.  Bunlara, tipik uygulama geliştirme ve test için ulaşacağız. Üretim dağıtımları için, müşterilerimizin yüksek ölçekli gereksinimlerini desteklemeye hazırız. Tartışmak için [bizimle Iletişim kurun](mailto:azuremrs@microsoft.com) . 
+Y **: Evet**, azaltma sınırımız var.  Bunlara, tipik uygulama geliştirme ve test için ulaşacağız. Üretim dağıtımları için, müşterilerimizin yüksek ölçekli gereksinimlerini desteklemeye hazırız. Tartışmak için [bizimle Iletişim kurun](mailto:azuremrscontact@microsoft.com) .
 
 **S: Azure uzamsal çıpası hangi bölgelerde kullanılabilir?**
 

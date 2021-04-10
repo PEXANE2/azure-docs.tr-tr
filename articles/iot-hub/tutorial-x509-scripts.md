@@ -13,16 +13,16 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: f11aec770818cd4ceeeda1ae7decf30acb9ca92b
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: fc3717436619468e2db0bf4b408059112dae24cc
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105630774"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384162"
 ---
 # <a name="tutorial-using-microsoft-supplied-scripts-to-create-test-certificates"></a>Öğretici: test sertifikaları oluşturmak için Microsoft tarafından sağlanan betikleri kullanma
 
-Microsoft, kendi X. 509.440 sertifikalarınızı oluşturmayı ve IoT Hub kimlik doğrulamasını anlamanıza yardımcı olmak için PowerShell ve Bash betikleri sağlar. Betikler [GitHub](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)' da bulunur. Yalnızca tanıtım amaçlı olarak sağlanır. Tarafından oluşturulan sertifikalar, üretim için kullanılmamalıdır. Sertifikalar sabit kodlanmış parolalar ("1234") içerir ve 30 gün sonra sona erer. Bir üretim ortamında, sertifika oluşturma ve ömür yönetimi için kendi en iyi uygulamalarınızı kullanmanız gerekir.
+Microsoft, kendi X. 509.440 sertifikalarınızı oluşturmayı ve IoT Hub kimlik doğrulamasını anlamanıza yardımcı olmak için PowerShell ve Bash betikleri sağlar. Betikler bir GitHub [deposunda](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)bulunur. Yalnızca tanıtım amaçlı olarak sağlanır. Tarafından oluşturulan sertifikalar, üretim için kullanılmamalıdır. Sertifikalar sabit kodlanmış parolalar ("1234") içerir ve 30 gün sonra sona erer. Bir üretim ortamında, sertifika oluşturma ve ömür yönetimi için kendi en iyi uygulamalarınızı kullanmanız gerekir.
 
 ## <a name="powershell-scripts"></a>PowerShell komut dosyaları
 
@@ -30,7 +30,7 @@ Microsoft, kendi X. 509.440 sertifikalarınızı oluşturmayı ve IoT Hub kimlik
 
 Windows için OpenSSL alın. <https://www.openssl.org/docs/faq.html#MISC4>İndirme veya kaynaktan derleme yerleri için bkz <https://www.openssl.org/source/> .. Ardından ön betikleri çalıştırın:
 
-1. Komut dosyalarını [GitHub](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) 'dan, çalışmak istediğiniz yerel dizine kopyalayın. Tüm dosyalar, bu dizinin alt öğesi olarak oluşturulacak.
+1. Bu GitHub [deposundan](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) betikleri, çalışmak istediğiniz yerel dizine kopyalayın. Tüm dosyalar, bu dizinin alt öğesi olarak oluşturulacak.
 
 1. PowerShell 'i yönetici olarak başlatın.
 

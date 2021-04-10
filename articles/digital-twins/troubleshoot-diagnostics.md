@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Tanılama ayarlarıyla günlüğe yazmayı etkinleştirme ve günlükleri anında görüntülemek için sorgulama bölümüne bakın.
 author: baanders
 ms.author: baanders
-ms.date: 11/9/2020
+ms.date: 2/24/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c600ced8896a3847b80d854c9e230310cca4c98d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 08db4d92da5213b1ce1b79867650da9df8c38ee4
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100588598"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385088"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure dijital TWINS sorunlarını giderme: tanılama günlüğü
 
@@ -63,12 +63,12 @@ Tanılama ayarları ve kurulum seçenekleri hakkında daha ayrıntılı bilgi i�
 
 Azure Digital TWINS 'in topladığı günlük kategorileri hakkında daha fazla ayrıntı aşağıda verilmiştir.
 
-| Günlük kategorisi | Description |
+| Günlük kategorisi | Açıklama |
 | --- | --- |
 | ADTModelsOperation | Modellerle ilgili tüm API çağrılarını günlüğe kaydet |
 | ADTQueryOperation | Sorgularla ilgili tüm API çağrılarını günlüğe kaydet |
 | ADTEventRoutesOperation | Olay rotalarıyla ilgili tüm API çağrılarını ve Azure dijital TWINS 'den olayların çıkış durumunu Event Grid, Event Hubs ve Service Bus gibi bir uç nokta hizmetine kaydedin |
-| ADTDigitalTwinsOperation | Azure dijital TWINS ile ilgili tüm API çağrılarını günlüğe kaydet |
+| ADTDigitalTwinsOperation | Tek tek tüm API çağrılarını günlüğe kaydet |
 
 Her günlük kategorisi yazma, okuma, silme ve eylem işlemlerinden oluşur.  Bu haritanın REST API çağrılar aşağıdaki gibidir:
 
@@ -104,18 +104,20 @@ Her kategoride günlüğe kaydedilen işlemlerin ve karşılık gelen [Azure dij
 
 Her günlük kategorisinin, bu kategorideki olayların nasıl raporlandığını tanımlayan bir şeması vardır. Her bir günlük girişi metin olarak depolanır ve JSON blobu olarak biçimlendirilir. Günlükteki ve örnek JSON gövdelerinin alanları, aşağıdaki her günlük türü için verilmiştir. 
 
-`ADTDigitalTwinsOperation`, `ADTModelsOperation` ve `ADTQueryOperation` TUTARLı bir API günlüğü şeması kullanın; `ADTEventRoutesOperation` kendi ayrı şemasına sahiptir.
+`ADTDigitalTwinsOperation`, `ADTModelsOperation` ve `ADTQueryOperation` TUTARLı bir API günlüğü şeması kullanır. `ADTEventRoutesOperation` Özellikleri, özelliklerde bir alan içerecek şekilde genişletir `endpointName` .
 
 ### <a name="api-log-schemas"></a>API günlük şemaları
 
-Bu günlük şeması,, ve için tutarlıdır `ADTDigitalTwinsOperation` `ADTModelsOperation` `ADTQueryOperation` . Bir Azure dijital TWINS örneğine yönelik API çağrılarına yönelik bilgiler içerir.
+Bu günlük şeması `ADTDigitalTwinsOperation` ,,, için `ADTModelsOperation` tutarlıdır `ADTQueryOperation` . Aynı şema, `ADTEventRoutesOperation` işlem adı **özel durumu** ile için de kullanılır `Microsoft.DigitalTwins/eventroutes/action` (Bu şema hakkında daha fazla bilgi için, sonraki bölüm, [*Çıkış günlüğü şemaları*](#egress-log-schemas)).
+
+Şema, bir Azure dijital TWINS örneğine yönelik API çağrılarına yönelik bilgiler içerir.
 
 API günlüklerinin alan ve özellik açıklamaları aşağıda verilmiştir.
 
 | Alan adı | Veri türü | Açıklama |
 |-----|------|-------------|
 | `Time` | DateTime | Bu olayın gerçekleştiği tarih ve saat (UTC) |
-| `ResourceID` | Dize | Olayın gerçekleştiği kaynak için Azure Resource Manager kaynak KIMLIĞI |
+| `ResourceId` | Dize | Olayın gerçekleştiği kaynak için Azure Resource Manager kaynak KIMLIĞI |
 | `OperationName` | Dize  | Olay sırasında gerçekleştirilen eylemin türü |
 | `OperationVersion` | Dize | Olay sırasında kullanılan API sürümü |
 | `Category` | Dize | Yayılmakta olan kaynağın türü |
@@ -125,9 +127,15 @@ API günlüklerinin alan ve özellik açıklamaları aşağıda verilmiştir.
 | `DurationMs` | Dize | Olayın milisaniye cinsinden ne kadar sürdüğü |
 | `CallerIpAddress` | Dize | Olay için maskelenmiş kaynak IP adresi |
 | `CorrelationId` | Guid | Olay için müşteri tarafından sunulan benzersiz tanımlayıcı |
-| `Level` | Dize | Etkinliğin günlüğe kaydetme önem derecesi |
+| `ApplicationId` | Guid | Taşıyıcı yetkilendirmede kullanılan uygulama KIMLIĞI |
+| `Level` | int | Etkinliğin günlüğe kaydetme önem derecesi |
 | `Location` | Dize | Olayın gerçekleştiği bölge |
 | `RequestUri` | Kullanılmamışsa | Olay sırasında kullanılan uç nokta |
+| `TraceId` | Dize | `TraceId`, [W3C's Trace bağlamının](https://www.w3.org/TR/trace-context/)bir parçası olarak. Sistemler genelinde dağıtılmış bir izlemeyi benzersiz şekilde tanımlamak için kullanılan tüm izlemenin KIMLIĞI. |
+| `SpanId` | Dize | `SpanId`[W3C's Trace bağlamının](https://www.w3.org/TR/trace-context/)bir parçası olarak. İzlem içindeki bu isteğin KIMLIĞI. |
+| `ParentId` | Dize | `ParentId`[W3C's Trace bağlamının](https://www.w3.org/TR/trace-context/)bir parçası olarak. Üst KIMLIĞI olmayan bir istek, izlemenin köküdür. |
+| `TraceFlags` | Dize | `TraceFlags`[W3C's Trace bağlamının](https://www.w3.org/TR/trace-context/)bir parçası olarak. Örnekleme, izleme düzeyi vb. gibi izleme bayraklarını denetler. |
+| `TraceState` | Dize | `TraceState`[W3C's Trace bağlamının](https://www.w3.org/TR/trace-context/)bir parçası olarak. Farklı dağıtılmış izleme sistemlerinde yaymak üzere satıcıya özgü ek izleme tanımlama bilgileri. |
 
 Aşağıda bu tür Günlükler için örnek JSON gövdeleri verilmiştir.
 
@@ -143,12 +151,25 @@ Aşağıda bu tür Günlükler için örnek JSON gövdeleri verilmiştir.
   "resultType": "Success",
   "resultSignature": "200",
   "resultDescription": "",
-  "durationMs": "314",
+  "durationMs": 8,
   "callerIpAddress": "13.68.244.*",
   "correlationId": "2f6a8e64-94aa-492a-bc31-16b9f0b16ab3",
+  "identity": {
+    "claims": {
+      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+    }
+  },
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-10-31"
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-10-31",
+  "properties": {},
+  "traceContext": {
+    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+    "spanId": "b630da57026dd046",
+    "parentId": "9f0de6dadae85945",
+    "traceFlags": "01",
+    "tracestate": "k1=v1,k2=v2"
+  }
 }
 ```
 
@@ -164,12 +185,25 @@ Aşağıda bu tür Günlükler için örnek JSON gövdeleri verilmiştir.
   "resultType": "Success",
   "resultSignature": "201",
   "resultDescription": "",
-  "durationMs": "935",
+  "durationMs": "80",
   "callerIpAddress": "13.68.244.*",
   "correlationId": "9dcb71ea-bb6f-46f2-ab70-78b80db76882",
+  "identity": {
+    "claims": {
+      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+    }
+  },
   "level": "4",
   "location": "southcentralus",
   "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-10-31",
+  "properties": {},
+  "traceContext": {
+    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+    "spanId": "b630da57026dd046",
+    "parentId": "9f0de6dadae85945",
+    "traceFlags": "01",
+    "tracestate": "k1=v1,k2=v2"
+  }
 }
 ```
 
@@ -185,18 +219,67 @@ Aşağıda bu tür Günlükler için örnek JSON gövdeleri verilmiştir.
   "resultType": "Success",
   "resultSignature": "200",
   "resultDescription": "",
-  "durationMs": "255",
+  "durationMs": "314",
   "callerIpAddress": "13.68.244.*",
   "correlationId": "1ee2b6e9-3af4-4873-8c7c-1a698b9ac334",
+  "identity": {
+    "claims": {
+      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+    }
+  },
   "level": "4",
   "location": "southcentralus",
   "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-10-31",
+  "properties": {},
+  "traceContext": {
+    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+    "spanId": "b630da57026dd046",
+    "parentId": "9f0de6dadae85945",
+    "traceFlags": "01",
+    "tracestate": "k1=v1,k2=v2"
+  }
 }
+```
+
+#### <a name="adteventroutesoperation"></a>ADTEventRoutesOperation
+
+Bu tür olmayan bir örnek JSON gövdesi aşağıda verilmiştir `ADTEventRoutesOperation`  `Microsoft.DigitalTwins/eventroutes/action` (Bu şema hakkında daha fazla bilgi için, [*Çıkış günlüğü şemaları*](#egress-log-schemas)sonraki bölümüne bakın).
+
+```json
+  {
+    "time": "2020-10-30T22:18:38.0708705Z",
+    "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+    "operationName": "Microsoft.DigitalTwins/eventroutes/write",
+    "operationVersion": "2020-10-31",
+    "category": "EventRoutesOperation",
+    "resultType": "Success",
+    "resultSignature": "204",
+    "resultDescription": "",
+    "durationMs": 42,
+    "callerIpAddress": "212.100.32.*",
+    "correlationId": "7f73ab45-14c0-491f-a834-0827dbbf7f8e",
+    "identity": {
+      "claims": {
+        "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+      }
+    },
+    "level": "4",
+    "location": "southcentralus",
+    "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/EventRoutes/egressRouteForEventHub?api-version=2020-10-31",
+    "properties": {},
+    "traceContext": {
+      "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+      "spanId": "b630da57026dd046",
+      "parentId": "9f0de6dadae85945",
+      "traceFlags": "01",
+      "tracestate": "k1=v1,k2=v2"
+    }
+  },
 ```
 
 ### <a name="egress-log-schemas"></a>Çıkış günlüğü şemaları
 
-Bu, Günlükler için şemadır `ADTEventRoutesOperation` . Bunlar, özel durumlarla ilgili ayrıntıları ve çıkış uç noktaları etrafında bir Azure dijital TWINS örneğine bağlı API işlemlerini içerir.
+Bu, `ADTEventRoutesOperation` işlem adına özgü günlüklere yönelik şemadır `Microsoft.DigitalTwins/eventroutes/action` . Bunlar, özel durumlarla ilgili ayrıntıları ve çıkış uç noktaları etrafında bir Azure dijital TWINS örneğine bağlı API işlemlerini içerir.
 
 |Alan adı | Veri türü | Açıklama |
 |-----|------|-------------|
@@ -205,28 +288,55 @@ Bu, Günlükler için şemadır `ADTEventRoutesOperation` . Bunlar, özel duruml
 | `OperationName` | Dize  | Olay sırasında gerçekleştirilen eylemin türü |
 | `Category` | Dize | Yayılmakta olan kaynağın türü |
 | `ResultDescription` | Dize | Olayla ilgili ek ayrıntılar |
-| `Level` | Dize | Etkinliğin günlüğe kaydetme önem derecesi |
+| `CorrelationId` | Guid | Olay için müşteri tarafından sunulan benzersiz tanımlayıcı |
+| `ApplicationId` | Guid | Taşıyıcı yetkilendirmede kullanılan uygulama KIMLIĞI |
+| `Level` | int | Etkinliğin günlüğe kaydetme önem derecesi |
 | `Location` | Dize | Olayın gerçekleştiği bölge |
+| `TraceId` | Dize | `TraceId`, [W3C's Trace bağlamının](https://www.w3.org/TR/trace-context/)bir parçası olarak. Sistemler genelinde dağıtılmış bir izlemeyi benzersiz şekilde tanımlamak için kullanılan tüm izlemenin KIMLIĞI. |
+| `SpanId` | Dize | `SpanId`[W3C's Trace bağlamının](https://www.w3.org/TR/trace-context/)bir parçası olarak. İzlem içindeki bu isteğin KIMLIĞI. |
+| `ParentId` | Dize | `ParentId`[W3C's Trace bağlamının](https://www.w3.org/TR/trace-context/)bir parçası olarak. Üst KIMLIĞI olmayan bir istek, izlemenin köküdür. |
+| `TraceFlags` | Dize | `TraceFlags`[W3C's Trace bağlamının](https://www.w3.org/TR/trace-context/)bir parçası olarak. Örnekleme, izleme düzeyi vb. gibi izleme bayraklarını denetler. |
+| `TraceState` | Dize | `TraceState`[W3C's Trace bağlamının](https://www.w3.org/TR/trace-context/)bir parçası olarak. Farklı dağıtılmış izleme sistemlerinde yaymak üzere satıcıya özgü ek izleme tanımlama bilgileri. |
 | `EndpointName` | Dize | Azure dijital TWINS 'te oluşturulan çıkış uç noktası adı |
 
 Aşağıda bu tür Günlükler için örnek JSON gövdeleri verilmiştir.
 
-#### <a name="adteventroutesoperation"></a>ADTEventRoutesOperation
+#### <a name="adteventroutesoperation-for-microsoftdigitaltwinseventroutesaction"></a>Microsoft. DigitalTwins/eventrotalar/eylem için ADTEventRoutesOperation
+
+Bu tür için örnek bir JSON gövdesi aşağıda verilmiştir `ADTEventRoutesOperation` `Microsoft.DigitalTwins/eventroutes/action` .
 
 ```json
 {
   "time": "2020-11-05T22:18:38.0708705Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/eventroutes/action",
+  "operationVersion": "",
   "category": "EventRoutesOperation",
-  "resultDescription": "Unable to send EventGrid message to [my-event-grid.westus-1.eventgrid.azure.net] for event Id [f6f45831-55d0-408b-8366-058e81ca6089].",
+  "resultType": "",
+  "resultSignature": "",
+  "resultDescription": "Unable to send EventHub message to [myPath] for event Id [f6f45831-55d0-408b-8366-058e81ca6089].",
+  "durationMs": -1,
+  "callerIpAddress": "",
   "correlationId": "7f73ab45-14c0-491f-a834-0827dbbf7f8e",
-  "level": "3",
+  "identity": {
+    "claims": {
+      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+    }
+  },
+  "level": "4",
   "location": "southcentralus",
+  "uri": "",
   "properties": {
-    "endpointName": "endpointEventGridInvalidKey"
+    "endpointName": "myEventHub"
+  },
+  "traceContext": {
+    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+    "spanId": "b630da57026dd046",
+    "parentId": "9f0de6dadae85945",
+    "traceFlags": "01",
+    "tracestate": "k1=v1,k2=v2"
   }
-}
+},
 ```
 
 ## <a name="view-and-query-logs"></a>Günlükleri görüntüleme ve sorgulama

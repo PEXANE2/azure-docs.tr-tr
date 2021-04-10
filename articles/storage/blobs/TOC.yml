@@ -221,6 +221,8 @@
               href: blob-inventory.md
         - name: Veri geçişi
           items:
+            - name: Depolama geçişine genel bakış
+              href: ../common/storage-migration-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Veri aktarımı çözümlerini karşılaştırma
               href: ../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:
@@ -411,8 +413,12 @@
               href: soft-delete-container-enable.md
             - name: Blob sürümü oluşturmayı etkinleştirme
               href: versioning-enable.md
-            - name: Bloblar için geçici silmeyi etkinleştirme
-              href: soft-delete-blob-enable.md
+            - name: Blob 'lar için geçici silmeyi etkinleştirme ve yönetme
+              items:
+                - name: Blob geçici silmeyi etkinleştir
+                  href: soft-delete-blob-enable.md
+                - name: Geçici olarak silinen Blobları yönetme ve geri yükleme
+                  href: soft-delete-blob-manage.md
             - name: Belirli bir noktaya geri yüklemeyi etkinleştirme
               href: point-in-time-restore-manage.md
             - name: Anlık görüntüler oluşturma (.NET)
@@ -439,6 +445,8 @@
           items:
             - name: Azurite açık kaynaklı öykünücüsünü kullanma
               href: ../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Otomatikleştirilmiş testleri çalıştırmak için Azurite kullanın
+              href: use-azurite-to-run-automated-tests.md
             - name: Azure Depolama öykünücüsü kullanma
               href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Statik web sitesi barındırma
@@ -573,6 +581,8 @@
               href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Komut satırı seçeneklerini Depolama Gezgini
               href: ../common/storage-explorer-command-line-options.md
+            - name: Doğrudan bağlantı Depolama Gezgini
+              href: ../common/storage-explorer-direct-link.md
             - name: Depolama Gezgini güvenliği
               href: ../common/storage-explorer-security.md
             - name: Depolama Gezgini blob sürümü oluşturma
