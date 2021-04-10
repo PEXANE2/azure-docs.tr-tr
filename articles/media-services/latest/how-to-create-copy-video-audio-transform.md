@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/19/2020
 ms.author: inhenkel
-ms.openlocfilehash: 24dcd64ba14303c4e205ba3da610d04d4ef277d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a3d9ff9947a97182964f805d0b8da7e3abcad69
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101724583"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962376"
 ---
 # <a name="create-a-copyvideo-copyaudio-transform"></a>CopyVideo CopyAudio dönüşümü oluşturma
 
@@ -29,7 +29,7 @@ Bu makalede bir dönüşümün nasıl oluşturulacağı gösterilmektedir `CopyV
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bir varlık oluşturmak için gerekli Media Services hesabı ve kaynak grubunu oluşturmak üzere [Media Services hesabı oluşturma](./create-account-howto.md) bölümündeki adımları izleyin.
+Bir varlık oluşturmak için gerekli Media Services hesabı ve kaynak grubunu oluşturmak üzere [Media Services hesabı oluşturma](./account-create-how-to.md) bölümündeki adımları izleyin.
 
 ## <a name="methods"></a>Yöntemler
 

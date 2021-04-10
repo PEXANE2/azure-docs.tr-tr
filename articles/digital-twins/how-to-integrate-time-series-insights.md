@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 608f883304dbc8e1ea8b0127668125ae50ca0b11
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 3bc821f31e0463000c9089e48818249f2c046ede
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105564951"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103004"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure dijital TWINS 'i Azure Time Series Insights ile tümleştirme
 
@@ -173,7 +173,7 @@ Sonra, ikinci (TSI) Olay Hub 'ından verileri almak için bir Time Series Insigh
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>Azure dijital TWINS 'e IoT verileri göndermeye başlama
 
-Time Series Insights veri göndermeye başlamak için Azure Digital TWINS 'te değişen veri değerleriyle Digital ikizi özelliklerini güncelleştirmeye başlamanız gerekir. [Az DT ikizi Update](/cli/azure/ext/azure-iot/dt/twin#ext-azure-iot-az-dt-twin-update) komutunu kullanın.
+Time Series Insights veri göndermeye başlamak için Azure Digital TWINS 'te değişen veri değerleriyle Digital ikizi özelliklerini güncelleştirmeye başlamanız gerekir. [Az DT ikizi Update](/cli/azure/dt/twin#az_dt_twin_update) komutunu kullanın.
 
 Uçtan uca öğreticiyi kullanıyorsanız ([*öğretici: uçtan uca çözümü bağlama*](tutorial-end-to-end.md)) ortam kurulumuna yardımcı olması için, örnekten *devicesimülatör* projesini çalıştırarak sanal IoT verilerini göndermeye başlayabilirsiniz. Yönergeler, öğreticinin [*benzetimini yapılandırın ve çalıştırın*](tutorial-end-to-end.md#configure-and-run-the-simulation) bölümünde bulunur.
 

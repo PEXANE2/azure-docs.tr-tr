@@ -11,16 +11,16 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 9ced4da7f71a0499e538e499644d89240611f1ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96917b805640f0cfe38f28ba263e2e7ce55bce7f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956222"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066169"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>Veri denetimi (Önizleme) için Apache Spark havuzları (Azure SYNAPSE Analytics tarafından desteklenir) iliştirme
 
-Bu makalede, ölçeklendirmekte olan veriler için [Azure SYNAPSE Analytics](/synapse-analytics/overview-what-is.md) tarafından desteklenen bir Apache Spark havuzunu nasıl ekleyeceğinizi ve başlatacağınızı öğreneceksiniz. 
+Bu makalede, ölçeklendirmekte olan veriler için [Azure SYNAPSE Analytics](../synapse-analytics/overview-what-is.md) tarafından desteklenen bir Apache Spark havuzunu nasıl ekleyeceğinizi ve başlatacağınızı öğreneceksiniz. 
 
 Bu makale, bir Jupyter not defterindeki adanmış bir Synapse oturumunda veri denetimi görevlerini etkileşimli olarak gerçekleştirmeye yönelik rehberlik içerir. Azure Machine Learning işlem hatlarını kullanmayı tercih ediyorsanız, [Machine Learning işlem hattınızda (Önizleme) Apache Spark (Azure SYNAPSE Analytics tarafından desteklenir) nasıl](how-to-use-synapsesparkstep.md)kullanılacağını öğrenin.
 
@@ -310,7 +310,7 @@ input1 = train_ds.as_mount()
 
 ## <a name="example-notebook"></a>Örnek not defteri
 
-Azure SYNAPSE Analytics ve Azure Machine Learning ile tek bir not defterinden veri hazırlama ve model eğitimi gerçekleştirme hakkında ayrıntılı kod örneği için bu [uçtan uca not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb) bakın.
+Azure SYNAPSE Analytics ve Azure Machine Learning ile tek bir not defterinden veri hazırlama ve model eğitimi gerçekleştirme hakkında ayrıntılı kod örneği için bu [uçtan uca not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

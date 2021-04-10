@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/22/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e0bb8ccf3be6038c228034a55cd15cadcebddbb7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 389ad34bb856675dfabd761507ed07cc722c032a
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572574"
+ms.locfileid: "105961685"
 ---
 # <a name="develop-azure-functions-with-media-services-v3"></a>Media Services v3 ile Azure Işlevleri geliştirin
 
@@ -29,7 +29,7 @@ Azure Media Services kullanan mevcut Azure Işlevlerini araştırmak ve dağıtm
 ## <a name="prerequisites"></a>Önkoşullar
 
 - İlk işlevinizin oluşturmadan önce etkin bir Azure hesabınız olması gerekir. Bir Azure hesabınız yoksa [ücretsiz hesaplar kullanılabilir](https://azure.microsoft.com/free/).
-- Azure Media Services (AMS) hesabınızda eylem gerçekleştiren veya Media Services tarafından gönderilen olayları dinlemek için Azure Işlevleri oluşturacaksanız, [burada](create-account-howto.md)açıklandığı gibi bir AMS hesabı oluşturmanız gerekir.
+- Azure Media Services (AMS) hesabınızda eylem gerçekleştiren veya Media Services tarafından gönderilen olayları dinlemek için Azure Işlevleri oluşturacaksanız, [burada](account-create-how-to.md)açıklandığı gibi bir AMS hesabı oluşturmanız gerekir.
 
 ## <a name="create-a-function-app"></a>İşlev uygulaması oluşturma
 

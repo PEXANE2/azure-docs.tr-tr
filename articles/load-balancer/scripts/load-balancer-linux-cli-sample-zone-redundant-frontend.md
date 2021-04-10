@@ -3,7 +3,6 @@ title: Kullanılabilirlik alanları genelinde VM 'Leri yük dengelemesi-Azure CL
 description: Bu Azure CLI betik örneğinde, farklı kullanılabilirlik alanlarındaki VM’lerde trafik yük dengelemesi gösterilmektedir
 documentationcenter: load-balancer
 author: asudbring
-Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines across availability zones in a region.
 ms.service: load-balancer
 ms.devlang: azurecli
 ms.topic: sample
@@ -11,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9f47d79be186dd44e26f78eaf70bbedaca969d66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e30c90152151dc51f74fb889b16c92208b1edf3d
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94696538"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056054"
 ---
 # <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Azure CLI betiği örneği: Farklı kullanılabilirlik alanlarındaki VM’lerde yük dengeleme
 

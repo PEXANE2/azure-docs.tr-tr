@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: d5d694820c2ffd09868d81693d4f98f839a139d7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1c85a07a3d61c80f3871f04c399263a8e210254e
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591886"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010800"
 ---
 # <a name="connect-to-azure-database-for-mysql-using-dbforge-studio-for-mysql"></a>MySQL için dbForge Studio 'Yu kullanarak MySQL için Azure veritabanı 'na bağlanma
 
@@ -78,9 +78,7 @@ Veritabanı geçiş çabalarımızın bir sonucu olarak, *world_x* veritabanı A
 MySQL için dbForge Studio, MySQL veritabanları, MySQL şemaları ve \veya verilerini Azure 'a geçirmeye izin veren birkaç araç içerir. İşlevsellik seçimi, gereksinimlerinize ve projenizin gereksinimlerine bağlıdır. Bir veritabanını seçmeli olarak taşımanız gerekiyorsa, diğer bir deyişle, belirli MySQL tablolarını Azure 'a geçirirseniz, şema ve veri karşılaştırma işlevlerini kullanmak en iyisidir.
 Bu örnekte, MySQL sunucusunda bulunan *Dünya* veritabanını MySQL Için Azure veritabanı 'na geçiririz. MySQL için dbForge Studio 'nun şema ve veri karşılaştırma işlevini kullanarak geçiş işleminin arkasındaki mantık, MySQL için Azure veritabanı 'nda boş bir veritabanı oluşturmaktır, şema karşılaştırma aracını ve ardından veri karşılaştırma aracı 'nı kullanarak önce gerekli MySQL veritabanıyla eşitler. Bu şekilde, MySQL şemaları ve verileri doğru şekilde Azure 'a taşınır.
 
-### <a name="connect-to-azure-database-for-mysql-and-create-an-empty-database"></a>MySQL için Azure veritabanı 'na bağlanma ve boş bir veritabanı oluşturma
-
-MySQL için Azure veritabanı 'na bağlanın ve boş bir veritabanı oluşturun.
+### <a name="step-1-connect-to-azure-database-for-mysql-and-create-an-empty-database"></a>Adım 1. MySQL için Azure veritabanı 'na bağlanma ve boş bir veritabanı oluşturma
 
 ### <a name="step-2-schema-synchronization"></a>Adım 2. Şema eşitleme
 

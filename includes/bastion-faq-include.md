@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9ba0e7173c41e26a698596fa18bf1fc1453f3fb3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b58040917ed3d3345a35b7acbe31b6b500f05562
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99628932"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073764"
 ---
 ### <a name="do-i-need-a-public-ip-on-my-virtual-machine-to-connect-via-azure-bastion"></a><a name="publicip"></a>Azure ile bağlantı kurmak için sanal makinemde genel bir IP almam gerekir mi?
 
@@ -22,6 +22,10 @@ Hayır. Azure savunma kullanarak bir VM 'ye bağlandığınızda, bağlandığı
 ### <a name="is-ipv6-supported"></a>IPv6 destekleniyor mu?
 
 Şu anda IPv6 desteklenmez. Azure savunma yalnızca IPv4 'Ü destekler.
+
+### <a name="can-i-use-azure-bastion-with-azure-private-dns-zones"></a>Azure Özel DNS bölgeleriyle Azure savunma kullanabilir miyim?
+
+Azure Özel DNS bölgeleriyle Azure savunma kullanımı Şu anda desteklenmiyor. Azure savunma kaynağınızı dağıtmadan önce lütfen konak sanal ağının özel bir DNS bölgesine bağlı olmadığından emin olun.
 
 ### <a name="do-i-need-an-rdp-or-ssh-client"></a><a name="rdpssh"></a>RDP veya SSH istemcisine ihtiyacım var mı?
 

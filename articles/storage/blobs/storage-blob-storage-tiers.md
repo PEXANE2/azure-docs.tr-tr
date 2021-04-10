@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 1a1cb8e1676405cbfbb3f4f61c86d8136b688b88
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0e2f3296eb6d4286bb4ef7081c1459109c40915f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656847"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962314"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob depolama için erişim katmanları-sık erişimli, seyrek erişimli ve arşiv
 
@@ -86,7 +86,7 @@ Arşiv erişim katmanı için örnek kullanım senaryoları şunları içerir:
 - Uzun bir süre içinde depolanması gereken uyumluluk ve arşiv verileri
 
 > [!NOTE]
-> ZRS, GZRS veya RA-GZRS hesapları için Arşiv katmanı desteklenmez. Depolama hesabı arşiv katmanındaki Bloblar içeriyorsa LRS 'den GRS 'ye geçiş desteklenmez.
+> ZRS, GZRS veya RA-GZRS hesapları için Arşiv katmanı desteklenmez. LRS 'den GRS 'ye geçiş, hesap LRS olarak ayarlandığı sürece arşiv katmanına taşınamadığından blob 'lar için desteklenir. Güncelleştirme, hesap LRS 'den önce 30 günden az olursa ve hesap LRS olarak ayarlandığında arşiv katmanına taşınamadığından bir hesap geri taşınabilir.
 
 ## <a name="account-level-tiering"></a>Hesap düzeyi katmanlama
 
