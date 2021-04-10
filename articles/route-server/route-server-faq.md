@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 03/08/2021
+ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: 6eed0ed3e936b0e9a534c82a3105c2ed37cab3d5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c4c36013f100d2fc5265024432cc01a6622a4024
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102485428"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932378"
 ---
 # <a name="azure-route-server-preview-faq"></a>Azure rota sunucusu (Önizleme) SSS
 
@@ -36,6 +36,9 @@ Azure Route sunucusu yalnızca Sınır Ağ Geçidi Protokolü (BGP) destekler. A
 ### <a name="does-azure-route-server-route-data-traffic-between-my-nva-and-my-vms"></a>Azure Route sunucusu, NVA ve sanal makinelerim arasındaki veri trafiğini yönlendirebilir mi?
 
 Hayır. Azure Route sunucusu yalnızca NVA 'yla BGP yollarını değiş tokuş eder. Veri trafiği, doğrudan NVA 'dan seçilen VM 'ye ve doğrudan VM 'den NVA 'ya gider.
+
+### <a name="does-azure-route-server-store-customer-data"></a>Azure Route sunucusu müşteri verilerini depolar mı?
+Hayır. Azure yol sunucusu, yalnızca NVA ile BGP yollarını değiş tokuş eder ve ardından bunları sanal ağınıza yayar.
 
 ### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-will-it-program-all-copies-of-the-route-but-each-with-a-different-next-hop-to-the-vms-in-the-virtual-network"></a>Azure Route sunucusu birden fazla NVA 'dan aynı rotayı alırsa, yolun tüm kopyalarını (her biri farklı bir sonraki atlamada) sanal ağdaki VM 'lere yeniden programsın mı?
 

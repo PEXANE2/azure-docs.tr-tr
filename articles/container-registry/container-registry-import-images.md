@@ -3,22 +3,22 @@ title: Kapsayıcı görüntülerini içeri aktarma
 description: Docker komutlarını çalıştırmaya gerek kalmadan Azure API 'Lerini kullanarak kapsayıcı görüntülerini bir Azure Container Registry 'ye aktarın.
 ms.topic: article
 ms.date: 01/15/2021
-ms.openlocfilehash: e6976f854b449f68faedd51878c2f3a7fe75cb0f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b481a2b4f0a08f0ccbfd33f7059e5d8e0c04f5f0
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99988243"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221509"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Kapsayıcı görüntülerini kapsayıcı kayıt defterine aktarma
 
 Kapsayıcı görüntülerini Docker komutlarını kullanmadan bir Azure Container Registry 'ye kolayca içeri aktarabilirsiniz (kopyalayabilirsiniz). Örneğin, bir geliştirme kayıt defterindeki görüntüleri bir üretim kayıt defterine aktarın veya temel görüntüleri ortak bir kayıt defterinden kopyalayın.
 
-Azure Container Registry, var olan bir kayıt defterinden görüntüleri kopyalamak için bir dizi yaygın senaryoyu işler:
+Azure Container Registry, var olan bir kayıt defterinden görüntüleri ve diğer yapıları kopyalamak için bir dizi yaygın senaryoyu işler:
 
-* Ortak bir kayıt defterinden içeri aktarma
+* Ortak bir kayıt defterinden görüntüleri içeri aktarma
 
-* Aynı veya farklı bir Azure aboneliğinde veya kiracısındaki başka bir Azure Container Registry 'den içeri aktarma
+* Aynı ya da farklı bir Azure aboneliğinde veya kiracıda, başka bir Azure Container Registry 'den Helu 3 grafikleri dahil görüntüleri veya OCı yapılarını içeri aktarın
 
 * Azure olmayan özel kapsayıcı kayıt defterinden içeri aktarma
 
