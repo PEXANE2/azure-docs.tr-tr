@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fb517f8c50ad2c32f23542e60069a0e0a496a2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb4ebbd0b1715d9de3905060952a35ad42060119
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98660673"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167558"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de etkin olmayan kullanıcı hesaplarını yönetme
 
@@ -47,10 +47,9 @@ Son başarılı oturum açma, bir kullanıcının kaynaklara erişim gereksinimi
 
 - **Tarihe göre kullanıcılar**: Bu senaryoda, belirli bir tarihten önce bir Lastsignındatetime değeri olan kullanıcıların listesini istemeniz gerekir: `https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 
-
-
-
-
+> [!NOTE]
+> Aşağıdaki senaryoyu kullanabilmeniz için, tüm kullanıcıların son oturum açma tarihinin bir raporunu oluşturma gereksinimi olabilir.
+> **Tüm kullanıcılar Için son oturum açma tarihi ve saati**: Bu senaryoda, tüm kullanıcıların bir listesini ve ilgili her Kullanıcı Için Son Lastsignındatetime değerini istemeniz gerekir: `https://graph.microsoft.com/beta/users?$select=displayName,signInActivity` 
 
 ## <a name="what-you-need-to-know"></a>Bilmeniz gerekenler
 

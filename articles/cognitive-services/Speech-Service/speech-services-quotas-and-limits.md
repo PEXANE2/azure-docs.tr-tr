@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2021
 ms.author: alexeyo
-ms.openlocfilehash: 7fe2942250e165606175392d7749becda0cff23b
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 7ef6ed5293ec9ecf49c16f8dfb0b6604942408f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105645118"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937065"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Konuşma Hizmet Kotaları ve Sınırları
 
@@ -63,19 +63,19 @@ Aşağıdaki tablolarda, "ayarlanamaz" satırı olmayan parametreler, tüm fiyat
 ### <a name="text-to-speech-quotas-and-limits-per-speech-resource"></a>Konuşma kaynağı başına metinden konuşmaya kotalar ve sınırlar
 "Ayarlanamaz" satırı olmayan parametrelerin altındaki tabloda tüm fiyat katmanları **için ayarlanamaz.**
 
-| Kota | Ücretsiz (F0)<sup>3</sup> | Standart (S0) |
-|--|--|--|
-| **Standart ve sinir sesler için saniye başına en fazla Işlem sayısı (TPS)** | 200<sup>4</sup> | 200<sup>4</sup> |  |
-| **Özel ses için eşzamanlı Istek sınırı** |  |  |
-| Varsayılan değer | 10 | 10 |
-| Ayarlanabilir | <sup>5</sup> yok | Evet<sup>5</sup> |
-| **HTTP 'e özgü kotalar** |  |
-| İstek başına en fazla üretilen ses uzunluğu | 10 dakika | 10 dakika |
-| `<voice>`SSML 'de ayrı etiket sayısı üst sınırı | 50 | 50 |
-| **WebSocket 'e özgü kotalar** |  |  |
-|Her açma için üretilen maksimum ses uzunluğu | 10 dakika | 10 dakika |
-|Her açma için en fazla SSML Ileti boyutu |64 KB |64 KB |
-| **REST API sınırı** | dakikada 20 istek | dakikada 300 istek |
+| Kota                                                                          | Ücretsiz (F0)<sup>3</sup>  | Standart (S0)   |
+|--------------------------------------------------------------------------------|------------------------|-----------------|
+| **Standart ve sinir sesler için saniye başına en fazla Işlem sayısı (TPS)** | 200<sup>4</sup>        | 200<sup>4</sup> |
+| **Özel ses için eşzamanlı Istek sınırı**                                  |                        |                 |
+| Varsayılan değer                                                                  | 10                     | 10              |
+| Ayarlanabilir                                                                     | <sup>5</sup> yok         | Evet<sup>5</sup> |
+| **HTTP 'e özgü kotalar**                                                       |                        |                 |
+| İstek başına en fazla üretilen ses uzunluğu                                          | 10 dakika                 | 10 dakika          |
+| `<voice>`SSML 'de ayrı etiket sayısı üst sınırı                                  | 50                     | 50              |
+| **WebSocket 'e özgü kotalar**                                                  |                        |                 |
+| Her açma için üretilen maksimum ses uzunluğu                                             | 10 dakika                 | 10 dakika          |
+| Her açma için en fazla SSML Ileti boyutu                                                 | 64 KB                  | 64 KB           |
+| **REST API sınırı**                                                             | dakikada 20 istek | dakikada 300 istek |
 
 
 <sup>3</sup> **ücretsiz (F0)** fiyatlandırma katmanı için bkz. [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)Ayrıca aylık allowsuyum.<br/>

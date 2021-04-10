@@ -1,19 +1,19 @@
 ---
 title: 'Hızlı başlangıç: Python kullanarak bağlanma-PostgreSQL için Azure veritabanı-esnek sunucu'
 description: Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'na bağlanmak ve buradan veri sorgulamak için kullanabileceğiniz çeşitli Python kod örnekleri sunulmaktadır.
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.openlocfilehash: 2bcf467eea9186cc57fb4c6c3d8964632b8fec03
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 948972c1d47e550395a280e62c0491800e716663
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047720"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550651"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---flexible-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma-esnek sunucu
 

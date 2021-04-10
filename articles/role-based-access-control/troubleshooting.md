@@ -2,7 +2,6 @@
 title: Azure RBAC sorunlarını giderme
 description: Azure rol tabanlı erişim denetimi (Azure RBAC) ile ilgili sorunları giderin.
 services: azure-portal
-documentationcenter: na
 author: rolyon
 manager: mtillman
 ms.assetid: df42cca2-02d6-4f3c-9d56-260e1eb7dc44
@@ -11,16 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/10/2020
+ms.date: 04/06/2021
 ms.author: rolyon
-ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: d77468619fcd67887273b2fbd452b37add1e19b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4a3f7f613f75f2f285437b7ae6f816adf56d999
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555885"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580097"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC sorunlarını giderme
 
@@ -68,11 +66,16 @@ $ras.Count
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
+
+- Yeni bir hizmet sorumlusu oluşturur ve bu hizmet sorumlusuna hemen bir rol atamayı denerseniz, bu rol ataması bazı durumlarda başarısız olabilir.
+
+    Bu senaryoya yönelik olarak, `principalType` rol atamasını oluştururken özelliğini olarak ayarlamanız gerekir `ServicePrincipal` . `apiVersion`Rol atamasının öğesini `2018-09-01-preview` veya daha sonra da ayarlamanız gerekir. Daha fazla bilgi için bkz [. Azure rollerini REST API kullanarak yeni bir hizmet sorumlusuna atama](role-assignments-rest.md#new-service-principal) veya [Azure Resource Manager şablonları kullanarak Azure rollerini yeni bir hizmet sorumlusuna atama](role-assignments-template.md#new-service-principal)
+
 - Bir abonelik için son sahip rol atamasını kaldırmaya çalışırsanız, "son RBAC yönetici ataması silinemiyor." hatasını görebilirsiniz. Aboneliğin en son sahip rol atamasının kaldırılması, aboneliğin orphankaçınmak için desteklenmez. Aboneliğinizi iptal etmek istiyorsanız bkz. [Azure aboneliğinizi Iptal etme](../cost-management-billing/manage/cancel-azure-subscription.md).
 
 ## <a name="problems-with-custom-roles"></a>Özel rollerle ilgili sorunlar
 
-- Özel rol oluşturma için adımlara ihtiyacınız varsa, [Azure Portal](custom-roles-portal.md) (Şu anda önizleme aşamasında), [Azure POWERSHELL](tutorial-custom-role-powershell.md)veya [Azure CLI](tutorial-custom-role-cli.md)kullanarak özel rol öğreticilerine bakın.
+- Özel rol oluşturma için adımlara ihtiyacınız varsa, [Azure Portal](custom-roles-portal.md), [Azure POWERSHELL](tutorial-custom-role-powershell.md)veya [Azure CLI](tutorial-custom-role-cli.md)kullanarak özel rol öğreticilerine bakın.
 - Mevcut bir özel rolü güncelleştireerişemiyorsanız, `Microsoft.Authorization/roleDefinition/write` [sahip](built-in-roles.md#owner) veya [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator)gibi izne sahip bir rol atanmış kullanıcıyla oturum açmış olup olmadığınızı kontrol edin.
 - Özel rolü silemiyor ve "Role başvuran mevcut rol atamaları var (kod: RoleDefinitionHasAssignments)" hata iletisiyle karşılaşıyorsanız, özel rolü kullanan rol atamaları mevcuttur. Bu rol atamalarını kaldırın ve özel rolü silmeyi tekrar deneyin.
 - Yeni bir özel rol oluşturmaya çalıştığınızda "Rol tanımı sınırı aşıldı. Başka rol tanımı oluşturulamaz (kod: Roledefinitionlimitexcelıo) "yeni bir özel rol oluşturmaya çalıştığınızda kullanılmayan tüm özel rolleri silin. Azure, bir dizinde en fazla **5000** özel rolü destekler. (Azure Almanya ve Azure Çin 21Vianet için sınır 2000 özel rollerdir.)

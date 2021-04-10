@@ -4,14 +4,14 @@ description: Azure Izleyici ile her kaynak türü için kullanılabilen ölçüm
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 02/06/2021
+ms.date: 04/01/2021
 ms.author: robb
-ms.openlocfilehash: 2437ab80a23ffc39c180bcdf72921fdf13768541
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0854d56930dbc8decfcf8f96a814f082e361de62
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033512"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167252"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Izleyici ile desteklenen ölçümler
 
@@ -55,7 +55,6 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 
 > [!IMPORTANT] 
 > Bu en son güncelleştirme yeni bir sütun ekler ve ölçümleri alfabetik olarak yeniden sıralanabilir. Ek bilgiler, tarayıcı pencerenizin genişliğine bağlı olarak, aşağıdaki tabloda alt kısımdaki bir yatay kaydırma çubuğuna sahip olabileceği anlamına gelir. Bilgilerin eksik olduğunu düşünüyorsanız, tablonun tamamını görmek için kaydırma çubuğunu kullanın.
-
 ## <a name="microsoftaadiamazureadmetrics"></a>Microsoft. aadihar/Azureadölçümlerini
 
 |Metric|Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
@@ -148,7 +147,6 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |Httpıncomingrequestduration|Yes|Httpıncomingrequestduration|Count|Ortalama|Http isteğinde gecikme süresi.|StatusCode, kimlik doğrulaması|
 |Çalışan Httprequestcount|Yes|Çalışan Httprequestcount|Count|Count|Kısıtlanmış http istekleri.|Boyut yok|
 
-
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/yay
 
 |Metric|Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
@@ -203,7 +201,6 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |Tomcat. Threads. Current|Yes|Tomcat. Threads. Current|Count|Toplam|Tomcat geçerli Iş parçacığı sayısı|Dağıtım, AppName, Pod|
 |toplam istek sayısı|Yes|toplam istek sayısı|Count|Ortalama|İşlemin ömrü boyunca toplam istek sayısı|Dağıtım, AppName, Pod|
 |çalışma kümesi|Yes|çalışma kümesi|Count|Ortalama|İşlem tarafından kullanılan çalışma kümesi miktarı (MB)|Dağıtım, AppName, Pod|
-
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
@@ -376,8 +373,8 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 
 |Metric|Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|---|
-|RequestLatency|Yes|İstek gecikme süresi|Mayacak|Toplam|İsteği işlemek için sunucu tarafından harcanan süre|İşlem, kimlik doğrulama, protokol|
-|RequestsTraffic|Yes|İstek trafiği|Yüzde|Count|Yapılan Istek sayısı|İşlem, kimlik doğrulama, protokol, StatusCode, StatusCodeClass|
+|RequestLatency|Yes|İstek gecikme süresi|Mayacak|Toplam|İsteği işlemek için sunucu tarafından harcanan süre|İşlem, kimlik doğrulama, protokol, veri merkezi|
+|RequestsTraffic|Yes|İstek trafiği|Yüzde|Count|Yapılan Istek sayısı|İşlem, kimlik doğrulama, protokol, StatusCode, StatusCodeClass, DataCenter|
 
 
 ## <a name="microsoftcacheredis"></a>Microsoft. Cache/redsıs
@@ -604,7 +601,6 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |totalkeys|Yes|Toplam anahtar sayısı|Count|Maksimum||Boyut yok|
 |usedmemory|Yes|Kullanılan Bellek|Bayt|Maksimum||Boyut yok|
 |usedmemorypercentage|Yes|Kullanılan Bellek Yüzdesi|Yüzde|Maksimum||InstanceId|
-|usedmemoryRss|Yes|Kullanılan bellek RSS|Bayt|Maksimum||InstanceId|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
@@ -619,7 +615,7 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |Metric|Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|---|
 |ByteHitRatio|Yes|Bayt Isabet oranı|Yüzde|Ortalama|Bu, toplam yanıt baytları ile karşılaştırıldığında önbellekten sunulan toplam baytların oranıdır|Uç Nokta|
-|OriginHealthPercentage|Yes|Kaynak sistem durumu yüzdesi|Yüzde|Ortalama|AFDX 'ten arka uçlara yapılan başarılı sistem durumu araştırmalarının yüzdesi.|Kaynak, kaynak havuzu|
+|OriginHealthPercentage|Yes|Kaynak sistem durumu yüzdesi|Yüzde|Ortalama|AFDX 'ten arka uçlara yapılan başarılı sistem durumu araştırmalarının yüzdesi.|Kaynak, OriginGroup|
 |OriginLatency|Yes|Kaynak gecikmesi|Mayacak|Ortalama|İsteğin AFDX Edge tarafından arka uca gönderildiği, AFDX, arka ucun son yanıt baytını almayana kadar hesaplanan süre.|Kaynak, uç nokta|
 |OriginRequestCount|Yes|Kaynak Istek sayısı|Count|Toplam|AFDX 'den kaynağa gönderilen istek sayısı.|HttpStatus, HttpStatusGroup, Origin, Endpoint|
 |Percentage4XX|Yes|4XX yüzdesi|Yüzde|Ortalama|Yanıt durum kodu 4XX olan tüm istemci isteklerinin yüzdesi|Uç nokta, ClientRegion, ClientCountry|
@@ -804,8 +800,8 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 
 |Metric|Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|---|
-|Tüketilen CPU kredileri|Yes|Tüketilen CPU kredileri|Count|Ortalama|Sanal makine tarafından tüketilen toplam kredi sayısı|Boyut yok|
-|Kalan CPU kredileri|Yes|Kalan CPU kredileri|Count|Ortalama|Patlama için kullanılabilen toplam kredi sayısı|Boyut yok|
+|Tüketilen CPU kredileri|Yes|Tüketilen CPU kredileri|Count|Ortalama|Sanal makine tarafından tüketilen toplam kredi sayısı. Yalnızca B serisi yazılabilir VM 'lerde kullanılabilir|Boyut yok|
+|Kalan CPU kredileri|Yes|Kalan CPU kredileri|Count|Ortalama|Patlama için kullanılabilen toplam kredi sayısı. Yalnızca B serisi yazılabilir VM 'lerde kullanılabilir|Boyut yok|
 |Veri diski tüketilen bant genişliği yüzdesi|Yes|Veri diski tüketilen bant genişliği yüzdesi|Yüzde|Ortalama|Dakika başına tüketilen veri diski bant genişliği yüzdesi|'YI|
 |Veri diski ıOPS tüketilen yüzde|Yes|Veri diski ıOPS tüketilen yüzde|Yüzde|Ortalama|Dakika başına tüketilen veri diski g/ç yüzdesi|'YI|
 |Veri diski en fazla patlama bant genişliği|Yes|Veri diski en fazla patlama bant genişliği|Count|Ortalama|Saniyede en fazla aktarım hızı veri diski elde edebilir|'YI|
@@ -859,8 +855,8 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 
 |Metric|Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|---|
-|Tüketilen CPU kredileri|Yes|Tüketilen CPU kredileri|Count|Ortalama|Sanal makine tarafından tüketilen toplam kredi sayısı|Boyut yok|
-|Kalan CPU kredileri|Yes|Kalan CPU kredileri|Count|Ortalama|Patlama için kullanılabilen toplam kredi sayısı|Boyut yok|
+|Tüketilen CPU kredileri|Yes|Tüketilen CPU kredileri|Count|Ortalama|Sanal makine tarafından tüketilen toplam kredi sayısı. Yalnızca B serisi yazılabilir VM 'lerde kullanılabilir|Boyut yok|
+|Kalan CPU kredileri|Yes|Kalan CPU kredileri|Count|Ortalama|Patlama için kullanılabilen toplam kredi sayısı. Yalnızca B serisi yazılabilir VM 'lerde kullanılabilir|Boyut yok|
 |Veri diski tüketilen bant genişliği yüzdesi|Yes|Veri diski tüketilen bant genişliği yüzdesi|Yüzde|Ortalama|Dakika başına tüketilen veri diski bant genişliği yüzdesi|LUN, VMName|
 |Veri diski ıOPS tüketilen yüzde|Yes|Veri diski ıOPS tüketilen yüzde|Yüzde|Ortalama|Dakika başına tüketilen veri diski g/ç yüzdesi|LUN, VMName|
 |Veri diski en fazla patlama bant genişliği|Yes|Veri diski en fazla patlama bant genişliği|Count|Ortalama|Saniyede en fazla aktarım hızı veri diski elde edebilir|LUN, VMName|
@@ -914,8 +910,8 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 
 |Metric|Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|---|
-|Tüketilen CPU kredileri|Yes|Tüketilen CPU kredileri|Count|Ortalama|Sanal makine tarafından tüketilen toplam kredi sayısı|Boyut yok|
-|Kalan CPU kredileri|Yes|Kalan CPU kredileri|Count|Ortalama|Patlama için kullanılabilen toplam kredi sayısı|Boyut yok|
+|Tüketilen CPU kredileri|Yes|Tüketilen CPU kredileri|Count|Ortalama|Sanal makine tarafından tüketilen toplam kredi sayısı. Yalnızca B serisi yazılabilir VM 'lerde kullanılabilir|Boyut yok|
+|Kalan CPU kredileri|Yes|Kalan CPU kredileri|Count|Ortalama|Patlama için kullanılabilen toplam kredi sayısı. Yalnızca B serisi yazılabilir VM 'lerde kullanılabilir|Boyut yok|
 |Veri diski tüketilen bant genişliği yüzdesi|Yes|Veri diski tüketilen bant genişliği yüzdesi|Yüzde|Ortalama|Dakika başına tüketilen veri diski bant genişliği yüzdesi|'YI|
 |Veri diski ıOPS tüketilen yüzde|Yes|Veri diski ıOPS tüketilen yüzde|Yüzde|Ortalama|Dakika başına tüketilen veri diski g/ç yüzdesi|'YI|
 |Veri diski en fazla patlama bant genişliği|Yes|Veri diski en fazla patlama bant genişliği|Count|Ortalama|Saniyede en fazla aktarım hızı veri diski elde edebilir|'YI|
@@ -992,11 +988,25 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |Metric|Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|---|
 |apiserver_current_inflight_requests|No|Esnek Istekler|Count|Ortalama|Son saniye içinde istek başına apiserver istek türü üzerinde şu anda en fazla kullanılan esnek istek sayısı|Istek türü|
+|cluster_autoscaler_cluster_safe_to_autoscale|No|Küme Durumu|Count|Ortalama|Küme otomatik Scaler 'ın kümede işlem yapıp olmayacağını belirler||
+|cluster_autoscaler_scale_down_in_cooldown|No|Ölçeği aşağı genişlet|Count|Ortalama|Ölçeğin aşağı doğru olup olmadığını belirler. bu zaman çerçevesi sırasında hiçbir düğüm kaldırılmaz||
+|cluster_autoscaler_unneeded_nodes_count|No|Gereksiz düğümler|Count|Ortalama|Küme auotscaler, bu düğümleri silinmek üzere aday olarak işaretler ve sonunda silinir||
+|cluster_autoscaler_unschedulable_pods_count|No|Unschedulable pods|Count|Ortalama|Kümede Şu anda unschedulable olan Pod sayısı||
 |kube_node_status_allocatable_cpu_cores|No|Yönetilen kümede toplam kullanılabilir CPU çekirdeği sayısı|Count|Ortalama|Yönetilen kümede toplam kullanılabilir CPU çekirdeği sayısı||
 |kube_node_status_allocatable_memory_bytes|No|Yönetilen kümede toplam kullanılabilir bellek miktarı|Bayt|Ortalama|Yönetilen kümede toplam kullanılabilir bellek miktarı||
 |kube_node_status_condition|No|Çeşitli düğüm koşullarına yönelik durumlar|Count|Ortalama|Çeşitli düğüm koşullarına yönelik durumlar|koşul, durum, status2, düğüm|
 |kube_pod_status_phase|No|Aşamasına göre Pod sayısı|Count|Ortalama|Aşamasına göre Pod sayısı|aşama, ad alanı, Pod|
 |kube_pod_status_ready|No|Hazırlık durumundaki Pod sayısı|Count|Ortalama|Hazırlık durumundaki Pod sayısı|ad alanı, Pod, koşul|
+|node_cpu_usage_millicores|Yes|CPU kullanımı Miliçekirdekler|Milicore|Ortalama|Küme genelinde miliçekirdekte CPU kullanımının toplu ölçümü|Node, nodepool|
+|node_cpu_usage_percentage|Yes|CPU kullanım yüzdesi|Yüzde|Ortalama|Küme genelinde yüzde cinsinden ölçülen ortalama CPU kullanımı|Node, nodepool|
+|node_disk_usage_bytes|Yes|Kullanılan disk bayt sayısı|Bayt|Ortalama|Cihaza göre bayt cinsinden kullanılan disk alanı|Node, nodepool, cihaz|
+|node_disk_usage_percentage|Yes|Kullanılan disk yüzdesi|Yüzde|Ortalama|Cihaza göre yüzde cinsinden kullanılan disk alanı|Node, nodepool, cihaz|
+|node_memory_rss_bytes|Yes|Bellek RSS baytları|Bayt|Ortalama|Bayt cinsinden kullanılan kapsayıcı RSS belleği|Node, nodepool|
+|node_memory_rss_percentage|Yes|Bellek RSS yüzdesi|Yüzde|Ortalama|Kullanılan kapsayıcı RSS belleği yüzdesi|Node, nodepool|
+|node_memory_working_set_bytes|Yes|Bellek çalışma kümesi baytları|Bayt|Ortalama|Bayt cinsinden kullanılan kapsayıcı çalışma kümesi belleği|Node, nodepool|
+|node_memory_working_set_percentage|Yes|Bellek çalışma kümesi yüzdesi|Yüzde|Ortalama|Kapsayıcıda kullanılan kapsayıcı çalışma kümesi belleği yüzdesi|Node, nodepool|
+|node_network_in_bytes|Yes|Bayt cinsinden ağ|Bayt|Ortalama|Alınan ağ bayt sayısı|Node, nodepool|
+|node_network_out_bytes|Yes|Ağ çıkış baytları|Bayt|Ortalama|Ağ tarafından iletilen baytlar|Node, nodepool|
 
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
@@ -1199,6 +1209,20 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |txlogs_storage_used|Yes|Kullanılan işlem günlüğü depolaması|Bayt|Ortalama|Kullanılan işlem günlüğü depolaması|Boyut yok|
 |write_iops|Yes|IOPS yaz|Count|Ortalama|Saniye başına veri disk g/ç yazma işlemi sayısı|Boyut yok|
 |write_throughput|Yes|Yazma aktarım hızı bayt/sn|Count|Ortalama|İzleme dönemi boyunca veri diskine saniye başına yazılan bayt sayısı|Boyut yok|
+
+
+## <a name="microsoftdbforpostgresqlservergroupsv2"></a>Microsoft. DBForPostgreSQL/serverGroupsv2
+
+|Metric|Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
+|---|---|---|---|---|---|---|
+|active_connections|Yes|Etkin Bağlantılar|Count|Ortalama|Etkin Bağlantılar|aboneliğinde ve|
+|cpu_percent|Yes|CPU yüzdesi|Yüzde|Ortalama|CPU yüzdesi|aboneliğinde ve|
+|'ye|Yes|IOPS|Count|Ortalama|GÇ işlemi/saniye|aboneliğinde ve|
+|memory_percent|Yes|Bellek yüzdesi|Yüzde|Ortalama|Bellek yüzdesi|aboneliğinde ve|
+|network_bytes_egress|Yes|Ağ Çıkışı|Bayt|Toplam|Etkin bağlantılar arasında ağ çıkışı|aboneliğinde ve|
+|network_bytes_ingress|Yes|Ağ Girişi|Bayt|Toplam|Etkin bağlantılar genelinde ağ|aboneliğinde ve|
+|storage_percent|Yes|Depolama alanı yüzdesi|Yüzde|Ortalama|Depolama alanı yüzdesi|aboneliğinde ve|
+|storage_used|Yes|Kullanılan depolama alanı|Bayt|Ortalama|Kullanılan depolama alanı|aboneliğinde ve|
 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/sunucuları
@@ -1444,6 +1468,7 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |CassandraTableUpdate|No|Cassandra tablosu güncelleştirildi|Count|Count|Cassandra tablosu güncelleştirildi|ResourceName, ChildResourceName, |
 |CreateAccount|Yes|Hesap oluşturuldu|Count|Count|Hesap oluşturuldu|Boyut yok|
 |Veri kullanımı|No|Veri Kullanımı|Bayt|Toplam|5 dakika ayrıntı düzeyinde raporlanan toplam veri kullanımı|CollectionName, DatabaseName, bölgesi|
+|Ayrılmış Gatewayrequests|Yes|Ayrılmış Gatewayrequests|Count|Count|Adanmış ağ geçidinde istekler|DatabaseName, CollectionName, Cachesed, OperationName, bölge|
 |DeleteAccount|Yes|Hesap silindi|Count|Count|Hesap silindi|Boyut yok|
 |DocumentCount|No|Belge sayısı|Count|Toplam|5 dakika ayrıntı düzeyinde raporlanan toplam belge sayısı|CollectionName, DatabaseName, bölgesi|
 |DocumentQuota|No|Belge kotası|Bayt|Toplam|5 dakika ayrıntı düzeyinde raporlanan toplam depolama kotası|CollectionName, DatabaseName, bölgesi|
@@ -1679,12 +1704,16 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |Kategorizedgatewayrequests|Yes|Kategorilere ayrılmış ağ geçidi Istekleri|Count|Toplam|Kategorilere göre ağ geçidi isteklerinin sayısı (1xx/2xx/3xx/4xx/5xx)|Http durumu|
 |GatewayRequests|Yes|Ağ Geçidi Istekleri|Count|Toplam|Ağ Geçidi isteklerinin sayısı|Http durumu|
 |KafkaRestProxy.ConsumerRequest.m1_delta|Yes|REST proxy tüketicisi Istek Işleme|Sayaçpersaniye|Toplam|Kafka REST proxy 'sine yönelik tüketici isteği sayısı|Makine, konu|
+|KafkaRestProxy.ConsumerRequestFail.m1_delta|Yes|REST proxy tüketicisi başarısız Istekleri|Sayaçpersaniye|Toplam|Tüketici isteği özel durumları|Makine, konu|
 |KafkaRestProxy. ConsumerRequestTime. P95|Yes|REST proxy tüketicisi RequestLatency|Mayacak|Ortalama|Kafka REST proxy aracılığıyla bir tüketici isteğinde ileti gecikmesi|Makine, konu|
+|KafkaRestProxy. Consumerrequestwaitingınqueuetime. P95|Yes|REST proxy tüketicisi Istek biriktirme listesi|Mayacak|Ortalama|Tüketici REST ara sunucu kuyruğu uzunluğu|Makine, konu|
 |KafkaRestProxy.MessagesIn.m1_delta|Yes|REST proxy üreticisi Messageüretilen Işi|Sayaçpersaniye|Toplam|Kafka REST proxy aracılığıyla üretici iletilerinin sayısı|Makine, konu|
 |KafkaRestProxy.MessagesOut.m1_delta|Yes|REST proxy tüketicisi Ileti Işleme|Sayaçpersaniye|Toplam|Kafka REST proxy aracılığıyla tüketici iletisi sayısı|Makine, konu|
 |KafkaRestProxy. OpenConnections|Yes|REST proxy ConcurrentConnections|Count|Toplam|Kafka REST proxy aracılığıyla eşzamanlı bağlantı sayısı|Makine, konu|
 |KafkaRestProxy.ProducerRequest.m1_delta|Yes|REST proxy üreticisi Requestverimlilik|Sayaçpersaniye|Toplam|Kafka REST proxy 'sine yönelik üretici isteği sayısı|Makine, konu|
+|KafkaRestProxy.ProducerRequestFail.m1_delta|Yes|REST proxy üreticisi başarısız Istekleri|Sayaçpersaniye|Toplam|Üretici isteği özel durumları|Makine, konu|
 |KafkaRestProxy.ProducerRequestTime.p95|Yes|REST proxy üreticisi RequestLatency|Mayacak|Ortalama|Kafka REST proxy aracılığıyla bir üretici isteğinde ileti gecikmesi|Makine, konu|
+|KafkaRestProxy.ProducerRequestWaitingInQueueTime.p95|Yes|REST proxy üreticisi Istek biriktirme listesi|Mayacak|Ortalama|Üretici REST proxy sırası uzunluğu|Makine, konu|
 |Numactiveçalışanları|Yes|Etkin çalışan sayısı|Count|Maksimum|Etkin çalışan sayısı|MetricName|
 
 
@@ -1790,18 +1819,6 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |dataExport. messages. filtrelenmiş|Yes|Filtrelenen veri dışarı aktarma Iletileri|Count|Toplam|Veri dışarı aktarma sırasında filtrelerle geçilen ileti sayısı|Dışarı Exportıd, exportDisplayName, Destinationıd, destinationDisplayName|
 |dataExport. messages. alındı|Yes|Alınan veri dışarı aktarma Iletileri|Count|Toplam|Filtrelemeden ve zenginleştirme işlemeden önce, veri dışa aktarmaya gelen ileti sayısı|Dışarı Exportıd, exportDisplayName, Destinationıd, destinationDisplayName|
 |dataExport. messages. yazıldı|Yes|Yazılan veri dışa aktarma Iletileri|Count|Toplam|Hedefe yazılan ileti sayısı|Dışarı Exportıd, exportDisplayName, Destinationıd, destinationDisplayName|
-
-
-## <a name="microsoftiotspacesgraph"></a>Microsoft. ıotspaces/Graph
-
-|Metric|Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
-|---|---|---|---|---|---|---|
-|Harilaya|No|Harilaya|6|0|Milisaniye olarak Microsoft. ıotspaces 'a yapılan API isteklerinin gecikmesini ölçer|Boyut yok|
-|FunctionExecutionLatency|No|FunctionExecutionLatency|6|0|Microsoft. ıotspaces için milisaniye olarak Kullanıcı tanımlı işlev yürütme gecikmesini ölçer|Boyut yok|
-|MessageEgressFailure|No|MessageEgressFailure|2|3|Şuna benzer bir yerelleştirilmiş dize arar Microsoft. ıotspaces için Count başarısız sayısı olayını say|Boyut yok|
-|Messageegressla|No|Messageegressla|6|0|Dağıtıcının gecikmesini Microsoft. ıotspaces için milisaniye olarak diğer uç noktalara ölçer|Boyut yok|
-|MessageEgressSuccess|No|MessageEgressSuccess|2|3|Şuna benzer bir yerelleştirilmiş dize arar; Microsoft. ıotspaces için sayı olarak tamamlanan sayı olayını ölçümler|Boyut yok|
-|ProcessingLatency|No|ProcessingLatency|6|0|Microsoft. ıotspaces için milisaniye olarak gönderilen iletiden gelen gecikme süresini ölçer|Boyut yok|
 
 
 ## <a name="microsoftkeyvaultmanagedhsms"></a>Microsoft. keykasası/managedhsms
@@ -2021,6 +2038,8 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |ContentKeyPolicyCount|Yes|İçerik anahtarı Ilke sayısı|Count|Ortalama|Geçerli medya hizmeti hesabında kaç tane içerik anahtar ilkesi oluşturuldu|Boyut yok|
 |ContentKeyPolicyQuota|Yes|İçerik anahtarı Ilke kotası|Count|Ortalama|Geçerli medya hizmeti hesabı için kaç tane içerik anahtar ilkelerine izin verilir?|Boyut yok|
 |ContentKeyPolicyQuotaUsedPercentage|Yes|İçerik anahtarı Ilke kotası kullanılan yüzde|Yüzde|Ortalama|Geçerli medya hizmeti hesabında kullanılan içerik anahtarı Ilkesi yüzdesi|Boyut yok|
+|MaxChannelsAndLiveEventsCount sayısı|Yes|En büyük canlı etkinlik kotası|Count|Maksimum|Geçerli Media Services hesabında izin verilen en fazla canlı olay sayısı|Boyut yok|
+|MaxRunningChannelsAndLiveEventsCount sayısı|Yes|En fazla çalışan canlı etkinlik kotası|Count|Maksimum|Geçerli Media Services hesabında izin verilen en fazla çalışan etkin olay sayısı|Boyut yok|
 |RunningChannelsAndLiveEventsCount sayısı|Yes|Çalışan canlı olay sayısı|Count|Ortalama|Geçerli Media Services hesabındaki toplam çalışan etkin olay sayısı|Boyut yok|
 |Streammingpolicycount|Yes|Akış Ilkesi sayısı|Count|Ortalama|Geçerli medya hizmeti hesabında kaç tane akış ilkesi zaten oluşturuldu|Boyut yok|
 |StreamingPolicyQuota|Yes|Akış Ilkesi kotası|Count|Ortalama|Geçerli medya hizmeti hesabı için kaç akış ilkesine izin verilir?|Boyut yok|
@@ -2041,9 +2060,9 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 
 |Metric|Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|---|
-|CPU|Yes|CPU kullanımı|Yüzde|Ortalama|Premium akış uç noktaları için CPU kullanımı. Bu veriler standart akış uç noktaları için kullanılamaz.|Kimliği|
+|CPU|Yes|CPU kullanımı|Yüzde|Ortalama|Premium akış uç noktaları için CPU kullanımı. Bu veriler standart akış uç noktaları için kullanılamaz.|Boyut yok|
 |Çıkış|Yes|Çıkış|Bayt|Toplam|Bayt cinsinden çıkış verisi miktarı.|OutputFormat|
-|Yumurressbandwidth|No|Çıkış bant genişliği|BitsPerSecond|Ortalama|Bit/saniye cinsinden çıkış bant genişliği.|Kimliği|
+|Yumurressbandwidth|No|Çıkış bant genişliği|BitsPerSecond|Ortalama|Bit/saniye cinsinden çıkış bant genişliği.|Boyut yok|
 |İstekler|Yes|İstekler|Count|Toplam|Akış uç noktası istekleri.|OutputFormat, HttpStatusCode, ErrorCode|
 |SuccessE2ELatency|Yes|Başarılı uçtan uca gecikme süresi|Mayacak|Ortalama|Başarılı istekler için milisaniye cinsinden ortalama gecikme süresi.|OutputFormat|
 
@@ -2086,7 +2105,7 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |---|---|---|---|---|---|---|
 |AverageReadLatency|Yes|Ortalama okuma gecikmesi|Mayacak|Ortalama|İşlem başına milisaniye cinsinden ortalama okuma gecikmesi|Boyut yok|
 |AverageWriteLatency|Yes|Ortalama yazma gecikmesi|Mayacak|Ortalama|İşlem başına milisaniye cinsinden ortalama yazma gecikmesi|Boyut yok|
-|Cbsvolumebackupactıve|Yes|Birim yedeklemesi askıya alındı|Count|Ortalama|Yedekleme ilkesi birim için askıya alındı mu? 1 ise, hayır ise 0.|Boyut yok|
+|Cbsvolumebackupactıve|Yes|Birim yedeklemesi askıya alındı|Count|Ortalama|Yedekleme ilkesi birim için askıya alındı mu? 0 ise, hayır ise 1.|Boyut yok|
 |CbsVolumeLogicalBackupBytes|Yes|Birim yedekleme baytları|Bayt|Ortalama|Bu birim için yedeklenen toplam bayt sayısı.|Boyut yok|
 |Cbsvolumeoperationtamamlanmıştır|Yes|Toplu yedekleme Işlemi tamamlanmıştır|Count|Ortalama|Son birim yedeklemesi veya geri yükleme işlemi başarıyla tamamlandı mı? 1 ise, hayır ise 0.|Boyut yok|
 |CbsVolumeOperationTransferredBytes|Yes|Toplu yedekleme son aktarılan baytlar|Bayt|Ortalama|Son yedekleme veya geri yükleme işlemi için aktarılan toplam bayt sayısı.|Boyut yok|
@@ -2132,14 +2151,14 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |Estimatedbilledcapacitybirimleri|No|Tahmini faturalandırılan Kapasite birimleri|Count|Ortalama|Ücretlendirilebilecek tahmini Kapasite birimleri|Boyut yok|
 |FailedRequests|Yes|Başarısız İstekler|Count|Toplam|Application Gateway tarafından sunulan başarısız istek sayısı|BackendSettingsPool|
 |Fixedbillablecapacitybirimleri|No|Sabit Faturalanabilir Kapasite Birimleri|Count|Ortalama|Ücretlendirilebilecek minimum kapasite birimleri|Boyut yok|
-|Healthyıhostcount|Yes|Sağlıklı konak sayısı|Count|Ortalama|Sağlıklı arka uç Konakları sayısı|BackendSettingsPool|
+|Healthyıhostcount|Yes|Sağlıklı konak sayısı|Count|Ortalama|İyi durumdaki arka uç konaklarının sayısı|BackendSettingsPool|
 |MatchedCount|Yes|Web uygulaması güvenlik duvarı toplam kural dağıtımı|Count|Toplam|Gelen trafik için Web uygulaması güvenlik duvarı toplam kural dağıtımı|RuleGroup, RuleId|
 |NewConnectionsPerSecond|No|Saniyedeki yeni bağlantı sayısı|Sayaçpersaniye|Ortalama|Saniye başına yeni bağlantı Application Gateway ile oluşturuldu|Boyut yok|
 |ResponseStatus|Yes|Yanıt durumu|Count|Toplam|Application Gateway tarafından döndürülen http yanıt durumu|HttpStatusGroup|
 |Aktarım hızı|No|Aktarım hızı|BytesPerSecond|Ortalama|Application Gateway saniyede hizmet verilen bayt sayısı|Boyut yok|
 |TlsProtocol|Yes|İstemci TLS protokolü|Count|Toplam|Application Gateway ile bağlantı kurulan istemci tarafından başlatılan TLS ve TLS olmayan isteklerin sayısı. TLS protokol dağıtımını görüntülemek için Dimension TLS protokolüne göre filtreleyin.|Dinleyici, TlsProtocol|
 |TotalRequests|Yes|Toplam İstek Sayısı|Count|Toplam|Application Gateway tarafından sunulan başarılı istek sayısı|BackendSettingsPool|
-|Unhealthyıhostcount|Yes|Sağlıksız konak sayısı|Count|Ortalama|Sağlıklı olmayan arka uç Konakları sayısı|BackendSettingsPool|
+|Unhealthyıhostcount|Yes|Sağlıksız konak sayısı|Count|Ortalama|İyi durumda olmayan arka uç konaklarının sayısı|BackendSettingsPool|
 
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
@@ -2152,6 +2171,17 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |NetworkRuleHit|Yes|Ağ kuralları isabet sayısı|Count|Toplam|Ağ kurallarının isabet sayısı|Durum, neden, protokol|
 |SNATPortUtilization|Yes|SNAT bağlantı noktası kullanımı|Yüzde|Ortalama|Şu anda kullanımda olan giden SNAT bağlantı noktalarının yüzdesi|Protokol|
 |Aktarım hızı|No|Aktarım hızı|BitsPerSecond|Ortalama|Bu güvenlik duvarı tarafından işlenen işleme|Boyut yok|
+
+
+## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionHosts
+
+|Metric|Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
+|---|---|---|---|---|---|---|
+|pingkafes|No|Savunma Iletişim durumu|Count|Ortalama|İletişim durumu, tüm iletişim uygunsa 1, bozuksa 0 değerini gösterir.||
+|bağlanabilecek|No|Oturum Sayısı|Count|Toplam|Savunma için oturum sayısı. Toplam ve örnek başına görüntüleyin.|konak|
+|toplam|Yes|Toplam bellek|Count|Ortalama|Toplam bellek istatistiği.|konak|
+|usage_user|No|Kullanılan CPU|Count|Ortalama|CPU kullanım istatistikleri.|CPU, ana bilgisayar|
+|kullanılan|Yes|Kullanılan Bellek|Count|Ortalama|Bellek kullanım istatistikleri.|konak|
 
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft. Network/Connections
@@ -2201,10 +2231,10 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |ErGatewayConnectionBitsOutPerSecond|No|BitsOutPerSecond|BitsPerSecond|Ortalama|Saniye başına Azure’da bit çıkışı|ConnectionName|
 |ExpressRouteGatewayCountOfRoutesAdvertisedToPeer|Yes|Eşe tanıtılan yolların sayısı (Önizleme)|Count|Maksimum|ExpressRouteGateway tarafından eşe tanıtılan yolların sayısı|Roleınstance|
 |ExpressRouteGatewayCountOfRoutesLearnedFromPeer|Yes|Eşten öğrenilen yolların sayısı (Önizleme)|Count|Maksimum|ExpressRouteGateway tarafından eşten öğrenilen yolların sayısı|Roleınstance|
-|Expressroutegatewaycpukullanımı|Yes|CPU kullanımı (Önizleme)|Count|Ortalama|ExpressRoute ağ geçidinin CPU kullanımı|Roleınstance|
+|Expressroutegatewaycpukullanımı|Yes|CPU kullanımı|Count|Ortalama|ExpressRoute ağ geçidinin CPU kullanımı|Roleınstance|
 |ExpressRouteGatewayFrequencyOfRoutesChanged|No|Yolların sıklığı değişikliği (Önizleme)|Count|Toplam|ExpressRoute Gateway 'de yolların sıklığı değişikliği|Roleınstance|
 |ExpressRouteGatewayNumberOfVmInVnet|No|Sanal ağdaki VM sayısı (Önizleme)|Count|Maksimum|Sanal ağdaki sanal makinelerin sayısı|Boyut yok|
-|ExpressRouteGatewayPacketsPerSecond|No|Paket/saniye (Önizleme)|Sayaçpersaniye|Ortalama|ExpressRoute ağ geçidinin paket sayısı|Roleınstance|
+|ExpressRouteGatewayPacketsPerSecond|No|Paket/saniye|Sayaçpersaniye|Ortalama|ExpressRoute ağ geçidinin paket sayısı|Roleınstance|
 
 
 ## <a name="microsoftnetworkexpressrouteports"></a>Microsoft. Network/expressRoutePorts
@@ -2366,10 +2396,10 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |AverageBandwidth|Yes|Ağ Geçidi S2S bant genişliği|BytesPerSecond|Ortalama|Bayt/saniye cinsinden bir ağ geçidinin ortalama siteden siteye bant genişliği|Boyut yok|
 |ExpressRouteGatewayCountOfRoutesAdvertisedToPeer|Yes|Eşe tanıtılan yolların sayısı (Önizleme)|Count|Maksimum|ExpressRouteGateway tarafından eşe tanıtılan yolların sayısı|Roleınstance|
 |ExpressRouteGatewayCountOfRoutesLearnedFromPeer|Yes|Eşten öğrenilen yolların sayısı (Önizleme)|Count|Maksimum|ExpressRouteGateway tarafından eşten öğrenilen yolların sayısı|Roleınstance|
-|Expressroutegatewaycpukullanımı|Yes|CPU kullanımı (Önizleme)|Count|Ortalama|ExpressRoute ağ geçidinin CPU kullanımı|Roleınstance|
+|Expressroutegatewaycpukullanımı|Yes|CPU kullanımı|Count|Ortalama|ExpressRoute ağ geçidinin CPU kullanımı|Roleınstance|
 |ExpressRouteGatewayFrequencyOfRoutesChanged|No|Yolların sıklığı değişikliği (Önizleme)|Count|Toplam|ExpressRoute Gateway 'de yolların sıklığı değişikliği|Roleınstance|
 |ExpressRouteGatewayNumberOfVmInVnet|No|Sanal ağdaki VM sayısı (Önizleme)|Count|Maksimum|Sanal ağdaki sanal makinelerin sayısı|Boyut yok|
-|ExpressRouteGatewayPacketsPerSecond|No|Paket/saniye (Önizleme)|Sayaçpersaniye|Ortalama|ExpressRoute ağ geçidinin paket sayısı|Roleınstance|
+|ExpressRouteGatewayPacketsPerSecond|No|Paket/saniye|Sayaçpersaniye|Ortalama|ExpressRoute ağ geçidinin paket sayısı|Roleınstance|
 |P2SBandwidth|Yes|Ağ Geçidi P2S bant genişliği|BytesPerSecond|Ortalama|Bayt/saniye cinsinden bir ağ geçidinin ortalama Noktadan siteye bant genişliği|Boyut yok|
 |P2SConnectionCount|Yes|P2S Bağlantı Sayısı|Count|Maksimum|Bir ağ geçidinin noktadan siteye bağlantı sayısı|Protokol|
 |TunnelAverageBandwidth|Yes|Tünel Bant Genişliği|BytesPerSecond|Ortalama|Bir tünelin bayt/saniye cinsinden ortalama bant genişliği|ConnectionName, Remoteıp|
@@ -2379,6 +2409,13 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |TunnelIngressBytes|Yes|Tünel Giriş Baytları|Bayt|Toplam|Bir tünelin gelen bayt sayısı|ConnectionName, Remoteıp|
 |TunnelIngressPacketDropTSMismatch|Yes|Tünel Giriş TS Uyumsuzluğu Paket Bırakma|Count|Toplam|Bir tünelin trafik seçiciyle eşleşmeyen gelen paket bırakma sayısı|ConnectionName, Remoteıp|
 |TunnelIngressPackets|Yes|Tünel giriş paketleri|Count|Toplam|Bir tünelin gelen paket sayısı|ConnectionName, Remoteıp|
+|Tünelnatallocations konumları|No|Tünel NAT ayırmaları|Count|Toplam|Bir tünelde NAT kuralı için ayırma sayısı|NatRule, ConnectionName, Remoteıp|
+|Tünelde Tedbytes|No|Tünel Içindeki baytlar|Bayt|Toplam|Bir NAT kuralı tarafından tünele gelen bayt sayısı |NatRule, ConnectionName, Remoteıp|
+|Tünelnatedpackets|No|Tünel tutulan paketler|Count|Toplam|Bir NAT kuralı tarafından tünele gelen paketlerin sayısı|NatRule, ConnectionName, Remoteıp|
+|Tünelnatflowcount|No|NAT akışları tüneli|Count|Toplam|Bir tünelde akış türüne ve NAT kuralına göre NAT akışı sayısı|NatRule, ConnectionName, Remoteıp, FlowType|
+|Tünelnatpacketdrop|No|Tünel NAT paketi düşü|Count|Toplam|Bırakma türü ve NAT kuralı tarafından bırakılan bir tünelde bulunan paketlerin sayısı|NatRule, ConnectionName, Remoteıp, DropType|
+|Tünelde sente bayt|No|Tünel ters çevrilmiş baytlar|Bayt|Toplam|Bir NAT kuralı tarafından bir tünelde ters çevrilmiş bayt sayısı|NatRule, ConnectionName, Remoteıp|
+|Tünel yankı paketleri|No|Ters çevrilmiş paketleri tünel|Count|Toplam|Bir NAT kuralı tarafından ters çevrilmiş bir Tüneldeki paket sayısı|NatRule, ConnectionName, Remoteıp|
 
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
@@ -2408,6 +2445,13 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |TunnelIngressBytes|Yes|Tünel Giriş Baytları|Bayt|Toplam|Bir tünelin gelen bayt sayısı|ConnectionName, Remoteıp|
 |TunnelIngressPacketDropTSMismatch|Yes|Tünel Giriş TS Uyumsuzluğu Paket Bırakma|Count|Toplam|Bir tünelin trafik seçiciyle eşleşmeyen gelen paket bırakma sayısı|ConnectionName, Remoteıp|
 |TunnelIngressPackets|Yes|Tünel giriş paketleri|Count|Toplam|Bir tünelin gelen paket sayısı|ConnectionName, Remoteıp|
+|Tünelnatallocations konumları|No|Tünel NAT ayırmaları|Count|Toplam|Bir tünelde NAT kuralı için ayırma sayısı|NatRule, ConnectionName, Remoteıp|
+|Tünelde Tedbytes|No|Tünel Içindeki baytlar|Bayt|Toplam|Bir NAT kuralı tarafından tünele gelen bayt sayısı |NatRule, ConnectionName, Remoteıp|
+|Tünelnatedpackets|No|Tünel tutulan paketler|Count|Toplam|Bir NAT kuralı tarafından tünele gelen paketlerin sayısı|NatRule, ConnectionName, Remoteıp|
+|Tünelnatflowcount|No|NAT akışları tüneli|Count|Toplam|Bir tünelde akış türüne ve NAT kuralına göre NAT akışı sayısı|NatRule, ConnectionName, Remoteıp, FlowType|
+|Tünelnatpacketdrop|No|Tünel NAT paketi düşü|Count|Toplam|Bırakma türü ve NAT kuralı tarafından bırakılan bir tünelde bulunan paketlerin sayısı|NatRule, ConnectionName, Remoteıp, DropType|
+|Tünelde sente bayt|No|Tünel ters çevrilmiş baytlar|Bayt|Toplam|Bir NAT kuralı tarafından bir tünelde ters çevrilmiş bayt sayısı|NatRule, ConnectionName, Remoteıp|
+|Tünel yankı paketleri|No|Ters çevrilmiş paketleri tünel|Count|Toplam|Bir NAT kuralı tarafından ters çevrilmiş bir Tüneldeki paket sayısı|NatRule, ConnectionName, Remoteıp|
 
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub 'Lar
@@ -2574,16 +2618,6 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |QueryPoolJobQueueLength|Yes|Sorgu havuzu Iş kuyruğu uzunluğu (veri kümeleri) (Gen1)|Count|Ortalama|Sorgu iş parçacığı havuzu kuyruğundaki iş sayısı. Yalnızca Power BI Embedded nesil 1 kaynakları için desteklenir.|Boyut yok|
 
 
-## <a name="microsoftprojectbabylonaccounts"></a>Microsoft. ProjectBabylon/hesaplar
-
-|Metric|Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
-|---|---|---|---|---|---|---|
-|Scaniptal edildi|Yes|Tarama Iptal edildi|Count|Toplam|İptal edilen taramaların sayısını belirtir.|ResourceId|
-|ScanCompleted|Yes|Tarama tamamlandı|Count|Toplam|Taramanın başarıyla tamamlandığını gösterir.|ResourceId|
-|ScanFailed|Yes|Tarama başarısız oldu|Count|Toplam|Başarısız tarama sayısını belirtir.|ResourceId|
-|ScanTimeTaken|Yes|Harcanan Tarama süresi|Saniye|Toplam|Saniye cinsinden toplam tarama süresini gösterir.|ResourceId|
-
-
 ## <a name="microsoftpurviewaccounts"></a>Microsoft. purview/hesapları
 
 |Metric|Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
@@ -2682,6 +2716,15 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |OutboundTraffic|Yes|Giden Trafik|Bayt|Toplam|Hizmetin giden trafiği|Boyut yok|
 |SystemErrors|Yes|Sistem hataları|Yüzde|Maksimum|Sistem hatalarının yüzdesi|Boyut yok|
 |UserErrors|Yes|Kullanıcı hataları|Yüzde|Maksimum|Kullanıcı hatalarının yüzdesi|Boyut yok|
+
+
+## <a name="microsoftsignalrservicewebpubsub"></a>Microsoft. SignalRService/WebPubSub
+
+|Metric|Tanılama ayarları aracılığıyla dışarı aktarılabilir mi?|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
+|---|---|---|---|---|---|---|
+|ConnectionCount|Yes|Bağlantı sayısı|Count|Maksimum|Kullanıcı bağlantısı miktarı.|Boyut yok|
+|Inboundtraffic|Yes|Gelen Trafik|Bayt|Toplam|Hizmetin gelen trafiği|Boyut yok|
+|OutboundTraffic|Yes|Giden Trafik|Bayt|Toplam|Hizmetin giden trafiği|Boyut yok|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/ManagedInstances
@@ -2902,6 +2945,7 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |---|---|---|---|---|---|---|
 |ServerSyncSessionResult|Yes|Eşitleme oturumu sonucu|Count|Ortalama|Sunucu uç noktası, bulut uç noktası ile eşitleme oturumunu başarıyla tamamladığında 1 değerini günlüğe kaydeden ölçüm|SyncGroupName, ServerEndpointName, SyncDirection|
 |StorageSyncBatchTransferredFileBytes|Yes|Eşitlenen baytlar|Bayt|Toplam|Eşitleme oturumları için aktarılan toplam dosya boyutu|SyncGroupName, ServerEndpointName, SyncDirection|
+|Storagesyncrecall, Tedbaşarılı oran|Yes|Bulut katmanlama geri çekme başarı oranı|Yüzde|Ortalama|Başarılı olan tüm geri çekmeler yüzdesi|SyncGroupName, ServerName|
 |StorageSyncRecalledNetworkBytesByApplication|Yes|Uygulamaya göre bulut katmanlama geri çağırma boyutu|Bayt|Toplam|Uygulama tarafından geri çekilen verilerin boyutu|SyncGroupName, ServerName, ApplicationName|
 |Storagesyncyeniden hesaplama Ledtotalnetworkbytes|Yes|Bulut katmanlama geri çağırma boyutu|Bayt|Toplam|Geri çekilen verilerin boyutu|SyncGroupName, ServerName|
 |Storagesyncyeniden hesaplama Liototalsizebytes|Yes|Bulut katmanlama geri çağırma|Bayt|Toplam|Sunucu tarafından geri çekilen toplam veri boyutu|aboneliğinde ve|
@@ -2956,6 +3000,7 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |LateInputEvents|Yes|Geç giriş olayları|Count|Toplam|Geç giriş olayları|LogicalName, PartitionID|
 |OutputEvents|Yes|Çıkış olayları|Count|Toplam|Çıkış olayları|LogicalName, PartitionID|
 |Outputsulu Markdelayseconds|Yes|Filigran gecikmesi|Saniye|Maksimum|Filigran gecikmesi|LogicalName, PartitionID|
+|ProcessCPUUsagePercentage|Yes|CPU% kullanımı (Önizleme)|Yüzde|Maksimum|CPU% kullanımı (Önizleme)|LogicalName, PartitionID|
 |Resourcekullanım|Yes|SU kullanımı yüzdesi|Yüzde|Maksimum|SU kullanımı yüzdesi|LogicalName, PartitionID|
 
 
@@ -3136,7 +3181,7 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |AverageResponseTime|Yes|Ortalama yanıt süresi (kullanım dışı)|Saniye|Ortalama|Uygulama için geçen ortalama süre (saniye cinsinden).|Örnek|
 |BytesReceived|Yes|Içindeki veriler|Bayt|Toplam|MIB içinde uygulama tarafından tüketilen gelen bant genişliği miktarı.|Örnek|
 |BytesSent|Yes|Giden veriler|Bayt|Toplam|MIB içinde uygulama tarafından tüketilen giden bant genişliği miktarı.|Örnek|
-|CpuTime|Yes|CPU süresi|Saniye|Toplam|Uygulama tarafından saniye cinsinden tüketilen CPU miktarı. Bu ölçüm hakkında daha fazla bilgi için. Lütfen bkz https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage . (CPU süresi vs CPU yüzdesi). Azure Işlevleri için geçerli değildir.|Örnek|
+|CpuTime|Yes|CPU süresi|Saniye|Toplam|Uygulama tarafından saniye cinsinden tüketilen CPU miktarı. Bu ölçüm hakkında daha fazla bilgi için. Azure Işlevleri için geçerli değildir. Lütfen bkz https://aka.ms/website-monitor-cpu-time-vs-cpu-percentage . (CPU süresi vs CPU yüzdesi).|Örnek|
 |CurrentAssemblies|Yes|Geçerli derlemeler|Count|Ortalama|Bu uygulamadaki tüm AppDomain 'ler genelinde yüklenen derlemelerin geçerli sayısı.|Örnek|
 |Filesystemage|Yes|Dosya sistemi kullanımı|Bayt|Ortalama|Uygulama tarafından tüketilen dosya sistemi kotasının yüzdesi.|Boyut yok|
 |Işlev yürütme sayısı|Yes|İşlev yürütme sayısı|Count|Toplam|İşlev yürütme sayısı. Yalnızca Azure Işlevleri için mevcut.|Örnek|
@@ -3180,7 +3225,7 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |AverageResponseTime|Yes|Ortalama yanıt süresi (kullanım dışı)|Saniye|Ortalama|Uygulama için geçen ortalama süre (saniye cinsinden).|Örnek|
 |BytesReceived|Yes|Içindeki veriler|Bayt|Toplam|MIB içinde uygulama tarafından tüketilen gelen bant genişliği miktarı.|Örnek|
 |BytesSent|Yes|Giden veriler|Bayt|Toplam|MIB içinde uygulama tarafından tüketilen giden bant genişliği miktarı.|Örnek|
-|CpuTime|Yes|CPU süresi|Saniye|Toplam|Uygulama tarafından saniye cinsinden tüketilen CPU miktarı. Bu ölçüm hakkında daha fazla bilgi için. Lütfen bkz https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage . (CPU süresi vs CPU yüzdesi).|Örnek|
+|CpuTime|Yes|CPU süresi|Saniye|Toplam|Uygulama tarafından saniye cinsinden tüketilen CPU miktarı. Bu ölçüm hakkında daha fazla bilgi için. Azure Işlevleri için geçerli değildir. Lütfen bkz https://aka.ms/website-monitor-cpu-time-vs-cpu-percentage . (CPU süresi vs CPU yüzdesi).|Örnek|
 |CurrentAssemblies|Yes|Geçerli derlemeler|Count|Ortalama|Bu uygulamadaki tüm AppDomain 'ler genelinde yüklenen derlemelerin geçerli sayısı.|Örnek|
 |Filesystemage|Yes|Dosya sistemi kullanımı|Bayt|Ortalama|Uygulama tarafından tüketilen dosya sistemi kotasının yüzdesi.|Boyut yok|
 |Işlev yürütme sayısı|Yes|İşlev yürütme sayısı|Count|Toplam|İşlev yürütme sayısı|Örnek|
@@ -3224,7 +3269,6 @@ Tanılama ayarlarını kullanmak ölçümleri yönlendirmenin en kolay yoludur, 
 |Işlev ısabetleri|Yes|Işlev ısabetleri|Count|Toplam|Işlev ısabetleri|Örnek|
 |SiteErrors|Yes|SiteErrors|Count|Toplam|SiteErrors|Örnek|
 |SiteHits|Yes|SiteHits|Count|Toplam|SiteHits|Örnek|
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

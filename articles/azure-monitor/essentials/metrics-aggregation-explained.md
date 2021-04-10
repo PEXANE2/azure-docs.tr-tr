@@ -5,13 +5,14 @@ author: rboucher
 ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 01/12/2020
-ms.openlocfilehash: b7e9318ee34836f8fbd2ae7a330134d8174e6a60
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/10/2021
+ms.subservice: metrics
+ms.openlocfilehash: 93d30663034c7560550160960af20f0a465d93c6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031404"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936181"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Azure Izleyici ölçümleri ölçüm toplamı ve görüntüleme açıklanmaktadır
 
@@ -26,6 +27,7 @@ Bir grafiğe ölçüm eklediğinizde, Ölçüm Gezgini varsayılan toplamayı ot
 Daha önce az sayıda terim tanımlayalim:
 
 - **Ölçüm değeri** : belirli bir kaynak için toplanan tek bir ölçüm değeri.
+- **Zaman serisi veritabanı** -bir değer ve karşılık gelen zaman damgası içeren veri noktalarının depolanması ve alınması için iyileştirilmiş bir veritabanı. 
 - **Zaman aralığı** : genel bir zaman dilimi.
 - **Zaman aralığı** : iki ölçüm değerinin toplanması arasındaki süre. 
 - **Zaman aralığı** : bir grafikte görünen zaman dilimi. Tipik varsayılan değer 24 saattir. Yalnızca belirli aralıklar kullanılabilir. 
@@ -33,7 +35,9 @@ Daha önce az sayıda terim tanımlayalim:
 - **Toplama türü** : birden çok ölçüm değerinden hesaplanan bir istatistik türü.  
 - **Toplama** : birden fazla giriş değeri alma ve sonra toplama türü tarafından tanımlanan kurallar aracılığıyla tek bir çıkış değeri oluşturmak için bunları kullanma işlemi. Örneğin, birden çok değerin ortalamasını alma.  
 
-Ölçümler, düzenli bir zaman aralığında yakalanan ölçüm değerleri dizisidir. Bir grafiği çizerseniz, seçili ölçüm değerleri zaman ayrıntı düzeyi (zaman çizgisi olarak da bilinir) boyunca ayrı olarak toplanır. Zaman ayrıntı düzeyinin boyutunu [Ölçüm Gezgini saat seçici panelini](../essentials/metrics-getting-started.md#select-a-time-range)kullanarak seçersiniz. Açık bir seçim yapmazsanız zaman ayrıntı düzeyi, o anda seçili zaman aralığına göre otomatik olarak seçilir. Seçildiğinde, her zaman ayrıntı düzeyi aralığı boyunca yakalanan ölçüm değerleri toplanır ve her Aralık için tek bir DataPoint şemasına yerleştirilir.
+## <a name="summary-of-process"></a>İşlemin Özeti
+
+Ölçümler, zaman damgasıyla depolanan bir değer dizisidir. Azure 'da, çoğu ölçüm Azure ölçümleri zaman serisi veritabanında depolanır. Bir grafiği çizerseniz seçili ölçümlerin değerleri veritabanından alınır ve ardından seçilen zaman ayrıntı düzeyi (zaman dilimi olarak da bilinir) temelinde ayrı olarak toplanır. Zaman ayrıntı düzeyinin boyutunu [Ölçüm Gezgini saat seçici panelini](../essentials/metrics-getting-started.md#select-a-time-range)kullanarak seçersiniz. Açık bir seçim yapmazsanız zaman ayrıntı düzeyi, o anda seçili zaman aralığına göre otomatik olarak seçilir. Seçildiğinde, her zaman ayrıntı düzeyi aralığı boyunca yakalanan ölçüm değerleri toplanır ve her Aralık için tek bir DataPoint şemasına yerleştirilir.
 
 ## <a name="aggregation-types"></a>Toplama türleri 
 
@@ -82,9 +86,11 @@ Bu düzgünleştirme davranışı, bu verileri diğer sistemlere gönderdiğiniz
 
 ## <a name="how-the-system-collects-metrics"></a>Sistemin ölçümleri nasıl toplar
 
-Veri toplama, ölçüme göre farklılık gösterir. İki tür koleksiyon dönemi vardır.
+Veri toplama, ölçüme göre farklılık gösterir. 
 
 ### <a name="measurement-collection-frequency"></a>Ölçüm toplama sıklığı 
+
+İki tür koleksiyon dönemi vardır.
 
 - **Normal** -ölçüm, farklılık gösteren tutarlı bir zaman aralığı içinde toplanır.
 

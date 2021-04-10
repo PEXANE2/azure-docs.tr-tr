@@ -1006,7 +1006,7 @@
                   displayname: 'Azure disk encryption, encryption, ADE'
                 - name: Hızlı Başlangıçlar
                   items:
-                    - name: Azure CLI’si
+                    - name: Azure CLI
                       href: ./linux/disk-encryption-cli-quickstart.md
                       displayname: 'Azure disk encryption, encryption, ADE'
                     - name: Azure PowerShell
@@ -1049,7 +1049,7 @@
                   href: ./windows/disk-encryption-overview.md
                 - name: Hızlı Başlangıçlar
                   items:
-                    - name: Azure CLI’si
+                    - name: Azure CLI
                       href: ./windows/disk-encryption-cli-quickstart.md
                     - name: Azure PowerShell
                       href: ./windows/disk-encryption-powershell-quickstart.md
@@ -1174,7 +1174,7 @@
             - name: Azure CLI
               displayName: 'add a data disk, data disk'
               href: ./linux/add-disk.md
-            - name: Azure portalı
+            - name: Azure portal
               displayName: 'add a data disk, data disk'
               href: ./linux/attach-disk-portal.md
         - name: Windows
@@ -1258,31 +1258,31 @@
         - name: CLI
           items:
             - name: VHD'den yönetilen disk oluşturma
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd
             - name: Anlık görüntüden yönetilen disk oluşturma
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd
             - name: Yönetilen bir diski aynı veya farklı aboneliğe kopyalama
               href: 'https://github.com/Azure-Samples/azure-cli-samples/blob/master/virtual-machine/copy-managed-disks-to-same-or-different-subscription/copy-managed-disks-to-same-or-different-subscription.sh'
             - name: Bir anlık görüntüyü aynı veya farklı aboneliğe kopyalama
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-same-or-different-subscription.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription
             - name: Anlık görüntüyü bir depolama hesabına VHD olarak dışarı aktarma
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-storage-account.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account
             - name: Yönetilen bir diski bir depolama hesabına VHD olarak dışarı aktarma
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account
         - name: PowerShell
           items:
             - name: VHD'den yönetilen disk oluşturma
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd
             - name: Anlık görüntüden yönetilen disk oluşturma
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot
             - name: Bir anlık görüntüyü aynı veya farklı aboneliğe kopyalama
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription
             - name: Anlık görüntüyü bir depolama hesabına VHD olarak dışarı aktarma
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-storage-account.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account
             - name: Yönetilen bir diski bir depolama hesabına VHD olarak dışarı aktarma
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd
             - name: VHD’den anlık görüntü oluşturma
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd
 - name: Ağ
   items:
     - name: Genel Bakış
@@ -1720,12 +1720,10 @@
             - name: Windows
               displayName: Enable disaster recovery
               href: ./windows/tutorial-disaster-recovery.md
-        - name: VM'ler için olağanüstü durum kurtarmayı etkinleştirme
-          href: ../site-recovery/azure-to-azure-tutorial-enable-replication.md
-        - name: VM'ler için olağanüstü durum kurtarma tatbikatı çalıştırma
-          href: ../site-recovery/azure-to-azure-tutorial-dr-drill.md
         - name: VM'nin yükünü başka bir bölgeye devretme
           href: ../site-recovery/azure-to-azure-tutorial-failover-failback.md
+        - name: VM 'yi birincil bölgeye geri dönme
+          href: ../site-recovery/azure-to-azure-tutorial-failback.md
     - name: Sanal makineleri taşıma ve geçirme
       items:
         - name: Aboneliği veya kaynak grubunu değiştirme
