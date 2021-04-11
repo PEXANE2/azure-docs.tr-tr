@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 1d3b2174df5dd83852ce120ec6693ae187a3e795
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 973bd1ac121513a297574bbb37d1663b5a18c345
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643531"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276918"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Sanal makineler için Azure oto yönetimi
 
@@ -70,6 +70,8 @@ Yeni bir oto Yönet hesabıyla, oto Yönet 'i etkinleştirirseniz:
 Var olan bir oto Yönet hesabıyla, oto Yönet 'i etkinleştirirseniz:
 * VM 'lerinizi içeren kaynak grubundaki **katkıda bulunan** rolü
 
+Oto Yönet hesabına, tekrar yönetilen makinelerde eylemler gerçekleştirmek için **katkıda bulunan** ve **kaynak ilkesi katılımcısı** izinleri verilecektir.
+
 > [!NOTE]
 > Farklı bir abonelikte bulunan bir çalışma alanına bağlı bir sanal makinede, oto yönetimi 'ni kullanmak istiyorsanız, her bir abonelikte yukarıda açıklanan izinlere sahip olmanız gerekir.
 
@@ -94,6 +96,19 @@ SANAL makineniz için Automanage 'u ilk kez etkinleştirdiğinizde, **automanage
 
 Bu hizmetleri yönetmek için bu VM ile etkileşimde bulunabilmeniz gereken tek zaman, sanal makinenizin düzeltilmesi için denediğimiz olaydır, ancak bunu yapamadı. VM 'nizi başarılı bir şekilde düzeltmemiz durumunda sizi uyarmadan yine de uyumluluğa geri getirilecektir. Daha fazla ayrıntı için bkz. [VM 'Lerin durumu](#status-of-vms).
 
+## <a name="enabling-automanage-for-vms-using-azure-policy"></a>Azure Ilkesi kullanarak VM 'Ler için oto yönetimini etkinleştirme
+Ayrıca, yerleşik Azure Ilkesini kullanarak VM 'lerde ölçek üzerinde de oto yönetimi etkinleştirebilirsiniz. İlkede bir DeployIfNotExists efekti vardır. Bu, ilke kapsamındaki tüm uygun sanal makinelerin otomatik olarak VM En Iyi uygulamalarını otomatik olarak yönetmesi için eklendi.
+
+İlkeye doğrudan bağlantı [burada](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F270610db-8c04-438a-a739-e8e6745b22d3)bulunur.
+
+### <a name="how-to-apply-the-policy"></a>İlkeyi uygulama
+1. İlke tanımını görüntülerken **ata** düğmesine tıklayın
+1. İlkeyi uygulamak istediğiniz kapsamı seçin (Yönetim grubu, abonelik veya kaynak grubu olabilir)
+1. **Parametreler** altında, oto Yönet hesabı, yapılandırma profili ve efekt için parametreleri belirtin (etki genellikle DeployIfNotExists olmalıdır)
+    1. Bir oto Yönet hesabınız yoksa, [oluşturmanız](#create-an-automanage-account)gerekir.
+1. **Düzeltme** altında "bir düzeltme görevini tıklatın" onay kutusunu işaretleyin. Bu, oto yönetimi için ekleme gerçekleştirecek.
+1. **Gözden geçir + oluştur** ' a tıklayın ve tüm ayarların iyi görünmesini sağlayın.
+1. **Oluştur**’a tıklayın.
 
 ## <a name="environment-configuration"></a>Ortam yapılandırması
 
@@ -142,6 +157,43 @@ Var olan bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, VM 'le
 > [!NOTE]
 > En Iyi Yönet uygulamalarını devre dışı bıraktığınızda, tüm ilişkili aboneliklerdeki hesap izinlerini oto Yönet olarak kalır. Aboneliğin ıAM sayfasına gidip izinleri el ile kaldırın veya tekrar Yönet hesabını silin. Hala herhangi bir makine yönetiliyorsa, oto Yönet hesabı silinemez.
 
+### <a name="create-an-automanage-account"></a>Bir oto Yönet hesabı oluşturun
+Portalı kullanarak veya bir ARM şablonu kullanarak bir oto Yönet hesabı oluşturabilirsiniz.
+
+#### <a name="portal"></a>Portal
+1. Portalda, **oto Yönet** dikey penceresine gidin
+1. **Mevcut makinede etkinleştir** ' e tıklayın
+1. **Gelişmiş**' in altında "yeni hesap oluştur" a tıklayın.
+1. Gerekli alanları doldurup **Oluştur** ' a tıklayın.
+
+#### <a name="arm-template"></a>ARM şablonu
+Aşağıdaki ARM şablonunu farklı kaydedin `azuredeploy.json` ve şu komutu çalıştırın: `az deployment group create --resource-group <resource group name> --template-file azuredeploy.json`
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "automanageAccountName": {
+            "type": "String"
+        },
+        "location": {
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2020-06-30-preview",
+            "type": "Microsoft.Automanage/accounts",
+            "name": "[parameters('automanageAccountName')]",
+            "location": "[parameters('location')]",
+            "identity": {
+                "type": "SystemAssigned"
+            }
+        }
+    ]
+}
+```
 
 ## <a name="status-of-vms"></a>VM 'lerin durumu
 

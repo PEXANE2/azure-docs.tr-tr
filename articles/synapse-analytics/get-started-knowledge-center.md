@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 11/16/2020
-ms.openlocfilehash: 59364a0a2c1d1e411f41dc35dee812c8e920b72d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/04/2021
+ms.openlocfilehash: a26f46da7b392bd3b4a49aacb360a4c6147f8d2c
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98209211"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382649"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>SYNAPSE bilgi merkezini araştırma
 
@@ -47,6 +47,7 @@ Herhangi bir yöntemi seçin ve **bilgi merkezini** açın.
 1. Çalıştır'a tıklayın. Yalnızca seçtiğiniz kodu çalıştırır.
 
 ## <a name="loading-more-nyc-taxi-data"></a>Daha fazla NYC TAXI verisi yükleniyor
+
 1. **Bilgi merkezine** gidin, **Galeriye** git ' e tıklayın.
 1. Üstteki **SQL betikleri** sekmesini seçin.
 1. **New York Taxicab veri kümesi** veri alım örneğini Yükle ' yi seçin, **devam**' a tıklayın.
@@ -61,6 +62,6 @@ Herhangi bir yöntemi seçin ve **bilgi merkezini** açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Synapse Analytics ile çalışmaya başlama](get-started.md)
-* [Çalışma alanı oluşturma](quickstart-create-workspace.md)
-* [Sunucusuz SQL havuzu kullanma](quickstart-sql-on-demand.md)
+> [!div class="nextstepaction"]
+> [Yönetici ekleme](get-started-add-admin.md)
+
