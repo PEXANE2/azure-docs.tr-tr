@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 01b30fed23b33719f08e93907075eee757343b1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7695c825dbdd2c207c87799ea801026f7506bcb
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461751"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219459"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>Öğretici: Linux kapsayıcıları kullanarak C# IoT Edge modülü geliştirme
 
@@ -52,7 +52,7 @@ Linux kapsayıcıları kullanarak C# modülleri geliştirme ve dağıtmaya yöne
 Bu öğreticiye başlamadan önce, bir önceki öğreticiden yararlanarak geliştirme ortamınızı ayarlamanız, [Linux kapsayıcıları kullanarak bir IoT Edge modülü geliştirmeniz](tutorial-develop-for-linux.md)gerekir. Bu Öğreticiyi tamamladıktan sonra, zaten aşağıdaki önkoşullara sahip olmanız gerekir:
 
 * Azure'da ücretsiz veya standart katman [IoT Hub'ı](../iot-hub/iot-hub-create-through-portal.md).
-* Azure IoT Edge çalıştıran bir cihaz. Hızlı başlangıçlarını bir [Linux cihazı](quickstart-linux.md) veya [Windows cihazı](quickstart.md)ayarlamak için kullanabilirsiniz.
+* Linux kapsayıcılarıyla Azure IoT Edge çalıştıran bir cihaz. Hızlı başlangıçlarını bir [Linux cihazı](quickstart-linux.md) veya [Windows cihazı](quickstart.md)ayarlamak için kullanabilirsiniz.
 * [Azure Container Registry](../container-registry/index.yml)gibi bir kapsayıcı kayıt defteri.
 * [Azure IoT araçlarıyla](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)yapılandırılmış [Visual Studio Code](https://code.visualstudio.com/) .
 * Linux kapsayıcılarını çalıştırmak için yapılandırılmış [Docker CE](https://docs.docker.com/install/) .
