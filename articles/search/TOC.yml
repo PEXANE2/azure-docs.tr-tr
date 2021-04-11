@@ -392,6 +392,8 @@
       items:
         - name: Performans Analizi
           href: search-performance-analysis.md
+        - name: Performans karşılaştırmaları
+          href: performance-benchmarks.md
         - name: Daha iyi performans ipuçları
           href: search-performance-tips.md
         - name: Tanılama günlüğüne kaydetme

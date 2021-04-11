@@ -12,18 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: c673f7a9556193fb05e05ea372bfccd17cd3c5ed
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: eeeaf01dd20e5b309884a01f954ceca576cbcbb9
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868520"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259634"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
-Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMB3 veya Dual Protocol (NFSv3 ve SMB) kullanarak birim oluşturmayı destekler. Birimin kapasite kullanımı, havuzunun sağlanan kapasitesinden sayılır. Bu makalede, SMB3 birimi oluşturma konusu gösterilmektedir.
+Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMB3 veya Dual Protocol (NFSv3 ve SMB) kullanarak birim oluşturmayı destekler. Birimin kapasite kullanımı, havuzunun sağlanan kapasitesinden sayılır. 
+
+Bu makalede, SMB3 birimi oluşturma konusu gösterilmektedir. NFS birimleri için bkz. [NFS birimi oluşturma](azure-netapp-files-create-volumes.md). Çift protokol birimleri için bkz. [çift protokol birimi oluşturma](create-volumes-dual-protocol.md).
 
 ## <a name="before-you-begin"></a>Başlamadan önce 
 
@@ -128,10 +130,12 @@ SMB birimine erişim izinler aracılığıyla yönetilir.
 
 ### <a name="share-permissions"></a>İzinleri paylaşma  
 
-Varsayılan olarak, yeni bir birimde **Everyone/Full denetim** Share izinleri vardır. Domain Admins grubunun üyeleri, Azure NetApp Files birimi için kullanılan bilgisayar hesabında Bilgisayar Yönetimi ' ni kullanarak paylaşma izinlerini değiştirebilir.
+Varsayılan olarak, yeni bir birimde **Everyone/Full denetim** Share izinleri vardır. Domain Admins grubunun üyeleri, aşağıdaki gibi, paylaşma izinlerini değiştirebilir:  
 
-![SMB bağlama yolu ](../media/azure-netapp-files/smb-mount-path.png) 
- ![ kümesi paylaşma izinleri](../media/azure-netapp-files/set-share-permissions.png) 
+1. Paylaşımdan bir sürücü eşleştirin.  
+2. Sürücüye sağ tıklayın, **Özellikler**' i seçin ve ardından **güvenlik** sekmesine gidin.
+
+[![Paylaşma izinlerini ayarla](../media/azure-netapp-files/set-share-permissions.png)](../media/azure-netapp-files/set-share-permissions.png#lightbox)
 
 ### <a name="ntfs-file-and-folder-permissions"></a>NTFS dosya ve klasör izinleri  
 

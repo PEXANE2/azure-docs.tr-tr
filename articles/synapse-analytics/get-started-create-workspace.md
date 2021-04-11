@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: a4fa902268d9a19cd0003a2fdaa4c5e58989a4ff
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: f186acbe030dcbb0c2bad22586a8b2a5d1aa520d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218949"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259804"
 ---
 # <a name="creating-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
 
@@ -64,6 +64,16 @@ Azure SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu a
 
 * SYNAPSE çalışma alanınızı [Azure Portal](https://portal.azure.com)açın, SYNAPSE çalışma alanının **genel bakış** bölümünde SYNAPSE Studio 'yu Aç kutusunda **Aç** ' ı seçin.
 * Adresine gidin `https://web.azuresynapse.net` ve çalışma alanınızda oturum açın.
+
+## <a name="place-sample-data-into-the-primary-storage-account"></a>Örnek verileri birincil depolama hesabına yerleştirme
+Bu başlangıç kılavuzunda birçok örnek için NYX TAXI cab verilerinin küçük bir 100K satırı örnek veri kümesini kullanacağız. Çalışma alanı için oluşturduğunuz birincil depolama hesabına yerleştirilerek başlayacağız.
+
+* Bu dosyayı bilgisayarınıza indirin: https://azuresynapsestorage.blob.core.windows.net/sampledata/NYCTaxiSmall/NYCTripSmall.parquet 
+* SYNAPSE Studiio ' de, veri merkezine gidin. 
+* **Bağlı**' e tıklayın.
+* **Azure Data Lake Storae Gen2** kategorisi altında **MyWorkspace (birincil-contosolake)** gibi bir ada sahip bir öğe görürsünüz
+* Kullanıcılar adlı kapsayıcıya tıklayın **(birincil)**
+* **Karşıya yükle** ' ye tıklayın ve `NYCTripSmall.parquet` indirdiğiniz dosyayı seçin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

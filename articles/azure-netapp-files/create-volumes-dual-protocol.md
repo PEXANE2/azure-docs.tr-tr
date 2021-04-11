@@ -12,19 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/28/2020
+ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: 0079c123f908a38cc1e4923790439f18352bf3ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6a2d7ad92c209a93d740d60808c2cbd2f90c6b4
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100574635"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258427"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için bir çift protokol (NFSv3 ve SMB) birimi oluşturun
 
-Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMB3 veya Dual Protocol kullanarak birim oluşturmayı destekler. Bu makalede, LDAP kullanıcı eşlemesi desteğiyle NFSv3 ve SMB 'nin ikili protokolünü kullanan bir birimin nasıl oluşturulacağı gösterilmektedir.  
+Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMB3 veya Dual Protocol kullanarak birim oluşturmayı destekler. Bu makalede, LDAP kullanıcı eşlemesi desteğiyle NFSv3 ve SMB 'nin ikili protokolünü kullanan bir birimin nasıl oluşturulacağı gösterilmektedir. 
 
+NFS birimleri oluşturmak için bkz. [NFS birimi oluşturma](azure-netapp-files-create-volumes.md). SMB birimleri oluşturmak için bkz. [SMB birimi oluşturma](azure-netapp-files-create-volumes-smb.md). 
 
 ## <a name="before-you-begin"></a>Başlamadan önce 
 
@@ -39,7 +40,7 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMB3 veya Dual Protocol kullanarak 
 * DNS sunucusunda bir geriye doğru arama bölgesi oluşturun ve ardından bu geriye doğru arama bölgesine AD ana makinesi için bir işaretçi (PTR) kaydı ekleyin. Aksi halde, çift protokol birimi oluşturma işlemi başarısız olur.
 * NFS istemcisinin güncel olduğundan ve işletim sistemi için en son güncelleştirmeleri çalıştırdığından emin olun.
 * AD üzerinde Active Directory (AD) LDAP sunucusunun açık ve çalışıyor olduğundan emin olun. Bunu, AD makinesine [Active Directory Basit Dizin Hizmetleri (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) rolünü yükleyip yapılandırarak yapabilirsiniz.
-* Çift protokol birimleri Şu anda Azure Active Directory Domain Services desteklemez (AEKLEMELERI).  
+* Çift protokol birimleri Şu anda Azure Active Directory Domain Services desteklemez (AEKLEMELERI). AEKLEMELERI kullanıyorsanız TLS üzerinden LDAP etkinleştirilmemelidir.
 * Bir çift protokol birimi tarafından kullanılan NFS sürümü NFSv3 ' dir. Bu nedenle, aşağıdaki önemli noktalar geçerlidir:
     * İkili protokol, NFS istemcilerinden gelen Windows ACL genişletilmiş özniteliklerini desteklemez `set/get` .
     * NFS istemcileri NTFS güvenlik stili için izinleri değiştiremezler ve Windows istemcileri UNIX stili çift protokol birimlerinin izinlerini değiştiremezler.   
@@ -121,6 +122,17 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMB3 veya Dual Protocol kullanarak 
  
     Birim, kapasite havuzundan aboneliği, kaynak grubunu ve konum özniteliklerini devralır. Birimin dağıtım durumunu izlemek için Bildirimler sekmesini kullanabilirsiniz.
 
+## <a name="allow-local-nfs-users-with-ldap-to-access-a-dual-protocol-volume"></a>Yerel NFS kullanıcılarının LDAP ile çift protokol birimine erişmesine izin ver 
+
+Genişletilmiş grupları etkinleştirilmiş LDAP içeren bir çift protokol birimine erişmek için Windows LDAP sunucusunda mevcut olmayan yerel NFS istemci kullanıcılarını etkinleştirebilirsiniz. Bunu yapmak için, **Yerel NFS KULLANıCıLARıNA LDAP Ile Izin ver** seçeneğini şu şekilde etkinleştirin:
+
+1. **Active Directory bağlantılar**' a tıklayın.  Var olan bir Active Directory bağlantısında bağlam menüsüne (üç nokta `…` ) tıklayın ve **Düzenle**' yi seçin.  
+
+2. Görüntülenen **Active Directory Ayarları Düzenle** penceresinde, **Yerel NFS kullanıcılarına LDAP ile izin ver** seçeneğini belirleyin.  
+
+    ![Yerel NFS kullanıcılarına LDAP ile Izin ver seçeneğini gösteren ekran görüntüsü](../media/azure-netapp-files/allow-local-nfs-users-with-ldap.png)  
+
+
 ## <a name="manage-ldap-posix-attributes"></a>LDAP POSIX özniteliklerini yönetme
 
 UID, Ana Dizin ve diğer değerler gibi POSIX özniteliklerini, Active Directory Kullanıcıları ve bilgisayarları MMC ek bileşenini kullanarak yönetebilirsiniz.  Aşağıdaki örnek Active Directory öznitelik düzenleyicisini gösterir:  
@@ -129,9 +141,9 @@ UID, Ana Dizin ve diğer değerler gibi POSIX özniteliklerini, Active Directory
 
 LDAP Kullanıcıları ve LDAP grupları için aşağıdaki öznitelikleri ayarlamanız gerekir: 
 * LDAP kullanıcıları için gerekli öznitelikler:   
-    `uid`: Çiğdem, `uidNumber` : 139, `gidNumber` : 555, `objectClass` : posixAccount
+    `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: posixAccount`
 * LDAP grupları için gerekli öznitelikler:   
-    `objectClass`: "posixGroup", `gidNumber` : 555
+    `objectClass: posixGroup`, `gidNumber: 555`
 
 ## <a name="configure-the-nfs-client"></a>NFS istemcisini yapılandırma 
 
@@ -141,3 +153,4 @@ NFS istemcisini yapılandırmak için [Azure NetApp FILES NFS Istemcisi yapılan
 
 * [Azure NetApp Files için NFS istemcisini yapılandırma](configure-nfs-clients.md)
 * [SMB veya çift protokol birimlerinde sorun giderme](troubleshoot-dual-protocol-volumes.md)
+* [LDAP birimi sorunlarını giderme](troubleshoot-ldap-volumes.md)

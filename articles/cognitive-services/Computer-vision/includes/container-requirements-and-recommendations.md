@@ -8,21 +8,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/23/2020
 ms.author: aahi
-ms.openlocfilehash: 4697be519eee96778eecdf37f7b358a88ad886c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a399b683dc9596d3514ce7d3be1fa2444449e2a
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96006925"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284958"
 ---
 > [!NOTE]
 > Gereksinimler ve öneriler, 29 satır ve toplam 803 karakter içeren taranmış bir iş harfinin 8 MB 'lik bir görüntüsünü kullanarak saniyede tek bir istek ile kıyaslamayı temel alır.
 
-Aşağıdaki tabloda, her bir okuma kapsayıcısı için kaynakların en düşük ve önerilen ayırması açıklanmaktadır.
+Aşağıdaki tabloda her bir okuma OCR kapsayıcısı için kaynakların en düşük ve önerilen ayırması açıklanmaktadır.
 
 | Kapsayıcı | Minimum | Önerilen |
 |-----------|---------|-------------|
-| Okuma 2,0-Önizleme | 1 çekirdek, 8 GB bellek |  8 çekirdek, 16 GB bellek |
+| Okuma 2,0-Önizleme | 1 çekirdek, 8 GB bellek |    8 çekirdek, 16 GB bellek |
 | Okuma 3,2-Önizleme | 8 çekirdek, 16 GB bellek | 8 çekirdek, 24 GB bellek |
 
 * Her çekirdek en az 2,6 gigahertz (GHz) veya daha hızlı olmalıdır.

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 78746e7623f58af5ae9df829b48245295dc39f01
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: f102bbe45fd5eea853ba63def4f1c1a92888ca46
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487109"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285961"
 ---
 # <a name="whats-new-in-computer-vision"></a>Görüntü İşleme yenilikleri
 
@@ -40,7 +40,7 @@ Görüntü İşleme, bulut hizmeti ve Docker kapsayıcısı olarak sunulan Read 
 * Yalnızca bir çok sayfalı belge için seçili sayfalar için metin ayıkla.
 * Şirket içi dağıtım için [daha az bir kapsayıcı](./computer-vision-how-to-install-containers.md?tabs=version-3-2) olarak kullanılabilir.
 
-Okuma API 'SI hakkında [daha fazla bilgi edinin](concept-recognizing-text.md) .
+Daha fazla bilgi için bkz. [API nasıl yapılır kılavuzunu okuyun](Vision-API-How-to-Topics/call-read-api.md) .
 
 > [!div class="nextstepaction"]
 > [Read API v 3.2 genel önizlemeyi kullanın](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
@@ -83,7 +83,7 @@ Görüntü İşleme Read API v 3.1 Genel önizlemesi şu özellikleri ekler:
 
 * Okuma API 'sinin bu önizleme sürümü Ingilizce, Felemenkçe, Fransızca, Almanca, Italyanca, Japonca, Portekizce, Basitleştirilmiş Çince ve Ispanyolca dilleri destekler.
 
-Daha fazla bilgi için [okuma API 'sine genel bakış](concept-recognizing-text.md) bölümüne bakın.
+Daha fazla bilgi için bkz. [API nasıl yapılır kılavuzunu okuyun](Vision-API-How-to-Topics/call-read-api.md) .
 
 > [!div class="nextstepaction"]
 > [Okuma API v 3.1 genel önizleme 2 hakkında daha fazla bilgi edinin](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)
@@ -95,18 +95,20 @@ Görüntü İşleme okuma API v 3.1 genel önizleme, Basitleştirilmiş Çince d
 
 * Okuma API 'sinin bu önizleme sürümü Ingilizce, Felemenkçe, Fransızca, Almanca, Italyanca, Portekizce, Basitleştirilmiş Çince ve Ispanyolca dilleri destekler.
 
-Daha fazla bilgi için [okuma API 'sine genel bakış](concept-recognizing-text.md) bölümüne bakın.
+Daha fazla bilgi için bkz. [API nasıl yapılır kılavuzunu okuyun](Vision-API-How-to-Topics/call-read-api.md) .
 
 > [!div class="nextstepaction"]
 > [Okuma API v 3.1 Genel Önizleme 1 hakkında daha fazla bilgi edinin](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>Mayıs 2020
-Görüntü İşleme API'si v 3.0 genel kullanılabilirliği ve [API 'Yi okumak](concept-recognizing-text.md)için güncelleştirmeler ile girilmiş:
+Görüntü İşleme API'si v 3.0 genel kullanılabilirliği, okuma API 'SI güncelleştirmeleriyle birlikte girilmiş:
 
 * Ingilizce, Felemenkçe, Fransızca, Almanca, Italyanca, Portekizce ve Ispanyolca desteği
 * İyileştirilmiş doğruluk
 * Ayıklanan her sözcüğün Güvenirlik puanı
 * Yeni çıkış biçimi
+
+Daha fazla bilgi için bkz. [OCR genel bakış](overview-ocr.md) .
 
 ## <a name="march-2020"></a>Mart 2020
 

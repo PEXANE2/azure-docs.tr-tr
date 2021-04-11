@@ -237,6 +237,8 @@
               href: storage-files-migration-nas-hybrid.md
             - name: DataBox ile şirket içi bir NAS 'dan karma dosya sunucusuna geçiş yapma
               href: storage-files-migration-nas-hybrid-databox.md
+            - name: Veri kutusuyla Azure dosya paylaşımlarına şirket içi bir NAS 'dan geçiş yapma
+              href: storage-files-migration-nas-cloud-databox.md
         - name: StorSimple’dan
           items:
             - name: StorSimple 8100 ve 8600 geçiş kılavuzu

@@ -3,20 +3,20 @@ title: Windows sanal masaüstündeki Microsoft ekipleri-Azure
 description: Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 04/09/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 46796573e14dfc33d02d4faddd5504f3e8b7ee7b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+manager: femila
+ms.openlocfilehash: 0c528f183106472850d6b5d2a8b492ea8939eda6
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935729"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285267"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma
 
 >[!IMPORTANT]
->Takımlar için medya iyileştirmesi Microsoft 365 Kamu (GCC) ve GCC-High ortamları için desteklenir. Takımlar için medya iyileştirmesi GCC-High veya DoD için desteklenmez.
+>Takımlar için medya iyileştirmesi Microsoft 365 Kamu (GCC) ve GCC-High ortamları için desteklenir. Takımlar için medya iyileştirmesi Microsoft 365 DoD için desteklenmez.
 
 >[!NOTE]
 >Microsoft ekipleri için medya iyileştirmesi yalnızca Windows 10 makinelerinde Windows Masaüstü istemcisi için kullanılabilir. Medya iyileştirmeleri Windows Masaüstü istemcisi sürümü 1.2.1026.0 veya üstünü gerektirir.
@@ -148,11 +148,7 @@ Sanallaştırılmış bir ortamda takımlar kullanmak, sanallaştırılmamış b
 - Takımlar uygulaması, diğer cihazlarla HID düğmelerini veya LED denetimlerini desteklemez.
 - Yeni toplantı deneyimi (NME) Şu anda VDı ortamlarında desteklenmemektedir.
 
-Ekipler, sanallaştırılmış ortamlarla ilgili olmayan bilinen sorunlar için bkz. [kuruluşunuzdaki destek takımları](/microsoftteams/known-issues)
-
-## <a name="uservoice-site"></a>UserVoice sitesi
-
-Takımlar [UserVoice sitesindeki](https://microsoftteams.uservoice.com/)Windows sanal masaüstündeki Microsoft ekipleri için geri bildirim sağlayın.
+Ekiplerde sanallaştırılmış ortamlarla ilgili olmayan bilinen sorunlar için bkz. [kuruluşunuzdaki destek takımları](/microsoftteams/known-issues).
 
 ## <a name="collect-teams-logs"></a>Takımlar günlüklerini topla
 

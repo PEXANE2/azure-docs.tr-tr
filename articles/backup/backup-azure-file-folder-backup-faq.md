@@ -2,13 +2,13 @@
 title: Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı – SSS
 description: Azure Backup ile dosya ve klasörleri yedekleme hakkında sık sorulan sorulara yöneliktir.
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.openlocfilehash: 1edfaed99e60409774496c5ae75df8be99a8fe1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: 98f558c091f1680c165ee26ffb20a8022ab15520
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94917367"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107185"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Sık sorulan sorular-Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı
 
@@ -100,6 +100,10 @@ Bu uyarı, bir yedekleme ilkesi yapılandırdığınız halde, yerel sunucuda de
 
 * Sunucu veya ayarlar bilinen iyi bir duruma kurtarıldığı zaman, yedekleme zamanlamaları eşitlenmemiş hale gelebilir.
 * Bu uyarıyı alırsanız, yedekleme ilkesini yeniden [yapılandırın](backup-azure-manage-windows-server.md) ve ardından yerel sunucuyu Azure ile yeniden eşitlemek için isteğe bağlı bir yedekleme çalıştırın.
+
+### <a name="i-see-a-few-jobs-are-stuck-in-the-in-progress-state-for-a-long-time-under-backup-jobs-in-the-azure-portal-how-can-i-resolve-these"></a>Birkaç işi, Azure portal yedekleme Işleri altında uzun bir süre boyunca devam ediyor durumunda kalmış. Bunları nasıl çözebilirim?
+
+Bu durum, ağ bağlantısı sorunları, makine kapatması veya işlem sonlandırma gibi nedenlerle bir işin tamamlanamazsa meydana gelebilir. Burada herhangi bir kullanıcı eylemi gerekli değildir. Bu işler, 30 gün sonra otomatik olarak **başarısız** olarak işaretlenir. MARS Aracısı 'nı kullanarak isteğe bağlı yedekleme işini çalıştırmaya [daha fazla bilgi edinin](backup-windows-with-mars-agent.md#run-an-on-demand-backup) .
 
 ## <a name="manage-the-backup-cache-folder"></a>Yedekleme önbelleği klasörünü yönetme
 
@@ -198,7 +202,7 @@ Aşağıdaki koşulları göz önünde bulundurun:
 
 | Özgün makine | Deyimi | Kullanılabilir seçenekler |
 | --- | --- | --- |
-| Mesi |Kullanılabilir |MARS aracısını, özgün makinenin kaydı sırasında sağladınız aynı parola ile başka bir makineye yükleyebilir ve kaydedebilirsiniz.   >  Geri yükleme işlemini gerçekleştirmek için kurtarma seçeneğini **başka bir konum** seçin. Daha fazla bilgi için bu [makaleye](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)bakın.
+| Mesi |Kullanılabilir |MARS aracısını, özgün makinenin kaydı sırasında sağladınız aynı parola ile başka bir makineye yükleyebilir ve kaydedebilirsiniz.   >  Geri yükleme işlemini gerçekleştirmek için kurtarma seçeneğini **başka bir konum** seçin. Daha fazla bilgi için [bu makaleye](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) bakın.
 | Mesi |Mesi |Verilerin kurtarılması mümkün değil veya veriler kullanılamıyor |
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>Yedekleme işlerim uzun süredir başarısız olmuş veya çalışmıyor. Saklama süresini geçti. Hala geri yükleme yapabilir miyim?

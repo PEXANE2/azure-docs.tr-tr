@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/16/2020
 ms.author: aahi
 keywords: Şirket içi, Docker, kapsayıcı, Kubernetes
-ms.openlocfilehash: 3b0a39e9d84a56bac3117df9279954e3756d465a
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 007dfe6d67d504286b9546fe0139055b58dc700f
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065829"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285612"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Bilişsel Hizmetler kapsayıcıları
 
@@ -76,7 +76,7 @@ Azure bilişsel hizmetler kapsayıcıları, her biri Azure bilişsel hizmetler '
 
 | Hizmet |  Kapsayıcı | Description | Kullanılabilirlik |
 |--|--|--|--|
-| [Görüntü İşleme][cv-containers] | **OCR** ([görüntü](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) oku | Okuma OCR kapsayıcısı, JPEG, PNG, BMP, PDF ve TIFF dosya biçimleri desteğiyle, görüntülerden ve belgelerden yazdırılmış ve el yazısı metinleri ayıklamanızı sağlar. Daha fazla bilgi için bkz. [okuma API 'si belgeleri](./computer-vision/concept-recognizing-text.md). | Geçişli önizleme. [Erişim isteyin][request-access]. |
+| [Görüntü İşleme][cv-containers] | **OCR** ([görüntü](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) oku | Okuma OCR kapsayıcısı, JPEG, PNG, BMP, PDF ve TIFF dosya biçimleri desteğiyle, görüntülerden ve belgelerden yazdırılmış ve el yazısı metinleri ayıklamanızı sağlar. Daha fazla bilgi için bkz. [okuma API 'si belgeleri](./computer-vision/overview-ocr.md). | Geçişli önizleme. [Erişim isteyin][request-access]. |
 | [Uzamsal Analiz][spa-containers] | **Uzamsal analiz** ([görüntü](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-spatial-analysis)) | Kişiler, taşınanlar ve fiziksel ortamlardaki nesnelerle etkileşimler arasındaki uzamsal ilişkileri anlamak için gerçek zamanlı akış videosunu analiz eder. | Geçişli önizleme. [Erişim isteyin][request-access]. |
 | [Yüz Tanıma][fa-containers] | **Yüz Tanıma** | Görüntülerde insan yüzlerini algılar ve yüzleri (Nosi ve gözler gibi), cinsiyet, yaş ve diğer makine tarafından öngörülen yüz özellikleri dahil olmak üzere öznitelikleri tanımlar. Algılamanın yanı sıra, benzer bir veya aynı yüzün zaten mevcut olup olmadığını görmek için aynı görüntüde veya farklı görüntülerde iki yüzün aynı olup olmadığını denetleyebilir veya bir veritabanı ile yüzleri karşılaştırın. Ayrıca, paylaşılan görsel nitelikleri kullanarak benzer yüzeyleri gruplar halinde düzenleyebilir. | Kullanılamaz |
 | [Form tanıyıcı][fr-containers] | **Form Tanıma** | Form, formlardan anahtar-değer çiftlerini ve tabloları tanımlamak ve ayıklamak için makine öğrenimi teknolojisini uygular. | Kullanılamaz | 

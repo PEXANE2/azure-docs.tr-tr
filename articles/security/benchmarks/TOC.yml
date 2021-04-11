@@ -67,6 +67,8 @@
       href: ../../application-gateway/security-baseline.md
     - name: Otomasyon güvenlik temeli
       href: ../../automation/security-baseline.md
+    - name: Azure Active Directory güvenlik temeli
+      href: ../../active-directory/fundamentals/security-baseline.md
     - name: Azure Danışmanı güvenlik temeli
       href: ../../advisor/security-baseline.md
     - name: Azure Uygulama Yapılandırması güvenlik temeli
