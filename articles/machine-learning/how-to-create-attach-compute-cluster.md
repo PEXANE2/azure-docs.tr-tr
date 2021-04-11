@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: c11176f0c7760e76b755406bda96b72b302f8857
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1e3549a6f5f4f9d7f6a6da574378c90c20e42dcf
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506948"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169581"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning işlem kümesi oluşturma
 
@@ -44,11 +44,9 @@ Azure Machine Learning işlem kümesi, kolayca tek veya çok düğümlü bir iş
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Çalışma alanınızdan **aynı işlem için birden çok, eşzamanlı ek oluşturmayın** . Örneğin, iki farklı ad kullanarak bir çalışma alanına bir işlem kümesi ekleme. Her yeni ek önceki mevcut ekleri keser.
-
-    Bir işlem hedefini yeniden iliştirmek istiyorsanız (örneğin, küme yapılandırma ayarlarını değiştirmek için), önce var olan eki kaldırmanız gerekir.
-
 * Bu belgede listelenen senaryolardan bazıları __Önizleme__ olarak işaretlendi. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+* Şu anda ARM şablonları [] aracılığıyla kümelerin oluşturma (ve güncelleştirme değil) ' i destekliyoruz https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/workspaces/computes?tabs=json . İşlem güncelleştirme için, şimdilik SDK, CLı veya UX kullanmanızı öneririz.
 
 * Azure Machine Learning Işlem, ayrılabilen çekirdek sayısı gibi varsayılan sınırlara sahiptir. Daha fazla bilgi için bkz. [Azure kaynakları için kotaları yönetme ve isteme](how-to-manage-quotas.md).
 

@@ -128,7 +128,7 @@ AMO bir açık kaynak projem, topluluk tarafından destek sağlanır (sorunlar o
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services varlıkların filtrelenmesi, sıralanması, sayfalama
 
-Bkz. [Azure Media Services varlıkların filtrelenmesi, sıralanması, sayfalama](entities-overview.md).
+Bkz. [Azure Media Services varlıkların filtrelenmesi, sıralanması, sayfalama](filter-order-page-entitites-how-to.md).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde bulunun, güncelleştirmeleri al
 

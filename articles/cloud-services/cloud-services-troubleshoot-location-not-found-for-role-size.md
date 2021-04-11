@@ -7,12 +7,12 @@ ms.author: v-mibufo
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: 3d1a1135db0421d89d4c6c9f278c86e02cb5cb32
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2ed889bea715ff5a26bf8e918789429e57fa31b2
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558967"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109671"
 ---
 # <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>Azure 'a bir bulut hizmeti (klasik) dağıttığınızda LocationNotFoundForRoleSize sorunlarını giderme
 
@@ -47,7 +47,8 @@ Bu senaryoda, bulut hizmetinizi (klasik) dağıtmak için farklı bir bölge vey
 
 ### <a name="list-skus-in-region-using-azure-cli"></a>Azure CLı kullanarak bölgedeki SKU 'Ları listeleme
 
-[Az VM List-SKU](/cli/azure/vm.html#az_vm_list_skus) komutunu kullanabilirsiniz.
+[Az VM List-SKU] (/cli/Azure/VM? View = Azure-CLI-latest) kullanabilirsiniz.
+#<a name="az_vm_list_skus-command"></a>az_vm_list_skus) komutu.
 
 - Kullanmakta olduğunuz `--location` konuma çıktıyı filtrelemek için parametresini kullanın.
 - `--size`Kısmi bir boyut adına göre arama yapmak için parametresini kullanın.

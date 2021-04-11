@@ -10,17 +10,17 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 8d495c04d5753c3771a0870659cc92fb1e604216
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 5dd6735b5ef17f97de1d2272bd98f6b87b0bc84b
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031214"
+ms.locfileid: "106553116"
 ---
 # <a name="migration-guide-ibm-db2-to-azure-sql-database"></a>Geçiş Kılavuzu: IBM DB2 'den Azure SQL veritabanı 'na
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-Bu kılavuzda, DB2 için [SQL Server geçiş](https://azure.microsoft.com/migration/migration-journey) Yardımcısı 'Nı kullanarak IBM DB2 VERITABANLARıNıZı Azure SQL veritabanı 'na [geçirmeyi](https://azure.microsoft.com/migration/migration-journey) öğreneceksiniz. 
+Bu kılavuzda, DB2 için SQL Server Geçiş Yardımcısı kullanarak IBM DB2 veritabanlarınızı Azure SQL veritabanı 'na geçirmeniz öğretilir. 
 
 Diğer geçiş kılavuzlarında bkz. [Azure veritabanı geçiş kılavuzu](https://docs.microsoft.com/data-migration). 
 
@@ -35,7 +35,7 @@ DB2 veritabanınızı SQL veritabanına geçirmek için şunlar gerekir:
 
 ## <a name="pre-migration"></a>Geçiş öncesi
 
-Önkoşulları karşıladıktan sonra ortamınızın topolojisini bulmaya ve [Azure bulut geçişinizin](https://azure.microsoft.com/migration)uygunluğunu değerlendirmeye hazırsınız demektir.
+Önkoşulları karşıladıktan sonra ortamınızın topolojisini bulmaya ve geçişinizin uygunluğunu değerlendirmeye hazırsınız demektir. 
 
 ### <a name="assess-and-convert"></a>Değerlendirin ve dönüştürün
 
@@ -153,7 +153,7 @@ Bazı SQL Server özellikleri yalnızca [veritabanı uyumluluk düzeyi](/sql/rel
 
 Ek Yardım için, gerçek dünyada geçiş projesi katılımı desteğiyle geliştirilen aşağıdaki kaynaklara bakın:
 
-|Varlık  |Description  |
+|Varlık  |Açıklama  |
 |---------|---------|
 |[Veri iş yükü değerlendirmesi modeli ve aracı](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Bu araç, belirli bir iş yükü için önerilen "en uygun" hedef platformları, bulut hazırlığı ve uygulama/veritabanı düzeltme düzeyini sağlar. Basit ve tek tıklamayla bir hesaplama ve rapor oluşturma olanağı sunarak, ve otomatikleştirilmiş ve Tekdüzen hedef platformu karar süreci sağlayarak büyük Emlak değerlendirmelerini hızlandırmaya yardımcı olur.|
 |[DB2 zOS veri varlıkları bulma ve değerlendirme paketi](https://github.com/microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|SQL betiğini bir veritabanında çalıştırdıktan sonra, sonuçları dosya sistemindeki bir dosyaya dışarı aktarabilirsiniz. Bazı dosya biçimleri, *. csv dahil olmak üzere desteklenir, böylece sonuçları elektronik tablolar gibi dış araçlarla yakalayabilirsiniz. Bu yöntem, çalışma ekranı yüklü olmayan ekiplerle sonuçları kolayca paylaşmak istiyorsanız yararlı olabilir.|
@@ -174,8 +174,7 @@ Veri SQL Mühendisliği ekibi bu kaynakları geliştirdik. Bu takımın temel ku
 
 - Bulut geçişleri için çerçeve ve benimseme çevrimi hakkında daha fazla bilgi edinmek için bkz.:
    -  [Azure için Bulut Benimseme Çerçevesi](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
-   -  [Azure'a geçirilen iş yüklerini maliyetlendirme ve boyutlandırma için en iyi yöntemler](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
-   -  [Buluta Geçiş kaynakları](https://azure.microsoft.com/migration/resources) 
+   -  [Azure'a geçirilen iş yüklerini maliyetlendirme ve boyutlandırma için en iyi yöntemler](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 
 - Uygulama erişim katmanını değerlendirmek için bkz. [veri erişimi geçiş araç seti](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
 - Veri erişim katmanı A/B testi gerçekleştirme hakkında daha fazla bilgi için bkz. [veritabanı yükseltme deneyimi Yardımcısı](/sql/dea/database-experimentation-assistant-overview).

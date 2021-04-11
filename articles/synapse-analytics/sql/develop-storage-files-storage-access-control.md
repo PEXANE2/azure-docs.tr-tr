@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 254f424694df72a290a07369fe910587fadf58d4
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 726395e9f004130699dab061cfa752a2e516c834
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385556"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552963"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için depolama hesabı erişimini denetleme
 
@@ -104,6 +104,15 @@ Güvenlik duvarıyla korunan depolamaya erişirken **Kullanıcı kimliğini** ve
 #### <a name="user-identity"></a>Kullanıcı kimliği
 
 Kullanıcı kimliği aracılığıyla güvenlik duvarıyla korunan depolamaya erişmek için az. Storage PowerShell modülünü kullanabilirsiniz.
+#### <a name="configuration-via-azure-portal"></a>Azure portal aracılığıyla yapılandırma
+
+1. Azure portal 'de depolama hesabınızı arayın.
+1. Bölüm ayarları altındaki Ağ ' a gidin.
+1. "Kaynak örnekleri" bölümünde, SYNAPSE çalışma alanınız için bir özel durum ekleyin.
+1. Kaynak türü olarak Microsoft. SYNAPSE/çalışma alanlarını seçin.
+1. Örnek adı olarak çalışma alanınızın adını seçin.
+1. Kaydet’e tıklayın.
+
 #### <a name="configuration-via-powershell"></a>PowerShell aracılığıyla yapılandırma
 
 Depolama hesabı güvenlik duvarını yapılandırmak ve SYNAPSE çalışma alanı için bir özel durum eklemek için aşağıdaki adımları izleyin.

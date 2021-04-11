@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: d6b5bab1c1b6c8db4821fdf84728eb66eb55b899
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b7ead2e54889327bfbea188ad464012c3861556
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98882238"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968620"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Öğretici: Azure SQL veritabanı ve SQL Server veritabanları arasında SQL Data Sync ayarlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,7 +64,7 @@ SQL Data Sync nasıl yapılandırılacağı hakkında PowerShell örnekleri içi
    | **Özel bağlantı kullan** | Eşitleme hizmeti ve hub veritabanı arasında güvenli bir bağlantı kurmak için hizmet tarafından yönetilen özel uç nokta seçin. |
 
    > [!NOTE]
-   > Microsoft, **eşitleme meta verileri veritabanı** olarak kullanılmak üzere yeni, boş bir veritabanı oluşturmayı önerir. Veri eşitleme, bu veritabanında tabloları oluşturur ve sık sık iş yükü çalıştırır. Bu veritabanı, seçilen bir bölgedeki ve abonelikteki tüm eşitleme grupları için **eşitleme meta verileri veritabanı** olarak paylaşılır. Bölgedeki tüm eşitleme gruplarını ve eşitleme aracılarını kaldırmadan veritabanını veya adını değiştiremezsiniz.
+   > Microsoft, **eşitleme meta verileri veritabanı** olarak kullanılmak üzere yeni, boş bir veritabanı oluşturmayı önerir. Veri eşitleme, bu veritabanında tabloları oluşturur ve sık sık iş yükü çalıştırır. Bu veritabanı, seçilen bir bölgedeki ve abonelikteki tüm eşitleme grupları için **eşitleme meta verileri veritabanı** olarak paylaşılır. Bölgedeki tüm eşitleme gruplarını ve eşitleme aracılarını kaldırmadan veritabanını veya adını değiştiremezsiniz. Ayrıca, esnek bir işler veritabanı SQL Data Sync meta veri veritabanı olarak kullanılamaz ve tam tersi de geçerlidir.  
 
    **Tamam** ' ı seçin ve eşitleme grubunun oluşturulmasını ve dağıtılmasını bekleyin.
    

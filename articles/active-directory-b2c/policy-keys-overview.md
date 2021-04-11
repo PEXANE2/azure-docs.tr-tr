@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30348d7ca12ded2d1f4b0522a7cabeadf0553a07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37ff3300935e90304754b5f2b375df0adecdaefa
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94953364"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256251"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'deki ilke anahtarlarına genel bakış
 
@@ -28,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C), tümleştiği hizmetlerle güven sağ
  Bu makalede, Azure AD B2C tarafından kullanılan ilke anahtarları hakkında bilmeniz gerekenler açıklanmaktadır.
 
 > [!NOTE]
-> Şu anda, ilke anahtarlarının yapılandırması yalnızca [özel ilkelerle](./custom-policy-get-started.md) sınırlıdır.
+> Şu anda, ilke anahtarlarının yapılandırması yalnızca [özel ilkelerle](./user-flow-overview.md) sınırlıdır.
 
 **İlke anahtarları** menüsündeki Azure Portal hizmetler arasında güven oluşturmak için gizli dizileri ve sertifikaları yapılandırabilirsiniz. Anahtarlar simetrik veya asimetrik olabilir. *Simetrik* şifreleme veya özel anahtar şifrelemesi, verileri şifrelemek ve şifrelerini çözmek için paylaşılan bir gizliliğin kullanıldığı yerdir. *Asimetrik* şifreleme veya ortak anahtar şifrelemesi, yalnızca Azure AD B2C bilinen bağlı olan taraf uygulamasıyla ve özel anahtarlarla paylaşılan ortak anahtarlardan oluşan, anahtar çiftleri kullanan bir şifreleme sistemidir.
 

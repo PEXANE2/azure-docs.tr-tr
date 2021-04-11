@@ -2,23 +2,27 @@
 title: Azure dosyaları birimini kapsayıcı grubuna bağlama
 description: Azure Container Instances ile devam etmek için bir Azure dosyaları birimini nasıl bağlayacağınızı öğrenin
 ms.topic: article
-ms.date: 07/02/2020
+ms.date: 03/24/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d52ad8ad02735c98b29a83d8ca69cdea8c6af7d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09a4d9922a4f9ba4296fc194d72c621fecb8342d
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97954983"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968909"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure Container Instances'ta Azure dosya paylaşımı bağlama
 
 Azure Container Instances varsayılan olarak durum bilgilerini saklamaz. Kapsayıcı yeniden başlatılırsa, kilitlenirse veya durdurulduğunda, tüm durumu kaybedilir. Durum bilgilerinin kapsayıcının ömründen bağımsız olarak kalıcı olmasını sağlamak için dış bir depodan birim bağlamanız gerekir. Bu makalede gösterildiği gibi Azure Container Instances [Azure dosyaları](../storage/files/storage-files-introduction.md)ile oluşturulmuş bir Azure dosya paylaşımından bağlanabilir. Azure dosyaları, Azure depolama 'da barındırılan, sektör standart sunucu Ileti bloğu (SMB) protokolü aracılığıyla erişilebilen, tam olarak yönetilen dosya paylaşımları sunar. Azure Container Instances ile bir Azure dosya paylaşımının kullanılması, Azure sanal makinelerle Azure dosya paylaşımı kullanmaya benzer dosya paylaşımı özellikleri sağlar.
 
+## <a name="limitations"></a>Sınırlamalar
+
+* Azure dosya paylaşımlarını yalnızca Linux kapsayıcılarına bağlayabilirsiniz. [Genel bakışta](container-instances-overview.md#linux-and-windows-containers)Linux ve Windows kapsayıcı grupları için özellik desteğinin farkları hakkında daha fazla bilgi için bkz..
+* Azure dosya paylaşma birimi bağlama, Linux kapsayıcısı 'nın *kök* olarak çalıştırılmasını gerektirir.
+* Azure dosya paylaşma birimi bağlama, CIFS desteğiyle sınırlıdır.
+
 > [!NOTE]
-> Azure dosya paylaşımının bağlanması şu anda Linux kapsayıcılarıyla kısıtlıdır. [Genel bakışta](container-instances-overview.md#linux-and-windows-containers)geçerli platform farklarını bulun.
->
-> Bir Azure dosya paylaşımının bir kapsayıcı örneğine bağlanması, Docker [bind bağlama](https://docs.docker.com/storage/bind-mounts/)ile benzerdir. Dosya veya dizinlerin bulunduğu bir kapsayıcı dizinine bir paylaşımın bağladığınızda, bu dosya veya dizinlerin bağlama tarafından gizlenerek ve kapsayıcının çalıştırıldığı sırada erişilebilir olmadığı farkında olun.
+> Bir Azure dosya paylaşımının bir kapsayıcı örneğine bağlanması, Docker [bind bağlama](https://docs.docker.com/storage/bind-mounts/)ile benzerdir. Dosya veya dizinlerin bulunduğu bir kapsayıcı dizinine bir paylaşılan dizin bağlarsanız, bağlama dosya ve dizinleri gizler, bu da kapsayıcı çalışırken erişilemez hale gelir.
 >
 
 > [!IMPORTANT]
