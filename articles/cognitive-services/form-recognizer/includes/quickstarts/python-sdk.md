@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 03/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: f28fba451a5fbad9efe76e0d6bd39488beebb103
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e37ff8a003bc10d69fd32794f26acfa8f5326423
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104761237"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073306"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -77,7 +77,7 @@ Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun.
 
 ## <a name="object-model"></a>Nesne modeli
 
-Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, `form_recognizer_client` hizmeti tanınan form alanları ve içerikleri için sorgulamak üzere kullanılır. İkincisi, `form_training_client` tanımayı geliştirmek için kullanabileceğiniz özel modeller oluşturmak ve yönetmek için kullanılır. 
+Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. İlki, `form_recognizer_client` hizmeti form alanlarını ve içeriğini tanımak üzere sorgulamak için kullanılır. İkincisi, `form_training_client` tanımayı geliştirmek için kullanabileceğiniz özel modeller oluşturmak ve yönetmek için kullanılır. 
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 
@@ -139,7 +139,7 @@ Eğitim ve test verileriniz için URL 'lere başvuru eklemeniz gerekir.
 * [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
   
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL 'SI alımı":::
-* Aşağıdaki örneklerde bulunan ( [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) ' da de mevcuttur) ve giriş görüntülerini kullanarak, blob depolamada tek BIR BELGENIN SAS URL 'sini almak için yukarıdaki adımları kullanabilirsiniz. 
+* Aşağıdaki örneklere dahil edilen örnek form ve alış görüntülerini kullanın ( [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) 'da da kullanılabilir) ve BLOB depolamada tek BIR BELGENIN SAS URL 'sini almak için yukarıdaki adımları kullanabilirsiniz. 
 
 > [!NOTE]
 > Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](/python/api/azure-ai-formrecognizer) ilgili yöntemlere ve [örneklere](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)bakın.

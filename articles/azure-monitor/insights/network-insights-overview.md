@@ -6,10 +6,10 @@ author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
 ms.openlocfilehash: db94a376112b3d715da9095acb05c0b4fd4ea02f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104605809"
 ---
 # <a name="azure-monitor-for-networks"></a>Ağlar için Azure İzleyici
@@ -71,7 +71,7 @@ Bağımlılık görünümündeki arama ve filtre çubuğu, grafikte arama yapmak
 
 Uygulama ağ geçidi, tüm arka uç havuzu kaynakları ve ön uç IP 'Leri için ayrıntılı ölçümler sağlayan önceden yapılandırılmış bir çalışma kitabını açmak için **ayrıntılı ölçümleri görüntüle** ' yi seçin. 
 
-## <a name="connectivity"></a><a name="connectivity"></a>Bağlantı
+## <a name="connectivity"></a><a name="connectivity"></a>Bilirlik
 
 Bağlantı **sekmesi,** seçili abonelik kümesi Için [bağlantı Izleyicisi](../../network-watcher/connection-monitor-overview.md) ve Bağlantı İzleyicisi (klasik) aracılığıyla yapılandırılan tüm testleri görselleştirmenin kolay bir yolunu sağlar.
 

@@ -11,18 +11,21 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 257fc6544061c2ef9c3fdbfb8c33bc06ed2db6e3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fec4eb55f43bd17db5935ab32e5429927c74f5b9
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566344"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066220"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyıter not defterlerini çalıştırma
 
 Jupyıter not defterlerinizi Azure Machine Learning Studio 'daki çalışma alanınızda doğrudan çalıştırmayı öğrenin. [Jupi](https://jupyter.org/) veya [Jupyıterlab](https://jupyterlab.readthedocs.io)'ı başlatabilmeniz sırasında, çalışma alanından çıkmadan not defterlerinizi düzenleyebilir ve çalıştırabilirsiniz.
 
 Not defterleri dahil olmak üzere dosyaları oluşturma ve yönetme hakkında bilgi için bkz. [çalışma alanınızdaki dosyaları oluşturma ve yönetme](how-to-manage-files.md).
+
+> [!IMPORTANT]
+> (Önizleme) olarak işaretlenen Özellikler bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -48,17 +51,27 @@ Etkin sekmelerinize odaklanabilmeniz için, geçerli görünümünüzü genişle
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Odak modunu/standart görünümü değiştirme":::
 
-## <a name="use-intellisense"></a>IntelliSense kullanma
+## <a name="code-completion-intellisense"></a>Kod tamamlama (IntelliSense)
 
 [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) , bir dizi özelliği içeren bir kod tamamlama yardımıdır: liste üyeleri, parametre bilgileri, hızlı bilgi ve tam sözcük. Bu özellikler, kullanmakta olduğunuz kod hakkında daha fazla bilgi edinmenize, yazmakta olduğunuz parametreleri izlemenize ve yalnızca birkaç tuş vuruşu ile özelliklere ve yöntemlere çağrılar eklemenize yardımcı olur.  
 
-Kod yazarken, IntelliSense 'i tetiklemek için Ctrl + Space tuşlarını kullanın.
+### <a name="use-code-snippets-preview"></a>Kod parçacıklarını kullanma (Önizleme)
+
+IntelliSense kod parçacıklarını tetiklemek için **Ctrl + Space** tuşlarını kullanın.  Eklemek istediğiniz kodu bulmak için önerilere ilerleyin veya yazmaya başlayın.  Kodu ekledikten sonra, kodu kendi kullanıma yönelik olarak özelleştirmek için bağımsız değişkenler aracılığıyla sekmesine geçin.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/insert-snippet.gif" alt-text="Kod parçacığı Ekle":::
+
+Bu kod parçacıkları, VS Code not defterinizi açtığınızda kullanılabilir. Kullanılabilir kod parçacıklarının tüm listesi için bkz. [Azure Machine Learning vs Code parçacıkları](https://github.com/Azure/azureml-snippets/blob/main/snippets/snippets.md).
+
+Kod parçacığı panelini açmak için Not defteri araç çubuğunu kullanarak kod parçacıkları listesine gözatabilir ve arama yapabilirsiniz.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/open-snippet-panel.png" alt-text="Not defteri araç çubuğunda Kod parçacığı paneli aracını aç":::
+
+Kod parçacıkları panelinden yeni kod parçacıkları ekleme isteği de gönderebilirsiniz.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/propose-new-snippet.png" alt-text="Kod parçacığı paneli yeni bir kod parçacığı önerme olanağı sağlar":::
 
 ## <a name="clean-your-notebook-preview"></a>Not defterinizi Temizleme (Önizleme)
-
-> [!IMPORTANT]
-> Toplama özelliği şu anda genel önizlemededir.
-> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bir not defteri oluşturma sırasında, genellikle veri araştırma veya hata ayıklama için kullandığınız hücrelerle birlikte sona erdir demektir. *Toplama* özelliği, bu yabancı hücreler olmadan temiz bir not defteri oluşturmanıza yardımcı olur.
 

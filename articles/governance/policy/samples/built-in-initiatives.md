@@ -1,15 +1,15 @@
 ---
 title: Yerleşik ilke girişimleri listesi
 description: Azure Ilkesi için yerleşik ilke girişimlerini listeleyin. Kategoriler, mevzuata uyumluluğu, Konuk yapılandırma ve daha fazlasını içerir.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 3eefcef05578dcae9adb0466e79e9ceb72b15afa
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: ef643e551c2ddab715d67467620fb748fb836eee
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105032734"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106090118"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Ilkesi yerleşik girişim tanımları
 
