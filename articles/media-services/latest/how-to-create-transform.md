@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4623610960d8f21a2dab3293c7499a2112416254
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37e2dc194eb2ebbcbe91eef6e50f3eb1e7b62e17
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101718922"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110402"
 ---
 # <a name="create-a-transform"></a>Dönüşüm oluşturma
 
@@ -30,12 +30,12 @@ Bu makaledeki Azure CLI betiği, dönüşüm oluşturmayı gösterir. Dönüşü
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Media Services hesabı oluşturun](./create-account-howto.md).
+[Media Services hesabı oluşturun](./account-create-how-to.md).
 
 ## <a name="cli"></a>[CLI](#tab/cli/)
 
 > [!NOTE]
-> [Standardencoderönayar](/rest/api/media/transforms/createorupdate#standardencoderpreset)için yalnızca özel standart kodlayıcı önceden ayarlanmış JSON dosyası için bir yol belirtebilirsiniz, özel bir dönüşüm örneği [ile](custom-preset-cli-howto.md) kodlamaya bakın.
+> [Standardencoderönayar](/rest/api/media/transforms/createorupdate#standardencoderpreset)için yalnızca özel standart kodlayıcı önceden ayarlanmış JSON dosyası için bir yol belirtebilirsiniz, özel bir dönüşüm örneği [ile](encode-custom-preset-cli-how-to.md) kodlamaya bakın.
 >
 > [Builtınstandardencoderönayar](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)kullanılırken bir dosya adı geçirilemez.
 

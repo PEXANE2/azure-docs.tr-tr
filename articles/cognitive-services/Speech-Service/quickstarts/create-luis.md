@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: trbye
-ms.openlocfilehash: f547b353091cc81816f0974fced8d4dc836d22b2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 45c509ea2391c370aa0a399b2f0c621238fabc55
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023829"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209689"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>Hızlı başlangıç: bir LUSıS uç noktası anahtarı alma
 
@@ -64,4 +64,4 @@ Azure panosu 'nda LUO kaynağını oluşturduktan sonra, [Halu portalında](http
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Amaçları tanıma](~/articles/cognitive-services/Speech-Service/quickstarts/intent-recognition.md)
+> [Amaçları tanıma](~/articles/cognitive-services/Speech-Service/get-started-intent-recognition.md)
