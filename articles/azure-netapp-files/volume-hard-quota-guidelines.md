@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 12807e83f7841bc67999ce385d0cb82bf15f4c71
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 52e855cb4ab42ed78a055ecdc31cffa886dc9bf2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176000"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731998"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Azure NetApp Files hizmetiniz için birim sabit kotasında ne kadar değişiklik yapılır?
 
 Hizmetin başından Azure NetApp Files, kapasite havuzu sağlama ve otomatik büyüme mekanizması kullanıyor. Azure NetApp Files birimler, seçilen bir katmanın ve boyutun, müşteri tarafından sağlanan kapasite havuzunda ölçülü kaynak olarak sağlanır. Birim boyutları (kotalar) performans ve kapasite sağlamak için kullanılır ve Kotalar herhangi bir zamanda anında ayarlanabilir. Bu davranış, şu anda birim kotasının birim bant genişliğini denetlemek için kullanılan bir performans mandalı olduğu anlamına gelir. Şu anda Kapasite dolduğunda kapasite havuzlarının ölçeği otomatik olarak büyütülür.   
 
 > [!IMPORTANT] 
-> Birim ve kapasite havuzu sağlamanın Azure NetApp Files davranışı *el ile* ve *denetlenebilir* mekanizmaya değişecektir. **1 Nisan 2021 (güncelleştirilmiş) tarihinden itibaren, birim boyutları (Kota) bant genişliği performansını ve sağlanan kapasiteyi yönetir ve temel alınan kapasite havuzları artık otomatik olarak büyütülecektir.** 
+> Birim ve kapasite havuzu sağlamanın Azure NetApp Files davranışı *el ile* ve *denetlenebilir* mekanizmaya değişecektir. **30 Nisan 2021 (güncelleştirilmiş) tarihinden itibaren, birim boyutları (Kota) bant genişliği performansını ve sağlanan kapasiteyi yönetir ve temel alınan kapasite havuzları artık otomatik olarak büyütülecektir.** 
 
 ## <a name="reasons-for-the-change-to-volume-hard-quota"></a>Birim sabit kotası değişikliğine yönelik nedenler
 

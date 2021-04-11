@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 03/12/2021
+ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: da293f15ba070fc9a00ad37defd6a76175ded2f2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 579a7114a06386fe48fcc074cc1095e980837ba0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587288"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732185"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute SSS
 
@@ -265,7 +265,7 @@ Evet. ExpressRoute, siteden siteye VPN 'Ler ile birlikte çalışabilir. Bkz. [E
 
 ### <a name="how-do-i-enable-routing-between-my-site-to-site-vpn-connection-and-my-expressroute"></a>Siteden siteye VPN bağlantısı ile ExpressRoute arasında yönlendirmeyi etkinleştirmek Nasıl yaparım?.
 
-Şubeleriniz arasında bir siteden siteye VPN bağlantısına bağlı olan dal arasında yönlendirmeyi etkinleştirmek istiyorsanız, [Azure Route Server](../route-server/expressroute-vpn-support.md)'ı ayarlamanız gerekir.
+ExpressRoute 'a bağlanmış dalınız ile bir siteden siteye VPN bağlantısına bağlı dalınız arasında yönlendirmeyi etkinleştirmek istiyorsanız, [Azure Route Server](../route-server/expressroute-vpn-support.md)'ı ayarlamanız gerekir.
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Bir sanal ağ üzerindeki ExpressRoute ağ geçidiyle ilişkili bir genel IP adresi neden var?
 

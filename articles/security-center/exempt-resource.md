@@ -7,12 +7,12 @@ ms.date: 03/11/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d3627f6bcda7a18204c24fc2a1347c4a512c5369
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ab729f5aa94c7137203c25319a5b830448d00a7
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149741"
+ms.locfileid: "105968212"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Güvenli puanınızdan kaynakları ve önerileri muaf tutma 
 
@@ -33,7 +33,7 @@ Bu gibi durumlarda öneri için bir istisna oluşturabilirsiniz:
 | Görünüş                          | Ayrıntılar                                                                                                                                                                                                                                                                                                                            |
 |---------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Yayın durumu:                  | Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
-| Fiyat                        | Bu, Azure Defender müşterileri için ek ücret ödemeden sunulan bir Premium Azure ilke özelliğidir. Diğer kullanıcılar için ücretler gelecekte uygulanabilir.                                                                                                                                                                 |
+| Fiyat                        | Bu, Azure Defender müşterileri için ek ücret ödemeden sunulan bir Premium Azure Ilke özelliğidir. Diğer kullanıcılar için ücretler gelecekte uygulanabilir.                                                                                                                                                                 |
 | Gerekli roller ve izinler: | Muafiyet oluşturmak için **abonelik sahibi** veya **ilke katılımcısı**<br>Bir kural oluşturmak için Azure Ilkesinde ilkeleri düzenleme izinlerinizin olması gerekir.<br>Azure [Ilkesinde Azure RBAC izinleri](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)hakkında daha fazla bilgi edinin.                                            |
 | Sınırlamalar:                    | Muafiyetler yalnızca güvenlik merkezi 'nin varsayılan girişim, Azure Güvenlik kıyaslaması veya sağlanan mevzuata standart girişimlerinin herhangi biri için eklenen öneriler için oluşturulabilir. Özel girişimlerden oluşturulan öneriler muaf tutulamaz. [İlkeler, girişimler ve öneriler](security-policy-concept.md)arasındaki ilişkiler hakkında daha fazla bilgi edinin. |
 | Larının                         | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)                                                                                                                                                                                         |
