@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/12/2021
+ms.date: 03/30/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 4a8efff7ef53753e15a47e87a2bb82d0124ae997
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d0e86d95205acea2ac48ce027bcd118f4e3bf20
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104590458"
+ms.locfileid: "105967039"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure Güvenlik Duvarı Premium Önizleme özellikleri
 
@@ -105,39 +105,37 @@ veya
 
 Azure Güvenlik Duvarı Premium önizlemesi aşağıdaki bölgelerde desteklenir:
 
-- Batı Avrupa (kamu/Avrupa)
-- Doğu ABD (genel/Birleşik Devletler)
-- Avustralya Doğu (kamu/Avustralya)
-- Güneydoğu Asya (genel/Asya Pasifik)
-- UK Güney (kamu/Birleşik Krallık)
-- Kuzey Avrupa (kamu/Avrupa)
-- Doğu ABD 2 (genel/Birleşik Devletler)
-- Orta Güney ABD (genel/Birleşik Devletler)
-- Batı ABD 2 (genel/Birleşik Devletler)
-- Batı ABD (genel/Birleşik Devletler)
-- Orta ABD (genel/Birleşik Devletler)
-- Orta Kuzey ABD (genel/Birleşik Devletler)
-- Japonya Doğu (kamu/Japonya)
-- Doğu Asya (genel/Asya Pasifik)
-- Kanada Orta (kamu/Kanada)
-- Fransa Orta (kamu/Fransa)
-- Güney Afrika Kuzey (kamu/Güney Afrika)
-- BAE Kuzey (genel/UAE)
-- İsviçre Kuzey (genel/Isviçre)
-- Brezilya Güney (Kamu/Brezilya)
-- Norveç Doğu (genel/Norveç)
 - Avustralya Orta (kamu/Avustralya)
 - Avustralya Orta 2 (kamu/Avustralya)
+- Avustralya Doğu (kamu/Avustralya)
 - Avustralya Güneydoğu (kamu/Avustralya)
+- Brezilya Güney (Kamu/Brezilya)
+- Kanada Orta (kamu/Kanada)
 - Kanada Doğu (kamu/Kanada)
+- Orta ABD (genel/Birleşik Devletler)
 - Orta ABD EUAP (kamu/Canary (US))
+- Doğu Asya (genel/Asya Pasifik)
+- Doğu ABD (genel/Birleşik Devletler)
+- Doğu ABD 2 (genel/Birleşik Devletler)
+- Fransa Orta (kamu/Fransa)
 - Fransa Güney (kamu/Fransa)
+- Japonya Doğu (kamu/Japonya)
 - Japonya Batı (kamu/Japonya)
+- Kore Orta (Genel/Kore)
 - Kore Güney (Genel/Kore)
+- Orta Kuzey ABD (genel/Birleşik Devletler)
+- Kuzey Avrupa (kamu/Avrupa)
+- Güney Afrika Kuzey (kamu/Güney Afrika)
+- Orta Güney ABD (genel/Birleşik Devletler)
+- Güneydoğu Asya (genel/Asya Pasifik)
 - BAE Orta (genel/UAE)
+- UK Güney (kamu/Birleşik Krallık)
 - UK Batı (kamu/Birleşik Krallık)
 - Orta Batı ABD (genel/Birleşik Devletler)
+- Batı Avrupa (kamu/Avrupa)
 - Batı Hindistan (genel/Hindistan)
+- Batı ABD (genel/Birleşik Devletler)
+- Batı ABD 2 (genel/Birleşik Devletler)
 
 
 ## <a name="known-issues"></a>Bilinen sorunlar

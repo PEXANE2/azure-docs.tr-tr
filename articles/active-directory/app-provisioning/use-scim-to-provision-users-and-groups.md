@@ -12,12 +12,12 @@ ms.date: 03/22/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8d517aaa6121120399e09bfef8aa6dd36e745563
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8192c5c6734009f69e3f741531251dd85675b47
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022951"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449469"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Öğretici: SCıM uç noktası için geliştirme ve plan sağlama
 
@@ -168,10 +168,10 @@ SCıM RFC 'de tanımlanmış birkaç uç nokta vardır. `/User`Uç nokta ile ba�
 |--|--|
 |/User|Bir kullanıcı nesnesi üzerinde CRUD işlemleri gerçekleştirin.|
 |/Group|Bir grup nesnesi üzerinde CRUD işlemleri gerçekleştirin.|
-|/ServiceProviderConfig|Desteklenen SCıM standardının özelliklerine ilişkin ayrıntıları, örneğin desteklenen kaynakları ve kimlik doğrulama yöntemini sağlar.|
-|/ResourceTypes|Her kaynakla ilgili meta verileri belirtir|
 |/Schemas|Her istemci ve hizmet sağlayıcı tarafından desteklenen öznitelik kümesi farklılık gösterebilir. Bir hizmet sağlayıcı, ve ' ı içerebilir, `name` `title` `emails` ancak başka bir hizmet sağlayıcısı `name` , ve ' ı kullanır `title` `phoneNumbers` . Şemalar uç noktası desteklenen özniteliklerin bulunmasına izin verir.|
 |/Toplu|Toplu işlemler, tek bir işlemde büyük kaynak nesneleri koleksiyonu üzerinde işlemler gerçekleştirmenize olanak tanır (örneğin, büyük bir grup için üyelikleri güncelleştirme).|
+|/ServiceProviderConfig|Desteklenen SCıM standardının özelliklerine ilişkin ayrıntıları, örneğin desteklenen kaynakları ve kimlik doğrulama yöntemini sağlar.|
+|/ResourceTypes|Her kaynakla ilgili meta verileri belirtir.|
 
 **Uç noktaların örnek listesi**
 
@@ -1329,9 +1329,9 @@ Uygulamanızı hızla eklemek için denetim listesini kullanın ve müşterileri
 > * uygulamanız için 3 süresi dolan test kimlik bilgileri (gerekli)
 > * Aşağıda açıklandığı gibi, OAuth yetkilendirme kodu yetkisini veya uzun süreli bir belirteci destekler (gerekli)
 > * Müşteri galerisinin ekleme işlemini desteklemesi için mühendislik ve destek iletişim noktası oluşturma (gerekli)
+> * [Şema bulmayı destekleme (gerekli)](https://tools.ietf.org/html/rfc7643#section-6)
 > * Tek bir düzeltme ekiyle birden çok grup üyeliğini güncelleştirme desteği
 > * SCıM uç noktanızı genel olarak belgeleyin
-> * [Şema bulmayı destekleme](https://tools.ietf.org/html/rfc7643#section-6)
 
 ### <a name="authorization-to-provisioning-connectors-in-the-application-gallery"></a>Uygulama galerisinde bağlayıcıları sağlama yetkilendirmesi
 SCıM özelliği, kimlik doğrulama ve yetkilendirme için bir SCıM 'e özgü düzen tanımlamaz ve mevcut sektör standartlarının kullanımına dayanır.

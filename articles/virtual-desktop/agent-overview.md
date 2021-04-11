@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: ecc4a5a17186eddd4223715462b14399bdf702df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 371cc78f3ebad638008f4195f164b66a64948c65
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601899"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504558"
 ---
 # <a name="get-started-with-the-windows-virtual-desktop-agent"></a>Windows sanal masaüstü Aracısı 'nı kullanmaya başlama
 
@@ -25,7 +25,7 @@ Bu makale, aracı yükleme ve güncelleştirme işlemlerine ilişkin kısa bir g
 
 ## <a name="initial-installation-process"></a>İlk yükleme işlemi
 
-Windows sanal masaüstü Aracısı, başlangıçta iki şekilde yüklenir. Azure portal ve Azure Marketi 'nde sanal makineler (VM) sağlarsanız, aracı ve aracı önyükleme yükleyicisi otomatik olarak yüklenir. PowerShell kullanarak VM 'Ler sağlarsanız, [PowerShell ile bir Windows sanal masaüstü konak havuzu oluştururken](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)aracı ve aracı önyükleme yükleyicisi. msi dosyalarını el ile indirmeniz gerekir. Aracı yüklendiğinde, Windows sanal masaüstü yan yana yığın ve Geneva Izleme Aracısı da aynı anda yüklenir. Yan yana yığın bileşeni, kullanıcıların ters sunucudan istemciye bağlantıları güvenli bir şekilde kurmasını sağlamak için gereklidir. Geneva Izleme Aracısı aracının sistem durumunu izler. Bu bileşenlerden üçü, uçtan uca Kullanıcı bağlantısının düzgün şekilde çalışması için gereklidir.
+Windows sanal masaüstü Aracısı, başlangıçta iki şekilde yüklenir. Azure portal ve Azure Marketi 'nde sanal makineler (VM) sağlarsanız, aracı ve aracı önyükleme yükleyicisi otomatik olarak yüklenir. PowerShell kullanarak VM 'Ler sağlarsanız, [PowerShell ile bir Windows sanal masaüstü konak havuzu oluştururken](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)aracı ve aracı önyükleme yükleyicisi. msi dosyalarını el ile indirmeniz gerekir. Aracı yüklendikten sonra, Windows sanal masaüstü yan yana yığınını ve Genfiliz Izleme aracısını yüklenir. Yan yana yığın bileşeni, kullanıcıların ters sunucudan istemciye bağlantıları güvenli bir şekilde kurmasını sağlamak için gereklidir. Geneva Izleme Aracısı aracının sistem durumunu izler. Bu bileşenlerden üçü, uçtan uca Kullanıcı bağlantısının düzgün şekilde çalışması için gereklidir.
 
 >[!IMPORTANT]
 >Windows sanal masaüstü aracısını, yan yana yığını ve Genfiliz Izleme aracısını başarıyla yüklemek için [gereklı URL listesinde](safe-url-list.md#virtual-machines)listelenen tüm URL 'lerin engellemesini kaldırmanız gerekir. Windows Sanal Masaüstü hizmetini kullanmak için bu URL 'Lerin engellemesini kaldırma işlemi gereklidir.
@@ -38,6 +38,7 @@ Aracının yeni sürümleri, tüm Azure aboneliklerine weeklong dönemdeki düze
 
 
 >[!NOTE]
+>Konak havuzunuzdaki VM 'Ler farklı zamanlarda aracı güncelleştirmeleri alabileceğinden, fışıklandırma sorunları ve başarısız aracı güncelleştirmeleri arasındaki farkı söylemelisiniz. **Olay Görüntüleyicisi**  >  **Windows günlükleri** uygulamasında sanal makinenizin olay günlüklerine giderseniz  >   ve "kimlik 3277" etiketli bir olay görürseniz, bu da aracı güncelleştirmesinin çalışmadığı anlamına gelir. Bu olayı görmüyorsanız, sanal makine farklı bir uçuşta ve daha sonra güncelleştirilir.
 >- Geneva Izleme Aracısı en son sürüme güncelleştirdiğinde, yeni izleme Aracısı için yeni bir görev oluşturmadan önce eski GenevaTask görevi bulunur ve devre dışı bırakılır. İzleme aracısının en son sürümünün düzeltilmesi için önceki sürüme geri dönülmesini gerektiren bir sorun olması durumunda izleme aracısının önceki sürümü silinmez. En son sürümde bir sorun varsa, izleme verilerini sunmaya devam etmek için eski izleme Aracısı yeniden etkinleştirilecek. Güncelleştirmeden önce yüklediğiniz son olandan önceki tüm sürümleri, sanal makinenizde silinmeden silinecek.
 >- VM 'niz tek seferde yan yana yığının üç sürümünü tutar. Bu, güncelleştirmede bir sorun olursa hızlı kurtarma sağlar. Yığının en eski sürümü, yığın her güncelleştirildiğinde VM 'den kaldırılır.
 

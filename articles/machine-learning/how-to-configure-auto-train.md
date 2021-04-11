@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 12a6761ac2cd305e6ff949ffa59ee3bbdff1934d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 755386bfa36b18796eccec0020efe9136e0215cd
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732899"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068158"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 
@@ -47,6 +47,9 @@ Kod deneyimini tercih ediyorsanız, [Azure Machine Learning Studio 'da otomatik 
     * SDK 'Yı otomatik olarak yüklediği ve ML iş akışları için önceden yapılandırılmış bir işlem örneği oluşturun. Daha fazla bilgi için bkz. [Azure Machine Learning işlem örneği oluşturma ve yönetme](how-to-create-manage-compute-instance.md) . 
 
     * SDK 'nın [varsayılan yüklemesini](/python/api/overview/azure/ml/install#default-install) içeren [ `automl` paketi kendiniz yüklemeniz](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)gerekir.
+    
+    > [!WARNING]
+    > Python 3,8 ile uyumlu değildir `automl` . 
 
 ## <a name="select-your-experiment-type"></a>Deneme türünüzü seçme
 

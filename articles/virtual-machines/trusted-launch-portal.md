@@ -7,14 +7,14 @@ ms.reviewer: cynthn
 ms.service: virtual-machines
 ms.subservice: trusted-launch
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 04/06/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 6499e4b3404a255025f88488e73da1efb6449296
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 50ecf6e394d5d19d09033554272023bd6796851b
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075960"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581199"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Güvenilir başlatma etkin bir VM dağıtma (Önizleme)
 
@@ -41,10 +41,13 @@ Güvenilir başlatma etkin olan bir sanal makine oluşturun.
 5. **Proje ayrıntıları**' nın altında, doğru aboneliğin seçildiğinden emin olun.
 6. **Kaynak grubu** altında **Yeni oluştur** ' u seçin ve kaynak grubunuz için bir ad yazın veya açılan listeden var olan bir kaynak grubunu seçin.
 7. **Örnek ayrıntıları**' nın altında, sanal makine adı için bir ad yazın ve [Güvenilen başlatmayı](trusted-launch.md#public-preview-limitations)destekleyen bir bölge seçin.
-8. **Görüntü** altında, [güvenilir başlatmayı destekleyen bir görüntü](trusted-launch.md#public-preview-limitations)seçin. Yalnızca görüntünün Gen 1 sürümünü görebilirsiniz, bu işlem bir sonraki adıma geçer.
-9. Sayfanın üst kısmında seçerek **Gelişmiş** sekmesine geçin.
-10. **VM oluşturma** bölümüne gidin ve sonra **Gen 2**' yi seçin.
-11. Hala **Gelişmiş** sekmesinde, **güvenilir başlatma**' ya gidin ve **güvenilir başlatma** onay kutusunu seçin. Böylece, güvenli önyükleme ve vTPM olmak üzere iki seçenek daha görünecektir. Dağıtımınız için uygun seçenekleri seçin.
+8. **Görüntü** altında, [güvenilir başlatmayı destekleyen](trusted-launch.md#public-preview-limitations)bir gen 2 görüntüsü seçin. 
+   > [!TIP]
+   > Açılan kutuda istediğiniz görüntünün Gen 2 sürümünü görmüyorsanız, **tüm görüntüleri görüntüle** ' yi seçin ve ardından yalnızca Gen 2 görüntülerini göstermek Için **VM oluşturma** filtresini değiştirin. Listede görüntüyü bulun, sonra da Gen 2 sürümünü seçmek için **Seç** açılan listesini kullanın.
+ 
+1. Sayfanın üst kısmında seçerek **Gelişmiş** sekmesine geçin.
+1. **VM oluşturma** bölümüne gidin. **Gen 2** ' nin seçili olduğundan emin olun.
+1. Hala **Gelişmiş** sekmesinde, **güvenilir başlatma**' ya gidin ve **güvenilir başlatma** onay kutusunu seçin. Böylece, güvenli önyükleme ve vTPM olmak üzere iki seçenek daha görünecektir. Dağıtımınız için uygun seçenekleri seçin.
 
     :::image type="content" source="media/trusted-launch/trusted-launch-portal.png" alt-text="Güvenilir başlatma seçeneklerini gösteren ekran görüntüsü.":::
 
@@ -67,10 +70,10 @@ VM'nizin dağıtılması birkaç dakika sürer.
 Bir hızlı başlangıç şablonu kullanarak güvenilen başlatma VM 'Leri dağıtabilirsiniz:
 
 **Linux**:    
-[![Azure'a Dağıt](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2FcreateUiDefinition.json)
+[![Azure'a Dağıt](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2FcreateUiDefinition.json)
 
 **Windows**:    
-[![Azure'a Dağıt](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2FcreateUiDefinition.json)
+[![Azure'a Dağıt](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2FcreateUiDefinition.json)
 
 ## <a name="view-and-update"></a>Görüntüle ve Güncelleştir
 

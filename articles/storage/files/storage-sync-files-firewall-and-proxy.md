@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 3/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f0dbe7f32f14eb4da3d591811d619eb2e9bea397
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 84ab3451ef71b95db3a0f00f88a58482516b48f4
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729649"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581853"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure Dosya Eşitleme proxy’si ve güvenli duvarı ayarları
 Azure Dosya Eşitleme, şirket içi sunucularınızı Azure dosyalarına bağlayarak çok siteli eşitlemeyi ve bulut katmanlama özelliklerini etkinleştirir. Bu nedenle, bir şirket içi sunucu internet 'e bağlı olmalıdır. BT yöneticisinin, sunucunun Azure Cloud Services 'e ulaşması için en iyi yolu karar vermesini gerektirir.
@@ -96,6 +96,10 @@ Makine genelindeki ara sunucu ayarlarını yapılandırmak için aşağıdaki ad
 
 2. WinHTTP proxy ayarlarını ayarla 
 
+   > [!Note]  
+   > Bir Windows sunucusunu bir ara sunucu kullanacak şekilde yapılandırmak için birkaç Yöntem (WPAD, PAC dosyası, netsh, vb.) vardır. Aşağıdaki adımlarda, netsh kullanılarak proxy ayarlarının nasıl yapılandırılacağı ele alınmaktadır, ancak [Windows 'da proxy sunucu ayarlarını yapılandırma](https://docs.microsoft.com/troubleshoot/windows-server/networking/configure-proxy-server-settings) bölümünde listelenen yöntemler desteklenir.
+
+
    - Mevcut proxy ayarını görmek için, yükseltilmiş bir komut isteminden veya PowerShell 'den aşağıdaki komutu çalıştırın:   
 
      Netsh WinHTTP proxy göster
@@ -134,7 +138,7 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 
 İş sürekliliği ve olağanüstü durum kurtarma (BCDR) nedenleriyle Azure dosya paylaşımlarınızı küresel olarak yedekli (GRS) depolama hesabında belirtmiş olabilirsiniz. Böyle bir durum söz konusu ise, Azure dosya paylaşımlarınız, coğrafi bölge kesintisi durumunda eşleştirilmiş bölgeye yük devreder. Azure Dosya Eşitleme depolama ile aynı bölgesel eşleştirmeleri kullanır. Bu nedenle, GRS depolama hesapları kullanıyorsanız, sunucunuzun Azure Dosya Eşitleme eşleştirilmiş bölge ile iletişim kurmasına izin vermek için ek URL 'Ler etkinleştirmeniz gerekir. Aşağıdaki tablo bu "eşleştirilmiş bölgeyi" çağırır. Ayrıca, aynı zamanda etkinleştirilmesi gereken bir Traffic Manager profil URL 'SI vardır. Bu, ağ trafiğinin yük devretme olayında eşleştirilmiş bölgeye sorunsuz bir şekilde yeniden yönlendirilmesini ve aşağıdaki tabloda "keşif URL 'SI" olarak adlandırılmasına olanak sağlar.
 
-| Bulut  | Region | Birincil uç nokta URL 'SI | Eşleştirilmiş bölge | Bulma URL 'SI |
+| Bulut  | Bölge | Birincil uç nokta URL 'SI | Eşleştirilmiş bölge | Bulma URL 'SI |
 |--------|--------|----------------------|---------------|---------------|
 | Genel |Doğu Avustralya | https: \/ /australiaeast01.AFS.Azure.net<br>https: \/ /Kailani-Aue.One.Microsoft.com | Güneydoğu Avustralya | https: \/ /TM-australiaeast01.AFS.Azure.net<br>https: \/ /TM-Kailani-Aue.One.Microsoft.com |
 | Genel |Güneydoğu Avustralya | https: \/ /australiasoutheast01.AFS.Azure.net<br>https: \/ /Kailani-aus.One.Microsoft.com | Doğu Avustralya | https: \/ /TM-australiasoutheast01.AFS.Azure.net<br>https: \/ /TM-Kailani-aus.One.Microsoft.com |

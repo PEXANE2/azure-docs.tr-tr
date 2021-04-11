@@ -12,18 +12,25 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Metinden konuşmaya
-ms.openlocfilehash: 45977faec9ab54fed0c1e7054c567b4d18b11f50
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1a7ff7befc1a5e82c5518cf103a81b35ec38c7db
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645025"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449367"
 ---
 # <a name="what-is-text-to-speech"></a>Metin okuma nedir?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Bu genel bakışta, uygulamanızın, araçların veya cihazların metni insan benzeri sentezleştirilmiş konuşmaya dönüştürmesini sağlayan, metinden konuşmaya hizmetinin avantajları ve özellikleri hakkında bilgi edinebilirsiniz. Standart ve sinir sesler arasından seçim yapın ya da ürün veya marka için benzersiz özel bir ses oluşturun. 75 + standart sesler 45 ' den fazla dilde ve yerel ayarlarda kullanılabilir ve bir dizi dilde ve yerel ayara 5 sinir seste erişilebilir. Desteklenen seslerin, dillerin ve yerel ayarların tam listesi için bkz. [desteklenen diller](language-support.md#text-to-speech).
+
+Bu belge aşağıdaki makale türlerini içerir:
+
+* **Hızlı** başlangıçlarda, hizmette istek yapma konusunda size kılavuzluk eden başlangıç yönergeleri bulunur.
+* **Nasıl yapılır kılavuzlarında** , hizmetin daha belirli veya özelleştirilmiş yollarla kullanılmasına ilişkin yönergeler bulunur.
+* **Kavramlar** , hizmet işlevselliği ve özelliklerinin ayrıntılı açıklamalarını sağlar.
+* **Öğreticiler** daha fazla iş çözümlerinde hizmeti bir bileşen olarak nasıl kullanacağınızı gösteren kılavuzlardır.
 
 > [!NOTE]
 > Bing Konuşma, 15 Ekim 2019 ' de kullanımdan çıkarıldı. Uygulamalarınız, araçlar veya ürünleriniz Bing Konuşma API 'Leri veya Özel Konuşma Tanıma kullanıyorsa, konuşma hizmetine geçiş yapmanıza yardımcı olacak kılavuzlar oluşturduk.

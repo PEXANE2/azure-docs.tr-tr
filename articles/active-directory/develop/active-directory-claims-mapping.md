@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c7474b001284286ed589f6b7995db6bc7fd50af
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94647605"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075075"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Nasıl yapılır: bir Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)
 
@@ -304,7 +304,7 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 | Kullanıcı | StreetAddress | Adres |
 | Kullanıcı | PostalCode | Posta Kodu |
 | Kullanıcı | PreferredLanguage | Tercih edilen dil |
-| Kullanıcı | onpremisesuserprincipalname | Şirket içi UPN |*
+| Kullanıcı | onpremisesuserprincipalname | Şirket içi UPN |
 | Kullanıcı | mailNickname | Posta takma adı |
 | Kullanıcı | extensionattribute1 | Uzantı özniteliği 1 |
 | Kullanıcı | extensionattribute2 | Uzantı özniteliği 2 |
@@ -419,16 +419,6 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 | ExtractMailPrefix | Yok |
 | Katılın | Katılmakta olan sonekin, kaynak kiracının doğrulanmış bir etki alanı olması gerekir. |
 
-### <a name="custom-signing-key"></a>Özel imzalama anahtarı
-
-Bir talep eşleme ilkesinin etkili olması için hizmet sorumlusu nesnesine özel bir imzalama anahtarı atanmalıdır. Bu, belirteçlerin talep eşleme ilkesinin Oluşturucusu tarafından değiştirildiğini ve uygulamaların kötü amaçlı aktörler tarafından oluşturulan talep eşleme ilkelerine karşı korunmasını sağlar. Özel bir imzalama anahtarı eklemek için, [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) uygulama nesneniz için bir sertifika anahtarı kimlik bilgisi oluşturmak üzere Azure PowerShell cmdlet 'ini kullanabilirsiniz.
-
-Talep eşlemesi etkin olan uygulamalar `appid={client_id}` , kendi [OpenID Connect meta veri isteklerine](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)ekleyerek belirteç imzalama anahtarlarını doğrulamalıdır. Aşağıda, kullanmanız gereken OpenID Connect meta veri belgesinin biçimi verilmiştir:
-
-```
-https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
-```
-
 ### <a name="cross-tenant-scenarios"></a>Çapraz kiracı senaryoları
 
 Talep eşleme ilkeleri Konuk kullanıcılar için uygulanmaz. Konuk Kullanıcı, hizmet sorumlusuna atanmış bir talep eşleme ilkesiyle bir uygulamaya erişmeyi denediğinde, varsayılan belirteç verilir (ilkenin hiçbir etkisi yoktur).
@@ -531,6 +521,33 @@ Bu örnekte, bağlantılı hizmet sorumlularına verilen JWTs 'e "JoinedData" ö
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
+
+## <a name="security-considerations"></a>Güvenlik konuları
+
+Belirteçleri alan uygulamalar, talep değerlerinin Azure AD tarafından yetkili olarak verildiği ve üzerinde oynanamaz olgusuna bağımlıdır. Ancak, talepler eşleme ilkeleri aracılığıyla belirteç içeriğini değiştirdiğinizde bu varsayımlar artık doğru olmayabilir. Uygulamalar, kötü amaçlı aktörler tarafından oluşturulan talep eşleme ilkelerinden kendilerini korumak için, belirteçlerin talep eşleme ilkesi Oluşturucusu tarafından değiştirildiğini açıkça kabul etmelidir. Bu, aşağıdaki yollarla yapılabilir:
+
+- Özel bir imzalama anahtarı yapılandırma
+- Eşlenen talepleri kabul etmek için uygulama bildirimini güncelleştirin.
+ 
+Bu olmadan, Azure AD bir [ `AADSTS50146` hata kodu](reference-aadsts-error-codes.md#aadsts-error-codes)döndürür.
+
+### <a name="custom-signing-key"></a>Özel imzalama anahtarı
+
+Hizmet sorumlusu nesnesine özel bir imzalama anahtarı eklemek için, [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) uygulama nesneniz için bir sertifika anahtarı kimlik bilgisi oluşturmak üzere Azure PowerShell cmdlet 'ini kullanabilirsiniz.
+
+Talep eşlemesi etkin olan uygulamalar `appid={client_id}` , kendi [OpenID Connect meta veri isteklerine](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)ekleyerek belirteç imzalama anahtarlarını doğrulamalıdır. Aşağıda, kullanmanız gereken OpenID Connect meta veri belgesinin biçimi verilmiştir:
+
+```
+https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
+```
+
+### <a name="update-the-application-manifest"></a>Uygulama bildirimini güncelleştirme
+
+Alternatif olarak, `acceptMappedClaims` özelliğini `true` [uygulama bildiriminde](reference-app-manifest.md)olarak ayarlayabilirsiniz. Bu, [Apiapplication kaynak türünde](/graph/api/resources/apiapplication#properties)belgelendiği gibi, bir uygulamanın özel bir imzalama anahtarı belirtmeden talep eşlemeyi kullanmasına izin verir.
+
+Bu, istenen belirteç kitlelerinin Azure AD kiracınızın doğrulanmış bir etki alanı adını kullanmasını gerektirir. Bu, `Application ID URI` Örneğin (uygulama bildiriminde ile temsil edilen) (örneğin, `identifierUris` `https://contoso.com/my-api` varsayılan kiracı adını kullanarak) olarak ayarlamanız gerektiği anlamına gelir `https://contoso.onmicrosoft.com/my-api` .
+
+Doğrulanmış bir etki alanı kullanmıyorsanız, Azure AD `AADSTS501461` "Acceptmappedtalepler" iletisi ile bir hata kodu döndürür *. "Acceptmappedtalepler yalnızca uygulama GUID 'si ile eşleşen bir belirteç izleyicisinin veya kiracının doğrulanan etki alanlarında bulunan bir hedef kitle için desteklenir. Kaynak tanımlayıcıyı değiştirin ya da uygulamaya özgü bir imzalama anahtarı kullanın. "*
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

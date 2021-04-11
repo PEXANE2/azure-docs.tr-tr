@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 62723f5c833ca89618a6d9e0781539a13efba4f3
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 9d61e9ff753c37268be19e95db9450e2cd923d96
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105959679"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279689"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>3. adım-v3 REST API veya istemci SDK 'sına geçirilecek şekilde ayarlama
 
@@ -43,7 +43,7 @@ Daha önce ARM yönetim API 'sinin 2015-10-01 sürümünü kullanan müşteriler
 
 ## <a name="create-a-new-media-services-account-for-testing"></a>Test için yeni bir Media Services hesabı oluşturun
 
-Azure portal kullanarak [ortamınızı ayarlamaya](how-to-set-azure-subscription.md?tabs=portal) yönelik hızlı başlangıç adımlarını izleyin. Bu test hesabıyla kullanılmak üzere yeni bir Azure AD uygulama KIMLIĞI ve gizli dizileri oluşturmak için API erişimi ve hizmet sorumlusu kimlik doğrulaması ' nı seçin.
+Azure portal kullanarak [ortamınızı ayarlamaya](setup-azure-subscription-how-to.md?tabs=portal) yönelik hızlı başlangıç adımlarını izleyin. Bu test hesabıyla kullanılmak üzere yeni bir Azure AD uygulama KIMLIĞI ve gizli dizileri oluşturmak için API erişimi ve hizmet sorumlusu kimlik doğrulaması ' nı seçin.
 
 [Bir Media Services hesabı oluşturun](account-create-how-to.md?tabs=portal).
 [MEDIA SERVICES API 'sine erişmek için kimlik bilgilerini alın](access-api-howto.md?tabs=portal).
@@ -66,7 +66,7 @@ Azure portal kullanarak [ortamınızı ayarlamaya](how-to-set-azure-subscription
 
 ## <a name="rest"></a>[REST](#tab/rest)
 
-Media Services v3 REST API çağrıları için [Postman](./media-rest-apis-with-postman.md) kullanın.
+Media Services v3 REST API çağrıları için [Postman](./setup-postman-rest-how-to.md) kullanın.
 [REST API başvuru sayfalarını](/rest/api/media/)okuyun.
 
 Postman koleksiyonunda 2020-05-01 sürüm dizesini kullanmanız gerekir.

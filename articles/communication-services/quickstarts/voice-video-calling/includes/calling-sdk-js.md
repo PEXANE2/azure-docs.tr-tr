@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 49054d9bbde67dc3670ec444e4b60c3ddf503db5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2ecbd207c4b1946a69b01f43ec2bc77d29b1a8c9
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645342"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106073236"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -21,10 +21,9 @@ ms.locfileid: "105645342"
 ## <a name="install-the-sdk"></a>SDK Yükleme
 
 > [!NOTE]
-> Bu belge, çağıran SDK 'nın 1.0.0-Beta. 10 sürümünü kullanır.
+> Bu belge, ACS çağıran Web SDK 'sını kullanır.
 
 `npm install`JavaScript için çağrı ve ortak SDK 'ları çağıran Azure Iletişim hizmetlerini yüklemek için komutunu kullanın.
-Bu belge, çağıran kitaplığın 1.0.0-Beta. 10 sürümündeki türlere başvurur.
 
 ```console
 npm install @azure/communication-common --save
@@ -144,6 +143,8 @@ const call = callAgent.join(context);
 ```
 
 ### <a name="join-a-teams-meeting"></a>Takımlar toplantısına katılarak
+> [!NOTE]
+> Bu API, geliştiriciler için önizleme olarak sunulmuştur ve alacağımız geri bildirimler doğrultusunda değiştirilebilir. Bu API’yi üretim ortamında kullanmayın. Bu API 'yi kullanmak için lütfen ACS çağıran Web SDK ' nın ' Beta ' sürümünü kullanın
 
 Bir ekip toplantısına katmak için `join` yöntemini kullanın ve bir toplantı bağlantısı veya koordinatları geçirin.
 
@@ -593,8 +594,8 @@ console.log(result.video);
 ```
 
 ## <a name="record-calls"></a>Çağrıları Kaydet
-
-[!INCLUDE [Private Preview Notice](../../../includes/private-preview-include-section.md)]
+> [!NOTE]
+> Bu API, geliştiriciler için önizleme olarak sunulmuştur ve alacağımız geri bildirimler doğrultusunda değiştirilebilir. Bu API’yi üretim ortamında kullanmayın. Bu API 'yi kullanmak için lütfen ACS çağıran Web SDK ' nın ' Beta ' sürümünü kullanın
 
 Çağrı kaydı, çekirdek API 'nin genişletilmiş bir özelliğidir `Call` . Önce kayıt özelliği API nesnesini edinmeniz gerekir:
 
@@ -620,6 +621,8 @@ callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler)
 ```
 
 ## <a name="transfer-calls"></a>Çağrıları aktar
+> [!NOTE]
+> Bu API, geliştiriciler için önizleme olarak sunulmuştur ve alacağımız geri bildirimler doğrultusunda değiştirilebilir. Bu API’yi üretim ortamında kullanmayın. Bu API 'yi kullanmak için lütfen ACS çağıran Web SDK ' nın ' Beta ' sürümünü kullanın
 
 Çağrı aktarımı, çekirdek API 'nin genişletilmiş bir özelliğidir `Call` . Önce Aktarım özelliği API nesnesini almanız gerekir:
 
