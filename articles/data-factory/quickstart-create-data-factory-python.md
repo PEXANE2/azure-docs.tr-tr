@@ -7,14 +7,14 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/15/2021
+ms.date: 04/06/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 6b15585f029f9289736d8d498b61a3e0ba40f009
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50e29262b609887d91c43ea8f012fad0c7a35ee2
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889425"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449282"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Hızlı Başlangıç: Python kullanarak veri fabrikası ve işlem hattı oluşturma
 
@@ -75,9 +75,12 @@ Azure Data Factory, veri taşıma ve veri dönüştürmeyi düzenlemek ve otomat
     ```
     > [!NOTE] 
     > "Azure-Identity" paketi bazı yaygın bağımlılıklarda "Azure-CLI" ile çakışıyor olabilir. Herhangi bir kimlik doğrulama sorununu karşılayabilir, "Azure-CLI" ve bağımlılıklarını kaldırın veya "Azure-CLI" paketini yüklemeden temiz bir makine kullanarak çalışır hale getirin.
+    > Sovereign bulutları için, buluta özgü uygun sabitleri kullanmanız gerekir.  Lütfen [Python çoklu bulut Için Azure kitaplıklarını kullanarak tüm bölgelere bağlanma | Bağımsız bulutlarda Python ile bağlantı kurmak için yönergeler Microsoft Docs.](https://docs.microsoft.com/azure/developer/python/azure-sdk-sovereign-domain)
+    
     
 ## <a name="create-a-data-factory-client"></a>Veri fabrikası istemcisi oluşturma
 
+  
 1. **datafactory.py** adlı bir dosya oluşturun. Ad alanlarına başvurular eklemek için aşağıdaki deyimleri ekleyin.
 
     ```python
@@ -122,6 +125,7 @@ Azure Data Factory, veri taşıma ve veri dönüştürmeyi düzenlemek ve otomat
     ```
 3. Aşağıdaki kodu DataFactoryManagementClient sınıfının bir örneğini oluşturan **Main** yöntemine ekleyin. Veri fabrikası, bağlı hizmet, veri kümeleri ve işlem hattı oluşturmak için bu nesneyi kullanırsınız. Bu nesneyi ayrıca işlem hattı ayrıntılarını izlemek için kullanabilirsiniz. **subscription_id** değişkenini Azure aboneliğinizin kimliğine ayarlayın. Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 
+        
     ```python
     def main():
 
@@ -136,6 +140,11 @@ Azure Data Factory, veri taşıma ve veri dönüştürmeyi düzenlemek ve otomat
 
         # Specify your Active Directory client ID, client secret, and tenant ID
         credentials = ClientSecretCredential(client_id='<service principal ID>', client_secret='<service principal key>', tenant_id='<tenant ID>') 
+        
+        # Specify following for Soverign Clouds, import right cloud constant and then use it to connect.
+        # from msrestazure.azure_cloud import AZURE_PUBLIC_CLOUD as CLOUD
+        # credentials = DefaultAzureCredential(authority=CLOUD.endpoints.active_directory, tenant_id=tenant_id)
+        
         resource_client = ResourceManagementClient(credentials, subscription_id)
         adf_client = DataFactoryManagementClient(credentials, subscription_id)
 

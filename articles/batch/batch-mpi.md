@@ -3,12 +3,12 @@ title: MPı uygulamalarını çalıştırmak için çok örnekli görevleri kull
 description: Ileti geçirme arabirimi (MPı) uygulamalarını Azure Batch ' deki çok örnekli görev türünü kullanarak yürütmeyi öğrenin.
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 51fc580e0bb31e0e975c53b44887a5889a784eea
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 02764f8dd8a6bb3e4224b8b44fe78ab7e15ba85d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605680"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219866"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Batch 'de Ileti geçirme arabirimi (MPı) uygulamalarını çalıştırmak için çok örnekli görevleri kullanma
 
@@ -21,7 +21,7 @@ ms.locfileid: "105605680"
 
 Batch 'de, her görev normalde tek bir işlem düğümünde yürütülür. bir işe birden çok görev gönderirseniz ve Batch hizmeti her görevi bir düğümde yürütmeye göre zamanlar. Ancak, bir görevin **Çoklu örnek ayarlarını** yapılandırarak, toplu olarak tek bir birincil görev ve daha sonra birden çok düğümde yürütülen birkaç alt görev oluşturmayı öğreneceksiniz.
 
-:::image type="content" source="media/batch-mpi/batch_mpi_01.png" alt-text="Çok örnekli ayarların genel bakışını gösteren diyagram.":::
+:::image type="content" source="media/batch-mpi/batch-mpi-01.png" alt-text="Çok örnekli ayarların genel bakışını gösteren diyagram.":::
 
 Bir iş için çok örnekli ayarlarla bir görev gönderdiğinizde toplu Işlem, çok örnekli görevlere özgü birkaç adımı gerçekleştirir:
 

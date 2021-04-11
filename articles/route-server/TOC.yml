@@ -12,6 +12,8 @@
       href: quickstart-configure-route-server-powershell.md
     - name: Rota sunucusu yapılandırma-CLı
       href: quickstart-configure-route-server-cli.md
+    - name: Route Server-ARM şablonu yapılandırma
+      href: quickstart-configure-template.md
   expanded: true
 - name: Kavramlar
   items:

@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 695ad1463bb207e9dd61d7b0147adbe15b44df37
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fb30913d71df46f4c0afedd475d40205c1429258
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108069"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122212"
 ---
 # <a name="creating-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
 
@@ -34,15 +34,19 @@ Bu öğreticinin adımlarını tamamlayabilmeniz için, **sahip** rolü atadığ
 
 ## <a name="basics-tab--project-details"></a>Proje ayrıntıları > temel kavramlar sekmesi
 Şu alanları doldurun:
-    1. **Abonelik** -herhangi bir abonelik seçin.
-    1. **Kaynak grubu** -herhangi bir kaynak grubunu kullanın.
-    1. **Kaynak grubu** -bu alanı boş bırakın.
+
+1. **Abonelik** -herhangi bir abonelik seçin.
+1. **Kaynak grubu** -herhangi bir kaynak grubunu kullanın.
+1. **Kaynak grubu** -bu alanı boş bırakın.
 
 
 ## <a name="basics-tab--workspace-details"></a>> çalışma alanı ayrıntılarının temelleri sekmesi
-Şu alanları doldur: 1. **Çalışma alanı adı** -genel olarak benzersiz bir ad seçin. Bu öğreticide, **MyWorkspace** kullanacağız.
+Şu alanları doldurun:
+
+1. **Çalışma alanı adı** -genel olarak benzersiz bir ad seçin. Bu öğreticide, **MyWorkspace** kullanacağız.
 1. **Bölge** -herhangi bir bölgeyi seçin.
-1. **Data Lake Storage Gen 2** ' yi seçin 1. **Abonelikle** ilgili düğmeye tıklayın.
+1. **Data Lake Storage Gen 2 ' yi seçin**
+1. **Abonelikle** ilgili düğmeye tıklayın.
 1. **Hesap adına** göre **Yeni oluştur** ' a tıklayın ve yeni depolama hesabını **contosogölü** veya buna benzer şekilde adlandırın.
 1. **Dosya sistemi adına** göre, **Yeni oluştur** ' a tıklayın ve BT **kullanıcılarını** adlandırın. Bu, **Kullanıcılar** adlı bir depolama kapsayıcısı oluşturur. Çalışma alanı, bu depolama hesabını Spark tabloları ve Spark uygulama günlükleri için "birincil" depolama hesabı olarak kullanacaktır.
 1. "Data Lake Storage 2. hesabında Depolama Blobu veri katılımcısı rolünü ata" kutusunu işaretleyin. 
@@ -60,16 +64,6 @@ Azure SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu a
 
 * SYNAPSE çalışma alanınızı [Azure Portal](https://portal.azure.com)açın, SYNAPSE çalışma alanının **genel bakış** bölümünde SYNAPSE Studio 'yu Aç kutusunda **Aç** ' ı seçin.
 * Adresine gidin `https://web.azuresynapse.net` ve çalışma alanınızda oturum açın.
-
-
-
-
-
-
-
-
-
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

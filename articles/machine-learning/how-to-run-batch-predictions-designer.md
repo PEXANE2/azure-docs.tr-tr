@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 02/05/2020
+ms.date: 02/05/2021
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: dda47d3ff561d4d57045dbb28f8c411e193086d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34d0d31296214355b85c52e4564e9bf6658b2005
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "101657373"
+ms.locfileid: "105962943"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanarak toplu tahminleri Çalıştır
 
@@ -164,4 +164,5 @@ Ardından, çıkarım işlem hattını güncelleştirilmiş model ve dönüşüm
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bir regresyon modeli eğitme ve dağıtma için tasarımcı [öğreticisini](tutorial-designer-automobile-price-train-score.md) izleyin.
-''
+
+Yayımlanmış bir işlem hattını SDK kullanarak yayımlamak ve çalıştırmak için, [Bu makaleye](how-to-deploy-pipelines.md)bakın.

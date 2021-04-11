@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 02/14/2021
 ms.topic: conceptual
 ms.openlocfilehash: ea7979ad4a401d317ec126b7abfe354690475235
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104953111"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Bir Azure Otomasyonu runbook 'unu tetiklemek için uyarı kullanma
@@ -29,7 +29,7 @@ Otomasyon Runbook 'larını üç uyarı türüyle kullanabilirsiniz:
 
 Bir uyarı runbook 'u çağırdığında, gerçek çağrı Web kancasına yönelik bir HTTP POST isteğidir. POST isteğinin gövdesi, uyarıyla ilgili yararlı özelliklere sahip olan JSON biçimli bir nesne içerir. Aşağıdaki tabloda her uyarı türü için yük şemasının bağlantıları listelenmektedir:
 
-|Uyarı  |Açıklama|Yük şeması  |
+|Uyarı  |Description|Yük şeması  |
 |---------|---------|---------|
 |[Ortak uyarı](../azure-monitor/alerts/alerts-common-schema.md)|Bugün Azure 'daki uyarı bildirimleri için tüketim deneyimini standartlaştıran ortak uyarı şeması.|Ortak uyarı yük şeması|
 |[Etkinlik günlüğü uyarısı](../azure-monitor/alerts/activity-log-alerts.md)    |Azure etkinlik günlüğündeki yeni bir olay belirli koşullara uyan bir bildirim gönderir. Örneğin, bir `Delete VM` Işlem **Myüretim resourcegroup** içinde veya etkin duruma sahip yeni bir Azure hizmet durumu olayı göründüğünde oluşur.| [Etkinlik günlüğü uyarısı yük şeması](../azure-monitor/alerts/activity-log-alerts-webhook.md)        |

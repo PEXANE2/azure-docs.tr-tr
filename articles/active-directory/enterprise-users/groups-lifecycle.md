@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4ba5a9211cdb89f6ac5a92a315378e58f5d08a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 34ac4a3b7f55c42711e4bc33c75bba964b49c65e
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709523"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551637"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 grupları için süre sonu ilkesini yapılandırma
 
@@ -91,6 +91,7 @@ Silinen bir grubu geri yükleme izinleri hakkında daha fazla bilgi için, [Azur
 > - Son tarihi ayarladığınızda, süre sonu aralığından eski olan tüm gruplar, Grup otomatik olarak yenilenmediği veya sahip onu yenilemediği sürece süresi dolmadan 35 gün olarak ayarlanır.
 > - Dinamik bir grup silinip geri yüklendiğinde, yeni bir grup olarak görülür ve kurala göre yeniden doldurulur. Bu işlem, 24 saate kadar sürebilir.
 > - Ekiplerde kullanılan gruplar için süre sonu bildirimleri takımlar sahipleri akışında görüntülenir.
+> - Seçili gruplar için süre sonunu etkinleştirdiğinizde, listeye en fazla 500 grup ekleyebilirsiniz. 500 taneden fazla grup eklemeniz gerekiyorsa, tüm gruplarınız için süre sonunu etkinleştirebilirsiniz. Bu senaryoda, 500 Grup sınırlaması uygulanmaz.
 
 ## <a name="email-notifications"></a>E-posta bildirimleri
 

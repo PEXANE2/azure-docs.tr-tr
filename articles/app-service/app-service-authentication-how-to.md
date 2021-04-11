@@ -2,14 +2,14 @@
 title: AuthN/AuthZ gelişmiş kullanımı
 description: Farklı senaryolar için App Service kimlik doğrulaması ve yetkilendirme özelliğini özelleştirmeyi ve Kullanıcı taleplerini ve farklı belirteçleri almayı öğrenin.
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 03/29/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: fc2916cbccc21262467533b0b497b14f4f4b941c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b7faf47363a5efee6a60951e67d9ad2bed8bf76f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034886"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076879"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 'da gelişmiş kimlik doğrulama ve yetkilendirme kullanımı
 
@@ -18,10 +18,9 @@ Bu makalede, [App Service ' de yerleşik kimlik doğrulama ve yetkilendirmeyi](o
 Hızlıca kullanmaya başlamak için aşağıdaki öğreticilerden birine bakın:
 
 * [Öğretici: Azure App Service'te kullanıcıların kimliğini doğrulama ve kullanıcıları uçtan uca yetkilendirme](tutorial-auth-aad.md)
-* [Uygulamanızı Azure Active Directory oturum açma bilgilerini kullanacak şekilde yapılandırma](configure-authentication-provider-aad.md)
+* [Uygulamanızı Microsoft Identity Platform oturum açma bilgilerini kullanacak şekilde yapılandırma](configure-authentication-provider-aad.md)
 * [Uygulamanızı Facebook oturum açma bilgilerini kullanacak şekilde yapılandırma](configure-authentication-provider-facebook.md)
 * [Uygulamanızı Google oturum açma bilgilerini kullanacak şekilde yapılandırma](configure-authentication-provider-google.md)
-* [Uygulamanızı Microsoft Hesabı oturum açma bilgilerini kullanacak şekilde yapılandırma](configure-authentication-provider-microsoft.md)
 * [Uygulamanızı Twitter oturum açma bilgilerini kullanacak şekilde yapılandırma](configure-authentication-provider-twitter.md)
 * [Uygulamanızı bir OpenID Connect sağlayıcısı kullanarak oturum açmak üzere yapılandırma (Önizleme)](configure-authentication-provider-openid-connect.md)
 * [Uygulamanızı Apple ile oturum açma kullanarak oturum açmak üzere yapılandırma (Önizleme)](configure-authentication-provider-apple.md)
@@ -37,8 +36,7 @@ Portal Yapılandırması, kullanıcılarınıza birden çok oturum açma sağlay
 Oturum açma sayfasında veya gezinti çubuğunda veya uygulamanızın herhangi bir yerinde, etkinleştirdiğiniz her bir sağlayıcının () bir oturum açma bağlantısını ekleyin `/.auth/login/<provider>` . Örnek:
 
 ```html
-<a href="/.auth/login/aad">Log in with Azure AD</a>
-<a href="/.auth/login/microsoftaccount">Log in with Microsoft Account</a>
+<a href="/.auth/login/aad">Log in with the Microsoft Identity Platform</a>
 <a href="/.auth/login/facebook">Log in with Facebook</a>
 <a href="/.auth/login/google">Log in with Google</a>
 <a href="/.auth/login/twitter">Log in with Twitter</a>
@@ -159,7 +157,6 @@ Sunucu kodunuzda sağlayıcıya özgü belirteçler istek üstbilgisine eklenir,
 | Azure Active Directory | `X-MS-TOKEN-AAD-ID-TOKEN` <br/> `X-MS-TOKEN-AAD-ACCESS-TOKEN` <br/> `X-MS-TOKEN-AAD-EXPIRES-ON`  <br/> `X-MS-TOKEN-AAD-REFRESH-TOKEN` |
 | Facebook belirteci | `X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN` <br/> `X-MS-TOKEN-FACEBOOK-EXPIRES-ON` |
 | Google | `X-MS-TOKEN-GOOGLE-ID-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-ACCESS-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-EXPIRES-ON` <br/> `X-MS-TOKEN-GOOGLE-REFRESH-TOKEN` |
-| Microsoft Hesabı | `X-MS-TOKEN-MICROSOFTACCOUNT-ACCESS-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-EXPIRES-ON` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-AUTHENTICATION-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-REFRESH-TOKEN` |
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
@@ -175,7 +172,6 @@ Sağlayıcınızın erişim belirtecinin ( [oturum belirteci](#extend-session-to
 - **Google**: `access_type=offline` API çağrın sorgu dizesi parametresini ekleyin `/.auth/login/google` . Mobile Apps SDK kullanıyorsanız, `LogicAsync` aşırı yüklerden birine parametreyi ekleyebilirsiniz (bkz. [Google Refresh belirteçleri](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: yenileme belirteçleri sağlamıyor. Uzun süreli belirteçlerin süresi 60 gün içinde doluyor (bkz. [Facebook süre sonu ve erişim belirteçleri uzantısı](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
 - **Twitter**: erişim belirteçlerinin süre sonu yok (bkz. [Twitter OAuth SSS](https://developer.twitter.com/en/docs/authentication/faq)).
-- **Microsoft hesabı**: [Microsoft hesabı kimlik doğrulaması ayarlarını yapılandırırken](configure-authentication-provider-microsoft.md) `wl.offline_access` kapsamı seçin.
 - **Azure Active Directory**: içinde [https://resources.azure.com](https://resources.azure.com) , aşağıdaki adımları uygulayın:
     1. Sayfanın üst kısmında **oku/yaz**' ı seçin.
     2. Sol tarayıcıda, **abonelikler** > * *_\<subscription\_name_** > **ResourceGroups** > * *_ \<resource\_group\_name> _* * > **sağlayıcıları**  >  **Microsoft. Web**  >  **Sites** > * *_ \<app\_name> _ * * > **config**  >  **authsettings öğesine tıklayın**' e gidin. 
@@ -280,14 +276,26 @@ Kimlik sağlayıcısı, belirli bir anahtar yetkilendirme sağlayabilir. Örnek:
 
 Diğer düzeylerin herhangi biri ihtiyacınız olan yetkilendirmeyi sağlamıyorsa veya platformunuz veya kimlik sağlayıcınız desteklenmiyorsa, [Kullanıcı taleplerine](#access-user-claims)göre kullanıcılara yetki vermek için özel kod yazmanız gerekir.
 
-## <a name="updating-the-configuration-version-preview"></a>Yapılandırma sürümünü güncelleştirme (Önizleme)
+## <a name="updating-the-configuration-version"></a>Yapılandırma sürümü güncelleştiriliyor
 
-Kimlik doğrulama/yetkilendirme özelliği için yönetim API 'sinin iki sürümü vardır. Preview v2 sürümü, Azure portal "kimlik doğrulama (Önizleme)" deneyimi için gereklidir. Zaten v1 API 'sini kullanan bir uygulama, birkaç değişiklik yapıldıktan sonra v2 sürümüne yükseltilebilir. Özellikle gizli yapılandırma, yuva Yapışkan uygulama ayarlarına taşınmalıdır. Microsoft hesabı sağlayıcısı 'nın yapılandırması şu anda v2 sürümünde de desteklenmiyor.
+Kimlik doğrulama/yetkilendirme özelliği için yönetim API 'sinin iki sürümü vardır. V2 sürümü, Azure portal "kimlik doğrulama" deneyimi için gereklidir. Zaten v1 API 'sini kullanan bir uygulama, birkaç değişiklik yapıldıktan sonra v2 sürümüne yükseltilebilir. Özellikle gizli yapılandırma, yuva Yapışkan uygulama ayarlarına taşınmalıdır. Bu, uygulamanızın portalın "kimlik doğrulama" bölümünden otomatik olarak yapılabilir.
 
 > [!WARNING]
-> V2 önizlemesine geçiş, uygulamanız için App Service kimlik doğrulama/yetkilendirme özelliğinin yönetimini devre dışı bırakır. Örneğin, Azure portal, Azure CLı ve Azure PowerShell var olan deneyimi gibi. Bu işlem geri alınamaz. Önizleme sırasında, üretim iş yüklerinin geçirilmesi önerilir veya desteklenmez. Test uygulamaları için bu bölümdeki adımları izlemeniz gerekir.
+> V2 'ye geçiş, uygulamanız için App Service kimlik doğrulama/yetkilendirme özelliğinin yönetimini devre dışı bırakır. Örneğin, Azure portal, Azure CLı ve Azure PowerShell var olan deneyimi gibi bazı istemciler. Bu işlem geri alınamaz.
 
-### <a name="moving-secrets-to-application-settings"></a>Gizli dizileri uygulama ayarlarına taşıma
+V2 API 'SI, Microsoft hesabı 'nın v1 'de yapıldığından farklı bir sağlayıcı olarak oluşturulmasını veya düzenlenmesinin yapılmasını desteklemez. Bunun yerine, hem Azure AD hem de kişisel Microsoft hesaplarıyla Kullanıcı oturumu açmak için yakınsanmış [Microsoft Identity platformunu](../active-directory/develop/v2-overview.md) kullanır. V2 API 'sine geçiş yaparken, v1 Azure Active Directory yapılandırması Microsoft Identity platform sağlayıcısını yapılandırmak için kullanılır. V1 Microsoft hesabı sağlayıcısı geçiş işleminde ileri taşınır ve normal olarak çalışmaya devam eder, ancak yeni Microsoft Identity platform modeline taşımanız önerilir. Daha fazla bilgi edinmek için bkz. [Microsoft hesap sağlayıcısı kayıtları Için destek](#support-for-microsoft-account-provider-registrations) .
+
+Otomatik geçiş işlemi, sağlayıcı gizli dizilerini uygulama ayarlarına taşıyacak ve sonra yapılandırmanın geri kalanını yeni biçime dönüştürmeyecektir. Otomatik geçişi kullanmak için:
+
+1. Portalda uygulamanıza gidin ve **kimlik doğrulaması** menü seçeneğini belirleyin.
+1. Uygulama v1 modeli kullanılarak yapılandırıldıysa, bir **yükseltme** düğmesi görürsünüz.
+1. Onay isteminde açıklamayı Gözden geçirin. Geçiş işlemini gerçekleştirmeye hazırsanız, sorulduğunda **Yükselt** ' e tıklayın.
+
+### <a name="manually-managing-the-migration"></a>Geçişi el ile yönetme
+
+Aşağıdaki adımlar, yukarıda belirtilen otomatik sürümü kullanmak istemiyorsanız, uygulamayı v2 API 'sine el ile geçirmenize olanak sağlayacak.
+
+#### <a name="moving-secrets-to-application-settings"></a>Gizli dizileri uygulama ayarlarına taşıma
 
 1. V1 API 'sini kullanarak mevcut yapılandırmanızı alın:
 
@@ -397,9 +405,7 @@ Kimlik doğrulama/yetkilendirme özelliği için yönetim API 'sinin iki sürüm
 
 Artık uygulamayı, kimlik sağlayıcısı gizli dizilerini uygulama ayarları olarak depolayacak şekilde geçirdiniz.
 
-### <a name="support-for-microsoft-account-registrations"></a>Microsoft hesabı kayıtları için destek
-
-V2 API 'SI Şu anda farklı bir sağlayıcı olarak Microsoft hesabını desteklemez. Bunun yerine, kişisel Microsoft hesaplarıyla kullanıcıları oturum açmak için yakınsanmış [Microsoft Identity platformunu](../active-directory/develop/v2-overview.md) kullanır. V2 API 'sine geçiş yaparken, v1 Azure Active Directory yapılandırması Microsoft Identity platform sağlayıcısını yapılandırmak için kullanılır.
+#### <a name="support-for-microsoft-account-provider-registrations"></a>Microsoft hesabı sağlayıcı kayıtları için destek
 
 Mevcut yapılandırmanız bir Microsoft hesabı sağlayıcısı içeriyorsa ve bir Azure Active Directory sağlayıcısı içermiyorsa, yapılandırmayı Azure Active Directory sağlayıcısına değiştirebilir ve sonra geçişi gerçekleştirebilirsiniz. Bunu yapmak için:
 
@@ -413,12 +419,10 @@ Mevcut yapılandırmanız bir Microsoft hesabı sağlayıcısı içeriyorsa ve b
 1. Bu noktada yapılandırmayı başarıyla kopyaladınız, ancak mevcut Microsoft hesap sağlayıcısı yapılandırması kalmaya devam eder. Kaldırmadan önce, uygulamanızın tüm bölümlerinin Azure Active Directory sağlayıcıya oturum açma bağlantıları aracılığıyla başvurduğunuzdan emin olun. Uygulamanızın tüm bölümlerinin beklendiği gibi çalıştığını doğrulayın.
 1. Her şeyin AAD Azure Active Directory sağlayıcısına karşı çalıştığını doğrulandıktan sonra, Microsoft hesap sağlayıcısı yapılandırmasını kaldırabilirsiniz.
 
-Bazı uygulamalarda Azure Active Directory ve Microsoft hesabı için ayrı kayıtlar olabilir. Bu uygulamalar şu anda geçirilemez. 
-
 > [!WARNING]
 > AAD uygulama kaydı için [Desteklenen hesap türlerini](../active-directory/develop/supported-accounts-validation.md) değiştirerek iki kaydı yakınlaşmak mümkündür. Bununla birlikte, bu, Microsoft hesabı kullanıcıları için yeni bir onay istemi zorlamasına ve bu kullanıcıların kimlik talepleri yapıda farklı olabilir ve bu da `sub` Yeni bir uygulama kimliği kullanımda olduğundan değerleri özellikle değiştiriyor. Bu yaklaşım, iyice anlaşılmadığı takdirde önerilmez. Bunun yerine v2 API yüzeyinde iki kayıt desteğini beklemeniz gerekir.
 
-### <a name="switching-to-v2"></a>V2 'ye geçiliyor
+#### <a name="switching-to-v2"></a>V2 'ye geçiliyor
 
 Yukarıdaki adımlar gerçekleştirildikten sonra, Azure portal uygulamaya gidin. "Kimlik doğrulama (Önizleme)" bölümünü seçin. 
 

@@ -99,6 +99,8 @@
           href: how-to-bind-redis.md
         - name: Uygulamayı Azure MySQL'e bağlama
           href: how-to-bind-mysql.md
+        - name: Azure SQL veritabanı 'na bağlanmak için yönetilen kimlik
+          href: connect-managed-identity-to-azure-sql.md
         - name: Azure Load Balance Çözümleriyle tümleştirme
           href: how-to-integrate-azure-load-balancers.md
     - name: İzleme
@@ -133,6 +135,20 @@
           href: how-to-enable-system-assigned-managed-identity.md
         - name: Rol ve izinler oluşturma
           href: how-to-permissions.md
+        - name: Uçtan uca aktarım katmanı güvenliğini etkinleştir
+          href: how-to-enable-end-to-end-tls.md
+        - name: Erişim yapılandırması sunucusu ve hizmet kayıt defteri
+          href: how-to-access-data-plane-azure-ad-rbac.md
+    - name: Tümleştirme
+      items:
+        - name: Uygulamayı Azure CosmosDB’ye bağlama
+          href: how-to-bind-cosmos.md
+        - name: Uygulamayı Redis için Azure Cache'e bağlama
+          href: how-to-bind-redis.md
+        - name: Uygulamayı Azure MySQL'e bağlama
+          href: how-to-bind-mysql.md
+        - name: Azure Load Balance Çözümleriyle tümleştirme
+          href: how-to-integrate-azure-load-balancers.md
     - name: Otomatikleştirme
       items:
         - name: Azure DevOps ile CI/CD
