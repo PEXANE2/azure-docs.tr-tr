@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 97fad1b984ad34722a952a31d8245eb68417a2ab
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: e6b35031d976a11bdac6f38d74f9e02a0fc83302
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104779979"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936317"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
@@ -158,7 +158,7 @@ Etkin olmayan uç nokta ayarlandıktan sonra, kullanılmayan iletiler depolama h
 
 Kullanılmayan iletiler, özgün uç noktanıza teslim edilmesi amaçlanan özgün olayın şemasıyla eşleşir.
 
-Aşağıda, bir [ikizi Create bildirimi](how-to-interpret-event-data.md#digital-twin-life-cycle-notifications)için atılacak ileti iletisine bir örnek verilmiştir:
+Aşağıda, bir [ikizi Create bildirimi](how-to-interpret-event-data.md#digital-twin-lifecycle-notifications)için atılacak ileti iletisine bir örnek verilmiştir:
 
 ```json
 {
@@ -234,12 +234,14 @@ CLı ve kullanılabilen komutları kullanma hakkında daha fazla bilgi için bkz
 Bitiş noktaları, filtrelemeden Azure dijital TWINS 'ten çeşitli olaylar alır:
 * Azure Digital TWINS hizmet API 'SI kullanılarak [dijital TWINS](concepts-twins-graph.md) tarafından tetiklenen telemetri
 * İkizi özellik değişikliği bildirimleri, Azure dijital TWINS örneğindeki herhangi bir ikizi için özellik değişikliklerinde harekete geçirilir
-* Yaşam döngüsü olayları, TWINS veya ilişkiler oluşturulduğunda veya silindiğinde tetiklenir
+* TWINS veya ilişkiler oluşturulduğunda veya silindiğinde tetiklenen yaşam döngüsü olayları
 
 Olay yolıza bir uç nokta için **filtre** ekleyerek gönderilmekte olan olayları kısıtlayabilirsiniz.
 
 >[!NOTE]
-> Filtreler **büyük/küçük harfe duyarlıdır** ve yük durumuyla eşleşmesi gerekir (model durumuyla eşleşmeyebilir).
+> Filtreler **büyük/küçük harfe duyarlıdır** ve yük durumuyla eşleşmesi gerekir. 
+>
+> Telemetri filtreleri için bu, büyük küçük harf 'in cihaz tarafından gönderilen telemetrideki büyük/küçük harf ile eşleşmesi gerektiği anlamına gelir. 
 
 Bir filtre eklemek için, aşağıdaki gövdeyi kullanarak *https://{-Azure-Digital-Twins-hostname}/eventRoutes/{Event-Route-Name}. api-Version = 2020-10-31* IÇIN bir PUT isteği kullanabilirsiniz:
 

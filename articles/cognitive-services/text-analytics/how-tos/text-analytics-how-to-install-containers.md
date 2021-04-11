@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/25/2021
 ms.author: aahi
 keywords: Şirket içi, Docker, kapsayıcı, yaklaşım analizi, doğal dil işleme
-ms.openlocfilehash: ac82781ed4a05fbbca7f5b16edb0b5349dfc400a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc5406cec54defd118ba350ba59b8d7311cff563
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102432086"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106089737"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Metin Analizi kapsayıcılarını yükleme ve çalıştırma
 
@@ -49,6 +49,8 @@ Metin Analizi kapsayıcıları kullanmadan önce aşağıdaki önkoşulları kar
 |Metin Analizi kaynağı |Kapsayıcısını kullanabilmeniz için şunları yapmanız gerekir:<br><br>Ücretsiz (F0) veya standart (ler) [fiyatlandırma katmanına](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)sahip bir Azure [metin analizi kaynağı](../../cognitive-services-apis-create-account.md) . Azure portal kaynağın **anahtar ve uç** nokta sayfasına gıderek ilişkili API anahtarını ve uç nokta URI 'sini almanız gerekecektir. <br><br>**{API_KEY}**: kullanılabilir iki kaynak anahtardan biri. <br><br>**{ENDPOINT_URI}**: kaynağınız için uç nokta. |
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
+
+Sistem durumu kapsayıcısı için Metin Analizi kullanıyorsanız [sorumlu AI](https://docs.microsoft.com/legal/cognitive-services/text-analytics/transparency-note-health)  (rampa) bildirimi de değeri ile birlikte bulunmalıdır `accept` .
 
 ## <a name="the-host-computer"></a>Ana bilgisayar
 

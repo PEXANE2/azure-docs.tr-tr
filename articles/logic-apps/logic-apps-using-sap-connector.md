@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 03/24/2021
 tags: connectors
-ms.openlocfilehash: c81e40f769ab9eefdd919f3336591dc065d6cfc9
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: b2f7ae79cf43e257c3e13d2da7fec5c83dd3fab0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105564122"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937286"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps’ten SAP sistemlerine bağlanma
 
@@ -33,6 +33,8 @@ Bu makalede [SAP bağlayıcısını](/connectors/sap/)kullanarak Logic Apps SAP 
     * Mantıksal uygulamanızı Premium düzeyinde bir [tümleştirme hizmeti ortamında (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)çalıştırıyorsanız, [Ise önkoşulları](#ise-prerequisites)bölümüne bakın.
 
 * Logic Apps erişmek istediğiniz [SAP uygulama sunucusu](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) veya [SAP ileti sunucusu](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm) . Bağlayıcıyla kullanabileceğiniz SAP sunucuları ve SAP eylemleri hakkında daha fazla bilgi için bkz. [SAP uyumluluğu](#sap-compatibility).
+
+    * SAP sunucunuzu RFC kullanımına izin verecek şekilde yapılandırmanız gerekir. Daha fazla bilgi için şu SAP notuna bakın: [460089-dış RFC programları Için en düşük yetkilendirme profilleri](https://launchpad.support.sap.com/#/notes/460089). 
 
 * SAP sunucunuza göndermek için örnek bir IDoc dosyası gibi ileti içeriği. Bu içerik XML biçiminde olmalıdır ve kullanmak istediğiniz SAP eyleminin ad alanını içermelidir. [BIR XML zarfına sarmalayarak, düz bir dosya şeması olan IDoc 'ları gönderebilirsiniz](#send-flat-file-idocs).
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4b85397eeda651678fe66c6e78199dd25630dcc4
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 420dade645d1a4ee32bb888aecb76b033d5756e1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889899"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731313"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Azure App Service erişim kısıtlamalarını ayarlama
 
@@ -178,7 +178,7 @@ Uygulamanıza erişimi denetleyebilmenin yanı sıra, uygulamanız tarafından k
 ### <a name="restrict-access-to-a-specific-azure-front-door-instance"></a>Belirli bir Azure ön kapısı örneğine erişimi kısıtla
 Azure ön kapılarından uygulamanıza giden trafik, Azurefrontkapı. arka uç hizmeti etiketinde tanımlanan iyi bilinen bir IP aralığı kümesinden kaynaklanır. Bir hizmet etiketi kısıtlama kuralı kullanarak, trafiği yalnızca Azure ön kapısından kaynaklanacak şekilde kısıtlayabilirsiniz. Trafiğin yalnızca belirli örnekten kaynaklandığını sağlamak için, Azure ön kapısının gönderdiği benzersiz http üstbilgisine göre gelen istekleri daha fazla filtrelemeniz gerekir.
 
-:::image type="content" source="media/app-service-ip-restrictions/access-restrictions-frontdoor.png" alt-text="Azure ön kapı kısıtlamasının nasıl ekleneceğini gösteren Azure portal ' erişim kısıtlamaları ' sayfasının ekran görüntüsü.":::
+:::image type="content" source="media/app-service-ip-restrictions/access-restrictions-frontdoor.png?v2" alt-text="Azure ön kapı kısıtlamasının nasıl ekleneceğini gösteren Azure portal ' erişim kısıtlamaları ' sayfasının ekran görüntüsü.":::
 
 PowerShell örneği:
 

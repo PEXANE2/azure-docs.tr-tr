@@ -1,19 +1,19 @@
 ---
 title: Güvenlik duvarı kurallarını yönetme-Azure CLı-PostgreSQL için Azure veritabanı-esnek sunucu
 description: PostgreSQL için Azure veritabanı-Azure CLı komut satırını kullanarak esnek sunucu için güvenlik duvarı kuralları oluşturun ve yönetin.
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 36249694c5a4de8a738853892f827c6d9e1e4aff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 843ad39d1c09d7c5a2fb7e9b536e300edf58d8e5
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92489481"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551130"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql---flexible-server-firewall-rules-using-the-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı oluşturma ve yönetme-esnek sunucu güvenlik duvarı kuralları
 

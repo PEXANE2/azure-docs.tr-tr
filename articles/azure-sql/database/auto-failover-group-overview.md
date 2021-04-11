@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 12/26/2020
-ms.openlocfilehash: e0b9eea7be97b9b67e75c314c4a1d9e69322e5b5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/26/2021
+ms.openlocfilehash: 4d497adf5229819527608157a7a840d514f4292c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594266"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732355"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -178,6 +178,12 @@ OLTP işlemlerini gerçekleştirirken `<fog-name>.database.windows.net` sunucu U
 
 Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Salt okuma oturumları için `<fog-name>.secondary.database.windows.net` sunucu URL 'si olarak kullanın ve bağlantı otomatik olarak ikinciye yönlendirilir. Ayrıca, kullanarak bağlantı dizesinde oku hedefini belirtmeniz önerilir `ApplicationIntent=ReadOnly` .
 
+> [!NOTE]
+> Premium, İş Açısından Kritik ve hiper ölçekli hizmet katmanlarında SQL veritabanı, bağlantı dizesindeki parametresini kullanarak salt okuma sorgu iş yüklerini boşaltmak için [salt okuma çoğaltmalarının](read-scale-out.md) kullanımını destekler `ApplicationIntent=ReadOnly` . Coğrafi olarak çoğaltılan ikincil örneği yapılandırdığınızda bu özelliği kullanarak birincil konumdaki veya coğrafi olarak çoğaltılan konumdaki bir salt okuma çoğaltmasına bağlanabilirsiniz.
+>
+> - Birincil konumdaki bir salt okuma çoğaltmasına bağlanmak için `ApplicationIntent=ReadOnly` ve kullanın `<fog-name>.database.windows.net` .
+> - İkincil konumdaki bir salt okuma çoğaltmasına bağlanmak için `ApplicationIntent=ReadOnly` ve kullanın `<fog-name>.secondary.database.windows.net` .
+
 ### <a name="preparing-for-performance-degradation"></a>Performans düşüşü için hazırlanma
 
 Tipik bir Azure uygulaması birden çok Azure hizmeti kullanır ve birden çok bileşenden oluşur. Yük devretme grubunun otomatik yük devretmesi, Azure SQL bileşenleri yalnızca durum temelinde tetiklenir. Birincil bölgedeki diğer Azure hizmetleri kesinti tarafından etkilenmeyebilir ve bileşenleri bu bölgede kullanılabilir olmaya devam edebilir. Birincil veritabanları DR bölgesine geçiş yaptıktan sonra, bağımlı bileşenler arasındaki gecikme artabilir. Uygulamanın performansına yönelik daha yüksek gecikme süresini önlemek için tüm uygulama bileşenlerinin DR bölgesindeki yedekliliği olduğundan emin olun ve bu [ağ güvenlik yönergelerini](#failover-groups-and-network-security)izleyin.
@@ -267,7 +273,7 @@ OLTP işlemlerini gerçekleştirirken `<fog-name>.zone_id.database.windows.net` 
 Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Coğrafi olarak çoğaltılan ikinciye doğrudan bağlanmak için `<fog-name>.secondary.<zone_id>.database.windows.net` sunucu URL 'si olarak kullanın ve bağlantı doğrudan coğrafi çoğaltılan ikincil öğesine yapılır.
 
 > [!NOTE]
-> Premium, İş Açısından Kritik ve hiper ölçekli hizmet katmanlarında SQL veritabanı, bağlantı dizesindeki parametresini kullanarak salt okunurdur ve salt okunurdur bir veya daha fazla çoğaltmanın kapasitesini kullanarak salt okuma yapılan sorgu iş yüklerini çalıştırmak için [salt okunurdur](read-scale-out.md) `ApplicationIntent=ReadOnly` . Coğrafi olarak çoğaltılan ikincil örneği yapılandırdığınızda bu özelliği kullanarak birincil konumdaki veya coğrafi olarak çoğaltılan konumdaki bir salt okuma çoğaltmasına bağlanabilirsiniz.
+> İş Açısından Kritik katmanında, SQL yönetilen örneği, bağlantı dizesindeki parametresini kullanarak salt okuma sorgusu iş yüklerini boşaltmak için [salt okuma çoğaltmalarının](read-scale-out.md) kullanımını destekler `ApplicationIntent=ReadOnly` . Coğrafi olarak çoğaltılan ikincil örneği yapılandırdığınızda bu özelliği kullanarak birincil konumdaki veya coğrafi olarak çoğaltılan konumdaki bir salt okuma çoğaltmasına bağlanabilirsiniz.
 >
 > - Birincil konumdaki bir salt okuma çoğaltmasına bağlanmak için `ApplicationIntent=ReadOnly` ve kullanın `<fog-name>.<zone_id>.database.windows.net` .
 > - İkincil konumdaki bir salt okuma çoğaltmasına bağlanmak için `ApplicationIntent=ReadOnly` ve kullanın `<fog-name>.secondary.<zone_id>.database.windows.net` .
