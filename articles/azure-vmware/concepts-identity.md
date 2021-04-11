@@ -3,12 +3,12 @@ title: Kavramlar-kimlik ve erişim
 description: Azure VMware çözümünün kimlik ve erişim kavramları hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: 7b1880ccdee1d4c3ce25e264c004b1a949134a96
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1d49ce27ee74621874281a555651c09a73048928
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026913"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109824"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Çözüm kimliği kavramları
 
@@ -93,6 +93,9 @@ Atanmayan veya silinebilen rollerin oluşturulmasını engellemek için, Azure V
    Eklenen izin, nesnesinin **izinler** bölümünde görüntülenir.
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX-T Yöneticisi erişimi ve kimliği
+
+>[!NOTE]
+>NSX-T 2,5 Şu anda destekleniyor.
 
 NSX-T Yöneticisi 'ne erişmek için *yönetici* hesabını kullanın. Tam ayrıcalıklara sahiptir ve Katman 1 (T1) ağ geçitleri, segmentler (mantıksal anahtarlar) ve tüm hizmetler oluşturup yönetmenize olanak sağlar. Ayrıcalıklar, NSX-T katmanı-0 (T0) ağ geçidine erişmenizi sağlar. T0 ağ geçidinde yapılan bir değişiklik, ağ performansının düşmesine neden olabilir veya özel bir bulut erişimi olmaz. NSX-T T0 ağ geçidinizdeki herhangi bir değişiklik istemek için Azure portal bir destek isteği açın.
 

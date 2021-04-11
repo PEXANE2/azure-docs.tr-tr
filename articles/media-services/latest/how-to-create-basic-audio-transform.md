@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/18/2020
 ms.author: inhenkel
-ms.openlocfilehash: 80edac3106a79a706ee1ef18c48d41d1ad6c3eaf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce0ed303790ad27c99864cc44ea85c96ac3ec468
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101724600"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962246"
 ---
 # <a name="create-a-basic-audio-transform"></a>Temel ses dönüşümü oluşturma
 
@@ -29,7 +29,7 @@ Bu makalede, temel bir ses dönüştürmesinin nasıl oluşturulacağı gösteri
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bir varlık oluşturmak için gerekli Media Services hesabı ve kaynak grubunu oluşturmak üzere [Media Services hesabı oluşturma](./create-account-howto.md) bölümündeki adımları izleyin.
+Bir varlık oluşturmak için gerekli Media Services hesabı ve kaynak grubunu oluşturmak üzere [Media Services hesabı oluşturma](./account-create-how-to.md) bölümündeki adımları izleyin.
 
 ## <a name="methods"></a>Yöntemler
 

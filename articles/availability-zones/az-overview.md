@@ -8,12 +8,12 @@ ms.date: 02/23/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: dad8661de55fc90c9f3d3782c402deb519d16536
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44ff938d0990a1a7794140a82c0e9222bb69a5d7
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596017"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384264"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 'da bölgeler ve Kullanılabilirlik Alanları
 
@@ -23,7 +23,7 @@ Microsoft Azure Hizmetleri, bulut işlemlerinizi en uygun düzeyde olacak şekil
 
 Azure 'da bölgeleri ve Kullanılabilirlik Alanları daha iyi anlamak için, temel hüküm veya kavramların anlaşılmasına yardımcı olur.
 
-| Terim veya kavram | Description |
+| Terim veya kavram | Açıklama |
 | --- | --- |
 | region | Gecikme süresi tanımlı bir çevre içinde dağıtılan ve ayrılmış bölgesel düşük gecikmeli bir ağ ile bağlanmış bir veri merkezleri kümesi. |
 | Coğrafya | En az bir Azure bölgesi içeren bir dünya alanı. Geographiler, veri uygunluğunu ve uyumluluk sınırlarını koruyan ayrı bir pazar tanımlar. Coğrafyalar, özel veri yerleşikliği ve uyumluluk gereksinimleri olan müşterilerin verileri ile uygulamalarını yakın tutmasına olanak tanır. Geographiler, adanmış yüksek kapasiteli ağ altyapımıza yönelik bağlantı yoluyla, tam bölge arızalarına karşı dayanıklı bir şekilde hataya dayanıklıdır. |
@@ -87,8 +87,8 @@ Belirli bir bölgede bir hizmet teklifi yoksa, Microsoft satış temsilcinizle i
 Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırır: temel, genel ve özel. Hizmet kategorileri genel kullanıma sunulduğuna göre atanır. Genellikle, hizmetler yaşam döngüsünü özelleştirilmiş bir hizmet olarak başlatır ve talep ve kullanım artışları, temel veya temel olarak yükseltilebilir. Aşağıdaki tabloda temel olarak hizmetler kategorisi listelenmektedir. Tabloyla ilgili olarak aşağıdakileri göz önünde belirtmelisiniz:
 
 - Bazı hizmetler bölgesel değildir. Bölgesel olmayan hizmetlerin bilgileri ve bir listesi için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/).
-- Daha eski nesil hizmetler veya sanal makineler listelenmez. Daha fazla bilgi için bkz. [önceki nesil sanal makine boyutlarında](../virtual-machines/sizes-previous-gen.md) belgeler
-- . Hizmetlere genel kullanıma (GA) kadar bir kategori atanmaz. Bilgi ve önizleme hizmetlerinin bir listesi için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). 
+- Daha eski nesil hizmetler veya sanal makineler listelenmez. Daha fazla bilgi için bkz. [önceki nesil sanal makine boyutlarında](../virtual-machines/sizes-previous-gen.md)belgeler.
+- Hizmetlere genel kullanıma (GA) kadar bir kategori atanmaz. Bilgi ve önizleme hizmetlerinin bir listesi için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). 
 
 > [!div class="mx-tableFixed"]
 > | Temel                           | Temel                                        | 

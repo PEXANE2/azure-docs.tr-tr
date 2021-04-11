@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 03/25/2021
 ms.openlocfilehash: 251f02f145e8f450b1528bf8676cffdc61a6f051
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105607890"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Application Insights ile Azure Batch .NET uygulamasında izleme ve hata ayıklama
@@ -293,7 +293,7 @@ Application Insights, uygulamanızdan oluşturulan özel durumları günlüğe k
 
 ![Düğüm başına blob indirme süresini gösteren grafiğin ekran görüntüsü.](./media/monitor-application-insights/blobdownloadtime.png)
 
-## <a name="monitor-compute-nodes-continuously"></a>İşlem düğümlerini sürekli izleyin
+## <a name="monitor-compute-nodes-continuously&quot;></a>İşlem düğümlerini sürekli izleyin
 
 Performans sayaçları dahil olmak üzere tüm ölçümlerin yalnızca görevler çalışırken günlüğe kaydedildiğini fark etmiş olabilirsiniz. Bu davranış, Application Insights günlüklerin veri miktarını sınırladığından yararlıdır. Ancak, her zaman işlem düğümlerini izlemek istediğiniz durumlar vardır. Örneğin, Batch hizmeti aracılığıyla zamanlanmamış bir arka plan çalışması çalışıyor olabilir. Bu durumda, işlem düğümünün ömrü için çalışacak bir izleme işlemi ayarlayın. 
 
@@ -302,15 +302,15 @@ Bu davranışı gerçekleştirmenin bir yolu, Application Insights Kitaplığı 
 ```csharp
 ...
  // Batch start task telemetry runner
-private const string BatchStartTaskFolderName = "StartTask";
-private const string BatchStartTaskTelemetryRunnerName = "Microsoft.Azure.Batch.Samples.TelemetryStartTask.exe";
-private const string BatchStartTaskTelemetryRunnerAIConfig = "ApplicationInsights.config";
+private const string BatchStartTaskFolderName = &quot;StartTask&quot;;
+private const string BatchStartTaskTelemetryRunnerName = &quot;Microsoft.Azure.Batch.Samples.TelemetryStartTask.exe&quot;;
+private const string BatchStartTaskTelemetryRunnerAIConfig = &quot;ApplicationInsights.config&quot;;
 ...
 CloudPool pool = client.PoolOperations.CreatePool(
     topNWordsConfiguration.PoolId,
     targetDedicated: topNWordsConfiguration.PoolNodeCount,
-    virtualMachineSize: "standard_d1_v2",
-    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
+    virtualMachineSize: &quot;standard_d1_v2&quot;,
+    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: &quot;5"));
 ...
 
 // Create a start task which will run a dummy exe in background that simply emits performance

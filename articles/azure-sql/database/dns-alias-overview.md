@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 25c2157a8de237d0ec66caa72d59c810d419ac76
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 128a57f02ebd85e4fece3c1417b8afc5c845514a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94989131"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732236"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL veritabanı için DNS diğer adı
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -98,7 +98,7 @@ Kod örneğinde kullanılan cmdlet 'ler şunlardır:
 - [Set-Azsqlserverdnsalıas](/powershell/module/az.Sql/Set-azSqlServerDnsAlias): diğer adın, sunucu 1 ' den sunucu 2 ' ye başvuracak şekilde yapılandırıldığı sunucu adını değiştirir.
 - [Remove-Azsqlserverdnsalıas](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): DNS diğer adını sunucu 2 ' den diğer ad adını kullanarak kaldırın.
 
-## <a name="limitations-during-preview"></a>Önizleme sırasında sınırlamalar
+## <a name="limitations"></a>Sınırlamalar
 
 Şu anda bir DNS diğer adı aşağıdaki sınırlamalara sahiptir:
 

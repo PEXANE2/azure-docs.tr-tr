@@ -4,12 +4,12 @@ description: Bu hızlı başlangıçta, Batch .NET istemci kitaplığı ile bir 
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 9087261865b07d32afab65012e04ea478cb60611
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48166faa016defb719d8b48c2fff84de32f6c2e4
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88921656"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168255"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Hızlı Başlangıç: .NET API ile ilk Azure Batch işinizi çalıştırma
 
@@ -108,7 +108,7 @@ Ayrıntılar için `Program.cs` dosyasına ve aşağıdaki bölümlere bakın.
 
 ### <a name="preliminaries"></a>Başlangıç bilgileri
 
-Bir depolama hesabı ile etkileşimde bulunmak üzere uygulama, .NET için Azure Depolama İstemci Kitaplığı’nı kullanır. [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) ile hesaba bir başvuru oluşturur ve buradan da bir [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient) oluşturur.
+Bir depolama hesabı ile etkileşimde bulunmak üzere uygulama, .NET için Azure Depolama İstemci Kitaplığı’nı kullanır. [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount) ile hesaba bir başvuru oluşturur ve buradan da bir [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient) oluşturur.
 
 ```csharp
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();

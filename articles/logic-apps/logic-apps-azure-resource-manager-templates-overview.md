@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: ec72431d927fd59677075e7adfdf7df171574882
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44131ecf6fd3d8d2f07f0fe567fb924ac8621682
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772952"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110011"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Genel Bakış: Azure Resource Manager şablonları kullanarak Azure Logic Apps dağıtımı otomatikleştirin
 
@@ -67,7 +67,7 @@ Mantıksal uygulama şablonu için öncelikle bu şablon nesneleriyle çalışı
 |-----------|-------------|
 | `parameters` | Azure 'da dağıtım için kaynakları oluştururken ve özelleştirirken kullanılacak değerleri kabul etmek için [şablon parametrelerini](../azure-resource-manager/templates/template-syntax.md#parameters) bildirir. Örneğin, bu parametreler mantıksal uygulamanızın adı ve konumu, bağlantıları ve dağıtım için gereken diğer kaynaklarla ilgili değerleri kabul eder. Bu parametre değerlerini, bu konunun ilerleyen kısımlarında açıklanan bir [Parametreler dosyasında](#template-parameter-files)saklayabilirsiniz. Genel Ayrıntılar için bkz. [Parametreler-Kaynak Yöneticisi Şablon yapısı ve sözdizimi](../azure-resource-manager/templates/template-syntax.md#parameters). |
 | `resources` | Mantıksal uygulamanız, bağlantılarınız, Azure depolama hesaplarınız ve benzeri bir Azure Kaynak grubu oluşturmak veya güncelleştirmek ve dağıtmak için [kaynakları](../azure-resource-manager/templates/template-syntax.md#resources) tanımlar. Genel Ayrıntılar için bkz. [Resources-Kaynak Yöneticisi Şablon yapısı ve sözdizimi](../azure-resource-manager/templates/template-syntax.md#resources). |
-||||
+|||
 
 Mantıksal uygulama şablonunuz bu dosya adı biçimini kullanır:
 

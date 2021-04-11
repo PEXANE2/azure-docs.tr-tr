@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0719fede4147943e76ddfea1c5e77388c7c5cc9f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13dadd9665f2d66861e00d769086fb23a4dea115
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104610073"
+ms.locfileid: "105961702"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Tanılama günlüklerini izleme Media Services
 
@@ -31,7 +31,7 @@ Bu makalede, verileri depolama hesabına yönlendirme ve sonra verileri görünt
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Media Services hesabı oluşturun](../create-account-howto.md).
+- [Media Services hesabı oluşturun](../account-create-how-to.md).
 - [İzleyici Media Services](monitor-media-services.md)gözden geçirin.
 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>Portalı kullanarak verileri depolama hesabına yönlendirme

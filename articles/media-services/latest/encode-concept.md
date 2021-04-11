@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 22f4c5bba3ea6836a8c9b016315f3cfae36cb52d
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 225f1d311739bdafbe39971a2b4ac74917e770e9
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106112167"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279502"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Video ve ses Media Services kodlama
 
@@ -31,7 +31,7 @@ Videolar genellikle, [aşamalı indirme](https://en.wikipedia.org/wiki/Progressi
 > Media Services, iptal edilen veya hatalı işler için faturalandırılmıyor. Örneğin, %50 ilerleme durumuna ulaşan ve iptal edilen bir iş, iş dakikası %50 ' de faturalandırılmaz. Yalnızca bitmiş işler için ücretlendirilirsiniz.
 
 * Aşamalı indirme ile teslim etmek için Azure Media Services kullanarak bir dijital medya dosyasını (Mezzanine), [H.](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) ve codec bileşeniyle kodlanmış video ve [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) codec ile kodlanan ses içeren bir [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) dosyasına dönüştürebilirsiniz. Bu MP4 dosyası Depolama hesabınızdaki bir varlığa yazılır. Dosyayı doğrudan indirmek için Azure depolama API 'Lerini veya SDK 'Larını (örneğin, [depolama REST API](../../storage/common/storage-rest-api-auth.md) veya [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) kullanabilirsiniz. Depolama alanında belirli bir kapsayıcı adıyla çıkış varlığı oluşturduysanız, bu konumu kullanın. Aksi takdirde, [varlık kapsayıcısı URL 'lerini listelemek](/rest/api/media/assets/listcontainersas)için Media Services kullanabilirsiniz. 
-* İçeriği Uyarlamalı bit hızı akışı ile teslim etmek üzere hazırlamak için, Mezzanine dosyasının birden çok bitücret (yüksek-düşük) ile kodlanmış olması gerekir. Kaliteyi düzgün şekilde geçişini sağlamak için, bit hızı düşürüldü, videonun çözümlenmesi düşürüldü. Bu, bir çözüm (bkz. [otomatik olarak üretilen Uyarlamalı bit hızı el](encode-autogen-bitrate-ladder.md)ile) adlı bir kodlama. Media Services kullanarak, Mezzanine dosyalarını birden çok bit hızında kodlamak için kullanabilirsiniz. Bunu yaparken, Depolama hesabınızdaki bir varlığa yazılan MP4 dosyaları ve ilişkili akış yapılandırma dosyaları kümesi alacaksınız. Daha sonra, videoyu [MPEG-Dash](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) ve [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)gibi akış protokolleriyle teslim etmek Için Media Services ' de [dinamik paketleme](encode-dynamic-packaging-concept.md) özelliğini kullanabilirsiniz. Bu, bir [akış Bulucu](streaming-locators-concept.md) oluşturmanız ve desteklenen protokollere karşılık gelen akış URL 'leri oluşturmanızı gerektirir. Bu, daha sonra özelliklerine göre cihazlara/uygulamalara devredilebilir.
+* İçeriği Uyarlamalı bit hızı akışı ile teslim etmek üzere hazırlamak için, Mezzanine dosyasının birden çok bitücret (yüksek-düşük) ile kodlanmış olması gerekir. Kaliteyi düzgün şekilde geçişini sağlamak için, bit hızı düşürüldü, videonun çözümlenmesi düşürüldü. Bu, bir çözüm (bkz. [otomatik olarak üretilen Uyarlamalı bit hızı el](encode-autogen-bitrate-ladder.md)ile) adlı bir kodlama. Media Services kullanarak, Mezzanine dosyalarını birden çok bit hızında kodlamak için kullanabilirsiniz. Bunu yaparken, Depolama hesabınızdaki bir varlığa yazılan MP4 dosyaları ve ilişkili akış yapılandırma dosyaları kümesi alacaksınız. Daha sonra, videoyu [MPEG-Dash](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) ve [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)gibi akış protokolleriyle teslim etmek Için Media Services ' de [dinamik paketleme](encode-dynamic-packaging-concept.md) özelliğini kullanabilirsiniz. Bu, bir [akış Bulucu](stream-streaming-locators-concept.md) oluşturmanız ve desteklenen protokollere karşılık gelen akış URL 'leri oluşturmanızı gerektirir. Bu, daha sonra özelliklerine göre cihazlara/uygulamalara devredilebilir.
 
 Aşağıdaki diyagramda, dinamik paketleme ile isteğe bağlı kodlama için iş akışı gösterilmektedir.
 
@@ -41,7 +41,7 @@ Bu konu, içeriğinizi Media Services v3 ile nasıl kodlayabileceğine kılavuzl
 
 ## <a name="transforms-and-jobs"></a>Dönüşümler ve işler
 
-Media Services v3 ile kodlamak için bir [dönüşüm](/rest/api/media/transforms) ve [iş](/rest/api/media/jobs)oluşturmanız gerekir. Dönüştürme, kodlama ayarlarınız ve çıktılar için bir tarif tanımlar; iş, tarif eden bir örneğidir. Daha fazla bilgi için [Dönüşümler ve İşler](transforms-jobs-concept.md) konusuna bakın.
+Media Services v3 ile kodlamak için bir [dönüşüm](/rest/api/media/transforms) ve [iş](/rest/api/media/jobs)oluşturmanız gerekir. Dönüştürme, kodlama ayarlarınız ve çıktılar için bir tarif tanımlar; iş, tarif eden bir örneğidir. Daha fazla bilgi için [Dönüşümler ve İşler](transform-jobs-concept.md) konusuna bakın.
 
 Media Services ile kodlarken, kodlayıcıların giriş medya dosyalarının nasıl işleneceğini söylemek için önayarları kullanın. V3 Media Services, dosyalarınızı kodlamak için standart kodlayıcı kullanırsınız. Örneğin, video çözünürlüğünü ve/veya kodlanmış içerikte istediğiniz ses kanalı sayısını belirtebilirsiniz.
 
@@ -84,8 +84,8 @@ Bir videoyu kodlarken, kaynak dosyayı kırpmak veya kırpmak ve giriş videosun
 
 Örneklere bakın:
 
-* [.NET ile videoyu alt kırpın](subclip-video-dotnet-howto.md)
-* [REST ile videoyu alt kırpın](subclip-video-rest-howto.md)
+* [.NET ile videoyu alt kırpın](transform-subclip-video-dotnet-how-to.md)
+* [REST ile videoyu alt kırpın](transform-subclip-video-rest-how-to.md)
 
 ## <a name="built-in-presets"></a>Yerleşik ön ayarlar
 
