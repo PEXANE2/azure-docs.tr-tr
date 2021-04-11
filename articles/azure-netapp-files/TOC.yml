@@ -145,6 +145,8 @@
       href: /rest/api/netapp/
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.netapp/allversions
+    - name: Azure CLI
+      href: /cli/azure/netappfiles
     - name: Azure Uygulamayla Tutarlı Anlık Görüntü Aracı (AzAcSnap)
       items:
         - name: AzAcSnap için sürüm notları

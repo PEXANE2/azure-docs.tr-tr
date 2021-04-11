@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 0c14b9a0c927ef9ed96853ddeed64b161df0d277
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c0ae5ae4a66ce55da40eae3959945c96013af3ea
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176714"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075653"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Güvenlik uyarıları - başvuru kılavuzu
 
@@ -510,7 +510,7 @@ Güvenlik Merkezi 'nin desteklenen Kill zinciri amaçları [, MITRE ATT&CK matri
 | **Sızdırma**        | Exfiltration, bir hedef ağdan dosya ve bilgilerin kaldırılmasına neden olan veya yardımcı olan tekniklerin ve özniteliklerin anlamına gelir. Bu kategori Ayrıca, bir sistem veya ağ üzerindeki konumları da ele alır.                                                                                                                                                                                                                                                                                                                                  |
 | **CommandAndControl**   | Komut ve denetim taktik, reklam işlemlerinin bir hedef ağ içindeki denetimleri altında sistemlerle nasıl iletişim kuracağını temsil eder.                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | **Etki**              | Etki olayları öncelikle bir sistem, hizmet veya ağın kullanılabilirliğini veya bütünlüğünü azaltmaya çalışır; bir iş veya işlemsel işlemi etkilemek için verilerin işlenmesi dahil. Bu, genellikle fidye, erteleme, veri işleme ve diğer diğer teknikleri ifade eder.                                                                                                                                                                                                                                                                                                     |
-|                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |  |
+|                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | 
 
 > [!NOTE]
 > Önizlemede olan uyarılar için: [!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]

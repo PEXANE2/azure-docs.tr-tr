@@ -1,14 +1,14 @@
 ---
 title: 'Hızlı başlangıç: Başlarken'
-description: Bu hızlı başlangıçta, IoT dağıtımı için Defender için temel iş akışını anlama hakkında bilgi edineceksiniz.
+description: Bu hızlı başlangıçta, IoT dağıtımı için Defender için temel iş akışını anlama hakkında bilgi edinebilirsiniz.
 ms.topic: quickstart
 ms.date: 2/18/2021
-ms.openlocfilehash: c6136d734570714b691a4ba3c2a72305c4c85590
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: aa26ea26a3fb0a08d931657cb7ad236c68972e2f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784501"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384962"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>Hızlı başlangıç: IoT için Defender 'ı kullanmaya başlama
 
@@ -20,7 +20,7 @@ Bu makalede IoT için Azure Defender 'ı kurmak için uygulayabileceğiniz adım
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Yok
+- Yok
 
 ## <a name="permission-requirements"></a>İzin gereksinimleri
 
@@ -60,11 +60,14 @@ Kayıt şunları içerir:
 Kaydolmak için:
 
 1. IoT portalı için Azure Defender ' a gidin.
+
 1. **Yerleşik abonelik**' ı seçin.
+
 1. **Fiyatlandırma** sayfasında bir abonelik seçin ya da yeni bir tane oluşturun ve kaydedilmiş cihazların sayısını ekleyin.
+
 1. **Şirket içi yönetim konsolunu indirin** sekmesini seçin ve indirilen etkinleştirme dosyasını kaydedin. Bu dosya, tanımladığınız toplam kaydedilmiş cihazları içerir. Bu dosya, ilk oturum açma işleminden sonra yönetim konsoluna yüklenir.
 
-Aboneliği boşaltma hakkında daha fazla bilgi için bkz. [aboneliği](how-to-manage-sensors-on-the-cloud.md#offboard-a-subscription)kaldırma.
+Aboneliği boşaltma hakkında daha fazla bilgi için bkz. [aboneliği](how-to-manage-subscriptions.md#offboard-a-subscription)kaldırma.
 
 ## <a name="install-and-set-up-the-on-premises-management-console"></a>Şirket içi yönetim konsolunu yükleyip kurma
 
@@ -87,6 +90,7 @@ Yüklemek ve ayarlamak için:
 IoT için Azure Defender ile kaydederek bir algılayıcı ekleme ve bir algılayıcı etkinleştirme dosyası indirme:
 
 1. Bir algılayıcı adı tanımlayın ve bunu bir abonelikle ilişkilendirin.
+
 1. Bir algılayıcı yönetim modu seçin:
 
    - **Buluta bağlı sensörler**: algılayıcıyı algılayan bilgiler algılayıcı konsolunda görüntülenir. Ayrıca, uyarı bilgileri bir IoT Hub 'ı aracılığıyla dağıtılır ve Azure Sentinel gibi diğer Azure hizmetleriyle de paylaşılabilir.
@@ -102,9 +106,13 @@ Daha fazla bilgi için bkz. [IoT Portal Için Defender 'daki algılayıcı eklem
 IoT portalı için Azure Defender 'dan ISO paketini indirin, yazılımı yükleyin ve algılayıcıyı ayarlayın.
 
 1. IoT portalı için **Defender 'dan Başlarken** ' i seçin.
+
 1. **Algılayıcıyı ayarla**' yı seçin.
+
 1. Bir sürüm seçin ve **İndir**' i seçin.
+
 1. Algılayıcı yazılımını yükler. Daha fazla bilgi için bkz. [IoT yüklemesi Için Defender](how-to-install-software.md).
+
 1. Algılayıcıyı etkinleştirin ve ayarlayın. Daha fazla bilgi için bkz. [oturum açma ve algılayıcı etkinleştirme](how-to-activate-and-set-up-your-sensor.md).
 
 ## <a name="connect-sensors-to-an-on-premises-management-console"></a>Algılayıcıları şirket içi yönetim konsoluna bağlama

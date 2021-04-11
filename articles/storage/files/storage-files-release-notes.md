@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/26/2021
+ms.date: 4/7/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 0e1cfe0ae53d1e1b35c5ec29d6c11b0891137e6d
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 4c046129293fcfbcea8ecaf98da72b9126dd540a
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074412"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030347"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure Dosya Eşitleme aracısı sürüm notları
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Windows Server yüklemeleriniz, Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürülür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
@@ -26,6 +26,7 @@ Aşağıdaki Azure Dosya Eşitleme Aracısı sürümleri desteklenir:
 | Ina | Aracı sürüm numarası | Sürüm tarihi | Durum |
 |----|----------------------|--------------|------------------|
 | V12 Release- [KB4568585](https://support.microsoft.com/topic/b9605f04-b4af-4ad8-86b0-2c490c535cfd)| 12.0.0.0 | 26 Mart 2021 | Desteklenen-Fışıklandırma |
+| V 11.3 Release- [KB4539953](https://support.microsoft.com/topic/f68974f6-bfdd-44f4-9659-bf2d8a696c26)| 11.3.0.0 | 7 Nisan 2021 | Desteklenir |
 | V 11.2 Release- [KB4539952](https://support.microsoft.com/topic/azure-file-sync-agent-v11-2-release-february-2021-c956eaf0-cd8e-4511-98c0-e5a1f2c84048)| 11.2.0.0 | 2 Şubat 2021 | Desteklenir |
 | V 11.1 Release- [KB4539951](https://support.microsoft.com/help/4539951)| 11.1.0.0 | 4 Kasım 2020 | Desteklenir |
 | V 10.1 sürüm- [KB4522411](https://support.microsoft.com/help/4522411)| 10.1.0.0 | 5 Haziran 2020 | Desteklenen-aracı sürümü 7 Haziran 2021 tarihinde dolacak |
@@ -76,6 +77,7 @@ Aşağıdaki sürüm notları Azure Dosya Eşitleme aracısına ait sürüm 12.0
     - Azure dosya paylaşımında değiştirilen dosyaları algılamak için geliştirilmiş değişiklik algılama performansı.
     - Mutabakat eşitleme oturumları için performans iyileştirmeleri. 
     - ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED ve ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED hatalarını azaltmak için eşitleme iyileştirmeleri.
+    - Bulut katmanlaması etkinse ve katmanlı dosyalar,/+ parametresiyle Robocopy kullanılarak kopyalanırsa veri bozulmasına neden olan bir hata düzeltildi.
     - Birimde yinelenen verileri kaldırma etkinleştirilmişse, dosyaların sunucu 2019 üzerinde katmana başarısız olmasına neden olabilecek bir hata düzeltildi.
     - Bir dosya 2GiB 'den büyükse AFSDiag 'ın dosyaları sıkıştıramasına neden olabilecek bir hata düzeltildi.
 
@@ -131,8 +133,12 @@ Aşağıdaki öğeler eşitlenmez ancak sistem normal şekilde çalışmaya deva
 ### <a name="cloud-tiering"></a>Bulut katmanlaması
 - Katmanlanmış bir dosya Robocopy kullanılarak başka bir konuma kopyalanırsa, elde edilen dosya katmanlanmaz. Robocopy bu özniteliği kopyalama işlemlerine yanlışlıkla dahil ettiği için çevrimdışı özniteliği ayarlanmış olabilir.
 - Robocopy kullanarak dosyaları kopyalarken dosya zaman damgalarını korumak için/MıR seçeneğini kullanın. Bu, eski dosyaların son erişilen dosyalardan daha önce katmanlı olmasını sağlayacaktır.
-    > [!Warning]  
-    > Robocopy/B anahtarı Azure Dosya Eşitleme desteklenmez. Kaynak dosya bozulmasına yol açacağından Robocopy/B anahtarını bir Azure Dosya Eşitleme sunucusu uç noktasıyla kullanma.
+
+## <a name="agent-version-11300"></a>Aracı sürümü 11.3.0.0
+Aşağıdaki sürüm notları, 7 Nisan 2021 ' de yayınlanan Azure Dosya Eşitleme aracısının sürüm 11.3.0.0 yöneliktir. Bu notlar, sürüm 11.1.0.0 için listelenen sürüm notlarına ek niteliğindedir.
+
+### <a name="improvements-and-issues-that-are-fixed"></a>Düzeltilen geliştirmeler ve sorunlar 
+Bulut katmanlaması etkinse ve katmanlı dosyalar,/+ parametresiyle Robocopy kullanılarak kopyalanırsa veri bozulmasına neden olan bir hata düzeltildi.
 
 ## <a name="agent-version-11200"></a>Aracı sürümü 11.2.0.0
 Aşağıdaki sürüm notları, 2 Şubat 2021 ' de yayınlanan Azure Dosya Eşitleme aracısının sürüm 11.2.0.0 yöneliktir. Bu notlar, sürüm 11.1.0.0 için listelenen sürüm notlarına ek niteliğindedir.
