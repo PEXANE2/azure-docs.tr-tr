@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: 7a2384a451d851d1bede24fc2dd73a386c019430
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 61c24a7c14eb2fafff8a052f24a50a85f03de404
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443721"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107225963"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: yenilikler
 
@@ -87,7 +87,7 @@ Azure Active Directory B2C belgelerindeki yenilikler 'e hoş geldiniz. Bu makale
 - [Azure Active Directory B2C kullanarak bir Twitter hesabıyla kaydolma ve oturum açma ayarlama](identity-provider-twitter.md)
 - [Azure Active Directory B2C kullanarak bir WeChat hesabı ile kaydolma ve oturum açma ayarlama](identity-provider-wechat.md)
 - [Azure Active Directory B2C kullanarak oturum açma ve Weibo hesabı ile oturum açma ayarlama](identity-provider-weibo.md)
-- [Azure AD B2C özel ilkeye genel bakış](custom-policy-trust-frameworks.md)
+- [Azure AD B2C özel ilkeye genel bakış](custom-policy-overview.md)
 
 
 ## <a name="december-2020"></a>Aralık 2020

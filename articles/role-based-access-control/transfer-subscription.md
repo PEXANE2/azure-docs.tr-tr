@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/10/2020
+ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 5a4be6052e72c27ad83b5af64f1acb3ad8d4e3be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5baf5f503542f31b26c4c210741f1ce986f6a549
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555899"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580118"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure aboneliğini farklı bir Azure AD dizinine aktarma
 
@@ -74,15 +74,15 @@ Birkaç Azure kaynağı bir aboneliğe veya dizine bağımlılığı vardır. Du
 | Sistem tarafından atanan Yönetilen kimlikler | Yes | Yes | [Yönetilen kimlikleri listeleme](#list-role-assignments-for-managed-identities) | Yönetilen kimlikleri devre dışı bırakıp yeniden etkinleştirmeniz gerekir. Rol atamalarını yeniden oluşturmanız gerekir. |
 | Kullanıcı tarafından atanan Yönetilen kimlikler | Yes | Yes | [Yönetilen kimlikleri listeleme](#list-role-assignments-for-managed-identities) | Yönetilen kimlikleri silmeniz, yeniden oluşturmanız ve uygun kaynağa bağlamanız gerekir. Rol atamalarını yeniden oluşturmanız gerekir. |
 | Azure Key Vault | Yes | Yes | [Key Vault erişim ilkelerini listeleme](#list-key-vaults) | Anahtar kasaları ile ilişkili kiracı KIMLIĞINI güncelleştirmeniz gerekir. Yeni erişim ilkelerini kaldırmalı ve eklemeniz gerekir. |
-| Azure AD kimlik doğrulaması tümleştirmesinin etkinleştirildiği Azure SQL veritabanları | Yes | Hayır | [Azure AD kimlik doğrulamasıyla Azure SQL veritabanlarını denetleme](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
+| Azure AD kimlik doğrulaması tümleştirmesinin etkinleştirildiği Azure SQL veritabanları | Yes | Hayır | [Azure AD kimlik doğrulamasıyla Azure SQL veritabanlarını denetleme](#list-azure-sql-databases-with-azure-ad-authentication) | Azure AD kimlik doğrulaması etkin bir Azure SQL veritabanı 'nı farklı bir dizine aktaramazsınız. Daha fazla bilgi için bkz. [Azure Active Directory kimlik doğrulaması kullanma](../azure-sql/database/authentication-aad-overview.md). | 
 | Azure depolama ve Azure Data Lake Storage 2. | Yes | Yes |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
 | Azure Data Lake Storage 1. Nesil | Evet | Yes |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
 | Azure Dosyaları | Yes | Yes |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
-| Azure Dosya Eşitleme | Yes | Yes |  |  |
+| Azure Dosya Eşitleme | Yes | Yes |  | Depolama eşitleme hizmeti ve/veya depolama hesabı farklı bir dizine taşınabilir. Daha fazla bilgi için bkz. [Azure dosyaları hakkında sık sorulan sorular (SSS)](../storage/files/storage-files-faq.md#azure-file-sync) |
 | Azure Yönetilen Diskleri | Yes | Yes |  |  Yönetilen diskleri müşteri tarafından yönetilen anahtarlarla şifrelemek için disk şifreleme kümeleri kullanıyorsanız, disk şifreleme kümeleriyle ilişkili sistem tarafından atanan kimlikleri devre dışı bırakıp yeniden etkinleştirmeniz gerekir. Ve rol atamalarını yeniden oluşturmanız gerekir, yani anahtar kasalarındaki disk şifreleme kümelerine gerekli izinleri verin. |
-| Azure Kubernetes Service | Yes | Yes |  |  |
+| Azure Kubernetes Service | Yes | Hayır |  | AKS kümenizi ve ilişkili kaynaklarını farklı bir dizine aktaramazsınız. Daha fazla bilgi için bkz. [Azure Kubernetes hizmeti (AKS) hakkında sık sorulan sorular](../aks/faq.md) |
 | Azure İlkesi | Yes | Hayır | Özel tanımlar, Atamalar, muafiyetler ve uyumluluk verileri dahil olmak üzere tüm Azure Ilke nesneleri. | Tanımları [dışarı](../governance/policy/how-to/export-resources.md)ve içeri aktarmanız gerekir. Ardından, yeni ilke atamaları ve gerekli [ilke muafiyetleri](../governance/policy/concepts/exemption-structure.md)oluşturun. |
-| Azure Active Directory Domain Services | Yes | Hayır |  |  |
+| Azure Active Directory Domain Services | Yes | Hayır |  | Azure AD Domain Services yönetilen bir etki alanını farklı bir dizine aktaramazsınız. Daha fazla bilgi için bkz. [Azure Active Directory (ad) etki alanı Hizmetleri hakkında sık sorulan sorular (SSS)](../active-directory-domain-services/faqs.md) |
 | Uygulama kayıtları | Yes | Yes |  |  |
 
 > [!WARNING]
