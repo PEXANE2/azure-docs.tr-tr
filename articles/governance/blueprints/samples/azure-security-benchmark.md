@@ -1,14 +1,14 @@
 ---
 title: Azure Güvenlik Karşılaştırması şema örneğine genel bakış
 description: Azure Güvenlik Karşılaştırması şema örneğine genel bakış. Bu şema örneği, müşterilerin belirli denetimleri değerlendirmesine yardımcı olur.
-ms.date: 01/27/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 38a50970999965b6a86b8ce8882006c169f2dc5a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58e8c3972b0f05e5b0a3f15da0dfd3eae301ad31
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919247"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106387001"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Azure Güvenlik kıyaslaması şeması örneği
 

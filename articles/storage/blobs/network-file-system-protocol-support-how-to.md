@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 8ed63a508447104f9073c986debfae73ba7de89f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2a37d206955e3372b9ecf97be8d27142bd417192
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102428652"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490463"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Ağ dosya sistemi (NFS) 3,0 protokolünü (Önizleme) kullanarak blob depolamayı bağlama
 
@@ -82,7 +82,7 @@ Hesabı yapılandırırken şu değerleri seçin:
 
 |Ayar | Premium performans | Standart performans  
 |----|---|---|
-|Konum|Tüm kullanılabilir bölgeler |Şu bölgelerden biri: Avustralya Doğu, Kore Orta ve Orta Güney ABD   
+|Konum|Tüm kullanılabilir bölgeler |Şu bölgelerden biri: Avustralya Doğu, Kore Orta, Doğu ABD ve Orta Güney ABD   
 |Performans|Premium| Standart
 |Hesap türü|BlockBlobStorage| Genel amaçlı v2
 |Çoğaltma|Yerel olarak yedekli depolama (LRS)| Yerel olarak yedekli depolama (LRS)

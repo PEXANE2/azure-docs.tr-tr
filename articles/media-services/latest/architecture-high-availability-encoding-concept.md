@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a87525248273db38e4e7bc8d1b59bbd9f99bb4c6
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: c334888f5b85b0d2211225282680d5f791b50793
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107002"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277887"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Media Services ve Isteğe bağlı video (VOD) ile yüksek kullanılabilirlik
 
@@ -61,7 +61,7 @@ Bu üst düzey diyagramda, yüksek kullanılabilirlik ve Medya Hizmetleri ile ç
 
 * İki (veya daha fazla) Azure Media Services hesabı [oluşturun](./account-create-how-to.md) . İki hesabın farklı bölgelerde olması gerekir. Daha fazla bilgi için [Azure Media Services hizmetinin dağıtıldığı bölgeler](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)bölümüne bakın.
 * Medyanızı, işi göndermeyi planladığınız aynı bölgeye yükleyin. Kodlama başlatma hakkında daha fazla bilgi için bkz. bir [https URL 'sinden iş girişi oluşturma](./job-input-from-http-how-to.md) veya [yerel bir dosyadan iş girişi oluşturma](./job-input-from-local-file-how-to.md).
-* [İşi](./transforms-jobs-concept.md) başka bir bölgeye yeniden göndermeniz gerekirse, `JobInputHttp` `Copy-Blob` verileri kaynak varlık kapsayıcısından alternatif bölgedeki bir varlık kapsayıcısına kopyalamak için kullanabilirsiniz.
+* [İşi](./transform-jobs-concept.md) başka bir bölgeye yeniden göndermeniz gerekirse, `JobInputHttp` `Copy-Blob` verileri kaynak varlık kapsayıcısından alternatif bölgedeki bir varlık kapsayıcısına kopyalamak için kullanabilirsiniz.
 
 ### <a name="monitoring"></a>İzleme
 
@@ -72,10 +72,10 @@ Bu üst düzey diyagramda, yüksek kullanılabilirlik ve Medya Hizmetleri ile ç
 
     Daha fazla bilgi için:
 
-    * Azure Event Grid iletilerinin bazı nedenlerle gecikildiği durumlarda geri dönüş ekleme dahil Azure Event Grid bir işi nasıl izleyeceğinizi gösteren [Ses analizi örneğine](./transforms-jobs-concept.md) bakın.
+    * Azure Event Grid iletilerinin bazı nedenlerle gecikildiği durumlarda geri dönüş ekleme dahil Azure Event Grid bir işi nasıl izleyeceğinizi gösteren [Ses analizi örneğine](./transform-jobs-concept.md) bakın.
     * [Media Services olaylar için Azure Event Grid şemalarına](./media-services-event-schemas.md)göz atın.
 
-* Bir [iş](./transforms-jobs-concept.md)oluşturduğunuzda:
+* Bir [iş](./transform-jobs-concept.md)oluşturduğunuzda:
     * Şu anda kullanılan hesapların listesinden rastgele bir hesap seçin (Bu liste normalde her iki hesabı da içerir, ancak sorunlar algılanırsa yalnızca bir hesap içerebilir). Liste boşsa, bir işlecin bir uyarı oluşturup Araştırabilmesi için bir uyarı yükseltin.
     * Her bir Inflight işini ve kullanılan bölge/hesabı izlemek için bir kayıt oluşturun.
 * `JobStateChange`İşleyiciniz bir işin zamanlanan duruma ulaştığı bir bildirim aldığında, zamanlanan duruma ve kullanılan bölgeye/hesaba giren zamanı kaydedin.

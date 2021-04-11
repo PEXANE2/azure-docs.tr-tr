@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 04/04/2021
+ms.date: 04/08/2021
 ms.author: memildin
-ms.openlocfilehash: 78332e95d400348c2878748a92fd818451183ffb
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: f9e1b5d19acbc9bcee86c374a3f843530b8adc61
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385879"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103768"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Güvenlik Merkezi 'Nde yapılan önemli değişiklikler
 
@@ -28,26 +28,12 @@ En son sürüm notlarını arıyorsanız, bunları [Azure Güvenlik Merkezi 'nde
 
 | Planlı değişiklik                                                                                                                                                        | Değişikliğin tahmini tarihi |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
-| ["Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | 2021 Nisan                |
 | [21 güvenlik denetimleri arasında hareket eden öneriler](#21-recommendations-moving-between-security-controls)                                                           | 2021 Nisan                |
-| ["Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı bırakılmakta olan iki ek öneri](#two-further-recommendations-from-apply-system-updates-security-control-being-deprecated)                                                                                         | 2021 Nisan                |
-| [AWS 'nin önerileri genel kullanıma sunulacaktır (GA)](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | 2021 Nisan                |
+| ["Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | 2021 Nisan                |
+| [AWS 'nin önerileri genel kullanıma sunulacaktır (GA)](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | **Ağustos** 2021             |
 | [SQL veri sınıflandırması önerisine yönelik geliştirmeler](#enhancements-to-sql-data-classification-recommendation)                                                     | S2 2021                   |
 |                                                                                                                                                                       |                           |
 
-
-### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>"Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi 
-
-**Değişikliğin tahmini tarihi:** 2021 Nisan
-
-Aşağıdaki iki öneri 2021 Nisan 'da kullanımdan kalkmak üzere zamanlandı:
-
-- **Sistem güncelleştirmelerinin uygulanabilmesi için makinelerinizin yeniden başlatılması gerekiyor**. Bu, güvenli puanınızın küçük bir etkisi oluşmasına neden olur.
-- **İzleme Aracısı makinelerinizde yüklü olmalıdır**. Bu öneri yalnızca şirket içi makinelerle ilgilidir ve mantığının bir kısmı başka bir öneriye aktarılacaktır. **Log Analytics aracı sistem durumu sorunları makinelerinizde çözümlenmelidir**. Bu, güvenli puanınızın küçük bir etkisi oluşmasına neden olur.
-
-Bu önerilerin bunlara dahil edilip edilmeyeceğini görmek için sürekli dışarı aktarma ve iş akışı Otomasyonu yapılandırmalarının denetlenmesini öneririz. Ayrıca, bunları kullanıyor olabilecek panolar veya diğer izleme araçları da buna uygun şekilde güncelleştirilmeleri gerekir.
-
-[Güvenlik önerileri başvuru sayfasında](recommendations-reference.md)bu öneriler hakkında daha fazla bilgi edinin.
 
 ### <a name="21-recommendations-moving-between-security-controls"></a>21 güvenlik denetimleri arasında hareket eden öneriler 
 
@@ -64,7 +50,7 @@ Güvenlik denetimlerinde ve bunların önerilerinde her güvenlik denetiminde ha
 |||
 
 
-### <a name="two-further-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>"Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı bırakılmakta olan iki ek öneri
+### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>"Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi
 
 **Değişikliğin tahmini tarihi:** 2021 Nisan
 
@@ -76,7 +62,7 @@ Aşağıdaki iki öneri kullanım dışı bırakılmıştır:
 
 ### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>AWS 'nin önerileri genel kullanıma sunulacaktır (GA)
 
-**Değişikliğin tahmini tarihi:** 2021 Nisan
+**Değişikliğin tahmini tarihi:** Ağustos 2021
 
 Azure Güvenlik Merkezi, Azure, Amazon Web Services (AWS) ve Google Cloud Platform (GCP) iş yüklerini korur.
 
@@ -87,7 +73,7 @@ Bu değişiklik ile, AWS önerilerinden oluşan iki küme GA 'ye taşınır:
 - [Güvenlik Merkezi 'nin PCI DSS denetimleri](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-pci-controls.html)
 - [Güvenlik Merkezi 'nin CIS AWS temelleri kıyaslama denetimleri](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html)
 
-Bunlar GA ve değerlendirmeler AWS kaynaklarınız üzerinde çalıştırıldığında, sonuçlar tüm çok ve karma bulut kaynaklarınız için Birleşik güvenli puanınızı etkiler. 
+Bunlar GA ve değerlendirmeler AWS kaynaklarınız üzerinde çalıştırıldığında, sonuçlar tüm çok ve karma bulut kaynaklarınız için Birleşik güvenli puanınızı etkiler.
 
 
 
