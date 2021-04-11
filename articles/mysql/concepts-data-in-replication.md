@@ -6,16 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
-ms.openlocfilehash: 99beddba470f73d6eadb448dfe1b77453ce6426d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab2433bfa4df3d75f10bc9128dc736ff6d12be76
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95996228"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210525"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na veri çoğaltma
 
-Gelen Verileri Çoğaltma, bir dış MySQL sunucusundan verileri MySQL için Azure veritabanı hizmetine eşitlemenize olanak tanır. Dış sunucu şirket içinde, sanal makinelerde veya diğer bulut sağlayıcıları tarafından barındırılan bir veritabanı hizmeti olabilir. Gelen Verileri Çoğaltma, MySQL’de yerel olan ikili günlük (binlog) dosya konumuna dayalı çoğaltmayı temel alır. Binlog çoğaltma hakkında daha fazla bilgi edinmek için [MySQL binlog çoğaltmasına genel bakış](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)bölümüne bakın. 
+Gelen Verileri Çoğaltma, bir dış MySQL sunucusundan verileri MySQL için Azure veritabanı hizmetine eşitlemenize olanak tanır. Dış sunucu şirket içinde, sanal makinelerde veya diğer bulut sağlayıcıları tarafından barındırılan bir veritabanı hizmeti olabilir. Gelen Verileri Çoğaltma ikili günlük (binlog) dosya konumu tabanlı veya gtıd tabanlı çoğaltmayı MySQL 'e göre temel alır. Binlog çoğaltma hakkında daha fazla bilgi edinmek için [MySQL binlog çoğaltmasına genel bakış](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)bölümüne bakın. 
 
 ## <a name="when-to-use-data-in-replication"></a>Ne zaman kullanılacağı Gelen Verileri Çoğaltma
 Gelen Verileri Çoğaltma kullanmayı göz önünde bulundurmanız gereken temel senaryolar şunlardır:
@@ -35,20 +35,20 @@ Kaynak sunucunuzdaki (Şirket içi, sanal makinelerde barındırılan veya diğe
 
 Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) gözden geçirin.
 
+## <a name="supported-in-general-purpose-or-memory-optimized-tier-only"></a>Yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş katmanda desteklenir
+Veri içi çoğaltma yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında desteklenir.
+
 ### <a name="requirements"></a>Gereksinimler
 - Kaynak sunucu sürümü en az MySQL sürüm 5,6 olmalıdır. 
 - Kaynak ve çoğaltma sunucusu sürümleri aynı olmalıdır. Örneğin, her ikisi de MySQL sürüm 5,6 olmalıdır veya her ikisi de MySQL sürüm 5,7 olmalıdır.
 - Her tablo bir birincil anahtara sahip olmalıdır.
 - Kaynak sunucu MySQL InnoDB altyapısını kullanmalıdır.
 - Kullanıcının, ikili günlüğü yapılandırma ve kaynak sunucuda yeni kullanıcılar oluşturma izinlerine sahip olması gerekir.
-- Kaynak sunucuda SSL etkinse, etki alanı için sağlanan SSL CA sertifikasının saklı yordama eklendiğinden emin olun `mysql.az_replication_change_master` . Aşağıdaki [örneklere](./howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication) ve `master_ssl_ca` parametresine bakın.
+- Kaynak sunucuda SSL etkinse, etki alanı için sağlanan SSL CA sertifikasının `mysql.az_replication_change_master` veya saklı yordama eklendiğinden emin olun `mysql.az_replication_change_master_with_gtid` . Aşağıdaki [örneklere](./howto-data-in-replication.md#4-link-source-and-replica-servers-to-start-data-in-replication) ve `master_ssl_ca` parametresine bakın.
 - Kaynak sunucunun IP adresinin MySQL Çoğaltma sunucusunun güvenlik duvarı kuralları için Azure veritabanı 'na eklendiğinden emin olun. [Azure portalını](./howto-manage-firewall-using-portal.md) veya [Azure CLI](./howto-manage-firewall-using-cli.md)’yı kullanarak güvenlik duvarı kurallarını güncelleştirin.
 - Kaynak sunucuyu barındıran makinenin 3306 numaralı bağlantı noktasında hem gelen hem de giden trafiğe izin verdiğinden emin olun.
 - Kaynak sunucunun **Genel BIR IP adresi** olduğundan, DNS 'nin genel olarak erişilebilir olduğundan veya tam etki alanı adı (FQDN) olduğundan emin olun.
 
-### <a name="other"></a>Diğer
-- Veri içi çoğaltma yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında desteklenir.
-- Genel işlem tanımlayıcıları (GTıD) desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Verileri çoğaltmayı ayarlamayı](howto-data-in-replication.md) öğrenin

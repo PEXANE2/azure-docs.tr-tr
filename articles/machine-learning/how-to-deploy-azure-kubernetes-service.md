@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: ef9c03b687bbc9b8fe736c872bbde14b8daba899
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a9c56724ca11c6fc79bbb8ab849a6d3e0b5f4c2
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519393"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209972"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
 
@@ -139,7 +139,7 @@ Model dağıtım zamanında, başarılı bir model dağıtımı için AKS düğ�
 
 Model dağıtıldıktan ve hizmet başladıktan sonra, azureml-Fe, AKS API 'sini kullanarak otomatik olarak keşfeder ve isteği kendisine yönlendirmeye hazırlanacaktır. Model PODs ile iletişim kurabilmesi gerekir.
 >[!Note]
->Dağıtılan model herhangi bir bağlantı gerektiriyorsa (örneğin, dış veritabanı veya diğer REST hizmetini sorgulama, bir BLOG indirme vb.), bu hizmetler için hem DNS çözümlemesi hem de giden iletişim etkinleştirilmelidir.
+>Dağıtılan model herhangi bir bağlantı gerektiriyorsa (örneğin, dış veritabanı veya diğer REST hizmetini sorgulama, bir blobu indirme vb.), bu hizmetler için hem DNS çözümlemesi hem de giden iletişim etkinleştirilmelidir.
 
 ## <a name="deploy-to-aks"></a>AKS’ye dağıtma
 

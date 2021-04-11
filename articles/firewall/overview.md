@@ -6,14 +6,14 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 03/10/2021
+ms.date: 04/05/2021
 ms.author: victorh
-ms.openlocfilehash: 6855eb50519afacdf971ffcb8b70aa289b7cfe26
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: bb89b6acbc76a4020ee721e87272b154bab6d0a4
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066339"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385182"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Güvenlik Duvarı nedir?
 
@@ -52,9 +52,8 @@ Azure Güvenlik Duvarı yenilikleri hakkında bilgi edinmek için bkz. [Azure Up
 
 Azure Güvenlik Duvarındaki bilinen sorunlar şunlardır:
 
-|Sorun  |Description  |Risk azaltma  |
+|Sorun  |Açıklama  |Risk azaltma  |
 |---------|---------|---------|
-|Bir kuralı IP adresinden IP grubuna veya portalı kullanarak tam tersi güncelleştirirseniz, her iki tür de kaydedilir, ancak portalda yalnızca bir tane sunulur.|Bu sorun klasik kurallarla oluşur.<br><br>Portalı kullanarak bir NAT kuralı kaynak türünü IP adresinden IP grubuna veya tam tersi yönde güncelleştirmek için, her iki türü de arka uca kaydeder ancak yalnızca yeni güncelleştirilmiş türü gösterir.<br><br>Aynı sorun, bir ağ veya uygulama kuralı hedef türünü IP adresinden IP grup türüne veya bunun tersini güncelleştirdiğinizde de vardır.|Bir portal düzeltmesinin Mart, 2021 için hedefi vardır.<br><br>Bu sırada, IP adresinden IP grubuna veya tam tersi yönde bir kuralı değiştirmek için Azure PowerShell, Azure CLı veya API kullanın.|
 |TCP/UDP dışı protokollere (örneğin ICMP) yönelik ağ filtreleme kuralları İnternet'e bağlı trafik için çalışmaz|TCP/UDP olmayan protokoller için ağ filtreleme kuralları, SNAT ile genel IP adresiniz arasında çalışmaz. TCP/UDP dışı protokoller, uç alt ağlarla sanal ağlar arasında desteklenir.|Azure Güvenlik Duvarı, [bugün IP protokolleri için SNAT desteği olmayan](../load-balancer/load-balancer-overview.md) Standart Load Balancer kullanır. Gelecekteki bir sürümde bu senaryoyu desteklemeye yönelik seçenekleri araştırıyoruz.|
 |ICMP için eksik PowerShell ve CLI desteği|Azure PowerShell ve CLı, ağ kurallarında geçerli bir protokol olarak ıCMP 'yi desteklemez.|Portal ve REST API aracılığıyla bir protokol olarak ıCMP kullanmak yine de mümkündür. PowerShell ve CLı için yakında ıCMP eklemek üzere çalışıyoruz.|
 |FQDN etiketleri bir protokol: bağlantı noktası ayarlamayı gerektirir|FQDN etiketleriyle uygulama kuralları için bağlantı noktası: protokol tanımı gerekir.|Bağlantı noktası:protokol değeri olarak **https** kullanabilirsiniz. FQDN etiketleri kullanıldığında bu alanı isteğe bağlı hale getirmek için çalışıyoruz.|
@@ -78,6 +77,7 @@ Azure Güvenlik Duvarındaki bilinen sorunlar şunlardır:
 |Başlat/Durdur, Zorlamalı tünel modunda yapılandırılmış bir güvenlik duvarı ile çalışmıyor|Başlat/Durdur, Zorlamalı tünel modunda yapılandırılmış Azure Güvenlik Duvarı ile çalışmıyor. Zorlamalı tünel yapılandırılmış olarak Azure Güvenlik Duvarı 'Nı başlatma girişimi şu hata ile sonuçlanır:<br><br>*Set-AzFirewall: AzureFirewall FW-xx yönetim IP yapılandırması mevcut bir güvenlik duvarına eklenemiyor. Zorlamalı tünel desteğini kullanmak istiyorsanız bir yönetim IP yapılandırması ile yeniden dağıtın. <br> StatusCode: 400 <br> ReasonPhrase: Hatalı istek*|İnceleme altında.<br><br>Geçici bir çözüm olarak, mevcut güvenlik duvarını silebilir ve aynı parametrelerle yeni bir tane oluşturabilirsiniz.|
 |Portal kullanılarak güvenlik duvarı ilkesi etiketleri eklenemiyor|Azure Güvenlik Duvarı Ilkesinde, Azure portal kullanarak etiket eklemelerini önleyen bir yama destek sınırlaması vardır. Şu hata oluşturuldu: *kaynak için Etiketler kaydedilemedi*.|Bir düzelme araştırılır. Veya, etiketleri güncelleştirmek için Azure PowerShell cmdlet 'ini kullanabilirsiniz `Set-AzFirewallPolicy` .|
 |IPv6 henüz desteklenmiyor|Bir kurala bir IPv6 adresi eklerseniz güvenlik duvarı başarısız olur.|Yalnızca IPv4 adreslerini kullanın. IPv6 desteği araştırma aşamasındadır.|
+|Birden çok IP grubunu güncelleştirme, çakışma hatasıyla başarısız oluyor.|Aynı güvenlik duvarına bağlı iki veya daha fazla IP grubunu güncelleştirdiğinizde, kaynağın biri başarısız durumuna geçer.|Bu bilinen bir sorundur/kısıtlamadır. <br><br>Bir ıpgroup 'u güncelleştirdiğinizde, ıpgroup 'un eklendiği tüm güvenlik duvarlarındaki bir güncelleştirmeyi tetikler. Güvenlik duvarı hala *güncelleştirme* durumunda olduğu sürece Ikinci bir ıpgroup güncelleştirmesi başlatılırsa, ıpgroup güncelleştirmesi başarısız olur.<br><br>Bu hatadan kaçınmak için aynı güvenlik duvarına bağlı olan ıpgroups birer birer güncellenmelidir. Güvenlik duvarının *güncelleştirme* durumundan çıkmasına izin vermek için güncelleştirmeler arasında yeterli zamana izin verin.| 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

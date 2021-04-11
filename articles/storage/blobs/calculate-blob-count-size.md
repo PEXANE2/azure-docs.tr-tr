@@ -2,18 +2,18 @@
 title: Azure depolama envanterini kullanarak blob sayısını ve boyutunu hesaplama
 description: Kapsayıcı başına Blobların sayısını ve toplam boyutunu hesaplamayı öğrenin.
 services: storage
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 03/10/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: d1aa91ea0f698e609e786d87a0072e6a07c143a3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e752d40ce2f237c2ab08bac2e71133cd06ec40e4
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047326"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277190"
 ---
 # <a name="calculate-blob-count-and-total-size-per-container-using-azure-storage-inventory"></a>Azure depolama envanterini kullanarak kapsayıcı başına blob sayısı ve toplam boyut hesaplama
 

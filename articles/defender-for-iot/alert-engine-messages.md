@@ -4,19 +4,19 @@ description: IoT uyarı açıklamaları için Defender 'ı inceleyin.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 03/29/2021
+ms.date: 4/8/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 42a922dab2237925c2294245e112aab70b4245f0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ef7aa388d0f25adcafec1cb4a5b38dcfb8597a1
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727731"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210474"
 ---
 # <a name="alert-types-and-descriptions"></a>Uyarı türleri ve açıklamaları
 
-Bu makalede, IoT altyapılarına yönelik Defender 'dan oluşturulabilecek Uyarı türleri tüm OPF açıklanır. Uyarılar, uyarı olayını yönetmenizi sağlayan uyarılar penceresinde görüntülenir. 
+Bu makalede, IoT altyapılarına yönelik Defender 'dan oluşturulabilecek tüm uyarı türleri açıklanmaktadır. Uyarılar, uyarı olayını yönetmenizi sağlayan uyarılar penceresinde görüntülenir. 
 
 ## <a name="policy-engine-alerts"></a>İlke altyapısı uyarıları
 

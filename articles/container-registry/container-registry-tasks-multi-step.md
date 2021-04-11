@@ -3,12 +3,12 @@ title: '& yama görüntüsünü derlemek, test etmek için çok adımlı görev'
 description: Bulutta kapsayıcı görüntüleri oluşturmak, test etmek ve düzeltme eki uygulamak için görev tabanlı iş akışları sağlayan, Azure Container Registry ' de ACR görevlerinin bir özelliği olan çok adımlı görevlere giriş.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 0dcd38559d3f50715f982de4c9c80bfe9c6c8433
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc671006beb1934b32fcd6ccf967a5bf9ff817fb
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "78399704"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169207"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>ACR görevlerinde çok adımlı derleme, test ve düzeltme eki görevleri çalıştırma
 
@@ -65,7 +65,7 @@ steps:
     build: -t $Registry/hello-world:$ID .
     when: ["-"]
   - id: build-tests
-    build -t $Registry/hello-world-tests ./funcTests
+    build: -t $Registry/hello-world-tests ./funcTests
     when: ["-"]
   - id: push
     push: ["$Registry/helloworld:$ID"]

@@ -15,7 +15,7 @@
       items:
         - name: Service Bus kuyruğu oluşturma
           items:
-            - name: Azure portalı
+            - name: Azure portal
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
@@ -317,6 +317,8 @@
       href: 'https://github.com/Azure/azure-sdk-for-ruby'
     - name: Başlayın
       href: 'https://github.com/Azure/azure-service-bus-go'
+    - name: Azure CLI
+      href: /cli/azure/servicebus
     - name: Azure PowerShell
       href: /powershell/module/az.servicebus
     - name: REST

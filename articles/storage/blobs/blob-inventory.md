@@ -2,20 +2,20 @@
 title: Blob verilerini yönetmek için Azure depolama envanterini kullanma (Önizleme)
 description: Azure depolama envanteri, bir depolama hesabındaki tüm blob verilerinize genel bir bakış almaya yardımcı olan bir araçtır.
 services: storage
-author: mhopkins-msft
+author: twooley
 ms.service: storage
-ms.date: 03/05/2021
+ms.date: 04/01/2021
 ms.topic: conceptual
-ms.author: mhopkins
-ms.reviewer: yzheng
+ms.author: twooley
+ms.reviewer: klaasl
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 8310de465a6416102a7ce4e614ead7029e6be87a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 33d50d1a6b5e84d178b522851795bcc42f5fc169
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950935"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277275"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Blob verilerini yönetmek için Azure Storage blob envanterini kullanma (Önizleme)
 
@@ -37,6 +37,7 @@ Blob envanter önizlemesi, depolama hesaplarında aşağıdaki bölgelerde kulla
 - Doğu Kanada
 - Doğu ABD
 - Doğu ABD 2
+- West Europe
 
 ### <a name="pricing-and-billing"></a>Fiyatlandırma ve Faturalama
 
@@ -117,9 +118,9 @@ Blob envanter raporunu özelleştirmek için çeşitli filtreler mevcuttur:
 | Filtre adı         | Filtre türü                     | Notlar | Gerekli mi? |
 |---------------------|---------------------------------|-------|-----------|
 | blobTypes           | Öntanımlı Enum değerlerinin dizisi | Geçerli değerler `blockBlob` ve `appendBlob` hiyerarşik ad alanı etkin hesaplar için ve `blockBlob` , `appendBlob` ve `pageBlob` diğer hesaplar için. | Yes |
-| prefixMatch         | Öneklerin eşleşmesi için 10 ' a kadar dize dizisi. Ön ek bir kapsayıcı adıyla başlamalıdır, örneğin "kapsayıcı1/foo" | *PrefixMatch* tanımlayamazsınız veya boş bir ön ek sağlamazsanız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | No |
-| ıncludesnapshots    | Boole                         | Envanterin anlık görüntüleri içerip içermediğini belirtir. Varsayılan değer **false**'dur. | No |
-| ıncludeblobversions | Boole                         | Envanterin blob sürümlerini içerip içermediğini belirtir. Varsayılan değer **false**'dur. | No |
+| prefixMatch         | Öneklerin eşleşmesi için 10 ' a kadar dize dizisi. Ön ek bir kapsayıcı adıyla başlamalıdır, örneğin "kapsayıcı1/foo" | *PrefixMatch* tanımlayamazsınız veya boş bir ön ek sağlamazsanız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | Hayır |
+| ıncludesnapshots    | Boole                         | Envanterin anlık görüntüleri içerip içermediğini belirtir. Varsayılan değer **false**'dur. | Hayır |
+| ıncludeblobversions | Boole                         | Envanterin blob sürümlerini içerip içermediğini belirtir. Varsayılan değer **false**'dur. | Hayır |
 
 Azure portal **BLOB stoğu** bölümünde **kod görünümü** sekmesini seçerek envanter kuralları için JSON kurallarını görüntüleyin. Filtreler bir kural tanımı içinde belirtilmiştir.
 
@@ -202,6 +203,14 @@ Envanter çalıştırması tamamlandığında bildirim almak için envanter tama
   "eventTime": "2020-10-13T15:47:54Z"
 }
 ```
+
+## <a name="known-issues"></a>Bilinen sorunlar
+
+Bu bölümde, Azure Depolama Blobu envanter özelliğinin sınırlamaları ve bilinen sorunları açıklanmaktadır.
+
+### <a name="inventory-job-fails-to-complete"></a>Envanter işi tamamlanamazsa
+
+Milyonlarca blob ve hiyerarşik ad alanı etkinleştirilmiş bir hesap için stok işi 24 saat içinde tamamlanmayabilir. Bu durumda, envanter dosyası oluşturulmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
