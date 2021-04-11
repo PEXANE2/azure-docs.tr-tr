@@ -9,12 +9,12 @@ ms.author: mariusu
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0f456581e14f17b0ea3ebbd54d0768d419e800b3
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 7d9e2f02eadec9fac93f14a0fe137c72a35224be
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110653"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727918"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Web 'i çağıran örnekle çalışmaya başlama
 
@@ -23,9 +23,6 @@ Web çağırma örneği, Iletişim Hizmetleri Web 'in çağrı yapan SDK tarafı
 Bu örnek, geliştiriciler için oluşturulmuştur ve Iletişim Hizmetleri 'ni kullanmaya başlamanıza çok daha kolay hale gelir. Kullanıcı arabirimi, her biri bir "kodu göster" düğmesine sahip olan birden fazla bölüme ayrılmıştır ve bu, kodu doğrudan tarayıcınızdan kendi Iletişim Hizmetleri uygulamanıza kopyalamanızı sağlar.
 
 ## <a name="get-started-with-the-web-calling-sample"></a>Web 'i çağıran örnekle çalışmaya başlama
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 
 > [!IMPORTANT]
 > [Bu örnek GitHub ' da kullanılabilir.](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: a21411e4d1ee30e4f79687bfc07a53575497ca1f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea7eda7e50e7d8733fd24a63d533272e5bca6bab
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562231"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166692"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -22,6 +22,21 @@ Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK 
 
 __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine yapıştırarak Bu sayfa güncelleştirildikten sonra bildirim alın: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
 
+## <a name="2021-03-31"></a>2021-03-31
+### <a name="azure-machine-learning-studio-notebooks-experience-march-update"></a>Azure Machine Learning Studio Not defteri deneyimi (Mart güncelleştirmesi)
++ **Yeni özellikler**
+  + CSV/TSV oluştur. Kullanıcılar, daha kolay veri analizi için bir kılavuz biçiminde ve TSV/CSV dosyası işleyebilir. 
+  + Işlem örneği için SSO kimlik doğrulaması. Kullanıcılar artık doğrudan not defteri Kullanıcı arabirimindeki yeni işlem örneklerinin kimliğini kolayca doğrulayabilir ve Azure SDK 'larını doğrudan AzureML üzerinde kimlik doğrulaması yapmayı ve kullanmayı kolaylaştırır. 
+  + İşlem örneği ölçümleri. Kullanıcılar, Terminal aracılığıyla CPU kullanımı ve bellek gibi işlem ölçümlerini görüntüleyebilecektir.
+  + Dosya ayrıntıları. Kullanıcılar artık son değiştirilme saati dahil olmak üzere dosya ayrıntılarını ve dosyanın yanındaki 3 noktaya tıklayarak dosya boyutunu görebilirler.
+
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + Geliştirilmiş sayfa yükleme süreleri.
+  + Gelişmiş performans.
+  + Gelişmiş hız ve çekirdek güvenilirliği.
+  + Not defteri dosya bölmesini yukarı tamamen taşıyarak dikey bir emlak kazanın
+  + Bağlantılar artık terminalde tıklatılabilir
+  + Geliştirilmiş IntelliSense performansı
 
 ## <a name="2021-03-08"></a>2021-03-08
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfea22c10d98adf3b8c89491c248bf7a934ba1ed
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e5a4cc2b964bcf4fa49d90c8b6d5aa546b7148a1
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798893"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107954"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Cihaz kimliği ve Masaüstü Sanallaştırması
 
@@ -94,6 +94,23 @@ Kalıcı olmayan VDı dağıtımı yaparken, Microsoft BT yöneticilerinin aşa�
 - [Eski cihazları yönetmek](manage-stale-devices.md)için işlem tanımlayın ve uygulayın.
    - Kalıcı olmayan karma Azure AD 'ye katılmış cihazlarınızı (ör. bilgisayar görünen adı önekini kullanarak) belirleme stratejiniz varsa, dizininizin çok sayıda eski cihaz ile tüketilmemesini sağlamak için bu cihazların temizlenmesi üzerinde daha Agresif olmanız gerekir.
    - Windows geçerli ve alt düzeyde kalıcı olmayan VDı dağıtımları için, 15 günden daha eski olan **yaklaşık bir Telastlogontimestamp** olan cihazları silmelisiniz.
+
+> [!NOTE]
+> Kalıcı olmayan VDı kullanılırken, bir cihazın JOIN durumunu engellemek istiyorsanız aşağıdaki kayıt defteri anahtarının ayarlanmış olduğundan emin olun:  
+> `HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin: "BlockAADWorkplaceJoin"=dword:00000001`    
+>
+> Windows 10, sürüm 1803 veya üstünü kullandığınızdan emin olun.  
+>
+> Yol altındaki tüm veriler `%localappdata%` desteklenmez. İçeriği aşağı taşımayı seçerseniz `%localappdata%` , aşağıdaki klasörlerin ve kayıt defteri anahtarlarının içeriğinin herhangi bir koşul altında **hiçbir şekilde ayrılmayın** olduğundan emin olun. Örneğin: profil geçiş araçları aşağıdaki klasörleri ve anahtarları atmalıdır:
+>
+> * `%localappdata%\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy`
+> * `%localappdata%\Packages\Microsoft.Windows.CloudExperienceHost_cw5n1h2txyewy`
+> * `%localappdata%\Packages\<any app package>\AC\TokenBroker`
+> * `%localappdata%\Microsoft\TokenBroker`
+> * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\IdentityCRL`
+> * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AAD`
+>
+
 
 ### <a name="persistent-vdi"></a>Kalıcı VDı
 

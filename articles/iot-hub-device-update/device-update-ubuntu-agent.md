@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ee09928cab6419d799d06de9cf2f69987e42d157
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 751e9337d74210d238be079e8fcd1bb973937846
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644443"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936861"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Ubuntu Server 18,04 x64 üzerinde paket aracısını kullanarak Azure IoT Hub öğreticisi için cihaz güncelleştirmesi
 
@@ -19,7 +19,7 @@ IoT Hub cihaz güncelleştirmesi iki güncelleştirme biçimini destekler: gör�
 
 Paket tabanlı güncelleştirmeler, cihazdaki yalnızca belirli bir bileşeni veya uygulamayı değiştirecek olan güncelleştirmeler için geçerlidir. Bu, bant genişliği tüketimini azaltmaya ve güncelleştirmeyi indirme ve yükleme süresini azaltmaya yardımcı olur. Paket güncelleştirmeleri genellikle bir güncelleştirme uygulanırken cihazların daha az kapalı kalma süresine izin verir ve görüntü oluşturma yükünden kaçınır.
 
-Bu öğreticide, IoT Hub için cihaz güncelleştirmesi aracılığıyla uçtan uca paket tabanlı bir güncelleştirmeyi tamamlamaya yönelik adımlarda adım adım gösterilmektedir. Bu öğreticide, Azure IoT Edge çalıştıran bir Ubuntu Server 18,04 x64 ve cihaz güncelleştirme paketi Aracısı kullanıyoruz. Öğretici, örnek bir paketin güncelleştirilmesini gösterir, ancak benzer adımları kullanarak Azure IoT Edge veya kullandığı kapsayıcı altyapısı gibi diğer paketleri güncelleştirebilirsiniz.
+Bu uçtan uca öğreticide, cihaz güncelleştirme paketi Aracısı 'nı kullanarak Ubuntu Server 18,04 x64 üzerinde Azure IoT Edge güncelleştirme işlemi adım adım açıklanmaktadır. Öğreticide IoT Edge güncelleştirme, benzer adımları kullanarak, kullandığı kapsayıcı altyapısı gibi diğer paketleri güncelleştirebilirsiniz.
 
 Bu öğreticideki araçlar ve kavramlar, farklı bir işletim sistemi platformu yapılandırması kullanmayı planlıyorsanız bile geçerlidir. Bir uçtan uca güncelleştirme işlemine giriş yapın, ardından ayrıntıları incelemek için tercih ettiğiniz güncelleştirme ve işletim sistemi platformu formunuzu seçin.
 

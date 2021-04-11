@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 06/09/2019
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9408adfe33fc71707532f3bf5646f3727fd7dda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b70d08363db212e5039690ceaaef5dbb55bcd65f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98955063"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107282"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Media Services .NET ile kodlarken bir videoyu alt kırpın
 
@@ -31,9 +31,9 @@ Aşağıdaki C# örneği bir varlık içinde bir kodlama işi gönderdiği bir v
 
 Bu konuda açıklanan adımları tamamlayabilmeniz için şunları yapmanız gerekir:
 
-- [Azure Media Services hesabı oluşturma](./create-account-howto.md)
+- [Azure Media Services hesabı oluşturma](./account-create-how-to.md)
 - Bir dönüşüm ve giriş ve çıkış varlıkları oluşturun. .NET öğreticisini [kullanarak karşıya yükleme, kodlama ve akış videoları](stream-files-tutorial-with-api.md) Için nasıl dönüşüm ve giriş ve çıkış varlıkları oluşturulacağını görebilirsiniz.
-- [Kodlama kavramı](encoding-concept.md) konusunu gözden geçirin.
+- [Kodlama kavramı](encode-concept.md) konusunu gözden geçirin.
 
 ## <a name="example"></a>Örnek
 
@@ -92,4 +92,4 @@ private static async Task<Job> JobWithBuiltInStandardEncoderWithSingleClipAsync(
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Özel dönüşümle kodlama](customize-encoder-presets-how-to.md) 
+[Özel dönüşümle kodlama](encode-custom-presets-how-to.md) 

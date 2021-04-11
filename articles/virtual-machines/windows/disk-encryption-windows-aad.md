@@ -10,10 +10,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 3b7f6f63953ba09e57e4586c698e16b9abb8aa1c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102555287"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Windows VM 'Leri için Azure AD ile Azure disk şifrelemesi (önceki sürüm)
@@ -64,7 +64,7 @@ Aşağıdaki tabloda Azure AD istemci KIMLIĞI kullanılarak Market senaryosunda
 | subnetName | VM NIC 'sinin ait olması gereken VNet 'teki alt ağın adı. |
 | Aadclientıd | Anahtar kasanıza gizli diziler yazma izinleri olan Azure AD uygulamasının istemci KIMLIĞI. |
 | AADClientSecret | Anahtar kasanıza gizli diziler yazma izinleri olan Azure AD uygulamasının istemci gizli anahtarı. |
-| keyVaultURL | BitLocker anahtarının yüklenmesi gereken anahtar kasasının URL 'SI. Bunu, cmdlet 'ini `(Get-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyKeyVaultResourceGroupName").VaultURI` veya Azure CLI 'sini kullanarak edinebilirsiniz `az keyvault show --name "MySecureVault" --query properties.vaultUri` |
+| keyVaultURL | BitLocker anahtarının yüklenmesi gereken anahtar kasasının URL 'SI. Bunu, cmdlet 'ini `(Get-AzKeyVault -VaultName "MyKeyVault&quot; -ResourceGroupName &quot;MyKeyVaultResourceGroupName").VaultURI` veya Azure CLI 'sini kullanarak edinebilirsiniz `az keyvault show --name "MySecureVault" --query properties.vaultUri` |
 | keyEncryptionKeyURL 'Si | Oluşturulan BitLocker anahtarını şifrelemek için kullanılan anahtar şifreleme anahtarının URL 'SI (isteğe bağlı). </br> </br>KeyEncryptionKeyURL isteğe bağlı bir parametredir. Anahtar Kasanızda veri şifreleme anahtarını (parola gizli dizisi) daha fazla korumak için kendi KEK getirebilirsiniz. |
 | keyVaultResourceGroup | Anahtar kasasının kaynak grubu. |
 | vmName | Şifreleme işleminin gerçekleştirileceği sanal makinenin adı. |
