@@ -1,18 +1,18 @@
 ---
 title: Depolamayı otomatik büyütme-Azure CLı-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede, PostgreSQL için Azure veritabanı-tek sunucu 'da Azure CLı kullanarak depolama otomatik büyümenin nasıl yapılandırılacağı açıklanır.
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 8/7/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6b6f3875af4c7f0eace327d810c632a6bb217092
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e323dfd0449b0fb4ad5119955227a2aa9bea1031
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94534203"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551161"
 ---
 # <a name="auto-grow-azure-database-for-postgresql-storage---single-server-using-the-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı depolama-tek sunucu için otomatik büyüme
 Bu makalede, bir PostgreSQL için Azure veritabanı sunucu depolaması, iş yükünü etkilemeden nasıl büyütüleceği açıklanır.

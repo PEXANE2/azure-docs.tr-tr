@@ -7,13 +7,13 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
-ms.date: 2/25/2020
-ms.openlocfilehash: 386a0e27c0f73f5bcd42397ed515f7561d5097fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: b4b67a6bf4eea72b3a81bd01398cc60cc33c0d0a
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955066"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227050"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Uygulama Yapılandırması’na erişmek için yönetilen kimlikleri kullanma
 
@@ -145,7 +145,7 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
     >config.AddAzureAppConfiguration(options =>
     >   options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential(<your_clientId>)));
     >```
-    >[Azure kaynakları Için Yönetilen kimlikler SSS](../active-directory/managed-identities-azure-resources/known-issues.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request)bölümünde açıklandığı gibi, hangi yönetilen kimliğin kullanıldığını çözümlemek için varsayılan bir yol vardır. Bu durumda, Azure kimlik kitaplığı, gelecekte çok fazla çalışma zamanı sorunlarından kaçınmak için (örneğin, yeni bir kullanıcı tarafından atanan yönetilen kimlik eklenirse veya sistem tarafından atanan yönetilen kimlik etkinse) istenen kimliği belirtmenizi zorunlu kılar. Bu nedenle, yalnızca bir kullanıcı tarafından atanan yönetilen kimlik tanımlanmış olsa da, sistem tarafından atanan yönetilen kimlik yoksa, ClientID belirtmeniz gerekecektir.
+    >[Azure kaynakları Için Yönetilen kimlikler SSS](../active-directory/managed-identities-azure-resources/managed-identities-faq.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request)bölümünde açıklandığı gibi, hangi yönetilen kimliğin kullanıldığını çözümlemek için varsayılan bir yol vardır. Bu durumda, Azure kimlik kitaplığı, gelecekte çok fazla çalışma zamanı sorunlarından kaçınmak için (örneğin, yeni bir kullanıcı tarafından atanan yönetilen kimlik eklenirse veya sistem tarafından atanan yönetilen kimlik etkinse) istenen kimliği belirtmenizi zorunlu kılar. Bu nedenle, yalnızca bir kullanıcı tarafından atanan yönetilen kimlik tanımlanmış olsa da, sistem tarafından atanan yönetilen kimlik yoksa, ClientID belirtmeniz gerekecektir.
 
 
 1. Hem uygulama yapılandırma değerlerini hem de başvurularını Key Vault kullanmak için *program. cs* 'yi aşağıda gösterildiği gibi güncelleştirin. Bu kod `SetCredential` `ConfigureKeyVault` , yapılandırma sağlayıcısına Key Vault kimlik doğrulaması yapılırken hangi kimlik bilgilerinin kullanılacağını bildirmek için bir parçası olarak çağırır.

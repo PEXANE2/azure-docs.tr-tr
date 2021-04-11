@@ -1,22 +1,25 @@
 ---
-title: Azure SYNAPSE Analytics 'i tarama
-description: Bu kılavuzda, Azure SYNAPSE Analytics 'i taramanın ayrıntıları açıklanmaktadır.
+title: Adanmış SQL havuzlarını tarama
+description: Bu kılavuzda, adanmış SQL havuzlarının taranmasına ilişkin ayrıntılar açıklanmaktadır.
 author: viseshag
 ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 3111b3a102abd923169cf655f1d71e79b19f7d5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc82a03534c21b5622c78a3eda63fd92b640b07d
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104598142"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028562"
 ---
-# <a name="register-and-scan-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'i kaydetme ve tarama
+# <a name="register-and-scan-dedicated-sql-pools-formerly-sql-dw"></a>Adanmış SQL havuzlarını kaydedin ve tarayın (eski adıyla SQL DW)
 
-Bu makalede, Azure SYNAPSE Analytics 'in (eski adıyla SQL DW) bir örneğinin nasıl kaydedileceği ve taramanın nasıl yapılacağı açıklanır.
+> [!NOTE]
+> Bir Synapse çalışma alanı içinde adanmış bir SQL veritabanını kaydetmek ve taramak istiyorsanız [buradaki](register-scan-synapse-workspace.md)yönergeleri izlemeniz gerekir.
+
+Bu makalede, bir adanmış SQL havuzunun (eski adıyla SQL DW) bir örneğinin nasıl kaydedileceği ve taranacağı anlatılmaktadır.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
@@ -93,7 +96,7 @@ Ayrıca Azure AD [uygulamalarını kullanarak Azure AD kullanıcıları oluştur
 CREATE USER [ServicePrincipalName] FROM EXTERNAL PROVIDER
 GO
 
-EXEC sp_addrolemember 'db_owner', [ServicePrincipalName]
+ALTER ROLE db_owner ADD MEMBER [ServicePrincipalName]
 GO
 ```
 
@@ -114,14 +117,14 @@ Kimlik doğrulama yöntemi seçiliyken **SQL kimlik doğrulaması** olduğunda, 
 1. Anahtar Kasanızda purview 'a bağlı değilse, [Yeni bir Anahtar Kasası bağlantısı oluşturmanız](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account) gerekir
 1. Son olarak, taramayı kurmak için anahtarı kullanarak [Yeni bir kimlik bilgisi oluşturun](manage-credentials.md#create-a-new-credential)
 
-## <a name="register-an-azure-synapse-analytics-instance-formerly-sql-dw"></a>Azure SYNAPSE Analytics örneğini kaydetme (eski adıyla SQL DW)
+## <a name="register-a-sql-dedicated-pool-formerly-sql-dw"></a>SQL adanmış havuzunu kaydetme (eski adıyla SQL DW)
 
 Yeni bir Azure SYNAPSE Analytics sunucusunu veri kataloğunuza kaydetmek için aşağıdakileri yapın:
 
 1. Purview hesabınıza gidin
 1. Sol gezinti bölmesinde **kaynakları** seçin
 1. **Kaydol** ' u seçin
-1. **Kayıt kaynakları** üzerinde **Azure SYNAPSE Analytics (eskı adıyla SQL DW)** seçeneğini belirleyin.
+1. **Kayıt kaynakları** üzerinde **SQL adanmış Havuzu (eskı adıyla SQL DW)** seçin
 1. **Devam**'ı seçin
 
 **Kaynakları Kaydet (Azure SYNAPSE Analytics)** ekranında şunları yapın:

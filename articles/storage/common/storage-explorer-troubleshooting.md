@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 15df9b38abe35fe3eefad2fa160e1c1f16fe7aa7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 593ccac7326a0a04884fe433cac85cb8eaf79319
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439468"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228240"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Depolama Gezgini sorun giderme kılavuzu
 
@@ -289,20 +289,20 @@ Bozulan bağlantıları korumak istiyorsanız, bozuk bağlantıları bulmak içi
 
 Tüm bağlantılarınız bittikten sonra, geri eklenmemiş tüm bağlantı adları için, bozulmuş verileri (varsa) temizlemeniz ve Depolama Gezgini içindeki standart adımları kullanarak geri eklemeniz gerekir:
 
-# <a name="windows"></a>[Windows](#tab/Windows)
+### <a name="windows"></a>[Windows](#tab/Windows)
 
 1. **Başlat** menüsünde **kimlik bilgileri Yöneticisi** ' ni arayın ve açın.
 2. **Windows kimlik bilgileri**' ne gidin.
 3. **Genel kimlik bilgileri** altında, anahtarına sahip olan girişleri arayın `<connection_type_key>/<corrupted_connection_name>` (örneğin, `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 4. Bu girişleri silip bağlantıları yeniden ekleyin.
 
-# <a name="macos"></a>[macOS](#tab/macOS)
+### <a name="macos"></a>[macOS](#tab/macOS)
 
 1. Spotlight (komut + ara çubuğu) öğesini açın ve **Anahtarlık erişimi** arayın.
 2. Anahtarına sahip olan girişleri arayın `<connection_type_key>/<corrupted_connection_name>` (örneğin, `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 3. Bu girişleri silip bağlantıları yeniden ekleyin.
 
-# <a name="linux"></a>[Linux](#tab/Linux)
+### <a name="linux"></a>[Linux](#tab/Linux)
 
 Yerel kimlik bilgisi yönetimi, Linux dağıtımına bağlı olarak farklılık gösterir. Linux yönetiyoruz yerel kimlik bilgileri yönetimi için yerleşik bir GUI aracı sağlamıyorsa, yerel kimlik bilgilerinizi yönetmek için bir üçüncü taraf araç yükleyebilirsiniz. Örneğin, Linux yerel kimlik bilgilerini yönetmek için açık kaynaklı bir GUI aracı olan [Mevsimat](https://wiki.gnome.org/Apps/Seahorse/)'ı kullanabilirsiniz.
 
@@ -356,7 +356,7 @@ Depolama Gezgini sisteminizde .NET Core 'un yüklü olmasını gerektirir. .NET 
 > [!NOTE]
 > Depolama Gezgini Version 1.7.0 ve önceki sürümleri .NET Core 2,0 gerektirir. .NET Core 'un daha yeni bir sürümü yüklüyse, [Depolama Gezgini yama](#patching-storage-explorer-for-newer-versions-of-net-core)yapmanız gerekir. Depolama Gezgini 1.8.0 veya üzeri bir sürümü çalıştırıyorsanız, en az .NET Core 2,1 gerekir.
 
-# <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
+### <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
 1. Depolama Gezgini. tar. gz dosyasını indirin.
 2. [.NET Core çalışma zamanını](/dotnet/core/install/linux)yükler:
@@ -369,7 +369,7 @@ Depolama Gezgini sisteminizde .NET Core 'un yüklü olmasını gerektirir. .NET 
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
+### <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. Depolama Gezgini. tar. gz dosyasını indirin.
 2. [.NET Core çalışma zamanını](/dotnet/core/install/linux)yükler:
@@ -382,7 +382,7 @@ Depolama Gezgini sisteminizde .NET Core 'un yüklü olmasını gerektirir. .NET 
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
+### <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Depolama Gezgini. tar. gz dosyasını indirin.
 2. [.NET Core çalışma zamanını](/dotnet/core/install/linux)yükler:
@@ -431,6 +431,98 @@ Azure portal **Explorer 'Da aç** düğmesi işe yaramazsa, uyumlu bir tarayıc�
 * Mozilla Firefox
 * Google Chrome
 * Microsoft Internet Explorer
+
+## <a name="gathering-logs"></a>Günlükler toplanıyor
+
+GitHub 'a bir sorun raporlarken, sorununuzu tanılamanıza yardımcı olması için belirli günlükleri toplamanız istenebilir.
+
+### <a name="storage-explorer-logs"></a>Depolama Gezgini günlükleri
+
+Sürüm 1.16.0 ile başlayarak, Depolama Gezgini kendi uygulama günlüklerinde çeşitli şeyleri günlüğe kaydeder. Günlük dizinini aç > Yardım ' a tıklayarak bu günlüklere kolayca erişebilirsiniz. Varsayılan olarak, günlükleri düşük düzeyde ayrıntı düzeyinde Depolama Gezgini. Ayrıntı düzeyini değiştirmek için, adı `STG_EX_LOG_LEVEL` ve aşağıdaki değerlerden herhangi birine sahip bir ortam değişkeni ekleyin:
+- `silent`
+- `critical`
+- `error`
+- `warning`
+- `info` (varsayılan düzey)
+- `verbose`
+- `debug`
+
+Günlükler, çalıştırdığınız Depolama Gezgini her oturumunda klasörlere ayrılır. Paylaşmanız gereken günlük dosyaları için, farklı klasörlerdeki farklı oturumlardaki dosyalarla birlikte bunları bir zip arşivine yerleştirmeniz önerilir.
+
+### <a name="authentication-logs"></a>Kimlik doğrulama günlükleri
+
+Oturum açma veya Depolama Gezgini kimlik doğrulama kitaplığıyla ilgili sorunlar için, büyük olasılıkla kimlik doğrulama günlüklerini toplamanız gerekir. Kimlik doğrulama günlükleri şurada depolanır:
+- Windows: `C:\Users\<your username>\AppData\Local\Temp\servicehub\logs`
+- macOS ve Linux `~/.ServiceHub/logs`
+
+Genellikle, günlükleri toplamak için aşağıdaki adımları izleyebilirsiniz:
+
+1. Ayarlar > oturum açma > ayrıntılı kimlik doğrulaması günlüğü ' ne bakın. Kimlik doğrulama kitaplığındaki bir sorun nedeniyle Depolama Gezgini başlatılamadı. Bu işlem sizin için yapılır.
+2. Depolama Gezgini kapatın.
+1. İsteğe bağlı/önerilen: klasördeki mevcut günlükleri temizleyin `logs` . Bunu yapmak, bize göndermek için sahip olduğunuz bilgi miktarını azaltır.
+4. Depolama Gezgini açın ve sorununuzu yeniden oluşturun
+5. Depolama Gezgini kapat
+6. Klasör içeriğini ZIP `log` .
+
+### <a name="azcopy-logs"></a>AzCopy günlükleri
+
+Veri aktarırken sorun yaşıyorsanız AzCopy günlüklerini almanız gerekebilir. AzCopy günlükleri, iki farklı yöntem aracılığıyla kolayca bulunabilir:
+- Hala etkinlik günlüğünde başarısız olan aktarımlar için, "AzCopy günlük dosyasına git" seçeneğine tıklayın.
+- Geçmişte başarısız olan aktarımlar için AzCopy logs klasörüne gidin. Bu klasör şurada bulunabilir:
+  - Windows: `C:\Users\<your username>\.azcopy`
+  - macOS ve Linux ' ~/.exe AzCopy
+
+### <a name="network-logs"></a>Ağ günlükleri
+
+Bazı sorunlar için, Depolama Gezgini tarafından yapılan ağ çağrılarının günlüklerini sağlamanız gerekir. Windows 'ta, Fiddler kullanarak bunu yapabilirsiniz.
+
+> [!NOTE]
+> Fiddler izlemeleri, izlemenin toplanması sırasında tarayıcınızda girdiğiniz/gönderdiğiniz parolaları içerebilir. Fiddler izlemesini Temizleme hakkındaki yönergeleri okuduğunuzdan emin olun. Fiddler izlemelerini GitHub 'a yüklemeyin. Fiddler izinizi güvenli bir şekilde gönderebileceğiniz bildirilir.
+
+1. kısım: Fiddler 'i yükleyip yapılandırma
+
+1. Fiddler 'ı yükler
+2. Fiddler 'ı Başlat
+3. Araçlar > seçeneklere git
+4. HTTPS sekmesine tıklayın
+5. Yakalama bağlantılarının ve şifresinin çözülmesi için HTTPS trafiğinin işaretli olduğundan emin olun
+6. Eylemler düğmesine tıklayın
+7. İleri iletişim kutusunda "kök sertifikaya güven" ve ardından "Evet" seçeneğini belirleyin
+8. Eylemler düğmesine yeniden tıklayın
+9. "Kök sertifikayı masaüstüne dışarı aktar" seçeneğini belirleyin
+10. Masaüstünüze gidin
+11. FiddlerRoot. cer dosyasını bulma
+12. Açmak için çift tıklayın
+13. "Ayrıntılar" sekmesine gidin
+14. "Dosyaya Kopyala..." seçeneğine tıklayın
+15. Dışarı aktarma sihirbazında aşağıdaki seçenekleri belirleyin
+    - Base-64 kodlamalı X. 509.440
+    - Dosya adı için, bkz... C:\Users \<your user dir> \Appdata\roaming\storageexplorer\cert için
+16. Sertifika penceresini kapat
+17. Depolama Gezgini Başlat
+18. > Düzenle ' ye git proxy yapılandırma
+19. İletişim kutusunda "uygulama proxy 'si ayarlarını kullan" ı seçin ve URL 'yi http://localhost ve bağlantı noktasını 8888 olarak ayarlayın
+20. Tamam 'A tıklayın
+21. Depolama Gezgini yeniden Başlat
+22. Bir işlemden gelen ağ çağrılarını `storageexplorer:` , Fiddler 'da göster ' i görmeye başlamanız gerekir
+
+2. Bölüm: sorunu yeniden oluşturma
+1. Fiddler dışındaki tüm uygulamaları kapatın
+2. Fiddler günlüğünü (sol üstteki, Görünüm menüsünün yakınında bulunan X simgesine) temizleyin
+3. İsteğe bağlı/önerilen: Fiddler 'in birkaç dakika için ayarlanmış olmasına izin ver ' i görürseniz, ağ aramaları görünürse, üzerine sağ tıklayın ve ' Şimdi filtrele ' seçeneğini belirleyin > ' gizle <process name> '
+4. Depolama Gezgini Başlat
+5. Sorunu yeniden oluşturun
+6. Dosya > tüm oturumları > Kaydet... ' e tıklayın, herhangi bir yere kaydedin ve unutmayın
+7. Fiddler ve Depolama Gezgini kapatma
+
+3. kısım: Fiddler izlemesini Temizleme
+1. Fiddler trace (. saz dosyasına) öğesine çift tıklayın
+2. Bas `ctrl`+`f`
+3. Görüntülenen iletişim kutusunda, aşağıdaki seçeneklerin ayarlanmış olduğundan emin olun: arama = Istekler ve yanıtlar, Inceleme = üstbilgiler ve gövdeler
+4. Fiddler izlemesini toplarken kullandığınız herhangi bir parolayı arayın, vurgulanan tüm girişler, sağ tıklayın ve > seçili oturumları Kaldır ' ı seçin.
+5. İzlemeyi toplarken, ancak Ctrl + f kullanırken bir girdi bulamazsanız ve parolalarınızı/kullandığınız parolalara başka hesaplar için kullanıldığından, bu durumda yalnızca bize. saz dosyası göndermeyi atlayabilirsiniz... Ne kadar güvenli olacak. :)
+6. İzlemeyi yeni bir adla yeniden Kaydet
+7. İsteğe bağlı: özgün izlemeyi Sil
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

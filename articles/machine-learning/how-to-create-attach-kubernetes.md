@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/11/2021
-ms.openlocfilehash: bc8f7aa6827ce251799acd0673d43344c0833c3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28a647949fdb3ff4d8527268919dbd7e49b27ea4
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149333"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276663"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma ve iliştirme
 
@@ -48,12 +48,8 @@ Azure Machine Learning, eğitilen makine öğrenimi modellerini Azure Kubernetes
 
 - Özel bir AKS kümesi (Azure özel bağlantısı kullanarak) kullanmak istiyorsanız, önce kümeyi oluşturmanız ve ardından çalışma alanına **bağlamanız** gerekir. Daha fazla bilgi için bkz. [özel Azure Kubernetes hizmet kümesi oluşturma](../aks/private-clusters.md).
 
-- AKS kümesinin işlem adı, Azure ML çalışma alanınız içinde benzersiz OLMALıDıR.
-    - Ad gereklidir ve 3 ila 24 karakter uzunluğunda olmalıdır.
-    - Geçerli karakterler büyük ve küçük harf, rakam ve-karakter.
-    - Ad bir harfle başlamalıdır.
-    - Adın, bir Azure bölgesindeki tüm mevcut hesaplar arasında benzersiz olması gerekir. Seçtiğiniz ad benzersiz değilse bir uyarı görürsünüz.
-   
+- AKS kümesinin işlem adı, Azure ML çalışma alanınız içinde benzersiz OLMALıDıR. Harf, rakam ve tire içerebilir. Bir harfle başlamalı, bir harf veya rakam ile bitmelidir ve 3 ila 24 karakter uzunluğunda olmalıdır.
+ 
  - Modelleri **GPU** düğümlerine veya **FPGA** düğümlerine (ya da belirli bir SKU) DAĞıTMAK istiyorsanız, belirli SKU 'ya sahip bir küme oluşturmanız gerekir. Mevcut bir kümede ikincil düğüm havuzu oluşturma ve ikincil düğüm havuzunda modelleri dağıtma desteği yoktur.
  
 - Bir küme oluştururken veya iliştirirken, __geliştirme ve test__ ya da __Üretim__ için kümenin oluşturulup oluşturulmayacağını seçebilirsiniz. Üretim yerine __geliştirme__, __doğrulama__ ve __Test__ için bir aks kümesi oluşturmak istiyorsanız, __küme amacını__ __geliştirme-test__ olarak ayarlayın. Küme amacını belirtmezseniz, bir __Üretim__ kümesi oluşturulur. 

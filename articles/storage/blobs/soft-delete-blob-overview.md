@@ -9,16 +9,18 @@ ms.topic: conceptual
 ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 29d9dd7757319e59fc12b42d89c2ce16dec71b8b
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: c0cc29e6cbc9be1e7683b1b4412fa47f71c0538d
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551076"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227033"
 ---
 # <a name="soft-delete-for-blobs"></a>Bloblar için geçici silme
 
 Blob geçici silme, belirli bir süre boyunca silinen verileri korumak için bağımsız bir blob, anlık görüntü veya sürümü yanlışlıkla silme veya üzerine yazma işlemlerinin korunmasını sağlar. Saklama süresi boyunca, geçici olarak silinen bir nesneyi silindiği sırada durumuna geri yükleyebilirsiniz. Saklama süresi dolduktan sonra nesne kalıcı olarak silinir.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="recommended-data-protection-configuration"></a>Önerilen veri koruma yapılandırması
 
@@ -29,8 +31,6 @@ Blob geçici silme, blob verileri için kapsamlı bir veri koruma stratejisinin 
 - Blob geçici silme, silinen bir blobu, anlık görüntüyü veya sürümü geri yüklemek için. Blob geçici silme özelliğini etkinleştirmeyi öğrenmek için bkz. [Bloblar için geçici silmeyi etkinleştirme ve yönetme](soft-delete-blob-enable.md).
 
 Microsoft 'un veri koruma önerileri hakkında daha fazla bilgi edinmek için bkz. [veri korumasına genel bakış](data-protection-overview.md).
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="how-blob-soft-delete-works"></a>Blob geçici silme nasıl kullanılır?
 

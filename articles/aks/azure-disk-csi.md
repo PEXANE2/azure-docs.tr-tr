@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 2b4079b6d4eb39b65a7a60cd4d149c7748ab39ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5f9e28ac568f70801b2bd955c201712cfcb80084
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178890"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963348"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) içindeki Azure disk kapsayıcısı depolama arabirimi (CSı) sürücülerini kullanma (Önizleme)
 Azure disk kapsayıcısı depolama arabirimi (CSı) sürücüsü, Azure disk yaşam döngüsünü yönetmek için Azure Kubernetes hizmeti (AKS) tarafından kullanılan bir [CSI belirtimiyle](https://github.com/container-storage-interface/spec/blob/master/spec.md)uyumlu bir sürücü.
@@ -71,9 +71,9 @@ test.txt
 
 Varsayılan depolama sınıfları en yaygın senaryolara sahiptir, ancak hepsini değildir. Bazı durumlarda kendi parametrelerinizi kullanarak kendi depolama sınıfınızın özelleştirilmiş olmasını isteyebilirsiniz. Örneğin, sınıfı değiştirmek isteyebileceğiniz bir senaryonuz vardır `volumeBindingMode` .
 
-Varsayılan depolama sınıfları, PVC oluşturulduktan `volumeBindingMode: Immediate` hemen sonra ortaya çıkan bir sınıfı kullanır. Düğüm havuzlarınızın topoloji sınırlı olduğu durumlarda (örneğin, kullanılabilirlik bölgelerini kullanarak), Pod 'un zamanlama gereksinimleri (Bu durumda belirli bir bölgede olması) hakkında bilgi sahibi olmadan,, PVs 'nin bağlanması veya sağlanması gerekir.
+`volumeBindingMode: Immediate`PVC oluşturulduktan hemen sonra ortaya çıkan bir sınıfı kullanabilirsiniz. Düğüm havuzlarınızın topoloji sınırlı olduğu durumlarda (örneğin, kullanılabilirlik bölgelerini kullanarak), Pod 'un zamanlama gereksinimleri (Bu durumda belirli bir bölgede olması) hakkında bilgi sahibi olmadan,, PVs 'nin bağlanması veya sağlanması gerekir.
 
-Bu senaryoya yönelik olarak, `volumeBindingMode: WaitForFirstConsumer` PVC 'yi kullanan bir pod oluşturuluncaya kadar BIR BD 'in bağlama ve sağlama işlemlerini gecikmesini sağlayabilirsiniz. Bu şekilde, BD, Pod 'un zamanlama kısıtlamaları tarafından belirtilen kullanılabilirlik bölgesinde (veya başka bir topolojide) uyumlu olacak ve sağlanacak.
+Bu senaryoya yönelik olarak, `volumeBindingMode: WaitForFirstConsumer` PVC 'yi kullanan bir pod oluşturuluncaya kadar BIR BD 'in bağlama ve sağlama işlemlerini gecikmesini sağlayabilirsiniz. Bu şekilde, BD, Pod 'un zamanlama kısıtlamaları tarafından belirtilen kullanılabilirlik bölgesinde (veya başka bir topolojide) uyumlu olacak ve sağlanacak. Varsayılan depolama sınıfları sınıfını kullanır `volumeBindingMode: WaitForFirstConsumer` .
 
 Adlı bir dosya oluşturun `sc-azuredisk-csi-waitforfirstconsumer.yaml` ve aşağıdaki bildirimi yapıştırın.
 Depolama sınıfı, `managed-csi` depolama sınıfımızla aynı ancak farklı bir `volumeBindingMode` sınıfla aynıdır.

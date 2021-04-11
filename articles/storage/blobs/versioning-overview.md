@@ -1,60 +1,64 @@
 ---
 title: Blob sürümü oluşturma
 titleSuffix: Azure Storage
-description: Blob Storage sürümü oluşturma bir nesnenin önceki sürümlerini otomatik olarak korur ve zaman damgalarına göre tanımlar. Yanlışlıkla değiştiriliyorsa veya silinirse verilerinizi kurtarmak için bir Blobun önceki sürümlerini geri yükleyebilirsiniz.
+description: Blob Storage sürümü oluşturma bir nesnenin önceki sürümlerini otomatik olarak korur ve zaman damgalarına göre tanımlar. Yanlışlıkla değiştirilmişse veya silinirse verilerinizi kurtarmak için bir blob 'un önceki bir sürümünü geri yükleyebilirsiniz.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/09/2021
+ms.date: 04/07/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 692a820bea69071485a973a988ae91bd70b74f35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82216abd13b6128be68e22a4ce2a0f6de9a6ce2f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100380823"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227557"
 ---
 # <a name="blob-versioning"></a>Blob sürümü oluşturma
 
 Bir nesnenin önceki sürümlerini otomatik olarak sürdürmek için blob Storage sürümü oluşturmayı etkinleştirebilirsiniz.  Blob sürümü oluşturma etkinleştirildiğinde, yanlışlıkla değiştirildiyse veya silinirse verilerinizi kurtarmak için bir Blobun önceki bir sürümünü geri yükleyebilirsiniz.
 
-Blob sürümü oluşturma, depolama hesabında etkinleştirilir ve depolama hesabındaki tüm Bloblar için geçerlidir. Depolama hesabı için blob sürüm oluşturmayı etkinleştirdikten sonra Azure depolama, depolama hesabındaki her blob için sürümleri otomatik olarak korur.
-
-Microsoft, üst veri koruma için bir Blobun önceki sürümlerini sürdürmek üzere blob sürümlendirme kullanılmasını önerir. Mümkün olduğunda, önceki sürümleri sürdürmek için blob anlık görüntüleri yerine blob sürümü oluşturma 'yı kullanın. Blob anlık görüntüleri, bir Blobun önceki sürümlerini koruduklarında benzer işlevler sağlar, ancak anlık görüntülerin uygulamanız tarafından el ile saklanması gerekir.
-
-Blob sürümü oluşturmayı nasıl etkinleştireceğinizi öğrenmek için bkz. [BLOB sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md).
-
-> [!IMPORTANT]
-> Blob sürümü oluşturma, bir depolama hesabı veya kapsayıcısının yanlışlıkla silinmesini kurtarmanıza yardımcı olamaz. Depolama hesabının yanlışlıkla silinmesini engellemek için depolama hesabı kaynağında bir kilit yapılandırın. Azure kaynaklarını kilitleme hakkında daha fazla bilgi için, bkz. [beklenmeyen değişiklikleri engellemek için kaynakları kilitleme](../../azure-resource-manager/management/lock-resources.md). Kapsayıcıları yanlışlıkla silinmeye karşı korumak için, depolama hesabı için kapsayıcı geçici silme 'yı yapılandırın. Daha fazla bilgi için bkz. [kapsayıcılar Için geçici silme (Önizleme)](soft-delete-container-overview.md).
-
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
+
+## <a name="recommended-data-protection-configuration"></a>Önerilen veri koruma yapılandırması
+
+Blob sürümü oluşturma, blob verileri için kapsamlı bir veri koruma stratejisinin bir parçasıdır. Blob verileriniz için en iyi koruma için, Microsoft aşağıdaki veri koruma özelliklerinin tümünü etkinleştirmeyi önerir:
+
+- Blob 'un önceki sürümlerini otomatik olarak sürdürmek için blob sürümü oluşturma. Blob sürümü oluşturma etkinleştirildiğinde, yanlışlıkla değiştirildiyse veya silinirse verilerinizi kurtarmak için bir Blobun önceki bir sürümünü geri yükleyebilirsiniz. Blob sürümü oluşturmayı nasıl etkinleştireceğinizi öğrenmek için bkz. [BLOB sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md).
+- Silinen bir kapsayıcıyı geri yüklemek için kapsayıcı geçici silme. Kapsayıcı geçici silmeyi etkinleştirme hakkında bilgi edinmek için bkz. [kapsayıcılar için geçici silmeyi etkinleştirme ve yönetme](soft-delete-container-enable.md).
+- Blob geçici silme, silinen bir blobu, anlık görüntüyü veya sürümü geri yüklemek için. Blob geçici silme özelliğini etkinleştirmeyi öğrenmek için bkz. [Bloblar için geçici silmeyi etkinleştirme ve yönetme](soft-delete-blob-enable.md).
+
+Microsoft 'un veri koruma önerileri hakkında daha fazla bilgi edinmek için bkz. [veri korumasına genel bakış](data-protection-overview.md).
 
 ## <a name="how-blob-versioning-works"></a>Blob sürümü oluşturma nasıl kullanılır?
 
-Bir sürüm, belirli bir noktadaki bir Blobun durumunu yakalar. Blob sürümü oluşturma bir depolama hesabı için etkinleştirildiğinde, blob her değiştirildiğinde veya silindiğinde Azure Storage otomatik olarak bir blob 'un yeni bir sürümünü oluşturur.
+Bir sürüm, belirli bir noktadaki bir Blobun durumunu yakalar. Blob sürümü oluşturma bir depolama hesabı için etkinleştirildiğinde, blob her değiştirildiğinde Azure Storage otomatik olarak bir blob 'un yeni bir sürümünü oluşturur.
 
 Sürüm oluşturma özelliği etkinken bir blob oluşturduğunuzda, yeni blob blob 'un geçerli sürümüdür (veya temel Blobun). Bu blobu daha sonra değiştirirseniz, Azure depolama, değiştirilmeden önce blob durumunu yakalayan bir sürüm oluşturur. Değiştirilen blob yeni geçerli sürüm olur. Blobu her değiştirdiğiniz zaman yeni bir sürüm oluşturulur.
 
-Aşağıdaki diyagramda, sürümlerin yazma ve silme işlemlerinde nasıl oluşturulduğu ve önceki sürümün geçerli sürüm olacak şekilde nasıl yükseltilerek ilgili bir durum gösterilmektedir:
+Aşağıdaki diyagramda, yazma işlemlerinde sürümlerin nasıl oluşturulduğu ve önceki sürümün geçerli sürüm olarak yükseltilme şekli gösterilmektedir:
 
 :::image type="content" source="media/versioning-overview/blob-versioning-diagram.png" alt-text="Blob sürümlendirme 'nin nasıl çalıştığını gösteren diyagram":::
 
-Blob başına çok sayıda sürüm olması, blob listeleme işlemlerine yönelik gecikmeyi artırabilir. Microsoft, blob başına 1000 ' den az sürümden bakım yapmanızı önerir. Eski sürümleri otomatik olarak silmek için yaşam döngüsü yönetimi kullanabilirsiniz. Yaşam döngüsü yönetimi hakkında daha fazla bilgi için bkz. [Azure Blob depolama erişim katmanlarını otomatikleştirerek maliyetleri iyileştirme](storage-lifecycle-management-concepts.md).
-
-Sürüm oluşturma etkinken bir blobu sildiğinizde, Azure depolama, silinmeden önce blob durumunu yakalayan bir sürüm oluşturur. Blob 'un geçerli sürümü silinir, ancak gerekirse yeniden oluşturulabilmesi için Blobun sürümleri korunur. 
+Sürüm oluşturma etkinken bir blobu sildiğinizde, Blobun geçerli sürümü silinir. Blob 'un önceki tüm sürümleri devam ederse.
 
 Blob sürümleri sabittir. Mevcut bir blob sürümünün içeriğini veya meta verilerini değiştiremezsiniz.
+
+Blob başına çok sayıda sürüm olması, blob listeleme işlemlerine yönelik gecikmeyi artırabilir. Microsoft, blob başına 1000 ' den az sürümden bakım yapmanızı önerir. Eski sürümleri otomatik olarak silmek için yaşam döngüsü yönetimi kullanabilirsiniz. Yaşam döngüsü yönetimi hakkında daha fazla bilgi için bkz. [Azure Blob depolama erişim katmanlarını otomatikleştirerek maliyetleri iyileştirme](storage-lifecycle-management-concepts.md).
 
 Blob sürümü oluşturma genel amaçlı v2, Blok Blobu ve BLOB depolama hesapları için kullanılabilir. Azure Data Lake Storage 2. ile kullanım için etkinleştirilmiş hiyerarşik bir ad alanı olan depolama hesapları Şu anda desteklenmemektedir.
 
 Azure depolama REST API sürüm 2019-10-10 ve üzeri, blob sürümü oluşturmayı destekler.
 
+> [!IMPORTANT]
+> Blob sürümü oluşturma, bir depolama hesabı veya kapsayıcısının yanlışlıkla silinmesini kurtarmanıza yardımcı olamaz. Depolama hesabının yanlışlıkla silinmesini engellemek için depolama hesabı kaynağında bir kilit yapılandırın. Depolama hesabını kilitleme hakkında daha fazla bilgi için bkz. [depolama hesabına Azure Resource Manager kilidi uygulama](../common/lock-account-resource.md).
+
 ### <a name="version-id"></a>Sürüm KIMLIĞI
 
-Her blob sürümü bir sürüm KIMLIĞIYLE tanımlanır. Sürüm KIMLIĞININ değeri, Blobun yazıldığı veya güncelleştirildiği zaman damgasıdır. Sürüm KIMLIĞI, Sürüm oluşturulduğu sırada atanır.
+Her blob sürümü bir sürüm KIMLIĞIYLE tanımlanır. Sürüm KIMLIĞININ değeri, Blobun güncelleştirildiği zaman damgasıdır. Sürüm KIMLIĞI, Sürüm oluşturulduğu sırada atanır.
 
 Sürüm KIMLIĞINI sağlayarak bir Blobun belirli bir sürümünde okuma veya silme işlemleri yapabilirsiniz. Sürüm KIMLIĞINI atlarsanız, işlem geçerli sürüme (temel blob) göre davranır.
 
@@ -77,29 +81,12 @@ Aşağıdaki diyagramda, yazma işlemlerinin blob sürümlerini nasıl etkiledi�
 > [!NOTE]
 > Depolama hesabı için etkinleştirilmeden önce oluşturulan bir Blobun sürüm KIMLIĞI yok. Blob değiştirildiğinde, değiştirilen blob geçerli sürüm olur ve güncelleştirmeden önce Blobun durumunu kaydetmek için bir sürüm oluşturulur. Sürüme, oluşturma süresi olan bir sürüm KIMLIĞI atanır.
 
-### <a name="versioning-on-delete-operations"></a>Silme işlemlerinde sürüm oluşturma
+Blob sürümü oluşturma bir depolama hesabı için etkinleştirildiğinde, blok Bloblarındaki tüm yazma işlemleri yeni bir sürümün oluşturulmasını, [PUT bloğu](/rest/api/storageservices/put-block) işlemi dışında tetikler.
 
-Bir blobu sildiğinizde, blob 'un geçerli sürümü önceki bir sürüm olur ve temel blob silinir. Blob silindiğinde, blob 'un var olan tüm önceki sürümleri korunur.
-
-Sürüm KIMLIĞI olmadan [BLOB silme](/rest/api/storageservices/delete-blob) işlemini çağırmak, temel blobu siler. Belirli bir sürümü silmek için, silme işleminde bu sürümün KIMLIĞINI sağlayın.
-
-Aşağıdaki diyagramda, sürümlü bir blob üzerinde silme işleminin etkisi gösterilmektedir:
-
-:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="Sürümlü blob silme işlemini gösteren diyagram.":::
-
-Blob 'a yeni veri yazmak Blobun yeni bir sürümünü oluşturur. Aşağıdaki diyagramda gösterildiği gibi, var olan tüm sürümler etkilenmez.
-
-:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="Silinmeden sonra sürümlü blob 'un yeniden oluşturulmasını gösteren diyagram.":::
-
-### <a name="blob-types"></a>Blob türleri
-
-Blob sürümü oluşturma bir depolama hesabı için etkinleştirildiğinde, blok Bloblarındaki tüm yazma ve silme işlemleri yeni bir sürümün oluşturulmasını, [PUT bloğu](/rest/api/storageservices/put-block) işlemi dışında tetikler.
-
-Sayfa Blobları ve ekleme Blobları için, yalnızca bir yazma ve silme işlemi alt kümesi bir sürüm oluşturulmasını tetikler. Bu işlemler şunları içerir:
+Sayfa Blobları ve ekleme Blobları için, yalnızca bir yazma işlemleri alt kümesi bir sürüm oluşturulmasını tetikler. Bu işlemler şunları içerir:
 
 - [İkili Büyük Nesne Koyma](/rest/api/storageservices/put-blob)
 - [Öbek listesini yerleştirme](/rest/api/storageservices/put-block-list)
-- [İkili Büyük Nesneyi Silme](/rest/api/storageservices/delete-blob)
 - [Blob meta verilerini ayarla](/rest/api/storageservices/set-blob-metadata)
 - [İkili Büyük Nesneyi Kopyalama](/rest/api/storageservices/copy-blob)
 
@@ -109,6 +96,20 @@ Aşağıdaki işlemler yeni bir sürümün oluşturulmasını tetiklemez. Bu iş
 - [Append bloğu](/rest/api/storageservices/append-block) (ekleme Blobu)
 
 Bir Blobun tüm sürümleri aynı blob türünde olmalıdır. Bir Blobun önceki sürümleri varsa, ilk olarak blobu ve tüm sürümlerini silmediğiniz müddetçe, bir tür Blobun başka bir türle üzerine yazamaz.
+
+### <a name="versioning-on-delete-operations"></a>Silme işlemlerinde sürüm oluşturma
+
+Bir sürüm KIMLIĞI belirtmeden [BLOB silme](/rest/api/storageservices/delete-blob) işlemini çağırdığınızda, geçerli sürüm önceki bir sürüm olur ve artık geçerli bir sürüm değildir. Blob 'un tüm mevcut önceki sürümleri korunur.
+
+Aşağıdaki diyagramda, sürümlü bir blob üzerinde silme işleminin etkisi gösterilmektedir:
+
+:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="Sürümlü blob silme işlemini gösteren diyagram.":::
+
+Bir Blobun belirli bir sürümünü silmek için, silme işleminde bu sürümün KIMLIĞINI sağlayın. Depolama hesabı için blob geçici silme özelliği de etkinleştirildiyse, geçici silme bekletme süresi sona erdiğinde sürüm sistemde tutulur.
+
+Blob 'a yeni veri yazmak, Blobun yeni bir güncel sürümünü oluşturur. Aşağıdaki diyagramda gösterildiği gibi, var olan tüm sürümler etkilenmez.
+
+:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="Silinmeden sonra sürümlü blob 'un yeniden oluşturulmasını gösteren diyagram.":::
 
 ### <a name="access-tiers"></a>Erişim katmanları
 
@@ -132,27 +133,29 @@ Aşağıdaki diyagramda, sürüm oluşturma işlemi devre dışı bırakıldıkt
 
 ## <a name="blob-versioning-and-soft-delete"></a>Blob sürümü oluşturma ve geçici silme
 
-Blob sürümü oluşturma ve BLOB geçici silme, size en uygun veri koruması sağlamak için birlikte çalışır. Geçici silmeyi etkinleştirdiğinizde, Azure depolama 'nın geçici olarak silinen bir blobu ne kadar süreyle koruyacağını belirtirsiniz. Geçici olarak silinen blob sürümü sistemde kalır ve geçici silme Bekletme dönemi içinde silinebilir. Blob geçici silme hakkında daha fazla bilgi için bkz. [Azure depolama Blobları Için geçici silme](./soft-delete-blob-overview.md).
+Microsoft, en iyi veri koruması için depolama hesaplarınız için hem sürüm oluşturma hem de blob geçici silmeyi etkinleştirmeyi önerir. Geçici silme, Blobları, sürümleri ve anlık görüntüleri yanlışlıkla silinmeye karşı korur. Blob geçici silme hakkında daha fazla bilgi için bkz. [Azure depolama Blobları Için geçici silme](./soft-delete-blob-overview.md).
+
+### <a name="overwriting-a-blob"></a>Bir Blobun üzerine yazma
+
+Blob sürümü oluşturma ve BLOB geçici silme her ikisi de bir depolama hesabı için etkinleştirildiyse, bir Blobun üzerine yazılması otomatik olarak yeni bir sürüm oluşturur. Yeni sürüm geçici olarak silinmez ve geçici silme bekletme süresi sona erdiğinde kaldırılmaz. Geçici olarak silinen anlık görüntü oluşturulmaz.
 
 ### <a name="deleting-a-blob-or-version"></a>Blob veya sürümü silme
 
-Geçici silme, blob sürümlerini silmek için ek koruma sağlar. Depolama hesabında hem sürüm oluşturma hem de geçici silme etkinse, bir blobu sildiğinizde Azure depolama, blob 'un durumunu silinmeden hemen önce kaydetmek için yeni bir sürüm oluşturur ve geçerli sürümü siler. Yeni sürüm geçici olarak silinmez ve geçici silme bekletme süresi sona erdiğinde kaldırılmaz.
+Depolama hesabında hem sürüm oluşturma hem de geçici silme etkinse, bir blobu sildiğinizde, blob 'un geçerli sürümü önceki bir sürüm olur ve geçerli sürüm silinir. Yeni sürüm oluşturulmaz ve geçici olarak silinen anlık görüntü oluşturulmaz. Geçici silme bekletme süresi, silinen blob için geçerli değildir.
 
-Blob 'un önceki bir sürümünü sildiğinizde, sürüm geçici olarak silinir. Geçici olarak silinen sürüm, depolama hesabının geçici silme ayarlarında belirtilen Bekletme dönemi boyunca tutulur ve geçici silme saklama süresi sona erdiğinde kalıcı olarak silinir.
+Geçici silme, blob sürümlerini silmek için ek koruma sağlar. Blob 'un önceki bir sürümünü sildiğinizde, bu sürüm geçici olarak silinir. Geçici olarak silinen sürüm, geçici silme bekletme süresi sona erdiğinde ve bu noktada kalıcı olarak silindiği sürece korunur.
 
-Bir Blobun önceki bir sürümünü kaldırmak için sürüm KIMLIĞINI belirterek açıkça silin.
+Bir Blobun önceki bir sürümünü silmek için **blobu silme** işlemini çağırın ve sürüm kimliğini belirtin.
 
 Aşağıdaki diyagramda bir Blobu veya blob sürümünü sildiğinizde ne olacağı gösterilmektedir.
 
 :::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="Geçici silme özelliği etkinken bir sürümü silmeyi gösteren diyagram.":::
 
-Bir depolama hesabında hem sürüm oluşturma hem de geçici silme etkinse, bir blob veya blob sürümü değiştirildiğinde veya silindiğinde, geçici olarak silinen anlık görüntü oluşturulmaz.
-
 ### <a name="restoring-a-soft-deleted-version"></a>Geçici olarak silinen bir sürümü geri yükleme
 
-Geçici olarak silinen bir blob sürümünü, geçici silme bekletme süresi etkinken sürüm üzerinde geri alma [blobu](/rest/api/storageservices/undelete-blob) işlemini çağırarak geri yükleyebilirsiniz. **Geri alma blobu** işlemi, Blobun tüm geçici silinen sürümlerini geri yükler.
+Geçici silme Bekletme dönemi sırasında geçici olarak silinen sürümleri geri yüklemek için silme [blobu](/rest/api/storageservices/undelete-blob) işlemini kullanabilirsiniz. **Geri alma blobu** işlemi, blob 'un tüm geçici silinen sürümlerini her zaman geri yükler. Yalnızca tek bir geçici olarak silinen sürümü geri yüklemek mümkün değildir.
 
-Geçici olarak silinen sürümleri geri alma **blobu** ile geri yükleme, herhangi bir sürümü geçerli sürüm olacak şekilde yükseltemez. Geçerli sürümü geri yüklemek için, önce tüm geçici silinen sürümleri geri yükleyin ve ardından blobu geri yüklemek için önceki bir sürümü kopyalamak üzere [blobu kopyalama](/rest/api/storageservices/copy-blob) işlemini kullanın.
+Geçici olarak silinen sürümleri geri alma **blobu** ile geri yükleme, herhangi bir sürümü geçerli sürüm olacak şekilde yükseltemez. Geçerli sürümü geri yüklemek için, önce tüm geçici silinen sürümleri geri yükleyin ve ardından önceki bir sürümü yeni bir güncel sürüme kopyalamak için [BLOB kopyalama](/rest/api/storageservices/copy-blob) işlemini kullanın.
 
 Aşağıdaki diyagramda, **silme blobu** işlemiyle, geçici olarak silinen blob sürümlerinin nasıl geri yükleneceği ve BLOB 'un geçerli sürümünün **BLOB kopyalama** işlemiyle nasıl geri yükleneceği gösterilmektedir.
 
@@ -193,8 +196,8 @@ Aşağıdaki tabloda, hangi Azure RBAC eylemlerinin bir blob veya blob sürümü
 
 | Description | Blob hizmeti işlemi | Azure RBAC verileri eylemi gerekiyor | Azure yerleşik rol desteği |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| Blobun geçerli sürümü siliniyor | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil** | Depolama Blob Verileri Katkıda Bulunanı |
-| Bir sürümü silme | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/deleteBlobVersion/Action** | Depolama Blob Verileri Sahibi |
+| Geçerli sürümü silme | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil** | Depolama Blob Verileri Katkıda Bulunanı |
+| Önceki bir sürümü silme | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/deleteBlobVersion/Action** | Depolama Blob Verileri Sahibi |
 
 ### <a name="shared-access-signature-sas-parameters"></a>Paylaşılan erişim imzası (SAS) parametreleri
 

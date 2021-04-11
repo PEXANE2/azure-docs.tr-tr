@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: jordane
 author: jpe316
-ms.date: 11/16/2020
-ms.openlocfilehash: cc844cbd2518bb131f6902d1da3e7653951224b5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.date: 04/08/2021
+ms.openlocfilehash: 2dc50702113f591075b790878347c4ca47beec4e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102547858"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027814"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning için git tümleştirmesi
 
@@ -25,6 +25,11 @@ ms.locfileid: "102547858"
 Azure Machine Learning bir iş gönderilirken, kaynak dosyalar yerel bir git deposunda depolanıyorsa, eğitim sürecinin bir parçası olarak depo hakkında bilgi izlenir.
 
 Azure Machine Learning, yerel bir git deposundan bilgileri izlediğinden, belirli bir merkezi depoya bağlı değildir. Deponuz GitHub, GitLab, Bitbucket, Azure DevOps veya başka bir git uyumlu hizmetten kopyalanabilir.
+
+> [!TIP]
+> Grafik kullanıcı arabiriminden git ile etkileşim kurmak için Visual Studio Code kullanın. Visual Studio Code kullanarak Azure Machine Learning uzak bir işlem örneğine bağlanmak için bkz. [Visual Studio Code 'de Azure Machine Learning işlem örneğine bağlanma (Önizleme)](how-to-set-up-vs-code-remote.md)
+>
+> Visual Studio Code sürüm denetimi özellikleri hakkında daha fazla bilgi için bkz. [vs Code sürüm denetimini kullanma](https://code.visualstudio.com/docs/editor/versioncontrol) ve [vs Code GitHub ile çalışma](https://code.visualstudio.com/docs/editor/github).
 
 ## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Git depolarını çalışma alanı dosya sisteminize kopyalama
 Azure Machine Learning, çalışma alanındaki tüm kullanıcılar için paylaşılan bir dosya sistemi sağlar.

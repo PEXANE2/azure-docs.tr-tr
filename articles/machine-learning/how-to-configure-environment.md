@@ -8,15 +8,15 @@ ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.date: 11/16/2020
+ms.date: 03/22/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 7e493404e7a36b60e8f9e62cd4ac2f2b32845bb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 686274bc90f516f597a397a6b0270fb638e30c95
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102501626"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027719"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir Python geliştirme ortamı ayarlama
 
@@ -134,7 +134,12 @@ Geliştirme için Visual Studio Code kullanmak için:
 1. [Visual Studio Code](https://code.visualstudio.com/Download)'i yükler.
 1. [Azure Machine Learning Visual Studio Code uzantısını](tutorial-setup-vscode-extension.md) (Önizleme) yükler.
 
-Visual Studio Code uzantısı yüklendikten sonra, [Azure Machine Learning kaynaklarınızı](how-to-manage-resources-vscode.md)yönetebilir, [denemeleri çalıştırıp hata ayıklayın](how-to-debug-visual-studio-code.md)ve [eğitilen modeller dağıtabilirsiniz](tutorial-train-deploy-image-classification-model-vscode.md).
+Visual Studio Code uzantısı yüklendikten sonra, şunları yapmak için kullanın:
+
+* [Azure Machine Learning kaynaklarınızı yönetin](how-to-manage-resources-vscode.md)
+* [Azure Machine Learning işlem örneğine bağlanma](how-to-set-up-vs-code-remote.md)
+* [Çalıştır ve hata ayıkla denemeleri](how-to-debug-visual-studio-code.md)
+* [Eğitilen modeller dağıtın](tutorial-train-deploy-image-classification-model-vscode.md).
 
 ## <a name="azure-machine-learning-compute-instance"></a><a id="compute-instance"></a>Azure Machine Learning işlem örneği
 
@@ -151,7 +156,7 @@ Paketlerin nasıl yükleneceğine ilişkin işlem örnekleri hakkında daha fazl
 
 Jupyter Notebook Server ve JupyterLab ' a ek olarak, [Azure Machine Learning Studio 'nun içindeki tümleşik Not defteri özelliğindeki](how-to-run-jupyter-notebooks.md)işlem örneklerini kullanabilirsiniz.
 
-Ayrıca, [bir Azure Machine Learning işlem örneğini uzak Jupyter Notebook sunucusu olarak yapılandırmak](how-to-set-up-vs-code-remote.md#configure-compute-instance-as-remote-notebook-server)için Azure Machine Learning Visual Studio Code uzantısını da kullanabilirsiniz.
+Ayrıca, [vs Code kullanarak uzak bir işlem örneğine bağlanmak](how-to-set-up-vs-code-remote.md)için Azure Machine Learning Visual Studio Code uzantısını da kullanabilirsiniz.
 
 ## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Veri Bilimi Sanal Makinesi
 

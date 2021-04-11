@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 6faec27bf368b3eb45e05a91307df6027bda93b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb5203629915914ab9af22d89e5f2865078a8e44
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100094007"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012616"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux’ta Azure App Service hakkında SSS
 
@@ -144,6 +144,20 @@ Otomatik bağlantı noktası algılıyoruz. Ayrıca, *WEBSITES_PORT* adlı bir u
 
 Hayır, platform paylaşılan ön uçlarında HTTPS sonlandırmasını işler.
 
+**Yerleşik kapsayıcılar için kodda bağlantı noktası değişkeni kullanmam gerekir mi?**
+
+Hayır, otomatik bağlantı noktası algılaması nedeniyle bağlantı noktası değişkeni gerekli değildir. Hiçbir bağlantı noktası algılanmazsa, varsayılan olarak 80 olur.
+Özel bir bağlantı noktasını el ile yapılandırmak için Dockerfile içindeki gösterme yönergesini ve WEBSITES_PORT uygulama ayarını kullanın. Bu, kapsayıcıya bağlamak için bir bağlantı noktası değeri ile.
+
+**Özel kapsayıcılar için WEBSITES_PORT kullanmam gerekir mi?**
+
+Evet, özel kapsayıcılar için bu gereklidir. Özel bir bağlantı noktasını el ile yapılandırmak için Dockerfile içindeki gösterme yönergesini ve WEBSITES_PORT uygulama ayarını kullanın. Bu, kapsayıcıya bağlamak için bir bağlantı noktası değeri ile.
+
+**Docker görüntüsünde ASPNETCORE_URLS kullanabilir miyim?**
+
+Evet, .NET Core uygulaması başlamadan önce ortam değişkeninin üzerine yazın.
+Örneğin İnit.sh betiği: Export ASPNETCORE_URLS = {Value}
+
 ## <a name="multi-container-with-docker-compose"></a>Docker Compose ile çok Kapsayıcılı
 
 **Nasıl yaparım? Azure Container Registry (ACR), çok Kapsayıcılı ile kullanılacak şekilde yapılandırma**
@@ -206,3 +220,4 @@ Uygulama ayarları için yalnızca harfler (A-Z, a-z), rakamlar (0-9) ve alt çi
 - [Linux üzerinde Azure App Service nedir?](overview.md#app-service-on-linux)
 - [Azure App Service’ta hazırlık ortamları ayarlama](deploy-staging-slots.md)
 - [Kapsayıcılar için Web App ile sürekli dağıtım](./deploy-ci-cd-custom-container.md)
+- [Bilmeniz gerekenler: Web Apps ve Linux](https://techcommunity.microsoft.com/t5/apps-on-azure/things-you-should-know-web-apps-and-linux/ba-p/392472)

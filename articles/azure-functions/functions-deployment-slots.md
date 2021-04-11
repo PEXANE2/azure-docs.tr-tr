@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 2dbf7c31e6b0b40fa9dc2d59e86c0ecc731657e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 73282145abd8bfe804b47fda3bf5f12dc691ff3a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172418"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551365"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Işlevleri dağıtım Yuvaları
 
@@ -20,9 +20,6 @@ Aşağıdaki, işlevlerin takas yuvaları tarafından nasıl etkilendiğini yans
 
 - Trafik yeniden yönlendirmesi sorunsuz; bir değiştirme nedeniyle hiçbir istek atılamaz.
 - Bir işlev değiştirme sırasında çalışıyorsa, yürütme devam eder ve sonraki Tetikleyiciler, takas edilen uygulama örneğine yönlendirilir.
-
-> [!NOTE]
-> Yuvalar Şu anda Linux tüketim planı için kullanılamaz.
 
 ## <a name="why-use-slots"></a>Yuvalar neden kullanılmalıdır?
 
@@ -229,7 +226,7 @@ Dağıtım yuvaları için iki düzey destek vardır:
 | Windows tüketimi       | Genel kullanılabilirlik |
 | Windows Premium           | Genel kullanılabilirlik  |
 | Windows ayrılmış         | Genel kullanılabilirlik |
-| Linux tüketimi         | Desteklenmeyen          |
+| Linux tüketimi         | Önizleme          |
 | Linux Premium             | Genel kullanılabilirlik  |
 | Linux adanmış           | Genel kullanılabilirlik |
 
