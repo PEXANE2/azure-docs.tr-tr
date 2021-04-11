@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: f2ea960d28bcdcbf586570933ac00dccae18e46a
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: bc7b1a0742e79c3c84bf533e75467b5def2706b4
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068005"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277734"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Media Services ile kendi anahtarınızı getirin (müşteri tarafından yönetilen anahtarlar)
 
@@ -46,8 +46,8 @@ Media Services otomatik olarak çift şifrelemeyi destekler. Bekleyen veriler i�
 
 ## <a name="tutorials"></a>Öğreticiler
 
-- [Azure portal, müşteri tarafından yönetilen anahtarları veya BYOK 'u Media Services ile birlikte kullanmak için kullanın](tutorial-byok-portal.md)
-- [Media Services REST API ile müşteri tarafından yönetilen anahtarları veya BYOK kullanın](tutorial-byok-postman.md).
+- [Azure portal, müşteri tarafından yönetilen anahtarları veya BYOK 'u Media Services ile birlikte kullanmak için kullanın](security-customer-managed-keys-portal-tutorial.md)
+- [Media Services REST API ile müşteri tarafından yönetilen anahtarları veya BYOK kullanın](security-customer-managed-keys-rest-postman-tutorial.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

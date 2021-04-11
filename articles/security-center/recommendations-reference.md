@@ -4,15 +4,15 @@ description: Bu makalede, kaynaklarınızı korumanıza ve korumanıza yardımc�
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/22/2021
+ms.date: 04/06/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 2d9f76bd3c6ad0060a90f52abba1c7378b310e67
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a44a5e4e715238c42e51e65dfe16d4f70dfcf54d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801475"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504830"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Güvenlik önerileri - başvuru kılavuzu
 
@@ -58,12 +58,15 @@ Güvenli puanınız, tamamladığınız Güvenlik Merkezi önerilerinin sayısı
 
 ## <a name="deprecated-recommendations"></a>Kullanım dışı öneriler
 
-|Öneri|Açıklama & ilgili ilke|Önem derecesi|Hızlı düzelme etkin mi? ([Daha fazla bilgi](security-center-remediate-recommendations.md#quick-fix-remediation))|Kaynak türü|
-|----|----|----|----|----|
-|**Uygulama Hizmetleri 'ne erişim kısıtlı olmalıdır**|Ağ yapılandırmasını değiştirerek, çok geniş aralıklardan gelen trafiği reddedecek şekilde uygulama hizmetlerinize erişimi kısıtlayın.<br>(İlgili ilke: [Önizleme]: uygulama hizmetlerine erişim kısıtlı olmalıdır)|Yüksek|H|App service|
-|**IaaS NSG 'lerdeki Web uygulamalarına yönelik kurallar sağlamlaştırılmış olmalıdır**|Web uygulamaları çalıştıran sanal makinelerinizin ağ güvenlik grubu (NSG), Web uygulaması bağlantı noktalarıyla ilgili aşırı izin veren NSG kuralları ile.<br>(İlgili ilke: IaaS üzerinde Web uygulamalarına yönelik NSG kuralları sağlamlaştırılmış olmalıdır)|Yüksek|H|Sanal makine|
-|**Gereksiz uygulama ayrıcalıklarını kaldırarak saldırı vektörünü azaltmak için pod güvenlik Ilkeleri tanımlanmalıdır (Önizleme)**|Gereksiz uygulama ayrıcalıklarını kaldırarak saldırı vektörünü azaltmak için pod güvenlik Ilkeleri tanımlayın. Yalnızca erişim izni verilen kaynaklara erişebilmeleri için pod güvenlik ilkelerinin yapılandırılması önerilir.<br>(İlgili ilke: [Önizleme]: Pod güvenlik Ilkeleri Kubernetes hizmetlerinde tanımlanmalıdır)|Orta|N|İşlem kaynakları (kapsayıcılar)|
-|**IoT cihazlarınıza daha fazla görünürlük sağlamak için IoT güvenlik modülü için Azure Güvenlik Merkezi 'ni yükler**|IoT cihazlarınıza daha fazla görünürlük sağlamak için IoT güvenlik modülü için Azure Güvenlik Merkezi 'ni yükler.|Düşük|N|IoT cihazı|
+|Öneri|Açıklama & ilgili ilke|Önem derecesi|
+|----|----|----|
+|Uygulama Hizmetleri 'ne erişim kısıtlı olmalıdır|Ağ yapılandırmasını değiştirerek, çok geniş aralıklardan gelen trafiği reddedecek şekilde uygulama hizmetlerinize erişimi kısıtlayın.<br>(İlgili ilke: [Önizleme]: uygulama hizmetlerine erişim kısıtlı olmalıdır)|Yüksek|
+|IaaS NSG 'lerdeki Web uygulamalarına yönelik kurallar sağlamlaştırılmış olmalıdır|Web uygulamaları çalıştıran sanal makinelerinizin ağ güvenlik grubu (NSG), Web uygulaması bağlantı noktalarıyla ilgili aşırı izin veren NSG kuralları ile.<br>(İlgili ilke: IaaS üzerinde Web uygulamalarına yönelik NSG kuralları sağlamlaştırılmış olmalıdır)|Yüksek|
+|Gereksiz uygulama ayrıcalıklarını kaldırarak saldırı vektörünü azaltmak için pod güvenlik Ilkeleri tanımlanmalıdır (Önizleme)|Gereksiz uygulama ayrıcalıklarını kaldırarak saldırı vektörünü azaltmak için pod güvenlik Ilkeleri tanımlayın. Yalnızca erişim izni verilen kaynaklara erişebilmeleri için pod güvenlik ilkelerinin yapılandırılması önerilir.<br>(İlgili ilke: [Önizleme]: Pod güvenlik Ilkeleri Kubernetes hizmetlerinde tanımlanmalıdır)|Orta|
+|IoT cihazlarınıza daha fazla görünürlük sağlamak için IoT güvenlik modülü için Azure Güvenlik Merkezi 'ni yükler|IoT cihazlarınıza daha fazla görünürlük sağlamak için IoT güvenlik modülü için Azure Güvenlik Merkezi 'ni yükler.|Düşük|
+|Sistem güncelleştirmelerinin uygulanabilmesi için makineleriniz yeniden başlatılmalıdır|Sistem güncelleştirmelerini uygulamak ve makinenin güvenlik açıklarına karşı güvenliğini sağlamak için makinelerinizi yeniden başlatın. (İlgili ilke: sistem güncelleştirmelerinin makinelerinizde yüklü olması gerekir)|Orta|
+|İzleme Aracısı makinelerinizde yüklü olmalıdır|Bu eylem, seçili sanal makinelere bir izleme Aracısı kurar. Aracının raporlamak için bir çalışma alanı seçin. (İlgili ilke yok)|Yüksek|
+||||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
