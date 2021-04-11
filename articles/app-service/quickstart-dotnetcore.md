@@ -11,10 +11,10 @@ adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-dotnetcore-uiex
 ms.openlocfilehash: 77e0768a617ef79ab8510f88bfdcd41d5647f9bf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101701646"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Hızlı başlangıç: Azure 'da ASP.NET Core Web uygulaması oluşturma
@@ -315,12 +315,12 @@ http://<app_name>.azurewebsites.net
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
-## <a name="update-and-redeploy-the-code"></a>Kodu güncelleştirme ve yeniden dağıtma
+## <a name="update-and-redeploy-the-code&quot;></a>Kodu güncelleştirme ve yeniden dağıtma
 
 Yerel dizinde, _Startup.cs_ dosyasını açın. `context.Response.WriteAsync` yöntem çağrısında metinde küçük bir değişiklik yapın:
 
 ```csharp
-await context.Response.WriteAsync("Hello Azure!");
+await context.Response.WriteAsync(&quot;Hello Azure!");
 ```
 
 Değişikliklerinizi kaydettikten sonra `az webapp up` komutu tekrar kullanarak uygulamayı yeniden dağıtın:

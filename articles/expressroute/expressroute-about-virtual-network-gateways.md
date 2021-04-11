@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: duau
-ms.openlocfilehash: 038e018a22af3546f5d3c66f6d8ee3963483cce1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3f8cf5de012999c0f814964fd41042a0caf78b42
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102615066"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106679"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>ExpressRoute sanal ağ geçitleri hakkında
 
@@ -53,7 +53,7 @@ ExpressRoute ağ geçidi oluşturmadan önce bir ağ geçidi alt ağı oluşturm
 
 Ağ geçidi alt ağı oluştururken, alt ağın içerdiği IP adresi sayısını belirtirsiniz. Ağ geçidi alt ağındaki IP adresleri ağ geçidi VM 'lerine ve ağ geçidi hizmetlerine ayrılır. Bazı yapılandırmalar için diğerlerinden daha fazla IP adresi gerekir. 
 
-Ağ geçidi alt ağınızın boyutunu planlarken, oluşturmayı planladığınız yapılandırma için belgelere bakın. Örneğin, ExpressRoute/VPN Gateway bir arada bulunan yapılandırma, diğer birçok yapılandırmadan daha büyük bir ağ geçidi alt ağı gerektirir. Ayrıca, ağ geçidi alt ağınızın olası gelecekteki ek yapılandırmalara uyum sağlamak için yeterli IP adresi içerdiğinden emin olmak isteyebilirsiniz. /29 kadar küçük bir ağ geçidi alt ağı oluşturabileceğiniz gibi, kullanılabilir adres alanınız varsa/27 veya daha büyük (/27,/26 vb.) bir ağ geçidi alt ağı oluşturmanızı öneririz. Çift yığın ağ geçidi alt ağı oluşturuyorsanız,/64 ya da daha büyük bir IPv6 aralığı kullanmanızı öneririz. Bu, çoğu yapılandırmaya uyum sağlayacaktır.
+Ağ geçidi alt ağınızın boyutunu planlarken, oluşturmayı planladığınız yapılandırma için belgelere bakın. Örneğin, ExpressRoute/VPN Gateway bir arada bulunan yapılandırma, diğer birçok yapılandırmadan daha büyük bir ağ geçidi alt ağı gerektirir. Ayrıca, ağ geçidi alt ağınızın olası gelecekteki ek yapılandırmalara uyum sağlamak için yeterli IP adresi içerdiğinden emin olmak isteyebilirsiniz. /29 kadar küçük bir ağ geçidi alt ağı oluşturabileceğiniz gibi, kullanılabilir adres alanınız varsa/27 veya daha büyük (/27,/26 vb.) bir ağ geçidi alt ağı oluşturmanızı öneririz. Ağ geçidinize 16 ExpressRoute devreleri bağlamayı planlıyorsanız,/26 veya daha büyük bir ağ geçidi alt ağı oluşturmanız **gerekir** . Çift yığın ağ geçidi alt ağı oluşturuyorsanız,/64 ya da daha büyük bir IPv6 aralığı kullanmanızı öneririz. Bu, çoğu yapılandırmaya uyum sağlayacaktır.
 
 Aşağıdaki Kaynak Yöneticisi PowerShell örneği, GatewaySubnet adlı bir ağ geçidi alt ağını göstermektedir. CıDR gösteriminin bir/27 olduğunu görebilirsiniz. Bu, şu anda mevcut olan çoğu yapılandırma için yeterli IP adresi sağlar.
 

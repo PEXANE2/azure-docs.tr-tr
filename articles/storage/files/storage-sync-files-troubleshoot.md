@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4439346a065f17f5b2136f51fd5e8b990fa1b914
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f20ebfdf9bdd1272ac1cb16e1ad88b4cbc287e5d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103491308"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727612"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -373,7 +373,7 @@ Aşağıdaki tabloda, Azure Dosya Eşitleme henüz desteklemediği tüm Unicode 
 ### <a name="common-sync-errors"></a>Ortak Eşitleme hataları
 <a id="-2147023673"></a>**Eşitleme oturumu iptal edildi.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x800704c7 |
 | **HRESULT (ondalık)** | -2147023673 | 
@@ -384,7 +384,7 @@ Eşitleme oturumları, sunucunun yeniden başlatılması veya güncelleştirilme
 
 <a id="-2147012889"></a>**Hizmetle bir bağlantı kurulamadı.**    
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80072EE7 |
 | **HRESULT (ondalık)** | -2147012889 | 
@@ -395,7 +395,7 @@ Eşitleme oturumları, sunucunun yeniden başlatılması veya güncelleştirilme
 
 <a id="-2134376372"></a>**Kullanıcı isteği hizmet tarafından kısıtlandı.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c8004c |
 | **HRESULT (ondalık)** | -2134376372 |
@@ -406,7 +406,7 @@ Herhangi bir eylem gerekmez; sunucu yeniden denenecek. Bu hata birkaç saat deva
 
 <a id="-2134364043"></a>**Değişiklik algılama geri yükleme sonrası tamamlanana kadar eşitleme engellendi**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c83075 |
 | **HRESULT (ondalık)** | -2134364043 |
@@ -417,7 +417,7 @@ Herhangi bir eylem gerekmez; sunucu yeniden denenecek. Bu hata birkaç saat deva
 
 <a id="-2147216747"></a>**Eşitleme veritabanı kaldırıldığından eşitleme başarısız oldu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80041295 |
 | **HRESULT (ondalık)** | -2147216747 |
@@ -428,7 +428,7 @@ Normalde bir yedekleme uygulaması VSS anlık görüntüsü oluşturduğunda ve 
 
 <a id="-2134364065"></a>**Eşitleme, bulut uç noktasında belirtilen Azure dosya paylaşımıyla erişemiyor.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c8305f |
 | **HRESULT (ondalık)** | -2134364065 |
@@ -444,7 +444,7 @@ Azure dosya paylaşımı veya bunu barındıran depolama hesabı artık var olma
 
 <a id="-2134351804"></a>**İstek bu işlemi gerçekleştirmek için yetkili olmadığından eşitleme başarısız oldu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c86044 |
 | **HRESULT (ondalık)** | -2134351804 |
@@ -460,7 +460,7 @@ Bu hata, Azure Dosya Eşitleme aracısının Azure dosya paylaşımında erişim
 
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**Kullanılan depolama hesabı adı çözümlenemedi.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80C83060 |
 | **HRESULT (ondalık)** | -2134364064 |
@@ -477,7 +477,7 @@ Bu hata, Azure Dosya Eşitleme aracısının Azure dosya paylaşımında erişim
 
 <a id="-2134364022"></a><a id="storage-unknown-error"></a>**Depolama hesabına erişirken bilinmeyen bir hata oluştu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c8308a |
 | **HRESULT (ondalık)** | -2134364022 |
@@ -489,7 +489,7 @@ Bu hata, Azure Dosya Eşitleme aracısının Azure dosya paylaşımında erişim
 
 <a id="-2134364014"></a>**Depolama hesabı kilitli olduğundan eşitleme başarısız oldu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c83092 |
 | **HRESULT (ondalık)** | -2134364014 |
@@ -500,7 +500,7 @@ Bu hata, depolama hesabının salt okunurdur [kaynak kilidi](../../azure-resourc
 
 <a id="-1906441138"></a>**Eşitleme veritabanıyla ilgili bir sorun nedeniyle eşitleme başarısız oldu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x8e5e044e |
 | **HRESULT (ondalık)** | -1906441138 |
@@ -511,7 +511,7 @@ Azure Dosya Eşitleme tarafından kullanılan iç veritabanıyla ilgili bir soru
 
 <a id="-2134364053"></a>**Sunucuda yüklü Azure Dosya Eşitleme Aracısı sürümü desteklenmiyor.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80C8306B |
 | **HRESULT (ondalık)** | -2134364053 |
@@ -522,7 +522,7 @@ Sunucuda yüklü olan Azure Dosya Eşitleme aracısının sürümü desteklenmiy
 
 <a id="-2134351810"></a>**Azure dosya paylaşımının depolama sınırına ulaştınız.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c8603e |
 | **HRESULT (ondalık)** | -2134351810 |
@@ -548,7 +548,7 @@ Paylaşım doluysa ve kota ayarlanmadıysa, bu sorunu çözmenin olası bir yolu
 
 <a id="-2134351824"></a>**Azure dosya paylaşımında bulunamıyor.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c86030 |
 | **HRESULT (ondalık)** | -2134351824 |
@@ -564,7 +564,7 @@ Azure dosya paylaşma silinmişse, yeni bir dosya paylaşma oluşturmanız ve ar
 
 <a id="-2134364042"></a>**Bu Azure aboneliği askıya alındığında eşitleme duraklatıldı.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80C83076 |
 | **HRESULT (ondalık)** | -2134364042 |
@@ -575,7 +575,7 @@ Azure aboneliği askıya alındığında bu hata oluşur. Azure aboneliği geri 
 
 <a id="-2134375618"></a>**Depolama hesabında yapılandırılmış bir güvenlik duvarı veya sanal ağ vardır.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c8033e |
 | **HRESULT (ondalık)** | -2134375618 |
@@ -586,7 +586,7 @@ Depolama hesabı güvenlik duvarından veya depolama hesabının bir sanal ağa 
 
 <a id="-2134375911"></a>**Eşitleme veritabanıyla ilgili bir sorun nedeniyle eşitleme başarısız oldu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c80219 |
 | **HRESULT (ondalık)** | -2134375911 |
@@ -602,7 +602,7 @@ Bu hata birkaç saatten uzun sürerse, bir destek isteği oluşturun ve bu sorun
 
 <a id="-2146762487"></a>**Sunucu güvenli bir bağlantı kuramadı. Bulut hizmeti beklenmeyen bir sertifika aldı.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x800b0109 |
 | **HRESULT (ondalık)** | -2146762487 |
@@ -627,7 +627,7 @@ Bu kayıt defteri değerini ayarlayarak Azure Dosya Eşitleme Aracısı, sunucu 
 
 <a id="-2147012894"></a>**Hizmetle bir bağlantı kurulamadı.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80072EE2 |
 | **HRESULT (ondalık)** | -2147012894 |
@@ -638,7 +638,7 @@ Bu kayıt defteri değerini ayarlayarak Azure Dosya Eşitleme Aracısı, sunucu 
 
 <a id="-2134375680"></a>**Kimlik doğrulamasıyla ilgili bir sorun nedeniyle eşitleme başarısız oldu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c80300 |
 | **HRESULT (ondalık)** | -2134375680 |
@@ -649,7 +649,7 @@ Bu hata normalde sunucu saati yanlış olduğunda oluşur. Sunucu bir sanal maki
 
 <a id="-2134364040"></a>**Sertifika süre sonu nedeniyle eşitleme başarısız oldu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c83078 |
 | **HRESULT (ondalık)** | -2134364040 |
@@ -673,7 +673,7 @@ Sertifikanın süresinin dolduğunu onaylamak için aşağıdaki adımları uygu
 
 <a id="-2134375896"></a>**Kimlik doğrulama sertifikası bulunamadığı için eşitleme başarısız oldu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c80228 |
 | **HRESULT (ondalık)** | -2134375896 |
@@ -693,7 +693,7 @@ Bu sorunu çözmek için aşağıdaki adımları gerçekleştirin:
 
 <a id="-2134364039"></a>**Kimlik doğrulama kimliği bulunamadığı için eşitleme başarısız oldu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c83079 |
 | **HRESULT (ondalık)** | -2134364039 |
@@ -704,14 +704,14 @@ Sunucu uç noktasını silme işlemi başarısız olduğu ve uç nokta şimdi k�
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**Sunucu uç noktasının bulunduğu birimde disk alanı azalmış olur.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x8e5e0211 |
 | **HRESULT (ondalık)** | -1906441711 |
 | **Hata dizesi** | JET_errLogDiskFull |
 | **Düzeltme gerekli** | Yes |
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c8031a |
 | **HRESULT (ondalık)** | -2134375654 |
@@ -722,7 +722,7 @@ Bu hata birimin doldurulmuş olması nedeniyle oluşur. Bu hata genellikle sunuc
 
 <a id="-2134364145"></a><a id="replica-not-ready"></a>**Hizmet henüz bu sunucu uç noktası ile eşitlenmeye hazırlanıyor.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c8300f |
 | **HRESULT (ondalık)** | -2134364145 |
@@ -733,21 +733,21 @@ Bu hata, bulut uç noktasının Azure dosya paylaşımında zaten mevcut olan i�
 
 <a id="-2134375877"></a><a id="-2134375908"></a><a id="-2134375853"></a>**Birçok ayrı dosya ile ilgili sorunlar nedeniyle eşitleme başarısız oldu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c8023b |
 | **HRESULT (ondalık)** | -2134375877 |
 | **Hata dizesi** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
 | **Düzeltme gerekli** | Yes |
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c8021c |
 | **HRESULT (ondalık)** | -2134375908 |
 | **Hata dizesi** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
 | **Düzeltme gerekli** | Yes |
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c80253 |
 | **HRESULT (ondalık)** | -2134375853 |
@@ -761,7 +761,7 @@ Bu hata, bulut uç noktasının Azure dosya paylaşımında zaten mevcut olan i�
 
 <a id="-2134376423"></a>**Sunucu uç noktası yolundaki bir sorun nedeniyle eşitleme başarısız oldu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c80019 |
 | **HRESULT (ondalık)** | -2134376423 |
@@ -772,7 +772,7 @@ Yolun var olduğundan, yerel bir NTFS biriminde olduğundan ve bir yeniden ayrı
 
 <a id="-2134375817"></a>**Filtre sürücüsü sürümü Aracı sürümüyle uyumlu olmadığından eşitleme başarısız oldu**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80C80277 |
 | **HRESULT (ondalık)** | -2134375817 |
@@ -783,7 +783,7 @@ Yüklenmiş olan bulut katmanlama filtresi sürücüsü (StorageSync.sys) sürü
 
 <a id="-2134376373"></a>**Hizmet şu anda kullanılamıyor.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c8004b |
 | **HRESULT (ondalık)** | -2134376373 |
@@ -794,7 +794,7 @@ Azure Dosya Eşitleme hizmeti kullanılamadığından bu hata oluşur. Azure Dos
 
 <a id="-2146233088"></a>**Bir özel durum nedeniyle eşitleme başarısız oldu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80131500 |
 | **HRESULT (ondalık)** | -2146233088 |
@@ -805,7 +805,7 @@ Eşitleme özel bir durum nedeniyle başarısız olduğu için bu hata oluşur. 
 
 <a id="-2134364045"></a>**Depolama hesabı başka bir bölgeye yük devrettiğinden eşitleme başarısız oldu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c83073 |
 | **HRESULT (ondalık)** | -2134364045 |
@@ -816,7 +816,7 @@ Depolama hesabı başka bir bölgeye yük devrettiği için bu hata oluştu. Azu
 
 <a id="-2134375922"></a>**Eşitleme veritabanı ile ilgili geçici bir sorun nedeniyle eşitleme başarısız oldu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c8020e |
 | **HRESULT (ondalık)** | -2134375922 |
@@ -827,7 +827,7 @@ Eşitleme veritabanındaki bir iç sorundan dolayı bu hata oluşur. Eşitleme y
 
 <a id="-2134364024"></a>**Azure Active Directory kiracısındaki değişiklik nedeniyle eşitleme başarısız oldu**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c83088 |
 | **HRESULT (ondalık)** | -2134364024 | 
@@ -840,7 +840,7 @@ En son aracı sürümüne sahip olduğunuzda, Microsoft. Storagessync uygulamas�
 
 <a id="-2134364010"></a>**Güvenlik Duvarı ve sanal ağ özel durumu yapılandırılmadığı için eşitleme başarısız oldu**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c83096 |
 | **HRESULT (ondalık)** | -2134364010 | 
@@ -851,7 +851,7 @@ Bu hata, güvenlik duvarı ve sanal ağ ayarları depolama hesabında etkinleşt
 
 <a id="-2147024891"></a>**Sistem birimi bilgi klasörü izinleri yanlış olduğundan eşitleme başarısız oldu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80070005 |
 | **HRESULT (ondalık)** | -2147024891 |
@@ -870,7 +870,7 @@ Bu sorunu çözmek için aşağıdaki adımları gerçekleştirin:
 
 <a id="-2134375810"></a>**Azure dosya paylaşımının silindiği ve yeniden oluşturulduğu için eşitleme başarısız oldu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c8027e |
 | **HRESULT (ondalık)** | -2134375810 |
@@ -889,7 +889,7 @@ Bu hatayı düzeltmek için aşağıdaki adımları uygulayarak eşitleme grubun
 
 <a id="-2145844941"></a>**HTTP isteği yeniden yönlendirildiği için eşitleme başarısız oldu**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80190133 |
 | **HRESULT (ondalık)** | -2145844941 |
@@ -900,7 +900,7 @@ Bu hata, Azure Dosya Eşitleme HTTP yeniden yönlendirmeyi (3xx durum kodu) dest
 
 <a id="-2134364027"></a>**Çevrimdışı veri aktarımı sırasında zaman aşımı oluştu, ancak devam ediyor.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c83085 |
 | **HRESULT (ondalık)** | -2134364027 |
@@ -911,7 +911,7 @@ Bu hata, bir veri alma işlemi zaman aşımını aştığında oluşur. Eşitlem
 
 <a id="-2134375814"></a>**Sunucu uç noktası yolu sunucuda bulunamadığı için eşitleme başarısız oldu.**  
 
-| | |
+| Hata | Kod |
 |-|-|
 | **HRESULT** | 0x80c8027a |
 | **HRESULT (ondalık)** | -2134375814 |

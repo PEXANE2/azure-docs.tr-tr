@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 02/22/2021
-ms.openlocfilehash: 5852899175f9cc9f2725b875c6e1ce9fd682768d
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: c5b6509cabd743a01a085639a7b76d764555a9f8
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105625287"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106662"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL Veritabanında tek veritabanı kaynaklarını ölçeklendirme
 
@@ -62,9 +62,6 @@ Hizmet katmanını değiştirmek, tek bir veritabanının veya elastik havuzun i
 >
 > Bir veritabanının PFS depolama kullanıp kullanmadığını anlamak için, veritabanı bağlamında aşağıdaki sorguyu yürütün. AccountType sütunundaki değer `PremiumFileStorage` veya ise `PremiumFileStorage-ZRS` , veritabanı PFS depolama alanını kullanıyor demektir.
 
-[!NOTE]
- Bölge yedekli özelliği, İş Açısından Kritik Genel Amaçlı katmanına ölçeklendirilirken varsayılan olarak aynı kalacaktır. Bölge yedekliliği etkinleştirildiğinde bu düşürme için gecikme süresi ve Genel Amaçlı katmanının bölge yedekliliğe geçiş gecikmesi veritabanı boyutuyla orantılıdır.
-
 ```sql
 SELECT s.file_id,
        s.type_desc,
@@ -73,6 +70,9 @@ SELECT s.file_id,
 FROM sys.database_files AS s
 WHERE s.type_desc IN ('ROWS', 'LOG');
 ```
+
+> [!NOTE]
+> Bölge yedekli özelliği, İş Açısından Kritik Genel Amaçlı katmanına ölçeklendirilirken varsayılan olarak aynı kalacaktır. Bölge yedekliliği etkinleştirildiğinde bu düşürme için gecikme süresi ve Genel Amaçlı katmanının bölge yedekliliğe geçiş gecikmesi veritabanı boyutuyla orantılıdır.
 
 > [!TIP]
 > Sürmekte olan işlemleri izlemek için bkz.: [SQL REST API kullanarak Işlemleri yönetme](/rest/api/sql/operations/list), [CLI kullanarak Işlemleri yönetme](/cli/azure/sql/db/op), [T-SQL kullanarak Işlemleri izleme](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ve bu Iki PowerShell komutu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) ve [stop-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
