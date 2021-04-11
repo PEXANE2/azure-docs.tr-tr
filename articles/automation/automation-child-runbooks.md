@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f0dd5cf5209924972080af6d22429252338754de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 338de996b06769b9d2891c7208b9050cc3acc7ed
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99491257"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167303"
 ---
 # <a name="create-modular-runbooks"></a>Modüler runbook’lar oluşturma
 
@@ -56,15 +56,15 @@ Runbook 'unuza satır içi yürütme kullanarak bir grafik veya PowerShell Iş a
 Aşağıdaki örnek, bir karmaşık nesne, bir tamsayı değeri ve bir Boolean değer kabul eden bir test alt runbook 'u başlatır. Alt runbook'un çıkışı bir değişkene atanır. Bu durumda, alt Runbook bir PowerShell Iş akışı runbook 'ıdır.
 
 ```azurepowershell-interactive
-$vm = Get-AzVM –ResourceGroupName "LabRG" –Name "MyVM"
-$output = PSWF-ChildRunbook –VM $vm –RepeatCount 2 –Restart $true
+$vm = Get-AzVM -ResourceGroupName "LabRG" -Name "MyVM"
+$output = PSWF-ChildRunbook -VM $vm -RepeatCount 2 -Restart $true
 ```
 
 Aşağıda, alt olarak bir PowerShell runbook 'u kullanan aynı örnek verilmiştir.
 
 ```azurepowershell-interactive
-$vm = Get-AzVM –ResourceGroupName "LabRG" –Name "MyVM"
-$output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
+$vm = Get-AzVM -ResourceGroupName "LabRG" -Name "MyVM"
+$output = .\PS-ChildRunbook.ps1 -VM $vm -RepeatCount 2 -Restart $true
 ```
 
 ## <a name="start-a-child-runbook-using-a-cmdlet"></a>Cmdlet kullanarak bir alt runbook 'u başlatma
@@ -84,7 +84,7 @@ Bir cmdlet ile başlatılan bir alt runbook için parametreler [runbook parametr
 
 Alt runbook 'lar ayrı işler olarak başlatıldığında abonelik bağlamı kaybolabilir. Alt runbook 'un belirli bir Azure aboneliğine karşı az Module cmdlet 'leri yürütmesi için, alt öğenin bu abonelikte üst runbook 'tan bağımsız olarak kimlik doğrulaması gerekir.
 
-Aynı Otomasyon hesabı içindeki işler birden fazla abonelikle çalışıyorsa, bir iş içinde bir abonelik seçmek diğer işler için o anda seçili olan abonelik bağlamını değiştirebilir. Bu durumdan kaçınmak için, `Disable-AzContextAutosave –Scope Process` her runbook 'un başlangıcında kullanın. Bu eylem yalnızca bu runbook yürütmesinin bağlamını kaydeder.
+Aynı Otomasyon hesabı içindeki işler birden fazla abonelikle çalışıyorsa, bir iş içinde bir abonelik seçmek diğer işler için o anda seçili olan abonelik bağlamını değiştirebilir. Bu durumdan kaçınmak için, `Disable-AzContextAutosave -Scope Process` her runbook 'un başlangıcında kullanın. Bu eylem yalnızca bu runbook yürütmesinin bağlamını kaydeder.
 
 ### <a name="example"></a>Örnek
 
@@ -92,7 +92,7 @@ Aşağıdaki örnek, parametreleri olan bir alt runbook başlatır ve sonra `Sta
 
 ```azurepowershell-interactive
 # Ensure that the runbook does not inherit an AzContext
-Disable-AzContextAutosave –Scope Process
+Disable-AzContextAutosave -Scope Process
 
 # Connect to Azure with Run As account
 $ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
@@ -108,11 +108,11 @@ $AzureContext = Set-AzContext -SubscriptionId $ServicePrincipalConnection.Subscr
 $params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
 
 Start-AzAutomationRunbook `
-    –AutomationAccountName 'MyAutomationAccount' `
-    –Name 'Test-ChildRunbook' `
+    -AutomationAccountName 'MyAutomationAccount' `
+    -Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
     -AzContext $AzureContext `
-    –Parameters $params –Wait
+    -Parameters $params -Wait
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
