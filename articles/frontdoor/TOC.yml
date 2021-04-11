@@ -98,8 +98,8 @@
           href: front-door-troubleshoot-allowed-ca.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
-      href: /cli/azure/ext/front-door/
+    - name: Azure CLI
+      href: /cli/azure/afd/
     - name: Azure PowerShell
       href: /powershell/module/az.frontdoor
     - name: REST API

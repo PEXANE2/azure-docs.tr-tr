@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 3c6fb1ca23bcc9c57e73bcaf960e0387611fcff3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00f9c6510a87770367472c0da6774b94034c6d72
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599223"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029786"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Metin Analizi nasıl çağrılacağını REST API
 
@@ -34,6 +34,14 @@ Metin Analizi API'si kullanmadan önce, uygulamalarınız için anahtar ve uç n
 2.  Uç noktanız için kullanmak istediğiniz bölgeyi seçin.  Lütfen `/analyze` ve `/health` uç noktaların yalnızca şu bölgelerde kullanılabilir olduğunu unutmayın: Batı ABD 2, Doğu ABD 2, Orta ABD, Kuzey Avrupa ve Batı Avrupa.
 
 3.  Metin Analizi kaynağını oluşturun ve sayfanın solundaki "anahtarlar ve uç nokta dikey penceresine" gidin. Daha sonra API 'Leri çağırdığınızda kullanılacak anahtarı kopyalayın. Bunu daha sonra üst bilgi için bir değer olarak eklersiniz `Ocp-Apim-Subscription-Key` .
+
+4. Metin Analizi kaynağınız kullanılarak gönderilen metin kayıtlarının sayısını denetlemek için:
+
+    1. Azure portal Metin Analizi kaynağına gidin. 
+    2. Sol gezinti menüsünde **izleme** altında bulunan **ölçümler**' e tıklayın. 
+    3. **Ölçüm** için açılan kutuda *işlenen metin kayıtları* ' nı seçin.
+    
+Bir metin kaydı 1000 karakterdir.
 
 ## <a name="change-your-pricing-tier"></a>Fiyatlandırma katmanınızı değiştirin 
 

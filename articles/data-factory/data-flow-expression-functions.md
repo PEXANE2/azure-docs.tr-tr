@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/26/2021
-ms.openlocfilehash: 313cca7a0db81502ac68a2cb7e9981f712a82548
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/01/2021
+ms.openlocfilehash: fdf7f52bf781d0e8da21f0b36bacc3f4ade52e8c
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933121"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581892"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Eşleme veri akışındaki veri dönüştürme ifadeleri
 
@@ -174,12 +174,6 @@ Bir dizi dizeyi bir ayırıcıyla birlikte birleştirir. İlk parametre ayırıc
 * ``concatWS(' ', 'dataflow', 'is', 'awesome') -> 'dataflow is awesome'``  
 * ``isNull(concatWS(null, 'dataflow', 'is', 'awesome')) -> true``  
 * ``concatWS(' is ', 'dataflow', 'awesome') -> 'dataflow is awesome'``  
-___
-### <code>contains</code>
-<code><b>contains(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => boolean</b></code><br/><br/>
-Belirtilen dizideki herhangi bir öğe, belirtilen koşulda doğru olarak değerlendiriliyorsa true değerini döndürür. Contains, koşul işlevindeki bir öğeye #item olarak bir başvuru bekliyor.  
-* ``contains([1, 2, 3, 4], #item == 3) -> true``  
-* ``contains([1, 2, 3, 4], #item > 5) -> false``  
 ___
 ### <code>cos</code>
 <code><b>cos(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
@@ -351,12 +345,6 @@ ___
 * ``iifNull(null, 20, 40) -> 20``  
 * ``iifNull('azure', 'data', 'factory') -> 'factory'``  
 * ``iifNull(null, 'data', 'factory') -> 'data'``  
-___
-### <code>in</code>
-<code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></code><br/><br/>
-Dizide bir öğe olup olmadığını denetler.  
-* ``in([10, 20, 30], 10) -> true``  
-* ``in(['good', 'kid'], 'bad') -> false``  
 ___
 ### <code>initCap</code>
 <code><b>initCap(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
@@ -1061,6 +1049,12 @@ Dizi işlevleri diziler olan veri yapıları üzerinde dönüşümler gerçekle�
 * ``['Seattle', 'Washington'][1]``
 * ``'Washington'``
 ___
+### <code>contains</code>
+<code><b>contains(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => boolean</b></code><br/><br/>
+Belirtilen dizideki herhangi bir öğe, belirtilen koşulda doğru olarak değerlendiriliyorsa true değerini döndürür. Contains, koşul işlevindeki bir öğeye #item olarak bir başvuru bekliyor.  
+* ``contains([1, 2, 3, 4], #item == 3) -> true``  
+* ``contains([1, 2, 3, 4], #item > 5) -> false``  
+___
 ### <code>filter</code>
 <code><b>filter(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => array</b></code><br/><br/>
 Öğeleri, belirtilen koşulu karşılamayan dizinin dışına filtreler. Filtre, koşul işlevindeki bir öğeye #item olarak bir başvuru bekliyor.  
@@ -1099,6 +1093,11 @@ Koşulla eşleşen bir diziden ilk öğeyi bulun. Dizideki öğeyi #item olarak 
                    ]
       )
     ``  
+___
+### <code>in</code>
+<code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></kod><br/><br/> bir öğe olup olmadığını denetler is in the array.  
+* ``in([10, 20, 30], 10) -> true``  
+* ``in(['good', 'kid'], 'bad') -> false``  
 ___
 ### <code>map</code>
 <code><b>map(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => any</b></kod><br/><br/> dizideki her öğeyi, belirtilen ifadeyi kullanarak yeni bir öğe ile eşleştirir. Eşleme, deyimde bir öğeye başvuru bekliyor Function as #item.  
@@ -1148,6 +1147,12 @@ ___
                ]
   )
 ``  
+___
+### <code>in</code>
+<code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></code><br/><br/>
+Checks if an item is in the array.  
+* ``in([10, 20, 30], 10) -> true``  
+* ``in(['good', 'kid'], 'bad') -> false``  
 ___
 ### <code>map</code>
 <code><b>map(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => any</b></code><br/><br/>

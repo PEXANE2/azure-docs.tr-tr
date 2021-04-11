@@ -3,13 +3,13 @@ title: Özel bir Azure Kubernetes hizmet kümesi oluşturma
 description: Özel bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmayı öğrenin
 services: container-service
 ms.topic: article
-ms.date: 3/5/2021
-ms.openlocfilehash: 21d839df04c868d2c21932f96a6b72a32b0404e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 3/31/2021
+ms.openlocfilehash: 474c9a5d58627cec59904ccbcc5b3597de314612
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771864"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120376"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma
 
@@ -77,7 +77,7 @@ az aks create \
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-* AKS önizleme sürümü 0.5.3 veya üzeri
+* AKS önizleme sürümü 0.5.7 veya üzeri
 * API sürüm 2020-11-01 veya üzeri
 
 ### <a name="create-a-private-aks-cluster-with-private-dns-zone-preview"></a>Özel DNS bölgesi (Önizleme) ile özel bir AKS kümesi oluşturma
@@ -91,6 +91,7 @@ az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --lo
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain-name>
 ```
+
 ## <a name="options-for-connecting-to-the-private-cluster"></a>Özel kümeye bağlanma seçenekleri
 
 API sunucusu uç noktasının genel IP adresi yok. API sunucusunu yönetmek için, AKS kümesinin Azure sanal ağına (VNet) erişimi olan bir VM kullanmanız gerekir. Özel kümeye Ağ bağlantısı kurmak için çeşitli seçenekler vardır.
@@ -98,8 +99,61 @@ API sunucusu uç noktasının genel IP adresi yok. API sunucusunu yönetmek içi
 * AKS kümesiyle aynı Azure sanal ağında (VNet) bir VM oluşturun.
 * Ayrı bir ağda bir VM kullanın ve [sanal ağ eşlemesi][virtual-network-peering]ayarlayın.  Bu seçenek hakkında daha fazla bilgi için aşağıdaki bölüme bakın.
 * Bir [Express Route veya VPN][express-route-or-VPN] bağlantısı kullanın.
+* [Aks Run komut özelliğini](#aks-run-command-preview)kullanın.
 
 AKS kümesiyle aynı VNET 'te VM oluşturma en kolay seçenektir.  Express Route ve VPN 'Ler maliyet ekler ve ek ağ karmaşıklığı gerektirir.  Sanal ağ eşlemesi, çakışan aralıklar bulunmadığından emin olmak için ağ CıDR aralıklarını planlamanız gerekir.
+
+### <a name="aks-run-command-preview"></a>AKS Run komutu (Önizleme)
+
+Bugün özel bir kümeye erişmeniz gerektiğinde, bunu küme sanal ağı veya eşlenmiş ağ ya da istemci makine içinde yapmanız gerekir. Bu genellikle makinenizin VPN veya Express Route ile küme sanal ağına veya küme sanal ağında oluşturulacak bir atlama kutusuna bağlanmasını gerektirir. AKS Run komutu, aks API 'SI aracılığıyla bir AKS kümesindeki komutları uzaktan çağırmayı sağlar. Bu özellik, örneğin özel bir küme için uzak bir dizüstü bilgisayardan tam zamanında komutlar yürütmelerine olanak tanıyan bir API sağlar. Bu, aynı RBAC denetimlerini ve özel API sunucusunu korurken ve zorlarken, istemci makinesi küme özel ağında olmadığında, özel bir kümeye hızlı bir şekilde tam zamanında erişim sağlayabilir.
+
+### <a name="register-the-runcommandpreview-preview-feature"></a>`RunCommandPreview`Önizleme özelliğini kaydetme
+
+Yeni komut çalıştırma API 'sini kullanmak için `RunCommandPreview` aboneliğinizdeki Özellik bayrağını etkinleştirmeniz gerekir.
+
+`RunCommandPreview`Özellik bayrağını, aşağıdaki örnekte gösterildiği gibi [az Feature Register] [az-Feature-Register] komutunu kullanarak kaydedin:
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "RunCommandPreview"
+```
+
+Durumun *kayıtlı* gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu doğrulayın:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/RunCommandPreview')].{Name:name,State:properties.state}"
+```
+
+Hazırlandığınızda, [az Provider Register][az-provider-register] komutunu kullanarak *Microsoft. Containerservice* kaynak sağlayıcısı kaydını yenileyin:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="use-aks-run-command"></a>AKS Run komutunu kullanma
+
+Basit komut
+
+```azurecli-interactive
+az aks command invoke -g <resourceGroup> -n <clusterName> -c "kubectl get pods -n kube-system"
+```
+
+Belirli dosyayı ekleyerek bir bildirim dağıtın
+
+```azurecli-interactive
+az aks command invoke -g <resourceGroup> -n <clusterName> -c "kubectl apply -f deployment.yaml -n default" -f deployment.yaml
+```
+
+Bir tam klasör ekleyerek bir bildirim dağıtın
+
+```azurecli-interactive
+az aks command invoke -g <resourceGroup> -n <clusterName> -c "kubectl apply -f deployment.yaml -n default" -f .
+```
+
+Bir Helu yüklemesi gerçekleştirin ve belirli değerler bildirimini geçirin
+
+```azurecli-interactive
+az aks command invoke -g <resourceGroup> -n <clusterName> -c "helm repo add bitnami https://charts.bitnami.com/bitnami && helm repo update && helm install my-release -f values.yaml bitnami/nginx" -f values.yaml
+```
 
 ## <a name="virtual-network-peering"></a>Sanal ağ eşleme
 

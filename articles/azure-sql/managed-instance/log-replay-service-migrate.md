@@ -8,13 +8,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: sstein
-ms.date: 03/29/2021
-ms.openlocfilehash: 186f1e085cecdc92e345231d50d06195bba55504
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 03/31/2021
+ms.openlocfilehash: 8e78db5b9d496c2ac13c9f1214b386770c11e21e
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732967"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075909"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Günlük yeniden yürütme hizmeti 'ni (Önizleme) kullanarak SQL Server veritabanlarını SQL yönetilen örneğine geçirme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,6 +34,7 @@ Aşağıdaki durumlarda LRS 'yi kullanmayı düşünebilirsiniz:
 - Veritabanı geçiş hizmeti yürütülebilir dosyasının veritabanı yedeklerine dosya erişimi yok.
 - Konak işletim sistemine erişim yok veya yönetici ayrıcalıkları yok.
 - Ortamınızdaki ağ bağlantı noktalarını Azure 'a açamazsınız.
+- Ağ daraltma veya ortamınızda ara sunucu engelleme sorunları.
 - Yedeklemeler, seçeneği aracılığıyla doğrudan Azure Blob depolama alanına depolanır `TO URL` .
 - Değişiklik yedeklemeleri kullanmanız gerekir.
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 545331fdea56aef3d7b9dac8062d4fc2d6891254
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 254f424694df72a290a07369fe910587fadf58d4
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501591"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385556"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için depolama hesabı erişimini denetleme
 
@@ -36,11 +36,11 @@ Sunucusuz SQL havuzunda oturum açan bir kullanıcının, dosyalar herkese açı
 "Azure AD geçişi" olarak da bilinen **Kullanıcı kimliği**, veri erişimini yetkilendirmek için SUNUCUSUZ SQL havuzunda oturum açan Azure AD kullanıcısının kimliğinin kullanıldığı bir yetkilendirme türüdür. Verilere erişmeden önce Azure depolama yöneticisinin Azure AD kullanıcısına izin vermesi gerekir. Aşağıdaki tabloda gösterildiği gibi, SQL kullanıcı türü için de desteklenmez.
 
 > [!IMPORTANT]
-> Verilerinize erişmek için kimliğinizi kullanabilmeniz için bir Depolama Blobu veri sahibi/katkıda bulunan/okuyucu rolüne sahip olmanız gerekir.
-> Bir depolama hesabının sahibi olsanız bile, yine de Depolama Blobu veri rollerinden birine eklemeniz gerekir.
->
-> Azure Data Lake Store Gen2 ' de erişim denetimi hakkında daha fazla bilgi edinmek için [Azure Data Lake Storage 2. makalesinde erişim denetimini](../../storage/blobs/data-lake-storage-access-control.md) gözden geçirin.
->
+> AAD kimlik doğrulama belirteci, istemci uygulamaları tarafından önbelleğe alınmış olabilir. Örneğin, PowerBI tarafından AAD belirteci önbelleğe alınır ve aynı belirteci bir saat için yeniden kullanır. Sorgu yürütmenin ortasında belirtecin süresi dolarsa uzun süren sorgular başarısız olabilir. Sorgunun ortasında süresi dolan AAD erişim belirtecinin neden olduğu sorgu hatalarıyla karşılaşıyorsanız, [yönetilen kimliğe](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) veya [paylaşılan erişim imzasına](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#supported-storage-authorization-types)geçmeyi düşünün.
+
+Verilerinize erişmek için kimliğinizi kullanabilmeniz için bir Depolama Blobu veri sahibi/katkıda bulunan/okuyucu rolüne sahip olmanız gerekir. Alternatif olarak, dosyalara ve klasörlere erişmek için hassas ACL kuralları belirtebilirsiniz. Bir depolama hesabının sahibi olsanız bile, yine de Depolama Blobu veri rollerinden birine eklemeniz gerekir.
+Azure Data Lake Store Gen2 ' de erişim denetimi hakkında daha fazla bilgi edinmek için [Azure Data Lake Storage 2. makalesinde erişim denetimini](../../storage/blobs/data-lake-storage-access-control.md) gözden geçirin.
+
 
 ### <a name="shared-access-signature"></a>[Paylaşılan erişim imzası](#tab/shared-access-signature)
 
@@ -54,6 +54,10 @@ Sunucusuz SQL havuzunda oturum açan bir kullanıcının, dosyalar herkese açı
 > SAS belirteci:? ZF = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
 Bir SAS belirteci kullanarak erişimi etkinleştirmek için, veritabanı kapsamlı veya sunucu kapsamlı kimlik bilgisi oluşturmanız gerekir 
+
+
+> [!IMPORTANT]
+> SAS belirteci ile özel depolama hesaplarına erişemezsiniz. Korumalı depolamaya erişmek için [yönetilen kimliğe](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) veya [Azure AD geçişli](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) kimlik doğrulamasına geçmeyi düşünün.
 
 ### <a name="managed-identity"></a>[Yönetilen Kimlik](#tab/managed-identity)
 

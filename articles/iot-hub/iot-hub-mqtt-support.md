@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 9cedf861594903cd160c24ea35545d388bf1f6ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9678648b6417138e216ba2dce3a3605bb4c1bce4
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104582723"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169241"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
 
@@ -450,7 +450,7 @@ MQTT protokolü hakkında daha fazla bilgi edinmek için [MQTT belgelerine](http
 
 IoT Hub Dağıtımınızı planlama hakkında daha fazla bilgi edinmek için bkz.:
 
-* [IoT için Microsoft Azure Sertifikalı cihaz kataloğu](https://catalog.azureiotsolutions.com/)
+* [IoT için Microsoft Azure Sertifikalı cihaz kataloğu](https://devicecatalog.azure.com/)
 * [Ek protokolleri destekleme](iot-hub-protocol-gateway.md)
 * [Event Hubs ile karşılaştırın](iot-hub-compare-event-hubs.md)
 * [Ölçeklendirme, HA ve DR](iot-hub-scaling.md)
