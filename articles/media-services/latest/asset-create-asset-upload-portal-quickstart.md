@@ -6,12 +6,12 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 3f175ff8e7c809032f35cdea9dc3cffa8345b82c
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 929d8412b3be894e80a13d9a2bd07ab7401b8dda
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106832"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277870"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Hızlı başlangıç: portala karşıya içerik yükleme, kodlama ve akışla
 
@@ -41,8 +41,8 @@ Bu hızlı başlangıçta, Azure Media Services ile içerik yükleme, kodlama ve
     
     İncelemeyi
 
-    * [Akış bulucuları](streaming-locators-concept.md)
-    * [Akış ilkeleri](streaming-policy-concept.md)
+    * [Akış bulucuları](stream-streaming-locators-concept.md)
+    * [Akış ilkeleri](stream-streaming-policy-concept.md)
     * [Paketleme ve teslim](encode-dynamic-packaging-concept.md)
     * [Filtreler](filters-concept.md)
 * İçeriğinizi Gelişmiş Şifreleme Standardı (AES-128) veya/ve üç ana DRM sisteminden (Microsoft PlayReady, Google Widevine ve Apple FairPlay) şifreleyerek koruyabilirsiniz. Azure portal hızlı başlangıç [ile Içerik şifreleme](drm-encrypt-content-how-to.md) içerik korumasının nasıl yapılandırılacağını gösterir.
@@ -94,7 +94,7 @@ Bir varlığı yayımlamak için, şimdi varlığınıza bir akış Bulucu eklem
 
     > [!NOTE]
     > Akışın şifrelenmesini istiyorsanız, içerik anahtar ilkesi oluşturmanız ve akış bulucunun üzerinde ayarlamanız gerekir. Ayrıntılar için bkz. [Azure Portal Içeriği şifreleme](drm-encrypt-content-how-to.md).
-1. **Akış Bulucu Ekle** penceresinde, önceden tanımlanmış akış ilkelerinden birini seçersiniz. Ayrıntılı bilgi için bkz. [akış ilkeleri](streaming-policy-concept.md)
+1. **Akış Bulucu Ekle** penceresinde, önceden tanımlanmış akış ilkelerinden birini seçersiniz. Ayrıntılı bilgi için bkz. [akış ilkeleri](stream-streaming-policy-concept.md)
 
     ![Akış Bulucu](./media/asset-create-asset-upload-portal-quickstart/streaming-locator.png)
 
@@ -105,7 +105,7 @@ Varlık yayımlandıktan sonra portalda doğrudan akış yapabilirsiniz.
 Ya da akış URL 'sini kopyalayın ve istemci oynatıcınızda kullanın.
 
 > [!NOTE]
-> [Akış uç noktasının](streaming-endpoint-concept.md) çalıştığından emin olun. İlk olarak bir medya hizmeti hesabı oluşturduğunuzda, varsayılan akış uç noktası oluşturulur ve durdurulmuş durumdaysa, içeriğinizi akışa almadan önce bunu başlatmanız gerekir.<br/>Yalnızca akış uç noktanız çalışır durumdaysa faturalandırılırsınız.
+> [Akış uç noktasının](stream-streaming-endpoint-concept.md) çalıştığından emin olun. İlk olarak bir medya hizmeti hesabı oluşturduğunuzda, varsayılan akış uç noktası oluşturulur ve durdurulmuş durumdaysa, içeriğinizi akışa almadan önce bunu başlatmanız gerekir.<br/>Yalnızca akış uç noktanız çalışır durumdaysa faturalandırılırsınız.
 
 ## <a name="cleanup-resources"></a>Kaynakları temizleme
 

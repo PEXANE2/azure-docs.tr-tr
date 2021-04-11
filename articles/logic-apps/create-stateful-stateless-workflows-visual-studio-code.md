@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: f7f8082cc9120345336610d5cb49741140d3b606
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/30/2021
+ms.openlocfilehash: 491d5f14cc8f456d228a5bc6efaa6686575979c1
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102557021"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078749"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (Önizleme) uzantısıyla Visual Studio Code durum bilgisiz ve durum bilgisi olmayan iş akışları oluşturma
 
@@ -101,8 +101,8 @@ MacOS veya Linux kullanırken Visual Studio Code mantıksal uygulama projenizi y
 1. Bağlantı dizesini güvenli bir yere kaydedin. Visual Studio Code ' de mantıksal uygulama projenizi oluşturduktan sonra, dizeyi projenizin kök düzeyi klasöründeki **local.settings.js** dosyasına eklemeniz gerekir.
 
    > [!IMPORTANT]
-   > Bir Docker kapsayıcısına dağıtmayı planlıyorsanız, bu bağlantı dizesini dağıtım için kullandığınız Docker dosyasına da eklemeniz gerekir.
-
+   > Bir Docker kapsayıcısına dağıtmayı planlıyorsanız, bu bağlantı dizesini dağıtım için kullandığınız Docker dosyası ile birlikte kullanmanız gerekir. Üretim senaryolarında, örneğin bir anahtar kasasını kullanarak, bu gizli bilgileri ve gizli bilgileri koruyun ve güvenli hale getirin.
+  
 ### <a name="tools"></a>Araçlar
 
 * [Visual Studio Code 1.30.1 (ocak 2019) veya üzeri bir sürümü](https://code.visualstudio.com/)ücretsizdir. Ayrıca, şu anda yoksa Visual Studio Code için bu araçları indirip yükleyin:
@@ -304,6 +304,9 @@ Mantıksal uygulamanızı oluşturabilmeniz için önce, Visual Studio Code mant
          }
       }
       ```
+
+      > [!IMPORTANT]
+      > Üretim senaryolarında, örneğin bir anahtar kasasını kullanarak, bu gizli bilgileri ve gizli bilgileri koruyun ve güvenli hale getirin.
 
    1. İşiniz bittiğinde, değişikliklerinizi kaydettiğinizden emin olun.
 
@@ -1205,7 +1208,10 @@ Docker hakkında bilgi sahibi değilseniz şu konuları gözden geçirin:
 
 * Docker kapsayıcınızı oluştururken kullandığınız iş akışı için bir Docker dosyası
 
-  Örneğin, bu örnek Docker dosyası bir mantıksal uygulama dağıtır. , Mantıksal uygulamayı Azure portal yayımlamak için kullanılan Azure depolama hesabı için erişim anahtarını içeren bağlantı dizesini belirtir. Bu dizeyi bulmak için bkz. [depolama hesabı bağlantı dizesi al](#find-storage-account-connection-string).
+  Örneğin, bu örnek Docker dosyası bir Logic App dağıtır ve mantıksal uygulamayı Azure portal yayımlamak için kullanılan Azure depolama hesabı için erişim anahtarını içeren bağlantı dizesini belirtir. Bu dizeyi bulmak için bkz. [depolama hesabı bağlantı dizesi al](#find-storage-account-connection-string). Daha fazla bilgi için [Docker dosyalarını yazmak Için en iyi yöntemleri](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)gözden geçirin.
+  
+  > [!IMPORTANT]
+  > Üretim senaryolarında, örneğin bir anahtar kasasını kullanarak, bu gizli bilgileri ve gizli bilgileri koruyun ve güvenli hale getirin. Docker dosyaları için özel olarak, [BuildKit Ile derleme görüntülerini](https://docs.docker.com/develop/develop-images/build_enhancements/) gözden geçirin ve [Docker gizli dizileri Ile hassas verileri yönetin](https://docs.docker.com/engine/swarm/secrets/).
 
    ```text
    FROM mcr.microsoft.com/azure-functions/node:3.0
@@ -1219,8 +1225,6 @@ Docker hakkında bilgi sahibi değilseniz şu konuları gözden geçirin:
 
    RUN cd /home/site/wwwroot
    ```
-
-   Daha fazla bilgi için bkz. [Docker dosyalarını yazma Için en iyi uygulamalar](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 
 <a name="find-storage-account-connection-string"></a>
 

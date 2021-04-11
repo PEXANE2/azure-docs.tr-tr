@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 987fb5745b6528eb96b4237f698b3ae371d69287
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ec83d8d56ad67d8c64c6ac3151ca3819e88c0616
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731828"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449605"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Öğretici: Azure Arc etkin bir Kubernetes kümesinde giler kullanarak yapılandırma dağıtma 
 
@@ -30,6 +30,14 @@ Bu öğreticide, Azure Arc etkin bir Kubernetes kümesinde Gilar kullanarak yap�
 - Mevcut bir Azure Arc, Kubernetes bağlı kümesini etkinleştirdi.
     - Henüz bir küme bağlanamadıysanız, [Azure Arc özellikli bir Kubernetes kümesi hızlı başlangıç](quickstart-connect-cluster.md)' i inceleyin.
 - Bu özelliğin avantajları ve mimarisi hakkında bilgiler. Yapılandırmalarda daha fazla bilgi edinin [ve Azure Arc etkin Kubernetes makalesini](conceptual-configurations.md)okuyun.
+- `k8s-configuration`Sürüm >= 1.0.0 Azure CLI uzantısını yükler:
+  
+  ```azurecli
+  az extension add --name k8s-configuration
+  ```
+
+    >[!TIP]
+    > `k8s-configuration`Uzantı zaten yüklüyse, aşağıdaki komutu kullanarak en son sürüme güncelleştirebilirsiniz.`az extension update --name k8s-configuration`
 
 ## <a name="create-a-configuration"></a>Yapılandırma oluşturma
 
@@ -235,7 +243,7 @@ Bir yapılandırma oluşturulduğunda veya güncelleştirilirken birkaç şey me
 
 Sağlama işlemi gerçekleşirken, yapılandırma kaynağı birkaç durum değişikliğine göre hareket eder. Yukarıdaki komutla ilerlemeyi izleyin `az k8s-configuration show ...` :
 
-| Aşama değişikliği | Description |
+| Aşama değişikliği | Açıklama |
 | ------------- | ------------- |
 | `complianceStatus`-> `Pending` | İlk ve devam eden durumları temsil eder. |
 | `complianceStatus` -> `Installed`  | `config-agent` küme başarıyla yapılandırıldı ve `flux` hata olmadan dağıtıldı. |

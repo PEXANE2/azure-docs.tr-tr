@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: sandeo
-ms.openlocfilehash: 44dfd07a5b749d88552bb1dcac2ee4b4e5ce65e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e14e214a220d9dade4fac028620d23c563d86a8f
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565249"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554085"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Önizleme: Azure Active Directory kimlik doğrulaması kullanarak Azure 'da Linux sanal makinesinde oturum açma
 
@@ -140,7 +140,7 @@ Azure RBAC kaynaklarına erişimi yönetmek için Azure RBAC kullanma hakkında 
 
 ## <a name="using-conditional-access"></a>Koşullu erişim kullanma
 
-Azure AD oturum açma özelliği ile etkinleştirilen Azure 'da Linux VM 'lerine erişimi yetkilendirmeden önce Multi-Factor Authentication veya Kullanıcı oturum açma riski denetimi gibi koşullu erişim ilkelerini uygulayabilirsiniz. Koşullu erişim ilkesini uygulamak için, bulut uygulamaları veya eylemler atama seçeneğinden "Azure Linux VM oturum açma" uygulamasını seçmeniz ve ardından, bir koşul olarak oturum açma riskini ve/veya çok faktörlü kimlik doğrulamasının izin verme erişim denetimi olarak kullanılmasını sağlamanız gerekir. 
+Azure AD oturum açma özelliği ile etkinleştirilen Azure 'da Linux VM 'lerine erişimi yetkilendirmeden önce Multi-Factor Authentication veya Kullanıcı oturum açma riski denetimi gibi koşullu erişim ilkelerini uygulayabilirsiniz. Koşullu erişim ilkesini uygulamak için, bulut uygulamaları veya eylemler atama seçeneğinden Microsoft Azure "Linux sanal makinesi oturum açma" uygulamasını seçmeniz ve ardından bir koşul olarak oturum açma riskini ve/veya çok faktörlü kimlik doğrulamasının izin verme erişim denetimi olarak kullanılmasını sağlamanız gerekir. 
 
 > [!WARNING]
 > Kullanıcı başına etkin/Zorlanmış Azure AD Multi-Factor Authentication, VM 'de oturum açma için desteklenmez.

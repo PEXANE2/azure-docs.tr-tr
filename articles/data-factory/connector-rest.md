@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: jingwang
-ms.openlocfilehash: 6d9bb17e0e68c563c6d8cc18669d8c298d4f267b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 779a8745688e6a1fb8a15bc9119c6fbc1803ca2c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951853"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078936"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory kullanarak ve bir REST uç noktasına veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -495,7 +495,7 @@ Bu bölümde, OAuth kullanarak JSON biçimindeki Azure Data Lake Storage veriler
 
     | Özellik | Açıklama |
     |:--- |:--- |
-    | URL |OAuth taşıyıcı belirtecini almak için URL 'yi belirtin. Örneğin, buradaki örnekte https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
+    | URL |OAuth taşıyıcı belirtecini almak için URL 'yi belirtin. Örneğin, buradaki örnekte https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |
     | Yöntem | HTTP yöntemi. İzin verilen değerler **gönderi** ve **Get**. | 
     | Üst Bilgiler | Üst bilgi, HTTP isteğindeki bir üst bilgi adına başvuran Kullanıcı tanımlı ' dır. | 
     | Gövde | HTTP isteğinin gövdesi. | 

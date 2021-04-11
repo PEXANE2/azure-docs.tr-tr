@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 83779dcd319614ae15de6b7e3e4e3abfd9599089
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc803814e493ffef6f5928dc9971f9f6f864342d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102619163"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221747"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -394,6 +394,16 @@ Application Gateway/WAF hizmetinin v1 SKU 'sunu kullanıyorsanız, yeni sertifik
 Daha fazla bilgi [için belgelere bakın](./end-to-end-ssl-portal.md#add-authenticationtrusted-root-certificates-of-back-end-servers).
 
 Application Gateway/WAF hizmetinin v2 SKU 'sunu kullanıyorsanız, v2 SKU 'SU "güvenilen kök sertifikalar" kullandığından ve burada herhangi bir işlem yapılması gerekmiyorsa, yeni sertifikayı HTTP ayarlarında karşıya yüklemeniz gerekmez.
+
+## <a name="configuration---mutual-authentication"></a>Yapılandırma-karşılıklı kimlik doğrulama
+
+### <a name="what-is-mutual-authentication"></a>Karşılıklı kimlik doğrulaması nedir?
+
+Karşılıklı kimlik doğrulama, istemci ve sunucu arasında iki yönlü kimlik doğrulamadır. Application Gateway ile karşılıklı kimlik doğrulaması şu anda ağ geçidinin, istemci kimlik doğrulaması olan isteği göndermesini doğrulamasına izin verir. Genellikle istemci, Application Gateway kimliğini doğrulayan tek bir tane olur. Application Gateway artık istemcinin kimliğini doğrulayabildiğinden, Application Gateway ve istemcinin birbirini karşılıklı olarak doğruladığı karşılıklı kimlik doğrulaması olur. 
+
+### <a name="is-mutual-authentication-available-between-application-gateway-and-its-backend-pools"></a>Application Gateway ve arka uç havuzları arasında karşılıklı kimlik doğrulaması kullanılabilir mi?
+
+Hayır, karşılıklı kimlik doğrulaması şu anda yalnızca ön uç istemcisiyle Application Gateway arasında. Arka uç karşılıklı kimlik doğrulaması şu anda desteklenmiyor.
 
 ## <a name="configuration---ingress-controller-for-aks"></a>AKS için yapılandırma girişi denetleyicisi
 

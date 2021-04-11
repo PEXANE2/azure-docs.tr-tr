@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 5bf4bbe2c8dc863f67dffb50609f7775a4499e3a
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 24a5c92164e0eace41224edfd2153c6142f7ea49
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073727"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107251358"
 ---
 [!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
 
@@ -46,8 +46,8 @@ Komut satırından iOS projesinin kök dizininin içine gidin `ChatQuickstart` .
 Pod dosyasını açın ve şu bağımlılıkları `ChatQuickstart` hedefe ekleyin:
 
 ```
-pod 'AzureCommunication', '~> 1.0.0-beta.9'
-pod 'AzureCommunicationChat', '~> 1.0.0-beta.9'
+pod 'AzureCommunication', '~> 1.0.0-beta.11'
+pod 'AzureCommunicationChat', '~> 1.0.0-beta.11'
 ```
 
 Aşağıdaki komutla bağımlılıkları yükler: `pod install` . Bunun ayrıca bir Xcode çalışma alanı oluşturduğunu unutmayın.
@@ -80,16 +80,20 @@ override func viewDidLoad() {
                 // <CREATE A CHAT CLIENT>
                 
                 // <CREATE A CHAT THREAD>
-                
-                // <CREATE A CHAT THREAD CLIENT>
-                
+
+                // <LIST ALL CHAT THREADS>
+
+                // <GET A CHAT THREAD CLIENT>
+
                 // <SEND A MESSAGE>
-                
+
+                // <SEND A READ RECEIPT >
+
+                // <RECEIVE MESSAGES>
+
                 // <ADD A USER>
                 
                 // <LIST USERS>
-                
-                // <REMOVE A USER>
             } catch {
                 print("Quickstart failed: \(error.localizedDescription)")
             }
@@ -106,17 +110,17 @@ Tanıtım amacıyla, kodunuzun eşitlenmesi için bir semafor kullanacağız. A�
 
 ```
 let endpoint = "<ACS_RESOURCE_ENDPOINT>"
-    let credential =
-    try CommunicationTokenCredential(
-        token: "<ACCESS_TOKEN>"
-    )
-    let options = AzureCommunicationChatClientOptions()
+let credential =
+try CommunicationTokenCredential(
+    token: "<ACCESS_TOKEN>"
+)
+let options = AzureCommunicationChatClientOptions()
 
-    let chatClient = try ChatClient(
-        endpoint: endpoint,
-        credential: credential,
-        withOptions: options
-    )
+let chatClient = try ChatClient(
+    endpoint: endpoint,
+    credential: credential,
+    withOptions: options
+)
 ```
 
 `<ACS_RESOURCE_ENDPOINT>`Azure Communication Services kaynağınızın uç noktasıyla değiştirin. `<ACCESS_TOKEN>`Geçerli bir Iletişim Hizmetleri erişim belirteciyle değiştirin.
@@ -141,10 +145,10 @@ Aşağıdaki sınıflar ve arabirimler, JavaScript için Azure Communication Ser
 `<CREATE A CHAT THREAD>` açıklamasını aşağıdaki kodla değiştirin:
 
 ```
-let request = CreateThreadRequest(
+let request = CreateChatThreadRequest(
     topic: "Quickstart",
     participants: [
-        Participant(
+        ChatParticipant(
             id: CommunicationUserIdentifier("<USER_ID>"),
             displayName: "Jack"
         )
@@ -155,7 +159,7 @@ var threadId: String?
 chatClient.create(thread: request) { result, _ in
     switch result {
     case let .success(result):
-        threadId = result.thread?.id
+        threadId = result.chatThread?.id
 
     case .failure:
         fatalError("Failed to create thread.")
@@ -169,11 +173,31 @@ semaphore.wait()
 
 Devam etmeden önce tamamlama işleyicisini beklemek için burada bir semafor kullanıyorsunuz. Sonraki adımlarda, öğesini `threadId` tamamlama işleyicisine döndürülen yanıttan kullanacaksınız.
 
+## <a name="list-all-chat-threads"></a>Tüm sohbet iş parçacıklarını Listele
+
+Sohbet iş parçacığı oluşturduktan sonra, üzerinde yöntemini çağırarak tüm sohbet iş parçacıklarını listeleriz `listChatThreads` `ChatClient` . `<LIST ALL CHAT THREADS>` açıklamasını aşağıdaki kodla değiştirin:
+
+```
+chatClient.listThreads { result, _ in
+    switch result {
+    case let .success(chatThreadItems):
+        var iterator = chatThreadItems.syncIterator
+            while let chatThreadItem = iterator.next() {
+                print("Thread id: \(chatThreadItem.id)")
+            }
+    case .failure:
+        print("Failed to list threads")
+    }
+    semaphore.signal()
+}
+semaphore.wait()
+```
+
 ## <a name="get-a-chat-thread-client"></a>Sohbet iş parçacığı istemcisi al
 
 Artık bir sohbet iş parçacığı oluşturduğunuza göre, `ChatThreadClient` iş parçacığı içinde işlem gerçekleştirmek için bir elde edebilirsiniz.
 
-`<CREATE A CHAT THREAD CLIENT>` açıklamasını aşağıdaki kodla değiştirin:
+`<GET A CHAT THREAD CLIENT>` açıklamasını aşağıdaki kodla değiştirin:
 
 ```
 let chatThreadClient = try chatClient.createClient(forThread: threadId!)
@@ -189,10 +213,13 @@ let message = SendChatMessageRequest(
     senderDisplayName: "Jack"
 )
 
+var messageId: String?
+
 chatThreadClient.send(message: message) { result, _ in
     switch result {
     case let .success(result):
         print("Message sent, message id: \(result.id)")
+        messageId = result.id
     case .failure:
         print("Failed to send message")
     }
@@ -203,12 +230,57 @@ semaphore.wait()
 
 İlk olarak, `SendChatMessageRequest` içeriği ve gönderenin görünen adını içeren öğesini oluşturursunuz. Bu istek, dahil etmek isterseniz, paylaşma geçmişi süresini de içerebilir. Tamamlanma işleyicisine döndürülen yanıt, gönderilen iletinin KIMLIĞINI içerir.
 
+
+## <a name="send-a-read-receipt"></a>Okundu bilgisi gönder
+
+Yöntemini çağırarak belirli bir ileti için okundu bilgisi gönderebilirsiniz `ChatThreadClients` `sendReadReceipt` . `<SEND A READ RECEIPT>` açıklamasını aşağıdaki kodla değiştirin:
+
+```
+if let id = messageId {
+    chatThreadClient.sendReadReceipt(forMessage: id) { result, _ in
+        switch result {
+        case .success:
+            print("Read receipt sent")
+        case .failure:
+            print("Failed to send read receipt")
+        }
+        semaphore.signal()
+    }
+    semaphore.wait()
+} else {
+    print("Cannot send read receipt without a message id")
+}
+```
+
+## <a name="receive-chat-messages-from-a-chat-thread"></a>Sohbet iş parçacığından sohbet iletileri alma
+
+' Den yöntemini çağırarak bir sohbet iş parçacığından iletiler alabilirsiniz `listMessages()` `ChatThreadClient` . Liste iletileri, sistem iletilerinin yanı sıra Kullanıcı tarafından gönderilen iletileri içerir. Alabileceği ileti türleri hakkında daha fazla bilgi için bkz. [Ileti türleri](https://docs.microsoft.com/azure/communication-services/concepts/chat/concepts#message-types)
+
+`<RECEIVE MESSAGES>` açıklamasını aşağıdaki kodla değiştirin:
+
+```
+chatThreadClient.listMessages { result, _ in
+    switch result {
+    case let .success(messages):
+        var iterator = messages.syncIterator
+        while let message = iterator.next() {
+            print("Received message of type \(message.type)")
+        }
+
+    case .failure:
+        print("Failed to receive messages")
+    }
+    semaphore.signal()
+}
+semaphore.wait()
+```
+
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Sohbet iş parçacığına katılımcı olarak Kullanıcı ekleme
 
 `<ADD A USER>` açıklamasını aşağıdaki kodla değiştirin:
 
 ```
-let user = Participant(
+let user = ChatParticipant(
     id: CommunicationUserIdentifier("<USER_ID>"),
     displayName: "Jane"
 )
@@ -216,9 +288,9 @@ let user = Participant(
 chatThreadClient.add(participants: [user]) { result, _ in
     switch result {
     case let .success(result):
-        (result.errors != nil) ? print("Added participant") : print("Error adding participant")
+        (result.invalidParticipants != nil) ? print("Added participant") : print("Error adding participant")
     case .failure:
-        print("Failed to list participants")
+        print("Failed to add the participant")
     }
     semaphore.signal()
 }
@@ -240,7 +312,7 @@ chatThreadClient.listParticipants { result, _ in
         var iterator = participants.syncIterator
         while let participant = iterator.next() {
             let user = participant.id as! CommunicationUserIdentifier
-            print(user.identifier)
+            print("User with id: \(user.identifier)")
         }
     case .failure:
         print("Failed to list participants")
@@ -250,28 +322,7 @@ chatThreadClient.listParticipants { result, _ in
 semaphore.wait()
 ```
 
-
-## <a name="remove-user-from-a-chat-thread"></a>Kullanıcı sohbet iş parçacığından kaldır
-
-`<REMOVE A USER>` açıklamasını aşağıdaki kodla değiştirin:
-
-```
-chatThreadClient
-    .remove(
-        participant: CommunicationUserIdentifier("<USER_ID>")
-    ) { result, _ in
-        switch result {
-        case .success:
-            print("Removed user from the thread.")
-        case .failure:
-            print("Failed to remove user from the thread.")
-        }
-    }
-```
-
-`<USER ID>`Kaldırılmakta olan katılımcının Iletişim Hizmetleri Kullanıcı kimliğiyle değiştirin.
-
 ## <a name="run-the-code"></a>Kodu çalıştırma
 
-Xcode 'da, projeyi derlemek ve çalıştırmak için **Çalıştır** ' ı seçin. Konsolunda, sohbet istemcisinden koddan ve günlükçü çıktısından çıktıyı görüntüleyebilirsiniz.
+Xcode 'da projeyi derlemek ve çalıştırmak için Çalıştır düğmesine basın. Konsolunda, koddan çıktıyı ve günlükçü çıkışını ChatClient ' dan görüntüleyebilirsiniz.
 

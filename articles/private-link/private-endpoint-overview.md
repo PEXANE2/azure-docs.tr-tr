@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 79d21549e7234e4ee342776466f8d3d8ced5f08c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1302d44a4cb5b09f6dc3b1bf0cb08a12a932c87
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508818"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029412"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure Özel Uç Nokta nedir?
 
@@ -39,7 +39,7 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 
 - Özel bir uç nokta oluştururken, kaynağın yaşam döngüsü için salt okunurdur bir ağ arabirimi de oluşturulur. Arabirimine, özel bağlantı kaynağıyla eşleşen alt ağdan dinamik olarak özel IP adresleri atanır. Özel IP adresinin değeri, Özel uç noktanın tüm yaşam döngüsünün değişmeden kalır.
  
-- Özel uç noktanın sanal ağla aynı bölgede dağıtılması gerekir. 
+- Özel uç noktanın, sanal ağ ile aynı bölgede ve abonelikte dağıtılması gerekir. 
  
 - Özel bağlantı kaynağı, sanal ağ ve özel uç noktadan farklı bir bölgede dağıtılabilir.
  

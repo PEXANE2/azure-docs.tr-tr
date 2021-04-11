@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 261dceb70a6059c76dbe3bd1d7636eee5d9d77bc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5037450d401153811899b8d769ca92af7ce4068e
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936300"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103785"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>Azure Digital Twins CLI’sini kullanma
 
@@ -25,7 +25,7 @@ Azure dijital TWINS örneğinizi, Azure portal Azure dijital TWINS örneğinizin
 * [Yolları](concepts-route-events.md) yönetme
 * Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla [güvenliği](concepts-security.md) yapılandırma
 
-Komut kümesi **az DT** olarak adlandırılır ve [Azure CLI için Azure IoT uzantısının](https://github.com/Azure/azure-iot-cli-extension)bir parçasıdır. Komut kümesi için başvuru belgelerinin bir parçası olarak komutların ve kullanımlarınızın tam listesini görebilirsiniz `az iot` : [ *az DT* komut Reference](/cli/azure/ext/azure-iot/dt).
+Komut kümesi **az DT** olarak adlandırılır ve [Azure CLI için Azure IoT uzantısının](https://github.com/Azure/azure-iot-cli-extension)bir parçasıdır. Komut kümesi için başvuru belgelerinin bir parçası olarak komutların ve kullanımlarınızın tam listesini görebilirsiniz `az iot` : [ *az DT* komut Reference](/cli/azure/dt).
 
 ## <a name="uses-deploy-and-validate"></a>Kullanır (Dağıt ve Doğrula)
 
@@ -61,4 +61,4 @@ az extension add --upgrade -n azure-iot
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Başvuru belgeleri aracılığıyla CLı ve tam komut kümesini gezin:
-* [*az DT* komut başvurusu](/cli/azure/ext/azure-iot/dt)
+* [*az DT* komut başvurusu](/cli/azure/dt)

@@ -4,12 +4,12 @@ description: Azure portalını kullanarak sunucusuz yürütme için ilk Azure İ
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 6ca187181d68d7924f97ebfac08e81dec77251e9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea5b6a9e51b6982a33dc748f72557ed539b8e2e0
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492156"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385998"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure portalında ilk işlevinizi oluşturma
 
@@ -60,11 +60,7 @@ Sonra, yeni işlev uygulamasında bir işlev oluşturun.
 
     ![Azure portalından işlev URL’sini kopyalama](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. İşlev URL'sini tarayıcınızın adres çubuğuna yapıştırın. Sorgu dizesi değerini `?name=<your_name>` Bu URL 'nin sonuna ekleyin ve isteği çalıştırmak Için ENTER 'a basın. 
-
-    Aşağıdaki örnekte tarayıcıdaki yanıt gösterilmektedir:
-
-    ![Tarayıcıdaki işlev yanıtı.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
+1. İşlev URL'sini tarayıcınızın adres çubuğuna yapıştırın. Sorgu dizesi değerini `?name=<your_name>` Bu URL 'nin sonuna ekleyin ve isteği çalıştırmak Için ENTER 'a basın. Tarayıcı, sorgu dizesi değerini yankılayan bir yanıt iletisi görüntülemelidir. 
 
     İstek URL 'SI bir [erişim anahtarı](functions-bindings-http-webhook-trigger.md#authorization-keys) () içeriyorsa `?code=...` , işlevi oluştururken **anonim** erişim düzeyi yerine **işlevi** seçersiniz demektir. Bu durumda, bunun yerine sonuna eklemeniz gerekir `&name=<your_name>` .
 

@@ -179,6 +179,8 @@
       href: /rest/api/labservices/
     - name: Az.LabServices PowerShell modülü (önizleme)
       href: reference-powershell-module.md
+    - name: Azure CLI
+      href: /cli/azure/hack
 - name: Kaynaklar
   items:
     - name: Azure Lab Services Blogu

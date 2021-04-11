@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9a878dc5cdbbe336e7279d0cd919bd17cd42d0e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e1b7e091fe09bc2c093cc84473bd07917347f26d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728224"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220810"
 ---
 # <a name="communication-services-notifications"></a>İletişim Hizmetleri bildirimleri
 
@@ -67,13 +67,24 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 #### <a name="using-the-azure-portal-to-link-your-notification-hub"></a>Bildirim Hub 'ınızı bağlamak için Azure portal kullanma
 
-Portalda Azure Communication Services kaynağınız ' ne gidin. Iletişim Hizmetleri kaynağı içinde Iletişim Hizmetleri sayfasının sol menüsünde anında Iletme bildirimleri ' ni seçin ve daha önce sağladığınız Bildirim Hub 'ını bağlayın. Bağlantı dizenizi ve ResourceId 'nı buradan sağlamanız gerekir:
+1. Portalda Azure Iletişim Hizmetleri kaynağına gidin.
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Azure portal içinde anında Iletme bildirimleri ayarlarını gösteren ekran görüntüsü.":::
+1. Iletişim Hizmetleri kaynağı ' nın içinde, Iletişim Hizmetleri sayfasının sol menüsünden **anında Iletme bildirimleri** ' ni seçin ve daha önce sağladığınız Bildirim Hub 'ını bağlayın.
+
+1. **Bildirim Hub 'ını bağla**' yı seçin. Bağlantı için kullanılabilen Bildirim Hub 'larının listesini görürsünüz.
+ 
+1. Bu kaynak için kullanmak istediğiniz Bildirim Hub 'ını seçin.
+ 
+   - Yeni bir hub oluşturmanız gerekiyorsa, bu kaynak için sağlanan yeni bir hub almak için **yeni Bildirim Hub 'ı oluştur** ' u seçin.
+
+   :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Azure portal içinde anında Iletme bildirimleri ayarlarını gösteren ekran görüntüsü.":::
+
+Şimdi bağlantılı durumla bağladığınız Bildirim Hub 'ını görürsünüz.
+
+Kaynak için farklı bir hub kullanmak istiyorsanız, **bağlantıyı kes**' i seçin ve ardından farklı Bildirim Hub 'ını bağlamak için adımları tekrarlayın.
 
 > [!NOTE]
-> Azure Bildirim Hub 'ı bağlantı dizesi güncelleştirilirse, Iletişim Hizmetleri kaynağının de güncellenmesi gerekiyor.
-Hub 'ın bağlantılı olduğu herhangi bir değişiklik, veri düzlemine (bir bildirim gönderilirken) en uzun süre içinde yansıtılır ``10`` . Bu, daha önce gönderilen bildirimler **varsa** hub ilk kez bağlandığında da geçerlidir.
+> Hub 'ın bağlantılı olduğu herhangi bir değişiklik, veri düzlemine (bir bildirim gönderilirken) 10 dakikalık bir süre içinde yansıtılır. Bu aynı davranış, hub ilk kez bağlandığında, değişiklikten **önce bildirimler gönderilmişse** geçerlidir.
 
 ### <a name="device-registration"></a>Cihaz kaydı
 

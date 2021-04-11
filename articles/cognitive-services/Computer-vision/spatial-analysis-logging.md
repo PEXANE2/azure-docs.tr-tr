@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: a825b9e0abc4e33eb0f9033f46bb77c38559f740
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd35062ca1a5b3218a9af1fbd28fe8e7d7073c07
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722710"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077627"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetri ve sorun giderme
 
@@ -103,21 +103,21 @@ Telegraf modülü dağıtıldıktan sonra, bildirilen ölçümlere Azure Izleyic
 
 ### <a name="system-health-events"></a>Sistem durumu olayları
 
-| Olay Adı | Description|
-|------|---------|
-|archon_exit     |Kullanıcı, uzamsal analiz modülü durumunun *çalışmayı* *durduruldu* olarak değiştirdiğinde gönderilir.  |
-|archon_error     |Kapsayıcının içindeki işlemlerden herhangi biri kilitleniyorsa gönderilir. Bu kritik bir hatadır.  |
-|Inputrate     |Grafiğin video girişini işleme hızıdır. Her 5 dakikada bir raporlanır. | 
-|OutputRate     |Grafiğin AI öngörülerini çıkış hızı. Her 5 dakikada bir raporlanır. |
-|archon_allGraphsStarted | Tüm grafiklerin başlaması bittiğinde gönderilir. |
-|archon_configchange     | Grafik yapılandırması değiştirildiğinde gönderilir. |
-|archon_graphCreationFailed     |Raporlandığı grafik başlatıldığında gönderilir `graphId` . |
-|archon_graphCreationSuccess     |Raporlanan grafik `graphId` başarıyla başladığında gönderilir. |
-|archon_graphCleanup     | Bildirilen grafik `graphId` Temizleme ve çıkış olduğunda gönderilir. |
-|archon_graphHeartbeat     |Bir yeteneğin her bir grafiği için her dakikada bir sinyal gönderilir. |
-|archon_apiKeyAuthFail |Görüntü İşleme kaynak anahtarı, aşağıdaki nedenlerden dolayı, kapsayıcıyı 24 saatten uzun bir süre için doğrulayamazsa gönderilir: kota dışı, geçersiz, çevrimdışı. |
-|Videoıngestersinyal     |Videonun video kaynağından akışını ve bu saatin hata sayısını gösteren her saat için gönderilir. Her bir grafik için bildirildi. |
-|Videoıngesterstate | Video akışı için raporlar *durduruldu* veya *başlatıldı* . Her bir grafik için bildirildi. |
+| Olay Adı                  | Description    |
+|-----------------------------|-------------------------------------------------------------------------------------------|
+| archon_exit                 | Kullanıcı, uzamsal analiz modülü durumunun *çalışmayı* *durduruldu* olarak değiştirdiğinde gönderilir.  |
+| archon_error                | Kapsayıcının içindeki işlemlerden herhangi biri kilitleniyorsa gönderilir. Bu kritik bir hatadır.      |
+| Inputrate                   | Grafiğin video girişini işleme hızıdır. Her 5 dakikada bir raporlanır.              |
+| OutputRate                  | Grafiğin AI öngörülerini çıkış hızı. Her 5 dakikada bir raporlanır.                |
+| archon_allGraphsStarted     | Tüm grafiklerin başlaması bittiğinde gönderilir.                                           |
+| archon_configchange         | Grafik yapılandırması değiştirildiğinde gönderilir.                                              |
+| archon_graphCreationFailed  | Raporlandığı grafik başlatıldığında gönderilir `graphId` .                           |
+| archon_graphCreationSuccess | Raporlanan grafik `graphId` başarıyla başladığında gönderilir.                      |
+| archon_graphCleanup         | Bildirilen grafik `graphId` Temizleme ve çıkış olduğunda gönderilir.                      |
+| archon_graphHeartbeat       | Bir yeteneğin her bir grafiği için her dakikada bir sinyal gönderilir.                                   |
+| archon_apiKeyAuthFail       | Görüntü İşleme kaynak anahtarı, aşağıdaki nedenlerden dolayı, kapsayıcıyı 24 saatten uzun bir süre için doğrulayamazsa gönderilir: kota dışı, geçersiz, çevrimdışı. |
+| Videoıngestersinyal      | Videonun video kaynağından akışını ve bu saatin hata sayısını gösteren her saat için gönderilir. Her bir grafik için bildirildi. |
+| Videoıngesterstate          | Video akışı için raporlar *durduruldu* veya *başlatıldı* . Her bir grafik için bildirildi.              |
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>IoT Edge cihaz sorunlarını giderme
 

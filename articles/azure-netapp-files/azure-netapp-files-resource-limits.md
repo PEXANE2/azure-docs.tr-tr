@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/29/2021
+ms.date: 03/30/2021
 ms.author: b-juche
-ms.openlocfilehash: c82e834c0af3737c1e5ef19c7aa789b94d87f6d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b061184f97abeea79912aadbae2c2b188206c72
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99095400"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058009"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files için kaynak sınırları
 
@@ -45,6 +45,7 @@ Aşağıdaki tabloda Azure NetApp Files için kaynak sınırları açıklanmakta
 |  Tek bir dosyanın en büyük boyutu     |    16 TiB    |    No    |    
 |  Tek bir dizindeki dizin meta verilerinin en büyük boyutu      |    320 MB    |    No    |    
 |  Birim başına en fazla dosya sayısı ([maxfiles](#maxfiles))     |    100.000.000    |    Yes    |    
+|  Birim başına en fazla dışarı aktarma ilkesi kuralı sayısı     |    5  |    No    | 
 |  El ile QoS birimi için atanan en düşük aktarım hızı     |    1 MIB/sn   |    No    |    
 |  El ile QoS birimi için atanan en yüksek aktarım hızı     |    4.500 MIB/sn    |    No    |    
 |  Çapraz bölge çoğaltma verileri koruma birimlerinin sayısı (hedef birimler)     |    5    |    Yes    |     

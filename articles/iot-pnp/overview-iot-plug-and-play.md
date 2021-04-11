@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: dcdd19faec5e428ac26917178aa8114245c205b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb39939f4a48a549479605dcccc346094359875f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594578"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106079021"
 ---
 # <a name="what-is-iot-plug-and-play"></a>IoT Tak Çalıştır nedir?
 
@@ -68,7 +68,7 @@ Bir cihaz Oluşturucu olarak IoT Tak ve Kullan destekleyen bir IoT donanım ür�
 
 ## <a name="device-certification"></a>Cihaz sertifikasyonu
 
-[Iot Tak ve kullan Cihaz Sertifikası programı](howto-certify-device.md) , bir cihazın IoT Tak ve kullan sertifika gereksinimlerini karşıladığını doğrular. [Azure IoT cihaz kataloğuna yönelik ortak sertifikalı](https://aka.ms/devicecatalog)sertifikalı bir cihaz ekleyebilirsiniz.
+[Iot Tak ve kullan Cihaz Sertifikası programı](../certification/program-requirements-pnp.md) , bir cihazın IoT Tak ve kullan sertifika gereksinimlerini karşıladığını doğrular. [Azure IoT cihaz kataloğuna yönelik ortak sertifikalı](https://aka.ms/devicecatalog)sertifikalı bir cihaz ekleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

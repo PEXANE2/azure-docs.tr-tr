@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 282ec6a25dc381dc51f28534d272bae57d2e792e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8e72cab6d6220b71e93550eec7649752201180a
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98675002"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256591"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>Passwordless kimlik doğrulaması için Azure Active Directory B2C ile Nevis yapılandırma öğreticisi
 
@@ -32,7 +32,7 @@ Başlamak için şunlar gerekir:
 
 - Azure aboneliğinize bağlı bir [Azure AD B2C kiracısı](./tutorial-create-tenant.md) .
 
-- Kayıt ilke akışınızla Nevis 'i birleştirmek istiyorsanız, [özel ilkeleri](./custom-policy-get-started.md)kullanmak için Azure AD B2C ortamı yapılandırıldı.
+- Kayıt ilke akışınızla Nevis 'i birleştirmek istiyorsanız, [özel ilkeleri](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)kullanmak için Azure AD B2C ortamı yapılandırıldı.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -270,4 +270,4 @@ Daha fazla bilgi için aşağıdaki makaleleri gözden geçirin
 
 - [Azure AD B2C'deki özel ilkeler](./custom-policy-overview.md)
 
-- [Azure AD B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C özel ilkeleri kullanmaya başlama](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

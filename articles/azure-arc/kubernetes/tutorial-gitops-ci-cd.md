@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: f720cc196f4034d29ec1d628e28d3534b10f3e41
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a94784f2f3fc622e0232033d63bc957279a7d34c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025824"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076352"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Öğretici: Azure Arc özellikli Kubernetes kümelerini kullanarak Gile ile CI/CD uygulama
 
@@ -58,7 +58,7 @@ Bu öğreticide, Azure DevOps, Azure Repos ve işlem hatları ve Azure CLı ile 
 
 ## <a name="import-application-and-gitops-repos-into-azure-repos"></a>Uygulama ve giler depolarını Azure Repos içine aktarma
 
-Bir [uygulama](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd#application-repo) deposunu ve bir [giler](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd#gitops-repo) deposunu Azure Repos içine aktarın. Bu öğretici için aşağıdaki örnek depoları kullanın:
+Bir [uygulama](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#application-repo) deposunu ve bir [giler](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#gitops-repo) deposunu Azure Repos içine aktarın. Bu öğretici için aşağıdaki örnek depoları kullanın:
 
 * **yay-cicd-demo-src** uygulama deposu
    * 'DEKI https://github.com/Azure/arc-cicd-demo-src
@@ -338,4 +338,4 @@ Bu öğreticide, dağıtım aracılığıyla uygulama geliştirmede DevOps uygul
 Azure Arc etkinleştirilmiş Kubernetes ile Gilar ve Konfigürasyonlar hakkında daha fazla bilgi edinmek için kavramsal makalemize ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Gilar kullanarak CI/CD Iş akışı-Azure Arc etkin Kubernetes](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd)
+> [Gilar kullanarak CI/CD Iş akışı-Azure Arc etkin Kubernetes](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd)
