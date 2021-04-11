@@ -5,16 +5,16 @@ author: avirishuv
 ms.author: avverma
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.subservice: management
+ms.subservice: automatic-os-upgrade
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: ff1a29577c0778d6ef88d3523c726f7a48739cdc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9194ab70e37c0659e77cbe9c10ffca10e1a76de8
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98684619"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011877"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure sanal makine ölçek kümesi otomatik işletim sistemi görüntüsü yükseltmeleri
 
@@ -79,7 +79,7 @@ Aşağıdaki platform SKU 'Ları Şu anda desteklenmektedir (ve daha fazla düze
 ### <a name="service-fabric-requirements"></a>Service Fabric gereksinimleri
 
 Service Fabric kullanıyorsanız, aşağıdaki koşulların karşılandığından emin olun:
--   Service Fabric [dayanıklılık düzeyi](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) gümüş veya altın, bronz değildir.
+-   Service Fabric [dayanıklılık düzeyi](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) , yok etme (yalnızca durum bilgisi olmayan nodetypes hariç) ve bronz değildir (otomatik Işletim sistemi yükseltmelerini destekleyen).
 -   Ölçek kümesi modeli tanımındaki Service Fabric uzantısının TypeHandlerVersion 1,1 veya üzeri olması gerekir.
 -   Dayanıklılık düzeyi, ölçek kümesi modeli tanımındaki Service Fabric kümesinde ve Service Fabric uzantısında aynı olmalıdır.
 - Ek bir sistem durumu araştırması veya uygulama durumu uzantısının kullanımı gerekli değildir.
@@ -163,7 +163,7 @@ Yük dengeleyici araştırmasına ölçek kümesinin *Networkprofile* öğesine 
 ```
 
 > [!NOTE]
-> Service Fabric ile otomatik işletim sistemi yükseltmeleri kullanırken, yeni işletim sistemi görüntüsü Service Fabric ' de çalışan hizmetlerin yüksek kullanılabilirliğini sürdürmek için etki alanını güncelleştirme etki alanını güncelleştir olarak almıştır. Service Fabric otomatik işletim sistemi yükseltmelerini kullanmak için, kümenizin gümüş dayanıklılık katmanını veya üstünü kullanacak şekilde yapılandırılması gerekir. Service Fabric kümelerinin dayanıklılık özellikleri hakkında daha fazla bilgi için lütfen [Bu belgelere](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)bakın.
+> Service Fabric ile otomatik işletim sistemi yükseltmeleri kullanırken, yeni işletim sistemi görüntüsü Service Fabric ' de çalışan hizmetlerin yüksek kullanılabilirliğini sürdürmek için etki alanını güncelleştirme etki alanını güncelleştir olarak almıştır. Service Fabric otomatik işletim sistemi yükseltmelerini kullanmak için kümeniz, gümüş dayanıklılık katmanını veya üstünü kullanacak şekilde yapılandırılmış olmalıdır. Bronz dayanıklılık katmanı için otomatik işletim sistemi yükseltmesi yalnızca durum bilgisi olmayan nodetypes 'lar için desteklenir. Service Fabric kümelerinin dayanıklılık özellikleri hakkında daha fazla bilgi için lütfen [Bu belgelere](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)bakın.
 
 ### <a name="keep-credentials-up-to-date"></a>Kimlik bilgilerini güncel tut
 Ölçek ayarlandıysa, depolama hesabı için bir SAS belirteci kullanmak üzere yapılandırılmış bir VM uzantısı gibi dış kaynaklara erişmek için herhangi bir kimlik bilgisi kullanılıyorsa, kimlik bilgilerinin güncelleştirildiğinden emin olun. Sertifikalar ve belirteçler dahil olmak üzere herhangi bir kimlik bilgisi dolmuşsa, yükseltme başarısız olur ve ilk VM toplu işi başarısız durumda bırakılır.

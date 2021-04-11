@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: 99a7f08b6d366f2f928b99caba2424c2fae0d625
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b9ae576a2d0ab8aee00be5b755c348806b412bef
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559528"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108498"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -27,6 +27,8 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 | [Yazım denetimi sorgu terimleri](speller-how-to-add.md) | Sorgu terimleri arama altyapısına ulaşmadan önce, yazım hatalarını denetlebilirler. `speller`Seçeneği herhangi bir sorgu türü (basit, tam veya anlamsal) ile birlikte kullanılır. |  Genel Önizleme, yalnızca REST, api-Version = 2020-06 -30-Önizleme|
 | [SharePoint Online Dizin Oluşturucu](search-howto-index-sharepoint-online.md) | Bu Dizin Oluşturucu, bir belge kitaplığından içerik dizini oluşturabilmeniz için sizi bir SharePoint Online sitesine bağlar. | Genel Önizleme, yalnızca REST, api-Version = 2020-06 -30-Önizleme |
 | [Normalleyiciler](search-normalizers.md) | Normalleştiriciler, tüm analiz zincirinin tamamında büyük küçük harf, aksan kaldırma, yokıifolding gibi basit metin ön işlemesi sağlar.| Genel Önizleme, yalnızca REST, api-Version = 2020-06 -30-Önizleme |
+[**Özel varlık arama becerisi**](cognitive-search-skill-custom-entity-lookup.md ) |  Özel, Kullanıcı tanımlı bir sözcük ve tümcecik listesinden metin gibi görünen bilişsel bir yetenek. Bu listeyi kullanarak tüm belgeleri eşleşen varlıklarla Etiketler. Bu beceri, benzer ancak tam olmayan eşleşmeleri bulmak için uygulanabilecek belirsiz eşleştirmeyi de destekler. | Genel olarak kullanılabilir. |
+|
 
 ## <a name="february-2021"></a>Şubat 2021
 

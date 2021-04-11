@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: bc82a03534c21b5622c78a3eda63fd92b640b07d
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 7d6a0b04306c2ed6ae4887c79962cbb5528643fc
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028562"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106981"
 ---
 # <a name="register-and-scan-dedicated-sql-pools-formerly-sql-dw"></a>Adanmış SQL havuzlarını kaydedin ve tarayın (eski adıyla SQL DW)
 
@@ -27,7 +27,8 @@ Azure SYNAPSE Analytics (eski adıyla SQL DW), meta verileri ve şemayı yakalam
 
 ### <a name="known-limitations"></a>Bilinen sınırlamalar
 
-Azure purview, Azure SYNAPSE Analytics 'te [görünümlerin](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true) taranmasını desteklemez
+> * Azure purview, Azure SYNAPSE Analytics 'te [görünümlerin](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true) taranmasını desteklemez.
+> * Azure purview, şema sekmesinde 300 sütundan fazlasını desteklemez ve "ek sütunlar-kesildi" olarak gösterilir. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 

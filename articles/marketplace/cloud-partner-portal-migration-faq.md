@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: e071692a1c6fe423b048dab884164d9b3c98f1fd
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e606e21fe2b80683737970b92d57ce87b9103144
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102613621"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106879"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Iş ortağı merkezine geçiş hakkında sık sorulan sorular
 
@@ -24,7 +24,7 @@ Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne geçti. İş Ortağı Merk
 
 | Alan | Değişiklikler |
 | --- | --- |
-| Hesap | Yeni bir Iş Ortağı Merkezi hesabı oluşturmanız gerekmez; Hesabınızı, kullanıcılarınızı, izinlerinizi ve faturanızı yönettiğiniz Iş Ortağı Merkezi 'Nde oturum açmak için mevcut Bulut İş Ortağı Portalı kimlik bilgilerinizi kullanabilirsiniz. Yayımlama sözleşmesi ve şirket profili bilgileri, yeni Iş Ortağı Merkezi hesabınıza geçirilir, bu da tüm ödeme profili bilgileri, Kullanıcı hesapları ve izinleri ve etkin tekliflerdir. [Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme](partner-center-portal/manage-account.md)hakkında daha fazla bilgi edinin. |
+| Hesap | Yeni bir Iş Ortağı Merkezi hesabı oluşturmanız gerekmez; Hesabınızı, kullanıcılarınızı, izinlerinizi ve faturanızı yönettiğiniz Iş Ortağı Merkezi 'Nde oturum açmak için mevcut Bulut İş Ortağı Portalı kimlik bilgilerinizi kullanabilirsiniz. Yayımlama sözleşmesi ve şirket profili bilgileri, yeni Iş Ortağı Merkezi hesabınıza geçirilir, bu da tüm ödeme profili bilgileri, Kullanıcı hesapları ve izinleri ve etkin tekliflerdir. [Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme](manage-account.md)hakkında daha fazla bilgi edinin. |
 | Teklif yayımlama ve teklif yönetimi deneyimi | Teklif verilerinizi Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne taşıdık. Artık, gelişmiş bir kullanıcı deneyimi ve sezgisel arabirim sunan Iş Ortağı Merkezi 'nde tekliflerinizi erişirsiniz. [Ticari Market 'te mevcut bir teklifi güncelleştirmeyi](partner-center-portal/update-existing-offer.md)öğrenin. |
 | Ticari Market 'teki tekliflerinizin kullanılabilirliği | Değişiklik yok. Teklifinizin ticari Market 'te canlı olması durumunda canlı olmaya devam edecektir. |
 | Yeni satın almalar ve dağıtımlar | Değişiklik yok. Müşterileriniz, kesintiler olmadan tekliflerinizi satın alıp dağıtmaya devam edebilir. |

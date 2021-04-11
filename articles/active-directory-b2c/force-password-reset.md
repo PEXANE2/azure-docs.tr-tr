@@ -12,12 +12,12 @@ ms.date: 03/03/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0477153b466702bec0fa2d5221fee1e054d06314
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b6aae76b0b35f8195fb52b7fb11de43d8fa511ba
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033778"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028443"
 ---
 # <a name="set-up-a-force-password-reset-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C bir parolayı zorla sıfırlama akışı ayarlama
 
@@ -92,7 +92,7 @@ Kaydolma veya oturum açma Kullanıcı akışında **zorlanan parola sıfırlama
 1. Azure portal, araması yapın ve **Azure AD B2C** seçin.
 1. **İlkeler** altında **kimlik deneyimi çerçevesi**' ni seçin.
 1. `B2C_1A_signup_signin_Custom_ForcePasswordReset`Açmak için ilkeyi seçin. 
-1. **Uygulama** için, [daha önce kaydetmiş](troubleshoot-custom-policies.md#troubleshoot-the-runtime)olduğunuz bir Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
+1. **Uygulama** için, [daha önce kaydetmiş](tutorial-register-applications.md)olduğunuz bir Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
 1. **Şimdi Çalıştır** düğmesini seçin.
 1. Parolayı sıfırlayabilmeniz için kullanıcı hesabıyla oturum açın.
 1. Artık Kullanıcı parolasını değiştirmeniz gerekir. Parolayı değiştirin ve **devam**' ı seçin. Belirteç öğesine döner `https://jwt.ms` ve size gösterilmesi gerekir.

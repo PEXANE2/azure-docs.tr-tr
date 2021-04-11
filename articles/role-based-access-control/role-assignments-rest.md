@@ -2,7 +2,6 @@
 title: Azure rollerini REST API kullanarak atama-Azure RBAC
 description: REST API ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak kullanıcılar, gruplar, hizmet sorumluları veya yönetilen kimlikler için Azure kaynaklarına nasıl erişim sağlayacağınızı öğrenin.
 services: active-directory
-documentationcenter: na
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
@@ -10,14 +9,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/15/2021
+ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: d012173adb5e238282e107b832ed9c6895237e48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a61f54530f25ac33c6ef097698198a11cf1275e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556076"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581442"
 ---
 # <a name="assign-azure-roles-using-the-rest-api"></a>REST API kullanarak Azure rolleri atama
 
@@ -109,6 +108,26 @@ Aşağıda çıktının bir örneği gösterilmektedir:
     "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
     "type": "Microsoft.Authorization/roleAssignments",
     "name": "{roleAssignmentId1}"
+}
+```
+
+### <a name="new-service-principal"></a>Yeni hizmet sorumlusu
+
+Yeni bir hizmet sorumlusu oluşturur ve bu hizmet sorumlusuna hemen bir rol atamayı denerseniz, bu rol ataması bazı durumlarda başarısız olabilir. Örneğin, yeni bir yönetilen kimlik oluşturup bu hizmet sorumlusuna bir rol atamayı denerseniz, rol ataması başarısız olabilir. Bu hatanın nedeni büyük olasılıkla çoğaltma gecikmesi. Hizmet sorumlusu tek bir bölgede oluşturulur; Ancak, rol ataması henüz hizmet sorumlusunu çoğaltılmamış farklı bir bölgede gerçekleşebilir.
+
+Bu senaryoya yönelik olarak, `principalType` rol atamasını oluştururken özelliğini olarak ayarlamanız gerekir `ServicePrincipal` . `apiVersion`Rol atamasının öğesini `2018-09-01-preview` veya daha sonra da ayarlamanız gerekir.
+
+```http
+PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2018-09-01-preview
+```
+
+```json
+{
+  "properties": {
+    "roleDefinitionId": "/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
+    "principalId": "{principalId}",
+    "principalType": "ServicePrincipal"
+  }
 }
 ```
 

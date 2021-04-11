@@ -14,24 +14,18 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f467fc739b3120fd43bec4e21e1e336c1cdf186f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ad8466dca6634b0e72ef4a65acb537006dba3bda
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935422"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108549"
 ---
 # <a name="azure-ad-built-in-roles"></a>Azure AD yerleşik rolleri
 
 Azure Active Directory (Azure AD) içinde, başka bir yönetici veya yönetici olmayan Azure AD kaynaklarını yönetmesi gerekiyorsa, bunlara gereken izinleri sağlayan bir Azure AD rolü atarsınız. Örneğin, Kullanıcı ekleme veya değiştirme, Kullanıcı parolalarını sıfırlama, kullanıcı lisanslarını yönetme veya etki alanı adlarını yönetme izni vermek için roller atayabilirsiniz.
 
 Bu makalede, Azure AD kaynaklarının yönetimine izin vermek için atayabileceğiniz Azure AD yerleşik rolleri listelenir. Rol atama hakkında daha fazla bilgi için bkz. [kullanıcılara Azure AD rolleri atama](manage-roles-portal.md).
-
-## <a name="limit-use-of-global-administrator"></a>Genel yönetici kullanımını sınırla
-
-Genel yönetici rolüne atanan kullanıcılar, Azure AD kuruluşunuzda her yönetim ayarını okuyabilir ve değiştirebilir. Varsayılan olarak, bir Kullanıcı bir Microsoft bulut hizmetine kaydolduğunda, bir Azure AD kiracısı oluşturulur ve Kullanıcı genel Yöneticiler rolünün bir üyesi yapılır. Mevcut bir kiracıya bir abonelik eklediğinizde, genel yönetici rolüne atanmamıştır. Yalnızca genel Yöneticiler ve ayrıcalıklı rol yöneticileri yönetici rollerini temsil edebilir. İşletmenize yönelik riski azaltmak için, bu rolü kuruluşunuzdaki en az olası kişilere atamanızı öneririz.
-
-En iyi uygulama olarak, bu rolü kuruluşunuzda beşten az kişiden fazlasına atamanız önerilir. Kuruluşunuzda genel yönetici rolüne atanmış beş taneden fazla yönetici varsa, bunun kullanımını azaltmanın bazı yolları aşağıda verilmiştir.
 
 ## <a name="all-roles"></a>Tüm roller
 
@@ -771,6 +765,9 @@ Bu yönetici Azure AD kuruluşları ve dış kimlik sağlayıcıları arasında 
 ## <a name="global-administrator"></a>Genel Yönetici
 
 Bu role sahip olan kullanıcılar, Azure Active Directory ' deki tüm yönetim özelliklerine ve Microsoft 365 Güvenlik Merkezi, Microsoft 365 Uyumluluk Merkezi, Exchange Online, SharePoint Online ve Skype Kurumsal Çevrimiçi kullanım gibi Azure Active Directory kimliklerini kullanan hizmetlere erişebilir. Ayrıca, genel Yöneticiler tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek üzere [erişimini yükseltebilir](../../role-based-access-control/elevate-access-global-admin.md) . Bu, genel yöneticilerin ilgili Azure AD kiracısı kullanarak tüm Azure kaynaklarına tam erişim sağlamasına izin verir. Azure AD organizasyonu için kaydolan kişi genel yönetici haline gelir. Şirketinizde birden fazla genel yönetici olabilir. Genel Yöneticiler, tüm kullanıcılar ve diğer tüm yöneticiler için parolayı sıfırlayabilir.
+
+> [!NOTE]
+> En iyi uygulama olarak, Microsoft, genel yönetici rolünü kuruluşunuzda beşten az kişiden fazlasına atamanızı önerir. Daha fazla bilgi için bkz. [Azure AD rolleri Için en iyi uygulamalar](best-practices.md).
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -1841,6 +1838,23 @@ Bu role sahip kullanıcılar Kullanıcı oluşturabilir ve bazı kısıtlamalara
 > | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 Yönetim merkezinde hizmet durumunu okuyun ve yapılandırın |
 > | Microsoft. office365. Supportbilet/allEntities/allTasks | Microsoft 365 hizmet istekleri oluşturma ve yönetme |
 > | Microsoft. office365. webPortal/allEntities/standart/okuma | Microsoft 365 Yönetim Merkezi 'ndeki tüm kaynaklardaki temel özellikleri okuyun |
+
+## <a name="how-to-understand-role-permissions"></a>Rol izinlerini anlama
+
+İzinlerin şeması, Microsoft Graph REST biçimini esnek şekilde izler:
+
+`<namespace>/<entity>/<propertySet>/<action>`
+
+Örnek:
+
+`microsoft.directory/applications/credentials/update`
+
+| İzin öğesi | Description |
+| --- | --- |
+| ad alanı | Görevi kullanıma sunan ürün veya hizmet, ve ile sona erer `microsoft` . Örneğin, Azure AD 'deki tüm görevler `microsoft.directory` ad alanını kullanır. |
+| varlık | Microsoft Graph ' de hizmet tarafından kullanıma sunulan mantıksal özellik veya bileşen. Örneğin, Azure AD Kullanıcı ve grupları kullanıma sunarsa, OneNote Notları kullanıma sunar ve Exchange posta kutularını ve takvimleri kullanıma sunar. `allEntities`Bir ad alanındaki tüm varlıkların belirtilmesine yönelik özel bir anahtar sözcük vardır. Bu, genellikle ürüne erişim izni veren rollerde kullanılır. |
+| propertySet | Erişim izni verilen varlığın belirli özellikleri veya yönleri. Örneğin, `microsoft.directory/applications/authentication/read` Azure AD 'de uygulama nesnesinde yanıt URL 'si, oturum kapatma URL 'si ve örtük akış özelliğini okuma yeteneği verir.<ul><li>`allProperties` ayrıcalıklı özellikler dahil olmak üzere varlığın tüm özelliklerini belirler.</li><li>`standard` ortak özellikleri belirtir, ancak eyleme ilişkin ayrıcalıklı olanları dışlar `read` . Örneğin, `microsoft.directory/user/standard/read` genel telefon numarası ve e-posta adresi gibi standart özellikleri okuma, ancak çok faktörlü kimlik doğrulaması için kullanılan özel ikincil telefon numarası veya e-posta adresi gibi standart özellikleri okuma özelliği de dahildir.</li><li>`basic` ortak özellikleri belirtir, ancak eylemle ilgili ayrıcalıklı olanları dışlar `update` . Okuyabilmeniz gereken özellikler kümesi, güncelleştirebileceğinize göre farklı olabilir. Bu nedenle, bunun nedeni `standard` ve `basic` Bu yüzden bunu yansıtan anahtar sözcükler vardır.</li></ul> |
+| eylem | Verilen işlem, en genellikle oluşturma, okuma, güncelleştirme veya silme (CRUD). `allTasks`Yukarıdaki tüm becerileri (oluşturma, okuma, güncelleştirme ve silme) belirtmek için özel bir anahtar sözcük vardır. |
 
 ## <a name="deprecated-roles"></a>Kullanım dışı roller
 
