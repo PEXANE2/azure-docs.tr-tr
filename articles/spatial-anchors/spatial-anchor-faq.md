@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b67dcf038dbe13b8c040f317bb117f3b7a7afdde
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: fc92543f5954cda9db42e53cab18db1d8f3366c3
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384247"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284213"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure uzamsal bağlantıları hakkında sık sorulan sorular
 
@@ -52,6 +52,10 @@ Y **:** Çıpaları Azure hesabı tarafından yalıtılmıştır. Yalnızca hesa
 **S: Azure uzamsal bağlantıları verileri nasıl depolar?**
 
 Y **:** Tüm veriler, Microsoft tarafından yönetilen bir veri şifreleme anahtarıyla şifrelenmiş olarak depolanır ve tüm veriler her kaynak için bölgesel olarak depolanır.
+
+**S: Azure uzamsal, verileri nerede depolıyor?**
+
+Y **:** Azure uzamsal bağlayıcı hesapları, verilerinizin depolanacağı bölgeyi belirtmenize olanak tanır. Microsoft, dayanıklılık açısından verileri diğer bölgelere çoğaltabilir, ancak Microsoft, Coğrafya dışında verileri çoğaltmaz veya taşımaz. Bu veriler, Azure uzamsal bağlayıcı hesabının yapılandırıldığı bölgede depolanır. Örneğin, hesap Doğu ABD bölgesinde kayıtlıysa, bu veriler Doğu ABD bölgesinde depolanır, ancak esneklik sağlamak için Kuzey Amerika coğrafya içindeki başka bir bölgeye çoğaltılabiliyor.
 
 **S: Azure uzamsal bağlayıcıları kullanılırken bir ortamla ilgili hangi bilgiler iletilir ve hizmete depolanır? Aktarılan ve depolanan ortamın resimleri mı var?**
 

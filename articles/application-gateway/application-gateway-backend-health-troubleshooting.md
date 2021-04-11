@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 95b74e5fc6c5d2c09ff04b3f14e920ae675ab6e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1373e0eeead805dcd3a439878c9737c46d75bf3b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99592764"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078511"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway'de arka uç durumu sorunlarını giderme
 ==================================================
@@ -176,12 +176,12 @@ Ayrıca, herhangi bir NSG/UDR/güvenlik duvarının IP 'ye ve bu arka ucun bağl
 
 | **Hata** | **Eylemler** |
 | --- | --- |
-| Araştırma durum kodu uyumsuzluğu: 401 alındı | Arka uç sunucusunun kimlik doğrulaması gerektirip gerektirmediğini denetleyin. Application Gateway araştırmaları kimlik doğrulaması için kimlik bilgilerini geçiremiyor. \" \" Araştırma durum kodu eşleşmesi veya araştırmasına yönelik http 401 ' i sunucunun kimlik doğrulaması gerektirmeyen bir yola izin verin. | |
-| Araştırma durum kodu uyumsuzluğu: 403 alındı | Erişim yasak. Arka uç sunucusunda yola erişime izin verilip verilmediğini denetleyin. | |
-| Araştırma durum kodu uyumsuzluğu: 404 alındı | Sayfa bulunamadı. Ana bilgisayar adı yolunun arka uç sunucusunda erişilebilir olup olmadığını denetleyin. Ana bilgisayar adı veya yol parametresini erişilebilir bir değer olarak değiştirin. | |
-| Araştırma durum kodu uyumsuzluğu: 405 alındı | Application Gateway için araştırma istekleri HTTP GET yöntemini kullanır. Sunucunuzun bu yöntemin izin verip içermediğini denetleyin. | |
-| Araştırma durum kodu uyumsuzluğu: 500 alındı | İç sunucu hatası. Arka uç sunucusunun sistem durumunu ve hizmetlerin çalışıp çalışmadığını denetleyin. | |
-| Araştırma durum kodu uyumsuzluğu: 503 alındı | Hizmet kullanılamıyor. Arka uç sunucusunun sistem durumunu ve hizmetlerin çalışıp çalışmadığını denetleyin. | |
+| Araştırma durum kodu uyumsuzluğu: 401 alındı | Arka uç sunucusunun kimlik doğrulaması gerektirip gerektirmediğini denetleyin. Application Gateway araştırmaları kimlik doğrulaması için kimlik bilgilerini geçiremiyor. \" \" Araştırma durum kodu eşleşmesi veya araştırmasına yönelik http 401 ' i sunucunun kimlik doğrulaması gerektirmeyen bir yola izin verin. |
+| Araştırma durum kodu uyumsuzluğu: 403 alındı | Erişim yasak. Arka uç sunucusunda yola erişime izin verilip verilmediğini denetleyin. |
+| Araştırma durum kodu uyumsuzluğu: 404 alındı | Sayfa bulunamadı. Ana bilgisayar adı yolunun arka uç sunucusunda erişilebilir olup olmadığını denetleyin. Ana bilgisayar adı veya yol parametresini erişilebilir bir değer olarak değiştirin. |
+| Araştırma durum kodu uyumsuzluğu: 405 alındı | Application Gateway için araştırma istekleri HTTP GET yöntemini kullanır. Sunucunuzun bu yöntemin izin verip içermediğini denetleyin. |
+| Araştırma durum kodu uyumsuzluğu: 500 alındı | İç sunucu hatası. Arka uç sunucusunun sistem durumunu ve hizmetlerin çalışıp çalışmadığını denetleyin. |
+| Araştırma durum kodu uyumsuzluğu: 503 alındı | Hizmet kullanılamıyor. Arka uç sunucusunun sistem durumunu ve hizmetlerin çalışıp çalışmadığını denetleyin. |
 
 Ya da yanıtın meşru olduğunu düşünüyorsanız ve Application Gateway diğer durum kodlarını sağlıklı olarak kabul etmek istiyorsanız, özel bir araştırma oluşturabilirsiniz. Bu yaklaşım, arka uç Web sitesinin kimlik doğrulaması gereken durumlarda yararlıdır. Araştırma istekleri herhangi bir kullanıcı kimlik bilgisi taşımadığından, bunlar başarısız olur ve arka uç sunucusu tarafından bir HTTP 401 durum kodu döndürülür.
 

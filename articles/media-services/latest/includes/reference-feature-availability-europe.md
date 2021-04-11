@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: be399cbe70cedf685db42a542941765043955c43
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 740fb67e1b35c156f2416bc5aaef15ce2942fd8a
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106125908"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106283271"
 ---
 <!--Feature availability in region-->
 ## <a name="europe"></a>Avrupa
@@ -21,5 +21,5 @@ ms.locfileid: "106125908"
 | [Audioanaliz Zerönayar](../analyze-video-audio-files-concept.md) |![Audioanalbir ön ayar Kuzey Avrupa genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg)  | ![Audioanalbir ön ayar Batı Avrupa genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) |
 | [Standardencoderönayar](../encode-concept.md) |![Standardencoderönayar Kuzey Avrupa genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg)  | ![Standardencoderönayar Batı Avrupa genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) |
 | [Canlı olaylar](../stream-live-streaming-concept.md) |![Genel kullanılabilirlik Kuzey Avrupa LiveEvents](../media/azure-clouds-regions/ga.svg)  | ![Genel kullanılabilirlik Batı Avrupa LiveEvents](../media/azure-clouds-regions/ga.svg) |
-| [Streammingendpoints](../streaming-endpoint-concept.md) |![Streammingendpoints Kuzey Avrupa genel kullanım](../media/azure-clouds-regions/ga.svg) | ![Streammingendpoints Batı Avrupa genel kullanım](../media/azure-clouds-regions/ga.svg) |
+| [Streammingendpoints](../stream-streaming-endpoint-concept.md) |![Streammingendpoints Kuzey Avrupa genel kullanım](../media/azure-clouds-regions/ga.svg) | ![Streammingendpoints Batı Avrupa genel kullanım](../media/azure-clouds-regions/ga.svg) |
 | [LiveTranscription](../live-event-live-transcription-how-to.md) |![LiveTranscription Kuzey Avrupa genel kullanım](../media/azure-clouds-regions/ga.svg) |![LiveTranscription Batı Avrupa genel kullanım](../media/azure-clouds-regions/ga.svg) |

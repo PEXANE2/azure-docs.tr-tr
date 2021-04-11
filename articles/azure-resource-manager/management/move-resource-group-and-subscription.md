@@ -4,12 +4,12 @@ description: Kaynakları yeni bir kaynak grubuna veya aboneliğe taşımak için
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4f6ecb9ec8269ab8e06a241a395887de77691499
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 800e605571ae18b008a86b4add4b0b2adce9c140
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934232"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078392"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma
 
@@ -124,7 +124,7 @@ Kaynakları bir abonelikten diğerine taşımak üç adımlı bir işlemdir:
 
 ## <a name="validate-move"></a>Taşımayı doğrula
 
-[Taşıma işlemini Doğrula işlemi](/rest/api/resources/resources/resources/moveresources) , kaynakları gerçekten taşımadan taşıma senaryonuzu test etmenizi sağlar. Taşımanın başarılı olup olmadığını denetlemek için bu işlemi kullanın. Bir taşıma isteği gönderdiğinizde doğrulama otomatik olarak çağrılır. Bu işlemi yalnızca sonuçları önceden belirlemeniz gerektiğinde kullanın. Bu işlemi çalıştırmak için şunlar gerekir:
+[Taşıma işlemini Doğrula işlemi](/rest/api/resources/resources/moveresources) , kaynakları gerçekten taşımadan taşıma senaryonuzu test etmenizi sağlar. Taşımanın başarılı olup olmadığını denetlemek için bu işlemi kullanın. Bir taşıma isteği gönderdiğinizde doğrulama otomatik olarak çağrılır. Bu işlemi yalnızca sonuçları önceden belirlemeniz gerektiğinde kullanın. Bu işlemi çalıştırmak için şunlar gerekir:
 
 * kaynak kaynak grubunun adı
 * hedef kaynak grubunun kaynak KIMLIĞI
@@ -241,7 +241,7 @@ Bir hata alırsanız bkz. [Azure kaynaklarını yeni kaynak grubuna veya aboneli
 
 ## <a name="use-rest-api"></a>REST API’yi kullanma
 
-Mevcut kaynakları başka bir kaynak grubuna veya aboneliğe taşımak için [kaynakları taşıma](/rest/api/resources/resources/resources/moveresources) işlemini kullanın.
+Mevcut kaynakları başka bir kaynak grubuna veya aboneliğe taşımak için [kaynakları taşıma](/rest/api/resources/resources/moveresources) işlemini kullanın.
 
 ```HTTP
 POST https://management.azure.com/subscriptions/{source-subscription-id}/resourcegroups/{source-resource-group-name}/moveResources?api-version={api-version}

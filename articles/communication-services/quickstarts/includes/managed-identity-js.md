@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: ce250b19478c70109fe28d199ac771a77c42c7dc
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: a3771a21914831f249696fc3d733c5ea935c2c7e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106113071"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107251318"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-js"></a>Iletişim Hizmetleri çözümünüze (JS) yönetilen kimlik ekleme
 
@@ -29,7 +29,9 @@ import { SmsClient, SmsSendRequest } from "@azure/communication-sms";
 
 Aşağıdaki örneklerde [DefaultAzureCredential](/javascript/api/@azure/identity/defaultazurecredential)kullanılmaktadır. Bu kimlik bilgisi üretim ve geliştirme ortamları için uygundur.
 
-Uygulamayı geliştirme ortamında kaydetmek ve ortam değişkenlerini ayarlamak için bkz. [yönetilen kimlikle erişimi yetkilendirme](../managed-identity-from-cli.md)
+Yönetilen kimlik doğrulaması kullanarak kolayca geçebileceğiniz kolay bir yol için bkz. [yönetilen kimlikle erişimi yetkilendirme](../managed-identity-from-cli.md)
+
+DefaultAzureCredential nesnesinin nasıl çalıştığı ve bu hızlı başlangıçta belirtilmeyen yollarla nasıl kullanabileceğiniz hakkında daha ayrıntılı bir bakış için bkz. [JavaScript Için Azure Identity Client Library](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)
 
 ### <a name="create-an-identity-and-issue-a-token-with-managed-identity"></a>Yönetilen kimlikle bir kimlik oluşturma ve belirteç verme
 

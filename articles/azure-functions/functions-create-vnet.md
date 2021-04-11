@@ -3,12 +3,12 @@ title: Azure Işlevlerini bir sanal ağla bütünleştirmek için özel uç nokt
 description: Bu öğreticide bir Azure sanal ağına nasıl bir işlev bağlanacağı ve özel uç noktalar kullanarak nasıl kilitleneceği gösterilmektedir.
 ms.topic: article
 ms.date: 2/22/2021
-ms.openlocfilehash: e8ca853908b366b99e150f04ced404f42acc7d21
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e1ed944250f05f52860c47f6cb61130f50b08e7c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027423"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078783"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>Öğretici: özel uç noktaları kullanarak Azure Işlevlerini bir Azure sanal ağı ile tümleştirme
 
@@ -160,7 +160,7 @@ Depolama hesabınızı kullanarak Azure dosyaları depolaması ve Azure Blob dep
     | Ayar      | Önerilen değer  | Açıklama      |
     | ------------ | ---------------- | ---------------- |
     | **Abonelik** | Aboneliğiniz | Kaynaklarınızın oluşturulduğu abonelik. | 
-    | **[Kaynak grubu](../azure-resource-manager/management/overview.md)**  | myResourceGroup | İşlev uygulamanız ile oluşturduğunuz kaynak grubunu seçin. | |
+    | **[Kaynak grubu](../azure-resource-manager/management/overview.md)**  | myResourceGroup | İşlev uygulamanız ile oluşturduğunuz kaynak grubunu seçin. |
     | **Ad** | dosya-uç noktası | Depolama hesabınızdaki dosyaların özel uç noktasının adı. |
     | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Depolama hesabınızı oluşturduğunuz bölgeyi seçin. |
 
