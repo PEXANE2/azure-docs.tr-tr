@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 03/24/2021
+ms.date: 03/29/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 711d4bdf2be2ad3158c12e4690a70fb83fe7a846
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 38ddd825321a3cb7947eb76c4f5f6cdbc6cb3414
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559511"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055714"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Koşullu Erişim: Güvenlik bilgileri kaydının güvenliğini sağlama
 
@@ -52,7 +52,7 @@ Aşağıdaki ilke, birleştirilmiş kayıt deneyimini kullanarak kaydolmayı den
 1. **İlkeyi etkinleştir**’i **Açık** duruma getirin.
 1. Ardından **Oluştur**’u seçin.
 
-Yöneticiler artık yeni kullanıcılara geçici erişim geçiş kimlik bilgileri vermek zorunda kalacak, böylelikle Multi-Factor Authentication 'ın kaydedileceği gereksinimleri karşılayabilirler. Bu görevi gerçekleştirmek için gereken adımlar, [Azure AD portalında geçici erişim geçişi oluşturma](../authentication/howto-authentication-temporary-access-pass.md#create-a-temporary-access-pass-in-the-azure-ad-portal)bölümünde bulunur.
+Yöneticiler artık yeni kullanıcılara geçici erişim geçiş kimlik bilgileri vermek zorunda kalacak, böylelikle Multi-Factor Authentication 'ın kaydedileceği gereksinimleri karşılayabilirler. Bu görevi gerçekleştirmek için gereken adımlar, [Azure AD portalında geçici erişim geçişi oluşturma](../authentication/howto-authentication-temporary-access-pass.md#create-a-temporary-access-pass)bölümünde bulunur.
 
 Kuruluşlar, 6B adımında **Multi-Factor Authentication gerektir** ' in yanı sıra diğer izin denetimleri gerektirmesinin gerekli olmasını seçebilirler. Birden çok denetim seçerken, bu değişikliği yaparken seçili denetimlerden **Tümünü** veya **birini** gerektirmek için uygun radyo düğmesini seçtiğinizden emin olun.
 

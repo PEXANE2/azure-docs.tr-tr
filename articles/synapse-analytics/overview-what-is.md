@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 03/24/2021
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 78b31cb32e3df9b0d8e198d8c2122e492e609283
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bb09a25d7ea242dfafd7d853015ae8e127b13883
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625827"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383414"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Azure Synapse Analytics nedir?
 
@@ -43,9 +43,9 @@ ms.locfileid: "105625827"
 
 Azure SYNAPSE, SQL ve Spark ile birlikte kullanma arasındaki geleneksel teknoloji sınırlamalarını ortadan kaldırır. Gereksinimlerinize ve uzmanlığa göre sorunsuz bir şekilde karıştırabilir ve eşleştirebilirsiniz.
 
-* Paylaşılan bir Hive uyumlu meta veri sistemi, Veri Gölü dosyalarda tanımlanan tabloların Spark veya Hive tarafından sorunsuz bir şekilde tüketilmesi için izin verir.
+* Veri Gölü dosyalarda tanımlanmış tablolar Spark veya Hive tarafından sorunsuz bir şekilde tüketilebilir.
 * SQL ve Spark, Veri Gölü içinde depolanan Parquet, CSV, TSV ve JSON dosyalarını doğrudan keşfedebilir ve analiz edebilir.
-* SQL ve Spark veritabanları arasında devam eden veriler için hızlı ölçeklenebilir yükleme ve kaldırma
+* SQL ve Spark veritabanları arasında hızlı, ölçeklenebilir veri yükleme
 
 ## <a name="built-in-data-integration"></a>Yerleşik veri tümleştirmesi
 
@@ -71,10 +71,10 @@ Azure SYNAPSE, kuruluşların analiz kaynaklarını yönetmesi, kullanımı ve e
 * SQL veya Spark kodu yazmak için sektör lideri üretkenlik: yazma, hata ayıklama ve performans iyileştirmesi
 * Kurumsal CI/CD işlemiyle tümleştirin
 
-## <a name="engage-with-the-synapse-engineering-team"></a>SYNAPSE Mühendislik ekibiyle etkileşim kurun
+## <a name="engage-with-the-synapse-community"></a>SYNAPSE topluluğuyla etkileşim kurun
 
+- [Microsoft Q&A](/answers/topics/azure-synapse-analytics.html): Teknik sorular sorun.
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse): geliştirme sorularını sorun.
-- [Microsoft Q&soru sayfası](/answers/topics/azure-synapse-analytics.html): Teknik sorular sorun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

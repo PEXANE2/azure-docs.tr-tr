@@ -1,7 +1,7 @@
 ---
 title: Otomatik ML denemeleri oluşturma
 titleSuffix: Azure Machine Learning
-description: Otomatik makine öğrenimi denemeleri için veri kaynakları, hesaplar ve yapılandırma ayarları tanımlama hakkında bilgi edinin.
+description: Otomatik makine öğrenimi denemeleri için veri kaynakları, hesaplar ve yapılandırma ayarlarını tanımlama hakkında bilgi edinin.
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 24c0d57490ecd039039992310f93ca3e21c47b3b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 12a6761ac2cd305e6ff949ffa59ee3bbdff1934d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563496"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732899"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 
@@ -217,7 +217,7 @@ Otomatik makine öğrenimi için en iyileştirmek üzere bir birincil ölçüm s
 
 ### <a name="primary-metrics-for-classification-scenarios"></a>Sınıflandırma senaryoları için birincil ölçümler 
 
-,,, Ve gibi eşik değerleri,,, `accuracy` `average_precision_score_weighted` ve gibi `norm_macro_recall` `precision_score_weighted` en iyi hale getiremeyebilir, çok büyük sınıf eğriliği (sınıf imdenizliği) veya beklenen ölçüm değeri 0,0 veya 1,0 ' e yakın olduğunda. Bu durumlarda, `AUC_weighted` birincil ölçüm için daha iyi bir seçenek olabilir. Otomatik makine öğrenimini tamamladıktan sonra, iş gereksinimlerinize en uygun ölçüm temelinde kazanan modeli seçebilirsiniz.
+,, Ve gibi eşik değerleri, `accuracy` `average_precision_score_weighted` `norm_macro_recall` `precision_score_weighted` çok büyük sınıf eğriliği (sınıf dengesizliği) olan veya beklenen ölçüm değeri 0,0 veya 1,0 ' e yakın olan veri kümelerinde de iyileştiremeyebilir. Bu durumlarda, `AUC_weighted` birincil ölçüm için daha iyi bir seçenek olabilir. Otomatik makine öğrenimini tamamladıktan sonra, iş gereksinimlerinize en uygun ölçüm temelinde kazanan modeli seçebilirsiniz.
 
 | Metric | Örnek kullanım örneği |
 | ------ | ------- |
@@ -386,16 +386,113 @@ Alt çalıştırmaların yönetilmesine yardımcı olmak ve bunların gerçekle�
 
 ## <a name="explore-models-and-metrics"></a>Modelleri ve ölçümleri keşfet
 
-Bir not defteriniz varsa, eğitim sonuçlarınızı bir pencere öğesinde veya satır içi olarak görüntüleyebilirsiniz. Daha fazla ayrıntı için bkz. [modelleri izleme ve değerlendirme](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs) .
+Otomatikleştirilmiş ML, eğitim sonuçlarınızı izlemenize ve değerlendirmenize yönelik seçenekler sunar. 
 
-Her çalıştırma için sunulan performans grafiklerinin ve ölçümlerinin tanımları ve örnekleri için [otomatik makine öğrenimi sonuçlarını değerlendir](how-to-understand-automated-ml.md) bölümüne bakın. 
+* Bir not defteriniz varsa, eğitim sonuçlarınızı bir pencere öğesinde veya satır içi olarak görüntüleyebilirsiniz. Daha fazla ayrıntı için bkz. [OTOMATIK ml çalıştırmalarını izleme](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs) .
 
-Bir Özet Özeti almak ve belirli bir modele hangi özelliklerin eklendiğini anlamak için bkz. uygun [Saydamlık](how-to-configure-auto-features.md#featurization-transparency). 
+* Her çalıştırma için belirtilen performans grafiklerine ve ölçümlere ilişkin tanımlar ve örnekler için bkz. [otomatik makine öğrenme deneme sonuçlarını değerlendir](how-to-understand-automated-ml.md) . 
 
+* Bir Özet Özeti almak ve belirli bir modele hangi özelliklerin eklendiğini anlamak için bkz. uygun [Saydamlık](how-to-configure-auto-features.md#featurization-transparency). 
+
+Hiper parametreleri, ölçeklendirme ve normalleştirme tekniklerini ve belirli bir otomatik ML 'ye uygulanan algoritmayı aşağıdaki özel kod çözümüyle birlikte çalıştırabilirsiniz. 
+
+Aşağıdaki, `print_model()` OTOMATIK ml eğitim işlem hattının her bir adımının hiper parametrelerini yazdıran özel yöntemini tanımlar.
+ 
+```python
+from pprint import pprint
+
+def print_model(model, prefix=""):
+    for step in model.steps:
+        print(prefix + step[0])
+        if hasattr(step[1], 'estimators') and hasattr(step[1], 'weights'):
+            pprint({'estimators': list(e[0] for e in step[1].estimators), 'weights': step[1].weights})
+            print()
+            for estimator in step[1].estimators:
+                print_model(estimator[1], estimator[0]+ ' - ')
+        elif hasattr(step[1], '_base_learners') and hasattr(step[1], '_meta_learner'):
+            print("\nMeta Learner")
+            pprint(step[1]._meta_learner)
+            print()
+            for estimator in step[1]._base_learners:
+                print_model(estimator[1], estimator[0]+ ' - ')
+        else:
+            pprint(step[1].get_params())
+            print()   
+```
+
+Yeni gönderilen ve aynı deneme Not Defteri içinden eğitilen bir yerel veya uzak çalıştırma için, yöntemini kullanarak en iyi modeli geçirebilirsiniz `get_output()` . 
+
+```python
+best_run, fitted_model = run.get_output()
+print(best_run)
+         
+print_model(fitted_model)
+```
+
+Aşağıdaki çıkış şunları gösterir:
+ 
+* Standartscalerwrapper tekniği, eğitimin öncesindeki verileri ölçeklendirmek ve normalleştirmek için kullanılmıştır.
+
+* Xgboostsınıflandırıcı algoritması en iyi çalıştırma olarak tanımlanmıştır ve ayrıca hiper parametre değerlerini de gösterir. 
+
+```python
+StandardScalerWrapper
+{'class_name': 'StandardScaler',
+ 'copy': True,
+ 'module_name': 'sklearn.preprocessing.data',
+ 'with_mean': False,
+ 'with_std': False}
+
+XGBoostClassifier
+{'base_score': 0.5,
+ 'booster': 'gbtree',
+ 'colsample_bylevel': 1,
+ 'colsample_bynode': 1,
+ 'colsample_bytree': 0.6,
+ 'eta': 0.4,
+ 'gamma': 0,
+ 'learning_rate': 0.1,
+ 'max_delta_step': 0,
+ 'max_depth': 8,
+ 'max_leaves': 0,
+ 'min_child_weight': 1,
+ 'missing': nan,
+ 'n_estimators': 400,
+ 'n_jobs': 1,
+ 'nthread': None,
+ 'objective': 'multi:softprob',
+ 'random_state': 0,
+ 'reg_alpha': 0,
+ 'reg_lambda': 1.6666666666666667,
+ 'scale_pos_weight': 1,
+ 'seed': None,
+ 'silent': None,
+ 'subsample': 0.8,
+ 'tree_method': 'auto',
+ 'verbose': -10,
+ 'verbosity': 1}
+```
+
+Çalışma alanınızdaki farklı bir deneyden mevcut bir çalıştırma için, araştırmak istediğiniz belirli çalıştırma KIMLIĞINI edinin ve `print_model()` yönteme geçirin. 
+
+```python
+from azureml.train.automl.run import AutoMLRun
+
+ws = Workspace.from_config()
+experiment = ws.experiments['automl-classification']
+automl_run = AutoMLRun(experiment, run_id = 'AutoML_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx')
+
+automl_run
+best_run, model_from_aml = automl_run.get_output()
+
+print_model(model_from_aml)
+
+```
 > [!NOTE]
 > Otomatik ML algoritmaları, önerilen bir modelin nihai ölçüm puanından, doğruluk gibi hafif çeşitçine neden olabilecek, rastgele bir açıklık elde ediyor. Otomatikleştirilmiş ML, gerektiğinde tren-test Split, tren-doğrulama bölme veya çapraz doğrulama gibi veriler üzerinde işlemler de gerçekleştirir. Bu nedenle, aynı yapılandırma ayarları ve birincil ölçüm ile bir denemeyi birden çok kez çalıştırırsanız, bu faktörlere bağlı olarak her bir denemeleri son ölçüm puanı için çeşitleme görürsünüz. 
 
 ## <a name="register-and-deploy-models"></a>Modelleri kaydetme ve dağıtma
+
 Bir modeli kaydedebilirsiniz, böylece daha sonra kullanmak üzere buna geri dönebilirsiniz. 
 
 Bir modeli otomatik ML çalıştırağından kaydetmek için [`register_model()`](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) yöntemini kullanın. 

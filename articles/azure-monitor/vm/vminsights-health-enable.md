@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5d4ff622f69445880c0de8cb74dc1aeee422c89b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 540f0725427ace4aec76de373556cd6699a1b229
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052169"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732763"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>VM öngörüleri Konuk durumunu etkinleştirme (Önizleme)
 VM öngörüleri Konuk durumu, bir sanal makinenin durumunu, düzenli aralıklarla örneklendiği bir dizi performans ölçümlerine göre tanımlanan şekilde görüntülemenize olanak sağlar. Bu makalede, aboneliğinizde bu özelliğin nasıl etkinleştirileceği ve her sanal makine için konuk izlemenin nasıl etkinleştirileceği açıklanır.
@@ -20,6 +20,7 @@ VM öngörüleri Konuk durumu, bir sanal makinenin durumunu, düzenli aralıklar
 VM öngörüleri Konuk durumu, genel önizlemede aşağıdaki sınırlamalara sahiptir:
 
 - Şu anda yalnızca Azure sanal makineleri desteklenmektedir. Sunucular için Azure Arc şu anda desteklenmemektedir.
+- Ağ proxy 'leri Şu anda desteklenmiyor.
 
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri

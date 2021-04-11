@@ -8,13 +8,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: sstein
-ms.date: 03/01/2021
-ms.openlocfilehash: 1b2a3f018b16258622b817648cb00e230313bf49
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.date: 03/29/2021
+ms.openlocfilehash: 186f1e085cecdc92e345231d50d06195bba55504
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105564526"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732967"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Günlük yeniden yürütme hizmeti 'ni (Önizleme) kullanarak SQL Server veritabanlarını SQL yönetilen örneğine geçirme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -70,7 +70,7 @@ LRS durdurulduktan sonra otomatik tamamlama aracılığıyla veya cutover aracı
 | **2. bulutta LRS 'Yi başlatın**. | Hizmeti bir cmdlet seçimi ile yeniden başlatabilirsiniz: PowerShell ([Start-azsqlınstancedatabaselogreplay](/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay)) veya Azure clı ([az_sql_midb_log_replay_start cmdlet 'leri](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start)). <br /><br /> Blob depolamada bir yedekleme klasörünü işaret eden her veritabanı için LRS 'yi ayrı olarak başlatın. <br /><br /> Hizmeti başlattıktan sonra, BLOB depolama kapsayıcısından yedeklemeler alınır ve bunları SQL yönetilen örneği 'ne geri yüklemeye başlar.<br /><br /> LRS 'yi sürekli modda başlattıysanız, başlangıçta karşıya yüklenen tüm yedeklemeler geri yüklendikten sonra hizmet, klasöre yüklenen tüm yeni dosyaları izleyebilir. Hizmet, günlük sıra numarası (LSN) zincirine göre günlükleri, durduruluncaya kadar sürekli olarak uygular. |
 | **2,1. işlemin Ilerlemesini izleyin**. | Geri yükleme işleminin ilerlemesini bir cmdlet seçimi ile izleyebilirsiniz: PowerShell ([Get-azsqlınstancedatabaselogreplay](/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay)) veya Azure clı ([az_sql_midb_log_replay_show cmdlet 'leri](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show)). |
 | **2,2. gerekirse Işlemi durdurun**. | Geçiş işlemini durdurmanız gerekiyorsa, cmdlet seçiminiz vardır: PowerShell ([stop-azsqlınstancedatabaselogreplay](/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay)) veya Azure clı ([az_sql_midb_log_replay_stop](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop)). <br /><br /> İşlem durdurulduğunda SQL yönetilen örneği üzerinde geri yüklemekte olduğunuz veritabanı silinir. Bir işlemi durdurduktan sonra, bir veritabanı için LRS 'yi sürdürülemez. Geçiş işlemini sıfırdan yeniden başlatmanız gerekir. |
-| **3. hazırsanız buluta kesin**. | Uygulamayı ve iş yükünü durdurun. Son günlük kuyruğu yedeklemesini gerçekleştirin ve Azure Blob depolama alanına yükleyin.<br /><br /> Bir LRS işlemini bir cmdlet seçimi ile başlatarak tam geçişi ' i doldurun `complete` : PowerShell ([tam-azsqlınstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay)) veya Azure CLI [az_sql_midb_log_replay_complete](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete). Bu işlem LRS 'yi durduracak ve SQL yönetilen örneği üzerinde okuma ve yazma kullanımı için veritabanının çevrimiçi duruma gelmesine neden olacak.<br /><br /> Uygulama bağlantı dizesinin SQL Server SQL yönetilen örneği 'ne yeniden işaret edin. |
+| **3. hazırsanız buluta kesin**. | Uygulamayı ve iş yükünü durdurun. Son günlük kuyruğu yedeklemesini gerçekleştirin ve Azure Blob depolama alanına yükleyin.<br /><br /> Bir LRS işlemini bir cmdlet seçimi ile başlatarak tam geçişi ' i doldurun `complete` : PowerShell ([tam-azsqlınstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay)) veya Azure CLI [az_sql_midb_log_replay_complete](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete). Bu işlem LRS 'yi durduracak ve SQL yönetilen örneği üzerinde okuma ve yazma kullanımı için veritabanının çevrimiçi duruma gelmesine neden olacak.<br /><br /> Uygulama bağlantı dizesinin SQL Server SQL yönetilen örneği 'ne yeniden işaret edin. Bu adımı uygulamanızda el ile bağlantı dizesi değişikliği aracılığıyla kendiniz veya otomatik olarak (örneğin, uygulamanızın bir özellikten veya bir veritabanından bağlantı dizesini okuyabilir) düzenleyebilmeniz gerekecektir. |
 
 ## <a name="requirements-for-getting-started"></a>Başlangıç gereksinimleri
 

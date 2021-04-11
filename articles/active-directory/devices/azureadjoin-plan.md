@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3acaf4929158b24ff50655aa18c05b41aeec4b53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 745cc7be37120cda27fe4d4077b9bda0fa07badf
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96435459"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550787"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Nasıl yapılır: Azure AD JOIN Uygulamanızı planlayın
 
@@ -168,13 +168,11 @@ Cihazın bir etki alanı denetleyicisine erişimi varsa, kullanıcılar Azure AD
 
 ### <a name="on-premises-network-shares"></a>Şirket içi ağ paylaşımları
 
-Bir cihazın şirket içi etki alanı denetleyicisine erişimi olduğunda kullanıcılarınızın Azure AD 'ye katılmış cihazlarından SSO 'SU vardır.
+Bir cihazın şirket içi etki alanı denetleyicisine erişimi olduğunda kullanıcılarınızın Azure AD 'ye katılmış cihazlarından SSO 'SU vardır. [Bunun nasıl çalıştığını öğrenin](azuread-join-sso.md)
 
 ### <a name="printers"></a>Yazıcı
 
-Yazıcılar için, Azure AD 'ye katılmış cihazlarda yazıcı bulmak için [hibrit bulut yazdırma](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) 'yı dağıtmanız gerekir. 
-
-Yazıcılar yalnızca bulut ortamında otomatik olarak keşfedilmeden, kullanıcılarınız, yazıcıların UNC yolunu da kullanarak doğrudan ekleyebilir. 
+[Evrensel Yazdırma](/universal-print/fundamentals/universal-print-whatis) 'nın şirket içi bağımlılıklar olmadan bulut tabanlı yazdırma yönetimi çözümüne sahip olmasını öneririz. 
 
 ### <a name="on-premises-applications-relying-on-machine-authentication"></a>Makine kimlik doğrulamasına bağlı şirket içi uygulamalar
 
@@ -221,7 +219,7 @@ Yukarıdaki tabloyu inceleyerek dağıtım yaklaşımınızı veya yaklaşımlar
 
 ## <a name="configure-your-device-settings"></a>Cihaz ayarlarınızı yapılandırın
 
-Azure portal, kuruluşunuzda Azure AD 'ye katılmış cihazların dağıtımını denetlemenize olanak tanır. İlgili ayarları yapılandırmak için, **Azure Active Directory sayfasında**, öğesini seçin `Devices > Device settings` .
+Azure portal, kuruluşunuzda Azure AD 'ye katılmış cihazların dağıtımını denetlemenize olanak tanır. İlgili ayarları yapılandırmak için, **Azure Active Directory sayfasında**, öğesini seçin `Devices > Device settings` . [Daha fazla bilgi edinin](device-management-azure-portal.md)
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>Kullanıcılar cihazları Azure AD’ye ekleyebilir
 
@@ -235,11 +233,13 @@ Bu seçeneği, dağıtımınızın kapsamına ve Azure AD 'ye katılmış bir ci
 
 ![Azure AD’ye katılan cihazlarda ek yerel yöneticiler](./media/azureadjoin-plan/02.png)
 
-### <a name="require-multi-factor-auth-to-join-devices"></a>Cihazlara katılması için çok faktörlü kimlik doğrulaması gerektir
+### <a name="require-multi-factor-authentication-mfa-to-join-devices"></a>Cihazlara katılması için çok faktörlü kimlik doğrulaması (MFA) gerektir
 
 Cihazların Azure AD 'ye katılırken MFA gerçekleştirmesini gerektiriyorsa, **"Evet"** seçeneğini belirleyin. MFA kullanarak cihazları Azure AD 'ye katılan kullanıcılar için, cihazın bir ikinci faktör haline gelir.
 
 ![Cihazlara katılması için çok faktörlü kimlik doğrulaması gerektir](./media/azureadjoin-plan/03.png)
+
+**Öneri:** Cihazları katmak için MFA 'yı zorlamaya yönelik kullanıcı eylemi [kaydetme veya cihazları](/conditional-access/concept-conditional-access-cloud-apps#user-actions) koşullu erişime katma olarak kullanın.
 
 ## <a name="configure-your-mobility-settings"></a>Mobility ayarlarınızı yapılandırın
 

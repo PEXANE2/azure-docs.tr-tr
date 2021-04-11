@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 281b22db692087f2876b4011563fee8c56bd476e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa3614aa3c4fbaec3611806406e5129379999bc3
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102522402"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067150"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Öğretici: Azure Data Box sipariş etme
 
@@ -790,7 +790,7 @@ Azure Data Box sırayı iptal etmek için, öğesini çalıştırın [`az databo
    |kaynak grubu [gerekli]| Silinecek siparişle ilişkili kaynak grubunun adı. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
    |ad [gerekli]| Silinecek siparişin adı. | "mydataboxorder"|
    |Neden [gerekli]| Siparişi iptal etme nedeni. | "Hatalı bilgiler girdim ve siparişi iptal etmek için gerekli." |
-   |evet| Onay sorma. | --Evet (-y)| --Evet-y |
+   |evet| Onay sorma. | --Evet (-y)| 
    |hata ayıklama| Ayrıntılı günlüğe hata ayıklama bilgilerini dahil et | --Hata Ayıkla |
    |Yardım| Bu komutla ilgili yardım bilgilerini görüntüleyin. | --Yardım-h |
    |yalnızca-hataları göster| Yalnızca hataları göster, uyarıları gizleme. | --yalnızca-show-Errors |
@@ -827,7 +827,7 @@ Azure Data Box sırayı iptal etmiş olmanız durumunda [`az databox job delete`
    |kaynak grubu [gerekli]| Silinecek siparişle ilişkili kaynak grubunun adı. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
    |ad [gerekli]| Silinecek siparişin adı. | "mydataboxorder"|
    |aboneliği| Azure aboneliğinizin adı veya KIMLIĞI (GUID). | "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" |
-   |evet| Onay sorma. | --Evet (-y)| --Evet-y |
+   |evet| Onay sorma. | --Evet (-y)|
    |hata ayıklama| Ayrıntılı günlüğe hata ayıklama bilgilerini dahil et | --Hata Ayıkla |
    |Yardım| Bu komutla ilgili yardım bilgilerini görüntüleyin. | --Yardım-h |
    |yalnızca-hataları göster| Yalnızca hataları göster, uyarıları gizleme. | --yalnızca-show-Errors |

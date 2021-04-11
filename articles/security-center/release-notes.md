@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/22/2021
+ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: f6ec14c577d1203b92085b791f89e4873a97c41a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 81f741fd9b0e3d40eb0027a5cbe0ba4b7113bbea
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786116"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027627"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -24,6 +24,93 @@ Güvenlik Merkezi 'ne yakında çıkacak *planlı* değişiklikler hakkında bil
 
 > [!TIP]
 > Altı aydan eski olan öğeleri arıyorsanız, [Azure Güvenlik Merkezi 'ndeki yenilikler Için arşivde](release-notes-archive.md)bulabilirsiniz.
+
+## <a name="april-2021"></a>2021 Nisan
+
+Nisan 'daki güncelleştirmeler şunları içerir:
+- [Konuk yapılandırmasıyla ilgili dört yeni öneri (Önizleme)](#four-new-recommendations-related-to-guest-configuration-preview)
+- [Karma ve çoklu bulut Kubernetes dağıtımlarını korumak için Kubernetes için Azure Defender 'ı kullanma (Önizleme)](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
+- [11 Azure Defender uyarıları kullanım dışı](#11-azure-defender-alerts-deprecated)
+- ["Sistem güncelleştirmelerini Uygula" güvenlik denetiminin iki önerisi kullanım dışı bırakıldı](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
+
+### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Konuk yapılandırmasıyla ilgili dört yeni öneri (Önizleme)
+
+Azure 'un [Konuk yapılandırma uzantısı](../governance/policy/concepts/guest-configuration.md) , sanal makinelerinizin Konuk içi ayarlarının sağlamlaştırılmış olduğundan emin olmak Için Güvenlik Merkezi 'ne rapor eder. Arc bağlı makine aracısına dahil edildiğinden, genişleme özellikli sunucular için uzantı gerekli değildir. Uzantı, makinede sistem tarafından yönetilen bir kimlik gerektirir.
+
+Bu uzantının en iyi şekilde kullanılabilmesini sağlamak için Güvenlik Merkezi 'ne dört yeni öneri ekledik.
+
+- Uzantıyı ve sistem tarafından yönetilen gerekli kimliğini yüklemek için iki öneri istenir:
+    - **Makinelerinizde Konuk yapılandırma uzantısının yüklü olması gerekir**
+    - **Sanal makinelerin Konuk yapılandırma uzantısı, sistem tarafından atanan yönetilen kimlikle dağıtılmalıdır**
+
+- Uzantı yüklenip çalıştırıldığında, makinelerinizi denetlemeye başlayacaktır ve işletim sistemi ve ortam ayarlarının yapılandırılması gibi ayarları almanız istenecektir. Bu iki öneri, Windows ve Linux makinelerinizi açıklandığı şekilde en fazla bilgi ister:
+    - **Makinelerinizde Windows Defender Exploit Guard etkinleştirilmelidir**
+    - **Linux makinelerinde kimlik doğrulaması için SSH anahtarları gerekir**
+
+[Azure Ilkesinin Konuk yapılandırmasını anlama](../governance/policy/concepts/guest-configuration.md)bölümünde daha fazla bilgi edinin.
+
+
+### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview"></a>Karma ve çoklu bulut Kubernetes dağıtımlarını korumak için Kubernetes için Azure Defender 'ı kullanma (Önizleme)
+
+Kubernetes için Azure Defender, dağıttıkları her yerde kümelerinizi savunmak için tehdit koruması yeteneklerini genişletiyor. Bu, [Azure Arc etkin Kubernetes](../azure-arc/kubernetes/overview.md) ve yeni [uzantı özellikleri](../azure-arc/kubernetes/extensions.md)ile tümleştirilirken etkinleştirilmiştir. 
+
+Azure 'da olmayan Kubernetes kümelerinizde Azure yayı 'yi etkinleştirdiğinizde, Azure Güvenlik Merkezi 'nin yeni bir önerisi, Azure Defender uzantısını yalnızca birkaç tıklamayla dağıtmak üzere sunmaktadır.
+
+Öneriyi kullanın (**Azure Arc etkin Kubernetes kümeleri, Azure Defender 'ın uzantısının yüklü olması gerekir**) ve yönetilen Kubernetes hizmetlerinde olmasa da diğer bulut sağlayıcılarıyla dağıtılan Kubernetes kümelerini koruma uzantısı.
+
+Azure Güvenlik Merkezi, Azure Defender ve Azure Arc etkin Kubernetes arasındaki bu tümleştirme şunları getirir:
+
+- Azure Defender uzantısının korumasız Azure Arc etkin Kubernetes kümelerine kolay sağlanması (el ile ve ölçekli)
+- Azure Arc portalından Azure Defender uzantısının ve sağlama durumunun izlenmesi
+- Güvenlik Merkezi 'ndeki güvenlik önerileri, Azure Arc portalının yeni güvenlik sayfasında raporlanır
+- Azure 'daki güvenlik tehditleri, Azure Arc portalının yeni güvenlik sayfasında raporlanır
+- Azure Arc etkin Kubernetes kümeleri, Azure Güvenlik Merkezi platformu ve deneyimiyle tümleşiktir
+
+Şirket [içi ve çoklu bulut Kubernetes kümelerinizle Kubernetes Için Azure Defender 'ı kullanma](defender-for-kubernetes-azure-arc.md)hakkında daha fazla bilgi edinin.
+
+:::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Güvenlik Merkezi 'nin Azure Arc etkin Kubernetes kümeleri için Azure Defender uzantısını dağıtmaya yönelik önerisi." lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+
+
+### <a name="11-azure-defender-alerts-deprecated"></a>11 Azure Defender uyarıları kullanım dışı
+
+Aşağıda listelenen on bir Azure Defender uyarısı kullanım dışıdır.
+
+- Yeni uyarılar, bu iki uyarıyı değiştirecek ve daha iyi kapsam sağlayacak:
+
+    | AlertType                | AlertDisplayName                                                         |
+    |--------------------------|--------------------------------------------------------------------------|
+    | ARM_MicroBurstDomainInfo | PREVIEW-mikro patlama araç seti "Get-AzureDomainInfo" işlev çalıştırması algılandı |
+    | ARM_MicroBurstRunbook    | PREVIEW-mikro patlama araç seti "Get-AzurePasswords" işlev çalıştırması algılandı  |
+    |                          |                                                                          |
+
+- Bu dokuz uyarı, zaten kullanım dışı bırakılmış bir Azure Active Directory Kimlik Koruması Bağlayıcısı (IPC) ile ilgilidir:
+
+    | AlertType           | AlertDisplayName              |
+    |---------------------|-------------------------------|
+    | UnfamiliarLocation  | Bilinmeyen oturum açma özellikleri |
+    | AnonymousLogin      | Anonim IP adresi          |
+    | Bulaşıp Teddevicelogin | Kötü amaçlı yazılım bağlı IP adresi     |
+    | Impossıbleseyahat    | Olağandışı yolculuk               |
+    | MaliciousIP         | Kötü amaçlı IP adresi          |
+    | LeakedCredentials   | Sızdırılan kimlik bilgileri            |
+    | Passwordpüskürtme       | Parola spreyi                |
+    | LeakedCredentials   | Azure AD tehdit bilgileri  |
+    | AADAı               | Azure AD AI                   |
+    |                     |                               |
+ 
+    > [!TIP]
+    > Bu dokuz IPC uyarısı hiç güvenlik merkezi uyarıymıştı. Bunlar, güvenlik merkezi 'ne gönderen Azure Active Directory (AAD) kimlik koruma bağlayıcısının (IPC) bir parçasıdır. Son iki yılda, bu uyarıları görmekte olan müşteriler yalnızca 2019 veya önceki sürümlerde dışarı aktarmayı (bağlayıcıdan ASC 'ye) yapılandıran kuruluşlardır. AAD IPC bunları kendi uyarı sistemlerinde göstermeye devam etti ve Azure Sentinel 'de sunulmaya devam ediyor. Tek değişiklik artık Güvenlik Merkezi 'nde görünistemdir.
+
+### <a name="two-recommendations-from-apply-system-updates-security-control-were-deprecated"></a>"Sistem güncelleştirmelerini Uygula" güvenlik denetiminin iki önerisi kullanım dışı bırakıldı 
+
+Aşağıdaki iki öneri kullanımdan kaldırılmıştır ve değişiklikler güvenli puanınızın üzerinde küçük bir etkiye neden olur:
+
+- **Sistem güncelleştirmelerinin uygulanabilmesi için makineleriniz yeniden başlatılmalıdır**
+- **İzleme Aracısı makinelerinizde yüklü olmalıdır**. Bu öneri yalnızca şirket içi makinelerle ilgilidir ve mantığının bir kısmı başka bir öneriye aktarılacaksa **Log Analytics aracı sistem durumu sorunları makinelerinizde çözümlenmelidir**
+
+Bu önerilerin bunlara dahil edilip edilmeyeceğini görmek için sürekli dışarı aktarma ve iş akışı Otomasyonu yapılandırmalarının denetlenmesini öneririz. Ayrıca, bunları kullanıyor olabilecek panolar veya diğer izleme araçları da buna uygun şekilde güncelleştirilmeleri gerekir.
+
+[Güvenlik önerileri başvuru sayfasında](recommendations-reference.md)bu öneriler hakkında daha fazla bilgi edinin.
 
 
 ## <a name="march-2021"></a>Mart 2021
@@ -489,7 +576,7 @@ Aralık ayında güncelleştirmeler şunlardır:
 Azure Güvenlik Merkezi, SQL sunucuları için iki Azure Defender planı sunar:
 
 - Azure **SQL veritabanı sunucuları Için Azure Defender** -Azure Native SQL Server 'larınızı savunma 
-- **MAKINELERDE SQL Server 'lar Için Azure Defender** -aynı korumaların karma, çok yüksek ve şirket ıçı ortamlarda SQL Server 'larınıza göre uzatıp
+- **MAKINELERDE SQL Server 'lar Için Azure Defender** -aynı korumaların karma, çoklu bulut ve şirket içi ortamlarınızdaki SQL Server 'larınızla aynı korumaları genişlettiğini genişletiyor
 
 Bu duyuru sayesinde, **SQL Için Azure Defender** artık veritabanlarınızı ve bu verilerin bulundukları yerden korunmasını sağlar.
 
@@ -753,154 +840,3 @@ Güvenli puanı sürekli dışa aktarma ile Azure Event Hubs veya bir Log Analyt
 Artık abonelikleriniz için, Azure portal Güvenlik Merkezi 'nin **güvenlik ilkesi** sayfasında, aboneliklerinizde varsayılan güvenlik merkezi ilkesi atanmış olup olmadığını görebilirsiniz.
 
 :::image type="content" source="media/release-notes/policy-assignment-info-per-subscription.png" alt-text="Azure Güvenlik Merkezi 'nin varsayılan ilke atamalarını gösteren ilke yönetimi sayfası":::
-
-## <a name="october-2020"></a>Ekim 2020
-
-Ekim 'deki güncelleştirmeler şunlardır:
-- [Şirket içi ve çoklu bulut makinelerinde güvenlik açığı değerlendirmesi (Önizleme)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
-- [Azure Güvenlik Duvarı önerisi eklendi (Önizleme)](#azure-firewall-recommendation-added-preview)
-- [Yetkili IP aralıklarının, hızlı düzeltmeyle güncelleştirilmiş Kubernetes Hizmetleri önerisi üzerinde tanımlanması gerekir](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)
-- [Mevzuat uyumluluk panosu artık standartları kaldırma seçeneğini içermektedir](#regulatory-compliance-dashboard-now-includes-option-to-remove-standards)
-- [Microsoft. Security/Securitydurumlarının tablosu Azure Kaynak grafiğinden kaldırıldı (ARG)](#microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg)
-
-### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview"></a>Şirket içi ve çoklu bulut makinelerinde güvenlik açığı değerlendirmesi (Önizleme)
-
-[Sunucular Için Azure Defender 'ın](defender-for-servers-introduction.md)tümleşik güvenlik açığı değerlendirmesi tarayıcısı (Qualys tarafından desteklenir) artık Azure Arc etkin sunucularını tarar.
-
-Azure dışı makinelerinizde Azure yayı 'yi etkinleştirdiyseniz, Güvenlik Merkezi, tümleşik güvenlik açığı tarayıcısını bunlara el ile ve ölçekli olarak dağıtmayı sağlar.
-
-Bu güncelleştirmeyle, Azure Defender 'ın tüm Azure ve Azure dışı varlıklarınızda güvenlik açığı yönetimi programınızı birleştirmek için **Azure Defender** 'ın gücünü açığa çıkarın.
-
-Ana yetenekler:
-
-- Azure Arc makinelerinde VA (güvenlik açığı değerlendirmesi) tarayıcı sağlama durumunu izleme
-- Tümleşik VA aracısını korumasız Windows ve Linux Azure yay makinelerine sağlama (el ile ve ölçekli)
-- Dağıtılan aracılardan algılanan güvenlik açıklarını alma ve çözümleme (el ile ve ölçekli)
-- Azure sanal makineleri ve Azure yay makineleri için Birleşik deneyim
-
-[Tümleşik güvenlik açığı tarayıcısını karma makinelerinize dağıtma hakkında daha fazla bilgi edinin](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines).
-
-[Azure Arc etkin sunucuları hakkında daha fazla bilgi edinin](../azure-arc/servers/index.yml).
-
-
-### <a name="azure-firewall-recommendation-added-preview"></a>Azure Güvenlik Duvarı önerisi eklendi (Önizleme)
-
-Tüm sanal ağlarınızı Azure Güvenlik Duvarı ile korumak için yeni bir öneri eklenmiştir.
-
-Bu öneri, **sanal ağların Azure Güvenlik Duvarı tarafından korunması gerekir** ve Azure Güvenlik Duvarı 'nı kullanarak sanal ağlarınıza erişimi kısıtlayıp olası tehditleri önlemenizi önerir.
-
-[Azure Güvenlik Duvarı](https://azure.microsoft.com/services/azure-firewall/)hakkında daha fazla bilgi edinin.
-
-
-### <a name="authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix"></a>Yetkili IP aralıklarının, hızlı düzeltmeyle güncelleştirilmiş Kubernetes Hizmetleri önerisi üzerinde tanımlanması gerekir
-
-Öneri **yetkılı IP aralıklarının artık, Kubernetes hizmetlerinde tanımlanması gerekir** . Şimdi hızlı bir çözüm seçeneği vardır.
-
-Bu öneri ve diğer tüm güvenlik merkezi önerileri hakkında daha fazla bilgi için bkz. [güvenlik önerileri-bir başvuru kılavuzu](recommendations-reference.md).
-
-:::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="Yetkili IP aralıkları hızlı düzelme seçeneği ile Kubernetes Hizmetleri önerisi üzerinde tanımlanmalıdır":::
-
-
-### <a name="regulatory-compliance-dashboard-now-includes-option-to-remove-standards"></a>Mevzuat uyumluluk panosu artık standartları kaldırma seçeneğini içermektedir
-
-Güvenlik Merkezi 'nin yasal uyumluluk panosu, uyumlu uyumluluk denetimleri ve gereksinimlerini nasıl karşıladığınızı temel alarak uyumlulukla ilgili öngörüler sağlar.
-
-Pano, varsayılan bir mevzuat standartları kümesi içerir. Sağlanan standartlardan herhangi biri kuruluşunuzla ilgili değilse, bir abonelik için kullanıcı arabiriminden kaldırma işlemi artık basit bir işlemdir. Standartlar yalnızca *abonelik* düzeyinde kaldırılabilir; Yönetim grubu kapsamı değil.
-
-[Panodan bir standart kaldırma](update-regulatory-compliance-packages.md#remove-a-standard-from-your-dashboard)hakkında daha fazla bilgi edinin.
-
-
-### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Microsoft. Security/Securitydurumlarının tablosu Azure Kaynak grafiğinden kaldırıldı (ARG)
-
-Azure Kaynak Grafiği, ortamınızı etkili bir şekilde yönetebilmeniz için belirli bir abonelik kümesi genelinde ölçeği sorgulama özelliği ile verimli kaynak araştırması sağlamak üzere tasarlanan Azure hizmetidir. 
-
-Azure Güvenlik Merkezi için bağımsız değişken ve [kusto sorgu dili (KQL)](/azure/data-explorer/kusto/query/) kullanarak çok çeşitli güvenlik sonrası verileri sorgulayabilirsiniz. Örnek:
-
-- Varlık envanteri kullanır (bağımsız değişken)
-- [Multi-Factor Authentication (MFA) etkin olmayan hesapların nasıl tanımlanacağına](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled) yönelik örnek bir bağımsız değişken sorgusu belgeliyoruz
-
-Bağımsız değişken içinde, sorgularda kullanabileceğiniz veri tabloları vardır.
-
-:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Azure Kaynak Grafiği Gezgini ve kullanılabilir tablolar":::
-
-> [!TIP]
-> ARG belgesi, [Azure Kaynak Grafiği tablosu ve kaynak türü başvurusu](../governance/resource-graph/reference/supported-tables-resources.md)'ndaki tüm kullanılabilir tabloları listeler.
-
-Bu güncelleştirmeden, **Microsoft. Security/Securitydurumlarının** tablosu kaldırılmıştır. Securitydurumlarının API 'SI hala kullanılabilir.
-
-Veri değiştirme, Microsoft. Security/değerlendirmeleri tablosu tarafından kullanılabilir.
-
-Microsoft. Security/Securitydurumlardan ve Microsoft. Security/değerlendirmeleri arasındaki önemli fark, ilki değerlendirmelerin toplanmasının, saniyenin her biri için tek bir kayıt tuttuğunda olduğu sürece.
-
-Örneğin, Microsoft. Security/Securitydurumlar, iki Polimanlar dizisiyle bir sonuç döndürür:
-
-```
-{
-id: "/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet",
-name: "mico-rg-vnet",
-type: "Microsoft.Security/securityStatuses",
-properties:  {
-    policyAssessments: [
-        {assessmentKey: "e3deicce-f4dd-3b34-e496-8b5381bazd7e", category: "Networking", policyName: "Azure DDOS Protection Standard should be enabled",...},
-        {assessmentKey: "sefac66a-1ec5-b063-a824-eb28671dc527", category: "Compute", policyName: "",...}
-    ],
-    securitystateByCategory: [{category: "Networking", securityState: "None" }, {category: "Compute",...],
-    name: "GenericResourceHealthProperties",
-    type: "VirtualNetwork",
-    securitystate: "High"
-}
-```
-Ancak, Microsoft. Security/değerlendirmeleri, bu tür bir ilke değerlendirmesi için aşağıdaki gibi bir kayıt tutacaktır:
-
-```
-{
-type: "Microsoft.Security/assessments",
-id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft. Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/e3delcce-f4dd-3b34-e496-8b5381ba2d70",
-name: "e3deicce-f4dd-3b34-e496-8b5381ba2d70",
-properties:  {
-    resourceDetails: {Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet"...},
-    displayName: "Azure DDOS Protection Standard should be enabled",
-    status: (code: "NotApplicable", cause: "VnetHasNOAppGateways", description: "There are no Application Gateway resources attached to this Virtual Network"...}
-}
-
-{
-type: "Microsoft.Security/assessments",
-id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/80fac66a-1ec5-be63-a824-eb28671dc527",
-name: "8efac66a-1ec5-be63-a824-eb28671dc527",
-properties: {
-    resourceDetails: (Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet"...),
-    displayName: "Audit diagnostic setting",
-    status:  {code: "Unhealthy"}
-}
-```
-
-**Artık değerlendirme tablosunu kullanmak için Securitydurumlar kullanarak var olan bir bağımsız değişken sorgusunun dönüştürülmesiyle bir örnek:**
-
-Securitydurumlarının başvurduğu sorgu:
-
-```kusto
-SecurityResources 
-| where type == 'microsoft.security/securitystatuses' and properties.type == 'virtualMachine'
-| where name in ({vmnames}) 
-| project name, resourceGroup, policyAssesments = properties.policyAssessments, resourceRegion = location, id, resourceDetails = properties.resourceDetails
-```
-
-Değerlendirme tablosu için değiştirme sorgusu:
-
-```kusto
-securityresources
-| where type == "microsoft.security/assessments" and id contains "virtualMachine"
-| extend resourceName = extract(@"(?i)/([^/]*)/providers/Microsoft.Security/assessments", 1, id)
-| extend source = tostring(properties.resourceDetails.Source)
-| extend resourceId = trim(" ", tolower(tostring(case(source =~ "azure", properties.resourceDetails.Id,
-source =~ "aws", properties.additionalData.AzureResourceId,
-source =~ "gcp", properties.additionalData.AzureResourceId,
-extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
-| extend resourceGroup = tolower(tostring(split(resourceId, "/")[4]))
-| where resourceName in ({vmnames}) 
-| project resourceName, resourceGroup, resourceRegion = location, id, resourceDetails = properties.additionalData
-```
-
-Aşağıdaki bağlantılardan daha fazla bilgi edinin:
-- [Azure Kaynak Grafı Gezgini ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
-- [Kusto Sorgu Dili (KQL)](/azure/data-explorer/kusto/query/)
