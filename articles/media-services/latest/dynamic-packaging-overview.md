@@ -3,22 +3,18 @@ title: Azure Media Services v3 'de dinamik paketleme
 description: Bu makale, Azure Media Services içindeki dinamik paketlemeye genel bakış sunar.
 author: myoungerman
 manager: femila
-editor: ''
 services: media-services
-documentationcenter: ''
 ms.service: media-services
 ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4f4f53d4a20397f38b565cb73e74b01d15cc3022
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e396841231659c27f199a7353565c5d69e02877
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102633062"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106062004"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 'de dinamik paketleme
 
@@ -41,7 +37,7 @@ Kodlanmış varlıktaki videoları kayıttan yürütme için kullanılabilir hal
 
 Bunu sonucunda, dosyaları yalnızca tek bir depolama biçiminde depolamanız ve buna göre ödeme yapmanız gerekir. Media Services hizmeti, istemciden gelen isteklere göre uygun yanıtı derler ve sunar.
 
-İçeriğinizi Media Services dinamik şifrelemeyi kullanarak korumayı planlıyorsanız, bkz. [akış protokolleri ve şifreleme türleri](content-protection-overview.md#streaming-protocols-and-encryption-types).
+İçeriğinizi Media Services dinamik şifrelemeyi kullanarak korumayı planlıyorsanız, bkz. [akış protokolleri ve şifreleme türleri](drm-content-protection-concept.md#streaming-protocols-and-encryption-types).
 
 ### <a name="hls-protocol"></a>HLS Protokolü
 
@@ -49,9 +45,9 @@ Akış istemciniz aşağıdaki HLS biçimlerini belirtebilir:
 
 |Protokol|Örnek|
 |---|---|
-|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
-|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
-|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
+|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
+|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
+|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
 
 > [!NOTE]
 > Apple 'dan gelen önceki yönergeler, düşük bant genişliğine sahip ağların geri dönüşü için yalnızca ses akımı sağlamalarından önce önerilir.  Media Services Kodlayıcısı, her seferinde otomatik olarak bir ses parçası oluşturur.  Apple yönergeleri artık yalnızca ses izlemenin, özellikle Apple TV dağıtımı için dahil *edilmemelidir.*  Player 'ın yalnızca bir ses izlemesine izin almasını engellemek için, URL 'de, HLS 'de yalnızca ses işlemesini kaldıran "salt ses = false" etiketini kullanmanızı veya yalnızca HLS-v3 ' i kullanmanızı öneririz. Örneğin, `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)`.
@@ -62,8 +58,8 @@ Akış istemciniz aşağıdaki MPEG-DASH biçimlerini belirtebilir:
 
 |Protokol|Örnek|
 |---|---|
-|MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` ||
-|MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` ||
+|MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
+|MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
 
 ### <a name="smooth-streaming-protocol"></a>Kesintisiz Akış Protokolü
 
@@ -71,7 +67,7 @@ Akış istemciniz aşağıdaki Kesintisiz Akış biçimlerini belirtebilir:
 
 |Protokol|Notlar/örnekler| 
 |---|---|
-|Kesintisiz Akış| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
+|Kesintisiz Akış| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 |Kesintisiz Akış 2,0 (eski bildirim)|Varsayılan olarak, Kesintisiz Akış bildirim biçimi Yinele etiketini (r-Tag) içerir. Ancak, bazı oyuncular desteklemez `r-tag` . Bu oyunculara sahip istemciler, r-Tag ' i devre dışı bırakan bir biçim kullanabilir:<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
 
 > [!NOTE]
@@ -115,7 +111,7 @@ Canlı bir olay, *doğrudan geçiş* (Şirket içi bir Live Encoder çoklu bit h
 1. Kodlayıcıdan alınan girişin alındığını doğrulamak için önizleme URL 'sini alın ve kullanın.
 1. Yeni bir varlık oluşturun.
 1. Canlı bir çıktı oluşturun ve oluşturduğunuz varlık adını kullanın.<br />Canlı çıktı, akışı varlığa arşivler.
-1. Yerleşik akış ilkesi türleriyle bir akış Bulucu oluşturun.<br />İçeriğinizi şifrelemeyi düşünüyorsanız, [içerik korumasına genel bakış](content-protection-overview.md)' ı inceleyin.
+1. Yerleşik akış ilkesi türleriyle bir akış Bulucu oluşturun.<br />İçeriğinizi şifrelemeyi düşünüyorsanız, [içerik korumasına genel bakış](drm-content-protection-concept.md)' ı inceleyin.
 1. Kullanılacak URL 'Leri almak için akış bulucunun yollarını listeleyin.
 1. Akışa almak istediğiniz akış uç noktası için ana bilgisayar adını alın.
 1. Farklı biçimleri (HLS, MPEG-DASH ve Kesintisiz Akış) hedefleyen derleme URL 'Leri. *Akış uç noktası* , farklı biçimlere yönelik doğru bildirime ve isteklere hizmet vermeye önem kazanır.
@@ -312,7 +308,7 @@ Oyunculara gönderilen iz, biçim, bitme ve sunum süresi pencerelerinin sayıs�
 
 ## <a name="dynamic-encryption"></a>Dinamik şifreleme
 
-Etkin veya isteğe bağlı içeriğinizi AES-128 veya üç ana dijital hak yönetimi (DRM) sisteminden dinamik olarak şifrelemek için *dinamik şifrelemeyi* kullanabilirsiniz: Microsoft PlayReady, Google Widevine ve Apple FairPlay. Media Services Ayrıca, yetkili istemcilere yönelik AES anahtarları ve DRM lisansları sunmaya yönelik bir hizmet sağlar. Daha fazla bilgi için bkz. [dinamik şifreleme](content-protection-overview.md).
+Etkin veya isteğe bağlı içeriğinizi AES-128 veya üç ana dijital hak yönetimi (DRM) sisteminden dinamik olarak şifrelemek için *dinamik şifrelemeyi* kullanabilirsiniz: Microsoft PlayReady, Google Widevine ve Apple FairPlay. Media Services Ayrıca, yetkili istemcilere yönelik AES anahtarları ve DRM lisansları sunmaya yönelik bir hizmet sağlar. Daha fazla bilgi için bkz. [dinamik şifreleme](drm-content-protection-concept.md).
 
 > [!NOTE]
 > Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.

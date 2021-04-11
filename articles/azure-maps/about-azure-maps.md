@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: fc70e6370f53848e9f3672611a3dfda685bcb9fe
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 55955f883425651749809da951832484f098aeaf
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011785"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256132"
 ---
 # <a name="what-is-azure-maps"></a>Azure Haritalar nedir?
 
@@ -169,7 +169,7 @@ Trafik hizmeti, geliştiricilerin trafik bilgileri gerektiren Web uygulamaları 
 
 Daha fazla bilgi için bkz. [trafik hizmeti belgeleri](/rest/api/maps/traffic).
 
-### <a name="weather-services-preview"></a>Hava durumu Hizmetleri (Önizleme) 
+### <a name="weather-services"></a>Hava durumu hizmetleri
 
 Hava durumu Hizmetleri, geliştiricilerin belirli bir konum için hava durumu bilgilerini almak üzere kullanabileceği API 'Ler sunar. Bilgiler, gözlem tarihi ve saati, hava durumu koşullarının kısa açıklaması, hava durumu simgesi, yağış gösterge bayrakları, sıcaklık ve rüzgar hızı bilgilerinin ayrıntılarını içerir. ™ Sıcaklık ve UV dizini gibi ek ayrıntılar da döndürülür.
 

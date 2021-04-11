@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 9be9e9b4c5153776bd78675cdc0c9da8c0506f75
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 52dd642c661aa60157876a89d41c771cabfe2f1d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106777"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256166"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -38,7 +38,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Dil                 | Yerel ayar (BCP-47) | Özelleştirmeler  | [Dil algılama](how-to-automatic-language-detection.md) |
 |------------------------------------|--------|---------------------------------------------------|-------------------------------|
-| Arapça (Bahreyn), modern standart  | `ar-BH` | Metin                                   | Yes                           | 
+| Arapça (Bahreyn), modern standart  | `ar-BH` | Metin                                   |                           | 
 | Arapça (Mısır)                     | `ar-EG` | Metin                                   | Yes                          |
 | Arapça (Irak)                      | `ar-IQ` | Metin                                   |                           |
 | Arapça (Israil)                    | `ar-IL` | Metin                                   |                           |
@@ -47,9 +47,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Arapça (Lübnan)                   | `ar-LB` | Metin                                   |                           |
 | Arapça (Umman)                      | `ar-OM` | Metin                                   |                           |
 | Arapça (Qtor)                     | `ar-QA` | Metin                                   |                           |
-| Arapça (Suudi Arabistan)              | `ar-SA` | Metin                                   | Yes                          |
+| Arapça (Suudi Arabistan)              | `ar-SA` | Metin                                   |                           |
 | Arapça (Filistin Yönetimi devleti)        | `ar-PS` | Metin                                   |                           |
-| Arapça (Suriye)                     | `ar-SY` | Metin                                   | Yes                          |
+| Arapça (Suriye)                     | `ar-SY` | Metin                                   |                           |
 | Arapça (Birleşik Arap Emirlikleri)      | `ar-AE` | Metin                                   |                           |
 | Bulgarca (Bulgaristan)               | `bg-BG` | Metin                                   |                           |
 | Katalanca (İspanya)                    | `ca-ES` | Metin                                   | Yes                          |
@@ -64,10 +64,10 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | İngilizce (Kanada)                   | `en-CA` | Ses (20201019)<br>Metin                 | Yes                          |
 | İngilizce (Gana)                    | `en-GH` | Metin                                   |                           |
 | İngilizce (Hong Kong)                | `en-HK` | Metin                                   |                           |
-| İngilizce (Hindistan)                    | `en-IN` | Ses (20200923)<br>Metin                 | Yes                          |
+| İngilizce (Hindistan)                    | `en-IN` | Ses (20200923)<br>Metin                 |                          |
 | İngilizce (İrlanda)                  | `en-IE` | Metin                                   |                           |
 | İngilizce (Kenya)                    | `en-KE` | Metin                                   |                           |
-| İngilizce (Yeni Zelanda)              | `en-NZ` | Ses (20201019)<br>Metin                 |  Yes                         |
+| İngilizce (Yeni Zelanda)              | `en-NZ` | Ses (20201019)<br>Metin                 |                          |
 | İngilizce (Nijerya)                  | `en-NG` | Metin                                   |                           |
 | İngilizce (Filipinler)              | `en-PH` | Metin                                   |                           |
 | İngilizce (Singapur)                | `en-SG` | Metin                                   |                           |
@@ -83,7 +83,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Fransızca (İsviçre)               | `fr-CH` | Metin<br>İşi                  |                           |
 | Almanca (Avusturya)                   | `de-AT` | Metin<br>İşi                  |                           |
 | Almanca (Almanya)                   | `de-DE` | Ses (20190701, 20200619, 20201127)<br>Metin<br>İşi|  Yes                         |
-| Yunanca (Yunanistan)                     | `el-GR` | Metin                                   |                           |
+| Yunanca (Yunanistan)                     | `el-GR` | Metin                                   |  Yes                         |
 | Gucerat dili (Hindistan)                  | `gu-IN` | Metin                                   |                           |
 | Hintçe (Hindistan)                      | `hi-IN` | Ses (20200701)<br>Metin                 |     Yes                      |
 | Macarca (Macaristan)                | `hu-HU` | Metin                                   |                           |
@@ -101,7 +101,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Lehçe (Polonya)                    | `pl-PL` | Metin                                   |       Yes                    |
 | Portekizce (Brezilya)                | `pt-BR` | Ses (20190620, 20201015)<br>Metin<br>İşi|          Yes                 |
 | Portekizce (Portekiz)              | `pt-PT` | Metin<br>İşi                  |             Yes              |
-| Rumence (Romanya)                 | `ro-RO` | Metin                                   |                           |
+| Rumence (Romanya)                 | `ro-RO` | Metin                                   |  Yes                         |
 | Rusça (Rusya)                   | `ru-RU` | Ses (20200907)<br>Metin                 |                Yes           |
 | Slovakça (Slovakya)                  | `sk-SK` | Metin                                   |                           |
 | Slovence (Slovenya)               | `sl-SI` | Metin                                   |                           |

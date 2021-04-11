@@ -1,17 +1,17 @@
 ---
 title: Depolamayı otomatik Büyüt-Azure portal-MariaDB için Azure veritabanı
 description: Bu makalede, Azure portal kullanarak MariaDB için Azure veritabanı için otomatik büyüme depolamayı nasıl etkinleştirebileceğinizi açıklamaktadır.
-author: rothja
-ms.author: jroth
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: c310d55db0b30a30d3964df622f7bb112f4e7552
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: c6ca4dc4304e6cd0a7bad2a393fd780ae281815f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552147"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227101"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal kullanarak MariaDB için Azure veritabanı 'nda depolamayı otomatik olarak büyüt
 Bu makalede, bir MariaDB sunucu depolaması için Azure veritabanı 'nı, iş yükünü etkilemeden büyümeden nasıl yapılandırabileceğiniz açıklanmaktadır.

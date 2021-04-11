@@ -1,17 +1,17 @@
 ---
 title: Sanal ağları yönetme-Azure portal-PostgreSQL için Azure veritabanı-esnek sunucu
 description: Azure portal kullanarak PostgreSQL için Azure veritabanı için sanal ağlar oluşturma ve yönetme-esnek sunucu
-author: rothja
-ms.author: jroth
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 8a3c983a60dc542cf83f9e818b7f9c1f20265b49
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: d5b60cfeb3bfce1253ece3708e6b48ce6bcb0b4f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552368"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226914"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Azure portal kullanarak PostgreSQL için Azure veritabanı için sanal ağlar oluşturma ve yönetme-esnek sunucu
 
