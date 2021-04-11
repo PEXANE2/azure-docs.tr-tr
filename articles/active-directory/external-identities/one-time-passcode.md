@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 04/06/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7961997c6a6736c154b6217ee3f21682d0c4c3fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30f22282b00a7ead2e19805f32d78338126e8087
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688476"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552759"
 ---
 # <a name="email-one-time-passcode-authentication"></a>E-posta bir kerelik geçiş kodu kimlik doğrulaması
 
@@ -64,7 +64,7 @@ Kullanıcının ayrıntılarında **kaynak** özelliğini görüntüleyerek bir 
 ![Kaynak değeri OTP olan bir kerelik geçiş kodu kullanıcısını gösteren ekran görüntüsü](media/one-time-passcode/guest-user-properties.png)
 
 > [!NOTE]
-> Bir Kullanıcı bir kerelik geçiş kodunu ve daha sonra bir MSA, Azure AD hesabını ya da başka bir Federasyon hesabını aldığında, bir kerelik geçiş kodu kullanarak kimlik doğrulamasından devam eder. Kimlik doğrulama yöntemini güncelleştirmek istiyorsanız, Konuk Kullanıcı hesabını silip yeniden davet edebilirsiniz.
+> Bir Kullanıcı bir kerelik geçiş kodunu ve daha sonra bir MSA, Azure AD hesabını ya da başka bir Federasyon hesabını aldığında, bir kerelik geçiş kodu kullanarak kimlik doğrulamasından devam eder. Kullanıcının kimlik doğrulama yöntemini güncelleştirmek istiyorsanız, kullanım [durumlarını sıfırlayabilirsiniz](reset-redemption-status.md).
 
 ### <a name="example&quot;></a>Örnek
 
@@ -76,7 +76,7 @@ Konuk Kullanıcı teri@gmail.com , Google Federasyonu ayarlanmamış olan Fabrik
 
 > [!NOTE]
 >
-> Kiracınızda e-posta geçiş kodu özelliği etkinleştirilmişse ve devre dışı bırakırsanız, bir kerelik geçiş kodu kullanan Konuk kullanıcılar oturum açamaz. Konuk kullanıcıyı silebilir ve başka bir kimlik doğrulama yöntemi kullanarak tekrar oturum açabilmeniz için yeniden davet edebilirsiniz.
+> Kiracınızda e-posta geçiş kodu özelliği etkinleştirilmişse ve devre dışı bırakırsanız, bir kerelik geçiş kodu kullanan Konuk kullanıcılar oturum açamaz. Başka bir kimlik doğrulama yöntemi kullanarak yeniden oturum açabilmeniz için kullanım [durumlarını sıfırlayabilirsiniz](reset-redemption-status.md) .
 
 ### <a name="to-disable-the-email-one-time-passcode-feature"></a>E-posta bir kerelik geçiş kodu özelliğini devre dışı bırakmak için
 

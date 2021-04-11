@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 96917b805640f0cfe38f28ba263e2e7ce55bce7f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 3d8c8f8df162d31c4f646866d7c82e9af237eaa8
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066169"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553813"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>Veri denetimi (Önizleme) için Apache Spark havuzları (Azure SYNAPSE Analytics tarafından desteklenir) iliştirme
 
@@ -198,6 +198,7 @@ df = spark.read.option("header", "true").csv("wasbs://demo@dprepdata.blob.core.w
 Aşağıdaki kod, **Azure Data Lake Storage nesil 1 ' den (ADLS Gen 1)** hizmet sorumlusu kimlik bilgilerinizle verilerin nasıl okunacağını gösterir. 
 
 ```python
+%%synapse
 
 # setup service principal which has access of the data
 sc._jsc.hadoopConfiguration().set("fs.adl.account.<storage account name>.oauth2.access.token.provider.type","ClientCredential")
@@ -207,7 +208,7 @@ sc._jsc.hadoopConfiguration().set("fs.adl.account.<storage account name>.oauth2.
 sc._jsc.hadoopConfiguration().set("fs.adl.account.<storage account name>.oauth2.credential", "<client secret>")
 
 sc._jsc.hadoopConfiguration().set("fs.adl.account.<storage account name>.oauth2.refresh.url",
-https://login.microsoftonline.com/<tenant id>/oauth2/token)
+"https://login.microsoftonline.com/<tenant id>/oauth2/token")
 
 df = spark.read.csv("adl://<storage account name>.azuredatalakestore.net/<path>")
 
@@ -216,14 +217,15 @@ df = spark.read.csv("adl://<storage account name>.azuredatalakestore.net/<path>"
 Aşağıdaki kod, hizmet sorumlusu kimlik bilgilerinizle **Azure Data Lake Storage oluşturma 2 ' den (ADLS Gen 2)** verilerin nasıl okunacağını gösterir. 
 
 ```python
+%%synapse
+
 # setup service principal which has access of the data
 sc._jsc.hadoopConfiguration().set("fs.azure.account.auth.type.<storage account name>.dfs.core.windows.net","OAuth")
 sc._jsc.hadoopConfiguration().set("fs.azure.account.oauth.provider.type.<storage account name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
 sc._jsc.hadoopConfiguration().set("fs.azure.account.oauth2.client.id.<storage account name>.dfs.core.windows.net", "<client id>")
 sc._jsc.hadoopConfiguration().set("fs.azure.account.oauth2.client.secret.<storage account name>.dfs.core.windows.net", "<client secret>")
 sc._jsc.hadoopConfiguration().set("fs.azure.account.oauth2.client.endpoint.<storage account name>.dfs.core.windows.net",
-https://login.microsoftonline.com/<tenant id>/oauth2/token)
-
+"https://login.microsoftonline.com/<tenant id>/oauth2/token")
 
 df = spark.read.csv("abfss://<container name>@<storage account>.dfs.core.windows.net/<path>")
 
@@ -308,9 +310,11 @@ input1 = train_ds.as_mount()
 
 ```
 
-## <a name="example-notebook"></a>Örnek not defteri
+## <a name="example-notebooks"></a>Örnek not defterleri
 
-Azure SYNAPSE Analytics ve Azure Machine Learning ile tek bir not defterinden veri hazırlama ve model eğitimi gerçekleştirme hakkında ayrıntılı kod örneği için bu [uçtan uca not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb) bakın.
+Verileriniz hazırlandıktan sonra, [model eğitimi için bir Synase Spark kümesinden işlem hedefi olarak](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb)nasıl yararlanacağınızı öğrenin.
+
+Azure SYNAPSE Analytics ve Azure Machine Learning tümleştirme özellikleri için ek kavramlar ve gösteriler hakkında daha fazla bilgi için bu [örnek not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

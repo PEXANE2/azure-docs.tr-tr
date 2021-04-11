@@ -4,12 +4,12 @@ ms.custom: devx-track-java
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/13/2020
-ms.openlocfilehash: 4c789b86c00f28778e94432e21106bd36cc84322
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: c169572e8af8ba992e604fc51b31db1146f11fda
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104803343"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106113348"
 ---
 Bir görüntü sınıflandırma modeli oluşturmak için Java için Özel Görüntü İşleme istemci kitaplığı 'nı kullanmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Bu örneği kendi görüntü tanıma uygulamanızı oluşturmak için bir şablon olarak kullanın.
 
@@ -99,7 +99,7 @@ Uygulamanın **CustomVisionQuickstart** sınıfında, kaynağınızın anahtarla
 
 
 > [!IMPORTANT]
-> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz özel görüntü işleme kaynakları başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtarlarınızı ve uç noktanızı kaynakların **anahtar ve uç nokta** sayfalarında bulabilirsiniz. Eğitim Kaynakları ' uç noktası ile birlikte hem eğitim ve tahmin Anahtarlarınızı almanız gerekir.
+> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz özel görüntü işleme kaynakları başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtarlarınızı ve uç noktanızı kaynakların **anahtar ve uç nokta** sayfalarında bulabilirsiniz. Eğitim kaynağınız için API uç noktasıyla birlikte hem eğitim hem de tahmin kaynaklarınızın anahtarlarını almanız gerekir.
 >
 > Tahmin kaynak KIMLIĞI değerini, kaynağın **Özellikler** sekmesinde, **abonelik kimliği** olarak listelenmiş şekilde bulabilirsiniz.
 > 

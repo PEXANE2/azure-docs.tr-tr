@@ -2,17 +2,17 @@
 title: HTTP üst bilgilerini ve URL 'YI Azure Application Gateway yeniden yazın | Microsoft Docs
 description: Bu makalede, Azure Application Gateway HTTP üstbilgilerini ve URL 'YI yeniden yazma hakkında genel bir bakış sunulmaktadır
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/16/2020
-ms.author: surmb
-ms.openlocfilehash: 81eaf95a4918590c6eaa2c17a45e6925a1a67992
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.author: azhussai
+ms.openlocfilehash: 7662ef5c2c3f5ed20069f64781d222ae44e52168
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726521"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384848"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>HTTP üstbilgilerini ve URL 'YI Application Gateway yeniden yazın
 
@@ -38,7 +38,7 @@ Azure portal kullanarak istek ve yanıt üst bilgilerini Application Gateway yen
 
 İstekler ve yanıtlarındaki tüm üst bilgileri, bağlantı ve yükseltme üstbilgileri dışında yeniden yazabilirsiniz. Ayrıca, uygulama ağ geçidini kullanarak özel üstbilgiler oluşturabilir ve bunlara yönlendirilmekte olan isteklere ve yanıtlara ekleyebilirsiniz.
 
-### <a name="url-path-and-query-string-preview"></a>URL yolu ve sorgu dizesi (Önizleme)
+### <a name="url-path-and-query-string"></a>URL yolu ve sorgu dizesi
 
 Application Gateway URL yeniden yazma özelliği ile şunları yapabilirsiniz:
 
@@ -51,9 +51,6 @@ Application Gateway URL yeniden yazma özelliği ile şunları yapabilirsiniz:
 Azure portal kullanarak URL 'YI Application Gateway yeniden yazmayı öğrenmek için [buraya](rewrite-url-portal.md)bakın.
 
 ![Application Gateway bir URL 'YI yeniden yazma işlemini açıklayan diyagram.](./media/rewrite-http-headers-url/url-rewrite-overview.png)
-
->[!NOTE]
-> URL yeniden yazma özelliği önizlemededir ve yalnızca Application Gateway Standard_v2 ve WAF_v2 SKU 'SU için kullanılabilir. Üretim ortamında kullanılması önerilmez. Önizlemeler hakkında daha fazla bilgi edinmek için [buradaki kullanım koşullarına](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 
 ## <a name="rewrite-actions"></a>Yeniden yazma eylemleri
 
@@ -104,7 +101,7 @@ Application Gateway sunucu, istemciyle bağlantı ve bağlantıdaki geçerli ist
 
 Application Gateway aşağıdaki sunucu değişkenlerini destekler:
 
-|   Değişken adı    |                   Description                                           |
+|   Değişken adı    |                   Açıklama                                           |
 | ------------------------- | ------------------------------------------------------------ |
 | add_x_forwarded_for_proxy | `client_ip`IP1, IP2, IP3, vb. biçiminde bu değişkene eklenen (Bu tablodaki açıklamaya bakın) X-iletilmiş istemci isteği üst bilgisi alanı. X-Iletilmiş-for alanı istemci isteği üstbilgisinde yoksa, `add_x_forwarded_for_proxy` değişken `$client_ip` değişkenine eşittir.   Bu değişken özellikle, üstbilginin yalnızca bağlantı noktası bilgisi olmadan yalnızca IP adresini içermesi için, Application Gateway tarafından ayarlanmış X-Iletilmiş-for üst bilgisini yeniden yazmak istediğinizde yararlıdır. |
 | ciphers_supported         | İstemci tarafından desteklenen şifrelemelerin listesi.               |
@@ -129,7 +126,20 @@ Application Gateway aşağıdaki sunucu değişkenlerini destekler:
 | ssl_enabled               | Bağlantı, TLS modunda çalışıyorsa "açık". Aksi takdirde, boş bir dize. |
 | uri_path                  | Web istemcisinin erişmek istediği konaktaki belirli kaynağı tanımlar. Bu, istek URI 'sinin bağımsız değişkenler olmadan bölümüdür. Örnek: istekte `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` uri_path değer olacaktır `/article.aspx` |
 
- 
+### <a name="mutual-authentication-server-variables-preview"></a>Karşılıklı kimlik doğrulama sunucusu değişkenleri (Önizleme)
+
+Application Gateway, karşılıklı kimlik doğrulama senaryolarında aşağıdaki sunucu değişkenlerini destekler. Bu sunucu değişkenlerini diğer sunucu değişkenleriyle aynı şekilde kullanın. 
+
+|   Değişken adı    |                   Açıklama                                           |
+| ------------------------- | ------------------------------------------------------------ |
+| client_certificate        | Kurulan bir SSL bağlantısı için PEM formate istemci sertifikası. |
+| client_certificate_end_date| İstemci sertifikasının bitiş tarihi. |
+| client_certificate_fingerprint| Kurulan bir SSL bağlantısı için istemci sertifikasının SHA1 parmak izi. |
+| client_certificate_issuer | Kurulan bir SSL bağlantısı için istemci sertifikasının "verenin DN 'si" dizesi. |
+| client_certificate_serial | Kurulan bir SSL bağlantısı için istemci sertifikasının seri numarası.  |
+| client_certificate_start_date| İstemci sertifikasının başlangıç tarihi. |
+| client_certificate_subject| Kurulan bir SSL bağlantısı için istemci sertifikasının "konu DN" dizesi. |
+| client_certificate_verification| İstemci sertifikası doğrulamasının sonucu: *başarılı*, *başarısız: <reason>*, ya da bir sertifika yoksa *none* . | 
 
 ## <a name="rewrite-configuration"></a>Yeniden yazma yapılandırması
 
@@ -148,6 +158,17 @@ Bir yeniden yazma kuralı kümesi şunları içerir:
       * **URL yolu**: yolun yeniden yazılması için gereken değer. 
       * **URL sorgu dizesi**: sorgu dizesinin yeniden yazılması için gereken değer. 
       * **Yol haritasını yeniden değerlendir**: URL yol eşlemesinin yeniden değerlendirilip değerlendirilmeyeceğini anlamak için kullanılır. İşaretlenmediyse, URL yolu eşlemesindeki yol düzeniyle eşleştirmek için özgün URL yolu kullanılacaktır. True olarak ayarlanırsa, URL yolu eşlemesi yeniden yazan yol ile eşleştirmeyi denetlemek için yeniden değerlendirilir. Bu anahtarı etkinleştirmek, isteği farklı bir arka uç havuzuna yeniden yazmaya yönlendirmenize yardımcı olur.
+
+### <a name="using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku"></a>Web uygulaması güvenlik duvarı (WAF_v2 SKU) ile URL yeniden yazma veya konak üstbilgi yeniden yazma kullanma
+
+URL yeniden yazma veya konak üstbilgi yeniden yazma 'yı yapılandırdığınızda, WAF değerlendirmesi istek üstbilgisinde veya URL parametrelerinde değiştirildikten sonra olur (yeniden yazma sonrası). Application Gateway URL yeniden yazma veya ana bilgisayar üst bilgisi yeniden yazma yapılandırmasını kaldırdığınızda,, üst bilgi yeniden yazma işleminden önce WAF değerlendirmesi yapılır (önceden yazma). Bu sıra, WAF kurallarının arka uç havuzunuz tarafından alınacak son isteğe uygulanmasını sağlar.
+
+Örneğin, üstbilgi için aşağıdaki üst bilgi yeniden yazma kuralına sahip olduğunu varsayalım `"Accept" : "text/html"` . üst bilgi değeri `"Accept"` öğesine eşitse `"text/html"` , değerini olarak yeniden yazın `"image/png"` .
+
+Burada, yalnızca üst bilgi yeniden yazma işlemi yapılandırıldığında WAF değerlendirmesi tarihinde yapılır `"Accept" : "text/html"` . Ancak URL yeniden yazma veya ana bilgisayar üst bilgisi yeniden yazma 'yı yapılandırdığınızda, WAF değerlendirmesi tarihinde yapılır `"Accept" : "image/png"` .
+
+>[!NOTE]
+> WAF Application Gateway CPU kullanımında küçük bir artışa neden olması beklenen URL yeniden yazma işlemleri beklenmektedir. WAF Application Gateway URL yeniden yazma kurallarını etkinleştirdikten sonra kısa bir süre boyunca [CPU kullanım ölçümünü](high-traffic-support.md) izlemeniz önerilir.
 
 ### <a name="common-scenarios-for-header-rewrite"></a>Üst bilgi yeniden yazma için genel senaryolar
 

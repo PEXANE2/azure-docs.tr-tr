@@ -181,6 +181,8 @@
           href: active-directory-data-storage-eu.md
         - name: Avustralya ve Yeni Zelanda müşterileri için kimlik verisi depolama
           href: active-directory-data-storage-australia-newzealand.md
+    - name: Frontline Worker yönetimi
+      href: frontline-worker-management.md
     - name: Azure AD İşlem başvurusu
       items:
         - name: Giriş

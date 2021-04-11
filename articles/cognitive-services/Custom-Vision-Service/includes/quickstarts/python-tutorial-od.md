@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/25/2020
-ms.openlocfilehash: 604af007e4549716edf8bac63b74351512b438a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a4ddee8262ddc8a573cf83715999f5c12cfd1dd
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102445441"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106113183"
 ---
 Python için Özel Görüntü İşleme istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve bir nesne algılama modeli oluşturmak için örnek kodu deneyin. Bir proje oluşturacak, Etiketler ekleyecek, projeyi eğtireceksiniz ve projenin tahmin uç nokta URL 'sini programlı bir şekilde test etmek üzere kullanacaksınız. Bu örneği kendi görüntü tanıma uygulamanızı oluşturmak için bir şablon olarak kullanın.
 
@@ -60,7 +60,7 @@ Kaynağınızın Azure uç noktası ve abonelik anahtarları için değişkenler
 
 
 > [!IMPORTANT]
-> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz özel görüntü işleme kaynakları başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtarlarınızın ve uç noktanın **kaynak yönetimi** altında kaynakların **anahtar ve uç nokta** sayfalarında bulabilirsiniz. Eğitim Kaynakları ' uç noktası ile birlikte hem eğitim ve tahmin Anahtarlarınızı almanız gerekir.
+> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz özel görüntü işleme kaynakları başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtarlarınızın ve uç noktanın **kaynak yönetimi** altında kaynakların **anahtar ve uç nokta** sayfalarında bulabilirsiniz. Eğitim kaynağınız için API uç noktasıyla birlikte hem eğitim hem de tahmin kaynaklarınızın anahtarlarını almanız gerekir.
 >
 > Tahmini kaynak KIMLIĞI değerini kaynağın **genel bakış** sekmesinde, **abonelik kimliği** olarak listelenmiş şekilde bulabilirsiniz.
 >

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/26/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: a794274248a12af97174dcc4e86bd4231e9d9dda
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0e1cfe0ae53d1e1b35c5ec29d6c11b0891137e6d
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727493"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074412"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure Dosya Eşitleme aracısı sürüm notları
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Windows Server yüklemeleriniz, Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürülür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
@@ -76,8 +76,8 @@ Aşağıdaki sürüm notları Azure Dosya Eşitleme aracısına ait sürüm 12.0
     - Azure dosya paylaşımında değiştirilen dosyaları algılamak için geliştirilmiş değişiklik algılama performansı.
     - Mutabakat eşitleme oturumları için performans iyileştirmeleri. 
     - ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED ve ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED hatalarını azaltmak için eşitleme iyileştirmeleri.
-    - Birimde yinelenen verileri kaldırma etkinse dosyalar sunucu 2019 katmanında başarısız olabilir.
-    - Bir dosya 2GiB 'den büyükse AFSDiag dosyaları sıkıştıramaz.
+    - Birimde yinelenen verileri kaldırma etkinleştirilmişse, dosyaların sunucu 2019 üzerinde katmana başarısız olmasına neden olabilecek bir hata düzeltildi.
+    - Bir dosya 2GiB 'den büyükse AFSDiag 'ın dosyaları sıkıştıramasına neden olabilecek bir hata düzeltildi.
 
 ### <a name="evaluation-tool"></a>Değerlendirme aracı
 Azure Dosya Eşitleme dağıtılmadan önce, Azure Dosya Eşitleme değerlendirme aracını kullanarak sisteminizle uyumlu olup olmadığını değerlendirmelisiniz. Bu araç, desteklenmeyen karakterler veya desteklenmeyen bir işletim sistemi sürümü gibi dosya sisteminizle ve veri kümesiyle ilgili olası sorunları denetleyen bir Azure PowerShell cmdlet 'i. Yükleme ve kullanım yönergeleri için, planlama kılavuzundaki [değerlendirme aracı](./storage-sync-files-planning.md#evaluation-cmdlet) bölümüne bakın. 

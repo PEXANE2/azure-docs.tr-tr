@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 03/30/2021
 ms.author: victorh
-ms.openlocfilehash: e955c6b760c06ce802dfae0193d34954eab99892
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 622fde49a31105b2f66a678d3e55d48fabea9487
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731097"
+ms.locfileid: "105966920"
 ---
 # <a name="what-are-security-partner-providers"></a>Güvenlik iş ortağı sağlayıcıları nedir?
 
@@ -44,7 +44,8 @@ Aşağıdaki senaryolar desteklenir:
    Azure Güvenlik Duvarı aracılığıyla bir güvenlik iş ortağı sağlayıcısı ve diğer trafik (bağlı ağa bağlı, bağlı bileşen, Dalla Şube) aracılığıyla VNet/dalı-Internet.
 - Hub 'da tek sağlayıcı
 
-   - Azure Güvenlik Duvarı tarafından güvenli hale getirilen tüm trafik (bağlı bileşen, bağlı bileşen, şube ve sanal ağ, sanal ağ, VNet-Internet)
+   - Azure Güvenlik Duvarı tarafından güvenli hale getirilen tüm trafik (bağlı bileşen, bağlı bileşen, şube ve sanal ağ, sanal ağ, VNet-Internet)<br>
+      veya
    - Güvenlik iş ortağı sağlayıcısı aracılığıyla VNet/şube-Internet
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Güvenli sanal hub 'larda Internet trafiği Filtreleme için en iyi uygulamalar

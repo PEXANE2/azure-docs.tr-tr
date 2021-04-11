@@ -15,16 +15,16 @@ ms.custom: mvc
 ms.date: 04/05/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99db58e39377932608b1c78bac37003432aa4c04
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: c49ded056c642fa91331b7cc98d18da34d9c73a6
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106381914"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504370"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Azure kaynakları için Yönetilen kimlikler nelerdir?
 
-Geliştiriciler için yaygın bir zorluk, farklı hizmetler arasındaki iletişimin güvenliğini sağlamak için gizli dizileri ve kimlik bilgilerini yönetiledir. Azure 'da Yönetilen kimlikler, Azure AD 'de Azure kaynağı için bir kimlik sağlayarak ve Azure Active Directory (Azure AD) belirteçleri elde etmek üzere kullanarak kimlik bilgilerini yönetmek zorunda olan geliştiricilerin gereksinimini ortadan kaldırır. Bu Ayrıca, geliştiricilerin kimlik bilgilerini güvenli bir şekilde depolayabilecekleri [Azure Key Vault](../../key-vault/general/overview.md) erişilmesine de yardımcı olur. Azure kaynakları için Yönetilen kimlikler, Azure AD 'de otomatik olarak yönetilen bir kimlikle Azure hizmetleri sağlayarak bu sorunu çözer.
+Geliştiriciler için ortak bir zorluk, bir çözüm oluşturan farklı bileşenler arasındaki iletişimin güvenliğini sağlamak için kullanılan gizli dizi ve kimlik bilgilerinin Yönetisidir. Yönetilen kimlikler, geliştiricilerin kimlik bilgilerini yönetme gereksinimini ortadan kaldırır. Yönetilen kimlikler, uygulamalar için Azure Active Directory (Azure AD) kimlik doğrulamasını destekleyen kaynaklara bağlanırken kullanılacak bir kimlik sağlar. Uygulamalar, Azure AD belirteçlerini almak için yönetilen kimliği kullanabilir. Örneğin, bir uygulama, geliştiricilerin kimlik bilgilerini güvenli bir şekilde depolayabileceği veya depolama hesaplarına erişebileceği [Azure Key Vault](../../key-vault/general/overview.md) gibi kaynaklara erişmek için yönetilen bir kimlik kullanabilir.
 
 Yönetilen bir kimlik ne için kullanılabilir?
 
@@ -33,7 +33,7 @@ Yönetilen bir kimlik ne için kullanılabilir?
 Yönetilen kimlikler kullanmanın avantajlarından bazıları şunlardır:
 
 - Kimlik bilgilerini yönetmeniz gerekmez. Kimlik bilgilerine, sizin için de erişilebilir.
-- Kendi uygulamalarınız dahil Azure Active Directory kimlik doğrulamasını destekleyen herhangi bir kaynak için kimlik doğrulaması yapmak üzere yönetilen kimlikler ' i kullanabilirsiniz.
+- Kendi uygulamalarınız dahil [Azure Active Directory kimlik doğrulamasını](../authentication/overview-authentication.md) destekleyen herhangi bir kaynak için kimlik doğrulaması yapmak üzere yönetilen kimlikler ' i kullanabilirsiniz.
 - Yönetilen kimlikler herhangi bir ek maliyet olmadan kullanılabilir.
 
 > [!NOTE]
@@ -62,7 +62,7 @@ Aşağıdaki tabloda, iki tür yönetilen kimliğin arasındaki farklar gösteri
 
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikleri nasıl kullanabilirim?
 
-![bir geliştiricinin kimlik doğrulama bilgilerini yönetmeksizin koddan kaynaklara erişim sağlamak için yönetilen kimlikleri nasıl kullanabileceği hakkında bazı örnekler](media/overview/azure-managed-identities-examples.png)
+![bir geliştiricinin kimlik doğrulama bilgilerini yönetmeksizin koddan kaynaklara erişim sağlamak için yönetilen kimlikleri nasıl kullanabileceği hakkında bazı örnekler](media/overview/when-use-managed-identities.png)
 
 ## <a name="what-azure-services-support-the-feature"></a>Bu özelliği hangi Azure hizmetleri destekliyor?<a name="which-azure-services-support-managed-identity"></a>
 

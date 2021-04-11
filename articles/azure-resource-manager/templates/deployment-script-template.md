@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 03/30/2021
 ms.author: jgao
-ms.openlocfilehash: 9f4c21a4b7e58c4eed3a62ea844eb11ccf4ecb49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb5fc0b6b673f8a754d0d6bb6ff962697cd5f38b
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889391"
+ms.locfileid: "105967345"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>ARM şablonlarında dağıtım betikleri kullanma
 
@@ -139,8 +139,8 @@ Aşağıdaki JSON bir örnektir. Daha fazla bilgi için bkz. en son [şablon şe
 - `identity`: Dağıtım betiği API 'SI sürüm 2020-10-01 veya üzeri için, betikte herhangi bir Azure 'a özgü eylem gerçekleştirmeniz gerekmedikçe Kullanıcı tarafından atanan yönetilen kimlik isteğe bağlıdır.  API sürümü 2019-10-01-önizleme için dağıtım betiği hizmeti tarafından betikleri yürütmek üzere kullandığı için yönetilen bir kimlik gerekir. Şu anda yalnızca Kullanıcı tarafından atanan yönetilen kimlik desteklenir.
 - `kind`: Betiğin türünü belirtin. Şu anda, Azure PowerShell ve Azure CLı betikleri desteklenir. Değerler **AzurePowerShell** ve **azurecli**' dir.
 - `forceUpdateTag`: Bu değerin, şablon dağıtımları arasında değiştirilmesi dağıtım betiğini yeniden yürütmeye zorlar. `newGuid()`Veya `utcNow()` işlevlerini kullanırsanız, her iki işlev yalnızca bir parametre için varsayılan değerde kullanılabilir. Daha fazla bilgi için bkz. [betiği birden çok kez çalıştırma](#run-script-more-than-once).
-- `containerSettings`: Azure Container Instance 'ı özelleştirmek için ayarları belirtin.  `containerGroupName` kapsayıcı grubu adını belirtmektir. Belirtilmemişse, Grup adı otomatik olarak oluşturulur.
-- `storageAccountSettings`: Mevcut bir depolama hesabını kullanmak için ayarları belirtin. Belirtilmemişse, otomatik olarak bir depolama hesabı oluşturulur. Bkz. [var olan bir depolama hesabını kullanma](#use-existing-storage-account).
+- `containerSettings`: Azure Container Instance 'ı özelleştirmek için ayarları belirtin. Dağıtım betiği yeni bir Azure Container örneği gerektirir. Mevcut bir Azure Container Instance belirtemezsiniz. Ancak, kullanarak kapsayıcı grubu adını özelleştirebilirsiniz `containerGroupName` . Belirtilmemişse, Grup adı otomatik olarak oluşturulur.
+- `storageAccountSettings`: Mevcut bir depolama hesabını kullanmak için ayarları belirtin. `containerGroupName`Belirtilmemişse, otomatik olarak bir depolama hesabı oluşturulur. Bkz. [var olan bir depolama hesabını kullanma](#use-existing-storage-account).
 - `azPowerShellVersion`/`azCliVersion`: Kullanılacak modül sürümünü belirtin. [Desteklenen Azure PowerShell sürümlerinin](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)listesini görüntüleyin. [Desteklenen Azure CLI sürümlerinin](https://mcr.microsoft.com/v2/azure-cli/tags/list)listesini görüntüleyin.
 
   >[!IMPORTANT]

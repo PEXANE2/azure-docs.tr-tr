@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/28/2021
 ms.author: bwren
-ms.openlocfilehash: 64b794f4a749816af71f9c5f14dddf2bbcbc6512
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 975a3ea250307e445e9bf48abdc669f2b035038a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279621"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554051"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme    
 
@@ -494,7 +494,7 @@ Toplanan günlüklerin hacmini azaltmaya yönelik bazı öneriler şunlardır:
 | Syslog                     | [Syslog yapılandırmasını](../agents/data-sources-syslog.md) şu şekilde değiştirin: <br> - Toplanan tesislerin sayısını azaltın <br> - Yalnızca gerekli olay düzeylerini toplayın. Örneği *Bilgi* ve *Hata Ayıklama* düzeyindeki olayları toplamayın |
 | AzureDiagnostics           | [Kaynak günlük koleksiyonunu](../essentials/diagnostic-settings.md#create-in-azure-portal) Değiştir: <br> - Log Analytics’e günlük gönderen kaynak sayısını azaltma <br> - Yalnızca gerekli günlükleri toplama |
 | Çözüm ihtiyacı olmayan bilgisayarlardan toplanan çözüm verileri | Yalnızca gerekli bilgisayar gruplarından veri toplamak için [çözüm hedefleme](../insights/solution-targeting.md) kullanın. |
-| Application Insights | İçin seçenekleri gözden geçirin [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) |
+| Application Insights | [Application Insights veri hacmini yönetme](../app/pricing.md#managing-your-data-volume) seçeneklerini gözden geçirin |
 | [SQL Analytics](../insights/azure-sql.md) | Denetim ayarlarını ayarlamak için [set-AzSqlServerAudit](/powershell/module/az.sql/set-azsqlserveraudit) komutunu kullanın. |
 | Azure Sentinel | Daha önce ek veri hacmi kaynakları olarak etkinleştirdiğiniz [Sentinel veri kaynaklarını](../../sentinel/connect-data-sources.md) gözden geçirin. |
 

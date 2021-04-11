@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90b2a39b9a5f3b4d011ff1a1ef3651dff75a1cf6
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92485384"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968314"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda yedekleme ve geri yükleme-hiper ölçek (Citus)
 
@@ -58,7 +58,7 @@ Güvenlik Duvarı ayarları ve PostgreSQL sunucu parametreleri özgün sunucu gr
 Kurtarma mekanizmasından geri yükleme yapıldıktan sonra, kullanıcılarınızın ve uygulamalarınızın yedeklemesini ve çalışmasını sağlamak için aşağıdakileri yapmanız gerekir:
 
 * Yeni sunucu özgün sunucunun yerini alacak şekilde, istemcileri ve istemci uygulamalarını yeni sunucuya yeniden yönlendirin
-* Kullanıcıların bağlanabilmesi için uygun sunucu düzeyi güvenlik duvarı ve VNet kurallarının bulunduğundan emin olun. Bu kurallar özgün sunucu grubundan kopyalanmaz.
+* Kullanıcıların bağlanabilmesi için uygun sunucu düzeyi güvenlik duvarının bulunduğundan emin olun. Bu kurallar özgün sunucu grubundan kopyalanmaz.
 * PostgreSQL sunucu parametrelerini gereken şekilde ayarlayın. Parametreler, özgün sunucu grubundan kopyalanmaz.
 * Uygun oturum açma ve veritabanı düzeyi izinlerinin yerinde olduğundan emin olun
 * Uyarıları uygun şekilde yapılandırma

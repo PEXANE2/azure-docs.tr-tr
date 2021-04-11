@@ -1,5 +1,5 @@
 ---
-title: Öğretici-kiracınızı kullanarak doğrulanabilen kimlik bilgilerini verme ve doğrulama (Önizleme)
+title: Öğretici-Azure kiracınızı kullanarak doğrulanabilen kimlik bilgilerini verme ve doğrulama (Önizleme)
 description: Doğrulanabilir kimlik bilgisi kod örneğini Azure kiracınızla çalışacak şekilde değiştirin
 documentationCenter: ''
 author: barclayn
@@ -10,14 +10,14 @@ ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 95d3ab19565ed04d9bf7d59ba7262d40b4971d34
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: e4772b6701065a44416d849faa9a501bd7895f27
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106170352"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553388"
 ---
-# <a name="tutorial-issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>Öğretici: kiracınızı kullanarak doğrulanabilen kimlik bilgilerini verme ve doğrulama (Önizleme)
+# <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>Öğretici-kiracınızı kullanarak doğrulanabilen kimlik bilgilerini verme ve doğrulama (Önizleme)
 
 > [!IMPORTANT]
 > Azure Active Directory doğrulanabilir kimlik bilgileri şu anda genel önizlemede.
@@ -66,7 +66,7 @@ Azure AD 'de ' VC cüzdan uygulaması ' adlı bir uygulamayı kaydedin ve bir is
 
    ![veren uç noktaları](media/issue-verify-verifable-credentials-your-tenant/application-endpoints.png)
 
-## <a name="set-up-your-node-app-with-access-to-key-vault"></a>Key Vault erişimli düğüm uygulamanızı ayarlama
+## <a name="set-up-your-node-app-with-access-to-azure-key-vault"></a>Azure Key Vault erişimli düğüm uygulamanızı ayarlama
 
 Bir kullanıcının kimlik bilgisi verme isteğinin kimliğini doğrulamak için, veren Web sitesi şifreleme anahtarlarınızı Azure Key Vault kullanır. Azure Key Vault erişmek için, Web sitenizin Azure Key Vault kimlik doğrulamak üzere kullanılabilecek bir istemci KIMLIĞI ve istemci parolası olması gerekir.
 
@@ -183,7 +183,7 @@ Gerekli kod değişikliklerini yapabilmek için birkaç değeri bir araya koyuyo
 
    ![oturum açma anahtarı tanımlayıcısı](media/issue-verify-verifable-credentials-your-tenant/issuer-signing-key-ion.png)
 
-### <a name="did-document"></a>Belge belgesi 
+### <a name="did-document"></a>Belge belgesi
 
 1. [DıF on ağ Gezginini](https://identity.foundation/ion/explorer/) açın
 
@@ -308,7 +308,7 @@ Azure AD 'nizden gelen Taleplerimizden doğrulanabilir kimlik bilgilerini verdi�
     
    ![Yeni izin isteği](media/enable-your-tenant-verifiable-credentials/new-permission-request.png)
 
-8. Kimlik bilgilerinizi başarıyla doğrulamadı ve Web sitesi, Azure AD 'nin Kullanıcı hesabındaki adı ve soyadınızı görüntülemelidir. 
+8. Kimlik bilgilerinizi başarıyla doğruladınız ve Web sitesi Azure AD 'nin Kullanıcı hesabındaki adı ve soyadınızı görüntülemelidir. 
 
 Artık öğreticiyi tamamladınız ve resmi olarak doğrulanmış bir kimlik bilgisi uzmanı! Örnek uygulamanız, Azure AD 'nizden doğrulanabilen bir kimlik bilgisine talepler yazarken hem verme hem de doğrulama için yaptığınız işlemi kullanıyor. 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 7aeca89ed09182b7947b10f24c65b0cb58ed67ea
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6d691c4c510f5ff00c34d03b7b8d7a7bcaa53c3f
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452144"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554102"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault geçici silmeye genel bakış
 
@@ -20,7 +20,7 @@ ms.locfileid: "102452144"
 > Anahtar kasalarınızda geçici silme özelliğini hemen etkinleştirmeniz gerekir. Geçici silme işlemini devre dışı bırakma özelliği yakında kullanım dışı bırakılacak. Tam ayrıntıları [burada](soft-delete-change.md) görebilirsiniz
 
 > [!IMPORTANT]
-> Geçici olarak silinen kasa Tetikleyicileri, Key Vault hizmetleriyle tümleştirilmiş ayarları siler, örneğin Azure RBAC rol atamaları, Event Grid abonelikleri, Azure Izleyici Tanılama ayarları. Tümleşik hizmetler için geçici olarak silinen Key Vault ayarlarının kurtarmasının ardından el ile yeniden oluşturulması gerekir. 
+> Geçici olarak silinen kasa Tetikleyicileri, Key Vault hizmetleriyle tümleştirilmiş ayarları siler, örneğin Azure RBAC rol atamaları, Event Grid abonelikleri. Tümleşik hizmetler için geçici olarak silinen Key Vault ayarlarının kurtarmasının ardından el ile yeniden oluşturulması gerekir. 
 
 Key Vault geçici silme özelliği, geçici silme olarak bilinen silinmiş kasaların ve silinen Anahtar Kasası nesnelerinin kurtarılmasına olanak tanır (örneğin, anahtarlar, gizlilikler, sertifikalar). Özellikle, aşağıdaki senaryolara adresliyoruz: Bu koruma aşağıdaki korumaların sunulmasını sağlar:
 

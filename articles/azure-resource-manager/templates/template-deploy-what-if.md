@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: 76469f8b74b119c07374232899302fe1d18fe463
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ff024ff97baa8a80ae6b1fcdafba010e482afd98
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731471"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074633"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM şablonu dağıtımı what-if işlemi
 
@@ -32,7 +32,7 @@ Modül yükleme hakkında daha fazla bilgi için bkz. [yükleme Azure PowerShell
 
 ## <a name="install-azure-cli-module"></a>Azure CLı modülünü yükler
 
-Azure CLI'de what-if komutunu kullanmak için Azure CLI'nin en az 2.5.0 sürümüne sahip olmanız gerekir. Gerekirse [Azure CLI'nin en son sürümünü yükleyin](/cli/azure/install-azure-cli).
+Azure CLı 'de ne olduğunu kullanmak için Azure CLı 2.14.0 veya sonraki bir sürüme sahip olmanız gerekir. Gerekirse [Azure CLI'nin en son sürümünü yükleyin](/cli/azure/install-azure-cli).
 
 ## <a name="see-results"></a>Sonuçlara bakın
 
@@ -117,10 +117,10 @@ Sonuçları renkler olmadan döndürmek istiyorsanız, [Azure CLI yapılandırma
 
 REST API için şunu kullanın:
 
-* [Dağıtımlar-](/rest/api/resources/resources/deployments/whatif) kaynak grubu dağıtımları için What If
-* [Dağıtımlar-abonelik dağıtımları Için Abonelik kapsamında What If](/rest/api/resources/resources/deployments/whatifatsubscriptionscope)
-* Dağıtımlar-yönetim grubu dağıtımları için [Yönetim grubu kapsamındaki What If](/rest/api/resources/resources/deployments/whatifatmanagementgroupscope)
-* [Dağıtımlar-](/rest/api/resources/resources/deployments/whatifattenantscope) kiracı dağıtımlarında kiracı kapsamındaki What If.
+* [Dağıtımlar-](/rest/api/resources/deployments/whatif) kaynak grubu dağıtımları için What If
+* [Dağıtımlar-abonelik dağıtımları Için Abonelik kapsamında What If](/rest/api/resources/deployments/whatifatsubscriptionscope)
+* Dağıtımlar-yönetim grubu dağıtımları için [Yönetim grubu kapsamındaki What If](/rest/api/resources/deployments/whatifatmanagementgroupscope)
+* [Dağıtımlar-](/rest/api/resources/deployments/whatifattenantscope) kiracı dağıtımlarında kiracı kapsamındaki What If.
 
 ## <a name="change-types"></a>Değişiklik türleri
 

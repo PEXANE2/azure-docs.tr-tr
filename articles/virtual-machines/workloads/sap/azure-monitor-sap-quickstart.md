@@ -6,12 +6,12 @@ ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.date: 08/17/2020
-ms.openlocfilehash: d9febb4efba85d47abe1cc11a3cb52dc0393c036
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 02c0801aa0425db96a1e6f71f248c795e81b5ddf
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101672007"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554068"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Azure portal ile SAP Çözümleri için Azure Izleyici dağıtma
 
@@ -81,12 +81,23 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 1. Açılan listeden OS (Linux) seçeneğini belirleyin 
 
-> [!IMPORTANT]
-> İşletim sistemi (Linux) sağlayıcısını yapılandırmak için, Node_Exporter her bir BareMetal örneğine yüklendiğinden emin olun. Daha fazla bilgi için bkz. [Node_Exporter](https://github.com/prometheus/node_exporter)
+>[!IMPORTANT]
+> İşletim sistemi (Linux) sağlayıcısını yapılandırmak için, izlemek istediğiniz her konakta (BareMetal veya VM) Node_Exporter 'nin en son sürümünün yüklü olduğundan emin olun. Bu [bağlantı] ( https://prometheus.io/download/#node_exporter) en son sürümü bulmak için) kullanın. Daha fazla bilgi için bkz. [Node_Exporter](https://github.com/prometheus/node_exporter)
 
 2. BareMetal örneği için tanımlayıcı olacak bir ad girin.
 3. Düğüm verme uç noktasını biçiminde girin http://IP:9100/metrics .
-4. İşiniz bittiğinde **Sağlayıcı Ekle**' yi seçin. Gerektiğinde daha fazla sağlayıcı eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur**' u seçin   . 
+
+>[!IMPORTANT]
+> Lütfen Linux konağının özel IP adresini kullanın. Lütfen konağın ve AMS kaynağının aynı VNET 'te olduğundan emin olun. 
+
+>[!Note]
+> "9100" güvenlik duvarı bağlantı noktası Linux ana bilgisayarında açılmalıdır.
+>Güvenlik duvarı kullanıyorsanız-cmd: Firewall-cmd--kalıcı--Add-Port = 9100/TCP Firewall-cmd--yeniden yükle: UW, 9100/TCP UW yeniden yüklemesine izin ver
+
+>[!Tip]
+> Linux ana bilgisayarı bir Azure sanal makinesi ise, lütfen tüm geçerli NSG bağlantı noktası 9100 ' de kaynak olarak "VirtualNetwork" adresinden gelen trafiğe izin verildiğinden emin olun.
+ 
+5. İşiniz bittiğinde **Sağlayıcı Ekle**' yi seçin. Gerektiğinde daha fazla sağlayıcı eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur**' u seçin   . 
 
 
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server sağlayıcı

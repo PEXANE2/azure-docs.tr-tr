@@ -12,12 +12,12 @@ ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7269a2435715834a2c1e6723de3fdc6e72eaad5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c26c56940e95fe32b709aa01fbaa9e567e797197
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955457"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074548"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -57,8 +57,18 @@ Bununla birlikte, tüm en son özellikleri ve güncelleştirmeleri beğenmezseni
 >
 >Kullanımdan kaldırılan sürümlerde sürüm geçmişi bilgileri için bkz. [Azure AD Connect sürüm sürümü geçmişi Arşivi](reference-connect-version-history-archive.md)
 
+## <a name="1640"></a>1.6.4.0
+
+### <a name="release-status"></a>Yayın durumu
+3/31/2021: yalnızca indirme için yayınlandı, otomatik yükseltme için kullanılamaz
+
+### <a name="bug-fixes"></a>Hata düzeltmeleri
+- Bu sürüm, sürüm 1.6.2.4 ' deki bir hatayı düzeltir, bu yayına yükselttikten sonra Azure AD Connect Health özelliği doğru şekilde kaydedilmemiş ve çalışmadı. Derleme 1.6.2.4 dağıtan müşteriler, Azure AD Connect sunucusunu bu derleme ile güncelleştirmek istiyor ve bu durum, sistem durumu özelliğini doğru olarak kaydeder. 
 
 ## <a name="1624"></a>1.6.2.4
+>[!IMPORTANT]
+> Güncelleştirme 30 Mart 2021: Bu derlemede bir sorun keşfettik. Bu derlemeyi yükledikten sonra, sistem sağlığı hizmetleri kayıtlı değildir. Bu derlemeyi yüklememenizi öneririz. Kısa süre içinde bir düzeltme yayımlayacaktır.
+> Bu derlemeyi zaten yüklediyseniz, [Bu makalede](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#manually-register-azure-ad-connect-health-for-sync) gösterildiği gibi cmdlet 'Ini kullanarak sistem sağlığı hizmetlerini el ile kaydedebilirsiniz.
 
 >[!NOTE]
 > - Bu sürüm yalnızca indirileceği için kullanılabilir hale getirilir.
@@ -66,7 +76,7 @@ Bununla birlikte, tüm en son özellikleri ve güncelleştirmeleri beğenmezseni
 > - Bu sürüm, AADConnect sunucusunu yeni v2 uç noktasına varsayılan olarak alır. Bu uç noktasının, Almanya Ulusal bulutu, Çince Ulusal bulut ve ABD kamu bulutu 'nda desteklenmediğini ve bu sürümü bu bulutlarda dağıtmanız gerekiyorsa, v1 uç noktasına dönmek için [Bu yönergeleri](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2#rollback) izlemeniz gerekir. Bunun yapılmaması eşitlemede hatalara neden olur.
 
 ### <a name="release-status"></a>Yayın durumu
-3/19/2021: indirilmek üzere yayınlandı
+3/19/2021: karşıdan yüklenmek üzere yayınlandı, otomatik yükseltme için kullanılamaz
 
 ### <a name="functional-changes"></a>İşlevsel değişiklikler
 

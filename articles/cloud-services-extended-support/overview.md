@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: ecf115b7ce902fcd8b50f0eca32ffda6ef47e068
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc470d12377f50f9f9ae4b362bcabf3a5ce34e8f
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102618483"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169292"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Azure Cloud Services hakkında (genişletilmiş destek)
 
@@ -48,12 +48,9 @@ Dağıtıma göre Cloud Services (klasik) ve Cloud Services (genişletilmiş des
 - [Azure Resource Manager](../azure-resource-manager/templates/overview.md) aracılığıyla dağıtılan tüm kaynaklar bir sanal ağ içinde olmalıdır. Sanal ağlar ve alt ağlar, mevcut Azure Resource Manager API 'Leri kullanılarak Azure Resource Manager oluşturulur ve Cloud Services dağıtımında. cscfg öğesinin NetworkConfiguration bölümünde başvurulmalıdır (genişletilmiş destek).   
 
 - Her bulut hizmeti (genişletilmiş destek), tek bir bağımsız dağıtımdır. Cloud Services (genişletilmiş destek), tek bir bulut hizmeti içinde birden çok yuvası desteklemez.  
-    - VIP takas <sup>*</sup> özelliği, iki bulut hizmeti arasında takas için kullanılabilir (genişletilmiş destek). Bir bulut hizmetinin yeni bir sürümünü test etmek ve hazırlamak için bir bulut hizmeti dağıtın (genişletilmiş destek) ve başka bir bulut hizmeti ile VIP swapolarak etiketleyin (genişletilmiş destek)  
+    - VIP takas özelliği, iki bulut hizmeti arasında takas için kullanılabilir (genişletilmiş destek). Bir bulut hizmetinin yeni bir sürümünü test etmek ve hazırlamak için bir bulut hizmeti dağıtın (genişletilmiş destek) ve başka bir bulut hizmeti ile VIP swapolarak etiketleyin (genişletilmiş destek)  
 
 - Etki alanı adı hizmeti (DNS) etiketi bir bulut hizmeti (genişletilmiş destek) için isteğe bağlıdır. Azure Resource Manager, DNS etiketi, bulut hizmetiyle ilişkili genel IP kaynağının bir özelliğidir. 
-
-
-<sup>*</sup> Cloud Services için VIP takas (genişletilmiş destek) genel önizleme sırasında kullanılamaz.  
 
 ## <a name="migration-to-azure-resource-manager"></a>Azure Resource Manager geçiş
 
