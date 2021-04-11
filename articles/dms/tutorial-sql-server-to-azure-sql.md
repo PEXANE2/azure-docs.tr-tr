@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 9c3fa0d8ac4540495e8580fd208507a2c1aaa7ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7bf4ea4beabf9abcc007c101ca5acf79ec919c4e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180793"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732406"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-using-dms"></a>Öğretici: DMS kullanarak Azure SQL veritabanı 'na SQL Server geçirme
 
@@ -245,6 +245,9 @@ Azure SQL veritabanı 'na geçirmek istediğiniz tüm veritabanlarını veya bel
 1. **Hedef Seç** ekranında, Azure SQL veritabanınıza kimlik doğrulama ayarları sağlayın. 
 
    ![Hedef seçin](media/tutorial-sql-server-to-azure-sql/select-target.png)
+   
+   > [!NOTE]
+   > Şu anda, SQL kimlik doğrulaması desteklenen tek kimlik doğrulama türüdür.
 
 1. Ileri ' yi seçin **: hedef veritabanlarına eşle** ekranı, kaynak ve hedef veritabanını geçiş için eşleyin.
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 13ead70f278f12866dbe00b53c487aebcc43304f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 40094c00a4b896756c5c0e51116e0ae33ae2a096
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742645"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580738"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -29,13 +29,14 @@ Bu bölüm Azure Key Vault güvenlik duvarının yapılandırılabilme farklı y
 
 ### <a name="key-vault-firewall-disabled-default"></a>Key Vault güvenlik duvarı devre dışı (varsayılan)
 
-Varsayılan olarak, yeni bir Anahtar Kasası oluşturduğunuzda Azure Key Vault güvenlik duvarı devre dışı bırakılır. Tüm uygulamalar ve Azure hizmetleri anahtar kasasına erişebilir ve istekleri anahtar kasasına gönderebilir. Bu yapılandırma, herhangi bir kullanıcının anahtar kasasında işlem gerçekleştirebileceği anlamına gelmez. Anahtar Kasası hala Azure Active Directory kimlik doğrulaması ve erişim ilkesi izinleri gerektirerek Anahtar Kasası 'nda depolanan gizli dizileri, anahtarları ve sertifikaları kısıtlar. Anahtar Kasası kimlik doğrulamasını daha ayrıntılı olarak anlamak için, [burada](./authentication-fundamentals.md)Anahtar Kasası kimlik doğrulaması temelleri belgesine bakın.
+Varsayılan olarak, yeni bir Anahtar Kasası oluşturduğunuzda Azure Key Vault güvenlik duvarı devre dışı bırakılır. Tüm uygulamalar ve Azure hizmetleri anahtar kasasına erişebilir ve istekleri anahtar kasasına gönderebilir. Bu yapılandırma, herhangi bir kullanıcının anahtar kasasında işlem gerçekleştirebileceği anlamına gelmez. Anahtar Kasası hala Azure Active Directory kimlik doğrulaması ve erişim ilkesi izinleri gerektirerek Anahtar Kasası 'nda depolanan gizli dizileri, anahtarları ve sertifikaları kısıtlar. Anahtar Kasası kimlik doğrulamasını daha ayrıntılı olarak anlamak için, [burada](./authentication-fundamentals.md)Anahtar Kasası kimlik doğrulaması temelleri belgesine bakın. Daha fazla bilgi için bkz. [erişim Azure Key Vault bir güvenlik duvarı arkasında](./access-behind-firewall.md).
 
 ### <a name="key-vault-firewall-enabled-trusted-services-only"></a>Key Vault Güvenlik Duvarı etkin (yalnızca güvenilir hizmetler)
 
-Key Vault güvenlik duvarını etkinleştirdiğinizde, ' güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına Izin ver ' seçeneği sunulur. Güvenilen hizmetler listesi, her bir Azure hizmetini kapsamaz. Örneğin, Azure DevOps güvenilir Hizmetler listesinde değildir. **Bu, güvenilir Hizmetler listesinde görünmeyen hizmetlerin güvenilir veya güvenli olmayan olduğunu göstermez.** Güvenilen hizmetler listesi, Microsoft 'un hizmette çalışan tüm kodu denetlediği hizmetleri kapsar. Kullanıcılar Azure DevOps gibi Azure hizmetlerinde özel kod yazabileceği için, Microsoft bu hizmet için bir paket onayı oluşturma seçeneği sağlamaz. Ayrıca, bir hizmet Güvenilen hizmet listesinde göründüğünden, tüm senaryolarda izin verilmediği anlamına gelmez.
+Key Vault güvenlik duvarını etkinleştirdiğinizde, ' güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına Izin ver ' seçeneği sunulur. Güvenilen hizmetler listesi, her bir Azure hizmetini kapsamaz. Örneğin, Azure DevOps güvenilir Hizmetler listesinde değildir. **Bu, güvenilir Hizmetler listesinde görünmeyen hizmetlerin güvenilir veya güvenli olmayan olduğunu göstermez.** Güvenilen hizmetler listesi, Microsoft 'un hizmette çalışan tüm kodu denetlediği hizmetleri kapsar. Kullanıcılar Azure DevOps gibi Azure hizmetlerinde özel kod yazabileceği için, Microsoft bu hizmet için bir paket onayı oluşturma seçeneği sağlamaz. Ayrıca, bir hizmet Güvenilen hizmet listesinde göründüğünden, tüm senaryolarda izin verilmediği anlamına gelmez. 
 
 Kullanmaya çalıştığınız bir hizmetin güvenilir hizmet listesinde olup olmadığını öğrenmek için lütfen [aşağıdaki belgeye bakın](./overview-vnet-service-endpoints.md#trusted-services).
+Nasıl yapılır Kılavuzu için [Portal, Azure CLI ve PowerShell](https://docs.microsoft.com/azure/key-vault/general/network-security#use-the-azure-portal) için buradaki yönergeleri izleyin
 
 ### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>Key Vault Güvenlik Duvarı etkin (IPv4 adresleri ve aralıkları-statik IP 'Ler)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 648003c042d4c8118af566a6c985d2fd6e26b04e
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 62723f5c833ca89618a6d9e0781539a13efba4f3
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105563047"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959679"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>3. adım-v3 REST API veya istemci SDK 'sına geçirilecek şekilde ayarlama
 
@@ -45,7 +45,7 @@ Daha önce ARM yönetim API 'sinin 2015-10-01 sürümünü kullanan müşteriler
 
 Azure portal kullanarak [ortamınızı ayarlamaya](how-to-set-azure-subscription.md?tabs=portal) yönelik hızlı başlangıç adımlarını izleyin. Bu test hesabıyla kullanılmak üzere yeni bir Azure AD uygulama KIMLIĞI ve gizli dizileri oluşturmak için API erişimi ve hizmet sorumlusu kimlik doğrulaması ' nı seçin.
 
-[Bir Media Services hesabı oluşturun](create-account-howto.md?tabs=portal).
+[Bir Media Services hesabı oluşturun](account-create-how-to.md?tabs=portal).
 [MEDIA SERVICES API 'sine erişmek için kimlik bilgilerini alın](access-api-howto.md?tabs=portal).
 
 ## <a name="download-client-sdk-of-your-choice-and-set-up-your-environment"></a>İstediğiniz istemci SDK 'sını indirin ve ortamınızı ayarlayın
