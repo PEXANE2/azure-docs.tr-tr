@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 24dafd63de1a37140c6a56547c4701729df1c8fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ae15503e8f12f7ba70aa5a9d306306fa79745f9
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566563"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220394"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Azure CLI kullanarak TSL sonlandırma ile bir uygulama ağ geçidi oluşturma
 
-[TLS sonlandırmasına](ssl-overview.md)yönelik bir sertifika ile [uygulama ağ geçidi](overview.md) oluşturmak için Azure CLI 'yı kullanabilirsiniz. Arka uç sunucuları için bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/overview.md) kullanabilirsiniz. Bu örnekte örnek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenen iki sanal makine örneğini içerir.
+[TLS sonlandırmasına](ssl-overview.md)yönelik bir sertifika ile [uygulama ağ geçidi](overview.md) oluşturmak için Azure CLI 'yı kullanabilirsiniz. Arka uç sunucuları için bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/overview.md)kullanabilirsiniz. Bu örnekte örnek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenen iki sanal makine örneğini içerir.
 
 Bu makalede şunları öğreneceksiniz:
 

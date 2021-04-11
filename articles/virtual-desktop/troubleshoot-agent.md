@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: b47a205cac1717dfc66594f856fd9370a01a9ae3
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 2f321413a275676d0abb1a075ba958885ffcd821
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168221"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505034"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Yaygın Windows sanal masaüstü Aracısı sorunlarını giderme
 
@@ -216,7 +216,7 @@ Bu sorunu çözmek için:
 
 ## <a name="error-heartbeat-issue-where-users-keep-getting-disconnected-from-session-hosts"></a>Hata: kullanıcıların oturum konaklarından bağlantısı kesilme tutmasına neden olan sinyal sorunu
 
-Sunucunuz Windows sanal masaüstü hizmetinden bir sinyal çekmezse sinyal eşiğini değiştirmeniz gerekir. Aşağıdaki senaryolardan biri veya daha fazlası size uygunsa, bu bölümdeki yönergeleri izleyin:
+Sunucunuz Windows sanal masaüstü hizmetinden bir sinyal çekmezse sinyal eşiğini değiştirmeniz gerekir. Bu işlem, sorun belirtilerini geçici olarak azaltır, ancak temel ağ sorununu çözmeyecektir. Aşağıdaki senaryolardan biri veya daha fazlası size uygunsa, bu bölümdeki yönergeleri izleyin:
 
 - Bir **CheckSessionHostDomainIsReachableAsync** hatası alıyorsunuz
 - Bir **ConnectionBrokenMissedHeartbeatThresholdExceeded** hatası alıyorsunuz
@@ -316,7 +316,7 @@ Bu sorunu çözmek için:
 
 Sorununuzu Bu makalede bulamazsanız veya yönergeler size yardımcı olmadıysa, Windows sanal masaüstü aracısını kaldırmanızı, yeniden yüklemenizi ve yeniden kaydetmenizi öneririz. Bu bölümdeki yönergeler, tüm aracı, önyükleme yükleyicisi ve yığın bileşenlerini kaldırarak, konak havuzundan oturum konağını kaldırarak, sanal makine için yeni bir kayıt anahtarı oluşturarak ve aracıyı ve önyükleme yükleyicisini yeniden yükleyerek VM 'nizi Windows sanal masaüstü hizmetine nasıl yeniden kaydetmeniz gerektiğini gösterir. Aşağıdaki senaryolardan biri veya daha fazlası sizin için geçerlidir, şu yönergeleri izleyin:
 - VM 'niz **yükseltme** veya **kullanılamaz duruma** takılmış
-- Yığın dinleyiciniz çalışmıyor ve Windows 10 1809, 1903 veya 1904 üzerinde çalışıyor
+- Yığın dinleyiciniz çalışmıyor ve Windows 10 1809, 1903 veya 1909 üzerinde çalışıyor
 - **EXPIRED_REGISTRATION_TOKEN** hatası alıyorsunuz
 - Sanal makinelerinizin oturum Konakları listesinde görünür olduğunu görmüyorsunuz
 - Hizmetler penceresinde **Uzak Masaüstü Aracısı yükleyicisini** görmezsiniz

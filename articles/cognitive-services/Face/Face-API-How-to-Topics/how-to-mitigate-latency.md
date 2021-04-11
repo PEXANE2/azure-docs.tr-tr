@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: 2c771509de5ac246bac0d8e006a5d0b884a410b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 412105e3262a3baf8780bd3bd1082508967ea486
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101706818"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012593"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>Nasıl yapılır: yüz hizmetini kullanırken gecikme süresini azaltma
 
@@ -86,6 +86,7 @@ Bilgisayarınızın yüz hizmetine yavaş bağlantısı varsa, hizmet yöntemler
 Karşı
 - Yüz aboneliğinizi oluştururken, uygulamanızın barındırıldığı konuma en yakın bölgeyi seçtiğinizden emin olun.
 - Birden çok hizmet yöntemini çağırmanız gerekiyorsa, uygulama tasarımınız için izin veriyorsa bunları paralel olarak çağırmayı göz önünde bulundurun. Bir örnek için önceki bölüme bakın.
+- Kullanıcı deneyimini daha uzun süre gecikmediğinde, API çağrısını yeniden denemeden önce bir zaman aşımı eşiği (örn. en fazla 5s) seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

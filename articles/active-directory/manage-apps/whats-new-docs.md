@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory uygulama yönetiminde yenilikler
 description: Azure Active Directory Uygulama yönetimi için yeni ve güncelleştirilmiş belgeler.
-ms.date: 03/08/2021
+ms.date: 04/04/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,45 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: 5b645efe2bbaadeca31b4a0a3b957ff53f5ed3aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81898875af85becf1766f02a5b7e077cb388a173
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775520"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450047"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Uygulama yönetimi Azure Active Directory: yenilikler
 
 Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş geldiniz. Bu makalede, eklenen ve son üç ay içinde önemli güncelleştirmeleri olan yeni belgeler listelenir. Uygulama yönetimi hizmeti yenilikleri hakkında bilgi edinmek için bkz. [Azure Active Directory](../fundamentals/whats-new.md)yenilikleri.
+
+## <a name="march-2021"></a>Mart 2021
+
+### <a name="new-articles"></a>Yeni makaleler
+
+- [Azure Active Directory (Azure AD) uygulama yönetimi sertifikaları hakkında sık sorulan sorular](application-management-certs-faq.md)
+- [Uygulama yönetimi için PowerShell örnekleri Azure Active Directory](app-management-powershell-samples.md)
+- [Giriş bölgesi bulma ilkesiyle Kullanıcı oturumu sırasında bir federe ıDP 'ye otomatik hızlandırmayı devre dışı bırak](prevent-domain-hints-with-home-realm-discovery.md)
+
+### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+
+- [Azure Active Directory Apps yapılandırması 'nı planla](my-apps-deployment-plan.md)
+- [Azure Active Directory uygulamalar ile tümleştirme kılavuzunu kullanmaya başlama](plan-an-application-integration.md)
+- [SharePoint ile tümleştirme (SAML)](application-proxy-integrate-with-sharepoint-server-saml.md)
+- [Uygulama kimlik doğrulamasını Azure Active Directory geçir](migrate-application-authentication-to-azure-active-directory.md)
+- [Uygulamaları Azure AD 'ye geçirmek için AD FS uygulama etkinliği raporunu kullanın](migrate-adfs-application-activity.md)
+- [Çoklu oturum açma dağıtımını planlama](plan-sso-deployment.md)
+- [Uygulama yönetimi için PowerShell örnekleri Azure Active Directory](app-management-powershell-samples.md)
+- [Uygulama Ara Sunucusu için Kerberos kısıtlanmış temsil yapılandırmalarının sorunlarını giderme ](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+- [Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için SAML tabanlı çoklu oturum açma (SSO) ayarlama](add-application-portal-setup-sso.md)
+- [Uygulama yönetimi Azure Active Directory: yenilikler](whats-new-docs.md)
+- [Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular](application-proxy-faq.md)
+- [Azure AD uygulamalarımın bir uygulamada oturum açma sorunlarını giderme](application-sign-in-other-problem-access-panel.md)
+- [Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md)
+- [Trafik akışını Azure Active Directory Uygulama Ara Sunucusu iyileştirin](application-proxy-network-topology.md)
+- [Azure AD Uygulama Ara Sunucusu: sürüm sürümü geçmişi](application-proxy-release-version-history.md)
+- [Giriş bölgesi bulma ilkesi kullanarak bir uygulama için Azure Active Directory oturum açma davranışı yapılandırma](configure-authentication-for-federated-users-portal.md)
+- [Uygulama kimlik doğrulamasını Active Directory Federasyon Hizmetleri’nden Azure Active Directory’ye taşıma](migrate-adfs-apps-to-azure.md)
+
 
 ## <a name="february-2021"></a>Şubat 2021
 

@@ -25,6 +25,8 @@
   items:
     - name: Güvenlik
       items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
         - name: Microsoft 365’i şirket içi saldırılardan koruma
           href: protect-m365-from-on-premises-attacks.md
         - name: Dış işbirliğini güvenli hale getirme

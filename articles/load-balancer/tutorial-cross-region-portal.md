@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: c16123fae63b89eff57b5c91864d9a947e01b386
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65d85f51afef36aa618868e2fda1d2bbf583ea21
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104576926"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221135"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak bir çapraz bölge Azure Load Balancer oluşturma
 
@@ -105,34 +105,6 @@ Bölgesel standart yük dengeleyicileri dahil etmek için **Mybackendpool-CR** a
 8. **Add (Ekle)** seçeneğini belirleyin.
 
     :::image type="content" source="./media/tutorial-cross-region-portal/add-to-backendpool.png" alt-text="Backendpool 'a bölgesel yük dengeleyiciler ekleme" border="true":::
-
-## <a name="create-a-health-probe"></a>Durum araştırması oluşturma
-
-Bu bölümde, Yük Dengeleme kuralını oluşturmak için bir sistem durumu araştırması oluşturacaksınız:
-
-* Adlandırılmış **Myhealtharaştırma**.
-* Protokol **TCP**.
-* **5** saniyelik Aralık.
-* **İki** hatalardan oluşan sağlıksız eşik.
-
-1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynak LISTESINDEN **myloadbalancer-CR** ' yi seçin.
-
-2. **Ayarlar**’ın altında **Durum yoklamaları**’nı seçin.
-
-3. Sistem durumu araştırmasını yapılandırmak için bu değerleri kullanın:
-
-    | Ayar | Değer |
-    | ------- | ----- |
-    | Ad | **Myhealtharaştırması** girin. |
-    | Protokol | **TCP**’yi seçin. |
-    | Bağlantı noktası | **80** girin. |
-    | Aralık | **5** girin. |
-    | İyi durumda olmayan durum eşiği | **2** girin. |
-
-4. **Tamam**’ı seçin.
-
-    > [!NOTE]
-    > Çapraz bölge yük dengeleyicide yerleşik bir sistem durumu araştırması vardır. Bu araştırma, Yük Dengeleme kuralı oluşturma işlevinin çalışması için bir yer tutucudur.  Daha fazla bilgi için bkz. **[bölgeler arası yük dengeleyicinin sınırlamaları](cross-region-overview.md#limitations)**.
 
 ## <a name="create-a-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
 

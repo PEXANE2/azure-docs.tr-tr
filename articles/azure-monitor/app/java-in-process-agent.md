@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: b695df29b7a4704ee9e4e25e402fa0de8f2b7685
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dc6eaaec334e7373f1a673bd1513ef05b761fee6
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103008221"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450030"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights
 
@@ -34,11 +34,11 @@ Uygulamanız için hala özel telemetri gönderebilirsiniz. 3,0 Aracısı, otoma
 >
 > JSON yapısı tamamen değiştiği için tüm [yapılandırma seçeneklerini](./java-standalone-config.md) dikkatle gözden geçirin. Bu, tüm küçük harfleri gösteren dosya adının tümüne ek olarak.
 
-[Applicationinsights-Agent-3.0.2. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.2/applicationinsights-agent-3.0.2.jar) dosyasını indirin
+[Applicationinsights-Agent-3.0.3. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.3/applicationinsights-agent-3.0.3.jar) dosyasını indirin
 
 **2. JVM 'yi aracıya işaret edin**
 
-`-javaagent:path/to/applicationinsights-agent-3.0.2.jar`Uygulamanızın JVM bağımsız değişkenlerini ekleyin
+`-javaagent:path/to/applicationinsights-agent-3.0.3.jar`Uygulamanızın JVM bağımsız değişkenlerini ekleyin
 
 Tipik JVM bağımsız değişkenleri `-Xmx512m` ve içerir `-XX:+UseG1GC` . Bu nedenle, bunların nereye ekleneceğini biliyorsanız, bunun nereye ekleneceğini zaten öğrenmiş olursunuz.
 
@@ -54,7 +54,7 @@ Bir ortam değişkenini ayarlayarak aracıyı Application Insights kaynağına g
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-Ya da adlı bir yapılandırma dosyası oluşturup, ile `applicationinsights.json` aynı dizine yerleştirilerek `applicationinsights-agent-3.0.2.jar` aşağıdaki içerikle birlikte:
+Ya da adlı bir yapılandırma dosyası oluşturup, ile `applicationinsights.json` aynı dizine yerleştirilerek `applicationinsights-agent-3.0.3.jar` aşağıdaki içerikle birlikte:
 
 ```json
 {
@@ -129,6 +129,10 @@ Tüm ayrıntılar için bkz. [yapılandırma seçenekleri](./java-standalone-con
 
 * Mikro ölçer (Spring Boot çalıştırıcı ölçümleri dahil)
 * JMX ölçümleri
+
+### <a name="azure-sdks"></a>Azure SDK’ları
+
+* Bu özellik önizleme aşamasındadır ve nasıl etkinleştirileceği için [yapılandırma seçeneklerine](./java-standalone-config.md#auto-collected-azure-sdk-telemetry) bakın.
 
 ## <a name="send-custom-telemetry-from-your-application"></a>Uygulamanızdan Özel telemetri gönderin
 
@@ -328,7 +332,7 @@ requestTelemetry.setName("myname");
 ### <a name="get-the-request-telemetry-id-and-the-operation-id-using-the-2x-sdk"></a>2. x SDK 'sını kullanarak istek telemetri kimliği ve işlem kimliği alın
 
 > [!NOTE]
-> Bu özellik yalnızca 3.0.3-BETA ve üzeri sürümlerde
+> Bu özellik yalnızca 3.0.3 ve üzeri sürümlerde
 
 `applicationinsights-web-2.6.2.jar`Uygulamanıza ekleme (tüm 2. x sürümleri Application Insights Java 3,0 tarafından desteklenir, ancak bir seçiminiz varsa en son kullanımı buna değecektir):
 

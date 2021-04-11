@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 04/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 81c28a3c64c81da8f6939d821c2bd61ba8617a7b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d63587eec1f7e6d24ae1638e8365b85fd1ec2c94
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935252"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505000"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -82,7 +82,21 @@ Hayır, şu anda ağ güvenlik gruplarını, Azure NetApp Files için temsilci a
 
 ### <a name="can-i-use-azure-rbac-with-azure-netapp-files"></a>Azure RBAC 'i Azure NetApp Files kullanabilir miyim?
 
-Evet, Azure RBAC özelliklerini destekler Azure NetApp Files.
+Evet, Azure RBAC özelliklerini destekler Azure NetApp Files. Yerleşik Azure rolleriyle birlikte Azure NetApp Files için [özel roller de oluşturabilirsiniz](../role-based-access-control/custom-roles.md) . 
+
+Azure NetApp Files izinlerinin tamamı listesi için bkz. Azure Kaynak sağlayıcısı işlemleri [`Microsoft.NetApp`](../role-based-access-control/resource-provider-operations.md#microsoftnetapp) .
+
+### <a name="are-azure-activity-logs-supported-on-azure-netapp-files"></a>Azure etkinlik günlükleri Azure NetApp Files destekleniyor mu?
+
+Azure NetApp Files bir Azure yerel hizmetidir. Azure NetApp Files için tüm PUT, POST ve DELETE API 'Leri günlüğe kaydedilir. Örneğin, Günlükler, anlık görüntüyü kimin oluşturduğunu, kimin birimi değiştirildiğini ve bu şekilde devam eden etkinlikleri gösterir.
+
+API işlemlerinin tüm listesi için bkz. [Azure NetApp Files REST API](/rest/api/netapp/).
+
+### <a name="can-i-use-azure-policies-with-azure-netapp-files"></a>Azure ilkelerini Azure NetApp Files kullanabilir miyim?
+
+Evet, [özel Azure ilkeleri](../governance/policy/tutorials/create-custom-policy-definition.md)oluşturabilirsiniz. 
+
+Ancak, Azure NetApp Files arabiriminde Azure ilkeleri (Özel adlandırma ilkeleri) oluşturamazsınız. [Azure NetApp Files ağ planlama yönergelerine](azure-netapp-files-network-topologies.md#considerations)bakın.
 
 ## <a name="performance-faqs"></a>Performans hakkında SSS
 
