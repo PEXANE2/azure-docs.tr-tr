@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: fc9b6c4edc5d08c30b1eadb5084155b10d0e55a3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: a1f66feedf33faf107bb4fca1879077379dfa815
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601508"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066356"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure Maliyet Yönetimi ile bulut yatırımınızı iyileştirme
 
@@ -91,7 +91,7 @@ Farklı seçenekler hakkında daha fazla bilgi edinmek için bkz. [Azure'ı sat�
 #### <a name="free"></a>[Ücretsiz](https://azure.microsoft.com/free/)
 
 - Popüler ücretsiz hizmetleri 12 ay boyunca kullanma
-- 30 gün boyunca hizmetleri keşfetmek için 200 ABD doları kredi
+- 200 ABD Doları kredi para biriminde alacak ve Hizmetleri 30 gün boyunca keşfetmeye yöneliktir
 - 25'ten fazla hizmet her zaman ücretsizdir
 
 #### <a name="pay-as-you-go"></a>[Kullandıkça öde](https://azure.microsoft.com/offers/ms-azr-0003p)
