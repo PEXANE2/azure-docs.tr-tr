@@ -10,16 +10,16 @@ ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 54e703b096ea4e3572a6fc00aa6b7b2b99c4bcad
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: af9d520bab3ff49b30672717414fbd651c915dd4
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104800753"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552386"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Kapsayıcılar için geçici silme (Önizleme)
 
-Kapsayıcılar için geçici silme (Önizleme), verilerinizin yanlışlıkla veya kötü amaçlı olarak silinmesini önler. Depolama hesabında kapsayıcıyı geçici silme etkinleştirildiğinde, silinen tüm kapsayıcılar ve bunların içeriği sizin belirttiğiniz süre boyunca Azure Depolama'da saklanır. Daha önce silinmiş olan kapsayıcıları saklama süresi boyunca geri yükleyebilirsiniz. Kapsayıcı geri yüklendiğinde, kapsayıcının silindiği sırada içinde bulunan tüm bloblar geri yüklenir.
+Kapsayıcılar için geçici silme (Önizleme), verilerinizin yanlışlıkla veya kötü amaçlı olarak silinmesini önler. Bir depolama hesabı için kapsayıcı geçici silme etkinleştirildiğinde, silinen bir kapsayıcı ve içeriği belirttiğiniz süre boyunca Azure Storage 'da tutulur. Daha önce silinmiş olan kapsayıcıları saklama süresi boyunca geri yükleyebilirsiniz. Kapsayıcı geri yüklendiğinde, kapsayıcının silindiği sırada içinde bulunan tüm bloblar geri yüklenir.
 
 Blob verilerinize yönelik uçtan uca koruma için, Microsoft aşağıdaki veri koruma özelliklerini etkinleştirmeyi önerir:
 
@@ -37,7 +37,7 @@ Kapsayıcı geçici silmeyi etkinleştirdiğinizde, 1 ila 365 gün arasında sil
 Bir kapsayıcıyı geri yüklediğinizde, kapsayıcının blob 'ları ve BLOB sürümleri de geri yüklenir. Ancak, kapsayıcının kendisi silinmişse Blobları geri yüklemek için yalnızca kapsayıcı geçici silme özelliğini kullanabilirsiniz. Silinen bir blobu, üst kapsayıcısı silinmediği zaman geri yüklemek için blob geçici silme veya blob sürümü oluşturma kullanmanız gerekir.
 
 > [!WARNING]
-> Kapsayıcı geçici silme, yalnızca tüm kapsayıcıları ve silme sırasında içerdikleri Blobları geri yükleyebilir. Kapsayıcı içinde silinen bir blobu kapsayıcı geçici silme özelliğini kullanarak geri yükleyemezsiniz.
+> Kapsayıcı geçici silme, silme sırasında yalnızca tüm kapsayıcıları ve içeriklerini geri yükleyebilir. Kapsayıcı içinde silinen bir blobu kapsayıcı geçici silme özelliğini kullanarak geri yükleyemezsiniz. Microsoft, bir kapsayıcıdaki tek tek Blobları korumak için blob geçici silme ve BLOB sürüm oluşturmayı da etkinleştirir.
 
 Aşağıdaki diyagramda, kapsayıcı geçici silme etkinken silinen kapsayıcının nasıl geri yüklenebildiğinden gösterilmektedir:
 
@@ -50,7 +50,7 @@ Saklama süresi dolduktan sonra kapsayıcı, Azure depolama 'dan kalıcı olarak
 Geçici silme kapsayıcısını devre dışı bırakmak, daha önce geçici olarak silinmiş kapsayıcıların kalıcı olarak silinmesine neden olmaz. Geçici olarak silinen kapsayıcılar, kapsayıcının silindiği sırada geçerli olan bekletme döneminin sona erdiğinde kalıcı olarak silinir.
 
 > [!IMPORTANT]
-> Kapsayıcı geçici silme, bir depolama hesabının silinmesine karşı koruma sağlamaz, ancak yalnızca söz konusu hesaptaki kapsayıcıların silinmesine karşı değildir. Bir depolama hesabını silinmeye karşı korumak için, depolama hesabı kaynağında bir kilit yapılandırın. Azure Resource Manager kaynaklarını kilitleme hakkında daha fazla bilgi için bkz. [kaynakları kilitleme, beklenmeyen değişiklikleri önleme](../../azure-resource-manager/management/lock-resources.md).
+> Kapsayıcı geçici silme, bir depolama hesabının silinmesine karşı koruma sağlamaz. Yalnızca söz konusu hesaptaki kapsayıcıların silinmesine karşı koruma sağlar. Bir depolama hesabını silinmeye karşı korumak için, depolama hesabı kaynağında bir kilit yapılandırın. Depolama hesabını kilitleme hakkında daha fazla bilgi için bkz. [depolama hesabına Azure Resource Manager kilidi uygulama](../common/lock-account-resource.md).
 
 ## <a name="about-the-preview"></a>Önizleme hakkında
 

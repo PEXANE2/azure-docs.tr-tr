@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de bir küme için birden çok dü
 services: container-service
 ms.topic: article
 ms.date: 02/11/2021
-ms.openlocfilehash: 8f18e19eca8895549f17c9f0f6822ecb4da2914b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb10e2023187c74a9e8b9a2e4c72115841e89a84
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773513"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552606"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -738,6 +738,34 @@ Mevcut AKS kümelerinde Ayrıca yeni bir düğüm havuzu ekleyebilir ve düğüm
 az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
 ```
 
+### <a name="use-a-public-ip-prefix"></a>Genel IP öneki kullanın
+
+[Genel IP öneki kullanmanın çeşitli avantajları][public-ip-prefix-benefits]vardır. AKS, `node-public-ip-prefix` Yeni bir küme oluştururken veya düğüm havuzu eklerken, kaynak kimliğini bayrağıyla geçirerek, düğümleriniz için mevcut bir genel IP önekinden adresler kullanmayı destekler.
+
+İlk olarak, [az Network PUBLIC-IP önekini][az-public-ip-prefix-create]kullanarak genel bir IP öneki oluşturun:
+
+```azurecli-interactive
+az network public-ip prefix create --length 28 --location eastus --name MyPublicIPPrefix --resource-group MyResourceGroup3
+```
+
+Çıktıyı görüntüleyin ve öneki için şunu göz önüne alın `id` :
+
+```output
+{
+  ...
+  "id": "/subscriptions/<subscription-id>/resourceGroups/myResourceGroup3/providers/Microsoft.Network/publicIPPrefixes/MyPublicIPPrefix",
+  ...
+}
+```
+
+Son olarak, yeni bir küme oluştururken veya yeni bir düğüm havuzu eklerken, bayrağı kullanın `node-public-ip-prefix` ve öneki kaynak kimliği ' ni geçirin:
+
+```azurecli-interactive
+az aks create -g MyResourceGroup3 -n MyManagedCluster -l eastus --enable-node-public-ip --node-public-ip-prefix /subscriptions/<subscription-id>/resourcegroups/MyResourceGroup3/providers/Microsoft.Network/publicIPPrefixes/MyPublicIPPrefix
+```
+
+### <a name="locate-public-ips-for-nodes"></a>Düğümler için genel IP 'Leri bulma
+
 Düğümleriniz için genel IP 'Leri çeşitli yollarla bulabilirsiniz:
 
 * [Az VMSS List-instance-public-IP][az-list-ips]Azure CLI komutunu kullanın.
@@ -821,3 +849,5 @@ AKS uygulamalarınızın gecikmesini azaltmak için [yakınlık yerleştirme gru
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
 [az-list-ips]: /cli/azure/vmss?view=azure-cli-latest&preserve-view=true#az_vmss_list_instance_public_ips
 [reduce-latency-ppg]: reduce-latency-ppg.md
+[public-ip-prefix-benefits]: ../virtual-network/public-ip-address-prefix.md#why-create-a-public-ip-address-prefix
+[az-public-ip-prefix-create]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest&preserve-view=true#az_network_public_ip_prefix_create

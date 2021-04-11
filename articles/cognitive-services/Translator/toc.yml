@@ -132,8 +132,6 @@
           href: custom-translator/training-and-model.md
         - name: BLEU Puanı
           href: custom-translator/what-is-bleu-score.md
-        - name: Şifreleme
-          href: encrypt-data-at-rest.md
 - name: Belge çevirisi
   items:
     - name: Belge çevirisi nedir?
@@ -146,8 +144,6 @@
           href: document-translation/create-sas-tokens.md
     - name: Başvuru
       items:
-        - name: Belge çevirisi REST API
-          href: /rest/api/cognitiveservices/translator/documenttranslation
         - name: Belge biçimlerini al
           href: document-translation/reference/get-document-formats.md
         - name: Sözlük biçimlerini al
@@ -170,5 +166,9 @@
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
     - name: Uyumluluk
       href: 'https://azure.microsoft.com/en-us/support/legal/cognitive-services-compliance-and-privacy'
+    - name: Şifreleme
+      href: encrypt-data-at-rest.md
     - name: GitHub’daki kod örnekleri
       href: 'https://aka.ms/TranslatorGitHub'
+    - name: Gizlilik ve tanımlama bilgileri
+      href: 'https://privacy.microsoft.com/en-US/privacystatement'

@@ -17,19 +17,19 @@ ms.date: 03/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 185638d683699403c304603d968cfe84e32a55b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b17e7f34da1428eec219a393417b0a2a7b461078
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574569"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552742"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory oturum açma etkinlik raporları-önizleme
 
 Azure Active Directory (Azure AD) içindeki raporlama mimarisi aşağıdaki bileşenlerden oluşur:
 
 - **Etkinlik** 
-    - **Oturum açma** bilgileri – kullanıcıların, uygulamaların ve yönetilen KAYNAKLARıN Azure AD 'de oturum açıp kaynaklara erişme hakkında bilgiler.
+    - **Oturum açma** bilgileri – kullanıcıların, uygulamaların ve yönetilen KAYNAKLARıN Azure AD 'de oturum açma ve kaynaklara erişme hakkında bilgiler.
     - **Denetim günlükleri**  -  [Denetim günlükleri](concept-audit-logs.md) , kullanıcılar ve Grup Yönetimi, yönetilen uygulamalar ve Dizin etkinlikleri hakkında sistem etkinliği bilgilerini sağlar.
 - **Güvenlik** 
     - **Riskli oturum** açma işlemleri- [riskli oturum](../identity-protection/overview-identity-protection.md) açma, Kullanıcı hesabının meşru sahibi olmayan birisi tarafından gerçekleştirilen oturum açma girişimine yönelik bir göstergedir.
