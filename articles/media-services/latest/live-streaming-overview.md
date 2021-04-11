@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: c82c646e4befef9d409bb8e59a442642913ada22
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f207cefaf333fc21eb56dc15b1e4d191bf8e5fae
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641514"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108311"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 ile canlı akış
 
@@ -36,18 +36,18 @@ Bu makale, Media Services ile canlı akış ve diğer ilgili makalelerin bağlan
 
 ## <a name="dynamic-packaging-and-delivery"></a>Dinamik paketleme ve teslim
 
-Media Services ile, canlı akışlarınızı, hizmet 'e gönderilen katkı akışından [MPEG Dash, HLS ve kesintisiz akış biçimlerinde](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) önizleme ve yayınlama olanağı sağlayan [dinamik paketlemeden](dynamic-packaging-overview.md)yararlanabilirsiniz. Görüntüleyicilerinizin her türlü HLS, ÇIZGI veya Kesintisiz Akış uyumlu oyuncularla canlı akışı kayıttan yürütebileceği. Bu protokollerden herhangi birine akışını sunmak için Web veya mobil uygulamalarınızda [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) kullanabilirsiniz.
+Media Services ile, canlı akışlarınızı, hizmet 'e gönderilen katkı akışından [MPEG Dash, HLS ve kesintisiz akış biçimlerinde](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) önizleme ve yayınlama olanağı sağlayan [dinamik paketlemeden](encode-dynamic-packaging-concept.md)yararlanabilirsiniz. Görüntüleyicilerinizin her türlü HLS, ÇIZGI veya Kesintisiz Akış uyumlu oyuncularla canlı akışı kayıttan yürütebileceği. Bu protokollerden herhangi birine akışını sunmak için Web veya mobil uygulamalarınızda [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) kullanabilirsiniz.
 
 ## <a name="dynamic-encryption"></a>Dinamik şifreleme
 
-Dinamik şifreleme, etkin veya isteğe bağlı içeriğinizi AES-128 veya üç ana dijital hak yönetimi (DRM) sisteminden dinamik olarak şifrelemenize olanak sağlar: Microsoft PlayReady, Google Widevine ve Apple FairPlay. Media Services, yetkili istemcilere AES anahtarları ve DRM (PlayReady, Widevine ve FairPlay) lisanslarını sunmaya yönelik bir hizmet sağlar. Daha fazla bilgi için bkz. [dinamik şifreleme](content-protection-overview.md).
+Dinamik şifreleme, etkin veya isteğe bağlı içeriğinizi AES-128 veya üç ana dijital hak yönetimi (DRM) sisteminden dinamik olarak şifrelemenize olanak sağlar: Microsoft PlayReady, Google Widevine ve Apple FairPlay. Media Services, yetkili istemcilere AES anahtarları ve DRM (PlayReady, Widevine ve FairPlay) lisanslarını sunmaya yönelik bir hizmet sağlar. Daha fazla bilgi için bkz. [dinamik şifreleme](drm-content-protection-concept.md).
 
 > [!NOTE]
 > Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
 ## <a name="dynamic-filtering"></a>Dinamik filtreleme
 
-Dinamik filtreleme, oyunculara gönderilen iz, biçim, bitme ve sunum süresi pencerelerinin sayısını denetlemek için kullanılır. Daha fazla bilgi için bkz. [filtreler ve dinamik bildirimler](filters-dynamic-manifest-overview.md).
+Dinamik filtreleme, oyunculara gönderilen iz, biçim, bitme ve sunum süresi pencerelerinin sayısını denetlemek için kullanılır. Daha fazla bilgi için bkz. [filtreler ve dinamik bildirimler](filters-dynamic-manifest-concept.md).
 
 ## <a name="live-event-types"></a>Canlı olay türleri
 

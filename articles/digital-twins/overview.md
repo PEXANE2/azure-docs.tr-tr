@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: c0bc245a4be1ab7c326fa27cc1422878aca6331d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 315519472baa672e802855b5ab21b8bae8f51935
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071690"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109858"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins nedir?
 
@@ -94,7 +94,11 @@ Aşağıdaki diyagramda Azure Digital TWINS 'in daha büyük bir Azure IoT çöz
 
 ## <a name="service-limits"></a>Hizmet sınırlamaları
 
-Azure dijital TWINS sınırları listesi için bkz. [*Azure Digital TWINS hizmet limitleri*](reference-service-limits.md).
+Azure dijital TWINS **hizmet sınırlarını** buradan öğrenebilirsiniz: [Azure Digital TWINS hizmet limitleri](reference-service-limits.md). Bu, hizmetin işlev ve hız sınırlamalarını anlamak için hizmetle çalışırken ve gerektiğinde hangi limitlerin ayarlanabileceğine ilişkin yararlı olabilir.
+
+## <a name="terminology"></a>Terminoloji
+
+Azure Digital TWINS de dahil olmak üzere Azure IoT hizmetlerinde **yaygın IoT terimleri** ve kullanımları listesini görebilirsiniz: [Azure IoT sözlüğü](../iot-fundamentals/iot-glossary.md?toc=/azure/digital-twins/toc.json&bc=/azure/digital-twins/breadcrumb/toc.json). Bu, Azure dijital TWINS ile çalışmaya başlarken ve bir IoT çözümü oluştururken yararlı bir başvuru olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

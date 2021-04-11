@@ -234,6 +234,8 @@
               href: sizes-field-programmable-gate-arrays.md?context=/azure/virtual-machines/context/context
             - name: NP serisi
               href: np-series.md
+            - name: FPGA kanıtlama hizmeti
+              href: field-programmable-gate-arrays-attestation.md
         - name: Yüksek performanslı işlem
           items:
             - name: Genel Bakış
@@ -1174,7 +1176,7 @@
             - name: Azure CLI
               displayName: 'add a data disk, data disk'
               href: ./linux/add-disk.md
-            - name: Azure portal
+            - name: Azure portalı
               displayName: 'add a data disk, data disk'
               href: ./linux/attach-disk-portal.md
         - name: Windows
@@ -1303,6 +1305,8 @@
           href: ./windows/nsg-quickstart-portal.md
     - name: Genel IP adresi atama
       href: ../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?context=/azure/virtual-machines/context/context
+    - name: Özel bir etki alanı adı kullanın
+      href: custom-domain.md
     - name: Birden çok NIC kullanma
       items:
         - name: CLı kullanarak Linux

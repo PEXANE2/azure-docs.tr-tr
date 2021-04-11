@@ -7,12 +7,12 @@ ms.custom:
 - H1Hack27Feb2017
 - devx-track-csharp
 - contperf-fy21q1
-ms.openlocfilehash: d0ed5cc47694d6576e6aea46b62dfab8ecb73459
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 17729b2b6a2c4faba0554339a382cad559e9894a
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045799"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210508"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma
 
@@ -61,7 +61,7 @@ Uygulama paketleriyle, havuzunuzun başlangıç görevinin düğümlere yüklene
 Batch hesabınızdaki uygulama paketlerini yönetmek için [Azure Portal](https://portal.azure.com) veya Batch yönetimi API 'lerini kullanabilirsiniz. Aşağıdaki bölümlerde, bir depolama hesabının nasıl bağlantılandırmasının yanı sıra Azure portal uygulama ve uygulama paketlerinin nasıl ekleneceği ve yönetileceği açıklanmaktadır.
 
 > [!NOTE]
-> Bir [ARM şablonunun](quick-create-template.md) [Microsoft.Batch/batchaccounts](/templates/microsoft.batch/batchaccounts) kaynağında uygulama değerlerini tanımlayabilmeniz mümkün olsa da, toplu iş hesabınızda kullanmak üzere uygulama paketlerini KARŞıYA yüklemek için bir ARM şablonu kullanmak mümkün değildir. Bunları, [aşağıda](#add-a-new-application)açıklandığı gibi bağlı depolama hesabınıza yüklemeniz gerekir.
+> Bir [ARM şablonunun](quick-create-template.md) [Microsoft.Batch/batchaccounts](/azure/templates/microsoft.batch/batchaccounts) kaynağında uygulama değerlerini tanımlayabilmeniz mümkün olsa da, toplu iş hesabınızda kullanmak üzere uygulama paketlerini KARŞıYA yüklemek için bir ARM şablonu kullanmak mümkün değildir. Bunları, [aşağıda](#add-a-new-application)açıklandığı gibi bağlı depolama hesabınıza yüklemeniz gerekir.
 
 ### <a name="link-a-storage-account"></a>Depolama hesabını bağlama
 

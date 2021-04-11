@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: f894fd5ca7bb98c48b106c13b8fe6130b2c76c6e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fa5d34d195cfed2d5dbfa6954d83b28487bf0bba
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102201065"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167762"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Öğretici: Azure ön kapısı ve Azure Web uygulaması güvenlik duvarı (WAF) kullanarak bir Web uygulamasını hızla ölçeklendirme ve koruma
 
@@ -140,7 +140,7 @@ Son olarak, Web uygulamanıza erişmek için özel bir etki alanı kullanıyorsa
 
 ## <a name="lock-down-your-web-application"></a>Web uygulamanızı kilitleme
 
-Yalnızca Azure ön kapısının Web uygulamanızla iletişim kurabildiğinden emin olmanızı öneririz. Bunun yapılması, hiçbir birinin Azure ön kapı korumasını atlayamayacağını ve uygulamanıza doğrudan erişmesini sağlamaya devam edebilir. Bu kilidi başarmak için, [arka ucumun erişimini yalnızca Azure ön kapısına nasıl yaparım?](./front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door).
+Yalnızca Azure ön kapısının Web uygulamanızla iletişim kurabildiğinden emin olmanızı öneririz. Bunun yapılması, hiçbir birinin Azure ön kapı korumasını atlayamayacağını ve uygulamanıza doğrudan erişmesini sağlamaya devam edebilir. Bu kilidi başarmak için, [arka ucumun erişimini yalnızca Azure ön kapısına nasıl yaparım?](./front-door-faq.yml#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

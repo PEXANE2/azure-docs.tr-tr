@@ -566,6 +566,16 @@
           href: template-functions-resource.md
         - name: Dize işlevleri
           href: template-functions-string.md
+    - name: Bıcep işleçleri
+      items:
+        - name: Tüm işleçler
+          href: bicep-operators.md
+        - name: Karşılaştırma işleçleri
+          href: bicep-operators-comparison.md
+        - name: Mantıksal işleçler
+          href: bicep-operators-logical.md
+        - name: Sayısal işleçler
+          href: bicep-operators-numeric.md
     - name: REST
       href: /rest/api/resources/
     - name: Azure PowerShell

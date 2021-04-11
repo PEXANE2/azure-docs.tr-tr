@@ -1,19 +1,19 @@
 ---
 title: 'Hızlı başlangıç: Azure kuyruk depolama istemci kitaplığı V12-JavaScript'
 description: Bir kuyruk oluşturmak ve buna ileti eklemek için Azure kuyruk depolama istemci kitaplığı V12 ' nı JavaScript için nasıl kullanacağınızı öğrenin. Sonra sıradan iletileri okumayı ve silmeyi öğrenin. Ayrıca, bir kuyruğu silmeyi de öğreneceksiniz.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 12/13/2019
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-js
-ms.openlocfilehash: 23c58526ba481a56b371bd077661d8d0bc7d45c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 628ce97b9f14290caf3f41b16cda93f4f47566f7
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97586542"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276170"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>Hızlı başlangıç: JavaScript için Azure kuyruk depolama istemci kitaplığı V12
 

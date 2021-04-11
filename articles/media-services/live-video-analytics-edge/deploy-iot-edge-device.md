@@ -3,12 +3,12 @@ title: IoT Edge cihazında canlı video analizi dağıtma-Azure
 description: Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 01b98c7a1f4073adcd8dea7cbfbfc57abc3787c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2fdf95be0966702f58afbb9df8e09a1688f9b204
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101718939"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961566"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge cihazda canlı video analizi dağıtma
 
@@ -25,7 +25,7 @@ Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yar
 * [Oluşturma ve kurulum IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
 * [IoT Edge cihazı kaydetme](../../iot-edge/how-to-register-device.md)
 * [Debian tabanlı Linux sistemlerine Azure IoT Edge çalışma zamanını yükleme](../../iot-edge/how-to-install-iot-edge.md)
-* [Azure Media Services hesabı oluşturma](../latest/create-account-howto.md)
+* [Azure Media Services hesabı oluşturma](../latest/account-create-how-to.md)
 
     * Şu bölgelerden birini kullanın: Doğu ABD 2, Doğu ABD, Orta ABD, Orta Kuzey ABD, Japonya Doğu, Batı ABD, Batı ABD 2, Orta Batı ABD, Kanada Doğu, UK Güney, Fransa orta, Fransa Güney, İsviçre Kuzey, İsviçre Batı ve Japonya Batı.
     * Genel amaçlı v2 (GPv2) depolama hesapları kullanmanız önerilir

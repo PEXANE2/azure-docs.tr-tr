@@ -79,13 +79,12 @@
           href: tokens-overview.md
         - name: Erişim belirteci isteme
           href: access-tokens.md
-    - name: İlke anahtarları
-      href: policy-keys-overview.md
-    - name: Kullanıcı akışı ve ilkesi
+    - name: Kullanıcı deneyimi
+      expanded: true
       items:
-        - name: Kullanıcı akışları
+        - name: Kullanıcı akışları ve özel ilkeler
           href: user-flow-overview.md
-        - name: Özel ilkeler
+        - name: Özel ilkeye genel bakış
           href: custom-policy-overview.md
     - name: Kullanıcı hesapları
       href: user-overview.md
@@ -93,6 +92,8 @@
       href: user-profile-attributes.md
     - name: Kimlik Koruması ve Koşullu Erişim
       href: conditional-access-identity-protection-overview.md
+    - name: İlke anahtarları
+      href: policy-keys-overview.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Uygulama tümleştirmesi
@@ -268,8 +269,6 @@
           href: add-api-connector.md
     - name: Özel ilke
       items:
-        - name: Özel ilkeye genel bakış
-          href: custom-policy-trust-frameworks.md
         - name: Özel ilkeleri kullanmaya başlama
           href: custom-policy-get-started.md
         - name: Özel e-posta doğrulaması
@@ -298,9 +297,8 @@
             - name: Application Insights’ı kullanarak günlük toplama
               href: troubleshoot-with-application-insights.md
               displayName: 'troubleshooting, app insights'
-            - name: Doğrulamayı yeniden deneme
+            - name: Özel ilkelerle ilgili sorunları giderme
               href: troubleshoot-custom-policies.md
-              displayName: troubleshooting
         - name: Başvuru
           items:
             - name: TrustFrameworkPolicy

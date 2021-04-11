@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 12/10/2020
 ms.openlocfilehash: 1529d2d546227880fee71d1823482e040d2e57c1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103564329"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşleme
@@ -33,11 +33,11 @@ Veri akışları, işlem hatları ve veri kümeleri gibi fabrika kaynakları bö
 
 Bu eylem sizi, dönüşüm mantığınızı oluşturabileceğiniz veri akışı tuvaline götürür. Kaynak dönüştürmeyi yapılandırmaya başlamak için **Kaynak Ekle** ' yi seçin. Daha fazla bilgi için bkz. [kaynak dönüştürme](data-flow-source.md).
 
-## <a name="authoring-data-flows"></a>Veri akışları yazma
+## <a name="authoring-data-flows&quot;></a>Veri akışları yazma
 
 Eşleme veri akışı, dönüştürme mantığını kolayca oluşturmak için tasarlanan benzersiz bir yazma tuvaline sahiptir. Veri akışı tuvali üç parçaya ayrılmıştır: üst çubuk, grafik ve yapılandırma paneli. 
 
-![Ekran görüntüsünde, etiketli üst çubuk, grafik ve yapılandırma paneli ile veri akışı tuvali gösterilmektedir.](media/data-flow/canvas-1.png "Tuval")
+![Ekran görüntüsünde, etiketli üst çubuk, grafik ve yapılandırma paneli ile veri akışı tuvali gösterilmektedir.](media/data-flow/canvas-1.png &quot;Tuval")
 
 ### <a name="graph"></a>Graf
 
@@ -63,11 +63,11 @@ Her bir dönüşümün yapılandırma bölmesindeki ilk sekme, bu dönüştürme
 
 ![Ekran görüntüsü, Bölüm seçeneği, bölüm türü ve bölüm sayısı dahil en Iyileştirme sekmesini gösterir.](media/data-flow/optimize.png)
 
-#### <a name="inspect"></a>Bilgiyi
+#### <a name="inspect&quot;></a>Bilgiyi
 
 **İnceleme** sekmesi, dönüştürmakta olduğunuz veri akışının meta verilerine bir görünüm sağlar. Sütun sayılarını, değişen sütunları, eklenen sütunları, veri türlerini, sütun sırasını ve sütun başvurularını görebilirsiniz. **İnceleme** , meta verilerinizin salt okunurdur görünümüdür. **İnceleme** bölmesinde meta verileri görmek için hata ayıklama modunun etkin olması gerekmez.
 
-![Bilgiyi](media/data-flow/inspect1.png "Bilgiyi")
+![Bilgiyi](media/data-flow/inspect1.png &quot;Bilgiyi")
 
 Dönüşümlerinizi kullanarak verilerinizin şeklini değiştirirken, **İnceleme** bölmesinde meta veri değişiklikleri akışını görürsünüz. Kaynak dönüşümünüze tanımlı bir şema yoksa, veriler **İnceleme** bölmesinde görünmez. Şema DRFT senaryolarında meta verilerin bulunmaması yaygındır.
 

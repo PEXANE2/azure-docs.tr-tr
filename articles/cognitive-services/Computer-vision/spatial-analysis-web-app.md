@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: de011fb0f827ea90efe33e237bbf1c5100dc76a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf99d02a0968fb1073a02425ecb8b0d5ba7f5ac6
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98183481"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109705"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Nasıl yapılır: Web uygulaması sayma bir kişi dağıtma
 
@@ -172,7 +172,7 @@ docker tag rtvsofficial.azurecr.io/acceleratorapp.personcount:1.0 [desired local
 docker push [desired local image name]
 ```
 
-Kapsayıcıyı yüklemek için yeni bir Azure Kapsayıcılar için Web App oluşturun ve gerekli parametreleri girin. Ardından **Docker** sekmesine gidip **tek kapsayıcı**' ı seçin ve ardından **Azure Container Registry**. Yukarıdaki görüntüyü gönderdiğiniz Azure Container Registry örneğinizi kullanın.
+Kapsayıcıyı yüklemek için yeni bir Azure App Service oluşturun ve gerekli parametreleri girin. Ardından **Docker** sekmesine gidip **tek kapsayıcı**' ı seçin ve ardından **Azure Container Registry**. Yukarıdaki görüntüyü gönderdiğiniz Azure Container Registry örneğinizi kullanın.
 
 ![Görüntü ayrıntılarını girin](./media/spatial-analysis/solution-app-create-screen.png)
 
@@ -189,7 +189,7 @@ Bu 2 ayar eklendikten sonra **Kaydet**' e tıklayın. Ardından sol gezinti men�
 
 ### <a name="test-the-app"></a>Uygulamayı test etme
 
-Azure Web uygulamasına gidin ve dağıtımın başarılı olduğunu ve Web uygulamasının çalıştığını doğrulayın. Çalışan uygulamayı görüntülemek için yapılandırılan URL 'ye gidin: `<yourapp>.azurewebsites.net`
+Azure hizmetine gidin ve dağıtımın başarılı olduğunu ve Web uygulamasının çalıştığını doğrulayın. Çalışan uygulamayı görüntülemek için yapılandırılan URL 'ye gidin: `<yourapp>.azurewebsites.net`
 
 ![Dağıtımı test etme](./media/spatial-analysis/solution-app-output.png)
 
