@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2020
 ms.author: duau
-ms.openlocfilehash: 7f40b48473c04238d504288307039948fcacf90a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5989f91233448c04d50ba1c69a06851b91426a03
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97511153"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167813"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Azure ön kapılarında HTTP üstbilgileri için protokol desteği
 Bu makalede, ön kapıların çağrı yolunun bölümleriyle desteklediği protokol (bkz. görüntü) özetlenmektedir. Aşağıdaki bölümlerde, ön kapıda desteklenen HTTP üstbilgileri hakkında daha fazla bilgi sağlanmaktadır.
@@ -40,7 +40,7 @@ Bu makalede, ön kapıların çağrı yolunun bölümleriyle desteklediği proto
 | X-Azure-SocketIP |  *X-Azure-SocketIP: 127.0.0.1* </br> Geçerli isteğin kaynaklandığı TCP bağlantısıyla ilişkili yuva IP adresini temsil eder. İsteğin istemci IP adresi, bir kullanıcı tarafından rastgele üzerine yazılabileceğinden, yuva IP adresine eşit olmayabilir.|
 | X-Azure-ref | *X-Azure-Ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Ön kapıya göre sunulan isteği tanımlayan benzersiz bir başvuru dizesi. Bu, erişim günlüklerini aramak için kullanılır ve sorun giderme için kritik öneme sahiptir.|
 | X-Azure-Requestzincirine | *X-Azure-Requestzincirine: atlama = 1* </br> Ön kapı, istek döngülerini algılamak için kullanılan üst bilgi ve kullanıcıların buna bir bağımlılığı olmaz. |
-| X-Azure-FDıD | *X-Azure-FDıD: 55ce4ed1-4B06-4BF1-B40E-4638452104da* <br/> Belirli bir ön kapı kaynağından gelen isteği tanımlayan bir başvuru dizesi. Değer Azure portal görünebilir veya yönetim API 'SI kullanılarak alınabilir. Uç noktanızı yalnızca belirli bir ön kapı kaynağından gelen istekleri kabul etmek üzere kilitlemek için bu üstbilgiyi IP ACL 'lerle birlikte kullanabilirsiniz. [Daha ayrıntılı bilgi](front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door) için SSS bölümüne bakın |
+| X-Azure-FDıD | *X-Azure-FDıD: 55ce4ed1-4B06-4BF1-B40E-4638452104da* <br/> Belirli bir ön kapı kaynağından gelen isteği tanımlayan bir başvuru dizesi. Değer Azure portal görünebilir veya yönetim API 'SI kullanılarak alınabilir. Uç noktanızı yalnızca belirli bir ön kapı kaynağından gelen istekleri kabul etmek üzere kilitlemek için bu üstbilgiyi IP ACL 'lerle birlikte kullanabilirsiniz. [Daha ayrıntılı bilgi](front-door-faq.yml#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-) için SSS bölümüne bakın |
 | X-Iletilmiş-Için | *X-Iletildi-for: 127.0.0.1* </br> X-Iletilmiş-for (XFF) HTTP üstbilgisi alanı, genellikle bir HTTP proxy veya yük dengeleyici aracılığıyla bir Web sunucusuna bağlanan bir istemcinin kaynak IP adresini belirler. Var olan bir XFF üst bilgisi varsa, ön kapı istemci yuvasını IP 'ye ekler veya XFF üstbilgisini istemci yuvası IP 'si ile ekler. |
 | X-Iletilen-konak | *X-Iletilen-ana bilgisayar: contoso.azurefd.net* </br> X-Iletilen ana bilgisayar HTTP üst bilgisi alanı, istemci tarafından istenen özgün Konağı tanımlamak için kullanılan ortak bir yöntemdir, ana bilgisayar HTTP istek üst bilgisi. Bunun nedeni, ön kapıdan ana bilgisayar adının isteği işleyen arka uç sunucusu için farklı olabilir. |
 | X-Iletilen-proto | *X-Iletilen-proto: http* </br> X-Iletilmiş-proto HTTP üst bilgisi alanı, genellikle bir HTTP isteğinin kaynak protokolünü belirlemek için kullanılır. Yapılandırmaya dayalı ön kapı, HTTPS kullanarak arka uca iletişim kurabilir. Bu, ters proxy 'ye yönelik istek HTTP olsa bile geçerlidir. |

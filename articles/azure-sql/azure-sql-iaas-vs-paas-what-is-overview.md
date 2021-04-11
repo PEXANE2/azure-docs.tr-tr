@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
 ms.openlocfilehash: ea097119111d5dbd5eba3c11aba549d201186e3f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104592192"
 ---
 # <a name="what-is-azure-sql"></a>Azure SQL nedir? 
@@ -95,7 +95,7 @@ Azure SQL veritabanı aşağıdaki dağıtım seçeneklerini sunar:
 - En iyi tutarlı SQL Server özelliklerini kullanmak isteyen ve en az değişiklikle buluta geçirilen yeni uygulamalar veya mevcut şirket içi uygulamalar için idealdir. SQL yönetilen örneğinin bir örneği, veritabanları ve diğer örnek kapsamlı özellikler için paylaşılan kaynaklar sunan [Microsoft SQL Server veritabanı altyapısının](/sql/database-engine/sql-server-database-engine-overview) bir örneğine benzer. 
 - SQL yönetilen örneği, veritabanı değişikliğine sahip olmayan en az ile şirket içi veritabanı geçişini destekler. Bu seçenek, Azure SQL veritabanı 'nın tüm PaaS avantajlarını sağlar, ancak daha önce yalnızca SQL Server VM 'lerde kullanılabilen özellikleri ekler. Bu, yerel bir sanal ağ ve şirket içi SQL Server ile %100 uyumluluğun yakınında bulunur. SQL yönetilen örneği örnekleri, SQL Server 'ı Azure 'a geçirmek için tam SQL Server erişim ve özellik uyumluluğu sağlar.
 
-### <a name="sql-server-on-azure-vm"></a>Azure VM’lerde SQL Server
+### <a name="sql-server-on-azure-vm"></a>Azure Sanal Makinesi üzerinde SQL Server
 
 [Azure VM SQL Server](virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) , sektör kategorisi *hizmet olarak altyapı (IaaS)* ile sonuçlanır ve Azure 'da tam olarak yönetilen BIR sanal makine (VM) içinde SQL Server çalıştırmanızı sağlar. 
 - İşletim sistemi düzeyinde erişim gerektiren geçişler ve uygulamalar için idealdir. Azure 'daki SQL sanal makineleri, en az değişiklikle veya hiçbir değişikliğe gerek olmadan buluta hızlı geçiş gerektiren mevcut uygulamalar için yükseltme ve kaydırma. SQL sanal makineleri, Azure 'a geçiş için SQL Server örneği ve temel alınan işletim sistemi üzerinde tam yönetim denetimi sunar. 
@@ -111,7 +111,7 @@ Genel olarak, SQL veritabanı ve SQL yönetilen örneği, tek bir BT veya geliş
 
 ### <a name="comparison-table"></a>Karşılaştırma tablosu
 
-| Azure SQL Veritabanı | Azure SQL Yönetilen Örnek | Azure VM’lerde SQL Server |
+| Azure SQL Veritabanı | Azure SQL Yönetilen Örnek | Azure Sanal Makinesi üzerinde SQL Server |
 | :--- | :--- | :--- |
 |, Çoğu şirket içi veritabanı düzeyi özelliği destekler. En yaygın olarak kullanılan SQL Server özellikleri mevcuttur.<br/>% 99,995 kullanılabilirlik garanti edilir.<br/>Yerleşik yedeklemeler, düzeltme eki uygulama.<br/>En son kararlı veritabanı altyapısı sürümü.<br/>Gerekli kaynakları (CPU/depolama) ayrı veritabanlarına atama özelliği.<br/>Yerleşik Gelişmiş zeka ve güvenlik.<br/>Kaynakların çevrimiçi değişikliği (CPU/depolama).| Neredeyse tüm şirket içi örnek düzeyinde ve veritabanı düzeyinde özellikleri destekler. SQL Server ile yüksek uyumluluk.<br/>% 99,99 kullanılabilirlik garanti edilir.<br/>Yerleşik yedeklemeler, düzeltme eki uygulama.<br/>En son kararlı veritabanı altyapısı sürümü.<br/>SQL Server 'den kolay geçiş.<br/>Azure sanal ağı içindeki özel IP adresi.<br/>Yerleşik Gelişmiş zeka ve güvenlik.<br/>Kaynakların çevrimiçi değişikliği (CPU/depolama).| SQL Server altyapısı üzerinde tam denetiminiz vardır. Tüm şirket içi özellikleri destekler.<br/>% 99,99 ' e kadar kullanılabilirlik.<br/>Şirket içi SQL Server eşleşen sürümüyle tam eşlik.<br/>Sabit, iyi bilinen Veritabanı Altyapısı sürümü.<br/>SQL Server 'den kolay geçiş.<br/>Azure sanal ağı içindeki özel IP adresi.<br/>SQL Server yerleştirildiği konakta uygulama veya hizmet dağıtma olanağınız vardır.|
 |SQL Server geçiş zor olabilir.<br/>Bazı SQL Server özellikleri kullanılamaz.<br/>Garanti eden tam bakım süresi (ancak neredeyse saydam).<br/>SQL Server sürümle uyumluluk, yalnızca veritabanı uyumluluk düzeyleri kullanılarak sağlanabilir.<br/>[Azure özel bağlantısı](database/private-endpoint-overview.md)Ile özel IP adresi desteği.|Kullanılabilir olmayan en az sayıda SQL Server özelliği hala vardır.<br/>Garanti eden tam bakım süresi (ancak neredeyse saydam).<br/>SQL Server sürümle uyumluluk, yalnızca veritabanı uyumluluk düzeyleri kullanılarak sağlanabilir.|Yedeklemelerinizi ve düzeltme eklerini yönetmeniz gerekir.<br>Kendi High-Availability çözümünüzü uygulamanız gerekir.<br/>Kaynakları değiştirirken kapalı kalma süresi var (CPU/depolama)|

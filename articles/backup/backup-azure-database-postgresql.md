@@ -2,14 +2,14 @@
 title: PostgreSQL için Azure Veritabanı’nı Yedekleme
 description: Uzun süreli saklama (Önizleme) ile PostgreSQL için Azure veritabanı yedeklemesi hakkında bilgi edinin
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 04/06/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1e2d83d4a5e21ed747ec9d4dcf2fa03d1e3935cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5eba9d78dda45197c0d1e92195980f3d731734a8
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737582"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011725"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Uzun süreli saklama ile PostgreSQL için Azure veritabanı yedekleme (Önizleme)
 
@@ -135,10 +135,9 @@ Aşağıdaki yönergeler, Azure PostgreSQL veritabanlarında Azure Backup kullan
 
 1. **Bekletme** ayarlarını tanımlayın. Bir veya daha fazla bekletme kuralı ekleyebilirsiniz. Her bekletme kuralı belirli yedeklemeler için girişleri ve bu yedeklemeler için veri depolama ve bekletme süresini varsayar.
 
-1. Yedeklemelerinizi iki veri deposundan (veya katmanda) birinde depolamayı seçebilirsiniz: **yedekleme veri deposu** (Standart katman) veya **Arşiv veri deposu** (önizlemede). Yedeklemelerin iki veri deposu arasında katmanlandığınızda tanımlamak üzere **iki katmanlama seçeneği** arasından seçim yapabilirsiniz:
+1. Yedeklemelerinizi iki veri deposundan (veya katmanda) birinde depolamayı seçebilirsiniz: **yedekleme veri deposu** (Standart katman) veya **Arşiv veri deposu** (önizlemede).
 
-    - Hem yedekleme hem de arşiv veri depolarında bir yedek kopya olmasını tercih ediyorsanız **hemen** kopyalamayı seçin.
-    - Yedekleme veri deposundaki süresi dolduktan sonra yedeklemeyi Arşiv veri deposuna taşımayı tercih ediyorsanız, **süre sonu '** nu taşımayı seçin.
+   Yedekleme veri deposundaki süresi dolduktan sonra yedeklemeyi Arşiv veri deposuna taşımak için **süre sonu** seçeneğini belirleyebilirsiniz.
 
 1. **Varsayılan bekletme kuralı** , başka bir bekletme kuralı yokluğunda uygulanır ve varsayılan değer üç aydan oluşur.
 
@@ -197,7 +196,21 @@ Geri yükleme tetiklemeye yönelik bu adım adım kılavuzu izleyin:
 
     ![Dosya olarak geri yükleme](./media/backup-azure-database-postgresql/restore-as-files.png)
 
+1. Kurtarma noktası arşiv katmanındaysa, geri yüklemeden önce kurtarma noktasını yeniden yazmanız gerekir.
+   
+   ![Yeniden doldurma ayarları](./media/backup-azure-database-postgresql/rehydration-settings.png)
+   
+   Yeniden doldurma için gereken aşağıdaki ek parametreleri sağlayın:
+   - **Yeniden doldurma önceliği:** Varsayılan değer **standarttır**.
+   - **Yeniden doldurma süresi:** Maksimum yeniden doldurma süresi 30 gündür ve en az yeniden doldurma süresi 10 gündür. Varsayılan değer **15**' tir.
+   
+   Kurtarma noktası, belirtilen yeniden doldurma süresi için **yedekleme veri deposunda** depolanır.
+
+
 1. Bilgileri gözden geçirin ve **geri yükle**' yi seçin. Bu, **yedekleme işleri** altında Izlenebilecek Ilgili geri yükleme işini tetikler.
+
+>[!NOTE]
+>PostgreSQL için Azure veritabanı için Arşiv desteği sınırlı genel önizlemede.
 
 ## <a name="prerequisite-permissions-for-configure-backup-and-restore"></a>Yedekleme ve geri yükleme yapılandırma için önkoşul izinleri
 
@@ -220,7 +233,7 @@ Otomatikleştirilmiş bir betik ve ilgili yönergeleri almak için [Bu belgeyi i
 
 ### <a name="stop-protection"></a>Korumayı durdurma
 
-Bir yedekleme öğesinde korumayı durdurabilirsiniz. Bu, bu yedekleme öğesi için ilişkili kurtarma noktalarını da siler. Mevcut kurtarma noktalarını korurken korumayı Durdur seçeneğini henüz sağlamayız.
+Bir yedekleme öğesinde korumayı durdurabilirsiniz. Bu, bu yedekleme öğesi için ilişkili kurtarma noktalarını da siler. Kurtarma noktaları en az altı aya ait arşiv katmanında değilse, bu kurtarma noktalarının silinmesi erken silme maliyetine neden olur. Mevcut kurtarma noktalarını korurken korumayı Durdur seçeneğini henüz sağlamayız.
 
 ![Korumayı durdurma](./media/backup-azure-database-postgresql/stop-protection.png)
 

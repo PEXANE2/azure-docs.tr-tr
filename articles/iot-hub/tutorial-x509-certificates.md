@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: cdc5b261abe91c31d31827aeab03c9e8838b2a91
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: fada68ba395b959e557542eb8c230561aad84214
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105630818"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384332"
 ---
 # <a name="tutorial-understanding-x509-public-key-certificates"></a>Öğretici: X. 509.440 ortak anahtar sertifikalarını anlama
 
@@ -106,6 +106,13 @@ Parola koruması için kullanılan algoritmayla ilgili ek meta verilerle Base64 
 ### <a name="pkcs12-key-and-certificate"></a>PKCS # 12 anahtar ve sertifika
 
 Bir anahtarı ve tüm sertifika zincirini depolayabilen ve koruyabilen karmaşık bir biçim. Genellikle. pfx uzantısıyla kullanılır. PKCS # 12, PFX biçimiyle eşanlamlıdır.
+
+## <a name="for-more-information"></a>Daha fazla bilgi edinmek için
+
+Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
+
+* [Layman 'nın X. 509.440 sertifikası öğretmek Kılavuzu](https://techcommunity.microsoft.com/t5/internet-of-things/the-layman-s-guide-to-x-509-certificate-jargon/ba-p/2203540)
+* [IoT sektöründe X. 509.440 CA sertifikalarının kavramsal olarak anlaşılmasına](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-concept)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

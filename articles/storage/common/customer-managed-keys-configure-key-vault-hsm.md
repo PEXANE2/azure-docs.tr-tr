@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/30/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f9be9272a898ad48f3553d4c5e48952e1fcdde81
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ea51c1f7fcfce5b795965eab2f9c03a820a6ab03
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218647"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059369"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>Azure Key Vault yönetilen HSM 'de depolanan, müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırma (Önizleme)
 
@@ -65,7 +65,9 @@ az keyvault role assignment create \
 
 ## <a name="configure-encryption-with-a-key-in-the-managed-hsm"></a>Yönetilen HSM 'de bir anahtarla şifrelemeyi yapılandırma
 
-Son olarak, yönetilen HSM 'de depolanan bir anahtarı kullanmak için, müşteri tarafından yönetilen anahtarlarla Azure depolama şifrelemesini yapılandırın. Desteklenen anahtar türleri 2048, 3072 ve 4096 boyutlarının RSA-HSM anahtarlarını içerir. Şifrelemeyi yönetilen bir HSM 'de müşteri tarafından yönetilen anahtar kullanacak şekilde yapılandırmak için Azure CLı 2.12.0 veya üstünü kullanın. Daha fazla bilgi için bkz. [Azure CLI 'Yı yüklerken](/cli/azure/install-azure-cli).
+Son olarak, yönetilen HSM 'de depolanan bir anahtarı kullanmak için, müşteri tarafından yönetilen anahtarlarla Azure depolama şifrelemesini yapılandırın. Desteklenen anahtar türleri 2048, 3072 ve 4096 boyutlarının RSA-HSM anahtarlarını içerir. Yönetilen bir HSM 'de anahtar oluşturmayı öğrenmek için bkz. [HSM anahtarı oluşturma](../../key-vault/managed-hsm/key-management.md#create-an-hsm-key).
+
+Şifrelemeyi yönetilen bir HSM 'de müşteri tarafından yönetilen anahtar kullanacak şekilde yapılandırmak için Azure CLı 2.12.0 veya üstünü kullanın. Daha fazla bilgi için bkz. [Azure CLI 'Yı yüklerken](/cli/azure/install-azure-cli).
 
 Müşteri tarafından yönetilen bir anahtarın anahtar sürümünü otomatik olarak güncelleştirmek için, depolama hesabı için müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırırken anahtar sürümünü atlayın. Aşağıdaki örnekte gösterildiği gibi, depolama hesabının şifreleme ayarlarını güncelleştirmek için [az Storage Account Update](/cli/azure/storage/account#az_storage_account_update) ' i çağırın. `--encryption-key-source parameter` `Microsoft.Keyvault` Hesap için müşteri tarafından yönetilen anahtarları etkinleştirmek üzere öğesini dahil edin ve olarak ayarlayın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 
