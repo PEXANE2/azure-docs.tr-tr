@@ -1,25 +1,25 @@
 ---
-title: Konuşma Hizmet Kotaları ve Sınırları
+title: Konuşma hizmeti kotaları ve limitleri
 titleSuffix: Azure Cognitive Services
-description: Azure bilişsel konuşma Hizmetleri kotaları ve limitleri için hızlı başvuru, ayrıntılı açıklama ve en iyi uygulamalar
+description: Azure bilişsel konuşma hizmeti kotaları ve limitleri için hızlı başvuru, ayrıntılı açıklama ve en iyi uygulamalar
 services: cognitive-services
 author: alexeyo26
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/27/2021
+ms.date: 04/07/2021
 ms.author: alexeyo
-ms.openlocfilehash: 7ef6ed5293ec9ecf49c16f8dfb0b6604942408f0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f851d7999b063a2b1334564902d81343e3789439
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937065"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011182"
 ---
-# <a name="speech-services-quotas-and-limits"></a>Konuşma Hizmet Kotaları ve Sınırları
+# <a name="speech-service-quotas-and-limits"></a>Konuşma hizmeti kotaları ve limitleri
 
-Bu makalede, Azure bilişsel konuşma Hizmetleri kotaları ve tüm [fiyatlandırma katmanlarında](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)limitlerin **ayrıntılı açıklaması** ve bir hızlı başvuru yer almaktadır. Ayrıca, istek azaltmasını önlemek için bazı en iyi yöntemleri içerir. 
+Bu makalede, Azure bilişsel konuşma hizmeti kotaları ve tüm [fiyatlandırma katmanlarında](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)limitlerin **ayrıntılı açıklaması** ve bir hızlı başvuru yer almaktadır. Ayrıca, istek azaltmasını önlemek için bazı en iyi yöntemleri içerir. 
 
 ## <a name="quotas-and-limits-quick-reference"></a>Kotalar ve sınırlar hızlı başvuru
 [Metin okuma kotaları ve sınırlarına](#text-to-speech-quotas-and-limits-per-speech-resource) atlayın
@@ -98,9 +98,13 @@ Sonraki bölümlerde, kotaları ayarlama hakkında belirli durumlar açıklanır
 [Metin okuma 'ya atlayın. Özel ses için eşzamanlı Istek sınırını artırma](#text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice)
 
 ### <a name="speech-to-text-increasing-online-transcription-concurrent-request-limit"></a>Konuşmayı metne dönüştürme: çevrimiçi döküm eşzamanlı istek sınırını artırma
-Varsayılan olarak, eş zamanlı istek sayısı her konuşma kaynağı (temel model) veya özel uç nokta (özel model) başına 20 ile sınırlıdır. Standart fiyatlandırma katmanı için bu miktar artırılabilir. İsteği göndermeden önce, [Bu bölümün](#detailed-description-quota-adjustment-and-best-practices) malzemesini öğrendiğinizden ve bu [en iyi uygulamalardan](#general-best-practices-to-mitigate-throttling-during-autoscaling)haberdar olduğunuzdan emin olun.
+Varsayılan olarak, eş zamanlı istek sayısı, konuşma kaynağı başına 100 (temel model) ve özel uç nokta başına 20 (özel model) ile sınırlıdır. Standart fiyatlandırma katmanı için bu miktar artırılabilir. İsteği göndermeden önce, [Bu bölümün](#detailed-description-quota-adjustment-and-best-practices) malzemesini öğrendiğinizden ve bu [en iyi uygulamalardan](#general-best-practices-to-mitigate-throttling-during-autoscaling)haberdar olduğunuzdan emin olun.
 
-Eşzamanlı Istek limitini **artırmak, maliyetlerinizi doğrudan etkilemez** . Konuşma Hizmetleri "yalnızca kullandığınız kadar ödeyin" modeli kullanır. Sınır, hizmetin isteklerinizi kısıtlama başlamadan önce ne kadar yüksek ölçeklenebileceğini tanımlar.
+>[!NOTE]
+> Özel modeller kullanıyorsanız, bir konuşma kaynağının birçok özel model dağıtımını barındıran çok sayıda özel uç nokta ile ilişkilendirilebilen lütfen unutmayın. Her özel uç nokta, oluşturma tarafından ayarlanan varsayılan eşzamanlı istek sınırı (20) sayısına sahiptir. Bu ayarı değiştirmeniz gerekiyorsa, her özel uç noktanın ayarlamasını **ayrı ayrı** yapmanız gerekir. Ayrıca, bir konuşma kaynağının temel modeli için eşzamanlı istek sınırı sayısının bu kaynakla ilişkili özel uç noktalar üzerinde **hiçbir** etkisi olmadığını unutmayın.
+
+
+Eşzamanlı Istek limitini **artırmak, maliyetlerinizi doğrudan etkilemez** . Konuşma hizmeti "yalnızca kullandığınız kadar ödeyin" modeli kullanır. Sınır, hizmetin isteklerinizi kısıtlama başlamadan önce ne kadar yüksek ölçeklenebileceğini tanımlar.
 
 **Taban** ve **özel** modellerin eşzamanlı istek sınırları **ayrı ayrı** ayarlanması gerekir.
 
@@ -112,9 +116,9 @@ Eşzamanlı Istek sınırı parametresinin mevcut değeri Azure portal, Command-
 #### <a name="have-the-required-information-ready"></a>Gerekli bilgileri hazırlayın:
 - **Taban model** için:
   - Konuşma kaynak KIMLIĞI
-  - Region
+  - Bölge
 - **Özel model** için: 
-  - Region
+  - Bölge
   - Özel uç nokta KIMLIĞI
 
 - **Bilgi alma (temel model)**:  
@@ -122,7 +126,7 @@ Eşzamanlı Istek sınırı parametresinin mevcut değeri Azure portal, Command-
   - Eşzamanlılık Istek sınırını artırmak istediğiniz konuşma kaynağını seçin
   - *Özellikleri* seçin (*kaynak yönetim* grubu) 
   - Aşağıdaki alanların değerlerini kopyalayın ve kaydedin:
-    - **Kaynak kimliği**
+    - **Kaynak KIMLIĞI**
     - **Konum** (uç nokta bölgeniz)
 
 - **Bilgi alma (özel model)**:
@@ -168,7 +172,7 @@ Genel olarak, üretime geçmeden önce iş yükünün ve iş yükü desenlerinin
 ### <a name="text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice"></a>Metinden konuşmaya: özel ses için eşzamanlı istek sınırını artırma
 Varsayılan olarak, bir özel ses bitiş noktası için eşzamanlı istek sayısı 10 ile sınırlıdır. Standart fiyatlandırma katmanı için bu miktar artırılabilir. İsteği göndermeden önce, [Bu bölümün](#detailed-description-quota-adjustment-and-best-practices) malzemesini öğrendiğinizden ve bu [en iyi uygulamalardan](#general-best-practices-to-mitigate-throttling-during-autoscaling)haberdar olduğunuzdan emin olun.
 
-Eşzamanlı Istek limitini **artırmak, maliyetlerinizi doğrudan etkilemez** . Konuşma Hizmetleri "yalnızca kullandığınız kadar ödeyin" modeli kullanır. Sınır, hizmetin isteklerinizi kısıtlama başlamadan önce ne kadar yüksek ölçeklenebileceğini tanımlar.
+Eşzamanlı Istek limitini **artırmak, maliyetlerinizi doğrudan etkilemez** . Konuşma hizmeti "yalnızca kullandığınız kadar ödeyin" modeli kullanır. Sınır, hizmetin isteklerinizi kısıtlama başlamadan önce ne kadar yüksek ölçeklenebileceğini tanımlar.
 
 Eşzamanlı Istek sınırı parametresinin mevcut değeri Azure portal, Command-Line araçları veya API istekleri aracılığıyla görünür **değil** . Mevcut değeri doğrulamak için bir Azure destek Isteği oluşturun.
 

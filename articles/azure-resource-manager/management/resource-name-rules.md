@@ -2,13 +2,13 @@
 title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 20f7b6dc6c49b972b873ae3b275451829dec5c14
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/08/2021
+ms.openlocfilehash: a1dbe409eb5479c4027834cd33e095d12c31e238
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934181"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210202"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -16,7 +16,7 @@ Bu makalede, Azure kaynakları için adlandırma kuralları ve kısıtlamalar ö
 
 Bu makalede kaynak sağlayıcısı ad alanına göre kaynaklar listelenir. Kaynak sağlayıcılarının Azure hizmetleriyle nasıl eşleşeceğini gösteren bir liste için bkz. [Azure hizmetleri Için kaynak sağlayıcıları](azure-services-resource-providers.md).
 
-Geçerli karakterler sütununda özellikle belirtilmedikçe, kaynak adları büyük/küçük harfe duyarlıdır.
+Geçerli karakterler sütununda belirtilmedikçe, kaynak adları büyük/küçük harfe duyarlıdır.
 
 Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 
@@ -110,7 +110,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | batchAccounts | Region | 3-24 | Küçük harfler ve rakamlar. |
+> | batchAccounts | Bölge | 3-24 | Küçük harfler ve rakamlar. |
 > | batchAccounts/uygulamalar | Batch hesabı | 1-64 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | batchAccounts/sertifikalar | Batch hesabı | 5-45 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | batchAccounts/havuzlar | Batch hesabı | 1-64 | Alfasayısal, alt çizgi ve kısa çizgi. |
@@ -177,11 +177,18 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | Galeriler/resimler/sürümler | image | 32 bit tamsayı | Sayılar ve dönemler. |
 > | images | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi ile biter. |
 > | anlık görüntüler | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi ile biter. |
-> | virtualMachines | kaynak grubu | 1-15 (Windows)<br>1-64 (Linux)<br><br>Aşağıdaki nota bakın. | Boşluk veya şu karakterleri kullanamaz:<br> `\/"'[]:|<>+=;,?*@&_`<br><br>Windows VM 'Leri, kısa çizgi ile nokta veya bitiş içeremez.<br><br>Linux VM 'Leri nokta veya kısa çizgi ile bitemez. |
-> | virtualMachineScaleSets | kaynak grubu | 1-15 (Windows)<br>1-64 (Linux)<br><br>Aşağıdaki nota bakın. | Boşluk veya şu karakterleri kullanamaz:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Alt çizgi ile başlayamaz. Nokta veya kısa çizgi ile bitemez. |
+> | virtualMachines | kaynak grubu | 1-15 (Windows)<br>1-64 (Linux)<br><br>Aşağıdaki nota bakın. | Boşluk veya şu karakterleri kullanamaz:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Windows VM 'Leri, kısa çizgi ile nokta veya bitiş içeremez.<br><br>Linux VM 'Leri nokta veya kısa çizgi ile bitemez. |
+> | virtualMachineScaleSets | kaynak grubu | 1-15 (Windows)<br>1-64 (Linux)<br><br>Aşağıdaki nota bakın. | Boşluk veya şu karakterleri kullanamaz:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Alt çizgi ile başlayamaz. Nokta veya kısa çizgi ile bitemez. |
 
 > [!NOTE]
 > Azure sanal makinelerinin iki ayrı adı vardır: kaynak adı ve ana bilgisayar adı. Portalda bir sanal makine oluşturduğunuzda, her iki ad için de aynı değer kullanılır. Yukarıdaki tablodaki kısıtlamalar ana bilgisayar adına yöneliktir. Gerçek kaynak adı en fazla 64 karakter uzunluğunda olabilir.
+
+## <a name="microsoftcommunication"></a>Microsoft. Communication
+
+> [!div class="mx-tableFixed"]
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | --- | --- | --- | --- |
+> | communicationServices | global | 1-63 | Alfasayısal karakterler, kısa çizgiler ve alt çizgiler. |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. Containerınstance
 
@@ -599,7 +606,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | dağıtımlar | kaynak grubu | 1-64 | Alfasayısal, alt çizgi, parantezler, tireler ve dönemler. |
-> | ResourceGroups | aboneliği | 1-90 | Alfasayısal [belgeleriyle](/rest/api/resources/resources/resourcegroups/createorupdate)eşleşen alfasayısal, alt çizgi, parantezler, tire, nokta ve Unicode karakterleri.<br><br>Nokta ile bitemez. |
+> | ResourceGroups | aboneliği | 1-90 | Alfasayısal [belgeleriyle](/rest/api/resources/resourcegroups/createorupdate)eşleşen alfasayısal, alt çizgi, parantezler, tire, nokta ve Unicode karakterleri.<br><br>Nokta ile bitemez. |
 > | tagNames | kaynak | 1-512 | Şu kullanılamıyor:<br>`<>%&\?/` |
 > | tagNames/tagValues | etiket adı | 1-256 | Tüm karakterler. |
 > | Templatespec | kaynak grubu | 1-90 | Alfasayısal, alt çizgi, parantezler, tireler ve dönemler. |
@@ -706,10 +713,12 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | --- | --- | --- | --- |
 > | sertifikalar | kaynak grubu | 1-260 | Şu kullanılamıyor:<br>`/` <br><br>Boşluk veya nokta ile bitemez.  | 
 > | serverfarms | kaynak grubu | 1-40 | Alfasayısal karakterler ve kısa çizgiler. |
-> | Siteler | global | 2-60 | Alfasayısal ve kısa çizgi içerir.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
+> | Siteler | Genel veya etki alanı. Aşağıdaki nota bakın. | 2-60 | Alfasayısal ve kısa çizgi içerir.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
 > | siteler/yuvalar | Site | 2-59 | Alfasayısal karakterler ve kısa çizgiler. |
 
 > [!NOTE]
+> Bir Web sitesi, genel olarak benzersiz bir URL 'ye sahip olmalıdır. Barındırma planı kullanan bir Web sitesi oluşturduğunuzda, URL olur `http://<app-name>.azurewebsites.net` . Uygulama adı genel olarak benzersiz olmalıdır. App Service Ortamı kullanan bir Web sitesi oluşturduğunuzda, uygulama adı [App Service ortamı etki alanı](../../app-service/environment/using-an-ase.md#app-access)içinde benzersiz olmalıdır. Her iki durumda da sitenin URL 'SI genel olarak benzersizdir.
+>
 > Azure Işlevleri, Microsoft. Web/Sites ile aynı adlandırma kurallarına ve kısıtlamalara sahiptir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

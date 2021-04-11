@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a29a2a7e379e253b52813eb7a76f669abbf668
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8779ee2d3c4d83c06a2c1803e65219d43f0ef14
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653839"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275813"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>Passwordless güvenlik anahtarı oturum açmayı etkinleştir 
 
@@ -89,6 +89,8 @@ Geri bildirim paylaşmak veya bu özellikle ilgili sorunlarla karşılaşırsan�
 ### <a name="security-key-provisioning"></a>Güvenlik anahtarı sağlama
 
 Yönetici sağlama ve güvenlik anahtarlarının ön sağlamasını kaldırma kullanılamıyor.
+
+**Note:** FIDO2 önbellekli oturum açma, win10 20H2 sürümüne özel karma Azure AD 'ye katılmış makinede başarısız olur (DC 'nin kullanılamadığı durumlarda). Bu, şu anda mühendisle araştırma aşamasındadır.
 
 ### <a name="upn-changes"></a>UPN değişiklikleri
 

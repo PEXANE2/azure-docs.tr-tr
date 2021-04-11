@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cfea22c10d98adf3b8c89491c248bf7a934ba1ed
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104798893"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Cihaz kimliği ve Masaüstü Sanallaştırması
@@ -52,12 +52,12 @@ VDı ortamınız için Azure AD 'de cihaz kimliklerini yapılandırmadan önce, 
 |   |   | Windows geçerli | Kalıcı olmayan | Evet<sup>5</sup> |
 |   |   | Windows alt düzey | Kalıcı olmayan | Evet<sup>6</sup> |
 |   | Yönetilen<sup>4</sup> | Windows geçerli ve Windows alt düzeyi | Kalıcı | Yes |
-|   |   | Windows geçerli | Kalıcı olmayan | Hayır |
+|   |   | Windows geçerli | Kalıcı olmayan | No |
 |   |   | Windows alt düzey | Kalıcı olmayan | Evet<sup>6</sup> |
-| Azure AD'ye katılanlar | Federe | Windows geçerli | Kalıcı | Hayır |
-|   |   |   | Kalıcı olmayan | Hayır |
-|   | Yönetilen | Windows geçerli | Kalıcı | Hayır |
-|   |   |   | Kalıcı olmayan | Hayır |
+| Azure AD'ye katılanlar | Federe | Windows geçerli | Kalıcı | No |
+|   |   |   | Kalıcı olmayan | No |
+|   | Yönetilen | Windows geçerli | Kalıcı | No |
+|   |   |   | Kalıcı olmayan | No |
 | Azure AD kayıtlı | Federasyon/yönetilen | Windows geçerli/Windows alt düzeyi | Kalıcı/kalıcı olmayan | Geçerli değil |
 
 <sup>1</sup> Windows **geçerli** cihaz Windows 10, Windows Server 2016 V1803 veya üzeri ve Windows Server 2019 ' i temsil eder.

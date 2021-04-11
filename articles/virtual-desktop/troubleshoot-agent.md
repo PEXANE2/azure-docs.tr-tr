@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 86296385a0e657246e415f326261ce401e3cdeaf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b47a205cac1717dfc66594f856fd9370a01a9ae3
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604194"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168221"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Yaygın Windows sanal masaüstü Aracısı sorunlarını giderme
 
@@ -106,7 +106,7 @@ Bu sorunu çözmek için, BrokerURI ve BrokerURIGlobal öğesine ulaşabilseniz 
    > ![Başarısız yüklü aracı genel erişiminin ekran görüntüsü](media/unsuccessful-broker-global.png)
 
 8. Ağ Bu URL 'Leri engelliyorsa, gerekli URL 'Lerin engellemesini kaldırmanız gerekecektir. Daha fazla bilgi için bkz. [gereklı URL listesi](safe-url-list.md).
-9. Bu sorunu çözmezse, şifrelemeleri olan ve aracının aracı bağlantısını engelleyecek bir grup ilkesi olmadığından emin olun. Windows sanal masaüstü, [Azure ön kapısının](../frontdoor/front-door-faq.MD#what-are-the-current-cipher-suites-supported-by-azure-front-door)kullandığı TLS 1,2 şifrelemeleri kullanır. Daha fazla bilgi için bkz. [bağlantı güvenliği](network-connectivity.md#connection-security).
+9. Bu sorunu çözmezse, şifrelemeleri olan ve aracının aracı bağlantısını engelleyecek bir grup ilkesi olmadığından emin olun. Windows sanal masaüstü, [Azure ön kapısının](../frontdoor/front-door-faq.yml#what-are-the-current-cipher-suites-supported-by-azure-front-door-)kullandığı TLS 1,2 şifrelemeleri kullanır. Daha fazla bilgi için bkz. [bağlantı güvenliği](network-connectivity.md#connection-security).
 
 ## <a name="error-3703"></a>Hata: 3703
 

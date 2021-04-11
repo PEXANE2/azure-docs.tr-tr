@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: memildin
-ms.openlocfilehash: 085f3a5295d60b83536683a57a34b51abccd3067
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 88d0a3dcd89ea678d77bc558fc680630bc0f2309
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043028"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168187"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Güvenlik Merkezi 'nin tümleşik EDR çözümü ile uç noktalarınızı koruyun: uç nokta için Microsoft Defender
 
@@ -38,7 +38,7 @@ Uç nokta için Microsoft Defender, bütünsel, bulut tarafından sunulan bir u�
 | Yayın durumu:                  | Genel olarak kullanılabilir (GA)                                                                                                                                                                                                                                                                                      |
 | Fiyat                        | [Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir                                                                                                                                                                                                                                             |
 | Desteklenen platformlar:            |  • Windows çalıştıran Azure makineleri<br> • Windows çalıştıran Azure Arc makineleri|
-| Desteklenen Windows sürümleri:  |  • **Genel kullanılabilirlik (GA)-** Windows Server 2016, 2012 r2 ve 2008 R2 SP1 'de algılama<br> • Windows Server 2019, [Windows sanal masaüstü (WVD)](../virtual-desktop/overview.md)ve [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (eski adıyla sanal masaüstleri) üzerinde **Önizleme-** algılama|
+| Desteklenen Windows sürümleri:  |  • **Genel kullanılabilirlik (GA)-** Windows Server 2016, 2012 r2 ve 2008 R2 SP1 'de algılama<br> • Windows Server 2019, [Windows sanal masaüstü (WVD)](../virtual-desktop/overview.md)ve [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.yml) (eski adıyla sanal masaüstleri) üzerinde **Önizleme-** algılama|
 | Desteklenmeyen işletim sistemleri:  |  • Windows 10 (EVD veya WVD dışında)<br> • Linux|
 | Gerekli roller ve izinler: | Tümleştirmeyi etkinleştirmek/devre dışı bırakmak için: **Güvenlik Yöneticisi** veya **sahibi**<br>Güvenlik Merkezi 'nde MDADTP uyarılarını görüntülemek için: **güvenlik okuyucu**, **okuyucu**, **kaynak grubu katılımcısı**, **kaynak grubu sahibi**, **Güvenlik Yöneticisi**, **abonelik sahibi** veya **abonelik katılımcısı**|
 | Larının                         | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov                                                        |
