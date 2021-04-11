@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/24/2021
 ms.openlocfilehash: 63151fa26e2e0d35f9f6bde86e69d3442c50822a
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104889522"
 ---
 # <a name="partner-spotlight"></a>İş ortağı Spotlight
 
 Azure Bilişsel Arama içeren uçtan uca çözümler oluşturan Microsoft iş ortaklarından uzman yardımı alın. Aşağıdaki iş ortakları, bir dizi iş ve teknik senaryo genelinde tam metin arama ve AI zenginleştirme özelliğinden yararlanarak derin bir deneyim yaşar.
 
-| İş Ortağı | Açıklama | Ürün bağlantısı |
+| İş Ortağı | Description | Ürün bağlantısı |
 |---------|-------------|----------------------|
 | ![Agolo](media/resource-partners/agolo-logo.png "Agolo şirket logosu") | [**Agolo**](https://www.agolo.com) , kurumsal kullanım için önde gelen özetleme altyapısıdır. Agolo 'nun AI platformu, her müşteriye ilgilendiğiniz alanlara özgü önemli noktaların özetini sağlamak için yüzlerce binlerce medya makalesini, araştırma belgelerini ve özel bilgileri analiz eder. </br></br>Microsoft ile iş ortaklarımız, agolo özetleme ile tümleştirilmiş Azure Bilişsel Arama platformunun gücünü ve uyarlanabilirliğini birleştirir. Tipik arama motoru parçacıkları yerine, sonuçlar sayfası bağlamsal olarak ilgili agolo özetlerini görüntüleyerek kullanıcının bu belgenin özel ihtiyaçlarına uygunluğunu belirlemesine anında olanak tanır. Özet destekli aramanın etkisi, kullanıcıların daha fazla ilgili içeriği daha hızlı bulmasına ve bunların işlerini daha etkin bir şekilde yapabilmeleri ve rekabetçi bir avantaj kazanmasını sağlamalarına olanak tanır. | [Ürün sayfası](https://www.agolo.com/microsoft-azure-cognitive-search ) |
 | ![BlueGranite](media/resource-partners/blue-granite-full-color.png "Mavi Granite şirket logosu") | [**Bluegranite**](https://www.bluegranite.com/) , modern iş zekası, veri PLATFORMLARı ve AI çözümlerinde birden çok sektör arasında 25 yıllık deneyim sunar. Bilgi araştırma hizmetleri, kuruluşların yapılandırılmış ve yapılandırılmamış veri kaynaklarından benzersiz Öngörüler almasına imkan tanır. Modüler AI özellikleri, verileri indekslemek ve verileri daha geleneksel veri kaynaklarıyla ilişkilendirmek için çok sayıda dosya türü üzerinde arama yapar. Analiz araçları, zenginleştirilmiş verilerden desenleri ve eğilimleri ayıklar ve sonuçları tüm düzeylerde kullanıcılara tanıtımlar. | [Ürün sayfası](https://www.bluegranite.com/knowledge-mining) |

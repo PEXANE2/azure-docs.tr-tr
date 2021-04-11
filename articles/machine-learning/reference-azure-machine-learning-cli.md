@@ -7,14 +7,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jordane
 author: jpe316
-ms.date: 06/22/2020
+ms.date: 04/02/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3e073310d62bfb772ea1120bd379cdc277137da0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a22700782c584015add2c83ecc96ccc610b8509
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519121"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219629"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>& Azure Machine Learning için CLı uzantısını kullanın
 
@@ -60,22 +60,7 @@ Diğer kimlik doğrulama yöntemleri için bkz. [Azure CLI Ile oturum açma](/cl
 
 ## <a name="install-the-extension"></a>Uzantıyı yükleme
 
-Machine Learning CLı uzantısını yüklemek için aşağıdaki komutu kullanın:
-
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
-
-> [!TIP]
-> Aşağıdaki komutlarla kullanabileceğiniz örnek dosyaları [burada](https://aka.ms/azml-deploy-cloud)bulabilirsiniz.
-
-İstendiğinde, `y` uzantıyı yüklemeyi seçin.
-
-Uzantının yüklendiğini doğrulamak için, ML 'ye özgü alt komutların listesini göstermek üzere aşağıdaki komutu kullanın:
-
-```azurecli-interactive
-az ml -h
-```
+Uzantı, ile başlayan bir komutu ilk kez kullanmaya çalıştığınızda otomatik olarak yüklenir `az ml` .
 
 ## <a name="update-the-extension"></a>Uzantıyı güncelleştirme
 
@@ -84,7 +69,6 @@ Machine Learning CLı uzantısını güncelleştirmek için aşağıdaki komutu 
 ```azurecli-interactive
 az extension update -n azure-cli-ml
 ```
-
 
 ## <a name="remove-the-extension"></a>Uzantıyı kaldırma
 

@@ -10,18 +10,27 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a47982012dcaa2eabda93c93508b23f30525812d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dcd48354372a196ea903c335e5e22caf20e25996
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720398"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219663"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için en iyi yöntemler
 
 Bu makalede sunucusuz SQL havuzu kullanmak için en iyi yöntemler koleksiyonunu bulacaksınız. Sunucusuz SQL havuzu, Azure SYNAPSE Analytics 'teki bir kaynaktır.
 
 Sunucusuz SQL havuzu, Azure depolama hesaplarınızdaki dosyaları sorgulamanızı sağlar. Yerel depolama veya alma özelliklerine sahip değildir. Bu nedenle, sorgunun hedeflediği tüm dosyalar sunucusuz SQL havuzu dışında. Depolama alanından dosyaların okunmayla ilgili her şey, sorgu performansının üzerinde bir etkiye sahip olabilir.
+
+Bazı genel yönergeler şunlardır:
+- İstemci uygulamalarınızın sunucusuz SQL havuzuyla birlikte bulunduğundan emin olun.
+  - İstemci uygulamalarını Azure dışında (Power BI Desktop Örneğin, SSMS, ADS) kullanıyorsanız, istemci bilgisayarınıza yakın bir bölgede sunucusuz havuz kullandığınızdan emin olun.
+- Depolama (Azure Data Lake, Cosmos DB) ve sunucusuz SQL havuzunun aynı bölgede bulunduğundan emin olun.
+- Bölümlendirme kullanarak [depolama yerleşimini iyileştirmeyi](#prepare-files-for-querying) deneyin ve DOSYALARıNıZı 100 MB Ile 10 GB arasında bir aralıkta tutun.
+- Çok sayıda sonuç döndürmekte sonra, SYNAPSE Studio 'Yu değil SSMS veya ADS kullandığınızdan emin olun. SYNAPSE Studio, büyük sonuç kümeleri için tasarlanmamış bir web aracıdır. 
+- Sonuçları dize sütununa göre filtrelerken, bazı harmanlama kullanmayı deneyin `BIN2_UTF8` .
+- Power BI Içeri aktarma modu veya Azure Analysis Services kullanarak istemci tarafında sonuçları önbelleğe almaya çalışın ve bunları düzenli aralıklarla yenileyin. Sunucusuz SQL havuzları, karmaşık sorgular kullanıyorsanız veya büyük miktarda veriyi işlemek için Power BI doğrudan sorgu modunda etkileşimli deneyim sağlayamaz.
 
 ## <a name="client-applications-and-network-connections"></a>İstemci uygulamaları ve ağ bağlantıları
 
@@ -66,7 +75,11 @@ Mümkünse, daha iyi performans için dosyaları hazırlayacaksınız:
 
 ### <a name="colocate-your-cosmosdb-analytical-storage-and-serverless-sql-pool"></a>CosmosDB analitik depolama ve sunucusuz SQL havuzunuzu birlikte bulundurma
 
-CosmosDB analitik depolamanın SYNAPSE çalışma alanıyla aynı bölgeye yerleştirildiğinden emin olun. Çapraz bölge sorguları çok fazla gecikme sürelerine neden olabilir.
+CosmosDB analitik depolamanın SYNAPSE çalışma alanıyla aynı bölgeye yerleştirildiğinden emin olun. Çapraz bölge sorguları çok fazla gecikme sürelerine neden olabilir. Analitik deponun yerleştirildiği bölgeyi açıkça belirtmek için bağlantı dizesindeki Region özelliğini kullanın (bkz. [sunucusuz SQL havuzu kullanarak bkz. sorgu CosmosDb](query-cosmos-db-analytical-store.md#overview)):
+
+```
+'account=<database account name>;database=<database name>;region=<region name>'
+```
 
 ## <a name="csv-optimizations"></a>CSV iyileştirmeleri
 
