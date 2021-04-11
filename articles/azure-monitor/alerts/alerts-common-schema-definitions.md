@@ -4,19 +4,19 @@ description: Azure Izleyici için ortak uyarı şeması tanımlarını anlama
 author: ofirmanor
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 02092f5a241824d2a9aef242b544f8900af7ebec
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 709ec2dee1be6930ca7c09de334aede8a76e95f4
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102045403"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491721"
 ---
 # <a name="common-alert-schema-definitions"></a>Ortak uyarı şeması tanımları
 
 Bu makalede, Web kancaları, Azure Logic Apps, Azure Işlevleri ve Azure Otomasyonu runbook 'ları gibi Azure Izleyici için [genel uyarı şeması tanımları](./alerts-common-schema.md) açıklanmaktadır. 
 
 Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıklar. Bu örnekler, aşağıdaki bölümlerde ortak şemada açıklanmıştır:
-* **Essentials**: uyarının hangi kaynakla ilgili olduğunu açıklayan tüm uyarı türlerinde ortak olan standartlaştırılmış alanlar kümesi (örneğin, önem derecesi veya açıklama). 
+* **Essentials**: uyarının hangi kaynakla ilgili olduğunu açıklayan tüm uyarı türlerinde ortak olan standartlaştırılmış alanlar kümesi (örneğin, önem derecesi veya açıklama). Önem derecesine ilişkin tanımlamalar [uyarılara genel bakış](alerts-overview.md#overview)bölümünde bulunabilir. 
 * **Uyarı bağlamı**: uyarı türüne göre değişen alanlarla, uyarının nedenini açıklayan bir alan kümesi. Örneğin, bir ölçüm uyarısı, uyarı bağlamındaki ölçüm adı ve ölçüm değeri gibi alanları içerir, ancak bir etkinlik günlüğü uyarısıyla uyarıyı oluşturan olay hakkında bilgi bulunur. 
 
 **Örnek uyarı yükü**

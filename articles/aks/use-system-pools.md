@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: 9c53cb53517c4696a1bb47c2cb72335979d58d3a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c3c65d3a7316d431c57d9fb75775e271bf9f34ca
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178839"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223277"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetindeki (AKS) sistem düğüm havuzlarını yönetme
 
@@ -43,7 +43,8 @@ Sistem düğüm havuzları aşağıdaki kısıtlamalara sahiptir:
 * Sistem havuzları osType, Linux olmalıdır.
 * Kullanıcı düğümü havuzları osType, Linux veya Windows olabilir.
 * Sistem havuzlarının en az bir düğüm içermesi ve Kullanıcı düğüm havuzlarının sıfır veya daha fazla düğüm içermesi gerekir.
-* Sistem düğüm havuzları, en az 2 vCPU ve 4 GB bellek için bir VM SKU 'SU gerektirir.
+* Sistem düğüm havuzları, en az 2 vCPU ve 4 GB bellek için bir VM SKU 'SU gerektirir. Ancak Burstable-VM (B serisi) önerilmez.
+* Özellikle büyük kümeler (örneğin, birden çok CoreDNS Pod çoğaltmaları, 3-4 + Eklentiler, vb.) için en az iki düğüm 4 vCPU önerilir (ör. Standard_DS4_v2).
 * Sistem düğüm havuzlarının [En düşük ve en yüksek değer formülünde Pod][maximum-pods]tarafından açıklandığı gibi en az 30 tane olması gerekir.
 * Spot düğüm havuzları, Kullanıcı düğümü havuzları gerektirir.
 * Ek bir sistem düğüm havuzu ekleme veya hangi düğüm havuzunun bir sistem düğüm havuzu olarak değiştirilmesi, sistem yığınlarını otomatik olarak *taşımayacak* . System Pod, bir Kullanıcı düğümü havuzuna değiştirseniz bile aynı düğüm havuzunda çalışmaya devam edebilir. Daha önce bir sistem düğüm havuzudur sistem Pod çalıştıran bir düğüm havuzunu siler veya ölçeklendirirseniz, bu sistem havuzları yeni sistem düğümü havuzuna tercih edilen zamanlamaya göre yeniden dağıtılır.

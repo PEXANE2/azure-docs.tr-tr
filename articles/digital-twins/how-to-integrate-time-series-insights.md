@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3bc821f31e0463000c9089e48818249f2c046ede
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 5ac8c5bb68430a1e886a89709d5e256beb8819c8
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103004"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257288"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure dijital TWINS 'i Azure Time Series Insights ile tümleştirme
 
@@ -40,7 +40,7 @@ Aşağıdaki yoldan Azure dijital TWINS 'e Time Series Insights iliştirilecekti
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Güncelleştirme bildirimlerinin ikizini oluşturmak için rota ve filtre oluşturma
 
-Azure dijital TWINS örnekleri, bir ikizi durumunun güncelleştirildiği her seferinde [ikizi Update olaylarını](how-to-interpret-event-data.md) yayabilir. Bu bölümde, daha fazla işleme için bu güncelleştirme olaylarını Azure [Event Hubs](../event-hubs/event-hubs-about.md) 'a yönlendiren bir Azure dijital TWINS [**olay yolu**](concepts-route-events.md) oluşturacaksınız.
+Azure dijital TWINS örnekleri, bir ikizi durumunun güncelleştirildiği her seferinde [ikizi değişiklik olaylarını](concepts-event-notifications.md#digital-twin-change-notifications) yayabilir. Bu bölümde, daha fazla işleme için bu güncelleştirme olaylarını Azure [Event Hubs](../event-hubs/event-hubs-about.md) 'a yönlendiren bir Azure dijital TWINS [**olay yolu**](concepts-route-events.md) oluşturacaksınız.
 
 Azure dijital TWINS [*öğreticisi: uçtan uca bir çözümü bağlama*](./tutorial-end-to-end.md) bir termometre 'nin bir odanın bulunduğu dijital bir ikizi üzerinde sıcaklık özniteliğini güncelleştirmek için kullanıldığı bir senaryoya yol gösterir. Bu model, Time Series Insights mantığınızı güncelleştirmeye gerek kalmadan temel alınan veri kaynağını değiştirme esnekliği sağlayan bir IoT cihazından telemetri iletmek yerine ikizi güncelleştirmelerini kullanır.
 

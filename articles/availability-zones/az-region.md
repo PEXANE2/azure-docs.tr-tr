@@ -4,16 +4,16 @@ description: Azure 'da yüksek oranda kullanılabilir ve dayanıklı uygulamalar
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/06/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: a81f3a3c51ffd0e1e0937c077a07fcbde16f0513
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 782e632f8707b4cafb6d33438f6c8da7e8b08c30
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961311"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491412"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Kullanılabilirlik Alanlarını destekleyen Azure Hizmetleri
 
@@ -45,16 +45,16 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 
 
 ## <a name="azure-regions-with-availability-zones"></a>Kullanılabilirlik Alanları olan Azure bölgeleri
-
+ 
 
 | Kuzey ve Güney Amerika           | Avrupa               | Afrika              | Asya Pasifik   |
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
 | Güney Brezilya       | Orta Fransa       | Güney Afrika Kuzey * | Doğu Avustralya |
-| Orta Kanada     | Almanya Orta Batı |                     | Doğu Japonya     |
-| Central US         | Kuzey Avrupa         |                     | Kore Orta * |
-| Doğu ABD            | Güney Birleşik Krallık             |                     | Güneydoğu Asya |
-| Doğu ABD 2          | West Europe          |                     |                |
+| Orta Kanada     | Almanya Orta Batı |                     | Orta Hindistan * |
+| Central US         | Kuzey Avrupa         |                     | Doğu Japonya     |
+| Doğu ABD            | Güney Birleşik Krallık             |                     | Kore Orta * |
+| Doğu ABD 2          | West Europe          |                     | Güneydoğu Asya |
 | Orta Güney ABD |                      |                     |                |
 | US Gov Virginia    |                      |                     |                |
 | Batı ABD 2        |                      |                     |                |
@@ -115,89 +115,100 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 
 **Temel hizmetler**
 
-| Ürünler                                        | Dayanıklılık |
-|-------------------------------------------------|:------------:|
-| App Service ortamları                        |      : large_blue_diamond:  |
-| Azure Active Directory Domain Services          |      : large_blue_diamond:  |
-| Azure Bastion                                   |      : large_blue_diamond:  |
-| Redis için Azure Cache                           |      : large_blue_diamond:  |
-| Azure Bilişsel Hizmetler: Metin Analizi        |      : large_blue_diamond:  |
-| Azure Veri Gezgini                             |      : large_blue_diamond:  |
-| MySQL için Azure veritabanı – esnek sunucu      |      : large_blue_diamond:  |
-| PostgreSQL için Azure veritabanı – esnek sunucu |      : large_blue_diamond:  |
-| Azure DDoS Koruması                           |      : large_blue_diamond:  |
-| Azure Disk Şifrelemesi                           |      : large_blue_diamond:  |
-| Azure Güvenlik Duvarı                                  |      : large_blue_diamond:  |
-| Azure Güvenlik Duvarı Yöneticisi                          |      : large_blue_diamond:  |
-| Azure Kubernetes Service (AKS)                  |      : large_blue_diamond:  |
-| Azure Özel Bağlantı                              |      : large_blue_diamond:  |
-| Azure Red Hat OpenShift                         |      : large_blue_diamond:  |
-| Azure Site Recovery                             |      : large_blue_diamond:  |
-| Azure SQL: sanal makine                      |      : large_blue_diamond:  |
-| Azure Search                                    |      : large_blue_diamond:  |
-| Azure Web Uygulaması Güvenlik Duvarı                  |      : large_blue_diamond:  |
-| Container Registry                              |      : large_blue_diamond:  |
-| Event Grid                                      |      : large_blue_diamond:  |
-| Ağ İzleyicisi                                 |      : large_blue_diamond:  |
-| Ağ Izleyicisi: Trafik Analizi              |      : large_blue_diamond:  |
-| Power BI Embedded                               |      : large_blue_diamond:  |
-| Premium blob depolaması                            |      : large_blue_diamond:  |
-| Depolama: Azure Premium dosyaları                    |      : large_blue_diamond:  |
-| Sanal makineler: Azure adanmış ana bilgisayar          |      : large_blue_diamond:  |
-| Sanal makineler: Ddsv4-Series                  |      : large_blue_diamond:  |
-| Sanal makineler: Ddv4-Series                   |      : large_blue_diamond:  |
-| Sanal makineler: Dsv4-Series                   |      : large_blue_diamond:  |
-| Sanal makineler: Dv4-Series                    |      : large_blue_diamond:  |
-| Sanal makineler: Edsv4-Series                  |      : large_blue_diamond:  |
-| Sanal makineler: Edv4-Series                   |      : large_blue_diamond:  |
-| Sanal makineler: Esv4-Series                   |      : large_blue_diamond:  |
-| Sanal makineler: Ev4-Series                    |      : large_blue_diamond:  |
-| Sanal makineler: Fsv2-Series                   |      : large_blue_diamond:  |
-| Sanal makineler: a serisi                      |      : large_blue_diamond:  |
-| Sanal WAN                                     |      : large_blue_diamond:  |
-| Sanal WAN: ExpressRoute                       |      : large_blue_diamond:  |
-| Sanal WAN: Noktadan siteye VPN Gateway          |      : large_blue_diamond:  |
-| Sanal WAN: siteden siteye VPN Gateway           |      : large_blue_diamond:  |
+
+|     Ürünler                                                    | Dayanıklılık             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     App Service ortamları                                    | : large_blue_diamond:  |
+|     Azure Active Directory Domain Services                      | : large_blue_diamond:  |
+|     Azure Bastion                                               | : large_blue_diamond:  |
+|     Redis için Azure Cache                                       | : large_blue_diamond:  |
+|     Azure Bilişsel Arama                                      | : large_blue_diamond:  |
+|     Azure Bilişsel Hizmetler: Metin Analizi                    | : large_blue_diamond:  |
+|     Azure Veri Gezgini                                         | : large_blue_diamond:  |
+|     MySQL için Azure veritabanı – esnek sunucu                  | : large_blue_diamond:  |
+|     PostgreSQL için Azure veritabanı – esnek sunucu             | : large_blue_diamond:  |
+|     Azure DDoS Koruması                                       | : large_blue_diamond:  |
+|     Azure Disk Şifrelemesi                                       | : large_blue_diamond:  |
+|     Azure Güvenlik Duvarı                                              | : large_blue_diamond:  |
+|     Azure Güvenlik Duvarı Yöneticisi                                      | : large_blue_diamond:  |
+|     Azure Kubernetes Service (AKS)                              | : large_blue_diamond:  |
+|     Azure Özel Bağlantı                                          | : large_blue_diamond:  |
+|     Azure Site Recovery                                         | : large_blue_diamond:  |
+|     Azure SQL: sanal makine                                  | : large_blue_diamond:  |
+|     Azure Web Uygulaması Güvenlik Duvarı                              | : large_blue_diamond:  |
+|     Container Registry                                          | : large_blue_diamond:  |
+|     Event Grid                                                  | : large_blue_diamond:  |
+|     Ağ İzleyicisi                                             | : large_blue_diamond:  |
+|     Ağ Izleyicisi: Trafik Analizi                          | : large_blue_diamond:  |
+|     Power BI Embedded                                           | : large_blue_diamond:  |
+|     Premium blob depolaması                                        | : large_blue_diamond:  |
+|     Depolama: Azure Premium dosyaları                                | : large_blue_diamond:  |
+|     Sanal makineler: Azure adanmış ana bilgisayar                      | : large_blue_diamond:  |
+|     Sanal makineler: Ddsv4-Series                              | : large_blue_diamond:  |
+|     Sanal makineler: Ddv4-Series                               | : large_blue_diamond:  |
+|     Sanal makineler: Dsv4-Series                               | : large_blue_diamond:  |
+|     Sanal makineler: Dv4-Series                                | : large_blue_diamond:  |
+|     Sanal makineler: Edsv4-Series                              | : large_blue_diamond:  |
+|     Sanal makineler: Edv4-Series                               | : large_blue_diamond:  |
+|     Sanal makineler: Esv4-Series                               | : large_blue_diamond:  |
+|     Sanal makineler: Ev4-Series                                | : large_blue_diamond:  |
+|     Sanal makineler: Fsv2-Series                               | : large_blue_diamond:  |
+|     Sanal makineler: a serisi                                  | : large_blue_diamond:  |
+|     Sanal WAN                                                 | : large_blue_diamond:  |
+|     Sanal WAN: ExpressRoute                                   | : large_blue_diamond:  |
+|     Sanal WAN: Noktadan siteye VPN Gateway                      | : large_blue_diamond:  |
+|     Sanal WAN: siteden siteye VPN Gateway                       | : large_blue_diamond:  |
+
+
+**Özel hizmetler**
+
+|     Ürünler                                                    | Dayanıklılık             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     Azure Red Hat OpenShift                                     | : large_blue_diamond:  |
+|     Bilişsel hizmetler: anomali algılayıcısı                        | : large_blue_diamond:  |
+|     Bilişsel hizmetler: form tanıyıcı                         | : large_blue_diamond:  |
+|     Depolama: Ultra disk                                         | : large_blue_diamond:  |
 
 
 **Bölgesel olmayan**
 
-|     Ürünler                                  |     Dayanıklılık    |
-|-----------------------------------------------|:-------------------:|
-|     Azure DNS                                 |     : globe_with_meridians:             |
-|     Azure Active Directory                  |     : globe_with_meridians:             |
-|     Azure Gelişmiş Tehdit Koruması          |     : globe_with_meridians:             |
-|     Azure Danışmanı                             |     : globe_with_meridians:             |
-|     Azure Blueprints                          |     : globe_with_meridians:             |
-|     Azure Bot Hizmetleri                        |     : globe_with_meridians:             |
-|     Azure Front Door                          |     : globe_with_meridians:             |
-|     IoT için Azure Defender                  |     : globe_with_meridians:             |
-|     Azure Front Door                           |     : globe_with_meridians:             |
-|     Azure Information Protection            |     : globe_with_meridians:             |
-|     Azure hafif kullanım                        |     : globe_with_meridians:             |
-|     Azure yönetilen uygulamalar              |     : globe_with_meridians:             |
-|     Azure Haritalar                                |     : globe_with_meridians:             |
-|     Azure İlkesi                              |     : globe_with_meridians:             |
-|     Azure Kaynak Grafiği                    |     : globe_with_meridians:             |
-|     Azure Sentinel                            |     : globe_with_meridians:             |
-|     Azure Stack                               |     : globe_with_meridians:             |
-|     Azure Stack uç                        |     : globe_with_meridians:             |
-|     Cloud Shell                               |     : globe_with_meridians:             |
-|     Content Delivery Network                  |     : globe_with_meridians:             |
-|     Maliyet Yönetimi                           |     : globe_with_meridians:             |
-|     Microsoft Azure için Müşteri Kasası    |     : globe_with_meridians:             |
-|     Intune                                    |     : globe_with_meridians:             |
-|     Microsoft Azure eşleme hizmeti         |     : globe_with_meridians:             |
-|     Microsoft Azure portal                  |     : globe_with_meridians:             |
-|     Microsoft Cloud App Security              |     : globe_with_meridians:             |
-|     Microsoft Graph                           |     : globe_with_meridians:             |
-|     Güvenlik Merkezi                         |     : globe_with_meridians:             |
-|     Traffic Manager                         |     : globe_with_meridians:             |
+|     Ürünler                                                    | Dayanıklılık             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     Azure DNS                                                   | : globe_with_meridians: |
+|     Azure Active Directory                                    | : globe_with_meridians: |
+|     Azure Gelişmiş Tehdit Koruması                            | : globe_with_meridians: |
+|     Azure Danışmanı                                               | : globe_with_meridians: |
+|     Azure Blueprints                                            | : globe_with_meridians: |
+|     Azure Bot Hizmetleri                                          | : globe_with_meridians: |
+|     Azure Front Door                                            | : globe_with_meridians: |
+|     IoT için Azure Defender                                    | : globe_with_meridians: |
+|     Azure Front Door                                            | : globe_with_meridians: |
+|     Azure Information Protection                              | : globe_with_meridians: |
+|     Azure hafif kullanım                                          | : globe_with_meridians: |
+|     Azure yönetilen uygulamalar                                | : globe_with_meridians: |
+|     Azure Haritalar                                                  | : globe_with_meridians: |
+|     Azure Performans Tanılama                               | : globe_with_meridians: |
+|     Azure İlkesi                                                | : globe_with_meridians: |
+|     Azure Kaynak Grafiği                                      | : globe_with_meridians: |
+|     Azure Sentinel                                              | : globe_with_meridians: |
+|     Azure Stack                                                 | : globe_with_meridians: |
+|     Azure Stack uç                                          | : globe_with_meridians: |
+|     Cloud Shell                                                 | : globe_with_meridians: |
+|     Content Delivery Network                                    | : globe_with_meridians: |
+|     Maliyet Yönetimi                                             | : globe_with_meridians: |
+|     Microsoft Azure için Müşteri Kasası                      | : globe_with_meridians: |
+|     Intune                                                      | : globe_with_meridians: |
+|     Microsoft Azure eşleme hizmeti                           | : globe_with_meridians: |
+|     Microsoft Azure portal                                    | : globe_with_meridians: |
+|     Microsoft Cloud App Security                                | : globe_with_meridians: |
+|     Microsoft Graph                                             | : globe_with_meridians: |
+|     Güvenlik Merkezi                                           | : globe_with_meridians: |
+|     Traffic Manager                                           | : globe_with_meridians: |
 
 
 ## <a name="pricing-for-vms-in-availability-zones"></a>Kullanılabilirlik Alanları VM 'Leri için fiyatlandırma
 
-Bir kullanılabilirlik bölgesinde dağıtılan sanal makineler için ek ücret yoktur. Daha fazla bilgi için [bant genişliği fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/bandwidth/)gözden geçirin.
+Azure Kullanılabilirlik Alanları Azure aboneliğiniz ile kullanılabilir. Daha fazla bilgi için [bant genişliği fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/bandwidth/)tıklayın.
 
 
 ## <a name="get-started-with-availability-zones"></a>Kullanılabilirlik Alanları kullanmaya başlayın

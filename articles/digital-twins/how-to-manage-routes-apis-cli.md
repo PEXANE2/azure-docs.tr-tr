@@ -7,18 +7,18 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e6b35031d976a11bdac6f38d74f9e02a0fc83302
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c7efebaf23bd8e897243f6ee12b23d3821a4c033
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936317"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257356"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-Azure dijital TWINS 'de, [olay bildirimlerini](how-to-interpret-event-data.md) aşağı akış hizmetlerine veya bağlı işlem kaynaklarına yönlendirebilirsiniz. Bunu yapmak için öncelikle olayları alabilecek **uç noktaları** ayarlamanız gerekir. Daha sonra, Azure dijital TWINS tarafından oluşturulan olayların hangi uç noktalara teslim edildiğini belirten  [**olay yolları**](concepts-route-events.md) oluşturabilirsiniz.
+Azure dijital TWINS 'de, [olay bildirimlerini](concepts-event-notifications.md) aşağı akış hizmetlerine veya bağlı işlem kaynaklarına yönlendirebilirsiniz. Bunu yapmak için öncelikle olayları alabilecek **uç noktaları** ayarlamanız gerekir. Daha sonra, Azure dijital TWINS tarafından oluşturulan olayların hangi uç noktalara teslim edildiğini belirten  [**olay yolları**](concepts-route-events.md) oluşturabilirsiniz.
 
 Bu makalede [REST API 'leri](/rest/api/azure-digitaltwins/), [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)ve [Azure dijital TWINS CLI](how-to-use-cli.md)ile uç noktalar ve rotalar oluşturma işlemi adım adım açıklanmaktadır.
 
@@ -48,7 +48,7 @@ Bu bölümde, Azure CLı kullanılarak bu uç noktaların nasıl oluşturulduğu
 
 ### <a name="create-the-endpoint"></a>Uç noktayı oluşturma
 
-Uç nokta kaynaklarını oluşturduktan sonra bunları bir Azure dijital TWINS uç noktası için kullanabilirsiniz. Aşağıdaki örneklerde, [Azure Digital TWINS CLI](how-to-use-cli.md)için [az DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create) komutunu kullanarak uç noktaların nasıl oluşturulacağı gösterilmektedir. Komutlardaki yer tutucuları kendi kaynaklarınızın ayrıntıları ile değiştirin.
+Uç nokta kaynaklarını oluşturduktan sonra bunları bir Azure dijital TWINS uç noktası için kullanabilirsiniz. Aşağıdaki örneklerde, [Azure Digital TWINS CLI](how-to-use-cli.md)için [az DT Endpoint Create](/cli/azure/dt/endpoint/create) komutunu kullanarak uç noktaların nasıl oluşturulacağı gösterilmektedir. Komutlardaki yer tutucuları kendi kaynaklarınızın ayrıntıları ile değiştirin.
 
 Event Grid uç noktası oluşturmak için:
 
@@ -119,7 +119,7 @@ Sonraki bölümde uç nokta bağlantısını ayarlamaya hazırlanmak için Azure
     
 #### <a name="create-the-dead-letter-endpoint"></a>Atılacak mektup uç noktasını oluşturma
 
-Etkin olmayan bir uç nokta oluşturmak için, [Azure Digital TWINS CLI](how-to-use-cli.md)için [az DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create) komutuna aşağıdaki atılacak mektup parametresini ekleyin.
+Etkin olmayan bir uç nokta oluşturmak için, [Azure Digital TWINS CLI](how-to-use-cli.md)için [az DT Endpoint Create](/cli/azure/dt/endpoint/create) komutuna aşağıdaki atılacak mektup parametresini ekleyin.
 
 Parametresi için değer, [önceki bölümde](#set-up-storage-resources)topladığınız depolama hesabı adı, kapsayıcı adı ve SAS belirtecinden oluşan **sahipsiz bir SAS URI 'sidir** . Bu parametre, anahtar tabanlı kimlik doğrulaması ile uç noktası oluşturur.
 
@@ -158,7 +158,7 @@ Etkin olmayan uç nokta ayarlandıktan sonra, kullanılmayan iletiler depolama h
 
 Kullanılmayan iletiler, özgün uç noktanıza teslim edilmesi amaçlanan özgün olayın şemasıyla eşleşir.
 
-Aşağıda, bir [ikizi Create bildirimi](how-to-interpret-event-data.md#digital-twin-lifecycle-notifications)için atılacak ileti iletisine bir örnek verilmiştir:
+Aşağıda, bir [ikizi Create bildirimi](concepts-event-notifications.md#digital-twin-lifecycle-notifications)için atılacak ileti iletisine bir örnek verilmiştir:
 
 ```json
 {
@@ -204,7 +204,7 @@ Yol adı yoksa, Azure dijital TWINS dışında hiçbir ileti yönlendirilmez. Bi
 
 Bir yol birden çok bildirimin ve olay türünün seçilebilmelidir. 
 
-Olay yolları Azure Digital TWINS [ **eventroutes** veri düzlemi API 'leri](/rest/api/digital-twins/dataplane/eventroutes) veya [ **az DT Route** CLI komutlarıyla](/cli/azure/ext/azure-iot/dt/route)oluşturulabilir. Bu bölümün geri kalanında oluşturma sürecinde adım adım gösterilmektedir.
+Olay yolları Azure Digital TWINS [ **eventroutes** veri düzlemi API 'leri](/rest/api/digital-twins/dataplane/eventroutes) veya [ **az DT Route** CLI komutlarıyla](/cli/azure/dt/route)oluşturulabilir. Bu bölümün geri kalanında oluşturma sürecinde adım adım gösterilmektedir.
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>API 'Ler ve C# SDK 'Sı ile rotalar oluşturma
 
@@ -225,7 +225,7 @@ Aşağıdaki örnek yöntem, C# SDK ile bir olay yolunun nasıl oluşturulduğun
 
 ### <a name="create-routes-with-the-cli"></a>CLı ile rotalar oluşturma
 
-Yollar, Azure Digital TWINS CLı için [az DT Route](/cli/azure/ext/azure-iot/dt/route) komutları kullanılarak da yönetilebilir. 
+Yollar, Azure Digital TWINS CLı için [az DT Route](/cli/azure/dt/route) komutları kullanılarak da yönetilebilir. 
 
 CLı ve kullanılabilen komutları kullanma hakkında daha fazla bilgi için bkz. [*nasıl yapılır: Azure dijital TWINS CLI 'Yi kullanma*](how-to-use-cli.md).
 
@@ -256,4 +256,4 @@ Desteklenen yol filtreleri aşağıda verilmiştir. Yukarıdaki istek gövdesind
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Alabilmeniz için farklı olay iletisi türleri hakkında bilgi edinin:
-* [*Nasıl yapılır: olay verilerini yorumlama*](how-to-interpret-event-data.md)
+* [*Kavramlar: olay bildirimleri*](concepts-event-notifications.md)

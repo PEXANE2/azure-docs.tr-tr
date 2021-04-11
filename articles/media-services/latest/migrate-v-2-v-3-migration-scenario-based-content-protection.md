@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9141fb025cb2c7976f88d894768972b10ea3a3d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 74f15fc302a8499e41a1413dd8915e6442d4bbe7
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729414"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064503"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>Content Protection senaryo tabanlı geçiş kılavuzu
 
@@ -28,7 +28,7 @@ Bu makalede, v2 API 'sindeki içerik koruma kullanım örneklerinin yeni Azure M
 
 ## <a name="protect-content-in-v3-api"></a>V3 API 'de içeriği koruma
 
-Yeni v3 API 'sindeki [çok tuşlu](design-multi-drm-system-with-access-control.md) özellikler için desteği kullanın.
+Yeni v3 API 'sindeki [çok tuşlu](architecture-design-multi-drm-system.md) özellikler için desteği kullanın.
 
 Bkz. içerik koruma kavramları, öğreticiler ve belirli adımlar için aşağıdaki kılavuzlar.
 
@@ -44,9 +44,9 @@ Varlık varlığındaki Yeni v3 yöntemi [Liststreamingkonumlandırıcı](https:
 
 İçerik koruması için **Streaminglocator** ' de kullanılan **contentkeys** 'ı bulmak için [Streaminglocator. listcontentkeysasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet&preserve-view=true) yöntemini çağırabilirsiniz.  
 
-V2 API kullanılarak oluşturulan ve yayınlanan **varlıkların** , [akış ilkesinde](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept)varsayılan bir içerik anahtar ilkesi kullanmak yerine, hem bir [içerik anahtar ilkesi](https://docs.microsoft.com/azure/media-services/latest/content-key-policy-concept) hem de v3 API 'sinde tanımlanmış bir içerik anahtarı olacaktır.
+V2 API kullanılarak oluşturulan ve yayınlanan **varlıkların** , [akış ilkesinde](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept)varsayılan bir içerik anahtar ilkesi kullanmak yerine, hem bir [içerik anahtar ilkesi](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept) hem de v3 API 'sinde tanımlanmış bir içerik anahtarı olacaktır.
 
-V3 API 'sindeki içerik koruması hakkında daha fazla bilgi için, [Media Services dinamik şifreleme ile Içeriğinizi koruma](https://docs.microsoft.com/azure/media-services/latest/content-protection-overview) makalesine bakın.
+V3 API 'sindeki içerik koruması hakkında daha fazla bilgi için, [Media Services dinamik şifreleme ile Içeriğinizi koruma](https://docs.microsoft.com/azure/media-services/latest/drm-content-protection-concept) makalesine bakın.
 
 ## <a name="how-to-list-your-v2-assets-and-content-protection-settings-using-the-v3-api"></a>V3 API kullanarak v2 varlıklarınızı ve içerik koruma ayarlarınızı listeleme
 
@@ -60,7 +60,7 @@ V2 varlıklarında depolanan içeriği güncelleştirmeniz, değiştirmeniz veya
 
 ## <a name="how-do-i-change-the-contentkeypolicy-used-for-a-v2-asset-that-is-published-and-keep-the-same-content-key"></a>Nasıl yaparım? yayımlanan ve aynı içerik anahtarını tutan bir v2 varlığı için kullanılan ContentKeyPolicy değiştirilsin mi?
 
-Bu durumda, ilk olarak varlık üzerindeki v2 SDK 'Sı aracılığıyla yayımdan kaldırmanız gerekir (tüm akış bulıcıları kaldırmanız, Içerik anahtarı yetkilendirme Ilkesinin bağlantısını kaldırmanız, varlık teslim Ilkesinin bağlantısını kaldırmanız, içerik anahtarının bağlantısını kaldırmanız, Içerik anahtarını silmeniz) ve v3 'de bir v3 [Streamingpolicy](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept) ve [contentkeypolicy](https://docs.microsoft.com/azure/media-services/latest/content-key-policy-concept)kullanarak yeni bir **[streaminglocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)** oluşturun.
+Bu durumda, ilk olarak varlık üzerindeki v2 SDK 'Sı aracılığıyla yayımdan kaldırmanız gerekir (tüm akış bulıcıları kaldırmanız, Içerik anahtarı yetkilendirme Ilkesinin bağlantısını kaldırmanız, varlık teslim Ilkesinin bağlantısını kaldırmanız, içerik anahtarının bağlantısını kaldırmanız, Içerik anahtarını silmeniz) ve v3 'de bir v3 [Streamingpolicy](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept) ve [contentkeypolicy](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept)kullanarak yeni bir **[streaminglocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)** oluşturun.
 
 **[Streamminglocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)** oluştururken gerekli olan belirli içerik anahtarı tanımlayıcısını ve anahtar değerini belirtmeniz gerekir.
 
@@ -75,24 +75,24 @@ V3 API kullanarak v2 bulucunun silineceğini, ancak bu içerik anahtarını veya
 
 ### <a name="concepts"></a>Kavramlar
 
-- [Media Services dinamik şifreleme ile içeriğinizi koruyun](content-protection-overview.md)
-- [Erişim denetimi ile çoklu DRM'ye sahip içerik koruma sistemi tasarlama](design-multi-drm-system-with-access-control.md)
-- [PlayReady lisans şablonuyla v3 Media Services](playready-license-template-overview.md)
-- [Wıdevine lisans şablonuna genel bakış ile Media Services v3](widevine-license-template-overview.md)
-- [Apple FairPlay lisansı gereksinimleri ve yapılandırması](fairplay-license-overview.md)
+- [Media Services dinamik şifreleme ile içeriğinizi koruyun](drm-content-protection-concept.md)
+- [Erişim denetimi ile çoklu DRM'ye sahip içerik koruma sistemi tasarlama](architecture-design-multi-drm-system.md)
+- [PlayReady lisans şablonuyla v3 Media Services](drm-playready-license-template-concept.md)
+- [Wıdevine lisans şablonuna genel bakış ile Media Services v3](drm-widevine-license-template-concept.md)
+- [Apple FairPlay lisansı gereksinimleri ve yapılandırması](drm-fairplay-license-overview.md)
 - [Akış Ilkeleri](streaming-policy-concept.md)
-- [İçerik anahtarı Ilkeleri](content-key-policy-concept.md)
+- [İçerik anahtarı Ilkeleri](drm-content-key-policy-concept.md)
 
 ### <a name="tutorials"></a>Öğreticiler
 
-[Hızlı başlangıç: içeriği şifrelemek için portalı kullanma](encrypt-content-quickstart.md)
+[Hızlı başlangıç: içeriği şifrelemek için portalı kullanma](drm-encrypt-content-how-to.md)
 
 ### <a name="how-to-guides"></a>Nasıl yapılır kılavuzları
 
-- [Var olan ilkeden imzalama anahtarı alma](get-content-key-policy-dotnet-howto.md)
-- [İOS için Media Services v3 ile çevrimdışı FairPlay Akışı](offline-fairplay-for-ios.md)
-- [Android için Media Services v3 ile çevrimdışı Widevine akışı](offline-widevine-for-android.md)
-- [Media Services v3 ile Windows 10 için çevrimdışı PlayReady akışı](offline-plaready-streaming-for-windows-10.md)
+- [Var olan ilkeden imzalama anahtarı alma](drm-get-content-key-policy-dotnet-how-to.md)
+- [İOS için Media Services v3 ile çevrimdışı FairPlay Akışı](drm-offline-fairplay-for-ios-concept.md)
+- [Android için Media Services v3 ile çevrimdışı Widevine akışı](drm-offline-widevine-for-android.md)
+- [Media Services v3 ile Windows 10 için çevrimdışı PlayReady akışı](drm-offline-playready-streaming-for-windows-10.md)
 
 ## <a name="samples"></a>Örnekler
 

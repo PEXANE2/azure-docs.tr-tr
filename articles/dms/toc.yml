@@ -37,7 +37,7 @@
   items:
     - name: SQL Server’ı geçirme
       items:
-        - name: Azure SQL veritabanı 'na
+        - name: Azure SQL Veritabanı’na
           href: tutorial-sql-server-to-azure-sql.md
         - name: Azure SQL Yönetilen Örnek’e (çevrimdışı)
           href: tutorial-sql-server-to-managed-instance.md
@@ -93,6 +93,10 @@
           href: how-to-migrate-ssis-packages.md
         - name: Azure SQL Yönetilen Örnek
           href: how-to-migrate-ssis-packages-managed-instance.md
+- name: Başvuru
+  items:
+    - name: Azure CLI
+      href: /cli/azure/dms
 - name: Kaynaklar
   items:
     - name: Sık sorulan sorular

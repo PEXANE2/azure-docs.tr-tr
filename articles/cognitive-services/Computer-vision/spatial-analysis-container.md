@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 87076febd4597556fd2b28245f47442308cd6e6c
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: d257a77940b460bf8be64e3f8376353a859365f7
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108373"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284728"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Uzamsal analiz kapsayıcısını (Önizleme) yükleyip çalıştırın
 
@@ -547,8 +547,8 @@ Kapsayıcıyı bağlı kameraları kullanacak şekilde yapılandırmak, işlemle
 
 Kapsayıcı tarafından oluşturulan çıktıyı tüketmeye başlamak istiyorsanız aşağıdaki makalelere bakın:
 
-*   Azure IoT Hub uç noktasına bağlanmak ve olayları almak için seçtiğiniz programlama diline yönelik Azure Event hub SDK 'sını kullanın. Daha fazla bilgi için bkz. [yerleşik uç noktadan cihazdan buluta Iletileri okuma](../../iot-hub/iot-hub-devguide-messages-read-builtin.md) . 
-*   Azure IoT Hub, olayları diğer uç noktalara göndermek veya olayları Azure Blob depolama alanına kaydetmek için Ileti yönlendirme ayarlayın, vb. Daha fazla bilgi için bkz. [IoT Hub Ileti yönlendirme](../../iot-hub/iot-hub-devguide-messages-d2c.md) . 
+*    Azure IoT Hub uç noktasına bağlanmak ve olayları almak için seçtiğiniz programlama diline yönelik Azure Event hub SDK 'sını kullanın. Daha fazla bilgi için bkz. [yerleşik uç noktadan cihazdan buluta Iletileri okuma](../../iot-hub/iot-hub-devguide-messages-read-builtin.md) . 
+*    Azure IoT Hub, olayları diğer uç noktalara göndermek veya olayları Azure Blob depolama alanına kaydetmek için Ileti yönlendirme ayarlayın, vb. Daha fazla bilgi için bkz. [IoT Hub Ileti yönlendirme](../../iot-hub/iot-hub-devguide-messages-d2c.md) . 
 
 ## <a name="running-spatial-analysis-with-a-recorded-video-file"></a>Kayıtlı bir video dosyası ile uzamsal analizler çalıştırma
 

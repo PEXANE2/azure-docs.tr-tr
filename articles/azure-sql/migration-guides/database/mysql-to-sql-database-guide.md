@@ -9,17 +9,17 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: ba332ed0e949c3c209dc3bd2d72d37187a200eea
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 32c56df5bafa9439fc559edf137c1080920cfb32
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030143"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284383"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>Geçiş Kılavuzu: MySQL to Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-Bu kılavuzda, MySQL için [SQL Server geçiş](https://azure.microsoft.com/migration/migration-journey) Yardımcısı (MySQL için SSMA) kullanarak MySQL veritabanınızı BIR Azure SQL veritabanına [nasıl geçirebileceğinizi](https://azure.microsoft.com/migration/migration-journey) öğreneceksiniz. 
+Bu kılavuzda, MySQL için [SQL Server geçiş](https://azure.microsoft.com/en-us/migration/sql-server/) Yardımcısı (MySQL için SSMA) kullanarak MySQL veritabanınızı BIR Azure SQL veritabanına [nasıl geçirebileceğinizi](https://azure.microsoft.com/migration/migration-journey) öğreneceksiniz. 
 
 Diğer geçiş kılavuzlarında [Azure veritabanı geçiş kılavuzu](https://docs.microsoft.com/data-migration)' na bakın. 
 

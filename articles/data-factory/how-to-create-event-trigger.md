@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: d9012c2bb56b7936b627063be2e9c5b7aa33541e
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 3021d049a38f1d883518fc7c45aa8ca0a906c2f7
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962739"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221594"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Bir depolama olayına yanıt olarak bir işlem hattı çalıştıran bir tetikleyici oluşturma
 
@@ -76,7 +76,7 @@ Bu bölümde, Azure Data Factory Kullanıcı arabirimi içinde bir depolama olay
    Önceki örnekte tetikleyici, kapsayıcı _örnek verilerinde_. csv dosyasında bir blob yolu oluşturulduğunda,. csv _' de sonlanan_ bir blob yolu başlatıldığında tetiklenecek şekilde yapılandırılmıştır. **FolderPath** ve **filename** özellikleri yeni Blobun konumunu yakalar. Örneğin, yola MoviesDB.csv eklendiğinde-Data/Event-Testing `@triggerBody().folderPath` değeri, değerine sahiptir `sample-data/event-testing` ve değeri vardır `@triggerBody().fileName` `moviesDB.csv` . Bu değerler, örnekte işlem hattı parametrelerine `sourceFolder` ve `sourceFile` sırasıyla, ardışık düzen boyunca kullanılabilecek şekilde eşlenir `@pipeline().parameters.sourceFolder` `@pipeline().parameters.sourceFile` .
 
    > [!NOTE]
-   > [Azure SYNAPSE Analytics](/synapse-analytics)'te işlem hattınızı ve tetikleyiciyi oluşturuyorsanız, `@trigger().outputs.body.fileName` ve `@trigger().outputs.body.folderPath` parametreleri olarak kullanmanız gerekir. Bu iki özellik blob bilgilerini yakalar. Ve kullanmak yerine bu özellikleri kullanın `@triggerBody().fileName` `@triggerBody().folderPath` .
+   > [Azure SYNAPSE Analytics](../synapse-analytics/overview-what-is.md)'te işlem hattınızı ve tetikleyiciyi oluşturuyorsanız, `@trigger().outputs.body.fileName` ve `@trigger().outputs.body.folderPath` parametreleri olarak kullanmanız gerekir. Bu iki özellik blob bilgilerini yakalar. Ve kullanmak yerine bu özellikleri kullanın `@triggerBody().fileName` `@triggerBody().folderPath` .
 
 1. İşiniz bittiğinde **son** ' a tıklayın.
 
@@ -90,7 +90,7 @@ Aşağıdaki tabloda, depolama olay tetikleyicilerle ilgili şema öğelerine ge
 | **olayları** | Bu tetikleyicinin tetiklenmesine neden olan olayların türü. | Dizi    | Microsoft. Storage. BlobCreated, Microsoft. Storage. BlobDeleted | Evet, bu değerlerin herhangi bir birleşimi. |
 | **blobPathBeginsWith** | Blob yolu, tetikleyicinin tetiklenmesi için belirtilen Düzenle başlamalı. Örneğin, `/records/blobs/december/` yalnızca `december` kapsayıcının altındaki klasörde bulunan bloblara yönelik tetikleyiciyi tetikler `records` . | Dize   | | Şu özelliklerden en az biri için bir değer belirtin: `blobPathBeginsWith` veya `blobPathEndsWith` . |
 | **blobPathEndsWith** | Blob yolu, tetikleyicinin tetiklenmesi için belirtilen Düzenle bitmelidir. Örneğin, `december/boxes.csv` yalnızca bir klasörde adlı Bloblar için tetikleyiciyi harekete geçirilir `boxes` `december` . | Dize   | | Şu özelliklerden en az biri için bir değer belirtmeniz gerekir: `blobPathBeginsWith` veya `blobPathEndsWith` . |
-| **ıgnoreemptyblob 'Lar** | Sıfır baytlık Blobların bir işlem hattı çalıştırmasını tetikleyip tetikleyemayacağı. Varsayılan olarak, bu true olarak ayarlanır. | Boole | true veya false | No |
+| **ıgnoreemptyblob 'Lar** | Sıfır baytlık Blobların bir işlem hattı çalıştırmasını tetikleyip tetikleyemayacağı. Varsayılan olarak, bu true olarak ayarlanır. | Boole | true veya false | Hayır |
 
 ## <a name="examples-of-storage-event-triggers"></a>Depolama olay tetikleyicisi örnekleri
 

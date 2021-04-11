@@ -9,12 +9,12 @@ ms.subservice: verifiable-credentials
 ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 1894ffb7ca75a283e3a74d17c3e73de51fc46d8d
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 1e8bb59c09622a39dad680940ff34e643ee0cc3b
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106170369"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222750"
 ---
 # <a name="how-to-create-a-free-azure-active-directory-developer-tenant"></a>Ücretsiz Azure Active Directory geliştirici kiracısı oluşturma
 
@@ -32,13 +32,13 @@ P2 deneme lisansıyla ücretsiz Azure Active Directory oluşturmanın iki yolu v
 
 Ücretsiz Microsoft 365 Geliştirici programına kaydolmaya karar verirseniz, birkaç kolay adımı izlemeniz gerekir:
 
-1. Ekranda Şimdi Birleştir düğmesine tıklayın
+1. Ekranda **Şimdi Birleştir** düğmesine tıklayın.
 
 2. Yeni bir Microsoft hesabı ile oturum açın veya zaten sahip olduğunuz mevcut bir (iş) hesabı kullanın.
 
-3. Kayıt sayfasında, bölgenizi seçin, bir şirket adı girin ve ileri ' ye tıklamadan önce programın hüküm ve koşullarını kabul edin.
+3. Kaydolma sayfasında bölgenizi seçin, bir şirket adı girin ve **İleri**' ye tıklamadan önce programın hüküm ve koşullarını kabul edin.
 
-4. Aboneliği ayarla ' ya tıklayın. Yeni kiracınızı oluşturmak istediğiniz bölgeyi belirtin, bir Kullanıcı adı, etki alanı oluşturun ve bir parola girin. Bu, yeni bir kiracı ve kiracının ilk yöneticisi oluşturur
+4. **Aboneliği ayarla**' ya tıklayın. Yeni kiracınızı oluşturmak istediğiniz bölgeyi belirtin, bir Kullanıcı adı, etki alanı oluşturun ve bir parola girin. Bu, yeni bir kiracı ve kiracının ilk Yöneticisi oluşturacak.
 
 5. Yeni kiracınızın yönetici hesabını korumak için gereken güvenlik bilgilerini girin. Bu, hesap için MFA kimlik doğrulamasını ayarlar.
 

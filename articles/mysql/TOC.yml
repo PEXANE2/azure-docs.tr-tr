@@ -7,8 +7,6 @@
       href: overview.md
     - name: Hangi MySQL seçeneğini kullanmalıyım?
       href: select-right-deployment-type.md
-    - name: Desteklenen sürümler
-      href: concepts-supported-versions.md
     - name: Sürüm destek ilkesi
       href: concepts-version-policy.md
       displayName: version policy
@@ -21,6 +19,8 @@
       items:
         - name: Tek Sunucu nedir?
           href: single-server-overview.md
+        - name: Desteklenen sürümler
+          href: concepts-supported-versions.md
         - name: Fiyatlandırma Katmanları
           items:
             - name: Fiyatlandırma katmanları
@@ -395,8 +395,6 @@
       items:
         - name: Esnek Sunucu nedir?
           href: flexible-server/overview.md
-        - name: Desteklenen sürümler
-          href: concepts-supported-versions.md
         - name: İşlem ve depolama
           href: flexible-server/concepts-compute-storage.md
     - name: Hızlı Başlangıçlar
