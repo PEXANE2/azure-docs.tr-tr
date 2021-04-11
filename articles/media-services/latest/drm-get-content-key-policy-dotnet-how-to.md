@@ -12,18 +12,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: df17eddd9cb4f05eb42ac517691bbf71bf72040f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 71d4b00d3ebb56d72cbb16cd42394c720f29849f
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106069180"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277660"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>Var olan ilkeden imzalama anahtarı alma
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-v3 API’nin temel tasarım ilkelerinden biri API’yi daha güvenli hale getirmektir. v3 API 'Leri, **Get** veya **list** işlemlerinde gizli dizileri veya kimlik bilgilerini döndürmez. Ayrıntılı açıklamayı burada görebilirsiniz: daha fazla bilgi Için bkz. [Azure RBAC ve Media Services hesapları](rbac-overview.md)
+v3 API’nin temel tasarım ilkelerinden biri API’yi daha güvenli hale getirmektir. v3 API 'Leri, **Get** veya **list** işlemlerinde gizli dizileri veya kimlik bilgilerini döndürmez. Ayrıntılı açıklamayı burada görebilirsiniz: daha fazla bilgi Için bkz. [Azure RBAC ve Media Services hesapları](security-rbac-concept.md)
 
 Bu makaledeki örnekte, mevcut ilkeden imzalama anahtarı almak için .NET kullanımı gösterilmektedir. 
  

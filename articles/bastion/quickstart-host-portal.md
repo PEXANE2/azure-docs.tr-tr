@@ -8,18 +8,18 @@ ms.service: bastion
 ms.topic: quickstart
 ms.date: 02/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 8aeba13954283ca35c3eb0060a0e588ba6a7adbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53f09eed89f9667611ed4d5e0268c889609d560a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101707178"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553575"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>Hızlı başlangıç: özel IP adresi aracılığıyla bir tarayıcı aracılığıyla güvenli bir şekilde VM 'ye bağlanma
 
 Azure portal ve Azure savunma kullanarak tarayıcınız aracılığıyla bir sanal makineye (VM) bağlanabilirsiniz. Bu hızlı başlangıç makalesinde, Azure savunma 'yı VM ayarlarınıza göre yapılandırma ve ardından Portal üzerinden sanal makinenize bağlama işlemi gösterilmektedir. VM 'nin genel IP adresi, istemci yazılımı, Aracısı veya özel bir yapılandırmaya sahip olması gerekmez. Hizmet sağlandıktan sonra, RDP/SSH deneyimi aynı sanal ağdaki tüm sanal makineler için kullanılabilir. Azure savunma hakkında daha fazla bilgi için bkz. [Azure](bastion-overview.md)savunma nedir?.
 
-## <a name="prerequisites"></a><a name="prereq"></a>Önkoşullar
+## <a name="prerequisites"></a><a name="prereq"></a>Kaynakları
 
 * Etkin aboneliği olan bir Azure hesabı. Yoksa, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Savunma kullanarak bir VM 'ye tarayıcı aracılığıyla bağlanabilme için, Azure portal oturum açabiliyor olmanız gerekir.
 
@@ -37,6 +37,10 @@ Azure portal ve Azure savunma kullanarak tarayıcınız aracılığıyla bir san
 * Gerekli VM bağlantı noktaları:
   * Gelen bağlantı noktaları: RDP (3389)
 
+ >[!NOTE]
+ >Azure Özel DNS bölgeleriyle Azure savunma kullanımı Şu anda desteklenmiyor. Başlamadan önce lütfen savunma kaynağınızı dağıtmayı planladığınız sanal ağın özel bir DNS bölgesine bağlı olmadığından emin olun.
+ >
+
 ### <a name="example-values"></a><a name="values"></a>Örnek değerler
 
 Bu yapılandırmayı oluştururken aşağıdaki örnek değerleri kullanabilir veya kendi kodunuzu kullanabilirsiniz.
@@ -47,7 +51,7 @@ Bu yapılandırmayı oluştururken aşağıdaki örnek değerleri kullanabilir v
 | --- | --- |
 | Sanal makine| TestVM |
 | Kaynak grubu | TestRG1 |
-| Region | Doğu ABD |
+| Bölge | Doğu ABD |
 | Sanal ağ | VNet1 |
 | Adres alanı | 10.1.0.0/16 |
 | Alt ağlar | Ön uç: 10.1.0.0/24 |

@@ -2,26 +2,27 @@
 title: Kayıt defteri ile ağ sorunlarını giderme
 description: Bir sanal ağda veya bir güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişirken oluşan belirtiler, nedenler ve çözümler
 ms.topic: article
-ms.date: 10/01/2020
-ms.openlocfilehash: 75c94d40663a7058dab7ed691183dd578964edcc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/30/2021
+ms.openlocfilehash: ae75959028e19ec61e6dcf41308e54df38139d59
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699615"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220122"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Kayıt defteri ile ağ sorunlarını giderme
 
-Bu makale, bir sanal ağda veya güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişirken karşılaşabileceğiniz sorunları gidermenize yardımcı olur. 
+Bu makale, bir sanal ağda veya bir güvenlik duvarı ya da ara sunucunun arkasındaki bir Azure Container Registry 'ye erişirken karşılaşabileceğiniz sorunları gidermenize yardımcı olur. 
 
 ## <a name="symptoms"></a>Belirtiler
 
 Aşağıdakilerden birini veya daha fazlasını içerebilir:
 
 * Görüntüler gönderilemiyor veya çekilemiyor ve hata alıyorsunuz `dial tcp: lookup myregistry.azurecr.io`
+* Görüntüler gönderilemiyor veya çekilemiyor ve hata alıyorsunuz `Client.Timeout exceeded while awaiting headers`
 * Görüntüler gönderilemiyor veya çekilemiyor ve Azure CLı hatası alıyorsunuz `Could not connect to the registry login server`
 * Görüntüler kayıt defterinden Azure Kubernetes hizmetine veya başka bir Azure hizmetine çekilemiyor
-* HTTPS proxy arkasındaki bir kayıt defterine erişilemiyor ve hata alıyorsunuz `Error response from daemon: login attempt failed with status: 403 Forbidden`
+* HTTPS proxy arkasındaki bir kayıt defterine erişilemiyor ve hata alıyorsunuz `Error response from daemon: login attempt failed with status: 403 Forbidden` veya `Error response from daemon: Get <registry>: proxyconnect tcp: EOF Login failed`
 * Sanal ağ ayarları yapılandırılamıyor ve hata alıyorsunuz `Failed to save firewall and virtual network settings for container registry`
 * Azure portal kayıt defteri ayarlarına erişilemiyor veya Azure CLı kullanarak kayıt defterini yönetme
 * Sanal ağ ayarları veya genel erişim kuralları eklenemiyor veya değiştirilemiyor
@@ -41,7 +42,7 @@ Kayıt defteri ortamının sistem durumu ve isteğe bağlı olarak bir hedef kay
 
 Bkz. komut örnekleri için [Azure Container Registry 'nin sistem durumunu denetleme](container-registry-check-health.md) . Hatalar raporlandıysanız, önerilen çözümler için [hata başvurusunu](container-registry-health-error-reference.md) ve aşağıdaki bölümleri gözden geçirin.
 
-Wih Azure Kubernetes hizmetini kullanarak sorun yaşıyorsanız, kayıt defterinin AKS kümesinden erişilebilir olduğunu doğrulamak için [az aks Check-ACR](/cli/azure/aks#az_aks_check_acr) komutunu çalıştırın.
+Tümleşik bir kayıt defteriyle Azure Kubernetes hizmetini kullanarak sorun yaşıyorsanız, AKS kümesinin kayıt defterine ulaşabildiğini doğrulamak için [az aks Check-ACR](/cli/azure/aks#az_aks_check_acr) komutunu çalıştırın.
 
 > [!NOTE]
 > Bazı ağ bağlantı belirtileri, kayıt defteri kimlik doğrulamasıyla veya yetkilendirmeyle ilgili sorunlar olduğunda da gerçekleşebilir. Bkz. [kayıt defteri oturum açma sorunlarını giderme](container-registry-troubleshoot-login.md).
@@ -57,7 +58,7 @@ Bir istemci güvenlik duvarı veya proxy sunucusunun arkasındaki bir kayıt def
 
 Coğrafi olarak çoğaltılan bir kayıt defteri için, her bölgesel çoğaltma için veri uç noktasına erişimi yapılandırın.
 
-HTTPS proxy 'nin arkasında, hem Docker istemciniz hem de Docker Daemon 'ın proxy davranışı için yapılandırıldığından emin olun.
+HTTPS proxy 'nin arkasında, hem Docker istemciniz hem de Docker Daemon 'ın proxy davranışı için yapılandırıldığından emin olun. Docker Daemon için proxy ayarlarınızı değiştirirseniz, arka plan programını yeniden başlattığınızdan emin olun. 
 
 ContainerRegistryLoginEvents tablosundaki kayıt defteri kaynak günlükleri, engellenen bir bağlantıyı tanılamanıza yardımcı olabilir.
 

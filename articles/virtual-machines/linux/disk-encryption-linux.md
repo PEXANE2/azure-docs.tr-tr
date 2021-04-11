@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 6ebec78d5a9e82cc8a2f6ceb020a8b9552d6311e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c131f64c540c14830e13619e0e832bbe67b675e
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604024"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443910"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM’lerde Azure Disk Şifrelemesi senaryoları
 
@@ -40,7 +40,7 @@ Her durumda, [bir anlık görüntü](snapshot-copy-managed-disk.md) almalısın�
 
 Azure disk şifrelemesi, [Azure CLI](/cli/azure) ve [Azure PowerShell](/powershell/azure/new-azureps-module-az)aracılığıyla etkinleştirilebilir ve yönetilebilir. Bunu yapmak için, araçları yerel olarak yüklemeli ve Azure aboneliğinize bağlamanız gerekir.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 [Azure clı 2,0](/cli/azure) , Azure kaynaklarını yönetmeye yönelik bir komut satırı aracıdır. CLı, verileri esnek bir şekilde sorgulamak, engelleyici olmayan işlemler olarak uzun süreli işlemleri desteklemek ve komut dosyasını kolay hale getirmek için tasarlanmıştır. [Azure CLI 'Yı yüklemeye](/cli/azure/install-azure-cli)ilişkin adımları izleyerek yerel olarak yükleyebilirsiniz.
 
@@ -416,6 +416,7 @@ Azure disk şifrelemesi, aşağıdaki Linux senaryoları, özellikleri ve teknol
 - Müşteri tarafından yönetilen anahtarlarla (SSE + CMK) [sunucu tarafı şifrelemesiyle](../disk-encryption.md) şifrelenmiş diskler IÇEREN bir VM 'ye Ade uygulama. ADE ile şifrelenen bir VM üzerindeki bir veri diskine SSE + CMK uygulamak, desteklenmeyen bir senaryodur.
 - ADE ile şifrelenen veya **herhangi** bır zaman Ade ile ŞIFRELENEN bir VM 'yi, [müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemeye](../disk-encryption.md)geçirme.
 - Yük devretme kümelerinde VM 'Leri şifreleme.
+- [Azure Ultra disklerin](../disks-enable-ultra-ssd.md)şifrelenmesi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

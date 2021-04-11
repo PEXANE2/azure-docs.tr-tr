@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 78cdc0b59fd178049e755cca5e1e909ac24483f2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ec648f02918717dad6b739aa6ae99206bcec1d6e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204057"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581822"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Öğretici: Key Vault içinde sertifika otomatik döndürmeyi yapılandırma
 
@@ -51,7 +51,7 @@ Bir sertifika oluşturun veya bir sertifikayı anahtar kasasına aktarın (bkz. 
 
 ## <a name="update-certificate-lifecycle-attributes"></a>Sertifika yaşam döngüsü özniteliklerini güncelleştirme
 
-Azure Key Vault, sertifikanın yaşam döngüsü özniteliklerini, sertifika oluşturma zamanından önce ve sonra güncelleştirebilirsiniz.
+Azure Key Vault, sertifikaların yaşam döngüsü özniteliklerini her ikisi de sertifika oluşturma sırasında veya sonrasında güncelleştirebilirsiniz.
 
 Key Vault oluşturulan bir sertifika şu olabilir:
 
@@ -83,7 +83,7 @@ Key Vault CAs ile belirlenen ortaklıklar aracılığıyla sertifikaları otomat
         |  Belirli bir zamanda otomatik olarak Yenile| Belirli bir zamanda tüm kişileri e-postayla gönder |
         |-----------|------|
         |Bu seçeneğin belirlenmesi, oto dönüşü *etkinleştirebilir* . | Bu seçeneğin *belirlenmesi otomatik olarak döndürülmez, ancak* yalnızca ilgili kişileri uyarır.|
-
+         You can learn about [setting up Email contact here](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration)
 1. **Oluştur**’u seçin.
 
 ![Sertifika yaşam döngüsü](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)

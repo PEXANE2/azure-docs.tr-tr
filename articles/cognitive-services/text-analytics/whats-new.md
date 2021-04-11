@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 03/25/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: a2b001d34d265c8e7246b03875c32168f2c5c962
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ed3a11381285a9422380eb14ff301a2b9ea816a
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104598907"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106093563"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
@@ -51,11 +51,12 @@ Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin g
     * Yeni bir `Date` varlık türü.
     * Değilleme algılamayı değiştiren onaylama işlemi algılama (yalnızca API v 3.1-Preview. 4).
     * `name`Çeşitli ontolobir ve kodlama sistemlerinden normalleştirilmiş (yalnızca API v 3.1-Preview. 4 ' te mevcuttur) bağlantılı varlıklar için yeni bir tercih edilen özellik. 
-* Kapsayıcı önizleme deposuna etiketli yeni bir kapsayıcı görüntüsü `3.0.015370001-onprem-amd64` ve yeni model sürümü `2021-03-01` yayımlandı. 
-* Sistem durumu kapsayıcısı görüntüsü için Metin Analizi sonraki ay yeni bir depoya taşınır.  Lütfen yeni evin bulunduğu konumda bir e-posta iletişimini izleyin.
+* Kapsayıcı önizleme deposuna etiketli yeni bir kapsayıcı görüntüsü `3.0.015490002-onprem-amd64` ve yeni model sürümü `2021-03-01` yayımlandı. 
+    * Bu kapsayıcı görüntüsü artık `containerpreview.azurecr.io` 26 nisan 2021 tarihinden sonra yüklenmek üzere kullanılamayacak.
+* Aynı model sürümüne sahip bir sistem durumu kapsayıcısı görüntüsü için yeni bir Metin Analizi Şu anda kullanılabilir `mcr.microsoft.com/azure-cognitive-services/textanalytics/healthcare` . 26 Nisan 'dan başlayarak kapsayıcıyı yalnızca bu depodan indirebilirsiniz.
+
 > [!div class="nextstepaction"]
 > [Sistem durumu Metin Analizi hakkında daha fazla bilgi edinin](how-tos/text-analytics-for-health.md)
->
 
 ### <a name="text-analytics-resource-portal-update"></a>Metin Analizi kaynak portalı güncelleştirmesi
 * **Işlenen metin kayıtları** artık Azure Portal metin analizi kaynağınız için **izleme** bölümünde bir ölçüm olarak sunulmaktadır.  
