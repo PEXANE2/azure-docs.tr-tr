@@ -3,12 +3,12 @@ title: İçeriği Azure portal şifreleyin
 description: Bu hızlı başlangıçta, Azure portal Azure Media Services kullanarak içeriğiniz için şifrelemeyi nasıl yapılandıracağınız gösterilir.
 ms.topic: quickstart
 ms.date: 08/31/2020
-ms.openlocfilehash: a97e1a3c51d44b7c530de0c6eeca569f898d07c1
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 5ce942447f6d143116350940bda0e01a8b532d24
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106069341"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277692"
 ---
 # <a name="quickstart-use-portal-to-encrypt-content"></a>Hızlı başlangıç: içeriği şifrelemek için portalı kullanma
 
@@ -28,8 +28,8 @@ Bu hızlı başlangıçta, akışa alma sırasında varlığınıza hangi şifre
 ### <a name="suggested-pre-reading"></a>Önerilen önceden okuma
 
 * [Dinamik şifreleme ve anahtar teslimi](drm-content-protection-concept.md)
-* [Akış bulucuları](streaming-locators-concept.md)
-* [Akış ilkeleri](streaming-policy-concept.md)
+* [Akış bulucuları](stream-streaming-locators-concept.md)
+* [Akış ilkeleri](stream-streaming-policy-concept.md)
 * [İçerik anahtarı ilkeleri](drm-content-key-policy-concept.md)
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -80,7 +80,7 @@ Ayrıca, içeriğinize bir AES-128 şifresiz anahtar şifrelemesi de ekleyebilir
 1. Seçili varlık için **akış Bulucu** bölümünde **+ akış Bulucu Ekle**' ye basın. 
 1. Yapılandırdığınız **içerik anahtarı ilkesine** uygun bir **akış ilkesi** seçin.
 
-    [Akış ilkeleri](streaming-policy-concept.md) konusu, hangi akış ilkesi ile eşleşen içerik anahtar ilkesi hakkında ayrıntılı bilgi verir.
+    [Akış ilkeleri](stream-streaming-policy-concept.md) konusu, hangi akış ilkesi ile eşleşen içerik anahtar ilkesi hakkında ayrıntılı bilgi verir.
 1. Uygun akış ilkesini seçtikten sonra, açılan listeden içerik anahtarı ilkesini seçebilirsiniz.
 1. Akış bulucuyu varlığınıza eklemek için **Ekle** ' ye basın.
 

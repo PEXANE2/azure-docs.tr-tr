@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: ad3b6fa581bfc36579ef4b6937b50f8c1789a7f5
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 1fb8724edc32477bb1c399db0493833e9df984bb
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106112095"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277581"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Dinamik Paketleyiciyi kullanarak bildirimlerinizi filtreleyin
 
@@ -26,7 +26,7 @@ ms.locfileid: "106112095"
 
 Cihazlara bit hızı uyarlamalı akış içeriği sunarken, bazı durumlarda belirli cihaz yeteneklerini veya kullanılabilir ağ bant genişliğini hedeflemek için bir bildirimin birden çok sürümünü yayımlamanız gerekir. [Dinamik paketlendirme](encode-dynamic-packaging-concept.md) , belirli codec bileşenlerinin, çözümlerin, bitlerin ve ses izleme birleşimlerinin anında filtreleyebilen filtreler belirtmenize olanak tanır. Bu filtreleme, birden çok kopya oluşturma gereksinimini ortadan kaldırır. Yalnızca hedef cihazlarınıza (iOS, Android, SmartTV ya da tarayıcılar) ve ağ özelliklerine (yüksek bant genişliği, mobil veya düşük bant genişlikli senaryolar) yapılandırılmış belirli bir filtre kümesiyle yeni bir URL yayımlamanız gerekir. Bu durumda, istemciler, içerik akışını sorgu dizesi aracılığıyla işleyebilir (kullanılabilir [varlık filtrelerini veya hesap filtrelerini](filters-concept.md)belirterek) ve bir akışın belirli bölümlerini akışa almak için filtreleri kullanabilirsiniz.
 
-Bazı teslim senaryoları, bir müşterinin belirli izlemelere erişegerektirmediğinden emin olmanızı gerektirir. Örneğin, belirli bir abone katmanında HD izleri içeren bir bildirim yayınlamak istemezsiniz olabilir. Ya da, belirli Uyarlamalı bit hızı (ABR) izlerini kaldırmak istiyor olabilirsiniz. Bu, ek İzlemelerden yararlanabilecek belirli bir cihaza teslim maliyetini azaltır. Bu durumda, önceden oluşturulmuş filtrelerin listesini oluşturma sırasında [akış konumunuzla](streaming-locators-concept.md) ilişkilendirebilirsiniz. Daha sonra istemciler, **akış Bulucu** tarafından tanımlandığından içeriğin nasıl akışa alınacağını işleyebilir.
+Bazı teslim senaryoları, bir müşterinin belirli izlemelere erişegerektirmediğinden emin olmanızı gerektirir. Örneğin, belirli bir abone katmanında HD izleri içeren bir bildirim yayınlamak istemezsiniz olabilir. Ya da, belirli Uyarlamalı bit hızı (ABR) izlerini kaldırmak istiyor olabilirsiniz. Bu, ek İzlemelerden yararlanabilecek belirli bir cihaza teslim maliyetini azaltır. Bu durumda, önceden oluşturulmuş filtrelerin listesini oluşturma sırasında [akış konumunuzla](stream-streaming-locators-concept.md) ilişkilendirebilirsiniz. Daha sonra istemciler, **akış Bulucu** tarafından tanımlandığından içeriğin nasıl akışa alınacağını işleyebilir.
 
 [Akış Konumlandırıcı](filters-concept.md#associating-filters-with-streaming-locator) + istemci URL 'de belirttiği cihaza özgü ek filtreler hakkında filtre belirterek filtrelemeyi birleştirebilirsiniz. Bu bileşim, meta veri veya olay akışları, ses dilleri veya açıklayıcı ses parçaları gibi ek parçaları kısıtlamak için yararlıdır.
 

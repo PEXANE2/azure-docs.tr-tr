@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/05/2021
+ms.date: 04/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: b6b23e792aaef4d70e9ffc9be3667f0abef49e81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e9df582ce6eddd50fbecf02858f4afe611dcf18
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102489557"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220224"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLı ile Azure Machine Learning çalışma alanı oluşturma
 
@@ -50,14 +50,6 @@ CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum a�
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
 Diğer kimlik doğrulama yöntemleri için bkz. [Azure CLI Ile oturum açma](/cli/azure/authenticate-azure-cli).
-
-## <a name="install-the-machine-learning-extension"></a>Machine Learning uzantısını yükler
-
-Machine Learning uzantısını yüklemek için şu komutu kullanın:
-
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 

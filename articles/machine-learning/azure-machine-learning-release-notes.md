@@ -9,18 +9,92 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: ea7eda7e50e7d8733fd24a63d533272e5bca6bab
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 13ef91af5f7ed8398e3d23400fa5e9df467ce6bc
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166692"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210903"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
 Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](/python/api/overview/azure/ml/intro) sayfasına gidin.
 
 __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine yapıştırarak Bu sayfa güncelleştirildikten sonra bildirim alın: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+
+## <a name="2021-04-05"></a>2021-04-05
+
+### <a name="azure-machine-learning-sdk-for-python-v1260"></a>Python v 1.26.0 için SDK Azure Machine Learning
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + **azureml-automl-core**
+    + Cmlstep çalıştırmaları için Naive modellerinin önerilme ve öteleme veya kayan pencere özellikleriyle başarısız olduğu bir sorun düzeltildi. Hedef lags veya hedef sıralı pencere boyutu ayarlandığında, bu modeller önerilmez.
+    +  Çalışan için bir portal bağlantısı göstermek üzere bir oto ml çalıştırması gönderilirken konsol çıkışı değiştirildi.
+  + **azureml-core**
+    + Belgelerde, belgemodu eklendi.
+    + Dosya veri kümesi bölümlerini glob yapısına göre anlamak için destek eklendi.
+    + AzureML çalışma alanıyla ilişkili güncelleştirme kapsayıcısı kayıt defteri için destek eklendi.
+    + DockerSection-"Enabled", "shared_volume" ve "arguments" altındaki kullanım dışı ortam öznitelikleri, RunConfiguration içindeki DockerConfiguration 'ın bir parçasıdır.
+    + Güncelleştirilmiş işlem hattı CLı kopyası belgeleri
+    + Kimlik doğrulaması için kiracı eklemek üzere Portal URI 'Leri güncelleştirildi
+    + Yeniden yönlendirmeleri önlemek için çalıştırma Uri 'lerinden deneme adı kaldırıldı 
+    + Deneme KIMLIĞI kullanmak için deneme UııD güncelleştirildi.
+    + AzureML CLı ile uzak işlem eklemeye yönelik hata düzeltmeleri.
+    + Kimlik doğrulaması için kiracı eklemek üzere Portal URI 'Leri güncelleştirildi.
+    + Deneme kimliğini kullanmak için deneme URI 'SI güncelleştirildi.
+  + **azureml-interpret**
+    + azureml--Community 0.17.0 kullanmayı kabul edin
+  + **azureml-opendatasets**
+    + Giriş başlangıç tarihi ve bitiş tarihi türü doğrulama ve hata göstergesi, tarih saat türünde değilse.
+  + **azureml-Parallel-Run**
+    + [Deneysel özellik] `partition_keys` ParallelRunConfig öğesine parametre ekleme belirtilirse, giriş veri kümeleri, tarafından belirtilen anahtarlarla mini toplu işlerle bölümlenir. Tüm giriş veri kümelerinin bölümlenmiş veri kümesi olmasını gerektirir.
+  + **azureml-pipeline-steps**
+    + Bugdüzeltmesini-veri kümesi yapılandırmasını indirme olarak geçirirken path_on_compute destekleme.
+    + İşlem hatlarında R betikleri çalıştırmak için CommandStep kullanma yerine RScriptStep 'i kullanımdan kaldırma. 
+    + İşlem hatlarında ML eğitimini (dağıtılmış eğitim dahil) çalıştırmak için CommandStep kullanma yerine EstimatorStep 'ı kullanımdan kaldırmayı tercih edin.
+  + **azureml-SDK**
+    + Python_requires < 3,9 ' de, azureml-SDK için güncelleştirme
+  + **azureml-train-automl-client**
+    +  Çalışan için bir portal bağlantısı göstermek üzere bir oto ml çalıştırması gönderilirken konsol çıkışı değiştirildi.
+  + **azureml-train-core**
+    + DockerConfiguration 'ın ScriptRunConfig ile kullanılması için sunulan DockerSection 'ın ' Enabled ', ' shared_volume ' ve ' arguments ' özniteliklerinin kullanım dışı bırakılmış.
+    +  MNIST veri kümesi için Azure açık veri kümelerini kullanma
+    + Hyperdrive hata iletileri güncelleştirildi.
+
+
+## <a name="2021-03-22"></a>2021-03-22
+
+### <a name="azure-machine-learning-sdk-for-python-v1250"></a>Python v 1.25.0 için SDK Azure Machine Learning
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + **azureml-automl-core**
+    +  Çalışan için bir portal bağlantısı göstermek üzere bir oto ml çalıştırması gönderilirken konsol çıkışı değiştirildi.
+  + **azureml-core**
+    + SDK ve CLı 'de çalışma alanı için kapsayıcı kayıt defterini güncelleştirmeyi desteklemeye başlar
+    + DockerConfiguration 'ın ScriptRunConfig ile kullanılması için sunulan DockerSection 'ın ' Enabled ', ' shared_volume ' ve ' arguments ' özniteliklerinin kullanım dışı bırakılmış.
+    + Güncelleştirilmiş işlem hattı CLı kopyası belgeleri
+    + Kimlik doğrulaması için kiracı eklemek üzere Portal URI 'Leri güncelleştirildi
+    + Yeniden yönlendirmeleri önlemek için çalıştırma Uri 'lerinden deneme adı kaldırıldı
+    + Deneme KIMLIĞI kullanmak için deneme UııD güncelleştirildi.
+    + Az CLI kullanarak uzaktan işlem eklemeye yönelik hata düzeltmeleri
+    + Kimlik doğrulaması için kiracı eklemek üzere Portal URI 'Leri güncelleştirildi.
+    + Dosya veri kümesi bölümlerini glob yapısına göre anlamak için destek eklendi.
+  + **azureml-interpret**
+    + azureml--Community 0.17.0 kullanmayı kabul edin
+  + **azureml-opendatasets**
+    + Giriş başlangıç tarihi ve bitiş tarihi türü doğrulama ve hata göstergesi, tarih saat türünde değilse.
+  + **azureml-pipeline-core**
+    + Bugdüzeltmesini-veri kümesi yapılandırmasını indirme olarak geçirirken path_on_compute destekleme.
+  + **azureml-pipeline-steps**
+    + Bugdüzeltmesini-veri kümesi yapılandırmasını indirme olarak geçirirken path_on_compute destekleme.
+    + İşlem hatlarında R betikleri çalıştırmak için CommandStep kullanma yerine RScriptStep 'i kullanımdan kaldırma. 
+    + İşlem hatlarında ML eğitimini (dağıtılmış eğitim dahil) çalıştırmak için CommandStep kullanma yerine EstimatorStep 'ı kullanımdan kaldırmayı tercih edin.
+  + **azureml-train-automl-runtime**
+    +  Çalışan için bir portal bağlantısı göstermek üzere bir oto ml çalıştırması gönderilirken konsol çıkışı değiştirildi.
+  + **azureml-train-core**
+    + DockerConfiguration 'ın ScriptRunConfig ile kullanılması için sunulan DockerSection 'ın ' Enabled ', ' shared_volume ' ve ' arguments ' özniteliklerinin kullanım dışı bırakılmış.
+    + MNIST veri kümesi için Azure açık veri kümelerini kullanma
+    + Hyperdrive hata iletileri güncelleştirildi.
+
 
 ## <a name="2021-03-31"></a>2021-03-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-march-update"></a>Azure Machine Learning Studio Not defteri deneyimi (Mart güncelleştirmesi)
@@ -38,6 +112,7 @@ __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine ya
   + Bağlantılar artık terminalde tıklatılabilir
   + Geliştirilmiş IntelliSense performansı
 
+
 ## <a name="2021-03-08"></a>2021-03-08
 
 ### <a name="azure-machine-learning-sdk-for-python-v1240"></a>Python v 1.24.0 için SDK Azure Machine Learning
@@ -50,8 +125,6 @@ __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine ya
     + Sütun değerlerine ve dosya veri kümelerine meta verilere göre tablo veri kümelerini filtrelemek için işlevsellik eklenmiştir.
   + **azureml-contrib-fairness**
     + İçin tekerlek şemasında JSON şemasını dahil et `azureml-contrib-fairness`
-  + **azureml-contrib-k8s**
-    + Artık kaynak grubu ve küme adı yerine iliştirilecek resource_id sağlanmalıdır.
   + **azureml-contrib-mir**
     + Modelleri dağıtırken show_output true olarak ayarlayarak, istek sunucuya gönderilmeden önce çıkarım yapılandırması ve dağıtım yapılandırması yeniden yürütülür.
   + **azureml-core**
@@ -94,7 +167,7 @@ __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine ya
   + **azureml-core**
     + [Deneysel özellik] SYNAPSE çalışma alanını bir bağlı hizmet olarak AML 'ye bağlama desteği ekleme
     + [Deneysel özellik] SYNAPSE Spark havuzunu bir işlem olarak AML 'ye eklemek için destek ekleme
-    + [Deneysel özellik] Kimlik tabanlı veri erişimi için destek ekleyin. Kullanıcılar, kimlik bilgilerini sağlamadan veri deposunu veya veri kümelerini kaydedebilir. Böyle bir durumda, kimlik doğrulaması için kullanıcıların AAD belirteci veya yönetilen kimliği işlem hedefini kullanılacaktır. [Daha fazla bilgi edinin](./how-to-identity-based-data-access.md).
+    + [Deneysel özellik] Kimlik tabanlı veri erişimi için destek ekleyin. Kullanıcılar, kimlik bilgilerini sağlamadan veri deposunu veya veri kümelerini kaydedebilir. Böyle bir durumda, kimlik doğrulaması için kullanıcıların AAD belirteci veya yönetilen kimliği işlem hedefini kullanılacaktır. [Burada](./how-to-identity-based-data-access.md) daha fazla bilgi edinin.
   + **azureml-pipeline-steps**
     + [Deneysel özellik] [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep) için destek ekleme
   + **azureml-synapse**

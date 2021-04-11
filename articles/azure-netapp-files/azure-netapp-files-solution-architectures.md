@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 04/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 47c641eedbbe096a75223286563acb0a2405b1a6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d5ff0f2444aac153116e8e33a6ed2af74c93f057
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935218"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553524"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files kullanan çözüm mimarileri
 Bu makalede, Azure NetApp Files kullanmaya yönelik çözüm mimarilerini anlamanıza yardımcı olabilecek en iyi yöntemlere başvurular sağlanmaktadır.  
@@ -54,10 +54,11 @@ Bu bölüm, Windows Uygulamaları ve SQL Server çözümleri için başvurular s
 
 ### <a name="sql-server"></a>SQL Server
 
+* [Azure dağıtım kılavuzu 'nda Azure NetApp Files kullanarak SQL Server](https://www.netapp.com/pdf.html?item=/media/27154-tr-4888.pdf)
+* [SQL Server dağıtımı için Azure NetApp Files kullanmanın avantajları](solutions-benefits-azure-netapp-files-sql-server.md)
 * [Azure NetApp Files SMB üzerinden SQL Server dağıtma](https://www.youtube.com/watch?v=x7udfcYbibs)
 * [Azure NetApp Files ile SMB üzerinden SQL Server Always-On yük devretme kümesi dağıtma](https://www.youtube.com/watch?v=zuNJ5E07e8Q) 
 * [Azure NetApp Files ile Always-On kullanılabilirlik grupları dağıtma](https://www.youtube.com/watch?v=y3VQmzzeyvc) 
-* [SQL Server dağıtımı için Azure NetApp Files kullanmanın avantajları](solutions-benefits-azure-netapp-files-sql-server.md)
 
 ## <a name="sap-on-azure-solutions"></a>Azure çözümlerinde SAP
 

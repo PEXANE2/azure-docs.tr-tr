@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 84a65e9ce7360a38f552c0dea61a33ff8a94b9cc
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: cdbba1618815dbc8b52195169b7de2bcec2986d8
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055527"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255588"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Kullanıcıları sosyal kimliklerle oturum açmak için MSAL.NET kullanma
 
@@ -178,7 +178,7 @@ Bu tür bir senaryonun belirtisi, `Missing from the token response` `preferred_u
 
 Önerilen geçici çözüm, daha önce açıklanan [ilkeye göre önbelleğe alma](#acquire-a-token-to-apply-a-policy) özelliğini kullanmaktır.
 
-Alternatif olarak, `tid` Azure AD B2C içinde [özel ilkeler](../../active-directory-b2c/custom-policy-get-started.md) kullanıyorsanız talebi kullanabilirsiniz. Özel ilkeler, [talep dönüşümünü](../../active-directory-b2c/claims-transformation-technical-profile.md)kullanarak uygulamanıza ek talepler döndürebilir.
+Alternatif olarak, `tid` Azure AD B2C içinde [özel ilkeler](../../active-directory-b2c/user-flow-overview.md) kullanıyorsanız talebi kullanabilirsiniz. Özel ilkeler, [talep dönüşümünü](../../active-directory-b2c/claims-transformation-technical-profile.md)kullanarak uygulamanıza ek talepler döndürebilir.
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>"Belirteç yanıtında yok" için azaltma
 

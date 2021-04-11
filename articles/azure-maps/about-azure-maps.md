@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: b53af0fda8bb24bf03d0e02f61ce7d195ae69503
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc70e6370f53848e9f3672611a3dfda685bcb9fe
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97680819"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011785"
 ---
 # <a name="what-is-azure-maps"></a>Azure Haritalar nedir?
 
@@ -173,7 +173,7 @@ Daha fazla bilgi için bkz. [trafik hizmeti belgeleri](/rest/api/maps/traffic).
 
 Hava durumu Hizmetleri, geliştiricilerin belirli bir konum için hava durumu bilgilerini almak üzere kullanabileceği API 'Ler sunar. Bilgiler, gözlem tarihi ve saati, hava durumu koşullarının kısa açıklaması, hava durumu simgesi, yağış gösterge bayrakları, sıcaklık ve rüzgar hızı bilgilerinin ayrıntılarını içerir. ™ Sıcaklık ve UV dizini gibi ek ayrıntılar da döndürülür.
 
-Geliştiriciler, belirli bir rota hakkında hava durumu bilgilerini almak için [Hava durumu ve rota API](/rest/api/maps/weather/getweatheralongroutepreview) 'sini kullanabilir. Ayrıca hizmet, bir veya daha ağır yağmur gibi hava durumu riskleri tarafından etkilenen waypoints için hava durumu bildirimleri oluşturmayı destekler.
+Geliştiriciler, belirli bir rota hakkında hava durumu bilgilerini almak için [Hava durumu ve rota API](/rest/api/maps/weather/getweatheralongroute) 'sini kullanabilir. Ayrıca hizmet, bir veya daha ağır yağmur gibi hava durumu riskleri tarafından etkilenen waypoints için hava durumu bildirimleri oluşturmayı destekler.
 
 [Get Map kutucuğu v2 API 'si](/rest/api/maps/renderv2/getmaptilepreview) , geçmiş, güncel ve gelecekteki radar ve uydu kutucukları isteyebilmeniz için izin verir.
 

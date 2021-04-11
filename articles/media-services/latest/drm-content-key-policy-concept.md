@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: c9709c444dfde4897c1364c8ab3d9dbfa315bb6f
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 6e60292c817ccad8eb1dd6cb3c33b944ab1c18a0
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106122161"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277700"
 ---
 # <a name="content-key-policies"></a>İçerik Anahtar İlkeleri
 
@@ -25,9 +25,9 @@ ms.locfileid: "106122161"
 
 Media Services ile canlı ve isteğe bağlı içeriğinizi Gelişmiş Şifreleme Standardı (AES-128) veya üç ana dijital hak yönetimi (DRM) sisteminden (Microsoft PlayReady, Google Widevine ve Apple FairPlay ile) dinamik olarak dağıtabilirsiniz. Media Services, yetkili istemcilere AES anahtarları ve DRM (PlayReady, Widevine ve FairPlay) lisanslarını sunmaya yönelik bir hizmet sağlar. 
 
-Akışınızla ilgili şifreleme seçeneklerini belirtmek için bir [akış ilkesi](streaming-policy-concept.md) oluşturmanız ve bunu [akış konumunuzla](streaming-locators-concept.md)ilişkilendirmeniz gerekir. İçerik anahtarının ( [varlıklarınıza](assets-concept.md)güvenli erişim sağlayan) son istemcilere teslim edildiğini yapılandırmak Için [içerik anahtarı ilkesini](/rest/api/media/contentkeypolicies) oluşturursunuz. Belirtilen yapılandırmaya sahip anahtarların istemcilere teslim edilebilmesi için karşılanması gereken Içerik anahtarı Ilkesinde gereksinimleri (kısıtlamalar) ayarlamanız gerekir. İçerik anahtarı ilkesi, açık akış veya indirme için gerekli değildir. 
+Akışınızla ilgili şifreleme seçeneklerini belirtmek için bir [akış ilkesi](stream-streaming-policy-concept.md) oluşturmanız ve bunu [akış konumunuzla](stream-streaming-locators-concept.md)ilişkilendirmeniz gerekir. İçerik anahtarının ( [varlıklarınıza](assets-concept.md)güvenli erişim sağlayan) son istemcilere teslim edildiğini yapılandırmak Için [içerik anahtarı ilkesini](/rest/api/media/contentkeypolicies) oluşturursunuz. Belirtilen yapılandırmaya sahip anahtarların istemcilere teslim edilebilmesi için karşılanması gereken Içerik anahtarı Ilkesinde gereksinimleri (kısıtlamalar) ayarlamanız gerekir. İçerik anahtarı ilkesi, açık akış veya indirme için gerekli değildir. 
 
-Genellikle, içerik anahtarı ilkenizi [akış konumunuzla](streaming-locators-concept.md)ilişkilendirirsiniz. Alternatif olarak, içerik anahtarı ilkesini bir [akış ilkesi](streaming-policy-concept.md) içinde belirtebilirsiniz (Gelişmiş senaryolar için özel bir akış ilkesi oluştururken). 
+Genellikle, içerik anahtarı ilkenizi [akış konumunuzla](stream-streaming-locators-concept.md)ilişkilendirirsiniz. Alternatif olarak, içerik anahtarı ilkesini bir [akış ilkesi](stream-streaming-policy-concept.md) içinde belirtebilirsiniz (Gelişmiş senaryolar için özel bir akış ilkesi oluştururken). 
 
 ## <a name="best-practices-and-considerations"></a>En iyi uygulamalar ve noktalar
 

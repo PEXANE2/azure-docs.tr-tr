@@ -1,5 +1,5 @@
 ---
-title: Veren hizmeti iletişim örnekleri (Önizleme)
+title: Veren hizmeti iletişim örnekleri (Önizleme)-Azure Active Directory doğrulanabilir kimlik bilgileri
 description: Kimlik sağlayıcısı ve veren hizmeti arasındaki iletişimin ayrıntıları
 author: barclayn
 manager: davba
@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: bd1b7560967ff0c458639a5737a02fca27ffc9f5
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 8771c61f96b244e0cc0bca1c61ceb8042b4a5b4c
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106170350"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220207"
 ---
 # <a name="issuer-service-communication-examples-preview"></a>Veren hizmeti iletişim örnekleri (Önizleme)
 
@@ -141,3 +141,7 @@ KIMLIK belirtecinin JWT Compact serileştirme biçimini kullanması ve şifrelen
 | `iat` | , KIMLIK belirtecinin verildiği saati içermelidir. |
 | `nonce` | Yetkilendirme isteğine dahil edilen değer. |
 | Ek talepler | KIMLIK belirteci, verilecek olan doğrulanabilir kimlik bilgisine dahil edilecek ek talepler içermelidir. Bu bölüm, Kullanıcı hakkında, adı gibi tüm öznitelikleri eklemeniz gereken yerdir. |
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Azure Active Directory doğrulanabilir kimlik bilgilerinizi özelleştirme](credential-design.md)

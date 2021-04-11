@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 814a2f7e32f173111e45fff02f00c3e4d2a9a670
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d2de439e661ef5b1d1669187355621f25400bc4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601092"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075631"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 ve 8600 Azure Dosya Eşitleme 'e geçiş
 
@@ -65,11 +65,11 @@ StorSimple gerecinizi ilk kez ayarladığınızda, "hizmet veri şifreleme anaht
 
 Başarılı bir geçiş için "hizmet verileri şifreleme anahtarı" gereklidir. Bu anahtarı, stokunuzdaki her bir uygulama için bir tane olmak üzere kayıtlarınızdaki bu anahtarı almak için iyi bir zamandır.
 
-Kayıtlarınızda anahtarları bulamıyorsanız, Gereç içinden anahtarı alabilirsiniz. Her gereç benzersiz bir şifreleme anahtarına sahiptir. Anahtarı almak için:
+Kayıtlarınızda anahtarları bulamıyorsanız, Gereç içinden yeni bir anahtar oluşturabilirsiniz. Her gereç benzersiz bir şifreleme anahtarına sahiptir.
 
-* Azure portal üzerinden Microsoft Azure bir destek isteği dosyası. İstek, StorSimple cihaz seri numaranızı ve "hizmet veri şifreleme anahtarını" alma isteğini içermelidir.
-* StorSimple Destek Mühendisi, bir sanal Toplantı isteğiyle sizinle iletişim kuracaktır.
-* Toplantıdan başlamadan önce, [bir seri konsol](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) veya [uzak bir PowerShell oturumu](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-remotely-to-storsimple-using-windows-powershell-for-storsimple)aracılığıyla StorSimple gerecinize bağlantığınızdan emin olun.
+#### <a name="change-the-service-data-encryption-key"></a>Hizmet veri şifreleme anahtarını değiştirme
+
+[!INCLUDE [storage-files-migration-generate-key](../../../includes/storage-files-migration-generate-key.md)]
 
 > [!CAUTION]
 > StorSimple gerecinize nasıl bağlanacağınıza karar verirken aşağıdakileri göz önünde bulundurun:

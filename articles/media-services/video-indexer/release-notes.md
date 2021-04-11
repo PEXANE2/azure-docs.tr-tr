@@ -10,14 +10,15 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 02/16/2021
+ms.custom: references_regions
+ms.date: 03/30/2021
 ms.author: juliako
-ms.openlocfilehash: 618617d3602e45ebb15314c7cc5f6898a73bb71f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c2465d845da9dd9c2c1690c39a8f1d1c7e86899f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203734"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075721"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
@@ -32,9 +33,31 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 
 ## <a name="march-2021"></a>Mart 2021
 
+### <a name="audio-analysis"></a>Ses Analizi 
+
 Ses analizi artık farklı fiyat noktasındaki yeni ses özellikleri paketinde bulunabilir. Yeni **temel ses** Analizi ön ayarı yalnızca konuşma dökümünü, çeviri ve biçim çıkış başlıklarını ve alt yazıları ayıklamak için düşük maliyetli bir seçenek sağlar. **Temel ses** ön ayarı faturanızda bir satır ve başlık ve alt başlık biçimlendirmesi için ayrı bir satır dahil olmak üzere iki ayrı ölçü oluşturur. Fiyatlandırma hakkında daha fazla bilgi için [Media Services fiyatlandırma](https://azure.microsoft.com/pricing/details/media-services/) sayfasına bakın.
 
 Yeni eklenen paket,   ->  **temel ses** Önayarı ( **video + ses dizin oluşturma** açılan kutusu altında) seçeneğini belirleyerek dosyanızı dizin oluşturma veya yeniden dizin oluşturma sırasında kullanılabilir.
+
+### <a name="new-developer-portal"></a>Yeni geliştirici portalı 
+
+Yeni bir [Geliştirici portalına](https://api-portal.videoindexer.ai/)sahip video Indexer, yeni video Indexer API 'leri deneyin ve tüm ilgili kaynakları tek bir yerde bulun: [GitHub deposu](https://github.com/Azure-Samples/media-services-video-indexer), [yığın taşması](https://stackoverflow.com/questions/tagged/video-indexer) [video Indexer](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer) , Ilgili blog gönderileri, [video Indexer SSS](faq.md), [Kullanıcı seslerine](https://feedback.azure.com/forums/932041-cognitive-services?category_id=399016) geri bildirimde bulunmak ve Özellikler önermek ve pencere öğesi kod örnekleri ile  [' codepen ' bağlantısı](https://codepen.io/videoindexer) . 
+ 
+### <a name="advanced-customization-capabilities-for-insight-widget"></a>Öngörüler pencere öğesi için Gelişmiş özelleştirme özellikleri 
+
+SDK artık Video Indexer öngörüleri pencere öğesini kendi hizmetinize eklemek ve stilini ve verilerini özelleştirmek için kullanılabilir. SDK Standart Video Indexer Öngörüler pencere öğesini ve tamamen özelleştirilebilir Öngörüler pencere öğesini destekler. Kod örneği [video Indexer GitHub deposunda](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets/widget-customization)kullanılabilir. Bu gelişmiş özelleştirme özellikleri sayesinde, çözüm geliştiricisi özel stil uygulayabilir ve müşterinin kendi AI verilerini getirebilir ve bunu, Öngörüler pencere öğesinde (Video Indexer içgörüler içeren veya olmayan) sunar. 
+
+### <a name="video-indexer-deployed-in-the-us-north-central--us-west-and-canada-central"></a>ABD Orta Kuzey, ABD Batı ve Kanada Orta dağıtılan Video Indexer 
+
+Artık ABD Orta Kuzey, ABD Batı ve Kanada Orta bölgelerinde Video Indexer ücretli bir hesap oluşturabilirsiniz
+ 
+### <a name="new-source-languages-support-for-speech-to-text-stt-translation-and-search"></a>Konuşmayı metne dönüştürme (STT), çeviri ve arama için yeni kaynak dilleri desteği 
+
+Video Indexer artık, Danca (' da-DK '), Norveççe (' NB-NO '), Isveççe (' SV-tr '), Fince (' FI-ı '), Kanada Fransızcası (' fr-CA '), Tay dili (' th-TH ') içinde STT, çeviri ve arama desteği Arapça (' ar-BH ', ' ar-EG ', ' ar-IQ ', ' ar-JO ', ' ar-KW ', ' ar-LB ', ' ar-OM ', ' ar-QA ', ' ar-S ' ve ' ar-SY ') ve Türkçe (' tr-TR '). Bu diller hem API 'de hem de Video Indexer Web sitesinde kullanılabilir. 
+ 
+### <a name="search-by-topic-in-video-indexer-website"></a>Video Indexer Web sitesinde konuya göre ara 
+
+Artık, belirli konularda video aramak için [video Indexer Web sitesi](https://www.videoindexer.ai/account/login) sayfasının en üstündeki arama özelliğini kullanabilirsiniz. 
 
 ## <a name="february-2021"></a>Şubat 2021
 
