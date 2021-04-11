@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: quickstart
-ms.date: 01/27/2021
+ms.date: 04/07/2021
 ms.author: alkohli
-ms.openlocfilehash: b6389152116a47bedbc9c2dc44231f3e1732fdc6
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 43477f11effaafb0bcd6158be6843c79d19092ac
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055120"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210819"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Hızlı başlangıç: GPU ile Azure Stack Edge Pro ile çalışmaya başlama 
 
@@ -36,7 +36,7 @@ Dağıtmadan önce, aşağıdaki önkoşulların yerinde olduğundan emin olun:
 
 ## <a name="deployment-steps"></a>Dağıtım adımları
 
-1. **Install**: bağlantı noktası 1 ' i bir çapraz kablo veya USB Ethernet bağdaştırıcısı aracılığıyla bir istemci bilgisayara bağlayın. Veri için en az bir diğer cihaz bağlantı noktasını (bağlantı noktası 3 ' ten bağlantı noktası 6 ' ya kadar) en az 1 GbE anahtar ve SFP + bakır kablo aracılığıyla Internet 'e bağlayın. Belirtilen güç gücünü güç kaynağı birimlerine bağlayın ve güç dağıtımı çıkışlarının birbirinden ayırın. Cihazı açmak için ön paneldeki güç düğmesine basın.  
+1. **Install**: bağlantı noktası 1 ' i bir çapraz kablo veya USB Ethernet bağdaştırıcısı aracılığıyla bir istemci bilgisayara bağlayın. En az bir diğer cihaz bağlantı noktasını, tercihen 25 GbE (bağlantı noktası 3 ' ten bağlantı noktası 6 ' ya kadar), SFP + bakır kablolar aracılığıyla Internet 'e bağlayın veya RJ45 Patch kablosuyla bağlantı noktası 2 ' yi kullanın. Belirtilen güç gücünü güç kaynağı birimlerine bağlayın ve güç dağıtımı çıkışlarının birbirinden ayırın. Cihazı açmak için ön paneldeki güç düğmesine basın.  
 
     Uyumlu ağ kabloları ve anahtarları almak için bkz. [Cavium Fastlınq 41000 serisi birlikte çalışabilirlik matrisi](https://www.marvell.com/documents/xalflardzafh32cfvi0z/) ve [Mellanox Dual Port 25G ConnectX-4 kanal ağ bağdaştırıcısı uyumlu ürünler](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products) .
 

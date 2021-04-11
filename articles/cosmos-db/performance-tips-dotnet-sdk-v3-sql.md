@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: 8eafd36c82b09575514afade6b848a7f9186895f
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 1a6439cfa64257e80d113f01f4ed31d56d850ea3
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105960053"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226065"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -215,7 +215,7 @@ Aktarım hızı, her bir kapsayıcı için ayarlanan [Istek birimi](request-unit
 
 Bir sorgunun karmaşıklık düzeyi, işlem için kullanılan istek birimi sayısını etkiler. Koşulların sayısı, koşulların doğası, UDF dosyalarının sayısı ve kaynak veri kümesinin boyutu, sorgu işlemlerinin maliyetini etkiler.
 
-Herhangi bir işlemin (oluşturma, güncelleştirme veya silme) yükünü ölçmek için, [](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) `RequestCharge` `ResourceResponse\<T>` `FeedResponse\<T>` işlemler tarafından tüketilen istek birimlerinin sayısını ölçmek üzere x-MS-Request-ücret üst bilgisini (veya .NET SDK içindeki veya içinde eşdeğer özelliği) inceleyin:
+Herhangi bir işlemin (oluşturma, güncelleştirme veya silme) yükünü ölçmek için, [](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) `RequestCharge` `ResourceResponse<T>` `FeedResponse<T>` işlemler tarafından tüketilen istek birimlerinin sayısını ölçmek üzere x-MS-Request-ücret üst bilgisini (veya .NET SDK içindeki veya içinde eşdeğer özelliği) inceleyin:
 
 ```csharp
 // Measure the performance (Request Units) of writes

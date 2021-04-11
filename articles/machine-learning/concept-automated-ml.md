@@ -10,18 +10,29 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: 44bcc27f877f6b2a547c51ecd3848214719cb085
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cbc147cb0aabc0540e3a91c99243aa88a8cca146
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643651"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210801"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (Otomatikml) nedir?
 
 Otomatik ML veya otomatik ml olarak da adlandırılan otomatik makine öğrenimi, Machine Learning modeli geliştirmenin zaman alıcı, yinelemeli görevlerini otomatikleştirme işlemidir. Veri bilimcilerinin, analistlerin ve geliştiricilerin, model kalitesini sürdürüp yüksek ölçekli, verimlilik ve üretkenlik özelliklerine sahip ML modelleri oluşturmalarına olanak tanır. Azure Machine Learning içindeki otomatik ML, Microsoft Research bölümümüzden bir [kahğuyla](https://www.microsoft.com/research/project/automl/)dayanır.
 
 Geleneksel makine öğrenme modeli geliştirme kaynakları yoğun bir şekilde, çok sayıda modeli oluşturmak ve karşılaştırmak için önemli etki alanı bilgisi ve zaman gerektirir. Otomatik makine öğrenimi sayesinde, mükemmel kolaylıklar ve verimlilik sayesinde üretime uygun ML modellerini elde etmek için geçen süreyi hızlandıracaksınız.
+
+## <a name="automl-in-azure-machine-learning"></a>Azure Machine Learning 'de oto ml
+
+Azure Machine Learning otomatikleştirilmiş ML ile çalışmaya yönelik iki deneyim sunar:
+
+* Kod ile deneyimli müşteriler için [Python SDK Azure Machine Learning](/python/api/overview/azure/ml/intro).  [Öğreticiyi kullanmaya başlayın: taksi Fares 'yi tahmin etmek için otomatik makine öğrenimini kullanın](tutorial-auto-train-models.md).
+
+* Sınırlı/kod deneyimi müşterisi için, Studio 'da Azure Machine Learning [https://ml.azure.com](https://ml.azure.com/) .  Bu öğreticilerle çalışmaya başlayın:
+    * [Öğretici: Azure Machine Learning OTOMATIK ml ile bir sınıflandırma modeli oluşturun](tutorial-first-experiment-automated-ml.md).
+    *  [Öğretici: otomatik makine öğrenimi ile talep tahmini](tutorial-automated-ml-forecast.md)
+
 
 ## <a name="when-to-use-automl-classify-regression--forecast"></a>Oto ml ne zaman kullanılır: sınıflandırma, regresyon, & tahmin
 
@@ -199,14 +210,6 @@ Yerel ve uzak kullanımını seçerken bu uzmanları ve dezavantajları göz ön
 * Her bir mağaza için satışları tahmin etme
 * Yüzlerce yağ için tahmine dayalı bakım
 * Bireysel kullanıcılar için bir deneyim uyarlama.
-
-## <a name="automl-in-azure-machine-learning"></a>Azure Machine Learning 'de oto ml
-
-Azure Machine Learning otomatikleştirilmiş ML ile çalışmaya yönelik iki deneyim sunar:
-
-* Kod ile deneyimli müşteriler için [Azure Machine Learning Python SDK 'sı](/python/api/overview/azure/ml/intro) 
-
-* Sınırlı/kod deneyimi müşterileri için Azure Machine Learning Studio [https://ml.azure.com](https://ml.azure.com/)  
 
 <a name="parity"></a>
 
