@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 03/18/2021
+ms.date: 04/04/2021
 ms.author: memildin
-ms.openlocfilehash: b9a93286b6a546160b6c621d084437f671eab4d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78332e95d400348c2878748a92fd818451183ffb
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773581"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385879"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Güvenlik Merkezi 'Nde yapılan önemli değişiklikler
 
@@ -28,8 +28,7 @@ En son sürüm notlarını arıyorsanız, bunları [Azure Güvenlik Merkezi 'nde
 
 | Planlı değişiklik                                                                                                                                                        | Değişikliğin tahmini tarihi |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
-| ["Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | Mart 2021                |
-| [11 Azure Defender uyarılarının kullanımdan kaldırılması](#deprecation-of-11-azure-defender-alerts)                                                                                   | Mart 2021                |
+| ["Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | 2021 Nisan                |
 | [21 güvenlik denetimleri arasında hareket eden öneriler](#21-recommendations-moving-between-security-controls)                                                           | 2021 Nisan                |
 | ["Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı bırakılmakta olan iki ek öneri](#two-further-recommendations-from-apply-system-updates-security-control-being-deprecated)                                                                                         | 2021 Nisan                |
 | [AWS 'nin önerileri genel kullanıma sunulacaktır (GA)](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | 2021 Nisan                |
@@ -39,9 +38,9 @@ En son sürüm notlarını arıyorsanız, bunları [Azure Güvenlik Merkezi 'nde
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>"Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi 
 
-**Değişikliğin tahmini tarihi:** Mart 2021
+**Değişikliğin tahmini tarihi:** 2021 Nisan
 
-Aşağıdaki iki öneri Şubat 2021 ' de kullanımdan kalkmak üzere zamanlandı:
+Aşağıdaki iki öneri 2021 Nisan 'da kullanımdan kalkmak üzere zamanlandı:
 
 - **Sistem güncelleştirmelerinin uygulanabilmesi için makinelerinizin yeniden başlatılması gerekiyor**. Bu, güvenli puanınızın küçük bir etkisi oluşmasına neden olur.
 - **İzleme Aracısı makinelerinizde yüklü olmalıdır**. Bu öneri yalnızca şirket içi makinelerle ilgilidir ve mantığının bir kısmı başka bir öneriye aktarılacaktır. **Log Analytics aracı sistem durumu sorunları makinelerinizde çözümlenmelidir**. Bu, güvenli puanınızın küçük bir etkisi oluşmasına neden olur.
@@ -49,39 +48,6 @@ Aşağıdaki iki öneri Şubat 2021 ' de kullanımdan kalkmak üzere zamanlandı
 Bu önerilerin bunlara dahil edilip edilmeyeceğini görmek için sürekli dışarı aktarma ve iş akışı Otomasyonu yapılandırmalarının denetlenmesini öneririz. Ayrıca, bunları kullanıyor olabilecek panolar veya diğer izleme araçları da buna uygun şekilde güncelleştirilmeleri gerekir.
 
 [Güvenlik önerileri başvuru sayfasında](recommendations-reference.md)bu öneriler hakkında daha fazla bilgi edinin.
-
-### <a name="deprecation-of-11-azure-defender-alerts"></a>11 Azure Defender uyarılarının kullanımdan kaldırılması
-
-**Değişikliğin tahmini tarihi:** Mart 2021
-
-Sonraki ay, aşağıda listelenen on bir Azure Defender uyarısı kullanım dışı olacaktır.
-
-- Yeni uyarılar, bu iki uyarıyı değiştirecek ve daha iyi kapsam sağlayacak:
-
-    | AlertType                | AlertDisplayName                                                         |
-    |--------------------------|--------------------------------------------------------------------------|
-    | ARM_MicroBurstDomainInfo | PREVIEW-mikro patlama araç seti "Get-AzureDomainInfo" işlev çalıştırması algılandı |
-    | ARM_MicroBurstRunbook    | PREVIEW-mikro patlama araç seti "Get-AzurePasswords" işlev çalıştırması algılandı  |
-    |                          |                                                                          |
-
-- Bu dokuz uyarı, zaten kullanım dışı bırakılmış bir Azure Active Directory Kimlik Koruması Bağlayıcısı ile ilgilidir:
-
-    | AlertType           | AlertDisplayName              |
-    |---------------------|-------------------------------|
-    | UnfamiliarLocation  | Bilinmeyen oturum açma özellikleri |
-    | AnonymousLogin      | Anonim IP adresi          |
-    | Bulaşıp Teddevicelogin | Kötü amaçlı yazılım bağlı IP adresi     |
-    | Impossıbleseyahat    | Olağandışı yolculuk               |
-    | MaliciousIP         | Kötü amaçlı IP adresi          |
-    | LeakedCredentials   | Sızdırılan kimlik bilgileri            |
-    | Passwordpüskürtme       | Parola spreyi                |
-    | LeakedCredentials   | Azure AD tehdit bilgileri  |
-    | AADAı               | Azure AD AI                   |
-    |                     |                               |
- 
-
-
-
 
 ### <a name="21-recommendations-moving-between-security-controls"></a>21 güvenlik denetimleri arasında hareket eden öneriler 
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: c79a80f3617665cb10978e7d1654dde79d69c0dc
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 2c66a7e3bf9e417b47d08e50e21c08625e9d0549
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106760"
+ms.locfileid: "107210219"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma birleştirme biçimlendirme dili (SSML) ile senssıs 'yi geliştirme
 
@@ -626,7 +626,7 @@ Yukarıdaki örnekte, IPA telefon kümesi olarak da bilinen International foneti
 
 IPA 'in anımsanması kolay olmadığından, konuşma hizmeti yedi dil (,,,,,, `en-US` `fr-FR` `de-DE` `es-ES` `ja-JP` `zh-CN` ve `zh-TW` ) için bir fonetik kümesi tanımlar.
 
-`sapi`Özniteliği için değerini olarak, `alphabet` aşağıda gösterildiği gibi özel lexsimgeleri ile kullanabilirsiniz:
+`sapi` `alphabet` Aşağıdaki gibi özel lexsimgelerle özniteliğin değeri olarak kullanabilirsiniz:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

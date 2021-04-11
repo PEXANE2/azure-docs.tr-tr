@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 8b549d868aed443e19d639ba6f6df7db20e014b1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 98b312066294f2c4ed7f9b089e0f8ea1a68fe4be
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612131"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059709"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Windows cihazı üzerinde Linux için Azure IoT Edge'i yükleme ve sağlama (Önizleme)
 
@@ -44,8 +44,8 @@ Bu makalede, bir Windows cihazında IoT Edge ayarlama adımları listelenir. Bu 
   * Professional, Enterprise veya Server sürümleri
   * Minimum boş bellek: 2 GB
   * Minimum boş disk alanı: 10 GB
-  * Windows 10 ' u kullanarak yeni bir dağıtım oluşturuyorsanız, Hyper-V ' y i etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [Windows 10 ' da Hyper-V ' d](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v.md)e nasıl yüklenir.
-  * Windows Server 'ı kullanarak yeni bir dağıtım oluşturuyorsanız, Hyper-V rolünü yüklediğinizden emin olun. Daha fazla bilgi için bkz. [Windows Server 'Da Hyper-V rolü nasıl yüklenir](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server.md).
+  * Windows 10 ' u kullanarak yeni bir dağıtım oluşturuyorsanız, Hyper-V ' y i etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [Windows 10 ' da Hyper-V ' d](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)e nasıl yüklenir.
+  * Windows Server 'ı kullanarak yeni bir dağıtım oluşturuyorsanız, Hyper-V rolünü yüklediğinizden emin olun. Daha fazla bilgi için bkz. [Windows Server 'Da Hyper-V rolü nasıl yüklenir](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
   * VM kullanarak yeni bir dağıtım oluşturuyorsanız, iç içe sanallaştırmayı doğru şekilde yapılandırdığınızdan emin olun. Daha fazla bilgi için bkz. [iç içe sanallaştırma](nested-virtualization.md) Kılavuzu.
 
 * Windows Yönetim Merkezi için Azure IoT Edge uzantısı yüklü Windows Yönetim merkezine erişim:

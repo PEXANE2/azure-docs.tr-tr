@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: f349d260fff32427712442615cabf6d3958468ac
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 997a4e115f8632544b2f73aef498d40dceb0d459
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640029"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449979"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Yapılandırma seçenekleri-Java için Azure Izleyici Application Insights
 
@@ -39,14 +39,14 @@ Daha fazla ayrıntı ve ek yapılandırma seçeneklerini aşağıda bulabilirsin
 
 ## <a name="configuration-file-path"></a>Yapılandırma dosyası yolu
 
-Varsayılan olarak Application Insights Java 3,0, yapılandırma dosyasının adlandırılması `applicationinsights.json` ve ile aynı dizinde bulunması beklenir `applicationinsights-agent-3.0.2.jar` .
+Varsayılan olarak Application Insights Java 3,0, yapılandırma dosyasının adlandırılması `applicationinsights.json` ve ile aynı dizinde bulunması beklenir `applicationinsights-agent-3.0.3.jar` .
 
 Kendi yapılandırma dosya yolunuzu aşağıdakilerden birini kullanarak belirtebilirsiniz
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE` ortam değişkeni veya
 * `applicationinsights.configuration.file` Java sistem özelliği
 
-Göreli bir yol belirtirseniz, bulunduğu dizine göre çözümlenir `applicationinsights-agent-3.0.2.jar` .
+Göreli bir yol belirtirseniz, bulunduğu dizine göre çözümlenir `applicationinsights-agent-3.0.3.jar` .
 
 ## <a name="connection-string"></a>Bağlantı dizesi
 
@@ -61,7 +61,7 @@ Bağlantı dizesi gerekiyor. Bağlantı dizenizi Application Insights kaynağın
 }
 ```
 
-Bağlantı dizesini, ortam değişkenini kullanarak da ayarlayabilirsiniz `APPLICATIONINSIGHTS_CONNECTION_STRING` (Bu, bağlantı dizesi JSON yapılandırmasında de belirtilmişse öncelikli olur).
+Bağlantı dizesini, ortam değişkenini kullanarak da ayarlayabilirsiniz `APPLICATIONINSIGHTS_CONNECTION_STRING` (daha sonra JSON yapılandırmasında belirtilen bağlantı dizesine göre öncelikli olur).
 
 Bağlantı dizesinin ayarlanması, Java aracısını devre dışı bırakacak.
 
@@ -81,7 +81,7 @@ Bulut rolü adını ayarlamak istiyorsanız:
 
 Bulut rolü adı ayarlanmamışsa, uygulama eşlemesindeki bileşeni etiketlemek için Application Insights kaynağın adı kullanılır.
 
-Ayrıca, ortam değişkenini kullanarak bulut rolü adını da ayarlayabilirsiniz `APPLICATIONINSIGHTS_ROLE_NAME` (Bu, Ayrıca JSON yapılandırmasında bulut rolü adı belirtilmişse öncelikli olur).
+Ayrıca, ortam değişkenini kullanarak `APPLICATIONINSIGHTS_ROLE_NAME` (JSON yapılandırmasında belirtilen bulut rolü adından öncelikli olacak şekilde) bulut rolü adını da ayarlayabilirsiniz.
 
 ## <a name="cloud-role-instance"></a>Bulut rolü örneği
 
@@ -98,7 +98,7 @@ Bulut rolü örneğini makine adı yerine farklı bir şekilde ayarlamak istiyor
 }
 ```
 
-Ayrıca, bulut rolü örneğini ortam değişkenini kullanarak ayarlayabilirsiniz `APPLICATIONINSIGHTS_ROLE_INSTANCE` (Bu, daha sonra da JSON yapılandırmasında bulut rolü örneği belirtilmişse öncelikli olur).
+Ayrıca, ortam değişkenini kullanarak `APPLICATIONINSIGHTS_ROLE_INSTANCE` (JSON yapılandırmasında belirtilen bulut rolü örneğinden öncelikli olacak şekilde) bulut rolü örneğini de ayarlayabilirsiniz.
 
 ## <a name="sampling"></a>Örnekleme
 
@@ -117,14 +117,14 @@ Maliyeti azaltmanız gerekiyorsa örnekleme yararlı olur.
 }
 ```
 
-Ayrıca, bir ortam değişkenini kullanarak örnekleme yüzdesini ayarlayabilirsiniz `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` (örnekleme yüzdesi de JSON yapılandırmasında belirtilmişse öncelikli olur).
+Ayrıca, `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` (JSON yapılandırmasında belirtilen örnekleme yüzdesine göre daha öncelikli olacak şekilde), ortam değişkenini kullanarak örnekleme yüzdesini de ayarlayabilirsiniz.
 
 > [!NOTE]
 > Örnekleme yüzdesi için, N 'nin bir tamsayı olduğu, 100/N 'e yakın bir yüzde seçin. Şu anda örnekleme diğer değerleri desteklemiyor.
 
 ## <a name="sampling-overrides-preview"></a>Örnekleme geçersiz kılmaları (Önizleme)
 
-Bu özellik önizleme aşamasındadır ve 3.0.3-BETA. 2 ' den başlayarak.
+Bu özellik 3.0.3 'den başlayarak önizlemededir.
 
 Örnekleme geçersiz kılmaları [Varsayılan örnekleme yüzdesini](#sampling)geçersiz kılmanızı sağlar, örneğin:
 * Gürültülü durum denetimleri için örnekleme yüzdesini 0 (veya küçük bir değer) olarak ayarlayın.
@@ -215,7 +215,7 @@ Application Insights için yapılandırılan varsayılan düzey `INFO` . Bu düz
 }
 ```
 
-Ayrıca, ortam değişkenini kullanarak düzeyi ayarlayabilirsiniz `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` (Bu, aynı zamanda, Ayrıca, JSON yapılandırmasında düzey belirtilmişse öncelikli olur).
+Ayrıca, ortam değişkenini kullanarak düzeyi ayarlayabilirsiniz `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` (daha sonra JSON yapılandırmasında belirtilen düzeye göre önceliğe sahip olur).
 
 Bunlar `level` , dosyada belirtebileceğiniz geçerli değerlerdir `applicationinsights.json` ve farklı günlük çerçeveleri içindeki günlük düzeylerine nasıl karşılık gelmektedir:
 
@@ -256,9 +256,32 @@ Mikro ölçüm ölçümlerinin otomatik toplanmasını devre dışı bırakmak i
 }
 ```
 
+## <a name="auto-collected-azure-sdk-telemetry"></a>Otomatik toplanan Azure SDK telemetrisi
+
+Bu özellik önizlemede.
+
+En son Azure SDK kitaplıklarının çoğu telemetri yaymalıdır.
+
+3.0.3 sürümünden başlayarak, bu Telemetriyi toplamayı etkinleştirebilirsiniz:
+
+```json
+{
+  "preview": {
+    "instrumentation": {
+      "azureSdk": {
+        "enabled": true
+      }
+    }
+  }
+}
+```
+
+Bu özelliği, ortam değişkenini kullanarak da etkinleştirebilirsiniz `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED`
+(Bu daha sonra JSON yapılandırmasında belirtilen etkin bir önceliğe sahip olacaktır).
+
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>Belirli otomatik toplanan Telemetriyi gizleme
 
-3.0.2 sürümünden başlayarak, belirli otomatik toplanan telemetri şu yapılandırma seçenekleri kullanılarak gizlenebilir:
+3.0.3 sürümünden başlayarak, belirli otomatik toplanan telemetri şu yapılandırma seçenekleri kullanılarak gizlenebilir:
 
 ```json
 {
@@ -267,6 +290,9 @@ Mikro ölçüm ölçümlerinin otomatik toplanmasını devre dışı bırakmak i
       "enabled": false
     },
     "jdbc": {
+      "enabled": false
+    },
+    "jms": {
       "enabled": false
     },
     "kafka": {
@@ -280,13 +306,28 @@ Mikro ölçüm ölçümlerinin otomatik toplanmasını devre dışı bırakmak i
     },
     "redis": {
       "enabled": false
+    },
+    "springScheduling": {
+      "enabled": false
     }
   }
 }
 ```
 
-> Daha ayrıntılı denetim arıyorsanız, örn. bazı redin çağrılarını bastırmak, ancak tüm redin çağrılarını önlemek için bkz. [örnekleme geçersiz kılmaları](./java-standalone-sampling-overrides.md).
+Ayrıca, bu ortam değişkenlerini kullanarak bu enstrümanları da gizleyebilirsiniz:
 
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_CASSANDRA_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_JDBC_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_JMS_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_KAFKA_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_MONGO_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_REDIS_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_SPRING_SCHEDULING_ENABLED`
+
+(Bu daha sonra JSON yapılandırmasında belirtilen etkin bir önceliğe sahip olacaktır).
+
+> Daha ayrıntılı denetim arıyorsanız, örn. bazı redin çağrılarını bastırmak, ancak tüm redin çağrılarını önlemek için bkz. [örnekleme geçersiz kılmaları](./java-standalone-sampling-overrides.md).
 
 ## <a name="heartbeat"></a>Sinyal
 
@@ -324,7 +365,7 @@ Bu özellik önizlemede.
 
 Varsayılan olarak ölçümler her 60 saniyede yakalanır.
 
-Sürüm 3.0.3-BETA sürümünden başlayarak bu aralığı değiştirebilirsiniz:
+3.0.3 sürümünden başlayarak bu aralığı değiştirebilirsiniz:
 
 ```json
 {
@@ -384,13 +425,13 @@ Varsayılan olarak, Java 3,0 günlüklerini `INFO` `applicationinsights.log` Bu 
 
 `level` ,,,,, veya bunlardan biri olabilir `OFF` `ERROR` `WARN` `INFO` `DEBUG` `TRACE` .
 
-`path` mutlak veya göreli bir yol olabilir. Göreli yollar, bulunduğu dizine göre çözümlenir `applicationinsights-agent-3.0.2.jar` .
+`path` mutlak veya göreli bir yol olabilir. Göreli yollar, bulunduğu dizine göre çözümlenir `applicationinsights-agent-3.0.3.jar` .
 
 `maxSizeMb` , oturum açmadan önce günlük dosyasının en büyük boyutudur.
 
 `maxHistory` , tutulan günlük dosyalarının (geçerli günlük dosyasına ek olarak) alınan sayısıdır.
 
-Sürüm 3.0.2 'den başlayarak, ortam değişkenini kullanarak kendi kendine tanılamayı da ayarlayabilirsiniz `level` (Bu, ayrıca `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` JSON yapılandırmasında kendi kendine tanılama belirtilmişse öncelikli olur `level` ).
+Sürüm 3.0.2 'den başlayarak, ortam değişkenini kullanarak kendi kendine tanılamayı da ayarlayabilirsiniz `level` `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` (daha sonra JSON yapılandırmasında belirtilen kendi kendine tanılama düzeyine göre öncelikli olur).
 
 ## <a name="an-example"></a>Örnek
 
