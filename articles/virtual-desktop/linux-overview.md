@@ -3,19 +3,19 @@ title: Windows sanal masaüstü basit Istemci desteği-Azure
 description: Windows sanal masaüstü için ölçülü istemci desteğine kısa bir genel bakış.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 03/31/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 90459c3eb171e03b1c28c91e766d3a6b765565b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 905451b4ce9c7a2a7c7aa2331ce3d433a9952223
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491478"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122042"
 ---
 # <a name="linux-support"></a>Linux desteği
 
-Linux cihazlarınızdan Windows sanal masaüstü kaynaklarına, Linux basit istemci iş ortaklarımız tarafından sağlanmış olan, [Web istemcisi](connect-web.md) veya aşağıdaki desteklenen istemcilerle erişebilirsiniz. Desteklenen Windows sanal masaüstü istemcilerini daha Linux tabanlı işletim sistemleri ve cihazlarda etkinleştirmek için bir dizi iş ortaklarıyla çalışıyoruz. Burada listelenmeyen bir Linux platformunda Windows sanal masaüstü desteğine ihtiyacınız varsa [UserVoice sayfamızda](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux)bize bilgi verin.
+Linux cihazlarınızdan Windows sanal masaüstü kaynaklarına, Linux basit istemci iş ortaklarımız tarafından sağlanmış olan, [Web istemcisi](connect-web.md) veya aşağıdaki desteklenen istemcilerle erişebilirsiniz. Desteklenen Windows sanal masaüstü istemcilerini daha Linux tabanlı işletim sistemleri ve cihazlarda etkinleştirmek için bir dizi iş ortaklarıyla çalışıyoruz.
 
 ## <a name="connect-with-your-linux-device"></a>Linux aygıtınızla bağlantı kurmak
 

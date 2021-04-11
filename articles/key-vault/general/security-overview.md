@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: mbaldwin
-ms.openlocfilehash: c7635fdc2012ab404709733d8f5849465c2ee82f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc054d1294b55ddd3937ebc7b91643aa349cd8ea
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071587"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122195"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault güvenliği
 
@@ -46,7 +46,7 @@ Bir Azure aboneliğinde bir Anahtar Kasası oluşturduğunuzda, bu, aboneliğin 
 
 - **Yalnızca uygulama**: uygulama bir hizmet sorumlusunu veya yönetilen kimliği temsil eder. Bu kimlik, anahtar kasasından düzenli olarak sertifikalara, anahtarlara veya gizli uygulamalara erişmesi gereken uygulamalar için en yaygın senaryolardır. Bu senaryonun çalışması için, `objectId` uygulamanın erişim ilkesinde belirtilmesi gerekir ve `applicationId` belirtilmemelidir veya olması gerekir  `null` .
 - **Yalnızca Kullanıcı**: Kullanıcı, kiracıda kayıtlı herhangi bir uygulamadan anahtar kasasına erişir. Bu tür erişimin örnekleri Azure PowerShell ve Azure portal içerir. Bu senaryonun çalışması için, `objectId` kullanıcının erişim ilkesinde belirtilmesi ve `applicationId` belirtilmemelidir veya olması _gerekir_ `null` .
-- **Uygulama-Plus-Kullanıcı** (bazen _bileşik kimlik_ olarak adlandırılır): kullanıcının belirli bir uygulamadan anahtar kasasına erişmesi _ve_ uygulamanın, kullanıcının kimliğine bürünmek için, Kullanıcı adına kimlik doğrulaması (OBO) akışı kullanması gerekir. Bu senaryonun çalışması için, her ikisi `applicationId` de `objectId` erişim ilkesinde belirtilmelidir. , `applicationId` Gerekli uygulamayı tanımlar ve `objectId` kullanıcıyı tanımlar. Şu anda bu seçenek, Azure RBAC (Önizleme) veri düzlemi için kullanılamaz.
+- **Uygulama-Plus-Kullanıcı** (bazen _bileşik kimlik_ olarak adlandırılır): kullanıcının belirli bir uygulamadan anahtar kasasına erişmesi _ve_ uygulamanın, kullanıcının kimliğine bürünmek için, Kullanıcı adına kimlik doğrulaması (OBO) akışı kullanması gerekir. Bu senaryonun çalışması için, her ikisi `applicationId` de `objectId` erişim ilkesinde belirtilmelidir. , `applicationId` Gerekli uygulamayı tanımlar ve `objectId` kullanıcıyı tanımlar. Şu anda bu seçenek Azure RBAC veri düzlemi için kullanılamaz.
 
 Tüm erişim türlerinde, uygulama Azure AD ile kimlik doğrulaması yapar. Uygulama, uygulama türüne göre desteklenen herhangi bir [kimlik doğrulama yöntemini](../../active-directory/develop/authentication-vs-authorization.md) kullanır. Uygulama, erişim izni vermek için düzlemdeki bir kaynak için bir belirteç alır. Kaynak, Azure ortamına göre yönetim veya veri düzleminde bir uç noktadır. Uygulama belirteci kullanır ve Key Vault bir REST API isteği gönderir. Daha fazla bilgi edinmek için [tüm kimlik doğrulama akışını](../../active-directory/develop/v2-oauth2-auth-code-flow.md)gözden geçirin.
 
@@ -61,14 +61,14 @@ Kasaların erişimi iki arabirim veya düzler aracılığıyla gerçekleşir. Bu
 - *Yönetim düzlemi* Key Vault kendisini yönettiğiniz yerdir ve bu, kasaların oluşturulması ve silinmesi için kullanılan arabirimdir. Ayrıca, Anahtar Kasası özelliklerini okuyabilir ve erişim ilkelerini yönetebilirsiniz.
 - *Veri düzlemi* , bir anahtar kasasında depolanan verilerle çalışmanıza olanak sağlar. Anahtarlar, gizli diziler ve sertifikalar ekleyebilir, silebilir ve değiştirebilirsiniz.
 
-Uygulamalar, uç noktalar aracılığıyla düzlemleri erişir. İki düzlemi için erişim denetimleri bağımsız olarak çalışır. Bir uygulamaya anahtar kasasındaki anahtarları kullanma izni vermek için, Key Vault erişim ilkesi veya Azure RBAC (Önizleme) kullanarak veri düzlemi erişimi verirsiniz. Kullanıcıya Key Vault özelliklerine ve etiketlere yönelik okuma erişimi vermek, ancak verilere (anahtarlar, gizlilikler veya sertifikalar) erişmek için Azure RBAC ile yönetim düzlemi erişimi verirsiniz.
+Uygulamalar, uç noktalar aracılığıyla düzlemleri erişir. İki düzlemi için erişim denetimleri bağımsız olarak çalışır. Bir uygulamaya anahtar kasasındaki anahtarları kullanma izni vermek için, Key Vault erişim ilkesi veya Azure RBAC kullanarak veri düzlemi erişimi verirsiniz. Kullanıcıya Key Vault özelliklerine ve etiketlere yönelik okuma erişimi vermek, ancak verilere (anahtarlar, gizlilikler veya sertifikalar) erişmek için Azure RBAC ile yönetim düzlemi erişimi verirsiniz.
 
 Aşağıdaki tabloda yönetim ve veri düzlemleri için uç noktalar gösterilmektedir.
 
 | Erişim &nbsp; düzlemi | Erişim uç noktaları | Operations | Erişim &nbsp; denetimi mekanizması |
 | --- | --- | --- | --- |
 | Yönetim düzlemi | **Genel**<br> management.azure.com:443<br><br> **Azure Çin 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure ABD kamu:**<br> management.usgovcloudapi.net:443<br><br> **Azure Almanya:**<br> management.microsoftazure.de:443 | Anahtar kasaları oluşturun, okuyun, güncelleştirin ve silin<br><br>Key Vault erişim ilkelerini ayarlama<br><br>Key Vault etiketlerini ayarla | Azure RBAC |
-| Veri düzlemi | **Genel**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure Çin 21Vianet:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure ABD kamu:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Almanya:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | Anahtarlar: şifreleme, şifre çözme, wrapKey, unwrapKey, imzala, doğrula, alma, listeleme, oluşturma, güncelleştirme, içeri aktarma, silme, kurtarma, yedekleme, geri yükleme, Temizleme<br><br> Sertifikalar: managecontacts, getısers, listissuers, setısers, silme, yönetim verenler, alma, listeleme, oluşturma, içeri aktarma, güncelleştirme, silme, kurtarma, yedekleme, geri yükleme, Temizleme<br><br>  Gizlilikler: Al, Listele, ayarla, Sil, kurtar, Yedekle, geri yükle, temizle | Key Vault erişim ilkesi veya Azure RBAC (Önizleme)|
+| Veri düzlemi | **Genel**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure Çin 21Vianet:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure ABD kamu:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Almanya:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | Anahtarlar: şifreleme, şifre çözme, wrapKey, unwrapKey, imzala, doğrula, alma, listeleme, oluşturma, güncelleştirme, içeri aktarma, silme, kurtarma, yedekleme, geri yükleme, Temizleme<br><br> Sertifikalar: managecontacts, getısers, listissuers, setısers, silme, yönetim verenler, alma, listeleme, oluşturma, içeri aktarma, güncelleştirme, silme, kurtarma, yedekleme, geri yükleme, Temizleme<br><br>  Gizlilikler: Al, Listele, ayarla, Sil, kurtar, Yedekle, geri yükle, temizle | Key Vault erişim ilkesi veya Azure RBAC |
 
 ### <a name="managing-administrative-access-to-key-vault"></a>Key Vault için yönetici erişimini yönetme
 

@@ -47,6 +47,10 @@
           href: ../virtual-network/tutorial-nat-gateway-load-balancer-public-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
         - name: NAT Gateway iç yük dengeleyiciyi tümleştirme
           href: ../virtual-network/tutorial-nat-gateway-load-balancer-internal-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+    - name: IP tabanlı arka uç
+      items:
+        - name: IP tabanlı arka uç portalı ile genel yük dengeleyici oluşturma
+          href: tutorial-load-balancer-ip-backend-portal.md
 - name: Örnekler
   items:
     - name: Azure CLI’si
