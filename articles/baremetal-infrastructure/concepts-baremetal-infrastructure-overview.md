@@ -4,19 +4,19 @@ description: Azure 'da BareMetal altyapısına genel bakış sağlar.
 ms.custom: references_regions
 ms.topic: conceptual
 ms.subservice: workloads
-ms.date: 04/06/2021
-ms.openlocfilehash: bccb171ce364a5129489c437f2f18156cc563a1b
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 04/08/2021
+ms.openlocfilehash: 7a4998a096a5c5d9e793c34d5046dce59262a2ae
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579045"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257577"
 ---
 #  <a name="what-is-baremetal-infrastructure-on-azure"></a>Azure 'da BareMetal Altyapısı nedir?
 
 Microsoft Azure, işletmenizin ihtiyaçlarını karşılamak için çok çeşitli tümleşik bulut hizmetleriyle bir bulut altyapısı sunmaktadır. Ancak bazı durumlarda, sanallaştırma katmanı olmadan çıplak sunucularda hizmetleri çalıştırmanız gerekebilir. Kök erişiminizin olması ve işletim sistemi (OS) üzerinde denetiminiz olması gerekebilir. Bu tür bir gereksinimi karşılamak için Azure, çeşitli yüksek değerli ve görev açısından kritik uygulamalar için BareMetal altyapı sunar.
 
-BareMetal altyapısı adanmış BareMetal örnekleri (işlem örnekleri), yüksek performanslı ve uygulamaya uygun depolama (NFS, dNFS, ISCSı ve Fiber Kanal) ve yalıtılmış bir ortamda işleve özgü sanal LAN 'Lar (VLAN 'Lar) kümesi haline getirilir. Depolama, genişleme kümeleri gibi özellikleri etkinleştirmek veya STONITH ile yüksek kullanılabilirlik çiftleri oluşturmak için BareMetal örnekleri arasında paylaşılabilir.
+BareMetal altyapısı adanmış BareMetal örnekleri (işlem örnekleri), yüksek performanslı ve uygulamaya uygun depolama (NFS, ISCSı ve Fiber Kanal) ve yalıtılmış bir ortamda işleve özgü sanal LAN 'lar (VLAN 'Lar) kümesi haline getirilir. Depolama, genişleme kümeleri gibi özellikleri etkinleştirmek veya STONITH ile yüksek kullanılabilirlik çiftleri oluşturmak için BareMetal örnekleri arasında paylaşılabilir.
  
 Bu ortamın Ayrıca Azure aboneliğinizde bir veya daha fazla Azure sanal ağı (VNet) üzerinde sanal makineler (VM) çalıştırıyorsanız erişebileceğiniz özel VLAN 'Lar de vardır. Tüm ortam, Azure aboneliğinizde bir kaynak grubu olarak temsil edilir.
 
@@ -40,7 +40,7 @@ BareMetal altyapısı şu avantajları sunar:
     - En fazla 1 PB/kiracı 
     - 1,2 milyon/kiracıya kadar ıOPS 
     - 40/100 GB ağ bant genişliği
-    - NFS, dNFS, ISCSı ve FC aracılığıyla erişilebilir
+    - NFS, ISCSı ve FC aracılığıyla erişilebilir
 - Yedekli güç, güç kaynakları, NIC 'ler, bağlantı noktaları, WAN, depolama ve yönetim
 - Hata üzerinde değişiklik için sık erişimli yedekler (yeniden yapılandırma gerekmeden)
 - Müşteri ile eşgüdümlü Bakım pencereleri

@@ -45,6 +45,9 @@ items:
       - name: 9 Bilgi Merkezi’ni keşfetme
         href: get-started-knowledge-center.md
         displayName: 'get, started'
+      - name: 10 yönetici ekleme
+        href: get-started-add-admin.md
+        displayName: 'get, started'
   - name: Çalışma alanı
     items:
       - name: Hızlı Başlangıçlar
@@ -54,7 +57,7 @@ items:
               - name: Azure portal
                 href: quickstart-create-workspace.md
                 displayName: quickstart
-              - name: Azure CLI’si
+              - name: Azure CLI
                 href: quickstart-create-workspace-cli.md
                 displayName: quickstart
               - name: Azure PowerShell
@@ -565,6 +568,8 @@ items:
             href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
           - name: Prometheus ve Grafana ile uygulama düzeyi ölçümlerini izleyin Apache Spark
             href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
+          - name: Ölçümleri ve günlükleri toplamak ve görselleştirmek için Azure Log Analytics kullanma (Önizleme)
+            href: ./spark/apache-spark-azure-log-analytics.md
       - name: Kavramlar
         items:
           - name: Apache Spark

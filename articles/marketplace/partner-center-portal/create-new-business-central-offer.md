@@ -7,18 +7,18 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 12/02/2020
-ms.openlocfilehash: 99c36354334701dcd4c7c30c5fd5039c13885525
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65df5f178ce0ec845fca6343c51049b6bf426e18
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97358733"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106046"
 ---
 # <a name="create-a-dynamics-365-for-business-central-offer"></a>Bir Dynamics 365 for Business Central teklifi oluşturma
 
 Bu makalede, yeni bir Dynamics 365 Iş Merkezi teklifinin nasıl oluşturulacağı açıklanır. [Microsoft Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central) , finans, işlemler, tedarik ZINCIRI, CRM ve proje yönetimi ve elektronik ticaret dahil olmak üzere çok çeşitli iş süreçlerini işleyen bir kurumsal kaynak planlama (ERP) hizmetidir. Premium paketler klasik dağıtım modelini ve üretimi de destekler. Dynamics 365 Business Central için tüm teklifler, sertifika sürecimize gitmelidir.
 
-Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](create-account.md) . Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
+Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](../create-account.md) . Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
 
 >[!NOTE]
 > Bir teklif yayımlandıktan sonra, teklifin düzenlemeleri yalnızca yayın teklifini yeniden gönderdikten sonra Iş Ortağı Merkezi 'nde ve çevrimiçi mağazada güncelleştirilir.

@@ -5,21 +5,39 @@
   href: overview.md
 - name: Hesap yönetimi
   items:
-    - name: Yeni bir İş Ortağı Merkezi hesabı oluşturma
-      href: partner-center-portal/create-account.md
-    - name: Hesabınızı yönetme
-      href: partner-center-portal/manage-account.md
-    - name: Şirket iş hesabı bulma veya oluşturma
-      href: partner-center-portal/company-work-accounts.md
-    - name: CPP’den İş Ortağı Merkezi’ne hesap geçişi
-      href: partner-center-portal/account-migration-from-cpp-to-pc.md
-    - name: Microsoft 'a bildirme
-      href: submit-legal-notice.md
+    - name: Genel hesap yönetimi
+      items:
+        - name: Yeni bir İş Ortağı Merkezi hesabı oluşturma
+          href: create-account.md
+        - name: Yeni yayımcılar ekleme
+          href: add-publishers.md
+        - name: Hesabınızı yönetme
+          href: manage-account.md
+        - name: Hesapları değiştir
+          href: switch-accounts.md
+        - name: Kiracılar yönetme
+          href: manage-tenants.md
+        - name: Şirket iş hesabı bulma veya oluşturma
+          href: company-work-accounts.md
+        - name: CPP’den İş Ortağı Merkezi’ne hesap geçişi
+          href: account-migration-from-cpp-to-pc.md
+        - name: Microsoft 'a bildirme
+          href: submit-legal-notice.md
+    - name: Kullanıcıları yönetme
+      items:
+        - name: Kullanıcı ekleme ve yönetme
+          href: add-manage-users.md
+        - name: Kullanıcı rolleri atama
+          href: user-roles.md
+        - name: Grupları yönetme
+          href: manage-groups.md
+        - name: Azure AD uygulamaları ekleme ve yönetme
+          href: manage-aad-apps.md
 - name: Kavramlar
   items:
     - name: Listeleme seçenekleri
       href: determine-your-listing-type.md
-    - name: Ticari markette işlem yapma
+    - name: Transact özellikleri
       href: marketplace-commercial-transaction-capabilities-and-considerations.md
     - name: Özel teklifler
       href: private-offers.md

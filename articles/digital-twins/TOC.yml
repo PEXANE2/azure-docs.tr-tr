@@ -43,6 +43,8 @@
       href: concepts-query-units.md
     - name: Diğer hizmetlerle tümleştirme
       href: concepts-integration.md
+    - name: Olay bildirimleri
+      href: concepts-event-notifications.md
     - name: Olay yolları
       href: concepts-route-events.md
     - name: Azure Digital Twins çözümleri için güvenlik
@@ -91,8 +93,6 @@
           href: how-to-manage-twin.md
         - name: İlişkileri olan ikiz grafiğini yönetme
           href: how-to-manage-graph.md
-        - name: Olay verilerini yorumlama
-          href: how-to-interpret-event-data.md
         - name: Veri işleme için bir Azure işlevi ayarlama
           href: how-to-create-azure-function.md
         - name: İkiz grafiğini sorgulama

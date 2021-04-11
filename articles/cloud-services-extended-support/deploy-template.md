@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 9849648c8a0a76ff89a6f95e64eeade791e7135c
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 8804febe81afc79a4a7eadb56e8350e758ea38ba
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106381783"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105519"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>ARM şablonları kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtma
 
@@ -25,14 +25,12 @@ Bu öğreticide, [ARM şablonları](../azure-resource-manager/templates/overview
 
 2. [Azure Portal](../azure-resource-manager/management/manage-resource-groups-portal.md) veya [PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md)kullanarak yeni bir kaynak grubu oluşturun. Mevcut bir kaynak grubu kullanıyorsanız, bu adım isteğe bağlıdır.
 
-3. Genel IP adresi oluşturun ve genel IP adresinin DNS etiketi özelliğini ayarlayın. Cloud Services (genişletilmiş destek) yalnızca [temel] ( https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU genel IP adreslerini destekler. Standart SKU genel IP 'Leri Cloud Services çalışmaz.
+3. Genel IP adresi oluşturun ve genel IP adresinin DNS etiketi özelliğini ayarlayın. Cloud Services (genişletilmiş destek) yalnızca [temel](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU genel IP adreslerini destekler. Standart SKU genel IP 'Leri Cloud Services çalışmaz.
 Statik IP kullanıyorsanız, hizmet yapılandırma (. cscfg) dosyasında bir Ayrılmış IP olarak başvurulmalıdır. Var olan bir IP adresi kullanıyorsanız, bu adımı atlayın ve IP adresi bilgilerini ARM şablonunuzun yük dengeleyici yapılandırma ayarlarına doğrudan ekleyin.
-
-4. Bir ağ profili nesnesi oluşturun ve genel IP adresini yük dengeleyicinin ön ucunda ilişkilendirin. Azure platformu, bulut hizmeti kaynağıyla aynı abonelikte otomatik olarak bir ' klasik ' SKU yük dengeleyici kaynağı oluşturur. Yük dengeleyici kaynağı ARM 'de salt okuma kaynağıdır. Kaynaktaki tüm güncelleştirmeler yalnızca bulut hizmeti dağıtım dosyaları (. cscfg &. csdef) aracılığıyla desteklenir
  
-5. [Azure Portal](../storage/common/storage-account-create.md?tabs=azure-portal) veya [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell)'i kullanarak yeni bir depolama hesabı oluşturun. Mevcut bir depolama hesabı kullanıyorsanız, bu adım isteğe bağlıdır.
+4. [Azure Portal](../storage/common/storage-account-create.md?tabs=azure-portal) veya [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell)'i kullanarak yeni bir depolama hesabı oluşturun. Mevcut bir depolama hesabı kullanıyorsanız, bu adım isteğe bağlıdır.
 
-6. Hizmet tanımı (. csdef) ve hizmet yapılandırma (. cscfg) dosyalarınızı [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) veya [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container)kullanarak depolama hesabına yükleyin. Bu öğreticide daha sonra ARM şablonuna eklenecek her iki dosyanın SAS URI 'Lerini alın.
+5. Hizmet tanımı (. csdef) ve hizmet yapılandırma (. cscfg) dosyalarınızı [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) veya [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container)kullanarak depolama hesabına yükleyin. Bu öğreticide daha sonra ARM şablonuna eklenecek her iki dosyanın SAS URI 'Lerini alın.
 
 6. Seçim Bir Anahtar Kasası oluşturun ve sertifikaları karşıya yükleyin.
 

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/27/2021
+ms.date: 04/08/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c0cc29e6cbc9be1e7683b1b4412fa47f71c0538d
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: ef1ed584a609b2e4baa27111e47343df99146f5a
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227033"
+ms.locfileid: "107257509"
 ---
 # <a name="soft-delete-for-blobs"></a>Bloblar için geçici silme
 
@@ -93,12 +93,14 @@ Geçici olarak silinen nesneleri geri yükleme hakkında daha fazla bilgi için 
 
 ## <a name="blob-soft-delete-and-versioning"></a>Blob geçici silme ve sürüm oluşturma
 
-Blob sürümü oluşturma ve BLOB geçici silme her ikisi de bir depolama hesabı için etkinleştirildiyse, bir Blobun üzerine yazılması otomatik olarak yeni bir sürüm oluşturur. Yeni sürüm geçici olarak silinmez ve geçici silme bekletme süresi sona erdiğinde kaldırılmaz. Geçici olarak silinen anlık görüntü oluşturulmaz. Bir blobu sildiğinizde, blob 'un geçerli sürümü önceki bir sürüm olur ve geçerli sürüm silinir. Yeni sürüm oluşturulmaz ve geçici olarak silinen anlık görüntü oluşturulmaz.
+Blob sürümü oluşturma ve BLOB geçici silme her ikisi de bir depolama hesabı için etkinleştirildiyse, bir Blobun üzerine yazılması otomatik olarak yeni bir sürüm oluşturur. Yeni sürüm geçici olarak silinmez ve geçici silme bekletme süresi sona erdiğinde kaldırılmaz. Geçici olarak silinen anlık görüntü oluşturulmaz. Bir blobu sildiğinizde, blob 'un geçerli sürümü önceki bir sürüm olur ve artık geçerli bir sürüm değildir. Yeni sürüm oluşturulmaz ve geçici olarak silinen anlık görüntü oluşturulmaz.
 
-Geçici silme ve sürüm oluşturma özelliğinin birlikte etkinleştirilmesi, blob sürümlerini silme işleminden korur. Geçici silme etkinleştirildiğinde, bir sürümü silmek, geçici olarak silinen bir sürüm oluşturur. Blob 'un güncel bir sürümü olduğu sürece, geçici olarak silinen bir sürümü geri yüklemek için **silme blobu** işlemini kullanabilirsiniz. Geçerli sürüm yoksa, **geri alma blobu** işlemini çağırmadan önce önceki bir sürümü geçerli sürüme kopyalamanız gerekir.
+Geçici silme ve sürüm oluşturma özelliğinin birlikte etkinleştirilmesi, blob sürümlerini silme işleminden korur. Geçici silme etkinleştirildiğinde, bir sürümü silmek, geçici olarak silinen bir sürüm oluşturur. Geçici silme Bekletme dönemi sırasında geçici olarak silinen sürümleri geri yüklemek için silme **blobu** işlemini kullanabilirsiniz. **Geri alma blobu** işlemi, blob 'un tüm geçici silinen sürümlerini her zaman geri yükler. Yalnızca tek bir geçici olarak silinen sürümü geri yüklemek mümkün değildir.
+
+Geçici silme bekletme süresi geçtikten sonra, geçici olarak silinen blob sürümleri kalıcı olarak silinir.
 
 > [!NOTE]
-> Sürüm oluşturma etkinken silinen blob üzerinde **geri alma blobu** işleminin çağrılması, geçici olarak silinen sürümleri veya anlık görüntüleri geri yükler, ancak temel blobu geri yüklemez. Temel blobu geri yüklemek için, önceki bir sürümü temel bloba kopyalayarak yükseltin.
+> Sürüm oluşturma etkinken silinen blob üzerinde **geri alma blobu** işleminin çağrılması, geçici olarak silinen sürümleri veya anlık görüntüleri geri yükler, ancak geçerli sürümü geri yüklemez. Geçerli sürümü geri yüklemek için, önceki bir sürümü güncel sürüme kopyalayarak yükseltin.
 
 Microsoft, en iyi veri koruması için depolama hesaplarınız için hem sürüm oluşturma hem de blob geçici silmeyi etkinleştirmeyi önerir. Blob sürümü oluşturma ve geçici silme hakkında daha fazla bilgi için bkz. [BLOB sürümü oluşturma ve geçici silme](versioning-overview.md#blob-versioning-and-soft-delete).
 

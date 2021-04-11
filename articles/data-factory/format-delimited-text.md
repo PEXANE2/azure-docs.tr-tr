@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.author: jingwang
-ms.openlocfilehash: daf3691b48f7bf12e9ef51de7d4253dad9dbd2b1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1cff49e4ddb7423e1e5956e1436cefd18abe6dfe
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026879"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107083"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure Data Factory sınırlandırılmış metin biçimi
 
@@ -185,8 +185,7 @@ Aşağıdaki tabloda, ayrılmış bir metin havuzunun desteklediği özellikler 
 | Klasörü temizle | Hedef klasör, yazma işleminden önce silinirse | hayır | `true` veya `false` | kesilemedi |
 | Dosya adı seçeneği | Yazılan verilerin adlandırma biçimi. Varsayılan olarak, biçimdeki bölüm başına bir dosya `part-#####-tid-<guid>` | hayır | Model: dize <br> Bölüm başına: dize [] <br> Dosyayı sütun verileri olarak adlandır: dize <br> Tek dosyaya çıkış: `['<fileName>']` <br> Klasörü sütun verileri olarak adlandır: dize | filePattern <br> Partitionbir dosya adı <br> rowUrlColumn <br> Partitionbir dosya adı <br> rowFolderUrlColumn |
 | Tümünü teklif | Tüm değerleri tırnak içine alın | hayır | `true` veya `false` | quoteAll |
-
-rowFolderUrlColumn:
+| Üst bilgi | Çıkış dosyalarına müşteri üstbilgileri ekleme | hayır | `[<string array>]` | üst bilgi |
 
 ### <a name="sink-example"></a>Havuz örneği
 

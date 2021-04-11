@@ -8,20 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cc470d12377f50f9f9ae4b362bcabf3a5ce34e8f
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: d61314dc89d341e376de7d3904568825ad3cfb04
+ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169292"
+ms.lasthandoff: 04/04/2021
+ms.locfileid: "106293881"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Azure Cloud Services hakkında (genişletilmiş destek)
 
-> [!IMPORTANT]
-> Cloud Services (genişletilmiş destek) Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Cloud Services (genişletilmiş destek), [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) ürüne yönelik yeni bir [Azure Resource Manager](../azure-resource-manager/management/overview.md) tabanlı dağıtım modelidir ve şu anda genel önizlemededir. Cloud Services (genişletilmiş destek), Azure Service Manager kullanılarak dağıtılan Azure Cloud Services ile özellik eşliği ile birlikte bölge esnekliği sağlamanın birincil avantajına sahiptir. Ayrıca rol tabanlı erişim ve denetim (RBAC), Etiketler, ilke ve dağıtım şablonlarını destekler gibi bazı ARM özellikleri de sağlar.  
+Cloud Services (genişletilmiş destek), [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) ürüne yönelik yeni bir [Azure Resource Manager](../azure-resource-manager/management/overview.md) tabanlı dağıtım modelidir ve genel kullanıma sunulmuştur. Cloud Services (genişletilmiş destek), Azure Service Manager kullanılarak dağıtılan Azure Cloud Services ile özellik eşliği ile birlikte bölge esnekliği sağlamanın birincil avantajına sahiptir. Ayrıca rol tabanlı erişim ve denetim (RBAC), Etiketler, ilke ve dağıtım şablonlarını destekler gibi bazı ARM özellikleri de sunar.  
 
 Bu değişiklik ile, Cloud Services için Azure Service Manager tabanlı dağıtım modeli [Cloud Services (klasik)](../cloud-services/cloud-services-choose-me.md)olarak yeniden adlandırılacaktır. Web ve bulut uygulamalarınızı ve hizmetlerinizi oluşturma ve hızla dağıtma imkanını koruyabilirsiniz. Bulut hizmetleri altyapınızı geçerli talebe göre ölçeklendirebilir ve uygulamalarınızın performansının aynı anda maliyetleri azaltırken devam edebilmesini sağlayabilirsiniz.  
 

@@ -3,12 +3,12 @@ title: Held grafiklerini depola
 description: Azure Container Registry içindeki depoları kullanarak Kubernetes uygulamalarınız için hele grafiklerini depolamayı öğrenin
 ms.topic: article
 ms.date: 06/12/2020
-ms.openlocfilehash: 69b16f35589586787e1c31a0e9755b9030af755d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9897ed6e43813c16314076b0322cd263cd2ed150
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86537876"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223090"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Azure Container Registry 'de Held grafikleri gönderme ve çekme
 
@@ -31,7 +31,7 @@ Hele grafiklerini Azure Container Registry barındırmak için helm3 kullanılma
 * `helm chart`Bir kayıt defterinde Held grafiklerini göndermek, çekmek ve yönetmek Için HELı CLI içindeki komutları kullanın
 * `helm install`Yerel bir depo önbelleğinden bir Kubernetes kümesine grafik yüklemek için kullanın.
 > [!NOTE]
-> Helm 3 itibariyle, Helm 2 istemcisiyle kullanım için [az ACR Helm][az-acr-helm] komutları kullanım dışı bırakılıyor. Bkz. [ürün yol haritası](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga). Daha önce helk 2 grafikleri dağıttıysanız, bkz. [Held v2 'yi v3 'e geçirme](https://helm.sh/docs/topics/v2_v3_migration/).
+> Helm 3 itibariyle, Helm 2 istemcisiyle kullanım için [az ACR Helm][az-acr-helm] komutları kullanım dışı bırakılıyor. Komut kaldırma işleminin ardından en az 3 ay ' bildirim sunulacaktır. Daha önce helk 2 grafikleri dağıttıysanız, bkz. [Held v2 'yi v3 'e geçirme](https://helm.sh/docs/topics/v2_v3_migration/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 

@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: Şirket içi, OCR, Docker, kapsayıcı
-ms.openlocfilehash: 1c9e681e3c02cb65b2a54070cc778051a0e7ac53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53d59822b378a658f8b6c048de1a32db53a795d1
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102432562"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285731"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Okuma OCR Docker kapsayıcılarını (Önizleme) yükler 
 
@@ -25,7 +25,7 @@ ms.locfileid: "102432562"
 
 Kapsayıcılar, Görüntü İşleme API’lerini kendi ortamınızda çalıştırmanızı sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için çok kullanışlıdır. Bu makalede Görüntü İşleme kapsayıcıları indirme, yükleme ve çalıştırma hakkında bilgi edineceksiniz.
 
-*Okuma* OCR KAPSAYıCıSı, JPEG, PNG, BMP, PDF ve TIFF dosya biçimleri desteğiyle, görüntülerden ve belgelerden yazdırılmış ve el yazısı metinleri ayıklamanızı sağlar. Daha fazla bilgi için bkz. [okuma API 'si belgeleri](concept-recognizing-text.md#read-api).
+*Okuma* OCR KAPSAYıCıSı, JPEG, PNG, BMP, PDF ve TIFF dosya biçimleri desteğiyle, görüntülerden ve belgelerden yazdırılmış ve el yazısı metinleri ayıklamanızı sağlar. Daha fazla bilgi için bkz. [API nasıl yapılır Kılavuzu](Vision-API-How-to-Topics/call-read-api.md).
 
 ## <a name="read-32-preview-container"></a>Okuma 3,2-Önizleme kapsayıcısı
 
@@ -96,7 +96,7 @@ Okuma için kapsayıcı görüntüleri kullanılabilir.
 
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)Bir kapsayıcı görüntüsünü indirmek için komutunu kullanın.
 
-### <a name="docker-pull-for-the-read-container"></a>Okuma kapsayıcısı için Docker çekme
+### <a name="docker-pull-for-the-read-ocr-container"></a>Okuma OCR kapsayıcısı için Docker çekme
 
 # <a name="version-32-preview"></a>[Sürüm 3,2-Önizleme](#tab/version-3-2)
 
@@ -139,7 +139,7 @@ ApiKey={API_KEY}
 
 Şu komut:
 
-* Kapsayıcı görüntüsünden okuma kapsayıcısını çalıştırır.
+* Kapsayıcı görüntüsünden OCR kapsayıcısını oku ' nı çalıştırır.
 * 8 CPU çekirdeği ve 18 gigabayt (GB) bellek ayırır.
 * TCP bağlantı noktası 5000 ' i gösterir ve kapsayıcı için bir sözde TTY ayırır.
 * Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
@@ -156,7 +156,7 @@ ApiKey={API_KEY}
 
 Şu komut:
 
-* Kapsayıcı görüntüsünden okuma kapsayıcısını çalıştırır.
+* Kapsayıcı görüntüsünden OCR kapsayıcısını oku ' nı çalıştırır.
 * 8 CPU çekirdeği ve 16 gigabayt (GB) bellek ayırır.
 * TCP bağlantı noktası 5000 ' i gösterir ve kapsayıcı için bir sözde TTY ayırır.
 * Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
@@ -392,7 +392,7 @@ Zaman uyumsuz GÖNDERI başarıyla çalıştırıldığında, bir **HTTP 202** d
 ---
 
 > [!IMPORTANT]
-> Bir yük dengeleyicinin arkasında birden çok okuma kapsayıcısı dağıtırsanız (örneğin, Docker Compose veya Kubernetes), bir dış önbelleğiniz olması gerekir. İşlem kapsayıcısı ve GET isteği kapsayıcısı aynı olamaz, çünkü bir dış önbellek sonuçları depolar ve kapsayıcılar arasında paylaşır. Önbellek ayarları hakkında daha fazla bilgi için bkz. [görüntü işleme Docker kapsayıcılarını yapılandırma](./computer-vision-resource-container-config.md).
+> Bir yük dengeleyicinin arkasında birden çok okuma OCR kapsayıcısı dağıtırsanız (örneğin, Docker Compose veya Kubernetes), bir dış önbelleğiniz olması gerekir. İşlem kapsayıcısı ve GET isteği kapsayıcısı aynı olamaz, çünkü bir dış önbellek sonuçları depolar ve kapsayıcılar arasında paylaşır. Önbellek ayarları hakkında daha fazla bilgi için bkz. [görüntü işleme Docker kapsayıcılarını yapılandırma](./computer-vision-resource-container-config.md).
 
 ### <a name="synchronous-read"></a>Zaman uyumlu okuma
 
@@ -445,7 +445,7 @@ Bu makalede, Görüntü İşleme kapsayıcıları indirmek, yüklemek ve çalı�
 * Görüntü İşleme, Docker için bir Linux kapsayıcısı sağlar ve bu da kapsülleme okur.
 * Kapsayıcı görüntüleri, Azure 'daki "kapsayıcı önizlemesi" kapsayıcı kayıt defterinden indirilir.
 * Kapsayıcı görüntüleri Docker 'da çalışır.
-* Kapsayıcının ana bilgisayar URI 'sini belirterek okuma kapsayıcılarındaki işlemleri çağırmak için REST API veya SDK kullanabilirsiniz.
+* Kapsayıcının ana bilgisayar URI 'sini belirterek, okuma OCR kapsayıcılarındaki işlemleri çağırmak için REST API ya da SDK kullanabilirsiniz.
 * Bir kapsayıcıyı örnekledikten sonra faturalandırma bilgilerini belirtmeniz gerekir.
 
 > [!IMPORTANT]
@@ -454,7 +454,7 @@ Bu makalede, Görüntü İşleme kapsayıcıları indirmek, yüklemek ve çalı�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Yapılandırma ayarları için [kapsayıcıları](computer-vision-resource-container-config.md) yapılandırmayı gözden geçir
-* Basılan ve el yazısı metni tanıma hakkında daha fazla bilgi edinmek için [görüntü işleme genel bakışı](overview.md) inceleyin
-* Kapsayıcı tarafından desteklenen yöntemler hakkındaki ayrıntılar için [görüntü işleme API'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) başvurun.
+* [OCR genel bakışını](overview-ocr.md) inceleyerek yazdırılmış ve el yazısı metin tanıma hakkında daha fazla bilgi edinin
+* Kapsayıcı tarafından desteklenen yöntemler hakkındaki ayrıntılar için [okuma API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) 'sine bakın.
 * Görüntü İşleme işlevlerle ilgili sorunları çözmek için [sık sorulan sorular (SSS)](FAQ.md) bölümüne bakın.
 * Daha fazla bilişsel [Hizmetler kapsayıcısı](../cognitive-services-container-support.md) kullanın

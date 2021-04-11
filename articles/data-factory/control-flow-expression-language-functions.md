@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: e89cb847bcd5d0137354c07fe97148bcbeca2714
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: af365ef9b94702fa6634235a95a91297d6b7ae50
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786303"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107139"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory’deki ifadeler ve işlevler
 
@@ -161,6 +161,30 @@ Aşağıdaki örnekte, işlem hattı **inputPath** ve **OutputPath** parametrele
     }
 }
 ```
+
+### <a name="replacing-special-characters"></a>Özel karakterleri değiştirme
+
+Dinamik İçerik Düzenleyicisi, düzenleme işlemi bitince içeriklerde çift tırnak işareti ve ters eğik çizgi gibi karakterleri otomatik olarak çıkar. Bu **, Replace**() işlevinde, **\t, \t** kullanarak satır beslemesini veya sekmeyi değiştirmek istediğinizde sorun oluşmasına neden olur. Deyimi ek \ ' i kaldırmak için kod görünümündeki dinamik içeriğinizi düzenleyebilir veya ifade dilini kullanarak özel karakterleri değiştirmek için aşağıdaki adımları izleyebilirsiniz:
+
+1. Özgün dize değerine karşılık gelen URL kodlaması
+1. URL kodlamalı dizeyi Değiştir, örneğin, satır besleme (% 0A), satır başı (% 0D), yatay sekme (%09).
+1. URL kod çözme
+
+Örneğin, değerinde bir yeni satır karakteri olan *CompanyName* , ifadesi `@uriComponentToString(replace(uriComponent(variables('companyName')), '%0A', ''))` yeni satır karakterini kaldırabilir. 
+
+```json
+Contoso-
+Corporation
+```
+
+### <a name="escaping-single-quote-character"></a>Kaçış tek tırnak karakteri
+
+İfade işlevleri dize değeri parametreleri için tek tırnak kullanır. Dize işlevlerinde bir ' karakteri kaçış için iki tek tırnak kullanın. Örneğin, ifade `@concat('Baba', ''' ', 'book store')` aşağıdaki sonucu döndürür.
+
+```
+Baba's book store
+```
+
 ### <a name="tutorial"></a>Öğretici
 Bu [öğreticide](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf) , bir işlem hattı ve etkinlik arasında ve Etkinlikler arasında parametrelerin nasıl geçirileceğini adım adım gösterilmektedir.
 
@@ -216,7 +240,7 @@ Bu işlevler, koşullar içinde yararlı olduğundan, her türlü mantığı de�
 | [eşittir](control-flow-expression-language-functions.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
 | [büyüktür](control-flow-expression-language-functions.md#greater) | İlk değerin ikinci değerden büyük olup olmadığını kontrol edin. |
 | [greaterOrEquals](control-flow-expression-language-functions.md#greaterOrEquals) | İlk değerin ikinci değere eşit veya ondan büyük olup olmadığını kontrol edin. |
-| [if](control-flow-expression-language-functions.md#if) | İfadenin true veya false olduğunu denetleyin. Sonuca göre belirtilen değeri döndürün. |
+| [kullandıysanız](control-flow-expression-language-functions.md#if) | İfadenin true veya false olduğunu denetleyin. Sonuca göre belirtilen değeri döndürün. |
 | [büyüktür](control-flow-expression-language-functions.md#less) | İlk değerin ikinci değerden küçük olup olmadığını kontrol edin. |
 | [lessOrEquals](control-flow-expression-language-functions.md#lessOrEquals) | İlk değerin ikinci değere eşit veya ondan küçük olup olmadığını kontrol edin. |
 | [başlatılmadı](control-flow-expression-language-functions.md#not) | İfadenin yanlış olup olmadığını denetleyin. |

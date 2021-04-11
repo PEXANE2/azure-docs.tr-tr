@@ -29,6 +29,8 @@
       href: program-requirements-edge-secured-core.md
 - name: Kavramlar
   items:
+    - name: Eski cihazlar
+      href: concepts-legacy.md
     - name: Pazarlama kavramları
       href: concepts-marketing.md
 - name: Nasıl yapılır kılavuzları

@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 04/07/2021
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 224a1b67ff0282c216763229593fcfed81d7567b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8afa0ec51f86bd77e5539840f3419eaff89171f5
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93090112"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107202"
 ---
-# <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kaynaklarını yönetmek için .NET v4 SDK 'sını kullanarak bir konsol uygulaması oluşturun.
+# <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-preview-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kaynaklarını yönetmek için .NET v4 SDK 'sını (Önizleme) kullanarak bir konsol uygulaması oluşturun.
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
@@ -28,7 +28,12 @@ ms.locfileid: "93090112"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-.NET için Azure Cosmos DB SQL API istemci kitaplığı ile çalışmaya başlayın. .NET v4 (Azure. Cosmos) paketini yüklemek, bir uygulama derlemek ve Azure Cosmos DB depolanan verilerdeki temel CRUD işlemleri için örnek kodu denemek üzere bu belgedeki adımları izleyin. 
+.NET için Azure Cosmos DB SQL API istemci kitaplığı ile çalışmaya başlayın. .NET v4 (Azure. Cosmos) paketini yüklemek, bir uygulama derlemek ve Azure Cosmos DB depolanan verilerdeki temel CRUD işlemleri için örnek kodu denemek üzere bu belgedeki adımları izleyin.
+
+> [!IMPORTANT]
+> Azure Cosmos DB için .NET v4 SDK 'Sı Şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Cosmos DB, Microsoft 'un herhangi bir ölçekte açık API 'Leri olan hızlı NoSQL veritabanıdır. Anahtar/değer, belge ve grafik veritabanlarını hızlıca oluşturmak ve sorgulamak için Azure Cosmos DB kullanabilirsiniz. .NET için Azure Cosmos DB SQL API istemci kitaplığı 'nı kullanarak şunları yapın:
 

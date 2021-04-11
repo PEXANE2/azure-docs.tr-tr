@@ -8,19 +8,30 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 48e823b19c1c6d30e73a7a673cbeab82a4d007a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: a40f3286b4e832f5c73e650859fa9a1d4fe4b6cb
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489228"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256965"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Mailjet ile özel e-posta doğrulama
 
-Uygulamalarınızı kullanmak üzere kaydolan kullanıcılara özelleştirilmiş e-posta göndermek için Azure Active Directory B2C (Azure AD B2C) içinde özel e-posta kullanın. [Displaycontrols](display-controls.md) (Şu anda önizleme aşamasında) ve üçüncü taraf e-posta sağlayıcısı mailjet ' i kullanarak kendi e-posta şablonunuzu ve *Kimden:* adres ve konu ' ı kullanabilir, ayrıca yerelleştirme ve özel bır kerelik parola (OTP) ayarlarını destekleyebilirsiniz.
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+Uygulamalarınızı kullanmak üzere kaydolan kullanıcılara özelleştirilmiş e-posta göndermek için Azure Active Directory B2C (Azure AD B2C) içinde özel e-posta kullanın. Üçüncü taraf e-posta sağlayıcısı Mailjet ' i kullanarak kendi e-posta şablonunuzu ve *Kimden:* adres ve konu ' ı kullanabilir, yerelleştirme ve özel bir kerelik parola (OTP) ayarlarını da destekleyebilirsiniz.
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Özel e-posta doğrulaması, [Mailjet](https://Mailjet.com), [SendGrid](./custom-email-sendgrid.md)veya [mini](https://sparkpost.com)posta, özel bir REST API veya herhangi bir HTTP tabanlı e-posta sağlayıcısı (kendinizğiniz dahil) gibi bir üçüncü taraf e-posta sağlayıcısının kullanılmasını gerektirir. Bu makalede, Mailjet kullanan bir çözümün kurulması açıklanmaktadır.
 
@@ -576,3 +587,5 @@ GitHub 'da özel bir e-posta doğrulama ilkesi örneğini bulabilirsiniz:
 
 - [Özel e-posta doğrulama-DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
 - Özel bir REST API veya herhangi bir HTTP tabanlı SMTP e-posta sağlayıcısı kullanma hakkında bilgi için, bkz. [Azure AD B2C bir özel ilkede, bir RESTAN teknik profili tanımlama](restful-technical-profile.md).
+
+::: zone-end
