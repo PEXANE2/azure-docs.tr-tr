@@ -436,6 +436,10 @@
   items:
     - name: Güvenlik temeli
       href: security-baseline.md
+- name: Başvuru
+  items:
+    - name: Azure CLI
+      href: /cli/azure/databoxedge
 - name: Kaynaklar
   items:
     - name: Azure Stack Edge Pro C# modülü örnekleri (.NET)

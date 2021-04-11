@@ -2,14 +2,14 @@
 title: Azure VM 'lerinde SQL Server yedekleme için Azure Backup destek matrisi
 description: Azure Backup hizmeti ile Azure VM 'lerinde SQL Server yedeklenirken destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 78436981c515b95ccda763d8ac916738b4364953
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7038b47bd4aba8f7747eef455f1e8dd3c77a695
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97734802"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257352"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure VM 'lerinde SQL Server yedekleme için destek matrisi
 
@@ -30,11 +30,10 @@ Azure Backup, Microsoft Azure bulut platformunda barındırılan Azure VM 'lerin
 |Ayar  |Üst sınır |
 |---------|---------|
 |Bir sunucuda (ve bir kasada) korunabilen veritabanlarının sayısı    |   2000      |
-|Veritabanı boyutu destekleniyor (bunun ötesinde performans sorunları çıkabilir)   |   2 TB      |
+|Veritabanı boyutu destekleniyor (bunun ötesinde performans sorunları çıkabilir)   |   6 TB *      |
 |Bir veritabanında desteklenen dosya sayısı    |   1000      |
 
->[!NOTE]
-> VM kaynakları, bant genişliği ve yedekleme ilkesi temel alınarak sunucu başına önerilen korumalı veritabanlarının yaklaşık sayısını hesaplamak için [ayrıntılı kaynak planlayıcısı](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) ' nı indirin.
+_* Veritabanı boyutu sınırı, destekdiğimiz veri aktarım hızına ve yedekleme süresi sınırı yapılandırmasına bağlıdır. Sabit sınır değildir. Yedekleme verimlilik performansı hakkında [daha fazla bilgi edinin](#backup-throughput-performance) ._
 
 * SQL Server yedekleme Azure portal veya **PowerShell** içinde yapılandırılabilir. CLı desteklenmez.
 * Çözüm her iki tür [dağıtım](../azure-resource-manager/management/deployment-models.md) için de desteklenir-Azure Resource Manager VM 'ler ve klasik VM 'ler.
@@ -93,6 +92,17 @@ Tam | Birincil
 Di | Birincil
 Günlük |  İkincil
 Copy-Only tam |  İkincil
+
+## <a name="backup-throughput-performance"></a>Yedek verimlilik performansı
+
+Azure Backup, büyük SQL veritabanlarının tam ve fark yedeklemeleri (500 GB) için 200 Mbps 'lik tutarlı veri aktarımı hızını destekler. En iyi performansı kullanmak için şunları doğrulayın:
+
+- Temel alınan VM (veritabanını barındıran SQL Server örneğini içeren), gereken ağ aktarım hızı ile yapılandırılır. VM 'nin en yüksek aktarım hızı 200 Mbps 'den küçükse Azure Backup en uygun hızda veri aktarabilir.<br></br>Ayrıca, veritabanı dosyalarını içeren diskte, sağlanan yeterli üretilen iş olması gerekir. Azure VM 'lerinde disk işleme ve performans hakkında [daha fazla bilgi edinin](../virtual-machines/disks-performance.md) . 
+- VM 'de çalışan süreçler VM bant genişliğini tüketmez. 
+- Yedekleme zamanlamaları, veritabanlarının bir alt kümesi arasında yayılır. Bir VM 'de eşzamanlı olarak çalışan birden çok yedekleme, yedeklemeler arasındaki ağ tüketimi oranını paylaşır. Eşzamanlı yedeklemelerin sayısını denetleme hakkında [daha fazla bilgi edinin](faq-backup-sql-server.md#can-i-control-how-many-concurrent-backups-run-on-the-sql-server) .
+
+>[!NOTE]
+> VM kaynakları, bant genişliği ve yedekleme ilkesi temel alınarak sunucu başına önerilen korumalı veritabanlarının yaklaşık sayısını hesaplamak için [ayrıntılı kaynak planlayıcısı](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) ' nı indirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

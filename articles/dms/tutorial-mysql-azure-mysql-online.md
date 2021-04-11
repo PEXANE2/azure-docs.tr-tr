@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: e9f8d4797907cfdc4e7184580e31ac3cb3975b66
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 050356dc74641e7e7154d6a3976e6cc8d5f4ce3d
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739891"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063619"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Öğretici: DMS hizmetini kullanarak çevrimiçi ortamda MySQL'i MySQL için Azure Veritabanı'na geçirme
 
 Azure veritabanı geçiş hizmeti 'ni kullanarak veritabanlarını şirket içi bir MySQL örneğinden, en az kapalı kalma süresiyle [MySQL Için Azure veritabanı](../mysql/index.yml) 'na geçirebilirsiniz. Diğer bir deyişle, geçiş işlemi, uygulamada minimum çalışmama süresi ile gerçekleştirilebilir. Bu öğreticide, Azure veritabanı geçiş hizmeti 'nde çevrimiçi geçiş etkinliği kullanarak MySQL 5,7 ' in şirket içi bir örneğinden **çalışanlar** örnek veritabanını MySQL Için Azure veritabanı 'na geçireceğiniz.
+
+> [!IMPORTANT]
+> "MySQL için Azure veritabanı" çevrimiçi geçiş senaryosu, 1 Haziran 2021 ' de bulunan paralel ve yüksek performanslı bir çevrimdışı geçiş senaryosu ile değiştiriliyor. Çevrimiçi geçişler için, bu yeni teklifi, [veri ile çoğaltma](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)ile birlikte kullanabilirsiniz. Alternatif olarak, çevrimiçi geçişler için veri-çoğaltma ile [Mydumper/MyLoader](https://centminmod.com/mydumper.html) gibi açık kaynaklı araçları kullanın. 
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]

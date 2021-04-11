@@ -23,6 +23,9 @@
     - name: İlk sorgunuzu çalıştırma - Go
       displayName: 'package, sdk, golang'
       href: ./first-query-go.md
+    - name: İlk sorgunuzu çalıştırın-Java
+      displayName: 'maven, zulu, mvn'
+      href: ./first-query-java.md
     - name: İlk sorgunuzu çalıştırma - JavaScript
       displayName: 'library, node, arm-resourcegraph'
       href: ./first-query-javascript.md

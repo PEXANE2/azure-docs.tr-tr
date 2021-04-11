@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/17/2021
-ms.openlocfilehash: 96f40f1abd14987b7c404f5a4210a2cab1fa9143
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8419ff2ba269b05d1fbf7e9d08a284085465fd8
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594181"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257424"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL veritabanı ve Azure SQL yönetilen örnek Connect ve sorgu makaleleri
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -40,7 +40,6 @@ Aşağıdaki belge, Azure SQL veritabanı ve Azure SQL yönetilen örneği ile b
 |[PHP](connect-query-php.md)|Bu hızlı başlangıçta PHP kullanarak bir veritabanına bağlanma ve Transact-SQL deyimleriyle veri sorgulayan bir program oluşturma işlemlerinin nasıl yapılacağı gösterilmiştir.|
 |[Python](connect-query-python.md)|Bu hızlı başlangıçta Python kullanarak bir veritabanına bağlanma ve Transact-SQL deyimleriyle veri sorgulama işlemlerinin nasıl yapılacağı gösterilmiştir. |
 |[Ruby](connect-query-ruby.md)|Bu hızlı başlangıçta, Ruby kullanarak veritabanına bağlanan ve Transact-SQL deyimleriyle veri sorgulayan bir program oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.|
-|[R](connect-query-r.md)|Bu hızlı başlangıçta, Azure SQL veritabanı 'nda bir veritabanına bağlanmak üzere bir program oluşturmak ve verileri sorgulamak için Transact-SQL deyimlerini kullanmak üzere Azure SQL veritabanı ile R 'yi kullanma Machine Learning Services gösterilmektedir.|
 |||
 
 ## <a name="get-server-connection-information"></a>Sunucu bağlantı bilgilerini al

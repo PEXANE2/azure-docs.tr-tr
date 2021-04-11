@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 03/18/2021
-ms.openlocfilehash: f4336350af92c27760369d668c6babddc4d4ea30
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/05/2021
+ms.openlocfilehash: 2debf7d350f4f1fde5e86a60ad03a6858bc02743
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103462925"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490344"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -120,11 +120,13 @@ Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 | Until zaman aşımı | -Varsayılan: PT1H (1 saat) | "Until" döngüsünün çıkmadan önce çalıştırılabilmesi ve [ıso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601)belirtilmesi en fazla süre. Zaman aşımı değeri her döngü döngüsü için değerlendirilir. Döngüdeki herhangi bir eylem zaman aşımı sınırından daha uzun sürerse, geçerli döngü durdurulmaz. Ancak, bir sonraki döngüde, sınır koşulu karşılanmadığı için başlamaz. <p><p>Bu sınırı değiştirmek için, "Until" döngüsünde şekil **Değiştir**' i seçin ve **zaman aşımı** özelliği için değeri belirtin. |
 ||||
 
+<a name="concurrency-debatching"></a>
+
 ### <a name="concurrency-and-debatching"></a>Eşzamanlılık ve ayırmayı kaldırma
 
 | Name | Sınır | Notlar |
 | ---- | ----- | ----- |
-| Eşzamanlılık tetikleme | Eşzamanlılık kapalı ile: sınırsız <p><p>' İ etkinleştirdikten sonra geri alamazsınız: <p><p>-Varsayılan: 25 <br>-Min: 1 <br>-Max: 50 | Bu sınır, aynı anda veya paralel olarak çalışabilen mantıksal uygulama örneklerinin maksimum sayısıdır. <p><p>**Note**: eşzamanlılık açık olduğunda, ayırma sınırı, [toplu işleme dizileri](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)için 100 öğeye düşürülür. <p><p>Bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık limitini değiştirme](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) veya [örnekleri sıralı olarak tetikleme](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
+| Eşzamanlılık tetikleme | Eşzamanlılık kapalı ile: sınırsız <p><p>' İ etkinleştirdikten sonra geri alamazsınız: <p><p>-Varsayılan: 25 <br>-Min: 1 <br>-Max: 100 | Bu sınır, aynı anda veya paralel olarak çalışabilen mantıksal uygulama örneklerinin maksimum sayısıdır. <p><p>**Note**: eşzamanlılık açık olduğunda, ayırma sınırı, [toplu işleme dizileri](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)için 100 öğeye düşürülür. <p><p>Bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık limitini değiştirme](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) veya [örnekleri sıralı olarak tetikleme](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | En fazla bekleyen çalışma | Eşzamanlılık kapalı ile: <p><p>-Min: 1 <br>-Max: 50 <p><p>Eşzamanlılık açık: <p><p>-Min: 10 Plus eşzamanlı çalıştırma sayısı (eşzamanlılık tetikleme) <br>-Max: 100 | Bu sınır, mantıksal uygulamanız zaten en fazla eşzamanlı örnekleri çalıştırıyorsa çalışmayı beklemeleri gereken mantıksal uygulama örneklerinin maksimum sayısıdır. <p><p>Bu sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
 | SplitOn öğeleri | Eşzamanlılık kapalı: 100.000 <p><p>Eşzamanlılık açık: 100 | Bir dizi döndüren Tetikleyiciler için, dizi öğelerini bir "foreach" döngüsü kullanmak yerine [birden çok iş akışı örneğine ayıran veya](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) içermeyen bir ' spton ' özelliği kullanan bir ifade belirtebilirsiniz. Bu ifade, her dizi öğesi için bir iş akışı örneği oluşturmak ve çalıştırmak için kullanılacak diziye başvurur. <p><p>**Note**: eşzamanlılık açık olduğunda, spton limiti 100 öğeye düşürülür. |
 ||||
@@ -552,7 +554,7 @@ Bu bölümde Azure Logic Apps hizmeti ve yönetilen bağlayıcılar için giden 
 
 #### <a name="azure-government---outbound-ip-addresses"></a>Azure Kamu-giden IP adresleri
 
-| Region | Logic Apps IP | Yönetilen bağlayıcılar IP 'si |
+| Bölge | Logic Apps IP | Yönetilen bağlayıcılar IP 'si |
 |--------|---------------|-----------------------|
 | Orta US DoD | 52.182.48.215, 52.182.92.143 | 52.127.58.160 - 52.127.58.175, 52.182.54.8, 52.182.48.136, 52.127.61.192 - 52.127.61.223 |
 | US Gov Arizona | 52.244.67.143, 52.244.65.66, 52.244.65.190 | 52.127.2.160 - 52.127.2.175, 52.244.69.0, 52.244.64.91, 52.127.5.224 - 52.127.5.255 |

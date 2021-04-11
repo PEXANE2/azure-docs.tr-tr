@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: a8532f87c9360c0812fb1cfe24be6ca07615ea97
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: dec4eec16ba24baf31d911db882625479c33fb3b
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106123467"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278635"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Canlı etkinlikler ve canlı çıktılar Media Services
 
@@ -107,14 +107,14 @@ Kendi Güvenlik duvarlarınızdan belirli IP 'Leri etkinleştirmek veya canlı o
 * En büyük canlı olay adı 32 karakterdir.
 * Ad şu [Regex](/dotnet/standard/base-types/regular-expression-language-quick-reference) düzenine uymalıdır: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` .
 
-Ayrıca bkz. [akış uç noktaları adlandırma kuralları](streaming-endpoint-concept.md#naming-convention).
+Ayrıca bkz. [akış uç noktaları adlandırma kuralları](stream-streaming-endpoint-concept.md#naming-convention).
 
 > [!TIP]
 > Canlı olay adınızın benzersizliğini garantilemek için bir GUID oluşturabilir, ardından tüm kısa çizgileri ve süslü ayraçları (varsa) kaldırabilirsiniz. Dize tüm canlı etkinlikler genelinde benzersiz olacaktır ve uzunluğu 32 olarak garanti edilir.
 
 ## <a name="live-event-ingest-urls"></a>Canlı olay alma URL 'Leri
 
-Canlı olay oluşturulduktan sonra, canlı şirket içi kodlayıcıya sağlayacağınız içe alma URL 'Leri edinebilirsiniz. Gerçek zamanlı kodlayıcı bu URL'leri canlı akış girişi için kullanır. Daha fazla bilgi için bkz. [Önerilen şirket içi canlı kodlayıcılar](recommended-on-premises-live-encoders.md).
+Canlı olay oluşturulduktan sonra, canlı şirket içi kodlayıcıya sağlayacağınız içe alma URL 'Leri edinebilirsiniz. Gerçek zamanlı kodlayıcı bu URL'leri canlı akış girişi için kullanır. Daha fazla bilgi için bkz. [Önerilen şirket içi canlı kodlayıcılar](encode-recommended-on-premises-live-encoders.md).
 
 >[!NOTE]
 > 2020-05-01 API sürümü itibariyle, "Vanity" URL 'Leri statik ana bilgisayar adları olarak bilinir (useStaticHostname: true)

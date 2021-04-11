@@ -121,6 +121,9 @@
           href: signin-appauth-ios.md
         - name: App Auth kullanarak Android
           href: signin-appauth-android.md
+        - name: Güvenli API Management API’si
+          href: secure-api-management.md
+          displayName: 'apim, api management, migrate, b2clogin.com'
     - name: Akış oluşturun
       items:
         - name: Kaydolma veya oturum açma ilkesi
@@ -222,6 +225,15 @@
           href: password-complexity.md
         - name: E-posta doğrulamayı devre dışı bırakma
           href: disable-email-verification.md
+        - name: Özel e-posta doğrulaması
+          items:
+            - name: Mailjet
+              href: custom-email-mailjet.md
+              displayName: 'Custom email, Custom verification email, Verification email'
+            - name: SendGrid
+              href: custom-email-sendgrid.md
+              displayName: 'Custom email, Custom verification email, Verification email'
+          displayName: verification
         - name: MFA’yı etkinleştirme
           items:
             - name: Multi-factor authentication
@@ -269,17 +281,6 @@
           href: add-api-connector.md
     - name: Özel ilke
       items:
-        - name: Özel ilkeleri kullanmaya başlama
-          href: custom-policy-get-started.md
-        - name: Özel e-posta doğrulaması
-          items:
-            - name: Mailjet
-              href: custom-email-mailjet.md
-              displayName: 'Custom email, Custom verification email, Verification email'
-            - name: SendGrid
-              href: custom-email-sendgrid.md
-              displayName: 'Custom email, Custom verification email, Verification email'
-          displayName: verification
         - name: Kendi iş mantığınızı ekleme
           items:
             - name: REST API’yi tümleştirme
@@ -299,101 +300,6 @@
               displayName: 'troubleshooting, app insights'
             - name: Özel ilkelerle ilgili sorunları giderme
               href: troubleshoot-custom-policies.md
-        - name: Başvuru
-          items:
-            - name: TrustFrameworkPolicy
-              href: trustframeworkpolicy.md
-            - name: BuildingBlocks
-              href: buildingblocks.md
-              items:
-                - name: ClaimsSchema
-                  href: claimsschema.md
-                - name: ClaimsTransformations
-                  href: claimstransformations.md
-                  items:
-                    - name: Boole
-                      href: boolean-transformations.md
-                    - name: Tarih
-                      href: date-transformations.md
-                    - name: Genel
-                      href: general-transformations.md
-                    - name: Tamsayı
-                      href: integer-transformations.md
-                    - name: JSON
-                      href: json-transformations.md
-                    - name: Telefon numarası
-                      href: phone-number-claims-transformations.md
-                    - name: Dış hesaplar
-                      href: social-transformations.md
-                    - name: StringCollection
-                      href: stringcollection-transformations.md
-                    - name: Dize
-                      href: string-transformations.md
-                - name: Koşullar
-                  href: predicates.md
-                - name: ContentDefinitions
-                  href: contentdefinitions.md
-                - name: Yerelleştirme
-                  href: localization.md
-                  items:
-                    - name: Yerelleştirme dizesi kimlikleri
-                      href: localization-string-ids.md
-                - name: DisplayControls
-                  href: display-controls.md
-                  items:
-                    - name: Doğrulama
-                      href: display-control-verification.md
-            - name: ClaimsProviders
-              href: claimsproviders.md
-              items:
-                - name: Teknik Profiller
-                  href: technicalprofiles.md
-                  items:
-                    - name: Doğrulama teknik profilleri hakkında
-                      href: validation-technical-profile.md
-                    - name: Azure Active Directory
-                      href: active-directory-technical-profile.md
-                    - name: Azure AD Multi-Factor Authentication
-                      href: multi-factor-auth-technical-profile.md
-                      displayName: mfa
-                    - name: Azure AD SSPR
-                      href: aad-sspr-technical-profile.md
-                    - name: Talepleri dönüştürme
-                      href: claims-transformation-technical-profile.md
-                    - name: Kimlik belirteci ipucu
-                      href: id-token-hint.md
-                    - name: JWT belirtecini veren
-                      href: jwt-issuer-technical-profile.md
-                    - name: OAuth1
-                      href: oauth1-technical-profile.md
-                    - name: OAuth2
-                      href: oauth2-technical-profile.md
-                    - name: Tek kullanımlık parola
-                      href: one-time-password-technical-profile.md
-                      displayName: otp
-                    - name: OpenID Connect
-                      href: openid-connect-technical-profile.md
-                    - name: Telefon faktörü
-                      href: phone-factor-technical-profile.md
-                    - name: REST
-                      href: restful-technical-profile.md
-                    - name: SAML kimlik sağlayıcısı
-                      href: saml-identity-provider-technical-profile.md
-                    - name: SAML belirtecini veren
-                      href: saml-issuer-technical-profile.md
-                    - name: Kendi kendine onaylanma
-                      href: self-asserted-technical-profile.md
-                    - name: SSO oturumu
-                      href: custom-policy-reference-sso.md
-                      displayName: single sign-on
-            - name: UserJourneys
-              href: userjourneys.md
-            - name: SubJourneys
-              href: subjourneys.md
-            - name: RelyingParty
-              href: relyingparty.md
-            - name: Talep çözümleyicileri
-              href: claim-resolver-overview.md
     - name: UserInfo uç noktası
       href: userinfo-endpoint.md
     - name: İş ortağı tümleştirmesi
@@ -458,15 +364,15 @@
         - name: Azure portalı
           href: manage-users-portal.md
           displayName: 'create users, add users, delete users'
+        - name: Kullanıcıları geçirme
+          href: user-migration.md
+          displayName: bulk import
         - name: İş ortağı tümleştirmesi
           items:
             - name: N8identity
               href: partner-n8identity.md
             - name: Saviynt
               href: partner-saviynt.md
-    - name: Güvenli API Management API’si
-      href: secure-api-management.md
-      displayName: 'apim, api management, migrate, b2clogin.com'
     - name: Günlükler ve izleme
       items:
         - name: Denetim günlükleri
@@ -489,12 +395,105 @@
         - name: Kullanıcı verileri
           href: manage-user-data.md
           displayName: GDPR
-    - name: Geçiş
-      items:
-        - name: Kullanıcıları geçirme
-          href: user-migration.md
 - name: Başvuru
   items:
+    - name: Özel ilke şeması
+      items:
+        - name: TrustFrameworkPolicy
+          href: trustframeworkpolicy.md
+        - name: BuildingBlocks
+          href: buildingblocks.md
+          items:
+            - name: ClaimsSchema
+              href: claimsschema.md
+            - name: ClaimsTransformations
+              href: claimstransformations.md
+              items:
+                - name: Boole
+                  href: boolean-transformations.md
+                - name: Tarih
+                  href: date-transformations.md
+                - name: Genel
+                  href: general-transformations.md
+                - name: Tamsayı
+                  href: integer-transformations.md
+                - name: JSON
+                  href: json-transformations.md
+                - name: Telefon numarası
+                  href: phone-number-claims-transformations.md
+                - name: Dış hesaplar
+                  href: social-transformations.md
+                - name: StringCollection
+                  href: stringcollection-transformations.md
+                - name: Dize
+                  href: string-transformations.md
+            - name: Koşullar
+              href: predicates.md
+            - name: ContentDefinitions
+              href: contentdefinitions.md
+            - name: Yerelleştirme
+              href: localization.md
+              items:
+                - name: Yerelleştirme dizesi kimlikleri
+                  href: localization-string-ids.md
+            - name: DisplayControls
+              href: display-controls.md
+              items:
+                - name: Doğrulama
+                  href: display-control-verification.md
+        - name: ClaimsProviders
+          href: claimsproviders.md
+          items:
+            - name: Teknik Profiller
+              href: technicalprofiles.md
+              items:
+                - name: Doğrulama teknik profilleri hakkında
+                  href: validation-technical-profile.md
+                - name: Azure Active Directory
+                  href: active-directory-technical-profile.md
+                - name: Azure AD Multi-Factor Authentication
+                  href: multi-factor-auth-technical-profile.md
+                  displayName: mfa
+                - name: Azure AD SSPR
+                  href: aad-sspr-technical-profile.md
+                - name: Talepleri dönüştürme
+                  href: claims-transformation-technical-profile.md
+                - name: Kimlik belirteci ipucu
+                  href: id-token-hint.md
+                - name: JWT belirtecini veren
+                  href: jwt-issuer-technical-profile.md
+                - name: OAuth1
+                  href: oauth1-technical-profile.md
+                - name: OAuth2
+                  href: oauth2-technical-profile.md
+                - name: Tek kullanımlık parola
+                  href: one-time-password-technical-profile.md
+                  displayName: otp
+                - name: OpenID Connect
+                  href: openid-connect-technical-profile.md
+                - name: Telefon faktörü
+                  href: phone-factor-technical-profile.md
+                - name: REST
+                  href: restful-technical-profile.md
+                - name: SAML kimlik sağlayıcısı
+                  href: saml-identity-provider-technical-profile.md
+                - name: SAML belirtecini veren
+                  href: saml-issuer-technical-profile.md
+                - name: Kendi kendine onaylanma
+                  href: self-asserted-technical-profile.md
+                - name: SSO oturumu
+                  href: custom-policy-reference-sso.md
+                  displayName: single sign-on
+        - name: UserJourneys
+          href: userjourneys.md
+        - name: SubJourneys
+          href: subjourneys.md
+        - name: RelyingParty
+          href: relyingparty.md
+        - name: Talep çözümleyicileri
+          href: claim-resolver-overview.md
+    - name: Özel ilke sürüm notları
+      href: custom-policy-developer-notes.md
     - name: Hizmet sınırlamaları ve kısıtlamalar
       href: service-limits.md
     - name: Uygulama kayıtları
@@ -510,8 +509,6 @@
       href: error-codes.md
     - name: Uzantılar uygulaması
       href: extensions-app.md
-    - name: Özel ilke (IEF) sürüm notları
-      href: custom-policy-developer-notes.md
     - name: Sayfa düzeni sürümleri
       href: page-layout.md
       displayName: Page version

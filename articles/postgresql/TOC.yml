@@ -32,6 +32,8 @@
     - name: Sürüm ilkesi
       href: concepts-version-policy.md
       displayName: 'version, postgresql'
+    - name: Performans önerileri
+      href: concepts-azure-advisor-recommendations.md
     - name: Bilinen sorunlar & sınırlamaları
       href: concepts-known-issues-limitations.md
       displayName: 'issues, limitations, postgresql'
@@ -670,6 +672,10 @@
             - name: Azure portal
               href: howto-hyperscale-read-replicas-portal.md
               displayName: 'replication, read replica'
+        - name: Zamanlanan bakım
+          items:
+            - name: Azure portal
+              href: howto-hyperscale-maintenance.md
         - name: İzleme
           items:
             - name: Ölçümler üzerinde uyarı oluşturma

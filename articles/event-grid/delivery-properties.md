@@ -3,14 +3,14 @@ title: Azure Event Grid-teslim edilen olaylarda özel üst bilgileri ayarla
 description: Teslim edilen olaylar üzerinde nasıl özel üstbilgiler (veya teslim özellikleri) ayarlayabileceğinizi açıklar.
 ms.topic: conceptual
 ms.date: 03/24/2021
-ms.openlocfilehash: 6cc6874b7aba6e0696dec21de5b431ca18df3013
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: fb6f0de7919ed7cf9072c0fa35e8f9be5cb5e7db
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967600"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278295"
 ---
-# <a name="delivery-with-custom-headers"></a>Özel üstbilgileriyle teslim
+# <a name="custom-delivery-properties"></a>Özel teslim özellikleri
 Olay abonelikleri, teslim edilen olaylara dahil edilen HTTP üstbilgilerini ayarlamanıza olanak sağlar. Bu özellik, bir hedef için gereken özel üstbilgileri ayarlamanıza olanak sağlar. Bir olay aboneliği oluştururken en fazla 10 üst bilgi ayarlayabilirsiniz. Her üst bilgi değeri 4.096 (4K) bayttan büyük olmamalıdır.
 
 Aşağıdaki hedeflere teslim edilen olaylar üzerinde özel üstbilgiler belirleyebilirsiniz:

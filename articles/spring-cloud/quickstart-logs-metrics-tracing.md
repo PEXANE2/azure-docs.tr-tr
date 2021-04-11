@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 75c50e6342a00ef37215d9e961503dd7ffb0d205
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4cc7c91e8bbc959c15e18503a9f715d84d1472e1
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104879374"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256183"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Hızlı başlangıç: Günlükler, ölçümler ve izleme ile Azure yay bulut uygulamalarını Izleme
 
@@ -72,6 +72,8 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 1. Ardından `Run` öğesini seçin ve günlükleri görürsünüz. Sorgu yazma hakkında daha fazla bilgi için bkz. [Azure Log Analytics docs](../azure-monitor/logs/get-started-queries.md) .
 
    [![Günlük Analizi sorgusu-Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
+
+1. Log Analytics 'de kullanılan sorgu dili hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlük sorguları](/azure/data-explorer/kusto/query/). Tüm Log Analytics günlüklerinizi merkezi bir istemciden sorgulamak için [Azure Veri Gezgini](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)' e göz atın.
 
 ## <a name="metrics"></a>Ölçümler
 
@@ -168,6 +170,8 @@ Azure Toolkit for IntelliJ kullanarak günlükleri almak için:
 1. Ardından filtrelenmiş günlükleri görürsünüz. Sorgu yazma hakkında daha fazla bilgi için bkz. [Azure Log Analytics docs](../azure-monitor/logs/get-started-queries.md) .
 
    [![Günlük Analizi sorgusu ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
+
+1. Log Analytics 'de kullanılan sorgu dili hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlük sorguları](/azure/data-explorer/kusto/query/). Tüm Log Analytics günlüklerinizi merkezi bir istemciden sorgulamak için [Azure Veri Gezgini](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)' e göz atın.
 
 ## <a name="metrics"></a>Ölçümler
 
