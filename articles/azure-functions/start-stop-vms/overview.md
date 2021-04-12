@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.service: azure-functions
 ms.subservice: ''
 ms.date: 03/29/2021
-ms.openlocfilehash: aac50f085d3ad63fb0183c19cf7d9aaa679e3d04
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 44bfbaa8b18ebeab3b74bc696a16fc4cfb6c08ec
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106112173"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220943"
 ---
 # <a name="startstop-vms-v2-preview-overview"></a>VM 'Leri Başlat/Durdur v2 (Önizleme) genel bakış
 
@@ -28,7 +28,7 @@ Aşağıdaki tabloda gösterildiği gibi, özelliğine dahil edilen zamanlama ve
 
 |Name |Tetikleyici |Description |
 |-----|--------|------------|
-|AlertAvailabilityTest |Zamanlayıcı |Bu işlev, her zaman birincil işlev olan **oto Stopvm** 'nin kullanılabilir olduğundan emin olmak için kullanılabilirlik testini gerçekleştirir.|
+|AlertAvailabilityTest |Zamanlayıcı |Bu işlev, test **sanal makinesinin** her zaman kullanılabilir olduğundan emin olmak için kullanılabilirlik testini gerçekleştirir.|
 |Oto durdur |HTTP |Bu işlev, Logic App 'ten çağrılan giriş noktası işlevi olan, **oto durdurma** senaryosunu destekler.|
 |AutoStopAvailabilityTest |Zamanlayıcı |Bu işlev, her zaman birincil işlev, **oto** 'nin kullanılabilir olduğundan emin olmak için kullanılabilirlik testini gerçekleştirir.|
 |Sanal makineyi oto |HTTP |Bu işlev, uyarı koşulu true olduğunda VM uyarısı tarafından otomatik olarak tetiklenir.|
@@ -95,7 +95,7 @@ VM 'lerin bir listesini belirtmek, belirli bir sanal makine kümesinde ve birden
 
 - Hesabınıza, abonelikte [katkıda](../../role-based-access-control/built-in-roles.md#contributor) bulunan izin verildi.
 
-- Başlat/Durdur VM 'Ler v2 (Önizleme), Azure Işlevleri için [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=functions) sayfasında listelenen tüm Azure genel bölgelerinde kullanılabilir. Azure Kamu Bulutu için yalnızca ABD devlet Virginia bölgesinde kullanılabilir.
+- Başlat/Durdur VM 'Ler v2 (Önizleme), Azure Işlevleri için [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=functions) sayfasında listelenen tüm Azure küresel ve ABD kamu bulut bölgelerinde kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

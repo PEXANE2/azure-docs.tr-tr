@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python, contperf-fy21q3
 adobe-target: true
-ms.openlocfilehash: f00a5efb01ea59b04495747ffd93d9f15ad5f76e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ed7a95ea83cacc0eaccfa23cd87403fb9be615ee
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935541"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210678"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Öğretici: Jupyter not defterlerinde Azure Machine Learning kullanmaya başlayın
 
@@ -27,7 +27,13 @@ Bu öğreticide şunları yaptınız:
 > [!div class="checklist"]
 > * Diğer Jupyter Notebook öğreticilerde kullanmak üzere bir [Azure Machine Learning çalışma alanı](concept-workspace.md) oluşturun.
 > * Öğreticiler Not defterini çalışma alanındaki klasörünüze kopyalayın.
-> * Azure Machine Learning Python SDK yüklü ve önceden yapılandırılmış olan bulut tabanlı bir işlem örneği oluşturun.
+> * Size Azure Machine Learning Python SDK 'nın zaten yüklü ve sizin için yapılandırılmış bir ortam sunan bulut tabanlı bir işlem örneği oluşturun.
+
+Bu öğretici, çalışma alanınızdaki bir işlem kaynağında Jupyıter not defterlerini çalıştırmaya hazırlar.  
+
+Azure Machine Learning 'i kullanmaya başlamak için başka harika bir yöntem de toplu işler gönderiliyor.  Bkz. [öğretici: geliştirme ortamınızda Azure Machine Learning kullanmaya başlama](tutorial-1st-experiment-sdk-setup-local.md).
+
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 

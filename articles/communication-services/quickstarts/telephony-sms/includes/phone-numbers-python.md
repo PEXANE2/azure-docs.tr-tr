@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: b9ac58a7cf09463020e0bcd424f5fc5974133657
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: e62aed02a0ad5f26ec8fd0a79de5e91269386095
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106113141"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450385"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -41,7 +41,7 @@ except Exception as ex:
 Hala uygulama dizininde, komutunu kullanarak Python paketi için Azure Communication Services yönetim istemcisi kitaplığı ' nı da yükleyebilirsiniz `pip install` .
 
 ```console
-pip install azure-communication-phone-numbers
+pip install azure-communication-phonenumbers
 ```
 
 ## <a name="authenticate-the-phone-numbers-client"></a>Telefon numaraları Istemcisinin kimliğini doğrulama

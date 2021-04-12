@@ -5,6 +5,10 @@
   items:
     - name: Form Tanıma nedir?
       href: overview.md
+    - name: Dil desteği
+      href: language-support.md
+    - name: Fiyatlandırma ve limitler
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: Yenilikler
       href: whats-new.md
 - name: Hızlı Başlangıçlar
@@ -91,15 +95,13 @@
   items:
     - name: Destek ve yardım seçenekleri
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
-    - name: Fiyatlandırma ve limitler
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: Azure yol haritası
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Bölgesel kullanılabilirlik
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
-    - name: Dil desteği
-      href: language-support.md
     - name: Uyumluluk
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Şifreleme
       href: encrypt-data-at-rest.md
+    - name: Gizlilik ve tanımlama bilgileri
+      href: 'https://privacy.microsoft.com/en-US/privacystatement'

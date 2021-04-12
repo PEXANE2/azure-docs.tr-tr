@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: eebcfb98d4e155ca965b9e4c68a862afa08a46ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04ab4ae4d3de6f33f800011b9b0802665d5fb16e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727456"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228342"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Çok kiracı için sağlama 
 
@@ -26,11 +26,12 @@ Bu iki senaryoyu birleştirmek yaygındır. Örneğin, çok kiracılı bir IoT �
 
 Bu makalede, bölgeler arasında çok kiracılı bir senaryoda cihazların nasıl sağlanacağını göstermek için [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 'sından sanal bir cihaz örneği kullanılmaktadır. Bu makalede aşağıdaki adımları gerçekleştirirsiniz:
 
-* İki bölgesel IoT Hub 'ı (**Batı ABD** ve **Doğu ABD**) oluşturmak için Azure CLI 'yi kullanma
-* Çok kiracılı bir kayıt oluştur
-* Aynı bölgelerde (**Batı ABD** ve **Doğu ABD**) cihaz olarak davranacak iki bölgesel Linux VM oluşturmak için Azure CLI 'yi kullanın
-* Her iki Linux sanal makinesi üzerinde Azure IoT C SDK 'Sı için geliştirme ortamını ayarlama
-* En yakın bölgede aynı kiracı için sağlandığını görmek için cihazların benzetimini yapın.
+> [!div class="checklist"]
+> * İki bölgesel IoT Hub 'ı (**Batı ABD** ve **Doğu ABD**) oluşturmak için Azure CLI 'yi kullanma
+> * Çok kiracılı bir kayıt oluştur
+> * Aynı bölgelerde (**Batı ABD** ve **Doğu ABD**) cihaz olarak davranacak iki bölgesel Linux VM oluşturmak için Azure CLI 'yi kullanın
+> * Her iki Linux sanal makinesi üzerinde Azure IoT C SDK 'Sı için geliştirme ortamını ayarlama
+> * En yakın bölgede aynı kiracı için sağlandığını görmek için cihazların benzetimini yapın.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -417,8 +418,11 @@ Kaynak grubunu ada göre silmek için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> Yeniden sağlama hakkında daha fazla bilgi için bkz. [cihaz yeniden sağlama kavramlarını IoT Hub](concepts-device-reprovision.md)
+* Yeniden sağlama hakkında daha fazla bilgi için bkz.
 
 > [!div class="nextstepaction"]
-> Sağlamayı kaldırma hakkında daha fazla bilgi edinmek için bkz. [daha önce otomatik olarak sağlanan cihazların sağlamasını kaldırma](how-to-unprovision-devices.md)
+> [Cihaz yeniden sağlama kavramlarını IoT Hub](concepts-device-reprovision.md)
+
+* Sağlamayı kaldırma hakkında daha fazla bilgi için bkz.
+> [!div class="nextstepaction"]
+> [Daha önce otomatik olarak sağlanan cihazların sağlamasını kaldırma](how-to-unprovision-devices.md)

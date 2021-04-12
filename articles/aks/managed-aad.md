@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: b7918ecc31fe152bd25153ac8c899ce3ff8fdacb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0e912de4cf3a9759abe4cb3df78255c0a9ba1557
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640591"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105873"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS tarafından yönetilen Azure Active Directory tümleştirme
 
@@ -20,7 +20,7 @@ AKS tarafından yönetilen Azure AD tümleştirmesi, kullanıcıların daha önc
 
 Küme yöneticileri, Kubernetes rol tabanlı erişim denetimini (Kubernetes RBAC) bir kullanıcının kimliğine veya dizin grubu üyeliğine göre yapılandırabilir. Azure AD kimlik doğrulaması, OpenID Connect ile AKS kümelerine sağlanır. OpenID Connect, OAuth 2,0 protokolünün üstünde oluşturulmuş bir kimlik katmanıdır. OpenID Connect hakkında daha fazla bilgi için bkz. [Açık kimlik bağlantısı belgeleri][open-id-connect].
 
-[Azure Active Directory tümleştirme kavramları belgelerindeki](concepts-identity.md#azure-active-directory-integration)Azure AD tümleştirme akışı hakkında daha fazla bilgi edinin.
+[Azure Active Directory tümleştirme kavramları belgelerindeki](concepts-identity.md#azure-ad-integration)Azure AD tümleştirme akışı hakkında daha fazla bilgi edinin.
 
 ## <a name="limitations"></a>Sınırlamalar 
 
