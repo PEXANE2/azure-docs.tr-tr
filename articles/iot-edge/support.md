@@ -8,16 +8,16 @@ ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f59e2ca06f4ec435522cd06815b22d706a2d894c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0bd6a8af4850f3a0519bac7644100c2dcf883635
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772425"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031181"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Desteklenen sistemleri Azure IoT Edge
 
-[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 Bu makalede, resmi olarak veya önizlemeye bakılmaksızın IoT Edge tarafından desteklenen sistemler ve bileşenler hakkında ayrıntılı bilgi sağlanır.
 
@@ -52,18 +52,39 @@ Azure IoT Edge, kapsayıcıları çalıştıratabilen çoğu işletim sisteminde
   * Microsoft, platformlar üzerinde resmi olmayan test yaptık veya platformda başarıyla çalışan bir iş ortağı biliyor Azure IoT Edge
   * Diğer platformlar için yükleme paketleri, bu platformlarda çalışabilir
 
-Ana bilgisayar işletim sistemi ailesi her zaman bir modülün kapsayıcısı içinde kullanılan Konuk işletim sisteminin ailesiyle aynı olmalıdır. Diğer bir deyişle, yalnızca Windows 'da Linux ve Windows kapsayıcılarında Linux kapsayıcıları kullanabilirsiniz. Windows kullanırken, Hyper-V yalıtılmış kapsayıcılar değil yalnızca işlem yalıtılmış kapsayıcılar desteklenir.  
+Ana bilgisayar işletim sistemi ailesi her zaman bir modülün kapsayıcısı içinde kullanılan Konuk işletim sisteminin ailesiyle aynı olmalıdır.
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+Diğer bir deyişle, yalnızca Windows 'da Linux ve Windows kapsayıcılarında Linux kapsayıcıları kullanabilirsiniz. Windows kapsayıcıları kullanılırken, Hyper-V yalıtılmış kapsayıcılar değil yalnızca işlem yalıtılmış kapsayıcılar desteklenir.  
 
 Windows üzerinde Linux için IoT Edge, Windows ana bilgisayarında çalışan bir Linux sanal makinesinde IoT Edge kullanır. Bu şekilde, Linux modüllerini bir Windows cihazında çalıştırabilirsiniz.
+:::moniker-end
+<!-- end 1.1 -->
 
 ### <a name="tier-1"></a>Katman 1
 
 Aşağıdaki tablolarda listelenen sistemler Microsoft tarafından desteklenir, genel olarak kullanılabilir ya da genel önizleme aşamasındadır ve her yeni sürümle test edilmiştir.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Azure IoT Edge, Linux veya Windows kapsayıcıları olarak oluşturulan modülleri destekler. Linux kapsayıcıları, Linux cihazlarına dağıtılabilir veya Windows üzerinde Linux için IoT Edge kullanılarak Windows cihazlarına dağıtılabilir. Windows kapsayıcıları yalnızca Windows cihazlarına dağıtılabilir.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Azure IoT Edge 1,2 sürümü yalnızca Linux kapsayıcıları olarak oluşturulan modülleri destekler.
+
+Şu anda Windows cihazlarda IoT Edge sürüm 1,2 ' i çalıştırmanın desteklenen bir yolu yoktur. [Windows 'Da Linux için IoT Edge](iot-edge-for-linux-on-windows.md) , windows cihazlarında IoT Edge çalıştırmanın önerilen yoludur, ancak şu anda yalnızca IoT Edge 1,1 ' i çalıştırıyor. Daha fazla bilgi için bu makalenin [IoT Edge 1,1](?view=iotedge-2018-06&preserve-view=true) sürümüne bakın.
+
+:::moniker-end
+<!-- end 1.2 -->
 
 #### <a name="linux-containers"></a>Linux kapsayıcıları
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Linux kapsayıcıları olarak oluşturulan modüller, Linux veya Windows cihazlarına dağıtılabilir. Linux cihazlarında, IoT Edge çalışma zamanı doğrudan konak cihaza yüklenir. Windows cihazlarında, IoT Edge çalışma zamanına göre önceden oluşturulmuş bir Linux sanal makinesi, konak cihazında çalışır.
 
 [Windows üzerinde Linux için IoT Edge](iot-edge-for-linux-on-windows.md) Şu anda genel önizlemededir, ancak windows cihazlarda IoT Edge çalıştırmanın önerilen yoludur.
@@ -78,12 +99,27 @@ Linux kapsayıcıları olarak oluşturulan modüller, Linux veya Windows cihazla
 | Windows Server 2019 | Genel Önizleme |  |  |
 
 Tüm Windows işletim sistemleri sürüm 1809 (derleme 17763) veya üzeri olmalıdır.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+| Operating System | 'TÜR | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| Raspberry PI OS Esnetme |  | ![Raspberry PI OS Esneti + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Genel Önizleme |
+
+:::moniker-end
+<!-- end 1.2 -->
 
 >[!NOTE]
 >Ubuntu Server 16,04 desteği IoT Edge sürüm 1,1 sürümüyle sona erdi.
 
 #### <a name="windows-containers"></a>Windows kapsayıcıları
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 >[!IMPORTANT]
 >IoT Edge 1,1 LTS, Windows kapsayıcılarını destekleyecek son sürüm kanaldır. Sürüm 1,2 ' den başlayarak Windows kapsayıcıları desteklenmeyecektir. Windows cihazlarda IoT Edge çalıştırmak için [Windows 'Ta Linux için IoT Edge](iot-edge-for-linux-on-windows.md) kullanmayı veya taşımayı düşünün.
 
@@ -99,6 +135,17 @@ Tüm Windows işletim sistemleri sürüm 1809 (derleme 17763) olmalıdır. Windo
 
 >[!NOTE]
 >Windows 10 IoT Core desteği, IoT Edge sürüm 1,1 sürümü ile sona erdi.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+IoT Edge 1,1 LTS, Windows kapsayıcılarını destekleyen son sürüm kanaldır. Sürüm 1,2 ' den başlayarak Windows kapsayıcıları desteklenmez.
+
+Windows kapsayıcıları için desteklenen işletim sistemleri hakkında bilgi için, bu makalenin [IoT Edge 1,1](?view=iotedge-2018-06&preserve-view=true) sürümüne bakın.
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="tier-2"></a>Katman 2
 
@@ -158,10 +205,28 @@ IoT Edge, Microsoft. Azure. Devices. Client SDK 'sını kullanır. Daha fazla bi
 Azure IoT Edge, sanal makinelerde çalıştırılabilir. Bir sanal makinenin IoT Edge cihaz olarak kullanılması, müşteriler var olan altyapıyı Edge zekası ile genişletmek istediğinizde yaygındır. Konak VM işletim sistemi ailesi, bir modülün kapsayıcısı içinde kullanılan Konuk işletim sisteminin ailesiyle eşleşmelidir. Bu gereksinim, Azure IoT Edge doğrudan bir cihazda çalıştırıldığı zaman ile aynıdır. Azure IoT Edge, temel alınan sanallaştırma teknolojisinin belirsiz olması ve Hyper-V ve vSphere gibi platformlar tarafından desteklenen VM 'lerde çalışır.
 
 <br>
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+<center>
+
+![Bir VM 'de Azure IoT Edge](./media/support/edge-on-vm-with-windows.png)
+
+</center>
+
+::: moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
 <center>
 
 ![Bir VM 'de Azure IoT Edge](./media/support/edge-on-vm.png)
+
 </center>
+
+:::moniker-end
 
 ## <a name="minimum-system-requirements"></a>En düşük sistem gereksinimleri
 

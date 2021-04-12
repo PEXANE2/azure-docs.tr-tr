@@ -7,15 +7,15 @@ ms.subservice: core
 ms.topic: overview
 ms.author: larryfr
 author: BlackMist
-ms.date: 11/04/2020
+ms.date: 04/08/2021
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: 00a3ab2954d09a7e70e81d8de3644b678b79d005
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 4f97883c157d04358322b01cab7049dcbbabdc4f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521399"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031095"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning nedir?
 
@@ -40,7 +40,7 @@ Makine öğreniminin öngörüleri veya tahminleri, uygulama ve cihazları daha 
 ## <a name="machine-learning-tools-to-fit-each-task"></a>Her göreve uyacak makine öğrenimi araçları 
 
 Azure Machine Learning, aşağıdakiler dahil olmak üzere makine öğrenimi iş akışları için gereken tüm araç geliştiricileri ve veri bilimcilerini sağlar:
-+ [Azure Machine Learning Tasarımcısı](tutorial-designer-automobile-price-train-score.md): denemeleri 'nizi derlemek ve sonra işlem hatları dağıtmak için-n-Drop modüllerini sürükleyin.
++ [Azure Machine Learning Tasarımcısı](tutorial-designer-automobile-price-train-score.md): Sürükle-n-Bırak modülleri denemeleri oluşturup bir düşük kod ortamında işlem hatlarını dağıtın.
 
 + Jupyter Not defterleri: makinenizde öğrendiğimiz <a href="/python/api/overview/azure/ml/intro" target="_blank">Python örnekleri Için SDK</a> 'ümüzden yararlanmak üzere [örnek Not defterlerimizi](https://github.com/Azure/MachineLearningNotebooks) kullanın veya kendi not defterlerinizi oluşturun. 
 
@@ -48,11 +48,11 @@ Azure Machine Learning, aşağıdakiler dahil olmak üzere makine öğrenimi iş
 
 + [Birçok model Çözüm Hızlandırıcısı](https://aka.ms/many-models) (önizleme) Azure Machine Learning oluşturur ve yüzlerce veya hatta binlerce makine öğrenimi modelini eğitmenize, çalıştırmanıza ve yönetmenize olanak sağlar.
 
-+ [Visual Studio Code kullanıcıları için makine öğrenimi uzantısı](tutorial-setup-vscode-extension.md)
++ [Visual Studio Code (Önizleme) Için Machine Learning uzantısı](how-to-set-up-vs-code-remote.md) , Machine Learning projelerinizi oluşturmak ve yönetmek için size tam özellikli bir geliştirme ortamı sağlar.
 
-+ [Machine learning CLI](reference-azure-machine-learning-cli.md)
++ [Machine LEARNING CLI](reference-azure-machine-learning-cli.md) , komut satırından Azure Machine Learning kaynaklarıyla yönetmek için komutlar sağlayan BIR Azure CLI uzantısıdır.
 
-+ PyTorch, TensorFlow ve scikit-öğrenme gibi açık kaynaklı çerçeveler ve çok daha fazlası
++ PyTorch, TensorFlow ve scikit gibi [Açık kaynaklı çerçevelerle tümleştirme](concept-open-source.md) , uçtan uca makine öğrenimi sürecini eğitmek, dağıtmak ve yönetmek için çok daha fazla bilgi edinin.
 
 + [Pekiştirmeye dayalı](how-to-use-reinforcement-learning.md) with Ray Rlrllib
 
@@ -130,6 +130,8 @@ Azure depolama hesabınız, işlem hedefleri ve diğer kaynaklarınız, modeller
 - + [Kendi geliştirme ortamınızı kullanmaya başlayın](tutorial-1st-experiment-sdk-setup-local.md)
   + [ML modellerini eğitmek & dağıtmak için bir işlem örneğinde Jupyıter not defterlerini kullanma](tutorial-1st-experiment-sdk-setup.md)
   + [ML modellerini eğitmek & dağıtmak için otomatik makine öğrenimi kullanma](tutorial-first-experiment-automated-ml.md) 
+  + [Visual Studio Code kaynaklarını yönetme](how-to-manage-resources-vscode.md)
+  + [Görüntü sınıflandırma modelini eğitmek ve dağıtmak için Visual Studio Code kullanma](tutorial-train-deploy-image-classification-model-vscode.md)
   + [& dağıtmayı eğitme tasarımcı & bırakma yeteneklerini kullanın](tutorial-designer-automobile-price-train-score.md) 
   + [Makine öğrenimi CLı kullanarak bir modeli eğitme ve dağıtma](tutorial-train-deploy-model-cli.md)
 

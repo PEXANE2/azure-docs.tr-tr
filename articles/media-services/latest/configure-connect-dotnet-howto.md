@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 677c5998d25205f8de9792888af2554674944798
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: e4d1ed0c015b75cc058c7d6136069a8858d835e2
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107603"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492537"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API-.NET ' e bağlanın
 
@@ -240,7 +240,7 @@ namespace ConsoleApp1
 - [Öğretici: Media Services v3-.NET ile videoları analiz etme](analyze-videos-tutorial.md)
 - [Yerel dosyadan iş girişi oluşturma-.NET](job-input-from-local-file-how-to.md)
 - [HTTPS URL 'sinden iş girişi oluşturma-.NET](job-input-from-http-how-to.md)
-- [Özel dönüşümle kodlama-.NET](encode-custom-presets-how-to.md)
+- [Özel dönüşümle kodlama-.NET](transform-custom-presets-how-to.md)
 - [AES-128 dinamik şifrelemesini ve anahtar teslim hizmetini kullanın-.NET](drm-playready-license-template-concept.md)
 - [DRM dinamik şifrelemesini ve lisans teslim hizmetini kullanma-.NET](drm-protect-with-drm-tutorial.md)
 - [Var olan ilkeden bir imzalama anahtarı al-.NET](drm-get-content-key-policy-dotnet-how-to.md)

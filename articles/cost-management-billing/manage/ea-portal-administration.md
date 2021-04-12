@@ -3,18 +3,18 @@ title: Azure EA portalı yönetimi
 description: Bu makalede, bir yöneticinin Azure EA portalında gerçekleştirdiği genel görevler açıklanmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/13/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 3ce13a103b605ea7b6066e8b2868fa974f4e64e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 8f643336d50f5ade145454d408599215ed6fd31e
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050575"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259447"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA portalı yönetimi
 
@@ -36,7 +36,9 @@ Yalnızca mevcut Azure kuruluş yöneticileri, diğer kuruluş yöneticilerini o
 
 ### <a name="create-another-enterprise-administrator"></a>Başka bir kuruluş yöneticisi oluşturma
 
-Başka bir kuruluş yöneticisi eklemek için:
+Durumunuza göre aşağıdaki seçeneklerden birini kullanın.
+
+#### <a name="if-youre-already-an-enterprise-administrator"></a>Zaten bir kuruluş yöneticisiyseniz
 
 1. [Azure Enterprise Portal](https://ea.azure.com)'da oturum açın.
 1. **Yönet** > **Kayıt Ayrıntıları**'na gidin.
@@ -44,7 +46,11 @@ Başka bir kuruluş yöneticisi eklemek için:
 
 Kullanıcının e-posta adresine ve iş, okul veya Microsoft hesabı gibi tercih edilen kimlik doğrulama yöntemine sahip olduğunuzdan emin olun.
 
-Kuruluş yöneticisi değilseniz, sizi bir kayda eklemesini istemek için bir kuruluş yöneticisiyle iletişime geçin. Bir kayda eklendikten sonra etkinleştirme e-postası alırsınız.
+#### <a name="if-youre-not-an-enterprise-administrator"></a>Kurumsal Yönetici değilseniz
+
+Kurumsal Yönetici değilseniz, sizi bir kayıt için eklemesini istemek üzere bir kurumsal yöneticiye başvurun. Kurumsal Yönetici, sizi Kurumsal Yönetici olarak eklemek için önceki adımları kullanır. Bir kayda eklendikten sonra etkinleştirme e-postası alırsınız.
+
+#### <a name="if-your-enterprise-administrator-cant-help-you"></a>Kuruluş yöneticiniz size yardımcı olamaz
 
 Kuruluş yöneticiniz size yardımcı olamıyorsa bir [Azure Enterprise Portal destek isteği](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c) oluşturun. Şu bilgileri belirtin:
 

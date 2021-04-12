@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 7d40dcf80d9ec566146bbe46bc2cb3c558584fcd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a03c3987c0cada69f6a7d47d7c1aa7cbf6d5015a
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775774"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258886"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC önbelleği önkoşulları
 
@@ -197,6 +197,8 @@ Bu, adımlara genel bir bakış. Bu adımlar değişebilir, bu nedenle geçerli 
    * Yukarıdaki [izinlerle](#permissions)belirtilen şekilde, önbellek uygulamasına Azure depolama hesabınıza erişim izni verin. Bunu ilk kez bir depolama hedefi oluşturduğunuzda yapabilirsiniz. Önbelleğe gerekli erişim rollerini sağlamak için [depolama hedefleri ekleme](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) bölümündeki yordamı izleyin.
 
      Depolama hesabı sahibi değilseniz, sahibi bu adımı izleyin.
+
+Azure HPC cache [ile](nfs-blob-considerations.md)Azure HPC Cache Ile ADLS-NFS depolama hedeflerini kullanma hakkında daha fazla bilgi edinin.
 
 ## <a name="set-up-azure-cli-access-optional"></a>Azure CLı erişimi ayarlama (isteğe bağlı)
 

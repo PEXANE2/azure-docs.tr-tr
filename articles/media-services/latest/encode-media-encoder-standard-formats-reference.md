@@ -14,18 +14,18 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: eb1b39f268934a71acb05d99bbeecb1b27b27a77
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 2fe8f5d0acb2ab7e2f1c64dde1bedb19b96111e9
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106112120"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492299"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Standart kodlayıcı biçimleri ve codec bileşenleri
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Bu makale, [Standardencoderönayar](/rest/api/media/transforms/createorupdate#standardencoderpreset)ile kullanabileceğiniz en yaygın içe aktarma ve dışa aktarma dosyası biçimlerinin bir listesini içerir. **Standardencoderönayar** kullanarak özel ön ayarlar oluşturma hakkında bilgi için bkz. [özel önayar ile dönüşüm oluşturma](encode-custom-presets-how-to.md).
+Bu makale, [Standardencoderönayar](/rest/api/media/transforms/createorupdate#standardencoderpreset)ile kullanabileceğiniz en yaygın içe aktarma ve dışa aktarma dosyası biçimlerinin bir listesini içerir. **Standardencoderönayar** kullanarak özel ön ayarlar oluşturma hakkında bilgi için bkz. [özel önayar ile dönüşüm oluşturma](transform-custom-presets-how-to.md).
 
 ## <a name="input-containerfile-formats"></a>Giriş kapsayıcısı/dosya biçimleri
 
@@ -64,7 +64,7 @@ veya
 | MPEG-2 (422 Profili ve Yüksek Düzeye kadar; XDCAM, XDCAM HD, XDCAM IMX, CableLabs® ve D10 gibi çeşitler dahil) |422 Profiline kadar |
 | MPEG-1 |Yes |
 | VC-1/WMV9 |Yes |
-| Canopus HQ/HQX |No |
+| Canopus HQ/HQX |Hayır |
 | MPEG-4 Bölüm 2 |Yes |
 | [Theora](https://en.wikipedia.org/wiki/Theora) |Yes |
 | YUV420 sıkıştırılmamış veya mezzanine |Yes |
@@ -88,10 +88,10 @@ veya
 | [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Yes |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Yes |
 | AMR (adaptive multi-rate) |Yes |
-| AES (SMPTE 331M ve 302M, AES3-2003) |No |
-| Dolby® E |No |
-| Dolby® Digital (AC3) |No |
-| Dolby® Digital Plus (E-AC3) |No |
+| AES (SMPTE 331M ve 302M, AES3-2003) |Hayır |
+| Dolby® E |Hayır |
+| Dolby® Digital (AC3) |Hayır |
+| Dolby® Digital Plus (E-AC3) |Hayır |
 
 ## <a name="output-formats-and-codecs"></a>Çıkış biçimleri ve codec bileşenleri
 Aşağıdaki tabloda, dışarı aktarma için desteklenen codec bileşenleri ve dosya biçimleri listelenmektedir.
@@ -103,4 +103,4 @@ Aşağıdaki tabloda, dışarı aktarma için desteklenen codec bileşenleri ve 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Özel önayar olan bir dönüşüm oluşturma](encode-custom-presets-how-to.md)
+[Özel önayar olan bir dönüşüm oluşturma](transform-custom-presets-how-to.md)

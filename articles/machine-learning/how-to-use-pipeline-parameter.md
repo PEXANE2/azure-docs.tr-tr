@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 03/19/2021
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 09eabffb0e01ee6c5ea6b541378773a7d60397a3
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 30ae737a170c337fe6be51521aeb358cdcebd44b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106080624"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107351"
 ---
 # <a name="use-pipeline-parameters-in-the-designer-to-build-versatile-pipelines"></a>Çok yönlü işlem hatları derlemek için tasarımcıda işlem hattı parametrelerini kullanma
 
@@ -95,9 +95,11 @@ Artık bu işlem hattını gönderdiğinizde, bu parametre için yeni değerler 
 
 Artık işlem hattını bir sonraki çalıştırışınızda işlem hattı parametresini kullanarak farklı bir veri kümesi belirtebilirsiniz.
 
-## <a name="attach-module-parameter-to-pipeline-parameter"></a>İşlem hattı parametresine modül parametresi iliştirme 
+## <a name="attach-and-detach-module-parameter-to-pipeline-parameter"></a>Modül parametresini bir işlem hattı parametresine Ekle ve ayır 
 
-Bu bölümde, işlem hattı parametresine modül parametresi eklemeyi öğreneceksiniz.
+Bu bölümde, işlem hattı parametresine modül parametresi eklemeyi ve çıkarmayı öğreneceksiniz.
+
+### <a name="attach-module-parameter-to-pipeline-parameter"></a>İşlem hattı parametresine modül parametresi iliştirme
 
 İşlem hattı çalıştırmasını tetiklerken değeri bir kez değiştirmek istiyorsanız, yinelenen modüllerin aynı modül parametrelerini aynı işlem hattı parametresine ekleyebilirsiniz.
 
@@ -115,10 +117,16 @@ Aşağıdaki örnek yinelenen **Temizleme eksik veri** modülünü içerir. Her 
 
    ![İşlem hattı parametresinin nasıl iliştirigösterdiğini gösteren ekran görüntüsü](media/how-to-use-pipeline-parameter/attach-replace-value-to-pipeline-parameter.png)
 
-**Değiştirme değeri** alanını işlem hattı parametreye başarıyla eklediniz. Modüllerindeki **değiştirme değeri** eylem yapılamayan değildir.
+**Değiştirme değeri** alanını işlem hattı parametreye başarıyla eklediniz. 
+
+
+### <a name="detach-module-parameter-to-pipeline-parameter"></a>Modül parametresini işlem hattı parametresine ayır
+
+İşlem hattı parametresine **değiştirme değeri** iliştirdikten sonra, işlem yapılamayan değildir.
+
+Modül parametresinin yanındaki üç nokta (**...**) işaretine tıklayıp işlem **hattı parametresinden ayır**' ı seçerek modül parametresini işlem hattı parametresine ayırabilirsiniz.
 
  ![İşlem hattı parametresine iliştirdikten sonra eylem yapılamayan gösteren ekran görüntüsü](media/how-to-use-pipeline-parameter/non-actionable-module-parameter.png)
-
 
 ## <a name="update-and-delete-pipeline-parameters"></a>İşlem hattı parametrelerini güncelleştirme ve silme
 
@@ -133,7 +141,7 @@ Modül ardışık düzen parametresini güncelleştirmek için aşağıdaki adı
 
 ### <a name="delete-a-dataset-pipeline-parameter"></a>Veri kümesi ardışık düzen parametresini silme
 
-Bir veri kümesi ardışık düzen parametresini ayırmak için aşağıdaki adımları kullanın:
+Bir veri kümesi ardışık düzen parametresini silmek için aşağıdaki adımları kullanın:
 
 1. Veri kümesi modülünü seçin.
 1. İşlem **hattı parametresi olarak ayarla** seçeneğinin işaretini kaldırın.
@@ -147,22 +155,14 @@ Modül ardışık düzen parametresini silmek için aşağıdaki adımları kull
 
 1. İşlem hattı parametresinin yanındaki üç nokta (**...**) simgesini seçin.
 
-    Bu görünüm, ardışık düzen parametresinin iliştirildiği modülleri gösterir. Bir işlem hattı parametresini silmek için önce herhangi bir modül parametrelerinden ayırmanız gerekir.
+    Bu görünüm, ardışık düzen parametresinin iliştirildiği modülleri gösterir.
 
-    ![Bir modüle uygulanan geçerli işlem hattı parametresini gösteren ekran görüntüsü](media/how-to-use-pipeline-parameter/current-pipeline-parameter.png)
+    ![Bir modüle uygulanan geçerli işlem hattı parametresini gösteren ekran görüntüsü](media/how-to-use-pipeline-parameter/delete-pipeline-parameter2.png)
 
-1. Tuvalde, işlem hattı parametresinin hala bağlı olduğu bir modül seçin.
-1. Sağdaki modül özellikleri bölmesinde, işlem hattı parametresinin eklendiği alanı bulun.
-1. Eklenmiş alanın üzerine Mouse. Ardından görüntülenen üç nokta (**...**) simgesini seçin.
-1. İşlem **hattı parametresinden ayır 'ı** seçin
-
-    ![İşlem hattı parametrelerinden ayırmayı gösteren ekran görüntüsü](media/how-to-use-pipeline-parameter/detach-from-pipeline-parameter.png)
-
-1. Tüm alanlardan ardışık düzen parametresini ayırana kadar önceki adımları yineleyin.
-1. İşlem hattı parametresinin yanındaki üç nokta (**...**) simgesini seçin.
 1. Ardışık düzen parametresini silmek için **Parametreyi sil** ' i seçin.
 
-    ![İşlem hattı parametrelerini silmeyi gösteren ekran görüntüsü](media/how-to-use-pipeline-parameter/delete-pipeline-parameter.png)
+    > [!NOTE]
+    > Bir işlem hattı parametresinin silinmesi, tüm ekli modül parametrelerinin ayrılmasına ve ayrılan modül parametrelerinin değeri geçerli ardışık düzen parametre değerini tutacaktır.     
 
 ## <a name="trigger-a-pipeline-run-with-pipeline-parameters"></a>İşlem hattı parametreleriyle işlem hattı çalıştırmasını tetikleme 
 

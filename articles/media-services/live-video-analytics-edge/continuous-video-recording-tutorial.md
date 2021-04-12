@@ -3,12 +3,12 @@ title: Bulut öğreticiden buluta sürekli video kaydı ve kayıttan yürütme �
 description: Bu öğreticide, Azure IoT Edge üzerinde Azure Live video analizi 'ni kullanarak buluta sürekli olarak video kaydetme ve Azure Media Services kullanarak bu videonun herhangi bir bölümünü akışa alma hakkında bilgi edineceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 2dde1c9d917881d7a16dbc853e4af416dffe5d7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d534fb174afa700671b6a3991a6aafa6357eb167
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101702428"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280352"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta sürekli video kaydetme ve buluttan kayıttan yürütme
 
@@ -389,7 +389,7 @@ Medya grafiği tarafından oluşturulan Media Services varlığı, Azure portal 
 1. Açılan sihirbazda, varsayılan seçenekleri kabul edin ve **Ekle**' yi seçin. Daha fazla bilgi için bkz. [video kayıttan yürütme](video-playback-concept.md).
 
     > [!TIP]
-    > [Akış uç noktanızın çalıştığından](../latest/streaming-endpoint-concept.md)emin olun.
+    > [Akış uç noktanızın çalıştığından](../latest/stream-streaming-endpoint-concept.md)emin olun.
 1. Player Videoyu yüklemesi gerekir. Görüntülemek için **Yürüt** ' ü seçin.
 
 > [!NOTE]

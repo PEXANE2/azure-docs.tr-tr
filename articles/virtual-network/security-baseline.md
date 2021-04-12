@@ -4,21 +4,22 @@ description: Sanal ağ güvenlik temeli, Azure Güvenlik kıyaslaması 'nda beli
 author: msmbaldwin
 ms.service: virtual-network
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 04/08/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c27f00ac7952ea6d6282bcf9f392242112595d99
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 433f20de4d150aadb48ead685e981c60579f2730
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968977"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285539"
 ---
 # <a name="azure-security-baseline-for-virtual-network"></a>Sanal ağ için Azure Güvenlik temeli
 
-Bu güvenlik temeli [Azure Güvenlik kıyaslama sürümü 1,0](../security/benchmarks/overview-v1.md) ' dan Azure sanal ağı 'na kılavuzluk uygular. Azure Güvenlik Karşılaştırması, Azure üzerindeki bulut çözümlerinizin güvenliğini sağlamaya yönelik öneriler sunar. İçerik, Azure Güvenlik kıyaslaması tarafından tanımlanan **güvenlik denetimlerine** ve Azure sanal ağı için geçerli olan ilgili kılavuza göre gruplandırılır. **Denetimler** Azure sanal ağı için geçerli değildir veya Microsoft 'un sorumluluğunu Microsoft 'un dışında tutulur.
+Bu güvenlik temeli [Azure Güvenlik kıyaslama sürümü 1,0](../security/benchmarks/overview-v1.md) ' dan Azure sanal ağı 'na kılavuzluk uygular. Azure Güvenlik Karşılaştırması, Azure üzerindeki bulut çözümlerinizin güvenliğini sağlamaya yönelik öneriler sunar. İçerik, Azure Güvenlik kıyaslaması tarafından tanımlanan **güvenlik denetimlerine** ve Azure sanal ağı için geçerli olan ilgili kılavuza göre gruplandırılır. 
 
-Azure sanal ağının Azure Güvenlik kıyaslaması ile tamamen nasıl eşlendiğini görmek için, [tam Azure sanal ağ güvenlik temeli eşleme dosyasına](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)bakın.
+> [!NOTE]
+> **Denetimler** , sanal ağ için geçerli değildir veya Microsoft 'un sorumluluğunu Microsoft 'un dışında tutulur. Sanal ağın Azure Güvenlik kıyaslaması ile tamamen nasıl eşlendiğini görmek için, **[tam sanal ağ güvenlik temeli eşleme dosyasına](https://github.com/MicrosoftDocs/SecurityBenchmarks/raw/master/Azure%20Offer%20Security%20Baselines/1.1/virtual-network-security-baseline-v1.1.xlsx)** bakın.
 
 ## <a name="network-security"></a>Ağ Güvenliği
 
@@ -165,9 +166,9 @@ Azure PowerShell veya Azure CLı ' yi seçerek etiketlere göre kaynakları aray
 
 **Rehberlik**: kaynak yapılandırmasını izlemek ve sanal ağınızdaki değişiklikleri algılamak Için Azure etkinlik günlüğü 'nü kullanın. Kritik kaynaklardaki değişiklikler gerçekleşirken tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
 
-- [Azure Izleyici 'de uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -184,9 +185,9 @@ Azure PowerShell veya Azure CLı ' yi seçerek etiketlere göre kaynakları aray
 Azure Izleyici 'de analiz sorgulamak ve gerçekleştirmek için Log Analytics çalışma alanlarını kullanın ve uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın.
 Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinleştirebilir ve bu verileri ayarlayabilirsiniz. 
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
@@ -198,9 +199,9 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 **Rehberlik**: olay kaynağı, tarih, Kullanıcı, zaman damgası, kaynak adresleri, hedef adresler ve diğer yararlı öğeleri içeren denetim ve etkinlik günlüklerinize erişim Için Azure izleyicisini etkinleştirin.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
 
 **Sorumluluk**: Müşteri
 
@@ -210,9 +211,9 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 **Kılavuz**: Azure izleyici 'de, Log Analytics çalışma alanı saklama dönemini kuruluşunuzun uyumluluk düzenlemelerine göre ayarlayın. Azure depolama hesaplarını, güvenlik günlüğü depolama saklama 'nin uzun süreli/arşiv depolaması için kullanın.
 
-- [Log Analytics veri saklama süresini değiştirme](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics veri saklama süresini değiştirme](https://docs.microsoft.com/azure/azure-monitor/logs/manage-cost-storage#change-the-data-retention-period)
 
-- [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Azure depolama hesabı günlükleri için bekletme ilkesini yapılandırma](https://docs.microsoft.com/azure/storage/common/manage-storage-analytics-logs#configure-logging)
 
 **Sorumluluk**: Müşteri
 
@@ -224,9 +225,9 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinleştirebilir ve bu verileri ayarlayabilirsiniz. 
 
-- [Log Analytics çalışma alanını anlayın](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Log Analytics çalışma alanını anlayın](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](/azure/azure-monitor/log-query/get-started-queries)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/get-started-queries.md)
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
@@ -244,7 +245,7 @@ Alternatif olarak, uyarı için Azure Sentinel 'e veya bir üçüncü taraf SıE
 
 - [Güvenlik Merkezi 'nde uyarıları yönetme](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics günlük verilerinde uyarı alma](/azure/azure-monitor/learn/tutorial-response)
+- [Log Analytics günlük verilerinde uyarı alma](../azure-monitor/alerts/tutorial-response.md)
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
@@ -336,7 +337,7 @@ Güvenlik Merkezi risk algılama, Azure Izleyici 'ye uyarı verebilir ve eylem g
 
 - [Azure Etkinlik Günlüklerini Azure İzleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) 
 
-- [Özel uyarı ve bildirim için eylem gruplarını yapılandırma](/azure/azure-monitor/platform/action-groups)
+- [Özel uyarı ve bildirim için eylem gruplarını yapılandırma](../azure-monitor/alerts/action-groups.md)
 
 **Sorumluluk**: Müşteri
 
@@ -442,7 +443,7 @@ Sahip, katkıda bulunan veya ağ katılımcısı gibi yerleşik roller ' i seçi
 
 - [Ağ güvenlik grubu için tanılama günlüğü](virtual-network-nsg-manage-log.md)
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -760,7 +761,7 @@ Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için K
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: olay Puanlama ve öncelik belirlemesi prosedürü oluşturma
 
-**Rehberlik**: Güvenlik Merkezi, ilk olarak hangi uyarıların araştırılması gerektiğini önceliklendirmenize yardımcı olmak için her bir uyarıya önem derecesi atar. Önem derecesi, uyarı veren etkinliğin arkasında kötü amaçlı bir amaç olduğunu ve uyarıyı vermek için kullanılan analitik düzeyini, ne kadar güvenli bir güvenlik merkezinin olduğunu temel alır.
+**Rehberlik**: Güvenlik Merkezi, ilk olarak hangi uyarıların araştırılması gerektiğini önceliklendirmenize yardımcı olmak için her bir uyarıya önem derecesi atar. Önem derecesi, güvenlik merkezi 'nin uyarıyı vermek için kullanılan bulma veya analizte ne kadar önemli olduğunu ve uyarıya yönelik etkinliğin arkasında kötü amaçlı bir amaç olduğunu bilmenin yanı sıra güven düzeyini temel alır.
 
 Etiketleri kullanarak abonelikleri (örneğin, üretim veya üretim dışı) açık bir şekilde işaretleyin ve Azure kaynaklarını net bir şekilde tanımlamak ve kategorilere ayırmak için özellikle de hassas verileri işleyen bir adlandırma sistemi oluşturun.  Azure kaynaklarının önem düzeyine ve olayın oluştuğu ortama bağlı olarak uyarıların çözümünde önceliği belirlemek sizin sorumluluğunuzdadır.
 

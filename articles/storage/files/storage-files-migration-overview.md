@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 27056f39885949d52c9fcc0d1472033cfc8f9aa0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c2de0c1b024d093bd0276a852d9b97ba3320f4b
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554879"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286343"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure dosya paylaşımlarına geçirme
 
@@ -83,7 +83,7 @@ Bağlantı olmadan bir senaryoda, henüz yayımlanmış bir geçiş kılavuzu yo
 | | Araç birleşimi:| Araç birleşimi: |
 | Windows Server 2012 R2 ve üzeri | <ul><li>[Azure Dosya Eşitleme](storage-sync-files-deployment-guide.md)</li><li>[Azure Dosya Eşitleme ve Azure veri kutusu](storage-sync-offline-data-transfer.md)</li></ul> | <ul><li>RoboCopy aracılığıyla bağlı bir Azure dosya paylaşımında</li><li>Azure Dosya Eşitleme aracılığıyla</li></ul> |
 | Windows Server 2012 ve öncesi | <ul><li>Veri kutusu aracılığıyla ve son sunucu işletim sistemine Azure Dosya Eşitleme</li><li>Depolama geçiş hizmeti 'ni Azure Dosya Eşitleme ile son sunucuya kullanarak karşıya yükleyin</li></ul> | <ul><li>Azure Dosya Eşitleme ile son sunucuya depolama geçiş hizmeti üzerinden</li><li>RoboCopy aracılığıyla bağlı bir Azure dosya paylaşımında</li></ul> |
-| Ağa bağlı depolama (NAS) | <ul><li>[Azure Dosya Eşitleme karşıya yükleme yoluyla](storage-files-migration-nas-hybrid.md)</li><li>[Veri kutusu + Azure Dosya Eşitleme aracılığıyla](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>RoboCopy aracılığıyla bağlı bir Azure dosya paylaşımında</li></ul> |
+| Ağa bağlı depolama (NAS) | <ul><li>[Azure Dosya Eşitleme karşıya yükleme yoluyla](storage-files-migration-nas-hybrid.md)</li><li>[Veri kutusu + Azure Dosya Eşitleme aracılığıyla](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>[Veri kutusu aracılığıyla](storage-files-migration-nas-cloud-databox.md)</li><li>RoboCopy aracılığıyla bağlı bir Azure dosya paylaşımında</li></ul> |
 | Linux/Samba | <ul><li>[Azure Dosya Eşitleme ve RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy aracılığıyla bağlı bir Azure dosya paylaşımında</li></ul> |
 | Microsoft Azure StorSimple Cloud gereç 8100 veya StorSimple Cloud Appliance 8600 | <ul><li>[Adanmış veri geçişi bulut hizmeti aracılığıyla](storage-files-migration-storsimple-8000.md)</li></ul> | |
 | StorSimple Cloud Appliance 1200 | <ul><li>[Azure Dosya Eşitleme aracılığıyla](storage-files-migration-storsimple-1200.md)</li></ul> | |

@@ -3,12 +3,12 @@ title: Video oynatma-Azure
 description: Yer tutucu
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 2020d64538b2fcc846ab9a146e2fc95325abd26b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: be42b39c167798e4e288c77dbd48a8734eb71fdf
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063381"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278601"
 ---
 # <a name="video-playback"></a>Video kayıttan yürütme 
 
@@ -24,7 +24,7 @@ Azure Media Services bir [varlığa](terminology.md#asset)video kaydetmek için 
 
 ## <a name="streaming-endpoint"></a>Akış uç noktası 
 
-Azure Media Services, HTTP Canlı Akışı (HLS) ve MPEG-DASH gibi sektör standardı, HTTP tabanlı medya akışı protokollerini kullanarak varlığı video oynatıcılara [akıtmak](terminology.md#streaming) için kullanabilirsiniz. Kaydedilen içerikten akış biçimlerine bu medya dönüştürme işlemi, Azure Media Service hesabınızda sağlamanız gereken bir kaynak olan bir [akış uç noktası](../latest/streaming-endpoint-concept.md)tarafından işlenir.
+Azure Media Services, HTTP Canlı Akışı (HLS) ve MPEG-DASH gibi sektör standardı, HTTP tabanlı medya akışı protokollerini kullanarak varlığı video oynatıcılara [akıtmak](terminology.md#streaming) için kullanabilirsiniz. Kaydedilen içerikten akış biçimlerine bu medya dönüştürme işlemi, Azure Media Service hesabınızda sağlamanız gereken bir kaynak olan bir [akış uç noktası](../latest/stream-streaming-endpoint-concept.md)tarafından işlenir.
 
 ## <a name="streaming-policy"></a>Akış ilkesi 
 
@@ -34,11 +34,11 @@ Azure Media Services, [içeriğinizi Media Services dinamik şifreleme Ile koruy
 * **Gelişmiş Şifreleme Standardı (AES-128) – kullanın** ve yalnızca kimliği doğrulanmış görüntüleyicilere videonun şifresini çözmek için anahtar teslim etmek üzere bir yöntem uygulayın.
 * **Dijital Rights Management (DRM) sistemlerini kullanarak** , bu ilkeleri zorlayan cihazlara videonun kullanımını, değiştirilmesini ve teslimini denetlemek için kullanın.
 
-İçerik koruması elde etmek için medya hizmeti hesabınızda bir [akış ilkesi](../latest/streaming-policy-concept.md) tanımlayabilir ve oluşturabilir ve bu ilkeyi tüm varlıkları akışa almak için kullanabilirsiniz (tüm akışlar güvenlik için aynı gereksinimlere sahip olduğu varsayılırsa). Önceden tanımlanmış ilkelerden herhangi birini de kullanabilirsiniz (örneğin, Predefined_ClearStreamingOnly).
+İçerik koruması elde etmek için medya hizmeti hesabınızda bir [akış ilkesi](../latest/stream-streaming-policy-concept.md) tanımlayabilir ve oluşturabilir ve bu ilkeyi tüm varlıkları akışa almak için kullanabilirsiniz (tüm akışlar güvenlik için aynı gereksinimlere sahip olduğu varsayılırsa). Önceden tanımlanmış ilkelerden herhangi birini de kullanabilirsiniz (örneğin, Predefined_ClearStreamingOnly).
 
 ## <a name="streaming-locator"></a>Akış Bulucu  
 
-Medya hizmeti hesabınızda bir akış uç noktası başlatıldıktan ve akış ilkesi tanımlandığında, HLS veya DASH protokolleri aracılığıyla bir varlıktan kaydedilmiş medyayı akışa devam edebilirsiniz. Web-oyuncular ve mobil uygulamalar, bu HLS veya DASH akışına işaret eden bir URL 'ye gerek duyar. Bu URL 'YI [akış bulucuyu](../latest/streaming-locators-concept.md)kullanarak oluşturabilirsiniz. Bu makalede açıklandığı gibi ve [bir akış bulucu ve derleme URL 'Leri oluşturma](../latest/create-streaming-locator-build-url.md) örneğinde gösterildiği gibi, AKıŞ URL 'si akış uç noktası, akış ilkesi ve akış bulucudan oluşur.
+Medya hizmeti hesabınızda bir akış uç noktası başlatıldıktan ve akış ilkesi tanımlandığında, HLS veya DASH protokolleri aracılığıyla bir varlıktan kaydedilmiş medyayı akışa devam edebilirsiniz. Web-oyuncular ve mobil uygulamalar, bu HLS veya DASH akışına işaret eden bir URL 'ye gerek duyar. Bu URL 'YI [akış bulucuyu](../latest/stream-streaming-locators-concept.md)kullanarak oluşturabilirsiniz. Bu makalede açıklandığı gibi ve [bir akış bulucu ve derleme URL 'Leri oluşturma](../latest/create-streaming-locator-build-url.md) örneğinde gösterildiği gibi, AKıŞ URL 'si akış uç noktası, akış ilkesi ve akış bulucudan oluşur.
 
 ## <a name="content-recorded-using-file-sink"></a>Dosya havuzu kullanılarak kaydedilen içerik  
 
