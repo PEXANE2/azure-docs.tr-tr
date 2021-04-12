@@ -114,7 +114,7 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: Kavramlar
       items:
-        - name: Terminoloji
+        - name: Önemli terimler
           href: custom-translator/terminology.md
         - name: Metin çevirisini özelleştirme ve iyileştirme
           href: customization.md

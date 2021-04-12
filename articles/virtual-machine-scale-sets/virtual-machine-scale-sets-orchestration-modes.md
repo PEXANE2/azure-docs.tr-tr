@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 316f97480dfe7ee6481ef88faf265051a92024da
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3d9d9449e2a971a4247e507e0c022c8c5fb9956c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937269"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075415"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Önizleme: Azure 'da sanal makine ölçek kümeleri için düzenleme modları 
 
@@ -306,7 +306,7 @@ Esnek düzenleme modundaki bir ölçek kümesine en fazla 1000 VM ekleyebilirsin
 
 **Esnek düzenleme ile kullanılabilirlik, kullanılabilirlik kümeleri veya Tekdüzen düzenleme ile nasıl karşılaştırılır?**
 
-|   | Esnek düzenleme  | Tekdüzen düzenleme  | Kullanılabilirlik Kümeleri  |
+| Kullanılabilirlik özniteliği  | Esnek düzenleme  | Tekdüzen düzenleme  | Kullanılabilirlik Kümeleri  |
 |-|-|-|-|
 | Kullanılabilirlik alanları arasında dağıtma  | Hayır  | Yes  | Hayır  |
 | Bölge içindeki hata etki alanı kullanılabilirliği garantisi  | Evet, en fazla 1000 örnek, bölgedeki en fazla 3 hata etki alanına yayılabilecek. En fazla hata etki alanı sayısı bölgeye göre değişir  | Evet, en fazla 100 örnek  | Evet, en fazla 200 örnek  |

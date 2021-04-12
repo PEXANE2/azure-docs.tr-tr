@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/07/2021
+ms.date: 04/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 82216abd13b6128be68e22a4ce2a0f6de9a6ce2f
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: f104b98c870fe6eee1d32fe656c0bba416cf3700
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227557"
+ms.locfileid: "107259753"
 ---
 # <a name="blob-versioning"></a>Blob sürümü oluşturma
 
@@ -43,7 +43,7 @@ Aşağıdaki diyagramda, yazma işlemlerinde sürümlerin nasıl oluşturulduğu
 
 :::image type="content" source="media/versioning-overview/blob-versioning-diagram.png" alt-text="Blob sürümlendirme 'nin nasıl çalıştığını gösteren diyagram":::
 
-Sürüm oluşturma etkinken bir blobu sildiğinizde, Blobun geçerli sürümü silinir. Blob 'un önceki tüm sürümleri devam ederse.
+Sürüm oluşturma etkinken bir blobu sildiğinizde, blob 'un geçerli sürümü önceki bir sürüm olur ve artık geçerli bir sürüm değildir. Blob 'un önceki tüm sürümleri devam ederse.
 
 Blob sürümleri sabittir. Mevcut bir blob sürümünün içeriğini veya meta verilerini değiştiremezsiniz.
 
@@ -133,7 +133,7 @@ Aşağıdaki diyagramda, sürüm oluşturma işlemi devre dışı bırakıldıkt
 
 ## <a name="blob-versioning-and-soft-delete"></a>Blob sürümü oluşturma ve geçici silme
 
-Microsoft, en iyi veri koruması için depolama hesaplarınız için hem sürüm oluşturma hem de blob geçici silmeyi etkinleştirmeyi önerir. Geçici silme, Blobları, sürümleri ve anlık görüntüleri yanlışlıkla silinmeye karşı korur. Blob geçici silme hakkında daha fazla bilgi için bkz. [Azure depolama Blobları Için geçici silme](./soft-delete-blob-overview.md).
+Microsoft, en iyi veri koruması için depolama hesaplarınız için hem sürüm oluşturma hem de blob geçici silmeyi etkinleştirmeyi önerir. Blob geçici silme hakkında daha fazla bilgi için bkz. [Azure depolama Blobları Için geçici silme](./soft-delete-blob-overview.md).
 
 ### <a name="overwriting-a-blob"></a>Bir Blobun üzerine yazma
 
@@ -141,7 +141,7 @@ Blob sürümü oluşturma ve BLOB geçici silme her ikisi de bir depolama hesab�
 
 ### <a name="deleting-a-blob-or-version"></a>Blob veya sürümü silme
 
-Depolama hesabında hem sürüm oluşturma hem de geçici silme etkinse, bir blobu sildiğinizde, blob 'un geçerli sürümü önceki bir sürüm olur ve geçerli sürüm silinir. Yeni sürüm oluşturulmaz ve geçici olarak silinen anlık görüntü oluşturulmaz. Geçici silme bekletme süresi, silinen blob için geçerli değildir.
+Bir depolama hesabı için hem sürüm oluşturma hem de geçici silme etkinleştirildiyse, bir blobu sildiğinizde, blob 'un geçerli sürümü önceki bir sürüm haline gelir. Yeni sürüm oluşturulmaz ve geçici olarak silinen anlık görüntü oluşturulmaz. Geçici silme bekletme süresi, silinen blob için geçerli değildir.
 
 Geçici silme, blob sürümlerini silmek için ek koruma sağlar. Blob 'un önceki bir sürümünü sildiğinizde, bu sürüm geçici olarak silinir. Geçici olarak silinen sürüm, geçici silme bekletme süresi sona erdiğinde ve bu noktada kalıcı olarak silindiği sürece korunur.
 

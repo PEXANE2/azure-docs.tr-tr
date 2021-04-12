@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 6f8f0d8a8898718ce8bfeb88cb1fb4ca2480b44a
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 876d47e0fbd199eb52c2de9a630b0bdf0dce21b3
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106125695"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106283117"
 ---
 <!--Feature availability in region-->
 ## <a name="canada"></a>Kanada
@@ -21,5 +21,5 @@ ms.locfileid: "106125695"
 | [Audioanaliz Zerönayar](../analyze-video-audio-files-concept.md) |![Audioanalbir ön ayar Kanada Orta genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg)  | ![Audioanalbir ön ayar Kanada Doğu genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) |
 | [Standardencoderönayar](../encode-concept.md) |![Standardencoderönayar Kanada Orta genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg)  | ![Standardencoderönayar Kanada Doğu genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) |
 | [Canlı olaylar](../stream-live-streaming-concept.md) |![Genel kullanılabilirlik Kanada Orta LiveEvents](../media/azure-clouds-regions/ga.svg)  | ![Genel kullanılabilirlik Kanada Doğu LiveEvents](../media/azure-clouds-regions/ga.svg) |
-| [Streammingendpoints](../streaming-endpoint-concept.md) |![Streammingendpoints Kanada Orta genel kullanım](../media/azure-clouds-regions/ga.svg) | ![Streammingendpoints Kanada Doğu genel kullanım](../media/azure-clouds-regions/ga.svg)  |
+| [Streammingendpoints](../stream-streaming-endpoint-concept.md) |![Streammingendpoints Kanada Orta genel kullanım](../media/azure-clouds-regions/ga.svg) | ![Streammingendpoints Kanada Doğu genel kullanım](../media/azure-clouds-regions/ga.svg)  |
 | [LiveTranscription](../live-event-live-transcription-how-to.md) |![LiveTranscription Kanada Orta genel kullanım](../media/azure-clouds-regions/ga.svg) |![LiveTranscription Kanada Doğu genel kullanım](../media/azure-clouds-regions/ga.svg) |

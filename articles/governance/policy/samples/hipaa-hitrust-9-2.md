@@ -1,15 +1,15 @@
 ---
 title: HIPAA ZRUST 9,2 için mevzuat uyumluluk ayrıntıları
 description: HIPAA ZRUST 9,2 mevzuatı uyumluluğu yerleşik girişiminin ayrıntıları. Her denetim, değerlendirmede yardımcı olan bir veya daha fazla Azure Ilke tanımına eşlenir.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 1da64ad851e1f115d7c2c5ca14b88c9e83c3acbf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: db8f3c887a6ed7beb2febb6910bec32e7b0ea218
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034512"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096402"
 ---
 # <a name="details-of-the-hipaa-hitrust-92-regulatory-compliance-built-in-initiative"></a>HIPAA ZRUST 9,2 mevzuatı uyumluluğu yerleşik girişiminin ayrıntıları
 

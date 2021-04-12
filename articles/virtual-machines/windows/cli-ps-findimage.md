@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 03/17/2021
 ms.author: cynthn
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 34fd6720b93a1462836b51856d73573a86809367
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 282eaa6e966ff458dfb1dfdd32ef6ec1f2cdc151
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022832"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443755"
 ---
 # <a name="find-and-use-azure-marketplace-vm-images-with-azure-powershell"></a>Azure PowerShell ile Azure Market VM görüntülerini bulma ve kullanma
 
@@ -66,7 +66,7 @@ Bir görüntü listesini daraltmak için PowerShell kullanabilirsiniz. Değişke
     Ayrıca, `latest` belirli bir eski sürümü değil en son görüntüyü kullanmak isterseniz de kullanabilirsiniz.
 
 
-Artık seçili yayımcı, teklif, SKU ve sürümü bir URN (:) ile ayrılmış değerler) ile birleştirebilirsiniz. `--image` [New-azvm](/powershell/module/az.compute/new-azvm) cmdlet 'INI kullanarak bir VM oluşturduğunuzda bu urn parametresini parametresiyle geçirin. `latest`Görüntünün en son sürümünü almak IÇIN urn 'deki sürüm numarasını da değiştirebilirsiniz.
+Artık seçili yayımcı, teklif, SKU ve sürümü bir URN (:) ile ayrılmış değerler) ile birleştirebilirsiniz. `-Image` [New-azvm](/powershell/module/az.compute/new-azvm) cmdlet 'INI kullanarak bir VM oluşturduğunuzda bu urn parametresini parametresiyle geçirin. `latest`Görüntünün en son sürümünü almak IÇIN urn 'deki sürüm numarasını da değiştirebilirsiniz.
 
 Bir sanal makineyi Kaynak Yöneticisi şablonuyla dağıtırsanız, Özellikler içinde görüntü parametrelerini ayrı olarak ayarlarsınız `imageReference` . Bkz. [şablon başvurusu](/azure/templates/microsoft.compute/virtualmachines).
 

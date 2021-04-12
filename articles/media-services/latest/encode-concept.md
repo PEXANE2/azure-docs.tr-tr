@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 225f1d311739bdafbe39971a2b4ac74917e770e9
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: cd37175bd85e31ddc18c8267cdf01f7dc6249a0b
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279502"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491925"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Video ve ses Media Services kodlama
 
@@ -45,7 +45,7 @@ Media Services v3 ile kodlamak için bir [dönüşüm](/rest/api/media/transform
 
 Media Services ile kodlarken, kodlayıcıların giriş medya dosyalarının nasıl işleneceğini söylemek için önayarları kullanın. V3 Media Services, dosyalarınızı kodlamak için standart kodlayıcı kullanırsınız. Örneğin, video çözünürlüğünü ve/veya kodlanmış içerikte istediğiniz ses kanalı sayısını belirtebilirsiniz.
 
-Sektörde en iyi uygulamaları temel alan önerilen yerleşik ön ayarlardan biriyle hızlı bir şekilde çalışmaya başlayabilir veya belirli bir senaryoyu veya cihaz gereksinimlerinizi hedeflemek için özel bir önayar oluşturmayı tercih edebilirsiniz. Daha fazla bilgi için bkz. [özel dönüşümle kodlama](encode-custom-presets-how-to.md).
+Sektörde en iyi uygulamaları temel alan önerilen yerleşik ön ayarlardan biriyle hızlı bir şekilde çalışmaya başlayabilir veya belirli bir senaryoyu veya cihaz gereksinimlerinizi hedeflemek için özel bir önayar oluşturmayı tercih edebilirsiniz. Daha fazla bilgi için bkz. [özel dönüşümle kodlama](transform-custom-presets-how-to.md).
 
 2019 Ocak 'tan başlayarak, MP4 dosyaları üretmek için standart kodlayıcıyla kodlarken, yeni bir. MPI dosyası oluşturulur ve çıkış varlığına eklenir. Bu MPı dosyası, [dinamik paketleme](encode-dynamic-packaging-concept.md) ve akış senaryoları için performansı iyileştirmeye yöneliktir.
 
@@ -136,9 +136,9 @@ Media Services, özel kodlama ihtiyaçlarınızı ve gereksinimlerinizi karşıl
 
 #### <a name="examples"></a>Örnekler
 
-- [.NET ile önayarları özelleştirme](encode-custom-presets-how-to.md)
-- [CLı ile önayarları özelleştirme](encode-custom-preset-cli-how-to.md)
-- [Önayarları REST ile özelleştirme](encode-custom-preset-rest-how-to.md)
+- [.NET ile önayarları özelleştirme](transform-custom-presets-how-to.md)
+- [CLı ile önayarları özelleştirme](transform-custom-preset-cli-how-to.md)
+- [Önayarları REST ile özelleştirme](transform-custom-preset-rest-how-to.md)
 
 
 ## <a name="preset-schema"></a>Önceden ayarlanmış şema
@@ -165,4 +165,4 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 * [Media Services kullanarak karşıya yükleme, kodlama ve akış](stream-files-tutorial-with-api.md).
 * [Yerleşik ön ayarları kullanarak BIR https URL 'Sinden kodlama](job-input-from-http-how-to.md).
 * [Yerleşik ön ayarları kullanarak yerel bir dosya kodlayın](job-input-from-local-file-how-to.md).
-* [Belirli bir senaryoyu veya cihaz gereksinimlerinizi hedeflemek için özel bir önayar oluşturun](encode-custom-presets-how-to.md).
+* [Belirli bir senaryoyu veya cihaz gereksinimlerinizi hedeflemek için özel bir önayar oluşturun](transform-custom-presets-how-to.md).

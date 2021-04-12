@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Storage 1. için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Data Lake Storage 1. için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: sample
 author: normesta
 ms.author: normesta
 ms.service: data-lake-store
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 9037b28f348ec885faf3e246e9c410a46974665f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fd51c80f811b92e03a433b5ab451b875254d3266
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034665"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095258"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. için Azure Ilke mevzuat uyumluluk denetimleri
 

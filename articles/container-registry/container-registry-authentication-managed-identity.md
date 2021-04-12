@@ -3,16 +3,16 @@ title: Yönetilen kimlikle kimlik doğrulaması
 description: Kullanıcı tarafından atanan veya sistem tarafından atanan yönetilen bir Azure kimliği kullanarak özel kapsayıcı kayıt defterinizde görüntülere erişim sağlama.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e6c0d21f7bdefa94241655225589a52c02110f70
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2ab27e8548882b5bd296dc45e4bb74d3d6ba357b
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041476"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285493"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure Container Registry 'de kimlik doğrulamak için Azure yönetilen kimliği kullanma 
 
-Kayıt defteri kimlik bilgilerini sağlamaya veya yönetmeye gerek kalmadan, başka bir Azure kaynağından Azure Container Registry 'de kimlik doğrulaması yapmak için [Azure kaynakları için yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md) kullanın. Örneğin, ortak bir kayıt defteri kullandığınız kadar kolay bir şekilde, kapsayıcı Kayıt defterinizden kapsayıcı görüntülerine erişmek için bir Linux sanal makinesinde Kullanıcı tarafından atanan veya sistem tarafından atanan bir yönetilen kimlik ayarlayın.
+Kayıt defteri kimlik bilgilerini sağlamaya veya yönetmeye gerek kalmadan, başka bir Azure kaynağından Azure Container Registry 'de kimlik doğrulaması yapmak için [Azure kaynakları için yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md) kullanın. Örneğin, ortak bir kayıt defteri kullandığınız kadar kolay bir şekilde, kapsayıcı Kayıt defterinizden kapsayıcı görüntülerine erişmek için bir Linux sanal makinesinde Kullanıcı tarafından atanan veya sistem tarafından atanan bir yönetilen kimlik ayarlayın. Ya da, bir Azure Kubernetes hizmet kümesini, Pod dağıtımı için Azure Container Registry kapsayıcı görüntülerini çekmek üzere [yönetilen kimliğini](../aks/use-managed-identity.md) kullanacak şekilde ayarlayın.
 
 Bu makalede, Yönetilen kimlikler ve nasıl yapılır hakkında daha fazla bilgi edinebilirsiniz:
 
@@ -27,23 +27,14 @@ Bir kapsayıcı kayıt defteri ayarlamak ve buna bir kapsayıcı görüntüsü g
 
 ## <a name="why-use-a-managed-identity"></a>Yönetilen kimlik neden kullanılmalıdır?
 
-Azure kaynakları için yönetilen bir kimlik, Azure hizmetlerini Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen kimlik sağlar. Yönetilen bir kimlikle, sanal makineler de dahil olmak üzere [belirli Azure kaynaklarını](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)yapılandırabilirsiniz. Daha sonra, kodu veya betiklerdeki kimlik bilgilerini geçirmeden diğer Azure kaynaklarına erişmek için bu kimliği kullanın.
+Azure kaynakları için yönetilen kimlikler özelliği hakkında bilgi sahibi değilseniz bu [genel bakışı](../active-directory/managed-identities-azure-resources/overview.md) inceleyin.
 
-Yönetilen kimlikler iki türtür:
+Seçili Azure kaynaklarını yönetilen bir kimlikle ayarladıktan sonra, herhangi bir güvenlik sorumlusu gibi, kimliğe başka bir kaynağa istediğiniz erişimi verin. Örneğin, Azure 'da özel bir kayıt defterine çekme, gönderme ve çekme veya diğer izinleri içeren bir yönetilen kimlik rolü atayın. (Kayıt defteri rollerinin tüm listesi için bkz. [Azure Container Registry roller ve izinler](container-registry-roles.md).) Bir veya daha fazla kaynağa bir kimlik erişimi verebilirsiniz.
 
-* Birden fazla kaynağa atayabileceğiniz ve istediğiniz sürece devam eden *Kullanıcı tarafından atanan kimlikler*. Kullanıcı tarafından atanan kimlikler Şu anda önizlemededir.
+Daha sonra, kodunuzda kimlik bilgileri olmadan [Azure AD kimlik doğrulamasını destekleyen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)herhangi bir hizmette kimlik doğrulaması yapmak için bu kimliği kullanın. Senaryonuza bağlı olarak, yönetilen kimliği kullanarak nasıl kimlik doğrulaması yapılacağını seçin. Bir sanal makineden bir Azure Container Registry 'ye erişmek üzere kimliği kullanmak için Azure Resource Manager ile kimlik doğrulaması yapabilirsiniz. 
 
-* Tek bir sanal makine gibi belirli bir kaynak için benzersiz olan ve söz konusu kaynağın kullanım ömrü boyunca kullanılan *sistem tarafından yönetilen bir kimlik*.
-
-Yönetilen kimliğe sahip bir Azure kaynağı ayarladıktan sonra, herhangi bir güvenlik sorumlusu gibi, kimliğe başka bir kaynağa istediğiniz erişimi verin. Örneğin, Azure 'da özel bir kayıt defterine çekme, gönderme ve çekme veya diğer izinleri içeren bir yönetilen kimlik rolü atayın. (Kayıt defteri rollerinin tüm listesi için bkz. [Azure Container Registry roller ve izinler](container-registry-roles.md).) Bir veya daha fazla kaynağa bir kimlik erişimi verebilirsiniz.
-
-Daha sonra, kodunuzda kimlik bilgileri olmadan [Azure AD kimlik doğrulamasını destekleyen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)herhangi bir hizmette kimlik doğrulaması yapmak için bu kimliği kullanın. Bir sanal makineden bir Azure Container Registry 'ye erişmek üzere kimliği kullanmak için Azure Resource Manager ile kimlik doğrulaması yapabilirsiniz. Senaryonuza bağlı olarak yönetilen kimliği kullanarak nasıl kimlik doğrulaması yapılacağını seçin:
-
-* HTTP veya REST çağrılarını kullanarak programlı [bir şekilde Azure AD erişim belirteci alma](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
-
-* [Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md) 'larını kullanma
-
-* Kimlik ile [Azure CLI veya PowerShell 'de oturum açın](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) . 
+> [!NOTE]
+> Şu anda Azure Kapsayıcılar için Web App veya Azure Container Instances gibi hizmetler, kapsayıcı kaynağının kendisini dağıtmak üzere bir kapsayıcı görüntüsü çekmekte olan Azure Container Registry kimlik doğrulaması yapmak için yönetilen kimliğini kullanamaz. Kimlik yalnızca kapsayıcı çalışmaya başladıktan sonra kullanılabilir. Azure Container Registry görüntülerini kullanarak bu kaynakları dağıtmak için, [hizmet sorumlusu](container-registry-auth-service-principal.md) gibi farklı bir kimlik doğrulama yöntemi önerilir.
 
 ## <a name="create-a-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
 
@@ -230,8 +221,6 @@ Bir ileti görmeniz gerekir `Login succeeded` . Ardından, `docker` kimlik bilgi
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
-> [!NOTE]
-> Sistem tarafından atanan yönetilen hizmet kimlikleri, ACRs ile etkileşim kurmak için kullanılabilir ve App Service sistem tarafından atanan yönetilen hizmet kimliklerini kullanabilir. Ancak, App Service bir ACR ile konuşmak için MSI kullanamıyor gibi bunları birleştiremezsiniz. Tek yöntem ACR üzerinde yöneticinin etkinleştirilmesi ve yönetici kullanıcı adını/parolasını kullanmaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

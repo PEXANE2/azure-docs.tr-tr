@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: dadca1fadef9d2967f20cae13e40d01de73d39e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b10d2e10f95470cadf67af762a0d7320bc09b7e0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778347"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075704"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -500,16 +500,15 @@ Disk ayrıntıları | Win32_PerfFormattedData_PerfDisk_PhysicalDisk | DiskWrites
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği Linux sunucu performansı verileri.
 
-**Veriler** | **Komutlar**
---- | ---
-CPU kullanımı | Cat/proc/stat/| grep ' CPU '/proc/stat
-Bellek kullanımı | ücretsiz \| grep mem \| awk ' {Print $3/$ 2 * 100,0} '
-NIC sayısı | lshw sınıfı ağ \| grep ETH [0-60] \| WC-l
-NIC başına alınan veri | Cat/sys/Class/net/ETH $ NIC/istatistikler/rx_bytes
-NIC başına aktarılan veriler | Cat/sys/Class/net/ETH $ NIC/istatistikler/tx_bytes
-Disk sayısı | Fdisk-l \| egrep ' disk. * bayt ' \| awk ' {Print $2} ' \| Kes-F1-d ': '
-Disk ayrıntıları | Cat/proc/diskstats
-
+| **Veriler** | **Komutlar** |
+| --- | --- |
+| CPU kullanımı | Cat/proc/stat/ \| grep ' CPU '/proc/stat |
+| Bellek kullanımı | ücretsiz \| grep mem \| awk ' {Print $3/$ 2 * 100,0} ' |
+| NIC sayısı | lshw sınıfı ağ \| grep ETH [0-60] \| WC-l |
+| NIC başına alınan veri | Cat/sys/Class/net/ETH $ NIC/istatistikler/rx_bytes |
+| NIC başına aktarılan veriler | Cat/sys/Class/net/ETH $ NIC/istatistikler/tx_bytes |
+| Disk sayısı | Fdisk-l \| egrep ' disk. \* bayt ' \| awk ' {print $2} ' \| Kes-F1-d ': ' |
+| Disk ayrıntıları | Cat/proc/diskstats |
 
 ## <a name="appliance-upgrades"></a>Gereç yükseltmeleri
 

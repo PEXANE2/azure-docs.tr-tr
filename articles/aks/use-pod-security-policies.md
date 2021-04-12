@@ -4,17 +4,17 @@ description: Azure Kubernetes Service (aks) içinde Pod SecurityPolicy kullanara
 services: container-service
 ms.topic: article
 ms.date: 03/25/2021
-ms.openlocfilehash: d95cdb51136511bdd8529c829c3f680d19e14ba9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4e72bd28910f471656feb27d10c123930305494e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105611778"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031231"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de Pod güvenlik ilkelerini kullanarak kümenizin güvenliğini sağlama
 
 > [!WARNING]
-> **Bu belgede açıklanan özellik, Pod güvenlik ilkesi (Önizleme), Kubernetes sürüm 1,21 ile kullanımdan kalkmaya başlayacak ve sürüm 1,25 ' de kaldırılır.** Kubernetes yukarı akış, kilometre taşına yaklaşırsa, Kubernetes topluluğu, önemli alternatifleri belgelemek için çalışır. Önceki kullanımdan kaldırma duyurusu, müşteriler için uygun bir seçenek olmadığından zamanında yapılmıştır. Kubernetes Community bir alternatif üzerinde çalıştık. artık Kubernetes 'in önüne geçmek için bir basmayla ilgili değildir.
+> **Bu belgede açıklanan özellik, Pod güvenlik ilkesi (Önizleme), Kubernetes sürüm 1,21 ile [kullanımdan kalkmaya](https://kubernetes.io/blog/2021/04/06/podsecuritypolicy-deprecation-past-present-and-future/) başlayacak ve sürüm 1,25 ' de kaldırılır.** Kubernetes yukarı akış, kilometre taşına yaklaşırsa, Kubernetes topluluğu, önemli alternatifleri belgelemek için çalışır. Önceki kullanımdan kaldırma duyurusu, müşteriler için uygun bir seçenek olmadığından zamanında yapılmıştır. Kubernetes Community bir alternatif üzerinde çalıştık. artık Kubernetes 'in önüne geçmek için bir basmayla ilgili değildir. 
 >
 > Pod güvenlik ilkesi (Önizleme) kullanım dışı olduktan sonra, gelecekteki küme yükseltmelerini gerçekleştirmek ve Azure desteği içinde kalmak için kullanımdan kaldırılan özelliği kullanarak mevcut kümelerin özelliğini devre dışı bırakmanız gerekir.
 

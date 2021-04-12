@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: c1b30a1eafe9af92c1ef3f81773d213ccf96555c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 098c6ace2b673654d07bfa29147fda3cbbc59b76
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462040"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107559"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Öğretici: IoT Edge cihazları hiyerarşisi oluşturma (Önizleme)
 
@@ -446,7 +446,7 @@ Yapılandırmaların her cihazda doğru olduğundan emin olduktan sonra devam et
 
 ## <a name="deploy-modules-to-the-top-layer-device"></a>Modülleri üst katman cihazına dağıt
 
-Modüller dağıtımı ve IoT Edge çalışma zamanını cihazlarınıza tamamlamaya ve hiyerarşinizin yapısını daha da tanımlamaya yönelik olarak işlev yapar. IoT Edge API proxy modülü, alt katman cihazlarınızdan tek bir bağlantı noktası üzerinden HTTP trafiğini güvenli bir şekilde azaltır. Docker kayıt defteri modülü, alt katman cihazlarınızın yönlendirme görüntüsü tarafından erişebileceği bir Docker görüntüleri deposunun en üst katman cihaza çekmesine olanak tanır.
+Modüller dağıtımı ve IoT Edge çalışma zamanını cihazlarınıza tamamlamaya ve hiyerarşinizin yapısını daha da tanımlamaya yönelik olarak işlev yapar. IoT Edge API proxy modülü, alt katman cihazlarınızdaki tek bir bağlantı noktası üzerinden HTTP trafiğini güvenli bir şekilde yönlendirir. Docker kayıt defteri modülü, alt katman cihazlarınızın yönlendirme görüntüsü tarafından erişebileceği bir Docker görüntüleri deposunun en üst katman cihaza çekmesine olanak tanır.
 
 En üst katman cihazınıza modül dağıtmak için Azure portal veya Azure CLı kullanabilirsiniz.
 
@@ -623,7 +623,7 @@ En üst katman cihazınıza modül dağıtmak için Azure portal veya Azure CLı
 
 ---
 
-Yukarıdaki adımları doğru bir şekilde tamamladıysanız, **en üst katman cihazınızın** dört modülü rapor etmesi gerekir: IoT Edge API proxy modülü, docker Container Registry modülü ve **dağıtım sırasında belirtilen** sistem modülleri. Cihazın yeni dağıtımını alması ve modülleri başlatması birkaç dakika sürebilir. **Cihaz tarafından bildirilen** sıcaklık algılayıcı modülünü görene kadar sayfayı yenileyin. Modüller cihaz tarafından bildirildikten sonra devam etmeye hazırlanın.
+Yukarıdaki adımları doğru bir şekilde tamamladıysanız, **en üst katman cihazınızın** dört modülü rapor etmesi gerekir: IoT Edge API proxy modülü, docker Container Registry modülü ve **dağıtım sırasında belirtilen** sistem modülleri. Cihazın yeni dağıtımını alması ve modülleri başlatması birkaç dakika sürebilir. **Cihaz tarafından bildirilen** ıotedgeapiproxy ve kayıt defteri modüllerini görene kadar sayfayı yenileyin. Modüller cihaz tarafından bildirildikten sonra devam etmeye hazırlanın.
 
 ## <a name="deploy-modules-to-the-lower-layer-device"></a>Modülleri alt katman cihazına dağıt
 

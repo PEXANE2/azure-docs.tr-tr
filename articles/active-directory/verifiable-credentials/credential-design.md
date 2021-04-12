@@ -9,12 +9,12 @@ ms.subservice: verifiable-credentials
 ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: c830f9c7edb252508824b3a92bd31b6fad31395d
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: a43e734c0a5bfa7c3698dcde5cb5b17f15575d90
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106170324"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222937"
 ---
 # <a name="how-to-customize-your-verifiable-credentials-preview"></a>Doğrulanabilir kimlik bilgilerinizi özelleştirme (Önizleme)
 
@@ -165,7 +165,7 @@ Kimlik bilgilerinizin birlikte çalışabilirliğini sağlamak için, sektörde 
 | `vc.type` | Doğrulanabilir kimlik bilgilerinizin karşıkullandığı şemayı belirten dizeler dizisi. |
 
 
-## <a name="input-type-self-attested-claims"></a>Giriş türü: Self-Attested talepler
+## <a name="input-type-self-attested-claims"></a>Giriş türü: kendi kendine test edilmiş talepler
 
 Verme akışı sırasında, kullanıcıdan bazı kendi kendine sınanmış bilgiler girmesini istenebilir. Şu andan itibaren, tek giriş türü bir ' dize ' olur. 
 ```json
@@ -263,7 +263,7 @@ Görüntüleme dosyası aşağıdaki yapıya sahiptir.
 | `claims.{attribute}.type` | Öznitelik türünü gösterir. Şu anda yalnızca ' String ' öğesini destekliyoruz. |
 | `claims.{attribute}.label` | Kimliği Doğrulayıcısı içinde görünecek olan özniteliği için etiket olarak kullanılması gereken değer. Bu, kurallar dosyasında kullanılan etiketten farklı olabilir. Önerilen en fazla 40 karakter uzunluğu. |
 
->[!note]
+>[!NOTE]
   >Kurallar dosyasına bir talep dahil edilirse ve görüntü dosyasında atlanırsa, iki farklı deneyim türü vardır. İOS üzerinde, talep, yukarıdaki görüntüde gösterilen Ayrıntılar bölümünde gösterilmez, ancak Android 'de talep gösterilir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar

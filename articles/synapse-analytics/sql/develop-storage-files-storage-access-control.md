@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 726395e9f004130699dab061cfa752a2e516c834
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: acfaa780f21f5264b546f97e9a3792aa43e9c30b
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552963"
+ms.locfileid: "107029752"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için depolama hesabı erişimini denetleme
 
@@ -23,6 +23,13 @@ Sunucusuz bir SQL havuzu sorgusu, dosyaları doğrudan Azure Storage 'dan okur. 
 - **SQL hizmet düzeyi** -Kullanıcı [dış tablo](develop-tables-external-tables.md) kullanarak verileri okuma veya işlevi yürütme izni vermiş olmalıdır `OPENROWSET` . [Bu bölümde gerekli izinler](develop-storage-files-overview.md#permissions)hakkında daha fazla bilgi edinin.
 
 Bu makalede, kullanabileceğiniz kimlik bilgileri türleri ve SQL ve Azure AD kullanıcıları için kimlik bilgileri aramasının nasıl yapılacağı açıklanır.
+
+## <a name="storage-permissions"></a>Depolama izinleri
+
+SYNAPSE Analytics çalışma alanındaki sunucusuz bir SQL havuzu Azure Data Lake depolama alanında depolanan dosyaların içeriğini okuyabilir. Bir SQL sorgusunu yürüten bir kullanıcının dosyaları okumasını sağlamak için depolama izinlerini yapılandırmanız gerekir. Dosyalara erişimi etkinleştirmek için üç yöntem vardır>
+- **[Rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md)** , depolama alanının yerleştirildiği kiracıda BIR Azure AD kullanıcısına bir rol atamanızı sağlar. RBAC rolleri, Azure AD kullanıcılarına atanabilir. Okuyucu `Storage Blob Data Reader` , `Storage Blob Data Contributor` veya rolüne sahip olmalıdır `Storage Blob Data Owner` . Azure Storage 'da veri yazan bir kullanıcının `Storage Blob Data Writer` veya `Storage Blob Data Owner` rolü olmalıdır. `Storage Owner`Rolün bir kullanıcının de olduğunu göstermez `Storage Data Owner` .
+- **Access Control listeleri (ACL)** , Azure depolama 'daki dosya ve dizinlerde hassas izin modeli tanımlamanızı sağlar. ACL, Azure AD kullanıcılarına atanabilir. Okuyucular Azure Storage 'daki bir yoldaki dosyayı okumak istiyorlarsa, dosya yolundaki her klasör üzerinde Execute (X) ACL 'SI olmalıdır ve dosyadaki (R) ACL 'yi okur. [Depolama katmanında ACL izinleri ayarlama hakkında daha fazla bilgi edinin](../../storage/blobs/data-lake-storage-access-control.md#how-to-set-acls)
+- **Paylaşılan erişim imzası (SAS)** , bir okuyucunun zaman sınırlı belirteci kullanarak Azure Data Lake depolama üzerindeki dosyalara erişmesine olanak sağlar. Okuyucunun kimlik doğrulamasının Azure AD kullanıcısı olarak da olması gerekmez. SAS belirteci, okuyucuya verilen izinleri ve belirtecin geçerli olduğu süreyi içerir. SAS belirteci, aynı Azure AD kiracısında olması gerekmeyen tüm kullanıcılara zaman kısıtlı erişim için iyi bir seçimdir. SAS belirteci, depolama hesabında veya belirli dizinlerde tanımlanabilir. [Paylaşılan erişim imzalarını kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../../storage/common/storage-sas-overview.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="supported-storage-authorization-types"></a>Desteklenen depolama yetkilendirme türleri
 
@@ -103,7 +110,7 @@ Güvenlik duvarıyla korunan depolamaya erişirken **Kullanıcı kimliğini** ve
 
 #### <a name="user-identity"></a>Kullanıcı kimliği
 
-Kullanıcı kimliği aracılığıyla güvenlik duvarıyla korunan depolamaya erişmek için az. Storage PowerShell modülünü kullanabilirsiniz.
+Kullanıcı kimliği aracılığıyla güvenlik duvarıyla korunan depolamaya erişmek için, Azure portal Kullanıcı arabirimi veya PowerShell modülü az. Storage ' u kullanabilirsiniz.
 #### <a name="configuration-via-azure-portal"></a>Azure portal aracılığıyla yapılandırma
 
 1. Azure portal 'de depolama hesabınızı arayın.

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 03/19/2021
-ms.openlocfilehash: 9f7df4889d1d54605ab2b5cd79f3039f06fab197
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 6ce7de649876ed8ccff1254f25a7213b407dacae
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027882"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284094"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-database"></a>Geçiş Kılavuzu: Azure SQL veritabanı 'na SQL Server
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ Daha fazla geçiş bilgisi için [geçişe genel bakış](sql-server-to-sql-data
 
 ## <a name="prerequisites"></a>Önkoşullar 
 
-Azure SQL veritabanı 'na [SQL Server geçişiniz](https://azure.microsoft.com/migration/migration-journey) için aşağıdaki önkoşullara sahip olduğunuzdan emin olun: 
+Azure SQL veritabanı 'na [SQL Server geçişiniz](https://azure.microsoft.com/en-us/migration/sql-server/) için aşağıdaki önkoşullara sahip olduğunuzdan emin olun: 
 
 - Seçilen bir [geçiş yöntemi](sql-server-to-sql-database-overview.md#compare-migration-options) ve ilgili araçlar.
 - [Data Migration Yardımcısı (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) , kaynak SQL Server bağlanabilecek bir makineye yüklendi.

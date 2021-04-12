@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2
-ms.openlocfilehash: e6971fa129c01fc4cdf64e0dc681ac0fab4f707b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f7b24c711d99b1127ee77a920b305acb114d20e
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833822"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505136"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central nedir?
 
@@ -23,16 +23,16 @@ Web Kullanıcı arabirimi, cihaz koşullarını izlemenizi, kurallar oluşturman
 
 Bu makalede IoT Central için özetlenmektedir:
 
-- Bir projeyle ilişkili tipik kişilikler.
+- Bir projeyle ilişkili tipik Kullanıcı rolleri.
 - Uygulamanızı oluşturma.
 - Cihazlarınızı uygulamanıza bağlama
 - Uygulamanızı yönetme.
 - IoT Central Azure IoT Edge özellikleri.
 - Azure IoT Edge çalışma zamanı ile desteklenen cihazlarınızı uygulamanıza bağlama.
 
-## <a name="personas"></a>Kişilikler
+## <a name="user-roles"></a>Kullanıcı rolleri
 
-IoT Central belgeler, IoT Central bir uygulamayla etkileşime geçen dört kişilik anlamına gelir:
+IoT Central belgeler, bir IoT Central uygulamayla etkileşime geçen dört kullanıcı rolüne başvurur:
 
 - Bir _çözüm Oluşturucusu_ , [uygulama oluşturmaktan](quick-deploy-iot-central.md), [kuralları ve eylemleri yapılandırmadan](quick-configure-rules.md), [diğer hizmetlerle tümleştirmelere tanımlamayı](howto-export-data.md)ve işleçler ve cihaz geliştiricileri için uygulamayı daha fazla özelleştirmeyi sağlamaktan sorumludur.
 - Bir _işleç_ , uygulamaya bağlı [aygıtları yönetir](howto-manage-devices.md) .
