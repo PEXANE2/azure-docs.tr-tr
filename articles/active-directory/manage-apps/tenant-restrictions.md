@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 2/23/2021
+ms.date: 4/6/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa025f7e21f76b4dde547ccabf675511e9156359
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb4e876b3fc679dd275f38168b99b9a3a718be58
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589336"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552687"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>SaaS bulut uygulamalarına erişimi yönetmek için kiracı kısıtlamalarını kullanın
 
@@ -97,6 +97,8 @@ Bu bölümde hem son kullanıcılar hem de Yöneticiler için deneyim açıklanm
 
 Örnek Kullanıcı contoso ağı üzerinde bulunur, ancak Outlook Online gibi paylaşılan SaaS uygulamasının fabrikam örneğine erişmeye çalışıyor. Fabrikam, contoso örneği için izin verilmeyen bir kiracı ise, Kullanıcı, BT departmanınız tarafından onaylanmamış bir kuruluşa ait olan bir kaynağa erişmeye çalıştığınız bir erişim reddi iletisi görür.
 
+![Kiracı kısıtlamaları hata iletisi, Nisan 2021 ' den](./media/tenant-restrictions/error-message.png)
+
 ### <a name="admin-experience"></a>Yönetici deneyimi
 
 Şirket proxy altyapısında kiracı kısıtlamaları yapılandırması yapıldığında, Yöneticiler Azure portal doğrudan kiracı kısıtlamaları raporlarına erişebilir. Raporları görüntülemek için:
@@ -113,14 +115,14 @@ Bu rapor, kısıtlı erişim bağlamı kiracısı dışında bir kiracıda olan 
 
 Azure portal diğer raporlar gibi, raporunuzun kapsamını belirtmek için filtreler kullanabilirsiniz. Belirli bir zaman aralığı, Kullanıcı, uygulama, istemci veya durum üzerinde filtre uygulayabilirsiniz. **Sütunlar** düğmesini seçerseniz, verileri aşağıdaki alanların herhangi bir birleşimiyle görüntülemeyi seçebilirsiniz:
 
-- **Kullanıcı** -bu alanda, kişisel olarak tanımlanabilir bilgiler kaldırılabilir, burada olarak ayarlanır `00000000-0000-0000-0000-000000000000` . 
+- **Kullanıcı** -bu alanda kişisel veriler kaldırılabilir, burada olarak ayarlanır `00000000-0000-0000-0000-000000000000` . 
 - **Uygulama**
 - **Durum**
 - **Date**
 - **Tarih (UTC)** -UTC 'Nin Eşgüdümlü Evrensel Saat
-- **IP Adresi**
+- **IP adresi**
 - **İstemci**
-- **Kullanıcı adı** -bu alanda, kişisel olarak tanımlanabilen bilgiler kaldırılabilir ve burada ayarlanır `{PII Removed}@domain.com`
+- **Kullanıcı adı** -bu alanda kişisel veriler kaldırılabilir, burada ayarlanır `{PII Removed}@domain.com`
 - **Konum**
 - **Hedef kiracı KIMLIĞI**
 
@@ -207,7 +209,7 @@ Bazı kuruluşlar `login.live.com` Kişisel hesapların kimlik doğrulamasını 
 
 ### <a name="configuration-for-consumer-apps"></a>Tüketici uygulamaları için yapılandırma
 
-`Restrict-Access-To-Tenants`Üst bilgi bir izin verilenler listesi olarak çalışırken, Microsoft hesabı (MSA) bloğu bir reddetme sinyali olarak çalışır ve bu da Microsoft hesabı platformunun kullanıcıların tüketici uygulamalarında oturum açmalarına izin vermemesini sağlar. Bu sinyali göndermek için `sec-Restrict-Tenant-Access-Policy` üst bilgi, `login.live.com` [Yukarıdaki](#proxy-configuration-and-requirements)şekilde aynı kurumsal ara sunucu veya güvenlik duvarı kullanılarak ziyaret eden trafiğe eklenir. Üstbilginin değeri olmalıdır `restrict-msa` . Üst bilgi mevcut olduğunda ve bir tüketici uygulaması doğrudan bir Kullanıcı oturum açmaya çalıştığında, bu oturum açma engellenir.
+`Restrict-Access-To-Tenants`Üst bilgi bir allowlist işlevi yaparken, Microsoft hesabı (MSA) bloğu bir reddetme sinyali olarak çalışır ve bu da Microsoft hesabı platformuna kullanıcıların tüketici uygulamalarında oturum açmalarına izin vermemesini sağlar. Bu sinyali göndermek için `sec-Restrict-Tenant-Access-Policy` üst bilgi, `login.live.com` [Yukarıdaki](#proxy-configuration-and-requirements)şekilde aynı kurumsal ara sunucu veya güvenlik duvarı kullanılarak ziyaret eden trafiğe eklenir. Üstbilginin değeri olmalıdır `restrict-msa` . Üst bilgi mevcut olduğunda ve bir tüketici uygulaması doğrudan bir Kullanıcı oturum açmaya çalıştığında, bu oturum açma engellenir.
 
 Şu anda, login.live.com Azure AD 'den ayrı olarak barındırıldığından, tüketici uygulamalarına yönelik kimlik doğrulaması [yönetici günlüklerinde](#admin-experience)görünmez.
 

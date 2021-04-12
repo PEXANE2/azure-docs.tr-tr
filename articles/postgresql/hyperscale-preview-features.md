@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: overview
 ms.date: 04/07/2021
-ms.openlocfilehash: 775785e1b5130499d69b269e72f5c774e9e5f3f9
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 5f0552e09464a6b571a665cfe3895f48c3aa8c41
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107024088"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258461"
 ---
 # <a name="preview-features-for-postgresql---hyperscale-citus"></a>PostgreSQL için Önizleme özellikleri-hiper ölçek (Citus)
 
@@ -23,11 +23,13 @@ PostgreSQL için Azure veritabanı-Hyperscale (Citus), yayımlanmayan özellikle
 
 Şu anda önizleme için kullanılabilen özellikler şunlardır:
 
-* **[Sütunlu depolama](concepts-hyperscale-columnar.md)**.
-  Seçili tabloların sütunları (satırlar yerine satırları değil) bitişik olarak diskte depola. Disk üzerinde sıkıştırmayı destekler. Analitik ve veri ambarı iş yükleri için uygundur.
+* **[Temel katman](concepts-hyperscale-tiers.md)**. Yalnızca bir düzenleyici düğümü ve çalışan düğümü kullanarak bir sunucu grubu çalıştırın. İlk test ve geliştirme yapmanın ekonomik bir yolu ve küçük üretim iş yüklerini işleyin.
 * **[PostgreSQL 12 ve 13](concepts-hyperscale-versions.md)**.
   Sunucu grubunuzda en son veritabanı sürümünü kullanın.
-* **[Temel katman](concepts-hyperscale-tiers.md)**. Yalnızca bir düzenleyici düğümü ve çalışan düğümü kullanarak bir sunucu grubu çalıştırın. İlk test ve geliştirme yapmanın ekonomik bir yolu ve küçük üretim iş yüklerini işleyin.
+* **[Citus 10](concepts-hyperscale-versions.md#citus-and-other-extension-versions)**.
+  PostgreSQL 13 çalıştıran sunucu gruplarına otomatik olarak yüklenir.
+* **[Sütunlu depolama](concepts-hyperscale-columnar.md)**.
+  Seçili tabloların sütunları (satırlar yerine satırları değil) bitişik olarak diskte depola. Disk üzerinde sıkıştırmayı destekler. Analitik ve veri ambarı iş yükleri için uygundur.
 * **[Çoğaltmaları oku](howto-hyperscale-read-replicas-portal.md)** (Şu anda yalnızca aynı bölge). Birincil sunucu grubunda gerçekleşen tüm değişiklikler, çoğaltmasına yansıtılır ve çoğaltmaya karşı sorgular orijinalde ek yük gerektirmez.
   Çoğaltmalar, salt okunurdur iş yüklerinin performansını artırmak için yararlı bir araçtır.
 * **[Yönetilen PgBouncer](concepts-hyperscale-limits.md#managed-pgbouncer-preview)**.

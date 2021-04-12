@@ -4,10 +4,10 @@ description: Azure Service Fabric küme sertifikasını parmak izi tabanlı bild
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: f719b1eb39da776827c6babec61e9e6701bb4602
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97900813"
 ---
 # <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>Küme sertifikalarını parmak izi tabanlı bildirimlerden ortak adlara Dönüştür
