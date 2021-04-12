@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 273a1b5986a72acc1d6725fbb3101c9c1df17e45
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: d021267c38f0043d2361b1a6392fbacd0634a164
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106122059"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279706"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>Canlı akış senaryosu tabanlı geçiş kılavuzu
 
@@ -37,7 +37,7 @@ Azure portal artık canlı olay ayarlama ve yönetimini desteklemektedir.  V2 'y
 
 - Kodlama için yeni bir v3 [Live olayı](live-event-outputs-concept.md#live-events) oluşturun. [1080p ve 720p kodlama ön ayarlarını](live-event-types-comparison-reference.md#system-presets)etkinleştirebilirsiniz.
 - Programlar yerine [canlı çıkış](live-event-outputs-concept.md#live-outputs) varlığını kullanın
-- [Akış Konumlandırıcı](streaming-locators-concept.md)oluştur.
+- [Akış Konumlandırıcı](stream-streaming-locators-concept.md)oluştur.
 - [HLS ve Dash](encode-dynamic-packaging-concept.md) canlı akış ihtiyacını göz önünde bulundurun.
 - Canlı olaylar için hızlı başlangıç yapmanız gerekiyorsa, yeni [Bekleme modu](live-event-outputs-concept.md#standby-mode) özelliklerini gözden geçirebilirsiniz.
 - Canlı olaylarınızı çalışırken eklemek istiyorsanız, yeni [canlı](live-event-live-transcription-how-to.md) döküm özelliğini bulun.
@@ -52,7 +52,7 @@ Belirli adımlar için bkz. canlı etkinlik kavramları, öğreticiler ve aşağ
 
 - [Azure Media Services v3 ile canlı akış](stream-live-streaming-concept.md)
 - [Canlı etkinlikler ve canlı çıktılar Media Services](live-event-outputs-concept.md)
-- [Doğrulanan şirket içi canlı akış kodlayıcıları](recommended-on-premises-live-encoders.md)
+- [Doğrulanan şirket içi canlı akış kodlayıcıları](encode-recommended-on-premises-live-encoders.md)
 - [İsteğe bağlı video oynatma oluşturmak için zaman değiştirme ve canlı çıktıları kullanma](live-event-cloud-dvr-time-how-to.md)
 - [Live-event-Live-Transcription-nasıl yapılır (Önizleme)](live-event-live-transcription-how-to.md)
 - [Canlı olay türleri karşılaştırması](live-event-types-comparison-reference.md)

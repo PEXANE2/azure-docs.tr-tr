@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault erişim ilkesi atama
-description: Hizmet sorumlusuna veya uygulama kimliğine Key Vault erişim ilkesi atamak için Azure portal, Azure CLı veya Azure PowerShell kullanma.
+description: Bir güvenlik sorumlusu veya uygulama kimliğine Key Vault erişim ilkesi atamak için Azure portal, Azure CLı veya Azure PowerShell kullanma.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4cf0393cdb0aae1b352b81df4893f874f34970cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4637715b2ba885d58ebb4c5f3ed40a79be2f815b
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934546"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968739"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>Azure PowerShell kullanarak Key Vault erişim ilkesi atama
 
-Key Vault erişim ilkesi, belirli bir hizmet sorumlusunun bir uygulama veya Kullanıcı grubu tarafından Key Vault [gizli](../secrets/index.yml)diziler, [anahtarlar](../keys/index.yml)ve [Sertifikalar](../certificates/index.yml)üzerinde farklı işlemler yapıp gerçekleştiremeyeceğini belirler. [Azure Portal](assign-access-policy-portal.md), [Azure CLI](assign-access-policy-cli.md)veya Azure PowerShell (Bu makale) kullanarak erişim ilkeleri atayabilirsiniz.
+Key Vault erişim ilkesi, bir Kullanıcı, uygulama veya Kullanıcı grubu gibi belirli bir güvenlik sorumlusunun Key Vault [gizli](../secrets/index.yml)diziler, [anahtarlar](../keys/index.yml)ve [Sertifikalar](../certificates/index.yml)üzerinde farklı işlemler yapıp gerçekleştiremeyeceğini belirler. [Azure Portal](assign-access-policy-portal.md), [Azure CLI](assign-access-policy-cli.md)veya Azure PowerShell (Bu makale) kullanarak erişim ilkeleri atayabilirsiniz.
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 

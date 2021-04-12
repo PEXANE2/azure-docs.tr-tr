@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 6fd497e0bc0fd282d57779c483f1e39e8f5ab60a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 92b5283e5779cc79ce0a745190b57884a6ca0f7e
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505486"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056020"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı için Azure özel bağlantısını yapılandırma
 
@@ -175,7 +175,7 @@ Azure sanal makineleri hakkında daha fazla bilgi için bkz. [sanal makineler be
 Bazı durumlarda, birisinin VNet yerine ortak bir uç nokta üzerinden güvenli çalışma alanınıza bağlanmasına izin vermek isteyebilirsiniz. Çalışma alanını özel bir uç noktayla yapılandırdıktan sonra, isteğe bağlı olarak çalışma alanına genel erişimi etkinleştirebilirsiniz. Bunu yaptığınızda özel uç nokta kaldırılmaz. VNet 'in arkasındaki bileşenler arasındaki tüm iletişimler hala güvenli hale getirilir. VNet üzerinden özel erişime ek olarak yalnızca çalışma alanına genel erişim sağlar.
 
 > [!WARNING]
-> Genel uç nokta üzerinden bağlanılırken, bazı Studio özellikleri verilerinize erişemez. Bu sorun, veriler VNet 'in arkasında güvenliği sağlanmış bir hizmette depolandığında oluşur. Örneğin, bir Azure depolama hesabı.
+> Genel uç nokta üzerinden bağlanılırken, bazı Studio özellikleri verilerinize erişemez. Bu sorun, veriler VNet 'in arkasında güvenliği sağlanmış bir hizmette depolandığında oluşur. Örneğin, bir Azure depolama hesabı. Ayrıca, Jupiter/Jupiterlab/RStudio işlevinin işlem örneği ' ni not edin ve çalışan Not defterleri çalışmaz.
 
 Özel bir bağlantı etkin çalışma alanına genel erişimi etkinleştirmek için aşağıdaki adımları kullanın:
 
