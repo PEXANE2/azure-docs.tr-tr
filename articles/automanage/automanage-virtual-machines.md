@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 973bd1ac121513a297574bbb37d1663b5a18c345
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: e4e1d22e2e7175135e88a08ed5a6d5ae7f021d49
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276918"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491295"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Sanal makineler için Azure oto yönetimi
 
@@ -77,7 +77,7 @@ Oto Yönet hesabına, tekrar yönetilen makinelerde eylemler gerçekleştirmek i
 
 ## <a name="participating-services"></a>Katılım Hizmetleri
 
-:::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services.png" alt-text="Hizmetleri akıllıca ekleyin.":::
+:::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services-1.png" alt-text="Hizmetleri akıllıca ekleyin.":::
 
 Katılımcı Azure hizmetlerinin yanı sıra desteklenen ortamları ve bunların tüm listesi için aşağıdakilere bakın:
 - [Linux için oto Yönet](automanage-linux.md)

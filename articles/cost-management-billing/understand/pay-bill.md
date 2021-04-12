@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 01/13/2021
 ms.author: banders
-ms.openlocfilehash: ecc5c8ebef0d2add365d128e11caedaa173d9d63
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: f93933e4a6109eef4f9a06b61c7ea06d9fbd7d60
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232152"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121855"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Microsoft Azure faturanızı ödeme
 
@@ -59,18 +59,6 @@ Azure portalda faturaları ödemek için doğru [MCA izinleriniz](../manage/unde
 1. Bir ödeme yöntemi seçtikten sonra **Şimdi öde** seçeneğini belirleyin.
 
 Fatura durumu, 24 saat içinde *ödendi* olarak görünür.
-
-## <a name="pay-now-for-customers-in-india"></a>Hindistan 'daki müşteriler için şimdi ödeme yapın
-
-1 Nisan 2021 ' de geçerli olacak [Yeni yönetmelikler](https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12002&Mode=0) verilen Hindistan bantlandı. Bu tarihten sonra, Hindistan 'daki bankalar otomatik yinelenen ödemeleri reddetmeye başlayabilir ve ödemelerin Azure portal el ile yapılması gerekir.
-
-Bankanızda otomatik olarak yinelenen bir ödeme reddederse, size e-posta ile bildirim göndereceğiz ve devam etmek için yönergeler sağlayacağız.
-
-1 Nisan 2021 ' den itibaren, aşağıdaki adımları izleyerek istediğiniz zaman bir bakiye ödeyebilirsiniz: 
-
-1. [Azure portalında](https://portal.azure.com/) Hesap Yöneticisi olarak oturum açın.
-1. **Maliyet Yönetimi + Faturalama** araması yapın.
-1. Genel Bakış sayfasında **Şimdi öde** düğmesini seçin. ( **Şimdi öde** düğmesini görmüyorsanız, bekleyen bir bakiyeniz yok demektir.)
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi’ne erişimi denetleme
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

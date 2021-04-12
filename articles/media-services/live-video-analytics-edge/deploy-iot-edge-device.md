@@ -3,12 +3,12 @@ title: IoT Edge cihazında canlı video analizi dağıtma-Azure
 description: Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 2fdf95be0966702f58afbb9df8e09a1688f9b204
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 466cc236c1482b2ae6a31b40b6f3461a2c2fbfc1
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961566"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280301"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge cihazda canlı video analizi dağıtma
 
@@ -38,7 +38,7 @@ Bkz. [özel Azure Resource Manager rolü oluşturma](create-custom-azure-resourc
 
 ### <a name="set-up-a-premium-streaming-endpoint"></a>Premium akış uç noktası ayarlama
 
-Videoyu buluta sürekli kaydetmek için canlı video analizi kullanmayı ve sonra yeniden oynamadan önce [sorgu API 'lerini](playback-recordings-how-to.md#query-api) kullanmayı düşünüyorsanız, medya hizmetinizi bir [Premium akış uç noktası](../latest/streaming-endpoint-concept.md#types)kullanacak şekilde güncelleştirmenizi öneririz.  
+Videoyu buluta sürekli kaydetmek için canlı video analizi kullanmayı ve sonra yeniden oynamadan önce [sorgu API 'lerini](playback-recordings-how-to.md#query-api) kullanmayı düşünüyorsanız, medya hizmetinizi bir [Premium akış uç noktası](../latest/stream-streaming-endpoint-concept.md#types)kullanacak şekilde güncelleştirmenizi öneririz.  
 
 Bu isteğe bağlı bir adımdır. Bunu yapmak için bu Azure CLı komutunu kullanabilirsiniz:
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 05/07/2019
 ms.author: inhenkel
-ms.openlocfilehash: 994e5ae0647f350e0a64f35318bd5803f4ed79b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05ef67e3caafe2c10d02ee4ca2e3248b7ab6c188
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98894992"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120905"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>Akış Uç Noktası (Kaynak) hataları
 
@@ -143,24 +143,24 @@ Veya işlemindeki bir kaynak için belirtilen KIMLIK, `PUT` `POST` var olan bir 
 
 Şifreleme makaleleri ve örnekleri için bkz.:
 
-- [Kavram: içerik koruma](content-protection-overview.md)
-- [Kavram: Içerik anahtarı Ilkeleri](content-key-policy-concept.md)
+- [Kavram: içerik koruma](drm-content-protection-concept.md)
+- [Kavram: Içerik anahtarı Ilkeleri](drm-content-key-policy-concept.md)
 - [Kavram: akış Ilkeleri](streaming-policy-concept.md)
-- [Örnek: AES şifrelemesi ile koruma](protect-with-aes128.md)
-- [Örnek: DRM ile koruma](protect-with-drm.md)
+- [Örnek: AES şifrelemesi ile koruma](drm-playready-license-template-concept.md)
+- [Örnek: DRM ile koruma](drm-protect-with-drm-tutorial.md)
 
 Filtre Kılavuzu için bkz.:
 
-- [Kavram: dinamik bildirimler](filters-dynamic-manifest-overview.md)
+- [Kavram: dinamik bildirimler](filters-dynamic-manifest-concept.md)
 - [Kavram: filtreler](filters-concept.md)
 - [Örnek: REST API 'Leri ile filtre oluşturma](filters-dynamic-manifest-rest-howto.md)
-- [Örnek: .NET ile filtre oluşturma](filters-dynamic-manifest-dotnet-howto.md)
-- [Örnek: CLı ile filtre oluşturma](filters-dynamic-manifest-cli-howto.md)
+- [Örnek: .NET ile filtre oluşturma](filters-dynamic-manifest-dotnet-how-to.md)
+- [Örnek: CLı ile filtre oluşturma](filters-dynamic-manifest-cli-how-to.md)
 
 Canlı makaleler ve örnekler için bkz.:
 
-- [Kavram: canlı akışa genel bakış](live-streaming-overview.md)
-- [Kavram: canlı olaylar ve canlı çıktılar](live-events-outputs-concept.md)
+- [Kavram: canlı akışa genel bakış](stream-live-streaming-concept.md)
+- [Kavram: canlı olaylar ve canlı çıktılar](live-event-outputs-concept.md)
 - [Örnek: canlı akış öğreticisi](stream-live-tutorial-with-api.md)
 
 ## <a name="416-range-not-satisfiable"></a>416 Aralık Karşılanamıyor
@@ -202,7 +202,7 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 
 - [Kodlama hata kodları](/rest/api/media/jobs/get#joberrorcode)
 - [Azure Media Services kavramlar](concepts-overview.md)
-- [Kotalar ve sınırlar](limits-quotas-constraints.md)
+- [Kotalar ve sınırlar](limits-quotas-constraints-reference.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8e3b9636dfb900fa0e22bfea8bcd2d0c7edf0241
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 214deb290fc0c0992458c2806644e06ffa00b271
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596714"
+ms.locfileid: "105963453"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Öğretici: Azure 'da Azure Media Services olaylarını depolama Log Analytics
 
@@ -40,7 +40,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="prerequisites"></a>Önkoşullar
 
 > * [Azure aboneliği](how-to-set-azure-subscription.md)
-> * [Media Services](create-account-howto.md) hesabı ve kaynak grubu.
+> * [Media Services](account-create-how-to.md) hesabı ve kaynak grubu.
 > * IŞLETIM sisteminiz için [FFmpeg](https://ffmpeg.org/download.html) yüklemesi.
 > * [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md) çalışma alanı
 

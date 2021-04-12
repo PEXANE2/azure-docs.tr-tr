@@ -3,12 +3,12 @@ title: Azure disk yedekleme hakkında sık sorulan sorular
 description: Azure disk yedekleme hakkında sık sorulan soruların yanıtlarını alın
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 7729bc1120fc0e2f4361739a8e05f3a82ccb4268
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 41f2862541d7cb0e3276b5fd24f39668d20fc0a3
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107321"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106964"
 ---
 # <a name="frequently-asked-questions-about-azure-disk-backup"></a>Azure disk yedekleme hakkında sık sorulan sorular
 
@@ -73,10 +73,6 @@ Evet, diski yedeklemenin alındığı kaynak tarafından yönetilen diskten fark
 ### <a name="can-i-back-up-multiple-disks-together"></a>Birden çok diski birlikte yedekleyebilir miyim?
 
 Hayır, bir sanal makineye bağlı birden çok diskin zaman içindeki anlık görüntüleri desteklenmez. Daha fazla bilgi için bkz. [yedeklemeyi yapılandırma](backup-managed-disks.md#configure-backup) ve sınırlamalar hakkında daha fazla bilgi edinmek için [destek matrisine](disk-backup-support-matrix.md)bakın.
-
-### <a name="what-are-my-options-to-back-up-disks-across-multiple-subscriptions"></a>Birden çok abonelikteki diskleri yedeklemek için seçeneklerim nelerdir?
-
-Şu anda, disklerin yedeklenmesini yapılandırmak için Azure portal kullanılması, aynı abonelikte en fazla 20 diskle sınırlıdır.
 
 ### <a name="what-is-a-target-resource-group"></a>Hedef kaynak grubu nedir?
 

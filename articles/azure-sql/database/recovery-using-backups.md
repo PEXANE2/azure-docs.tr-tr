@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
 ms.openlocfilehash: 0c3db3b3f22f9f2639012068924708537f9ada77
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98795328"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Otomatik veritabanı yedeklemeleri kullanarak kurtarma-SQL yönetilen örnek & Azure SQL veritabanı
@@ -47,11 +47,11 @@ Otomatik veritabanı yedeklemeleri kullanarak bir veritabanını geri yüklemeye
 - Geri yükleme farklı bir bölgeye ise ağ bant genişliği.
 - Hedef bölgede işlenen eşzamanlı geri yükleme isteklerinin sayısı.
 
-Büyük veya çok etkin bir veritabanı için geri yükleme birkaç saat sürebilir. Bir bölgede uzun süren bir kesinti varsa, olağanüstü durum kurtarma için yüksek sayıda coğrafi geri yükleme isteği başlatılabilir. Çok sayıda istek olduğunda, bireysel veritabanlarının kurtarma süresi artabilir. Çoğu veritabanı son geri yükleme işlemi 12 saatten az sürer.
+Büyük veya çok etkin bir veritabanı için geri yükleme birkaç saat sürebilir. Bölgede uzun süren bir kesinti olursa, olağanüstü durum kurtarma için çok sayıda coğrafi geri yükleme isteğinin başlatılması mümkündür. Çok sayıda istek olduğunda tek tek veritabanlarının kurtarma süresi uzayabilir. Çoğu veritabanı son geri yükleme işlemi 12 saatten az sürer.
 
-Tek bir abonelik için, eş zamanlı geri yükleme isteği sayısında sınırlamalar vardır. Bu sınırlamalar, uzun süreli saklama yedeklemesinden gelen zaman içindeki tüm geri yüklemeler, coğrafi geri yüklemeler ve geri yüklemeler için geçerlidir.
+Tek bir abonelik için eşzamanlı geri yükleme isteklerinin sayısında sınırlamalar söz konusudur. Bu sınırlamalar belirli bir noktaya geri yükleme, coğrafi geri yükleme ve uzun süreli saklama yedeklemelerinden geri yükleme işlemlerinin her türlü bileşimine uygulanır.
 
-| **Dağıtım seçeneği** | **İşlenmekte olan eşzamanlı istek sayısı üst sınırı** | **Gönderilen en fazla eşzamanlı istek sayısı** |
+| **Dağıtım seçeneği** | **İşlenmekte olan eşzamanlı istek sayısı üst sınırı** | **Gönderilmekte olan eşzamanlı istek sayısı üst sınırı** |
 | :--- | --: | --: |
 |**Tek veritabanı (abonelik başına)**|30|100|
 |**Elastik havuz (havuz başına)**|4|2000|
