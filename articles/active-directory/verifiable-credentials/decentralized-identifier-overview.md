@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 4ae7ad186e2ed8868be6205d48e9cfbef525d810
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 04b36b9b32e78016f693e61d40246776492be0e3
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106172820"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222869"
 ---
 # <a name="introduction-to-azure-active-directory-verifiable-credentials-preview"></a>Doğrulanabilir kimlik bilgilerine Azure Active Directory giriş (Önizleme)
 
@@ -28,7 +28,7 @@ Dijital ve fiziksel yaşamlarımız, zengin bir deneyim kümesine erişmek için
 
 Ancak kimlik verileri çok sık güvenlik ihlallerine sunuldu. Bu ihlal, insanların sosyal, profesyonel ve finans yaşamımızı etkileyen yaşamına yönelik olarak tasarlanmıştır. Microsoft daha iyi bir yol olduğunu düşündüğü. Her kişinin kendi sahip oldukları ve denetdukları bir kimlik hakkı vardır. Bunlar, dijital kimlik öğelerini güvenli bir şekilde depolayan ve gizliliği koruyan bir kimlik içerir. Bu makalede, bireyler ve kuruluşlar için açık, güvenilir, birlikte çalışabilen ve standartlara dayalı bir kimlik (DıD) çözümü oluşturmak üzere farklı bir topluluk ile uygulamalı şekilde nasıl katılacağız açıklanmaktadır.
 
-## <a name="why-we-need-decentralized-identity"></a>Neden merkezi olmayan kimliğe ihtiyacımız var? 
+## <a name="why-we-need-decentralized-identity"></a>Neden merkezi olmayan kimliğe ihtiyacımız var?
 
 Bugün iş sırasında, evde ve kullanımda olan her uygulama, hizmet ve cihazdaki dijital kimliklerimizi kullanıyoruz. Bu, yaşamımız her şeyden oluşur: bir olaya yönelik bilet satın alma, otel halinde denetleme veya öğle yemeği siparişi verme. Şu anda kimlik ve tüm dijital etkileşimlerimiz, bazı hatta farkında olmadığımız diğer taraflara aittir ve denetlenmektedir.
 
@@ -36,7 +36,7 @@ Genellikle, kullanıcılar çeşitli uygulamalara ve cihazlara onay verir. Bu ya
 
 Standartlara dayalı, merkezi bir kimlik sisteminin, kullanıcılar ve kuruluşların kendi verileri üzerinde daha fazla denetime sahip olmasını sağlayan yeni bir deneyim kümesinin kilidini açıp uygulamalar, cihazlar ve hizmet sağlayıcıları için daha yüksek düzeyde güven ve güvenlik sunma olanağı sunuyoruz
 
-## <a name="lead-with-open-standards"></a>Açık standartlarla lider 
+## <a name="lead-with-open-standards"></a>Açık standartlarla lider
 
 Bir sonraki nesil nesil kimlik tabanlı deneyimlerin kilidini açmak için müşteriler, iş ortakları ve topluluk ile yakın bir şekilde çalışmaya kararlıdır ve bu alanda inanılmaz katkılara sahip olan bireyler ve kuruluşlara iş ortağı heyecanlanıyoruz. Eğer ekosisteminin büyüyeceği, standartlara, teknik bileşenlere ve kod Teslim edilebilirlerin açık kaynak olması ve tümünün erişimine sahip olması gerekir.
 
@@ -50,21 +50,21 @@ Microsoft, merkezi olmayan Identity Foundation (DıF), W3C kimlik bilgileri topl
 * [DıF sunum değişimi](https://identity.foundation/presentation-exchange/)
 
 
-## <a name="what-are-dids"></a>DIB 'ler nelerdir? 
+## <a name="what-are-dids"></a>Dalların anlamı nedir?
 
 DIB 'leri anlayabilmemiz için, bunları geçerli kimlik sistemleriyle karşılaştırmanıza yardımcı olur. E-posta adresleri ve sosyal ağ kimlikleri işbirliği için kolay bir diğer adlardır, ancak artık işbirliğinin ötesinde çok sayıda senaryoda veri erişimi için denetim noktaları olarak kullanıma sunulmuştur. Bu, bu kimliklere erişim herhangi bir zamanda dış taraflarca kaldırılabildiğinden olası bir sorun oluşturur.
 
 Merkezi olmayan tanımlayıcılar (DIB 'Ler) farklıdır. Dıds, Kullanıcı tarafından üretilmiş, kendine ait, genel olarak benzersiz tanımlayıcılardır ve bu da, Iyon gibi dağıtılmış sistemler için kök olarak kullanılır. Bunlar, daha fazla güvence güvencesi, censorgemisi ve evasiveness delebilirlik gibi benzersiz özelliklere sahiptir. Bu öznitelikler, kendi kendine sahiplik ve Kullanıcı denetimi sağlamak için tasarlanan tüm KIMLIK sistemleri için önemlidir. 
 
 Microsoft 'un doğrulanabilen kimlik bilgileri çözümü, bağlı olan tarafın (Doğrulayıcı) doğrulanabilir kimlik bilgisinin sahipleri olduğunu kanıtlama konusunda bilgi sahibi olmak üzere, şifreli olmayan kimlik bilgilerini (DIB 'Ler) şifreleme olarak imzalamak için kullanılır. Bu nedenle, Microsoft teklifini temel alan doğrulanabilir kimlik bilgisi çözümü oluşturan herkes için merkezi olmayan tanımlayıcıların temel olarak anlaşılmasına önerilir.
-## <a name="what-are-verifiable-credentials"></a>Doğrulanabilir kimlik bilgileri nelerdir? 
+## <a name="what-are-verifiable-credentials"></a>Doğrulanabilir kimlik bilgileri nelerdir?
 
  Günlük yaşamımızda kimlikleri kullanıyoruz. Bir otomobil çalıştırma imkanımız hakkında kanıt olarak kullandığımız sürücü Lisanslarımız vardır. Üniversiteler, bir eğitim düzeyi sunuyoruz. Diğer ülkelere ulaşdığımızda ne kadar yetkililer olduğunu kanıtlamak için Passport 'lar kullanıyoruz. Veri modeli, internet üzerinden çalışırken ancak kullanıcının gizliliğini karşılayan güvenli bir şekilde bu tür senaryoları nasıl işleyebileceğinizi açıklar. [Doğrulanabilir kimlik bilgileri veri modeli 1,0](https://www.w3.org/TR/vc-data-model/) ' de daha fazla bilgi edinebilirsiniz
 
 Kısacası, doğrulanabilir kimlik bilgileri, bir konuyla ilgili veren attest bilgileri tarafından yapılan taleplerden oluşan veri nesneleridir. Bu talepler, şema tarafından tanımlanır ve veren ve Subject olduğunu içerir. Veren 'in, bu bilgileri test ettikleri kanıt olarak bir dijital imza oluşturuyor.
 
 
-## <a name="how-does-decentralized-identity-work"></a>Merkezileşmemiş kimlik nasıl çalışır? 
+## <a name="how-does-decentralized-identity-work"></a>Merkezileşmemiş kimlik nasıl çalışır?
 
 Yeni bir kimlik biçimine ihtiyacımız var. Kendi kendine sahiplik ve censorgemisi gibi önemli kimlik öznitelikleri sağlamak için teknolojileri ve standartları birlikte getiren bir kimliğe ihtiyacımız var. Bu yetenekler, mevcut sistemleri kullanarak elde etmek zordur.
 

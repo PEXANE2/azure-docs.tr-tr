@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 666e9f01d090acf29b8013470ed0264cd83f6d47
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: a8420d23c8bda29290722975ada2acca6733f0e7
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106293643"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491703"
 ---
 # <a name="use-databox-to-migrate-from-network-attached-storage-nas-to-azure-file-shares"></a>Ağ bağlantılı depolama alanından (NAS) Azure dosya paylaşımlarına geçiş yapmak için veri kutusunu kullanın
 
@@ -137,7 +137,12 @@ Azure veri kutusu belgelerindeki adımları izleyin:
 
 Bağlantılı veri kutusu belgeleri bir RoboCopy komutu belirtir. Ancak, komut tam dosya ve klasör uygunluk kalitesini korumak için uygun değildir. Bunun yerine bu komutu kullanın:
 
-[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
+```console
+Robocopy /MT:32 /NP /NFL /NDL /B /MIR /IT /COPY:DATSO /DCOPY:DAT /UNILOG:<FilePathAndName> <SourcePath> <Dest.Path> 
+```
+* Bireysel RoboCopy bayraklarının ayrıntıları hakkında daha fazla bilgi edinmek için yaklaşan [Robocopy bölümündeki](#robocopy)tabloya bakın.
+* İş parçacığı sayısını uygun şekilde boyutlandırma `/MT:n` , Robocopy hızını iyileştirme ve Robocopy 'yi veri merkezinizde iyi bir komşu hale getirme hakkında daha fazla bilgi edinmek Için [Robocopy sorun giderme bölümüne](#troubleshoot)göz atın.
+
 
 ## <a name="phase-7-catch-up-robocopy-from-your-nas"></a>7. Aşama: NAS 'ınızdan yakalama RoboCopy
 
@@ -197,59 +202,7 @@ Bu kopyaların birkaçını paralel olarak çalıştırmayı deneyebilirsiniz. T
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-Belirli bir RoboCopy çalışmasının hız ve başarı oranı, çeşitli faktörlere bağlıdır:
-
-* Kaynak ve hedef depolamada ıOPS
-* aralarında kullanılabilir ağ bant genişliği
-* bir ad alanındaki dosyaları ve klasörleri hızlı bir şekilde işleyebilme
-* RoboCopy çalıştırmaları arasındaki değişiklik sayısı
-
-
-### <a name="iops-and-bandwidth-considerations"></a>IOPS ve bant genişliği konuları
-
-Bu kategoride **kaynağın** (NAS), **hedefin** (Azure veri kutusu ve sonraki Azure dosya paylaşımının) yeteneklerini ve bunları bağlayan **ağı** dikkate almanız gerekir. Olası en yüksek aktarım hızı, bu üç bileşenden en yavaş şekilde belirlenir. Standart bir veri kutusu, Çift 10 Gbps ağ arabirimleriyle birlikte gelir. NAS 'nize bağlı olarak, bu ile eşleşmeyebilirsiniz. Ağ altyapınızın en iyi yeteneklere en iyi aktarım hızlarını destekleyecek şekilde yapılandırıldığından emin olun.
-
-> [!CAUTION]
-> Mümkün olduğunca hızlı kopyalama genellikle en çok desibleken, genellikle iş açısından kritik görevler için yerel ağınızın ve NAS gerecinin kullanımını göz önünde bulundurun.
-
-Mümkün olduğunca hızlı kopyalama, geçişin kullanılabilir kaynakları tekeline geçirebilmesini gerektiren bir risk olduğunda istenmeyebilir.
-
-* Geçiş çalıştırmak için ortamınızda en iyi şekilde geçiş yapmayı düşünün: gün, saat kapalı veya hafta sonları sırasında.
-* Ayrıca, RoboCopy hızını kısıtlamak ve bu nedenle NAS ve ağ üzerindeki etkileri azaltmak için bir Windows Server üzerinde ağ QoS 'yi düşünün.
-* Geçiş araçları için gereksiz çalışmaktan kaçının.
-
-RobCopy 'in kendisi de, `/IPG:n` `n` Robocopy paketleri arasında milisaniye cinsinden ölçülen anahtarı belirterek paket arası gecikmeler ekleme özelliğine sahiptir. Bu anahtarın kullanılması, hem GÇ kısıtlı NAS cihazlarındaki kaynakların tek bir şekilde oluşmasını önlemeye ve yüksek oranda kullanılabilir ağ bağlantılarına karşı bir yardımcı olabilir. 
-
-`/IPG:n` belirli bir MB/sn olan kesin ağ azaltma için kullanılamaz. Bunun yerine Windows Server Network QoS kullanın. RoboCopy tamamen tüm ağ için SMB protokolüne bağımlıdır ve bu nedenle ağ aktarım hızını etkilemeyebilir, ancak kullanımını yavaşlatabilir. 
-
-Benzer bir düşünme satırı, NAS üzerinde gözlemlenen ıOPS için geçerlidir. NAS birimi, paket boyutları ve diğer faktörlerdeki küme boyutu, gözlemlenen ıOPS 'yi etkiler. Paket içi gecikmeye giriş, genellikle NAS üzerindeki yükü denetleyen en kolay yoldur. Birden çok değeri, örneğin, diğer gereksinimleriniz için en fazla gecikme süresi boyunca, diğer gereksinimlerinizin ne kadar gecikmeye izin verdiğini görmek için yaklaşık 20 milisaniyeye (n = 20) test edin.
-
-### <a name="processing-speed"></a>İşlem hızı
-
-RoboCopy, işaret ettiği ad alanını gezer ve kopya için her dosya ve klasörü değerlendirir. Her dosya, bir başlangıç kopyası sırasında, yerel ağ üzerinde bir veri kutusuna kopyalama ve hatta bir Azure dosya paylaşımının WAN bağlantısı üzerinden yakalama kopyaları sırasında değerlendirilir.
-
-Genellikle, bir geçişte en sınırlayıcı faktör olarak bant genişliğini göz önünde bulunduruyoruz ve bu değer doğru olabilir. Ancak bir ad alanını listeleme özelliği, daha küçük dosyalarla daha büyük ad alanları için daha da fazla kopya kopyalamak üzere toplam süreyi etkileyebilir. Küçük dosyaları kopyalamanın 1 TiB ' nin daha az ancak daha büyük bir dosya kopyalaması (diğer tüm değişkenlerin aynı olduğunu kabul etmesinden) çok daha uzun sürmekte olduğunu düşünün.
-
-Bu farkın nedeni, bir ad alanı üzerinde gezinmek için gereken işleme gücünden sorumludur. RoboCopy, `/MT:n` işlemci iş parçacığı sayısı için n tarafından temsil edildiği parametresi aracılığıyla çok iş parçacıklı kopyaları destekler. Bu nedenle, özellikle RoboCopy için bir makine sağlanırken, işlemci çekirdeği sayısını ve bunların sağladıkları iş parçacığı sayısıyla ilişkilerini göz önünde bulundurun. En yaygın olarak çekirdek başına iki iş parçacığı bulunur. Bir makinenin çekirdek ve iş parçacığı sayısı, hangi çoklu iş parçacığı değerlerini belirtmeniz gerektiğine karar vermek için önemli bir veri noktasıdır `/MT:n` . Ayrıca, belirli bir makinede paralel olarak çalıştırmayı planladığınız kaç RoboCopy işi de göz önünde bulundurun.
-
-Daha fazla iş parçacığı, küçük dosya örneğimizi daha az iş parçacığından önemli ölçüde daha hızlı kopyalayacaktır. Aynı zamanda, 1 TİB daha büyük dosyaları için yatırımdaki azalan bir dönüş vardır. Atadığınız daha fazla iş parçacığını daha hızlı kopyalayabilirler, ancak ağ bant genişliği veya GÇ kısıtlı olma olasılığını daha yüksektir.
-
-### <a name="avoid-unnecessary-work"></a>Gereksiz çalışmayı önleyin
-
-Ad uzayındaki büyük ölçekli değişikliklerden kaçının. Bu, dosyaları dizinler arasında taşımayı, büyük ölçekte özellikleri değiştirmeyi veya izinleri değiştirmeyi (NTFS ACL 'Leri), çünkü genellikle bir paylaşımın köküne daha yakın olan klasör ACL 'Leri değiştirildiğinde basamaklı bir değişiklik etkiye sahip olmaları da dahildir. Sonuçlar şu olabilir:
-
-* bir ACL değişikliğinin güncelleştirilmesi gereken her dosya ve klasör nedeniyle genişletilmiş RoboCopy iş çalıştırma süresi
-* ilk yerde veri kutusunu kullanmanın verimliliği, dosyalar bir veri kutusuna kopyalandıktan sonra klasör yapıları değiştiğinde azalabilir. Bir RoboCopy işi, bir ad alanı değişikliğini "oynatabilir" ve bunun yerine, bir Azure dosya paylaşımında taşınan dosyaları temizlemek ve yeni klasör yapısındaki dosyaları yeniden Azure 'a yüklemek için gerekli olacaktır.
-
-Diğer önemli bir boyut, RoboCopy aracını etkin bir şekilde kullanmaktır. Önerilen RoboCopy betiği ile hatalar için bir günlük dosyası oluşturup kaydedebilirsiniz. Kopyalama hataları gerçekleşebilir-Bu normaldir. Bu hatalar genellikle RoboCopy gibi bir kopyalama aracının birden fazla boyutunu çalıştırmanın gerekli hale getirir. Bir ilk çalıştırma, NAS 'dan DataBox 'a ve kopyalanan dosyaları yakalamak ve yeniden denemek için/MıR anahtarıyla bir veya daha fazla ek.
-
-Belirli bir ad alanı kapsamında RoboCopy 'nin birden çok sayısını çalıştırmaya hazır olmanız gerekir. Daha kısa bir sürede kopyalamak daha hızlı tamamlanır, ancak ad alanı işleme hızına göre daha fazla kısıtlanmıştır. Birden çok sayıyı çalıştırdığınızda, RoboCopy her bir turun ilk denemede her şeyi kopyalamaya izin vermez. Bu RoboCopy anahtarları önemli bir farklılık yapabilir:
-
-* `/R:n` n = başarısız bir dosyayı kopyalamayı ne sıklıkta yeniden deneirsiniz ve 
-* `/W:n` n = yeniden denemeler arasında beklenecek saniye sayısı
-
-`/R:5 /W:5` , dilediğiniz şekilde ayarlayabileceğiniz makul bir ayardır. Bu örnekte, başarısız olan bir dosya beş kez yeniden denenecektir ve yeniden denemeler arasında beş saniyelik bekleme süresi vardır. Dosya yine de kopyalanamazsa, sonraki RoboCopy işi yeniden dener ve genellikle zaman aşımı sorunları bu şekilde başarıyla kopyalanabileceğinden başarısız olur.
-
+[!INCLUDE [storage-files-migration-robocopy-optimize](../../../includes/storage-files-migration-robocopy-optimize.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

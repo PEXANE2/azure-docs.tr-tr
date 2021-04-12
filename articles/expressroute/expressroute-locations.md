@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: bb5efa11bcc723d0f373ae00cf7629a59b4a2ca9
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 06e0a97488d94609e28ac418d4a9566be2d5c300
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105959825"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222070"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute bağlantı iş ortakları ve eşleme konumları
 
@@ -122,7 +122,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Internet2](https://internet2.edu/services/cloud-connect/#service-cloud-connect)** |Desteklenir |Desteklenir |Chicago, Dallas, Silicon Valley, Washington DC |
 | **[İnternet Initiative Japan Inc. - IIJ](https://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Desteklenir |Desteklenir |Osaka, Tokyo |
 | **[Internet Solutions - Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |Desteklenir |Desteklenir |Cape Town, Johannesburg, Londra |
-| **[Interxiyon](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Desteklenir |Desteklenir |Amsterdam, Amsterdam2, Copenhagen, Dublin, Frankfurt, Londra, Marseille, Paris, Zurich |
+| **[Interxiyon](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Desteklenir |Desteklenir |Amsterdam, Amsterdam2, Copenhagen, Dublin, Frankfurt, Londra, Madrid, Marseille, Istanbul, Zurich |
 | **[IRıDEOS](https://irideos.it/)** |Desteklenir |Desteklenir |Milano |
 | **Iron Sıradağlar** | Desteklenir |Desteklenir |Washington DC |
 | **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|Desteklenir |Desteklenir | Amsterdam, London2, Silicon Valley, Toron, Washington DC |
@@ -298,6 +298,7 @@ Uzaktan çalışıyorsanız ve fiber bağlantınız yoksa veya diğer bağlantı
 | **[Proximus](https://www.proximus.be/en/id_b_cl_proximus_external_cloud_connect/companies-and-public-sector/discover/magazines/expert-blog/proximus-external-cloud-connect.html)**|Equinix | Amsterdam, Dublin, Londra, Paris |
 | **[QSC AG](https://www.qsc.de/de/produkte-loesungen/cloud-services-und-it-outsourcing/pure-enterprise-cloud/multi-cloud-management/azure-expressroute/)** |Interxion | Frankfurt |  
 | **[RETN](https://retn.net/services/cloud-connect/)** | Equinix | Amsterdam |
+| **[Tata TeleServices](https://www.tatateleservices.com/business-services/data-services/secure-cloud-connect)** | Tata Communications | Chennai, Mumbai |
 | **Rogers** | Cologix, Equinix | Montreal, Toronto |
 | **[SPIN kurumsal](https://enterprise.spectrum.com/services/cloud/cloud-connect.html)** | Equinix | Chicago, Dallas, Los Angeles, New York, Silicon Valley | 
 | **[Tamares Telecom](http://www.tamarestelecom.com/our-services/#Connectivity)** | Equinix | Londra | 

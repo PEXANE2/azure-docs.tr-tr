@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 01a73e7940f88a3eb6e040f26d255448294cab18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed8516f9a898131338fb5b4d75e25cd774c5ab43
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467905"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285371"
 ---
 # <a name="form-recognizer-prebuilt-identification-card-id-model"></a>Form tanıyıcı önceden oluşturulan kimlik kartı (KIMLIK) modeli
 
-Azure form tanıyıcı, önceden oluşturulmuş kimlikler modelini kullanarak kamu kimlik kartlarından (kimlikler) bilgi çözümleyebilir ve ayıklayabilir. Dünya çapındaki Passport ve ABD sürücüsünün lisanslarından önemli bilgileri ayıklamak için KIMLIK tanıma özelliklerine sahip güçlü [optik karakter tanıma (OCR)](../computer-vision/concept-recognizing-text.md) olanaklarımızı birleştirir (tüm 50 durumlar ve D.C.). Kimlikler API 'SI bu kimlik belgelerinden, ad, soyadı, Doğum tarihi, belge numarası ve daha fazlası gibi önemli bilgileri ayıklar. Bu API, tanıyıcı v 2.1 önizlemesinde bulut hizmeti olarak ve şirket içi kapsayıcı olarak kullanılabilir.
+Azure form tanıyıcı, önceden oluşturulmuş kimlikler modelini kullanarak kamu kimlik kartlarından (kimlikler) bilgi çözümleyebilir ve ayıklayabilir. Dünya çapındaki Passport ve ABD sürücüsünün lisanslarından önemli bilgileri ayıklamak için KIMLIK tanıma özelliklerine sahip güçlü [optik karakter tanıma (OCR)](../computer-vision/overview-ocr.md) olanaklarımızı birleştirir (tüm 50 durumlar ve D.C.). Kimlikler API 'SI bu kimlik belgelerinden, ad, soyadı, Doğum tarihi, belge numarası ve daha fazlası gibi önemli bilgileri ayıklar. Bu API, tanıyıcı v 2.1 önizlemesinde bulut hizmeti olarak ve şirket içi kapsayıcı olarak kullanılabilir.
 
 ## <a name="what-does-the-id-service-do"></a>KIMLIK hizmeti ne yapar? 
 

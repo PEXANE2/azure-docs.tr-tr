@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 7f99c37cd9f029c7478d4102bd17c952ffd52f8c
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 36fb512181986fd04a95e72aa028b7c0253aa45f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105044286"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731233"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric yayınları
 
@@ -57,7 +57,7 @@ Service Fabric çalışma zamanının 7,2 sürümünün araç ve SDK güncelleş
 
 Geçerli COVı-19 çapraz olduğu ve müşterilerimizin karşılaştığı zorluk göz önünde bulundurarak 7,1 kullanılabilir hale getirdik, ancak Otomatik yükseltmeleri alacak şekilde kümeleri otomatik olarak yükseltmeyecektir. Müşterilerin, bu kullanıcılara en uygun olan yükseltmeleri uygulayabilmesi için, beklenmeyen kesintilere engel olmak üzere Otomatik yükseltmeleri durakladık.
 
-[Azure Portal](./service-fabric-cluster-upgrade-version-azure.md#upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal) aracılığıyla veya bir [Azure Resource Manager dağıtımı](./service-fabric-cluster-upgrade-version-azure.md#set-the-upgrade-mode-using-a-resource-manager-template)aracılığıyla 7,1 ' e güncelleştirebilirsiniz.
+[Azure Portal](./service-fabric-cluster-upgrade-version-azure.md#manual-upgrades-with-azure-portal) aracılığıyla veya bir [Azure Resource Manager dağıtımı](./service-fabric-cluster-upgrade-version-azure.md#resource-manager-template)aracılığıyla 7,1 ' e güncelleştirebilirsiniz.
 
 Otomatik yükseltmelere sahip Service Fabric kümeleri, standart dağıtım yordamını sürdürtikten sonra otomatik olarak 7,1 güncelleştirmesini almaya başlayacaktır. Standart dağıtım [Service Fabric Tech Community sitesinde](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)başlamadan önce başka bir duyuru sağlayacağız.
 Ayrıca, 7,1 6,5 ' den başlayan önemli yayınlar için destek tarihinin sonunda güncelleştirme yayımladık [.](./service-fabric-versions.md#supported-versions) 

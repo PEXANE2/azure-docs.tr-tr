@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 92803c1e3062fb9f093012db3e3637746dedf87f
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 99f7f6561df16cfad6b0cc001395fa3ad7b2f6dc
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107049"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259481"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>MariaDB için Azure veritabanı fiyatlandırma katmanları
 
@@ -22,7 +22,7 @@ MariaDB sunucusu için Azure veritabanı oluşturmak için üç farklı fiyatlan
 | İşlem oluşturma | 5. Nesil |5. Nesil | 5. Nesil |
 | Sanal çekirdek | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Sanal çekirdek başına bellek | 2 GB | 5 GB | 10 GB |
-| Depolama boyutu | 5 GB ila 1 TB | 5 GB ila 4 TB | 5 GB ila 4 TB |
+| Depolama boyutu | 5 GB ila 1 TB | 5 GB ila 16 TB | 5 GB ila 16 TB |
 | Veritabanı yedekleme saklama süresi | 7-35 gün | 7-35 gün | 7-35 gün |
 
 Fiyatlandırma katmanını seçmek için, başlangıç noktası olarak aşağıdaki tabloyu kullanın.

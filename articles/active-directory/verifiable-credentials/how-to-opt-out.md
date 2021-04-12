@@ -1,5 +1,5 @@
 ---
-title: Doğrulanabilir kimlik bilgilerini (Önizleme) devre dışı
+title: Azure Active Directory doğrulanabilir kimlik bilgilerini (Önizleme) devre dışı
 description: Doğrulanabilir kimlik bilgileri önizlemeden nasıl vazeceğinizi öğrenin
 documentationCenter: ''
 author: barclayn
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 93c493a9b9941913da270fe763175240c8abf9f3
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: d6e72b6d6f566fcf3f52e1c48ab6824c0e9a968e
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106170360"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222801"
 ---
 # <a name="opt-out-of-the-verifiable-credentials-preview"></a>Doğrulanabilir kimlik bilgilerini (Önizleme) devre dışı
 
@@ -62,7 +62,7 @@ Azure Active Directory doğrulanabilir kimlik bilgileri hizmeti 'ni tamamladıkt
 
 Bir kabul etme gerçekleştikten sonra, yaptığınız değişiklikleri kurtarmanız veya yaptığınız herhangi bir işlem yapmanız mümkün olmayacaktır. Bu adım tek yönlü bir işlemdir ve bir kez daha kabul etmeniz gerekir. Bu, yeni bir oluşturma işlemi ile sonuçlanır.  
 
-## <a name="effect-on-existing-verifiable-credentials"></a>Var olan doğrulanabilir kimlik bilgileriyle ilgili etkisi.
+## <a name="effect-on-existing-verifiable-credentials"></a>Var olan doğrulanabilir kimlik bilgileriyle ilgili etki
 
 Zaten verilen tüm doğrulanabilir kimlik bilgileri mevcut olmaya devam edecektir. Bu, YAPTıĞıNıZ bir işlem için çözümlenemeye devam edecek şekilde şifreli olarak geçersiz kılınmaz.
 Ancak, bağlı olan taraflar durum API 'sini çağırdıklarında, her zaman bir hata iletisi alır.
