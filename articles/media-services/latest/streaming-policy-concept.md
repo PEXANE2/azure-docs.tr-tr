@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: inhenkel
-ms.openlocfilehash: 2873486b95f0bb4a9a27e2e050cc6f6d5473a44e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82f01b4216af8d924354ae9e9a204a8eaefb8213
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98898181"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120852"
 ---
 # <a name="streaming-policies"></a>Akış İlkeleri
 
@@ -34,7 +34,7 @@ Aşağıdaki "karar ağacı" senaryonuz için önceden tanımlanmış bir akış
 
 > [!IMPORTANT]
 > * Tarih saat türünde **akış ilkelerinin** özellikleri her zaman UTC biçimindedir.
-> * Media Service hesabınız için sınırlı bir ilke kümesi tasarlamanızı ve aynı seçenek gerektiğinde bunları akış bulucular için yeniden kullanmanız gerekir. Daha fazla bilgi için bkz. [Kotalar ve sınırlar](limits-quotas-constraints.md).
+> * Media Service hesabınız için sınırlı bir ilke kümesi tasarlamanızı ve aynı seçenek gerektiğinde bunları akış bulucular için yeniden kullanmanız gerekir. Daha fazla bilgi için bkz. [Kotalar ve sınırlar](limits-quotas-constraints-reference.md).
 
 ## <a name="decision-tree"></a>Karar ağacı
 
@@ -42,7 +42,7 @@ Resmi tam boyutlu görüntülemek için tıklayın.
 
 [![Senaryonuz için önceden tanımlanmış bir akış Ilkesi seçmenize yardımcı olmak üzere tasarlanan bir karar ağacının gösterildiği diyagram.](./media/streaming-policy/large.png)](./media/streaming-policy/large.png#lightbox)
 
-İçeriğinizi şifreliyorsanız bir [Içerik anahtarı ilkesi](content-key-policy-concept.md)oluşturmanız gerekir, **içerik anahtarı ilkesi** açık akış veya indirme için gerekli değildir. 
+İçeriğinizi şifreliyorsanız bir [Içerik anahtarı ilkesi](drm-content-key-policy-concept.md)oluşturmanız gerekir, **içerik anahtarı ilkesi** açık akış veya indirme için gerekli değildir. 
 
 Özel gereksinimleriniz varsa (örneğin, farklı protokoller belirtmek istiyorsanız, özel bir anahtar teslim hizmeti kullanmanız veya net bir ses izi kullanmanız gerekiyorsa), özel bir akış Ilkesi [oluşturabilirsiniz](/rest/api/media/streamingpolicies/create) . 
 
@@ -81,10 +81,10 @@ Yanıt:
 
 ## <a name="filtering-ordering-paging"></a>Filtreleme, sıralama, sayfalama
 
-Bkz. [Media Services varlıkların filtrelenmesi, sıralanması, sayfalama](entities-overview.md).
+Bkz. [Media Services varlıkların filtrelenmesi, sıralanması, sayfalama](filter-order-page-entitites-how-to.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Bir dosyayı akışa alma](stream-files-dotnet-quickstart.md)
-* [AES-128 dinamik şifreleme ve anahtar dağıtım hizmetini kullanma](protect-with-aes128.md)
-* [DRM dinamik şifreleme ve lisans teslim hizmetini kullanma](protect-with-drm.md)
+* [AES-128 dinamik şifreleme ve anahtar dağıtım hizmetini kullanma](drm-playready-license-template-concept.md)
+* [DRM dinamik şifreleme ve lisans teslim hizmetini kullanma](drm-protect-with-drm-tutorial.md)

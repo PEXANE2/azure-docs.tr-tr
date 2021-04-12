@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: d3cc8f36f05def18c16db0875cb712cdf5d165f9
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: b106c82e3755fbd0e02f12a769d80ce4761cf026
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121362"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285867"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 
@@ -358,6 +358,15 @@ Bulut katmanlaması etkinleştirilirse, sunucu uç noktasını veya sunucu uç n
 
 > [!Note]  
 > Azure Dosya Eşitleme aracısının 9. sürümünde, VSS anlık görüntüleri (önceki sürümler dahil), artık bulut katmanlaması etkinleştirilmiş birimlerde desteklenmektedir. Ancak, PowerShell aracılığıyla önceki sürüm uyumluluğunu etkinleştirmeniz gerekir. [Nasıl yapılacağını öğrenin](storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service).
+
+## <a name="data-classification"></a>Veri Sınıflandırması
+Veri sınıflandırma yazılımınız yüklüyse, bulut Katmanlamasının etkinleştirilmesi iki nedenden dolayı maliyeti artırabilir:
+
+1. Bulut katmanlama özelliği etkinken, en yoğun dosyalarınız yerel olarak önbelleğe alınır ve en güncel dosyalar buluttaki Azure dosya paylaşımında katmanlıdır. Veri sınıflandırmanız dosya paylaşımındaki tüm dosyaları düzenli olarak taraıyorsa, buluta katmanlı dosyalar her tarandığında geri alınmalıdır. 
+
+2. Veri sınıflandırma yazılımı bir dosyanın veri akışındaki meta verileri kullanıyorsa, yazılımın sınıflandırmasını bilmesi için dosyanın tam olarak geri çekilmiş olması gerekir. 
+
+Bu, hem geri çekme sayısı hem de geri çekilen veri miktarı arttıkça maliyetleri artırabilir.
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure Dosya Eşitleme aracısı güncelleştirme ilkesi
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

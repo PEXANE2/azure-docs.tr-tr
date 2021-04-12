@@ -1,20 +1,20 @@
 ---
-title: 'Öğretici: örnek uygulama (Önizleme) kullanarak doğrulanabilir kimlik bilgileriyle çalışmaya başlama'
+title: Öğretici-örnek uygulama kullanarak Azure Active Directory doğrulanabilir kimlik bilgilerini kullanmaya başlama (Önizleme)
 description: Bu öğreticide, örnek uygulama ve test kiracımızı kullanarak doğrulanabilir kimlik bilgileri verme hakkında bilgi edineceksiniz
 ms.service: identity
 ms.subservice: verifiable-credentials
 author: barclayn
 ms.author: barclayn
 ms.topic: tutorial
-ms.date: 03/31/2021
-ms.openlocfilehash: 4914df0df30ed990dd2c692f0f5b57586d2a75c6
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.date: 04/01/2021
+ms.openlocfilehash: deebaf31197d8b7335f887ae447f05add45278b2
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106172103"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222894"
 ---
-# <a name="tutorial-get-started-with-verifiable-credentials-using-a-sample-app-preview"></a>Öğretici: örnek uygulama (Önizleme) kullanarak doğrulanabilir kimlik bilgileriyle çalışmaya başlama
+#  <a name="tutorial---get-started-with-azure-active-directory-verifiable-credentials-using-a-sample-app-preview"></a>Öğretici-örnek uygulama kullanarak Azure Active Directory doğrulanabilir kimlik bilgilerini kullanmaya başlama (Önizleme)
 
 Bu öğreticide, ilk doğrulanabilir kimlik bilgilerinizi vermek için gereken adımlara geçeceğiz: doğrulanmış bir kimlik bilgisi uzmanı kartı. Daha sonra bu kartı kullanarak, dijital credentialing 'in bir bölümünde ana, doğrulanmış bir kimlik bilgisi uzmanı olduğunuzu doğrulayan bir doğrulayıcı olduğunu kanıtlayabilirsiniz. İlk doğrulanabilir kimlik bilgilerinizi vermek için doğrulanabilir kimlik bilgileri örnek uygulamasını kullanarak Azure Active Directory doğrulanabilir kimlik bilgilerini kullanmaya başlayın.
 

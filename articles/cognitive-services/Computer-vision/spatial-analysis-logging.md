@@ -10,16 +10,16 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: bd35062ca1a5b3218a9af1fbd28fe8e7d7073c07
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 1f03f99e6394c3939855c73548e8fb917f8696bc
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077627"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286037"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetri ve sorun giderme
 
-Uzamsal analiz sistemin durumunu izlemeye ve sorunları tanılarken yardımcı olmaya yönelik bir dizi özellik içerir.
+Uzamsal analizler sistemin sistem durumunu izlemeye yönelik bir dizi özellik içerir ve sorunları tanılamanıza yardımcı olur.
 
 ## <a name="enable-visualizations"></a>Görselleştirmeleri etkinleştir
 

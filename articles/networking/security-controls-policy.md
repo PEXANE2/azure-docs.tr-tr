@@ -1,18 +1,18 @@
 ---
 title: Azure ağ hizmetleri için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure ağ hizmetleri için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: sample
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: bd09fbbd818f40d11c6bada09b232308b9ebaac2
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: e097ff7ea49657588b6002bb18972e5b1086f3dc
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105031178"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096263"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-networking-services"></a>Azure ağ hizmetleri için Azure Ilke mevzuat uyumluluk denetimleri
 

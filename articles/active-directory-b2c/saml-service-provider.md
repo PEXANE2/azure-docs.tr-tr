@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 97718fef0aecd07dd364677ce1b72eb5bba78475
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 652bc9a236a4e4b9d3f99dab640919f2be985984
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384281"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257730"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -47,7 +47,7 @@ Müşteri kimliği ve erişim yönetimi çözümü olarak Azure AD B2C kullanan 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Azure AD B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Makalesinde açıklanan özel ilke başlangıç paketinden *SocialAndLocalAccounts* özel ilkesine ihtiyacınız vardır.
+* [Azure AD B2C özel ilkeleri kullanmaya başlama](tutorial-create-user-flows.md?pivots=b2c-custom-policy)bölümündeki adımları uygulayın. Makalesinde açıklanan özel ilke başlangıç paketinden *SocialAndLocalAccounts* özel ilkesine ihtiyacınız vardır.
 * SAML protokolünün temel olarak anlaşılmasına ve uygulamanın SAML uygulamasına aşina olma.
 * SAML uygulaması olarak yapılandırılmış bir Web uygulaması. Bu öğreticide, sağladığımız bir [SAML test uygulaması][samltest] kullanabilirsiniz.
 
@@ -71,8 +71,8 @@ Uygulamanız ve Azure AD B2C arasında bir güven ilişkisi oluşturmak için he
 
 | Kullanım | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| SAML istek imzalama  | Hayır | Web uygulamanızda depolanan özel anahtara sahip bir sertifika, uygulamanız tarafından Azure AD B2C gönderilen SAML isteklerini imzalamak için kullanılır. Web uygulaması, ortak anahtarı SAML meta veri uç noktası aracılığıyla kullanıma sunmalıdır. Azure AD B2C, uygulama meta verilerinden ortak anahtar kullanarak SAML istek imzasını doğrular.|
-| SAML onaylama şifrelemesi  | Hayır | Web uygulamanızda depolanan özel anahtara sahip bir sertifika. Web uygulaması, ortak anahtarı SAML meta veri uç noktası aracılığıyla kullanıma sunmalıdır. Azure AD B2C, ortak anahtarı kullanarak uygulamanıza yapılan onayları şifreleyebilir. Uygulama, onay şifresini çözmek için özel anahtarı kullanır.|
+| SAML istek imzalama  | No | Web uygulamanızda depolanan özel anahtara sahip bir sertifika, uygulamanız tarafından Azure AD B2C gönderilen SAML isteklerini imzalamak için kullanılır. Web uygulaması, ortak anahtarı SAML meta veri uç noktası aracılığıyla kullanıma sunmalıdır. Azure AD B2C, uygulama meta verilerinden ortak anahtar kullanarak SAML istek imzasını doğrular.|
+| SAML onaylama şifrelemesi  | No | Web uygulamanızda depolanan özel anahtara sahip bir sertifika. Web uygulaması, ortak anahtarı SAML meta veri uç noktası aracılığıyla kullanıma sunmalıdır. Azure AD B2C, ortak anahtarı kullanarak uygulamanıza yapılan onayları şifreleyebilir. Uygulama, onay şifresini çözmek için özel anahtarı kullanır.|
 
 **Azure AD B2C sertifikaları**
 

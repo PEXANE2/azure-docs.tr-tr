@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Azure Active Directory doğrulanabilir kimlik bilgileri verecek şekilde yapılandırma (Önizleme)'
+title: Öğretici-Azure Active Directory doğrulanabilir kimlik bilgileri verecek şekilde yapılandırma (Önizleme)
 description: Bu öğreticide, kiracınızda doğrulanabilir kimlik bilgilerini dağıtmak için gereken ortamı oluşturacaksınız
 documentationCenter: ''
 author: barclayn
@@ -7,17 +7,17 @@ manager: daveba
 ms.service: identity
 ms.topic: tutorial
 ms.subservice: verifiable-credentials
-ms.date: 03/31/2021
+ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 08aaa49f73ed437e041ffb93dc9ef5be41e316ec
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: cd39f6c484ebe116918611bb1d543c1919a3cb0a
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106172111"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222954"
 ---
-# <a name="tutorial-configure-your-azure-active-directory-to-issue-verifiable-credentials-preview"></a>Öğretici: Azure Active Directory doğrulanabilir kimlik bilgileri verecek şekilde yapılandırma (Önizleme)
+# <a name="tutorial---configure-your-azure-active-directory-to-issue-verifiable-credentials-preview"></a>Öğretici-Azure Active Directory doğrulanabilir kimlik bilgileri verecek şekilde yapılandırma (Önizleme)
 
 Bu öğreticide, [kullanmaya başlama](get-started-verifiable-credentials.md) makalesinin bir parçası olarak yapılan çalışmayı geliştirdik ve Azure Active Directory (Azure AD) kendi kendine bağlı olmayan [tanımlayıcı](https://www.microsoft.com/security/business/identity-access-management/decentralized-identity-blockchain?rtc=1#:~:text=Decentralized%20identity%20is%20a%20trust,protect%20privacy%20and%20secure%20transactions.) (DID) ile ayarlanıyor. Örnek uygulamayı ve vereninizi kullanarak doğrulanabilir bir kimlik bilgisi vermek için merkezileşmemiş tanımlayıcıyı kullanırız; Bununla birlikte, bu öğreticide, kimlik doğrulaması için örnek Azure B2C kiracısı 'ni kullanmaya devam ediyoruz.  Sonraki öğreticimizde, uygulamayı Azure AD 'niz ile çalışacak şekilde yapılandırmak için ek adımlar kullanacağız.
 

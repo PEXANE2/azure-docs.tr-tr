@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f7357644639e1bdba07b9ad44533582fc66b600
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f186ea4afd6a8bbf52f91e94f2976f244fc8dda
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102456087"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120869"
 ---
 # <a name="streaming-locators"></a>Akış Bulucuları
 
@@ -29,7 +29,7 @@ Bir **akış Bulucu** oluştururken bir **varlık** adı ve **akış ilkesi** ad
 
 * [Varlıklar](assets-concept.md)
 * [Akış Ilkeleri](streaming-policy-concept.md)
-* [İçerik anahtarı Ilkeleri](content-key-policy-concept.md)
+* [İçerik anahtarı Ilkeleri](drm-content-key-policy-concept.md)
 
 Ayrıca, yalnızca kullanıcının bu saatler arasında içerik oynamasını sağlayan akış bulucuda başlangıç ve bitiş saatini belirtebilirsiniz (örneğin, 5/1/2019 arasında 5/5/2019 arasında).  
 
@@ -37,7 +37,7 @@ Ayrıca, yalnızca kullanıcının bu saatler arasında içerik oynamasını sa�
 
 * **Akış Konumlandırıcı** güncelleştirilemez. 
 * Tarih saat türünde **akış Konumlandırıcı** özellikleri her zaman UTC biçimindedir.
-* Media Service hesabınız için sınırlı bir ilke kümesi tasarlamanızı ve aynı seçenek gerektiğinde bunları akış bulucular için yeniden kullanmanız gerekir. Daha fazla bilgi için bkz. [Kotalar ve sınırlar](limits-quotas-constraints.md).
+* Media Service hesabınız için sınırlı bir ilke kümesi tasarlamanızı ve aynı seçenek gerektiğinde bunları akış bulucular için yeniden kullanmanız gerekir. Daha fazla bilgi için bkz. [Kotalar ve sınırlar](limits-quotas-constraints-reference.md).
 
 ## <a name="create-streaming-locators"></a>Akış Konumlandırıcı oluşturma  
 
@@ -85,7 +85,7 @@ Bkz. [Filtreler: akış Bulleyicileri ile ilişkilendir](filters-concept.md#asso
 
 ## <a name="filter-order-page-streaming-locator-entities"></a>Filtre, sipariş, sayfa akışı Bulucu varlıkları
 
-Bkz. [Media Services varlıkların filtrelenmesi, sıralanması, sayfalama](entities-overview.md).
+Bkz. [Media Services varlıkların filtrelenmesi, sıralanması, sayfalama](filter-order-page-entitites-how-to.md).
 
 ## <a name="list-streaming-locators-by-asset-name"></a>Akış Konumlandırıcı 'yı varlık adına göre Listele
 
@@ -103,7 +103,7 @@ Bkz. [Media Services varlıkların filtrelenmesi, sıralanması, sayfalama](enti
 
 * [Varlıklar](assets-concept.md)
 * [Akış Ilkeleri](streaming-policy-concept.md)
-* [İçerik anahtarı Ilkeleri](content-key-policy-concept.md)
+* [İçerik anahtarı Ilkeleri](drm-content-key-policy-concept.md)
 * [Öğretici: .NET kullanarak videoları karşıya yükleme, kodlama ve akışla](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

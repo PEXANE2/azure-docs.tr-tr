@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/07/2021
-ms.openlocfilehash: abf88619969875121d8e9e46e758680adce68566
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 5a395205662e6c9ab0bde0e227f045ca46cfed45
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107108525"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228274"
 ---
 # <a name="assign-user-roles-and-permissions"></a>Kullanıcı rollerini ve izinlerini atama
 
@@ -26,12 +26,12 @@ Market veya geliştirici hesabınızla ilgili olanaklarla erişebilmek için, ke
 
 | Rol | Açıklama |
 | ------------ | ------------- |
-| Sahip | Bir yayımcı hesabı oluşturulduğunda, ortağa bir sahiplik rolü atanır.<br>İzin ayrıntıları:<br><ul><li>Hesabın sahipliğini tamamen doldurun.</li><li>Kullanıcı türü ekleme</li><li>Ödeme ve vergi bilgilerini tamamlayabilir</li><li>Geribildirim raporlarını ve özetlerini görüntüleme</li><li>Yayımcı hesabını diğer geliştirici programlarına kaydetme</li></ul> |
-| Yönetici | <ul><li>Yayımcı hesabı kullanıcılarını, rollerini ve izinlerini yönetme</li><li>Kiracılar yönetme</li><li>Vergi ve ödeme ayarlarına erişin</li></ul> |
-| Geliştirici | <ul><li>Paketi karşıya yükle</li><li>Uygulamaları ve eklentileri gönderme</li><li>Telemetri ayrıntıları için kullanım raporlarını görüntüleyin</li><li>Finansal bilgilere veya hesap setlere erişin</li></ul> |
-| İş Katılımcısı | <ul><li>Mali bilgilere erişin</li><li>Fiyatlandırma ayrıntılarını ayarlama</li><li>Yeni uygulamalar ve eklentiler oluşturma veya gönderme</li></ul> |
-| Mali katkıda bulunan | <ul><li>Ödeme raporlarını görüntüleme</li><li>Ödeme ve vergi profillerini yönetme</li><li>Uygulamalarda veya ayarlarda değişiklik yapma</li></ul> |
-| Pazarlamacısıdır | <ul><li>Müşteri incelemelerine yanıt verme</li><li>Finansal olmayan raporları görüntüleme</li><li>Uygulamalarda veya ayarlarda değişiklik yapma</li></ul> |
+| Sahip | Bir yayımcı hesabı oluşturulduğunda, ortağa bir sahiplik rolü atanır.<br><br>İzin ayrıntıları:<br><br>Hesabın tüm sahipliğini &#10004;&#160;&#160;.<br>&#10004;&#160;&#160;Kullanıcı türü ekleme<br>&#10004;&#160;&#160;, ödeme ve vergi bilgilerini tamamlayabilir<br>&#10004;&#160;&#160;geri bildirim raporlarını ve özetlerini görüntüleme<br>&#10004;&#160;&#160;yayımcı hesabını diğer geliştirici programlarına Kaydet |
+| Yönetici | Yayımcı hesabı kullanıcılarını, rollerini ve izinlerini yönetmek &#10004;&#160;&#160;<br>Kiracılar &#10004;&#160;&#160;Yönet<br>&#x2718;&#160;&#160;erişim vergisi ve ödeme ayarları |
+| Geliştirici | Paketi karşıya yükleme &#10004;&#160;&#160;<br>&#10004;&#160;&#160;uygulamaları ve eklentileri gönder<br>Telemetri ayrıntıları için kullanım raporlarını görüntüleme &#10004;&#160;&#160;<br>Finansal bilgilere veya hesap ayarlarına erişim &#x2718;&#160;&#160; |
+| İş Katılımcısı | &#10004;&#160;&#160;finansal bilgilere erişin<br>&#10004;&#160;&#160;fiyatlandırma ayrıntılarını ayarlama<br>Yeni uygulamalar ve eklentiler oluşturma veya gönderme &#x2718;&#160;&#160; |
+| Mali katkıda bulunan | &#10004;&#160;&#160;ödeyen raporlarını görüntüleme<br>&#10004;&#160;&#160;ödeme ve vergi profillerini yönetme<br>&#x2718;&#160;&#160;uygulamalarda veya ayarlarda değişiklik yapma |
+| Pazarlamacısıdır | &#10004;&#160;&#160;müşteri incelemelerine yanıt verin<br>&#10004;&#160;&#160;finansal olmayan raporları görüntüleme<br>&#x2718;&#160;&#160;uygulamalarda veya ayarlarda değişiklik yapma |
 |||
 
 > [!NOTE]

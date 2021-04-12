@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf49b1a2b7178800966342a3d52ed49450f3d97c
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 53cdbfb3ba531330c37f86233cbed990da4efaf4
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226693"
+ms.locfileid: "107258393"
 ---
 # <a name="resilient-end-user-experience"></a>Dayanıklı son kullanıcı deneyimi
 
@@ -40,7 +40,7 @@ En yaygın kimlik görevlerini ayarlamanıza yardımcı olması için Azure AD B
 
 İş gereksinimlerinize göre karşılanabileceği yerleşik Kullanıcı akışları ' nı seçin. Microsoft tarafından kapsamlı bir şekilde test edildiğinden, bu kimlik Kullanıcı akışlarının ilke düzeyi işlevsel, performans veya ölçeğini doğrulamak için gereken testi en aza indirmenize izin verebilirsiniz. Uygulamalarınızın işlevselliği, performansı ve ölçeği için yine de test etmeniz gerekir.
 
-İş gereksinimleriniz nedeniyle [özel ilkeler](../../active-directory-b2c/custom-policy-get-started.md) ' i seçmeniz gerekir, uygulama düzeyinde teste ek olarak işlevsel, performans veya ölçek için ilke düzeyinde test gerçekleştirdiğinizden emin olun.
+İş gereksinimleriniz nedeniyle [özel ilkeler](../../active-directory-b2c/user-flow-overview.md) ' i seçmeniz gerekir, uygulama düzeyinde teste ek olarak işlevsel, performans veya ölçek için ilke düzeyinde test gerçekleştirdiğinizden emin olun.
 
 Karar vermenize yardımcı olması için [Kullanıcı akışlarını ve özel ilkeleri karşılaştıran](../../active-directory-b2c/user-flow-overview.md#comparing-user-flows-and-custom-policies) makaleye bakın.
 

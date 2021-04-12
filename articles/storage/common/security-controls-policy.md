@@ -1,18 +1,18 @@
 ---
 title: Azure depolama için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure depolama için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: sample
 author: twooley
 ms.author: twooley
 ms.service: storage
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 2ef722bd5d27e5aba4c16be96246db0e5e0f94e2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a2607d2ea4e67ec97b87dda67fa968ce37e1476b
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105036041"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096259"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-storage"></a>Azure depolama için Azure Ilke mevzuat uyumluluk denetimleri
 

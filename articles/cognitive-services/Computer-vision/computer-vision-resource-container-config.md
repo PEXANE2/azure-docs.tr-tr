@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: ee2e4fca697c086b95e83feb9d40ce8e07dc344c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b421877b2a41074bf901817c7ad8922083c3e77
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102611904"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285682"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>Okuma OCR Docker kapsayıcılarını yapılandırma
 
@@ -33,14 +33,14 @@ Kapsayıcı Ayrıca, kapsayıcıya özgü aşağıdaki yapılandırma ayarların
 
 |Gerekli|Ayar|Amaç|
 |--|--|--|
-|No|ReadEngineConfig: ResultExpirationPeriod| yalnızca v 2.0 kapsayıcıları. Saat cinsinden sonuç süre sonu dönemi. Varsayılan değer 48 saattir. Ayar sistemin tanınma sonuçlarını ne zaman temizlemeli olduğunu belirtir. Örneğin, sistem, `resultExpirationPeriod=1` işlem sonrasında tanınma sonucunu 1 saat sonra temizler. İse `resultExpirationPeriod=0` , sistem, sonuç alındıktan sonra tanınma sonucunu temizler.|
-|No|Önbellek: Redsıs| yalnızca v 2.0 kapsayıcıları. Sonuçları depolamak için Redsıs depolamayı sunar. Bir yük dengeleyicinin arkasına birden çok okuma kapsayıcısı yerleştirilirse önbellek *gerekir* .|
-|No|Kuyruk: Kbıbitmq|yalnızca v 2.0 kapsayıcıları. Görevleri dağıtırken Kbıbitmq 'ı sunar. Bu ayar, bir yük dengeleyicinin arkasına birden çok okuma kapsayıcısı yerleştirildiğinde yararlıdır.|
-|No|Kuyruk: Azure: Queuevisibilitytimeoutınmilliseconds | yalnızca v3. x kapsayıcıları. Başka bir çalışan tarafından işlendiği zaman bir iletinin görünmez olması. |
-|No|Depolama::D Okısaentstore:: MongoDB|yalnızca v 2.0 kapsayıcıları. Kalıcı sonuç depolaması için MongoDB 'yi sunar. |
-|No|Depolama: ObjectStore: AzureBlob: ConnectionString| yalnızca v3. x kapsayıcıları. Azure Blob depolama bağlantı dizesi. |
-|No|Depolama: Timetoliveındays| yalnızca v3. x kapsayıcıları. Sonuç süre sonu dönemi (gün). Ayar sistemin tanınma sonuçlarını ne zaman temizlemeli olduğunu belirtir. Varsayılan değer 2 gündür (48 saat); Bu, bu dönemden daha uzun süre içinde olan tüm sonuçlar başarıyla alınmayacağından garanti edilmez. |
-|No|Görev: Maxrunningtimespanınminutes| yalnızca v3. x kapsayıcıları. Tek bir istek için en fazla çalışma süresi. Varsayılan değer 60 dakikadır. |
+|Hayır|ReadEngineConfig: ResultExpirationPeriod| yalnızca v 2.0 kapsayıcıları. Saat cinsinden sonuç süre sonu dönemi. Varsayılan değer 48 saattir. Ayar sistemin tanınma sonuçlarını ne zaman temizlemeli olduğunu belirtir. Örneğin, sistem, `resultExpirationPeriod=1` işlem sonrasında tanınma sonucunu 1 saat sonra temizler. İse `resultExpirationPeriod=0` , sistem, sonuç alındıktan sonra tanınma sonucunu temizler.|
+|Hayır|Önbellek: Redsıs| yalnızca v 2.0 kapsayıcıları. Sonuçları depolamak için Redsıs depolamayı sunar. Bir yük dengeleyicinin arkasına birden çok okuma OCR kapsayıcısı yerleştirilirse önbellek *gerekir* .|
+|Hayır|Kuyruk: Kbıbitmq|yalnızca v 2.0 kapsayıcıları. Görevleri dağıtırken Kbıbitmq 'ı sunar. Bu ayar, bir yük dengeleyicinin arkasına birden çok okuma OCR kapsayıcısı yerleştirildiğinde yararlıdır.|
+|Hayır|Kuyruk: Azure: Queuevisibilitytimeoutınmilliseconds | yalnızca v3. x kapsayıcıları. Başka bir çalışan tarafından işlendiği zaman bir iletinin görünmez olması. |
+|Hayır|Depolama::D Okısaentstore:: MongoDB|yalnızca v 2.0 kapsayıcıları. Kalıcı sonuç depolaması için MongoDB 'yi sunar. |
+|Hayır|Depolama: ObjectStore: AzureBlob: ConnectionString| yalnızca v3. x kapsayıcıları. Azure Blob depolama bağlantı dizesi. |
+|Hayır|Depolama: Timetoliveındays| yalnızca v3. x kapsayıcıları. Sonuç süre sonu dönemi (gün). Ayar sistemin tanınma sonuçlarını ne zaman temizlemeli olduğunu belirtir. Varsayılan değer 2 gündür (48 saat); Bu, bu dönemden daha uzun süre içinde olan tüm sonuçlar başarıyla alınmayacağından garanti edilmez. |
+|Hayır|Görev: Maxrunningtimespanınminutes| yalnızca v3. x kapsayıcıları. Tek bir istek için en fazla çalışma süresi. Varsayılan değer 60 dakikadır. |
 
 ## <a name="apikey-configuration-setting"></a>ApiKey yapılandırma ayarı
 
@@ -119,7 +119,7 @@ Aşağıdaki örneklerde, komutlarının nasıl yazılacağını ve kullanılaca
 
 ## <a name="container-docker-examples"></a>Kapsayıcı Docker örnekleri
 
-Aşağıdaki Docker örnekleri okuma kapsayıcısı içindir.
+Aşağıdaki Docker örnekleri, okuma OCR kapsayıcısına yöneliktir.
 
 
 # <a name="version-32-preview"></a>[Sürüm 3,2-Önizleme](#tab/version-3-2)

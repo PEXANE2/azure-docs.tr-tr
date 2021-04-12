@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory Delta biçimi
 description: Delta biçimini kullanarak bir Delta Gölü verileri dönüştürme ve taşıma
-author: djpmsft
+author: dcstwh
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.author: daperlov
-ms.openlocfilehash: 74df809f2206a105b405ba184949ef887096ebc2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: weetok
+ms.openlocfilehash: 6d9d2b0d185750cf8ed8192661f28a2b82d88b78
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932514"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222547"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Azure Data Factory Delta biçimi
 
@@ -76,7 +76,7 @@ Aşağıdaki tabloda bir Delta havuzu tarafından desteklenen özellikler listel
 | Vakum | Eski tablo sürümleri için bekletme eşiğini saat cinsinden belirtin. 0 veya daha az varsayılan değer 30 gündür | evet | Tamsayı | Vakum |
 | Yöntemi Güncelleştir | Delta Gölü üzerinde hangi güncelleştirme işlemlerine izin verileceğini belirtin. INSERT olmayan yöntemler için, satırları işaretlemek için önceki bir alter Row dönüşümü gerekir. | evet | `true` veya `false` | siler <br> eklenebilir <br> güncellenebilir <br> birleþtirmek |
 | İyileştirilmiş yazma | Spark yürüticilerinin iç karıştırmasını iyileştirmek yoluyla yazma işlemi için daha yüksek aktarım hızı elde edin. Sonuç olarak daha büyük boyutta daha az bölüm ve dosya fark edebilirsiniz | hayır | `true` veya `false` | optimizedWrite: doğru |
-| Otomatik Sıkıştır | Herhangi bir yazma işlemi tamamlandıktan sonra Spark, ```OPTIMIZE``` verileri yeniden düzenlemek için komutu otomatik olarak yürütür ve daha sonra daha iyi okuma performansı elde etmek için gerekirse daha fazla bölüme sahip olur | hayır | `true` veya `false` |   Oto sıkıştır: true |
+| Otomatik Sıkıştır | Herhangi bir yazma işlemi tamamlandıktan sonra Spark, ```OPTIMIZE``` verileri yeniden düzenlemek için komutu otomatik olarak yürütür ve daha sonra daha iyi okuma performansı elde etmek için gerekirse daha fazla bölüme sahip olur | hayır | `true` veya `false` |    Oto sıkıştır: true |
 
 ### <a name="delta-sink-script-example"></a>Delta havuz betiği örneği
 

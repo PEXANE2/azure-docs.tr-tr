@@ -80,7 +80,7 @@ Nasıl yapılır kılavuzlarında bir görevi tamamlamayı gösteren kod örnekl
 * [İş girişi olarak HTTPS ile kodlama-.NET](job-input-from-http-how-to.md)  
 * [Olayları izleme - Portal](monitoring/monitor-events-portal-how-to.md)
 * [Multi-DRM-.NET ile dinamik olarak şifreleyin](drm-protect-with-drm-tutorial.md) 
-* [Özel bir dönüşümle kodlama-CLı](encode-custom-preset-cli-how-to.md)
+* [Özel bir dönüşümle kodlama-CLı](transform-custom-preset-cli-how-to.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde bulunun, güncelleştirmeleri al
 
