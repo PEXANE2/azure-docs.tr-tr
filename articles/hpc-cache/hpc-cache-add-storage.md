@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: afb896100ea60c21aaf37890d7b520bf38c6ce18
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 44b2534d7aeb12f4819a6c42cfb29d057ce26ddc
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772731"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259039"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
@@ -314,6 +314,8 @@ ADLS-NFS depolama hedefleri, BLOB depolama hedefleri ve bazı NFS depolama hedef
 
 Bir ADLS-NFS depolama hedefi oluşturabilmeniz için önce NFS özellikli bir depolama hesabı oluşturmanız gerekir. [Azure HPC Cache önkoşulları](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview) ve [NFS kullanarak blob Storage bağlama](../storage/blobs/network-file-system-protocol-support-how-to.md)bölümündeki yönergeleri izleyin. Depolama hesabınızı ayarladıktan sonra, depolama hedefini oluştururken yeni bir kapsayıcı oluşturabilirsiniz.
 
+Bu yapılandırma hakkında daha fazla bilgi edinmek için [Azure HPC Cache Ile NFS 'e bağlı BLOB depolama kullanın](nfs-blob-considerations.md) makalesini okuyun.
+
 Bir ADLS-NFS depolama hedefi oluşturmak için Azure portal **depolama hedefi Ekle** sayfasını açın. (Ek yöntemler geliştirmektedir.)
 
 ![ADLS-NFS hedefi tanımlı depolama hedefi ekleme sayfasının ekran görüntüsü](media/add-adls-target.png)
@@ -331,8 +333,6 @@ Bu bilgileri girin.
 * **Kullanım modeli** -yukarıda [bir kullanım modeli seçin](#choose-a-usage-model) bölümünde açıklanan iş akışınızı temel alan veri önbelleğe alma profillerinden birini seçin.
 
 İşiniz bittiğinde, depolama hedefini eklemek için **Tamam** ' ı tıklatın.
-
-<!-- **** -->
 
 ## <a name="view-storage-targets"></a>Depolama hedeflerini görüntüleme
 

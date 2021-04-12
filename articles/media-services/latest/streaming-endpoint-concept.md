@@ -9,14 +9,14 @@ MS. Service: Media-Services MS. Workload: MS. Topic: kavramsal MS. Date: 02/13/2
 
 Microsoft Azure Media Services, bir [akış uç noktası](/rest/api/media/streamingendpoints) , canlı ve isteğe bağlı içeriğinizi ortak akış medya protokollerinden (HLS veya Dash) birini kullanarak doğrudan bir istemci oynatıcı uygulamasına teslim edebilen dinamik (tam zamanında) paketleme ve kaynak hizmetini temsil eder. Ayrıca, **akış uç noktası** sektör lideri drms için dinamik (tam zamanında) şifreleme sağlar. 
 
-Media Services bir hesap oluşturduğunuzda, bir durdurulmuş durumda sizin için **varsayılan** bir akış uç noktası oluşturulur. Hesap altında daha fazla akış uç noktası oluşturulabilir (bkz. [Kotalar ve sınırlar](limits-quotas-constraints.md)).
+Media Services bir hesap oluşturduğunuzda, bir durdurulmuş durumda sizin için **varsayılan** bir akış uç noktası oluşturulur. Hesap altında daha fazla akış uç noktası oluşturulabilir (bkz. [Kotalar ve sınırlar](limits-quotas-constraints-reference.md)).
 
 > [!NOTE]
 > Video akışını başlatmak için videoyu akışını istediğiniz **akış uç noktasını** başlatmanız gerekir.
 >
 > Yalnızca akış uç noktanız çalışır durumdaysa faturalandırılırsınız.
 
-[Dinamik paketleme](dynamic-packaging-overview.md) konusunu da gözden geçirdiğinizden emin olun. 
+[Dinamik paketleme](encode-dynamic-packaging-concept.md) konusunu da gözden geçirdiğinizden emin olun. 
 
 ## <a name="naming-convention"></a>Adlandırma kuralı
 
@@ -201,7 +201,7 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Dinamik paketleme](dynamic-packaging-overview.md)
+[Dinamik paketleme](encode-dynamic-packaging-concept.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

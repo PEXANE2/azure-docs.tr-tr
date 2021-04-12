@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: azhussai
-ms.openlocfilehash: 7662ef5c2c3f5ed20069f64781d222ae44e52168
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 3e7bdc92dc6268c712eecbd69ff014e2229b3b84
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384848"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490973"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>HTTP üstbilgilerini ve URL 'YI Application Gateway yeniden yazın
 
@@ -158,6 +158,14 @@ Bir yeniden yazma kuralı kümesi şunları içerir:
       * **URL yolu**: yolun yeniden yazılması için gereken değer. 
       * **URL sorgu dizesi**: sorgu dizesinin yeniden yazılması için gereken değer. 
       * **Yol haritasını yeniden değerlendir**: URL yol eşlemesinin yeniden değerlendirilip değerlendirilmeyeceğini anlamak için kullanılır. İşaretlenmediyse, URL yolu eşlemesindeki yol düzeniyle eşleştirmek için özgün URL yolu kullanılacaktır. True olarak ayarlanırsa, URL yolu eşlemesi yeniden yazan yol ile eşleştirmeyi denetlemek için yeniden değerlendirilir. Bu anahtarı etkinleştirmek, isteği farklı bir arka uç havuzuna yeniden yazmaya yönlendirmenize yardımcı olur.
+
+## <a name="rewrite-configuration-common-pitfall"></a>Yapılandırmayı yeniden yazma ortak
+
+* Temel istek yönlendirme kuralları için ' yol haritasını yeniden değerlendir ' kullanımına izin verilmez. Bu, temel bir yönlendirme kuralı için sonsuz değerlendirme döngüsünü önlemektir.
+
+* Yol tabanlı yönlendirme kuralı için sonsuz değerlendirme döngüsünü engellemek üzere yol tabanlı yönlendirme kuralları için ' yeniden değerlendir yol haritası ' etkin olmayan en az 1 Koşullu yeniden yazma kuralı veya 1 yeniden yazma kuralı olması gerekir.
+
+* Bir döngünün istemci girdilerine göre dinamik olarak oluşturulması durumunda gelen istekler 500 hata koduyla sonlandırılır. Application Gateway, böyle bir senaryoda herhangi bir düşüş olmadan diğer isteklere hizmet vermeye devam edecektir.
 
 ### <a name="using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku"></a>Web uygulaması güvenlik duvarı (WAF_v2 SKU) ile URL yeniden yazma veya konak üstbilgi yeniden yazma kullanma
 

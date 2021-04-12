@@ -1,18 +1,19 @@
 ---
-title: Bir klasör yapısını Azure Dosya Eşitleme topolojisine eşleme
-description: Azure Dosya Eşitleme ile kullanmak için mevcut bir dosya ve klasör yapısını Azure dosya paylaşımlarına eşleyin. Geçiş belgeleri arasında paylaşılan ortak bir metin bloğu.
+title: include dosyası
+description: include dosyası
+services: storage
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: include
 ms.date: 2/20/2020
 ms.author: fauhse
-ms.subservice: files
-ms.openlocfilehash: cde85e245c8cc6ae8c55b24270f125bacc111737
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.custom: include file
+ms.openlocfilehash: 6158964c04a689ed421f216c2910f47d7a39e2be
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102547568"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081134"
 ---
 ```console
 Robocopy /MT:16 /NP /NFL /NDL /B /MIR /IT /COPY:DATSO /COPY:DATSO /DCOPY:DAT /UNILOG:<FilePathAndName> <SourcePath> <Dest.Path> 

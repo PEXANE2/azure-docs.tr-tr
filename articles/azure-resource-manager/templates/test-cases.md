@@ -5,16 +5,16 @@ ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 451323058ad743d6e26fc8bcea27d1b44c76f543
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31e30b4853da03e28a4a2d15292050805f5bc292
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97674051"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064163"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>ARM şablonu test araç seti için varsayılan test çalışmaları
 
-Bu makalede, [şablon test araç seti](test-toolkit.md)ile çalıştırılan varsayılan testler açıklanmaktadır. Testi geçiren veya başarısız olan örnekler sağlar. Her testin adını içerir.
+Bu makalede, Azure Resource Manager şablonları (ARM şablonları) için [şablon test araç seti](test-toolkit.md) ile çalıştırılan varsayılan testler açıklanmaktadır. Testi geçiren veya başarısız olan örnekler sağlar. Her testin adını içerir. Belirli bir testi çalıştırmak için bkz. [test parametreleri](test-toolkit.md#test-parameters).
 
 ## <a name="use-correct-schema"></a>Doğru şemayı kullan
 
@@ -137,7 +137,7 @@ Aşağıdaki örnek bu testi **geçirir** .
 
 Test adı: **konum sabit kodlanmamalıdır**
 
-Şablonlarınız konum adlı bir parametreye sahip olmalıdır. Şablonunuzda kaynakların konumunu ayarlamak için bu parametreyi kullanın. Ana şablonda (azuredeploy.jsveya mainTemplate.json olarak adlandırılır), bu parametre varsayılan kaynak grubu konumu olarak belirtilebilir. Bağlantılı veya iç içe şablonlarda, konum parametresinin varsayılan bir konumu olmamalıdır.
+Şablonlarınız konum adlı bir parametreye sahip olmalıdır. Şablonunuzda kaynakların konumunu ayarlamak için bu parametreyi kullanın. Ana şablonda ( _azuredeploy.js_ veya _mainTemplate.json_ olarak adlandırılır), bu parametre varsayılan kaynak grubu konumu olarak belirtilebilir. Bağlantılı veya iç içe şablonlarda, konum parametresinin varsayılan bir konumu olmamalıdır.
 
 Şablonunuz için kullanılabilen bölgeler sınırlı olabilir. Kaynak konumunu sabit kodunuzda, kullanıcıların o bölgede bir kaynak oluşturması engellenebilir. Kaynak konumunu olarak ayarlamış olsanız bile kullanıcılar engellenebilir `"[resourceGroup().location]"` . Kaynak grubu, diğer kullanıcıların erişebileceği bir bölgede oluşturulmuş olabilir. Bu kullanıcıların şablonu kullanmalarını engelledi.
 
@@ -393,11 +393,11 @@ Ve için parametreler dahil ettiğinizde `_artifactsLocation` `_artifactsLocatio
 * bir parametre sağlarsanız, diğerini sağlamanız gerekir
 * `_artifactsLocation`bir **dize** olmalıdır
 * `_artifactsLocation` Ana şablonda bir varsayılan değere sahip olmalıdır
-* `_artifactsLocation` iç içe yerleştirilmiş bir şablonda varsayılan değere sahip olamaz 
+* `_artifactsLocation` iç içe yerleştirilmiş bir şablonda varsayılan değere sahip olamaz
 * `_artifactsLocation``"[deployment().properties.templateLink.uri]"`varsayılan değeri için ya da ham depo URL 'si olmalıdır
 * `_artifactsLocationSasToken`**secureString** olmalıdır
 * `_artifactsLocationSasToken` Varsayılan değeri için yalnızca boş bir dize olabilir
-* `_artifactsLocationSasToken` iç içe yerleştirilmiş bir şablonda varsayılan değere sahip olamaz 
+* `_artifactsLocationSasToken` iç içe yerleştirilmiş bir şablonda varsayılan değere sahip olamaz
 
 ## <a name="declared-variables-must-be-used"></a>Tanımlanan değişkenler kullanılmalıdır
 
@@ -520,7 +520,7 @@ Sonraki örnek bu testi **geçirir** .
 
 Test adı: **Resourceıds içermemelidir**
 
-Kaynak kimlikleri oluştururken, isteğe bağlı parametreler için gereksiz işlevler kullanmayın. Varsayılan olarak, [RESOURCEID](template-functions-resource.md#resourceid) işlevi geçerli aboneliği ve kaynak grubunu kullanır. Bu değerleri sağlamanız gerekmez.  
+Kaynak kimlikleri oluştururken, isteğe bağlı parametreler için gereksiz işlevler kullanmayın. Varsayılan olarak, [RESOURCEID](template-functions-resource.md#resourceid) işlevi geçerli aboneliği ve kaynak grubunu kullanır. Bu değerleri sağlamanız gerekmez.
 
 Aşağıdaki örnek, geçerli abonelik KIMLIĞINI ve kaynak grubu adını sağlamanız gerekmeyen için bu testi **başarısız olur** .
 
@@ -691,7 +691,40 @@ Aşağıdaki örnek, çıktılarında bir [list *](template-functions-resource.m
 }
 ```
 
+## <a name="use-protectedsettings-for-commandtoexecute-secrets"></a>CommandToExecute gizli dizileri için protectedSettings kullanma
+
+Test adı: **Commandtoexecute, gizlilikler Için ProtectedSettings kullanmalıdır**
+
+Özel bir betik uzantısında `protectedSettings` `commandToExecute` parola gibi gizli verileri içerdiğinde şifreli özelliğini kullanın. Gizli veri türü örnekleri, `secureString` `secureObject` , `list()` işlevleri veya betiklerdir.
+
+Sanal makineler için özel Betik uzantısı hakkında daha fazla bilgi için bkz. [Windows](
+/azure/virtual-machines/extensions/custom-script-windows), [Linux](/azure/virtual-machines/extensions/custom-script-linux)ve şema [Microsoft. COMPUTE virtualmachines/Extensions](/azure/templates/microsoft.compute/virtualmachines/extensions).
+
+Bu örnekte, şifrelenen özelliği içerdiğinden, adlı bir parametreye sahip bir şablon `adminPassword` `secureString` , testi **geçirir** `protectedSettings` `commandToExecute` .
+
+```json
+"properties": [
+  {
+    "protectedSettings": {
+      "commandToExecute": "[parameters('adminPassword')]"
+    }
+  }
+]
+```
+
+Şifrelenmemiş özelliği içeriyorsa test **başarısız olur** `settings` `commandToExecute` .
+
+```json
+"properties": [
+  {
+    "settings": {
+      "commandToExecute": "[parameters('adminPassword')]"
+    }
+  }
+]
+```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Test araç setini çalıştırma hakkında bilgi edinmek için bkz. [ARM şablonu test araç seti kullanma](test-toolkit.md).
-- Test araç setini kullanarak kapsanan bir Microsoft Learn modülü için bkz. [değişiklik önizleme ve Azure kaynaklarını doğrulama, durum ve ARM şablonu test araç seti](/learn/modules/arm-template-test/).
+* Test araç setini çalıştırma hakkında bilgi edinmek için bkz. [ARM şablonu test araç seti kullanma](test-toolkit.md).
+* Test araç setini kullanarak kapsanan bir Microsoft Learn modülü için bkz. [değişiklik önizleme ve Azure kaynaklarını doğrulama, durum ve ARM şablonu test araç seti](/learn/modules/arm-template-test/).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/06/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 9797401fd96bf052fdc9de0c2c2ceaf88b3d46b6
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 0a25e1b50455cad5bdbe5b76b2a291f2a1c11940
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504218"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107015"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Ticari Market Transact özellikleri
 
@@ -43,7 +43,7 @@ Microsoft, Transact seçeneğini kullanırken, üçüncü taraf yazılımların�
 | Teklif türü | Faturalandırma temposunda | Ölçülen faturalandırma | Fiyatlandırma modeli |
 | ------------ | ------------- | ------------- | ------------- |
 | Azure Uygulaması<br>(Yönetilen uygulama) | Aylık | Yes | Kullanım tabanlı |
-| Azure Sanal Makinesi | Aylık | Hayır | Kullanım tabanlı, KLG |
+| Azure Sanal Makinesi | Aylık | No | Kullanım tabanlı, KLG |
 | Hizmet Olarak Yazılım (SaaS) | Aylık ve yıllık | Yes | Düz hız, Kullanıcı başına, kullanım tabanlı. |
 |||||
 
@@ -189,7 +189,7 @@ Bu bölümde, farklı teklif türleri için Transact gereksinimleri ele alınmak
 - Teklifin fiyatlandırma modelinden bağımsız olarak, Transact yayımlama seçeneği için Microsoft hesabı ve finansal bilgiler gereklidir.
 - Zorunlu mali bilgiler, ödeme hesabı ve vergi profilini içerir.
 
-Bu hesapları ayarlama hakkında daha fazla bilgi için bkz. [Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme](partner-center-portal/manage-account.md).
+Bu hesapları ayarlama hakkında daha fazla bilgi için bkz. [Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme](manage-account.md).
 
 ### <a name="requirements-for-specific-offer-types"></a>Belirli teklif türleri için gereksinimler
 

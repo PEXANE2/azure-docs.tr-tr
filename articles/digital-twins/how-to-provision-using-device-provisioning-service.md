@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a571d92dd9663c7d2d0a576b59e5cd2b3352cb76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad1351b7c9a649a553ce54422b99a13c286437d6
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951110"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107304"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Cihaz sağlama hizmeti 'ni (DPS) kullanarak Azure dijital TWINS 'de cihazları otomatik olarak yönetme
 
@@ -302,7 +302,7 @@ Bu akıştan doldurduktan sonra, her şey cihazları devre dışı bırakmak iç
 
 Kullanımdan kaldırma işleminin tetiklenmesi için cihazı IoT Hub el ile silmeniz gerekir.
 
-Bunu bir [Azure CLI komutuyla](/cli/azure/ext/azure-iot/iot/hub/module-identity#ext_azure_iot_az_iot_hub_module_identity_delete) veya Azure Portal yapabilirsiniz. Azure portal cihazı silmek için aşağıdaki adımları izleyin:
+Bunu bir [Azure CLI komutuyla](/cli/azure/iot/hub/module-identity#az_iot_hub_module_identity_delete) veya Azure Portal yapabilirsiniz. Azure portal cihazı silmek için aşağıdaki adımları izleyin:
 
 1. IoT Hub 'ınıza gidin ve sol taraftaki menü seçeneklerinde **IoT cihazları** ' nı seçin. 
 2. [Bu makalenin ilk yarısında](#auto-provision-device-using-device-provisioning-service)seçtiğiniz CIHAZ kayıt kimliğine sahip bir cihaz görürsünüz. Alternatif olarak, Azure dijital TWINS 'te bir ikizi olduğu sürece silinecek başka bir cihaz seçebilirsiniz. böylece, cihaz silindikten sonra ikizi 'in otomatik olarak silindiğini doğrulayabilirsiniz.

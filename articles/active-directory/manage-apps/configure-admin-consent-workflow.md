@@ -12,16 +12,16 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95d89ea0cbc7d1e0379a9cbfce40f11d4f8ac93f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e01a3b1538c6bf3030e5c8f129606adaecffda60
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643771"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105332"
 ---
-# <a name="configure-the-admin-consent-workflow-preview"></a>Yönetici onayı iş akışını yapılandırma (Önizleme)
+# <a name="configure-the-admin-consent-workflow"></a>Yönetici onayı iş akışını yapılandırma
 
-Bu makalede, son kullanıcılara yönetici onayı gerektiren uygulamalara erişim istemek için bir yol sağlayan yönetici onayı iş akışı (Önizleme) özelliğinin nasıl etkinleştirileceği açıklanır.
+Bu makalede, son kullanıcılara yönetici onayı gerektiren uygulamalara erişim istemek için bir yol sağlayan yönetici onayı iş akışı özelliğinin nasıl etkinleştirileceği açıklanır.
 
 Yönetici onayı iş akışı olmadan, Kullanıcı izninin devre dışı olduğu bir Kiracıdaki bir Kullanıcı, kuruluş verilerine erişim izni gerektiren herhangi bir uygulamaya erişmeyi denediğinde engellenir. Kullanıcı, uygulamaya erişimin yetkilendirilmemiş olduğunu bildiren genel bir hata iletisi görür ve yöneticisinden yardım isteyin. Ancak genellikle Kullanıcı, uygulamaya kimin başvuracağını bilmez, bu nedenle uygulamada yeni bir yerel hesap verir veya oluşturur. Bir yöneticiye bildirimde bulunulsa bile, yöneticinin erişim izni vermesini ve kullanıcılarını bilgilendirmesini sağlamak için her zaman kolaylaştırılmış bir işlem yoktur.
  
@@ -38,7 +38,7 @@ Yönetici onayı iş akışını etkinleştirmek ve gözden geçirenler ' i seç
 3. Filtre arama kutusuna "**Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
 4. Gezinti menüsünde **Kurumsal uygulamalar**' a tıklayın. 
 5. **Yönet** altında **Kullanıcı ayarları**' nı seçin.
-6. **Yönetici izin istekleri (Önizleme)** altında, kullanıcıları **Evet** olarak **kabul veremediği uygulamalara yönetici onayı isteyebilecekleri** şekilde ayarlayın.
+6. **Yönetici izin istekleri** altında, kullanıcılar, **Evet** olarak **kabul veremediği uygulamalar için yönetici onayı isteyebilirler** .
 
    ![Yönetici onayı iş akışı ayarlarını yapılandırma](media/configure-admin-consent-workflow/admin-consent-requests-settings.png)
  
@@ -78,7 +78,7 @@ Yönetici izin isteklerini gözden geçirmek ve işlem yapmak için:
 2. Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i seçin. **Azure Active Directory uzantısı** açılır.
 3. Filtre arama kutusuna "**Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
 4. Gezinti menüsünde **Kurumsal uygulamalar**' a tıklayın.
-5. **Etkinlik**' ın altında **Yönetici onay istekleri (Önizleme)** öğesini seçin.
+5. **Etkinlik**' ın altında **Yönetici onay istekleri**' ni seçin.
 
    > [!NOTE]
    > Gözden geçirenler yalnızca, gözden geçiren olarak belirlendikten sonra oluşturulan yönetici isteklerini görürler.
@@ -112,11 +112,7 @@ Yapılandırıldıysa, tüm gözden geçirenler şu durumlarda e-posta bildirimi
  
 ## <a name="audit-logs"></a>Denetim günlükleri 
  
-Aşağıdaki tabloda, yönetici onayı iş akışı için kullanılabilen senaryolar ve denetim değerleri özetlenmektedir. 
-
-> [!NOTE]
-> Denetim aktörün Kullanıcı bağlamı Şu anda tüm senaryolarda yok. Bu, önizleme sürümünde bilinen bir sınırlamadır.
-
+Aşağıdaki tabloda, yönetici onayı iş akışı için kullanılabilen senaryolar ve denetim değerleri özetlenmektedir.
 
 |Senaryo  |Denetim Hizmeti  |Denetim Kategorisi  |Denetim etkinliği  |Aktör denetimi  |Denetim günlüğü sınırlamaları  |
 |---------|---------|---------|---------|---------|---------|

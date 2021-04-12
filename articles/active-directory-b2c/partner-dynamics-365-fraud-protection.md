@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 9483b0a8829c042a7cf8d516c6007cbbf14a97ac
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d1f0728a9a8da264f0960be2b956516b3c93742e
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639740"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258086"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ile Microsoft Dynamics 365 sahtekarlık korumasını yapılandırma
 
@@ -68,7 +68,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 ## <a name="set-up-the-solution"></a>Çözümü ayarlama
 
 1. Federasyonun Azure AD B2C izin verecek şekilde yapılandırılmış [bir Facebook uygulaması oluşturun](./identity-provider-facebook.md#create-a-facebook-application) .
-2. Oluşturduğunuz [Facebook gizli](./custom-policy-get-started.md#create-the-facebook-key) anahtarını bir kimlik deneyimi çerçevesi ilke anahtarı olarak ekleyin.
+2. Oluşturduğunuz [Facebook gizli](./tutorial-create-user-flows.md?pivots=b2c-custom-policy#create-the-facebook-key) anahtarını bir kimlik deneyimi çerçevesi ilke anahtarı olarak ekleyin.
 
 ## <a name="configure-your-application-under-microsoft-dfp"></a>Uygulamanızı Microsoft DFP altında yapılandırma
 
@@ -148,7 +148,7 @@ Kullanıcı Kimliği değerinin, karşılık gelen Azure AD B2C yapılandırma d
 
 1. Ilkeler klasöründeki [Azure AD B2C ilkesine](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies) gidin.
 
-2. [LocalAccounts başlangıç paketini](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) indirmek için bu [belgeyi](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) izleyin
+2. [LocalAccounts başlangıç paketini](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) indirmek için bu [belgeyi](./tutorial-create-user-flows.md?pivots=b2c-custom-policy?tabs=applications#custom-policy-starter-pack) izleyin
 
 3. Azure AD B2C kiracı için ilkeyi yapılandırın.
 
@@ -184,4 +184,4 @@ Daha fazla bilgi için aşağıdaki makaleleri gözden geçirin:
 
 - [Azure AD B2C'deki özel ilkeler](./custom-policy-overview.md)
 
-- [Azure AD B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C özel ilkeleri kullanmaya başlama](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)

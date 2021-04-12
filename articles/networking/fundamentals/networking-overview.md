@@ -8,20 +8,20 @@ ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 10/28/2020
+ms.date: 04/07/2021
 ms.author: kumud
-ms.openlocfilehash: 3145a52a6050272c01cd7ccb64afef0b89812753
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 34e31bacbb276feb5b11d1b955096877376e989b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106170332"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107712"
 ---
 # <a name="azure-networking-services-overview"></a>Azure ağ hizmetlerine genel bakış
 
 Azure 'daki ağ hizmetleri, birlikte veya ayrı olarak kullanılabilecek çeşitli ağ özellikleri sağlar. Bunlarla ilgili daha fazla bilgi edinmek için aşağıdaki önemli yeteneklerden birine tıklayın:
 - [**Bağlantı Hizmetleri**](#connect): Azure sanal ağ (VNet), sanal WAN, expressroute, VPN Gateway, sanal ağ NAT ağ geçidi, Azure DNS, eşleme hizmeti ve Azure savunma 'da bu ağ hizmetlerinin herhangi birini veya birleşimini kullanarak Azure kaynaklarını ve şirket içi kaynakları bağlayın.
-- [**Uygulama koruma hizmetleri**](#protect): Azure-Private link, DDoS koruması, güvenlik duvarı, ağ güvenlik grupları, Web uygulaması güvenlik duvarı ve sanal ağ uç noktalarında bu ağ hizmetlerinin herhangi birini veya birleşimini kullanarak uygulamalarınızı koruyun.
+- [**Uygulama koruma hizmetleri**](#protect): Azure-Load Balancer, özel bağlantı, DDoS koruması, güvenlik duvarı, ağ güvenlik grupları, Web uygulaması güvenlik duvarı ve sanal ağ uç noktalarında bu ağ hizmetlerinin herhangi birini veya birleşimini kullanarak uygulamalarınızı koruyun.
 - [**Uygulama Teslim Hizmetleri**](#deliver): azure-Content DELIVERY Network (CDN), Azure ön kapı hizmeti, Traffic Manager, Application Gateway, Internet çözümleyicisi ve Load Balancer bu ağ hizmetlerinin herhangi birini veya birleşimini kullanarak Azure ağı 'nda uygulamalar sunun.
 - [**Ağ izleme**](#monitor): Azure-ağ Izleyicisi, ExpressRoute Izleyicisi, Azure Izleyici veya VNET Terminal erişim noktası (TAP) ' de bu ağ hizmetlerinin herhangi birini veya birleşimini kullanarak ağ kaynaklarınızı izleyin.
 
@@ -158,13 +158,13 @@ Aşağıdaki diyagramda Application Gateway ile URL yolu tabanlı yönlendirme g
 :::image type="content" source="./media/networking-overview/figure1-720.png" alt-text="Application Gateway örneği":::
 
 ## <a name="network-monitoring-services"></a><a name="monitor"></a>Ağ izleme hizmetleri
-Bu bölümde, Azure 'da ağ kaynaklarınızı izlemeye yardımcı olan ağ hizmetleri açıklanmaktadır-ağ Izleyicisi, ağlar için Azure Izleyici, ExpressRoute Izleyicisi, Azure Izleyici ve sanal ağ dokunma.
+Bu bölümde, Azure 'da ağ kaynaklarınızı izlemeye yardımcı olan ağ hizmetleri açıklanmaktadır-ağ Izleyicisi, Azure Izleyici ağ öngörüleri, Azure Izleyici, ExpressRoute Izleyicisi ve sanal ağ dokunma.
 
 ### <a name="network-watcher"></a><a name="networkwatcher"></a>Ağ İzleyicisi
 Azure Ağ İzleyicisi, Azure sanal ağındaki kaynaklarda izleme, tanılama, ölçümleri görüntüleme ve günlükleri etkinleştirme veya devre dışı bırakma işlemleri için araçlar sağlar. Daha fazla bilgi için bkz. [Ağ İzleyicisi nedir?](../../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 
-### <a name="azure-monitor-for-networks-preview"></a>Ağlar için Azure Izleyici önizlemesi
-Ağlar için Azure Izleyici, tüm dağıtılan ağ kaynakları için herhangi bir yapılandırma gerektirmeden sistem durumu ve ölçümlerinin kapsamlı bir görünümünü sağlar. Ayrıca [bağlantı izleyici](../../network-watcher/connection-monitor-overview.md), [ağ güvenlik grupları için akış günlüğü](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)ve [Trafik Analizi](../../network-watcher/traffic-analytics.md)gibi ağ izleme özelliklerine erişim sağlar. Daha fazla bilgi için bkz. [Networks önizlemesi Için Azure izleyici](../../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
+### <a name="azure-monitor-network-insights"></a>Azure Izleyici ağ öngörüleri
+Ağlar için Azure Izleyici, tüm dağıtılan ağ kaynakları için herhangi bir yapılandırma gerektirmeden sistem durumu ve ölçümlerinin kapsamlı bir görünümünü sağlar. Ayrıca [bağlantı izleyici](../../network-watcher/connection-monitor-overview.md), [ağ güvenlik grupları için akış günlüğü](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)ve [Trafik Analizi](../../network-watcher/traffic-analytics.md)gibi ağ izleme özelliklerine erişim sağlar. Daha fazla bilgi için bkz. [Azure Izleyici ağ öngörüleri](../../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 
 ### <a name="expressroute-monitor"></a><a name="expressroutemonitor"></a>ExpressRoute Izleyicisi
 ExpressRoute devre ölçümlerini, kaynak günlüklerini ve uyarılarını görüntüleme hakkında bilgi edinmek için bkz. [ExpressRoute izleme, ölçümler ve uyarılar](../../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json).
