@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 11c65498d5a31c2e2ee997bdaf18037b1f0f9060
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cc877a693ce00ca3c8040a656e743216c092636
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102455221"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960529"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Media Services .NET SDK ile filtre oluşturma
 
@@ -37,7 +37,7 @@ Bu konu başlığı altında, Isteğe bağlı bir video için filtre tanımlamak
 ## <a name="prerequisites"></a>Önkoşullar 
 
 - [Filtreleri ve dinamik bildirimleri](filters-dynamic-manifest-overview.md)gözden geçirin.
-- [Media Services hesabı oluşturun](./create-account-howto.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
+- [Media Services hesabı oluşturun](./account-create-how-to.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
 - [API 'lere erişmek](./access-api-howto.md) için gereken bilgileri alın
 - [.NET SDK 'yı kullanmaya başlama](stream-files-tutorial-with-api.md#start-using-media-services-apis-with-net-sdk) hakkında bilgi için [Azure Media Services kullanarak karşıya yükleme, kodlama ve akışı](stream-files-tutorial-with-api.md) gözden geçirin
 
