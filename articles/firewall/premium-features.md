@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/07/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8d0e86d95205acea2ac48ce027bcd118f4e3bf20
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: fdf0113d73b0b2e82ec889caf2a82c77bb7a040c
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967039"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226710"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure Güvenlik Duvarı Premium Önizleme özellikleri
 
@@ -148,7 +148,6 @@ Azure Güvenlik Duvarı Premium önizleme aşağıdaki bilinen sorunlara sahipti
 |HTTPS 'de FQDN çözümlemesi için ESNı desteği|Şifrelenmiş SNı, HTTPS el sıkışması içinde desteklenmez.|Yalnızca bugün Firefox, özel yapılandırma ile ESNı destekler. Önerilen geçici çözüm bu özelliği devre dışı bırakdır.|
 |İstemci sertifikaları (TLS)|İstemci sertifikaları, istemci ve sunucu arasında karşılıklı kimlik güveni oluşturmak için kullanılır. İstemci sertifikaları, bir TLS anlaşması sırasında kullanılır. Azure Güvenlik Duvarı, sunucuyla bir bağlantıyı yeniden sağlar ve istemci sertifikalarının özel anahtarına erişemez.|Yok|
 |QUIC/HTTP3|QUIC, HTTP 'nin yeni ana sürümüdür. Bu, 80 (PLAN) ve 443 (SSL) üzerinden UDP tabanlı bir protokoldür. FQDN/URL/TLS incelemesi desteklenmez.|UDP 80/443 ' i ağ kuralları olarak geçirmeyi yapılandırın.|
-|Premium 'da güvenli merkez ve Zorlamalı tünel desteklenmez|Şu anda güvenlik duvarı Premium SKU 'SU güvenli hub dağıtımları ve Zorlamalı tünel yapılandırmalarında desteklenmez.|GA için zamanlanan düzelme.|
 Güvenilmeyen müşteri tarafından imzalanan sertifikalar|Bir intranet tabanlı Web sunucusundan alındıktan sonra, müşteri tarafından imzalanan sertifikalara güvenlik duvarı tarafından güvenilmiyor.|GA için zamanlanan düzelme.
 |IDPS 'de TLS incelemesi ile ilgili uyarılarda yanlış kaynak ve hedef IP adresleri.|TLS incelemesini ve ıDPS 'yi etkinleştirdiğinizde yeni bir uyarı olduğunda, görünen kaynak/hedef IP adresi yanlış olur (özgün IP adresi yerine iç IP adresi görüntülenir).|GA için zamanlanan düzelme.|
 |HTTP için ıDPS ile ilgili uyarılarda yanlış kaynak IP adresi (TLS denetimi olmadan).|Düz metin HTTP trafiği kullanımda olduğunda ve ıDPS yeni bir uyarı yayınlar ve hedef bir IP adresi ise, görünen kaynak IP adresi yanlış olur (özgün IP adresi yerine iç IP adresi görüntülenir).|GA için zamanlanan düzelme.|

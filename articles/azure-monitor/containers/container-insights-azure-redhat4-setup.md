@@ -3,12 +3,12 @@ title: Azure Red Hat OpenShift v4. x 'i Container Insights ile yapılandırma | 
 description: Bu makalede, Azure Red Hat OpenShift sürüm 4 veya sonraki sürümlerde barındırılan Azure Izleyici ile bir Kubernetes kümesi için izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 02cb794463b965ebafef0b6861477dbf69227511
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c44a7c6eea6182316d626e3e8501f9aa63eef78
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506421"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221526"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-container-insights"></a>Azure Red Hat OpenShift v4. x 'i kapsayıcı öngörüleri ile yapılandırma
 
@@ -34,6 +34,8 @@ Kapsayıcı öngörüleri, [kapsayıcı öngörülerine genel bakış](container
 - Azure CLı sürüm 2.0.72 veya üzeri  
 
 - [Helb 3](https://helm.sh/docs/intro/install/) CLI aracı
+
+- [OpenShift CLI](https://docs.openshift.com/container-platform/4.7/cli_reference/openshift_cli/getting-started-cli.html) 'nın en son sürümü
 
 - [Bash sürüm 4](https://www.gnu.org/software/bash/)
 

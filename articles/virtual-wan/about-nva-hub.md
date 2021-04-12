@@ -7,19 +7,18 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
-Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
-ms.openlocfilehash: 365ed60e73be9bb2098022fa767f4ae54b93c37c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e70b899ea0133704e4ecab42dd4c2a09bca41804
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98028089"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226320"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Bir Azure sanal WAN hub 'ında ağ sanal gereci hakkında (Önizleme)
 
 Azure sanal WAN, müşteri şirket Içi ekipmanlarını (CPE) sanal hub 'daki bir Azure VPN ağ geçidine bağlamayı kolaylaştıran bir Otomasyon oluşturmak için ağ ortaklarıyla çalıştı. Azure, müşterilerin bir üçüncü taraf ağ sanal gereci (NVA) doğrudan sanal hub 'a dağıtmasını sağlamak üzere Select Networking partner ile çalışmaktadır. Bu, kendi şubelerini sanal hub 'daki aynı marka NVA 'ya bağlamak isteyen müşterilerin, özel uçtan uca SD-WAN özelliğinden yararlanabilmeleri için bu özellikleri sağlar.
 
-Barbcuda ağları ve Cisco sistemleri, doğrudan sanal WAN hub 'ına dağıtılabilecek NVA 'lar sağlayan ilk iş ortaklarıdır.  İlgili ürün belgeleri için bkz. [Barracuda CloudGen WAN](https://www.barracuda.com/products/cloudgenwan) ve [Cisco Cloud onrampa](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) . Azure daha fazla iş ortaklarıyla çalışmaktadır, bu nedenle diğer tekliflerin izlediğini görmek beklenir.
+Barbcuda ağları ve Cisco sistemleri, doğrudan sanal WAN hub 'ına dağıtılabilecek NVA 'lar sağlayan ilk iş ortaklarıdır.  İlgili ürün belgeleri için bkz. [Barracuda CloudGen WAN](https://www.barracuda.com/products/cloudgenwan), Multi-Cloud ve [VMware SD-WAN](https://kb.vmware.com/s/article/82746) [için Cisco Cloud onrampa](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) . Azure daha fazla iş ortaklarıyla çalışmaktadır, bu nedenle diğer tekliflerin izlediğini görmek beklenir.
 
 > [!NOTE]
 > Yalnızca sanal WAN hub 'ına dağıtılabilecek olan NVA teklifleri sanal WAN hub 'ına dağıtılabilir. Azure 'da rastgele bir sanal ağa dağıtılamaz.

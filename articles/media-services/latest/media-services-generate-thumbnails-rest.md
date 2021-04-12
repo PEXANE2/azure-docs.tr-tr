@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: f4456a65f422c23da73f36dd74680fbb598db186
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5c21c384af90341161bab9407b3f6bcd3a4efac
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98955843"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107614"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-rest"></a>REST ile kodlayıcı standardını kullanarak küçük resimleri oluşturma
 
@@ -28,7 +28,7 @@ Giriş videoınızdan [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://
 
 ## <a name="recommended-reading-and-practice"></a>Önerilen okuma ve uygulama
 
-Özel dönüşümlerle [nasıl kodlanacağını](custom-preset-rest-howto.md)okuyarak özel dönüştürmeleri tanıdık yapmanız önerilir.
+Özel dönüşümlerle [nasıl kodlanacağını](encode-custom-preset-rest-how-to.md)okuyarak özel dönüştürmeleri tanıdık yapmanız önerilir.
 
 ## <a name="thumbnail-parameters"></a>Küçük resim parametreleri
 
