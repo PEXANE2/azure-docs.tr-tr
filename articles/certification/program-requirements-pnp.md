@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: IoT Plug and Play Certification Requirements
 ms.service: certification
-ms.openlocfilehash: bbe9a3f18463285521dde0ee64b369cffcd71d75
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: b26fab6f8b92e3cb996f545f1f6201d32b1eaced
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969391"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310521"
 ---
 # <a name="iot-plug-and-play-certification-requirements"></a>IoT Tak ve Kullan sertifika gereksinimleri
 
@@ -51,7 +51,7 @@ IoT Tak ve Kullan sertifikası Promise:
 | **İşletim sistemi**                  | Belirsiz                                                     |
 | **Doğrulama türü**     | Otomatik                                                    |
 | **Doğrulama**          | Cihazın, ekli kodu yeniden derlemek gerekmeden DPS KIMLIK kapsamı sahipliğinin kolayca aktarımını uygulaması gerekir. Microsoft, cihazın DPS **1 ' i** desteklediğini doğrulamak için sınamaları yürütmek üzere [Portal iş akışı](https://certify.azure.com) sağlar. Kullanıcı, kanıtlama yöntemlerinden birini (X. 509.440, TPM ve SAS anahtarı) 2 olarak seçmelidir **.** Kanıtlama yöntemine bağlı olarak, kullanıcının a gibi ilgili eylemi yapması gerekir **)** X. 509.952 CERT 'yi şirket IÇINDE yönetilen DPS kapsamına Yükle **b)** cihaza SAS anahtarı veya onay anahtarı uygulama |
-| **Kaynaklar**           | **a) bir** [cihaz sağlama hizmetine genel bakış](../iot-dps/about-iot-dps.md), **b)** [DPS kimlik kapsamı aktarımı için örnek yapılandırma dosyası](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples/digitaltwin_sample_ll_device/sample_config) |
+| **Kaynaklar**           | **a) bir** [cihaz sağlama hizmetine genel bakış](../iot-dps/about-iot-dps.md), **b)** [DPS kimlik kapsamı aktarımı için örnek yapılandırma dosyası](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/serializer/samples/devicetwin_simplesample) |
 
 **Istenir DTDL v2: tanımlanan cihaz modellerinin ve arabirimlerinin, dijital TWINS tanım dili v2 ile uyumlu olduğundan emin olmak için testin amacı.**                                                              
 
@@ -95,7 +95,7 @@ IoT Tak ve Kullan sertifikası Promise:
 | **Uygulama hedefi**          | Herhangi bir cihaz                                                   |
 | **İşletim sistemi**                  | Belirsiz                                                     |
 | **Doğrulama türü**     | Otomatik                                                    |
-| **Doğrulama**          | [Portal iş akışı](https://certify.azure.com) , cihaz kodu uygulayan [cihaz bilgisi arabirimi](https://repo.azureiotrepository.com/Models/dtmi:azure:DeviceManagement:DeviceInformation;1?api-version=2020-05-01-previewureiot:DeviceManagement:DeviceInformation:1) **1 ' i doğrular.** Değerin cihaz kodu tarafından IoT Hub 2 ' ye yayıldığını denetler **.** Arabirimin DCM 'de uygulandığını denetler (Bu uygulama DTDL v2 'de değişir) **3.** Denetimlerin özellikleri yazma özellikli değil (salt okuma) **4.** Şema türünün dize ve/veya uzun ve null olduğunu denetler |
+| **Doğrulama**          | [Portal iş akışı](https://certify.azure.com) , cihaz kodu uygulayan cihaz bilgisi arabirimi **1 ' i doğrular.** Değerin cihaz kodu tarafından IoT Hub 2 ' ye yayıldığını denetler **.** Arabirimin DCM 'de uygulandığını denetler (Bu uygulama DTDL v2 'de değişir) **3.** Denetimlerin özellikleri yazma özellikli değil (salt okuma) **4.** Şema türünün dize ve/veya uzun ve null olduğunu denetler |
 | **Kaynaklar**           | [Microsoft tanımlı arabirim](../iot-pnp/overview-iot-plug-and-play-preview-updates.md) |
 | **Azure önerilir**  | Yok                                                          |
 

@@ -1,18 +1,18 @@
 ---
 title: Yayınlanan Azure Sertifikalı cihazınızı düzenleme
 description: Azure Sertifikalı cihaz programı aracılığıyla cihazınızı sertifikalandırdıktan ve yayımladıktan sonra cihaz bilgilerini düzenleme kılavuzu.
-author: nikuntjo
+author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: ddd6a377b477f5895db797f6f4e4917d180e40de
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 14a29d438103f07dd35b3a3380b7cc094f215824
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969528"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304452"
 ---
 # <a name="edit-your-published-device"></a>Yayınlanan cihazınızı düzenleme
 

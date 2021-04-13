@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 12/16/2020
+ms.date: 04/12/2021
 ms.author: aahi
 keywords: Şirket içi, Docker, kapsayıcı, Kubernetes
-ms.openlocfilehash: 007dfe6d67d504286b9546fe0139055b58dc700f
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 45b1eb00b61c36e3a7a0f39bc41a9c1d053f3d8e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285612"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313751"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Bilişsel Hizmetler kapsayıcıları
 
@@ -41,13 +41,13 @@ Azure bilişsel hizmetler kapsayıcıları, her biri Azure bilişsel hizmetler '
 
 ### <a name="decision-containers"></a>Karar kapsayıcıları
 
-| Hizmet |  Kapsayıcı | Description | Kullanılabilirlik |
+| Hizmet |  Kapsayıcı | Açıklama | Kullanılabilirlik |
 |--|--|--|--|
 | [Anomali algılayıcısı][ad-containers] | **Anomali algılayıcısı** ([görüntü](https://hub.docker.com/_/microsoft-azure-cognitive-services-decision-anomaly-detector))  | Anomali algılayıcı API 'SI, makine öğrenimi ile zaman serisi verilerinizde bulunan normalleştirikleri izlemenize ve algılamanıza olanak sağlar. | Genel kullanıma sunuldu |
 
 ### <a name="language-containers"></a>Dil kapsayıcıları
 
-| Hizmet |  Kapsayıcı | Description | Kullanılabilirlik |
+| Hizmet |  Kapsayıcı | Açıklama | Kullanılabilirlik |
 |--|--|--|--|
 | [LUIS][lu-containers] |  **Lusıs** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Bir Docker kapsayıcısı olarak da bilinen eğitilen veya yayınlanan Language Understanding modelini bir Docker kapsayıcısına yükler ve kapsayıcının API uç noktalarından sorgu tahminlerine erişim sağlar. Kapsayıcıda sorgu günlüklerini toplayabilir ve uygulamanın tahmin doğruluğunu artırmak için bunları [Luo portalına](https://www.luis.ai) geri yükleyebilirsiniz. | Genel kullanıma sunuldu |
 | [Metin Analizi][ta-containers-keyphrase] | **Anahtar ifade ayıklama** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Ana noktaları belirlemek için anahtar tümceleri ayıklar. Örneğin, "The food was delicious and there were wonderful staff" (Yemekler lezzetliydi ve personel harikaydı) giriş metni olduğunda API, "food" (yemek) ve "wonderful staff" (personel harikaydı) ana konuşma noktalarını döndürür. | Önizleme |
@@ -60,7 +60,7 @@ Azure bilişsel hizmetler kapsayıcıları, her biri Azure bilişsel hizmetler '
 > [!NOTE]
 > Konuşma kapsayıcılarını kullanmak için bir [çevrimiçi istek formu](https://aka.ms/csgate)doldurmanız gerekir.
 
-| Hizmet |  Kapsayıcı | Description | Kullanılabilirlik |
+| Hizmet |  Kapsayıcı | Açıklama | Kullanılabilirlik |
 |--|--|--|
 | [Konuşma Hizmeti API’si][sp-containers-stt] |  **Konuşmayı metne** dönüştürme ([görüntü](https://hub.docker.com/_/microsoft-azure-cognitive-services-speechservices-custom-speech-to-text)) | Sürekli, gerçek zamanlı konuşmaları metne dönüştürür. | Genel kullanıma sunuldu |
 | [Konuşma Hizmeti API’si][sp-containers-cstt] | **Özel konuşma tanıma metin** ([görüntü](https://hub.docker.com/_/microsoft-azure-cognitive-services-speechservices-custom-speech-to-text)) | Özel bir model kullanarak sürekli gerçek zamanlı konuşmayı metne dönüştürme. | Genel kullanıma sunuldu |
@@ -74,7 +74,7 @@ Azure bilişsel hizmetler kapsayıcıları, her biri Azure bilişsel hizmetler '
 > [!WARNING]
 > 11 Haziran 2020’de Microsoft, insan haklarına dayalı etkili düzenlemeler yapılmadığı sürece ABD’deki polis departmanlarına yüz tanıma teknolojisi satmayacağını duyurmuştur. Bu nedenle, müşteriler yüz tanıma özelliklerini ya da yüz veya Video Indexer gibi Azure hizmetlerinde yer alan işlevselliği veya bir müşteri varsa ya da için Birleşik Devletler bir polis departmanı olan bu hizmetlerin kullanılmasına izin vermeyi kullanamaz.
 
-| Hizmet |  Kapsayıcı | Description | Kullanılabilirlik |
+| Hizmet |  Kapsayıcı | Açıklama | Kullanılabilirlik |
 |--|--|--|--|
 | [Görüntü İşleme][cv-containers] | **OCR** ([görüntü](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) oku | Okuma OCR kapsayıcısı, JPEG, PNG, BMP, PDF ve TIFF dosya biçimleri desteğiyle, görüntülerden ve belgelerden yazdırılmış ve el yazısı metinleri ayıklamanızı sağlar. Daha fazla bilgi için bkz. [okuma API 'si belgeleri](./computer-vision/overview-ocr.md). | Geçişli önizleme. [Erişim isteyin][request-access]. |
 | [Uzamsal Analiz][spa-containers] | **Uzamsal analiz** ([görüntü](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-spatial-analysis)) | Kişiler, taşınanlar ve fiziksel ortamlardaki nesnelerle etkileşimler arasındaki uzamsal ilişkileri anlamak için gerçek zamanlı akış videosunu analiz eder. | Geçişli önizleme. [Erişim isteyin][request-access]. |
@@ -148,4 +148,4 @@ Azure bilişsel hizmetler 'de kapsayıcılar tarafından sunulan işlevleri yük
 [ta-containers-language]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
 [ta-containers-sentiment]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment
 [ta-containers-health]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health
-[request-access]: https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyQZ7B8Cg2FEjpibPziwPcZUNlQ4SEVORFVLTjlBSzNLRlo0UzRRVVNPVy4u
+[request-access]: https://aka.ms/csgate

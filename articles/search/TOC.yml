@@ -420,7 +420,7 @@
               href: search-security-get-encryption-keys.md
         - name: Gelen güvenlik
           items:
-            - name: API erişim anahtarları
+            - name: API anahtarı kimlik doğrulaması
               href: search-security-api-keys.md
             - name: IP güvenlik duvarını yapılandırma
               href: service-configure-firewall.md

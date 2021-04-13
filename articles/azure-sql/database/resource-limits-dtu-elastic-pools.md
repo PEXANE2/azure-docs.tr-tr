@@ -10,30 +10,36 @@ ms.topic: reference
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
-ms.date: 03/30/2021
-ms.openlocfilehash: f3c20774accf9e0b589b898cb903d6da4516e553
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 04/09/2021
+ms.openlocfilehash: 906d34a91736d28f0da4a5ba34b7114fbe410adb
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058927"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306645"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>DTU satın alma modelini kullanarak elastik havuzlar için kaynak limitleri
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Bu makalede, DTU satın alma modelini kullanan bir elastik havuzda Azure SQL veritabanı 'nda bulunan veritabanları için ayrıntılı kaynak sınırları sağlanmaktadır.
 
-* Azure SQL veritabanı için DTU satın alma modeli kaynak sınırları için bkz. [DTU kaynak limitleri-Azure SQL veritabanı](resource-limits-dtu-single-databases.md).
+* Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için bkz. [bir sunucudaki kaynak sınırlarına genel bakış](resource-limits-logical-server.md).
+* Azure SQL veritabanı için DTU satın alma modeli kaynak sınırları için bkz. [DTU kaynak limitleri tek veritabanı](resource-limits-dtu-single-databases.md) ve [DTU kaynak sınırları elastik havuzlar](resource-limits-dtu-elastic-pools.md).
 * VCore kaynak sınırları için bkz. [Vcore kaynak limitleri-Azure SQL veritabanı](resource-limits-vcore-single-databases.md) ve [sanal çekirdek kaynak limitleri-elastik havuzlar](resource-limits-vcore-elastic-pools.md).
+* Farklı satın alma modelleriyle ilgili daha fazla bilgi için bkz. [model ve hizmet katmanları satın alma](purchasing-models.md).
+
+Her salt okunurdur çoğaltma, DTU 'Lar, çalışanlar ve oturumlar gibi kendi kaynaklarına sahiptir. Her salt okuma çoğaltması, bu makalede daha sonra ayrıntılı kaynak sınırlarına tabidir.
 
 ## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Elastik havuz: depolama boyutları ve işlem boyutları
 
 Azure SQL veritabanı elastik havuzlar için aşağıdaki tablolarda, her bir hizmet katmanında ve işlem boyutunda kullanılabilen kaynaklar gösterilmektedir. Kullanarak hizmet katmanını, işlem boyutunu ve depolama miktarını ayarlayabilirsiniz:
 
+* [Alter database](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database) aracılığıyla [Transact-SQL](elastic-pool-scale.md)
 * [Azure portalı](elastic-pool-manage.md#azure-portal)
 * [PowerShell](elastic-pool-manage.md#powershell)
 * [Azure CLI](elastic-pool-manage.md#azure-cli)
-* [REST API](elastic-pool-manage.md#rest-api).
+* [REST API](elastic-pool-manage.md#rest-api)
+
 
 > [!IMPORTANT]
 > Ölçeklendirme Kılavuzu ve değerlendirmeleri için bkz. [elastik havuz ölçekleme](elastic-pool-scale.md)

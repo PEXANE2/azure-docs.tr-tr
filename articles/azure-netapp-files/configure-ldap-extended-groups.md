@@ -12,22 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/08/2021
+ms.date: 04/09/2021
 ms.author: b-juche
-ms.openlocfilehash: 9edf8c6eca223ece8728f9868ee9fe310c517ca9
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 2546236399853f3ed6fad9e07e031edb568fbfe9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259719"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311541"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>Yapılandırma, NFS birim erişimi için genişletilmiş gruplarla LDAP ekler
 
-[BIR NFS birimi oluşturduğunuzda](azure-netapp-files-create-volumes.md), birim için genişletilmiş gruplar ile LDAP özelliğini ( **LDAP** seçeneği) etkinleştirme seçeneğiniz vardır. Bu özellik Active Directory LDAP kullanıcılarının ve genişletilmiş grupların (1024 gruba kadar) birime erişmesini sağlar.  
+[BIR NFS birimi oluşturduğunuzda](azure-netapp-files-create-volumes.md), birim için genişletilmiş gruplar ile LDAP özelliğini ( **LDAP** seçeneği) etkinleştirme seçeneğiniz vardır. Bu özellik Active Directory LDAP kullanıcılarının ve genişletilmiş grupların (1024 gruba kadar) birime erişmesini sağlar. Genişletilmiş gruplar ile LDAP özelliğini, NFSv 4.1 ve NFSv3 birimleri ile birlikte kullanabilirsiniz. 
 
 Bu makalede, bir NFS birimi oluştururken genişletilmiş gruplarla LDAP 'yi etkinleştirmeye yönelik konular ve adımlar açıklanmaktadır.  
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
+
+* Genişletilmiş gruplar ile LDAP yalnızca Active Directory Domain Services (ekler) veya Azure Active Directory etki alanı Hizmetleri (AEKLEMELERI) ile desteklenir. OpenLDAP veya diğer üçüncü taraf LDAP Dizin Hizmetleri desteklenmez. 
 
 * Azure Active Directory Domain Services (AEKLEMELERI) kullanıyorsanız TLS üzerinden LDAP *etkinleştirilmemelidir.*  
 
@@ -69,6 +71,9 @@ Bu makalede, bir NFS birimi oluştururken genişletilmiş gruplarla LDAP 'yi etk
 
 2. LDAP birimleri LDAP sunucu ayarları için bir Active Directory yapılandırması gerektirir. [Active Directory bağlantıları Için gereksinimlerde](create-active-directory-connections.md#requirements-for-active-directory-connections) yer alan yönergeleri izleyin ve Azure Portal Active Directory bağlantıları yapılandırmak için [Active Directory bağlantısı oluşturun](create-active-directory-connections.md#create-an-active-directory-connection) .  
 
+    > [!NOTE]
+    > Active Directory bağlantı ayarlarını yapılandırdığınızdan emin olun. Active Directory bağlantı ayarlarında belirtilen kuruluş biriminde (OU) bir makine hesabı oluşturulur. Bu ayarlar, LDAP istemcisi tarafından Active Directory kimlik doğrulaması yapmak için kullanılır.
+
 3. Active Directory LDAP sunucusunun Active Directory açık ve çalışıyor olduğundan emin olun. 
 
 4. LDAP NFS kullanıcılarının, LDAP sunucusunda belirli POSIX özniteliklerinin olması gerekir. LDAP Kullanıcıları ve LDAP gruplarının özniteliklerini aşağıdaki şekilde ayarlayın: 
@@ -82,7 +87,7 @@ Bu makalede, bir NFS birimi oluştururken genişletilmiş gruplarla LDAP 'yi etk
 
     ![Active Directory öznitelik Düzenleyicisi](../media/azure-netapp-files/active-directory-attribute-editor.png) 
 
-5. LDAP ile tümleşik bir Linux istemcisini yapılandırmak istiyorsanız, bkz. [NFS Istemcisini yapılandırma Azure NetApp Files](configure-nfs-clients.md).
+5. LDAP ile tümleşik NFSv 4.1 Linux istemcisini yapılandırmak istiyorsanız, bkz. [NFS Istemcisini yapılandırma Azure NetApp Files](configure-nfs-clients.md).
 
 6.  NFS birimi oluşturmak için [Azure NetApp Files IÇIN NFS birimi oluşturma](azure-netapp-files-create-volumes.md) bölümündeki adımları izleyin. Birim oluşturma işlemi sırasında **protokol** sekmesi altında **LDAP** seçeneğini etkinleştirin.   
 

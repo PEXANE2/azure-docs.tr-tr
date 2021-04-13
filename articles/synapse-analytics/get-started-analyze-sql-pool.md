@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 4588eee721a58a7e4f3366d0d325b48de0f56ae5
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 267dc7c7d89bbecfbed127f4a46adb7cd9044bc4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259821"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309382"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Adanmış SQL havuzları ile verileri analiz etme
 
@@ -99,7 +99,7 @@ Adanmış bir SQL havuzu, etkin olduğu sürece faturalanabilir kaynakları kull
 
 1. SYNAPSE Studio 'da **veri** merkezine gidin.
 1. **SQLPOOL1**  >  **Tables** bölümüne gidin. 
-3. Dbo öğesine sağ tıklayın **. Seyahat** tablosu ve **Yeni SQL betiği** Seç  >  **ilk 100 satır seçin**.
+3. Dbo öğesine sağ tıklayın **. NYCTaxiTripSmall** tablosu ve **Yeni SQL betiği** Seç  >  **ilk 100 satır seçin**.
 4. Yeni bir SQL betiği oluşturulup çalışırken bekleyin.
 5. SQL **komut dosyasının en üstünde,** **SQLPOOL1** adlı SQL havuzuna otomatik olarak ayarlandığını unutmayın.
 6. SQL komut dosyasının metnini bu kodla değiştirin ve çalıştırın.
@@ -108,7 +108,7 @@ Adanmış bir SQL havuzu, etkin olduğu sürece faturalanabilir kaynakları kull
     SELECT PassengerCount,
           SUM(TripDistanceMiles) as SumTripDistance,
           AVG(TripDistanceMiles) as AvgTripDistance
-    FROM  dbo.Trip
+    FROM  dbo.NYCTaxiTripSmall
     WHERE TripDistanceMiles > 0 AND PassengerCount > 0
     GROUP BY PassengerCount
     ORDER BY PassengerCount;

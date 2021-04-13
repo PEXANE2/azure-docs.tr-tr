@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 62296acaba77017cd71227582447b9fa7c4f1934
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: d45c40bb6878da80f68fff9642b55da68706743a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090248"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305846"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API 'Lerini çağıran masaüstü uygulaması: belirteç alma
 
@@ -1012,7 +1012,7 @@ Bu akış, macOS için MSAL üzerinde desteklenmez.
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Bu ayıklama [msal node dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/standalone-samples/username-password). Aşağıdaki kod parçacığında Kullanıcı adı ve parola yalnızca çizim amaçlıdır. Bu, üretimde kaçınılmalıdır. Bunun yerine, kullanıcıdan Kullanıcı adını/parolasını girmesini isteyen temel bir kullanıcı arabirimi önerilir. 
+Bu ayıklama [msal node dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/username-password). Aşağıdaki kod parçacığında Kullanıcı adı ve parola yalnızca çizim amaçlıdır. Bu, üretimde kaçınılmalıdır. Bunun yerine, kullanıcıdan Kullanıcı adını/parolasını girmesini isteyen temel bir kullanıcı arabirimi önerilir. 
 
 ```JavaScript
 const msal = require("@azure/msal-node");
@@ -1255,7 +1255,7 @@ Bu akış macOS için geçerlidir.
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Bu ayıklama [msal node dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/standalone-samples/device-code).
+Bu ayıklama [msal node dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/device-code).
 
 ```JavaScript
 const msal = require('@azure/msal-node');

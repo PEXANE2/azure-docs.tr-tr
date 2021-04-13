@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: b46efa53bba3b845fa5837b91a3707f4a85d298e
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 08e75f9eb5ea111cc977d02f66b945de4eae5126
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258784"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306186"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda yedekleme ve geri yükleme
 
@@ -88,7 +88,7 @@ MariaDB için Azure veritabanı 'nda geri yükleme gerçekleştirmek, özgün su
 Tahmini kurtarma süresi, veritabanı boyutları, işlem günlüğü boyutu, ağ bant genişliği ve aynı bölgedeki aynı bölgede Kurtarılan toplam veritabanı sayısı gibi çeşitli faktörlere bağlıdır. Kurtarma zamanı genellikle 12 saatten düşüktür.
 
 > [!IMPORTANT]
-> Silinen sunucular **geri yüklenemez.** Sunucuyu silerseniz, sunucuya ait olan tüm veritabanları da silinir ve kurtarılamaz. Sunucu kaynaklarını korumak için dağıtım sonrası, yanlışlıkla silme veya beklenmeyen değişikliklerden, Yöneticiler [Yönetim kilitlerinin](../azure-resource-manager/management/lock-resources.md)faydalanabilir.
+> Silinen sunucular yalnızca, yedeklemelerin silinmesinden sonra **beş gün** içinde geri yüklenebilir. Veritabanı yedeklemesine yalnızca sunucuyu barındıran Azure aboneliğinden erişilebilir ve geri yüklenebilir. Bırakılan bir sunucuyu geri yüklemek için [belgelenen adımlara](howto-restore-dropped-server.md)bakın. Sunucu kaynaklarını korumak için dağıtım sonrası, yanlışlıkla silme veya beklenmeyen değişikliklerden, Yöneticiler [Yönetim kilitlerinin](../azure-resource-manager/management/lock-resources.md)faydalanabilir.
 
 ### <a name="point-in-time-restore"></a>Belirli bir noktaya geri yükleme
 

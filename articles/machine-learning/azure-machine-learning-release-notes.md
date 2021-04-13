@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 13ef91af5f7ed8398e3d23400fa5e9df467ce6bc
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 7c22381d547029aedc5965d07033e8800fcbddc3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210903"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313156"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -145,7 +145,7 @@ __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine ya
 ### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Azure Machine Learning Studio Not defteri deneyimi (Şubat güncelleştirmesi)
 + **Yeni özellikler**
   + [Yerel Terminal (GA)](./how-to-access-terminal.md). Kullanıcılar artık tümleşik Terminal aracılığıyla bir tümleşik terminale ve git işlemine erişime sahip olur.
-  + [Not defteri parçacıkları (Önizleme)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). Ortak Azure ML kodu alıntıları artık parmaklarınızın ucunda. Araç çubuğu aracılığıyla erişilebilen kod parçacıkları paneline gidin veya Ctrl + Space ' i kullanarak kod içi parçacıkları menüsünü etkinleştirin.  
+  + Not defteri parçacıkları (Önizleme). Ortak Azure ML kodu alıntıları artık parmaklarınızın ucunda. Araç çubuğu aracılığıyla erişilebilen kod parçacıkları paneline gidin veya Ctrl + Space ' i kullanarak kod içi parçacıkları menüsünü etkinleştirin.  
   + [Klavye kısayolları](./how-to-run-jupyter-notebooks.md#useful-keyboard-shortcuts). Jupyter 'da kullanılabilen klavye kısayollarıyla tam eşlik. 
   + Hücre parametrelerini belirtin. Bir not defterindeki hücrelerin parametre hücreleri olduğunu ve Işlem örneği üzerinde [Papermill](https://github.com/nteract/papermill) aracılığıyla parametreli not defterlerini çalıştırabileceği kullanıcıları gösterir.
   + Terminal ve çekirdek oturum Yöneticisi: kullanıcılar, işlem sırasında çalışan tüm kerls ve Terminal oturumlarını yönetebilecektir.
@@ -1140,7 +1140,7 @@ Artık Azure Machine Learning doğrudan stüdyo Web deneyiminin içinde Machine 
 
 Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     
-| Web tabanlı araç  |     Description  |
+| Web tabanlı araç  |     Açıklama  |
 |---|---|
 | Azure ML Studio Not defterleri   |     Not defteri dosyaları için birinci sınıf yazma ve Azure ML Python SDK 'da bulunan tüm işlemleri destekleme. | 
 
@@ -1652,7 +1652,7 @@ Studio 'dan veri kümeleri, işlem hatları, modeller, uç noktaları ve daha fa
 
 Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
 
-| Web tabanlı araç | Description | 
+| Web tabanlı araç | Açıklama | 
 |-|-|-|
 | Not defteri VM (Önizleme) | Tam olarak yönetilen bulut tabanlı iş istasyonu | 
 | [Otomatik makine öğrenimi](tutorial-first-experiment-automated-ml.md) (Önizleme) | Machine Learning modeli geliştirmeyi otomatikleştirmek için kod deneyimi yok | 

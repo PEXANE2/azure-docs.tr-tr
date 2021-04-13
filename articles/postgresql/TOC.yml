@@ -32,8 +32,6 @@
     - name: Sürüm ilkesi
       href: concepts-version-policy.md
       displayName: 'version, postgresql'
-    - name: Performans önerileri
-      href: concepts-azure-advisor-recommendations.md
     - name: Bilinen sorunlar & sınırlamaları
       href: concepts-known-issues-limitations.md
       displayName: 'issues, limitations, postgresql'
@@ -217,6 +215,8 @@
             - name: Performans önerileri
               href: concepts-performance-recommendations.md
               displayName: 'query store, performance, optimize, recommendations'
+            - name: Azure Advisor önerileri
+              href: concepts-azure-advisor-recommendations.md
         - name: Uygulama Geliştirme
           items:
             - name: En iyi uygulamalar

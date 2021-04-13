@@ -7,14 +7,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 04/06/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2f41034331ed21e194fc2b86c2902c5957333313
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 1fe5974bafddcb4e474ef59a062836e071ab9461
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010607"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304928"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Sürüm notları-Azure Arc etkin veri Hizmetleri (Önizleme)
 
@@ -24,7 +24,7 @@ Bu makalede, Azure Arc etkin veri Hizmetleri için kısa süre önce yayınlanan
 
 ## <a name="march-2021"></a>Mart 2021
 
-Mart 2021 sürümü 6 Nisan 2021 ' de kullanıma sunulmuştur.
+Mart 2021 sürümü başlangıçta 2021 5 Nisan 'da sunulmuştur ve sürümün son aşamaları 2021 9 Nisan 'da tamamlandı.
 
 Bilinen sorunlarda bu sürümün sınırlamalarını gözden geçirin [-Azure Arc etkin veri Hizmetleri (Önizleme)](known-issues.md).
 
@@ -45,7 +45,9 @@ PostgreSQL için özel kaynak tanımları (CRD) tek bir CRD ile birleştirildi. 
 
 Geçmiş yüklemeleri Temizleme sırasında önceki CRDs 'yi silecaksınız. Bkz. [Geçmiş yüklemelerinden Temizleme](create-data-controller-using-kubernetes-native-tools.md#cleanup-from-past-installations).
 
-### <a name="azure-arc-enabled-managed-instance"></a>Azure Arc etkinleştirilmiş yönetilen örnek
+### <a name="azure-arc-enabled-sql-managed-instance"></a>Azure Arc özellikli SQL Yönetilen Örneği
+
+- Artık doğrudan bağlı moddaki Azure portal bir SQL yönetilen örneği oluşturabilirsiniz.
 
 - Artık bir veritabanını 3 çoğaltmalarıyla SQL yönetilen örneği 'ne geri yükleyebilirsiniz ve kullanılabilirlik grubuna otomatik olarak eklenir. 
 

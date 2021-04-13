@@ -4,27 +4,22 @@ description: Azure IoT Edge için Azure cihaz sağlama hizmeti 'ni sınamak içi
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 6/30/2020
+ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5beb3c750f99b8fe314fabbc2ff6109bfa6bc67c
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: ca16099cffc22a19c2ee35b00ae6f1bcbe2977a7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166607"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312408"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux 'ta TPM ile IoT Edge cihaz oluşturma ve sağlama
 
-[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 Bu makalede, bir Güvenilir Platform Modülü (TPM) kullanarak bir Linux IoT Edge cihazında otomatik sağlamayı test etme işlemi gösterilmektedir. [Cihaz sağlama hizmeti](../iot-dps/index.yml)ile Azure IoT Edge cihazları otomatik olarak sağlayabilirsiniz. Otomatik sağlama işlemini tanımıyorsanız, devam etmeden önce [sağlamaya](../iot-dps/about-iot-dps.md#provisioning-process) genel bakış konusunu gözden geçirin.
-
-:::moniker range=">=iotedge-2020-11"
-> [!NOTE]
-> Şu anda, IoT Edge sürüm 1,2 ' de TPM kimlik doğrulaması kullanılarak otomatik sağlama desteklenmez.
-:::moniker-end
 
 Görevler aşağıdaki gibidir:
 
@@ -34,7 +29,7 @@ Görevler aşağıdaki gibidir:
 1. IoT Edge çalışma zamanını yükleyip cihazı IoT Hub bağlayın.
 
 > [!TIP]
-> Bu makalede, bir TPM simülatörü kullanılarak DPS sağlama işlemi nasıl test edileceğini açıklanmaktadır, ancak bunun çoğu, IoT için Azure Sertifikalı bir cihaz olan [Infineon OPTIMIZE GA &trade; TPM](https://devicecatalog.azure.com/devices/3f52cdee-bbc4-d74e-6c79-a2546f73df4e)gibi fiziksel TPM donanımları için geçerlidir.
+> Bu makalede, bir TPM simülatörü kullanılarak DPS sağlama işlemi nasıl test edileceğini açıklanmaktadır, ancak bunun çoğu, IoT için Azure Sertifikalı bir cihaz olan [Infineon OPTIMIZE GA &trade; TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board)gibi fiziksel TPM donanımları için geçerlidir.
 >
 > Fiziksel bir cihaz kullanıyorsanız, bu makaledeki [sağlama bilgilerini bir fiziksel cihazdan alma](#retrieve-provisioning-information-from-a-physical-device) bölümüne geçebilirsiniz.
 
@@ -191,6 +186,9 @@ IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Bileşenle
 
 Çalışma zamanı cihazınıza yüklendikten sonra, cihazı cihaz sağlama hizmetine bağlanmak için kullandığı bilgilerle yapılandırın ve IoT Hub.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. DPS **kimlik kapsamınızı** ve önceki bölümlerde toplanan CIHAZ **kayıt kimliğini** öğrenin.
 
 1. IoT Edge cihazında yapılandırma dosyasını açın.
@@ -216,11 +214,52 @@ IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Bileşenle
    # dynamic_reprovisioning: false
    ```
 
-   İsteğe bağlı olarak, `always_reprovision_on_startup` `dynamic_reprovisioning` cihazınızın yeniden sağlama davranışını yapılandırmak için veya satırını kullanın. Bir cihaz başlangıçta yeniden sağlamak üzere ayarlandıysa, her zaman önce DPS ile sağlamayı dener ve ardından bu başarısız olursa sağlama yedeklemesine geri dönecektir. Bir cihaz kendisini dinamik olarak yeniden sağlamak üzere ayarlandıysa, yeniden sağlama olayı algılandığında IoT Edge yeniden başlatılır ve yeniden hazırlar. Daha fazla bilgi için bkz. [cihaz yeniden sağlama kavramlarını IoT Hub](../iot-dps/concepts-device-reprovision.md).
-
 1. Ve değerlerini, `scope_id` `registration_id` DPS ve cihaz bilgileriniz ile güncelleştirin.
 
+1. İsteğe bağlı olarak, `always_reprovision_on_startup` `dynamic_reprovisioning` cihazınızın yeniden sağlama davranışını yapılandırmak için veya satırını kullanın. Bir cihaz başlangıçta yeniden sağlamak üzere ayarlandıysa, her zaman önce DPS ile sağlamayı dener ve ardından bu başarısız olursa sağlama yedeklemesine geri dönecektir. Bir cihaz kendisini dinamik olarak yeniden sağlamak üzere ayarlandıysa, yeniden sağlama olayı algılandığında IoT Edge yeniden başlatılır ve yeniden hazırlar. Daha fazla bilgi için bkz. [cihaz yeniden sağlama kavramlarını IoT Hub](../iot-dps/concepts-device-reprovision.md).
+
+1. Dosyayı kaydedin ve kapatın.
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. DPS **kimlik kapsamınızı** ve önceki bölümlerde toplanan CIHAZ **kayıt kimliğini** öğrenin.
+
+1. IoT Edge cihazında yapılandırma dosyasını açın.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+1. Dosyanın sağlama yapılandırması bölümünü bulun. TPM sağlaması için satırların açıklamasını kaldırın ve diğer sağlama satırlarının açıklama olarak belirlendiğinden emin olun.
+
+   ```toml
+   # DPS provisioning with TPM
+   [provisioning]
+   source = "dps"
+   global_endpoint = "https://global.azure-devices-provisioning.net"
+   id_scope = "<SCOPE_ID>"
+   
+   [provisioning.attestation]
+   method = "tpm"
+   registration_id = "<REGISTRATION_ID>"
+   ```
+
+1. Ve değerlerini, `id_scope` `registration_id` DPS ve cihaz bilgileriniz ile güncelleştirin.
+
+1. İsteğe bağlı olarak, dosyanın otomatik yeniden sağlama modu bölümünü bulun. `auto_reprovisioning_mode`Cihazınızın yeniden sağlama davranışını, ya da olarak yapılandırmak için parametresini kullanın `Dynamic` `AlwaysOnStartup` `OnErrorOnly` . Daha fazla bilgi için bkz. [cihaz yeniden sağlama kavramlarını IoT Hub](../iot-dps/concepts-device-reprovision.md).
+
+1. Dosyayı kaydedin ve kapatın.
+:::moniker-end
+<!-- end 1.2 -->
+
 ## <a name="give-iot-edge-access-to-the-tpm"></a>TPM 'ye IoT Edge erişim verme
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 Cihazınızı otomatik olarak sağlamak için IoT Edge çalışma zamanının TPM 'ye erişmesi gerekir.
 
@@ -272,9 +311,68 @@ Hizmetin kök ayrıcalıklarına sahip olması için systemd ayarlarını geçer
    ```
 
    Doğru izinlerin uygulandığını görmüyorsanız, udev 'yi yenilemek için makinenizi yeniden başlatmayı deneyin.
+:::moniker-end
+<!-- end 1.1 -->
 
-## <a name="restart-the-iot-edge-runtime"></a>IoT Edge çalışma zamanını yeniden başlatın
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+IoT Edge çalışma zamanı, aracının bir cihazın TPM 'ye erişiminin bulunduğu TPM hizmetini kullanır. Cihazınızı otomatik olarak sağlamak için bu hizmetin TPM 'ye erişmesi gerekir.
 
+Hizmetin kök ayrıcalıklarına sahip olması için systemd ayarlarını geçersiz kılarak TPM 'ye erişim izni verebilirsiniz `aziottpm` . Hizmet ayrıcalıklarını yükseltmek istemiyorsanız, TPM erişimini el ile sağlamak için aşağıdaki adımları da kullanabilirsiniz.
+
+1. Cihazınızdaki TPM donanım modülünün dosya yolunu bulun ve yerel bir değişken olarak kaydedin.
+
+   ```bash
+   tpm=$(sudo find /sys -name dev -print | fgrep tpm | sed 's/.\{4\}$//')
+   ```
+
+2. IoT Edge çalışma zamanına tpm0 erişimini sağlayacak yeni bir kural oluşturun.
+
+   ```bash
+   sudo touch /etc/udev/rules.d/tpmaccess.rules
+   ```
+
+3. Kurallar dosyasını açın.
+
+   ```bash
+   sudo nano /etc/udev/rules.d/tpmaccess.rules
+   ```
+
+4. Aşağıdaki erişim bilgilerini kurallar dosyasına kopyalayın.
+
+   ```input
+   # allow aziottpm access to tpm0
+   KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="aziottpm", MODE="0600"
+   ```
+
+5. Dosyayı kaydedin ve kapatın.
+
+6. Yeni kuralı değerlendirmek için udev sistemini tetikleyin.
+
+   ```bash
+   /bin/udevadm trigger $tpm
+   ```
+
+7. Kuralın başarıyla uygulandığını doğrulayın.
+
+   ```bash
+   ls -l /dev/tpm0
+   ```
+
+   Başarılı çıkış şu şekilde görünür:
+
+   ```output
+   crw-rw---- 1 root aziottpm 10, 224 Jul 20 16:27 /dev/tpm0
+   ```
+
+   Doğru izinlerin uygulandığını görmüyorsanız, udev 'yi yenilemek için makinenizi yeniden başlatmayı deneyin.
+:::moniker-end
+<!-- end 1.2 -->
+
+## <a name="restart-iot-edge-and-verify-successful-installation"></a>IoT Edge yeniden başlatın ve yüklemenin başarılı olduğunu doğrulayın
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Cihazda yaptığınız tüm yapılandırma değişikliklerini alması için IoT Edge çalışma zamanını yeniden başlatın.
 
    ```bash
@@ -287,6 +385,12 @@ IoT Edge çalışma zamanının çalışıp çalışmadığını denetleyin.
    sudo systemctl status iotedge
    ```
 
+Daemon günlüklerini inceleyin.
+
+```cmd/sh
+journalctl -u iotedge --no-pager --no-full
+```
+
 Sağlama hataları görürseniz, yapılandırma değişikliklerinin henüz etkili bir şekilde yapılmamış olması olabilir. IoT Edge Daemon 'ı yeniden başlatmayı deneyin.
 
    ```bash
@@ -294,22 +398,40 @@ Sağlama hataları görürseniz, yapılandırma değişikliklerinin henüz etkil
    ```
 
 Ya da değişikliklerin yeni bir başlangıç üzerinde etkin olup olmadığını görmek için sanal makinenizi yeniden başlatmayı deneyin.
+:::moniker-end
+<!-- end 1.1 -->
 
-## <a name="verify-successful-installation"></a>Yüklemenin başarılı olduğunu doğrulama
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Cihazda yaptığınız yapılandırma değişikliklerini uygulayın.
 
-Çalışma zamanı başarıyla başlatıldıysa, IoT Hub giderek yeni cihazınızın otomatik olarak sağlandığını görebilirsiniz. Cihazınız artık IoT Edge modülleri çalıştırılmaya hazır.
+   ```bash
+   sudo iotedge config apply
+   ```
 
-IoT Edge Daemon 'ın durumunu denetleyin.
+IoT Edge çalışma zamanının çalışıp çalışmadığını denetleyin.
 
-```cmd/sh
-systemctl status iotedge
-```
+   ```bash
+   sudo iotedge system status
+   ```
 
 Daemon günlüklerini inceleyin.
 
-```cmd/sh
-journalctl -u iotedge --no-pager --no-full
-```
+   ```cmd/sh
+   sudo iotedge system logs
+   ```
+
+Sağlama hataları görürseniz, yapılandırma değişikliklerinin henüz etkili bir şekilde yapılmamış olması olabilir. IoT Edge Daemon 'ı yeniden başlatmayı deneyin.
+
+   ```bash
+   sudo systemctl daemon-reload
+   ```
+
+Ya da değişikliklerin yeni bir başlangıç üzerinde etkin olup olmadığını görmek için sanal makinenizi yeniden başlatmayı deneyin.
+:::moniker-end
+<!-- end 1.2 -->
+
+Çalışma zamanı başarıyla başlatıldıysa, IoT Hub giderek yeni cihazınızın otomatik olarak sağlandığını görebilirsiniz. Cihazınız artık IoT Edge modülleri çalıştırılmaya hazır.
 
 Çalışan modülleri listeleyin.
 

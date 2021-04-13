@@ -8,12 +8,12 @@ ms.date: 04/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b82ad29b02e501d41653fd466e58218e35c3b93c
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 6fa49af946a1e5fc631eeb1ee9b9c7c99d3adff8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012178"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308277"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>IoT Edge cihazınızda sorun giderme
 
@@ -64,6 +64,18 @@ Sorun giderme aracı, bu üç kategoride sıralanan birçok denetimi çalıştı
 * *Üretime hazırlık denetimleri* , cihaz sertifika YETKILISI (CA) sertifikalarının durumu ve modül günlük dosyası yapılandırması gibi önerilen üretim en iyi uygulamalarına bakar.
 
 IoT Edge Denetim Aracı, tanılamayı çalıştırmak için bir kapsayıcı kullanır. Kapsayıcı görüntüsü, `mcr.microsoft.com/azureiotedge-diagnostics:latest` [Microsoft Container Registry](https://github.com/microsoft/containerregistry)ile kullanılabilir. Bir cihazda İnternet 'e doğrudan erişim olmadan bir denetim çalıştırmanız gerekiyorsa, cihazlarınız kapsayıcı görüntüsüne erişmesi gerekir.
+
+<!-- <1.2> -->
+:::moniker range=">=iotedge-2020-11"
+
+İç içe IoT Edge cihazları kullanan bir senaryoda, ana cihazlarda görüntü çekmeyi yönlendirerek alt cihazlarda tanılama görüntüsüne erişim sağlayabilirsiniz.
+
+```bash
+sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:<port_for_api_proxy_module>/azureiotedge-diagnostics:1.2
+```
+
+<!-- </1.2> -->
+:::moniker-end
 
 Bu aracın çalıştığı her bir tanılama denetimi hakkında bilgi için, bir hata veya uyarı alırsanız, [IoT Edge sorun giderme denetimleri](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)bölümüne bakın.
 

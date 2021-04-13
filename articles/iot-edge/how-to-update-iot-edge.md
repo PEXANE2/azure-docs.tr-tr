@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/01/2021
+ms.date: 04/07/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1ed9aef66e9e1a672274b814abbc4e83600761f5
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: e5034c228a354c98b5792492d484da9eb10b8cf2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028715"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310861"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>IoT Edge güvenlik daemon'ını ve çalışma zamanını güncelleştirme
 
@@ -202,9 +202,10 @@ Sürüm 1,2 ' den başlayarak, IoT Edge hizmeti yeni bir paket adı kullanır ve
 
 * Paket adı, **ıotedge** 'den **azıot-Edge** olarak değiştirildi.
 * **Libiothsm-STD** paketi artık kullanılmıyor. IoT Edge sürümünün bir parçası olarak sunulan standart paketi kullandıysanız, yapılandırmanız yeni sürüme aktarılabilir. Libiothsm-STD ' nin farklı bir uygulamasını kullandıysanız, cihaz kimlik sertifikası, cihaz CA ve güven paketi gibi kullanıcı tarafından sağlanmış tüm sertifikaların yeniden yapılandırılması gerekir.
-* Yeni bir kimlik hizmeti olan **azıot-Identity-Service** , 1,2 sürümünün bir parçası olarak sunulmuştur. Bu hizmet, IoT Edge için kimlik sağlamayı ve yönetimini ve Azure IoT Hub cihaz güncelleştirmesi gibi IoT Hub iletişim kurması gereken diğer cihaz bileşenlerini işler. <!--TODO: add link to ADU when available -->
-* Varsayılan yapılandırma dosyası, yeni bir ad ve konuma sahiptir. `/etc/iotedge/config.yaml`Daha önce, cihaz yapılandırma bilgilerinizin artık varsayılan olarak içinde olması bekleniyor `/etc/aziot/config.toml` . Bu `iotedge config import` komut, yapılandırma bilgilerinin yeni bir konum ve sözdizimini yeni bir konuma geçirmeye yardımcı olması için kullanılabilir.
-* Kalıcı verileri şifrelemek veya şifresini çözmek için IoT Edge iş yükü API 'sini kullanan tüm modüller, güncelleştirmeden sonra çözülemez. IoT Edge, iç kullanım için dinamik olarak ana kimlik anahtarı ve şifreleme anahtarı oluşturur. Bu anahtar yeni hizmete aktarılmaz. IoT Edge v 1.2 yeni bir tane oluşturur.
+* Yeni bir kimlik hizmeti olan **azıot-Identity-Service** , 1,2 sürümünün bir parçası olarak sunulmuştur. Bu hizmet, IoT Edge için kimlik sağlamayı ve yönetimini ve [IoT Hub Için cihaz güncelleştirmesi](../iot-hub-device-update/understand-device-update.md)gibi IoT Hub iletişim kurması gereken diğer cihaz bileşenlerini işler.
+* Varsayılan yapılandırma dosyası, yeni bir ad ve konuma sahiptir. `/etc/iotedge/config.yaml`Daha önce, cihaz yapılandırma bilgilerinizin artık varsayılan olarak içinde olması bekleniyor `/etc/aziot/config.toml` . Bu `iotedge config import` komut, yapılandırma bilgilerini eski konumdan ve söz dizimi yeni bir sözdizimine geçirmeye yardımcı olması için kullanılabilir.
+  * Import komutu bir cihazın güvenilir Platform Modülü 'ne (TPM) erişim kurallarını algılayamaz veya değiştiremezler. Cihazınız TPM kanıtlama kullanıyorsa, aziottpm hizmetine erişim sağlamak için/etc/udev/rules. d/tpmaccess.exe dosyasını el ile güncelleştirmeniz gerekir. Daha fazla bilgi için bkz. [TPM 'ye IoT Edge erişim verme](how-to-auto-provision-simulated-device-linux.md?view=iotedge-2020-11&preserve-view=true#give-iot-edge-access-to-the-tpm).
+* Sürüm 1,2 ' deki iş yükü API 'SI şifreli gizli dizileri yeni bir biçimde kaydeder. Eski bir sürümden sürüm 1,2 ' e yükseltirseniz, var olan ana şifreleme anahtarı içeri aktarılır. İş yükü API 'SI, içeri aktarılan şifreleme anahtarını kullanarak önceki biçimde kaydedilmiş gizli dizileri okuyabilir. Ancak, iş yükü API 'SI şifreli gizli dizileri eski biçimde yazamaz. Bir parola bir modülle yeniden şifrelendikten sonra yeni biçimde kaydedilir. Sürüm 1,2 ' de şifrelenen gizlilikler, sürüm 1,1 ' de aynı modülle okunamaz. Şifrelenmiş verileri konağa bağlı bir klasöre veya birime kalıcı yaparsanız, gerekli olduğunda düşürme özelliğini sürdürmek üzere yükseltmeden *önce* her zaman verilerin bir yedek kopyasını oluşturun.
 
 Herhangi bir güncelleştirme işlemini otomatikleştirmeye başlamadan önce, test makinelerinde çalıştığını doğrulayın.
 

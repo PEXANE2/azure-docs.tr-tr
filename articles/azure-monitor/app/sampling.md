@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7b53b0bc8c7cc3df2123d327bf87a85081f88f50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a03dab43c12b372fc52e7516821fe7aef22d2e16
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100589552"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305251"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -34,10 +34,10 @@ Aşağıdaki tabloda her SDK ve uygulama türü için kullanılabilir örnekleme
 |-|-|-|-|
 | ASP.NET | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-applications) | Yalnızca başka bir örnekleme geçerli değilse |
 | ASP.NET Core | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| Azure İşlevleri | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-azure-functions) | No | Yalnızca başka bir örnekleme geçerli değilse |
-| Java | No | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| Node.JS | No | [Evet](./nodejs.md#sampling) | Yalnızca başka bir örnekleme geçerli değilse
-| Python | No | [Evet](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| Azure İşlevleri | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-azure-functions) | Hayır | Yalnızca başka bir örnekleme geçerli değilse |
+| Java | Hayır | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| Node.JS | Hayır | [Evet](./nodejs.md#sampling) | Yalnızca başka bir örnekleme geçerli değilse
+| Python | Hayır | [Evet](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Yalnızca başka bir örnekleme geçerli değilse |
 | Tüm diğerleri | Hayır | Hayır | [Evet](#ingestion-sampling) |
 
 > [!NOTE]
@@ -184,7 +184,7 @@ Yukarıdaki kod, uyarlamalı örneklemeyi devre dışı bırakacak. Daha fazla �
 `TelemetryProcessorChainBuilder`Örnekleme davranışını özelleştirmek için aşağıda gösterildiği gibi uzantı yöntemlerini kullanın.
 
 > [!IMPORTANT]
-> Örnekleme yapılandırmak için bu yöntemi kullanırsanız, lütfen `aiOptions.EnableAdaptiveSampling` çağrılırken özelliğini olarak ayarladığınızdan emin olun `false` `AddApplicationInsightsTelemetry()` .
+> Örnekleme yapılandırmak için bu yöntemi kullanırsanız, lütfen `aiOptions.EnableAdaptiveSampling` çağrılırken özelliğini olarak ayarladığınızdan emin olun `false` `AddApplicationInsightsTelemetry()` . Bu değişikliği yaptıktan sonra, özelleştirmelerinizi yerinde, uyarlamalı örneklemeyi yeniden etkinleştirmek için aşağıdaki kod bloğundaki yönergeleri **tam olarak** izlemeniz gerekir. Bunun yapılmaması, aşırı veri alımı oluşmasına neden olabilir. Her zaman değişen örnekleme ayarlarını test edin ve maliyetlerinizi denetlemeye yardımcı olması için uygun [günlük veri ucunu](pricing.md#set-the-daily-cap) ayarlayın.
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility

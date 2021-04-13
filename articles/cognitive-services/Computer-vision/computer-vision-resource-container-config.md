@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 04/09/2021
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 7b421877b2a41074bf901817c7ad8922083c3e77
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 3e6c4b73e8aeb26c6ac4025ef3c07fb4f8d48eaf
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285682"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308651"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>Okuma OCR Docker kapsayıcılarını yapılandırma
 
@@ -62,11 +62,11 @@ Bu ayar aşağıdaki yerde bulunabilir:
 
 * Azure portal: bilişsel **Hizmetler** genel bakış, etiketli `Endpoint`
 
-`vision/v1.0`Aşağıdaki tabloda gösterildiği gibi, yönlendirmeyi, uç nokta URI 'sine eklemeyi unutmayın. 
+`vision/<version>`Aşağıdaki tabloda gösterildiği gibi, yönlendirmeyi, uç nokta URI 'sine eklemeyi unutmayın. 
 
 |Gerekli| Name | Veri türü | Açıklama |
 |--|------|-----------|-------------|
-|Evet| `Billing` | Dize | Faturalama uç noktası URI 'SI<br><br>Örnek:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+|Evet| `Billing` | Dize | Faturalama uç noktası URI 'SI<br><br>Örnek:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v3.2` |
 
 ## <a name="eula-setting"></a>EULA ayarı
 
@@ -122,13 +122,13 @@ Aşağıdaki örneklerde, komutlarının nasıl yazılacağını ve kullanılaca
 Aşağıdaki Docker örnekleri, okuma OCR kapsayıcısına yöneliktir.
 
 
-# <a name="version-32-preview"></a>[Sürüm 3,2-Önizleme](#tab/version-3-2)
+# <a name="version-32"></a>[Sürüm 3,2](#tab/version-3-2)
 
 ### <a name="basic-example"></a>Temel örnek
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -139,7 +139,7 @@ ApiKey={API_KEY}
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

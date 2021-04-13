@@ -7,14 +7,14 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 04/06/2021
+ms.date: 04/12/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 50e29262b609887d91c43ea8f012fad0c7a35ee2
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 879ca169604dcd61a79db4ec3ca937289dacdd9b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449282"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309875"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Hızlı Başlangıç: Python kullanarak veri fabrikası ve işlem hattı oluşturma
 
@@ -40,7 +40,7 @@ Azure Data Factory, veri taşıma ve veri dönüştürmeyi düzenlemek ve otomat
 
 * [Azure Depolama Gezgini](https://storageexplorer.com/) (isteğe bağlı).
 
-* [Azure Active Directory bir uygulama](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Sonraki adımlarda kullanmak için aşağıdaki değerleri unutmayın: **uygulama kimliği**, **kimlik doğrulama anahtarı** ve **Kiracı kimliği**. Aynı makaledeki yönergeleri uygulayarak uygulamayı **katkıda bulunan** rolüne atayın.
+* [Azure Active Directory bir uygulama](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Sonraki adımlarda kullanmak için aşağıdaki değerleri unutmayın: **uygulama kimliği**, **kimlik doğrulama anahtarı** ve **Kiracı kimliği**. Aynı makaledeki yönergeleri uygulayarak uygulamayı **katkıda bulunan** rolüne atayın. Sonraki adımlarda kullanılan makalede gösterilen şekilde aşağıdaki değerleri unutmayın: **uygulama kimliği (aşağıdaki hizmet sorumlusu kimliği), kimlik doğrulama anahtarı (aşağıda istemci parolası) ve KIRACı kimliği.**
 
 ## <a name="create-and-upload-an-input-file"></a>Giriş dosyası oluşturma ve yükleme
 
@@ -225,6 +225,9 @@ Azure Blob’da kaynak verilerini temsil eden bir veri kümesi tanımlayın. Bu 
         rg_name, df_name, dsOut_name, dsOut_azure_blob)
     print_item(dsOut)
 ```
+ > [!NOTE] 
+ > Parametreleri işlem hattına geçirmek Için, ardışık düzende gereken parametrelerin her biri için **{"ParameterName1": "ParameterValue1"}** biçiminde gösterildiği gibi json dizesine params_for_pipeline ekleyin. Parametreleri bir veri akışına geçirmek için, parametre adını/değerini tutacak bir işlem hattı parametresi oluşturun ve sonra **@pipeline (). Parameters. ParameterName** biçimindeki veri akışı parametresinde işlem hattı parametresini kullanın.
+
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 

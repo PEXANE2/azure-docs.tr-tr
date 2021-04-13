@@ -5,13 +5,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 01/03/2021
-ms.openlocfilehash: 0663690318773ccad3bddfaaa03e456c2f58895e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/11/2021
+ms.openlocfilehash: 3e48eee5bf36732edc4f897103cb72bbbe75a5c3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100383390"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306322"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory 'de veri akışı etkinliği
 
@@ -57,12 +57,12 @@ Veri akışı etkinliğini, veri akışları eşleme yoluyla dönüştürmek ve 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
 veri akışı | Yürütülen veri akışının başvurusu | DataFlowReference | Yes
-ıntegrationruntime | Veri akışının çalıştığı işlem ortamı. Belirtilmemişse, Otomatik Çözümle Azure tümleştirme çalışma zamanı kullanılacaktır. | IntegrationRuntimeReference | No
-compute. coreCount | Spark kümesinde kullanılan çekirdek sayısı. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | 8, 16, 32, 48, 80, 144, 272 | No
-compute. computeType | Spark kümesinde kullanılan işlem türü. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | "Genel", "ComputeOptimized", "Memoryoptimlanmış" | No
+ıntegrationruntime | Veri akışının çalıştığı işlem ortamı. Belirtilmemişse, Otomatik Çözümle Azure tümleştirme çalışma zamanı kullanılacaktır. | IntegrationRuntimeReference | Hayır
+compute. coreCount | Spark kümesinde kullanılan çekirdek sayısı. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | 8, 16, 32, 48, 80, 144, 272 | Hayır
+compute. computeType | Spark kümesinde kullanılan işlem türü. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | "Genel", "ComputeOptimized", "Memoryoptimlanmış" | Hayır
 hazırlama. linkedService | Azure SYNAPSE Analytics kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan depolama hesabını belirtin.<br/><br/>Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage). Ayrıca, [Azure Blob](connector-azure-blob-storage.md#managed-identity) için gerekli konfigürasyonları ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#managed-identity) de öğrenin.<br/> | LinkedServiceReference | Yalnızca veri akışı bir Azure SYNAPSE analizlerini okuduğunda veya yazıyorsa
 hazırlama. folderPath | Azure SYNAPSE Analytics kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan BLOB depolama hesabındaki klasör yolu | Dize | Yalnızca veri akışı Azure SYNAPSE Analytics 'i okuduğunda veya yazıyorsa
-traceLevel | Veri akışı etkinlik yürütmesinin günlüğe kaydetme düzeyini ayarlama | İnce, kalın, hiçbiri | No
+traceLevel | Veri akışı etkinlik yürütmesinin günlüğe kaydetme düzeyini ayarlama | İnce, kalın, hiçbiri | Hayır
 
 ![Veri akışı yürütme](media/data-flow/activity-data-flow.png "Veri akışı yürütme")
 
@@ -76,9 +76,9 @@ traceLevel | Veri akışı etkinlik yürütmesinin günlüğe kaydetme düzeyini
 
 ### <a name="data-flow-integration-runtime"></a>Veri akışı tümleştirme çalışma zamanı
 
-Veri akışı etkinliği yürütmesinde kullanılacak Integration Runtime seçin. Data Factory, varsayılan olarak, Azure tümleştirme çalışma zamanını dört çalışan çekirdekle ve canlı kalma süresi (TTL) ile otomatik çözümle 'yi kullanacaktır. Bu IR genel amaçlı bir işlem türüne sahiptir ve fabrikanızın bulunduğu bölgede çalışır. Veri akışı etkinlik yürütmenizi için belirli bölgeleri, işlem türünü, çekirdek sayılarını ve TTL 'yi tanımlayan kendi Azure tümleştirme çalışma zamanlarını oluşturabilirsiniz.
+Veri akışı etkinliği yürütmesinde kullanılacak Integration Runtime seçin. Data Factory, varsayılan olarak Azure tümleştirme çalışma zamanını dört çalışan çekirdeklerle Otomatik Çözümle ' yi kullanır. Bu IR genel amaçlı bir işlem türüne sahiptir ve fabrikanızın bulunduğu bölgede çalışır. Yürütülen işlem hatları için, veri akışı etkinlik yürütmenize yönelik belirli bölgeleri, işlem türünü, çekirdek sayılarını ve TTL 'yi tanımlayan kendi Azure tümleştirme çalışma zamanlarını oluşturmanız önemle tavsiye edilir.
 
-İşlem hattı yürütmeleri için küme, yürütme başlamadan önce birkaç dakika süren bir iş kümesidir. TTL belirtilmemişse, bu başlangıç saati her işlem hattı çalıştırmasında gereklidir. Bir TTL belirtirseniz, son yürütmeden sonra belirtilen süre için bir sıcak küme havuzu etkin kalır ve daha kısa başlangıç süreleri elde edilir. Örneğin, 60 dakikalık bir TTL 'SI varsa ve bir veri akışını saatte bir kez çalıştırırsanız, küme havuzu etkin kalır. Daha fazla bilgi için bkz. [Azure tümleştirme çalışma zamanı](concepts-integration-runtime.md).
+En az bir Genel Amaçlı işlem türü (büyük iş yükleri için işlem iyileştirildi) 8 + 8 (16 Toplam v-çekirdek) yapılandırmasıyla ve 10 dakikalık en düşük düzeyde üretim iş yükleri için en düşük öneriden oluşur. Küçük bir TTL ayarlayarak Azure IR, soğuk bir küme için birkaç dakikalık başlangıç zamanı olmayacak bir sıcak küme tutabilir. Azure IR veri akışı yapılandırmalarında "hızlı yeniden kullan" seçeneğini belirleyerek, veri akışlarınızın yürütülmesini daha da hızlandırabilirsiniz. Daha fazla bilgi için bkz. [Azure tümleştirme çalışma zamanı](concepts-integration-runtime.md).
 
 ![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 

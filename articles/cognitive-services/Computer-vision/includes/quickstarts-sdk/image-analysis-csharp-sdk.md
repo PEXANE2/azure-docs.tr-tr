@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 03/29/2021
 ms.author: pafarley
-ms.openlocfilehash: 2b5828df0c0f29de04acfd87faf39c6392217ea7
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 407ef167ca05f08d349a017c60164e2fe67977a6
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073643"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107327532"
 ---
 <a name="HOLTop"></a>
 
@@ -40,7 +40,7 @@ Visual Studio 'yu kullanarak yeni bir .NET Core uygulaması oluşturun.
 
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükler 
 
-Yeni bir proje oluşturduktan sonra, **Çözüm Gezgini** proje çözümüne sağ tıklayıp **NuGet Paketlerini Yönet**' i seçerek istemci kitaplığını yükleyebilirsiniz. Açılan paket yöneticisinde, Seç ' i seçin, **ön sürümü dahil** **et ' i** işaretleyin ve arama yapın `Microsoft.Azure.CognitiveServices.Vision.ComputerVision` . Sürüm `6.0.0-preview.1` ' ü ve ardından **öğesini seçin**. 
+Yeni bir proje oluşturduktan sonra, **Çözüm Gezgini** proje çözümüne sağ tıklayıp **NuGet Paketlerini Yönet**' i seçerek istemci kitaplığını yükleyebilirsiniz. Açılan paket yöneticisinde, Seç ' i seçin, **ön sürümü dahil** **et ' i** işaretleyin ve arama yapın `Microsoft.Azure.CognitiveServices.Vision.ComputerVision` . Sürüm `7.0.0` ' ü ve ardından **öğesini seçin**. 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
@@ -71,7 +71,7 @@ Build succeeded.
 Uygulama dizini içinde, aşağıdaki komutla .NET için Görüntü İşleme istemci Kitaplığı ' nı yüklemelisiniz:
 
 ```console
-dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 6.0.0
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 7.0.0
 ```
 
 ---

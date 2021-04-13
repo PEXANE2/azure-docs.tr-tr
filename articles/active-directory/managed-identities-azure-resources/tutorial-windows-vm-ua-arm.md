@@ -1,5 +1,5 @@
 ---
-title: Öğretici `:` Azure Resource Manager erişmek için yönetilen bir kimlik kullanma-Windows-Azure AD
+title: 'Öğretici: Azure Resource Manager erişmek için yönetilen bir kimlik kullanma-Windows-Azure AD'
 description: Windows VM üzerinde bir kullanıcı tarafından atanan yönetilen kimliği kullanarak Azure Resource Manager'a erişme işleminde size yol gösteren bir öğretici.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/02/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43f926f400bf8ddd522bbb5f62509519fa09903d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f46d92c38d2d2567eeaafce0f9c5c9c3b5dd44c5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101096608"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307070"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Öğretici: Azure Resource Manager erişmek için Windows VM üzerinde kullanıcı tarafından atanan yönetilen kimlik kullanma
 

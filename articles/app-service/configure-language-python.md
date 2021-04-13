@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/16/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 094755ed6c018b3ac82d6f62a43f17e2536bbd9a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 844846afa438a2d3425ecf6392b50f0411d8c03e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953519"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309008"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service için bir Linux Python uygulaması yapılandırma
 
@@ -129,7 +129,7 @@ Aşağıdaki tabloda, Azure ile ilgili üretim ayarları açıklanmaktadır. Bu 
 
 | Docgo ayarı | Azure için yönergeler |
 | --- | --- |
-| `SECRET_KEY` | Değeri, [uygulama ayarlarında ortam değişkenleri olarak erişim](#access-app-settings-as-environment-variables)bölümünde açıklandığı gibi bir App Service ayarında depolayın. [Değeri, Azure Key Vault ' de bir "secrete" olarak da saklayabilirsiniz](../key-vault/secrets/quick-create-python.md). |
+| `SECRET_KEY` | Değeri, [uygulama ayarlarında ortam değişkenleri olarak erişim](#access-app-settings-as-environment-variables)bölümünde açıklandığı gibi bir App Service ayarında depolayın. [Değeri, Azure Key Vault ' de bir "gizli dizi" olarak da saklayabilirsiniz](../key-vault/secrets/quick-create-python.md). |
 | `DEBUG` | `DEBUG`App Service 0 (false) değeriyle bir ayar oluşturun ve ardından değeri bir ortam değişkeni olarak yükleyin. Geliştirme ortamınızda, `DEBUG` 1 değerine sahip bir ortam değişkeni oluşturun (true). |
 | `ALLOWED_HOSTS` | Üretimde, Docgo, uygulamanın URL 'sini `ALLOWED_HOSTS` *Settings.py* dizisine dahil etmeniz gerekir. Bu URL 'YI çalışma zamanında bu kodla elde edebilirsiniz `os.environ['WEBSITE_HOSTNAME']` . App Service, `WEBSITE_HOSTNAME` ortam değişkenini otomatik olarak uygulamanın URL 'si olarak ayarlar. |
 | `DATABASES` | Veritabanı bağlantısı için App Service ayarları tanımlayın ve sözlüğü doldurmak için ortam değişkenleri olarak yükleyin [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) . Değerleri (özellikle Kullanıcı adı ve parola) [gizli Azure Key Vault](../key-vault/secrets/quick-create-python.md)olarak saklayabilirsiniz. |

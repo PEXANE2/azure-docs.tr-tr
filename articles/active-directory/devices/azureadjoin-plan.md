@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 745cc7be37120cda27fe4d4077b9bda0fa07badf
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: dc20ca3f3cf6197f8a3ed3a7e0362046f129d369
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550787"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305880"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Nasıl yapılır: Azure AD JOIN Uygulamanızı planlayın
 
@@ -239,7 +239,7 @@ Cihazların Azure AD 'ye katılırken MFA gerçekleştirmesini gerektiriyorsa, *
 
 ![Cihazlara katılması için çok faktörlü kimlik doğrulaması gerektir](./media/azureadjoin-plan/03.png)
 
-**Öneri:** Cihazları katmak için MFA 'yı zorlamaya yönelik kullanıcı eylemi [kaydetme veya cihazları](/conditional-access/concept-conditional-access-cloud-apps#user-actions) koşullu erişime katma olarak kullanın.
+**Öneri:** Cihazları katmak için MFA 'yı zorlamaya yönelik kullanıcı eylemi [kaydetme veya cihazları](/azure/active-directory/conditional-access/concept-conditional-access-cloud-apps#user-actions) koşullu erişime katma olarak kullanın.
 
 ## <a name="configure-your-mobility-settings"></a>Mobility ayarlarınızı yapılandırın
 
