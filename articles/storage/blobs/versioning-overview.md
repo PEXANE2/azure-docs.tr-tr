@@ -10,16 +10,16 @@ ms.date: 04/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f104b98c870fe6eee1d32fe656c0bba416cf3700
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 268de3e8ea168ac721362d42149389b9f37c86fe
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259753"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305064"
 ---
 # <a name="blob-versioning"></a>Blob sürümü oluşturma
 
-Bir nesnenin önceki sürümlerini otomatik olarak sürdürmek için blob Storage sürümü oluşturmayı etkinleştirebilirsiniz.  Blob sürümü oluşturma etkinleştirildiğinde, yanlışlıkla değiştirildiyse veya silinirse verilerinizi kurtarmak için bir Blobun önceki bir sürümünü geri yükleyebilirsiniz.
+Bir nesnenin önceki sürümlerini otomatik olarak sürdürmek için blob Storage sürümü oluşturmayı etkinleştirebilirsiniz. Blob sürümü oluşturma etkinleştirildiğinde, yanlışlıkla değiştirildiyse veya silinirse verilerinizi kurtarmak için bir Blobun önceki bir sürümünü geri yükleyebilirsiniz.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -35,21 +35,21 @@ Microsoft 'un veri koruma önerileri hakkında daha fazla bilgi edinmek için bk
 
 ## <a name="how-blob-versioning-works"></a>Blob sürümü oluşturma nasıl kullanılır?
 
-Bir sürüm, belirli bir noktadaki bir Blobun durumunu yakalar. Blob sürümü oluşturma bir depolama hesabı için etkinleştirildiğinde, blob her değiştirildiğinde Azure Storage otomatik olarak bir blob 'un yeni bir sürümünü oluşturur.
+Bir sürüm, belirli bir noktadaki bir Blobun durumunu yakalar. Her sürüm, bir sürüm KIMLIĞIYLE tanımlanır. Blob sürümü oluşturma bir depolama hesabı için etkinleştirildiğinde, Azure depolama, blob ilk kez oluşturulduğunda ve BLOB daha sonra değiştirildiğinde otomatik olarak benzersiz bir KIMLIĞE sahip yeni bir sürüm oluşturur.
 
-Sürüm oluşturma özelliği etkinken bir blob oluşturduğunuzda, yeni blob blob 'un geçerli sürümüdür (veya temel Blobun). Bu blobu daha sonra değiştirirseniz, Azure depolama, değiştirilmeden önce blob durumunu yakalayan bir sürüm oluşturur. Değiştirilen blob yeni geçerli sürüm olur. Blobu her değiştirdiğiniz zaman yeni bir sürüm oluşturulur.
+Sürüm KIMLIĞI geçerli sürümü veya önceki bir sürümü tanımlayabilir. Blob aynı anda yalnızca bir tane geçerli sürüme sahip olabilir.
+
+Yeni bir blob oluşturduğunuzda, tek bir sürüm bulunur ve bu sürüm geçerli sürümdür. Mevcut bir blobu değiştirirken, geçerli sürüm önceki bir sürüm olur. Güncelleştirilmiş durumu yakalamak için yeni bir sürüm oluşturulur ve bu yeni sürüm geçerli sürümdür. Bir blobu sildiğinizde, blob 'un geçerli sürümü önceki bir sürüm olur ve artık geçerli bir sürüm değildir. Blob 'un önceki tüm sürümleri devam ederse.
 
 Aşağıdaki diyagramda, yazma işlemlerinde sürümlerin nasıl oluşturulduğu ve önceki sürümün geçerli sürüm olarak yükseltilme şekli gösterilmektedir:
 
 :::image type="content" source="media/versioning-overview/blob-versioning-diagram.png" alt-text="Blob sürümlendirme 'nin nasıl çalıştığını gösteren diyagram":::
 
-Sürüm oluşturma etkinken bir blobu sildiğinizde, blob 'un geçerli sürümü önceki bir sürüm olur ve artık geçerli bir sürüm değildir. Blob 'un önceki tüm sürümleri devam ederse.
-
 Blob sürümleri sabittir. Mevcut bir blob sürümünün içeriğini veya meta verilerini değiştiremezsiniz.
 
 Blob başına çok sayıda sürüm olması, blob listeleme işlemlerine yönelik gecikmeyi artırabilir. Microsoft, blob başına 1000 ' den az sürümden bakım yapmanızı önerir. Eski sürümleri otomatik olarak silmek için yaşam döngüsü yönetimi kullanabilirsiniz. Yaşam döngüsü yönetimi hakkında daha fazla bilgi için bkz. [Azure Blob depolama erişim katmanlarını otomatikleştirerek maliyetleri iyileştirme](storage-lifecycle-management-concepts.md).
 
-Blob sürümü oluşturma genel amaçlı v2, Blok Blobu ve BLOB depolama hesapları için kullanılabilir. Azure Data Lake Storage 2. ile kullanım için etkinleştirilmiş hiyerarşik bir ad alanı olan depolama hesapları Şu anda desteklenmemektedir.
+Blob sürümü oluşturma, standart genel amaçlı v2, Premium Blok Blobu ve eski BLOB depolama hesapları için kullanılabilir. Azure Data Lake Storage 2. ile kullanım için etkinleştirilmiş hiyerarşik bir ad alanı olan depolama hesapları Şu anda desteklenmemektedir.
 
 Azure depolama REST API sürüm 2019-10-10 ve üzeri, blob sürümü oluşturmayı destekler.
 
@@ -58,9 +58,9 @@ Azure depolama REST API sürüm 2019-10-10 ve üzeri, blob sürümü oluşturmay
 
 ### <a name="version-id"></a>Sürüm KIMLIĞI
 
-Her blob sürümü bir sürüm KIMLIĞIYLE tanımlanır. Sürüm KIMLIĞININ değeri, Blobun güncelleştirildiği zaman damgasıdır. Sürüm KIMLIĞI, Sürüm oluşturulduğu sırada atanır.
+Her blob sürümü benzersiz bir sürüm KIMLIĞIYLE tanımlanır. Sürüm KIMLIĞININ değeri, Blobun güncelleştirildiği zaman damgasıdır. Sürüm KIMLIĞI, Sürüm oluşturulduğu sırada atanır.
 
-Sürüm KIMLIĞINI sağlayarak bir Blobun belirli bir sürümünde okuma veya silme işlemleri yapabilirsiniz. Sürüm KIMLIĞINI atlarsanız, işlem geçerli sürüme (temel blob) göre davranır.
+Sürüm KIMLIĞINI sağlayarak bir Blobun belirli bir sürümünde okuma veya silme işlemleri yapabilirsiniz. Sürüm KIMLIĞINI atlarsanız, işlem geçerli sürüme göre davranır.
 
 Blob oluşturmak veya değiştirmek için bir yazma işlemi çağırdığınızda, Azure Storage yanıttaki *x-MS-Version-id* üst bilgisini döndürür. Bu üstbilgi, yazma işlemi tarafından oluşturulan Blobun geçerli sürümü için sürüm KIMLIĞINI içerir.
 
@@ -70,11 +70,9 @@ Sürüm KIMLIĞI, sürümün ömrü boyunca aynı kalır.
 
 Blob sürüm oluşturma açık olduğunda, bir Blobun her yazma işlemi yeni bir sürüm oluşturur. Yazma işlemleri, [BLOB koyma](/rest/api/storageservices/put-blob), [blok listesini yerleştirme](/rest/api/storageservices/put-block-list), [blobu kopyalama](/rest/api/storageservices/copy-blob)ve [BLOB meta verilerini ayarlama](/rest/api/storageservices/set-blob-metadata)içerir.
 
-Yazma işlemi yeni bir blob oluşturursa, sonuçta elde edilen blob blob 'un geçerli sürümüdür. Yazma işlemi var olan bir Blobun değiştirirse, yeni veriler güncel sürüm olan güncelleştirilmiş blob 'da yakalanır ve Azure Storage, blob 'un önceki durumunu kaydeden bir sürüm oluşturur.
+Yazma işlemi yeni bir blob oluşturursa, sonuçta elde edilen blob blob 'un geçerli sürümüdür. Yazma işlemi var olan bir blobu değiştirirse, geçerli sürüm önceki bir sürüm olur ve güncelleştirilmiş blobu yakalamak için yeni bir geçerli sürüm oluşturulur.
 
-Kolaylık olması için, bu makalede gösterilen diyagramlarda sürüm KIMLIĞI bir basit tamsayı değeri olarak görüntülenir. Gerçekte, sürüm KIMLIĞI bir zaman damgasıdır. Geçerli sürüm mavi olarak gösterilir ve önceki sürümler gri renkte gösterilir.
-
-Aşağıdaki diyagramda, yazma işlemlerinin blob sürümlerini nasıl etkilediği gösterilmektedir. Bir blob oluşturulduğunda bu blob geçerli sürümdür. Aynı blob değiştirildiğinde, Blobun önceki durumunu kaydetmek için yeni bir sürüm oluşturulur ve güncelleştirilmiş blob geçerli sürüm olur.
+Aşağıdaki diyagramda, yazma işlemlerinin blob sürümlerini nasıl etkilediği gösterilmektedir. Kolaylık olması için, bu makalede gösterilen diyagramlarda sürüm KIMLIĞI bir basit tamsayı değeri olarak görüntülenir. Gerçekte, sürüm KIMLIĞI bir zaman damgasıdır. Geçerli sürüm mavi olarak gösterilir ve önceki sürümler gri renkte gösterilir.
 
 :::image type="content" source="media/versioning-overview/write-operations-blob-versions.png" alt-text="Yazma işlemlerinin sürümlü Blobları nasıl etkilediğini gösteren diyagram.":::
 
@@ -194,7 +192,7 @@ Blob sürümü oluşturma, verilerinizi yanlışlıkla veya kötü amaçlı olar
 
 Aşağıdaki tabloda, hangi Azure RBAC eylemlerinin bir blob veya blob sürümünü silmenin desteklediği gösterilmektedir.
 
-| Description | Blob hizmeti işlemi | Azure RBAC verileri eylemi gerekiyor | Azure yerleşik rol desteği |
+| Açıklama | Blob hizmeti işlemi | Azure RBAC verileri eylemi gerekiyor | Azure yerleşik rol desteği |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | Geçerli sürümü silme | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil** | Depolama Blob Verileri Katkıda Bulunanı |
 | Önceki bir sürümü silme | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/deleteBlobVersion/Action** | Depolama Blob Verileri Sahibi |

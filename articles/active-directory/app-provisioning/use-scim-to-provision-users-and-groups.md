@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/22/2021
+ms.date: 04/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e8192c5c6734009f69e3f741531251dd85675b47
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 4130ed4bb690edb3c0c5d72d7d158262ed6ff39d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449469"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305608"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Öğretici: SCıM uç noktası için geliştirme ve plan sağlama
 
@@ -62,7 +62,7 @@ SCıM standardı, kullanıcıları ve grupları yönetmek için bir şema tanım
 **Çekirdek** Kullanıcı şeması yalnızca üç öznitelik gerektirir (diğer tüm öznitelikler isteğe bağlıdır):
 
 - `id`, hizmet sağlayıcı tanımlı tanımlayıcı
-- `externalId`, istemci tanımlı tanımlayıcı
+- `userName`, Kullanıcı için benzersiz bir tanımlayıcı (genellikle Azure AD Kullanıcı asıl adıyla eşlenir)
 - `meta`, hizmet sağlayıcısı tarafından tutulan *salt okuma* meta verileri
 
 SIM standardı, **çekirdek** Kullanıcı şemasına ek olarak, uygulamanızın ihtiyaçlarını karşılamak için Kullanıcı şemasını genişletmek üzere bir modelle bir **Kurumsal** Kullanıcı uzantısı tanımlar. 

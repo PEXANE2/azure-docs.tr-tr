@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/06/2021
+ms.date: 04/11/2021
 ms.author: memildin
-ms.openlocfilehash: 81f741fd9b0e3d40eb0027a5cbe0ba4b7113bbea
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 3e4dddf61656ea38bac406366bf993788fd34943
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027627"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303160"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -28,26 +28,22 @@ Güvenlik Merkezi 'ne yakında çıkacak *planlı* değişiklikler hakkında bil
 ## <a name="april-2021"></a>2021 Nisan
 
 Nisan 'daki güncelleştirmeler şunları içerir:
-- [Konuk yapılandırmasıyla ilgili dört yeni öneri (Önizleme)](#four-new-recommendations-related-to-guest-configuration-preview)
+- [Son çekilen kapsayıcı kayıt defteri görüntüleri artık haftalık olarak yeniden taranıp (genel kullanılabilirlik)](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
 - [Karma ve çoklu bulut Kubernetes dağıtımlarını korumak için Kubernetes için Azure Defender 'ı kullanma (Önizleme)](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
+- [Konuk yapılandırmasıyla ilgili dört yeni öneri (Önizleme)](#four-new-recommendations-related-to-guest-configuration-preview)
+- [CMK önerileri en iyi yöntemler güvenlik denetimine taşındı](#cmk-recommendations-moved-to-best-practices-security-control)
 - [11 Azure Defender uyarıları kullanım dışı](#11-azure-defender-alerts-deprecated)
 - ["Sistem güncelleştirmelerini Uygula" güvenlik denetiminin iki önerisi kullanım dışı bırakıldı](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
 
-### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Konuk yapılandırmasıyla ilgili dört yeni öneri (Önizleme)
+### <a name="recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability"></a>Son çekilen kapsayıcı kayıt defteri görüntüleri artık haftalık olarak yeniden taranıp (genel kullanılabilirlik)
 
-Azure 'un [Konuk yapılandırma uzantısı](../governance/policy/concepts/guest-configuration.md) , sanal makinelerinizin Konuk içi ayarlarının sağlamlaştırılmış olduğundan emin olmak Için Güvenlik Merkezi 'ne rapor eder. Arc bağlı makine aracısına dahil edildiğinden, genişleme özellikli sunucular için uzantı gerekli değildir. Uzantı, makinede sistem tarafından yönetilen bir kimlik gerektirir.
+Kapsayıcı kayıt defterleri için Azure Defender, yerleşik bir güvenlik açığı tarayıcısı içerir. Bu tarayıcı, Kayıt defterinize gönderdiğiniz tüm görüntüyü ve son 30 gün içinde çekilen tüm görüntüyü hemen tarar.
 
-Bu uzantının en iyi şekilde kullanılabilmesini sağlamak için Güvenlik Merkezi 'ne dört yeni öneri ekledik.
+Her gün yeni güvenlik açıkları bulunur. Bu güncelleştirmeyle, son 30 gün boyunca kayıt defterlerinden çekilen kapsayıcı görüntüleri her hafta yeniden **taranıp** . Bu, yeni keşfedilen güvenlik açıklarının görüntülerinizin tanımlanmasını sağlar.
 
-- Uzantıyı ve sistem tarafından yönetilen gerekli kimliğini yüklemek için iki öneri istenir:
-    - **Makinelerinizde Konuk yapılandırma uzantısının yüklü olması gerekir**
-    - **Sanal makinelerin Konuk yapılandırma uzantısı, sistem tarafından atanan yönetilen kimlikle dağıtılmalıdır**
+Tarama, görüntü başına ücretlendirilir. bu nedenle, bu yeniden taramalar için ek ücret alınmaz.
 
-- Uzantı yüklenip çalıştırıldığında, makinelerinizi denetlemeye başlayacaktır ve işletim sistemi ve ortam ayarlarının yapılandırılması gibi ayarları almanız istenecektir. Bu iki öneri, Windows ve Linux makinelerinizi açıklandığı şekilde en fazla bilgi ister:
-    - **Makinelerinizde Windows Defender Exploit Guard etkinleştirilmelidir**
-    - **Linux makinelerinde kimlik doğrulaması için SSH anahtarları gerekir**
-
-[Azure Ilkesinin Konuk yapılandırmasını anlama](../governance/policy/concepts/guest-configuration.md)bölümünde daha fazla bilgi edinin.
+Bu tarayıcı hakkında daha fazla bilgi için bkz. [Azure Defender 'ı kapsayıcı kayıt defterleri Için kullanarak görüntülerinizi güvenlik açıklarına karşı tarayın](defender-for-container-registries-usage.md).
 
 
 ### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview"></a>Karma ve çoklu bulut Kubernetes dağıtımlarını korumak için Kubernetes için Azure Defender 'ı kullanma (Önizleme)
@@ -69,6 +65,40 @@ Azure Güvenlik Merkezi, Azure Defender ve Azure Arc etkin Kubernetes arasındak
 Şirket [içi ve çoklu bulut Kubernetes kümelerinizle Kubernetes Için Azure Defender 'ı kullanma](defender-for-kubernetes-azure-arc.md)hakkında daha fazla bilgi edinin.
 
 :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Güvenlik Merkezi 'nin Azure Arc etkin Kubernetes kümeleri için Azure Defender uzantısını dağıtmaya yönelik önerisi." lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+
+### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Konuk yapılandırmasıyla ilgili dört yeni öneri (Önizleme)
+
+Azure 'un [Konuk yapılandırma uzantısı](../governance/policy/concepts/guest-configuration.md) , sanal makinelerinizin Konuk içi ayarlarının sağlamlaştırılmış olduğundan emin olmak Için Güvenlik Merkezi 'ne rapor eder. Arc bağlı makine aracısına dahil edildiğinden, genişleme özellikli sunucular için uzantı gerekli değildir. Uzantı, makinede sistem tarafından yönetilen bir kimlik gerektirir.
+
+Bu uzantının en iyi şekilde kullanılabilmesini sağlamak için Güvenlik Merkezi 'ne dört yeni öneri ekledik.
+
+- Uzantıyı ve sistem tarafından yönetilen gerekli kimliğini yüklemek için iki öneri istenir:
+    - **Makinelerinizde Konuk yapılandırma uzantısının yüklü olması gerekir**
+    - **Sanal makinelerin Konuk yapılandırma uzantısı, sistem tarafından atanan yönetilen kimlikle dağıtılmalıdır**
+
+- Uzantı yüklenip çalıştırıldığında, makinelerinizi denetlemeye başlayacaktır ve işletim sistemi ve ortam ayarlarının yapılandırılması gibi ayarları almanız istenecektir. Bu iki öneri, Windows ve Linux makinelerinizi açıklandığı şekilde en fazla bilgi ister:
+    - **Makinelerinizde Windows Defender Exploit Guard etkinleştirilmelidir**
+    - **Linux makinelerinde kimlik doğrulaması için SSH anahtarları gerekir**
+
+[Azure Ilkesinin Konuk yapılandırmasını anlama](../governance/policy/concepts/guest-configuration.md)bölümünde daha fazla bilgi edinin.
+
+### <a name="cmk-recommendations-moved-to-best-practices-security-control"></a>CMK önerileri en iyi yöntemler güvenlik denetimine taşındı
+
+Her kuruluşun güvenlik programı, veri şifreleme gereksinimlerini içerir. Varsayılan olarak, Azure müşterilerinin verileri, hizmet tarafından yönetilen anahtarlarla geri kalanında şifrelenir. Ancak, yasal uyumluluk standartlarını karşılamak için genellikle müşteri tarafından yönetilen anahtarlar (CMK) gereklidir. CMKs, verilerinizi oluşturduğunuz ve size ait olan bir [Azure Key Vault](../key-vault/general/overview.md) anahtarıyla şifrelemenize olanak tanır. Bu, döndürme ve yönetim dahil olmak üzere anahtar yaşam döngüsü için tam denetim ve sorumluluk sağlar.
+
+Azure Güvenlik Merkezi 'nin güvenlik denetimleri, ilgili güvenlik önerilerinin mantıksal gruplarıdır ve savunmasız saldırı yüzeylerinizi yansıtır. Tüm kaynaklarınız için denetimde listelenen tüm önerileri düzeltmeniz durumunda her denetim, güvenli puanınızı ekleyebileceğiniz en fazla sayıda noktaya sahiptir. **En iyi güvenlik uygulamaları** uygulama güvenlik denetimi sıfır noktalara uygundur. Bu nedenle bu denetimdeki öneriler, güvenli puanınızı etkilemez.
+
+Aşağıda listelenen öneriler, isteğe bağlı yapısını daha iyi yansıtacak şekilde **güvenlik en iyi yöntemlerini Uygula** güvenlik denetimine taşınıyor. Bu taşıma, Bu önerilerin amacını karşılamak için en uygun denetimde olmasını sağlar.
+
+- Azure Cosmos DB hesaplar, bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları kullanmalıdır
+- Azure Machine Learning çalışma alanları, müşteri tarafından yönetilen bir anahtarla şifrelenmelidir (CMK)
+- Bilişsel hizmetler hesapları, müşteri tarafından yönetilen bir anahtarla (CMK) veri şifrelemeyi etkinleştirmelidir
+- Kapsayıcı kayıt defterleri, müşteri tarafından yönetilen bir anahtarla şifrelenmelidir (CMK)
+- SQL yönetilen örnekler, bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları kullanmalıdır
+- SQL Server 'lar, bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları kullanmalıdır
+- Depolama hesapları, şifreleme için müşteri tarafından yönetilen anahtar (CMK) kullanmalıdır
+
+[Güvenlik denetimlerinde ve bunların önerilerinde](secure-score-security-controls.md#security-controls-and-their-recommendations)her güvenlik denetiminde hangi önerilerin olduğunu öğrenin.
 
 
 ### <a name="11-azure-defender-alerts-deprecated"></a>11 Azure Defender uyarıları kullanım dışı

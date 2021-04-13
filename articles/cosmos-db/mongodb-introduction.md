@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/02/2021
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 5820592bf06cc9427e12aa0cd79c54dc1f0156e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfaa04077a5148f19f06aa5e1257b986377ea8c0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101658004"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307138"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API'si
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "101658004"
 
 ## <a name="wire-protocol-compatibility"></a>Kablo protokol uyumluluğu
 
-Azure Cosmos DB MongoDB için kablo protokolünü uygular. Bu uygulama yerel MongoDB istemci SDK 'Ları, sürücüleri ve araçları ile şeffaf uyumluluk sağlar. Azure Cosmos DB MongoDB veritabanı altyapısını barındırır. MongoDB tarafından desteklenen özelliklerin ayrıntıları şurada bulunabilir: 
+Azure Cosmos DB MongoDB için kablo protokolünü uygular. Bu uygulama yerel MongoDB istemci SDK 'Ları, sürücüleri ve araçları ile şeffaf uyumluluk sağlar. Azure Cosmos DB MongoDB veritabanı altyapısını barındırmıyor. MongoDB tarafından desteklenen özelliklerin ayrıntıları şurada bulunabilir: 
 - [Mongo DB sürüm 4,0 için Azure Cosmos DB API 'SI](mongodb-feature-support-40.md)
 - [Mongo DB sürüm 3,6 için Azure Cosmos DB API 'SI](mongodb-feature-support-36.md)
 

@@ -75,7 +75,7 @@
     - name: Görüntü analizine genel bakış
       href: overview-image-analysis.md
     - name: Görüntü analizi hızlı başlangıç
-      href: quickstarts-sdk/client-library.md
+      href: quickstarts-sdk/image-analysis-client-library.md
     - name: Örnekler
       items:
         - name: Görüntü işleme uygulamasını inceleme
@@ -146,8 +146,6 @@
   items:
     - name: Uzamsal Analize genel bakış
       href: intro-to-spatial-analysis-public-preview.md
-    - name: Konak makinesini ayarlama ve kapsayıcıyı çalıştırma
-      href: spatial-analysis-container.md
     - name: Yapay zekanın sorumluluk sahibi bir biçimde kullanılması
       items:
         - name: Saydamlık notları
@@ -170,6 +168,8 @@
       items:
         - name: Uzamsal analiz kapsayıcısını kullanma
           items:
+            - name: Konak makinesini ayarlama ve kapsayıcıyı çalıştırma
+              href: spatial-analysis-container.md
             - name: İşlemleri yapılandırma
               href: spatial-analysis-operations.md
             - name: Kişi sayma web uygulaması dağıtma

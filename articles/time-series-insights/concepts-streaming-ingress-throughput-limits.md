@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 3c938e7fe180e6a9cf08031a2a4565486f3f77a9
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: d86cc6af34036f5bd638b4fc78abdb54d71e6859
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504643"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306526"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Akış alma performansı sınırları
 
@@ -59,7 +59,7 @@ Azure Time Series Insights Gen2 ortamınızı planlarken, Azure Time Series Insi
 
 *Bölüm* , bir hub 'da tutulan olayların sıralı dizisidir. Bölüm sayısı, hub oluşturma aşamasında ayarlanır ve değiştirilemez.
 
-Event Hubs bölümlendirme en iyi uygulamaları için [kaç bölümden Ihtiyacım olduğunu](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need) gözden geçirin.
+Event Hubs bölümlendirme en iyi uygulamaları için [kaç bölümden Ihtiyacım olduğunu](../event-hubs/event-hubs-faq.yml#how-many-partitions-do-i-need-) gözden geçirin.
 
 > [!NOTE]
 > Azure Time Series Insights Gen2 ile kullanılan birçok IoT Hub 'ı yalnızca dört bölüme ihtiyaç duyar.

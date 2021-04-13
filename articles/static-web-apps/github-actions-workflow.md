@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: c0cb32bd3308affa473e9039d92bd3cb23acabee
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 4f1f432da33bded4fc0f04170673e5943dec5fb0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027542"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311337"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için GitHub eylemleri iş akışları
 
@@ -38,11 +38,11 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
-    - main
+      - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - main
+      - main
 
 jobs:
   build_and_deploy_job:
@@ -50,33 +50,33 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
-    - name: Build And Deploy
-      id: builddeploy
-      uses: Azure/static-web-apps-deploy@v0.0.1-preview
-      with:
-        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
-        repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
-        action: 'upload'
-        ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
-        app_location: '/' # App source code path
-        api_location: 'api' # Api source code path - optional
-        output_location: 'dist' # Built app content directory - optional
-        ###### End of Repository/Build Configurations ######
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
+          action: 'upload'
+          ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
+          app_location: '/' # App source code path
+          api_location: 'api' # Api source code path - optional
+          output_location: 'dist' # Built app content directory - optional
+          ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
     name: Close Pull Request Job
     steps:
-    - name: Close Pull Request
-      id: closepullrequest
-      uses: Azure/static-web-apps-deploy@v0.0.1-preview
-      with:
-        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
-        action: 'close'
+      - name: Close Pull Request
+        id: closepullrequest
+        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
+          action: 'close'
 ```
 
 ## <a name="triggers"></a>Tetikleyiciler
@@ -87,11 +87,11 @@ GitHub eylemleri [tetikleyicisi](https://help.github.com/actions/reference/event
 on:
   push:
     branches:
-    - main
+      - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - main
+      - main
 ```
 
 Özelliği ile ilişkili ayarlar sayesinde `on` , hangi dalların bir işi tetikleyeceğini tanımlayabilir ve farklı çekme isteği durumları için Tetikleyicileri tetiklenecek şekilde ayarlayabilirsiniz.
@@ -104,10 +104,10 @@ Her olay tetikleyicisi bir olay işleyicisi gerektirir. [İşler](https://help.g
 
 Statik Web Apps iş akışı dosyasında, kullanılabilir iki iş vardır.
 
-| Ad  | Açıklama |
-|---------|---------|
-|`build_and_deploy_job` | Yürütmeler gönderdiğinizde veya özellikte listelenen dala karşı bir çekme isteği açtığınızda yürütülür `on` . |
-|`close_pull_request_job` | , Çekme isteklerinden oluşturulan hazırlama ortamını kaldıran yalnızca bir çekme isteğini kapattığınızda yürütülür. |
+| Ad                     | Açıklama                                                                                                    |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| `build_and_deploy_job`   | Yürütmeler gönderdiğinizde veya özellikte listelenen dala karşı bir çekme isteği açtığınızda yürütülür `on` .          |
+| `close_pull_request_job` | , Çekme isteklerinden oluşturulan hazırlama ortamını kaldıran yalnızca bir çekme isteğini kapattığınızda yürütülür. |
 
 ## <a name="steps"></a>Adımlar
 
@@ -115,10 +115,10 @@ Adımlar, bir iş için sıralı görevlerdir. Bir adım bağımlılıklar yükl
 
 Bir iş akışı dosyası aşağıdaki adımları tanımlar.
 
-| İş  | Adımlar  |
-|---------|---------|
-| `build_and_deploy_job` |<ol><li>Işlemin ortamındaki depoyu kontrol eder.<li>Depoyu oluşturup Azure statik Web Apps dağıtır.</ol>|
-| `close_pull_request_job` | <ol><li>Azure statik Web Apps bir çekme isteğinin kapatıldığını bildirir.</ol>|
+| İş                      | Adımlar                                                                                                                              |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `build_and_deploy_job`   | <ol><li>Işlemin ortamındaki depoyu kontrol eder.<li>Depoyu oluşturup Azure statik Web Apps dağıtır.</ol> |
+| `close_pull_request_job` | <ol><li>Azure statik Web Apps bir çekme isteğinin kapatıldığını bildirir.</ol>                                                        |
 
 ## <a name="build-and-deploy"></a>Oluşturma ve dağıtma
 
@@ -126,14 +126,14 @@ Adlı adım, `Build and Deploy` Azure statik Web Apps örneğinize yapılar ve d
 
 ```yml
 with:
-    azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
-    repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
-    action: 'upload'
-    ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
-    app_location: '/' # App source code path
-    api_location: 'api' # Api source code path - optional
-    output_location: 'dist' # Built app content directory - optional
-    ###### End of Repository/Build Configurations ######
+  azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
+  repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
+  action: 'upload'
+  ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
+  app_location: '/' # App source code path
+  api_location: 'api' # Api source code path - optional
+  output_location: 'dist' # Built app content directory - optional
+  ###### End of Repository/Build Configurations ######
 ```
 
 [!INCLUDE [static-web-apps-folder-structure](../../includes/static-web-apps-folder-structure.md)]
@@ -146,10 +146,10 @@ Dağıtım sırasında hangi komutların çalıştığı hakkında ayrıntılı 
 
 Dağıtım her zaman `npm install` özel bir komuttan önce çağırır.
 
-| Komut            | Açıklama |
-|---------------------|-------------|
-| `app_build_command` | Statik içerik uygulamasının dağıtımı sırasında çalışacak özel bir komut tanımlar.<br><br>Örneğin, angular uygulamasına yönelik bir üretim yapısını yapılandırmak için, çalıştırmak üzere adlı bir NPM betiği oluşturun `build-prod` `ng build --prod` ve `npm run build-prod` özel komut olarak girin. Boş bırakılırsa, iş akışı `npm run build` veya komutlarını çalıştırmayı dener `npm run build:azure` .  |
-| `api_build_command` | Azure Işlevleri API uygulaması dağıtımı sırasında çalışacak özel bir komut tanımlar. |
+| Komut             | Açıklama                                                                                                                                                                                                                                                                                                                                                                                |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `app_build_command` | Statik içerik uygulamasının dağıtımı sırasında çalışacak özel bir komut tanımlar.<br><br>Örneğin, angular uygulamasına yönelik bir üretim yapısını yapılandırmak için, çalıştırmak üzere adlı bir NPM betiği oluşturun `build-prod` `ng build --prod` ve `npm run build-prod` özel komut olarak girin. Boş bırakılırsa, iş akışı `npm run build` veya komutlarını çalıştırmayı dener `npm run build:azure` . |
+| `api_build_command` | Azure Işlevleri API uygulaması dağıtımı sırasında çalışacak özel bir komut tanımlar.                                                                                                                                                                                                                                                                                                  |
 
 ## <a name="skip-app-build"></a>Uygulama derlemesini atla
 
@@ -159,33 +159,33 @@ Uygulamanın oluşturulmasını atlamak için, `skip_app_build` `true` ' ye ve `
 
 ```yml
 with:
-    azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
-    repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
-    action: 'upload'
-    ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
-    app_location: 'dist'  # Application build output generated by a previous step
-    api_location: 'api'   # Api source code path - optional
-    output_location: ''   # Leave this empty
-    skip_app_build: true
-    ###### End of Repository/Build Configurations ######
+  azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
+  repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
+  action: 'upload'
+  ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
+  app_location: 'dist' # Application build output generated by a previous step
+  api_location: 'api' # Api source code path - optional
+  output_location: '' # Leave this empty
+  skip_app_build: true
+  ###### End of Repository/Build Configurations ######
 ```
 
-| Özellik            | Açıklama |
-|---------------------|-------------|
-| `skip_app_build`    | `true`Ön uç uygulamanın oluşturulmasını atlamak için değerini olarak ayarlayın. |
+| Özellik         | Açıklama                                                 |
+| ---------------- | ----------------------------------------------------------- |
+| `skip_app_build` | `true`Ön uç uygulamanın oluşturulmasını atlamak için değerini olarak ayarlayın. |
 
 > [!NOTE]
 > Yalnızca ön uç uygulaması için derlemeyi atlayabilirsiniz. Uygulamanızda bir API varsa, bu, hala statik Web Apps GitHub eylemi tarafından oluşturulmuştur.
 
 ## <a name="route-file-location"></a>Yol dosyası konumu
 
-Deponuzdaki herhangi bir klasörde [routes.js](routes.md) aramak için iş akışını özelleştirebilirsiniz. Aşağıdaki özellik bir iş bölümünün altında tanımlanabilir `with` .
+Deponuzdaki herhangi bir klasörde [staticwebapp.config.js](routes.md) aramak için iş akışını özelleştirebilirsiniz. Aşağıdaki özellik bir iş bölümünün altında tanımlanabilir `with` .
 
-| Özellik            | Açıklama |
-|---------------------|-------------|
-| `routes_location` | Dosyadaki _routes.js_ bulunduğu dizin konumunu tanımlar. Bu konum, deponun köküne göredir. |
+| Özellik          | Açıklama                                                                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `routes_location` | Dosyadaki _staticwebapp.config.js_ bulunduğu dizin konumunu tanımlar. Bu konum, deponun köküne göredir. |
 
- _routes.jsdosya üzerinde_ açık olması özellikle, ön uç Framework derleme adımınız bu dosyayı varsayılan olarak ' a taşımadığından önemlidir `output_location` .
+_staticwebapp.config.jsdosya üzerinde_ açık olması özellikle, ön uç Framework derleme adımınız bu dosyayı varsayılan olarak ' a taşımadığından önemlidir `output_location` .
 
 ## <a name="environment-variables"></a>Ortam değişkenleri
 
@@ -207,11 +207,11 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          action: "upload"
+          action: 'upload'
           ###### Repository/Build Configurations
-          app_location: "/"
-          api_location: "api"
-          output_location: "public"
+          app_location: '/'
+          api_location: 'api'
+          output_location: 'public'
           ###### End of Repository/Build Configurations ######
         env: # Add environment variables here
           HUGO_VERSION: 0.58.0
@@ -219,7 +219,7 @@ jobs:
 
 ## <a name="monorepo-support"></a>Monorepo desteği
 
-Tek depo, birden fazla uygulama için kod içeren bir depodur. Varsayılan olarak, statik bir Web Apps iş akışı dosyası bir depodaki tüm dosyaları izler, ancak bunu tek bir uygulamayı hedefleyecek şekilde ayarlayabilirsiniz. Bu nedenle, tek depolarda her bir statik uygulama, deponun *. GitHub/iş akışları* klasöründe yan yana bulunan kendi yapılandırma dosyasına sahiptir.
+Tek depo, birden fazla uygulama için kod içeren bir depodur. Varsayılan olarak, statik bir Web Apps iş akışı dosyası bir depodaki tüm dosyaları izler, ancak bunu tek bir uygulamayı hedefleyecek şekilde ayarlayabilirsiniz. Bu nedenle, tek depolarda her bir statik uygulama, deponun _. GitHub/iş akışları_ klasöründe yan yana bulunan kendi yapılandırma dosyasına sahiptir.
 
 ```files
 ├── .github
@@ -261,9 +261,9 @@ on:
 
 Bu örnekte, yalnızca aşağıdaki dosyalarda yapılan değişiklikler yeni bir derlemeyi tetikler:
 
-- *APP1* klasörünün içindeki dosyalar
-- *Api1* klasörünün içindeki dosyalar
-- Uygulamanın *Azure-static-Web-Apps-Purple-Pond. yıml* iş akışı dosyasında yapılan değişiklikler
+- _APP1_ klasörünün içindeki dosyalar
+- _Api1_ klasörünün içindeki dosyalar
+- Uygulamanın _Azure-static-Web-Apps-Purple-Pond. yıml_ iş akışı dosyasında yapılan değişiklikler
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Azure Certified Device Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 948fe25da8468e887693fe8c9f75f675dfbea858
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 497ffa4b3026491d6aa95df87708b3b1f2f1619e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969407"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308294"
 ---
 # <a name="azure-certified-device-requirements"></a>Azure Sertifikalı cihaz gereksinimleri 
 (daha önce IoT Hub olarak bilinirdi)
@@ -40,7 +40,7 @@ Azure Sertifikalı cihaz sertifikası taahhüdüne:
 | **Uygulama hedefi**          | Yaprak cihaz/kenar aygıtı                                      |
 | **İşletim sistemi**                  | Belirsiz                                                     |
 | **Doğrulama türü**     | Otomatik                                                    |
-| **Doğrulama**          | Cihazın IoT Hub için herhangi bir telemetri şeması gönderebilmesi gerekir. Microsoft, testleri yürütmek için [Portal iş akışını](https://certify.azure.come) sağlar. Cihazdan buluta (gerekli): **1.** Cihazın IoT Hub 2 tarafından yönetilen bir ileti gönderemediğini doğrular **.** Kullanıcının ileti sayısını ve sıklığını belirtmesi gerekir. **3.** AICS, Telemetriyi, hub örneği tarafından alındığını doğrular |
+| **Doğrulama**          | Cihazın IoT Hub için herhangi bir telemetri şeması gönderebilmesi gerekir. Microsoft, testleri yürütmek için [Portal iş akışını](https://certify.azure.com/) sağlar. Cihazdan buluta (gerekli): **1.** Cihazın IoT Hub 2 tarafından yönetilen bir ileti gönderemediğini doğrular **.** Kullanıcının ileti sayısını ve sıklığını belirtmesi gerekir. **3.** AICS, Telemetriyi, hub örneği tarafından alındığını doğrular |
 | **Kaynaklar**           | [Sertifika adımları](./overview.md) (tüm ek kaynaklara sahiptir) |
 
 **Istenir DPS: testin amacı, cihazın uygulayıp uygulamadığını denetlerken, üç kanıtlama yönteminden biriyle cihaz sağlama hizmeti IoT Hub destekler**

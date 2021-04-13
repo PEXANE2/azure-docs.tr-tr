@@ -2,13 +2,13 @@
 title: Azure Izleyici uyarıları için eylem kuralları
 description: Azure Izleyici 'deki eylem kurallarının ne olduğunu ve bunların nasıl yapılandırılacağını ve yönetileceğini anlamak.
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.openlocfilehash: 12e7cf8e72c5423b4a2edd6ea2a0f4537e328b08
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/08/2021
+ms.openlocfilehash: df71883d04106dd341af4571c13cc55f35a1ecc3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105036790"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304826"
 ---
 # <a name="action-rules-preview"></a>Eylem kuralları (Önizleme)
 
@@ -67,7 +67,7 @@ Kullanılabilir filtreleri şunlardır:
 
 * **Önem Derecesi**  
 Bu kural yalnızca seçili önem derecelerine sahip uyarılar için geçerlidir.  
-Örneğin, **önem derecesi = Sev1** , kuralın yalnızca Sev1 önem derecesine sahip uyarılara uygulanacağını gösterir.
+Örneğin, **önem derecesi = "Sev1"** , kuralın yalnızca Sev1 önem derecesine sahip uyarılara uygulanacağını gösterir.
 * **Hizmeti izle**  
 Bu kural, yalnızca seçilen izleme hizmetlerinden gelen uyarılar için geçerlidir.  
 Örneğin, **Monitor Service = "Azure Backup"** , kuralın yalnızca yedekleme uyarıları (Azure Backup geldiği) için uygulanacağı anlamına gelir.
@@ -79,15 +79,22 @@ Bu kural, yalnızca belirli bir uyarı kuralından gelen uyarılar için geçerl
 Örneğin, **Uyarı KURALı kimliği = "/Subscriptions/SubId1/resourceGroups/RG1/Providers/Microsoft.insights/metricalerts/API-Latency"** , bu kuralın yalnızca "API-Latency" ölçümü uyarı kuralından gelen uyarılar için uygulanacağını gösterir.  
 _Burada, CLı 'dan uyarı kurallarınızı listeleyerek veya portalda belirli bir uyarı kuralını açıp "Özellikler" ' i tıklatarak ve "kaynak KIMLIĞI" değerini kopyalayarak doğru uyarı kuralı KIMLIĞINI alabilirsiniz._
 * **İzleme koşulu**  
-Bu kural yalnızca belirtilen izleyici koşuluna sahip uyarı olayları için geçerlidir- **tetiklenir** veya **çözüldü**.
+Bu kural yalnızca belirtilen izleyici koşuluna sahip uyarı olayları için geçerlidir- **"tetiklenir"** veya **"çözümlendi"**.
 * **Açıklama**  
 Bu kural yalnızca uyarı açıklaması alanında belirli bir dizeyi içeren uyarılar için geçerlidir. Bu alan, uyarı kuralı açıklamasını içerir.  
-Örneğin, **Açıklama ' prod ' içerdiğinde** , kuralın yalnızca açıklamalarında "üretim" dizesini içeren uyarılarla eşleşeceğini gösterir.
+Örneğin, **Açıklama "üretim" içerir** , kuralın yalnızca açıklamalarında "üretim" dizesini içeren uyarılarla eşleşeceğini gösterir.
 * **Uyarı bağlamı (yük)**  
 Bu kural yalnızca uyarı bağlam alanlarında bir veya daha fazla belirli değeri içeren uyarılar için geçerlidir.  
-Örneğin, **Uyarı bağlamı (yük) ' bilgisayar-01 ' içeriyorsa** , kuralın yalnızca yükü "bilgisayar-01" dizesini içeren uyarılara uygulanacağını gösterir.
+Örneğin, **Uyarı bağlamı (yük) "bilgisayar-01" içerdiğinde** , kuralın yalnızca yükü "bilgisayar-01" dizesini içeren uyarılara uygulanacağını gösterir.
 
-Bir kuralda birden çok filtre ayarlarsanız, bunların hepsi geçerlidir. Örneğin, **' = sanal makineler** ve **önem derecesi ' = Sev0** kaynak türünü ayarlarsanız, kural yalnızca sanal makinelerdeki Sev0 uyarıları için geçerlidir.
+> [!NOTE]
+> Her filtre en fazla beş değer içerebilir.  
+> Örneğin, izleme hizmetindeki bir filtre en fazla beş İzleyici hizmeti adı içerebilir.
+
+
+
+
+Bir kuralda birden çok filtre ayarlarsanız, bunların hepsi geçerlidir. Örneğin, **kaynak türü = "sanal makineler"** ve **önem derecesi = "Sev0"** olarak ayarlanırsa, kural yalnızca sanal makinelerdeki Sev0 uyarıları için geçerlidir.
 
 ![Eylem kuralı filtreleri](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
@@ -118,7 +125,7 @@ Geçiş sırasında **eylem grubu** ' nu seçerseniz, var olan bir eylem grubu e
 Son olarak, eylem kuralı için aşağıdaki ayrıntıları yapılandırın:
 * Name
 * Kaydedildiği kaynak grubu
-* Description
+* Açıklama
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

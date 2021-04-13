@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/07/2021
 ms.author: terrylan
-ms.openlocfilehash: be270383b868abb7e2865920f4a3852e2f6210dc
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 3ea3c2bcb878dbd8a712e6076dda09853f55e297
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031425"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310351"
 ---
 # <a name="end-to-end-security-in-azure"></a>Azure 'da uçtan uca güvenlik
 Uygulamalarınız ve hizmetleriniz için Azure kullanmanın en iyi nedenlerinden biri, kendi sunduğu güvenlik araçları ve özellikleri dizisinden faydalanabilir. Bu araçlar ve yetenekler, güvenli Azure platformunda güvenli çözümler oluşturmayı olanaklı hale getirmeye yardımcı olur. Microsoft Azure, müşteri verilerinin gizliliğini, bütünlüğünü ve kullanılabilirliğini sağlar. Ayrıca, saydam sorumluluklığa de olanak tanır.
@@ -63,8 +63,8 @@ Diyagram, Azure 'da kullandığınız hizmetlerin güvenliğini sağlamaya yard�
 | [Azure DDoS Koruması Standart](../../ddos-protection/ddos-protection-overview.md) | DDoS saldırılarına karşı savunmak için gelişmiş DDoS azaltma özellikleri sağlar. Bir sanal ağdaki belirli Azure kaynaklarınızı korumaya yardımcı olmak üzere otomatik olarak ayarlanır. |
 | [Azure Front Door](../../frontdoor/front-door-overview.md) | Hızlı, güvenli ve yaygın olarak ölçeklenebilir Web uygulamaları oluşturmak için Microsoft Global Edge ağını kullanan küresel, ölçeklenebilir bir giriş noktasıdır. |
 | [Azure Güvenlik Duvarı](../../firewall/overview.md) | Azure sanal ağ kaynaklarınızı koruyan, yönetilen, bulut tabanlı bir ağ güvenlik hizmeti. Yerleşik yüksek kullanılabilirliğe ve sınırsız bulut ölçeklenebilirliğine sahip, tam durum bilgisi olan bir hizmet olarak güvenlik duvarıdır. |
-| [Azure Key Vault](../../key-vault/general/overview.md) | Azure sanal ağ kaynaklarınızı koruyan, yönetilen, bulut tabanlı bir ağ güvenlik hizmeti. Yerleşik yüksek kullanılabilirliğe ve sınırsız bulut ölçeklenebilirliğine sahip, tam durum bilgisi olan bir hizmet olarak güvenlik duvarıdır. |
-| [Key Vault Managed HSDM (Önizleme)](../../key-vault/managed-hsm/overview.md) | FIPS 140-2 düzey 3 tarafından doğrulanan HSM 'ler kullanarak bulut uygulamalarınız için şifreleme anahtarlarını korumanıza olanak sağlayan, tam olarak yönetilen, yüksek oranda kullanılabilir, tek kiracılı, standartlara uyumlu bir bulut hizmeti. |
+| [Azure Key Vault](../../key-vault/general/overview.md) | Belirteçler, parolalar, sertifikalar, API anahtarları ve diğer gizli dizileri için güvenli bir gizli anahtar deposu. Key Vault, verilerinizi şifrelemek için kullanılan şifreleme anahtarlarını oluşturmak ve denetlemek için de kullanılabilir. |
+| [Key Vault Managed HSM (Önizleme)](../../key-vault/managed-hsm/overview.md) | FIPS 140-2 düzey 3 tarafından doğrulanan HSM 'ler kullanarak bulut uygulamalarınız için şifreleme anahtarlarını korumanıza olanak sağlayan, tam olarak yönetilen, yüksek oranda kullanılabilir, tek kiracılı, standartlara uyumlu bir bulut hizmeti. |
 | [Azure Özel Bağlantı](../../private-link/private-link-overview.md) | Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişmenizi sağlar. |
 | [Azure Application Gateway](../../application-gateway/overview.md) | Web uygulamalarınıza yönelik trafiği yönetmenizi sağlayan gelişmiş bir Web trafiği yük dengeleyici. Application Gateway, bir HTTP isteğinin ek özniteliklerine (örneğin, URI yolu veya ana bilgisayar üstbilgileri) göre yönlendirme kararları verebilir. |
 | [Azure Service Bus](../../service-bus-messaging/service-bus-messaging-overview.md) | İleti kuyrukları ve yayımlama-abone olma konuları ile tam olarak yönetilen bir kurumsal ileti Aracısı. Service Bus, uygulamaları ve hizmetleri birbirinden ayırmak için kullanılır. |

@@ -15,6 +15,10 @@
     - name: Route Server-ARM şablonu yapılandırma
       href: quickstart-configure-template.md
   expanded: true
+- name: Örnekler
+  items:
+    - name: Resource Manager şablonları
+      href: resource-manager-template-samples.md
 - name: Kavramlar
   items:
     - name: Yönlendirme sunucusu hakkında SSS

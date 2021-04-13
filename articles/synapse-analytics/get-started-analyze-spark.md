@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 5d08bc216157fce9ad81eaf3c0f540c7a4d8c3f2
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 2b85fe21fee34a9bedab33f0d10756bbfe8dc88b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259838"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305217"
 ---
 # <a name="analyze-with-apache-spark"></a>Apache Spark ile Çözümle
 
@@ -34,10 +34,10 @@ Bu öğreticide, Azure SYNAPSE için Apache Spark verileri yüklemek ve analiz e
 
 Sunucusuz Spark havuzu, bir kullanıcının Spark ile nasıl çalışmak istediğini belirten bir yoldur. Bir havuzu kullanmaya başladığınızda, gerekirse Spark oturumu oluşturulur. Havuz, bu oturum tarafından kaç Spark kaynağı kullanılacağını ve oturumun otomatik olarak duraklamadan önce ne kadar süre önce olacağını denetler. Havuzun kendisi için değil, bu oturum sırasında kullanılan Spark kaynakları için ödeme yaparsınız. Bu şekilde, bir Spark havuzu, kümeleri yönetmek zorunda kalmadan Spark ile çalışmanıza olanak sağlar. Bu, sunucusuz SQL havuzunun çalışmasına benzer.
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>Spark kullanarak, blob depolamada NYC TAXI verilerini çözümleme
+## <a name="analyze-nyc-taxi-data-with-a-spark-pool"></a>NYC TAXI verilerini Spark havuzuyla çözümle
 
 1. SYNAPSE Studio 'da **geliştirme** merkezine gidin
-2. Varsayılan dili **Pyspark (Python)** olarak ayarlanmış yeni bir not defteri oluşturun.
+2. Yeni Not Defteri oluşturma
 3. Yeni bir kod hücresi oluşturun ve aşağıdaki kodu bu hücreye yapıştırın.
     ```py
     %%pyspark
@@ -49,22 +49,23 @@ Sunucusuz Spark havuzu, bir kullanıcının Spark ile nasıl çalışmak istedi�
 1. Yalnızca veri çerçevesinin şemasını görmek istiyorsanız aşağıdaki kodla bir hücre çalıştırın:
 
     ```py
+    %%pyspark
     df.printSchema()
     ```
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>NYC TAXI verilerini Spark nyctaxi veritabanına yükleme
 
-Veriler, **veri adlı veri** çerçevesi aracılığıyla kullanılabilir. **Nyctaxi** adlı bir Spark veritabanına yükleyin.
+Veriler **df** adlı veri çerçevesi aracılığıyla kullanılabilir. **Nyctaxi** adlı bir Spark veritabanına yükleyin.
 
 1. Not defterine yeni bir kod hücresi ekleyin ve ardından aşağıdaki kodu girin:
 
     ```py
+    %%pyspark
     spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Spark ve not defterlerini kullanarak NYC TAXI verilerini çözümleme
 
-1. Not defterinize geri dönün.
 1. Yeni bir kod hücresi oluşturun ve aşağıdaki kodu girin. 
 
    ```py

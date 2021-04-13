@@ -7,16 +7,16 @@ ms.author: cbroad
 ms.date: 02/23/2021
 ms.topic: how-to
 ms.service: certification
-ms.openlocfilehash: da3110b562bc5ddbd37657f31cbdd3790a13b897
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 3a4fd2838c0ddf6d7d03d68f105fc59471b77dea
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969464"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304486"
 ---
 # <a name="device-bundles-and-indirectly-connected-devices"></a>Cihaz paketleri ve dolaylı olarak bağlı cihazlar
 
-Bir cihaz, SaaS veya PaaS teklifleri, gönderim portalı (ve cihaz kataloğu) aracılığıyla Azure ile etkileşime geçen cihazları desteklemek için https://www.certify.azure.com) ( https://devicecatalog.azure.com) paket oluşturma ve bağımlılıklar kavramlarını etkinleştirin ve bu cihaz birleşimlerini yükseltmek ve etkinleştirmek Için Azure Sertifikalı cihaz programımızın erişimini etkinleştirin.
+Bir cihaz, SaaS veya PaaS teklifleri, gönderim portalı (ve cihaz kataloğu) aracılığıyla Azure ile etkileşime geçen cihazları desteklemek için https://certify.azure.com/) ( https://devicecatalog.azure.com) paket oluşturma ve bağımlılıklar kavramlarını etkinleştirin ve bu cihaz birleşimlerini yükseltmek ve etkinleştirmek Için Azure Sertifikalı cihaz programımızın erişimini etkinleştirin.
 
 Sizin için sunulan ürün hattına ve hizmetlere bağlı olarak, koşulunuzda şu adımların bir birleşimi gerekebilir:
 

@@ -4,12 +4,12 @@ description: Docker CLı kullanarak Azure 'daki özel kapsayıcı Kayıt defteri
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 83ef385313b035f5e5d7d993e7948725906c75a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 982a49af271648caeb62e5759530aa6049be4382
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99987763"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308311"
 ---
 # <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>Docker CLı kullanarak ilk görüntünüzü Azure Container Registry 'nize gönderin
 
@@ -39,7 +39,7 @@ docker login myregistry.azurecr.io
 
 Her iki komut de `Login Succeeded` tamamlandığında döndürülür.
 > [!NOTE]
->* Daha hızlı ve daha uygun bir oturum açma işlemi için Docker uzantı ile Visual Studio Code kullanmak isteyebilirsiniz.
+>* Daha hızlı ve daha uygun bir oturum açma için Docker uzantılı Visual Studio Code kullanmak isteyebilirsiniz.
 
 > [!TIP]
 > `docker login`' İ kullanırken ve Kayıt defterinize göndermek üzere resimleri etiketlediğinizde, her zaman tam olarak nitelenmiş kayıt defteri adını (tümü küçük harf) belirtin. Bu makaledeki örneklerde, tam nitelikli ad *myregistry.azurecr.io*' dir.

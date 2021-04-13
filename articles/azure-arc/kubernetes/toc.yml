@@ -73,5 +73,7 @@
       href: /powershell/module/Az.ConnectedKubernetes/
 - name: Kaynaklar
   items:
+    - name: Dağıtım planı
+      href: plan-at-scale-deployment.md
     - name: Azure Arc hızlı başlangıç
       href: 'https://azurearcjumpstart.io'

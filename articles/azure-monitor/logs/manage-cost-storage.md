@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/28/2021
 ms.author: bwren
-ms.openlocfilehash: 975a3ea250307e445e9bf48abdc669f2b035038a
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: ac2d1ea17460c56a3369d00d2cc8e41cca616363
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554051"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310929"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme    
 
@@ -266,7 +266,7 @@ Başlamanıza başlamak için, işlevi kullanarak tabloyu sorgulayan uyarının 
 - Hedef: Log Analytics kaynağını seçin
 - Ölçütlere 
    - Sinyal adı: özel günlük araması
-   - Arama sorgusu: `_LogOperation | where Operation == "Data Collection Status" | where Detail contains "OverQuota"`
+   - Arama sorgusu: `_LogOperation | where Operation == "Data collection Status" | where Detail contains "OverQuota"`
    - Temel alan: sonuç sayısı
    - Koşul: büyüktür
    - Eşik: 0

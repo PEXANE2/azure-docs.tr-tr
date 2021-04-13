@@ -1,18 +1,18 @@
 ---
 title: Pazarlama özellikleri
 description: Portalda toplanan farklı pazarlama alanlarının açıklaması ve bunların Azure Sertifikalı cihaz kataloğunda görünme sıklığı
-author: nikuntjo
+author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: template-concept
-ms.openlocfilehash: 45ecab18451ca0915ee3891278db47feb7469915
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 262616ca82e9c06baec0d7a1b81a0e3dff2ed8db
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969544"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304520"
 ---
 # <a name="marketing-properties"></a>Pazarlama özellikleri
 
@@ -75,7 +75,7 @@ Hem ürün kutucuğunda hem de ürün açıklaması sayfasında bulunan bir atö
 ## <a name="external-links"></a>Dış bağlantılar
 Ürün açıklaması sayfasına da dahil edilen bağlantılar, müşterinin ürünü daha iyi anlamasına yardımcı olan iş ortakları tarafından sağlanan sitelere veya dosyalara gider. Bunlar sayfanın üst kısmında, ürün açıklaması metninin altına doğru görünürler. Farklı cihaz türleri ve sertifika programları için, görüntülenecek bağlantılar farklılık gösterir.
 
-| Bağlantı | Description                  | Portala eklenecek yer                |
+| Bağlantı | Açıklama                  | Portala eklenecek yer                |
 |---------------|-------------------------|----------------------------------|
 | Kullanmaya başlama kılavuzu * | Azure hizmetleriyle cihazınızı bağlamaya ve kullanmaya yönelik Kullanıcı yönergeleriyle birlikte PDF dosyası | Portalın ' Başlarken ' Kılavuzu bölümüne ekleme|
 | Üretici sayfası *|Üretici sayfasına bağlantı. Bu sayfa, cihazınız için belirli bir ürün sayfası veya bir pazarlama sayfası yoksa Şirket giriş sayfası olabilir. | Pazarlama ayrıntılarında üreticinin pazarlama sayfası |

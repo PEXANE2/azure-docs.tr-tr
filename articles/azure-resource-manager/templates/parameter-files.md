@@ -2,13 +2,13 @@
 title: Parametre dosyası oluşturma
 description: Azure Resource Manager şablonunun dağıtımı sırasında değerleri geçirmek için parametre dosyası oluşturma
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: 2b6d942b21594fa608127bb8f403e72295671005
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: d557bcdfe246dc2c9bfccde17b7f9590c2686358
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89276669"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312051"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Kaynak Yöneticisi parametre dosyası oluştur
 
@@ -210,6 +210,8 @@ Daha fazla bilgi için bkz. [ARM şablonlarıyla kaynak dağıtma ve Azure Power
 
 > [!NOTE]
 > Portalda özel şablon dikey penceresinde bir parametre dosyası kullanmak mümkün değildir.
+
+[Visual Studio 'Da Azure Kaynak grubu projesi](create-visual-studio-deployment-project.md)kullanıyorsanız, parametre dosyasının **Yapı eylemi** **içerik** olarak ayarlanmış olduğundan emin olun.
 
 ## <a name="file-name"></a>Dosya adı
 

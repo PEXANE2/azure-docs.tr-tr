@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: jgao
-ms.openlocfilehash: fb5fc0b6b673f8a754d0d6bb6ff962697cd5f38b
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 3240cce34a6fa645986a58ab43b28ad38485e97b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967345"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308974"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>ARM şablonlarında dağıtım betikleri kullanma
 
@@ -140,7 +140,7 @@ Aşağıdaki JSON bir örnektir. Daha fazla bilgi için bkz. en son [şablon şe
 - `kind`: Betiğin türünü belirtin. Şu anda, Azure PowerShell ve Azure CLı betikleri desteklenir. Değerler **AzurePowerShell** ve **azurecli**' dir.
 - `forceUpdateTag`: Bu değerin, şablon dağıtımları arasında değiştirilmesi dağıtım betiğini yeniden yürütmeye zorlar. `newGuid()`Veya `utcNow()` işlevlerini kullanırsanız, her iki işlev yalnızca bir parametre için varsayılan değerde kullanılabilir. Daha fazla bilgi için bkz. [betiği birden çok kez çalıştırma](#run-script-more-than-once).
 - `containerSettings`: Azure Container Instance 'ı özelleştirmek için ayarları belirtin. Dağıtım betiği yeni bir Azure Container örneği gerektirir. Mevcut bir Azure Container Instance belirtemezsiniz. Ancak, kullanarak kapsayıcı grubu adını özelleştirebilirsiniz `containerGroupName` . Belirtilmemişse, Grup adı otomatik olarak oluşturulur.
-- `storageAccountSettings`: Mevcut bir depolama hesabını kullanmak için ayarları belirtin. `containerGroupName`Belirtilmemişse, otomatik olarak bir depolama hesabı oluşturulur. Bkz. [var olan bir depolama hesabını kullanma](#use-existing-storage-account).
+- `storageAccountSettings`: Mevcut bir depolama hesabını kullanmak için ayarları belirtin. `storageAccountName`Belirtilmemişse, otomatik olarak bir depolama hesabı oluşturulur. Bkz. [var olan bir depolama hesabını kullanma](#use-existing-storage-account).
 - `azPowerShellVersion`/`azCliVersion`: Kullanılacak modül sürümünü belirtin. [Desteklenen Azure PowerShell sürümlerinin](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)listesini görüntüleyin. [Desteklenen Azure CLI sürümlerinin](https://mcr.microsoft.com/v2/azure-cli/tags/list)listesini görüntüleyin.
 
   >[!IMPORTANT]
@@ -245,7 +245,7 @@ Aşağıdaki şablonda değerlerin iki kaynak arasında nasıl geçirileceğini 
 İlk kaynakta, adlı bir değişken tanımlarsınız `$DeploymentScriptOutputs` ve bunu çıkış değerlerini depolamak için kullanabilirsiniz. Şablon içindeki başka bir kaynaktan çıkış değerine erişmek için şunu kullanın:
 
 ```json
-reference('<ResourceName>').output.text
+reference('<ResourceName>').outputs.text
 ```
 
 ## <a name="work-with-outputs-from-cli-script"></a>CLı betiğinin çıktılarla çalışma
@@ -566,7 +566,7 @@ Betiği başarıyla test edildikten sonra, şablonlarınızı şablonlarda bir d
 
 ## <a name="deployment-script-error-codes"></a>Dağıtım betiği hata kodları
 
-| Hata kodu | Description |
+| Hata kodu | Açıklama |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Şablondaki dağıtım betiği kaynak tanımı geçersiz özellik adları içeriyor. |
 | DeploymentScriptResourceConflict | Terminal dışı durumda olan bir dağıtım betiği kaynağı silinemez ve yürütme 1 saati aşmadı. Ya da aynı dağıtım betiğini aynı kaynak tanımlayıcısıyla (aynı abonelik, kaynak grubu adı ve kaynak adı), aynı anda farklı betik gövdesi içeriğiyle yeniden çalıştıramıyorum. |

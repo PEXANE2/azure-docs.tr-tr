@@ -4,16 +4,16 @@ description: Hangi işletim sistemlerinin Azure IoT Edge Daemon ve çalışma za
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/11/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0bd6a8af4850f3a0519bac7644100c2dcf883635
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: b60deee6ccb95245839ee740c2b237b98315d483
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031181"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313207"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Desteklenen sistemleri Azure IoT Edge
 
@@ -171,9 +171,15 @@ Aşağıdaki tabloda listelenen sistemler Azure IoT Edge uyumlu olarak değerlen
 
 IoT Edge sürüm varlıkları ve sürüm notları, [Azure-ıotedge yayınları](https://github.com/Azure/azure-iotedge/releases) sayfasında bulunabilir. Bu bölüm, her bir sürümün bileşenlerini daha kolay görselleştirmenize yardımcı olmak için bu sürüm notlarındaki bilgileri yansıtır.
 
-IoT Edge bileşenleri tek tek yüklenebilir ve güncelleştirilmiş olabilir ve eski sürümlerden bileşenlerle geriye doğru uyumludur. Aşağıdaki tabloda her sürümde yer alan bileşenler listelenmiştir:
+Aşağıdaki tabloda, 1.2.0 ile başlayan her sürümde yer alan bileşenler listelenmiştir. Bu tabloda listelenen bileşenler tek başına yüklenebilir veya güncelleştirilir ve eski sürümlerle geriye dönük olarak uyumludur.
 
-| Yayınla | Güvenlik cini | Edge hub 'ı<br>Edge Aracısı | Libiothsm | Moby |
+| Yayınla | azıot-Edge | edgeHub<br>edgeAgent | azıot-kimlik hizmeti |
+| ------- | ---------- | -------------------- | ---------------------- |
+| **1.2** | 1.2.0      | 1.2.0                | 1.2.0                  |
+
+Aşağıdaki tabloda, 1,1 LTS sürümüne kadar her bir yayında yer alan bileşenler listelenmiştir. Bu tabloda listelenen bileşenler tek başına yüklenebilir veya güncelleştirilir ve eski sürümlerle geriye dönük olarak uyumludur.
+
+| Yayınla | iotedge | edgeHub<br>edgeAgent | libiothsm | Moby |
 |--|--|--|--|--|
 | **1,1 LTS**<sup>1</sup> | 1.1.0<br>1.1.1 | 1.1.0<br>1.1.1 | 1.1.0<br>1.1.1 |   |
 | **1.0.10** | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br>1.0.10.3<br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 |  |
@@ -192,7 +198,8 @@ IoT Edge, Microsoft. Azure. Devices. Client SDK 'sını kullanır. Daha fazla bi
 
 | IoT Edge sürümü | Microsoft. Azure. Devices. Client SDK sürümü |
 |------------------|--------------------------------------------|
-| 1,1 (LTS)      | 1.28.0                                     |
+| 1.2.0            | 1.33.4-NestedEdge
+| 1,1 (LTS)        | 1.28.0                                     |
 | 1.0.10           | 1.28.0                                     |
 | 1.0.9            | 1.21.1                                     |
 | 1.0.8            | 1.20.3                                     |

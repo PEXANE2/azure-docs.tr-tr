@@ -1,23 +1,23 @@
 ---
 title: TDE koruyucuyu kaldırma (Azure CLı & PowerShell)
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Kendi anahtarını getir (BYOK) desteği ile TDE kullanarak Azure SQL veritabanı veya Azure SYNAPSE Analytics için riskli olabilecek bir TDE uzlaşın nasıl yanıtlanacağını öğrenin.
+description: Kendi Anahtarını Getir (BYOK) desteğiyle TDE kullanarak Azure SQL veritabanı veya Azure SYNAPSE Analytics için riskli olabilecek bir TDE için nasıl yanıt verileceğini öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
-author: jaszymas
-ms.author: jaszymas
+author: shohamMSFT
+ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: 31298be4d50c7f562e2e2b9adbf889b165b197e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1613c61143044c4fa355c6225cf0fa1d4e2e09d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96461864"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308396"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell kullanarak Saydam Veri Şifrelemesi (TDE) koruyucusunu kaldırma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]

@@ -71,6 +71,8 @@
           href: scenario-route-through-nvas-custom.md
         - name: Azure Güvenlik Duvarı - özel
           href: scenario-route-between-vnets-firewall.md
+        - name: Application Gateway ve arka uç havuzları
+          href: scenario-secured-hub-app-gateway.md
     - name: İzleme
       items:
         - name: Sanal WAN için Azure İzleyici İçgörüleri hakkında

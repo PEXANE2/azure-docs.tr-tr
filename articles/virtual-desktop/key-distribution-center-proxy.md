@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a1e6d2f4fc0444be364ce3c07c14f6408b3f19fe
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 21db7ed0cf13a3ed282929b09847c6c3ba8a36ed
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446919"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307257"
 ---
 # <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Kerberos Anahtar Dağıtım Merkezi ara sunucusunu yapılandırma (Önizleme)
 
@@ -29,7 +29,7 @@ Windows sanal masaüstü hizmeti 'nin kimlik doğrulamasının doğrulanması ge
 - Windows sanal masaüstü istemcisindeki, kullanıcılara erişimleri olan kullanılabilir masaüstleri veya uygulamalar listesi veren akış. Bu kimlik doğrulama işlemi Azure Active Directory olur. Bu, bu bileşenin bu makalenin konusu olmadığı anlamına gelir.
 - Bir kullanıcının mevcut kaynaklarından birini seçmesini sağlayan RDP oturumu. Bu bileşen Kerberos kimlik doğrulamasını kullanır ve uzak kullanıcılar için bir KDC ara sunucusu gerektirir.
 
-Bu makalede, Azure portal Windows sanal masaüstü istemcisinde akışın nasıl yapılandırılacağı gösterilir. RD Ağ Geçidi rolünü yapılandırmayı öğrenmek istiyorsanız, bkz. [RD Ağ geçidi rolünü dağıtma](/windows-server/remote/rd-gateway-role).
+Bu makalede, Azure portal Windows sanal masaüstü istemcisinde akışın nasıl yapılandırılacağı gösterilir. RD Ağ Geçidi rolünü yapılandırmayı öğrenmek istiyorsanız, bkz. [RD Ağ geçidi rolünü dağıtma](/azure/virtual-desktop/rd-gateway-role).
 
 ## <a name="requirements"></a>Gereksinimler
 
