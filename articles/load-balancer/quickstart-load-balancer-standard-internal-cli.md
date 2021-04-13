@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: f728e1f1e2186188135666ed54e02c9ed3507509
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 66b3db9a7aec45a2a0881379db6f7ef51950b5c5
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056547"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364320"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-by-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak iç yük dengeleyici oluşturma
 
@@ -30,9 +30,6 @@ ms.locfileid: "106056547"
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)] 
 
 Bu hızlı başlangıç, Azure CLı 'nin sürüm 2.0.28 veya üstünü gerektirir. Azure Cloud Shell kullanıyorsanız, en son sürüm zaten yüklüdür.
-
->[!NOTE]
->Azure Load Balancer standart, üretim iş yükleri için önerilen seçenektir. Bu makale, Azure Load Balancer standart ve temel Azure Load Balancer hakkında bilgiler içerir. SKU 'Lar hakkında daha fazla bilgi için bkz. [Azure Load Balancer SKU 'lar](skus.md).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -47,7 +44,11 @@ Azure Kaynak grubu, Azure kaynaklarınızı dağıttığınız ve yönettiğiniz
 
 ```
 
-## <a name="azure-load-balancer-standard"></a>Azure Load Balancer standart
+---
+# <a name="standard-sku"></a>[**Standart SKU**](#tab/option-1-create-load-balancer-standard)
+
+>[!NOTE]
+>Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
 
 Bu bölümde, sanal makinelerin yükünü dengeleyen bir yük dengeleyici oluşturacaksınız. Bir iç yük dengeleyici oluşturduğunuzda, yük dengeleyici için ağ olarak bir sanal ağ yapılandırılır. Aşağıdaki diyagramda bu hızlı başlangıçta oluşturulan kaynaklar gösterilmektedir:
 
@@ -335,7 +336,10 @@ Yük dengeleyici kuralı şunları tanımlar:
 
 ```
 
-## <a name="azure-load-balancer-basic"></a>Azure Load Balancer temel
+# <a name="basic-sku"></a>[**Temel SKU**](#tab/option-1-create-load-balancer-basic)
+
+>[!NOTE]
+>Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
 
 Bu bölümde, sanal makinelerin yükünü dengeleyen bir yük dengeleyici oluşturacaksınız. Bir iç yük dengeleyici oluşturduğunuzda, yük dengeleyici için ağ olarak bir sanal ağ yapılandırılır. Aşağıdaki diyagramda bu hızlı başlangıçta oluşturulan kaynaklar gösterilmektedir:
 
@@ -636,7 +640,7 @@ Yük dengeleyici kuralı şunları tanımlar:
   done
 
 ```
-
+---
 ## <a name="test-the-load-balancer"></a>Yük dengeleyiciyi test etme
 
 [Az Network Nic Create](/cli/azure/network/nic#az-network-nic-create)komutuyla ağ arabirimini oluşturun. Aşağıdakileri belirtin:

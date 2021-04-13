@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: ea860f58caba25ef3027fbf7bc4728355a7ca1bc
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 5fad2a9e1789b98ac541e8a0d95c77131905544d
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107315631"
+ms.locfileid: "107364742"
 ---
 # <a name="back-up-vm-disks-on-azure-stack-edge-pro-gpu-via-azure-powershell"></a>Azure PowerShell aracılığıyla Azure Stack Edge Pro GPU üzerinde VM disklerini yedekleme
 
@@ -305,6 +305,10 @@ VM 'Leri yedeklemebilmeniz için aşağıdakileri yaptığınızdan emin olun:
     PS C:\Users\user>
     ```
 
+    Anlık görüntünün depolama hesabına doğru şekilde kopyalandığını doğrulamak için Depolama Gezgini de kullanabilirsiniz.
+
+    ![Yerel depolama hesabındaki kapsayıcıda yedeklemeyi gösteren Depolama Gezgini](media/azure-stack-edge-gpu-back-up-virtual-machine-disks/back-up-virtual-machine-disk-1.png)
+
 ## <a name="download-vhd-to-external-target"></a>VHD 'yi dış hedefe indir
 
 Yedeklemelerinizi dış bir konuma taşımak için Azure Depolama Gezgini veya AzCopy kullanabilirsiniz.
@@ -315,7 +319,7 @@ Yedeklemelerinizi dış bir konuma taşımak için Azure Depolama Gezgini veya A
     azcopy copy "https://<local storage account name>.blob.<device name>.<DNS domain>/<container name>/<filename><SAS query string>" <destination target>
     ```
 
-- Azure Stack Edge ile Azure Depolama Gezgini ayarlamak ve kullanmak için, [yükleme Depolama Gezgini](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#use-storage-explorer-for-upload)bulunan yönergelere bakın.
+- Azure Depolama Gezgini Azure Stack Edge ile ayarlamak ve kullanmak için, [yükleme için Depolama Gezgini kullanma](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#use-storage-explorer-for-upload)yönergelerine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

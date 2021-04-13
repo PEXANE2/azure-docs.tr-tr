@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Azure Arc etkin Kubernetes üzerinde uzantıların yaşam döngüsünü dağıtın ve yönetin
-ms.openlocfilehash: 63fb14818d148dcc579300fdb4c89d636b47fd05
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 854d7418515d7927a3c0b4b8790ed4770af555ab
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106451205"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312629"
 ---
 # <a name="kubernetes-cluster-extensions"></a>Kubernetes kümesi uzantıları
 
@@ -51,7 +51,7 @@ Bu özelliğe kavramsal genel bakış, [küme uzantıları-Azure Arc etkin Kuber
 | Dahili numara | Açıklama |
 | --------- | ----------- |
 | [Azure İzleyici](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json) | Kubernetes kümesine dağıtılan iş yüklerinin performansına ilişkin görünürlük sağlar. Denetleyiciler, düğümler ve kapsayıcılardan bellek ve CPU kullanımı ölçümlerini toplar. |
-| [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Kubernetes kümesinin denetim düzlemi düğümlerinden denetim günlüğü verilerini toplar. Toplanan verileri temel alan öneriler ve tehdit uyarıları sağlar. |
+| [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Kubernetes kümesinden denetim günlüğü verileri gibi güvenlikle ilgili bilgileri toplar. Toplanan verileri temel alan öneriler ve tehdit uyarıları sağlar. |
 
 ## <a name="usage-of-cluster-extensions"></a>Küme uzantılarının kullanımı
 
@@ -235,31 +235,6 @@ az k8s-extension list --cluster-name <clusterName> --resource-group <resourceGro
   }
 ]
 ```
-
-### <a name="update-an-existing-extension-instance"></a>Var olan bir uzantı örneğini Güncelleştir
-
-İle bir kümede uzantı örneğini güncelleştirme `k8s-extension update` , güncelleştirilecek değerleri geçirme.  Bu komut yalnızca,, `auto-upgrade-minor-version` `release-train` ve özelliklerini güncelleştirir `version` . Örnek:
-
-- **Sürüm eğmesini güncelleştir:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --release-train Preview
-    ```
-
-- **Otomatik yükseltmeyi devre dışı bırakma ve uzantı örneğini belirli bir sürüme sabitleme:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --auto-upgrade-minor-version false --version 2.2.2
-    ```
-
-- **Uzantı örneği için otomatik yükseltmeyi açın:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --auto-upgrade-minor-version true
-    ```
-
-> [!NOTE]
-> `version`Parametresi yalnızca `--auto-upgrade-minor-version` öğesine ayarlandığında ayarlanabilir `false` .
 
 ### <a name="delete-extension-instance"></a>Uzantı örneğini Sil
 

@@ -2,13 +2,13 @@
 title: 800 olmayan kaynaklar sayısı sınırı
 description: Bir kaynak grubunda 800 taneden fazla örneğe sahip olabilir Azure Kaynak türlerini listeler.
 ms.topic: conceptual
-ms.date: 01/08/2021
-ms.openlocfilehash: 05f96597fb572005f7f32599b19d62ff2cb311cc
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.date: 04/12/2021
+ms.openlocfilehash: d132773ff35d53dc373c759326efc8179f4993d6
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210185"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366547"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Kaynak grubu başına 800 örneğiyle sınırlı kaynak yok
 
@@ -16,10 +16,12 @@ Varsayılan olarak, her kaynak grubunda bir kaynak türünün en fazla 800 örne
 
 Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlamak üzere desteğe başvurmanız gerekir. Bu kaynak türleri bu makalede belirtilmiştir.
 
+
 ## <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
+* resourceHealthAlertRules
 * smartDetectorAlertRules
- 
+
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
 * automationAccounts
@@ -79,6 +81,7 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 * Flexibtaservers
 * Sunucu grupları
+* serverGroupsv2
 * larý
 * serversv2
 
@@ -111,7 +114,7 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 ## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 
 * makineler-en fazla 5.000 örneği destekler
-* Uzantılar-sınırsız sayıda VM Uzantısı örneğini destekler
+* makineler/uzantılar-sınırsız sayıda VM Uzantısı örneğini destekler
 
 ## <a name="microsoftinsights"></a>Microsoft. Insights
 
@@ -133,6 +136,7 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 * netAppAccounts/Capacityhavuzları/birimleri
 * netAppAccounts/Capacityhavuzlar/Volumes/Mount hedefleri
 * netAppAccounts/Capacityhavuzlar/birimler/anlık görüntüler
+* netAppAccounts/Birimgrupları
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -183,6 +187,7 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft. Powerbiadanmış
 
+* Varsayılan olarak, 800 örneğiyle sınırlı olan oto özellikli çekirdekler. Bu sınır, destek ile iletişim kurarak artırılabilir.
 * kapasiteler, varsayılan olarak 800 örnek ile sınırlıdır. Bu sınır, destek ile iletişim kurarak artırılabilir.
 
 ## <a name="microsoftrelay"></a>Microsoft. Relay

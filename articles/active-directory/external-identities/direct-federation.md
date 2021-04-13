@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff8ac540459ad79a8980542254cc15518959b5c0
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 830119a5b3a7781e8b12e3d4df870f539a2cd63a
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552300"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364915"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Konuk kullanıcılar için AD FS ve üçüncü taraf sağlayıcılarla doğrudan Federasyon (Önizleme)
 
@@ -38,7 +38,7 @@ Bu senaryoların hiçbirinde, bir Konuk kullanıcının kimlik doğrulama yönte
 Doğrudan Federasyon, contoso.com ve fabrikam.com gibi etki alanı ad alanlarına bağlıdır. AD FS veya bir üçüncü taraf IDP ile doğrudan Federasyon yapılandırması kurarken, kuruluşlar bir veya daha fazla etki alanı ad alanını bu IDPs ile ilişkilendirir. 
 
 ## <a name="end-user-experience"></a>Son kullanıcı deneyimi 
-Doğrudan Federasyon sayesinde, Konuk kullanıcılar kendi kurumsal hesaplarını kullanarak Azure AD kiracınızda oturum açabilirler. Paylaşılan kaynaklara erişirken ve oturum açma isteminde bulunulduklarında, doğrudan Federasyon kullanıcıları IDP 'ye yeniden yönlendirilir. Başarılı oturum açma işleminden sonra, kaynaklara erişmek için Azure AD 'ye döndürülür. Doğrudan federasyon kullanıcılarının yenileme belirteçleri, Azure AD 'de [geçiş yenileme belirteci için varsayılan uzunluk](../develop/active-directory-configurable-token-lifetimes.md#exceptions) olan 12 saat için geçerlidir. Federal IDP SSO etkin ise, Kullanıcı SSO ile karşılaşacaktır ve ilk kimlik doğrulamasından sonra herhangi bir oturum açma istemi görmeyecektir.
+Doğrudan Federasyon sayesinde, Konuk kullanıcılar kendi kurumsal hesaplarını kullanarak Azure AD kiracınızda oturum açabilirler. Paylaşılan kaynaklara erişirken ve oturum açma isteminde bulunulduklarında, doğrudan Federasyon kullanıcıları IDP 'ye yeniden yönlendirilir. Başarılı oturum açma işleminden sonra, kaynaklara erişmek için Azure AD 'ye döndürülür. Doğrudan federasyon kullanıcılarının yenileme belirteçleri, Azure AD 'de [geçiş yenileme belirteci için varsayılan uzunluk](../develop/active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties) olan 12 saat için geçerlidir. Federal IDP SSO etkin ise, Kullanıcı SSO ile karşılaşacaktır ve ilk kimlik doğrulamasından sonra herhangi bir oturum açma istemi görmeyecektir.
 
 ## <a name="sign-in-endpoints"></a>Oturum açma uç noktaları
 

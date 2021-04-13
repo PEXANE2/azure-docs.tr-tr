@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: f186acbe030dcbb0c2bad22586a8b2a5d1aa520d
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: b22954edf4f3a5a935c470326aa43bd24ee2d708
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259804"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366071"
 ---
 # <a name="creating-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
 
@@ -47,8 +47,8 @@ Bu öğreticinin adımlarını tamamlayabilmeniz için, **sahip** rolü atadığ
 
 **Data Lake Storage Gen 2**' yi seçin:
 
-1. **Hesap adına** göre **Yeni oluştur** ' a tıklayın ve yeni depolama hesabını **contosogölü** veya buna benzer şekilde adlandırın.
-1. **Dosya sistemi adına** göre, **Yeni oluştur** ' a tıklayın ve BT **kullanıcılarını** adlandırın. Bu, **Kullanıcılar** adlı bir depolama kapsayıcısı oluşturur. Çalışma alanı, bu depolama hesabını Spark tabloları ve Spark uygulama günlükleri için "birincil" depolama hesabı olarak kullanacaktır.
+1. **Hesap adına** göre, **Yeni oluştur** ' u seçin ve yeni depolama hesabının adı ' nı **contosolake** veya benzerine benzer olmalıdır.
+1. **Dosya sistemi adına** göre, **Yeni oluştur** ' u seçin ve BT **kullanıcılarını** adlandırın. Bu, **Kullanıcılar** adlı bir depolama kapsayıcısı oluşturur. Çalışma alanı, bu depolama hesabını Spark tabloları ve Spark uygulama günlükleri için "birincil" depolama hesabı olarak kullanacaktır.
 1. "Data Lake Storage 2. hesabında Depolama Blobu veri katılımcısı rolünü ata" kutusunu işaretleyin. 
 
 ## <a name="completing-the-process"></a>İşlem Tamamlanıyor
@@ -66,14 +66,14 @@ Azure SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu a
 * Adresine gidin `https://web.azuresynapse.net` ve çalışma alanınızda oturum açın.
 
 ## <a name="place-sample-data-into-the-primary-storage-account"></a>Örnek verileri birincil depolama hesabına yerleştirme
-Bu başlangıç kılavuzunda birçok örnek için NYX TAXI cab verilerinin küçük bir 100K satırı örnek veri kümesini kullanacağız. Çalışma alanı için oluşturduğunuz birincil depolama hesabına yerleştirilerek başlayacağız.
+Bu başlangıç kılavuzunda birçok örnek için NYX TAXI cab verilerinin küçük 100 K satırı örnek veri kümesini kullanacağız. Çalışma alanı için oluşturduğunuz birincil depolama hesabına yerleştirilerek başlayacağız.
 
 * Bu dosyayı bilgisayarınıza indirin: https://azuresynapsestorage.blob.core.windows.net/sampledata/NYCTaxiSmall/NYCTripSmall.parquet 
-* SYNAPSE Studiio ' de, veri merkezine gidin. 
-* **Bağlı**' e tıklayın.
-* **Azure Data Lake Storae Gen2** kategorisi altında **MyWorkspace (birincil-contosolake)** gibi bir ada sahip bir öğe görürsünüz
-* Kullanıcılar adlı kapsayıcıya tıklayın **(birincil)**
-* **Karşıya yükle** ' ye tıklayın ve `NYCTripSmall.parquet` indirdiğiniz dosyayı seçin
+* SYNAPSE Studio 'da veri merkezine gidin. 
+* **Bağlı**' yı seçin.
+* **Azure Data Lake Storae Gen2** kategorisi altında **MyWorkspace (Primary-contosolake)** gibi bir ada sahip bir öğe görürsünüz.
+* **Kullanıcılar (birincil)** adlı kapsayıcıyı seçin.
+* **Karşıya yükle** ' yi seçin ve `NYCTripSmall.parquet` indirdiğiniz dosyayı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

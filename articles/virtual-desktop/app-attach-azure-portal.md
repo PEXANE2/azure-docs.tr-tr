@@ -1,26 +1,21 @@
 ---
-title: Windows sanal masaüstü MALTı uygulama iliştirme Portal önizlemesi-Azure
+title: Windows sanal masaüstü MALTı uygulama iliştirme portalı-Azure
 description: Azure portal kullanarak Windows sanal masaüstü için MSIX uygulama iliştirme 'yi ayarlama.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 02/11/2021
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a849b65fd25e6943925ffa245430cd8a27529fdb
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 0d7598e332539b8203d55bbcb1cf497811c32540
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448432"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366564"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Azure portalla MSIX uygulama iliştirmeyi ayarlama
 
-> [!IMPORTANT]
-> MSIX uygulama iliştirme Şu anda genel önizlemededir.
-> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Bu makalede, bir Windows sanal masaüstü ortamında MSIX uygulama iliştirme 'yi (Önizleme) ayarlama işleminde size kılavuzluk edilir.
+Bu makalede, bir Windows sanal masaüstü ortamında MSIX uygulama iliştirme 'yi ayarlama işleminde size yol gösterilir.
 
 ## <a name="requirements"></a>Gereksinimler
 

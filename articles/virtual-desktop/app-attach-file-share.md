@@ -1,27 +1,23 @@
 ---
-title: Windows sanal masaüstü dosya paylaşımının kurulum dosyası paylaşılan MSIX uygulama iliştirme önizleme-Azure
+title: Windows sanal masaüstü dosya paylaşımının kurulum dosyası-Azure Uygulama iliştirme-Azure
 description: Windows sanal masaüstü için MSIX uygulama iliştirme için dosya paylaşımının nasıl ayarlanacağı.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1e7a956b358d486250fbfc26da141c47c0238b56
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: d8aaa8d5013c426ac1ab6b367309c51be4929cee
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448398"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366411"
 ---
-# <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>MSIX uygulama iliştirme (Önizleme) için bir dosya paylaşma ayarlama
-
-> [!IMPORTANT]
-> MSIX uygulama iliştirme Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="set-up-a-file-share-for-msix-app-attach"></a>MSIX uygulama iliştirme için dosya paylaşma ayarlama
 
 Tüm MSIX görüntülerinin, salt okuma izinlerine sahip bir konak havuzundaki kullanıcılar tarafından erişilebilen bir ağ paylaşımında depolanması gerekir.
 
-MSIX uygulama iliştirme (Önizleme), dosya paylaşımının kullandığı depolama dokusunun türü üzerinde hiçbir bağımlılığı yok. MSIX uygulama iliştirme paylaşımıyla ilgili konular bir FSLogix paylaşımıyla aynı olanlardır. Depolama gereksinimleri hakkında daha fazla bilgi edinmek için bkz. [Windows sanal masaüstü 'Nde FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).
+MSIX uygulama iliştirme, dosya paylaşımının kullandığı depolama dokusunun türü üzerinde hiçbir bağımlılığı içermez. MSIX uygulama iliştirme paylaşımıyla ilgili konular bir FSLogix paylaşımıyla aynı olanlardır. Depolama gereksinimleri hakkında daha fazla bilgi edinmek için bkz. [Windows sanal masaüstü 'Nde FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).
 
 ## <a name="performance-requirements"></a>Performans gereksinimleri
 

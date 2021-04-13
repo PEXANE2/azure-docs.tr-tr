@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 542b6580994a2054526f0ddbb3ad93dc27c28fcc
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: a0559028192b0a99aeffd45a3b2896f9c9d159be
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107661"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310211"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Amazon için Azure purview Bağlayıcısı S3
 
@@ -116,9 +116,30 @@ Bu yordamda, AWS demetlerinizi tararken kullanılacak yeni bir purview kimlik bi
 
     Kimlik bilgisini oluşturmayı bitirmeyi bitirdiğinizde **Oluştur** ' u seçin.
 
-Purview kimlik bilgileri hakkında daha fazla bilgi için bkz. [Azure purview genel önizleme belgeleri](manage-credentials.md).
+1. Henüz yapmadıysanız, bir sonraki adımınız olan [purview için yeni BIR AWS rolü oluştururken](#create-a-new-aws-role-for-purview)kullanmak üzere **Microsoft hesabı KIMLIĞI** ve **dış kimlik** değerlerini kopyalayıp yapıştırın.
+
+Purview kimlik bilgileri hakkında daha fazla bilgi için bkz. [Azure purview 'da kaynak kimlik doğrulaması Için kimlik bilgileri](manage-credentials.md).
 
 ### <a name="create-a-new-aws-role-for-purview"></a>Purview için yeni bir AWS rolü oluşturma
+
+Bu yordam, AWS rolünüzü oluştururken Azure hesap KIMLIĞINIZ ve dış KIMLIĞINIZ için değerleri girmenizi gerektirir.
+
+Bu değerlere sahip değilseniz, bunları önce [purview kimlik bilgilerinizin](#create-a-purview-credential-for-your-aws-bucket-scan)içinde bulun.
+
+**Microsoft HESABı kimliğinizi ve dış kimliğinizi bulmak için**:
+
+1. Purview 'da **Yönetim Merkezi**  >  **güvenlik ve erişim**  >  **kimlik bilgilerine** gidin.
+
+1. [AWS demet taramanızı için oluşturduğunuz](#create-a-purview-credential-for-your-aws-bucket-scan)kimlik bilgisini seçin ve ardından araç çubuğunda **Düzenle**' yi seçin.
+
+1. Sağ tarafta görünen **kimlik bilgisini düzenle** BÖLMESINDE **Microsoft hesabı KIMLIĞI** ve **dış kimlik** değerlerini ayrı bir dosyaya kopyalayın ya da AWS 'deki ilgili alana yapıştırma için yararlı olmasını isteyin.
+
+    Örnek:
+
+    [![MICROSOFT HESABı kimliğinizi ve dış kimlik değerlerini bulun. ](./media/register-scan-amazon-s3/locate-account-id-external-id.png)](./media/register-scan-amazon-s3/locate-account-id-external-id.png#lightbox)
+
+
+**Takip görünümü için AWS rolünüzü oluşturmak için**:
 
 1.  **Amazon Web Services** konsolunuzu açın ve **güvenlik, kimlik ve uyumluluk** altında **IAM**' i seçin.
 
@@ -129,12 +150,8 @@ Purview kimlik bilgileri hakkında daha fazla bilgi için bkz. [Azure purview ge
     |Alan  |Açıklama  |
     |---------|---------|
     |**Hesap Kimliği**     |    Microsoft hesabı KIMLIĞINIZI girin. Örnek: `615019938638`     |
-    |**Dış KIMLIK**     |   Seçenekler altında **dış kimlik iste...**' yi seçin ve ardından, atanan alana dış kimliğinizi girin. <br>Örnek: `e7e2b8a3-0a9f-414f-a065-afaf4ac6d994`    <br><br>Bu dış KIMLIĞI sizin için bulabilirsiniz.  |
+    |**Dış KIMLIK**     |   Seçenekler altında **dış kimlik iste...**' yi seçin ve ardından, atanan alana dış kimliğinizi girin. <br>Örnek: `e7e2b8a3-0a9f-414f-a065-afaf4ac6d994`     |
     | | |
-
-    > [!NOTE]
-    > Hem **Microsoft hesap kimliği** hem de **Harici kimliğin** değerlerini, purview kimlik bilgilerinizi oluşturduğunuz purview **Yönetim Merkezi**  >  **kimlik bilgileri** alanında bulabilirsiniz. [](#create-a-purview-credential-for-your-aws-bucket-scan)
-    >
 
     Örnek:
 
@@ -370,7 +387,7 @@ Demetlerinizi takip etme veri kaynakları olarak ekledikten sonra, bir taramayı
 
     Yeni bir özel tarama kuralı kümesi oluşturmayı seçerseniz, aşağıdaki ayarları tanımlamak için Sihirbazı kullanın:
 
-    |Bölme  |Description  |
+    |Bölme  |Açıklama  |
     |---------|---------|
     |**Yeni tarama kuralı kümesi** /<br>**Tarama kuralı açıklaması**    |   Kural kümesi için anlamlı bir ad ve isteğe bağlı bir açıklama girin      |
     |**Dosya türlerini seçin**     | Taramaya dahil etmek istediğiniz tüm dosya türlerini seçin ve ardından **devam**' ı seçin.<br><br>Yeni dosya türü eklemek için **yeni dosya türü**' nü seçin ve aşağıdakileri tanımlayın: <br>-Eklemek istediğiniz dosya uzantısı <br>-İsteğe bağlı bir açıklama  <br>-Dosya içeriğinin özel bir sınırlayıcısı olup olmadığı veya bir sistem dosyası türü olup olmadığı. Ardından, özel sınırlayıcıyı girin veya sistem dosya türünü seçin. <br><br>Özel dosya türünü oluşturmak için **Oluştur** ' u seçin.     |

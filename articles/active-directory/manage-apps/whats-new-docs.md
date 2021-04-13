@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: 81898875af85becf1766f02a5b7e077cb388a173
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f83aa7368ec5ac06f2c5a5ebe121c7ce87f93bd1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450047"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304741"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Uygulama yönetimi Azure Active Directory: yenilikler
 
@@ -40,9 +40,9 @@ Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş gel
 - [Uygulama Ara Sunucusu için Kerberos kısıtlanmış temsil yapılandırmalarının sorunlarını giderme ](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 - [Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için SAML tabanlı çoklu oturum açma (SSO) ayarlama](add-application-portal-setup-sso.md)
 - [Uygulama yönetimi Azure Active Directory: yenilikler](whats-new-docs.md)
-- [Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular](application-proxy-faq.md)
+- [Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular](application-proxy-faq.yml)
 - [Azure AD uygulamalarımın bir uygulamada oturum açma sorunlarını giderme](application-sign-in-other-problem-access-panel.md)
-- [Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md)
+- [Öğretici: Azure Active Directory'de Uygulama Ara Sunucusu aracılığıyla uzaktan erişim için bir şirket içi uygulaması ekleme](application-proxy-add-on-premises-application.md)
 - [Trafik akışını Azure Active Directory Uygulama Ara Sunucusu iyileştirin](application-proxy-network-topology.md)
 - [Azure AD Uygulama Ara Sunucusu: sürüm sürümü geçmişi](application-proxy-release-version-history.md)
 - [Giriş bölgesi bulma ilkesi kullanarak bir uygulama için Azure Active Directory oturum açma davranışı yapılandırma](configure-authentication-for-federated-users-portal.md)
@@ -61,7 +61,7 @@ Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş gel
 - [SharePoint ile tümleştirme (SAML)](application-proxy-integrate-with-sharepoint-server-saml.md)
 - [Uygulamaya kiracı genelinde yönetici onayı verme](grant-admin-consent.md)
 - [Uygulama kimlik doğrulamasını Active Directory Federasyon Hizmetleri’nden Azure Active Directory’ye taşıma](migrate-adfs-apps-to-azure.md)
-- [Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md)
+- [Öğretici: Azure Active Directory'de Uygulama Ara Sunucusu aracılığıyla uzaktan erişim için bir şirket içi uygulaması ekleme](application-proxy-add-on-premises-application.md)
 - [SaaS bulut uygulamalarına erişimi yönetmek için kiracı kısıtlamalarını kullanın](tenant-restrictions.md)
 
 ## <a name="january-2021"></a>Ocak 2021
@@ -75,15 +75,15 @@ Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş gel
 - [Uygulama yönetimi en iyi uygulamaları](application-management-fundamentals.md)
 - [Azure Active Directory uygulamalar ile tümleştirme kılavuzunu kullanmaya başlama](plan-an-application-integration.md)
 - [Uygulama yönetimi nedir?](what-is-application-management.md)
-- [Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular](application-proxy-faq.md)
-- [Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md)
+- [Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular](application-proxy-faq.yml)
+- [Öğretici: Azure Active Directory'de Uygulama Ara Sunucusu aracılığıyla uzaktan erişim için bir şirket içi uygulaması ekleme](application-proxy-add-on-premises-application.md)
 - [Mevcut şirket içi proxy sunucularıyla çalışma](application-proxy-configure-connectors-with-proxy-servers.md)
 - [Azure Active Directory için iş kolu uygulamaları geliştirin](../develop/v2-overview.md)
 - [Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](application-proxy-connectors.md)
 - [Bağlantılı oturum açmayı anlama](configure-linked-sign-on.md)
 - [Parola tabanlı çoklu oturum açmayı anlama](configure-password-single-sign-on-non-gallery-applications.md)
 - [SAML tabanlı çoklu oturum açmayı anlama](configure-saml-single-sign-on.md)
-- [Azure Active Directory bir uygulamayı ekleme veya kaldırma hakkında yaygın sorun giderme](troubleshoot-adding-apps.md)
+- [Azure Active Directory'de uygulama ekleme veya kaldırma ile ilgili yaygın sorunu giderme](troubleshoot-adding-apps.md)
 - [Kimlik yönetimi için Azure AD kiracınızı kullanarak uygulamaları görüntüleme](application-types.md)
 - [Kullanıcıların Azure Active Directory ' de uygulamalara nasıl atandığını anlayın](ways-users-get-assigned-to-applications.md)
 - [Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdan bir uygulamayı silme](delete-application-portal.md)
@@ -96,7 +96,7 @@ Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş gel
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
 - [Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için OıDC tabanlı çoklu oturum açma (SSO) ayarlama](add-application-portal-setup-oidc-sso.md)
-- [Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md)
+- [Öğretici: Azure Active Directory'de Uygulama Ara Sunucusu aracılığıyla uzaktan erişim için bir şirket içi uygulaması ekleme](application-proxy-add-on-premises-application.md)
 - [OıDC tabanlı çoklu oturum açmayı anlama](configure-oidc-single-sign-on.md)
 - [Uygulama kimlik doğrulamasını Active Directory Federasyon Hizmetleri’nden Azure Active Directory’ye taşıma](migrate-adfs-apps-to-azure.md)
 - [Mevcut şirket içi proxy sunucularıyla çalışma](application-proxy-configure-connectors-with-proxy-servers.md)
@@ -141,7 +141,7 @@ Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş gel
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 - [Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınıza uygulama ekleme](add-application-portal.md)
-- [Azure Active Directory bir uygulamayı ekleme veya kaldırma hakkında yaygın sorun giderme](troubleshoot-adding-apps.md)
+- [Azure Active Directory'de uygulama ekleme veya kaldırma ile ilgili yaygın sorunu giderme](troubleshoot-adding-apps.md)
 - [Uygulamalara onayı yönetme ve izin isteklerini değerlendirme](manage-consent-requests.md)
 - [Kimlik yönetimi için Azure AD kiracınızı kullanarak uygulamaları görüntüleme](application-types.md)
 - [Kullanıcıların Azure Active Directory ' de uygulamalara nasıl atandığını anlayın](ways-users-get-assigned-to-applications.md)

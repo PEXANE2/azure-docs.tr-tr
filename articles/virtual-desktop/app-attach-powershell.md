@@ -1,25 +1,21 @@
 ---
-title: Windows sanal masaüstü MALTı uygulama iliştirme önizleme PowerShell-Azure
+title: Windows sanal masaüstü MALTı uygulama PowerShell iliştirme-Azure
 description: PowerShell kullanarak Windows sanal masaüstü için MSIX uygulama iliştirme 'yi ayarlama.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 8b6bad32ec653fb2ba63c6940cf6a89a13a8afd0
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f44cbf3764063c511c896f11bb7ebfaae2973f0c
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448330"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365408"
 ---
-# <a name="set-up-msix-app-attach-preview-using-powershell"></a>PowerShell kullanarak MSIX uygulama iliştirme (Önizleme) ayarlama
+# <a name="set-up-msix-app-attach-using-powershell"></a>PowerShell kullanarak MSIX uygulama eklemeyi ayarlama
 
-> [!IMPORTANT]
-> MSIX uygulama iliştirme Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Azure portal ek olarak, PowerShell ile MSIX uygulama ekleme (Önizleme) de oluşturabilirsiniz. Bu makalede, PowerShell kullanarak MSIX uygulama iliştirme 'yi ayarlama işleminde size kılavuzluk edilir.
+Azure portal ek olarak, PowerShell ile MSIX uygulamasını el ile de ekleyebilirsiniz. Bu makalede, PowerShell kullanarak MSIX uygulama iliştirme 'yi ayarlama işleminde size kılavuzluk edilir.
 
 ## <a name="requirements"></a>Gereksinimler
 

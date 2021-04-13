@@ -4,13 +4,13 @@ description: Azure Izleyici ölçüm uyarıları ve olası çözümlerle ilgili 
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 03/15/2021
-ms.openlocfilehash: f14142632f6ded9f598d6e94fd1e91ec17f6d0a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 85be4100d62971ef7f69840ae3e9b117fbc3c047
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466506"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305234"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure İzleyici ölçüm uyarılarındaki sorunları giderme 
 
@@ -91,9 +91,10 @@ Uyarı kuralı oluştururken belirli bir ölçümle ilgili uyarıyı arıyorsan�
 [Bir ölçümün belirli boyut değerlerini](./alerts-metric-overview.md#using-dimensions)uyarmak istiyorsanız ancak bu değerleri bulamazsanız, aşağıdakilere göz önünde bulunur:
 
 1. Boyut değerlerinin **Boyut değerleri** listesinde görünmesi birkaç dakika sürebilir
-1. Görüntülenen boyut değerleri son gün toplanan ölçüm verilerini temel alır
-1. Boyut değeri henüz yayınlanmadıysa veya gösterilmiyorsa özel bir boyut değeri eklemek için ‘Özel değer ekle’ seçeneğini kullanabilirsiniz
-1. Bir boyutun tüm olası değerlerini (gelecekteki değerler dahil) uyarmak isterseniz, ' tüm geçerli ve gelecekteki değerleri Seç ' seçeneğini belirleyin.
+2. Görüntülenen boyut değerleri son gün toplanan ölçüm verilerini temel alır
+3. Boyut değeri henüz yayınlanmadıysa veya gösterilmiyorsa özel bir boyut değeri eklemek için ‘Özel değer ekle’ seçeneğini kullanabilirsiniz
+4. Bir boyutun tüm olası değerlerini (gelecekteki değerler dahil) uyarmak isterseniz, ' tüm geçerli ve gelecekteki değerleri Seç ' seçeneğini belirleyin.
+5. Application Insights kaynakların özel ölçüm boyutları varsayılan olarak kapalıdır. Bu özel ölçümler için boyut koleksiyonunu açmak üzere [buraya](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)bakın.
 
 ## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>Ölçüm uyarı kuralları silinen bir kaynakta hala tanımlı 
 
@@ -196,7 +197,7 @@ Tüm parametreleri doğru şekilde geçirdiğinizi doğrulamak için [REST API k
 - Ölçüm uyarılarına yönelik PowerShell cmdlet’leri [Az.Monitor modülünde](/powershell/module/az.monitor/) de sunulur
 - Yeni (klasik olmayan) ölçüm uyarıları için ' v2 ' ile biten cmdlet 'leri kullandığınızdan emin olun (örneğin, [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2))
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Ölçüm uyarıları için doğru CLı komutlarını kullandığınızdan emin olun:
 

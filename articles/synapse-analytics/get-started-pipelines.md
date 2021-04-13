@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: pipeline
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 22631cfd872ed226fc78a97d38c423fbc300f78e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 05c33db130bfa3fcc1a4f5d75935294fcc0ba1d7
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304724"
+ms.locfileid: "107365476"
 ---
 # <a name="integrate-with-pipelines"></a>İşlem hatları ile tümleştirme
 
@@ -38,10 +38,11 @@ Bu öğreticide, SYNAPSE Studio kullanarak işlem hatlarını ve etkinlikleri t�
 1. **Tümünü Yayımla**. 
 
 
-## <a name="monitor-pipeline"></a>İşlem hattını izleme
+## <a name="monitor-pipeline-execution"></a>İşlem hattı yürütmeyi izleme
 
 1. İşlem hattı yayımlandıktan sonra, bir sonraki saat beklemek zorunda kalmadan işlem hattını hemen çalıştırmak için, şimdi **tetikleyici tetikleyicisi Ekle**' yi seçin  >  .
-1. SYNAPSE Studio 'da **izleyici** hub 'ına gidin ve işlem hattı yürütme ilerlemesini izlemek Için işlem **hattı çalıştırmaları** ' nı seçin.
+1. SYNAPSE Studio 'da **izleyici** hub 'ına gidin.
+1. İşlem hattı yürütme ilerlemesini izlemek için işlem **hattı çalıştırmalarını** seçin.
 
 
 

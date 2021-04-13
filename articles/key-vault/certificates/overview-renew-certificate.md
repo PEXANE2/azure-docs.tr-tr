@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: ffa130c0598d2405469d272a3ac6852f281ed965
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0492575bef93a1b08d48475c3ab32ecbc7becd6e
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726371"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364303"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Azure Key Vault sertifikalarınızı yenileme
 
@@ -82,7 +82,7 @@ Azure Key Vault Ayrıca otomatik olarak imzalanan sertifikaların otomatik yenil
 
 **Sertifikanın oto döndürme özelliğini nasıl test edebilirim?**
 
-**1 aylık** geçerliliği olan bir sertifika oluşturun ve ardından **%1**' deki döndürme için ömür eylemini ayarlayın. Bu ayar sertifika her 7,2 saatte bir döndürülür.
+**1 aylık** bir geçerliliği olan kendinden imzalı bir sertifika oluşturun ve ardından **%1**' deki döndürme için ömür eylemini ayarlayın. Sonraki birkaç gün içinde oluşturulan sertifika sürümü geçmişini görüntüleyebilmelisiniz.
   
 **Etiketler sertifikanın otomatik yenileme sonra çoğaltılacaktır mi?**
 

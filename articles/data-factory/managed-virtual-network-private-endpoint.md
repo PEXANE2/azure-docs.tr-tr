@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 6730a5cfca1b6c04d3c738aac2bdf3c097d5daf5
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d777588f0abdd1f771deb259c597f6407e61d874
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303211"
+ms.locfileid: "107364626"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory yönetilen sanal ağ (Önizleme)
 
@@ -73,6 +73,50 @@ Yalnızca onaylanan bir durumdaki yönetilen özel uç nokta, belirli bir özel 
 Etkileşimli yazma özellikleri, test bağlantısı, klasör listesi ve tablo listesi, şema al ve Önizleme verileri gibi işlevler için kullanılır. ADF tarafından yönetilen sanal ağdaki bir Azure Integration Runtime oluştururken veya düzenlerken etkileşimli yazma özelliğini etkinleştirebilirsiniz. Arka uç hizmeti, etkileşimli yazma işlevleri için işlem ön ayırmasını alacak. Aksi takdirde, işlem, daha fazla zaman alacak herhangi bir etkileşimli işlem gerçekleştirildiğinde tahsis edilir. Etkileşimli yazma için yaşam süresi (TTL) 60 dakikadır. Bu, son etkileşimli yazma işleminin 60 dakika sonra otomatik olarak devre dışı bırakılacağından oluşur.
 
 ![Etkileşimli yazma](./media/managed-vnet/interactive-authoring.png)
+
+## <a name="create-managed-virtual-network-via-azure-powershell"></a>Azure PowerShell aracılığıyla yönetilen sanal ağ oluşturma
+```powershell
+$subscriptionId = ""
+$resourceGroupName = ""
+$factoryName = ""
+$managedPrivateEndpointName = ""
+$integrationRuntimeName = ""
+$apiVersion = "2018-06-01"
+$privateLinkResourceId = ""
+
+$vnetResourceId = "subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/managedVirtualNetworks/default"
+$privateEndpointResourceId = "subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/managedVirtualNetworks/default/managedprivateendpoints/${managedPrivateEndpointName}"
+$integrationRuntimeResourceId = "subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/integrationRuntimes/${integrationRuntimeName}"
+
+# Create managed Virtual Network resource
+New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${vnetResourceId}"
+
+# Create managed private endpoint resource
+New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${privateEndpointResourceId}" -Properties @{
+        privateLinkResourceId = "${privateLinkResourceId}"
+        groupId = "blob"
+    }
+
+# Create integration runtime resource enabled with VNET
+New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeResourceId}" -Properties @{
+        type = "Managed"
+        typeProperties = @{
+            computeProperties = @{
+                location = "AutoResolve"
+                dataFlowProperties = @{
+                    computeType = "General"
+                    coreCount = 8
+                    timeToLive = 0
+                }
+            }
+        }
+        managedVirtualNetwork = @{
+            type = "ManagedVirtualNetworkReference"
+            referenceName = "default"
+        }
+    }
+
+```
 
 ## <a name="limitations-and-known-issues"></a>Sınırlamalar ve bilinen sorunlar
 ### <a name="supported-data-sources"></a>Desteklenen Veri Kaynakları

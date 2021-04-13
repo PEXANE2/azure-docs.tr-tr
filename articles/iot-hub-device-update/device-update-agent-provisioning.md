@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: a5f4b23196a04d88e4329cb5ebf26d0b0a477444
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 812de4850c6c3577346915a0072ea11c60f7ba73
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307282"
+ms.locfileid: "107365459"
 ---
 # <a name="device-update-agent-provisioning"></a>Cihaz Güncelleştirme Aracısı sağlama
 
@@ -173,8 +173,8 @@ Cihaz Güncelleştirme Aracısı Ayrıca, test için veya kısıtlı cihazlarda 
         > [!Important]
         > Bağlantı dizesinin etrafına tırnak eklemeyin.
         ```shell
-        - connection_string=<ADD CONNECTION STRING HERE>
-       ```
+        connection_string=<ADD CONNECTION STRING HERE>
+        ```
        
     1. Girin ve kaydedin.
     

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0605c8d6cb3f650a1955688d95ece62fb56d06bc
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ecd33549536323658a7116d7d5c311eaaec98487
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256063"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107302956"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>SAP iş yükü için Azure Depolama türleri
 Azure 'da yetenekler, verimlilik, gecikme ve fiyatlara göre büyük ölçüde farklı depolama türlerine sahiptir. Bazı depolama türleri veya SAP senaryolarında sınırlı kullanılabilir değildir. Ancak, birkaç Azure depolama türü, belirli SAP iş yükü senaryoları için uygundur veya iyileştirilmiştir. Özellikle SAP HANA için, bazı Azure Depolama türleri SAP HANA kullanım için sertifikalandıralındı. Bu belgede, farklı depolama türlerini inceleyeceğiz ve SAP iş yükleri ve SAP bileşenleriyle yeteneklerini ve kullanılabilirliğini anladık.
@@ -236,7 +236,7 @@ ANF depolama Şu anda çeşitli SAP iş yükü senaryolarında desteklenmektedir
     - [SAP uygulamaları için Azure NetApp Files SUSE Linux Enterprise Server üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](./high-availability-guide-suse-netapp-files.md)
     - [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirlik, SAP uygulamaları için Azure NetApp Files Red Hat Enterprise Linux](./high-availability-guide-rhel-netapp-files.md)
 - [Azure sanal makine depolama yapılandırması SAP HANA](./hana-vm-operations-storage.md) makalesinde belgelendiği gibi,/Hana/Data ve/Hana/Shared BIRIMLERINE yönelik NFS v 4.1 paylaşımlarını ve/veya NFS v 4.1 veya NFS v3 birimlerini kullanan SAP HANA dağıtımlar
-- [DNFS] ( https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA) doracle verileri ve yineleme günlüğü birimlerini kullanarak Oracle Linux konuk işletim sistemindeki Oracle dağıtımları. Daha fazla ayrıntı [Için Azure sanal makineler Oracle DBMS dağıtımı for SAP iş yükü](./dbms_guide_oracle.md) makalesine ulaşabilirsiniz
+- Oracle verileri için [Dnfs](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA) kullanan Oracle Linux konuk işletim sistemindeki Oracle dağıtımları ve günlük birimlerini yineleyin. Daha fazla ayrıntı [Için Azure sanal makineler Oracle DBMS dağıtımı for SAP iş yükü](./dbms_guide_oracle.md) makalesine ulaşabilirsiniz
 
 > [!NOTE]
 > Azure NetApp Files tabanlı NFS veya SMB paylaşımları için başka bir DBMS iş yükü desteklenmez. Güncelleştirmeler ve değişiklikler, bu değişiklik yapacaklıyordu.

@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: ed83d52d19df126ef9b0e68f984f88f5dfd40c42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a8fe4ed0c24d2ccda5fb844005a33a93e85a169
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492949"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365527"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Azure Key Vault'ta kimliği doğrulama
 
@@ -59,8 +59,6 @@ Key Vault iki ayrı yetkilendirme düzeyiyle kullanılabilir:
     - [Azure portalı](../../role-based-access-control/role-assignments-portal.md)
     - [Azure CLI](../../role-based-access-control/role-assignments-cli.md)
     - [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
-
-    Key Vault Şu anda, Key Vault kaynaklarında yönetim işlemlerine izin veren [katkıda](../../role-based-access-control/built-in-roles.md#key-vault-contributor) bulunan rolünü desteklemektedir. Diğer birçok rol Şu anda önizlemededir. Ayrıca, [Azure özel rolleri](../../role-based-access-control/custom-roles.md)' nde açıklandığı gibi özel roller de oluşturabilirsiniz.
 
     Roller hakkında genel bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md).
 

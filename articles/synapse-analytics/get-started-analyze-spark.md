@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 2b85fe21fee34a9bedab33f0d10756bbfe8dc88b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: de48f906f4dc86bf6297cfb3b76f406df49feec3
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305217"
+ms.locfileid: "107363861"
 ---
 # <a name="analyze-with-apache-spark"></a>Apache Spark ile Çözümle
 
@@ -81,10 +81,10 @@ Veriler **df** adlı veri çerçevesi aracılığıyla kullanılabilir. **Nyctax
    %%pyspark
    df = spark.sql("""
       SELECT PassengerCount,
-          SUM(TripDistance) as SumTripDistance,
-          AVG(TripDistance) as AvgTripDistance
+          SUM(TripDistanceMiles) as SumTripDistance,
+          AVG(TripDistanceMiles) as AvgTripDistance
       FROM nyctaxi.trip
-      WHERE TripDistance > 0 AND PassengerCount > 0
+      WHERE TripDistanceMiles > 0 AND PassengerCount > 0
       GROUP BY PassengerCount
       ORDER BY PassengerCount
    """) 

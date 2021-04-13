@@ -4,15 +4,15 @@ description: Azure Cosmos DB işlemsel (satır tabanlı) ve analitik (sütun tab
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 04/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 450514541a90a01ea6b70f77491f116adb404887
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: eaabc663ba243423bddf7ef6abfe41182e06b4f9
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046222"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364619"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Analitik depo Azure Cosmos DB nedir?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -134,6 +134,7 @@ Analiz deposunda iki şema gösterimi modu var. Bu modlarda sütunlu gösterimin
 İyi tanımlanmış şema gösterimi, işlem deposundaki şema belirsiz verilerin basit tablolu bir gösterimini oluşturur. İyi tanımlanmış şema gösterimi aşağıdaki noktalara dikkat edin:
 
 * Bir özellik, birden çok öğe arasında her zaman aynı türe sahiptir.
+* Null değerinden başka herhangi bir veri türüne yalnızca 1 tür değişikliğine izin veririz. Null olmayan ilk oluşum, sütun veri türünü tanımlar.
 
   * Örneğin, `{"a":123} {"a": "str"}` `"a"` bazen bir dize ve bazen bir sayı olduğundan, iyi tanımlanmış bir şemaya sahip değildir. Bu durumda, analitik depo veri türünü `"a"` `“a”` kapsayıcının kullanım ömrü içinde ilk oluşan öğede veri türü olarak kaydeder. Belge yine analitik depoya dahil edilecek, ancak veri türünün farklı olduğu öğeler `"a"` Bu şekilde olmayacaktır.
   
