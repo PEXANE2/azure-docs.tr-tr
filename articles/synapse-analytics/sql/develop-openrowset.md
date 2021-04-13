@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a6af8f4600544007a9ecb4fcff5ac9016fd7dfbf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c37f6d89d5ebd3e18177db8add048739a62c883f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640342"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307954"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kullanarak OPENROWSET kullanma
 
@@ -138,9 +138,9 @@ Unstructured_data_path bir klasör olacak şekilde belirtirseniz, sunucusuz bir 
 Yolun sonunda/* belirterek, daha az SQL havuzunun klasörlere geçiş yapmasını sağlayabilirsiniz: `https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
 
 > [!NOTE]
-> Hadoop ve PolyBase 'in aksine, yolun sonunda/* * belirtmediğiniz müddetçe sunucusuz SQL havuzu alt klasör döndürmez. Ayrıca, Hadoop ve PolyBase 'den farklı olarak sunucusuz SQL havuzu, dosya adının altı çizili (_) veya nokta (.) ile başladığı dosyaları döndürür.
+> Hadoop ve PolyBase 'in aksine, yolun sonunda/* * belirtmediğiniz müddetçe sunucusuz SQL havuzu alt klasör döndürmez.
 
-Aşağıdaki örnekte, unstructured_data_path = ise `https://mystorageaccount.dfs.core.windows.net/webdata/` , sunucusuz BIR SQL havuzu sorgusu mydata.txt ve _hidden.txt satırları döndürür. Bir alt klasörde bulunduğundan mydata2.txt ve mydata3.txt döndürmez.
+Aşağıdaki örnekte, unstructured_data_path = ise `https://mystorageaccount.dfs.core.windows.net/webdata/` , sunucusuz BIR SQL havuzu sorgusu mydata.txt satırları döndürür. Bir alt klasörde bulunduğundan mydata2.txt ve mydata3.txt döndürmez.
 
 ![Dış tablolar için özyinelemeli veriler](./media/develop-openrowset/folder-traversal.png)
 

@@ -4,15 +4,15 @@ description: Windows Server 'ı Azure dosya paylaşımınızın hızlı önbelle
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 2/1/2021
+ms.date: 4/12/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f20ebfdf9bdd1272ac1cb16e1ad88b4cbc287e5d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 54a2493d930069142a8cd6965421dd588b8d76b8
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727612"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366309"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -147,10 +147,10 @@ Kullanıcı hesabı rolünüzün gerekli izinlere sahip olup olmadığını beli
 Sunucu uç noktası yolu sistem birimindeyse ve bulut katmanlama etkinleştirildiyse bu hata oluşur. Sistem biriminde bulut katmanlama desteklenmez. Sistem biriminde sunucu uç noktası oluşturmak için, sunucu uç noktasını oluştururken bulutta katmanlamayı devre dışı bırakın.
 
 <a id="-2147024894"></a>**Sunucu uç noktası oluşturma işlemi şu hata ile başarısız oluyor: "MgmtServerJobFailed" (hata kodu:-2147024894 veya 0x80070002)**  
-Belirtilen sunucu uç noktası yolu geçerli değilse bu hata oluşur. Belirtilen sunucu uç noktası yolunun yerel olarak eklenmiş bir NTFS birimi olduğunu doğrulayın. Not, Azure Dosya Eşitleme eşlenen sürücüleri sunucu uç noktası yolu olarak desteklemez.
+Belirtilen sunucu uç noktası yolu geçerli değilse bu hata oluşur. Belirtilen sunucu uç noktası yolunun yerel olarak eklenmiş bir NTFS birimi olduğunu doğrulayın. Unutmayın, Azure Dosya Eşitleme sunucu uç noktası yolu olarak eşlenmiş sürücüleri desteklemez.
 
 <a id="-2134375640"></a>**Sunucu uç noktası oluşturma işlemi şu hatayla başarısız oldu: "MgmtServerJobFailed" (hata kodu:-2134375640 veya 0x80c80328)**  
-Belirtilen sunucu uç noktası yolu bir NTFS birimi değilse bu hata oluşur. Belirtilen sunucu uç noktası yolunun yerel olarak eklenmiş bir NTFS birimi olduğunu doğrulayın. Not, Azure Dosya Eşitleme eşlenen sürücüleri sunucu uç noktası yolu olarak desteklemez.
+Belirtilen sunucu uç noktası yolu bir NTFS birimi değilse bu hata oluşur. Belirtilen sunucu uç noktası yolunun yerel olarak eklenmiş bir NTFS birimi olduğunu doğrulayın. Unutmayın, Azure Dosya Eşitleme sunucu uç noktası yolu olarak eşlenmiş sürücüleri desteklemez.
 
 <a id="-2134347507"></a>**Sunucu uç noktası oluşturma işlemi şu hatayla başarısız oldu: "MgmtServerJobFailed" (hata kodu:-2134347507 veya 0x80c8710d)**  
 Azure Dosya Eşitleme, sıkıştırılmış Sistem Birim Bilgisi klasörü bulunan birimlerde sunucu uç noktalarını desteklemediğinden bu hata oluşur. Bu sorunu çözmek için Sistem Birim Bilgisi klasörünün sıkıştırmasını açın. Sistem Birim Bilgisi klasörü birimde sıkıştırılmış durumdaki tek klasörse aşağıdaki adımları izleyin:
@@ -168,7 +168,7 @@ Sunucu başına sunucu uç noktası sınırına ulaşılırsa bu hata oluşur. A
 Belirtilen sunucu uç noktası yolunu başka bir sunucu uç noktası zaten eşitliyorsa bu hata oluşur. Azure Dosya Eşitleme birden çok sunucu uç noktasının aynı dizini veya birimi eşitlemesini desteklemez.
 
 <a id="-2160590967"></a>**Sunucu uç noktası oluşturma işlemi şu hatayla başarısız oldu: "MgmtServerJobFailed" (hata kodu:-2160590967 veya 0x80c80077)**  
-Sunucu uç noktası yolu yalnız bırakılmış katmanlı dosyalar içeriyorsa bu hata oluşur. Sunucu uç noktası kısa bir süre önce kaldırılırsa, yalnız bırakılmış katmanlı dosyaları temizleme tamamlanana kadar bekleyin. Yalnız bırakılmış katmanlı dosyalar temizliği başladıktan sonra telemetri olay günlüğüne olay KIMLIĞI 6662 kaydedilir. Bir olay KIMLIĞI 6661, yalnız bırakılmış katmanlı dosyalar temizliği tamamlandığında günlüğe kaydedilir ve bir sunucu uç noktası yol kullanılarak yeniden oluşturulabilir. Katmanlı dosyalar Temizleme işlemi tamamlandıktan sonra sunucu uç noktası oluşturma işlemi başarısız olursa veya olay günlüğü geçişi nedeniyle telemetri olay günlüğünde olay KIMLIĞI 6661 bulunamazsa, [sunucu uç noktası bölümü silindikten sonra katmanlı dosyalarda](?tabs=portal1%252cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) belgelenen adımları gerçekleştirerek, yalnız bırakılmış katmanlı dosyaları kaldırın.
+Sunucu uç noktası yolu yalnız bırakılmış katmanlı dosyalar içeriyorsa bu hata oluşur. Kısa süre önce bir sunucu uç noktası kaldırıldıysa, yalnız bırakılmış katmanlı dosyaları temizleme işleminin tamamlanmasını bekleyin. Yalnız bırakılmış katmanlı dosyalar temizliği başladıktan sonra telemetri olay günlüğüne olay KIMLIĞI 6662 kaydedilir. Bir olay KIMLIĞI 6661, yalnız bırakılmış katmanlı dosyalar temizliği tamamlandığında günlüğe kaydedilir ve bir sunucu uç noktası yol kullanılarak yeniden oluşturulabilir. Katmanlı dosyalar Temizleme işlemi tamamlandıktan sonra sunucu uç noktası oluşturma işlemi başarısız olursa veya olay günlüğü geçişi nedeniyle telemetri olay günlüğünde olay KIMLIĞI 6661 bulunamazsa, [sunucu uç noktası bölümü silindikten sonra katmanlı dosyalarda](?tabs=portal1%252cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) belgelenen adımları gerçekleştirerek, yalnız bırakılmış katmanlı dosyaları kaldırın.
 
 <a id="-2134347757"></a>**Sunucu uç noktası silme işlemi şu hatayla başarısız oluyor: "Mgmtserverjobendpoint" (hata kodu:-2134347757 veya 0x80c87013)**  
 Sunucu çevrimdışıysa veya ağ bağlantısı yoksa bu hata oluşur. Sunucu artık kullanılabilir değilse portalda sunucunun kaydını kaldırın; bu işlem sunucu uç noktalarını siler. Sunucu uç noktalarını silmek için [Azure dosya eşitleme ile sunucu kaydını](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)silme bölümünde açıklanan adımları izleyin.
@@ -342,10 +342,10 @@ Bu hataları görmek için, açık tanıtıcılar, desteklenmeyen karakterler ve
 | 0x80070002 | -2147024894 | ERROR_FILE_NOT_FOUND | Dosya silindi ve eşitleme değişikliğin farkında değildir. | Eylem gerekmiyor. Değişiklik algılama, dosyanın silindiğini algıladığında, eşitleme bu hatayı günlüğe kaydetmeyi durduracak. |
 | 0x80070003 | -2147942403 | ERROR_PATH_NOT_FOUND | Öğe hedefte zaten silindiğinden ve eşitleme değişikliğin farkında olmadığından, bir dosyanın veya dizinin silinmesi eşitlenemiyor. | Eylem gerekmiyor. Eşitleme, hedefte değişiklik algılama çalıştırmaları yapıldıktan sonra bu hatayı günlüğe kaydetmeyi durduracak ve eşitleme öğenin silindiğini algılıyor. |
 | 0x80c80205 | -2134375931 | ECS_E_SYNC_ITEM_SKIP | Dosya veya dizin atlandı, ancak sonraki eşitleme oturumu sırasında eşitlenecek. Öğe indirilirken Bu hata bildirilirse, dosya veya dizin adı büyük olasılıkla geçersiz olur. | Dosya karşıya yüklenirken bu hata bildirilmezse hiçbir eylem gerekmez. Dosya indirilirken hata bildirilirse, söz konusu dosyayı veya dizini yeniden adlandırın. Daha fazla bilgi için [Desteklenmeyen karakterleri işleme](?tabs=portal1%252cazure-portal#handling-unsupported-characters) bölümüne bakın. |
-| 0x800700B7 | -2147024713 | ERROR_ALREADY_EXISTS | Öğe hedefte zaten varolduğundan ve eşitleme değişikliğin farkında olmadığından, bir dosya veya dizin oluşturma eşitlenemiyor. | Eylem gerekmiyor. Eşitleme, hedefte değişiklik algılama çalıştıktan sonra bu hatayı günlüğe kaydetmeyi durduracak ve eşitleme bu yeni öğenin farkında. |
+| 0x800700B7 | -2147024713 | ERROR_ALREADY_EXISTS | Öğe hedefte zaten varolduğundan ve eşitleme değişikliğin farkında olmadığından, bir dosya veya dizin oluşturma eşitlenemiyor. | Eylem gerekmiyor. Hedefte değişiklik algılaması çalıştırıldıktan ve eşitleme bu yeni öğenin bilgisine sahip olduktan sonra, eşitleme bu hatanın günlüğe kaydedilmesini durduracaktır. |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Azure dosya paylaşımı sınırına ulaşıldığından dosya eşitlenemiyor. | Bu sorunu çözmek için sorun giderme kılavuzundaki [Azure dosya paylaşma depolama sınırı bölümüne ulaştınız](?tabs=portal1%252cazure-portal#-2134351810) . |
 | 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | Dosya desteklenmeyen bir çözüm (NTFS EFS gibi) tarafından şifrelenir. | Dosyanın şifresini çözün ve desteklenen bir şifreleme çözümünü kullanın. Desteklenen çözümleri listesi için planlama kılavuzunun [Şifreleme çözümleri](./storage-sync-files-planning.md#encryption) bölümüne bakın. |
-| 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | Dosya, DFS-R salt okunurdur çoğaltma klasöründe bulunur. | Dosya, DFS-R salt okunurdur çoğaltma klasöründe bulunur. Azure Dosya Eşitleme DFS-R salt okunur çoğaltma klasörlerindeki sunucu uç noktalarını desteklemez. Daha fazla bilgi için bkz. [Planlama Kılavuzu](./storage-sync-files-planning.md#distributed-file-system-dfs) . |
+| 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | Dosya, DFS-R salt okunurdur çoğaltma klasöründe bulunur. | Dosya, DFS-R salt okunurdur çoğaltma klasöründe bulunur. Azure Dosya Eşitleme DFS-R salt okunur çoğaltma klasörlerindeki sunucu uç noktalarını desteklemez. Daha fazla bilgi için [planlama kılavuzuna](./storage-sync-files-planning.md#distributed-file-system-dfs) bakın. |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Dosyada silme beklemede durumu vardır. | Eylem gerekmiyor. Dosya, tüm açık dosya tutamaçları kapatıldıktan sonra silinir. |
 | 0x80c86044 | -2134351804 | ECS_E_AZURE_AUTHORIZATION_FAILED | Depolama hesabındaki güvenlik duvarı ve sanal ağ ayarları etkinleştirildiğinden ve sunucunun depolama hesabına erişimi olmadığından dosya eşitlenemiyor. | Dağıtım kılavuzundaki [güvenlik duvarı ve sanal ağ ayarlarını yapılandırma](./storage-sync-files-deployment-guide.md?tabs=azure-portal#configure-firewall-and-virtual-network-settings) bölümünde belgelenen adımları IZLEYEREK sunucu IP adresini veya sanal ağını ekleyin. |
 | 0x80c80243 | -2134375869 | ECS_E_SECURITY_DESCRIPTOR_SIZE_TOO_LARGE | Güvenlik tanımlayıcı boyutu 64 KiB sınırını aştığından dosya eşitlenemiyor. | Bu sorunu çözmek için dosyadaki erişim denetimi girdilerini (ACE) kaldırarak güvenlik açıklayıcısının boyutunu küçültün. |
@@ -353,7 +353,7 @@ Bu hataları görmek için, açık tanıtıcılar, desteklenmeyen karakterler ve
 | 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Dosya kullanımda olduğundan eşitlenemiyor. Dosya artık kullanımda olmadığında eşitlenir. | Eylem gerekmiyor. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Dosya eşitleme sırasında değiştirildi, bu nedenle yeniden eşitlenmesi gerekiyor. | Eylem gerekmiyor. |
 | 0x80070017 | -2147024873 | ERROR_CRC | CRC hatası nedeniyle dosya eşitlenemiyor. Bu hata, bir sunucu uç noktası silinmeden veya dosya bozuksa önce katmanlı bir dosya geri çağrılmıyorsa meydana gelebilir. | Bu sorunu çözmek için, sunucu uç noktası silindikten sonra, yalnız bırakılmış katmanlı dosyaları kaldırmak için [katmanlı dosyalara sunucu üzerinde erişilebilir değil](?tabs=portal1%252cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) ' e bakın. Yalnız bırakılmış katmanlı dosyalar kaldırıldıktan sonra hata oluşmaya devam ederse, birimde [Chkdsk komutunu](/windows-server/administration/windows-commands/chkdsk) çalıştırın. |
-| 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Çakışma dosyası sayısı üst sınırına ulaşıldığından dosya eşitlenemiyor. Azure Dosya Eşitleme dosya başına 100 çakışma dosyasını destekler. Dosya çakışmaları hakkında daha fazla bilgi edinmek için Azure Dosya Eşitleme [SSS](./storage-files-faq.md#afs-conflict-resolution)bölümüne bakın. | Bu sorunu çözmek için, çakışma dosyalarının sayısını azaltın. Çakışma dosyası sayısı 100 ' den az olduğunda dosya eşitlenir. |
+| 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Çakışma dosyası sayısı üst sınırına ulaşıldığından dosya eşitlenemiyor. Azure Dosya Eşitleme dosya başına 100 çakışma dosyasını destekler. Dosya çakışmaları hakkında daha fazla bilgi edinmek için Azure Dosya Eşitleme [SSS](./storage-files-faq.md#afs-conflict-resolution)bölümüne bakın. | Bu sorunu çözmek için çakışma dosyalarının sayısını azaltın. Çakışma dosyalarının sayısı 100’ün altına düştükten sonra dosya eşitlenecektir. |
 
 #### <a name="handling-unsupported-characters"></a>Desteklenmeyen karakterleri işleme
 **FileSyncErrorsReport.ps1** PowerShell betiği desteklenmeyen karakterler (hata kodu 0x8007007B veya 0x80c80255) nedeniyle öğe başına eşitleme hatalarını gösteriyorsa, ilgili dosya adlarından hata durumunda karakterleri kaldırmanız veya yeniden adlandırmanız gerekir. Bu karakterlerin çoğu standart görsel kodlamaya sahip olmadığından, PowerShell bu karakterleri muhtemelen soru işaretleri veya boş dikdörtgenler olarak yazdıracaktır. 
@@ -378,7 +378,7 @@ Aşağıdaki tabloda, Azure Dosya Eşitleme henüz desteklemediği tüm Unicode 
 | **HRESULT** | 0x800704c7 |
 | **HRESULT (ondalık)** | -2147023673 | 
 | **Hata dizesi** | ERROR_CANCELLED |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Eşitleme oturumları, sunucunun yeniden başlatılması veya güncelleştirilmesini, VSS anlık görüntülerini vb. dahil çeşitli nedenlerle başarısız olabilir. Bu hata, izlenmesi gereken gibi görünse de, birkaç saat boyunca devam etmediği takdirde bu hatayı yoksaymak güvenlidir.
 
@@ -400,7 +400,7 @@ Eşitleme oturumları, sunucunun yeniden başlatılması veya güncelleştirilme
 | **HRESULT** | 0x80c8004c |
 | **HRESULT (ondalık)** | -2134376372 |
 | **Hata dizesi** | ECS_E_USER_REQUEST_THROTTLED |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Herhangi bir eylem gerekmez; sunucu yeniden denenecek. Bu hata birkaç saat devam ederse destek isteği oluşturun.
 
@@ -411,7 +411,7 @@ Herhangi bir eylem gerekmez; sunucu yeniden denenecek. Bu hata birkaç saat deva
 | **HRESULT** | 0x80c83075 |
 | **HRESULT (ondalık)** | -2134364043 |
 | **Hata dizesi** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 İşlem yapmanız gerekmez. Bir dosya veya dosya paylaşma (bulut uç noktası) Azure Backup kullanılarak geri yüklendiğinde, Azure dosya paylaşımında değişiklik algılama tamamlanana kadar eşitleme engellenir. Geri yükleme tamamlandıktan hemen sonra değişiklik algılama çalıştırılır ve çalışma süresi dosya paylaşımındaki dosyaların sayısına bağlıdır.
 
@@ -422,7 +422,7 @@ Herhangi bir eylem gerekmez; sunucu yeniden denenecek. Bu hata birkaç saat deva
 | **HRESULT** | 0x80041295 |
 | **HRESULT (ondalık)** | -2147216747 |
 | **Hata dizesi** | SYNC_E_METADATA_INVALID_OPERATION |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Normalde bir yedekleme uygulaması VSS anlık görüntüsü oluşturduğunda ve eşitleme veritabanının yüklemesi kaldırıldığında bu hata oluşur. Bu hata birkaç saat devam ederse destek isteği oluşturun.
 
@@ -496,7 +496,7 @@ Bu hata, Azure Dosya Eşitleme aracısının Azure dosya paylaşımında erişim
 | **Hata dizesi** | ECS_E_STORAGE_ACCOUNT_LOCKED |
 | **Düzeltme gerekli** | Yes |
 
-Bu hata, depolama hesabının salt okunurdur [kaynak kilidi](../../azure-resource-manager/management/lock-resources.md)olduğu için oluşur. Bu sorunu çözmek için depolama hesabındaki salt okuma kaynak kilidini kaldırın. 
+Bu hata, depolama hesabının salt okunurdur [kaynak kilidi](../../azure-resource-manager/management/lock-resources.md)olduğu için oluşur. Bu sorunu çözmek için depolama hesabındaki salt okunur kaynak kilidini kaldırın. 
 
 <a id="-1906441138"></a>**Eşitleme veritabanıyla ilgili bir sorun nedeniyle eşitleme başarısız oldu.**  
 
@@ -591,7 +591,7 @@ Depolama hesabı güvenlik duvarından veya depolama hesabının bir sanal ağa 
 | **HRESULT** | 0x80c80219 |
 | **HRESULT (ondalık)** | -2134375911 |
 | **Hata dizesi** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Bu hata genellikle kendiliğinden çözülür ve şunlar varsa gerçekleşebilir:
 
@@ -727,7 +727,7 @@ Bu hata birimin doldurulmuş olması nedeniyle oluşur. Bu hata genellikle sunuc
 | **HRESULT** | 0x80c8300f |
 | **HRESULT (ondalık)** | -2134364145 |
 | **Hata dizesi** | ECS_E_REPLICA_NOT_READY |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Bu hata, bulut uç noktasının Azure dosya paylaşımında zaten mevcut olan içerikle oluşturulduğu için oluşur. Azure Dosya Eşitleme, sunucu uç noktasının ilk eşitlemesine devam etmesini sağlamak için Azure dosya paylaşımında tüm içerikleri taramalıdır.
 
@@ -788,7 +788,7 @@ Yüklenmiş olan bulut katmanlama filtresi sürücüsü (StorageSync.sys) sürü
 | **HRESULT** | 0x80c8004b |
 | **HRESULT (ondalık)** | -2134376373 |
 | **Hata dizesi** | ECS_E_SERVICE_UNAVAILABLE |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Azure Dosya Eşitleme hizmeti kullanılamadığından bu hata oluşur. Azure Dosya Eşitleme hizmeti kullanılabilir olduğunda bu hata otomatik olarak çözülecektir.
 
@@ -799,7 +799,7 @@ Azure Dosya Eşitleme hizmeti kullanılamadığından bu hata oluşur. Azure Dos
 | **HRESULT** | 0x80131500 |
 | **HRESULT (ondalık)** | -2146233088 |
 | **Hata dizesi** | COR_E_EXCEPTION |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Eşitleme özel bir durum nedeniyle başarısız olduğu için bu hata oluşur. Hata birkaç saat devam ederse lütfen bir destek isteği oluşturun.
 
@@ -821,7 +821,7 @@ Depolama hesabı başka bir bölgeye yük devrettiği için bu hata oluştu. Azu
 | **HRESULT** | 0x80c8020e |
 | **HRESULT (ondalık)** | -2134375922 |
 | **Hata dizesi** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Eşitleme veritabanındaki bir iç sorundan dolayı bu hata oluşur. Eşitleme yeniden denendiğinde bu hata otomatik olarak düzelecektir. Bu hata uzabir süre devam ederse, bir destek isteği oluşturun ve bu sorunu çözmenize yardımcı olması için sizinle iletişim kuracağız.
 
@@ -863,7 +863,7 @@ Bu hata, NT AUTHORITY\SYSTEM hesabının sunucu uç noktasının bulunduğu biri
 Bu sorunu çözmek için aşağıdaki adımları gerçekleştirin:
 
 1. [Psexec](/sysinternals/downloads/psexec) aracını indirin.
-2. Sistem hesabını kullanarak bir komut istemi başlatmak için yükseltilmiş bir komut isteminden aşağıdaki komutu çalıştırın: **PsExec.exe-i-s-d cmd** 
+2. Sistem hesabını kullanarak yükseltilmiş komut isteminde şu komutu çalıştırıp komut istemini başlatın: **PsExec.exe -i -s -d cmd** 
 3. Sistem hesabı altında çalıştırılan komut isteminde şu komutu çalıştırarak NT AUTHORITY\SYSTEM hesabının Sistem Birim Bilgisi klasörüne erişimi olmadığını onaylayın: **cacls "sürücü harfi:\sistem birim bilgisi" /T /C**
 4. NT AUTHORITY\SYSTEM hesabının Sistem Birim Bilgisi klasörüne erişimi yoksa şu komutu çalıştırın: **cacls  "sürücü harfi:\sistem birim bilgisi" /T /E /G "NT AUTHORITY\SYSTEM:F"**
     - 4. adım erişim reddedildi hatasıyla başarısız olursa Sistem Birim Bilgisi klasörünün sahipliğini almak için şu komutu çalıştırın ve sonra 4. adımı yineleyin: **takeown /A /R /F "sürücü harfi:\Sistem Birim Bilgisi"**
@@ -896,7 +896,7 @@ Bu hatayı düzeltmek için aşağıdaki adımları uygulayarak eşitleme grubun
 | **Hata dizesi** | HTTP_E_STATUS_REDIRECT_KEEP_VERB |
 | **Düzeltme gerekli** | Yes |
 
-Bu hata, Azure Dosya Eşitleme HTTP yeniden yönlendirmeyi (3xx durum kodu) desteklemediğinden oluşur. Bu sorunu çözmek için, proxy sunucunuzda veya ağ cihazınızda HTTP yeniden yönlendirmeyi devre dışı bırakın.
+Bu hatanın nedeni, Azure Dosya Eşitleme'nin HTTP yeniden yönlendirme (3xx durum kodu) yönlendirme desteği sunmamasıdır. Bu sorunu çözmek için, ara sunucunuzda veya ağ cihazınızda HTTP yeniden yönlendirmeyi devre dışı bırakın.
 
 <a id="-2134364027"></a>**Çevrimdışı veri aktarımı sırasında zaman aşımı oluştu, ancak devam ediyor.**  
 
@@ -905,7 +905,7 @@ Bu hata, Azure Dosya Eşitleme HTTP yeniden yönlendirmeyi (3xx durum kodu) dest
 | **HRESULT** | 0x80c83085 |
 | **HRESULT (ondalık)** | -2134364027 |
 | **Hata dizesi** | ECS_E_DATA_INGESTION_WAIT_TIMEOUT |
-| **Düzeltme gerekli** | No |
+| **Düzeltme gerekli** | Hayır |
 
 Bu hata, bir veri alma işlemi zaman aşımını aştığında oluşur. Eşitleme ilerleme durumu (AppliedItemCount 0 ' dan büyükse) Bu hata yoksayılabilir. [Geçerli bir eşitleme oturumunun ilerlemesini izlemek nasıl yaparım? bakın mi?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
@@ -1054,24 +1054,6 @@ if ($role -eq $null) {
 ```
 ---
 
-### <a name="how-do-i-prevent-users-from-creating-files-containing-unsupported-characters-on-the-server"></a>Nasıl yaparım?, kullanıcıların sunucuda desteklenmeyen karakterler içeren dosyalar oluşturmasını önler mi?
-[Dosya sunucusu Kaynak Yöneticisi (FSRM) dosya ekranlarını](/windows-server/storage/fsrm/file-screening-management) , adlarında desteklenmeyen karakterlerden oluşan dosyaları sunucuda oluşturulmasını engellemek için kullanabilirsiniz. Desteklenmeyen karakterlerin çoğu yazdırılamaz olduğundan PowerShell 'i kullanarak bunu yapmanız gerekebilir. bu nedenle, onaltılı gösterimlerini öncelikle karakter olarak atamalısınız.
-
-Önce [New-Fsrmfılegroup cmdlet 'ini](/powershell/module/fileserverresourcemanager/new-fsrmfilegroup)kullanarak bir FSRM dosya grubu oluşturun. Bu örnek, grubu desteklenmeyen karakterlerden yalnızca ikisini içerecek şekilde tanımlar, ancak dosya grubunuza gereken sayıda karakteri dahil edebilirsiniz.
-
-```powershell
-New-FsrmFileGroup -Name "Unsupported characters" -IncludePattern @(("*"+[char]0x00000090+"*"),("*"+[char]0x0000008F+"*"))
-```
-
-Bir FSRM dosya grubu tanımladıktan sonra, New-FsrmFileScreen cmdlet 'ini kullanarak bir FSRM dosyası ekranı oluşturabilirsiniz.
-
-```powershell
-New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported characters" -IncludeGroup "Unsupported characters"
-```
-
-> [!Important]  
-> Dosya ekranlarının yalnızca Azure Dosya Eşitleme tarafından desteklenmeyen karakterlerin oluşturulmasını engellemek için kullanılması gerektiğini unutmayın. Dosya ekranları diğer senaryolarda kullanılıyorsa, eşitleme sürekli olarak dosyaları Azure dosya paylaşımından sunucuya indirmeye çalışır ve dosya ekranı nedeniyle, yüksek veri çıkışı elde edilecek şekilde engellenir. 
-
 ## <a name="cloud-tiering"></a>Bulut katmanlaması 
 Bulut katmanlarındaki hatalara yönelik iki yol vardır:
 
@@ -1131,27 +1113,27 @@ Dosyalar Azure dosyalarını katmanlamaz:
 | HRESULT | HRESULT (ondalık) | Hata dizesi | Sorun | Düzeltme |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80c86045 | -2134351803 | ECS_E_INITIAL_UPLOAD_PENDING | İlk karşıya yükleme devam ettiğinden dosya katmanı başarısız oldu. | Eylem gerekmiyor. İlk karşıya yükleme tamamlandıktan sonra dosya katmanlanacaktır. |
-| 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | Dosya kullanımda olduğundan katmanı açamadı. | Eylem gerekmiyor. Dosya artık kullanımda olmadığında katmanlı olur. |
+| 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | Dosya kullanımda olduğundan katmanı açamadı. | Eylem gerekmiyor. Dosya artık kullanımda olmadığında katmanlanır. |
 | 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | Dosya, eşitleme tarafından dışlandığından katmana gönderilemedi. | Eylem gerekmiyor. Eşitleme dışlama listesindeki dosyalar katmanlanamaz. |
-| 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | Sunucuda bulunamadığı için dosya katmanı başarısız oldu. | Eylem gerekmiyor. Hata devam ederse, dosyanın sunucuda mevcut olup olmadığını denetleyin. |
-| 0x80c83053 | -2134364077 | ECS_E_CREATE_SV_FILE_DELETED | Azure dosya paylaşımında silindiği için dosya katmanı başarısız oldu. | Eylem gerekmiyor. Sonraki indirme eşitleme oturumu çalıştırıldığında, dosyanın sunucuda silinmesi gerekir. |
-| 0x80c8600e | -2134351858 | ECS_E_AZURE_SERVER_BUSY | Ağ sorunu nedeniyle dosya katmanı başarısız oldu. | Eylem gerekmiyor. Hata devam ederse, Azure dosya paylaşımının ağ bağlantısını kontrol edin. |
-| 0x80072EE7 | -2147012889 | WININET_E_NAME_NOT_RESOLVED | Ağ sorunu nedeniyle dosya katmanı başarısız oldu. | Eylem gerekmiyor. Hata devam ederse, Azure dosya paylaşımının ağ bağlantısını kontrol edin. |
-| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Erişim reddedildi hatası nedeniyle dosya katmanı başarısız oldu. Bu hata, dosya bir DFS-R salt okuma çoğaltma klasöründe bulunuyorsa oluşabilir. | Azure Dosya Eşitleme DFS-R salt okunur çoğaltma klasörlerindeki sunucu uç noktalarını desteklemez. Daha fazla bilgi için bkz. [Planlama Kılavuzu](./storage-sync-files-planning.md#distributed-file-system-dfs) . |
-| 0x80072efe | -2147012866 | WININET_E_CONNECTION_ABORTED | Ağ sorunu nedeniyle dosya katmanı başarısız oldu. | Eylem gerekmiyor. Hata devam ederse, Azure dosya paylaşımının ağ bağlantısını kontrol edin. |
-| 0x80c80261 | -2134375839 | ECS_E_GHOSTING_MIN_FILE_SIZE | Dosya boyutu desteklenen boyuttan daha az olduğu için dosya katmana kopyalanamadı. | Aracı sürümü 9,0 'den küçükse, desteklenen minimum dosya boyutu 64 KB 'dir. Aracı sürümü 9,0 ve daha yeniyse, desteklenen minimum dosya boyutu dosya sistemi kümesi boyutunu (çift dosya sistemi kümesi boyutu) temel alır. Örneğin, dosya sistemi kümesi boyutu 4kb ise, en küçük dosya boyutu 8kb 'tır. |
+| 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | Sunucuda bulunamadığı için dosya katmanı başarısız oldu. | Eylem gerekmiyor. Hata devam ederse dosyanın sunucuda mevcut olup olmadığını denetleyin. |
+| 0x80c83053 | -2134364077 | ECS_E_CREATE_SV_FILE_DELETED | Azure dosya paylaşımında silindiği için dosya katmanı başarısız oldu. | Eylem gerekmiyor. Bir sonraki indirme eşitleme oturumu çalıştığında dosya sunucudan silinmelidir. |
+| 0x80c8600e | -2134351858 | ECS_E_AZURE_SERVER_BUSY | Ağ sorunu nedeniyle dosya katmanı başarısız oldu. | Eylem gerekmiyor. Hata devam ederse Azure dosya paylaşımının ağ bağlantısını kontrol edin. |
+| 0x80072EE7 | -2147012889 | WININET_E_NAME_NOT_RESOLVED | Ağ sorunu nedeniyle dosya katmanı başarısız oldu. | Eylem gerekmiyor. Hata devam ederse Azure dosya paylaşımının ağ bağlantısını kontrol edin. |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Erişim reddedildi hatası nedeniyle dosya katmanı başarısız oldu. Bu hata dosyanın bir DFS-R salt okunur çoğaltma klasöründe yer alması nedeniyle oluşabilir. | Azure Dosya Eşitleme DFS-R salt okunur çoğaltma klasörlerindeki sunucu uç noktalarını desteklemez. Daha fazla bilgi için [planlama kılavuzuna](./storage-sync-files-planning.md#distributed-file-system-dfs) bakın. |
+| 0x80072efe | -2147012866 | WININET_E_CONNECTION_ABORTED | Ağ sorunu nedeniyle dosya katmanı başarısız oldu. | Eylem gerekmiyor. Hata devam ederse Azure dosya paylaşımının ağ bağlantısını kontrol edin. |
+| 0x80c80261 | -2134375839 | ECS_E_GHOSTING_MIN_FILE_SIZE | Dosya boyutu desteklenen boyuttan daha az olduğu için dosya katmana kopyalanamadı. | Aracı sürümü 9.0 öncesiyse desteklenen en küçük dosya boyutu 64 kb olacaktır. Aracı sürümü 9.0 ve üzeriyse desteklenen en küçük dosya boyutu, dosya sistemi kümesinin boyutuna göre değişir (dosya sistemi kümesinin boyutunun iki katıdır). Örneğin, dosya sistemi kümesi boyutu 4kb ise, en küçük dosya boyutu 8kb 'tır. |
 | 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | Azure depolama sorunu nedeniyle dosya katmanı başarısız oldu. | Hata devam ederse bir destek isteği açın. |
-| 0x800703E3 | -2147023901 | ERROR_OPERATION_ABORTED | Dosya, aynı anda geri çekilmiş olduğundan katmana gönderilemedi. | Eylem gerekmiyor. Geri çağırma tamamlandığında ve dosya artık kullanımda olmadığında dosya katmanlanacaktır. |
-| 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | Dosya, Azure dosya paylaşımıyla eşitlenmediği için katmanı gerçekleştiremedi. | Eylem gerekmiyor. Dosya, Azure dosya paylaşımıyla eşitlendikten sonra katman olur. |
+| 0x800703E3 | -2147023901 | ERROR_OPERATION_ABORTED | Dosya, aynı anda geri çekilmiş olduğundan katmana gönderilemedi. | Eylem gerekmiyor. Dosya, geri çağırma tamamlandığında ve artık kullanımda olmadığında katmanlanacaktır. |
+| 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | Dosya, Azure dosya paylaşımıyla eşitlenmediği için katmanı gerçekleştiremedi. | Eylem gerekmiyor. Dosya, Azure dosya paylaşımıyla eşitlendikten sonra katmanlanır. |
 | 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | Bulut katmanlama filtresi sürücüsü (storagesync.sys) çalışmadığından dosya katmanı başarısız oldu. | Bu sorunu çözmek için, yükseltilmiş bir komut istemi açın ve aşağıdaki komutu çalıştırın: `fltmc load storagesync`<br>FltMC komutu çalıştırılırken storagessync filtre sürücüsü yüklenemezse, Azure Dosya Eşitleme aracısını kaldırın, sunucuyu yeniden başlatın ve Azure Dosya Eşitleme aracısını yeniden yükleyin. |
-| 0x80070070 | -2147024784 | ERROR_DISK_FULL | Sunucu uç noktasının bulunduğu birimde yetersiz disk alanı nedeniyle dosya katmana gönderilemedi. | Bu sorunu çözmek için sunucu uç noktasının bulunduğu birimde en az 100 MB disk alanı boşaltın. |
-| 0x80070490 | -2147023728 | ERROR_NOT_FOUND | Dosya, Azure dosya paylaşımıyla eşitlenmediği için katmanı gerçekleştiremedi. | Eylem gerekmiyor. Dosya, Azure dosya paylaşımıyla eşitlendikten sonra katman olur. |
-| 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | Dosya, desteklenmeyen bir yeniden ayrıştırma noktası olduğundan katmana gönderilemedi. | Dosya yinelenen verileri kaldırma yeniden ayrıştırma noktanız ise, yinelenen verileri kaldırma desteğini etkinleştirmek için [planlama kılavuzundaki](./storage-sync-files-planning.md#data-deduplication) adımları izleyin. Yinelenen verileri kaldırma dışında yeniden ayrıştırma noktaları olan dosyalar desteklenmez ve katmanlanmaz.  |
-| 0x80c83052 | -2134364078 | ECS_E_CREATE_SV_STREAM_ID_MISMATCH | Dosya değiştirildiğinden katman başarısız oldu. | Eylem gerekmiyor. Dosya, değiştirilen dosya Azure dosya paylaşımıyla eşitlendikten sonra katman olur. |
-| 0x80c80269 | -2134375831 | ECS_E_GHOSTING_REPLICA_NOT_FOUND | Dosya, Azure dosya paylaşımıyla eşitlenmediği için katmanı gerçekleştiremedi. | Eylem gerekmiyor. Dosya, Azure dosya paylaşımıyla eşitlendikten sonra katman olur. |
-| 0x80072EE2 | -2147012894 | WININET_E_TIMEOUT | Ağ sorunu nedeniyle dosya katmanı başarısız oldu. | Eylem gerekmiyor. Hata devam ederse, Azure dosya paylaşımının ağ bağlantısını kontrol edin. |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Dosya değiştirildiğinden katman başarısız oldu. | Eylem gerekmiyor. Dosya, değiştirilen dosya Azure dosya paylaşımıyla eşitlendikten sonra katman olur. |
-| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Yetersiz sistem kaynakları nedeniyle dosya katmanı başarısız oldu. | Hata devam ederse, sistem kaynaklarını hangi uygulamanın veya çekirdek modu sürücüsünün tüketdiünü araştırın. |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | Sunucu uç noktasının bulunduğu birimde yetersiz disk alanı nedeniyle dosya katmana gönderilemedi. | Bu sorunu çözmek için sunucu uç noktasının bulunduğu birimde en az 100 MB disk alanını boşaltın. |
+| 0x80070490 | -2147023728 | ERROR_NOT_FOUND | Dosya, Azure dosya paylaşımıyla eşitlenmediği için katmanı gerçekleştiremedi. | Eylem gerekmiyor. Dosya, Azure dosya paylaşımıyla eşitlendikten sonra katmanlanır. |
+| 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | Dosya, desteklenmeyen bir yeniden ayrıştırma noktası olduğundan katmana gönderilemedi. | Dosyanın bir Yinelenen Verileri Kaldırma yeniden ayrıştırma noktası olması halinde Yinelenen Verileri Kaldırma desteğini etkinleştirmek için [plan kılavuzundaki](./storage-sync-files-planning.md#data-deduplication) adımları izleyin. Yinelenen Verileri Kaldırma haricinde yeniden ayrıştırma noktalarına sahip dosyalar desteklenmez ve katmanlanmaz.  |
+| 0x80c83052 | -2134364078 | ECS_E_CREATE_SV_STREAM_ID_MISMATCH | Dosya değiştirildiğinden katman başarısız oldu. | Eylem gerekmiyor. Dosya, değiştirilen dosya Azure dosya paylaşımıyla eşitlendikten sonra katmanlanır. |
+| 0x80c80269 | -2134375831 | ECS_E_GHOSTING_REPLICA_NOT_FOUND | Dosya, Azure dosya paylaşımıyla eşitlenmediği için katmanı gerçekleştiremedi. | Eylem gerekmiyor. Dosya, Azure dosya paylaşımıyla eşitlendikten sonra katmanlanır. |
+| 0x80072EE2 | -2147012894 | WININET_E_TIMEOUT | Ağ sorunu nedeniyle dosya katmanı başarısız oldu. | Eylem gerekmiyor. Hata devam ederse Azure dosya paylaşımının ağ bağlantısını kontrol edin. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Dosya değiştirildiğinden katman başarısız oldu. | Eylem gerekmiyor. Dosya, değiştirilen dosya Azure dosya paylaşımıyla eşitlendikten sonra katmanlanır. |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Yetersiz sistem kaynakları nedeniyle dosya katmanı başarısız oldu. | Hata devam ederse sistem kaynaklarının tüketilmesine hangi uygulamanın veya çekirdek modu sürücüsünün neden olduğunu araştırın. |
 | 0x8e5e03fe | -1906441218 | JET_errDiskIO | Bulut katmanlama veritabanına yazılırken bir g/ç hatası nedeniyle dosya katmanı başarısız oldu. | Hata devam ederse, birimde Chkdsk komutunu çalıştırın ve depolama donanımını denetleyin. |
 | 0x8e5e0442 | -1906441150 | JET_errInstanceUnavailable | Bulut katmanlama veritabanı çalışmadığından dosya katmanı başarısız oldu. | Bu sorunu çözmek için FileSyncSvc hizmetini veya sunucusunu yeniden başlatın. Hata devam ederse, birimde Chkdsk komutunu çalıştırın ve depolama donanımını denetleyin. |
 
@@ -1174,15 +1156,15 @@ Dosyalar geri çekilemez:
 | HRESULT | HRESULT (ondalık) | Hata dizesi | Sorun | Düzeltme |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070079 | -2147942521 | ERROR_SEM_TIMEOUT | Bir g/ç zaman aşımı nedeniyle dosya geri çekemedi. Bu sorun çeşitli nedenlerden kaynaklanabilir: sunucu kaynak kısıtlamaları, zayıf ağ bağlantısı veya bir Azure depolama sorunu (örneğin, azaltma). | Eylem gerekmiyor. Hata birkaç saat devam ederse bir destek talebi açın. |
-| 0x80070036 | -2147024842 | ERROR_NETWORK_BUSY | Ağ sorunu nedeniyle dosya geri çekemedi.  | Hata devam ederse, Azure dosya paylaşımının ağ bağlantısını kontrol edin. |
+| 0x80070036 | -2147024842 | ERROR_NETWORK_BUSY | Ağ sorunu nedeniyle dosya geri çekemedi.  | Hata devam ederse Azure dosya paylaşımının ağ bağlantısını kontrol edin. |
 | 0x80c80037 | -2134376393 | ECS_E_SYNC_SHARE_NOT_FOUND | Sunucu uç noktası silindiğinden dosya geri çekemedi. | Bu sorunu çözmek için, [sunucu uç noktasını sildikten sonra, sunucuda katmanlı dosyalara erişilebilir değil ' a](?tabs=portal1%252cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)bakın. |
-| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Erişim reddedildi hatası nedeniyle dosya geri çekemedi. Bu sorun, depolama hesabındaki güvenlik duvarı ve sanal ağ ayarları etkinleştirilmişse ve sunucunun depolama hesabına erişimi yoksa oluşabilir. | Bu sorunu çözmek için, dağıtım kılavuzu 'ndaki [güvenlik duvarı ve sanal ağ ayarlarını yapılandırma](./storage-sync-files-deployment-guide.md?tabs=azure-portal#configure-firewall-and-virtual-network-settings) bölümünde belgelenen adımları IZLEYEREK sunucu IP adresini veya sanal ağını ekleyin. |
-| 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | Azure dosya paylaşımında erişilebilir olmadığından dosya geri çekemedi. | Bu sorunu çözmek için dosyanın Azure dosya paylaşımında bulunduğunu doğrulayın. Dosya Azure dosya paylaşımında varsa, en son Azure Dosya Eşitleme [aracı sürümüne](./storage-files-release-notes.md#supported-versions)yükseltin. |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Erişim reddedildi hatası nedeniyle dosya geri çekemedi. Bu sorunun oluşmasının nedeni, depolama hesabında güvenlik duvarı ve sanal ağ ayarlarının etkinleştirilmesi ve sunucunun depolama hesabına erişim sahibi olmamasıdır. | Bu sorunu çözmek için, dağıtım kılavuzu 'ndaki [güvenlik duvarı ve sanal ağ ayarlarını yapılandırma](./storage-sync-files-deployment-guide.md?tabs=azure-portal#configure-firewall-and-virtual-network-settings) bölümünde belgelenen adımları IZLEYEREK sunucu IP adresini veya sanal ağını ekleyin. |
+| 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | Azure dosya paylaşımında erişilebilir olmadığından dosya geri çekemedi. | Bu sorunu çözmek için dosyanın Azure dosya paylaşımında mevcut olduğunu doğrulayın. Dosya Azure dosya paylaşımında varsa, en son Azure Dosya Eşitleme [aracı sürümüne](./storage-files-release-notes.md#supported-versions)yükseltin. |
 | 0x80c8305f | -2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | Depolama hesabına yönelik yetkilendirme hatası nedeniyle dosya geri çekemedi. | Bu sorunu çözmek için [Azure dosya eşitleme depolama hesabına erişiminin](?tabs=portal1%252cazure-portal#troubleshoot-rbac)olduğunu doğrulayın. |
 | 0x80c86030 | -2134351824 | ECS_E_AZURE_FILE_SHARE_NOT_FOUND | Azure dosya paylaşımının erişimi olmadığından dosya geri çekemedi. | Dosya paylaşımının var olduğunu ve erişilebilir olduğunu doğrulayın. Dosya paylaşma silinmişse ve yeniden oluşturulduysa, eşitleme grubunu silip yeniden oluşturmak için [Azure dosya paylaşımının silindiği ve](?tabs=portal1%252cazure-portal#-2134375810) yeniden oluşturulduğu bir bölüm olduğundan eşitleme sırasında belgelenen adımları gerçekleştirin. |
-| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Yetersiz sistem kaynakları nedeniyle dosya geri çekemedi. | Hata devam ederse, sistem kaynaklarını hangi uygulamanın veya çekirdek modu sürücüsünün tüketdiünü araştırın. |
-| 0x8007000E | -2147024882 | ERROR_OUTOFMEMORY | Yetersiz bellek nedeniyle dosya geri çekemedi. | Hata devam ederse, düşük bellek koşuluna hangi uygulamanın veya çekirdek modu sürücüsünün neden olduğunu araştırın. |
-| 0x80070070 | -2147024784 | ERROR_DISK_FULL | Yetersiz disk alanı nedeniyle dosya geri çekemedi. | Bu sorunu çözmek için, dosyaları farklı bir birime taşıyarak birimde yer açın, birimin boyutunu artırın veya Invoke-StorageSyncCloudTiering cmdlet 'ini kullanarak dosyaları katmana zorlayın. |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Yetersiz sistem kaynakları nedeniyle dosya geri çekemedi. | Hata devam ederse sistem kaynaklarının tüketilmesine hangi uygulamanın veya çekirdek modu sürücüsünün neden olduğunu araştırın. |
+| 0x8007000E | -2147024882 | ERROR_OUTOFMEMORY | Yetersiz bellek nedeniyle dosya geri çekemedi. | Hata devam ederse düşük bellek koşuluna hangi uygulamanın veya çekirdek modu sürücüsünün neden olduğunu araştırın. |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | Yetersiz disk alanı nedeniyle dosya geri çekemedi. | Bu sorunu çözmek için dosyaları farklı bir birime taşıyarak birimde yer açın, birimin boyutunu artırın veya Invoke-StorageSyncCloudTiering cmdlet'ini kullanarak dosyaları katmanlamaya zorlayın. |
 
 ### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>Sunucu uç noktası silindikten sonra katmanlı dosyalara sunucuda erişilemiyor
 Sunucu uç noktası silinmeden önce dosyalar geri çağrılmıyorsa, bir sunucudaki katmanlı dosyalar erişilemez duruma gelir.
@@ -1332,4 +1314,4 @@ Aracı sürümü ile v10 arasındaki ve önceki sürümler için:
 - [Azure Dosya Eşitleme’yi izleme](storage-sync-files-monitoring.md)
 - [Azure dosyaları hakkında sık sorulan sorular](storage-files-faq.md)
 - [Windows’ta Azure Dosyalar sorunlarını giderme](storage-troubleshoot-windows-file-connection-problems.md)
-- [Linux 'ta Azure dosyaları sorunlarını giderme](storage-troubleshoot-linux-file-connection-problems.md)
+- [Linux’ta Azure Dosyalar sorunlarını giderme](storage-troubleshoot-linux-file-connection-problems.md)

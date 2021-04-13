@@ -4,12 +4,12 @@ description: Bu makalede Azure Service Bus iletilerinin teslimini erteleme açı
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e3a940f8aa9e72d9b09e9c0a3305521c6f17dfb0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 997aab36652b08864892f1171e2b8588ec5f06b4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98622054"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306118"
 ---
 # <a name="message-deferral"></a>İleti erteleme
 
@@ -22,7 +22,7 @@ Basit bir tanım örneği, eşleşen satın alma siparişi mağazadan öne çık
 Sonuç olarak, alma sırasındaki iletileri, işleme için bir ileti deposunda güvenli durumda bırakarak, bu iletileri işlenmek üzere yeniden sıralama konusunda yardımcı olur.
 
 > [!NOTE]
-> Ertelenmiş iletiler, [süreleri dolduktan sonra](./service-bus-dead-letter-queues.md#exceeding-timetolive)otomatik olarak atılacak ileti kuyruğuna taşınmaz. Bu davranış tasarıma göre yapılır.
+> Ertelenmiş iletiler, [süreleri dolduktan sonra](./service-bus-dead-letter-queues.md#time-to-live)otomatik olarak atılacak ileti kuyruğuna taşınmaz. Bu davranış tasarıma göre yapılır.
 
 ## <a name="message-deferral-apis"></a>İleti erteleme API 'Leri
 

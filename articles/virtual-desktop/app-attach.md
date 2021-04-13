@@ -3,22 +3,17 @@ title: Windows sanal masaüstü 'Nü yapılandırma MALTı uygulaması PowerShel
 description: Windows sanal masaüstü için MSIX uygulama iliştirme için PowerShell betikleri oluşturma.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 224f2e773ecd42dcbdd356531d9ce94636de002f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 143f0a9d23cdc70425147faa95258ec753b92691
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448279"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365389"
 ---
-# <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>MSIX uygulama iliştirme (Önizleme) için PowerShell betikleri oluşturma
-
-> [!IMPORTANT]
-> MSIX uygulama iliştirme Şu anda genel önizlemededir.
-> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="create-powershell-scripts-for-msix-app-attach"></a>MSIX uygulama iliştirme için PowerShell betikleri oluşturma
 
 Bu konu başlığı altında, MSIX uygulama iliştirme için PowerShell betikleri ayarlama işleminde size yol gösterilir.
 

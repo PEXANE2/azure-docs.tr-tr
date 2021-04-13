@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 04/09/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: Şirket içi, OCR, Docker, kapsayıcı
-ms.openlocfilehash: 53d59822b378a658f8b6c048de1a32db53a795d1
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 1b4af5dddf8878118bc5f222532cc9e2d0f9dd66
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285731"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308789"
 ---
-# <a name="install-read-ocr-docker-containers-preview"></a>Okuma OCR Docker kapsayıcılarını (Önizleme) yükler 
+# <a name="install-read-ocr-docker-containers"></a>Okuma OCR Docker Kapsayıcıları 'nı yükler
 
 [!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
 
@@ -27,12 +27,9 @@ Kapsayıcılar, Görüntü İşleme API’lerini kendi ortamınızda çalıştı
 
 *Okuma* OCR KAPSAYıCıSı, JPEG, PNG, BMP, PDF ve TIFF dosya biçimleri desteğiyle, görüntülerden ve belgelerden yazdırılmış ve el yazısı metinleri ayıklamanızı sağlar. Daha fazla bilgi için bkz. [API nasıl yapılır Kılavuzu](Vision-API-How-to-Topics/call-read-api.md).
 
-## <a name="read-32-preview-container"></a>Okuma 3,2-Önizleme kapsayıcısı
+## <a name="read-32-container"></a>3,2 kapsayıcısını oku
 
-> [!NOTE]
-> Okuma 3,0-Önizleme kapsayıcısı kullanım dışı bırakılmıştır. 
-
-Okuma 3,2-Önizleme OCR kapsayıcısı şunları sağlar:
+Okuma 3,2 OCR kapsayıcısı şunları sağlar:
 * Gelişmiş doğruluk için yeni modeller.
 * Aynı belge içinde birden çok dil desteği.
 * Toplam 73 dil desteği. [OCR tarafından desteklenen dillerin](./language-support.md#optical-character-recognition-ocr)tam listesine bakın.
@@ -62,7 +59,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Kapsayıcıyı çalıştırmak için onay istemek üzere [istek formunu](https://aka.ms/csgate) doldurun ve iletin. 
 
-[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to run the container](../../../includes/cognitive-services-containers-request-access.md)]
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -92,16 +89,16 @@ Okuma için kapsayıcı görüntüleri kullanılabilir.
 | Kapsayıcı | Container Registry/depo/görüntü adı |
 |-----------|------------|
 | Okuma 2,0-Önizleme | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Okuma 3,2-Önizleme | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2` |
+| 3,2 okuyun | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2` |
 
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)Bir kapsayıcı görüntüsünü indirmek için komutunu kullanın.
 
 ### <a name="docker-pull-for-the-read-ocr-container"></a>Okuma OCR kapsayıcısı için Docker çekme
 
-# <a name="version-32-preview"></a>[Sürüm 3,2-Önizleme](#tab/version-3-2)
+# <a name="version-32"></a>[Sürüm 3,2](#tab/version-3-2)
 
 ```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2
 ```
 
 # <a name="version-20-preview"></a>[Sürüm 2,0-Önizleme](#tab/version-2)
@@ -127,11 +124,11 @@ Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine
 
 Komut [örnekleri](computer-vision-resource-container-config.md#example-docker-run-commands) `docker run` mevcuttur.
 
-# <a name="version-32-preview"></a>[Sürüm 3,2-Önizleme](#tab/version-3-2)
+# <a name="version-32"></a>[Sürüm 3,2](#tab/version-3-2)
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -189,9 +186,9 @@ Bağlantı dizenizi bulmak için:
 
 Kapsayıcı REST tabanlı sorgu tahmin uç noktası API’lerini sağlar. 
 
-# <a name="version-32-preview"></a>[Sürüm 3,2-Önizleme](#tab/version-3-2)
+# <a name="version-32"></a>[Sürüm 3,2](#tab/version-3-2)
 
-Kapsayıcı API’leri için `http://localhost:5000` konağını kullanın. Swagger yolunu şurada görebilirsiniz: `http://localhost:5000/swagger/vision-v3.2-preview-read/swagger.json` .
+Kapsayıcı API’leri için `http://localhost:5000` konağını kullanın. Swagger yolunu şurada görebilirsiniz: `http://localhost:5000/swagger/vision-v3.2-read/swagger.json` .
 
 # <a name="version-20-preview"></a>[Sürüm 2,0-Önizleme](#tab/version-2)
 
@@ -202,7 +199,7 @@ Kapsayıcı API’leri için `http://localhost:5000` konağını kullanın. Swag
 ### <a name="asynchronous-read"></a>Zaman uyumsuz okuma
 
 
-# <a name="version-32-preview"></a>[Sürüm 3,2-Önizleme](#tab/version-3-2)
+# <a name="version-32"></a>[Sürüm 3,2](#tab/version-3-2)
 
 `POST /vision/v3.2/read/analyze` `GET /vision/v3.2/read/operations/{operationId}` Görüntü işleme hizmetinin ilgili Rest işlemlerini nasıl kullandığına benzer şekilde bir görüntüyü zaman uyumsuz olarak okumak için konser içindeki ve işlemlerini kullanabilirsiniz. Zaman uyumsuz POST yöntemi, `operationId` HTTP GET isteğine tanımlayıcı olarak kullanılan bir döndürür.
 
@@ -398,7 +395,7 @@ Zaman uyumsuz GÖNDERI başarıyla çalıştırıldığında, bir **HTTP 202** d
 
 Bir görüntüyü eşzamanlı olarak okumak için aşağıdaki işlemi kullanabilirsiniz. 
 
-# <a name="version-32-preview"></a>[Sürüm 3,2-Önizleme](#tab/version-3-2)
+# <a name="version-32"></a>[Sürüm 3,2](#tab/version-3-2)
 
 `POST /vision/v3.2/read/syncAnalyze` 
 
@@ -443,7 +440,7 @@ Bu seçenekler hakkında daha fazla bilgi için bkz. [kapsayıcıları yapıland
 Bu makalede, Görüntü İşleme kapsayıcıları indirmek, yüklemek ve çalıştırmak için kavramları ve iş akışını öğrendiniz. Özet:
 
 * Görüntü İşleme, Docker için bir Linux kapsayıcısı sağlar ve bu da kapsülleme okur.
-* Kapsayıcı görüntüleri, Azure 'daki "kapsayıcı önizlemesi" kapsayıcı kayıt defterinden indirilir.
+* Okuma kapsayıcı görüntüsü bir uygulamanın çalıştırmasını gerektirir. 
 * Kapsayıcı görüntüleri Docker 'da çalışır.
 * Kapsayıcının ana bilgisayar URI 'sini belirterek, okuma OCR kapsayıcılarındaki işlemleri çağırmak için REST API ya da SDK kullanabilirsiniz.
 * Bir kapsayıcıyı örnekledikten sonra faturalandırma bilgilerini belirtmeniz gerekir.

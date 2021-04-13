@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: e4e1d22e2e7175135e88a08ed5a6d5ae7f021d49
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 514f1af2a1b120254840986fc5ceb803dfc24345
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491295"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363385"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Sanal makineler için Azure oto yönetimi
 
@@ -59,6 +59,7 @@ Oto yönetimi yalnızca aşağıdaki bölgelerde bulunan VM 'Leri destekler:
 * Güney Birleşik Krallık
 * AU Doğu
 * AU Güneydoğu
+* Güneydoğu Asya
 
 ### <a name="required-rbac-permissions"></a>Gerekli RBAC izinleri
 Hesabınız, yeni bir oto Yönet hesabıyla, oto yönetimi etkinleştirip etkinleştirdiğinize bağlı olarak biraz farklı RBAC rolü gerektirir.
@@ -105,7 +106,7 @@ Ayrıca, yerleşik Azure Ilkesini kullanarak VM 'lerde ölçek üzerinde de oto 
 1. İlke tanımını görüntülerken **ata** düğmesine tıklayın
 1. İlkeyi uygulamak istediğiniz kapsamı seçin (Yönetim grubu, abonelik veya kaynak grubu olabilir)
 1. **Parametreler** altında, oto Yönet hesabı, yapılandırma profili ve efekt için parametreleri belirtin (etki genellikle DeployIfNotExists olmalıdır)
-    1. Bir oto Yönet hesabınız yoksa, [oluşturmanız](#create-an-automanage-account)gerekir.
+    1. Bir oto Yönet hesabınız yoksa, [oluşturmanız](./automanage-account.md)gerekir.
 1. **Düzeltme** altında "bir düzeltme görevini tıklatın" onay kutusunu işaretleyin. Bu, oto yönetimi için ekleme gerçekleştirecek.
 1. **Gözden geçir + oluştur** ' a tıklayın ve tüm ayarların iyi görünmesini sağlayın.
 1. **Oluştur**’a tıklayın.
@@ -142,58 +143,9 @@ Katılan Azure hizmetlerinin tüm listesi ve tercihleri destekliyorsa, buraya ba
 
 ## <a name="automanage-account"></a>Hesabı oto Yönet
 
-Otomatikmanage hesabı, güvenlik bağlamına veya otomatik işlemlerin oluştuğu kimliğe sahiptir. Genellikle, hesabı otomatik Yönet seçeneği, seçmeniz için gereksizdir, ancak kaynaklarınızın otomatik yönetimini bölmek istediğiniz bir yetkilendirme senaryosu varsa (Belki iki sistem yöneticisi arasında), bu seçenek bu yöneticilerin her biri için bir Azure kimliği tanımlamanızı sağlar.
+Otomatikmanage hesabı, güvenlik bağlamına veya otomatik işlemlerin oluştuğu kimliğe sahiptir. Genellikle, hesabı otomatik Yönet seçeneği gereksizdir, ancak kaynaklarınızın otomatik yönetimini bölmek istediğiniz bir yetkilendirme senaryosu varsa (Belki iki sistem yöneticisi arasında), etkinleştirme akışındaki hesabı otomatik Yönet seçeneği bu yöneticilerin her biri için bir Azure kimliği tanımlamanızı sağlar.
 
-Azure portal deneyiminde, sanal makinelerinizdeki oto yönetimini etkinleştirirken, el ile Yönet hesabı atamanıza veya el ile oluşturmanıza imkan tanıyan, **Azure VM en iyi uygulama** dikey penceresinde gelişmiş bir açılan menü bulunur.
-
-Oto Yönet hesabına hem **katkıda bulunan** hem de **kaynak ilkesi katılımcısı** rollerinin, sizin eklediğiniz makineleri içeren abonelikler (ler) e-olarak verilmesi sağlanır. Tüm aboneliklerde hesap **katılımcısı** ve **kaynak ilkesi katkıda** bulunan izinlerini oto yönetmesine izin veren birden çok abonelik genelinde makinelerde aynı oto Yönet hesabını kullanabilirsiniz.
-
-VM 'niz başka bir abonelikteki bir Log Analytics çalışma alanına bağlıysa, oto Yönet hesabına hem **katkıda** bulunan hem de **kaynak ilkesi katılımcısı** da bu diğer abonelikte de verilecektir.
-
-Yeni bir bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, aboneliğiniz üzerinde aşağıdaki izinlere sahip olmanız gerekir: **sahip** rolü veya **katkıda bulunan** **Kullanıcı erişimi yönetici** rolleriyle birlikte.
-
-Var olan bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, VM 'lerinizi içeren kaynak grubunda **katkıda** bulunan rolüne sahip olmanız gerekir.
-
-> [!NOTE]
-> En Iyi Yönet uygulamalarını devre dışı bıraktığınızda, tüm ilişkili aboneliklerdeki hesap izinlerini oto Yönet olarak kalır. Aboneliğin ıAM sayfasına gidip izinleri el ile kaldırın veya tekrar Yönet hesabını silin. Hala herhangi bir makine yönetiliyorsa, oto Yönet hesabı silinemez.
-
-### <a name="create-an-automanage-account"></a>Bir oto Yönet hesabı oluşturun
-Portalı kullanarak veya bir ARM şablonu kullanarak bir oto Yönet hesabı oluşturabilirsiniz.
-
-#### <a name="portal"></a>Portal
-1. Portalda, **oto Yönet** dikey penceresine gidin
-1. **Mevcut makinede etkinleştir** ' e tıklayın
-1. **Gelişmiş**' in altında "yeni hesap oluştur" a tıklayın.
-1. Gerekli alanları doldurup **Oluştur** ' a tıklayın.
-
-#### <a name="arm-template"></a>ARM şablonu
-Aşağıdaki ARM şablonunu farklı kaydedin `azuredeploy.json` ve şu komutu çalıştırın: `az deployment group create --resource-group <resource group name> --template-file azuredeploy.json`
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "automanageAccountName": {
-            "type": "String"
-        },
-        "location": {
-            "type": "String"
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2020-06-30-preview",
-            "type": "Microsoft.Automanage/accounts",
-            "name": "[parameters('automanageAccountName')]",
-            "location": "[parameters('location')]",
-            "identity": {
-                "type": "SystemAssigned"
-            }
-        }
-    ]
-}
-```
+Oto Yönet hesabı ve bir hesap oluşturma hakkında daha fazla bilgi edinmek için, [hesabı oto Yönet belgesini](./automanage-account.md)ziyaret edin.
 
 ## <a name="status-of-vms"></a>VM 'lerin durumu
 
@@ -227,7 +179,7 @@ Kabul etmiş önce **devre dışı bırakmak** için ortaya çıkan açılan pen
 >
 > - VM 'nin yapılandırması ve bu hizmetin değişeklendi.
 > - Bu hizmetler tarafından tahakkuk eden ücretler faturalandırılabilir ve tahakkuk olmaya devam eder.
-> - Tüm Oto yönetimi davranışları hemen durdurulur.
+> - Oto yönetimi, DRFT izlemeyi hemen durduruyor.
 
 
 İlk ve daha önce, sanal makineyi eklendi ve yapılandırdığımız hizmetlerden herhangi birinden kurmayacak. Bu nedenle, bu hizmetler tarafından tahakkuk eden ücretler faturalandırılabilir olmaya devam edecektir. Gerekirse Pano 'ya ihtiyacınız olacaktır. Herhangi bir oto yönetimi davranışı hemen durdurulur. Örneğin, artık VM 'yi DRFT için izliyoruz.

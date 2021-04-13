@@ -8,12 +8,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 16433d5b148d7bc441e375591c64af497cd7b8de
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 90ee39039b0734bf434e7339a973358989c08175
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505349"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311371"
 ---
 # <a name="access-config-server-and-service-registry"></a>Erişim yapılandırması sunucusu ve hizmet kayıt defteri
 
@@ -47,15 +47,15 @@ Azure Spring Cloud Data Reader rolü atandıktan sonra, müşteriler Spring Clou
     ```
 2. Uç noktası oluşturun. Spring Cloud config Server ve Spring Cloud Service kayıt defteri 'nin Azure Spring Cloud tarafından yönetilen varsayılan uç noktalarını destekliyoruz. Daha fazla bilgi için bkz. [üretime hazırlık uç noktaları](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-endpoints). Müşteriler, uç noktalara erişerek Azure Spring Cloud tarafından yönetilen Spring Cloud config Server ve Spring Cloud Service kayıt defterinin tam listesini de alabilir:
 
-    * *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/*
-    * *https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/* 
+    * *'https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/'*
+    * *'https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/'* 
 
 >[!NOTE]
 > Azure Çin kullanıyorsanız lütfen `*.azuremicroservices.io` ile değiştirin `*.microservices.azure.cn` , [daha fazla bilgi edinin](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure).
 
 3. Oluşturulan uç noktaya erişim belirteciyle erişin. Erişim belirtecini yetkilendirme sağlamak için bir üstbilgiye koyun.  Yalnızca "GET" yöntemi desteklenir.
 
-    Örneğin, *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/health* Eureka sistem durumunu görmek için gibi bir uç noktaya erişin.
+    Örneğin, Eureka sistem durumunu görmek için *' https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/health '* gibi bir uç noktaya erişin.
 
     Yanıt *401* ise, rolün başarıyla atanıp atanmadığından emin olun.  Rolün etkili olması veya erişim belirtecinin sona ermediğinden emin olmak birkaç dakika sürer.
 

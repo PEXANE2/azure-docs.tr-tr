@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67018a2ec6b9239661a7022ad7fb9eeb6c9a5f64
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 756e5e96a8040fb3d93273a5521236d46879e60d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385590"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306390"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>Hazırlanan dağıtım kullanarak bulut kimlik doğrulamasına geçiş
 
@@ -92,7 +92,7 @@ Aşağıdaki senaryolar hazırlanan dağıtım için desteklenmez:
 - Windows 10 hibrit JOIN veya Azure AD JOIN birincil yenileme belirteci alma, kullanıcının şirket içi UPN 'si yönlendirilebilir olmadığında. Bu senaryo, hazırlanan dağıtım modundayken WS-Trust uç noktasına geri dönecektir, ancak hazırlanan geçiş tamamlandığında ve Kullanıcı oturum açma artık federasyon sunucusuna bağlı olmadığında çalışmayı durduracaktır.
 
   >[!NOTE]
-  >Azure AD Connect veya PowerShell kullanarak, Federasyon kimlik doğrulamasından en son tam geçişi ' i yine de yapmanız gerekir. Hazırlanan dağıtım etki alanlarını federe 'dan yönetilene geçmez.  Etki alanı cutover hakkında daha fazla bilgi için bkz. [Federasyon 'dan Parola karması eşitlemesine geçiş](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) ve [Federasyondan geçişli kimlik doğrulamasına geçirme](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
+  >Azure AD Connect veya PowerShell kullanarak, Federasyon kimlik doğrulamasından en son tam geçişi ' i yine de yapmanız gerekir. Hazırlanan dağıtım etki alanlarını federe 'dan yönetilene geçmez.  Etki alanı cutover hakkında daha fazla bilgi için bkz. [Federasyon 'dan parola karma eşitlemesine geçiş](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) ve [Federasyondan geçişli kimlik doğrulamaya](plan-migrate-adfs-pass-through-authentication.md#step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso)geçiş.
   
 ## <a name="get-started-with-staged-rollout"></a>Hazırlanan piyasaya çıkma ile çalışmaya başlama
 

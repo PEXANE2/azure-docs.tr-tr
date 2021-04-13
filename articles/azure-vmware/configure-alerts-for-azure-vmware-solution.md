@@ -3,16 +3,16 @@ title: Azure VMware çözümünde uyarıları yapılandırma ve ölçülerle ça
 description: Bildirimleri almak için uyarıları nasıl kullanacağınızı öğrenin. Ayrıca, Azure VMware Çözüm özel bulutunuz hakkında daha derin Öngörüler elde etmek için ölçümlerle nasıl çalışacağınızı öğrenin.
 ms.topic: how-to
 ms.date: 04/02/2021
-ms.openlocfilehash: f021662658399111187e9963fc5caec434fabf4a
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 486f25eba017b2d4e37c0796909a0d26adee6ba8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096884"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309637"
 ---
 # <a name="configure-azure-alerts-in-azure-vmware-solution"></a>Azure VMware çözümünde Azure uyarılarını yapılandırma 
 
-Bu makalede, [Microsoft Azure uyarılarında](/azure/azure-monitor/alerts/alerts-overvie) [Azure eylem gruplarını](/azure/azure-monitor/alerts/action-groups) , tanımladığınız tetiklenmiş olayların bildirimlerini almak için nasıl yapılandıracağınızı öğreneceksiniz. Azure VMware Çözüm özel bulutunuz hakkında daha derin öngörüler edinmek için [Azure Izleyici ölçümlerini](/azure/azure-monitor/essentials/data-platform-metrics) kullanma hakkında da bilgi edineceksiniz.
+Bu makalede, [Microsoft Azure uyarılarında](/azure/azure-monitor/alerts/alerts-overview) [Azure eylem gruplarını](/azure/azure-monitor/alerts/action-groups) , tanımladığınız tetiklenmiş olayların bildirimlerini almak için nasıl yapılandıracağınızı öğreneceksiniz. Azure VMware Çözüm özel bulutunuz hakkında daha derin öngörüler edinmek için [Azure Izleyici ölçümlerini](/azure/azure-monitor/essentials/data-platform-metrics) kullanma hakkında da bilgi edineceksiniz.
 
 
 ## <a name="supported-metrics-and-activities"></a>Desteklenen ölçümler ve Etkinlikler

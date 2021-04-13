@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 566ca1598857f67e25faea9f19d134c4a91bfb18
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: be4348359e6b53c3e7454e9ab7c1af8ce8a7020a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106556261"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305570"
 ---
 # <a name="manage-vm-tags-on-azure-stack-edge-via-azure-powershell"></a>Azure Stack Edge üzerinde VM etiketlerini Azure PowerShell aracılığıyla yönetme
 
@@ -36,17 +36,7 @@ Bir VM 'yi PowerShell aracılığıyla cihazınıza dağıtabilmeniz için önce
 
 ## <a name="verify-connection-to-local-azure-resource-manager"></a>Yerel Azure Resource Manager bağlantıyı doğrulama
 
-Aşağıdaki adımların, cihazınızdan cihaza erişmek için kullanılabilir olduğundan emin olun.
-
-İstemcinizin yerel Azure Resource Manager bağlanabildiğini doğrulayın. 
-
-1. Kimlik doğrulamak için yerel cihaz API 'Lerini çağırın:
-
-    ```powershell
-    login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d  
-    ```
-
-1. `EdgeArmUser`Azure Resource Manager üzerinden bağlanmak için Kullanıcı adını ve parolayı belirtin. Parolayı geri çağırmıyorsanız, [Azure Resource Manager parolasını sıfırlayın](azure-stack-edge-gpu-set-azure-resource-manager-password.md) ve bu parolayı kullanarak oturum açın.
+[!INCLUDE [azure-stack-edge-gateway-verify-azure-resource-manager-connection](../../includes/azure-stack-edge-gateway-verify-azure-resource-manager-connection.md)]
 
 
 ## <a name="add-a-tag-to-a-vm"></a>VM 'ye etiket ekleme

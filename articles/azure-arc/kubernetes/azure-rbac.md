@@ -7,16 +7,16 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Azure Arc etkin Kubernetes kümelerinde yetkilendirme denetimleri için Azure RBAC kullanma
-ms.openlocfilehash: bd8029cb2772a6f6bd9821abe6acf69c9c08599d
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 0ee5f86ce12a39d86754d2e6e88263d8a03a012b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106451193"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304214"
 ---
-# <a name="azure-rbac-for-azure-arc-enabled-kubernetes-clusters"></a>Azure için Azure RBAC yay etkin Kubernetes kümeleri
+# <a name="integrate-azure-active-directory-with-azure-arc-enabled-kubernetes-clusters"></a>Azure Arc etkin Kubernetes kümeleriyle Azure Active Directory tümleştirme
 
-Kubernetes [Clusterrolebinding ve rolebinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) nesne türleri, Kubernetes 'te yerel olarak yetkilendirme tanımlamaya yardımcı olur. Azure RBAC ile, kümedeki yetkilendirme denetimlerini denetlemek için Azure 'daki Azure Active Directory ve rol atamalarını kullanabilirsiniz. Bu, artık dağıtım, Pod ve hizmet gibi Kubernetes nesnelerinizi okuma, yazma ve silme işlemlerini bir daha fazla denetim için Azure rol atamalarını kullanabilirsiniz.
+Kubernetes [Clusterrolebinding ve rolebinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) nesne türleri, Kubernetes 'te yerel olarak yetkilendirme tanımlamaya yardımcı olur. Bu özelliği kullanarak, kümedeki yetkilendirme denetimlerini denetlemek için Azure 'daki Azure Active Directory ve rol atamalarını kullanabilirsiniz. Bu, artık dağıtım, Pod ve hizmet gibi Kubernetes nesnelerinizi okuma, yazma ve silme işlemlerini bir daha fazla denetim için Azure rol atamalarını kullanabilirsiniz.
 
 [Azure RBAC-Azure Arc etkin Kubernetes](conceptual-azure-rbac.md) makalesinde bu özelliğe kavramsal bir genel bakış sunulmaktadır.
 
@@ -274,10 +274,10 @@ Azure Arc etkin Kubernetes kaynağı sahipleri, diğer kullanıcılara Kubernete
 
 | Rol | Açıklama |
 |---|---|
-| Azure Arc Kubernetes Görüntüleyici | Bir ad alanındaki birçok nesneyi görmek için salt okuma erişimine izin verir. Bu rol, parolaların görüntülenmesine izin vermez. Bunun nedeni, `read` Gizli `ServiceAccount` dizi izinlerinin ad alanındaki kimlik bilgilerine erişimini olanaklı hale, bu da `ServiceAccount` (bir ayrıcalık yükseltme BIÇIMI) kullanarak API erişimine izin vermeyi sağlayacaktır. |
-| Azure Arc Kubernetes yazıcı | Bir ad alanındaki nesnelerin çoğuna okuma/yazma erişimi sağlar. Bu rol, rolleri veya rol bağlamalarını görüntülemeye veya değiştirmeye izin vermez. Bununla birlikte, bu rol, ad alanı içinde her türlü `ServiceAccount` API erişim düzeylerini elde etmek için kullanılabilir `ServiceAccount` . |
-| Azure Arc Kubernetes Yöneticisi | Yönetici erişimine izin verir. RoleBinding kullanılarak bir ad alanı içinde verilmek üzere tasarlanmıştır. Bir RoleBinding içinde kullanılırsa, ad alanı içinde rol ve rol bağlamaları oluşturma özelliği de dahil olmak üzere bir ad alanındaki kaynakların çoğuna okuma/yazma erişimi sağlar. Bu rol, kaynak kotasına veya ad alanının kendine yazma erişimine izin vermez. |
-| Azure Arc Kubernetes Küme Yöneticisi | Süper Kullanıcı erişiminin herhangi bir kaynakta herhangi bir eylemi yürütmesine izin verir. Bir ClusterRoleBinding içinde kullanıldığında, kümedeki her kaynak ve tüm ad alanlarında tam denetim sağlar. Bir RoleBinding 'te kullanıldığında, rol bağlamanın ad alanındaki her kaynak için ad alanının kendisi de dahil olmak üzere tam denetim sağlar.|
+| [Azure Arc Kubernetes Görüntüleyici](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-viewer) | Bir ad alanındaki birçok nesneyi görmek için salt okuma erişimine izin verir. Bu rol, parolaların görüntülenmesine izin vermez. Bunun nedeni, `read` Gizli `ServiceAccount` dizi izinlerinin ad alanındaki kimlik bilgilerine erişimini olanaklı hale, bu da `ServiceAccount` (bir ayrıcalık yükseltme BIÇIMI) kullanarak API erişimine izin vermeyi sağlayacaktır. |
+| [Azure Arc Kubernetes yazıcı](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-writer) | Bir ad alanındaki nesnelerin çoğuna okuma/yazma erişimi sağlar. Bu rol, rolleri veya rol bağlamalarını görüntülemeye veya değiştirmeye izin vermez. Bununla birlikte, bu rol, ad alanı içinde her türlü `ServiceAccount` API erişim düzeylerini elde etmek için kullanılabilir `ServiceAccount` . |
+| [Azure Arc Kubernetes Yöneticisi](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-admin) | Yönetici erişimine izin verir. RoleBinding kullanılarak bir ad alanı içinde verilmek üzere tasarlanmıştır. Bir RoleBinding içinde kullanılırsa, ad alanı içinde rol ve rol bağlamaları oluşturma özelliği de dahil olmak üzere bir ad alanındaki kaynakların çoğuna okuma/yazma erişimi sağlar. Bu rol, kaynak kotasına veya ad alanının kendine yazma erişimine izin vermez. |
+| [Azure Arc Kubernetes Küme Yöneticisi](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-cluster-admin) | Süper Kullanıcı erişiminin herhangi bir kaynakta herhangi bir eylemi yürütmesine izin verir. Bir ClusterRoleBinding içinde kullanıldığında, kümedeki her kaynak ve tüm ad alanlarında tam denetim sağlar. Bir RoleBinding 'te kullanıldığında, rol bağlamanın ad alanındaki her kaynak için ad alanının kendisi de dahil olmak üzere tam denetim sağlar.|
 
 Azure portal küme kaynağının dikey penceresinde yay etkinleştirilmiş Kubernetes kümesi kapsamındaki rol atamaları oluşturabilirsiniz `Access Control (IAM)` . Azure CLı komutlarını aşağıda gösterildiği gibi da kullanabilirsiniz:
 

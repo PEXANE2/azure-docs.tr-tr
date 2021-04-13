@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/22/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 686274bc90f516f597a397a6b0270fb638e30c95
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 7f35f9196fb4ab67de724ba73982fed69ac81361
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027719"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306849"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir Python geliştirme ortamı ayarlama
 
@@ -104,7 +104,7 @@ Yerel bir geliştirme ortamını veya uzak VM 'yi yapılandırmak için:
 
 Yerel ortamınız ayarlamış olduğunuza göre artık Azure Machine Learning çalışmaya başlamaya hazırsınız. Başlamak için [Python başlangıç kılavuzu Azure Machine Learning](tutorial-1st-experiment-sdk-setup-local.md) bakın.
 
-### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter Notebooks
+### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyıter Not defterleri
 
 Yerel bir Jupyter Notebook sunucusu çalıştırırken, Python sanal ortamınız için bir IPython çekirdeği oluşturmanız önerilir. Bu, beklenen çekirdek ve paket içeri aktarma davranışının sağlanmasına yardımcı olur.
 

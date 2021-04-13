@@ -10,18 +10,18 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 04/04/2021
-ms.openlocfilehash: a26f46da7b392bd3b4a49aacb360a4c6147f8d2c
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 92d1534b5dd0233ce88b81d605c6502b67a121df
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382649"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307903"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>SYNAPSE bilgi merkezini araştırma
 
 Bu öğreticide, SYNAPSE Studio bilgi merkezini kullanmayı öğreneceksiniz.
 
-## <a name="getting-to-the-knowledge-center"></a>Bilgi merkezine alma
+## <a name="introduction-to-the-knowledge-center"></a>Bilgi merkezine giriş
 
 SYNAPSE Studio 'da bilgi merkezini bulmanın iki yolu vardır:
 
@@ -30,16 +30,19 @@ SYNAPSE Studio 'da bilgi merkezini bulmanın iki yolu vardır:
 
 Herhangi bir yöntemi seçin ve **bilgi merkezini** açın.
 
-## <a name="overview"></a>Genel Bakış
-
-**Bilgi Merkezi** , üç şey yapmanıza olanak sağlar:
+Görünür olduktan sonra, **Bilgi Merkezi** 'nin üç şey yapmanıza izin verdiğini görürsünüz:
 * **Örnekleri hemen kullanın**. SYNAPSE 'in nasıl çalıştığına ilişkin hızlı bir örnek istiyorsanız bu seçeneği belirleyin.
 * **Galeriye gözatamazsınız**. Bu seçenek, örnek veri kümelerini bağlamanızı ve SQL betikleri, Not defterleri ve işlem hatları biçiminde örnek kod eklemenizi sağlar.
 * **Tur SYNAPSE Studio**. Bu seçenek sizi SYNAPSE Studio 'nun temel bölümlerinin kısa bir turuna götürür. Daha önce SYNAPSE Studio 'Yu kullanmadıysanız bu kullanışlıdır.
 
-## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>Sunucusuz SQL havuzuyla blob depolamayı keşfetme
+## <a name="exploring-use-samples-immediately"></a>Keşfetme: örnekleri hemen kullanın
 
-1. **Bilgi merkezine** gidin, **örnekleri hemen kullan**' a tıklayın.
+Bu bölümde üç öğe vardır:
+* Spark ile örnek verileri araştırma
+* SQL ile verileri sorgulama
+* SQL ile dış tablo oluşturma
+
+1. **Bilgi merkezinde**, **örnekleri hemen kullan**' a tıklayın.
 1. **SQL Ile sorgu verileri**' ni seçin.
 1. **Örnek kullan**' a tıklayın.
 1. Yeni bir örnek SQL betiği açılır.

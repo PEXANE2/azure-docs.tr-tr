@@ -35,6 +35,8 @@
           href: roles.md
         - name: Kaynaklara göre erişimi yönetme
           href: resource-context-rbac.md
+        - name: MSSP fikri özelliğini koru
+          href: mssp-protect-intellectual-property.md
     - name: Gelişmiş çok aşamalı saldırı algılama
       href: fusion.md
     - name: Otomasyon (SOAR)

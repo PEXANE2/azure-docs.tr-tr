@@ -26,6 +26,8 @@
           href: howto-create-private-cluster-4x.md
         - name: DNS iletmeyi yapılandırma
           href: dns-forwarding.md
+        - name: Çıkış trafiğini kısıtla
+          href: howto-restrict-egress.md
     - name: Depolama
       items:
         - name: PVC 'leri müşteri tarafından yönetilen anahtarla şifreleyin (Önizleme)

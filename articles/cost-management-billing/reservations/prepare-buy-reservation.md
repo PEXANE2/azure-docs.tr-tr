@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 04/12/2021
 ms.author: banders
-ms.openlocfilehash: a70d434b06fd19071f3576f9333579e0bd2b85e7
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 13a9e3ad1dcdfa230d757230e3fdea91e4ee9d23
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574983"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310402"
 ---
 # <a name="buy-a-reservation"></a>Ayırma satın alma
 
@@ -44,9 +44,9 @@ Gereksinimlerinize bağlı olarak bir rezervasyonu kapsama almak için üç seç
 
 Kullanımınıza rezervasyon indirimleri uygulanırken, Azure rezervasyonu aşağıdaki sırayla işler:
 
-1. Kaynak grubu kapsamındaki rezervasyonlar
-2. Tek kapsam rezervasyonları
-3. Paylaşılan kapsam rezervasyonları
+1. Tek bir kaynak grubu kapsamına sahip rezervasyonlar
+2. Tek bir abonelik kapsamına sahip rezervasyonlar
+3. Daha önce açıklanan paylaşılan kapsama sahip rezervasyonlar (birden çok abonelik)
 
 Rezervasyon satın aldıktan sonra her zaman kapsamı güncelleştirebilirsiniz. Bunu yapmak için rezervasyona gidin, **Yapılandırma**'ya tıklayın ve rezervasyon kapsamını yeniden belirleyin. Rezervasyon kapsamını yeniden belirlemek ticari bir işlem değildir. Rezervasyon süreniz değişmez. Kapsamı güncelleştirme hakkında daha fazla bilgi için bkz. [Rezervasyon satın aldıktan sonra kapsamı güncelleştirme](manage-reserved-vm-instance.md#change-the-reservation-scope).
 

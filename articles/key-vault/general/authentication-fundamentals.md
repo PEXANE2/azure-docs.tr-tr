@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 25f00024fb7371fd08bf6c4ceec3177cfaca029b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c43995a8b3a072d98db0ba2c8219694f17e49a26
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103572817"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363436"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault Kimlik Doğrulamasının temelleri
 
@@ -104,7 +104,7 @@ Ancak, klasik erişim ilkeleri nesne düzeyindeki izinler için izin vermez ve a
 > [!IMPORTANT]
 > Klasik Anahtar Kasası erişim ilkeleri ve Azure Active Directory rol atamaları birbirinden bağımsızdır. Güvenlik sorumlusu atama bir abonelik düzeyindeki ' katılımcı ' rolü otomatik olarak güvenlik sorumlusuna, abonelik kapsamındaki her anahtar kasasında veri düzlemi işlemleri gerçekleştirme imkanı vermez. Güvenlik sorumlusunun yine de verilmesi gerekir veya veri düzlemi işlemlerini gerçekleştirmek için kendilerine erişim ilkesi izinleri vermelidir.
 
-### <a name="data-plane-access-option-2--azure-rbac-for-key-vault-preview"></a>Veri düzlemi erişim seçeneği 2: Key Vault için Azure RBAC (Önizleme)
+### <a name="data-plane-access-option-2--azure-rbac-for-key-vault"></a>Veri düzlemi erişim seçeneği 2: Key Vault için Azure RBAC
 
 Anahtar Kasası veri düzlemine erişim vermek için yeni bir yol, Anahtar Kasası için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanmaktır.
 
