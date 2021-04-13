@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80ee161944a48135778d12942964a88455ab756e
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: d707106d66c77ad1f3a1156906add8bb85fd0ce0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055782"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305982"
 ---
 # <a name="continuous-access-evaluation"></a>Sürekli erişim değerlendirmesi
 
@@ -142,7 +142,7 @@ Bu sayfadan, önizlemeye tabi olacak kullanıcıları ve grupları isteğe bağl
 CAE için, yalnızca adlandırılmış IP tabanlı adlandırılmış konumlara ilişkin Öngörüler sunuyoruz. [MFA güvenilir IP 'leri](../authentication/howto-mfa-mfasettings.md#trusted-ips) veya ülke tabanlı konumlar gibi diğer konum ayarlarına yönelik Öngörüler bulunmamaktadır. Kullanıcı MFA güvenilir IP 'Leri veya ülke konumunu içeren güvenilir konumlardan veya Kullanıcı farklı bir konuma geçtikten sonra CAE uygulanmaz. Bu durumlarda, anlık IP zorlama denetimi olmadan 1 saatlik bir CAE belirteci yayımlayacağız.
 
 > [!IMPORTANT]
-> Sürekli erişim değerlendirmesi için konumları yapılandırırken yalnızca [IP tabanlı koşullu erişim konumu koşulunu](../conditional-access/location-condition.md#preview-features) kullanın ve **hem IPv4 hem de IPv6 dahil olmak üzere** kimlik sağlayıcınız ve kaynak SAĞLAYıCıNıZ tarafından görülebilen tüm IP adreslerini yapılandırın. Ülke konum koşullarını veya Azure AD Multi-Factor Authentication hizmet ayarları sayfasında bulunan güvenilir IP 'ler özelliğini kullanmayın.
+> Sürekli erişim değerlendirmesi için konumları yapılandırırken yalnızca [IP tabanlı koşullu erişim konumu koşulunu](../conditional-access/location-condition.md) kullanın ve **hem IPv4 hem de IPv6 dahil olmak üzere** kimlik sağlayıcınız ve kaynak SAĞLAYıCıNıZ tarafından görülebilen tüm IP adreslerini yapılandırın. Ülke konum koşullarını veya Azure AD Multi-Factor Authentication hizmet ayarları sayfasında bulunan güvenilir IP 'ler özelliğini kullanmayın.
 
 ### <a name="ip-address-configuration"></a>IP adresi yapılandırması
 

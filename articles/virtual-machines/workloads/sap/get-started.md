@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/17/2021
+ms.date: 04/12/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ab23b9c2ba4b4ef3c20188b2207d7718c30cfe6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99af5ff3add6d002f3a0e5efdb91215873b8d3c7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599893"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304231"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -82,6 +82,10 @@ Bu bölümde, Microsoft Power BI tümleştirme hakkındaki belgeleri SAP veri ka
 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
+- 04/12/2021: [SLES yapılandırma kılavuzunda Azure VM 'Lerinde Paceyapıcısı ile SAP HANA genişleme HSR](./sap-hana-high-availability-scale-out-hsr-suse.md) sürümü
+- 04/07/2021: [SAP NetWeaver Için Azure sanal MAKINELER DBMS dağıtımında](./dbms_guide_sqlserver.md) SQL Server çok örnekli ve çoklu veritabanı SQL Server desteğinin açıklığa kavuşturuldu desteği
+- 04/07/2021: [SAP NetWeaver Için Azure sanal makineler planlama ve uygulama](./planning-guide.md) 'DA ikincil IP adresleriyle ilgili bilgiler eklendi
+- 04/07/2021: [SAP iş yükü Için Azure depolama türlerinde](./planning-guide-storage.md) ANF 'de Oracle DBMS desteği desteği eklendi
 - 03/17/2021: [SLES 'Deki Azure VM 'lerinde SAP HANA Için ha](./sap-hana-high-availability.md)değiştirme, RHEL ve ha üzerinde Azure [VM 'lerinde SAP HANA için, Khel 'de azure sanal](./sap-hana-high-availability-rhel.md) makinelerinde [SAP HANA ölçeği ile](./sap-hana-high-availability-netapp-files-red-hat.md)
 - 03/15/2021: SAP ascs [/SCS ÖRNEĞINDE wsfc ve dosya paylaşımıyla](./sap-high-availability-guide-wsfc-file-share.md)değiştirin, SAP Ass/SCS örneği [ve hem](./sap-ascs-ha-multi-sid-wsfc-file-share.md) wsfc hem de dosya paylaşımıyla SAP Ass/SCS örneği, SAP ascs/SCS[örneği](./sap-high-availability-installation-wsfc-file-share.md) ve SOFS paylaşımının ayrı kümelerde dağıtılması gerektiğini açıklığa kavuşturun
 - 03/03/2021: SAP sistem yüklemesi sırasında SWPM çalıştıran kullanıcı için yükseltilmiş ayrıcalıkların gerekli olduğunu belirten bir uyarı eklemek için, [wsfc ve Azure NetApp Files (SMB) Ile SAP ASCS/SCS Için ha kılavuzunda](./high-availability-guide-windows-netapp-files-smb.md) değişiklik yapın

@@ -2,22 +2,22 @@
 title: include dosyası
 description: include dosyası
 services: expressroute
-author: duongau
+author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 12/05/2019
-ms.author: duau
+ms.date: 04/12/2021
+ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b1465b9bf855d592d195277b616c860a23c179f6
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 9ecbfc720f79c9e95b46af05bd6b1e49da0bd110
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504726"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107327428"
 ---
-| Ağ Geçidi SKU 'SU | Saniyedeki bağlantı sayısı | Akış sayısı | Saniye başına mega bit | Paket/saniye | Bağlantı hattı bant genişliği | Ağ Geçidi tarafından tanıtılan yolların sayısı (MSEE 'e) | Ağ Geçidi tarafından öğrenilen yolların sayısı (MSEE) | Sanal ağdaki sanal makinelerin sayısı |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Temel SKU (kullanım dışı)** | Yok | Yok | 500 | Yok | Yok | Yok | Yok | Yok |
-| **Standart SKU/ErGw1AZ** | 7.000 | 400,000 | >1.000 | >100.000 | 1 Gbps |  500 | 4.000 | 2.000 (bakım sırasında 1.000 ' e düşürün, daha sonra geri yükler.) | 
-| **Yüksek performanslı SKU/ErGw2AZ** | 14.000 | 840.000 | >2.000 | 250.000 | 1 Gbps | 500 | ~ 9.500 (Sanal ağda 6.500 ' den fazla VM varsa, 4.000 ' e düşürün.) | 4.500 |
-| **Ultra performans SKU 'SU/ErGw3AZ** | 16.000 | 950.000 | ~ 10.000 | 1.000.000 | 1 Gbps | 500 | ~ 9.500 | 11.000 |
+|  | **Megabit/saniye** | **Paket/saniye** | **Saniyedeki bağlantı sayısı** | **FastPath** | **En fazla devre bağlantı sayısı** |
+| --- | --- | --- | --- | --- | --- |
+| **Standart SKU/ErGw1AZ** |1.000 | 100.000 | 7.000 | Hayır | 4 |
+| **Yüksek performanslı SKU/ErGw2AZ** |2.000 | 250.000 | 14.000 | Hayır | 8 |
+| **Ultra performans SKU 'SU/ErGw3AZ** |10,000 | 1.000.000 | 28.000 | Yes | 16 |
+

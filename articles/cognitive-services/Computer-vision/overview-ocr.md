@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 03/29/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 3fff9f4bd34fc1defdb50f2eefbc8ac1f39b46af
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 41b3552a633c9cebce1138fa042dbd154eee0cb5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106287272"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314125"
 ---
 # <a name="what-is-optical-character-recognition"></a>Optik karakter tanıma nedir?
 
-Optik karakter tanıma (OCR) hizmeti, belge &mdash; faturalarından, faturanız, finansal raporlardan, Makalelerden ve daha birçok yerden, lisans levhalarının ve seri numaralarının fotoğraflarından oluşan fotoğraflar gibi yazdırılmış veya el yazısı metinleri ayıklamanızı sağlar. Derin öğrenme tabanlı modeller kullanır ve çeşitli yüzeyler ve arka planlar üzerinde metinle birlikte çalışmaktadır.
+Optik karakter tanıma (OCR) hizmeti, yazdırılmış veya el yazısı metinleri cadde işaretleri ve ürünlerin fotoğraflarından, Ayrıca belgeler &mdash; faturalarından, faturalardan, finansal raporlardan, Makalelerden ve daha fazlasına ayıklamanızı sağlar. Derin öğrenme tabanlı modeller kullanır ve çeşitli yüzeyler ve arka planlar üzerinde metinle birlikte çalışmaktadır.
 
 OCR API 'Leri, yazdırılan metnin [birkaç dilde](./language-support.md)ayıklanarak desteklenir. Başlamak için [hızlı](./quickstarts-sdk/client-library.md) başlangıcı izleyin.
 
@@ -46,7 +46,7 @@ OCR API 'Leri, yazdırma stili metni için toplam 73 dili destekler. [OCR taraf�
 
 ## <a name="read-api"></a>API 'YI oku 
 
-Görüntü İşleme [okuma API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) 'Si, Azure 'un en son OCR teknolojisidir[(yenilikler),](./whats-new.md)yazdırılan metni (bazı dillerde), el yazısı metin (yalnızca İngilizce), rakamları ve görüntü ve çok sayfalı PDF belgelerinden gelen para birimi sembollerini ayıklar. Metin açısından kalın görüntülerden ve çok sayfalı PDF belgelerinden karışık dillerle metin ayıklamak en iyi duruma getirilmiştir. Aynı görüntüde veya belgede hem yazdırılmış hem de el yazısı metnin algılanmasının aynısını destekler.
+Görüntü İşleme [okuma API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005) 'Si, Azure 'un en son OCR teknolojisidir[(yenilikler),](./whats-new.md)yazdırılan metni (bazı dillerde), el yazısı metin (yalnızca İngilizce), rakamları ve görüntü ve çok sayfalı PDF belgelerinden gelen para birimi sembollerini ayıklar. Metin açısından kalın görüntülerden ve çok sayfalı PDF belgelerinden karışık dillerle metin ayıklamak en iyi duruma getirilmiştir. Aynı görüntüde veya belgede hem yazdırılmış hem de el yazısı metnin algılanmasının aynısını destekler.
 
 ![OCR, resimleri ve belgeleri ayıklanan metinle yapısal çıktıya dönüştürür](./Images/how-ocr-works.svg)
 
@@ -58,9 +58,7 @@ Görüntü İşleme [okuma API](https://westcentralus.dev.cognitive.microsoft.co
 
 ## <a name="ocr-api"></a>OCR APı 'SI
 
-Eski [OCR API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) , daha eski bir tanıma modeli kullanır, yalnızca görüntüleri destekler ve algılanan metinle anında dönerek zaman uyumlu olarak yürütülür. Desteklenen dillerin bir listesi için [desteklenen DILLERIN](./language-support.md#optical-character-recognition-ocr) OCR sütununa bakın.
-
-## <a name="recognizetext-api"></a>RecognizeText API 'SI
+Eski [OCR API 'si](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f20d) , daha eski bir tanıma modeli kullanır, yalnızca görüntüleri destekler ve algılanan metinle anında dönerek zaman uyumlu olarak yürütülür. Desteklenen dillerin bir listesi için [desteklenen DILLERIN](./language-support.md#optical-character-recognition-ocr) OCR sütununa bakın.
 
 > [!WARNING]
 > Görüntü İşleme 2,0 RecognizeText işlemleri, bu makalede ele alınan yeni [okuma API](#read-api) 'sinde kullanım dışı bırakılıyor sürecinde. Mevcut müşteriler [okuma işlemlerini kullanarak geçiş](upgrade-api-versions.md)yapması gerekir.
@@ -71,6 +69,5 @@ Tüm bilişsel hizmetlerde olduğu gibi, Görüntü İşleme hizmetini kullanan 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [OCR REST API veya istemci kitaplığı hızlı](./quickstarts-sdk/client-library.md)başlangıçlarını kullanmaya başlayın.
-- [Okuma 3,1 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)hakkında bilgi edinin.
-- Toplam 73 dil desteğiyle ilgili [okuma 3,2 genel önizleme REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005) hakkında bilgi edinin.
+- [OCR (okuma) REST API veya istemci kitaplığı hızlı](./quickstarts-sdk/client-library.md)başlangıçlarını kullanmaya başlayın.
+- [Okuma 3,2 REST API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)hakkında bilgi edinin.

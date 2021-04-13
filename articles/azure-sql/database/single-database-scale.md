@@ -10,19 +10,26 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 02/22/2021
-ms.openlocfilehash: c5b6509cabd743a01a085639a7b76d764555a9f8
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.date: 04/09/2021
+ms.openlocfilehash: 47686f457e2579ca8a643de6671c886effefa6f1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106662"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313530"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL Veritabanında tek veritabanı kaynaklarını ölçeklendirme
 
 Bu makalede, sağlanan işlem katmanında bir Azure SQL veritabanı için kullanılabilir işlem ve depolama kaynaklarının nasıl ölçeklendiriyapılacağı açıklanır. Alternatif olarak, [sunucusuz bilgi işlem katmanı](serverless-tier-overview.md) , kullanılan işlem için saniye başına işlem otomatik ölçeklendirme ve fatura sağlar.
 
-Sanal çekirdekler veya DTU sayısını ilk kez seçtikten sonra, [Azure Portal](single-database-manage.md#the-azure-portal), [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), [Azure CLI](/cli/azure/sql/db#az-sql-db-update)veya [REST API](/rest/api/sql/databases/update)kullanarak gerçek deneyime göre tek bir veritabanını dinamik olarak yukarı veya aşağı ölçeklendirdirebilirsiniz.
+Sanal çekirdekler veya DTU sayısını ilk kez seçtikten sonra, kullanarak gerçek deneyim temelinde tek bir veritabanını dinamik olarak yukarı veya aşağı ölçekleyebilirsiniz:
+
+* [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database)
+* [Azure portalı](single-database-manage.md#the-azure-portal)
+* [PowerShell](/powershell/module/az.sql/set-azsqldatabase)
+* [Azure CLI](/cli/azure/sql/db#az-sql-db-update)
+* [REST API](/rest/api/sql/databases/update)
+
 
 Aşağıdaki videoda, tek bir veritabanı için kullanılabilir DTU 'ları artırmak üzere hizmet katmanını ve işlem boyutunu dinamik olarak değiştirme gösterilmektedir.
 
@@ -125,7 +132,7 @@ Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından b
 
 ### <a name="vcore-based-purchasing-model"></a>Sanal çekirdek tabanlı satın alma modeli
 
-- Depolama, 1 GB 'lik artışlarla veri depolama maksimum boyut sınırına sağlanabilir. Yapılandırılabilir veri depolaması en az 1 GB 'dir. Her hizmet hedefi için [tek veritabanları](resource-limits-vcore-single-databases.md) ve [Esnek havuzlar](resource-limits-vcore-elastic-pools.md) için kaynak sınırı belge sayfalarına bakın.
+- Depolama, 1 GB 'lik artışlarla veri depolama maksimum boyut sınırına sağlanabilir. Yapılandırılabilir veri depolaması en az 1 GB 'dir. Her hizmet hedefi için veri depolama maksimum boyut sınırları için, bkz. tek veritabanlarına ait kaynak sınırları için kaynak sınırı belge sayfaları, [DTU satın alma modelini kullanarak tek veritabanlarının](resource-limits-dtu-single-databases.md) [sanal çekirdek satın alma modelini](resource-limits-vcore-single-databases.md) ve kaynak sınırlarını kullanarak.
 - Tek bir veritabanı için veri depolama, [Azure Portal](https://portal.azure.com), [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), [Azure CLI](/cli/azure/sql/db#az-sql-db-update)veya [REST API](/rest/api/sql/databases/update)kullanılarak en büyük boyutu arttırılarak veya azaltılarak sağlanabilir. En büyük boyut değeri bayt cinsinden belirtilirse, 1 GB (1073741824 bayt) katlarından biri olmalıdır.
 - Bir veritabanının veri dosyalarında depolanabilecek veri miktarı, yapılandırılan veri depolama maksimum boyutuyla sınırlıdır. Bu depolamaya ek olarak, Azure SQL veritabanı işlem günlüğü için kullanılmak üzere %30 daha fazla depolama alanı ayırır.
 - Azure SQL veritabanı, veritabanı için otomatik olarak 32 GB ayırır `tempdb` . `tempdb` , tüm hizmet katmanlarında yerel SSD depolamada bulunur.

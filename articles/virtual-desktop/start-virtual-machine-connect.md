@@ -3,15 +3,15 @@ title: Sanal makine bağlantısını Başlat-Azure
 description: Connect üzerinde sanal makineyi Başlat özelliği nasıl yapılandırılır.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/31/2021
+ms.date: 04/10/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d9ce9811cd660c9a9b1fcb6f9e24cadd65d3c2bc
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: d3ef8e3656051c4a99ab52a7b52a0d623fdf9ce2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445610"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303973"
 ---
 # <a name="start-virtual-machine-on-connect-preview"></a>Bağlantı sırasında sanal makineyi Başlat (Önizleme)
 
@@ -35,8 +35,7 @@ Aşağıdaki uzak masaüstü istemcileri, Connect üzerinde başlangıç sanal m
 
 [Teknik topluluk forumundaki](https://aka.ms/wvdtc)güncelleştirmeler ve istemci desteğiyle ilgili duyuruları kontrol edebilirsiniz.
 
->[!IMPORTANT]
->Connect üzerinde VM Başlat özelliği şu anda yalnızca PowerShell ve REST API destekler, Azure portal değil. Daha fazla bilgi için bkz. [konak havuzu oluşturma veya güncelleştirme](/rest/api/desktopvirtualization/hostpools/createorupdate).
+Azure Kamu bulutu, şu anda Connect üzerinde başlangıç VM 'yi desteklememektedir.
 
 ## <a name="create-a-custom-role-for-start-vm-on-connect"></a>Connect üzerinde başlangıç VM 'si için özel bir rol oluştur
 
@@ -115,6 +114,24 @@ Connect üzerinde VM 'yi Başlat bir konak havuzu ayarıdır. Yalnızca bir grup
 
 >[!IMPORTANT]
 > Bu özelliği yalnızca mevcut konak havuzlarında yapılandırabilirsiniz. Yeni bir konak havuzu oluşturduğunuzda bu özellik kullanılamaz.
+
+### <a name="use-the-azure-portal"></a>Azure portalını kullanma
+
+Connect üzerinde başlangıç sanal makinesini yapılandırmak üzere Azure portal kullanmak için:
+
+1. Tarayıcınızı açın ve [Azure Portal](https://portal.azure.com/?feature.startVMonConnect=true#home)gidin. Azure portal bir InPrivate pencerede açmanız önerilir.
+
+2. Azure portal **Windows sanal masaüstü**' ne gidin.
+
+3. **Konak havuzları**' nı seçin ve ardından rolün atandığı kişisel masaüstlerini içeren konak havuzunu bulun.
+
+   >[!NOTE]
+   > Bu özelliği yapılandırdığınız ana bilgisayar havuzunda doğrudan rol atamaları olan kişisel masaüstleri olmalıdır. Konak havuzundaki masaüstleri doğru yapılandırılmamışsa yapılandırma işlemi çalışmaz.
+
+4. Konak havuzunda **Özellikler**' i seçin. **Connect 'TE VM Başlat** altında **Evet**' i seçin ve sonra ayarı hemen uygulamak için **Kaydet** ' i seçin.
+
+    > [!div class="mx-imgBorder"]
+    > ![Özellikler penceresi ekran görüntüsü. Connect 'te VM Başlat seçeneği kırmızı renkle vurgulanır.](media/properties-start-vm-on-connect.png)
 
 ### <a name="use-powershell"></a>PowerShell kullanma
 

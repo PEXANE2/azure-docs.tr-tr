@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: f76d3b81c2d5425f7bb91c5c86a79faa097794e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36d6af7fb42bc1b705b44bdae6f24b454bfd242f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96435010"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312442"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Azure yönetilen uygulamalar için Portal arabiriminizi test etme
 
@@ -18,7 +18,7 @@ Yönetilen uygulamanız için [dosyada createUiDefinition.js](create-uidefinitio
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Dosyadaki bir **createUiDefinition.js** . Bu dosyaya sahip değilseniz [örnek dosyayı](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json)kopyalayın.
+* Dosyadaki bir **createUiDefinition.js** . Bu dosyaya sahip değilseniz [örnek dosyayı](https://github.com/Azure/azure-quickstart-templates/blob/master/demos/100-marketplace-sample/createUiDefinition.json)kopyalayın.
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 

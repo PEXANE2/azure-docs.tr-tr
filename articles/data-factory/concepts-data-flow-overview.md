@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 12/10/2020
-ms.openlocfilehash: 1529d2d546227880fee71d1823482e040d2e57c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/11/2021
+ms.openlocfilehash: 53f300adb57eb17e704e7e3323b9829c485bb87a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103564329"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308991"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşleme
 
@@ -96,66 +96,6 @@ Hata ayıklama modu, veri akışlarınızı oluştururken ve hata ayıkladığı
 Eşleme veri akışı, mevcut Azure Data Factory izleme özellikleri ile tümleşir. Veri akışı izleme çıkışını nasıl anlayacağınızı öğrenmek için bkz. [eşleme veri akışlarını izleme](concepts-data-flow-monitoring.md).
 
 Azure Data Factory ekibi, iş mantığınızı oluşturduktan sonra veri akışlarınızın yürütme süresini iyileştirmenize yardımcı olmak için bir [performans ayarlama Kılavuzu](concepts-data-flow-performance.md) oluşturdu.
-
-## <a name="available-regions"></a>Kullanılabilir bölgeler
-
-= = = = = = = Eşleme veri akışları, ADF içinde aşağıdaki bölgelerde kullanılabilir:
-
-| Azure bölgesi | ADF 'de veri akışları |
-| ------------ | ----------------- |
-|  Orta Avustralya | |
-| Orta Avustralya 2 | |
-| Doğu Avustralya | ✓ |
-| Güneydoğu Avustralya   | ✓ |
-| Güney Brezilya  | ✓ |
-| Orta Kanada | ✓ |
-| Orta Hindistan | ✓ |
-| Central US    | ✓ |
-| Doğu Çin |      |
-| Çin Doğu 2  |   |
-| Çin bölgesel olmayan | |
-| Kuzey Çin |     |
-| Çin Kuzey 2 | |
-| Doğu Asya | ✓ |
-| Doğu ABD   | ✓ |
-| Doğu ABD 2 | ✓ |
-| Orta Fransa | ✓ |
-| Güney Fransa  | |
-| Almanya Orta (Sovereign) | |
-| Almanya Bölgesel Olmayan (Sovereign) | |
-| Almanya Kuzey (genel) | |
-| Almanya Kuzeydoğu (Sovereign) | |
-| Almanya Orta Batı (genel) |  |
-| Doğu Japonya | ✓ |
-| Batı Japonya |  |
-| Güney Kore - Orta | ✓ |
-| Güney Kore - Güney | |
-| Orta Kuzey ABD  | ✓ |
-| Kuzey Avrupa  | ✓ |
-| Norveç Doğu | |
-| Norveç Batı | |
-| Güney Afrika - Kuzey    | ✓ |
-| Güney Afrika - Batı |  |
-| Orta Güney ABD  | |
-| Güney Hindistan | |
-| Güneydoğu Asya    | ✓ |
-| İsviçre Kuzey |   |
-| İsviçre Batı | |
-| BAE Orta | |
-| BAE Kuzey |  |
-| Güney Birleşik Krallık  | ✓ |
-| Batı Birleşik Krallık |     |
-| Orta US DoD | |
-| Doğu US DoD | |
-| US Gov Arizona |      |
-| US Gov Bölgesel Olmayan | |
-| US Gov Texas | |
-| US Gov Virginia |     |
-| Orta Batı ABD |     |
-| West Europe   | ✓ |
-| Batı Hindistan | |
-| Batı ABD   | ✓ |
-| Batı ABD 2 | ✓ |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

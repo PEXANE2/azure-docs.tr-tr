@@ -7,12 +7,12 @@ ms.author: chpalm
 ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: e55cfb1a4dff7bfda2323e68777d6f50514b1608
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8301f81b21db50814df1bc764cc1fae38b4f14de
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105930243"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307648"
 ---
 # <a name="teams-embed"></a>Ekip ekleme
 
@@ -33,6 +33,6 @@ Takımlar ekleme, takımlar toplantılarında desteklenen özelliklerin çoğunu
 - Ses ve video cihazlarını yapılandırmak için toplantı içi deneyim
 - [Video arka planları](https://support.microsoft.com/office/change-your-background-for-a-teams-meeting-f77a2381-443a-499d-825e-509a140f4780): katılımcıların arka planlarını bulanıklaştırmasını veya değiştirmesini sağlar
 - Video galerisinin büyük galerisiyle birlikte mod, odak, sabitleme ve Spotlight [Için birden çok seçenek](https://support.microsoft.com/office/using-video-in-microsoft-teams-3647fc29-7b92-4c26-8c2d-8a596904cdae)
-- [Içerik paylaşımı](https://support.microsoft.comoffice/share-content-in-a-meeting-in-teams-fcc2bf59-aecd-4481-8f99-ce55dd836ce8#ID0EABAAA=Mobile): katılımcıların kendi ekranını paylaşmasına izin verme
+- [Içerik paylaşımı](https://support.microsoft.com/en-us/office/share-content-in-a-meeting-in-teams-fcc2bf59-aecd-4481-8f99-ce55dd836ce8): katılımcıların kendi ekranını paylaşmasına izin verme
 
 Diğer Azure Iletişim SDK 'larına kıyasla bu kullanıcı arabirimi hakkında daha fazla bilgi için, bkz. [UI SDK 'sı kavramı tanıtımı](ui-sdk-overview.md). 

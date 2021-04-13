@@ -10,16 +10,29 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: f102bbe45fd5eea853ba63def4f1c1a92888ca46
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 826bd22375fb6649bf4edbbeca88aed64cfe7245
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285961"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312136"
 ---
 # <a name="whats-new-in-computer-vision"></a>Görüntü İşleme yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notları, videolar, blog gönderileri ve diğer bilgi türleri olabilir. Hizmette güncel kalmak için bu sayfaya yer işareti ekleyin.
+
+## <a name="april-2021"></a>2021 Nisan
+
+### <a name="computer-vision-v32-ga"></a>Görüntü İşleme v 3.2 GA
+
+Görüntü İşleme API'si v 3.2, artık aşağıdaki güncelleştirmelerle genel kullanıma sunulmuştur:
+* Geliştirilmiş görüntü etiketleme modeli: görsel içeriği analiz eder ve görüntüde görünen nesnelere, eylemlere ve içeriğe göre ilgili etiketler oluşturur. Bu, [Tag Image API 'si](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f200)ile kullanılabilir. Daha fazla bilgi için bkz. görüntü analizi [nasıl yapılır Kılavuzu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) ve [genel bakış](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) .
+* Güncelleştirilmiş içerik denetleme modeli: yetişkinlere yönelik içeriklerin varlığını algılar ve yetişkinlere, kcy ve Gori görsel içeriğini içeren görüntüleri filtrelemek için bayraklar sağlar. Bu, [Çözümle API 'si](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b)aracılığıyla kullanılabilir. Daha fazla bilgi için bkz. görüntü analizi [nasıl yapılır Kılavuzu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) ve [genel bakış](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) .
+* Basitleştirilmiş ve geleneksel Çince, Japonca, Korece ve Latin dilleri dahil olmak üzere [73 dilleri Için OCR (okuma) kullanılabilir](./language-support.md#optical-character-recognition-ocr) .
+* [OCR (okuma)](./overview-ocr.md) , şirket içi dağıtım Için [daha az bir kapsayıcı](./computer-vision-how-to-install-containers.md?tabs=version-3-2) olarak da kullanılabilir.
+
+> [!div class="nextstepaction"]
+> [Bkz. Görüntü İşleme v 3.2 GA](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
 
 ## <a name="march-2021"></a>Mart 2021
 

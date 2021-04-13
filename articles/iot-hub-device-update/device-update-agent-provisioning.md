@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e778c7ee14d2115bf6d8cf7f12ceaa61e364a4a2
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: a5f4b23196a04d88e4329cb5ebf26d0b0a477444
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120201"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307282"
 ---
 # <a name="device-update-agent-provisioning"></a>Cihaz Güncelleştirme Aracısı sağlama
 
@@ -81,8 +81,25 @@ Cihaz güncelleştirme aracısını [IoT Edge etkinleştirilmiş cihazlara](http
 
 1. [Azure IoT Edge çalışma zamanını yüklemek ve sağlamak](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge?view=iotedge-2020-11&preserve-view=true)için yönergeleri izleyin.
 
-1. Ardından cihaz güncelleştirme aracısını [yapıtlardan](https://github.com/Azure/iot-hub-device-update/releases) yükleyebilirsiniz ve artık IoT Edge cihazınızda cihaz güncelleştirme aracısını başlatmaya hazırsınız.
+1. Cihaz güncelleştirme görüntüsü güncelleştirme aracısını yükler
+    - Yansıma güncelleştirme piyasaya çıkarma ' yi bir temel görüntü (ADU-Base-Image) ve bir güncelleştirme görüntüsü (ADU-Update-Image) kullanarak farklı sürümlere denemek için [yapıtlar](https://github.com/Azure/iot-hub-device-update/releases) içinde örnek görüntüler sunuyoruz. [Görüntünün IoT Hub cihazınıza nasıl yanıp sönegösteren](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image)örneğe bakın.  
 
+1. Cihaz güncelleştirme paketi güncelleştirme aracısını yükler  
+    - Packages.miscrosoft.com ' dan en son Aracı sürümleri için: cihazınızdaki paket listelerini güncelleştirin ve aşağıdakileri kullanarak cihaz Güncelleştirme Aracısı paketini ve bağımlılıklarını yüklersiniz:   
+    ```shell
+    sudo apt-get update
+    ```
+    
+    ```shell
+    sudo apt-get install deviceupdate-agent deliveryoptimization-plugin-apt
+    ```
+    
+    - [Yapıtlardan](https://github.com/Azure/iot-hub-device-update/releases) yaklaşan sürüm adayı sürümleri:. dep dosyasını, cihaz güncelleştirme aracısını yüklemek istediğiniz makineye indirin ve ardından:
+     ```shell
+    Sudo apt-get install -y ./"<PATH TO FILE>"/"<.DEP FILE NAME>"
+     ```
+    
+1. Artık IoT Edge cihazınızda cihaz güncelleştirme aracısını başlatmaya hazırsınız. 
 
 ### <a name="on-non-edge-iot-linux-devices"></a>Edge olmayan IoT Linux cihazlarda
 
@@ -130,14 +147,15 @@ IoT Linux cihazlarınızda cihaz güncelleştirme aracısını sağlamak için b
     sudo aziotctl config apply
     ```
     
-1.  Son olarak, cihaz güncelleştirme aracısını [yapıtlardan](https://github.com/Azure/iot-hub-device-update/releases) yükleyebilirsiniz ve artık IoT Edge cihazınızda cihaz güncelleştirme aracısını başlatmaya hazırsınız.
+1.  Son olarak cihaz güncelleştirme aracısını yükler. Yansıma güncelleştirme piyasaya çıkarma ' yi bir temel görüntü (ADU-Base-Image) ve bir güncelleştirme görüntüsü (ADU-Update-Image) kullanarak farklı sürümlere denemek için [yapıtlar](https://github.com/Azure/iot-hub-device-update/releases) içinde örnek görüntüler sunuyoruz. [Görüntünün IoT Hub cihazınıza nasıl yanıp sönegösteren](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image)örneğe bakın.
 
+1.  Artık IoT cihazınızda cihaz güncelleştirme aracısını başlatmaya hazırsınız. 
 
 ### <a name="other-iot-devices"></a>Diğer IoT cihazları
 
 Cihaz Güncelleştirme Aracısı Ayrıca, test için veya kısıtlı cihazlarda IoT kimlik hizmeti olmadan da yapılandırılabilir. Bir bağlantı dizesi (modülünden veya cihazdan) kullanarak cihaz güncelleştirme aracısını sağlamak için aşağıdaki adımları izleyin.
 
-1.  [Yapıtlardan](https://github.com/Azure/iot-hub-device-update/releases)Cihaz Güncelleştirme Aracısı 'nı yükler.
+1.  Yansıma güncelleştirme piyasaya çıkarma ' yi bir temel görüntü (ADU-Base-Image) ve bir güncelleştirme görüntüsü (ADU-Update-Image) kullanarak farklı sürümlere denemek için [yapıtlar](https://github.com/Azure/iot-hub-device-update/releases) içinde örnek görüntüler sunuyoruz. [Görüntünün IoT Hub cihazınıza nasıl yanıp sönegösteren](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image)örneğe bakın.
 
 1.  Makinede veya IoT Edge cihaz/IoT cihazında oturum açın.
     
@@ -150,16 +168,17 @@ Cihaz Güncelleştirme Aracısı Ayrıca, test için veya kısıtlı cihazlarda 
        
     1. İçindeki bir metinle birlikte açık bir pencere görmeniz gerekir. IoT cihazında Cihaz Güncelleştirme Aracısı 'nı ilk kez sağladığınızda ' connection_String = ' izleyen tüm dizeyi silin. Yalnızca tutucu metin yerleştirir.
     
-    1. Terminalde, bağlantı dizesi> <, cihaz Güncelleştirme Aracısı örneğiniz için aygıtın bağlantı dizesiyle değiştirin.
+    1. Terminalde, "<-Connection-String>" değerini, cihaz Güncelleştirme Aracısı örneğiniz için aygıtın bağlantı dizesiyle değiştirin.
     
         > [!Important]
         > Bağlantı dizesinin etrafına tırnak eklemeyin.
-        
-        - connection_string =<bağlantı dizeniz>
+        ```shell
+        - connection_string=<ADD CONNECTION STRING HERE>
+       ```
        
     1. Girin ve kaydedin.
     
-1.  Artık IoT Edge cihazınızda cihaz güncelleştirme aracısını başlatmaya hazırsınız. 
+1.  Artık IoT cihazınızda cihaz güncelleştirme aracısını başlatmaya hazırsınız. 
 
 
 ## <a name="how-to-start-the-device-update-agent"></a>Cihaz güncelleştirme aracısını başlatma
@@ -191,7 +210,7 @@ Ayrıca kendi müşteri aygıtı güncelleştirme aracınızı oluşturabilir ve
 
 Cihaz güncelleştirme aracısını kaynaktan [derlemek](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md) için yönergeleri izleyin.
 
-Aracı başarılı bir şekilde oluşturulduktan sonra aracıyı [çalıştıralım](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-run-agent.md) zamanı.
+Aracı başarıyla oluşturulduktan sonra aracıyı [çalıştırmaya](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-run-agent.md) zaman atalım.
 
 Şimdi, aracının yansımanıza dahil etmek için gerekli değişiklikleri yapın.  Yönergeler için cihaz güncelleştirme aracısını [değiştirme](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-modify-the-agent-code.md) bölümüne bakın.
 

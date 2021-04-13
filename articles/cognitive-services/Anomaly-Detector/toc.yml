@@ -3,12 +3,18 @@
 - name: Genel Bakış
   expanded: true
   items:
-    - name: Anomali algılayıcısı nedir?
+    - name: Anomali algılayıcısı nedir (çok değişen)?
+      href: overview-multivariate.md
+    - name: Anomali algılayıcısı nedir (Univariate)?
       href: overview.md
     - name: Fiyatlandırma ve limitler
       href: 'https://aka.ms/adpricing'
-- name: Anomali algılayıcı hızlı başlangıç
-  href: ./quickstarts/client-libraries.md
+- name: Anomali algılayıcısı hızlı başlangıçlar
+  items:
+    - name: Çok değişkenli istemci kitaplıkları
+      href: ./quickstarts/client-libraries-multivariate.md
+    - name: Tek istemci kitaplıkları
+      href: ./quickstarts/client-libraries.md
 - name: Örnekler
   items:
     - name: Etkileşimli tanıtım
@@ -39,10 +45,18 @@
               href: how-to/deploy-anomaly-detection-on-container-instances.md
 - name: Kavramlar
   items:
-    - name: Anomali algılayıcı API en iyi uygulamaları
+    - name: Anomali algılayıcı API en iyi uygulamaları (çoklu varilar)
+      href: concepts/best-practices-multivariate.md
+    - name: Anomali algılayıcı API en iyi uygulamaları (tek değişkenli)
       href: concepts/anomaly-detection-best-practices.md
+    - name: Tahmine dayalı bakım mimarisi (çok değişen)
+      href: concepts/multivariate-architecture.md
+    - name: Çok sayıda sorun giderme
+      href: concepts/troubleshoot.md
     - name: Spectral artımı (SR) ve evsel sinir net (CNN) anomali algılama
       href: 'https://arxiv.org/abs/1906.03821'
+    - name: Grafik dikkat ağı aracılığıyla çok sayıda zaman serisi anomali algılama
+      href: 'https://arxiv.org/abs/2009.02040'
 - name: Öğreticiler
   items:
     - name: Power BI kullanarak anomalileri toplu olarak görselleştirme

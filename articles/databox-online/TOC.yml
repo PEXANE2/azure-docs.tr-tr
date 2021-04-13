@@ -260,6 +260,8 @@
               href: azure-stack-edge-gpu-manage-virtual-machine-tags-powershell.md
             - name: Sanal anahtar oluştur
               href: azure-stack-edge-gpu-create-virtual-switch-powershell.md
+            - name: VM disklerini yedekleme
+              href: azure-stack-edge-gpu-back-up-virtual-machine-disks.md
         - name: Sertifikaları yönetme
           items:
             - name: Gereksinimler

@@ -1,14 +1,14 @@
 ---
 title: Kaynak hiyerarşinizi koruma-Azure Idare
 description: Kaynak hiyerarşinizi, varsayılan yönetim grubunu ayarlamayı içeren hiyerarşi ayarlarıyla nasıl koruyacağınızı öğrenin.
-ms.date: 02/05/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5d13a0235152046eff2585da170d5fba0e9d3b09
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 11c20ccf5aff74d810533cd56e0a7b116f2dc64b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259090"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303653"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Kaynak hiyerarşinizi koruma
 
@@ -110,6 +110,28 @@ Bu ayarı REST API yapılandırmak için [Hiyerarşi ayarları](/rest/api/manage
   ```
 
 Ayarı yeniden kapatmak için aynı uç noktayı kullanın ve **Requireauthorizationforgroupoluşturmayı** **false** değerine ayarlayın.
+
+## <a name="powershell-sample"></a>PowerShell örneği
+
+PowerShell 'in varsayılan yönetim grubunu ayarlamak için ' az ' komutu yoktur veya yetkilendirme gerektir seçeneğini belirleyin, ancak geçici bir çözüm olarak aşağıdaki PowerShell örneğiyle REST API yararlanabilirsiniz:
+
+```powershell
+$root_management_group_id = "Enter the ID of root management group"
+$default_management_group_id = "Enter the ID of default management group (or use the same ID of the root management group)"
+
+$body = '{
+     "properties": {
+          "defaultManagementGroup": "/providers/Microsoft.Management/managementGroups/' + $default_management_group_id + '",
+          "requireAuthorizationForGroupCreation": true
+     }
+}'
+
+$token = (Get-AzAccessToken).Token
+$headers = @{"Authorization"= "Bearer $token"; "Content-Type"= "application/json"}
+$uri = "https://management.azure.com/providers/Microsoft.Management/managementGroups/$root_management_group_id/settings/default?api-version=2020-02-01"
+
+Invoke-RestMethod -Method PUT -Uri $uri -Headers $headers -Body $body
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

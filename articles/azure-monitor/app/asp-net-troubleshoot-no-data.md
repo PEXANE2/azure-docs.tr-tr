@@ -4,12 +4,12 @@ description: Azure Application Insights verileri görmüyor musunuz? Buradan den
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: fbf53f6d4a928215d25874f4e405147c73cbf81f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 3b550e434db5b616ffedef7ebe9891b36fa431a2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056581"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311235"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>.NET/.NET Core için veri Application Insights sorunlarını giderme
 
@@ -28,6 +28,10 @@ ms.locfileid: "106056581"
 *Uygulama durmak üzere olduğunda konsol uygulamasında veya Web uygulamasında veri kaybı yaşıyorum.*
 
 * SDK kanalı, Telemetriyi arabelleğe tutar ve bunları toplu işler halinde gönderir. Uygulama kapatıyorsunuz, açıkça [flush ()](api-custom-events-metrics.md#flushing-data)çağrısı yapmanız gerekebilir. Davranış `Flush()` , kullanılan gerçek [kanala](telemetry-channels.md#built-in-telemetry-channels) bağlıdır.
+
+## <a name="request-count-collected-by-application-insights-sdk-does-not-match-the-iis-log-count-for-my-application"></a>Application Insights SDK 'Sı tarafından toplanan istek sayısı uygulamamın IIS günlük sayısıyla eşleşmiyor
+
+Internet Information Services (IIS), IIS 'ye ulaşan tüm istek sayısını günlüğe kaydeder ve kendiliğinden bir uygulamaya ulaşan toplam istekten farklı olabilir. Bu nedenle, SDK 'lar tarafından toplanan istek sayısı, toplam IIS günlük sayısıyla eşleşmeyecektir. 
 
 ## <a name="no-data-from-my-server"></a>Sunucuma veri yok
 *Uygulamamı Web sunucuma yükledim ve bundan sonra herhangi bir telemetri görmüyorum. Geliştirici makinmda Tamam 'a çalıştı.*

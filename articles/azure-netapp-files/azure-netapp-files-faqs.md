@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 04/12/2021
 ms.author: b-juche
-ms.openlocfilehash: d63587eec1f7e6d24ae1638e8365b85fd1ec2c94
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: ae94ac9719a827a2d1af258398988f0972e61b3a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505000"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305523"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -27,9 +27,9 @@ Bu makalede Azure NetApp Files hakkında sık sorulan sorular (SSS) yanıtlanmak
 
 ## <a name="networking-faqs"></a>Ağ oluşturma SSS
 
-### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS veri yolu Internet üzerinden mi çalışıyor?  
+### <a name="does-the-data-path-for-nfs-or-smb-go-over-the-internet"></a>NFS veya SMB veri yolu Internet üzerinden mi çalışıyor?  
 
-Hayır. NFS veri yolu, Internet üzerinden geçmiyor. Azure NetApp Files, hizmetin kullanılabilir olduğu Azure sanal ağına (VNet) dağıtılan bir Azure yerel hizmetidir. Azure NetApp Files, temsilcili bir alt ağ kullanır ve doğrudan VNet üzerinde bir ağ arabirimi sağlar. 
+Hayır. NFS veya SMB için veri yolu, Internet üzerinden geçmiyor. Azure NetApp Files, hizmetin kullanılabilir olduğu Azure sanal ağına (VNet) dağıtılan bir Azure yerel hizmetidir. Azure NetApp Files, temsilcili bir alt ağ kullanır ve doğrudan VNet üzerinde bir ağ arabirimi sağlar. 
 
 Ayrıntılar için [Azure NetApp Files ağ planlaması kılavuzlarına](./azure-netapp-files-network-topologies.md) bakın.  
 

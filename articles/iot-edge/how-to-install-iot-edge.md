@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 03/26/2021
 ms.author: kgremban
-ms.openlocfilehash: 7b4c2cb946017fd9871e2d99dbed8f841f025008
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 39e165d862d6e174f763cd58529727fd26b8bd46
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030534"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311082"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Linux için Azure IoT Edge yükleme veya kaldırma
 
@@ -146,7 +146,7 @@ IoT kimlik hizmeti, IoT Edge sürüm 1,2 ile birlikte sunulmuştur. Bu hizmet, I
 Bu bölümdeki adımlarda, internet bağlantısı olan bir cihaza en son sürümü yüklemek için tipik bir işlem temsil etmektedir. Yayın öncesi sürüm gibi belirli bir sürümü yüklemeniz ya da çevrimdışıyken yüklemeniz gerekiyorsa, bu makalenin ilerleyen kısımlarında yer alarak [çevrimdışı veya belirli sürüm yükleme](#offline-or-specific-version-installation-optional) adımlarını izleyin.
 
 >[!NOTE]
->Bu bölümdeki adımlarda, şu anda genel önizlemede olan IoT Edge sürüm 1,2 ' nin nasıl yükleneceği gösterilmektedir. IoT Edge en son genel kullanıma sunulan sürümünü yüklemeye yönelik adımları arıyorsanız, bu makalenin [1,1 (LTS)](?view=iotedge-2018-06&preserve-view=true) sürümünü görüntüleyin.
+>Bu bölümdeki adımlarda IoT Edge sürüm 1,2 ' nin nasıl yükleneceği gösterilmektedir.
 >
 >Daha eski bir sürümü çalıştıran bir IoT Edge cihazınız zaten varsa ve 1,2 sürümüne yükseltmek istiyorsanız, [IoT Edge güvenlik cini ve çalışma zamanını güncelleştirme](how-to-update-iot-edge.md)bölümündeki adımları kullanın. Sürüm 1,2, yükseltmek için belirli adımların gerekli olduğu IoT Edge önceki sürümlerinden yeterince farklıdır.
 
@@ -168,15 +168,11 @@ En son IoT Edge sürümünü yüklemek istiyorsanız, kimlik hizmeti paketinin e
    sudo apt-get install aziot-edge
    ```
 
-<!-- commenting out for public preview. reintroduce at GA
-
-Or, if you want to install a specific version of IoT Edge and the identity service, specify the versions from the apt list output. Specify the same versions for both services.. For example, the following command installs the most recent version of the 1.2 release:
+Ya da IoT Edge belirli bir sürümünü ve kimlik hizmetini yüklemek istiyorsanız, apt liste çıktısından sürümleri belirtin. Her iki hizmet için de aynı sürümleri belirtin. Örneğin, aşağıdaki komut 1,2 sürümünün en son sürümünü yüklüyor:
 
    ```bash
    sudo apt-get install aziot-edge=1.2* aziot-identity-service=1.2*
    ```
-
--->
 
 <!-- end 1.2 -->
 ::: moniker-end

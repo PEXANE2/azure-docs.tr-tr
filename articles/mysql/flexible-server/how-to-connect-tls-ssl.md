@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 399cf8087d39f78184cfdae4b9f0e34efecaea66
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 6dbb1b46aef40986fc2d601aee152aed02591ac0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491633"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312612"
 ---
 # <a name="connect-to-azure-database-for-mysql---flexible-server-with-encrypted-connections"></a>Şifrelenmiş bağlantılarla, MySQL için Azure veritabanı 'na bağlanma-esnek sunucu
 
@@ -26,7 +26,7 @@ Esnek sunucunuz için kullanabileceğiniz SSL ve TLS ayarlarının farklı yapı
 
 | Senaryo   | Sunucu parametresi ayarları      | Açıklama                                    |
 |------------|--------------------------------|------------------------------------------------|
-|SSL 'yi devre dışı bırak (şifreli bağlantılar) | require_secure_transport = kapalı |Eski uygulamanız MySQL sunucusuna şifreli bağlantıları desteklemiyorsa, require_secure_transport = kapalı ayarını yaparak esnek sunucunuza şifreli bağlantıların uygulanmasını devre dışı bırakabilirsiniz.|
+|SSL zorlamayı devre dışı bırak | require_secure_transport = kapalı |Eski uygulamanız MySQL sunucusuna şifreli bağlantıları desteklemiyorsa, require_secure_transport = kapalı ayarını yaparak esnek sunucunuza şifreli bağlantıların uygulanmasını devre dışı bırakabilirsiniz.|
 |TLS sürümü < SSL 'yi zorunlu kıl 1,2 | require_secure_transport = ON ve tls_version = TLSV1 veya TLSV 1.1| Eski uygulamanız şifreli bağlantıları destekliyorsa, ancak TLS sürümü 1,2 < gerektiriyorsa, şifrelenmiş bağlantıları etkinleştirebilir ancak esnek sunucunuzu uygulamanızın desteklediği TLS sürümü (v 1.0 veya v 1.1) ile bağlantılara izin verecek şekilde yapılandırabilirsiniz|
 |TLS sürümü = 1.2 ile SSL 'yi zorunlu kıl (varsayılan yapılandırma)|require_secure_transport = ON ve tls_version = TLSV 1.2| Bu, esnek sunucu için önerilen ve varsayılan yapılandırmadır.|
 |TLS sürümü = 1.3 ile SSL 'yi zorunlu kıl (MySQL v 8.0 ve üstü ile desteklenir)| require_secure_transport = ON ve tls_version = TLSV 1.3| Bu, yeni uygulamaların geliştirilmesi için yararlıdır ve önerilir|
@@ -44,7 +44,7 @@ Bu makalede şunları yapmayı öğreneceksiniz:
 * Bağlantınız için şifreleme durumunu doğrulayın
 * Çeşitli uygulama çerçeveleri kullanarak şifrelenmiş bağlantılarla esnek sunucunuza bağlanma
 
-## <a name="disable-ssl-on-your-flexible-server"></a>Esnek sunucunuzda SSL 'yi devre dışı bırakma
+## <a name="disable-ssl-enforcement-on-your-flexible-server"></a>Esnek sunucunuzda SSL zorlamayı devre dışı bırakma
 İstemci uygulamanız şifreli bağlantıları desteklemiyorsa, esnek sunucunuzda şifreli bağlantıları zorlamayı devre dışı bırakmanız gerekir. Şifrelenmiş bağlantıları zorlamayı devre dışı bırakmak için, ekran görüntüsünde gösterildiği gibi require_secure_transport Server parametresini kapalı olarak ayarlamanız ve sunucu parametre yapılandırmasını etkili olabilmesi için kaydetmeniz gerekir. require_secure_transport, hemen geçerli olan ve sunucu yeniden başlatmanın etkili olması gerekmeyen bir **dinamik sunucu parametresidir** .
 
 > :::image type="content" source="./media/how-to-connect-tls-ssl/disable-ssl.png" alt-text="MySQL için Azure veritabanı esnek sunucusu ile SSL 'nin devre dışı bırakılacağını gösteren ekran görüntüsü.":::

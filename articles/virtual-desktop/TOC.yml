@@ -126,8 +126,6 @@
       href: disaster-recovery.md
     - name: KDC ara sunucusunu ayarlama
       href: key-distribution-center-proxy.md
-    - name: RD Ağ Geçidi rolünü ayarlama
-      href: rd-gateway-role.md
     - name: Connect 'te VM 'yi Başlat
       items:
         - name: Connect 'te başlangıç VM 'si ayarlama

@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 7facb74cd407c576b2a7b119f19427dcd185f04e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e9749dfd7b28551a4fc2e7c6ba70ba9cce4e5a69
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568826"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307308"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-two-level-nested-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>Microsoft bağlı önbellek önizleme dağıtım senaryosu örneği: giden kimliği doğrulanmamış proxy ile Iki düzey iç içe Azure IoT Edge Ağ Geçidi
 
@@ -70,7 +70,7 @@ Aşağıdaki diyagramda, bir Azure IoT Edge ağ geçidinin CDN kaynaklarına do�
 ## <a name="child-gateway-configuration"></a>Alt ağ geçidi yapılandırması
 
 >[!Note]
->Kendi özel kayıt defterinizde yapılandırmanızda kullanılan kapsayıcıları çoğaltdıysanız, modül dağıtımınızdaki config. TOML ayarları ve çalışma zamanı ayarları üzerinde bir değişiklik olması gerekir. Daha fazla bilgi için bkz. [öğretici-IoT Edge cihaz hiyerarşisi oluşturma-](../iot-edge/tutorial-nested-iot-edge.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11#deploy-modules-to-the-lower-layer-device) daha fazla ayrıntı için Azure IoT Edge.
+>Kendi özel kayıt defterinizde yapılandırmanızda kullanılan kapsayıcıları çoğaltdıysanız, modül dağıtımınızdaki config. TOML ayarları ve çalışma zamanı ayarları üzerinde bir değişiklik olması gerekir. Daha fazla bilgi için, daha fazla ayrıntı için [aşağı akış IoT Edge cihazlara bağlanma-Azure IoT Edge](../iot-edge/how-to-connect-downstream-iot-edge-device.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11#deploy-modules-to-lower-layer-devices) konusuna bakın.
 
 1. Edge aracısının görüntü yolunu aşağıdaki örnekte gösterildiği gibi değiştirin:
 
