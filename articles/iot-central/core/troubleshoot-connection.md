@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: ae40571b958897b5f06c4ae72a9049a585561872
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 494608f9dd8fbf986dcda6eeb782a64f6a2ca008
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064724"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378576"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Cihazlarınızdan gelen verilerin Azure IoT Central'da gösterilmemesi sorununu giderme
 
@@ -130,7 +130,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| Cihaz sağlama durumu | Description | Olası risk azaltma |
+| Cihaz sağlama durumu | Açıklama | Olası risk azaltma |
 | - | - | - |
 | Sağlanan | Anında tanınabilir sorun yoktur. | Yok |
 | Kaydedildi | Cihaz henüz IoT Central bağlanmadı. | Bağlantı sorunları için cihaz günlüklerinizi denetleyin. |
@@ -150,7 +150,7 @@ Aşağıdaki tablolarda, genel hata kodları ve hafifletmek için olası eylemle
 
 Kimlik doğrulama akışla ilgili sorunlar görüyorsanız:
 
-| Hata kodu | Description | Olası risk azaltma |
+| Hata kodu | Açıklama | Olası risk azaltma |
 | - | - | - |
 | 400 | İsteğin gövdesi geçerli değil. Örneğin, ayrıştırılamıyor veya nesne doğrulanamıyor. | Kanıtlama akışının bir parçası olarak doğru istek gövdesini gönderdiğinizden emin olun veya bir cihaz SDK 'Sı kullanın. |
 | 401 | Yetkilendirme belirteci doğrulanamıyor. Örneğin, süresi sona ermiştir veya isteğin URI 'sine uygulanmaz. Bu hata kodu, TPM kanıtlama akışının bir parçası olarak cihazlara de döndürülür. | Cihazınızın doğru kimlik bilgilerine sahip olduğundan emin olun. |
@@ -158,6 +158,14 @@ Kimlik doğrulama akışla ilgili sorunlar görüyorsanız:
 | 412 | `ETag`İstekteki, `ETag` RFC7232 başına mevcut kaynak ile eşleşmiyor. | [Müşteri desteği ile Bilet dosyası oluşturma](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
 | 429 | İşlemler, hizmet tarafından kısıtlanıyor. Belirli hizmet limitleri için bkz. [cihaz sağlama hizmeti sınırlarını IoT Hub](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits). | İleti sıklığını azaltın, sorumlulukları daha fazla cihaz arasında ayırın. |
 | 500 | Bir iç hata oluştu. | Size daha fazla yardımcı olup olmadığını görmek için [müşteri desteğiyle bir bilet dosyası](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) yapın. |
+
+### <a name="file-upload-error-codes"></a>Karşıya dosya yükleme hata kodları
+
+Bir cihaz buluta dosya yüklemeye çalıştığında görebileceğiniz yaygın hata kodlarının listesi aşağıda verilmiştir. Cihazınızın bir dosyayı karşıya yükleyebilmesi için uygulamanızdaki [cihaz dosya yüklemelerini](howto-configure-file-uploads.md) yapılandırmanız gerektiğini unutmayın.
+
+| Hata kodu | Açıklama | Olası risk azaltma |
+| - | - | - |
+| 403006  | Eşzamanlı karşıya dosya yükleme işlemlerinin sayısını aştınız. Her cihaz istemcisi, 10 eşzamanlı dosya yükleme ile sınırlıdır. | Cihazın, karşıya dosya yükleme işleminin tamamlandığını IoT Central hemen bildirdiğinden emin olun. Bu işe yaramazsa, istek zaman aşımını azaltmayı deneyin. |
 
 ## <a name="payload-shape-issues"></a>Yük şekli sorunları
 

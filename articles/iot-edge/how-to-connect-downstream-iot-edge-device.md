@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: e0912fb452a7f587fef19de835eea111b349a9a4
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 500833d1bb4fc492942c08239bd488c2d2c16d30
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310028"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484328"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>Bir aşağı akış IoT Edge cihazını bir Azure IoT Edge ağ geçidine bağlama
 
@@ -78,9 +78,9 @@ Ayrıca, var olan cihazlar için üst/alt ilişkileri oluşturabilir veya yönet
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLı için [Azure IoT](/cli/azure/ext/azure-iot) uzantısı, IoT kaynaklarınızı yönetmek için komutlar sağlar. Yeni cihaz kimlikleri oluştururken veya mevcut cihazları düzenleyerek IoT ve IoT Edge cihazlarının üst/alt ilişkilerini yönetebilirsiniz.
+Azure CLı için [Azure IoT](/cli/azure/iot) uzantısı, IoT kaynaklarınızı yönetmek için komutlar sağlar. Yeni cihaz kimlikleri oluştururken veya mevcut cihazları düzenleyerek IoT ve IoT Edge cihazlarının üst/alt ilişkilerini yönetebilirsiniz.
 
-[Az IoT Hub cihazı-kimlik](/cli/azure/ext/azure-iot/iot/hub/device-identity) komut kümesi, belirli bir cihaz için üst/alt ilişkileri yönetmenizi sağlar.
+[Az IoT Hub cihazı-kimlik](/cli/azure/iot/hub/device-identity) komut kümesi, belirli bir cihaz için üst/alt ilişkileri yönetmenizi sağlar.
 
 Bu `create` komut, alt cihaz ekleme ve cihaz oluşturma sırasında bir üst cihazı ayarlama parametrelerini içerir.
 

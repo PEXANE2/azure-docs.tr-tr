@@ -1,16 +1,16 @@
 ---
-title: SQL Insights 'ı etkinleştir
+title: SQL içgörülerini etkinleştirme
 description: Azure Izleyici 'de SQL Insights 'ı etkinleştirme
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: e8dd887d151eb553131048f232940555dbef324b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cfcb34b731855fd26ddad191b819e308406117cb
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025042"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478344"
 ---
 # <a name="enable-sql-insights-preview"></a>SQL Insights 'ı etkinleştir (Önizleme)
 Bu makalede, SQL dağıtımlarınızı izlemek için [SQL Insights](sql-insights-overview.md) 'ın nasıl etkinleştirileceği açıklanır. İzleme, SQL dağıtımlarınıza bir bağlantı yapan ve izleme verilerini toplamak için dinamik yönetim görünümleri (DMVs) kullanan bir Azure sanal makineden gerçekleştirilir. Hangi veri kümelerinin toplanacağını ve bir izleme profili kullanan koleksiyon sıklığını denetleyebilirsiniz.
@@ -26,7 +26,7 @@ SQL Insights, verilerini bir veya daha fazla [Log Analytics çalışma](../logs/
 
 Gerekli izinlere sahip bir kullanıcı oluşturmak için aşağıdaki betiği çalıştırın. *Kullanıcıyı* bir Kullanıcı adı ve *mystrongpassword* ile parolayla değiştirin.
 
-```
+```sql
 CREATE USER [user] WITH PASSWORD = N'mystrongpassword'; 
 GO 
 GRANT VIEW DATABASE STATE TO [user]; 
@@ -39,11 +39,23 @@ Kullanıcının oluşturulduğunu doğrulayın.
 
 :::image type="content" source="media/sql-insights-enable/telegraf-user-database-verify.png" alt-text="Telegraf Kullanıcı betiğini doğrulayın." lightbox="media/sql-insights-enable/telegraf-user-database-verify.png":::
 
+```sql
+select name as username,
+       create_date,
+       modify_date,
+       type_desc as type,
+       authentication_type_desc as authentication_type
+from sys.database_principals
+where type not in ('A', 'G', 'R', 'X')
+       and sid is not null
+order by username
+```
+
 ### <a name="azure-sql-managed-instance"></a>Azure SQL Yönetilen Örnek
 Azure SQL yönetilen Örneğinizde oturum açın ve [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) veya benzer bir aracı kullanarak izleme kullanıcısını gereken izinlerle oluşturmak için aşağıdaki betiği çalıştırın. *Kullanıcıyı* bir Kullanıcı adı ve *mystrongpassword* ile parolayla değiştirin.
 
  
-```
+```sql
 USE master; 
 GO 
 CREATE LOGIN [user] WITH PASSWORD = N'mystrongpassword'; 
@@ -58,7 +70,7 @@ GO
 SQL Server çalıştıran Azure sanal makinenizde oturum açın ve [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) veya benzer aracı kullanarak izleme kullanıcısını gereken izinlerle oluşturmak için aşağıdaki betiği çalıştırın. *Kullanıcıyı* bir Kullanıcı adı ve *mystrongpassword* ile parolayla değiştirin.
 
  
-```
+```sql
 USE master; 
 GO 
 CREATE LOGIN [user] WITH PASSWORD = N'mystrongpassword'; 
@@ -67,6 +79,19 @@ GRANT VIEW SERVER STATE TO [user];
 GO 
 GRANT VIEW ANY DEFINITION TO [user]; 
 GO
+```
+
+Kullanıcının oluşturulduğunu doğrulayın.
+
+```sql
+select name as username,
+       create_date,
+       modify_date,
+       type_desc as type,
+from sys.server_principals
+where type not in ('A', 'G', 'R', 'X')
+       and sid is not null
+order by username
 ```
 
 ## <a name="create-azure-virtual-machine"></a>Azure sanal makinesi oluştur 
@@ -167,7 +192,7 @@ Bağlantı dizesini şu biçimde girin:
 
 ```
 sqlAzureConnections": [ 
-   "Server=mysqlserver.database.windows.net;Port=1433;Database=mydatabase;User Id=$username;Password=$password;" 
+   "Server=mysqlserver.database.windows.net;Port=1433;Database=mydatabase;User Id=$username;Password=$password;" 
 }
 ```
 
@@ -175,7 +200,7 @@ Veritabanına yönelik **bağlantı dizeleri** menü öğesinden ayrıntıları 
 
 :::image type="content" source="media/sql-insights-enable/connection-string-sql-database.png" alt-text="SQL veritabanı bağlantı dizesi" lightbox="media/sql-insights-enable/connection-string-sql-database.png":::
 
-Okunabilir bir ikinciyi izlemek için bağlantı dizesine anahtar değerini ekleyin `ApplicationIntent=ReadOnly` .
+Okunabilir bir ikinciyi izlemek için bağlantı dizesine anahtar değerini ekleyin `ApplicationIntent=ReadOnly` . SQL Insights, tek bir ikincil izlemeyi destekler. Toplanan veriler birincil veya ikincil yansıtacak şekilde etiketlenecek. 
 
 
 #### <a name="azure-virtual-machines-running-sql-server"></a>SQL Server çalıştıran Azure sanal makineleri 
@@ -183,7 +208,7 @@ Bağlantı dizesini şu biçimde girin:
 
 ```
 "sqlVmConnections": [ 
-   "Server=MyServerIPAddress;Port=1433;User Id=$username;Password=$password;" 
+   "Server=MyServerIPAddress;Port=1433;User Id=$username;Password=$password;" 
 ] 
 ```
 
@@ -191,15 +216,13 @@ Bağlantı dizesini şu biçimde girin:
 
 :::image type="content" source="media/sql-insights-enable/sql-vm-security.png" alt-text="SQL sanal makine güvenliği" lightbox="media/sql-insights-enable/sql-vm-security.png":::
 
-Okunabilir bir ikinciyi izlemek için bağlantı dizesine anahtar değerini ekleyin `ApplicationIntent=ReadOnly` .
-
 
 ### <a name="azure-sql-managed-instances"></a>Azure SQL Yönetilen Örnekleri 
 Bağlantı dizesini şu biçimde girin:
 
 ```
 "sqlManagedInstanceConnections": [ 
-      "Server= mysqlserver.database.windows.net;Port=1433;User Id=$username;Password=$password;", 
+      "Server= mysqlserver.database.windows.net;Port=1433;User Id=$username;Password=$password;", 
     ] 
 ```
 Yönetilen örnek için **bağlantı dizeleri** menü öğesinden ayrıntıları alın.
@@ -207,8 +230,7 @@ Yönetilen örnek için **bağlantı dizeleri** menü öğesinden ayrıntıları
 
 :::image type="content" source="media/sql-insights-enable/connection-string-sql-managed-instance.png" alt-text="SQL yönetilen örnek bağlantı dizesi" lightbox="media/sql-insights-enable/connection-string-sql-managed-instance.png":::
 
-Okunabilir bir ikinciyi izlemek için bağlantı dizesine anahtar değerini ekleyin `ApplicationIntent=ReadOnly` .
-
+Okunabilir bir ikinciyi izlemek için bağlantı dizesine anahtar değerini ekleyin `ApplicationIntent=ReadOnly` . SQL Insights, tek bir ikincili izlemeyi destekler ve toplanan veriler birincil veya Ikincil yansıtmak üzere etiketlenecek. 
 
 
 ## <a name="monitoring-profile-created"></a>İzleme profili oluşturuldu 
