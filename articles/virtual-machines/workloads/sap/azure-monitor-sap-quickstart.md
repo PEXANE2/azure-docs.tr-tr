@@ -6,12 +6,12 @@ ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.date: 08/17/2020
-ms.openlocfilehash: 02c0801aa0425db96a1e6f71f248c795e81b5ddf
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 096f0425a6893d68341b97c821481fa0adf2f95c
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554068"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375279"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Azure portal ile SAP Çözümleri için Azure Izleyici dağıtma
 
@@ -136,6 +136,32 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 4. İşiniz bittiğinde **Sağlayıcı Ekle**' yi seçin. Gerektiğinde daha fazla sağlayıcı eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
 
      :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="Görüntüde Microsoft SQL Server sağlayıcısı eklemeyle ilgili bilgiler gösterilir." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
+
+### <a name="sap-netweaver-provider"></a>SAP NetWeaver sağlayıcısı
+
+#### <a name="pre-requisites-for-adding-netweaver-provider"></a>NetWeaver sağlayıcısı ekleme önkoşulları
+
+"SAP Start Service", SAP sistemini izleme dahil olmak üzere bir hizmet Konağı sağlar. Bu özellikleri kullanıma sunan SOAP Web hizmeti arabirimi olan "SAPControl" i kullanıyoruz. Bu SAPControl WebService arabirimi [, korunan ve korumasız](https://wiki.scn.sap.com/wiki/display/SI/Protected+web+methods+of+sapstartsrv) Web hizmeti yöntemleri arasında ayrım yapar. Belirli ölçümleri getirmek için bazı yöntemlerin korumasını kaldırma işlemi yapmanız gerekir. Geçerli yayın için gerekli yöntemlerin korumasını kaldırmak için, lütfen her SAP sistemi için aşağıdaki adımları izleyin:
+
+1. SAP sunucusuna SAP GUI bağlantısı açma
+2. Yönetici hesabı kullanarak oturum açın
+3. İşlem RZ10 Yürüt
+4. Uygun profili seçin (varsayılan. PFL)
+5. ' Genişletilmiş bakım ' seçeneğini belirleyin ve Değiştir ' e tıklayın. 
+6. Etkilenen "Service/protectedwebmethods" parametresinin değerini "SDEFAULT-GetQueueStatistic – ABAPGetWPTable – Enqgetistatistiğini – GetProcessList" yerine önerilen ayarı olarak değiştirin ve Kopyala ' ya tıklayın.
+7. Geri dönün ve profil >Kaydet ' i seçin
+8. Parametrenin etkili olması için sistemi yeniden Başlat
+
+#### <a name="installing-netweaver-provider-on-the-azure-portal"></a>Azure portal NetWeaver sağlayıcısı yükleniyor
+1.  Önkoşul adımlarının tamamlandığından ve sunucunun yeniden başlatıldığından emin olun
+2.  Azure portal, AMS altında Sağlayıcı Ekle ' yi seçin ve açılan listeden SAP NetWeaver ' ı seçin.
+3.  SAP sisteminin ve alt etki alanının ana bilgisayar adını girin (varsa)
+4.  Girilen ana bilgisayar adına karşılık gelen örnek numarasını girin 
+5.  Sistem KIMLIĞINI (SID) girin
+6.  İşiniz bittiğinde, sağlayıcı ekle ' yi seçin.
+7.  Gerektiğinde ek sağlayıcılar eklemeye devam edin veya dağıtımı tamamladıktan sonra gözden geçir + oluştur ' u seçin
+
+![image](https://user-images.githubusercontent.com/75772258/114583569-5c777d80-9c9f-11eb-99a2-8c60987700c2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
