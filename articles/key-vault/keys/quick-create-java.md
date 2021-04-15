@@ -2,18 +2,18 @@
 title: Hızlı başlangıç-Java için Azure Key Vault anahtar istemci kitaplığı
 description: Java için Azure Key Vault Keys istemci kitaplığı için hızlı başlangıç sağlar.
 author: msmbaldwin
-ms.custom: devx-track-java, devx-track-azurecli
+ms.custom: devx-track-java
 ms.author: mbaldwin
 ms.date: 01/05/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: cb5abf59c446ef0835375bac45d1e852144a6f28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 124e56fad35be0f3ac5b08ee9dd66454b9d077c5
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935283"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374701"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>Hızlı başlangıç: Java için Azure Key Vault anahtar istemci kitaplığı
 Java için Azure Key Vault anahtar istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere aşağıdaki adımları izleyin.
