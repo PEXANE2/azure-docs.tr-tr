@@ -3,12 +3,12 @@ title: Azure Site Recovery ile Azure VM olağanüstü durum kurtarma için deste
 description: Azure Site Recovery olan ikincil bir bölgeye Azure VM olağanüstü durum kurtarma desteğini özetler.
 ms.topic: article
 ms.date: 11/29/2020
-ms.openlocfilehash: 8e0d47395e4658d531ac6e9d31117edc062351c0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 02268471d58cbd473493b6001aa9f1df271077bb
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312306"
+ms.locfileid: "107376163"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure sanal makinesi olağanüstü durum kurtarma için destek matrisi
 
@@ -173,6 +173,8 @@ De, 9,1 | [9,37](https://support.microsoft.com/help/4582666/) | 4.9.0-3-AMD64-4.
 Debian 10 | [9,41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533) | 4.19.0-5-AMD64-4.19.0-14-AMD64 </br> 4.19.0-6-Cloud-AMD64, 4.19.0-14-Cloud-AMD64 </br> 5.8.0 -0. BPO. 2-AMD64 </br> 5.8.0 -0. BPO. 2-Cloud-AMD64 </br> 4.19.0-10-Cloud-AMD64, 4.19.0-16-AMD64, 4.19.0-16-Cloud-AMD64 ila 9,41 sık Düzeltme Eki
 Debian 10 | [9,40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 4.19.0-5-AMD64-4.19.0-13-AMD64 </br> 4.19.0-6-Cloud-AMD64, 4.19.0-13-Cloud-AMD64 </br> 5.8.0 -0. BPO. 2-AMD64 </br> 5.8.0 -0. BPO. 2-Cloud-AMD64
 
+* * Note: 15 gün içinde en son Linux keritelerini desteklemek Için, Azure Site Recovery en son Mobility Aracısı sürümünün en üstünde etkin düzeltme eki uygulama. Bu düzeltilme iki ana sürüm sürümü arasında kullanıma sunulacaktır. Mobility aracısının en son sürümüne (sık düzeltme eki ekleme) güncelleştirmek için [Bu makalede](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)bahsedilen adımları izleyin. Bu düzeltme eki Şu anda Azure 'da Azure DR senaryosunda kullanılan Mobility aracıları için kullanıma hazır.
+
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Azure sanal makineleri için desteklenen SUSE Linux Enterprise Server 12 çekirdek sürümü
 
 **Sürüm** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
@@ -193,6 +195,7 @@ SUSE Linux Enterprise Server 15, SP1, SP2 | [9,39](https://support.microsoft.com
 SUSE Linux Enterprise Server 15, SP1, SP2 | [9.38](https://support.microsoft.com/help/4590304/)  | Varsayılan olarak, tüm [hisse senedi SUSE 15, SP1, SP2 çekirdekler](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.12.14-5,5-Azure to 4.12.14-5.47-Azure </br></br> 4.12.14-8.5-Azure to 4.12.14-8.44-Azure </br> 5.3.18-16-Azure </br> 5.3.18-18.5-Azure-5.3.18-18.18-Azure </br> 4.12.14-8.47-Azure, 5.3.18-18.21-Azure ile 9,38 sık Düzeltme Eki
 SUSE Linux Enterprise Server 15 ve 15 SP1 | [9,37](https://support.microsoft.com/help/4582666/)  | Varsayılan olarak, tüm [hisse senedi SUSE 15, SP1, SP2 çekirdekler](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.12.14-5,5-Azure to 4.12.14-5.47-Azure </br></br> 4.12.14-8.5-Azure to 4.12.14-8.38-Azure </br> 4.12.14-8.41-Azure, 4.12.14-8.44-Azure ile 9,37 sık Düzeltme Eki
 
+* * Note: 15 gün içinde en son Linux keritelerini desteklemek Için, Azure Site Recovery en son Mobility Aracısı sürümünün en üstünde etkin düzeltme eki uygulama. Bu düzeltilme iki ana sürüm sürümü arasında kullanıma sunulacaktır. Mobility aracısının en son sürümüne (sık düzeltme eki ekleme) güncelleştirmek için [Bu makalede](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)bahsedilen adımları izleyin. Bu düzeltme eki Şu anda Azure 'da Azure DR senaryosunda kullanılan Mobility aracıları için kullanıma hazır.
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Çoğaltılan makineler-Linux dosya sistemi/Konuk depolama
 

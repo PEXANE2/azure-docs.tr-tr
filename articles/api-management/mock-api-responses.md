@@ -3,16 +3,16 @@ title: Öğretici-API Management içindeki sahte API yanıtları Azure portal | 
 description: Bu öğreticide, bir API üzerinde bir ilke ayarlamak için API Management kullanırsınız, böylece arka uç gerçek yanıtları göndermek için kullanılamaz.
 author: vladvino
 ms.service: api-management
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 75727d139242e1b537505d2ed907ae20fc5479f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 562ec4cf19d15772b2dec5adf59582f1feb5363a
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100547287"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478473"
 ---
 # <a name="tutorial-mock-api-responses"></a>Öğretici: sahte API yanıtları
 
@@ -20,7 +20,7 @@ Arka uç API 'Leri, bir API Management (APıM) API 'sine içeri aktarılabilir v
 
 Yanıtları artırma özelliği, çeşitli senaryolarda yararlı olabilir:
 
-+ İlk olarak API cephesi tasarlanıp arka uç uygulaması daha sonra geldiğinde. Veya arka uç paralel olarak geliştirildiğinde.
++ API faÃ § Ade önce tasarlandıysa ve arka uç uygulama daha sonra gelir. Veya arka uç paralel olarak geliştirildiğinde.
 + Arka uç geçici olarak çalışır durumda olmadığında veya ölçeklenemediğinde.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
@@ -84,7 +84,7 @@ Bir API, bir veya daha fazla işlem sunar. Bu bölümde, oluşturduğunuz boş A
 Bu örnek için gerekli olmamasına rağmen, bir API işleminin ek ayarları diğer sekmelerde yapılandırılabilir; örneğin:
 
 
-|Tab      |Description  |
+|Tab      |Açıklama  |
 |---------|---------|
 |**Sorgu**     |  Sorgu parametreleri ekleyin. Bir ad ve açıklama sağlamanın yanı sıra, bir sorgu parametresine atanmış değerler sağlayabilirsiniz. Varsayılan olarak işaretlenebilecek değerlerde biri (isteğe bağlı).        |
 |**İstek**     |  İstek içerik türleri, örnekler ve şemalar tanımlayın.       |

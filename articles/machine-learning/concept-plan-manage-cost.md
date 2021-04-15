@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Azure portal maliyet analiziyle Azure Machine Learning maliyetlerini planlayın ve yönetin. ML modellerini oluştururken maliyetinizi düşürmek için daha fazla maliyet tasarrufu ipuçları edinin.
 author: sdgilley
 ms.author: sgilley
-ms.custom: subject-cost-optimization
+ms.custom: subject-cost-optimization, devx-track-azurecli
 ms.reviewer: nigup
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 6f4a8e4b8cbc35dca9f48bbec84e9023e82f6a84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39c649cccdf159810ad01c2312c4ea4837d9f4fc
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102501644"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478650"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning maliyetlerini planlayın ve yönetin
 

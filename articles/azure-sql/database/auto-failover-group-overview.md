@@ -5,19 +5,19 @@ description: Otomatik yük devretme grupları, bir sunucudaki bir veritabanı gr
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: high-availability
-ms.custom: sqldbrb=2, devx-track-azurecli
+ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 03/26/2021
-ms.openlocfilehash: 4d497adf5229819527608157a7a840d514f4292c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c0149dbb5f17af87229d951cf744c285e54835af
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732355"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375959"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -368,10 +368,10 @@ Yukarıdaki yapılandırma, otomatik yük devretmenin ön uç bileşenlerinden g
 - SQL yönetilen örneğinin iki örneğinin farklı Azure bölgelerinde olması gerekir.
 - SQL yönetilen örneğinin iki örneğinin aynı hizmet katmanı olması ve aynı depolama boyutuna sahip olması gerekir.
 - SQL yönetilen örneğinin ikincil örneğinizin boş olması gerekir (Kullanıcı veritabanı yok).
-- SQL yönetilen örneği örnekleri tarafından kullanılan sanal ağların bir [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [Express rotası](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)aracılığıyla bağlanması gerekir. İki sanal ağ şirket içi ağı üzerinden bağlandığında 5022 ve 11000-11999 numaralı bağlantı noktalarını engelleyen bir güvenlik duvarı kuralı olmadığından emin olun. Küresel VNet eşlemesi, aşağıdaki notta açıklanan kısıtlamayla desteklenir.
+- SQL yönetilen örneği örnekleri tarafından kullanılan sanal ağların bir [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [Express rotası](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)aracılığıyla bağlanması gerekir. İki sanal ağ şirket içi ağı üzerinden bağlandığında 5022 ve 11000-11999 numaralı bağlantı noktalarını engelleyen bir güvenlik duvarı kuralı olmadığından emin olun. Genel VNet Eşlemesi aşağıdaki notta açıklanan sınırlamayla desteklenir.
 
    > [!IMPORTANT]
-   > [9/22/2020 tarihinde yeni oluşturulan sanal kümeler için genel sanal ağ eşlemesi duyuruldu](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Diğer bir deyişle, duyuru tarihinden sonra boş alt ağlarda oluşturulan SQL yönetilen örnekleri ve bu alt ağlarda oluşturulan tüm sonraki yönetilen örnekler için genel sanal ağ eşlemesi desteklenir. Diğer tüm SQL yönetilen örnekler için eşleme desteği, [Genel sanal ağ eşlemesi kısıtlamalarından](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)dolayı aynı bölgedeki ağlarla sınırlıdır. Daha fazla bilgi için bkz. [Azure sanal ağlar sık sorulan sorular](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) makalesinin ilgili bölümü. 
+   > [22/9/2020’de yeni oluşturulan sanal kümeler için genel sanal ağ eşlemesinin duyurusunu yaptık](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Bu, hem duyuru tarihinden sonra boş alt ağlarda oluşturulan SQL Yönetilen Örnekleri için hem de söz konusu alt ağlarda daha sonra oluşturulan yönetilen örnekler için genel sanal ağ eşlemesinin desteklendiği anlamına geliyor. Diğer tüm SQL yönetilen örnekler için eşleme desteği, [Genel sanal ağ eşlemesi kısıtlamalarından](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)dolayı aynı bölgedeki ağlarla sınırlıdır. Daha fazla bilgi için bkz. [Azure sanal ağlar sık sorulan sorular](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) makalesinin ilgili bölümü. 
 
 - İki SQL yönetilen örnek sanal ağı, çakışan IP adreslerine sahip olamaz.
 - Ağ Güvenlik Gruplarınızı (NSG), 5022 numaralı ve 11000~12000 aralığındaki bağlantı noktalarının diğer yönetilen örneğin alt ağından gelen ve giden bağlantılara açık olmasını sağlayacak şekilde ayarlamalısınız. Bunun amacı örnekler arasında çoğaltma trafiğine olanak tanımaktır.

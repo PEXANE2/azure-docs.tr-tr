@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2020
+ms.date: 4/14/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 2d14ca2423d34926a9e297823a6515c2c5dde06a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b5f6f06af3eecabe26f7b587a790912f99b006e4
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607125"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107496767"
 ---
 # <a name="virtual-network-service-tags"></a>Sanal ağ hizmeti etiketleri
 <a name="network-service-tags"></a>
@@ -138,8 +138,10 @@ Hizmet etiketlerinin geçerli listesini, IP adres aralığı ayrıntıları ile 
 - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 > [!NOTE]
-> Ortak önizlemedeyken, bulma API 'si JSON İndirmeleri tarafından döndürülen bilgilerden daha az güncel bilgiler döndürebilir. (Sonraki bölüme bakın.)
+> Yeni hizmet etiketi verilerinin API sonuçlarına yayılması 4 hafta kadar sürer. Bu gerçekleştiğinde, yanıt meta verilerindeki değişiklik numarası artacaktır. Farklı konum değerleri belirtildiğinde sonuçlarda geçici farklılıklar olabilir. NSG kuralları oluşturmak için sonuçları kullanırken, konum parater ' ı NSG 'nin bölgesiyle eşleşecek şekilde ayarlamanız gerekir. 
 
+> [!NOTE]
+> API verileri, şu anda indirilebilir JSON dosyasındaki etiketlerin bir alt kümesi olan NSG kuralları ile kullanılabilen etiketleri temsil eder. Genel önizleme aşamasında, verilerin bir güncelleştirmeden sonraki bir güncelleştirmeden aynı kalacağından emin vermeyiz. 
 
 ### <a name="discover-service-tags-by-using-downloadable-json-files"></a>İndirilebilir JSON dosyalarını kullanarak hizmet etiketlerini bulma 
 Hizmet etiketlerinin geçerli listesini içeren JSON dosyalarını, IP adresi aralığı ayrıntıları ile birlikte indirebilirsiniz. Bu listeler haftalık olarak güncelleştirilir ve yayımlanır. Her bulutun konumları şunlardır:

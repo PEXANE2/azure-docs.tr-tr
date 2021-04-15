@@ -4,12 +4,12 @@ description: Azure depolama hesaplarını kullanarak bir aktarım işlem hattı 
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: 4fe36366011fb790d25419ac46a54c4bf5ad94bf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e921880eb0b8ae5a38e69c9c0045f6a26d84084d
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785827"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497991"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Yapıtları başka bir kayıt defterine aktar
 
@@ -422,7 +422,7 @@ az resource delete \
   * Hedef depolama hesabındaki Depolama Blobu, başarılı bir içeri aktarma çalıştırdıktan sonra silinmeyebilir. DeleteBlobOnSuccess seçeneğinin içeri aktarma çalıştırmasında ayarlandığını ve SAS belirtecinin yeterli izinlere sahip olduğunu doğrulayın.
   * Depolama Blobu oluşturulmadı veya silinmedi. Dışarı aktarma veya içeri aktarma çalıştırmasında belirtilen kapsayıcının bulunduğunu veya el ile içeri aktarma çalıştırması için belirtilen Depolama Blobu olduğunu onaylayın. 
 * **AzCopy sorunları**
-  * Bkz. [AzCopy sorunlarını giderme](../storage/common/storage-use-azcopy-configure.md#troubleshoot-issues).  
+  * Bkz. [AzCopy sorunlarını giderme](../storage/common/storage-use-azcopy-configure.md).  
 * **Yapıt aktarma sorunları**
   * Tüm yapıtlar veya hiçbiri aktarılmaz. Dışarı aktarma çalıştırmasında yapıtların yazımını ve dışarı aktarma ve içeri aktarma çalıştırmalarının blob adını onaylayın. En fazla 50 Yapıt aktaraldığınızı onaylayın.
   * İşlem hattı çalıştırması tamamlanmamış olabilir. Bir dışarı aktarma veya içeri aktarma çalıştırması biraz zaman alabilir. 

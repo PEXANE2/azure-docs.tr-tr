@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 03/31/2021
-ms.openlocfilehash: 74cd5ce5912e5a656342a43b7c2b165fdf3c32d4
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.date: 04/08/2021
+ms.openlocfilehash: 7f9a8cb54458999d8f20a258bc36241dfdbd0de8
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490325"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376044"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 'deki yenilikler
 
@@ -25,10 +25,28 @@ Belirtilen özellikler Şu anda ÖNIZLEME aşamasındadır. [Azure önizleme ek 
 
 
 > [!TIP]
-> Microsoft 'un, takımlarınızın uyarlayabilmesi ve kullanabileceği belirli bir arama [sorguları](https://github.com/Azure/Azure-Sentinel) dahil olmak üzere [Azure Sentinel Community](https://github.com/Azure/Azure-Sentinel)'ye yönelik Microsoft 'a yönelik sorguları, PlayBook 'ları, çalışma kitaplarını ve not defterlerini ele alan tehdit. 
+> Microsoft 'un, takımlarınızın uyarlayabilmesi ve kullanabileceği belirli bir arama [sorguları](https://github.com/Azure/Azure-Sentinel) dahil olmak üzere [Azure Sentinel Community](https://github.com/Azure/Azure-Sentinel)'ye yönelik Microsoft 'a yönelik sorguları, PlayBook 'ları, çalışma kitaplarını ve not defterlerini ele alan tehdit.
 >
 > Ayrıca katkıda bulunabilirsiniz! [Azure Sentinel tehdit arayıcılar GitHub Community](https://github.com/Azure/Azure-Sentinel/wiki)' de bize katılarak.
-> 
+>
+
+## <a name="april-2021"></a>2021 Nisan
+
+- [Olay zaman çizelgesi (Genel Önizleme)](#incident-timeline-public-preview)
+
+### <a name="incident-timeline-public-preview"></a>Olay zaman çizelgesi (Genel Önizleme)
+
+Olay Ayrıntıları sayfasındaki ilk sekme artık, olaydaki uyarı ve yer işaretlerinin zaman çizelgesini gösteren **zaman çizelgesi**' dir. Bir olayın zaman çizelgesi olayı daha iyi anlamanıza ve ilgili uyarılar ve yer işaretleri genelinde saldırgan etkinliğinin zaman çizelgesini yeniden oluşturmanıza yardımcı olabilir.
+
+- Olay bağlamından çıkmadan ayrıntılarını görmek için zaman çizelgesinde bir öğe seçin
+- Zaman çizelgesi içeriğini yalnızca uyarıları veya yer imlerini veya belirli bir önem derecesi ya da MITRE 'nın öğelerini göstermek için filtreleyin.
+- **Günlükler** alanında ilgili olayları görmek için kaydın tamamını veya **Olaylar** bağlantısını görüntülemek için **Sistem Uyarısı kimliği** bağlantısını seçebilirsiniz.
+
+Örnek:
+
+:::image type="content" source="media/tutorial-investigate-cases/incident-timeline.png" alt-text="Olay zaman çizelgesi sekmesi":::
+
+Daha fazla bilgi için bkz. [öğretici: Azure Sentinel ile olayları araştırma](tutorial-investigate-cases.md).
 
 ## <a name="march-2021"></a>Mart 2021
 

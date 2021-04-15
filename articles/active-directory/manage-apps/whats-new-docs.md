@@ -6,15 +6,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
-ms.author: kenwith
-author: kenwith
-manager: daveba
-ms.openlocfilehash: f83aa7368ec5ac06f2c5a5ebe121c7ce87f93bd1
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.author: iangithinji
+author: iantheninja
+manager: CelesteDG
+ms.openlocfilehash: 17dca502d3c65563cb9e4d2c382afb79f4d612e9
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304741"
+ms.locfileid: "107376061"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Uygulama yönetimi Azure Active Directory: yenilikler
 

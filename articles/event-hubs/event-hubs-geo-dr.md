@@ -2,13 +2,13 @@
 title: Coğrafi olağanüstü durum kurtarma-Azure Event Hubs | Microsoft Docs
 description: Coğrafi bölgeleri kullanarak yük devretme ve Azure Event Hubs olağanüstü durum kurtarma gerçekleştirme
 ms.topic: article
-ms.date: 02/10/2021
-ms.openlocfilehash: 091c6c61b079ceb8f96f04e62fb772d91732eb2f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 04/14/2021
+ms.openlocfilehash: 504a83772c2ac8e3afc86465899357d0eda4eb92
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311218"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478667"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs-coğrafi olağanüstü durum kurtarma 
 
@@ -194,19 +194,17 @@ Bu yaklaşımın avantajı, yük devretmenin uygulama katmanında Event Hubs ad 
 > Bir sanal ağın coğrafi olağanüstü durum kurtarma hakkında yönergeler için bkz. [sanal ağ-Iş sürekliliği](../virtual-network/virtual-network-disaster-recovery-guidance.md).
  
 ## <a name="next-steps"></a>Sonraki adımlar
-
-* [GitHub 'daki örnek](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) , coğrafi eşleme oluşturan ve olağanüstü durum kurtarma senaryosu için yük devretme Başlatan basit bir iş akışında gösterilmektedir.
-* [REST API başvurusu](/rest/api/eventhub/) , coğrafi olağanüstü durum kurtarma yapılandırmasını gerçekleştirmek Için API 'leri açıklar.
-
-Event Hubs hakkında daha fazla bilgi için şu bağlantıları ziyaret edin:
-
-- Event Hubs kullanmaya başlayın
-    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-    - [Java](event-hubs-java-get-started-send.md)
-    - [Python](event-hubs-python-get-started-send.md)
-    - [JavaScript](event-hubs-node-get-started-send.md)
-* [Event Hubs ile ilgili SSS](event-hubs-faq.yml)
-* [Event Hubs kullanan örnek uygulamalar](https://github.com/Azure/azure-event-hubs/tree/master/samples)
+Aşağıdaki örnekleri veya başvuru belgelerini inceleyin. 
+- [.NET GeoDR örneği](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/DotNet/GeoDRClient) 
+- [Java GeoDR örneği](https://github.com/Azure-Samples/eventhub-java-manage-event-hub-geo-disaster-recovery)
+- [.NET-Azure. Messaging. EventHubs örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
+- [.NET-Microsoft. Azure. EventHubs örnekleri](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet)
+- [Java-Azure-mesajlaşma-eventhubs örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
+- [Java-Azure-eventhubs örnekleri](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java)
+- [Python örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples)
+- [JavaScript örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/javascript)
+- [TypeScript örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/typescript)
+- [REST API başvurusu](/rest/api/eventhub/)
 
 [1]: ./media/event-hubs-geo-dr/geo1.png
 [2]: ./media/event-hubs-geo-dr/geo2.png
