@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: d84f56e5ae0f3c364a0fd3a08ccb173d7c65a5e2
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 1be15c16a1897797326ea869c34c3590ffb07691
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121770"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363878"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Desteklenen MySQL için Azure Veritabanı sunucu sürümleri
 
@@ -33,7 +33,7 @@ MySQL için Azure veritabanı hizmetinde, ağ geçidi düğümleri v 5.7 istemci
 ## <a name="azure-database-for-mysql-currently-supports-the-following-major-and-minor-versions-of-mysql"></a>MySQL için Azure veritabanı şu anda MySQL 'in aşağıdaki büyük ve küçük sürümlerini desteklemektedir:
 
 
-| Sürüm | [Tek sunucu](overview.md) <br/> Geçerli ikincil sürüm |[Esnek Sunucu (Önizleme)](/../flexible-server/overview.md) <br/> Geçerli ikincil sürüm  |
+| Sürüm | [Tek sunucu](overview.md) <br/> Geçerli ikincil sürüm |[Esnek Sunucu (Önizleme)](/azure/mysql/flexible-server/overview) <br/> Geçerli ikincil sürüm  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL sürüm 5,6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) (kullanımdan kaldırıldı) | Desteklenmez|
 |MySQL sürüm 5,7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|

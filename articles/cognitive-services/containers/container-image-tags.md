@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 03/25/2020
+ms.date: 04/12/2021
 ms.author: aahi
-ms.openlocfilehash: 3fecb84196ba736120273955b2c88af8cb4dadea
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 80b1af824f1c7bd47f16723f839141c4bed756df
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095824"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365012"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Azure bilişsel hizmetler kapsayıcı görüntü etiketleri ve sürüm notları
 
@@ -52,18 +52,24 @@ Bu kapsayıcı görüntüsünde aşağıdaki Etiketler kullanılabilir. Ayrıca 
 
 # <a name="latest-version"></a>[En son sürüm](#tab/current)
 
+İçin sürüm notları `3.2` :
+
+* OCR kapsayıcısını oku artık genel kullanıma sunulmuştur.
+
+| Resim etiketleri                    | Notlar |
+|-------------------------------|:------|
+| `3.2`                     |       |
+
+# <a name="previous-versions"></a>[Önceki sürümler](#tab/previous)
+
+
 İçin sürüm notları `3.2-preview.2` :
+
 * Daha az yayın
 * JSON yanıtında metin satırı sırası arasında seçim yapmak için ReadingOrder parametresi
 * Gelişmiş günlük kaydı
 * CJK modeline düzeltmeler
-
-| Resim etiketleri                    | Notlar |
-|-------------------------------|:------|
-|3.2.2.014850001-49e0eac6-AMD64-Önizleme                     |       |
-
-# <a name="previous-versions"></a>[Önceki sürümler](#tab/previous)
-
+* 
 İçin sürüm notları `v2.0.013250001-amd64-preview` :
 
 * Kapsayıcı için bellek kullanımını daha da azaltın.
@@ -93,6 +99,7 @@ Bu kapsayıcı görüntüsünde aşağıdaki Etiketler kullanılabilir. Ayrıca 
 
 | Resim etiketleri                    | Notlar |
 |-------------------------------|:------|
+| `3.2.2.014850001-49e0eac6-amd64-preview` |       |
 | `2.0.013250001-amd64-preview` |       |
 | `1.1.013050001-amd64-preview` |       |
 | `1.1.011580001-amd64-preview` |       |

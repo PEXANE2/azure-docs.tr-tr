@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 9a61f54530f25ac33c6ef097698198a11cf1275e
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 3baf44a4240b23b41ce2e80dc22dbda4c7d0672a
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581442"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363725"
 ---
 # <a name="assign-azure-roles-using-the-rest-api"></a>REST API kullanarak Azure rolleri atama
 
@@ -115,10 +115,10 @@ Aşağıda çıktının bir örneği gösterilmektedir:
 
 Yeni bir hizmet sorumlusu oluşturur ve bu hizmet sorumlusuna hemen bir rol atamayı denerseniz, bu rol ataması bazı durumlarda başarısız olabilir. Örneğin, yeni bir yönetilen kimlik oluşturup bu hizmet sorumlusuna bir rol atamayı denerseniz, rol ataması başarısız olabilir. Bu hatanın nedeni büyük olasılıkla çoğaltma gecikmesi. Hizmet sorumlusu tek bir bölgede oluşturulur; Ancak, rol ataması henüz hizmet sorumlusunu çoğaltılmamış farklı bir bölgede gerçekleşebilir.
 
-Bu senaryoya yönelik olarak, `principalType` rol atamasını oluştururken özelliğini olarak ayarlamanız gerekir `ServicePrincipal` . `apiVersion`Rol atamasının öğesini `2018-09-01-preview` veya daha sonra da ayarlamanız gerekir.
+Bu senaryoya yönelik olarak, [-Create REST API rol atamalarını](/rest/api/authorization/roleassignments/create) kullanın ve `principalType` özelliğini olarak ayarlayın `ServicePrincipal` . Ayrıca, veya sonraki bir sürümünü de ayarlamanız gerekir `apiVersion` `2018-09-01-preview` .
 
 ```http
-PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2018-09-01-preview
+PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2018-09-01-preview
 ```
 
 ```json
