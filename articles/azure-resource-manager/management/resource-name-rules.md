@@ -3,12 +3,12 @@ title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: a1dbe409eb5479c4027834cd33e095d12c31e238
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: e260c9055b26d82f2fd2f8458d287a35a838f40f
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210202"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107477800"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -110,7 +110,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | batchAccounts | Bölge | 3-24 | Küçük harfler ve rakamlar. |
+> | batchAccounts | Region | 3-24 | Küçük harfler ve rakamlar. |
 > | batchAccounts/uygulamalar | Batch hesabı | 1-64 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | batchAccounts/sertifikalar | Batch hesabı | 5-45 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | batchAccounts/havuzlar | Batch hesabı | 1-64 | Alfasayısal, alt çizgi ve kısa çizgi. |
@@ -169,7 +169,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | --- | --- | --- | --- |
 > | availabilitySets | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi ile biter. |
 > | diskEncryptionSets | kaynak grubu | 1-80 | Alfasayısal ve alt çizgi. |
-> | disklerinden | kaynak grubu | 1-80 | Alfasayısal ve alt çizgi. |
+> | disklerinden | kaynak grubu | 1-80 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | Galeriler | kaynak grubu | 1-80 | Alfasayısal ve dönemler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | Galeriler/uygulamalar | galeri | 1-80 | Alfasayısal karakterler, kısa çizgiler ve dönemler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | Galeriler/uygulamalar/sürümler | uygulama | 32 bit tamsayı | Sayılar ve dönemler. |
@@ -397,7 +397,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | --- | --- | --- | --- |
 > | Çizelge | kaynak grubu | 2-64 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektup ile başlayın. |
 
-## <a name="microsoftinsights"></a>Microsoft. Insights
+## <a name="microsoftinsights"></a>Microsoft.Insights
 
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
