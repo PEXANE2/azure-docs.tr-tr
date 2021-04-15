@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 0072e699107ea51764a728ce3e9987b86b2a6806
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 5bab4a7a90101d3749571e0f2d4179f0fce14296
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492333"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378644"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda cihazları yönetme
 
@@ -58,10 +58,12 @@ Azure IoT Central uygulamanıza bir cihaz eklemek için:
 
 ## <a name="import-devices"></a>Cihazları içeri aktar
 
-Çok sayıda cihazı uygulamanıza bağlamak için, cihazları bir CSV dosyasından toplu içeri aktarabilirsiniz. CSV dosyası aşağıdaki sütunlara ve üstbilgilere sahip olmalıdır:
+Çok sayıda cihazı uygulamanıza bağlamak için, cihazları bir CSV dosyasından toplu içeri aktarabilirsiniz. CSV dosyası aşağıdaki sütun üst bilgilerine sahip olmalıdır:
 
-* **IOTC_DeviceID** -cihaz kimliği harfler, rakamlar ve `-` karakter içerebilir.
-* **IOTC_DeviceName** -bu sütun isteğe bağlıdır.
+| Sütun | Açıklama 
+| - | - | 
+| IOTC_DEVICEID | Cihaz KIMLIĞI, bu cihazın bağlanmak için kullanacağı benzersiz bir kimliktir. Cihaz KIMLIĞI, boşluk olmadan harf, sayı ve karakter içerebilir `-` . |
+| IOTC_DEVICENAME | İsteğe bağlı. Cihaz adı, uygulama genelinde görüntülenecek kolay bir addır. Belirtilmezse, bu cihaz KIMLIĞIYLE aynı olacaktır.   |
 
 Uygulamanızdaki cihazları toplu olarak kaydetmek için:
 

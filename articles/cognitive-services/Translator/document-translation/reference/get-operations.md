@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/25/2021
 ms.author: v-jansk
-ms.openlocfilehash: c42f3081a831c267c7bc605267b99e2a916ea3d8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fd7cee564aa3a00e21d1e707d08a18115d519925
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105613089"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484685"
 ---
 # <a name="document-translation-get-operations"></a>Belge çevirisi: işlemleri al
 
@@ -59,7 +59,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 İstek üst bilgileri:
 
-|Üst Bilgiler|Description|
+|Üst Bilgiler|Açıklama|
 |--- |--- |
 |Ocp-Apim-Subscription-Key|Gerekli istek üst bilgisi|
 
@@ -67,7 +67,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
 
-|Durum Kodu|Description|
+|Durum Kodu|Açıklama|
 |--- |--- |
 |200|Tamam ögesini seçin. Başarılı istek ve tüm işlemlerin durumunu döndürür. HeadersRetry-After: ıntegeretag: String|
 |400|Hatalı Istek. Geçersiz istek. Giriş parametrelerini denetleyin.|
@@ -81,7 +81,7 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
 
 Aşağıdaki bilgiler başarılı bir yanıtta döndürülür.
 
-|Ad|Tür|Description|
+|Ad|Tür|Açıklama|
 |--- |--- |--- |
 |kimlik|string|İşlemin KIMLIĞI.|
 |createdDateTimeUtc|string|İşlem Oluşturulma tarihi.|
@@ -96,9 +96,9 @@ Aşağıdaki bilgiler başarılı bir yanıtta döndürülür.
 |Özet. iptal edildi|tamsayı|İptal edilen belge sayısı.|
 |Summary. Totalkarakterücret|tamsayı|Ücretlendirilen toplam karakter sayısı.|
 
-###<a name="error-response"></a>Hata yanıtı
+### <a name="error-response"></a>Hata yanıtı
 
-|Ad|Tür|Description|
+|Ad|Tür|Açıklama|
 |--- |--- |--- |
 |kod|string|Üst düzey hata kodlarını içeren Numaralandırmalar. Olası değerler:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>Invalidrequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Yetkisiz</li></ul>|
 |message|string|Üst düzey hata iletisini alır.|

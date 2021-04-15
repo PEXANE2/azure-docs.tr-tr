@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 76c6d7caf3c63779e12443304688192f7311720a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 43707a99792ae3c4d817f47d770629287b8a774b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594572"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374344"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
 
@@ -229,7 +229,7 @@ Yukarıda açıklandığı gibi erişimin sınırlandırılması Azure Resource 
 
 ### <a name="log-analytics-solution-packs-download"></a>Log Analytics çözüm paketlerini indirme
 
-Log Analytics aracısının çözüm paketlerini indirmesini sağlamak için, uygun tam etki alanı adlarını güvenlik duvarı izin verilenler listenize ekleyin. 
+Log Analytics aracısının çözüm paketlerini indirmesini sağlamak için, uygun tam etki alanı adlarını güvenlik duvarınızın allowlist 'nize ekleyin. 
 
 
 | Bulut ortamı | Aracı Kaynağı | Bağlantı noktaları | Yön |
@@ -237,6 +237,10 @@ Log Analytics aracısının çözüm paketlerini indirmesini sağlamak için, uy
 |Azure Genel     | scadvisorcontent.blob.core.windows.net         | 443 | Giden
 |Azure Kamu | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Giden
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Giden
+
+
+>[!NOTE]
+> 19 Nisan 2021 ' den itibaren yukarıdaki ayar gerekli olmayacaktır ve özel bağlantı aracılığıyla çözüm paketleri depolama hesabına ulaşabileceksiniz. Yeni özellik, AMPLS 'in (19 Nisan, 2021 veya sonraki sürümlerde) ve ona bağlı özel uç noktanın yeniden oluşturulmasını gerektirir. Mevcut yükseltme ve özel bitişler için geçerli olmayacaktır.
 
 ## <a name="configure-application-insights"></a>Application Insights'ı Yapılandırma
 
@@ -246,7 +250,7 @@ Azure portala gidin. Azure Izleyici Application Insights bileşen kaynağında, 
 
 İlk olarak, bu Application Insights kaynağını, erişiminiz olan Azure Izleyici özel bağlantı kapsamlarına bağlayabilirsiniz. **Ekle** ' yi seçin ve **Azure Izleyici özel bağlantı kapsamını** seçin. Bu uygulamayı bağlamak için Uygula ' yı seçin. Tüm bağlı kapsamlar Bu ekranda görünür. Bu bağlantının yapılması, bağlı sanal ağlardaki ağ trafiğinin bu bileşene ulaşmasını sağlar ve [Azure izleyici kaynaklarını bağladığımızda](#connect-azure-monitor-resources)kapsama bağlama ile aynı etkiye sahiptir. 
 
-İkincisi, daha önce listelenen özel bağlantı kapsamları (AMPLS) dışından bu kaynağa nasıl ulaşılgidebileceğini kontrol edebilirsiniz. Alma **için genel ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, bağlı kapsamların dışındaki makineler veya SDK 'lar bu bileşene veri yükleyebilir. **Sorgular için ortak ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, kapsamların dışındaki makineler bu Application Insights kaynaktaki verilere erişemez. Bu veriler APM günlüklerine, ölçümlere ve canlı ölçüm akışına erişimi, ayrıca çalışma kitapları, panolar, sorgu API tabanlı istemci deneyimleri, Azure portal içgörüler ve daha fazlası gibi en üstte oluşturulan deneyimlerden de oluşur. 
+Daha sonra, bu kaynağa daha önce listelenen özel bağlantı kapsamları (AMPLS) dışından nasıl ulaşılgidebileceğini kontrol edebilirsiniz. Alma **için genel ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, bağlı kapsamların dışındaki makineler veya SDK 'lar bu bileşene veri yükleyebilir. **Sorgular için ortak ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, kapsamların dışındaki makineler bu Application Insights kaynaktaki verilere erişemez. Bu veriler APM günlüklerine, ölçümlere ve canlı ölçüm akışına erişimi, ayrıca çalışma kitapları, panolar, sorgu API tabanlı istemci deneyimleri, Azure portal içgörüler ve daha fazlası gibi en üstte oluşturulan deneyimlerden de oluşur. 
 
 > [!NOTE]
 > Portal dışı tüketim deneyimleri, izlenen iş yüklerini içeren özel bağlantılı VNET üzerinde de çalışmalıdır.
