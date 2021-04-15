@@ -10,13 +10,13 @@ author: saachigopal
 ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: fb6d9a1a1ad341763c205a11b7a6a9acafda1ac4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: how-to, devx-track-python, deploy
+ms.openlocfilehash: f621bb2a7d4543620d22ab85fb8b44752c9989ac
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889748"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376265"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Özel bir Docker temel görüntüsü kullanarak model dağıtma
 
@@ -216,7 +216,7 @@ Mevcut görüntüleri bir Azure Container Registry karşıya yükleme hakkında 
 
 Microsoft, bu bölümdeki adımlarla kullanılabilecek, herkese açık bir şekilde erişilebilir bir depoda çeşitli Docker görüntüleri sağlar:
 
-| Görüntü | Description |
+| Görüntü | Açıklama |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure Machine Learning için çekirdek görüntü |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | CPU ınzoni için ONNX çalışma zamanını içerir |

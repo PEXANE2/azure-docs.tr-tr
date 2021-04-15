@@ -3,14 +3,14 @@ title: Betik eylemlerini kullanarak Azure HDInsight kümelerini özelleştirme
 description: Betik eylemleri kullanarak HDInsight kümelerine özel bileşenler ekleyin. Betik eylemleri, küme yapılandırmasını özelleştirmek için kullanılan Bash betikleridir. Ya da ton, Solr veya R gibi ek hizmetler ve yardımcı programlar ekleyin.
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
+ms.custom: seoapr2020, contperf-fy21q2
 ms.date: 03/09/2021
-ms.openlocfilehash: efd145732ecc119e2fdf9b73ca59729232a37d4c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c614f2f60adfa2a29a01000cd3adf4791591b8b5
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109531"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378763"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Betik eylemlerini kullanarak Azure HDInsight kümelerini özelleştirme
 
@@ -316,7 +316,7 @@ Aşağıdaki örnek betik, bir betiği yükseltmek ve alçaltmak için cmdlet 'l
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=123-140)]
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 | Komut | Açıklama |
 | --- | --- |

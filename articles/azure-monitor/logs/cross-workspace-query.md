@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/11/2021
-ms.openlocfilehash: e007f5af214dcfa475eb59a5981bc580b9499915
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 19cc85751fc5e4a165b646ac89d9d6b6e90c4408
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107314244"
+ms.locfileid: "107379562"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Azure Izleyici 'de çalışma alanları ve uygulamalar arasında yayılan günlük sorgusu gerçekleştirme
 
@@ -41,8 +41,8 @@ Bir çalışma alanının tanımlanması çeşitli yollarla gerçekleştirilebil
 
 * Kaynak adı-çalışma alanının, bazen *bileşen adı* olarak adlandırılan okunabilir bir adıdır. 
 
-    >[!Note]
-    >Uygulama ve çalışma alanı adları benzersiz olmadığından, bu tanımlayıcı belirsiz olabilir. Kaynak adının birden çok örneği olduğunda, başvurunun nitelenmiş ad, kaynak KIMLIĞI veya Azure Kaynak KIMLIĞI ile olması gerekir.
+    >[!IMPORTANT]
+    >Uygulama ve çalışma alanı adları benzersiz olmadığından, bu tanımlayıcı belirsiz olabilir. Başvurunun nitelenmiş ad, çalışma alanı KIMLIĞI veya Azure Kaynak KIMLIĞI tarafından olması önerilir.
 
     `workspace("contosoretail-it").Update | count`
 

@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 1282d1916d669f1026707e15cc8d5437d885087f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93e97f1f04aea2a31b62b2014a88a5aaa998ed2d
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668996"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376095"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>SAP Solutions sağlayıcıları için Azure izleyici (Önizleme)
 
@@ -25,6 +25,7 @@ Müşteriler aynı SAP izleyici kaynağını ve ilişkili yönetilen grubu yenid
 - SAP HANA
 - Yüksek kullanılabilirlik kümesi
 - Microsoft SQL Server
+- SAP NetWeaver
 
 ![SAP Solutions sağlayıcıları için Azure Izleyici](./media/azure-monitor-sap/azure-monitor-providers.png)
 
@@ -108,6 +109,27 @@ Genel önizlemede, müşteriler SQL Server sağlayıcı ile aşağıdaki veriler
 Microsoft SQL Server sağlayıcıyı yapılandırmak için, SAP sistem KIMLIĞI, ana bilgisayar IP adresi, SQL Server bağlantı noktası numarası ve SQL Server oturum açma adı ve parolası gerekir.
 
 ![SAP Solutions sağlayıcıları için Azure Izleyici-SQL](./media/azure-monitor-sap/azure-monitor-providers-sql.png)
+
+## <a name="provider-type-sap-netweaver"></a>Sağlayıcı türü SAP NetWeaver
+
+Müşteriler SAP NetWeaver katmanından veri toplamayı etkinleştirmek için bir veya daha fazla dizi sağlayıcı türü SAP NetWeaver yapılandırabilir. AMS NetWeaver sağlayıcısı, uygun telemetri bilgilerini almak için mevcut [Sapcontrol WebService](https://www.sap.com/documents/2016/09/0a40e60d-8b7c-0010-82c7-eda71af511fa.html) arabirimini kullanır.
+
+Geçerli yayın için aşağıda, AMS tarafından çağrılan Standart kullanıma hazır SOAP Web yöntemleri verilmiştir.
+|Web yöntemi|    ABAP|   JAVA|   Ölçümler|
+|--|--|--|--|
+|Getsystemınstancelist| X|  X|  Örnek kullanılabilirliği, Ileti sunucusu, ağ geçidi, ICM, ABAP kullanılabilirliği|
+|GetProcessList|    X|  X|  Örnek listesi kırmızı ise, bu sunucunun kırmızı olmasına neden olan Işlemi edinebilirsiniz|
+|GetQueueStatistic| X|  X|  Sıra Istatistikleri (ÇYA/BATCH/UPD)|
+|ABAPGetWPTable|    X|   -| İş süreci kullanımı|
+|Enqgetistatistiğini|   X   |X  |Kilitler|
+
+Genel önizlemede, müşteriler SAP NetWeaver sağlayıcısı ile aşağıdaki verileri görmeyi bekleyebilir: 
+- Sistem ve örnek kullanılabilirliği
+- İş süreci kullanımı
+- Kuyruk kullanımı
+- Kilit istatistiklerini sıraya alma.
+
+![image](https://user-images.githubusercontent.com/75772258/114581825-a9f2eb00-9c9d-11eb-8e6f-79cee7c5093f.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
