@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: d70514e81bc838b4193862e66b0c03440d006128
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
-ms.translationtype: HT
+ms.openlocfilehash: ce29158c2a44f01fa06649e4b4497bf5c5076866
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307493"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107511708"
 ---
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -82,7 +82,7 @@ async function sendSms(resourceEndpoint, fromNumber, toNumber, message) {
 }
 ```
 
-## <a name="write-the-main-method"></a>Main metodunu yazma
+## <a name="write-the-main-function"></a>Main işlevini yazma
 
 İşlevlerimiz oluşturulduktan sonra, bunları çağırmak ve yönetilen kimliklerin kullanımını göstermek için bir ana işlev yazalım:
 ```JavaScript
@@ -154,7 +154,7 @@ async function main() {
 main();
 ```
 
-## <a name="run-the-program"></a>Programı Çalıştır
+## <a name="run-the-program"></a>Programı çalıştırma
 
 Her şey tamamlanarak, projenin dizininden girerek dosyayı çalıştırabilirsiniz `node index.js` . Her şey iyi sorun olursa aşağıdakine benzer bir şey görmeniz gerekir.
 

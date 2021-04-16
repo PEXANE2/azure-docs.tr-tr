@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 1c85a07a3d61c80f3871f04c399263a8e210254e
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 942651aadf4113c1aca32e4e1d2c558b0d764421
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010800"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377234"
 ---
 # <a name="connect-to-azure-database-for-mysql-using-dbforge-studio-for-mysql"></a>MySQL için dbForge Studio 'Yu kullanarak MySQL için Azure veritabanı 'na bağlanma
 
@@ -93,7 +93,7 @@ Yeni şema karşılaştırma Sihirbazı görüntülenir.
 
     :::image type="content" source="media/concepts-migrate-dbforge-studio-for-mysql/schema-sync-wizard.png" alt-text="Şema eşitleme Sihirbazı":::
 
-### <a name="data-comparison"></a>Veri karşılaştırması
+### <a name="step-3-data-comparison"></a>3. Adım Veri karşılaştırması
 
 1. Karşılaştırma menüsünde Yeni veri karşılaştırması ' ni seçin. Yeni veri karşılaştırma Sihirbazı görüntülenir.
 
