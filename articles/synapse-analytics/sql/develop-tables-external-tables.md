@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1977663f4661fca316e4839671abd76e07b5acda
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0986a1d6a75f0d464eb405841af821c606c68200
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304809"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565330"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>SYNAPSE SQL ile dış tabloları kullanma
 
@@ -339,7 +339,7 @@ Azure Blob depolamada gerçek verilerin klasörünü veya dosya yolunu ve dosya 
 Bir klasör konumu belirtirseniz, sunucusuz bir SQL havuzu sorgusu dış tablodan seçim yapılır ve klasörden dosyaları alır.
 
 > [!NOTE]
-> Hadoop ve PolyBase 'in aksine, yolun sonunda/* * belirtmediğiniz müddetçe sunucusuz SQL havuzu alt klasör döndürmez.
+> Hadoop ve PolyBase 'in aksine, yolun sonunda/* * belirtmediğiniz müddetçe sunucusuz SQL havuzu alt klasör döndürmez. Yalnızca Hadoop ve PolyBase gibi, dosya adının altı çizili (_) veya nokta (.) ile başladığı dosyaları döndürmez.
 
 Bu örnekte, bir sunucusuz SQL havuzu sorgusu olan LOCATION = '/Webdata/' ise mydata.txt satırları döndürür. Bir alt klasörde bulunduğundan mydata2.txt ve mydata3.txt döndürmez.
 

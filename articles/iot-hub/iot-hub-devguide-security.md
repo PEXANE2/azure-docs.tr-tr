@@ -7,7 +7,7 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 04/15/2021
 ms.custom:
 - amqp
 - mqtt
@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: 3ddc8c78bac47ed85266037341328585e3c7cb1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e72af412f61f2084fb78907c15a92a22b9e3bc99
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97825123"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567188"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub’a erişimi denetleme
 
@@ -385,7 +385,7 @@ Desteklenen sertifikalar şunlardır:
 
 Bir cihaz, kimlik doğrulaması için bir X. 509.440 sertifikası veya güvenlik belirteci kullanabilir, ancak ikisini birden kullanamazsınız. X. 509.952 sertifikası kimlik doğrulaması ile, mevcut bir sertifikanın süresi dolmuşsa sertifika rollover 'ı işlemek için bir stratejiniz olduğundan emin olun.
 
-X. 509.440 CA kimlik doğrulamasını kullanan cihazlarda aşağıdaki işlev desteklenmez:
+X. 509.440 sertifika yetkilisi (CA) kimlik doğrulaması kullanan cihazlar için aşağıdaki işlevsellik henüz genel kullanıma açık değildir ve [Önizleme modunun etkinleştirilmesi gerekir](iot-hub-preview-mode.md):
 
 * HTTPS, WebSockets üzerinden MQTT ve WebSockets protokolleri üzerinden AMQP.
 * Dosya karşıya yükleme (tüm protokoller).

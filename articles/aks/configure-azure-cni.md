@@ -4,13 +4,13 @@ description: Azure Kubernetes Service 'te (AKS) Azure CNı (Gelişmiş) ağını
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.custom: references_regions
-ms.openlocfilehash: ef9e3689f5846ddfc66c47a15967a18fc6550d35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 62885a4695e7b061a5e7f0e70496cde4663c943d
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504261"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478939"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'te (AKS) Azure CNı ağını yapılandırma
 
@@ -61,9 +61,9 @@ AKS kümesindeki düğüm başına en fazla düğüm sayısı 250 ' dir. Düğü
 
 | Dağıtım yöntemi | Kubenet varsayılanı | Azure CNı varsayılan | Dağıtımda yapılandırılabilir |
 | -- | :--: | :--: | -- |
-| Azure CLI’si | 110 | 30 | Evet (250 'e kadar) |
+| Azure CLI | 110 | 30 | Evet (250 'e kadar) |
 | Resource Manager şablonu | 110 | 30 | Evet (250 'e kadar) |
-| Portal | 110 | 110 (düğüm havuzları sekmesinde yapılandırılır) | No |
+| Portal | 110 | 110 (düğüm havuzları sekmesinde yapılandırılır) | Hayır |
 
 ### <a name="configure-maximum---new-clusters"></a>En fazla yeni küme yapılandırma
 
@@ -221,8 +221,8 @@ IP 'lerin dinamik olarak ayrılması ile Azure CNı kullanılırken düğüm ba�
 
 |SEÇENEĞIYLE CNı kullanan|Dağıtım yöntemi|Varsayılan|Dağıtımda yapılandırılabilir|
 |--|--| :--: |--|
-|Geleneksel Azure CNı|Azure CLI’si|30|Evet (250 'e kadar)|
-|IP 'lerin dinamik ayırması ile Azure CNı|Azure CLI’si|250|Evet (250 'e kadar)|
+|Geleneksel Azure CNı|Azure CLI|30|Evet (250 'e kadar)|
+|IP 'lerin dinamik ayırması ile Azure CNı|Azure CLI|250|Evet (250 'e kadar)|
 
 Pod başına en fazla düğüm yapılandırması ile ilgili diğer tüm rehberlik aynı kalır.
 

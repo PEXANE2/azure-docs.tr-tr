@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 361a151d1f1835f82e440704105cf8b3844a4c54
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 709c7bf352635ffb1c17f6cb24aee59dcae2e033
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221636"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479772"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Öğretici: SQL Server veritabanları ile uç cihazlarda veri depolama
 
@@ -43,7 +43,7 @@ Bu öğreticiye başlamadan önce, Linux kapsayıcı geliştirmesi için gelişt
 
 * Azure'da ücretsiz veya standart katman [IoT Hub'ı](../iot-hub/iot-hub-create-through-portal.md).
 * Linux kapsayıcılarıyla Azure IoT Edge çalıştıran AMD64 cihaz. Hızlı başlangıçlarını bir [Linux cihazı](quickstart-linux.md) veya [Windows cihazı](quickstart.md)ayarlamak için kullanabilirsiniz.
-  * Raspberry PSIS gibi ARM cihazları SQL Server çalıştıramıyor. SQL 'i ARM cihazında kullanmak istiyorsanız, önizleme aşamasında [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/) 'i denemek için kaydolabilirsiniz.
+  * Raspberry PSIS gibi ARM cihazları SQL Server çalıştıramıyor. SQL 'i ARM cihazında kullanmak istiyorsanız, [Azure SQL Edge](../azure-sql-edge/overview.md)'i kullanabilirsiniz.
 * [Azure Container Registry](../container-registry/index.yml)gibi bir kapsayıcı kayıt defteri.
 * [Azure IoT araçlarıyla](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)yapılandırılmış [Visual Studio Code](https://code.visualstudio.com/) .
 * Linux kapsayıcılarını çalıştırmak için yapılandırılmış [Docker CE](https://docs.docker.com/install/) .

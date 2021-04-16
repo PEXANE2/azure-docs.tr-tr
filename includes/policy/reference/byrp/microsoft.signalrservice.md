@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 84bbc8d093a7eefc8186f18b942b0e89522d3f5f
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: fe218a8a9859aeea23c03f6c10633073527e5cde
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106089460"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501404"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure SignalR hizmeti genel ağ erişimini devre dışı bırakmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F21a9766a-82a5-4747-abb5-650b6dbba6d0) |Azure SignalR hizmeti kaynağının güvenliğini artırmak için, genel İnternet 'e açık olmadığından ve yalnızca özel bir uç noktadan erişilebildiğinden emin olun. Genel ağ erişim özelliğini bölümünde açıklandığı gibi devre dışı bırakın [https://aka.ms/asrs/networkacls](https://aka.ms/asrs/networkacls) . Bu seçenek, Azure IP aralığı dışındaki tüm ortak adres alanından erişimi devre dışı bırakır ve IP veya sanal ağ tabanlı güvenlik duvarı kurallarıyla eşleşen tüm oturum açmaları reddeder. Bu, veri sızıntısı risklerini azaltır. |Denetim, reddetme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PublicNetworkAccessDisabled_AuditDeny.json) |
 |[Azure SignalR hizmeti özel bir bağlantı etkin SKU kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F464a1620-21b5-448d-8ce6-d4ac6d1bc49a) |Azure özel bağlantısı, Sanal ağınızı, kaynakları ortak veri sızıntısı risklerine karşı koruyan kaynak veya hedefte genel bir IP adresi olmadan Azure hizmetlerine bağlamanıza olanak tanır. İlke, Azure SignalR hizmeti için özel bağlantı etkin SKU 'Ları için sizi sınırlandırır. Şu adreste özel bağlantı hakkında daha fazla bilgi edinin: [https://aka.ms/asrs/privatelink](https://aka.ms/asrs/privatelink) . |Denetim, reddetme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_AllowedSKU_AuditDeny.json) |

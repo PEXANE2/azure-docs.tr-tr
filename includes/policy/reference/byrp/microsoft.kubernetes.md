@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 676f212908bcf1f12d46f6ba82031854cab271e5
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 4699649f6dc9d1adeb4bcbe44bb95d61caf88567
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106092911"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499739"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure Arc etkin Kubernetes kümelerinde Azure Defender 'ın uzantısı yüklü olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure wiki 'nin Azure Arc için uzantısı, Arc etkin Kubernetes kümeleriniz için tehdit koruması sağlar. Uzantı kümedeki tüm denetim düzlemi (ana) düğümlerinden verileri toplar ve daha fazla analize yönelik olarak bulutta Kubernetes arka ucu için Azure Defender 'a gönderir. Daha fazla bilgi edinin [https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc) . |Auditınotexists, devre dışı |[1.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ASC_Audit_Azure_Defender_Kubernetes_Arc_Extension.json) |
 |[Kubernetes kümelerini, HTTPS gizli dizilerini kullanarak belirtilen Gima yapılandırmasıyla yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6f560f4-f582-4b67-b123-a37dcd1bf7ea) |Kümelerin, tanımlanan git deposundan iş yükleri ve yapılandırmalar için Truth kaynaklarını almasını güvence altına almak için, Kubernetes kümelerine ' sourceControlConfiguration ' dağıtın. Bu tanım, Key Vault depolanan HTTPS Kullanıcı ve anahtar gizli dizileri gerektirir. Yönergeler için, adresini ziyaret edin [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy) . |deployIfNotExists, Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster-HTTPS-secrets_DINE.json) |

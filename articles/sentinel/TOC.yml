@@ -120,6 +120,8 @@
               href: connect-windows-firewall.md
             - name: Windows güvenlik olayları
               href: connect-windows-security-events.md
+            - name: Windows Sanal Masaüstü
+              href: connect-windows-virtual-desktop.md
         - name: Dış çözümleri bağlama
           items:
             - name: Agari savunma ve marka koruması

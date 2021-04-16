@@ -3,12 +3,12 @@ title: Öğretici-Azure VMware çözümü özel bulutu dağıtma
 description: Azure VMware çözümü özel bulutu oluşturmayı ve dağıtmayı öğrenin
 ms.topic: tutorial
 ms.date: 02/22/2021
-ms.openlocfilehash: ed916305cd1a67162f07c24e3bf97766e5389b74
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 89a44ce7e5910609068f72c321971ced2e3646b4
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462176"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374854"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>Öğretici: Azure VMware çözümü özel bulutu dağıtma
 
@@ -30,7 +30,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 - [Öğretici: ağ denetim listesi](tutorial-network-checklist.md)' nde açıklandığı şekilde yapılandırılmış uygun ağa sahip olduğunuzdan emin olun.
 - Konaklar sağlandı ve Microsoft. AVS kaynak sağlayıcısı, Istek içinde açıklandığı şekilde kaydedilir [ve Microsoft. AVS kaynak sağlayıcısı 'nı etkinleştirir](enable-azure-vmware-solution.md).
 
-## <a name="create-a-private-cloud"></a>Özel Bulut oluşturma
+## <a name="create-a-private-cloud"></a>Özel bulut oluşturma
 
 [Azure Portal](#azure-portal) kullanarak veya [Azure CLI](#azure-cli)kullanarak bir Azure VMware çözümü özel bulutu oluşturabilirsiniz.
 
@@ -38,7 +38,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Azure VMware çözümü özel bulutu oluşturmak için Azure portal yerine Azure Cloud Shell kullanarak Azure CLı 'yi kullanabilirsiniz.  Azure VMware çözümü ile kullanabileceğiniz komutların listesi için bkz. [Azure VMware komutları](/cli/azure/ext/vmware/vmware).
 

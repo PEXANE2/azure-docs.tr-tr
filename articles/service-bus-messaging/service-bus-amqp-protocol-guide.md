@@ -2,13 +2,13 @@
 title: Azure Service Bus ve Event Hubs protokol kılavuzunda AMQP 1,0 | Microsoft Docs
 description: Azure Service Bus ve Event Hubs AMQP 1,0 ifadelerine ve açıklamasına yönelik protokol Kılavuzu
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 2154221ebfe69b659ff83100ed614133e178ccdb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: 8575e17cd06a4153928837e6990c764d7a29993f
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98624498"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502071"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus ve Event Hubs protokol kılavuzunda AMQP 1,0
 
@@ -52,7 +52,7 @@ AMQP, iletişim programları *kapsayıcılarını* çağırır; Bunlar, bu kapsa
 
 Ağ bağlantısı bu nedenle kapsayıcıya bağlanır. Alıcı rolündeki kapsayıcı tarafından, gelen TCP bağlantılarını dinleyen ve kabul eden bir kapsayıcıya giden TCP yuvası bağlantısı kuran istemci rolünde kapsayıcı tarafından başlatılır. Bağlantı el sıkışması, protokol sürümü için anlaşma, aktarım düzeyi güvenliği (TLS/SSL) ve bağlantı kapsamındaki bir kimlik doğrulama/yetkilendirme el sıkışması ve SASL 'yi temel alır.
 
-Azure Service Bus her zaman TLS kullanımını gerektirir. TCP bağlantı noktası 5671 üzerinden bağlantıları destekler, bu, TCP bağlantısının AMQP protokol el sıkışması girmeden önce TLS ile üzeri olduğu ve ayrıca sunucunun AMQP tarafından önceden tanımlanmış model kullanılarak TLS ile bağlantı için zorunlu bir yükseltme sunduğu TCP bağlantı noktası 5672 üzerinden bağlantı kurulmasını destekler. AMQP WebSockets Binding, daha sonra AMQP 5671 bağlantılarına denk gelen TCP bağlantı noktası 443 üzerinden bir tünel oluşturur.
+Azure Service Bus daima TLS kullanımını gerektirir. TCP bağlantı noktası 5671 üzerinden bağlantıları destekler, bu, TCP bağlantısının AMQP protokol el sıkışması girmeden önce TLS ile üzeri olduğu ve ayrıca sunucunun AMQP tarafından önceden tanımlanmış model kullanılarak TLS ile bağlantı için zorunlu bir yükseltme sunduğu TCP bağlantı noktası 5672 üzerinden bağlantı kurulmasını destekler. AMQP WebSockets Binding, daha sonra AMQP 5671 bağlantılarına denk gelen TCP bağlantı noktası 443 üzerinden bir tünel oluşturur.
 
 Bağlantıyı ve TLS 'yi ayarladıktan sonra Service Bus iki SASL mekanizması seçeneği sunar:
 
@@ -106,7 +106,7 @@ En basit durumda, gönderen iletileri "önceden kapatılmış" olarak, istemcini
 
 Normal durumda, iletilerin kapanmamış olarak gönderilmesi ve alıcı, daha sonra *değerlendirme* ve ret kullanımını kabul veya reddetme olduğunu gösterir. Reddetme, alıcı herhangi bir nedenden dolayı iletiyi kabul edemediğinde oluşur ve reddetme iletisi AMQP tarafından tanımlanan bir hata yapısı olan neden hakkında bilgi içerir. Service Bus içindeki iç hatalar nedeniyle iletiler reddedildiyse, hizmet, destek istekleri dosyayorsanız personeli desteklemek için tanılama ipuçları sağlamak üzere kullanılabilecek ek bilgileri bu yapıda geri döndürür. Hatalar hakkında daha sonra hatalarla ilgili daha fazla bilgi edinebilirsiniz.
 
-Özel bir Red formu, alıcının aktarıma hiçbir teknik nesne bulunmadığını ve aktarımı kapatma konusunda hiçbir ilgi olmadığını gösteren *serbest bırakılmış* durumdur. Bu durumda, örneğin bir ileti Service Bus istemcisine teslim edildiğinde ve istemci iletiyi işlemeden kaynaklanan işi gerçekleştiremediği için iletiyi "iptal" seçerse, bu durum vardır; ileti teslimi hata durumunda değil. Bu durumun bir çeşitlemesi, serbest bırakıldığında ileti üzerinde değişiklik yapılmasına izin veren *değiştirme* durumudur. Bu durum Service Bus tarafından mevcut değil.
+Özel bir Red formu, alıcının aktarıma hiçbir teknik nesne bulunmadığını ve aktarımı kapatma konusunda hiçbir ilgi olmadığını gösteren *serbest bırakılmış* durumdur. Bu durumda, örneğin bir ileti Service Bus istemcisine teslim edildiğinde ve istemci iletiyi işlemeden kaynaklanan işi gerçekleştiremediği için iletiyi "iptal" seçerse, bu durum vardır; ileti teslimi hata durumunda değil. Bu durumun bir çeşitlemesi, serbest bırakıldığında ileti üzerinde değişiklik yapılmasına izin veren *değiştirme* durumudur. Şu anda bu durum, Service Bus tarafından kullanılmıyor.
 
 AMQP 1,0 belirtimi *alındı* olarak adlandırılan ve özellikle bağlantı kurtarmayı işlemeye yardımcı olan bir daha fazla değerlendirme durumu tanımlar. Bağlantı kurtarma, önceki bağlantı ve oturum kaybedildiğinde bağlantının durumunun ve yeni bir bağlantı ve oturumun üzerine bekleyen teslimleri reconstituting sağlar.
 
@@ -144,67 +144,67 @@ Aşağıdaki tablodaki oklar, performasel akış yönünü gösterir.
 
 | İstemci | Service Bus |
 | --- | --- |
-| --> iliştirme (<br/>ad = {bağlantı adı},<br/>tanıtıcı = {sayısal tanıtıcı},<br/>rol =**alıcı**,<br/>Kaynak = {varlık adı},<br/>hedef = {istemci bağlantı KIMLIĞI}<br/>) |İstemci, varlığa alıcı olarak iliştirir |
-| Bağlantının sonuna ekleme yanıtlarını Service Bus |<--Attach (<br/>ad = {bağlantı adı},<br/>tanıtıcı = {sayısal tanıtıcı},<br/>rol =**Gönderen**,<br/>Kaynak = {varlık adı},<br/>hedef = {istemci bağlantı KIMLIĞI}<br/>) |
+| `--> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={entity name},<br/>target={client link ID}<br/>)` |İstemci, varlığa alıcı olarak iliştirir |
+| Bağlantının sonuna ekleme yanıtlarını Service Bus |`<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={entity name},<br/>target={client link ID}<br/>)` |
 
 #### <a name="create-message-sender"></a>İleti gönderici oluştur
 
 | İstemci | Service Bus |
 | --- | --- |
-| --> iliştirme (<br/>ad = {bağlantı adı},<br/>tanıtıcı = {sayısal tanıtıcı},<br/>rol =**Gönderen**,<br/>kaynak = {istemci bağlantı KIMLIĞI},<br/>Hedef = {varlık adı}<br/>) |Eylem yok |
-| Eylem yok |<--Attach (<br/>ad = {bağlantı adı},<br/>tanıtıcı = {sayısal tanıtıcı},<br/>rol =**alıcı**,<br/>kaynak = {istemci bağlantı KIMLIĞI},<br/>Hedef = {varlık adı}<br/>) |
+| `--> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link ID},<br/>target={entity name}<br/>)` |Eylem yok |
+| Eylem yok |`<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={client link ID},<br/>target={entity name}<br/>)` |
 
 #### <a name="create-message-sender-error"></a>İleti gönderici oluştur (hata)
 
 | İstemci | Service Bus |
 | --- | --- |
-| --> iliştirme (<br/>ad = {bağlantı adı},<br/>tanıtıcı = {sayısal tanıtıcı},<br/>rol =**Gönderen**,<br/>kaynak = {istemci bağlantı KIMLIĞI},<br/>Hedef = {varlık adı}<br/>) |Eylem yok |
-| Eylem yok |<--Attach (<br/>ad = {bağlantı adı},<br/>tanıtıcı = {sayısal tanıtıcı},<br/>rol =**alıcı**,<br/>Kaynak = null,<br/>Target = null<br/>)<br/><br/><--ayır (<br/>tanıtıcı = {sayısal tanıtıcı},<br/>kapalı =**doğru**,<br/>hata = {hata bilgisi}<br/>) |
+| `--> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link ID},<br/>target={entity name}<br/>)` |Eylem yok |
+| Eylem yok |`<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source=null,<br/>target=null<br/>)<br/><br/><-- detach(<br/>handle={numeric handle},<br/>closed=**true**,<br/>error={error info}<br/>)` |
 
 #### <a name="close-message-receiversender"></a>İleti alıcısını/göndereni kapat
 
 | İstemci | Service Bus |
 | --- | --- |
-| --> ayır (<br/>tanıtıcı = {sayısal tanıtıcı},<br/>kapalı =**doğru**<br/>) |Eylem yok |
-| Eylem yok |<--ayır (<br/>tanıtıcı = {sayısal tanıtıcı},<br/>kapalı =**doğru**<br/>) |
+| `--> detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>)` |Eylem yok |
+| Eylem yok |`<-- detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>)` |
 
 #### <a name="send-success"></a>Gönderme (başarılı)
 
 | İstemci | Service Bus |
 | --- | --- |
-| --> aktarımı (<br/>teslimat kimliği = {sayısal tanıtıcı},<br/>teslim-etiket = {ikili tanıtıcı},<br/>Kapatılan =**false**,, daha fazla =**false**,<br/>State =**null**,<br/>Özgeçmişi =**false**<br/>) |Eylem yok |
-| Eylem yok |<--Disposition (<br/>rol = alıcı,<br/>ilk = {Delivery ID},<br/>Son = {teslim KIMLIĞI},<br/>Kapatılan =**doğru**,<br/>durum =**kabul edildi**<br/>) |
+| `--> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |Eylem yok |
+| Eylem yok |`<-- disposition(<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID},<br/>settled=**true**,<br/>state=**accepted**<br/>)` |
 
 #### <a name="send-error"></a>Gönder (hata)
 
 | İstemci | Service Bus |
 | --- | --- |
-| --> aktarımı (<br/>teslimat kimliği = {sayısal tanıtıcı},<br/>teslim-etiket = {ikili tanıtıcı},<br/>Kapatılan =**false**,, daha fazla =**false**,<br/>State =**null**,<br/>Özgeçmişi =**false**<br/>) |Eylem yok |
-| Eylem yok |<--Disposition (<br/>rol = alıcı,<br/>ilk = {Delivery ID},<br/>Son = {teslim KIMLIĞI},<br/>Kapatılan =**doğru**,<br/>durum =**reddedildi**(<br/>hata = {hata bilgisi}<br/>)<br/>) |
+| `--> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |Eylem yok |
+| Eylem yok |`<-- disposition(<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID},<br/>settled=**true**,<br/>state=**rejected**(<br/>error={error info}<br/>)<br/>)` |
 
 #### <a name="receive"></a>Al
 
 | İstemci | Service Bus |
 | --- | --- |
-| --> akışı (<br/>bağlantı-kredi = 1<br/>) |Eylem yok |
-| Eylem yok |< aktarımı (<br/>teslimat kimliği = {sayısal tanıtıcı},<br/>teslim-etiket = {ikili tanıtıcı},<br/>Kapatılan =**false**,<br/>daha fazla =**yanlış**,<br/>State =**null**,<br/>Özgeçmişi =**false**<br/>) |
-| --> eğilimi (<br/>rol =**alıcı**,<br/>ilk = {Delivery ID},<br/>Son = {teslim KIMLIĞI},<br/>Kapatılan =**doğru**,<br/>durum =**kabul edildi**<br/>) |Eylem yok |
+| `--> flow(<br/>link-credit=1<br/>)` |Eylem yok |
+| Eylem yok |`< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |
+| `--> disposition(<br/>role=**receiver**,<br/>first={delivery ID},<br/>last={delivery ID},<br/>settled=**true**,<br/>state=**accepted**<br/>)` |Eylem yok |
 
 #### <a name="multi-message-receive"></a>Birden çok ileti alma
 
 | İstemci | Service Bus |
 | --- | --- |
-| --> akışı (<br/>bağlantı-kredi = 3<br/>) |Eylem yok |
-| Eylem yok |< aktarımı (<br/>teslimat kimliği = {sayısal tanıtıcı},<br/>teslim-etiket = {ikili tanıtıcı},<br/>Kapatılan =**false**,<br/>daha fazla =**yanlış**,<br/>State =**null**,<br/>Özgeçmişi =**false**<br/>) |
-| Eylem yok |< aktarımı (<br/>teslimat kimliği = {sayısal tanıtıcı + 1},<br/>teslim-etiket = {ikili tanıtıcı},<br/>Kapatılan =**false**,<br/>daha fazla =**yanlış**,<br/>State =**null**,<br/>Özgeçmişi =**false**<br/>) |
-| Eylem yok |< aktarımı (<br/>teslimat kimliği = {sayısal tanıtıcı + 2},<br/>teslim-etiket = {ikili tanıtıcı},<br/>Kapatılan =**false**,<br/>daha fazla =**yanlış**,<br/>State =**null**,<br/>Özgeçmişi =**false**<br/>) |
-| --> eğilimi (<br/>rol = alıcı,<br/>ilk = {Delivery ID},<br/>Son = {teslim KIMLIĞI + 2},<br/>Kapatılan =**doğru**,<br/>durum =**kabul edildi**<br/>) |Eylem yok |
+| `--> flow(<br/>link-credit=3<br/>)` |Eylem yok |
+| Eylem yok |`< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |
+| Eylem yok |`< transfer(<br/>delivery-id={numeric handle+1},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |
+| Eylem yok |`< transfer(<br/>delivery-id={numeric handle+2},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |
+| `--> disposition(<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID+2},<br/>settled=**true**,<br/>state=**accepted**<br/>)` |Eylem yok |
 
 ### <a name="messages"></a>İletiler
 
 Aşağıdaki bölümlerde, standart AMQP ileti bölümlerinden hangi özelliklerin Service Bus tarafından kullanıldığı ve Service Bus API kümesine nasıl eşlendikleri açıklanmaktadır.
 
-Uygulamanın tanımlaması gereken herhangi bir özelliği AMQP 'nin `application-properties` haritasına eşlenmelidir.
+Uygulamanın tanımlanması gereken tüm özellikler AMQP 'nin `application-properties` haritasına eşlenmelidir.
 
 #### <a name="header"></a>üst bilgi
 
@@ -223,7 +223,7 @@ Uygulamanın tanımlaması gereken herhangi bir özelliği AMQP 'nin `applicatio
 | ileti kimliği |Bu ileti için uygulama tanımlı, serbest biçimli tanımlayıcı. Yinelenen algılama için kullanılır. |[Ileti](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |Uygulama tanımlı kullanıcı tanımlayıcısı, Service Bus tarafından yorumlanmaz. |Service Bus API 'SI aracılığıyla erişilemez. |
 | kullanıcısı |Uygulama tanımlı hedef tanımlayıcısı, Service Bus tarafından yorumlanmaz. |[Kime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| subject |Uygulama tanımlı ileti amacı tanımlayıcısı, Service Bus tarafından yorumlanmaz. |[Etiketle](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| subject |Uygulama tanımlı ileti amacı tanımlayıcısı, Service Bus tarafından yorumlanmaz |[Etiketle](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | Yanıtla |Uygulama tanımlı yanıt yolu göstergesi, Service Bus tarafından yorumlanmaz. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |Uygulama tanımlı bağıntı tanımlayıcısı, Service Bus tarafından yorumlanmaz. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | içerik türü |Service Bus tarafından Yorumlanmayan gövde için uygulama tanımlı içerik türü göstergesi. |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -247,7 +247,7 @@ AMQP ileti özelliklerinin parçası olmayan ve ileti üzerinde olduğu gibi di�
 | x-opt-sıra numarası | Bir iletiye atanan hizmet tanımlı benzersiz sayı. | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) |
 | x-opt-kayması | İletinin hizmet tarafından tanımlanan sıraya alınan sıra numarası. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber) |
 | x-opt-kilitlendi-Until | Hizmet tanımlı. İletinin kuyrukta/abonelikte kilitlenebileceği tarih ve saat. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc) |
-| x-opt-sahipsiz-kaynak | Hizmet tanımlı. İleti atılacak ileti sırasından alınmışsa, özgün iletinin kaynağı. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource) |
+| x-opt-sahipsiz-kaynak | Hizmet tanımlı. İleti, atılacak ileti sırasından alınmışsa, özgün iletinin kaynağıdır. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource) |
 
 ### <a name="transaction-capability"></a>İşlem yeteneği
 
@@ -319,16 +319,16 @@ Bu bölümde, AMQP 'ye yönelik taslak uzantılarına dayalı Azure Service Bus 
 
 ### <a name="amqp-management"></a>AMQP yönetimi
 
-AMQP yönetim belirtimi, bu makalede ele alınan taslak uzantılarının ilklarıdır. Bu belirtim, AMQP üzerinden mesajlaşma altyapısına sahip yönetim etkileşimlerine izin veren AMQP protokolünün üst kısmında katmanlı bir protokoller kümesi tanımlar. Belirtim, bir ileti altyapısı içindeki varlıkları yönetmek için *oluşturma*, *okuma*, *güncelleştirme* ve *silme* gibi genel işlemleri ve sorgu işlemleri kümesini tanımlar.
+AMQP yönetim belirtimi, bu makalede ele alınan taslak uzantılarının ilklarıdır. Bu belirtim, AMQP Protokolü üzerindeki mesajlaşma altyapısıyla yönetim etkileşimlerine izin veren AMQP protokolünün üst kısmında katmanlı bir protokoller kümesi tanımlar. Belirtim, bir ileti altyapısı içindeki varlıkları yönetmek için *oluşturma*, *okuma*, *güncelleştirme* ve *silme* gibi genel işlemleri ve sorgu işlemleri kümesini tanımlar.
 
 Bu hareketlerin hepsi, istemci ile mesajlaşma altyapısı arasında bir istek/yanıt etkileşimi gerektirir ve bu nedenle belirtim, istemci mesajlaşma altyapısına bağlanır, bir oturum başlatır ve ardından bir çift bağlantı oluşturur. Tek bir bağlantıda, istemci Gönderici olarak davranır ve diğeri de alıcı olarak davranır ve bu sayede çift yönlü kanal görevi gören bir dizi bağlantı oluşturur.
 
 | Mantıksal Işlem | İstemci | Service Bus |
 | --- | --- | --- |
-| Istek yanıt yolu oluştur |--> iliştirme (<br/>ad = {*bağlantı adı*},<br/>tanıtıcı = {*sayısal tanıtıcı*},<br/>rol =**Gönderen**,<br/>kaynak =**null**,<br/>target = "myentity/$management"<br/>) |Eylem yok |
-| Istek yanıt yolu oluştur |Eylem yok |\<-- attach(<br/>ad = {*bağlantı adı*},<br/>tanıtıcı = {*sayısal tanıtıcı*},<br/>rol =**alıcı**,<br/>Kaynak = null,<br/>target = "myentity"<br/>) |
-| Istek yanıt yolu oluştur |--> iliştirme (<br/>ad = {*bağlantı adı*},<br/>tanıtıcı = {*sayısal tanıtıcı*},<br/>rol =**alıcı**,<br/>Source = "myentity/$management",<br/>target = "myclient $ ID"<br/>) | |
-| Istek yanıt yolu oluştur |Eylem yok |\<-- attach(<br/>ad = {*bağlantı adı*},<br/>tanıtıcı = {*sayısal tanıtıcı*},<br/>rol =**Gönderen**,<br/>Source = "myentity",<br/>target = "myclient $ ID"<br/>) |
+| Istek yanıt yolu oluştur |`--> attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**sender**,<br/>source=**null**,<br/>target=”myentity/$management”<br/>)` |Eylem yok |
+| Istek yanıt yolu oluştur |Eylem yok |`\<-- attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**receiver**,<br/>source=null,<br/>target=”myentity”<br/>)` |
+| Istek yanıt yolu oluştur |`--> attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**receiver**,<br/>source=”myentity/$management”,<br/>target=”myclient$id”<br/>)` | |
+| Istek yanıt yolu oluştur |Eylem yok |`\<-- attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**sender**,<br/>source=”myentity”,<br/>target=”myclient$id”<br/>)` |
 
 Bu bağlantı çiftinin yerinde olması, istek/yanıt uygulamasının basittir: istek, bu kalıbı anlayan mesajlaşma altyapısı içindeki bir varlığa gönderilen iletidir. Bu istek iletisinde, *Özellikler* bölümündeki *Yanıtla* alanı, yanıtın teslim edileceği bağlantının *hedef* tanımlayıcısına ayarlanır. İşleme varlığı, isteği işler ve ardından yanıtı, *hedef* tanımlayıcısı belirtilen *Yanıtla* tanımlayıcıyla eşleşen bağlantı üzerinden sunar.
 
@@ -359,26 +359,25 @@ Protokol hareketi, yönetim belirtimi tarafından tanımlanan bir istek/yanıt d
 
 | Anahtar | İsteğe Bağlı | Değer Türü | Değer Içeriği |
 | --- | --- | --- | --- |
-| operation |No |string |**Put belirteci** |
-| tür |No |string |Yerleştirmekte olan belirtecin türü. |
-| name |No |string |Belirtecin uygulandığı "hedef kitle". |
+| operation |Hayır |string |**Put belirteci** |
+| tür |Hayır |string |Yerleştirmekte olan belirtecin türü. |
+| name |Hayır |string |Belirtecin uygulandığı "hedef kitle". |
 | dolmadan |Yes |timestamp |Belirtecin süre sonu zamanı. |
 
 *Name* özelliği, belirtecin ilişkilendirilacağı varlığı tanımlar. Service Bus kuyruk veya konu/abonelik yoludur. *Type* özelliği, belirteç türünü tanımlar:
 
 | Belirteç türü | Belirteç açıklaması | Gövde türü | Notlar |
 | --- | --- | --- | --- |
-| AMQP: JWT |JSON Web Token (JWT) |AMQP değeri (dize) |Henüz kullanılamıyor. |
-| AMQP: SWT |Basit Web belirteci (SWT) |AMQP değeri (dize) |Yalnızca AAD/ACS tarafından verilen SWT belirteçleri için desteklenir |
-| ServiceBus. Windows. net: sastoken |Service Bus SAS belirteci |AMQP değeri (dize) |- |
+| `jwt` |JSON Web Token (JWT) |AMQP değeri (dize) |Henüz kullanılamıyor. |
+| `servicebus.windows.net:sastoken` |Service Bus SAS belirteci |AMQP değeri (dize) |- |
 
-Belirteçler yapılandırmacısı hakları. Service Bus üç temel hak biliyor: "Gönder" gönderimi, "dinlemek" almayı ve "Yönet", varlıkların işlenmesine izin vermez. AAD/ACS tarafından verilen SWT belirteçleri, bu hakları açıkça talep olarak içerir. Service Bus SAS belirteçleri, ad alanı veya varlıkta yapılandırılan kurallara başvurur ve bu kurallar, haklarla yapılandırılır. Belirteç bu kuralla ilişkilendirilen anahtarla imzalanmak, belirtecin ilgili hakları ifade etmelerini sağlar. *PUT belirtecini* kullanan bir varlıkla ilişkili belirteç, bağlı istemcinin, belirteç hakları başına varlıkla etkileşime geçmesini sağlar. *Gönderen* rolünü istemcinin aldığı bir bağlantı, "Gönder" hakkını gerektirir; *alıcı* rolünü almak Için "dinler" hakkı gerekir.
+Belirteçler yapılandırmacısı hakları. Service Bus üç temel hak biliyor: "Gönder" gönderimi, "dinlemek" almayı ve "Yönet", varlıkların işlenmesine izin vermez. Service Bus SAS belirteçleri, ad alanı veya varlıkta yapılandırılan kurallara başvurur ve bu kurallar, haklarla yapılandırılır. Belirteç bu kuralla ilişkilendirilen anahtarla imzalanmak, belirtecin ilgili hakları ifade etmelerini sağlar. *PUT belirtecini* kullanan bir varlıkla ilişkili belirteç, bağlı istemcinin, belirteç hakları başına varlıkla etkileşime geçmesini sağlar. *Gönderen* rolünü istemcinin aldığı bir bağlantı, "Gönder" hakkını gerektirir; *alıcı* rolünü almak Için "dinler" hakkı gerekir.
 
 Yanıt iletisinde aşağıdaki *uygulama özellikleri* değerleri bulunur
 
 | Anahtar | İsteğe Bağlı | Değer Türü | Değer Içeriği |
 | --- | --- | --- | --- |
-| durum kodu |No |int |HTTP yanıt kodu **[RFC2616]**. |
+| durum kodu |Hayır |int |HTTP yanıt kodu **[RFC2616]**. |
 | durum-açıklama |Yes |string |Durumun açıklaması. |
 
 İstemci, *yerleştirme belirtecini* sürekli olarak ve mesajlaşma altyapısındaki herhangi bir varlık için çağırabilir. Belirteçler, geçerli istemcinin kapsamına alınır ve geçerli bağlantıya bağlanır, yani bağlantı düşerse sunucu tüm korunan belirteçleri bırakır.
@@ -401,8 +400,8 @@ Bu işlevle, bir gönderici oluşturup bağlantısını kurarsınız `via-entity
 
 | İstemci | Yön | Service Bus |
 | :--- | :---: | :--- |
-| ekleme<br/>ad = {bağlantı adı},<br/>rol = Gönderen,<br/>kaynak = {istemci bağlantı KIMLIĞI},<br/>hedef =**{VIA-varlık}**,<br/>**Properties = Map [( <br/> com. Microsoft: aktarım-hedefi-adresi = <br/> {hedef-varlık})]** ) | ------> | |
-| | <------ | ekleme<br/>ad = {bağlantı adı},<br/>rol = alıcı,<br/>kaynak = {istemci bağlantı KIMLIĞI},<br/>hedef = {VIA-varlık},<br/>Properties = Map [(<br/>com. Microsoft: transfer-Destination-Address =<br/>{Hedef-varlık})] ) |
+| ekleme<br/>ad = {bağlantı adı},<br/>rol = Gönderen,<br/>kaynak = {istemci bağlantı KIMLIĞI},<br/>hedef =**{VIA-varlık}**,<br/>**Properties = Map [( <br/> com. Microsoft: aktarım-hedefi-adresi = <br/> {hedef-varlık})]**) | ------> | |
+| | <------ | ekleme<br/>ad = {bağlantı adı},<br/>rol = alıcı,<br/>kaynak = {istemci bağlantı KIMLIĞI},<br/>hedef = {VIA-varlık},<br/>Properties = Map [(<br/>com. Microsoft: transfer-Destination-Address =<br/>{Hedef-varlık})]) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

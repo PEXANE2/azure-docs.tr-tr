@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 206bcfaeb5cb13d3ecf1e5f6335518c42df21eb8
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f737be68a28f95ab5402ba5ea08e85fcf1b04d37
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535300"
+ms.locfileid: "107565908"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Ağ güvenlik grupları için akış günlük kaydına giriş
 
@@ -93,10 +93,10 @@ Akış günlükleri aşağıdaki özellikleri içerir:
                     * **Trafik akışı** -trafik akışının yönü. Giden **ve çıkış için geçerli** değerler **ı** .
                     * **Trafik kararı** -trafiğe izin verilip verilmediğini belirtir. Geçerli **değerler, izin** verilen ve **D** için için geçerlidir.
                     * **Flow durumu-yalnızca sürüm 2** -akışın durumunu yakalar. Olası durumlar **B**: bir akış oluşturulduğunda başlar. İstatistikler sağlanmamış. **C**: devam eden bir akış için devam ediliyor. İstatistikler 5 dakikalık aralıklarla sağlanır. **E**: bir akış sonlandırıldığında sonlandırın. İstatistikler sağlanır.
-                    * **Paketler-kaynak-yalnızca hedef sürüm 2** Son güncelleştirmeden bu yana kaynaktan hedefe gönderilen TCP veya UDP paketlerinin toplam sayısı.
-                    * **Gönderilen bayt-kaynak-yalnızca hedef sürüm 2 ' ye** Son güncelleştirmeden bu yana kaynaktan hedefe gönderilen TCP veya UDP paket baytlarının toplam sayısıdır. Paket baytları paket üst bilgisini ve yükünü içerir.
-                    * **Paketler-hedefe yalnızca kaynak-sürüm 2** Son güncelleştirmeden bu yana hedefin kaynağına Gönderilen TCP veya UDP paketlerinin toplam sayısı.
-                    * **Gönderilen bayt-hedef-yalnızca kaynak-sürüm 2** Son güncelleştirmeden bu yana, hedefin kaynağına Gönderilen TCP ve UDP paket baytlarının toplam sayısıdır. Paket baytları paket üst bilgisini ve yükünü içerir.
+                    * **Paketler-kaynak-yalnızca hedef sürüm 2** Son güncelleştirmeden bu yana kaynaktan hedefe gönderilen TCP paketlerinin toplam sayısı.
+                    * **Gönderilen bayt-kaynak-yalnızca hedef sürüm 2 ' ye** Son güncelleştirmeden bu yana kaynaktan hedefe gönderilen TCP paket baytlarının toplam sayısıdır. Paket baytları paket üst bilgisini ve yükünü içerir.
+                    * **Paketler-hedefe yalnızca kaynak-sürüm 2** Son güncelleştirmeden bu yana Hedefin kaynaktan gönderilen toplam TCP paketi sayısı.
+                    * **Gönderilen bayt-hedef-yalnızca kaynak-sürüm 2** Son güncelleştirmeden bu yana, hedefin kaynağa gönderdiği TCP paket baytlarının toplam sayısı. Paket baytları paket üst bilgisini ve yükünü içerir.
 
 
 **NSG akış günlükleri sürüm 2 (vs sürüm 1)** 
