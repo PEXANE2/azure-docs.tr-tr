@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: ab9c9c6b9d908e86912565ba43cec665432aeda5
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: a3408d30a9caa24355cf3976235c3a9b8061b95f
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389630"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531229"
 ---
 # <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>Azure NP-Series VM 'Ler için FPGA kanıtlama (Önizleme)
 
@@ -60,7 +60,7 @@ Ayrıca, bunun için Azure portal de kullanabilirsiniz.
 
 Dosyayı kopyalamanın birkaç yolu vardır; az Storage upload cmdlet 'ini kullanan bir örnek aşağıda gösterilmiştir. Az komutlar hem Linux hem de Windows üzerinde çalışır. "Blob" adı için herhangi bir ad seçebilirsiniz, ancak xclbin uzantısını sakladığınızdan emin olun. 
 
-```az storage blob upload --account-name <storage account to receive netlist> container-name <blob container name> --name <blob filename> --file <local file with netlist>  ```
+```az storage blob upload --account-name <storage account to receive netlist> --container-name <blob container name> --name <blob filename> --file <local file with netlist>  ```
 
 ## <a name="download-the-attestation-scripts"></a>Kanıtlama betiklerini indirin  
 
@@ -82,13 +82,13 @@ Sanal dizinleri kullanmak istiyorsanız, kapsayıcı bağımsız değişkeninin 
 
 ### <a name="powershell"></a>PowerShell   
 
-```$sas=$(az storage container generate-sas --account-name <storage acct name> -name <blob container name> --https-only --permissions rwc --expiry <e.g., 2021-01-07T17:00Z> --output tsv)  ```
+```$sas=$(az storage container generate-sas --account-name <storage acct name> --name <blob container name> --https-only --permissions rwc --expiry <e.g., 2021-01-07T17:00Z> --output tsv)  ```
 
 ```.\Validate-FPGAImage.ps1 -StorageAccountName <storage acct name> -Container <blob container name> -BlobContainerSAS $sas -NetlistName <netlist blob filename>  ```
 
 ### <a name="bash"></a>Bash  
 
-``` sas=az storage container generate-sas --account-name <storage acct name> -name <blob container name> --https-only --permissions rwc --expiry <2021-01-07T17:00Z> --output tsv  ```
+``` sas=az storage container generate-sas --account-name <storage acct name> --name <blob container name> --https-only --permissions rwc --expiry <2021-01-07T17:00Z> --output tsv  ```
 
 ```validate-fpgaimage.sh --storage-account <storage acct name> --container <blob container name> --netlist-name <netlist blob filename> --blob-container-sas $sas ``` 
 

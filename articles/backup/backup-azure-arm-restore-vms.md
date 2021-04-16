@@ -3,13 +3,13 @@ title: Azure portal kullanarak VM 'Leri geri yükleme
 description: Çapraz bölge geri yükleme özelliği de dahil olmak üzere Azure portal kullanarak bir Azure sanal makinesini kurtarma noktasından geri yükleyin.
 ms.reviewer: geg
 ms.topic: conceptual
-ms.date: 08/02/2020
-ms.openlocfilehash: 83681d2bb3622857fb9141a3cec79d92d278a814
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/14/2021
+ms.openlocfilehash: 452ca5e1b1c6554a2ae1651068eae06ad9a6b232
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568758"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515235"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal Azure VM verilerini geri yükleme
 
@@ -150,7 +150,7 @@ CRR etkinse, yedekleme öğelerini ikincil bölgede görüntüleyebilirsiniz.
 1. İkincil bölgedeki öğeleri görüntülemek için **Ikincil bölge** ' yi seçin.
 
 >[!NOTE]
->Yalnızca CRR özelliğini destekleyen yedekleme yönetim türleri listede gösterilir. Şu anda yalnızca ikincil bölge verilerinin bir ikincil bölgeye geri yüklenmesi için desteğe izin verilir.
+>Yalnızca CRR özelliğini destekleyen yedekleme yönetim türleri listede gösterilir. Şu anda yalnızca ikincil bölge verilerinin bir ikincil bölgeye geri yüklenmesi için desteğe izin verilir.<br></br>Azure VM 'ler için CRR, Azure yönetilen VM 'ler (şifrelenmiş Azure VM 'Ler dahil) için desteklenir.
 
 ![İkincil bölgedeki sanal makineler](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
 

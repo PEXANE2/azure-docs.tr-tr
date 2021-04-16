@@ -1,14 +1,14 @@
 ---
 title: Azure Arc etkin sunucularıyla VM Uzantısı yönetimi
 description: Azure Arc etkin sunucuları, Azure olmayan VM 'lerle dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan sanal makine uzantılarının dağıtımını yönetebilir.
-ms.date: 03/22/2021
+ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9af2700f036352188e646188485285482ee70c69
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 67f1b5b3db6ef446342e8381d54d487af1f3426a
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799590"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389800"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc özellikli sunucularla sanal makine uzantısı yönetimi
 
@@ -20,6 +20,9 @@ Azure yay özellikli sunucular, Azure VM uzantılarını Azure olmayan Windows v
 - [Azure CLI](manage-vm-extensions-cli.md)
 - [Azure PowerShell](manage-vm-extensions-powershell.md)
 - Azure [Kaynak Yöneticisi şablonları](manage-vm-extensions-template.md)
+
+> [!NOTE]
+> Azure yay özellikli sunucular, VM uzantılarının Azure sanal makinelerine dağıtılmasını ve yönetilmesini desteklemez. Azure VM 'Leri için aşağıdaki [VM uzantısına genel bakış](../../virtual-machines/extensions/overview.md) makalesine bakın.
 
 ## <a name="key-benefits"></a>Önemli avantajlar
 

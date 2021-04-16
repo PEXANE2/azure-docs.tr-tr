@@ -1,15 +1,15 @@
 ---
 title: Azure Container Instances için yerleşik ilke tanımları
 description: Azure Container Instances için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 06886397bd4e30826863daab3b3cd525fef523a1
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 7590a5fb7f9731f64c0b51f277166b3235487e52
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106091399"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107504173"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-container-instances"></a>Azure Container Instances için Azure Ilkesi yerleşik tanımları
 

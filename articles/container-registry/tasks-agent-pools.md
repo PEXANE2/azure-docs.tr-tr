@@ -4,12 +4,12 @@ description: Azure Container Registry bir görevi çalıştırmak için kayıt d
 ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 8b1f077d6216443ad267f8620f87882439cb355c
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 21db066b3f18106938d11fbd8e2cfe688c1ef276
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284150"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389562"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>Adanmış bir aracı havuzunda ACR görevi çalıştırma
 
@@ -31,7 +31,7 @@ Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanıla
 ## <a name="preview-limitations"></a>Önizleme sınırlamaları
 
 - Görev aracısı havuzları Şu anda Linux düğümlerini destekliyor. Windows düğümleri Şu anda desteklenmiyor.
-- Görev aracısı havuzları önizlemede şu bölgelerde kullanılabilir: Batı ABD 2, Orta Güney ABD, Doğu ABD 2, Doğu ABD, Orta ABD, Batı Avrupa, Kanada Orta, USGov Arizona, USGov Texas ve USGov Virginia.
+- Görev aracısı havuzları önizlemede şu bölgelerde kullanılabilir: Batı ABD 2, Orta Güney ABD, Doğu ABD 2, Doğu ABD, Orta ABD, Batı Avrupa, Kuzey Avrupa, Kanada Orta, USGov Arizona, USGov Texas ve USGov Virginia.
 - Her kayıt defteri için, varsayılan toplam vCPU (çekirdek) kotası tüm standart aracı havuzları için 16, yalıtılmış aracı havuzları için ise 0 ' dır. Ek ayırma için bir [destek isteği][open-support-ticket] açın.
 - Şu anda aracı havuzunda çalıştırılan bir görevi iptal edemezsiniz.
 

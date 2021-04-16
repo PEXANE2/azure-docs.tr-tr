@@ -6,19 +6,16 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 143f0a9d23cdc70425147faa95258ec753b92691
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: d1ca4a843c6731cde7ed70d65fc230a21ef6e7c4
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365389"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389443"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach"></a>MSIX uygulama iliştirme için PowerShell betikleri oluşturma
 
 Bu konu başlığı altında, MSIX uygulama iliştirme için PowerShell betikleri ayarlama işleminde size yol gösterilir.
-
->[!IMPORTANT]
->Başlamadan önce, aboneliğinizde MSIX uygulama iliştirmeyi etkinleştirmek için [Bu formu](https://aka.ms/enablemsixappattach) doldurup gönderdiğinizden emin olun. Onaylanmış bir isteğiniz yoksa, MSIX uygulama iliştirme çalışmaz. İsteklerin onaylanması, iş günleri sırasında 24 saate kadar sürebilir. İsteğiniz kabul edildiğinde ve tamamlandığında bir e-posta alacaksınız.
 
 ## <a name="install-certificates"></a>Sertifikaları yükleme
 

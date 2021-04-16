@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 09/05/2019
+ms.date: 04/13/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: afb6efcee2ad4f5cf25a411eed353ff2fc27d75c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3245f560d9a5afb1f9cf8824eeaa3bc681706794
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96460798"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389681"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Sıralı kümelenmiş columnstore dizini ile performans ayarlama  
 
@@ -133,6 +133,11 @@ Sıralı bir CCı oluşturma, çevrimdışı bir işlemdir.  Bölüm içermeyen 
 4.    "ALTER INDEX <Ordered_CCI_Index> <Table_B> YENIDEN oluşturma bölümünde <tablo B Partition_ID  
 5.    Table_A içindeki her bölüm için 3. ve 4. adımı yineleyin.
 6.    Tüm bölümler Table_A Table_B, yeniden oluşturulduktan sonra Table_A bırakın ve Table_A Table_B yeniden adlandırın. 
+
+>[!TIP]
+> Sıralı bir CCı içeren adanmış bir SQL havuzu tablosu için ALTER INDEX REBUıLD, verileri tempdb kullanarak yeniden sıralayacak. Derleme işlemleri sırasında tempdb 'yi izleyin. Daha fazla tempdb alanına ihtiyacınız varsa havuzun ölçeğini ölçeklendirin. Dizin yeniden oluşturma işlemi tamamlandıktan sonra ölçeği yeniden küçültün.
+>
+> Sıralı bir CCı içeren adanmış bir SQL havuzu tablosu için ALTER INDEX REINDEX, verileri yeniden sıralamaz. Daha fazla veri için ALTER INDEX REBUıLD kullanın.
 
 ## <a name="examples"></a>Örnekler
 

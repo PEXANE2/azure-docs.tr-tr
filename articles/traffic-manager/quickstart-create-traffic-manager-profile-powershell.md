@@ -3,20 +3,22 @@ title: 'Hızlı başlangıç: uygulamalar için yüksek kullanılabilirlik için
 description: Bu hızlı başlangıç makalesinde, yüksek oranda kullanılabilir bir Web uygulaması oluşturmak için bir Traffic Manager profili oluşturma açıklanmaktadır.
 services: traffic-manager
 author: duongau
-mnager: twooley
-ms.service: traffic-manager
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: ed3f6c96f6c02d5dad686947ee7f61e8852b559f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+manager: twooley
+ms.date: 10/01/2020
+ms.topic: quickstart
+ms.service: traffic-manager
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.custom:
+- mode-api
+ms.openlocfilehash: 0fd2ae59f62850da75eecd5423ad225e208dca80
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063840"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537664"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak yüksek oranda kullanılabilir bir Web uygulaması için Traffic Manager profili oluşturma
 

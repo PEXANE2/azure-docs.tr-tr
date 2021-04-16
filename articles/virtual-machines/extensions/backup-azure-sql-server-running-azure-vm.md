@@ -8,12 +8,12 @@ author: v-amallick
 ms.author: v-amallick
 ms.collection: windows
 ms.date: 07/05/2019
-ms.openlocfilehash: 171a438b8ac2a74437c15a749d6974945877a1ee
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: c10be941206dd60887c9d82025506d1ea15c51a2
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106293762"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517258"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure VM 'de çalışan SQL Server için Azure Backup
 
@@ -114,4 +114,4 @@ Komut bu kaynağın bir **yedekleme kapsayıcısını** döndürür ve durum **k
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure SQL Server VM yedekleme sorunlarını giderme yönergeleri hakkında [daha fazla bilgi edinin](../../backup/backup-sql-server-azure-troubleshoot.md)
-- Azure sanal makinelerinde (VM 'Ler) çalışan ve Azure Backup hizmetini kullanan SQL Server veritabanlarının yedeklenmesi hakkında [genel sorular](../../backup/faq-backup-sql-server.md) .
+- Azure sanal makinelerinde (VM 'Ler) çalışan ve Azure Backup hizmetini kullanan SQL Server veritabanlarının yedeklenmesi hakkında [genel sorular](../../backup/faq-backup-sql-server.yml) .

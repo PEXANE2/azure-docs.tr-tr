@@ -3,7 +3,7 @@ title: 'Hızlı başlangıç: uygulamalar için bir profil oluşturma-Azure CLı
 description: Bu hızlı başlangıç makalesinde, Azure CLı kullanarak yüksek düzeyde kullanılabilir bir Web uygulaması oluşturmak için bir Traffic Manager profilinin nasıl oluşturulacağı açıklanır.
 services: traffic-manager
 author: duongau
-mnager: kumud
+manager: kumud
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: quickstart
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 10/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8871392bca12078364c2be9b7104bf2a1dc20cb3
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 42870c1a539916cde018667921d913b164fb6b20
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066645"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537690"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak yüksek oranda kullanılabilir bir Web uygulaması için Traffic Manager profili oluşturma
 

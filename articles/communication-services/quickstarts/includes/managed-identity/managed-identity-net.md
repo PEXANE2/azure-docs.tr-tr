@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 424e70f4f3656be2196f4dbdfbddb852846b6897
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
-ms.translationtype: MT
+ms.openlocfilehash: a055cc1b715f93830647c9b13793a59d09db605c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307495"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107512976"
 ---
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -165,7 +165,7 @@ class Program
     }
 ```
 
-## <a name="run-the-program"></a>Programı Çalıştır
+## <a name="run-the-program"></a>Programı çalıştırma
 
 Artık uygulamanızı uygulama klasörünüzden kullanarak çalıştırabilmelisiniz `dotnet run` . Çıkışın aşağıdakine benzer olması gerekir:
 ```
