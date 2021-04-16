@@ -6,17 +6,17 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 04/13/2021
-ms.openlocfilehash: aebfeed055fad7c1108620ab494236640285aa1e
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.date: 04/14/2021
+ms.openlocfilehash: 99e507fed35e5b74aa44bc2713550f7cf9d7b2e5
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107495080"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518890"
 ---
 # <a name="point-in-time-restore-of-a-hyperscale-citus-server-group"></a>Hiper ölçek (Citus) sunucu grubunun zaman içindeki bir noktaya geri yüklemesi
 
-Bu makalede, yedeklemeleri kullanarak bir hiper ölçek (Citus) sunucu grubu için [zaman içinde kurtarma](concepts-hyperscale-backup.md#point-in-time-restore-pitr) işlemleri gerçekleştirmeye yönelik adım adım yordamlar sunulmaktadır. En erken yedeklemeye ya da saklama döneminizin içindeki özel bir geri yükleme noktasına geri yükleyebilirsiniz.
+Bu makalede, yedeklemeleri kullanarak bir hiper ölçek (Citus) sunucu grubu için [zaman içinde kurtarma](concepts-hyperscale-backup.md#restore) işlemleri gerçekleştirmeye yönelik adım adım yordamlar sunulmaktadır. En erken yedeklemeye ya da saklama döneminizin içindeki özel bir geri yükleme noktasına geri yükleyebilirsiniz.
 
 ## <a name="restoring-to-the-earliest-restore-point"></a>En erken geri yükleme noktasına geri yükleme
 

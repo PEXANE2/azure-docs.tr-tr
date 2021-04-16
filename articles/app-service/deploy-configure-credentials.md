@@ -4,13 +4,13 @@ description: Azure App Service dağıtım kimlik bilgileri türlerini ve bunlar�
 ms.topic: article
 ms.date: 02/11/2021
 ms.reviewer: byvinyal
-ms.custom: seodec18
-ms.openlocfilehash: c7d3c7c8b5da40a4e9ccd9085af5a850b9ebc3dd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: ec48ec32250e271eff9e40535689f83dd9d3b60c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052356"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483642"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service için dağıtım kimlik bilgilerini yapılandırma
 Yerel bir bilgisayardan uygulama dağıtımını güvenli hale getirmek için [Azure App Service](./overview.md) , [Yerel git dağıtımı](deploy-local-git.md) ve [FTP/S dağıtımı](deploy-ftp.md)için iki tür kimlik bilgilerini destekler. Bu kimlik bilgileri, Azure aboneliğiniz kimlik bilgilerinizle aynı değildir.
@@ -26,7 +26,7 @@ Yerel bir bilgisayardan uygulama dağıtımını güvenli hale getirmek için [A
 
 [Az WebApp Deployment User set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) komutunu çalıştırın. \<username>Ve öğesini \<password> bir dağıtım kullanıcısı Kullanıcı adı ve parolasıyla değiştirin. 
 
-- Kullanıcı adı Azure içinde benzersiz olmalıdır ve yerel git gönderimleri için ' @ ' sembolünü içermemelidir. 
+- Kullanıcı adı Azure içinde benzersiz olmalıdır ve yerel git gönderimleri için â € ̃ @â €™ sembolünü içermemelidir. 
 - Parola en az sekiz karakter uzunluğunda olmalıdır ve şu üç öğeden ikisi vardır: harfler, rakamlar ve semboller. 
 
 ```azurecli-interactive
@@ -144,7 +144,7 @@ Siteye FTP erişimini devre dışı bırakmak için aşağıdaki CLı komutunu �
 az resource update --resource-group <resource-group> --name ftp --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-FTP erişiminin engellendiğini onaylamak için FileZilla gibi bir FTP istemcisi kullanarak kimlik doğrulaması yapmayı deneyebilirsiniz. Yayımlama kimlik bilgilerini almak için sitenizin genel bakış dikey penceresine gidin ve yayımlama profilini Indir ' e tıklayın. Kimlik doğrulaması için dosyanın FTP ana bilgisayar adını, Kullanıcı adını ve parolasını kullanın ve yetkili olmadığını belirten bir 401 hata yanıtı alırsınız.
+FTP erişiminin engellendiğini onaylamak için FileZilla gibi bir FTP istemcisi kullanarak kimlik doğrulaması yapmayı deneyebilirsiniz. Yayımlama kimlik bilgilerini almak için sitenizin genel bakış dikey penceresine gidin ve yayımlama profilini Indir ' e tıklayın. Kimlik doğrulaması için fileâ €™ s FTP ana bilgisayar adı, Kullanıcı adı ve parola kullanın ve yetkili olmadığını belirten bir 401 hata yanıtı alırsınız.
 
 ### <a name="webdeploy-and-scm"></a>WebDeploy ve SCM
 

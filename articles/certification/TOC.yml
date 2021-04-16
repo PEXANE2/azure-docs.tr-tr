@@ -39,6 +39,8 @@
       href: how-to-edit-published-device.md
     - name: Dolaylı olarak bağlı bir cihazı onaylama
       href: how-to-indirectly-connected-devices.md
+    - name: IoT Tak ve Kullan cihazlarınızın sorunlarını giderme
+      href: how-to-troubleshoot-pnp.md
     - name: Bileşenler özelliğini kullanma
       href: how-to-using-the-components-feature.md
 - name: Kaynaklar

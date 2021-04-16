@@ -5,12 +5,12 @@ services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: a02e5fced0a9e338a32d8d8beaa9e4b5fca994e8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 3d75d7605ba082aac84973aef247de79d55b4c9c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309492"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482781"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Izleyici çalışma kitapları
 
@@ -48,7 +48,18 @@ Ancak çalışma kitaplarının gerçek gücü, tek bir rapordaki ayrı kaynakla
 * [Performansının](../visualize/workbooks-graph-visualizations.md)
 * [Bileşik çubuk](../visualize/workbooks-composite-bar.md)
 
-:::image type="content" source="./media/workbooks-overview/visualizations.png" alt-text="Çalışma kitabı görselleştirmeleri örneği" border="false" lightbox="./media/workbooks-overview/visualizations.png":::
+:::image type="content" source="./media/workbooks-overview/visualizations.png" alt-text="Çalışma kitabı görselleştirmeleri örneği." border="false" lightbox="./media/workbooks-overview/visualizations.png":::
+
+### <a name="pinning-visualizations"></a>Görselleştirmeleri sabitleme
+
+Çalışma kitabındaki metin, sorgu ve ölçüm adımları, çalışma kitabı PIN modundayken veya çalışma kitabı yazarı PIN simgesini görünür hale getirmek üzere bu öğe için ayarları etkinleştirmişse, bu öğelerin sabitleme düğmesi kullanılarak sabitlenebilir.
+
+PIN moduna erişmek için, düzenleme moduna girmek üzere **Düzenle** ' ye tıklayın ve üstteki çubukta mavi pin simgesini seçin. Her bir pin simgesi, ekranın sağ tarafındaki her ilgili çalışma kitabı bölümünün *düzenleme* kutusunun üstünde görünür.
+
+:::image type="content" source="./media/workbooks-overview/pin-experience.png" alt-text="PIN deneyiminin ekran görüntüsü." border="false":::
+
+> [!NOTE]
+> Çalışma kitabının durumu, PIN sırasında kaydedilir ve temeldeki çalışma kitabı değiştirilirse bir panodaki sabitlenmiş çalışma kitapları güncelleştirmeyecektir. Sabitlenmiş bir çalışma kitabı bölümünü güncelleştirmek için bu bölümü silip yeniden sabitlemek zorunda olursunuz.
 
 ## <a name="getting-started"></a>Kullanmaya başlama
 
@@ -56,7 +67,7 @@ Ancak çalışma kitaplarının gerçek gücü, tek bir rapordaki ayrı kaynakla
 
 Sonra **çalışma kitapları**' nı seçin.
 
-:::image type="content" source="./media/workbooks-overview/workbooks.png" alt-text="Kırmızı kutuda vurgulanan çalışma kitapları düğmesinin ekran görüntüsü" border="false":::
+:::image type="content" source="./media/workbooks-overview/workbooks.png" alt-text="Kırmızı kutuda vurgulanan çalışma kitapları düğmesinin ekran görüntüsü." border="false":::
 
 ### <a name="gallery"></a>Galeri
 
@@ -97,7 +108,7 @@ Aynı zamanda şablonlar, kaydedilen çalışma kitaplarından de farklılık g�
 
 Varsayılan uygulama çalışma kitabı şablonlarından birini görmek için **uygulama hata analizi** ' ni seçin.
 
-:::image type="content" source="./media/workbooks-overview/failure-analysis.png" alt-text="Uygulama hatası analiz şablonunun ekran görüntüsü" border="false" lightbox="./media/workbooks-overview/failure-analysis.png":::
+:::image type="content" source="./media/workbooks-overview/failure-analysis.png" alt-text="Uygulama hatası çözümleme şablonunun ekran görüntüsü." border="false" lightbox="./media/workbooks-overview/failure-analysis.png":::
 
 Daha önce belirtildiği gibi, şablonu açmak, ile etkileşime girebilmeniz için geçici bir çalışma kitabı oluşturur. Çalışma kitabı, varsayılan olarak, yalnızca özgün şablon yazarı tarafından oluşturulan amaçlanan çözümleme deneyiminin bilgilerini görüntüleyen okuma modunda açılır.
 
@@ -111,27 +122,15 @@ Bu çalışma kitabı şablonunun nasıl bir araya yerleştirileceğini anlamak 
 
 Düzenleme moduna geçtikten sonra, çalışma kitabınızın her bir yönüyle ilgili olarak doğru bir dizi **düzenleme** kutusu göründüğünü fark edersiniz.
 
-:::image type="content" source="./media/workbooks-overview/edit-mode.png" alt-text="Düzenleme düğmesinin ekran görüntüsü" border="false" lightbox="./media/workbooks-overview/edit-mode.png":::
+:::image type="content" source="./media/workbooks-overview/edit-mode.png" alt-text="Düzenleme düğmesinin ekran görüntüsü." border="false" lightbox="./media/workbooks-overview/edit-mode.png":::
 
 İstek verileri kılavuzunun hemen altındaki Düzenle düğmesini seçmemiz durumunda, çalışma kitabımızın bu bölümünün Application Insights bir kaynaktaki verilere karşı bir kusto sorgusundan oluştuğunu görebiliriz.
 
-:::image type="content" source="./media/workbooks-overview/kusto.png" alt-text="Temel kusto sorgusunun ekran görüntüsü" border="false" lightbox="./media/workbooks-overview/kusto.png":::
+:::image type="content" source="./media/workbooks-overview/kusto.png" alt-text="Temel kusto sorgusunun ekran görüntüsü." border="false" lightbox="./media/workbooks-overview/kusto.png":::
 
-
-Sağ taraftaki diğer **düzenleme** düğmelerine tıkladığınızda, markaşağı tabanlı [metin kutuları](../visualize/workbooks-text-visualizations.md), [parametre seçimi](../visualize/workbooks-parameters.md) Kullanıcı arabirimi öğeleri ve diğer [grafik/görselleştirme türleri](#visualizations)gibi çalışma kitaplarını oluşturan çekirdek bileşenlerin sayısı görüntülenir.
+Sağdaki diğer **düzenleme** düğmelerinin seçilmesi, markı tabanlı [metin kutuları](../visualize/workbooks-text-visualizations.md), [parametre seçimi](../visualize/workbooks-parameters.md) Kullanıcı arabirimi öğeleri ve diğer [grafik/görselleştirme türleri](#visualizations)gibi çalışma kitaplarını oluşturan çekirdek bileşenlerin sayısını açığa çıkarır.
 
 Önceden oluşturulmuş şablonları düzenleme modunda inceleyerek, bunları gereksinimlerinize uyacak şekilde değiştirerek ve kendi özel çalışma kitabınızı kaydederek Azure Izleyici çalışma kitaplarında mümkün olan şeyler hakkında bilgi edinmek için harika bir yoldur.
-
-## <a name="pinning-visualizations"></a>Görselleştirmeleri sabitleme
-
-Çalışma kitabındaki metin, sorgu ve ölçüm adımları, çalışma kitabı PIN modundayken veya çalışma kitabı yazarı PIN simgesini görünür hale getirmek üzere bu öğe için ayarları etkinleştirmişse, bu öğelerin sabitleme düğmesi kullanılarak sabitlenebilir.
-
-PIN moduna erişmek için, düzenleme moduna girmek üzere **Düzenle** ' ye tıklayın ve üstteki çubukta mavi pin simgesini seçin. Her bir pin simgesi, ekranın sağ tarafındaki her ilgili çalışma kitabı bölümünün *düzenleme* kutusunun üstünde görünür.
-
-:::image type="content" source="./media/workbooks-overview/pin-experience.png" alt-text="PIN deneyiminin ekran görüntüsü." border="false":::
-
-> [!NOTE]
-> Çalışma kitabının durumu, PIN sırasında kaydedilir ve temeldeki çalışma kitabı değiştirilirse bir panodaki sabitlenmiş çalışma kitapları güncelleştirmeyecektir. Sabitlenmiş bir çalışma kitabı bölümünü güncelleştirmek için bu bölümü silip yeniden sabitlemek zorunda olursunuz.
 
 ## <a name="dashboard-time-ranges"></a>Pano zaman aralıkları
 

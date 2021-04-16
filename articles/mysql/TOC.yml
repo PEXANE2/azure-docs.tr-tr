@@ -466,6 +466,8 @@
           href: flexible-server/how-to-stop-start-server-portal.md
         - name: Azure portal kullanarak sunucuyu yeniden Başlat
           href: flexible-server/how-to-restart-server-portal.md
+        - name: Azure CLı ile Başlat/Durdur/yeniden Başlat
+          href: flexible-server/how-to-restart-stop-start-server-cli.md
     - name: Ağ
       items:
         - name: Kavramlar
@@ -497,6 +499,8 @@
           href: flexible-server/concepts-high-availability.md
         - name: Azure portal kullanarak yüksek kullanılabilirliği yapılandırma
           href: flexible-server/how-to-configure-high-availability.md
+        - name: Azure CLı ile yüksek kullanılabilirliği yapılandırma
+          href: flexible-server/how-to-configure-high-availability-cli.md
     - name: İzleme ve Günlükler
       items:
         - name: Kavramlar
@@ -507,12 +511,16 @@
               href: flexible-server/concepts-slow-query-logs.md
             - name: Azure portal kullanarak yavaş sorgu günlüklerini yapılandırma
               href: flexible-server/how-to-configure-slow-query-logs-portal.md
+            - name: Azure CLı ile yavaş sorgu günlüklerini yapılandırma
+              href: flexible-server/how-to-configure-slow-query-log-cli.md
         - name: Denetim günlükleri
           items:
             - name: Kavramlar
               href: flexible-server/concepts-audit-logs.md
             - name: Denetim günlüklerini yapılandırma
               href: flexible-server/how-to-configure-audit-logs-portal.md
+            - name: Azure CLı ile denetim günlüklerini yapılandırma
+              href: flexible-server/how-to-configure-audit-log-cli.md
     - name: Çoğaltma
       items:
         - name: Okuma amaçlı çoğaltmalar
@@ -529,6 +537,8 @@
           href: flexible-server/concepts-backup-restore.md
         - name: Azure portalı kullanarak sunucuyu geri yükleme
           href: flexible-server/how-to-restore-server-portal.md
+        - name: Azure CLI’yi kullanarak sunucuyu geri yükleme
+          href: flexible-server/how-to-restore-server-cli.md
     - name: Sorun giderme
       items:
         - name: Bağlantı hatalarını giderme

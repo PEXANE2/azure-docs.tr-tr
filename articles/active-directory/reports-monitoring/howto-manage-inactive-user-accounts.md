@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb4ebbd0b1715d9de3905060952a35ad42060119
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 2ea62a8d602cc472269b52c230529aa3f9b86ed4
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167558"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535102"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de etkin olmayan kullanıcı hesaplarını yönetme
 
@@ -57,7 +57,7 @@ Bu bölümde, Lastsignındatetime özelliği hakkında bilmeniz gerekenler liste
 
 ### <a name="how-can-i-access-this-property"></a>Bu özelliğe nasıl erişebilirim?
 
-**Lastsignındatetime** özelliği, [Microsoft Graph REST API](/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph) [signeylemsizlik kaynak türü](/graph/api/resources/signinactivity?view=graph-rest-beta) tarafından gösterilir.   
+**Lastsignındatetime** özelliği, [Microsoft Graph REST API](/graph/overview#whats-in-microsoft-graph) [signeylemsizlik kaynak türü](/graph/api/resources/signinactivity?view=graph-rest-beta&preserve-view=true) tarafından gösterilir.   
 
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Lastsignındatetime özelliği Get-AzureAdUser cmdlet 'i aracılığıyla kullanılabilir mi?
 
@@ -90,5 +90,5 @@ Bir Lastsignındatetime zaman damgası oluşturmak için başarılı bir oturum 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Sertifikalarla Azure Active Directory raporlama API’sini kullanarak veri alma](tutorial-access-api-with-certificates.md)
-* [API başvurusunu denetle](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
-* [Oturum açma Etkinliği raporu API başvurusu](/graph/api/resources/signin?view=graph-rest-beta)
+* [API başvurusunu denetle](/graph/api/resources/directoryaudit) 
+* [Oturum açma Etkinliği raporu API başvurusu](/graph/api/resources/signin)

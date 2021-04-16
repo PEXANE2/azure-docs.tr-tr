@@ -7,7 +7,7 @@
       href: overview.md
     - name: Dil desteği
       href: language-support.md
-    - name: Fiyatlandırma ve limitler
+    - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: Yenilikler
       href: whats-new.md
@@ -27,8 +27,6 @@
       href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
     - name: JavaScript form tanıyıcı istemci kitaplığı SDK 'Sı
       href: /samples/azure/azure-sdk-for-js/ai-form-recognizer-javascript/
-    - name: REST API ve kıvrımlı
-      href: 'https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer'
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Eğitim verileri kümesi oluşturma
@@ -52,6 +50,14 @@
           href: ../containers/index.yml
     - name: Modelleri yedekleme ve kurtarma
       href: disaster-recovery.md
+    - name: Kurumsal kullanıma hazır olma
+      items:
+        - name: Sanal ağları ayarlama
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/form-recognizer/context/context
+        - name: Müşteri tarafından yönetilen anahtarları kullan
+          href: encrypt-data-at-rest.md
+        - name: Azure AD kimlik doğrulamasını kullanma
+          href: ../authentication.md?context=/azure/cognitive-services/form-recognizer/context/context
 - name: Kavramlar
   items:
     - name: Düzen API 'SI
@@ -97,15 +103,15 @@
           href: /javascript/api/overview/azure/ai-form-recognizer-readme
 - name: Kaynaklar
   items:
+    - name: Kurumsal kullanıma hazır olma
+      items:
+        - name: Bölge desteği
+          href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
+        - name: Uyumluluk ve sertifika
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Destek ve yardım seçenekleri
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
     - name: Azure yol haritası
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Bölgesel kullanılabilirlik
-      href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
-    - name: Uyumluluk
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Şifreleme
-      href: encrypt-data-at-rest.md
     - name: Gizlilik ve tanımlama bilgileri
       href: 'https://privacy.microsoft.com/en-US/privacystatement'

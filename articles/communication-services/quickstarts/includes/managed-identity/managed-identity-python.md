@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 42d079a2aa98549b12aafecdd8d58f3361db8b4d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 3fcfb364ebffdd3643e803922cbe4f3dd0d87935
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307494"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107513387"
 ---
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -45,7 +45,7 @@ from azure.communication.sms import SmsClient
      credential = DefaultAzureCredential()
 ```
 
-## <a name="create-an-identity-and-issue-a-token-with-managed-identities"></a>Bir kimlik oluşturun ve yönetilen kimliklerle belirteç verin.
+## <a name="create-an-identity-and-issue-a-token-with-managed-identities"></a>Yönetilen kimliklerle bir kimlik oluşturma ve belirteç verme
 
 Şimdi bir VoIP erişim belirteci vermek için oluşturulan kimlik bilgisini kullanan kodu ekleyeceğiz. Bu kodu daha sonra şu numaradan çağıracağız:
 
@@ -138,7 +138,7 @@ sms_result = send_sms(endpoint, "<FROM_NUMBER>", "<TO_NUMBER>", "Hello from Mana
 print(f'SMS ID: {sms_result[0].message_id}');
 print(f'Send Result Successful: {sms_result[0].successful}');
 ```
-## <a name="run-the-program"></a>Programı Çalıştır
+## <a name="run-the-program"></a>Programı çalıştırma
 
 Her şey tamamlanarak, projenin dizininden girerek dosyayı çalıştırabilirsiniz `python managed-identity.py` . Her şey iyi sorun olursa aşağıdakine benzer bir şey görmeniz gerekir.
 

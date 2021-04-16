@@ -1,18 +1,21 @@
 ---
 title: Azure PowerShell kullanarak VM uzantısını etkinleştirme
 description: Bu makalede, Azure PowerShell kullanarak karma bulut ortamlarında çalışan Azure Arc etkin sunucularına sanal makine uzantılarının nasıl dağıtılacağı açıklanır.
-ms.date: 01/05/2021
+ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9b1f83ad976aa3471430a912280fac25dc5c5c0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0cb854c9745e8bd7eef35c6f6467c284a6327349
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97916193"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388593"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>Azure PowerShell kullanarak Azure VM uzantılarını etkinleştirme
 
 Bu makalede, Azure Arc etkin sunucuları tarafından desteklenen Azure VM uzantılarının Azure PowerShell kullanarak bir Linux veya Windows hibrit makinesine nasıl dağıtılacağı ve kaldırılacağı gösterilmektedir.
+
+> [!NOTE]
+> Azure yay özellikli sunucular, VM uzantılarının Azure sanal makinelerine dağıtılmasını ve yönetilmesini desteklemez. Azure VM 'Leri için aşağıdaki [VM uzantısına genel bakış](../../virtual-machines/extensions/overview.md) makalesine bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

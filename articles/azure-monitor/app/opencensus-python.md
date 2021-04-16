@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: 69472da4f774a1dfae86e1891255907ad711175a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 92d954a865a2d4a8c55177b132139dcd7d0444ef
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047431"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515932"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python uygulamanız için Azure Izleyicisini ayarlama
 
@@ -19,7 +19,7 @@ Azure Izleyici, [Opencensus](https://opencensus.io)ile tümleştirme yoluyla, Py
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-- Python yüklemesi. Bu makalede [Python 3.7.0](https://www.python.org/downloads/release/python-370/)kullanılmaktadır, ancak diğer sürümler büyük olasılıkla küçük değişikliklerle çalışabilse de. SDK yalnızca 2,7 ve 3.6 + Python sürümlerini destekler.
+- Python yüklemesi. Bu makalede [Python 3.7.0](https://www.python.org/downloads/release/python-370/)kullanılmaktadır, ancak diğer sürümler büyük olasılıkla küçük değişikliklerle çalışabilse de. SDK yalnızca Python v 2.7 ve v 3.4-v 3.7 destekler.
 - Application Insights [kaynağı](./create-new-resource.md)oluşturun. Kaynağınız için kendi izleme anahtarınızı (Ikey) atadınız.
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Azure Izleyici için OpenCensus Python SDK 'Sı ile işaretleme
@@ -330,6 +330,54 @@ OpenCensus. stats 4 toplama yöntemini destekler, ancak Azure Izleyici için kı
     ```
 
 1. Dışarı Aktarıcı, ölçüm verilerini Azure Izleyici 'ye sabit bir aralıkla gönderir. Varsayılan değer 15 saniyedir. Tek bir ölçümü izliyoruz, bu nedenle içerdiği değer ve zaman damgasıyla birlikte bu ölçüm verileri her aralığa gönderilir. Değer birikimlidir, yeniden başlatma sırasında yalnızca 0 ' a artırabilir ve sıfırlanır. Verilerin altında bulabilirsiniz `customMetrics` , ancak `customMetrics` ValueCount, Valuesum, ValueMin, ValueMax ve valueStdDev özellikleri etkin bir şekilde kullanılmaz.
+
+### <a name="setting-custom-dimensions-in-metrics"></a>Ölçümlerde özel boyutlar ayarlama
+
+Opencensus Python SDK 'Sı `tags` , genel olarak anahtar/değer çiftleri sözlüğü olan ölçüm telemetrinize özel boyutlar eklemeye olanak tanır. 
+
+1. Etiket eşlemesinde kullanmak istediğiniz etiketleri ekleyin. Etiket eşlemesi, kullanabileceğiniz tüm kullanılabilir etiketlerin "havuz" sıralaması gibi davranır.
+
+```python
+...
+tmap = tag_map_module.TagMap()
+tmap.insert("url", "http://example.com")
+...
+```
+
+1. Belirli bir için `View` , etiket anahtarı aracılığıyla bu görünümle ölçümleri kaydederken kullanmak istediğiniz etiketleri belirtin.
+
+```python
+...
+prompt_view = view_module.View("prompt view",
+                               "number of prompts",
+                               ["url"], # <-- A sequence of tag keys used to specify which tag key/value to use from the tag map
+                               prompt_measure,
+                               aggregation_module.CountAggregation())
+...
+```
+
+1. Ölçüm eşlemesinde kayıt sırasında etiket haritasını kullandığınızdan emin olun. İçinde belirtilen etiket anahtarlarının, `View` kaydetmek için kullanılan etiket eşlemesinde bulunması gerekir.
+
+```python
+...
+mmap = stats_recorder.new_measurement_map()
+mmap.measure_int_put(prompt_measure, 1)
+mmap.record(tmap) # <-- pass the tag map in here
+...
+```
+
+1. Tablosu altında, `customMetrics` kullanılarak oluşturulan tüm ölçüm kayıtları `prompt_view` özel boyutlara sahip olur `{"url":"http://example.com"}` .
+
+1. Aynı anahtarları kullanarak farklı değerlere sahip etiketler üretmek için, bunlar için yeni etiket haritaları oluşturun.
+
+```python
+...
+tmap = tag_map_module.TagMap()
+tmap2 = tag_map_module.TagMap()
+tmap.insert("url", "http://example.com")
+tmap2.insert("url", "https://www.wikipedia.org/wiki/")
+...
+```
 
 #### <a name="performance-counters"></a>Performans sayaçları
 

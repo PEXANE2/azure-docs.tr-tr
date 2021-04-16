@@ -2,13 +2,13 @@
 title: Yinelenen ileti algılamayı Azure Service Bus | Microsoft Docs
 description: Bu makalede Azure Service Bus iletilerinde yinelenenleri nasıl Algılayabileceğiniz açıklanır. Yinelenen ileti yoksayılabilir ve bırakılabilir.
 ms.topic: article
-ms.date: 01/13/2021
-ms.openlocfilehash: 527c2dea34b02733907372b6e75a40a5ef5fc289
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: a9ca9de988f5a3db15da773a870e2d929ab938c8
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711935"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499487"
 ---
 # <a name="duplicate-detection"></a>Yineleme algılama
 
@@ -39,24 +39,34 @@ Bazı uygulama bağlamını işleme sürecinde birden fazla iletinin gönderildi
 
 ## <a name="enable-duplicate-detection"></a>Yinelenen algılamayı etkinleştir
 
-Portalda, özellik varsayılan olarak kapalı olan **yinelenen saptamayı etkinleştir** onay kutusu ile varlık oluşturma sırasında açıktır. Yeni konu başlıkları oluşturma ayarı eşdeğerdir.
+Yalnızca yinelenen saptamayı etkinleştirmenin yanı sıra, ileti kimliklerinin saklanacağı yinelenen algılama geçmişi zaman penceresinin boyutunu da yapılandırabilirsiniz.
+Bu değer, en az 7 günlük değer olacak şekilde, kuyruklar ve konular için varsayılan olarak 10 dakikadır.
+
+Tüm kayıtlı ileti kimliklerinin yeni gönderilen ileti tanımlayıcısına karşı eşleşmesi gerektiğinden, yinelenen saptamayı etkinleştirmek ve pencerenin boyutu doğrudan sırayı (ve konu) verimini etkiler.
+
+Pencerenin küçük tutulması, daha az ileti kimliği tutulması ve eşleştirilmesi gerektiği ve verimlilik daha az etkilenildiği anlamına gelir. Yinelenen saptamayı gerektiren yüksek aktarım hızı varlıkları için, pencereyi mümkün olduğunca küçük tutmanız gerekir.
+
+### <a name="using-the-portal"></a>Portalı kullanma
+
+Portalda, yinelenen algılama özelliği, varsayılan olarak kapalı olan **yinelenen saptamayı etkinleştir** onay kutusu ile varlık oluşturma sırasında açıktır. Yeni konu başlıkları oluşturma ayarı eşdeğerdir.
 
 ![Yinelenen saptamayı etkinleştir seçeneği belirlenmiş ve kırmızı renkle anahatlı bir sıra oluştur iletişim kutusunun ekran görüntüsü.][1]
 
 > [!IMPORTANT]
 > Sıra oluşturulduktan sonra yinelenen saptamayı etkinleştiremez/devre dışı bırakabilirsiniz. Bunu yalnızca kuyruğu oluşturma sırasında yapabilirsiniz. 
 
-Programlama yoluyla, bayrağı Full Framework .NET API 'sindeki [Queuedescription. requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) özelliği ile ayarlarsınız. Azure Resource Manager API 'SI ile, değeri [Queueproperties. requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) özelliği ile ayarlanır.
-
-Yinelenen algılama süresi geçmişi, kuyruklar ve konular için varsayılan değer olan en fazla 7 günlük değere sahip en az 20 saniyelik bir değere sahip, kuyruklar ve konular için 10 dakika olarak Bu ayarı, Azure portal sıra ve konu özellikleri penceresinde değiştirebilirsiniz.
+Yinelenen algılama geçmişi zaman penceresi, Azure portal sıra ve konu özellikleri penceresinde değiştirilebilir.
 
 ![Özellikler ayarı vurgulanmış Service Bus özelliğinin ekran görüntüsü ve kırmızı renkle yinelenen algılama geçmişi seçeneği.][2]
 
-Programlama yoluyla, tam .NET Framework API 'SI ile [Queuedescription. DuplicateDetectionHistoryTimeWindow](/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) özelliğini kullanarak ileti kimliklerinin saklanacağı yinelenen saptama penceresinin boyutunu yapılandırabilirsiniz. Azure Resource Manager API 'SI ile, değeri [Queueproperties. duplicateDetectionHistoryTimeWindow](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) özelliği ile ayarlanır.
+### <a name="using-sdks"></a>SDK'ları kullanma
 
-Tüm kayıtlı ileti kimliklerinin yeni gönderilen ileti tanımlayıcısına karşı eşleşmesi gerektiğinden, yinelenen saptamayı etkinleştirmek ve pencerenin boyutu doğrudan sırayı (ve konu) verimini etkiler.
+.NET, Java, JavaScript, Python ve, kuyruklar ve konular oluştururken yinelenen algılama özelliğini etkinleştirmek için tüm SDK 'larımızı kullanabilirsiniz. Yinelenen algılama geçmişi zaman penceresini de değiştirebilirsiniz.
+Bunu başarmak için kuyrukları ve konuları oluştururken güncelleştirilecek özellikler şunlardır:
+- `RequiresDuplicateDetection`
+- `DuplicateDetectionHistoryTimeWindow`
 
-Pencerenin küçük tutulması, daha az ileti kimliği tutulması ve eşleştirilmesi gerektiği ve verimlilik daha az etkilenildiği anlamına gelir. Yinelenen saptamayı gerektiren yüksek aktarım hızı varlıkları için, pencereyi mümkün olduğunca küçük tutmanız gerekir.
+Özellik adları burada Pascal büyük küçük harf bölümünde sağlandığı için, JavaScript ve Python SDK 'ları sırasıyla ortası büyük harfleri ve Snake büyük harfleri kullanacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,19 +1,19 @@
 ---
 title: SYNAPSE çalışma alanı için sürekli tümleştirme ve teslim
 description: Çalışma alanındaki değişiklikleri bir ortamdan (geliştirme, test, üretim) diğerine dağıtmak için sürekli tümleştirme ve teslimi nasıl kullanacağınızı öğrenin.
-services: synapse-analytics
 author: liud
 ms.service: synapse-analytics
+ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: de3738573bb9bb6f045a45d290c74ba9e6902a5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f68e3698f8616b581d319bc19d2a8c636c79c36
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103561966"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566095"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure SYNAPSE çalışma alanı için sürekli tümleştirme ve teslim
 
@@ -231,7 +231,7 @@ Yukarıdaki şablonun nasıl oluşturulduğu ve kaynak türüne göre nasıl bö
 
 * Yoldaki herhangi bir özellik `properties/bigDataPool/referenceName` varsayılan değeri ile parametrelenir. Her bir not defteri dosyası için ekli Spark havuzunu parametreleştirebilirsiniz. 
 
-#### <a name="sql-scripts"></a>SQL betikleri 
+#### <a name="sql-scripts"></a>SQL Betikleri 
 
 * Yoldaki Özellikler (poolName ve databaseName), `properties/content/currentConnection` şablondaki varsayılan değerler olmadan dize olarak parametrelenir. 
 

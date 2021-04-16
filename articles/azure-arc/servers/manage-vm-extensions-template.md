@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Manager şablonu kullanarak VM uzantısını etkinleştirme
 description: Bu makalede, karma bulut ortamlarında çalışan Azure Arc etkin sunucularına bir Azure Resource Manager şablonu kullanılarak sanal makine uzantılarının nasıl dağıtılacağı açıklanır.
-ms.date: 03/01/2021
+ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 88296cd4f410defcaf7db15507ddac42e80cba2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 095f95192a2054d34e438d8683ac9c2e20a824f1
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688272"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389647"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>ARM şablonunu kullanarak Azure VM uzantılarını etkinleştirme
 
@@ -18,6 +18,9 @@ VM uzantıları, bir Azure Resource Manager şablonuna eklenebilir ve şablonun 
 
 >[!NOTE]
 >Birden çok uzantı birlikte toplanmış ve işlenebilir olsa da, bunlar hizmet temelli olarak yüklenir. İlk uzantı yüklemesi tamamlandıktan sonra, sonraki uzantının yüklenmesi denenir.
+
+> [!NOTE]
+> Azure yay özellikli sunucular, VM uzantılarının Azure sanal makinelerine dağıtılmasını ve yönetilmesini desteklemez. Azure VM 'Leri için aşağıdaki [VM uzantısına genel bakış](../../virtual-machines/extensions/overview.md) makalesine bakın.
 
 ## <a name="deploy-the-log-analytics-vm-extension"></a>Log Analytics VM uzantısını dağıtma
 
