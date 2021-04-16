@@ -3,7 +3,7 @@
 - name: Genel Bakış
   expanded: true
   items:
-    - name: Kişiselleştiriciye genel bakış
+    - name: Kişiselleştirme nedir?
       href: what-is-personalizer.md
     - name: Fiyatlandırma
       href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
@@ -11,7 +11,7 @@
     - name: Yenilikler
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
-- name: Kişiselleştirici hızlı başlangıç
+- name: Hızlı Başlangıç
   href: ./quickstart-personalizer-sdk.md
 - name: Örnekler
   href: 'https://github.com/Azure-Samples/cognitive-services-personalizer-samples'
@@ -32,6 +32,12 @@
       href: how-to-manage-model.md
     - name: Çevrimdışı değerlendirme ile analiz etme
       href: how-to-offline-evaluation.md
+    - name: Kurumsal kullanıma hazır olma
+      items:
+        - name: Sanal ağları ayarlama
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/personalizer/context/context
+        - name: Müşteri tarafından yönetilen anahtarları kullan
+          href: encrypt-data-at-rest.md
 - name: Kavramlar
   items:
     - name: Kişiselleştirme nasıl çalışır?
@@ -107,17 +113,17 @@
           href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: Kaynaklar
   items:
+    - name: Kurumsal kullanıma hazır olma
+      items:
+        - name: Bölge desteği
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Uyumluluk ve sertifika
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Microsoft Learn modülleri
+      href: 'https://docs.microsoft.com/learn/browse/?terms=personalizer'
     - name: Destek ve yardım seçenekleri
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/personalizer/context/context
     - name: Sorun giderme
       href: troubleshooting.md
-    - name: Modülleri öğrenin
-      href: 'https://docs.microsoft.com/learn/browse/?terms=personalizer'
-    - name: Bölge desteği
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Uyumluluk
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Şifreleme
-      href: encrypt-data-at-rest.md
     - name: Azure güncelleştirmeleri
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'

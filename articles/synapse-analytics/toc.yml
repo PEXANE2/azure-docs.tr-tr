@@ -24,7 +24,7 @@ items:
       - name: 2 sunucusuz SQL havuzu kullanarak çözümle
         href: get-started-analyze-sql-on-demand.md
         displayName: 'get, started'
-      - name: 3 servılsız Spark havuzunu kullanarak çözümle
+      - name: 3 sunucusuz Spark havuzunu kullanarak çözümle
         href: get-started-analyze-spark.md
         displayName: 'get, started'
       - name: 4 adanmış bir SQL havuzu kullanarak çözümleme
@@ -177,7 +177,7 @@ items:
                   - name: Azure Synapse çalışma alanına özel uç noktalarla bağlanma
                     href: security/how-to-connect-to-workspace-with-private-links.md
                     displayname: links
-                  - name: Yönetilen Sanal Ağ ile bağlı hizmeti sağlama ve güvenlik altına alma
+                  - name: Yönetilen VNet ile bağlantılı hizmet sağlama ve güvenliğini sağlama
                     href: ./data-integration/linked-service.md
                   - name: Kısıtlanmış ağdan Synapse çalışma alanına bağlanma
                     href: security/how-to-connect-to-workspace-from-restricted-network.md

@@ -2,18 +2,21 @@
 title: Azure Event Grid 'de Azure AD ile güvenli Web kancası teslimi
 description: Azure Event Grid kullanılarak Azure Active Directory korunan HTTPS uç noktalarına olayların nasıl teslim edileceğini açıklar
 ms.topic: how-to
-ms.date: 03/20/2021
-ms.openlocfilehash: 1298910db78ba468dd9744e84ee4629161e0a776
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.date: 04/13/2021
+ms.openlocfilehash: 4238087d977fa1102d1dd31d0cc9080d6308c175
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076045"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389698"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Olayları Azure Active Directory korumalı uç noktalara yayımlama
 Bu makalede, **olay aboneliğiniz** ve **Web kancası uç** noktanız arasındaki bağlantıyı güvenli hale getirmek IÇIN Azure Active Directory (Azure AD) nasıl kullanılacağı açıklanır. Azure AD uygulamalarına ve hizmet sorumlularına genel bakış için bkz. [Microsoft Identity platform (v 2.0) genel bakış](../active-directory/develop/v2-overview.md).
 
 Bu makale, tanıtım için Azure portal kullanır, ancak özellik CLı, PowerShell veya SDK 'lar kullanılarak da etkinleştirilebilir.
+
+> [!IMPORTANT]
+> Bir güvenlik açığına yönelik olarak 30 Mart 2021 ' de olay aboneliği oluşturma veya güncelleştirme kapsamında ek erişim denetimi sunulmuştur. Abone istemcisinin hizmet sorumlusunun bir sahip olması veya hedef uygulama hizmeti sorumlusu üzerinde atanmış bir rolü olması gerekir. Lütfen aşağıdaki yeni talimatları izleyerek AAD uygulamanızı yeniden yapılandırın.
 
 
 ## <a name="create-an-azure-ad-application"></a>Azure AD uygulaması oluşturma
@@ -107,10 +110,13 @@ Write-Host $myAppRoles
 
 ```
 
-### <a name="create-a-role-assignment"></a>Rol ataması oluşturma
+### <a name="create-role-assignment-for-the-client-creating-event-subscription"></a>İstemci olay aboneliği oluşturma için rol ataması oluşturma
 Rol atamasının, AAD uygulaması veya olay aboneliğini oluşturan AAD kullanıcısı için Web kancası Azure AD Uygulaması oluşturulması gerekir. AAD uygulaması veya AAD kullanıcısının olay aboneliğini oluşturup oluşturmadığına bağlı olarak aşağıdaki komut dosyalarından birini kullanın.
 
-#### <a name="option-a-create-a-role-assignment-for-event-subscription-aad-app"></a>A seçeneği. olay aboneliği AAD uygulaması için rol ataması oluşturma 
+> [!IMPORTANT]
+> Bir güvenlik açığına yönelik olarak 30 Mart 2021 ' de olay aboneliği oluşturma veya güncelleştirme kapsamında ek erişim denetimi sunulmuştur. Abone istemcisinin hizmet sorumlusunun bir sahip olması veya hedef uygulama hizmeti sorumlusu üzerinde atanmış bir rolü olması gerekir. Lütfen aşağıdaki yeni talimatları izleyerek AAD uygulamanızı yeniden yapılandırın.
+
+#### <a name="create-role-assignment-for-an-event-subscription-aad-app"></a>Bir olay aboneliği AAD uygulaması için rol ataması oluşturma 
 
 ```powershell
 # This is the app id of the application which will create event subscription. Set to $null if you are not assigning the role to app.
@@ -125,10 +131,11 @@ if ($eventSubscriptionWriterSP -eq $null)
 }
 
 Write-Host "Creating the Azure Ad App Role assignment for application: " $eventSubscriptionWriterAppId
-New-AzureADServiceAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventSubscriptionWriterSP.ObjectId -PrincipalId $eventSubscriptionWriterSP.ObjectId
+$eventGridAppRole = $myApp.AppRoles | Where-Object -Property "DisplayName" -eq -Value $eventGridRoleName
+New-AzureADServiceAppRoleAssignment -Id $eventGridAppRole.Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventSubscriptionWriterSP.ObjectId -PrincipalId $eventSubscriptionWriterSP.ObjectId
 ```
 
-#### <a name="option-b-create-a-role-assignment-for-event-subscription-aad-user"></a>Seçenek B. olay aboneliği AAD kullanıcısı için bir rol ataması oluşturma 
+#### <a name="create-role-assignment-for-an-event-subscription-aad-user"></a>Bir olay aboneliği AAD kullanıcısı için rol ataması oluşturma 
 
 ```powershell
 # This is the user principal name of the user who will create event subscription. Set to $null if you are not assigning the role to user.
@@ -138,14 +145,16 @@ $myServicePrincipal = Get-AzureADServicePrincipal -Filter ("appId eq '" + $myApp
     
 Write-Host "Creating the Azure Ad App Role assignment for user: " $eventSubscriptionWriterUserPrincipalName
 $eventSubscriptionWriterUser = Get-AzureAdUser -ObjectId $eventSubscriptionWriterUserPrincipalName
-New-AzureADUserAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventSubscriptionWriterUser.ObjectId -PrincipalId $eventSubscriptionWriterUser.ObjectId
+$eventGridAppRole = $myApp.AppRoles | Where-Object -Property "DisplayName" -eq -Value $eventGridRoleName
+New-AzureADUserAppRoleAssignment -Id $eventGridAppRole.Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventSubscriptionWriterUser.ObjectId -PrincipalId $eventSubscriptionWriterUser.ObjectId
 ```
 
-### <a name="add-event-grid-service-principal-to-the-role"></a>Role Event Grid hizmet sorumlusu ekleyin
+### <a name="create-role-assignment-for-event-grid-service-principal"></a>Event Grid hizmet sorumlusu için rol ataması oluşturma
 Önceki adımda oluşturduğunuz role Event Grid hizmet sorumlusu atamak için New-AzureADServiceAppRoleAssignment komutunu çalıştırın.
 
 ```powershell
-New-AzureADServiceAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventGridSP.ObjectId -PrincipalId $eventGridSP.ObjectId
+$eventGridAppRole = $myApp.AppRoles | Where-Object -Property "DisplayName" -eq -Value $eventGridRoleName
+New-AzureADServiceAppRoleAssignment -Id $eventGridAppRole.Id -ResourceId $myServicePrincipal.ObjectId -ObjectId -PrincipalId $eventGridSP.ObjectId
 ```
 
 Daha sonra kullanacağınız bilgileri çıkarmak için aşağıdaki komutları çalıştırın.
@@ -168,7 +177,7 @@ Bir olay aboneliği oluştururken, şu adımları izleyin:
 1. **Ek özellikler** sekmesinde şu adımları uygulayın:
     1. **AAD kimlik doğrulaması kullan**' ı seçin ve Kiracı kimliğini ve uygulama kimliğini yapılandırın:
     1. Azure AD kiracı KIMLIĞINI betiğin çıktısından kopyalayın ve **AAD KIRACı kimliği** alanına girin.
-    1. Azure AD uygulama KIMLIĞI 'ni betiğin çıktısından kopyalayın ve **AAD uygulama kimliği** alanına girin.
+    1. Azure AD uygulama KIMLIĞI 'ni betiğin çıktısından kopyalayın ve **AAD uygulama kimliği** alanına girin. Alternatif olarak, AAD uygulama KIMLIĞI URI 'sini de kullanabilirsiniz. Uygulama KIMLIĞI URI 'SI hakkında daha fazla bilgi için [Bu makaleye](../app-service/configure-authentication-provider-aad.md)bakın.
 
         ![Güvenli Web kancası eylemi](./media/secure-webhook-delivery/aad-configuration.png)
 

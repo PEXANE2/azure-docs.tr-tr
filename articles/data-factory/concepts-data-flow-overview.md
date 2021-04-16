@@ -3,17 +3,16 @@ title: Veri akışlarını eşleme
 description: Azure Data Factory veri akışlarını eşleştirmeye genel bakış
 author: kromerm
 ms.author: makromer
-ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 04/11/2021
-ms.openlocfilehash: 53f300adb57eb17e704e7e3323b9829c485bb87a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 26d119fb6880f4c539e0064db424699bc5d22f96
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308991"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478684"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşleme
 
@@ -82,6 +81,10 @@ Hata ayıklama modu açık ise, **veri önizleme** sekmesi her dönüşümde ver
 ## <a name="available-transformations"></a>Kullanılabilir dönüşümler
 
 Kullanılabilir dönüşümlerinin bir listesini almak için [eşleme veri akışı dönüşümüne genel bakış ' ı](data-flow-transformation-overview.md) görüntüleyin.
+
+## <a name="data-flow-data-types"></a>Veri akışı veri türleri
+
+dizi ikili Boolean karmaşık ondalık Tarih kayan tamsayı Long Map kısa dize zaman damgası
 
 ## <a name="data-flow-activity"></a>Veri akışı etkinliği
 
