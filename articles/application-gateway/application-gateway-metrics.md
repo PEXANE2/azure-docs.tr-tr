@@ -2,17 +2,17 @@
 title: Application Gateway için Azure Izleyici ölçümleri
 description: Uygulama ağ geçidinin performansını izlemek için ölçümleri nasıl kullanacağınızı öğrenin
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
-ms.author: surmb
-ms.openlocfilehash: 9faa3a284aa7151880526c1ee70cfadc3dbf3089
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: azhussai
+ms.openlocfilehash: 3baaf49cb3d1c8c5502d96974f9729d05996c75b
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100576121"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519897"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway ölçümleri
 
@@ -24,7 +24,7 @@ Application Gateway, Application Gateway ve arka uç örneklerinizin performans�
 
 Application Gateway, istek ve Yanıtla ilgili, hepsi milisaniye cinsinden ölçülen çeşitli yerleşik zamanlama ölçümleri sağlar. 
 
-![Application Gateway için zamanlama ölçümlerinin diyagramı.](./media/application-gateway-metrics/application-gateway-metrics.png)
+![Application Gateway için zamanlama ölçümlerinin diyagramı.](./media/application-gateway-metrics/application-gateway-metrics.jpg)
 
 > [!NOTE]
 >

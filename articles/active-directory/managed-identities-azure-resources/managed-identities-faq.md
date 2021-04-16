@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 04/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 3d3ab9859eb9f85d5ca7d0573fa79443ae9fe964
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 07b106630cffae75c5e4588d14de7ae938945614
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107251036"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534115"
 ---
 # <a name="managed-identities-for-azure-resources-frequently-asked-questions---azure-ad"></a>Azure kaynakları için Yönetilen kimlikler sık sorulan sorular-Azure AD
 
@@ -139,11 +139,11 @@ Hayır. Yönetilen kimlikler Şu anda çapraz dizin senaryolarını desteklemez.
 Yönetilen kimlikler sınırları, Azure hizmet limitleri, Azure Instance Metadata Service (IMDS) sınırları ve hizmet sınırlarına Azure Active Directory bağımlılıkları vardır.
 
 - **Azure hizmet limitleri** , kiracı ve abonelik düzeylerinde gerçekleştirilebilecek oluşturma işlemlerinin sayısını tanımlar. Kullanıcı tarafından atanan Yönetilen kimlikler Ayrıca adlandırılmaları konusunda [sınırlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md#managed-identity-limits) da vardır.
-- **IDS 'ler** Genel olarak, ıDS istekleri saniyede beş istek ile sınırlıdır. Bu eşiği aşan istekler 429 yanıt olarak reddedilir. Yönetilen kimlik kategorisine yönelik istekler saniyede 20 istek ve 5 eşzamanlı istek ile sınırlıdır. [Azure örnek meta veri hizmeti (Windows)](../../virtual-machines/windows/instance-metadata-service.md?tabs=windows#managed-identity) makalesinde daha fazla bilgi edinebilirsiniz.
+- **IDS 'ler** Genel olarak, ıDS istekleri saniyede beş istek ile sınırlıdır. Bu eşiği aşan istekler 429 yanıt olarak reddedilir. Yönetilen kimlik kategorisine yönelik istekler saniyede 20 istek ve 5 eşzamanlı istek ile sınırlıdır. [Azure Instance Metadata Service (Windows)](../../virtual-machines/windows/instance-metadata-service.md?tabs=windows#managed-identity) makalesinde daha fazla bilgi edinebilirsiniz.
 - **Azure Active Directory hizmeti** Her yönetilen kimlik, Azure [ad hizmeti sınırları ve kısıtlamaları](../enterprise-users/directory-service-limits-restrictions.md)bölümünde açıklandığı gibi BIR Azure AD kiracısındaki nesne kotası sınırına doğru sayılır.
 
 
-## <a name="is-it-ok-to-move-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Kullanıcı tarafından atanan yönetilen bir kimliği farklı bir kaynak grubuna/aboneliğe taşımak ister misiniz?
+### <a name="is-it-possible-to-move-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Kullanıcı tarafından atanan bir yönetilen kimliği farklı bir kaynak grubuna/aboneliğe taşımak mümkün mü?
 
 Kullanıcı tarafından atanan bir yönetilen kimliğin farklı bir kaynak grubuna taşınması desteklenmez.
 

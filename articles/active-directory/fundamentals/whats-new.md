@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d34a6eaa653ad0d2f93db0dcd04eec0f5532a4c7
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 81a909d946b55ee8b06d68aa8bee53bc50d2190e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107036"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532309"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler nelerdir?
 
@@ -210,7 +210,7 @@ Otomatik Kullanıcı hesabı sağlamayı kullanarak kuruluşunuzun daha iyi güv
 **Hizmet kategorisi:** MS grafiği  
 **Ürün yeteneği:** B2B/B2C
 
-[Şirket markalaması Için MS Graph API](https://docs.microsoft.com/graph/api/resources/organizationalbrandingproperties?view=graph-rest-1.0)  , Azure AD veya Microsoft 365 oturum açma deneyiminde, marka parametrelerinin programlı olarak yönetimine izin vermek için kullanılabilir.
+[Şirket markalaması Için MS Graph API](https://docs.microsoft.com/graph/api/resources/organizationalbrandingproperties)  , Azure AD veya Microsoft 365 oturum açma deneyiminde, marka parametrelerinin programlı olarak yönetimine izin vermek için kullanılabilir.
 
 ---
 
@@ -308,7 +308,7 @@ Müşteriler artık mevcut dış Konuk kullanıcıları, kullanım durumlarını
 **Hizmet kategorisi:** Uygulama sağlama  
 **Ürün yeteneği:** Kimlik yaşam döngüsü yönetimi
  
-Müşteriler artık, eşitleme API 'Lerini çağırmak için uygulama izni olarak Application. ReadWrite. ownedcan kullanabilir. Bu, yalnızca Azure AD 'den üçüncü taraf uygulamalara (örneğin, AWS, veri blokları, vb.) sağlanması için desteklenir. Bu, şu anda HR sağlama (Workday/başarılı faktörleri) veya bulut eşitleme (AD ile Azure AD) için desteklenmiyor. [Daha fazla bilgi edinin](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta).
+Müşteriler artık, eşitleme API 'Lerini çağırmak için uygulama izni olarak Application. ReadWrite. ownedcan kullanabilir. Bu, yalnızca Azure AD 'den üçüncü taraf uygulamalara (örneğin, AWS, veri blokları, vb.) sağlanması için desteklenir. Bu, şu anda HR sağlama (Workday/başarılı faktörleri) veya bulut eşitleme (AD ile Azure AD) için desteklenmiyor. [Daha fazla bilgi edinin](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta&preserve-view=true).
  
 ---
 
@@ -904,7 +904,7 @@ Bulut sağlama Aracısı genel önizlemede yayımlanmıştır ve artık Portal �
  
 Daha önce,/BitLocker uç noktası aracılığıyla BitLocker anahtarlarını kurtarabilirsiniz. Bu uç noktayı kullanımdan kaldıracağız ve müşteriler artık/ınformationprotectionaltında olan API 'YI kullanmaya başlamalıdır. 
 
-Bu değişiklikleri yansıtmak için belgelerdeki güncelleştirmeler için bkz. [BitLocker kurtarma API 'si](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) .
+Bu değişiklikleri yansıtmak için belgelerdeki güncelleştirmeler için bkz. [BitLocker kurtarma API 'si](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta&preserve-view=true) .
 
 ---
 
@@ -1072,7 +1072,7 @@ Tümleştirme Yardımcısı (Önizleme) deneyimi artık Azure AD B2C Uygulama ka
 
 Artık Azure portal her bir Azure AD rolünün şablon KIMLIĞINI görüntüleyebilirsiniz. Azure AD 'de seçili rolün  **açıklamasını** seçin. 
 
-Müşterilerin, görünen ad yerine, PowerShell betiklerinde ve kodunda rol şablonu kimliklerini kullanması önerilir. Rol şablonu KIMLIĞI [Directoryroles](/graph/api/resources/directoryrole) ve [roledefinition](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) nesnelerinde kullanılmak üzere desteklenir. Rol şablonu kimlikleri hakkında daha fazla bilgi için bkz. [Azure AD yerleşik rolleri](../roles/permissions-reference.md).
+Müşterilerin, görünen ad yerine, PowerShell betiklerinde ve kodunda rol şablonu kimliklerini kullanması önerilir. Rol şablonu KIMLIĞI [Directoryroles](/graph/api/resources/directoryrole) ve [roledefinition](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta&preserve-view=true) nesnelerinde kullanılmak üzere desteklenir. Rol şablonu kimlikleri hakkında daha fazla bilgi için bkz. [Azure AD yerleşik rolleri](../roles/permissions-reference.md).
 
 ---
 

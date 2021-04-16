@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 04/09/2021
 ms.custom: generated
-ms.openlocfilehash: 4e559ea1e531e2d472faeef60ebc6d528da0cfd0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c89e6ed98e0a71f530cefda4cc1f42a27996d805
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307937"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518516"
 ---
 # <a name="azure-built-in-roles"></a>Yerleşik Azure rolleri
 
@@ -12144,7 +12144,7 @@ Masaüstü Sanallaştırma çalışma alanının okuyucusu. [Daha fazla bilgi ed
 
 ### <a name="disk-backup-reader"></a>Disk yedekleme okuyucusu
 
-Disk yedeklemesi gerçekleştirmek için Yedekleme Kasası için izin sağlar. [Daha fazla bilgi edinin](../backup/disk-backup-faq.md)
+Disk yedeklemesi gerçekleştirmek için Yedekleme Kasası için izin sağlar. [Daha fazla bilgi edinin](../backup/disk-backup-faq.yml)
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
 ms.author: lajanuar
-ms.openlocfilehash: d46fef0159b983f2685be40e2a0ab5471b96883b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 148aa722515d9364ce5af85b3f7c3b39958c9c91
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98895450"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388389"
 ---
 # <a name="translator-30-translate"></a>Translator 3,0: çeviri
 
@@ -54,12 +54,12 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   <th width="20%">Sorgu parametresi</th>
   <th>Açıklama</th>
   <tr>
-    <td>Kaynak</td>
+    <td> değerini</td>
     <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metninin dilini belirtir. Kapsam kullanarak <a href="./v3-0-languages.md">desteklenen dilleri</a> arayarak hangi dillerin çevrilebileceği hakkında bilgi edinin <code>translation</code> . <code>from</code>Parametresi belirtilmemişse, kaynak dili saptamak için otomatik dil algılama uygulanır. <br/><br/><code>from</code> <a href="/azure/cognitive-services/translator/dynamic-dictionary">Dinamik sözlük</a> özelliğini kullanırken, parametresini, oto algılaması yerine kullanmanız gerekir.</td>
   </tr>  
   <tr>
     <td>textType</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Çevrilen metnin düz metin mi yoksa HTML metni mi olduğunu tanımlar. Herhangi bir HTML 'nin iyi biçimlendirilmiş, tam bir öğe olması gerekir. Olası değerler şunlardır: <code>plain</code> (varsayılan) veya <code>html</code>.</td>
+    <td><em>Isteğe bağlı parametre</em>.<br/>Çevrilen metnin düz metin mi yoksa HTML metni mi olduğunu tanımlar. Herhangi bir HTML 'nin iyi biçimlendirilmiş, tam bir öğe olması gerekir. HTML metni çevrilirken, çıkış metninde kaçış biçiminde şu özel karakterler bulunur: ' & ', ' < ' ve ' > '. Bu, giriş HTML metninde karakterlerin atlanıp kaçışdıklarına bakılmaksızın olur. Olası değerler şunlardır: <code>plain</code> (varsayılan) veya <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
@@ -104,7 +104,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 <table width="100%">
   <th width="20%">Üst Bilgiler</th>
-  <th>Description</th>
+  <th>Açıklama</th>
   <tr>
     <td>Kimlik doğrulama üst bilgisi</td>
     <td><em>Gerekli istek üst bilgisi</em>.<br/><a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
@@ -182,7 +182,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 
 <table width="100%">
   <th width="20%">Üst Bilgiler</th>
-  <th>Description</th>
+  <th>Açıklama</th>
     <tr>
     <td>X-RequestId</td>
     <td>İsteği tanımlamak için hizmet tarafından oluşturulan değer. Sorun giderme amacıyla kullanılır.</td>
@@ -199,7 +199,7 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
 
 <table width="100%">
   <th width="20%">Durum Kodu</th>
-  <th>Description</th>
+  <th>Açıklama</th>
   <tr>
     <td>200</td>
     <td>Başarılı.</td>

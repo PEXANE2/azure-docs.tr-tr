@@ -8,16 +8,16 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: e31a1cef427062723adf4b45bd47cd8009630128
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b48963fa6cb28c836c57de8b46861ef83752231
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94888819"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388573"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Hızlı başlangıç: Azure NetApp Files ayarlama ve NFS birimi oluşturma
 
-Bu makalede, Azure NetApp Files hızlı bir şekilde ayarlama ve birim oluşturma işlemlerinin nasıl yapılacağı gösterilir.
+Bu makalede, Azure NetApp Files hızlı bir şekilde ayarlama ve bir NFS birimi oluşturma işlemlerinin nasıl yapılacağı gösterilir. 
 
 Bu hızlı başlangıçta, aşağıdaki öğeleri ayarlayacaksınız:
 
@@ -27,6 +27,8 @@ Bu hızlı başlangıçta, aşağıdaki öğeleri ayarlayacaksınız:
 - Azure NetApp Files için NFS birimi
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+
+NFS birimi ve ilgili konular için etkinleştirebileceğiniz tüm özellikleri görmek için bkz. [NFS birimi oluşturma](azure-netapp-files-create-volumes.md). 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -248,7 +250,7 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/Capacityhavuzl
 
 ---
 
-## <a name="create-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files için NFS birimi oluşturma
+## <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files için NFS birimi oluşturma
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

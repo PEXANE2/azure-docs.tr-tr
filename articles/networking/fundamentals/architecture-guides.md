@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: kumud
-ms.openlocfilehash: 9b608312d66e6a3e7455c4577ea4644b33e4e82e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: c98bdbb9fba2a6ba01e4ce590c36d57e68390f17
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106080609"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484804"
 ---
 # <a name="azure-networking-architecture-documentation"></a>Azure ağ mimarisi belgeleri
 
@@ -51,6 +51,7 @@ Aşağıdaki tablo, Azure ağ hizmetleri 'nin bir birleşimini kullanarak uygula
 |[IaaS: ilişkisel veritabanıyla Web uygulaması](/azure/architecture/high-availability/ref-arch-iaas-web-and-db)    |   Bir hizmet olarak altyapı (IaaS) Web uygulaması ve SQL Server veritabanı barındırmak için yüksek oranda kullanılabilir bir mimari sağlamak üzere birden çok bölge arasında yayılan kaynakların nasıl kullanılacağını açıklar.     |
 |[Düşük maliyetli sunucusuz Azure hizmetlerini kullanarak gerçek zamanlı konum paylaşımı](/azure/architecture/example-scenario/signalr/#azure-front-door)       |   , Uygulamalarınızın tek bir bölgeye dağıtılmasından daha yüksek kullanılabilirlik sağlamak için Azure ön kapısını kullanır. Birinci bölge bölgesel bir kesintiden etkileniyorsa, ikinci bölgeye yük devretmek için Front Door kullanabilirsiniz.      |
 |[Yüksek oranda kullanılabilir ağ sanal gereçleri](/azure/architecture/reference-architectures/dmz/nva-ha)     | Azure 'da yüksek kullanılabilirlik için bir dizi ağ sanal gereçlerini (NVA 'lar) nasıl dağıtacağınızı gösterir.        |
+|[Traffic Manager ve Application Gateway ile çok bölgeli Yük Dengeleme](/azure/architecture/high-availability/reference-architecture-traffic-manager-application-gateway)     | Kullanılabilirlik ve sağlam olağanüstü durum kurtarma altyapısına ulaşmak için birden fazla Azure bölgesinde dayanıklı çok katmanlı uygulamaların nasıl dağıtılacağını açıklar.        |
 
 ## <a name="secure-your-network-resources"></a>Ağ kaynaklarınızın güvenliğini sağlama
 

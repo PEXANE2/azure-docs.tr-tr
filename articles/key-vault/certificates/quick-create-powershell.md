@@ -8,15 +8,15 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 587815cf9628df35f1e1efdbc6a7a3c89a27ed55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11f463ab0ae60f489fd6b10d06402b6d27fc9930
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071926"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502272"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Azure Key Vault bir sertifikayı ayarlama ve alma
 
@@ -62,6 +62,18 @@ Get-AzKeyVaultCertificate -VaultName "<your-unique-keyvault-name>" -Name "Exampl
 ```
 
 Şimdi bir Key Vault oluşturdunuz, bir sertifikayı depolamıştır ve geri almıştır.
+
+**Sorun giderme**:
+
+İşlem geçersiz bir durum kodu döndürdü ' yasak '
+
+Bu hatayı alırsanız, Azure Key Vault erişen hesabın sertifika oluşturmak için uygun izinleri yoktur.
+
+Doğru izinleri atamak için aşağıdaki Azure PowerShell komutunu çalıştırın:
+
+```azurepowershell-interactive
+Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> -ObjectId <AzureObjectID> -PermissionsToCertificates get,list,update,create
+```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
