@@ -2,19 +2,19 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/29/2021
+ms.date: 04/13/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 164c5e199bcb17dfe7a8ce92b169b26ecd389703
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d2ae849616946169911468bb43e190c7ff8a4ec8
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105957984"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107386666"
 ---
 Bu kategoride **65** öneri vardır.
 
-|Öneri |Description |Önem derecesi |
+|Öneri |Açıklama |Önem derecesi |
 |---|---|---|
 |SQL yönetilen örnek gelişmiş veri güvenliği ayarları 'nda tüm gelişmiş tehdit koruması türleri etkinleştirilmelidir |SQL yönetilen örneklerinizin tümünde Gelişmiş tehdit koruması türlerinin etkinleştirilmesi önerilir. Tüm türlerin etkinleştirilmesi SQL ekleme, veritabanı güvenlik açıklarına ve diğer anormal etkinliklere karşı korunur.<br />(İlgili ilke yok) |Orta |
 |Tüm Gelişmiş tehdit koruması türleri SQL Server Gelişmiş veri güvenliği ayarları 'nda etkinleştirilmelidir |SQL sunucularınızda tüm gelişmiş tehdit koruması türlerinin etkinleştirilmesi önerilir. Tüm türlerin etkinleştirilmesi SQL ekleme, veritabanı güvenlik açıklarına ve diğer anormal etkinliklere karşı korunur.<br />(İlgili ilke yok) |Orta |
@@ -74,7 +74,7 @@ Bu kategoride **65** öneri vardır.
 |Depolama hesapları, şifreleme için müşteri tarafından yönetilen anahtar (CMK) kullanmalıdır |Müşteri tarafından yönetilen anahtarları (CMKs) kullanarak depolama hesabınızın güvenliğini daha fazla esneklik sağlar. Bir CMK belirttiğinizde, bu anahtar, verilerinizi şifreleyen anahtara erişimi korumak ve denetlemek için kullanılır. CMKs 'in kullanılması, anahtar şifreleme anahtarının dönüşünü denetlemek veya şifreli olarak verileri silmek için ek yetenekler sağlar.<br />(İlgili ilke: [depolama hesapları, şifreleme için müşteri tarafından yönetilen anahtarı (CMK) kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6fac406b-40ca-413b-bf8e-0bf964659c25)) |Orta |
 |Abonelikler güvenlik sorunları için bir iletişim e-posta adresine sahip olmalıdır |Aboneliklerinizden birinde potansiyel bir güvenlik ihlali olduğunda kuruluşunuzdaki ilgili kişilerin bilgilendirilmesine emin olmak için Güvenlik Merkezi 'nden e-posta bildirimleri alacak bir güvenlik kişisi ayarlayın.<br />(İlgili ilke: [abonelikler güvenlik sorunları için bir iletişim e-posta adresine sahip olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4f4f78b8-e367-4b10-a341-d9a4ad5cf1c7)) |Düşük |
 |SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir |Rest verilerini korumak ve uyumluluk gereksinimlerini karşılamak için saydam veri şifrelemesini etkinleştirme<br />(İlgili ilke: [SQL veritabanlarında saydam veri şifrelemesi etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f17k78e20-9358-41c9-923c-fb736d382a12)) |Düşük |
-|VM görüntü Oluşturucu şablonlarının özel bağlantı kullanması gerekir |Yapılandırılmış bir sanal ağı olmayan VM görüntü Oluşturucu şablonlarının denetimini yapın. Bir sanal ağ yapılandırılmadığında, kaynakları doğrudan internet 'te kullanıma sunabilecek ve olası saldırı yüzeyini artıran genel bir IP oluşturulur ve kullanılır.<br />(İlgili ilke: [VM görüntü Oluşturucu şablonlarının özel bağlantı kullanması gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2154edb9-244f-4741-9970-660785bccdaa)) |Orta |
+|VM görüntü Oluşturucu şablonlarının özel bağlantı kullanması gerekir |Yapılandırılmış bir sanal ağı olmayan VM görüntü Oluşturucu şablonlarının denetimini yapın. Bir sanal ağ yapılandırılmadığında, bunun yerine genel IP oluşturulur ve kullanılır, bu da kaynakları internet 'e doğrudan kullanıma sunabilir ve olası saldırı yüzeyini artırabilir.<br />(İlgili ilke: [VM görüntü Oluşturucu şablonlarının özel bağlantı kullanması gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2154edb9-244f-4741-9970-660785bccdaa)) |Orta |
 |SQL veritabanlarındaki güvenlik açığı değerlendirmesi bulguları düzeltildi |SQL güvenlik açığı değerlendirmesi, veritabanınızı güvenlik açıklarına karşı tarar ve yanlış yapılandırma, aşırı izin ve korunmayan gizli veriler gibi en iyi uygulamalardan sapmaları gösterir. Bulunan güvenlik açıklarının çözülmesi, veritabanınızın güvenlik duruşunuzu önemli ölçüde iyileştirebilir. <a href='https://aka.ms/SQL-Vulnerability-Assessment/'>Daha fazla bilgi edinin</a><br />(İlgili ilke: [SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2ffeedbf84-6b99-488c-acc2-71c829aa5ffc)) |Yüksek |
 |Makinelerdeki SQL sunucularınızda güvenlik açığı değerlendirmesi bulguları düzeltildi |SQL güvenlik açığı değerlendirmesi, veritabanınızı güvenlik açıklarına karşı tarar ve yanlış yapılandırma, aşırı izin ve korunmayan gizli veriler gibi en iyi uygulamalardan sapmaları gösterir. Bulunan güvenlik açıklarının çözülmesi, veritabanınızın güvenlik duruşunuzu önemli ölçüde iyileştirebilir. <a href='https://aka.ms/explore-vulnerability-assessment-reports/'>Daha fazla bilgi edinin</a><br />(İlgili ilke: [MAKINEDEKI SQL Server 'Larınızdaki güvenlik açıkları düzeltilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2f6ba6d016-e7c3-4842-b8f2-4992ebc0d72d)) |Yüksek |
 |SQL yönetilen örneklerinizin üzerinde güvenlik açığı değerlendirmesi etkinleştirilmelidir |Güvenlik açığı değerlendirmesi, olası veritabanı güvenlik açıklarını düzeltmenizi, izleyebilir ve yardımcı olabilir.<br />(İlgili ilke: [güvenlik açığı DEĞERLENDIRMESI SQL yönetilen örneği üzerinde etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1b7aa243-30e4-4c9e-bca8-d0d3022b634a)) |Yüksek |

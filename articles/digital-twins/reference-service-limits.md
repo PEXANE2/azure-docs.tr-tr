@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 46f378baad51e959f8b3c074cc24e5bbdfdd95d4
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 15c76bc042cb66dafbdeebac2951f5cb68310aa4
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389613"
+ms.locfileid: "107482800"
 ---
 # <a name="azure-digital-twins-service-limits"></a>Azure dijital TWINS hizmet limitleri
 
@@ -29,7 +29,7 @@ Bunlar Azure dijital TWINS 'in hizmet sınırlamalarıdır.
 
 ## <a name="working-with-limits"></a>Limitlerle çalışma
 
-Sınıra ulaşıldığında, hizmet ek istekleri kısıtlar. Bu, bu isteklerden 404 hata yanıtı oluşmasına neden olur.
+Sınıra ulaşıldığında, hizmet ek istekleri kısıtlar. Bu, bu isteklerden 429 hata yanıtı oluşmasına neden olur.
 
 Bunu yönetmek için, limitlerle çalışmaya yönelik bazı öneriler aşağıda verilmiştir.
 * **Yeniden deneme mantığını kullanın.** [Azure dijital TWINS SDK 'ları](how-to-use-apis-sdks.md) başarısız istekler için yeniden deneme mantığı uygular, bu nedenle, BELIRTILEN bir SDK ile çalışıyorsanız bu zaten yerleşik olarak bulunur. Aksi takdirde, kendi uygulamanızda yeniden deneme mantığı uygulamayı düşünün. Hizmet, `Retry-After` hata yanıtında bir üst bilgi gönderir ve yeniden denemeden önce ne kadar bekleneceğini tespit edebilirsiniz.

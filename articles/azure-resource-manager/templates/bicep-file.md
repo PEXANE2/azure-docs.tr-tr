@@ -3,12 +3,12 @@ title: Bıcep dosya yapısı ve sözdizimi
 description: Bildirim temelli söz dizimi kullanarak bir Bıcep dosyasının yapısını ve özelliklerini açıklar.
 ms.topic: conceptual
 ms.date: 03/31/2021
-ms.openlocfilehash: 09993ae9c08f53144de8e94e6555ad93bec681f6
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 1b8eddd388878be8f653f963ef967cf2c0af685f
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168697"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537865"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Bıcep dosyalarının yapısını ve söz dizimini anlayın
 
@@ -146,7 +146,7 @@ param storageSKU string = 'Standard_LRS'
 
 Aşağıdaki tabloda, kullanılabilir dekoratörler ve bunların nasıl kullanılacağı açıklanmaktadır.
 
-| Dekoratör | Uygula | Bağımsız Değişken | Description |
+| Dekoratör | Uygula | Bağımsız Değişken | Açıklama |
 | --------- | ---- | ----------- | ------- |
 | izin verilen | tümü | array | Parametre için izin verilen değerler. Kullanıcının doğru değerler sağladığından emin olmak için bu dekoratörü kullanın. |
 | açıklama | tümü | string | Parametresinin nasıl kullanılacağını açıklayan metin. Açıklama, portalda kullanıcılar için görüntülenir. |
@@ -297,7 +297,7 @@ param existingKeyVaultName string
 
 ## <a name="multi-line-strings"></a>Çok satırlı dizeler
 
-Bir dizeyi birden çok satıra kesebilirsiniz. `'''`Çok satırlı dizeyi başlatmak ve sonlandırmak için üç tek tırnak karakteri kullanın. 
+Bir dizeyi birden çok satıra kesebilirsiniz. `'''`Çok satırlı dizeyi başlatmak ve sonlandırmak için üç tek tırnak karakteri kullanın.
 
 Çok satırlı dize içindeki karakterler olduğu gibi işlenir. Kaçış karakterleri gereksizdir. `'''`Çok satırlı dizeye dahil etmeniz gerekir. Dize ilişkilendirme Şu anda desteklenmiyor.
 

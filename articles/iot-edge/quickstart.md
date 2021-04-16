@@ -10,12 +10,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: de24f6c8436b4537519f8cc65931325dd7d5f8d9
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9f0562d4471ac1129bf9bc7ecfee058cddac7c61
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313394"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533139"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü bir Windows cihazına dağıtma (Önizleme)
 
@@ -59,7 +59,7 @@ IoT Edge cihazınızın aşağıdaki gereksinimleri karşıladığından emin ol
   * Windows Server 2019 derleme 17763 veya üzeri
 
 * Donanım gereksinimleri
-  * Minimum boş bellek: 2 GB
+  * Minimum boş bellek: 1 GB
   * Minimum boş disk alanı: 10 GB
 
 >[!NOTE]

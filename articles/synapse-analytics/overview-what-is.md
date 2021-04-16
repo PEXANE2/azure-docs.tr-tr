@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 03/24/2021
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: bb09a25d7ea242dfafd7d853015ae8e127b13883
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 652f98659f96b36e3185432e50d9d36dc569bd43
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383414"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537952"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Azure Synapse Analytics nedir?
 
@@ -55,21 +55,14 @@ Azure SYNAPSE, Azure SYNAPSE Analytics 'ten çıkmadan zengin ölçekli ETL işl
 * Veri akışı etkinlikleri ile Code-Free ETL
 * Not defterlerini, Spark işlerini, saklı yordamları, SQL betiklerini ve daha fazlasını düzenleyin
 
-## <a name="unified-management-monitoring-and-security"></a>Birleşik yönetim, izleme ve güvenlik
+## <a name="unified-experience"></a>Birleşik deneyim 
 
-Azure SYNAPSE, kuruluşların analiz kaynaklarını yönetmesi, kullanımı ve etkinlikleri izlemesi ve güvenliği zorunlu kılmak için tek bir yol sunar.
+**SYNAPSE Studio** , kuruluşların tek bir kullanıcı deneyiminde çözüm oluşturmak, sürdürmek ve güvenliğini sağlamak için tek bir yol sağlar
 
-* Analiz kaynaklarına erişimi basitleştirmek için kullanıcıları role atayın
-* Veriler ve kod üzerinde ayrıntılı erişim denetimi
-* SQL ve Spark genelinde kaynakları, kullanımı ve kullanıcıları izlemek için tek bir pano
-
-## <a name="unified-experience"></a>Birleşik deneyim
-
-**SYNAPSE Studio** , veri mühendislerine yönelik her şeyi birbirine bağlayan kullanıcı deneyimidir. Tüm analiz çözümü oluşturmak için ihtiyaç duydukları her görevi yapmasına izin verir.
-
-* Anahtar veri mühendisinin görevleri tek bir yerde: alma, İnceleme, hazırlama, düzenleme, görselleştirme
-* SQL veya Spark kodu yazmak için sektör lideri üretkenlik: yazma, hata ayıklama ve performans iyileştirmesi
-* Kurumsal CI/CD işlemiyle tümleştirin
+* Anahtar görevleri gerçekleştirin: alma, İnceleme, hazırlama, düzenleme, görselleştirme
+* SQL ve Spark genelinde kaynakları, kullanımı ve kullanıcıları izleme
+* Analiz kaynaklarına erişimi basitleştirmek için rol tabanlı erişim denetimi kullanma
+* SQL veya Spark Code yazın ve kurumsal CI/CD işlemleriyle tümleştirin
 
 ## <a name="engage-with-the-synapse-community"></a>SYNAPSE topluluğuyla etkileşim kurun
 

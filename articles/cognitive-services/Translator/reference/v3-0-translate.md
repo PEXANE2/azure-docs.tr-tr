@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
 ms.author: lajanuar
-ms.openlocfilehash: 148aa722515d9364ce5af85b3f7c3b39958c9c91
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 7c92fb7f5de5542af08d1335bea745557a330f0d
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388389"
+ms.locfileid: "107506015"
 ---
 # <a name="translator-30-translate"></a>Translator 3,0: çeviri
 
@@ -59,7 +59,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>  
   <tr>
     <td>textType</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Çevrilen metnin düz metin mi yoksa HTML metni mi olduğunu tanımlar. Herhangi bir HTML 'nin iyi biçimlendirilmiş, tam bir öğe olması gerekir. HTML metni çevrilirken, çıkış metninde kaçış biçiminde şu özel karakterler bulunur: ' & ', ' < ' ve ' > '. Bu, giriş HTML metninde karakterlerin atlanıp kaçışdıklarına bakılmaksızın olur. Olası değerler şunlardır: <code>plain</code> (varsayılan) veya <code>html</code>.</td>
+    <td><em>Isteğe bağlı parametre</em>.<br/>Çevrilen metnin düz metin mi yoksa HTML metni mi olduğunu tanımlar. Herhangi bir HTML 'nin iyi biçimlendirilmiş, tam bir öğe olması gerekir. Olası değerler şunlardır: <code>plain</code> (varsayılan) veya <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>

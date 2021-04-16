@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: yüz tanıma, yüz tanıma yazılımı, yüz analizi, yüz eşleştirme, yüz tanıma uygulaması, görüntüye göre arama, yüz tanıma arama
-ms.openlocfilehash: 26076289d8c6659abdd55fa805c27b13690feccd
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: a999b2100dc57d7b623cebbbe261f821a80835e3
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258750"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505131"
 ---
 # <a name="what-is-the-azure-face-service"></a>Azure yüz hizmeti nedir?
 
@@ -33,7 +33,7 @@ Bu belge aşağıdaki makale türlerini içerir:
 * [Hızlı başlangıç](./Quickstarts/client-libraries.md) , hizmete çağrı yapmanızı ve sonuçların kısa bir süre içinde elde etmenize olanak tanıyan adım adım yönergelerdir. 
 * [Nasıl yapılır kılavuzlarında](./Face-API-How-to-Topics/HowtoDetectFacesinImage.md) , hizmeti daha belirli veya özelleştirilmiş yollarla kullanmaya yönelik yönergeler bulunur.
 * [Kavramsal makaleler](./concepts/face-detection.md) , hizmetin işlevselliği ve özellikleri hakkında ayrıntılı açıklamalar sağlar.
-* [Öğreticiler](./Tutorials/FaceAPIinCSharpTutorial.md) daha fazla iş çözümlerinde bu hizmeti bir bileşen olarak nasıl kullanacağınızı gösteren kılavuzlardır.
+* [Öğreticiler](./enrollment-overview.md) daha fazla iş çözümlerinde bu hizmeti bir bileşen olarak nasıl kullanacağınızı gösteren kılavuzlardır.
 
 ## <a name="face-detection"></a>Yüz algılama
 

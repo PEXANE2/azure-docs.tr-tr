@@ -7,12 +7,12 @@ ms.date: 4/12/2021
 author: sakthi-vetrivel
 ms.author: suvetriv
 keywords: Aro, OpenShift, az Aro, Red hat, CLI, KCı, destek
-ms.openlocfilehash: 364b0a04e3394efcacba00c538218ecee2355f89
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 4bb00cb533d0065a992831f09ed8280c96efcdee
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107495072"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537005"
 ---
 # <a name="overview-of-responsibilities-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift için sorumluluklara genel bakış
 
@@ -405,14 +405,14 @@ Kimlik ve erişim yönetimi, yalnızca uygun kişilerin küme, uygulama ve altya
    <td>
 <ul>
 
-<li>Yerel OpenShift RBAC ve adanmış yönetici özellikleri sağlayın.
+<li>Yerel OpenShift RBAC özellikleri sağlayın.
 </li>
 </ul>
    </td>
    <td>
 <ul>
 
-<li>Yol yapılandırmasına erişimi gerektiği şekilde denetlemek için OpenShift adanmış yönetici ve RBAC 'i yapılandırın.
+<li>Yol yapılandırmasına erişimi gerektiği şekilde denetlemek için OpenShift RBAC 'i yapılandırın.
 </li>
 </ul>
    </td>
@@ -423,7 +423,7 @@ Kimlik ve erişim yönetimi, yalnızca uygun kişilerin küme, uygulama ve altya
    <td>
 <ul>
 
-<li>Yerel OpenShift RBAC ve adanmış yönetici özellikleri sağlayın.
+<li>Yerel OpenShift RBAC özellikleri sağlayın.
 </li>
 </ul>
    </td>
@@ -434,7 +434,7 @@ Kimlik ve erişim yönetimi, yalnızca uygun kişilerin küme, uygulama ve altya
 
 <li>OpenShift Küme Yöneticisi 'ne erişim izni vermek için, Red Hat organizasyonu için kuruluş yöneticilerini yönetin.
 
-<li>Yol yapılandırmasına erişimi gerektiği şekilde denetlemek için OpenShift adanmış yönetici ve RBAC 'i yapılandırın.
+<li>Yol yapılandırmasına erişimi gerektiği şekilde denetlemek için OpenShift RBAC 'i yapılandırın.
 </li>
 </ul>
    </td>
@@ -583,7 +583,7 @@ Müşteri, Azure Red Hat OpenShift 'e dağıttıkları uygulamalardan, iş yükl
 
 <li>Bir müşteri, Işleçler veya dış görüntüler kullanarak bir Red hat, topluluk, üçüncü taraf, kendi veya diğer hizmetlerini kümeye eklerse, müşteri bu hizmetlerden sorumludur ve ilgili sağlayıcıyla (Red Hat dahil) çalışarak sorunları gidermeye çalışır.
 
-<li><a href="https://docs.openshift.com/dedicated/4/architecture/understanding-development.html#application-types">Yapılandırmak ve dağıtmak</a>için sunulan araçları ve özellikleri kullanın; güncel <a href="https://docs.openshift.com/dedicated/4/applications/deployments/deployment-strategies.html">tutun</a>; <a href="https://docs.openshift.com/dedicated/4/applications/working-with-quotas.html">kaynak isteklerini ve sınırlarını ayarlayın</a>; <a href="https://docs.openshift.com/dedicated/4/getting_started/scaling-your-cluster.html">kümeyi, uygulamaları çalıştırmak için yeterli kaynağa sahip olacak şekilde boyutlandırın</a>; <a href="https://docs.openshift.com/dedicated/4/administering_a_cluster/dedicated-admin-role.html#dedicated-admin-granting-permissions_dedicated-administrator">izinleri ayarlama</a>; diğer hizmetlerle tümleştirin; <a href="https://docs.openshift.com/dedicated/4/openshift_images/images-understand.html">müşterinin dağıttığı tüm görüntü akışlarını veya şablonlarını yönetin</a>; <a href="https://docs.openshift.com/dedicated/4/cloud_infrastructure_access/dedicated-aws-private-cluster.html">dışarıdan hizmeti</a>; verileri kaydetme, yedekleme ve geri yükleme; ve bunların yüksek oranda kullanılabilir ve dayanıklı iş yüklerini yönetin.
+<li><a href="https://docs.openshift.com/aro/4/architecture/understanding-development.html#application-types">Yapılandırmak ve dağıtmak</a>için sunulan araçları ve özellikleri kullanın; güncel <a href="https://docs.openshift.com/aro/4/applications/deployments/deployment-strategies.html">tutun</a>; <a href="https://docs.openshift.com/aro/4/applications/working-with-quotas.html">kaynak isteklerini ve sınırlarını ayarlayın</a>; <a href="https://docs.openshift.com/aro/4/getting_started/scaling-your-cluster.html">kümeyi, uygulamaları çalıştırmak için yeterli kaynağa sahip olacak şekilde boyutlandırın</a>; <a href="https://docs.openshift.com/aro/4/administering_a_cluster/">izinleri ayarlama</a>; diğer hizmetlerle tümleştirin; <a href="https://docs.openshift.com/aro/4/openshift_images/images-understand.html">müşterinin dağıttığı tüm görüntü akışlarını veya şablonlarını yönetin</a>; <a href="https://docs.openshift.com/aro/4/cloud_infrastructure_access">dışarıdan hizmeti</a>; verileri kaydetme, yedekleme ve geri yükleme; ve bunların yüksek oranda kullanılabilir ve dayanıklı iş yüklerini yönetin.
 
 <li>Azure Red Hat OpenShift üzerinde çalışan uygulamaların izlenmesi sorumluluğunu koruyun; ölçümleri toplamak ve uyarı oluşturmak için yükleme ve işletim yazılımı dahil.
 </li>

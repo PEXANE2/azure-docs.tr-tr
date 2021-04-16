@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d482f21955b76e6b90523afe3b4933378c91d36e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56e0f92593d185890e34a1a5120093d68cf45484
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98107370"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388424"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 'ye katılmış cihazlarda yerel Yöneticiler grubunu yönetme
 
@@ -68,11 +68,7 @@ Cihaz yöneticileri tüm Azure AD 'ye katılmış cihazlara atanır. Cihaz yöne
 
 ## <a name="manage-administrator-privileges-using-azure-ad-groups-preview"></a>Azure AD gruplarını kullanarak yönetici ayrıcalıklarını yönetme (Önizleme)
 
->[!NOTE]
-> Bu özellik şu anda önizleme sürümündedir.
-
-
-Windows 10 2004 Güncelleştirmesi ile başlayarak, Azure AD 'ye katılmış cihazlarda [Kısıtlanmış Gruplar](/windows/client-management/mdm/policy-csp-restrictedgroups) MDM ilkesiyle yönetici ayrıcalıklarını yönetmek IÇIN Azure AD Grupları ' nı kullanabilirsiniz. Bu ilke, Azure AD 'ye katılmış bir cihazdaki tek tek kullanıcıları veya Azure AD gruplarını yerel Yöneticiler grubuna atamanıza izin verir ve farklı cihaz grupları için ayrı Yöneticiler yapılandırmak için ayrıntı düzeyi sağlar. 
+Windows 10 sürüm 2004 ' den başlayarak, Azure AD 'ye katılmış cihazlarda [Kısıtlanmış Gruplar](/windows/client-management/mdm/policy-csp-restrictedgroups) MDM ilkesiyle yönetici ayrıcalıklarını yönetmek IÇIN Azure AD gruplarını kullanabilirsiniz. Bu ilke, Azure AD 'ye katılmış bir cihazdaki tek tek kullanıcıları veya Azure AD gruplarını yerel Yöneticiler grubuna atamanıza izin verir ve farklı cihaz grupları için ayrı Yöneticiler yapılandırmak için ayrıntı düzeyi sağlar. 
 
 >[!NOTE]
 > Windows 10 20 H2 güncelleştirmesi başlatılıyor, Kısıtlanmış Gruplar ilkesi yerine [yerel kullanıcılar ve gruplar](/windows/client-management/mdm/policy-csp-localusersandgroups) ilkesini kullanmanızı öneririz
@@ -84,7 +80,7 @@ Windows 10 2004 Güncelleştirmesi ile başlayarak, Azure AD 'ye katılmış cih
 - Kısıtlanmış Gruplar ilkesi zorlandığında, grubun Üyeler listesinde olmayan geçerli üyeleri kaldırılır. Bu nedenle, bu ilkeyi yeni üyeler veya gruplarla uygulamak, cihazı, cihaz yöneticisi rolünü ve genel yönetici rolünü cihazdan katılmış olan mevcut yöneticiler olarak kaldırır. Mevcut üyeleri kaldırmayı önlemek için, onları kısıtlı gruplar ilkesindeki Üyeler listesinin bir parçası olarak yapılandırmanız gerekir. Grup üyeliğine artımlı güncelleştirmelere izin veren yerel kullanıcılar ve Gruplar ilkesini kullanıyorsanız bu sınırlama ele alınmalıdır
 - Her iki ilkeyi kullanan yönetici ayrıcalıkları yalnızca bir Windows 10 cihaz-Yöneticiler, kullanıcılar, konuklar, Power Users, uzak masaüstü kullanıcıları ve uzaktan yönetim kullanıcıları için, yalnızca aşağıdaki bilinen gruplar için değerlendirilir. 
 - Azure AD gruplarını kullanarak yerel yöneticileri yönetmek, karma Azure AD 'ye katılmış veya Azure AD 'ye kayıtlı cihazlar için geçerli değildir.
-- Kısıtlı Gruplar ilkesi Windows 10 2004 güncelleştirmesinden önce mevcut olsa da, Azure AD gruplarını cihazın yerel Yöneticiler grubunun üyeleri olarak desteklemeiyordu. 
+- Kısıtlı Gruplar ilkesi Windows 10 sürüm 2004 ' den önce mevcut olsa da, Azure AD gruplarını bir cihazın yerel Yöneticiler grubunun üyesi olarak desteklemez. 
 
 ## <a name="manage-regular-users"></a>Normal kullanıcıları yönetme
 

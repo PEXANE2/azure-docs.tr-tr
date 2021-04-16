@@ -3,18 +3,18 @@ title: Günlük yeniden yürütme hizmeti 'ni kullanarak veritabanlarını SQL y
 description: Günlük yeniden yürütme hizmeti 'ni kullanarak SQL Server veritabanlarını SQL yönetilen örneğine geçirmeyi öğrenin
 services: sql-database
 ms.service: sql-managed-instance
-ms.custom: seo-lt-2019, sqldbrb=1
+ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurecli
 ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 03/31/2021
-ms.openlocfilehash: 8e78db5b9d496c2ac13c9f1214b386770c11e21e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 522f4ec2f28f9d8975a8a7a7b10e435f602af855
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075909"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484039"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Günlük yeniden yürütme hizmeti 'ni (Önizleme) kullanarak SQL Server veritabanlarını SQL yönetilen örneğine geçirme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -95,7 +95,7 @@ Blob depolamada uygun bir klasöre işaret ederek LRS 'yi her veritabanı için 
 
 ### <a name="azure-rbac-permissions"></a>Azure RBAC izinleri
 LRS 'yi belirtilen istemcilerle çalıştırmak için aşağıdaki Azure rollerinden biri gerekir:
-- Abonelik sahibi rolü
+- Abonelik Sahibi rolü
 - [Yönetilen örnek katılımcısı](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) rolü
 - Aşağıdaki izne sahip özel rol: `Microsoft.Sql/managedInstances/databases/*`
 
@@ -400,9 +400,9 @@ LRS 'nin işlevsel sınırlamaları şunlardır:
 LRS 'yi başlattıktan sonra, `get-azsqlinstancedatabaselogreplay` işlemin durumunu görmek için izleme cmdlet 'ini (veya `az_sql_midb_log_replay_show` ) kullanın. LRS bir süre sonra başlatılamazsa ve bir hata alırsanız, en sık karşılaşılan sorunları kontrol edin:
 
 - SQL yönetilen örneğindeki mevcut bir veritabanı, SQL Server geçirmeye çalıştığınız adla aynı ada sahip mi? Veritabanlarından birini yeniden adlandırarak bu çakışmayı çözün.
-- Veritabanı yedeklemesi, seçeneği aracılığıyla SQL Server `CHECKSUM` mı?
-- SAS belirtecindeki izinler yalnızca LRS için okuma ve listeleme izinlerine sahiptir mi?
-- LRS için SAS belirtecini, soru işaretinden ( `?` ) sonra şu şekilde başlayan içerikle kopyaladınız: `sv=2020-02-10...` ? 
+- Veritabanı yedeklemesi SQL Server, bu `CHECKSUM` seçenek aracılığıyla mi yapıldı?
+- SAS Simge² izinleri yalnızca LRS için okuma ve listeleme izinleridir?
+- LRS için SAS belirtecini, soru işaretinden ( `?` ) sonra şu şekilde başlayan içerikle kopyaladınız: `sv=2020-02-10...` ? Lið 
 - Geçiş işlemini başlatma ve tamamlama zaman penceresi için SAS belirteci geçerlilik süresi geçerli mi? SQL yönetilen örneği ve SAS belirteci için kullanılan farklı saat dilimlerine bağlı olarak uyuşmazlıklar olabilir. SAS belirtecini yeniden üretmeyi ve geçerli tarihten önce ve sonra zaman penceresinin belirteç geçerliliğini genişletmenize çalışın.
 - Veritabanı adı, kaynak grubu adı ve yönetilen örnek adı doğru yazılmış mı?
 - LRS 'yi otomatik tamamlama modunda başlattıysanız, belirtilen son yedekleme dosyası için geçerli bir dosya adı idi mı?
