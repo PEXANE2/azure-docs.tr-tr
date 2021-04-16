@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: b22954edf4f3a5a935c470326aa43bd24ee2d708
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 61fcbfa9d40ebb26485ce8160fa3b011935ab4d6
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366071"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536313"
 ---
 # <a name="creating-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
 
@@ -43,7 +43,10 @@ Bu öğreticinin adımlarını tamamlayabilmeniz için, **sahip** rolü atadığ
 Şu alanları doldurun:
 
 1. **Çalışma alanı adı** -genel olarak benzersiz bir ad seçin. Bu öğreticide, **MyWorkspace** kullanacağız.
-1. **Bölge** -herhangi bir bölgeyi seçin.
+1. **Bölge** -istemci uygulamalarınızı/hizmetlerinizi yerleştirdiğiniz bölgeyi (örneğin, Azure VM, Power BI, Azure Analysis Service) ve veri içeren depolarınızı (Örneğin Azure Data Lake depolama, Azure Cosmos DB analitik depolama) seçin.
+
+> [!NOTE]
+> İstemci uygulamaları veya depolaması ile birlikte bulunan bir çalışma alanı, birçok performans sorununa ilişkin kök neden olabilir. Veriler veya istemciler birden çok bölgeye yerleştirilirse, veri ve istemcileriniz ile farklı bölgelerde ayrı çalışma alanları oluşturabilirsiniz.
 
 **Data Lake Storage Gen 2**' yi seçin:
 
@@ -71,7 +74,7 @@ Bu başlangıç kılavuzunda birçok örnek için NYX TAXI cab verilerinin küç
 * Bu dosyayı bilgisayarınıza indirin: https://azuresynapsestorage.blob.core.windows.net/sampledata/NYCTaxiSmall/NYCTripSmall.parquet 
 * SYNAPSE Studio 'da veri merkezine gidin. 
 * **Bağlı**' yı seçin.
-* **Azure Data Lake Storae Gen2** kategorisi altında **MyWorkspace (Primary-contosolake)** gibi bir ada sahip bir öğe görürsünüz.
+* Kategori **Azure Data Lake Storage 2.** , **MyWorkspace (Primary-contosolake)** gibi bir ada sahip bir öğe görürsünüz.
 * **Kullanıcılar (birincil)** adlı kapsayıcıyı seçin.
 * **Karşıya yükle** ' yi seçin ve `NYCTripSmall.parquet` indirdiğiniz dosyayı seçin.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/01/2021
 ms.author: iangithinji
 ms.reviewer: baselden
-ms.openlocfilehash: 83e506c0a3d0b9718f94d48ea8e6b23f43e811f3
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: b0fd3dae2ff9c6de39462d19dc41a32ba51171e0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377947"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534863"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Uygulama kimlik doğrulamasını Active Directory Federasyon Hizmetleri’nden Azure Active Directory’ye taşıma
 
@@ -177,7 +177,7 @@ Aşağıdaki protokol özelliklerini gerektiren uygulamalar bugün geçirilemez:
 
 Belirteç özellikleri 'nde aşağıdaki talepler gerektiren uygulamalar bugün geçirilemez.
 
-* Azure ad dizini dışındaki öznitelik depolarından gelen talepler, verilerin Azure AD ile eşitlenmediği durumlar değildir. Daha fazla bilgi için bkz. [Azure AD eşitleme API 'sine genel bakış](/graph/api/resources/synchronization-overview?view=graph-rest-beta).
+* Azure ad dizini dışındaki öznitelik depolarından gelen talepler, verilerin Azure AD ile eşitlenmediği durumlar değildir. Daha fazla bilgi için bkz. [Azure AD eşitleme API 'sine genel bakış](/graph/api/resources/synchronization-overview).
 * Dizin çoklu değer özniteliklerinin verilmesi. Örneğin, şu anda proxy adresleri için çok değerli bir talep yayınlıyoruz.
 
 ## <a name="map-app-settings-from-ad-fs-to-azure-ad"></a>AD FS uygulama ayarlarını Azure AD 'ye eşleyin

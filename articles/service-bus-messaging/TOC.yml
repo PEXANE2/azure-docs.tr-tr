@@ -92,22 +92,34 @@
   items:
     - name: 'Kuyruklar, konu başlıkları ve abonelikler'
       href: service-bus-queues-topics-subscriptions.md
-    - name: İleti oturumları
-      href: message-sessions.md
-    - name: Konu başlığı filtreleri ve eylemleri
-      href: topic-filters.md
     - name: Premium mesajlaşma
       href: service-bus-premium-messaging.md
     - name: Azure Kuyrukları ve Service Bus kuyruklarını karşılaştırın
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
-    - name: 'İleti aktarımları, kilitler ve kapatma'
-      href: message-transfers-locks-settlement.md
-    - name: Teslim edilemeyen iletiler sırası
-      href: service-bus-dead-letter-queues.md
-    - name: İleti sayaçları
-      href: message-counters.md
-    - name: Performansı iyileştirme
-      href: service-bus-performance-improvements.md
+    - name: Gelişmiş özellikler
+      items:
+        - name: İleti oturumları
+          href: message-sessions.md
+        - name: Konu başlığı filtreleri ve eylemleri
+          href: topic-filters.md
+        - name: İletilere göz atma
+          href: message-browsing.md
+        - name: 'İleti aktarımları, kilitler ve kapatma'
+          href: message-transfers-locks-settlement.md
+        - name: Teslim edilemeyen iletiler sırası
+          href: service-bus-dead-letter-queues.md
+        - name: İleti sayaçları
+          href: message-counters.md
+        - name: Performansı iyileştirme
+          href: service-bus-performance-improvements.md
+        - name: Coğrafi olağanüstü durum kurtarma ve coğrafi çoğaltma
+          href: service-bus-geo-dr.md
+        - name: Zaman uyumsuz mesajlaşma ve yüksek kullanılabilirlik
+          href: service-bus-async-messaging.md
+        - name: Kesintileri ve olağanüstü durumları yönetme
+          href: service-bus-outages-disasters.md
+        - name: Azaltma
+          href: service-bus-throttling.md
     - name: Federasyon
       items:
         - name: İleti çoğaltma ve bölgeler arası federasyon
@@ -124,14 +136,6 @@
           href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
         - name: Event Hubs'dan iletileri alma
           href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
-    - name: Coğrafi olağanüstü durum kurtarma ve coğrafi çoğaltma
-      href: service-bus-geo-dr.md
-    - name: Zaman uyumsuz mesajlaşma ve yüksek kullanılabilirlik
-      href: service-bus-async-messaging.md
-    - name: Kesintileri ve olağanüstü durumları yönetme
-      href: service-bus-outages-disasters.md
-    - name: Azaltma
-      href: service-bus-throttling.md
     - name: Güvenlik
       items:
         - name: Güvenlik temeli
@@ -206,8 +210,6 @@
               href: duplicate-detection.md
             - name: İleti erteleme
               href: message-deferral.md
-            - name: İletilere göz atma
-              href: message-browsing.md
             - name: Otomatik yönlendirme ile varlıklar arasında zincir oluşturma
               href: service-bus-auto-forwarding.md
             - name: İşlem gerçekleştirme

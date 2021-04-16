@@ -2,21 +2,21 @@
 title: Adanmış SQL havuzu için sürekli tümleştirme ve dağıtım
 description: Azure Pipelines kullanarak sürekli tümleştirme ve dağıtım için yerleşik destek ile Azure SYNAPSE Analytics 'te adanmış SQL havuzu için kurumsal sınıf veritabanı DevOps deneyimi.
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql-dw
 ms.date: 02/04/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: d43039c98e991cd23a8e5c4fb866a8e3dcab6fc2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95bf3a8c614b8b7c0269257cb62b3c3a0f60be13
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585647"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568293"
 ---
 # <a name="continuous-integration-and-deployment-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için sürekli tümleştirme ve dağıtım
 

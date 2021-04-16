@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 04/09/2021
 ms.custom: template-overview
 ms.service: certification
-ms.openlocfilehash: b9d599542a53e3d809748b72028512c66409b4ec
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e7cd664e9eb61cae4f1888e4c94f02f19301e9e5
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307716"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502105"
 ---
 # <a name="what-is-the-azure-certified-device-program"></a>Azure Sertifikalı cihaz programı nedir?
 
-Azure Sertifikalı cihaz programına ilgilendiğiniz için teşekkür ederiz! Bu program, Azure 'da çalışmak üzere tasarlanan IoT cihazlarını kolayca farklılaştırmaya, yükseltmenizi ve bulmayı sağlamak için tek seferlik bir mağazanız. Akıllı kameralardan uç altyapılarına bağlı sensörlerden, bu Gelişmiş IoT cihaz sertifika programı, cihaz oluşturucuların ürün görünürlüğünü artırmalarına yardımcı olur ve çözümleri derleme sırasında müşterileri kaydeder.
+Azure Sertifikalı cihaz programına ilgilendiğiniz için teşekkür ederiz! Azure Sertifikalı cihaz, Azure 'da çalışmak üzere tasarlanan IoT cihazlarınızı farklılaştırmanıza, sertifikalandırmanıza ve yükseltebilmenizi sağlayan ücretsiz bir programdır. Akıllı kameralardan uç altyapılarına bağlı sensörlerden, bu Gelişmiş IoT cihaz sertifika programı, cihaz oluşturucuların ürün görünürlüğünü artırmalarına yardımcı olur ve çözümleri derleme sırasında müşterileri kaydeder.
 
 ## <a name="our-certification-promise"></a>Sertifika taahhüdizin
 
@@ -58,7 +58,10 @@ Bir cihazın sertifikalandırılması, [Azure Sertifikalı cihaz portalındaki](
 1. Cihaz işlevselliğini doğrulama
 1. İnceleme sürecini gönder ve tümünü doldurun
 
-Cihazınızı sertifikalandırdıktan sonra, isteğe bağlı olarak aşağıdaki etkinliklerden ikisini de tamamlayabilirsiniz:
+> [!Note]
+> İnceleme işleminin tamamlanması bir hafta kadar sürebilir, ancak bazen daha uzun sürebilir.
+
+Cihazınızı sertifikalandırdıktan sonra, isteğe bağlı olarak aşağıdaki etkinliklerden ikisini de tamamlayabilirsiniz: 
 
 1. Azure Sertifikalı cihaz kataloğuna yayımlama (isteğe bağlı)
 1. Projeniz onaylandıktan/yayımlandıktan sonra güncelleştiriliyor (isteğe bağlı)

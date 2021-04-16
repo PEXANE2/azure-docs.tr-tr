@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 50ecf6e394d5d19d09033554272023bd6796851b
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 295579d17f3b24adcf43f6907cc4b1aca01dcae2
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581199"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565925"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Güvenilir başlatma etkin bir VM dağıtma (Önizleme)
 
@@ -41,22 +41,20 @@ Güvenilir başlatma etkin olan bir sanal makine oluşturun.
 5. **Proje ayrıntıları**' nın altında, doğru aboneliğin seçildiğinden emin olun.
 6. **Kaynak grubu** altında **Yeni oluştur** ' u seçin ve kaynak grubunuz için bir ad yazın veya açılan listeden var olan bir kaynak grubunu seçin.
 7. **Örnek ayrıntıları**' nın altında, sanal makine adı için bir ad yazın ve [Güvenilen başlatmayı](trusted-launch.md#public-preview-limitations)destekleyen bir bölge seçin.
-8. **Görüntü** altında, [güvenilir başlatmayı destekleyen](trusted-launch.md#public-preview-limitations)bir gen 2 görüntüsü seçin. 
+8. **Görüntü** altında, [güvenilir başlatmayı destekleyen](trusted-launch.md#public-preview-limitations)bir gen 2 görüntüsü seçin. Aşağıdaki iletiyi görtığınızdan emin olun: **Bu görüntü, güvenilen başlatma önizlemesini destekler. Gelişmiş sekmesinde yapılandırın**.
    > [!TIP]
    > Açılan kutuda istediğiniz görüntünün Gen 2 sürümünü görmüyorsanız, **tüm görüntüleri görüntüle** ' yi seçin ve ardından yalnızca Gen 2 görüntülerini göstermek Için **VM oluşturma** filtresini değiştirin. Listede görüntüyü bulun, sonra da Gen 2 sürümünü seçmek için **Seç** açılan listesini kullanın.
- 
+
+    :::image type="content" source="media/trusted-launch/gen-2-image.png" alt-text="Bunun, güvenilir başlatmayı destekleyen bir Gen2 görüntüsü olduğunu onaylayan iletiyi gösteren ekran görüntüsü.":::
+
+13. Güvenilen başlatmayı destekleyen bir VM boyutu seçin. [Desteklenen boyutlar](trusted-launch.md#public-preview-limitations)listesine bakın.
+14. **Yönetici hesabı** bilgilerini ve ardından **gelen bağlantı noktası kurallarını** girin. 
 1. Sayfanın üst kısmında seçerek **Gelişmiş** sekmesine geçin.
 1. **VM oluşturma** bölümüne gidin. **Gen 2** ' nin seçili olduğundan emin olun.
 1. Hala **Gelişmiş** sekmesinde, **güvenilir başlatma**' ya gidin ve **güvenilir başlatma** onay kutusunu seçin. Böylece, güvenli önyükleme ve vTPM olmak üzere iki seçenek daha görünecektir. Dağıtımınız için uygun seçenekleri seçin.
 
     :::image type="content" source="media/trusted-launch/trusted-launch-portal.png" alt-text="Güvenilir başlatma seçeneklerini gösteren ekran görüntüsü.":::
 
-12. **Temel bilgiler** sekmesine, **görüntü**' ın altına dönün ve aşağıdaki iletiyi Görtığınızdan emin olun: **Bu görüntü, güvenilen başlatma önizlemesini destekler. Gelişmiş sekmesinde yapılandırın**. Gen 2 görüntüsü şimdi seçilmelidir.
-
-    :::image type="content" source="media/trusted-launch/gen-2-image.png" alt-text="Bunun, güvenilir başlatmayı destekleyen bir Gen2 görüntüsü olduğunu onaylayan iletiyi gösteren ekran görüntüsü.":::
-
-13. Güvenilen başlatmayı destekleyen bir VM boyutu seçin. [Desteklenen boyutlar](trusted-launch.md#public-preview-limitations)listesine bakın.
-14. **Yönetici hesabı** bilgilerini ve ardından **gelen bağlantı noktası kurallarını** girin.
 15. Sayfanın alt kısmındaki **gözden geçir + oluştur** ' u seçin.
 16. **Sanal makine oluştur** sayfasında, dağıtmak üzere olduğunuz VM hakkındaki ayrıntıları görebilirsiniz. Hazır olduğunuzda **Oluştur**'u seçin.
 

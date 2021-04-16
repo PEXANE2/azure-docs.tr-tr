@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 19d20caf71ddd09b7a537b4214d339dbff125e98
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 8d4f02aa2f358d63a96855a31bc53c63307a933a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106091286"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499264"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure Key Vault Managed HSM 'nin Temizleme koruması etkin olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc39ba22d-4428-4149-b981-70acb31fc383) |Azure Key Vault yönetilen bir HSM 'nin kötü bir şekilde silinmesi kalıcı veri kaybına neden olabilir. Kuruluşunuzda kötü amaçlı bir Insider, yönetilen HSM Azure Key Vault silebilir ve temizedebilir. Temizleme koruması, geçici olarak silinen Azure Key Vault yönetilen HSM için zorunlu bir saklama süresi zorlayarak Insider saldırılarına karşı sizi korur. Kuruluş içinde hiç kimse veya Microsoft, geçici silme Bekletme dönemi sırasında Azure Key Vault yönetilen HSM 'yi temizleyemezsiniz. |Denetim, reddetme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_Recoverable_Audit.json) |
 |[\[Önizleme \] : sertifikalar, belirtilen tümleşik sertifika yetkilisi tarafından verilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8e826246-c976-48f6-b03e-619bb92b3d82) |Anahtar kasasında DigiCert veya GlobalSign gibi sertifikalar veren Azure tümleşik sertifika yetkililerini belirterek kurumsal uyumluluk gereksinimlerinizi yönetin. |Denetim, reddetme, devre dışı |[2.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Issuers_SupportedCAs.json) |

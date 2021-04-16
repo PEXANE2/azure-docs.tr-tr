@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2960726cf687908e8e4aed9333fce490dd7ff006
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd82caab0babbc4803dd54926dafcba98370fa03
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98788748"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567290"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Öğretici: .NET 'teki bir Azure Web uygulamasına Key Vault bağlamak için yönetilen bir kimlik kullanın
 
@@ -34,7 +34,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Azure aboneliği. [Ücretsiz bir tane oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [.NET Core 3,1 SDK (veya üzeri)](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-* [Git](https://www.git-scm.com/downloads) yüklemesi.
+* Sürüm 2.28.0 veya üstünün [Git](https://www.git-scm.com/downloads) yüklemesi.
 * [Azure CLI](/cli/azure/install-azure-cli) veya [Azure PowerShell](/powershell/azure/).
 * [Azure Key Vault.](./overview.md) [Azure Portal](quick-create-portal.md), [Azure CLI](quick-create-cli.md)veya [Azure PowerShell](quick-create-powershell.md)kullanarak bir Anahtar Kasası oluşturabilirsiniz.
 * [Gizli](../secrets/about-secrets.md)dizi Key Vault. [Azure Portal](../secrets/quick-create-portal.md), [POWERSHELL](../secrets/quick-create-powershell.md)veya [Azure CLI](../secrets/quick-create-cli.md)kullanarak bir gizli dizi oluşturabilirsiniz.
@@ -78,7 +78,7 @@ Bu adımda, .NET Core uygulamanızı yerel Git kullanarak Azure App Service dağ
 Terminal penceresinde, **CTRL + C** ' yi seçerek Web sunucusunu kapatın.  .NET Core projesi için bir git deposu başlatın:
 
 ```bash
-git init
+git init --initial-branch=main
 git add .
 git commit -m "first commit"
 ```
@@ -167,8 +167,13 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;your-webapp-na
 }
 </pre>
 
-
 Git Remote 'in URL 'SI, `deploymentLocalGitUrl` özelliğinde, biçiminde gösterilir `https://<username>@<your-webapp-name>.scm.azurewebsites.net/<your-webapp-name>.git` . Bu URL 'YI kaydedin. Buna daha sonra ihtiyacınız olacak.
+
+Şimdi Web uygulamanızı daldan dağıtılacak şekilde yapılandırın `main` :
+
+```azurecli-interactive
+ az webapp config appsettings set -g MyResourceGroup -name "<your-webapp-name>"--settings deployment_branch=main
+```
 
 Aşağıdaki komutu kullanarak yeni uygulamanıza gidin. `<your-webapp-name>`Uygulamanızın adıyla değiştirin.
 

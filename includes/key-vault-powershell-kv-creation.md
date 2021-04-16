@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 07/20/2020
 ms.author: msmbaldwin
-ms.openlocfilehash: 13d4bb94d3efb574895df6cfdf240cdeec77e539
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d19c656946817b06cd620d8a48073bed8299af7d
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99070203"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502271"
 ---
 Önceki adımdan kaynak grubunda bir Key Vault oluşturmak için Azure PowerShell [New-Azkeykasası](/powershell/module/az.keyvault/new-azkeyvault) cmdlet 'ini kullanın. Bazı bilgileri sağlamanız gerekir:
 
@@ -22,7 +22,7 @@ ms.locfileid: "99070203"
 - Konum: **EastUS**.
 
 ```azurepowershell-interactive
-New-AzKeyVault -Name "<your-unique-keyvault-name>" -ResourceGroupName "ContosoResourceGroup" -Location "East US"
+New-AzKeyVault -Name "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup" -Location "East US"
 ```
 
 Bu cmdlet’in çıktısı, yeni oluşturulan anahtar kasasının özelliklerini gösterir. Aşağıda listelenen iki özelliği not edin:

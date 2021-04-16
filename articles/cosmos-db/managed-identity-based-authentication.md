@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d9845fad8c9013bd20499c45a8d1714e30e9dbf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: e4a41d508d15c3d8f41cc727776f233cc56c0817
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98927404"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480962"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Azure Cosmos DB verilerine erişmek için sistem tarafından atanan Yönetilen kimlikler kullanın
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ Bu adımda, işlev uygulamanıza sistem tarafından atanmış bir yönetilen kim
 
 Bu adımda, işlev uygulamasının sistem tarafından atanan yönetilen kimliğine bir rol atayacaksınız. Azure Cosmos DB yönetilen kimliğe atayabilmeniz için birden çok yerleşik rol içerir. Bu çözüm için aşağıdaki iki rolü kullanacaksınız:
 
-|Yerleşik rol  |Description  |
+|Yerleşik rol  |Açıklama  |
 |---------|---------|
 |[DocumentDB hesabı Katılımcısı](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|, Azure Cosmos DB hesaplarını yönetebilir. Okuma/yazma anahtarlarının alınmasına izin verir. |
 |[Cosmos DB hesabı okuyucu rolü](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB hesabı verilerini okuyabilir. Okuma anahtarlarının alınmasına izin verir. |

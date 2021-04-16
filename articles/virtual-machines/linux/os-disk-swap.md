@@ -1,6 +1,6 @@
 ---
-title: CLı kullanarak işletim sistemi diskleri arasında takas et
-description: CLı kullanarak bir Azure sanal makinesi tarafından kullanılan işletim sistemi diskini değiştirin.
+title: Azure CLı 'yı kullanarak işletim sistemi diskleri arasında takas etme
+description: Azure CLı kullanarak bir Azure sanal makinesi tarafından kullanılan işletim sistemi diskini değiştirin.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: disks
@@ -8,14 +8,15 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 24cd71cafa9dc0bd9131255caf50841f6d5909d1
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0c9b0c1948dc4ecef74cd78ec1736803a0c0b4bc
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311252"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497379"
 ---
-# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>CLı kullanarak bir Azure VM tarafından kullanılan işletim sistemi diskini değiştirme
+# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-azure-cli"></a>Azure CLı kullanarak bir Azure VM tarafından kullanılan işletim sistemi diskini değiştirme
 
 
 Var olan bir VM varsa, ancak diski bir yedekleme diski veya başka bir işletim sistemi diski için değiştirmek istiyorsanız, işletim sistemi disklerini değiştirmek için Azure CLı 'yi kullanabilirsiniz. VM 'yi silip yeniden oluşturmanız gerekmez. Zaten kullanımda olmadığı sürece, başka bir kaynak grubunda yönetilen bir disk de kullanabilirsiniz.
