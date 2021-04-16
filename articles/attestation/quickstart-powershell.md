@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: cbc415411e05d6fdecee1acf2fbc02b3c170b9d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80f0efe0894c54d1499bbfdce2317a38dff9299d
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501133"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481625"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile Azure kanıtlama ayarlama
 
@@ -170,12 +170,12 @@ Remove-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationR
 - Microsoft. kanıtlama/attestationProviders/kanıtlama/yazma
 - Microsoft. kanıtlama/attestationProviders/kanıtlama/silme
 
-Bu izinler, "Owner" (joker izinleri), "katkıda bulunan" (joker karakter izinleri) veya "kanıtlama katılımcısı" (yalnızca Azure kanıtlama için özel izinler) gibi bir rol aracılığıyla bir AD kullanıcısına atanabilir.  
+Bu işlemleri gerçekleştirmek için, bir Azure AD kullanıcısının kanıtlama sağlayıcısında "kanıtlama katılımcısı" rolü olmalıdır. Bu izinler, abonelik/kaynak grubu düzeyinde "sahip" (joker karakter izinleri), "katkıda bulunan" (joker karakter izinleri) gibi rollerle da devralınabilir.  
 
 İlkeleri okumak için, bir Azure AD kullanıcısı "eylemler" için aşağıdaki izinleri gerektirir:
 - Microsoft. kanıtlama/attestationProviders/kanıtlama/okuma
 
-Bu izin, "okuyucu" (joker karakter izinleri) veya "kanıtlama okuyucusu" gibi bir rol aracılığıyla bir AD kullanıcısına atanabilir (yalnızca Azure kanıtlama için özel izinler).
+Bu eylemi gerçekleştirmek için, bir Azure AD kullanıcısının kanıtlama sağlayıcısında "kanıtlama okuyucusu" rolü olmalıdır. Okuma izni Ayrıca, abonelik/kaynak grubu düzeyinde "okuyucu" (joker karakter izinleri) gibi rollerle devralınabilir.  
 
 Aşağıdaki PowerShell cmdlet 'leri bir kanıtlama sağlayıcısı için ilke yönetimi sağlar (bir seferde bir t).
 

@@ -4,12 +4,12 @@ description: Azure Backup hizmeti ile Azure VM 'lerinde SQL Server yedeklenirken
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: d7038b47bd4aba8f7747eef455f1e8dd3c77a695
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: bcbac4f6a91ad77d21eb6274aa03d251b8fbfe7c
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257352"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515065"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure VM 'lerinde SQL Server yedekleme için destek matrisi
 
@@ -99,7 +99,7 @@ Azure Backup, büyük SQL veritabanlarının tam ve fark yedeklemeleri (500 GB) 
 
 - Temel alınan VM (veritabanını barındıran SQL Server örneğini içeren), gereken ağ aktarım hızı ile yapılandırılır. VM 'nin en yüksek aktarım hızı 200 Mbps 'den küçükse Azure Backup en uygun hızda veri aktarabilir.<br></br>Ayrıca, veritabanı dosyalarını içeren diskte, sağlanan yeterli üretilen iş olması gerekir. Azure VM 'lerinde disk işleme ve performans hakkında [daha fazla bilgi edinin](../virtual-machines/disks-performance.md) . 
 - VM 'de çalışan süreçler VM bant genişliğini tüketmez. 
-- Yedekleme zamanlamaları, veritabanlarının bir alt kümesi arasında yayılır. Bir VM 'de eşzamanlı olarak çalışan birden çok yedekleme, yedeklemeler arasındaki ağ tüketimi oranını paylaşır. Eşzamanlı yedeklemelerin sayısını denetleme hakkında [daha fazla bilgi edinin](faq-backup-sql-server.md#can-i-control-how-many-concurrent-backups-run-on-the-sql-server) .
+- Yedekleme zamanlamaları, veritabanlarının bir alt kümesi arasında yayılır. Bir VM 'de eşzamanlı olarak çalışan birden çok yedekleme, yedeklemeler arasındaki ağ tüketimi oranını paylaşır. Eşzamanlı yedeklemelerin sayısını denetleme hakkında [daha fazla bilgi edinin](faq-backup-sql-server.yml#can-i-control-how-many-concurrent-backups-run-on-the-sql-server-) .
 
 >[!NOTE]
 > VM kaynakları, bant genişliği ve yedekleme ilkesi temel alınarak sunucu başına önerilen korumalı veritabanlarının yaklaşık sayısını hesaplamak için [ayrıntılı kaynak planlayıcısı](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) ' nı indirin.

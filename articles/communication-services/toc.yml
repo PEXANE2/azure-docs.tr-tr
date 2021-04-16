@@ -112,17 +112,6 @@
           href: concepts/ui-framework/ui-sdk-overview.md
         - name: UI çerçevesi özellikleri
           href: concepts/ui-framework/ui-sdk-features.md
-    - name: Veri ve Işlemler
-      items:
-        - name: Hizmet olayları (EventGrid)
-          href: ../event-grid/event-schema-communication-services.md
-          maintainContext: true
-        - name: Günlüğe kaydetme ve tanılama
-          href: concepts/logging-and-diagnostics.md
-        - name: Ölçümler
-          href: concepts/metrics.md
-        - name: Sorun giderme
-          href: concepts/troubleshooting-info.md
     - name: SDK 'Lar ve REST API 'Leri
       href: concepts/sdk-options.md
     - name: İstemci ve sunucu mimarisi
@@ -139,6 +128,15 @@
       href: concepts/notifications.md
     - name: Teams ile birlikte çalışabilirlik
       href: concepts/teams-interop.md
+    - name: Hizmet olayları (EventGrid)
+      href: ../event-grid/event-schema-communication-services.md
+      maintainContext: true
+    - name: Günlüğe kaydetme ve tanılama
+      href: concepts/logging-and-diagnostics.md
+    - name: Ölçümler
+      href: concepts/metrics.md
+    - name: Sorun giderme
+      href: concepts/troubleshooting-info.md
 - name: Örnekler
   items:
     - name: Genel Bakış

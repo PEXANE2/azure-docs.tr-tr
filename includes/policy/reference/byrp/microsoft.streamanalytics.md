@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cc238a9b47c15a437bfcd5970a398ff3a4165cbe
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 778d9fed49f49f4ed5477312c2dd962e42a98f8f
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095512"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499993"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure Stream Analytics işlerin verileri şifrelemek için müşteri tarafından yönetilen anahtarları kullanması gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F87ba29ef-1ab3-4d82-b763-87fcd4f531f7) |Depolama hesabınızdaki Stream Analytics işlerinizin tüm meta verilerini ve özel veri varlıklarını güvenli bir şekilde depolamak istediğinizde, müşteri tarafından yönetilen anahtarları kullanın. Bu, Stream Analytics verilerinizin nasıl şifrelendiği hakkında toplam denetim sağlar. |Denetim, reddetme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Stream%20Analytics/StreamAnalytics_CMK_Audit.json) |
 |[Olay Hub 'ına Stream Analytics için tanılama ayarlarını dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fedf3780c-3d70-40fe-b17e-ab72013dafca) |, Bu tanılama ayarlarının eksik olduğu Stream Analytics bir bölgesel Olay Hub 'ına akışa Stream Analytics yönelik tanılama ayarlarını dağıtır. |DeployIfNotExists, devre dışı |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/StreamAnalytics_DeployDiagnosticLog_Deploy_EventHub.json) |

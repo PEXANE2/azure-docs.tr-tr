@@ -9,12 +9,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 04/02/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 9a22700782c584015add2c83ecc96ccc610b8509
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 8e912e141ab769f3121fcccdecb9c3952920572f
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219629"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516221"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>& Azure Machine Learning için CLı uzantısını kullanın
 
@@ -39,7 +39,7 @@ CLı Azure Machine Learning SDK 'sının yerini almaz. Otomasyonuna uygun olan y
 
 ## <a name="full-reference-docs"></a>Tam başvuru belgeleri
 
-[Azure CLI 'nın Azure-CLI-ml uzantısı için tüm başvuru belgelerini](/cli/azure/ext/azure-cli-ml/)bulun.
+[Azure CLI 'nın Azure-CLI-ml uzantısı için tüm başvuru belgelerini](/cli/azure/ml/)bulun.
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>CLı 'yı Azure aboneliğinize bağlama
 
@@ -392,7 +392,7 @@ Aşağıdaki komutlarda, çalışma alanınız için Azure Machine Learning [ort
 
 Aşağıdaki tabloda JSON dosyasındaki her üst düzey alan, türü ve bir açıklama ayrıntıları verilmiştir. Bir nesne türü Python SDK 'dan bir sınıfa bağlanmışsa, Python sınıfında her bir JSON alanı ve genel değişken adı arasında gevşek bir 1:1 eşleşmesi vardır. Bazı durumlarda alan, sınıf değişkeni yerine bir Oluşturucu bağımsız değişkenine de eşlenir. Örneğin, `environmentVariables` alanı `environment_variables` sınıfındaki değişkenle eşlenir [`Environment`](/python/api/azureml-core/azureml.core.environment%28class%29) .
 
-| JSON alanı | Tür | Description |
+| JSON alanı | Tür | Açıklama |
 |---|---|---|
 | `name` | `string` | Ortamın adı. **Microsoft** veya **AzureML** ile ad başlatma. |
 | `version` | `string` | Ortamın sürümü. |

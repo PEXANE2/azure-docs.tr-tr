@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: d1302d44a4cb5b09f6dc3b1bf0cb08a12a932c87
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: a12f0c2e8ff5987a14b56ef12d49b8350cc1b3aa
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029412"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501782"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure Özel Uç Nokta nedir?
 
@@ -57,8 +57,8 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |---------|---------|---------|
 |**Özel bağlantı hizmeti** (kendi hizmetiniz)   |  Microsoft. Network/privateLinkServices       | empty |
 |**Azure Otomasyonu** |  Microsoft. Automation/automationAccounts | Web kancası, Dscandhyıbridworker |
-|**Azure SQL Veritabanı** | Microsoft. SQL/sunucuları    |  SQL Server (sqlServer)        |
-|**Azure Synapse Analytics** | Microsoft. SQL/sunucuları    |  SQL Server (sqlServer)        | 
+|**Azure SQL Veritabanı** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
+|**Azure Synapse Analytics** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        | 
 |**Azure Depolama**  | Microsoft. Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Tablo (tablo, table_secondary)<BR> Kuyruk (kuyruk, queue_secondary)<BR> Dosya (dosya, file_secondary)<BR> Web (Web, web_secondary)        |
 |**Azure Data Lake Storage 2. Nesil**  | Microsoft. Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Data Lake dosya sistemi Gen2 (DFS, dfs_secondary)       |
 |**Azure Cosmos DB** | Microsoft. Azu, Smosdb/databaseAccounts    | SQL, MongoDB, Cassandra, Gremlin, tablo|
@@ -78,6 +78,7 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |**Azure Event Grid** | Microsoft. EventGrid/konuları    | konu başlığı |
 |**Azure Event Grid** | Microsoft. EventGrid/Domains    | etki alanı |
 |**Azure App Service** | Microsoft. Web/siteler    | Siteler |
+|**Azure App Service Yuvaları** | Microsoft. Web/siteler    | barındıra`<slot name>` |
 |**Azure Machine Learning** | Microsoft. MachineLearningServices/çalışma alanları    | amlworkspace |
 |**SignalR** | Microsoft. SignalRService/SignalR    | signalR |
 |**Azure İzleyici** | Microsoft. Insights/privateLinkScopes    | azuremonitor |

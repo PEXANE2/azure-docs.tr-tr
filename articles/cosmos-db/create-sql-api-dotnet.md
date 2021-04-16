@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/07/2021
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: c7dc3a230e2cd3f990771c297de29891de347089
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.custom: devx-track-dotnet, devx-track-azurecli
+ms.openlocfilehash: 21b2459294b3465ba147cb454b93ac0da0081c5d
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363419"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480894"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Hızlı başlangıç: Azure Cosmos DB SQL API kaynaklarını yönetmek için bir .NET konsol uygulaması oluşturma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "107363419"
 
 .NET için Azure Cosmos DB SQL API istemci kitaplığı ile çalışmaya başlayın. .NET paketini yüklemek, bir uygulama derlemek ve Azure Cosmos DB depolanan veriler üzerinde temel CRUD işlemleri için örnek kodu denemek üzere bu belgedeki adımları izleyin. 
 
-Azure Cosmos DB, Microsoft 'un herhangi bir ölçekte açık API 'Leri olan hızlı NoSQL veritabanıdır. Anahtar/değer, belge ve grafik veritabanlarını hızlıca oluşturmak ve sorgulamak için Azure Cosmos DB kullanabilirsiniz. .NET için Azure Cosmos DB SQL API istemci kitaplığı 'nı kullanarak şunları yapın:
+Azure Cosmos DB, tüm ölçeklendirmeye yönelik açık API 'lerle birlikte Microsoftâ €™ s hızlı NoSQL veritabanıdır. Anahtar/değer, belge ve grafik veritabanlarını hızlıca oluşturmak ve sorgulamak için Azure Cosmos DB kullanabilirsiniz. .NET için Azure Cosmos DB SQL API istemci kitaplığı 'nı kullanarak şunları yapın:
 
 * Azure Cosmos veritabanı ve kapsayıcısı oluşturma
 * Kapsayıcıya örnek veri ekleme

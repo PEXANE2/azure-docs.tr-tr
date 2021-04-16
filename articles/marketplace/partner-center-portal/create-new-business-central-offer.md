@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 12/02/2020
-ms.openlocfilehash: 65df5f178ce0ec845fca6343c51049b6bf426e18
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 001f7453c29e7a8525fb88a96dd9a867468460e3
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106046"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501442"
 ---
 # <a name="create-a-dynamics-365-for-business-central-offer"></a>Bir Dynamics 365 for Business Central teklifi oluşturma
 
@@ -33,7 +33,7 @@ Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari 
 
 ## <a name="new-offer"></a>Yeni teklif
 
-Bir **TEKLIF kimliği** girin. Bu, hesabınızdaki her teklif için benzersiz bir tanımlayıcıdır.
+Bir **TEKLIF kimliği** girin. Bu değer, hesabınızdaki her bir teklif için benzersiz bir tanımlayıcıdır.
 
 - Bu KIMLIK, varsa Market teklifi ve Azure Resource Manager şablonları için Web adresinde müşteriler tarafından görülebilir.
 - Yayımcı KIMLIĞIYLE birleştirilmiş teklif KIMLIĞI, 40 karakter uzunluğunda olmalıdır.
@@ -51,7 +51,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 ### <a name="alias"></a>Diğer ad
 
-Bu teklifine yalnızca Iş Ortağı Merkezi içinde başvurmak için kullanacağımız açıklayıcı bir ad girin. Bu ad (teklif oluşturduğunuzda girdiğiniz değer ile önceden doldurulur) Market 'te kullanılmaz ve müşteriler tarafından gösterilen teklif adından farklıdır. Teklif adını daha sonra güncelleştirmek istiyorsanız [teklif listesi](#offer-listing) sayfasına gidin.
+Bu teklifine yalnızca Iş Ortağı Merkezi içinde başvurmak için kullanacağımız açıklayıcı bir ad girin. Bu ad (teklifi oluştururken girmiş olduğunuz), Market 'te kullanılmaz ve müşteriler tarafından gösterilen teklif adından farklıdır. Teklif adını daha sonra güncelleştirmek istiyorsanız [teklif listesi](#offer-listing) sayfasına gidin.
 
 ### <a name="setup-details"></a>Kurulum Ayrıntıları
 
@@ -118,11 +118,11 @@ Bu sayfa, teklif adı, açıklama, bağlantılar ve kişiler gibi teklif ayrınt
 > [!NOTE]
 > Yalnızca bir dilde liste ayrıntılarını sunun. Teklif açıklaması "ifadesi ile başladığı sürece Ingilizce olması gerekmez," Bu uygulama yalnızca [Ingilizce olmayan dilde] kullanılabilir ". Ayrıca, teklif listeleme içeriğinde kullanılandan farklı bir dilde içerik sunmak için *yararlı bir bağlantı URL 'si* sağlamak da kabul edilebilir.
 
-Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir (listelenen tüm fiyatlar yalnızca örnek amaçlıdır ve gerçek maliyetlerin yansıtılmasına yönelik değildir):
-<!-- update screen? -->
+Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir (listelenen tüm fiyatlar yalnızca örnektir ve gerçek maliyetlerin yansıtılmasına yönelik değildir):
+
 :::image type="content" source="media/example-d365-business-central.png" alt-text="Bu teklifin Microsoft AppSource nasıl göründüğünü gösterir.":::
 
-#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
+### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
 1. Logo
 2. Ürünler
@@ -132,7 +132,7 @@ Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir �
 6. Gizlilik ilkesi
 7. Teklif adı
 8. Özet
-9. Description
+9. Açıklama
 10. Ekran görüntüleri/videolar
 
 ### <a name="marketplace-details"></a>Market ayrıntıları
@@ -174,11 +174,11 @@ Müşterilerinizin teklifinizi gösterirken kullanılacak logoları ve görünt�
 [!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
->Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
+>Dosya yükleme sorununuz varsa, yerel ağınızın `https://upload.xboxlive.com` Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="logos"></a>Ların
 
-**Büyük** boyutlu amblem IÇIN bir PNG dosyası sağlayın. İş Ortağı Merkezi bunu, gerekli diğer boyutları oluşturmak için kullanır. İsterseniz bunu daha sonra farklı bir görüntüyle değiştirebilirsiniz.
+**Büyük** boyutlu amblem IÇIN bir PNG dosyası sağlayın. İş Ortağı Merkezi bu ilk dosyayı, gerekli diğer boyutları oluşturmak için kullanır. İsteğe bağlı olarak, yeniden boyutlandırılmış görüntüyü kendi görüntünüz ile değiştirebilirsiniz.
 
 Bu amblemler, listede farklı yerlerde kullanılır:
 
@@ -194,7 +194,7 @@ Teklifinizin nasıl çalıştığını gösteren ekran görüntüleri ekleyin. E
 
 İsteğe bağlı olarak, teklifinizi gösteren dört adede kadar video ekleyebilirsiniz. Videoların bir dış sitede barındırılması gerekir. Her biri için videonun adını, adresini ve videonun küçük bir görüntüsünü (1280 x 720 piksel) girin.
 
-Diğer Market listeleme kaynakları için bkz. [Market teklif listeleri Için en iyi uygulamalar](../gtm-offer-listing-best-practices.md).
+Daha fazla Market listeleme kaynakları için bkz. [Market teklif listeleri Için en iyi uygulamalar](../gtm-offer-listing-best-practices.md).
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
@@ -225,6 +225,8 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 Bu sayfa, teklifiniz ile bağlantı kurmak için kullanılan teknik ayrıntıları tanımlar. Bu bağlantı, teklifi edinmeyi tercih ettiklerinde, son müşteri için teklifinizi sağlamamızı sağlar.
 
+Teklifiniz için gönderilen uzantılar, [Teknik doğrulama denetim listesinde](/dynamics365/business-central/dev-itpro/developer/devenv-checklist-submission)belirtilen gereksinimlere uymalıdır.
+
 ### <a name="file-upload"></a>Karşıya dosya yükleme
 
 Daha önce **Ekle**' yi seçtiyseniz, teklifin paket dosyasını, bağımlılıkları olan herhangi bir uzantıya ait paket dosyaları ile birlikte karşıya yükleyeceksiniz.
@@ -242,14 +244,6 @@ Teklifinizin Market 'e yayımlanmayacak başka bir uzantıyla birlikte yüklenme
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
-<!-- ## Test drive technical configuration
-
-This page lets you set up a demonstration ("test drive") that allows customers to try your offer before purchasing it. Learn more in [What is test drive](../what-is-test-drive.md).
-
-To enable a test drive, select the **Enable a test drive** check box on the [Offer setup](#test-drive) tab. To remove test drive from your offer, clear this check box.
-
-When you've finished setting up your test drive, select **Save draft** before continuing.
--->
 ## <a name="supplemental-content"></a>Ek içerik
 
 Bu sayfa, teklifinizi doğrulamamıza yardımcı olmak için ek bilgiler sağlamanıza olanak tanır. Bu bilgiler müşterilere gösterilmez veya Market 'te yayımlanmamıştır.
@@ -285,9 +279,9 @@ Teklifin tüm gerekli bölümlerini tamamladıktan sonra portalın sağ üst kö
 Bu teklifi ilk kez yayımladıysanız şunları yapabilirsiniz:
 
 - Teklifin her bölümü için tamamlanma durumuna bakın.
-    - **Başlatılmamış** -bölüm dokunulmamış ve tamamlanması gerekiyor.
-    - **Tamamlanmamış** -bölüm düzeltilmesi gereken veya daha fazla bilgi gerektiren hatalar içeriyor. Bölüm (ler) e geri dönün ve güncelleştirin.
-    - **Tam** bölüm tamamlandı, gerekli tüm veriler sağlanmış ve hata yok. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
+  - **Başlatılmamış** -bölüm dokunulmamış ve tamamlanması gerekiyor.
+  - **Tamamlanmamış** -bölüm düzeltilmesi gereken veya daha fazla bilgi gerektiren hatalar içeriyor. Bölüm (ler) e geri dönün ve güncelleştirin.
+  - **Tam** bölüm tamamlandı, gerekli tüm veriler sağlanmış ve hata yok. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
 - **Sertifika notları** bölümünde, uygulamanızı anlamak için yararlı olan tüm ek notlara ek olarak, uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın.
 - **Gönder**' i seçerek teklifi yayımlamaya gönderebilirsiniz. Teklifin bir önizleme sürümü incelenmek ve onaylanmak için kullanılabilir olduğunda size e-posta göndereceğiz. Iş Ortağı Merkezi 'ne dönün ve teklifinizi herkese açık olarak yayımlamak için **Git-Live** ' ı seçin.
 

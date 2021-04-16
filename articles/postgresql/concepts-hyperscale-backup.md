@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 90b2a39b9a5f3b4d011ff1a1ef3651dff75a1cf6
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 8dfc82ce79f33553be5220b52a1e415d99c26518
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968314"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483920"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda yedekleme ve geri yükleme-hiper ölçek (Citus)
 
@@ -48,22 +48,9 @@ Bir noktadan noktaya geri yükleme, birden çok senaryoda faydalıdır. Örneği
 
 Geri yükleme işlemi, orijinal olarak aynı Azure bölgesinde, abonelikte ve kaynak grubunda yeni bir küme oluşturur. Kümenin özgün yapılandırması vardır: aynı düğüm sayısı, sanal çekirdek sayısı, depolama boyutu, Kullanıcı rolleri, PostgreSQL sürümü ve Citus uzantısının sürümü.
 
-Güvenlik Duvarı ayarları ve PostgreSQL sunucu parametreleri özgün sunucu grubundan korunmaz, varsayılan değerlere sıfırlanır. Güvenlik Duvarı tüm bağlantıları engeller. Geri yükleme sonrasında bu ayarları el ile ayarlamanız gerekir.
-
-> [!IMPORTANT]
-> Hiperscale (Citus) kümenizin zaman içindeki bir noktaya geri yükleme işlemini gerçekleştirmek için bir destek isteği açmanız gerekir.
-
-### <a name="post-restore-tasks"></a>Post-restore tasks
-
-Kurtarma mekanizmasından geri yükleme yapıldıktan sonra, kullanıcılarınızın ve uygulamalarınızın yedeklemesini ve çalışmasını sağlamak için aşağıdakileri yapmanız gerekir:
-
-* Yeni sunucu özgün sunucunun yerini alacak şekilde, istemcileri ve istemci uygulamalarını yeni sunucuya yeniden yönlendirin
-* Kullanıcıların bağlanabilmesi için uygun sunucu düzeyi güvenlik duvarının bulunduğundan emin olun. Bu kurallar özgün sunucu grubundan kopyalanmaz.
-* PostgreSQL sunucu parametrelerini gereken şekilde ayarlayın. Parametreler, özgün sunucu grubundan kopyalanmaz.
-* Uygun oturum açma ve veritabanı düzeyi izinlerinin yerinde olduğundan emin olun
-* Uyarıları uygun şekilde yapılandırma
+Güvenlik Duvarı ayarları ve PostgreSQL sunucu parametreleri özgün sunucu grubundan korunmaz, varsayılan değerlere sıfırlanır. Güvenlik Duvarı tüm bağlantıları engeller. Geri yükleme sonrasında bu ayarları el ile ayarlamanız gerekir. Genel olarak, önerilen [geri yükleme sonrası görevleri](howto-hyperscale-restore-portal.md#post-restore-tasks)listemize bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* Azure portal [bir sunucu grubunu geri yükleme](howto-hyperscale-restore-portal.md) adımlarına bakın.
 *  [Azure kullanılabilirlik alanları](../availability-zones/az-overview.md)hakkında bilgi edinin.
-* Hiperscale (Citus) sunucu gruplarında [Önerilen uyarıları](./howto-hyperscale-alert-on-metric.md#suggested-alerts) ayarlayın.

@@ -8,12 +8,12 @@ ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ca16099cffc22a19c2ee35b00ae6f1bcbe2977a7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 79fe8acd06084c58b0cf9b47bf93e933c648510c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312408"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481999"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux 'ta TPM ile IoT Edge cihaz oluşturma ve sağlama
 
@@ -149,7 +149,7 @@ Sanal makinenizden sağlama bilgilerini alın ve cihaz sağlama hizmeti 'nde tek
 DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu** bildirme fırsatına sahip olursunuz. Device ikizi 'da, bir cihaz için gereken bölge, ortam, konum veya cihaz türü gibi herhangi bir ölçüme cihazları gruplamak için Etiketler ayarlayabilirsiniz. Bu Etiketler [otomatik dağıtımlar](how-to-deploy-at-scale.md)oluşturmak için kullanılır.
 
 > [!TIP]
-> Azure CLı 'da bir [kayıt](/cli/azure/ext/azure-iot/iot/dps/enrollment) oluşturabilir ve **kenar özellikli** bayrağını kullanarak bir cihazın IoT Edge cihaz olduğunu belirtebilirsiniz.
+> Azure CLı 'da bir [kayıt](/cli/azure/iot/dps/enrollment) oluşturabilir ve **kenar özellikli** bayrağını kullanarak bir cihazın IoT Edge cihaz olduğunu belirtebilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com), IoT Hub cihaz sağlama hizmeti örneğinize gidin.
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 6b7ead2e54889327bfbea188ad464012c3861556
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 75de7b122bff75ea13e3b66bb0b79452142dc36c
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968620"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500099"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Öğretici: Azure SQL veritabanı ve SQL Server veritabanları arasında SQL Data Sync ayarlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -236,6 +236,11 @@ Bir veritabanını bir *. bacpac* dosyası olarak dışa aktarıp bir veritaban�
 **Kullanmaya başlayabilmeniz için özel bağlantıyı el ile onaylamanız gerekiyor mu?**
 
 Evet, eşitleme grubu dağıtımı sırasında veya PowerShell kullanarak, Azure portal özel uç nokta bağlantıları sayfasında, hizmet yönetilen özel uç noktasını el ile onaylamanız gerekir.
+
+**Eşitleme işi Azure veritabanımı sağlanırken neden bir güvenlik duvarı hatası alıyorum?**
+
+Bu durum, Azure kaynaklarının sunucunuza erişmesine izin verilmediği için meydana gelebilir. Azure veritabanında güvenlik duvarının "Azure hizmetleri ve kaynaklarına bu sunucuya erişmesine Izin ver" ayarı "Evet" olarak ayarlanmış olduğundan emin olun.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: fa8f0afe4467f53f37daadf6cf881114d03ebaf4
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 3cd086d4ee19161dc503f24678f2f8392506c7a4
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106091257"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498956"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Bilişsel hizmetler hesapları ortak ağ erişimini devre dışı bırakmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0725b4dd-7e76-479c-a735-68e7ee23d5ca) |Ortak ağ erişiminin devre dışı bırakılması, bilişsel hizmetler hesabının genel İnternet 'te açık olmamasını sağlayarak güvenliği iyileştirir. Özel uç noktalar oluşturmak bilişsel hizmetler hesabının görünürlüğünü sınırlayabilir. Daha fazla bilgi: [https://go.microsoft.com/fwlink/?linkid=2129800](https://go.microsoft.com/fwlink/?linkid=2129800) .  |Denetim, reddetme, devre dışı |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_DisablePublicNetworkAccess_Audit.json) |
 |[Bilişsel hizmetler hesapları veri şifrelemeyi etkinleştirmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2bdd0062-9d75-436e-89df-487dd8e4b3c7) |Bu ilke, veri şifrelemesini kullanmayan bilişsel hizmetler hesabını denetler. Depolama alanı olan her bilişsel Hizmetler hesabı için, müşteri tarafından yönetilen veya Microsoft tarafından yönetilen anahtar ile veri şifrelemeyi etkinleştirmeniz gerekir. |Denetim, reddetme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_Encryption_Audit.json) |

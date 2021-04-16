@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: d777588f0abdd1f771deb259c597f6407e61d874
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 1213d5f7421cc71255f29d013fa47878559110ee
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364626"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481591"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory yönetilen sanal ağ (Önizleme)
 
@@ -121,9 +121,9 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 ## <a name="limitations-and-known-issues"></a>Sınırlamalar ve bilinen sorunlar
 ### <a name="supported-data-sources"></a>Desteklenen Veri Kaynakları
 ADF tarafından yönetilen sanal ağdan özel bağlantı üzerinden bağlanmak için aşağıdaki veri kaynaklarının altında desteklenir.
-- Azure Blob Depolama
-- Azure Tablo Depolama
-- Azure Dosyaları
+- Azure Blob depolama (depolama hesabı v1 dahil değil)
+- Azure Tablo Depolama (depolama hesabı v1 dahil değil)
+- Azure dosyaları (depolama hesabı v1 dahil değil)
 - Azure Data Lake Gen2
 - Azure SQL veritabanı (Azure SQL yönetilen örneği dahil değil)
 - Azure Synapse Analytics

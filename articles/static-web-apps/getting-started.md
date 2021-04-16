@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 335f78bba24947b1b6c3d6132bc38f237b3298b9
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: fb874c25ab688cc5e6723d1023157b8acd9478b9
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449211"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483860"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>Hızlı başlangıç: Azure statik Web Apps ilk statik sitenizi oluşturma
 
@@ -58,21 +58,35 @@ Sonra, Visual Studio Code açın ve **dosya > klasöre** giderek, düzenleyicide
     # <a name="no-framework"></a>[Çerçeve yok](#tab/vanilla-javascript)
     :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="Uygulama önayarları: çerçeve yok":::
 
-    Uygulama dosyalarının konumu olarak **./** girin
+    Uygulama dosyalarının konumu olarak **./** girin.
 
     :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Uygulama dosyaları konumu":::
 
-    Azure Işlevleri API 'sinin konumu olarak **Şimdi atla** ' yı seçin
+    Azure Işlevleri API 'sinin konumu olarak **Şimdi atla** ' yı seçin.
 
     :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API konumu":::
 
-    Derleme çıkış konumu olarak **./** girin
+    Yapı çıkış konumu olarak **./** girin.
 
     :::image type="content" source="media/getting-started/extension-build-location.png" alt-text="Uygulama derlemesi çıkış konumu":::
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    :::image type="content" source="media/getting-started/extension-presets-angular.png" alt-text="Uygulama önayarları: angular":::
+    Bir angular önayarı olsa da, bu uygulama için uygun bir çıkış konumu sağlayabilmeniz için **özel** seçeneğini belirleyin.
+
+    :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="Uygulama önayarları: angular":::
+
+    Uygulama dosyalarının konumu olarak **./** girin.
+
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Uygulama dosyalarının konumu: angular":::
+
+    Azure Işlevleri API 'sinin konumu olarak **Şimdi atla** ' yı seçin.
+
+    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API konumu: angular":::
+
+    Derleme çıkış konumu olarak **Dist/angular-Basic** girin.
+
+    :::image type="content" source="media/getting-started/extension-angular.png" alt-text="Uygulama derleme çıkış konumu: angular":::
 
     # <a name="react"></a>[React](#tab/react)
 

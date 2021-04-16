@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 03/31/2021
 ms.author: kenwith
-ms.openlocfilehash: 102c0f7363b8d4f635762a33b82825e9ae71dfc6
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: f7a2429161cebe867d844b4ca7aa08ec3613edcd
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120801"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388219"
 ---
 # <a name="syncing-extension-attributes-for-app-provisioning"></a>Uygulama sağlama için uzantı öznitelikleri eşitleniyor
 
@@ -28,10 +28,10 @@ Yalnızca Azure AD 'deki kullanıcılar için [PowerShell veya Microsoft Graph k
 ## <a name="create-an-extension-attribute-on-a-cloud-only-user"></a>Yalnızca bulut kullanıcısı üzerinde uzantı özniteliği oluşturma
 Microsoft Graph ve PowerShell 'i kullanarak Azure AD 'deki kullanıcılar için Kullanıcı şemasını genişletebilirsiniz. Bu uzantı öznitelikleri çoğu durumda otomatik olarak keşfedilir.
 
-1000 ' den fazla hizmet sorumlusu varsa, kaynak öznitelik listesinde eksik olan uzantıları bulabilirsiniz. Oluşturduğunuz bir öznitelik otomatik olarak görünmezse, özniteliğin oluşturulduğunu doğrulayın ve şemaya el ile ekleyin. Oluşturulduğunu doğrulamak için Microsoft Graph ve [grafik Gezgini](/graph/graph-explorer/graph-explorer-overview.md)' ni kullanın. Şemaya el ile eklemek için, bkz. [desteklenen özniteliklerin listesini düzenlemeyle](customize-application-attributes.md#editing-the-list-of-supported-attributes).
+1000 ' den fazla hizmet sorumlusu varsa, kaynak öznitelik listesinde eksik olan uzantıları bulabilirsiniz. Oluşturduğunuz bir öznitelik otomatik olarak görünmezse, özniteliğin oluşturulduğunu doğrulayın ve şemaya el ile ekleyin. Oluşturulduğunu doğrulamak için Microsoft Graph ve [grafik Gezgini](/graph/graph-explorer/graph-explorer-overview)' ni kullanın. Şemaya el ile eklemek için, bkz. [desteklenen özniteliklerin listesini düzenlemeyle](customize-application-attributes.md#editing-the-list-of-supported-attributes).
 
 ### <a name="create-an-extension-attribute-on-a-cloud-only-user-using-microsoft-graph"></a>Microsoft Graph kullanarak yalnızca bulutta bulunan bir kullanıcı üzerinde uzantı özniteliği oluşturma
-[Microsoft Graph](/graph/overview.md)kullanarak Azure AD kullanıcıları şemasını genişletebilirsiniz. 
+[Microsoft Graph](/graph/overview)kullanarak Azure AD kullanıcıları şemasını genişletebilirsiniz. 
 
 İlk olarak, üzerinde çalıştığınız uygulamanın KIMLIĞINI almak için kiracınızdaki uygulamaları listeleyin. Daha fazla bilgi için bkz. [extensionProperties 'ı listeleme](/graph/api/application-list-extensionproperty?view=graph-rest-1.0&tabs=http&preserve-view=true).
 
@@ -54,7 +54,7 @@ Content-type: application/json
 }
 ```
 
-Önceki istek biçimiyle bir uzantı özniteliği oluşturdu `extension_appID_extensionName` . Artık bir kullanıcıyı bu uzantı özniteliğiyle güncelleştirebilirsiniz. Daha fazla bilgi için bkz. [Kullanıcı güncelleştirme](/graph/api/user-update.md?view=graph-rest-1.0&tabs=http&preserve-view=true).
+Önceki istek biçimiyle bir uzantı özniteliği oluşturdu `extension_appID_extensionName` . Artık bir kullanıcıyı bu uzantı özniteliğiyle güncelleştirebilirsiniz. Daha fazla bilgi için bkz. [Kullanıcı güncelleştirme](/graph/api/user-update?view=graph-rest-1.0&tabs=http&preserve-view=true).
 ```json
 PATCH https://graph.microsoft.com/v1.0/users/{id}
 Content-type: application/json
@@ -63,7 +63,7 @@ Content-type: application/json
   "extension_inputAppId_extensionName": "extensionValue"
 }
 ```
-Son olarak, kullanıcının özniteliğini doğrulayın. Daha fazla bilgi için bkz. [Kullanıcı alma](/graph/api/user-get.md?view=graph-rest-1.0&tabs=http#example-3-users-request-using-select&preserve-view=true).
+Son olarak, kullanıcının özniteliğini doğrulayın. Daha fazla bilgi için bkz. [Kullanıcı alma](/graph/api/user-get?view=graph-rest-1.0&tabs=http#example-3-users-request-using-select&preserve-view=true).
 
 ```json
 GET https://graph.microsoft.com/v1.0/users/{id}?$select=displayName,extension_inputAppId_extensionName
