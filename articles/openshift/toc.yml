@@ -62,9 +62,7 @@
               href: ../azure-monitor/containers/container-insights-optout-openshift-v4.md
     - name: Uygulamaları geliştirme ve çalıştırma
       items:
-        - name: Kaynak kodundan uygulama dağıtma
-          href: howto-deploy-with-s2i.md
-        - name: OpenShift sunucusuz kullanarak uygulama dağıtma
+        - name: OpenShift sunucusuz kullanarak Azure Red Hat OpenShift 'e uygulama dağıtma
           href: howto-deploy-with-serverless.md
         - name: Open Liberty/WebSphere Liberty uygulaması dağıtma
           href: howto-deploy-java-liberty-app.md
