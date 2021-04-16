@@ -684,6 +684,10 @@
             - name: Veritabanı günlüklerine erişme
               href: howto-hyperscale-logging.md
               displayName: 'log, hyperscale'
+        - name: Sunucu grubunu geri yükle
+          items:
+            - name: Azure portal
+              href: howto-hyperscale-restore-portal.md
         - name: Ana sürüm yükseltmeleri
           href: howto-hyperscale-upgrade.md
         - name: Sorun giderme

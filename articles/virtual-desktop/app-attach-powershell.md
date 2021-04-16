@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f44cbf3764063c511c896f11bb7ebfaae2973f0c
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: ebc403553443a9ea04525323b751fbdb51d23c6e
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365408"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500592"
 ---
 # <a name="set-up-msix-app-attach-using-powershell"></a>PowerShell kullanarak MSIX uygulama eklemeyi ayarlama
 
@@ -19,14 +19,10 @@ Azure portal ek olarak, PowerShell ile MSIX uygulamasını el ile de ekleyebilir
 
 ## <a name="requirements"></a>Gereksinimler
 
->[!IMPORTANT]
->Başlamadan önce, aboneliğinizde MSIX uygulama iliştirmeyi etkinleştirmek için [Bu formu](https://aka.ms/enablemsixappattach) doldurup gönderdiğinizden emin olun. Onaylanmış bir isteğiniz yoksa, MSIX uygulama iliştirme çalışmaz. İsteklerin onaylanması, iş günleri sırasında 24 saate kadar sürebilir. İsteğiniz kabul edildiğinde ve tamamlandığında bir e-posta alacaksınız.
-
 İşte MALTı uygulama eklemeyi yapılandırmak için gerekenler şunlardır:
 
 - Çalışan bir Windows sanal masaüstü dağıtımı. Windows sanal masaüstü 'Nü (klasik) dağıtmayı öğrenmek için bkz. [Windows sanal masaüstü 'nde kiracı oluşturma](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Windows sanal masaüstü Azure Resource Manager tümleştirme ile nasıl dağıtılacağını öğrenmek için, bkz. [Azure Portal bir konak havuzu oluşturma](./create-host-pools-azure-marketplace.md).
 - En az bir etkin oturum ana bilgisayarı olan bir Windows sanal masaüstü konak Havuzu.
-- Bu konak havuzunun doğrulama ortamında olması gerekir.
 - Masaüstü uzak uygulama grubu.
 - MSIX paketleme aracı.
 - Bir dosya paylaşımında karşıya yüklenen bir MSIX görüntüde genişletilen, MSIX paketlenmiş bir uygulama.

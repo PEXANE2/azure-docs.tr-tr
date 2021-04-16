@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 520dc611e49675f35b8ba0330448438192770773
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 561855704d157f9ad826b5db83600a79d9437fc6
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168884"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500694"
 ---
 # <a name="chat-sdk-overview"></a>Sohbet SDK genel bakış 
 
@@ -43,7 +43,7 @@ Aşağıdaki listede, Iletişim Hizmetleri sohbet SDK 'lerinde Şu anda kullanı
 |                   | Katılımcılar bir sohbet iş parçacığına etkin bir şekilde ileti yazarken bildirim alın                                         | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
 |                   | Sohbet iş parçacığında tüm iletileri al                                                                        | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
 |                   | İleti içeriğinin bir parçası olarak Unicode emojıs gönder                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-|Gerçek zamanlı bildirimler (özel sinyal paketi tarafından etkin * *)|  Sohbet istemcileri gelen iletiler ve sohbet iş parçacığında gerçekleşen diğer işlemler için gerçek zamanlı güncelleştirmeler almak üzere abone olabilir. Gerçek zamanlı bildirimler için desteklenen güncelleştirmelerin listesini görmek için bkz. [sohbet kavramları](concepts.md#real-time-notifications)                                     | ✔️   | ❌    | ❌  | ❌  | ❌  | ❌  | 
+|Gerçek zamanlı bildirimler (özel sinyal paketi tarafından etkin * *)|  Sohbet istemcileri gelen iletiler ve sohbet iş parçacığında gerçekleşen diğer işlemler için gerçek zamanlı güncelleştirmeler almak üzere abone olabilir. Gerçek zamanlı bildirimler için desteklenen güncelleştirmelerin listesini görmek için bkz. [sohbet kavramları](concepts.md#real-time-notifications)                                     | ✔️   | ❌    | ❌  | ❌  | ✔️  | ✔️  |   
 | Azure Event Grid ile tümleştirme             | Özel bildirim hizmetleri eklemek veya bu olayı bir Web kancasına göndermek için Azure Event Grid 'de bulunan sohbet olaylarını kullanarak bir sohbet tamamlandıktan sonra CRM kayıtlarını güncelleştirme gibi iş mantığını yürütün   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
 | Raporlama </br>(Bu bilgi, Azure portal üzerinde Iletişim Hizmetleri kaynağınızın Izleme sekmesinde kullanılabilir)      | Azure Ölçüm Gezgini yayımlanan ölçümleri izleyerek sohbet uygulamaınızdan API trafiğini anlayın ve tüm bunları tespit etmek için Uyarılar ayarlayın     | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
 |                   | Kaynağınız için tanılama günlüğü etkinleştirerek Iletişim Hizmetleri çözümünüzü izleyip hatalarını ayıklayın    | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   

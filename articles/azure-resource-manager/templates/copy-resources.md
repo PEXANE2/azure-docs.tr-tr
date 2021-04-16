@@ -3,12 +3,12 @@ title: Birden çok kaynak örneğini dağıtma
 description: Kaynak türünü birçok kez dağıtmak için bir Azure Resource Manager şablonunda kopyalama işlemi ve dizileri (ARM şablonu) kullanın.
 ms.topic: conceptual
 ms.date: 04/01/2021
-ms.openlocfilehash: 3af676cce544c125e441857f06556b9ff7eee697
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 5ddb0cabf0acae1ffe9b9e77e6defa70f9cbd61b
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385725"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479976"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM şablonlarındaki kaynak yinelemesi
 
@@ -47,7 +47,7 @@ Döngüler şu şekilde birden çok kaynak bildirmek için kullanılabilir:
   @batchSize(<number>)
   resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for <item> in <collection>: {
     <resource-properties>
-  }
+  }]
   ```
 
 - Bir dizinin öğeleri üzerinde yineleme yapma
@@ -56,7 +56,7 @@ Döngüler şu şekilde birden çok kaynak bildirmek için kullanılabilir:
   @batchSize(<number>)
   resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for (<item>, <index>) in <collection>: {
     <resource-properties>
-  }
+  }]
   ```
 
 - Döngü dizinini kullanma
@@ -65,7 +65,7 @@ Döngüler şu şekilde birden çok kaynak bildirmek için kullanılabilir:
   @batchSize(<number>)
   resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for <index> in range(<start>, <stop>): {
     <resource-properties>
-  }
+  }]
   ```
 
 ---

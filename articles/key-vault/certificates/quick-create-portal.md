@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e55c0832638105ad681f74cbeb6429a6704b7fb2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a35f83286abe5ae33f6d3c44ee7b05faf692512
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935147"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479228"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure Key Vault bir sertifikayı ayarlama ve alma
 
@@ -61,7 +61,8 @@ Kasaya bir sertifika eklemek için, birkaç ek adım yapmanız yeterlidir. Bu du
     - **Sertifika oluşturma yöntemi**: oluştur.
     - **Sertifika adı**: örnek sertifikası.
     - **Konu**: CN = exampledomain
-    - Diğer değerleri varsayılan değerlerinde bırakın. **Oluştur**’a tıklayın.
+    - Diğer değerleri varsayılan değerlerinde bırakın. (Varsayılan olarak, gelişmiş ilkede özel bir şey belirtmezseniz, istemci kimlik doğrulama sertifikası olarak kullanılabilir.)
+ 4. **Oluştur**’a tıklayın.
 
 Sertifikanın başarıyla oluşturulduğunu belirten iletiyi aldıktan sonra listede üzerine tıklayabilirsiniz. Ondan sonra bazı özellikleri görebilirsiniz. Geçerli sürüme tıklarsanız önceki adımda belirtilen değeri görebilirsiniz.
 

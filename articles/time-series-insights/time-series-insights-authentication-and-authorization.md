@@ -10,13 +10,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
-ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 88fd575d40cc31f12f052158bda0aed9a5335555
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: seodec18, has-adal-ref, devx-track-azurecli
+ms.openlocfilehash: 225e72bc00ce0a80ff655a76562b5c6b70b7fa79
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103009275"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479500"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API’si için kimlik doğrulaması ve yetkilendirme
 
@@ -148,7 +148,7 @@ Bu bölümde, Azure Time Series Insights gen1 ve Gen2 API 'Lerinde sorgu yapmak 
 
 Gerekli istek üstbilgileri aşağıda açıklanmıştır.
 
-| Gerekli istek üst bilgisi | Description |
+| Gerekli istek üst bilgisi | Açıklama |
 | --- | --- |
 | Yetkilendirme | Azure Time Series Insights kimlik doğrulaması yapmak için, [Yetkilendirme üst bilgisinde](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)geçerli bir OAuth 2,0 taşıyıcı belirtecinin geçirilmesi gerekir. |
 
@@ -157,7 +157,7 @@ Gerekli istek üstbilgileri aşağıda açıklanmıştır.
 
 İsteğe bağlı istek üstbilgileri aşağıda açıklanmıştır.
 
-| İsteğe bağlı istek üst bilgisi | Description |
+| İsteğe bağlı istek üst bilgisi | Açıklama |
 | --- | --- |
 | İçerik türü | yalnızca `application/json` desteklenir. |
 | x-MS-Client-Request-ID | İstemci istek KIMLIĞI. Hizmet bu değeri kaydeder. Hizmetin işlemleri hizmetler arasında izlemesini sağlar. |
@@ -166,7 +166,7 @@ Gerekli istek üstbilgileri aşağıda açıklanmıştır.
 
 İsteğe bağlı ancak önerilen yanıt üstbilgileri aşağıda açıklanmıştır.
 
-| Yanıt üst bilgisi | Description |
+| Yanıt üst bilgisi | Açıklama |
 | --- | --- |
 | İçerik türü | Yalnızca `application/json` desteklenir. |
 | x-MS-istek kimliği | Sunucu tarafından oluşturulan istek KIMLIĞI. , Bir isteği araştırmak üzere Microsoft 'a başvurmak için kullanılabilir. |
