@@ -7,9 +7,9 @@
       href: overview-multivariate.md
     - name: Anomali algılayıcısı nedir (Univariate)?
       href: overview.md
-    - name: Fiyatlandırma ve limitler
+    - name: Fiyatlandırma
       href: 'https://aka.ms/adpricing'
-- name: Anomali algılayıcısı hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   items:
     - name: Çok değişkenli istemci kitaplıkları
       href: ./quickstarts/client-libraries-multivariate.md
@@ -43,6 +43,12 @@
               displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
             - name: Kapsayıcı örnekleri kullanma
               href: how-to/deploy-anomaly-detection-on-container-instances.md
+    - name: Kurumsal kullanıma hazır olma
+      items:
+        - name: Sanal ağları ayarlama
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/anomaly-detector/context/context
+        - name: Azure AD kimlik doğrulamasını kullanma
+          href: ../authentication.md?context=/azure/cognitive-services/anomaly-detector/context/context
 - name: Kavramlar
   items:
     - name: Anomali algılayıcı API en iyi uygulamaları (çoklu varilar)
@@ -75,20 +81,22 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
 - name: Kaynaklar
   items:
-    - name: Bölge desteği
-      href: 'https://aka.ms/adregion'
-    - name: Modülleri öğrenin
-      href: 'https://docs.microsoft.com/learn/modules/intro-to-anomaly-detector/'
-    - name: Destek & yardım
+    - name: Kurumsal kullanıma hazır olma
+      items:
+        - name: Bölge desteği
+          href: 'https://aka.ms/adregion'
+        - name: Uyumluluk ve sertifika
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Destek ve yardım seçenekleri
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
+    - name: Microsoft Learn modülleri
+      href: 'https://docs.microsoft.com/learn/modules/intro-to-anomaly-detector/'
     - name: Kullanıcı tarafından oluşturulan içerikler
       href: user-generated-content.md
     - name: Microsoft Teams üzerinde Anomali Algılayıcısı Danışmanları grubuna katılın
       href: 'https://aka.ms/adadvisorsjoin'
     - name: Çözüm mimarisi başvurusu
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
-    - name: Uyumluluk
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure güncelleştirmeleri
       href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
     - name: Teknik bloglar

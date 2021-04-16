@@ -13,7 +13,7 @@
       href: whats-new.md
     - name: Metin Analizi SSS
       href: text-analytics-resource-faq.md
-- name: Hızlı başlangıç Metin Analizi
+- name: Hızlı Başlangıç
   href: quickstarts/client-libraries-rest-api.md
 - name: Örnekler
   items:
@@ -71,21 +71,25 @@
       displayName: 'NER, Named entity recognition, PII, redaction'
     - name: Sistem durumu için Metin Analizi
       href: How-tos/text-analytics-for-health.md
-    - name: Metin Analizi dağıt
+    - name: Kapsayıcıları kullanma
       items:
-        - name: Kapsayıcılar
-          items:
-            - name: Kapsayıcıları yükleme ve çalıştırma
-              href: how-tos/text-analytics-how-to-install-containers.md
-            - name: Kapsayıcıları yapılandırma
-              href: text-analytics-resource-container-config.md
-            - name: Kapsayıcı örnekleri kullanma
-              maintainContext: true
-              href: ../containers/azure-container-instance-recipe.md
-            - name: Kubernetes hizmetini kullanma (AKS)
-              href: how-tos/text-analytics-how-to-use-kubernetes-service.md
-            - name: Bilişsel Hizmetler kapsayıcıları belgeleri
-              href: ../containers/index.yml
+        - name: Kapsayıcıları yükleme ve çalıştırma
+          href: how-tos/text-analytics-how-to-install-containers.md
+        - name: Kapsayıcıları yapılandırma
+          href: text-analytics-resource-container-config.md
+        - name: Kapsayıcı örnekleri kullanma
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
+        - name: Kubernetes hizmetini kullanma (AKS)
+          href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+        - name: Bilişsel Hizmetler kapsayıcıları belgeleri
+          href: ../containers/index.yml
+    - name: Kurumsal kullanıma hazır olma
+      items:
+        - name: Sanal ağları ayarlama
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/text-analytics/context/context
+        - name: Azure AD kimlik doğrulamasını kullanma
+          href: ../authentication.md?context=/azure/cognitive-services/text-analytics/context/context
     - name: API’nin 3. sürümüne geçirme
       href: migration-guide.md
 - name: Kavramlar
@@ -164,13 +168,13 @@
       href: /powershell/module/azurerm.cognitiveservices/
 - name: Kaynaklar
   items:
+    - name: Kurumsal kullanıma hazır olma
+      items:
+        - name: Bölge desteği
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Uyumluluk ve sertifika
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Destek ve yardım seçenekleri
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/text-analytics/context/context
     - name: Dış içerik ve topluluk içeriği
       href: text-analytics-resource-external-community.md
-    - name: Bölgesel kullanılabilirlik
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Uyumluluk
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Deneyin!
-      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'

@@ -4,14 +4,14 @@ description: Bu makalede, Otomasyon hesabınızı farklı yapılandırma senaryo
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-ms.date: 03/18/2021
+ms.date: 04/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: c3a514aa507fcf069671f987e175b7ae5be59d10
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d088f3adc391068de5e337c10ab52dc3d3a2dd07
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105735114"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535557"
 ---
 # <a name="how-to-delete-your-azure-automation-account"></a>Azure Otomasyonu hesabınızı silme
 
@@ -28,7 +28,10 @@ Otomasyon hesabınızı kaldırmak, desteklenen dağıtım modellerine bağlı o
 * Log Analytics çalışma alanının Otomasyon hesabından bağlantısını kaldırın ve otomasyon hesabını silin.
 * Özelliği bağlantılı çalışma alanınızdan silin, çalışma alanındaki hesabın bağlantısını kaldırın ve ardından Otomasyon hesabını silin.
 
-Bu makalede Azure portal, PowerShell, Azure CLı veya REST API aracılığıyla Otomasyon hesabınızı tamamen nasıl kaldıracakları açıklanır.
+Bu makalede, Azure PowerShell, Azure CLı veya REST API kullanarak Azure portal Otomasyon hesabınızı tamamen nasıl kaldıracakları açıklanır.
+
+> [!NOTE]
+> Devam etmeden önce, abonelik, kaynak grubu veya kaynak üzerinde, önemli kaynakların yanlışlıkla silinmesini veya değiştirilmesini önleyen [Kaynak Yöneticisi kilit](../azure-resource-manager/management/lock-resources.md) olmadığından emin olun. VM'leri çalışma saatleri dışında başlat/durdur çözümünü dağıttıysanız, Otomasyon hesabındaki birkaç bağımlı kaynağa (özellikle runbook 'lar ve değişkenler) karşı kilit düzeyini **Cannotdelete** olarak ayarlar. Otomasyon hesabını silebilmeniz için önce tüm kilitlerin kaldırılması gerekir.
 
 ## <a name="delete-the-dedicated-resource-group"></a>Adanmış kaynak grubunu silme
 
