@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 03796ba26e8c54ea78aee5219e535543334c3e1d
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: c071f73bcdb8fba26cbb714cca312e91689eb9ca
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093268"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501302"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure IoT Hub, bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarı kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d7e144b-159c-44fc-95c1-ac3dbf5e6e54) |Müşteri tarafından yönetilen anahtarla IoT Hub bekleyen verilerin şifrelenmesi, varsayılan hizmet tarafından yönetilen anahtarların üzerine ikinci bir şifreleme katmanı ekler, anahtar erişim denetimi aracılığıyla anahtar erişimi, özel döndürme ilkeleri ve verilere erişimi yönetme olanağı sağlar. IoT Hub oluşturulması sırasında müşterinin yönettiği anahtarların yapılandırılması gerekir. Müşteri tarafından yönetilen anahtarların nasıl yapılandırılacağı hakkında daha fazla bilgi için bkz [https://aka.ms/iotcmk](https://aka.ms/iotcmk) .. |Denetim, reddetme, devre dışı |[1.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IotHub_CMKEncryptionEnabled.json) |
 |[Ortak ağ erişimini devre dışı bırakmak için IoT Hub cihaz sağlama hizmeti örnekleri yapılandırın](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F859dfc91-ea35-43a6-8256-31271c363794) |IoT Hub cihaz sağlama örneğiniz için genel ağ erişimini devre dışı bırakarak genel İnternet üzerinden erişilebilir olmaz. Bu, veri sızıntısı riskini azaltabilir. Daha fazla bilgi: [https://aka.ms/iotdpsvnet](https://aka.ms/iotdpsvnet) . |Değiştirme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_DisablePublicNetworkAccess_Modify.json) |

@@ -4,12 +4,12 @@ description: Azure Izleyici için ortak uyarı şeması tanımlarını anlama
 author: ofirmanor
 ms.topic: conceptual
 ms.date: 04/12/2021
-ms.openlocfilehash: 5ec2adc4594c71f640b027d799b0a3c133ca2333
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 6d835b6d2c3519bc47decf8256ab3f3380170df6
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308668"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565126"
 ---
 # <a name="common-alert-schema-definitions"></a>Ortak uyarı şeması tanımları
 
@@ -72,7 +72,7 @@ Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıkl
 
 | Alan | Açıklama|
 |:---|:---|
-| alertId | GUID, uyarı örneğini benzersiz bir şekilde tanımlıyor. |
+| alertId | Uyarı örneğini tanımlayan benzersiz kaynak KIMLIĞI. |
 | alertRule | Uyarı örneğini oluşturan uyarı kuralının adı. |
 | Önem derecesi | Uyarının önem derecesi. Olası değerler: Sev0, Sev1, Sev2, Sev3 veya Sev4. |
 | signalType | Uyarı kuralının tanımlandığı sinyali tanımlar. Olası değerler: ölçüm, günlük veya etkinlik günlüğü. |

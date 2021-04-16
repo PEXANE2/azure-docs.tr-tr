@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: bb078b9738e995a1c507f7934a7dd64f075d5fe0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42ce7a1760ecdb1dcbd5275927f351bef5da07a8
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100596530"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531171"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>Bir ağ güvenlik grubu için kaynak günlüğü
 
@@ -28,7 +28,7 @@ Bir NSG için günlük kaydını etkinleştirdiğinizde aşağıdaki kaynak gün
 
 Kaynak günlükleri yalnızca Azure Resource Manager dağıtım modeliyle dağıtılan NSG 'ler için kullanılabilir. Klasik dağıtım modeli aracılığıyla dağıtılan NSG 'ler için kaynak günlüğü etkinleştiremezsiniz. İki modeli daha iyi anlamak için bkz. [Azure dağıtım modellerini anlama](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Kaynak günlüğü, için tanılama verilerini toplamak istediğiniz *her* NSG için ayrı olarak etkinleştirilir. Bunun yerine etkinlik (işlemsel) günlükleri ile ilgileniyorsanız, bkz. Azure [etkinlik günlüğü](../azure-monitor/essentials/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Kaynak günlüğü, için tanılama verilerini toplamak istediğiniz *her* NSG için ayrı olarak etkinleştirilir. Bunun yerine etkinlik (işlemsel) günlükleri ile ilgileniyorsanız, bkz. Azure [etkinlik günlüğü](../azure-monitor/essentials/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). NSG 'ler aracılığıyla IP trafiği ile ilgileniyorsanız, bkz. Azure ağ Izleyicisi [NSG akış günlükleri](../network-watcher/network-watcher-nsg-flow-logging-overview.md) 
 
 ## <a name="enable-logging"></a>Günlü kaydını etkinleştir
 
@@ -91,7 +91,7 @@ Her ikisi yerine yalnızca bir kategori ya da diğeri için veri kaydetmek istiy
 
 Günlükleri görüntüleyin ve çözümleyin. Daha fazla bilgi için bkz. [günlükleri görüntüleme ve çözümleme](#view-and-analyze-logs).
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 [Azure Cloud Shell](https://shell.azure.com/bash)izleyen komutları veya BILGISAYARıNıZDAN Azure CLI 'yi çalıştırarak çalıştırabilirsiniz. Azure Cloud Shell, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. CLı 'yı bilgisayarınızdan çalıştırırsanız, sürüm 2.0.38 veya daha yeni bir sürüme ihtiyacınız vardır. `az --version`Yüklü sürümü bulmak için bilgisayarınızda çalıştırın. Yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli). CLı 'yi yerel olarak çalıştırıyorsanız, `az login` Azure 'da [gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir hesapla oturum açmak için öğesini de çalıştırmanız gerekir.
 

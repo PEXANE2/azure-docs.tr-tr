@@ -1,16 +1,16 @@
 ---
-title: Azure 'da BareMetal altyapısına genel bakış
+title: Azure 'da BareMetal Altyapısı nedir?
 description: Azure 'da BareMetal altyapısına genel bakış sağlar.
 ms.custom: references_regions
 ms.topic: conceptual
 ms.subservice: workloads
-ms.date: 04/08/2021
-ms.openlocfilehash: 7a4998a096a5c5d9e793c34d5046dce59262a2ae
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.date: 04/14/2021
+ms.openlocfilehash: c0fd250a63ce93d3f8b62dfe76fe753c928801ce
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257577"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536889"
 ---
 #  <a name="what-is-baremetal-infrastructure-on-azure"></a>Azure 'da BareMetal Altyapısı nedir?
 
@@ -47,6 +47,22 @@ BareMetal altyapısı şu avantajları sunar:
 - Uygulamayla uyumlu anlık görüntüler, arşivleme, yansıtma ve kopyalama
 
 
+## <a name="baremetal-benefits"></a>BareMetal avantajları  
+
+BareMetal altyapısı, kurumsal uygulamalarınızı çalıştırmak için sertifika gerektiren görev açısından kritik iş yükleri için tasarlanmıştır. BareMetal örnekleri yalnızca size ayrılmıştır ve işletim sistemine (OS) tam erişime (kök erişim) sahip olacaksınız. İşletim sistemini ve uygulama yüklemesini gereksinimlerinize göre yönetirsiniz. Güvenlik için, örnekleri internet bağlantısı olmadan Azure sanal ağınız (VNet) içinde sağlanır. Yalnızca sanal makineleriniz (VM) ve aynı katman 2 ağındaki diğer Azure hizmetlerinde çalışan hizmetler, BareMetal örnekleriniz ile iletişim kurabilir.  
+
+BareMetal altyapısı şu avantajları sunar: 
+
+- Özelleştirilmiş iş yükleri için sertifikalı donanım
+- SAP ( [SAP notuna #1928533](https://launchpad.support.sap.com/#/notes/1928533)bakın)
+- Oracle ( [Oracle belge kimliği #948372.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=52088246571495&id=948372.1&_adf.ctrl-state=kwnkj1hzm_52))
+- Hiper yönetici olmayan BareMetal örneği, tek kiracılı sahiplik
+- Azure 'da barındırılan uygulama VM 'Leri ile BareMetal örneklerine düşük gecikme süresi (0,35 MS)
+- Tüm flash SSD ve NVMe desteği
+- Veritabanı en fazla 1 PB/kiracı 
+- 1,2 milyon/kiracıya kadar ıOPS 
+- 50 GB ağ bant genişliği 
+
 ## <a name="sku-availability-in-azure-regions"></a>Azure bölgelerindeki SKU kullanılabilirliği
 
 BareMetal altyapısı, özel iş yükleri için sertifikalı birden çok SKU sunar. İhtiyaçlarınızı karşılamak için iş yüküne özgü SKU 'Ları kullanın.
@@ -69,11 +85,11 @@ BareMetal altyapısı, özel iş yükleri için sertifikalı birden çok SKU sun
 
 ## <a name="managing-baremetal-instances-in-azure"></a>Azure 'da BareMetal örnekleri yönetme 
 
-Gereksinimlerinize bağlı olarak, BareMetal altyapısının uygulama topolojileri karmaşık olabilir. Paylaşılan veya ayrılmış depolama ile, özel LAN ve WAN bağlantıları içeren bir veya daha fazla konumda birden çok örnek dağıtabilirsiniz. Bu nedenle, Azure, bir sağlama portalındaki alana bir CSA/GBB tarafından bu bilgilerin bir danışmanlığını yakalamasına olanak sağlar. 
+Gereksinimlerinize bağlı olarak, BareMetal altyapısının uygulama topolojileri karmaşık olabilir. Paylaşılan veya ayrılmış depolama ve özelleştirilmiş LAN ve WAN bağlantıları ile bir veya daha fazla konumda birden çok örnek dağıtabilirsiniz. Bu nedenle, Azure, bir sağlama portalındaki alana bir CSA/GBB tarafından bu bilgilerin bir danışmanlığını yakalamasına olanak sağlar. 
 
-Karemetal altyapınızın sağlandığı zamana göre, işletim sistemi, ağlar, depolama birimleri, bölgelerde bölgeler ve bölgelerde ve konumlar arasındaki WAN bağlantıları önceden yapılandırılmıştır. İşletim sistemi lisanslarınızı (KLG) kaydetmek, işletim sistemini yapılandırmak ve uygulama katmanını yüklemek üzere ayarlanır.
+Karemetal altyapınızın sağlandığı zamana göre, işletim sistemi, ağlar, depolama birimleri, bölgelerde bölgeler ve bölgelerde ve konumlar arasındaki WAN bağlantıları önceden yapılandırılmıştır. İşletim sistemi lisanslarınızı (KLG) kaydetmek, işletim sistemini yapılandırmak ve uygulama katmanını yüklemek için hazırsınız.
 
-Azure portal tüm BareMetal altyapı kaynaklarını ve bunların durumlarını ve özniteliklerini görebileceksiniz. Ayrıca, örnekleri işleyebilir ve hizmet isteklerini açabilir ve bilet buradan destekleyebilirsiniz. 
+Tüm BareMetal kaynakları ve bunların durumlarını ve özniteliklerini Azure portal. Ayrıca, örnekleri işleyebilir ve hizmet isteklerini açabilir ve bilet buradan destekleyebilirsiniz. 
 
 ## <a name="operational-model"></a>İşletimsel model
 BareMetal altyapısı ISO 27001, ISO 27017, SOC 1 ve SOC 2 uyumludur. Ayrıca, kendi lisansını getir (KLG) modelini kullanır: işletim sistemi, özel iş yükü ve üçüncü taraf uygulamalar.  

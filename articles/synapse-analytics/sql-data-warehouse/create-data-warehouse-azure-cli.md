@@ -2,19 +2,19 @@
 title: 'Hızlı başlangıç: Azure CLı ile SYNAPSE SQL havuzu oluşturma'
 description: Azure CLı kullanarak sunucu düzeyinde güvenlik duvarı kuralıyla hızlıca bir Synapse SQL havuzu oluşturun.
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 11/20/2020
-ms.author: gaursa
-ms.custom: azure-synapse
-ms.openlocfilehash: c17bfc06e76bad7730707530001ebeccea539c37
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: jrasnick
+ms.custom: azure-synapse, devx-track-azurecli
+ms.openlocfilehash: 532c06cc49f9fddab09c6678ee5fff9fe32347cb
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104602273"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565942"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile SYNAPSE SQL havuzu oluşturma
 

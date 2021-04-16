@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2021
 ms.author: duau
-ms.openlocfilehash: d2c8d4179dbaa44929031ce7e14b597b145ed72a
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 4291a7d46c723f799cf9d09ca0e7a3f6d614971f
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067614"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389749"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Öğretici: Front Door özel etki alanı üzerinde HTTPS'yi yapılandırma
 
@@ -70,9 +70,8 @@ Azure ön kapısının yönettiği bir sertifika kullandığınızda, HTTPS öze
 5. [Etki alanını doğrulamaya](#validate-the-domain)devam edin.
 
 > [!NOTE]
-> AFD tarafından yönetilen sertifikalar için DigiCert 64 karakter sınırı zorlanır. Bu sınır aşılırsa doğrulama başarısız olur.
-
-! NOTUN Ön kapı yönetilen sertifikası aracılığıyla HTTPS 'yi etkinleştirmek, tepesinde/root etki alanları için desteklenmez (örnek: contoso.com). Bu senaryo için kendi sertifikanızı kullanabilirsiniz.  Daha fazla ayrıntı için lütfen seçenek 2 ile devam edin.
+> * AFD tarafından yönetilen sertifikalar için DigiCert 64 karakter sınırı zorlanır. Bu sınır aşılırsa doğrulama başarısız olur.
+> * Ön kapı yönetilen sertifikası aracılığıyla HTTPS 'yi etkinleştirmek, tepesinde/root etki alanları için desteklenmez (örnek: contoso.com). Bu senaryo için kendi sertifikanızı kullanabilirsiniz.  Daha fazla ayrıntı için lütfen seçenek 2 ile devam edin.
 
 ### <a name="option-2-use-your-own-certificate"></a>Seçenek 2: Kendi sertifikanızı kullanın
 

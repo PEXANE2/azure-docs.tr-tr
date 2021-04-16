@@ -3,16 +3,17 @@ title: Synapse Studio bağlantı sorunlarını giderme
 description: PowerShell kullanarak Azure SYNAPSE Studio bağlantısı sorunlarını giderme
 author: saveenr
 ms.service: synapse-analytics
+ms.subservice: workspace
 ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6ff3d985bb24ec852bb5c6cfaedf295fd79a8247
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bbdaef9268239005cdf5ea7fbee6734dadc8113
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98120368"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566264"
 ---
 # <a name="troubleshoot-synapse-studio-connectivity-with-powershell"></a>PowerShell ile SYNAPSE Studio bağlantısı sorunlarını giderme
 

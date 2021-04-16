@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 04/14/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8f729d3d2ebc41552919634c68557042a95649ec
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: cd9cf0e4a2abec1ad29d5b34f3d6f473ca5bf71d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516456"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564569"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -23,7 +23,7 @@ ms.locfileid: "107516456"
 > [!NOTE]
 > Bu kılavuz REST API çağrılarını yürütmek için kıvrımlı kullanır.
 
-| [Form tanıyıcı REST API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) | [Azure REST API başvurusu](/rest/api/azure/) | [Örnekler](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer)|
+|[Form tanıyıcı REST API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) | [Azure REST API başvurusu](/rest/api/azure/)|
 
 ## <a name="prerequisites"></a>Önkoşullar
 

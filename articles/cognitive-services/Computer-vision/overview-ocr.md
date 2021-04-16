@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/29/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 41b3552a633c9cebce1138fa042dbd154eee0cb5
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: da4ada8b505c747d24738e175a1701b5ea73b4e4
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107314125"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536747"
 ---
 # <a name="what-is-optical-character-recognition"></a>Optik karakter tanıma nedir?
 
@@ -42,7 +42,6 @@ OCR API 'Leri, yazdırma stili metni için toplam 73 dili destekler. [OCR taraf�
 * Desteklenen dosya biçimleri: JPEG, PNG, BMP, PDF ve TIFF
 * PDF ve TIFF dosyaları için en fazla 2000 sayfa (ücretsiz katman için yalnızca ilk iki sayfa) işlenir.
 * Dosya boyutu 50 MB 'tan az (ücretsiz katman için 4 MB) ve en az 50 x 50 piksel ve en fazla 10000 x 10000 piksel boyutunda olmalıdır. 
-* PDF boyutları, yasal veya A3 kağıt boyutlarına ve daha küçük boyutlara karşılık gelen en fazla 17 x 17 inç olmalıdır.
 
 ## <a name="read-api"></a>API 'YI oku 
 
@@ -50,6 +49,21 @@ Görüntü İşleme [okuma API](https://centraluseuap.dev.cognitive.microsoft.co
 
 ![OCR, resimleri ve belgeleri ayıklanan metinle yapısal çıktıya dönüştürür](./Images/how-ocr-works.svg)
 
+### <a name="key-features"></a>Önemli özellikler
+
+Okuma API 'SI aşağıdaki özellikleri içerir. 
+
+* 73 dilde yazdırma metin ayıklama
+* Ingilizce 'de el ile metin ayıklama
+* Konum ve güvenirlik puanlarını içeren metin satırları ve sözcükler
+* Dil kimliği gerekli değil
+* Karışık diller için destek, karma mod (yazdırma ve el yazısı)
+* Büyük, çok sayfalı belgelerden sayfaları ve sayfa aralıklarını seçin
+* Metin satırları için doğal okuma sırası
+* Metin satırları için el yazısı sınıflandırması
+* Şirket içi dağıtım için Distrodaha az Docker kapsayıcısı olarak kullanılabilir
+
+[OCR özelliklerini kullanmayı](./vision-api-how-to-topics/call-read-api.md)öğrenin.
 
 ## <a name="use-the-cloud-api-or-deploy-on-premise"></a>Bulut API 'sini kullanma veya şirket içinde dağıtma
 3. x bulut API 'Leri, çoğu müşteri için tercih edilen seçenektir ve bu, çok sayıda tümleştirme ve bu kutudan hızlı verimlilik açısından tercih edilir. Müşterilerinizin gereksinimlerine odaklanmanız durumunda Azure ve Görüntü İşleme Hizmeti tanıtıcı ölçeği, performansı, veri güvenliği ve uyumluluk gereksinimlerini karşılamanız gerekir.
