@@ -2,21 +2,21 @@
 title: PowerShell örneği-Azure Active Directory kiracısındaki uygulama kayıtları için gizli dizileri ve sertifikaları dışarı aktarın.
 description: Azure Active Directory kiracınızda belirtilen uygulama kayıtlarına yönelik tüm gizli dizileri ve sertifikaları dışarı aktaran PowerShell örneği.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 03/09/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: mifarca
-ms.openlocfilehash: d0de96d0d8a5edc6fbacc25dcbcb868073e57183
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5cbb6b3843e81d9265405dcea24a092e57bf65e
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556562"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377055"
 ---
 # <a name="export-secrets-and-certificates-for-app-registrations"></a>Uygulama kayıtları için gizli dizileri ve sertifikaları dışa aktarma
 

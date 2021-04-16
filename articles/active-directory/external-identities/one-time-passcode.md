@@ -12,12 +12,12 @@ manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30f22282b00a7ead2e19805f32d78338126e8087
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 3b4089559b341dd268928b1f150b6fc173869ead
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552759"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529920"
 ---
 # <a name="email-one-time-passcode-authentication"></a>E-posta bir kerelik geçiş kodu kimlik doğrulaması
 
@@ -114,7 +114,7 @@ Ancak, özelliği devre dışı bırakmayı tercih ediyorsanız ve BT 'nin 2021 
 
 ## <a name="note-for-azure-us-government-customers"></a>Azure ABD kamu müşterileri için göz önünde bulunun
 
-E-posta bir kerelik geçiş kodu özelliği, Azure ABD kamu bulutunda varsayılan olarak devre dışıdır.  
+E-posta bir kerelik geçiş kodu özelliği, Azure ABD kamu bulutunda varsayılan olarak devre dışıdır. Bu özellik etkinleştirilmediği takdirde, iş ortaklarınız oturum açamıyor. Azure genel bulutundan farklı olarak, Azure ABD kamu bulutu, self servis Azure Active Directory hesaplarıyla davetleri benimseme desteğini desteklemez.
 
  ![E-posta bir kerelik geçiş kodu devre dışı](media/one-time-passcode/enable-email-otp-disabled.png)
 
@@ -122,7 +122,7 @@ Azure ABD kamu bulutunda e-posta bir kerelik geçiş kodu özelliğini etkinleş
 
 1. [Azure Portal](https://portal.azure.com) Azure AD Genel Yöneticisi olarak oturum açın.
 2. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
-3. **Kurumsal ilişki** ayarları ' nı seçin   >  ****.
+3. **Kuruluş ilişkileri**   >  **tüm kimlik sağlayıcıları**' nı seçin.
 
    > [!NOTE]
    > - **Kuruluş ilişkilerini** görmüyorsanız, üstteki arama çubuğunda "dış kimlikler" araması yapın.

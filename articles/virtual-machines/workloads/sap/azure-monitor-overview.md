@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: a88ad3930e114bdf9f3c3c340f92f164215d59c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c561a9a786765ccfdaf00abf4e0d9c8cc550cb9a
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101671987"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377217"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>SAP Çözümleri için Azure izleyici (Önizleme)
 
@@ -22,7 +22,7 @@ SAP Çözümleri için Azure Izleyici ile müşteriler, Azure altyapısından ve
 
 SAP Çözümleri için Azure Izleyici, Azure Marketi aracılığıyla sunulur. Basit, sezgisel bir kurulum deneyimi sağlar ve yalnızca birkaç tıklamayla yararlanarak SAP için Azure Izleyici çözümleri için kaynak ( **SAP Monitor kaynağı** olarak bilinir) dağıtımı gerçekleştirir.
 
-Müşteriler, bu bileşene karşılık gelen **sağlayıcıyı** ekleyerek Azure sanal makineler, yüksek kullanılabilirlik kümesi, SAP HANA veritabanı vb. gibi SAP yatay 'ın farklı bileşenlerini izleyebilir.
+Müşteriler, bu bileşene karşılık gelen **sağlayıcıyı** ekleyerek Azure sanal makineleri, yüksek kullanılabilirlik kümesi, SAP HANA VERITABANı, SAP NetWeaver vb. gibi SAP yatay 'ın farklı bileşenlerini izleyebilir.
 
 Desteklenen altyapı:
 
@@ -70,6 +70,13 @@ Microsoft SQL Server telemetri:
 - Devam eden g/ç sayısı, kalıcı bellek okuma/yazma baytları. 
 - Ağ paketleri/Out, ağ baytları/Out 
 
+SAP NetWeaver telemetrisi:
+
+- Dağıtıcı, ICM, ağ geçidi, Ileti sunucusu, sıraya alma sunucusu, ıGS Bekinin örnek işleme kullanılabilirliği dahil olmak üzere SAP sistem ve uygulama sunucusu kullanılabilirliği
+- İş süreci kullanım istatistikleri ve eğilimleri
+- Kilit istatistiklerini ve eğilimlerini sıraya alma
+- Kuyruk kullanım istatistikleri ve eğilimleri
+
 ## <a name="data-sharing-with-microsoft"></a>Microsoft ile veri paylaşımı
 
 SAP Çözümleri için Azure Izleyici, Azure müşterilerine yönelik SAP 'imiz için geliştirilmiş destek sağlamak üzere sistem meta verilerini toplar. PII/EUıı toplanmadı.
@@ -102,8 +109,8 @@ Mimarinin temel bileşenleri şunlardır:
 ### <a name="architecture-highlights"></a>Mimari vurgulamalar
 
 Mimarinin başlıca vurgulamaları aşağıda verilmiştir:
- - **Çok örnekli** -MÜŞTERILER, SAP Çözümleri için tek bir Azure izleyici kaynağına sahıp bir sanal ağ içindeki bırden fazla sap SID arasında belirli bir bileşen türünün (ÖRNEĞIN, Hana DB, ha kümesi, Microsoft SQL Server) birden çok örneği için izleyici oluşturabilir.
- - **Multi-Provider** -yukarıdaki mimari diyagramda, örnek olarak SAP HANA sağlayıcısı gösterilmektedir. Benzer şekilde, müşteriler ilgili bileşenleri (örneğin, HANA DB, HA kümesi, Microsoft SQL Server) Bu bileşenlerden veri toplamak için daha fazla sağlayıcı yapılandırabilir.
+ - **Çoklu örnek** -MÜŞTERILER, SAP Çözümleri için tek bir Azure izleyici kaynağı olan bir sanal ağ içindeki bırden fazla sap SID 'de, belirli bir bileşen türünün (ÖRNEĞIN, Hana DB, ha kümesi, Microsoft SQL Server, SAP NetWeaver) birden çok örneği için izleyici oluşturabilir.
+ - **Multi-Provider** -yukarıdaki mimari diyagramda, örnek olarak SAP HANA sağlayıcısı gösterilmektedir. Benzer şekilde, müşteriler ilgili bileşenleri (örneğin, HANA DB, HA kümesi, Microsoft SQL Server, SAP NetWeaver), bu bileşenlerden veri toplamak için daha fazla sağlayıcı yapılandırabilir.
  - **Açık kaynak** -SAP Için Azure izleyici çözümlerinin kaynak kodu [GitHub](https://github.com/Azure/AzureMonitorForSAPSolutions)' da bulunabilir. Müşteriler sağlayıcı koduna başvurabilir ve ürün, katkıda bulunma veya paylaşma hakkında daha fazla bilgi edinebilirsiniz.
  - **Genişletilebilir sorgu çerçevesi** -telemetri verilerini toplamak için SQL sorguları [JSON](https://github.com/Azure/AzureMonitorForSAPSolutions/blob/master/sapmon/content/SapHana.json)dilinde yazılır. Daha fazla telemetri verisi toplamak için daha fazla SQL sorgusu kolayca eklenebilir. Müşteriler, bu belgenin sonundaki bağlantı aracılığıyla geri bildirim bırakarak veya hesap ekibine başvurarak, SAP Çözümleri için Azure Izleyici 'ye belirli telemetri verileri eklemek isteyebilir.
 

@@ -5,12 +5,12 @@ author: dkamstra
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.author: dukek
-ms.openlocfilehash: 7010e20b65142cf0ab85c29d6b22c925c977f1f8
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 1486415c5d225163dd2b2c7e79cd008ad0a76588
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107104992"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514878"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portalında eylem gruplarını oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. 
@@ -147,6 +147,13 @@ Yalnızca *birincil e-posta* adresine bir bildirim e-postası gönderilir.
   :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="Birincil e-postanın nasıl ekleneceği hakkında örnek." border="true":::
 
 Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sınırlandırma bilgileri](./alerts-rate-limiting.md) makalesi.
+
+*E-posta ARM rolünü* ayarlarken 3 koşulun karşılandığından emin olmanız gerekir:
+
+1. Role atanan varlığın türünün **"user"** olması gerekir.
+2. Atamanın **abonelik** düzeyinde yapılması gerekir.
+3. Kullanıcının **AAD profilinde** yapılandırılmış bir e-posta olması gerekir. 
+
 
 ### <a name="function"></a>İşlev
 [Azure işlevlerinde](../../azure-functions/functions-get-started.md)var olan bir http tetikleyici uç noktasını çağırır. Bir isteği işlemek için uç noktanızın HTTP POST fiilini işlemesi gerekir.

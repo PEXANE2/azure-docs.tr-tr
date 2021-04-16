@@ -62,6 +62,8 @@
           href: hana-concept-preparation.md
         - name: Olağanüstü durum kurtarma yük devretme yordamı
           href: hana-failover-procedure.md
+        - name: RHEL üzerinde SAP için büyük örnekler HA
+          href: large-instance-high-availability-rhel.md
     - name: Sorun giderme ve izleme
       items:
         - name: HLI'yi izleme
@@ -135,7 +137,7 @@
         - name: SAP HANA veritabanlarının yedeklenmesi için destek matrisi
           href: ../../../backup/sap-hana-backup-support-matrix.md
         - name: 'SSS: Azure VM ''lerinde SAP HANA veritabanlarını yedekleme'
-          href: ../../../backup/sap-hana-faq-backup-azure-vm.md
+          href: ../../../backup/sap-hana-faq-backup-azure-vm.yml
         - name: Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
           href: ../../../backup/backup-azure-sap-hana-database-troubleshoot.md
         - name: Öğretici-Azure VM 'de SAP HANA veritabanlarını yedekleme
@@ -213,8 +215,6 @@
               href: high-availability-guide-rhel.md
             - name: Azure NetApp Files ile (A)SCS Örneği için Red Hat Enterprise Linux üzerinde HA
               href: high-availability-guide-rhel-netapp-files.md
-            - name: RHEL üzerinde SAP için büyük örnekler HA
-              href: large-instance-high-availability-rhel.md
         - name: Azure Altyapı Hazırlığı
           items:
             - name: (A)SCS Örneği için Paylaşılan Diskle Windows

@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: a93fe6c6203140bfed3771da8353ea7843b7694f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: bd9a607b46c87ca590bcefef310f822d6f23483c
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327388"
+ms.locfileid: "107386798"
 ---
 Bu hızlı başlangıçta, JavaScript için SDK 'Yı çağıran Azure Iletişim hizmetlerini kullanarak nasıl çağrı başlayacağınızı öğreneceksiniz.
 
@@ -164,7 +164,7 @@ Tarayıcınızı açın ve adresine gidin http://localhost:8080/ . Şunları gö
 
 :::image type="content" source="../media/javascript/calling-javascript-app-2.png" alt-text="Tamamlanan JavaScript uygulamasının ekran görüntüsü.":::
 
-Metin alanına bir kullanıcı KIMLIĞI sağlayarak ve **çağrıya başla** düğmesine tıklayarak gıden bir VoIP çağrısı yapabilirsiniz. Çağırmak `8:echo123` sizi bir Echo bot ile bağlar, bu, başlamak ve ses cihazlarınızın çalıştığını doğrulamak için harika bir yoldur.
+İlgili metin alanlarında geçerli bir Kullanıcı erişim belirteci ve Kullanıcı KIMLIĞI sağlayıp **çağrıya başla** düğmesine tıklayarak gıden bir VoIP çağrısı yapabilirsiniz. Çağırmak `8:echo123` sizi bir Echo bot ile bağlar, bu, başlamak ve ses cihazlarınızın çalıştığını doğrulamak için harika bir yoldur.
 
 ## <a name="sample-code"></a>Örnek kod
 

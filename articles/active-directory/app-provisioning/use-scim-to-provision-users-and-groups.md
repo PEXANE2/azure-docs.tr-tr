@@ -12,12 +12,12 @@ ms.date: 04/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 4130ed4bb690edb3c0c5d72d7d158262ed6ff39d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 3d53c96c4b0306911b0c8a0b8576f35a73419db0
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305608"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498161"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Öğretici: SCıM uç noktası için geliştirme ve plan sağlama
 
@@ -210,7 +210,8 @@ AAD ile uyumluluğu sağlamak için bir SCıM uç noktası uygularken genel yön
 * 3.5.2 bölümünde tanımlandığı gibi, belirli bir **Düzeltme Eki** işlem değerlerinde SCIM içindeki yapısal öğelerde büyük/küçük harfe duyarlı bir eşleşme gerektirmez `op` . [](https://tools.ietf.org/html/rfc7644#section-3.5.2) AAD, değerlerini `op` **ekleme**, **değiştirme** ve **kaldırma** olarak yayar.
 * Microsoft AAD, uç noktanın ve kimlik bilgilerinin geçerli olduğundan emin olmak için rastgele bir Kullanıcı ve grup getirme istekleri yapar. Ayrıca, [Azure Portal](https://portal.azure.com) **Test bağlantı** akışının bir parçası olarak da yapılır. 
 * Kaynakların sorgulanabileceği öznitelik, [Azure Portal](https://portal.azure.com)uygulamada eşleşen bir öznitelik olarak ayarlanmalıdır, bkz. [Kullanıcı sağlama öznitelik eşlemelerini özelleştirme](customize-application-attributes.md).
-* SCıM uç noktanıza HTTPS desteği
+* Yetkilendirmeler özniteliği desteklenmiyor.
+* SCıM uç noktanıza HTTPS desteği.
 * [Şema bulma](#schema-discovery)
   * Şema bulma işlemi şu anda özel uygulamada desteklenmiyor, ancak belirli Galeri uygulamalarında kullanılıyor. İleri, şema bulma bir bağlayıcıya ek öznitelikler eklemek için birincil yöntem olarak kullanılacaktır. 
   * Bir değer yoksa, null değerler göndermez.

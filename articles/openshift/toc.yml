@@ -62,6 +62,8 @@
               href: ../azure-monitor/containers/container-insights-optout-openshift-v4.md
     - name: Uygulamaları geliştirme ve çalıştırma
       items:
+        - name: OpenShift sunucusuz kullanarak Azure Red Hat OpenShift 'e uygulama dağıtma
+          href: howto-deploy-with-serverless.md
         - name: Open Liberty/WebSphere Liberty uygulaması dağıtma
           href: howto-deploy-java-liberty-app.md
     - name: Azure Red Hat OpenShift 3.11

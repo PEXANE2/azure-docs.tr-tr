@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a6522eb54980cb28f08ce91e29a6a18943d49040
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: fcd177870bcb44f5ae61b3c153e4653dcd70898d
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106089001"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499277"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Özel bir IPSec/ıKE ilkesinin tüm Azure sanal ağ geçidi bağlantılarına uygulanması gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Bu ilke, tüm Azure sanal ağ geçidi bağlantılarının özel bir Internet Protokolü güvenliği (IPSec)/Internet anahtar değişimi (ıKE) ilkesi kullanmasını sağlar. Desteklenen algoritmalar ve anahtar güçleri- [https://aka.ms/AA62kb0](https://aka.ms/AA62kb0) |Denetim, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json) |
 |[\[Önizleme \] : tüm Internet trafiği, dağıtılan Azure Güvenlik duvarınız aracılığıyla yönlendirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c) |Azure Güvenlik Merkezi, bazı alt ağlarınızın bir sonraki nesil güvenlik duvarı ile korunmuyor olduğunu belirledi. Azure Güvenlik Duvarı veya desteklenen bir yeni nesil güvenlik duvarı ile erişimi kısıtlayarak alt ağlarınızı olası tehditlere karşı koruyun |Auditınotexists, devre dışı |[3.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ASC_All_Internet_traffic_should_be_routed_via_Azure_Firewall.json) |

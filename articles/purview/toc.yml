@@ -182,3 +182,11 @@ items:
         href: supported-classifications.md
       - name: ABAP Function dağıtım kılavuzu
         href: abap-functions-deployment-guide.md
+  - name: Kaynaklar
+    items:
+      - name: Özellik geri bildirimi (Kullanıcı sesi)
+        href: 'https://feedback.azure.com/forums/932437-azure-purview'
+      - name: Fiyatlandırma hesaplayıcı
+        href: 'https://azure.microsoft.com/pricing/details/azure-purview/'
+      - name: Microsoft Q&Forumu
+        href: 'https://docs.microsoft.com/answers/topics/azure-purview.html'

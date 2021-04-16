@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 710f33ada7a64248f0371a3e8c39e085d3f0834c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 242dd2476783a3d1db6b74452d35e87c5cd189b6
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107066"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516561"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki yenilikler nelerdir?
 
@@ -42,11 +42,19 @@ Windows sanal masaüstü Aracısı ayda en az bir kez güncelleştirilir.
 
 Windows sanal masaüstü aracısında şu şekilde değişiklik yapılır:
 
-- Sürüm 1.0.2866.1500: Bu güncelleştirme 26 Mart 2021 ' de yayımlanmıştır ve yığın sistem durumu denetimi ile ilgili bir sorun düzeltildi.
-- Sürüm 1.0.2800.2802: Bu güncelleştirme 10 Mart 2021 ' de yayımlanmıştır ve genel geliştirmeler ve hata düzeltmeleri içerir.
-- Sürüm 1.0.2800.2800: Bu güncelleştirme 2 Mart 2021 ' den yayımlanmıştır ve ters bir bağlantı sorunu düzeltildi.
-- Sürüm 1.0.2800.2700: Bu güncelleştirme 10 Şubat 2021 ' de yayımlanmıştır ve genel geliştirmeler ve hata düzeltmeleri içerir.
-- Sürüm 1.0.2800.2700: Bu güncelleştirme 4 Şubat 2021 ' de yayımlanmıştır ve bir erişim reddedildi düzenleme sorunu düzeltildi.
+- Sürüm 1.0.2990.800: Bu güncelleştirme 13 2021 Nisan tarihinde yayımlanmıştır ve aşağıdaki değişikliklere sahiptir:
+    - Aracı hata iletileri güncelleştirildi.
+    - Windows 7 VM 'lerine Windows 7 olmayan aracıların yüklenmesini önleyen bir özel durum ekler.
+    - Sinyal hizmeti mantığını güncelleştirmiş.
+- Sürüm 1.0.2944.1400: Bu güncelleştirme 7 Nisan 2021 ' de yayımlanmıştır ve aşağıdaki değişikliklere sahiptir:
+    - Windows sanal masaüstü Aracısı sorun giderme kılavuzu 'nda, aracı hataları için Olay Görüntüleyici günlüklerinde bağlantılar yerleştirildi.
+    - Daha iyi hata işleme için ek bir özel durum eklendi.
+    - Müşterilerin erişebileceği gerekli URL 'Leri denetlemesini sağlayan WVDAgentUrlTool.exe eklendi.
+- Sürüm 1.0.2866.1500: Bu güncelleştirme 26 Mart 2021 ' de yayımlanmıştır ve yığın sistem durumu denetiminde bir sorunu düzeltir.
+- Sürüm 1.0.2800.2802: Bu güncelleştirme 10 Mart 2021 ' de yayımlanmıştır ve genel iyileştirmeler ve hata düzeltmeleri içerir.
+- Sürüm 1.0.2800.2800: Bu güncelleştirme 2 Mart 2021 ' de yayımlanmıştır ve ters bir bağlantı sorununu düzeltir.
+- Sürüm 1.0.2800.2700: Bu güncelleştirme 10 Şubat 2021 ' de yayımlanmıştır ve genel iyileştirmeler ve hata düzeltmeleri içerir.
+- Sürüm 1.0.2800.2700: Bu güncelleştirme 4 Şubat 2021 ' de yayımlanmıştır ve erişim reddedildi düzenleme sorununu düzeltir.
 
 ## <a name="fslogix-updates"></a>FSLogix güncelleştirmeleri
 

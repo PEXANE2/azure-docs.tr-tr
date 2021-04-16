@@ -9,12 +9,12 @@ metadata:
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: fad34c10d02d4a9daa8795cf77ab76903d8360f4
-  ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+  ms.openlocfilehash: d6c9d2ae5a2f91cd0c9c5b0b902b254ffcd8c8f8
+  ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 04/14/2021
-  ms.locfileid: "107501204"
+  ms.lasthandoff: 04/15/2021
+  ms.locfileid: "107517887"
 landingContent:
 - title: About Azure Red Hat OpenShift Hakkında
   linkLists:
@@ -42,7 +42,9 @@ landingContent:
       url: dns-forwarding.md
     - text: Azure Red Hat OpenShift için yerleşik kapsayıcı kayıt defterini yapılandırma
       url: built-in-container-registry.md
-    - text: Azure Red Hat OpenShift kümesine açık bir özgürlük/WebSphere serbest uygulaması dağıtma
+    - text: OpenShift sunucusuz kullanarak Azure Red Hat OpenShift 'e uygulama dağıtma
+      url: howto-deploy-with-serverless.md
+    - text: Azure Red Hat OpenShift 4 kümesinde bir Open Liberty/WebSphere Liberty uygulaması dağıtma
       url: howto-deploy-java-liberty-app.md
 - title: Başvuru
   linkLists:

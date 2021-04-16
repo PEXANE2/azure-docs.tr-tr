@@ -25,6 +25,10 @@
       href: /samples/azure/azure-sdk-for-java/formrecognizer-java-samples
     - name: 'Python: form tanıyıcı istemci kitaplığı SDK ''Sı'
       href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
+    - name: JavaScript form tanıyıcı istemci kitaplığı SDK 'Sı
+      href: /samples/azure/azure-sdk-for-js/ai-form-recognizer-javascript/
+    - name: REST API ve kıvrımlı
+      href: 'https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer'
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Eğitim verileri kümesi oluşturma
@@ -63,7 +67,7 @@
       href: concept-business-cards.md
     - name: Faturalar
       href: concept-invoices.md
-    - name: Kimlik kartları
+    - name: Kimlik belgeleri
       href: concept-identification-cards.md
 - name: Öğreticiler
   items:

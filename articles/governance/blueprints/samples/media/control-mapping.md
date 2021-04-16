@@ -1,18 +1,18 @@
 ---
 title: Media şema örnek denetimleri
 description: Medya şeması örneklerinin denetim eşlemesi. Her denetim, değerlendirmede yardımcı olan bir veya daha fazla Azure Ilke tanımına eşlenir.
-ms.date: 04/02/2021
+ms.date: 04/13/2021
 ms.topic: sample
-ms.openlocfilehash: b489111010c9a4fcb112428ae642332980302849
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 4c04c661d7dd8b2b07a05c20524258d6bb887e62
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386438"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376707"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>Medya şeması örneğinin denetim eşlemesi
 
-Aşağıdaki makalede, Azure şemaları medya şeması 'nın medya denetimleriyle nasıl eşleştiği açıklanır. Denetimler hakkında daha fazla bilgi için bkz. [Media](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
+Aşağıdaki makalede, Azure şemaları medya şeması 'nın medya denetimleriyle nasıl eşleştiği açıklanır. Denetimler hakkında daha fazla bilgi için bkz. [Media](https://www.motionpictures.org/best-practices).
 
 Aşağıdaki eşlemeler **medya** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, önizlemeyi bulun ve seçin **\[ \] : medya denetimlerini denetle** yerleşik ilke girişimi.
 

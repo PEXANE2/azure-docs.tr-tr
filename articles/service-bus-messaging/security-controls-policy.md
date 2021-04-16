@@ -1,18 +1,18 @@
 ---
 title: Azure Service Bus mesajlaşma için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Service Bus mesajlaşma için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: service-bus-messaging
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 80d7d13ac387a5fed2c3c6a58c4954f2f91d1451
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: d141eb9a04f058eaf9405919cc1d7eccac1469fe
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093133"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505584"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-service-bus-messaging"></a>Azure Service Bus mesajlaşma için Azure Ilke mevzuat uyumluluk denetimleri
 
