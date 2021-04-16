@@ -3,12 +3,12 @@ title: Azure mesajlaşma hizmetleri-Kaynak Yöneticisi Service Manager
 description: Bu makalede, REST API & PowerShell cmdlet 'leri Kaynak Yöneticisi için kullanım dışı bırakılmış Azure Service Manager REST API & PowerShell cmdlet 'lerinin eşleştirmesi sunulmaktadır.
 ms.topic: article
 ms.date: 04/13/2021
-ms.openlocfilehash: 41e5e22910a5f972be57185f112544c3cde21fb3
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 48b073e0b2fa739fb2a92a2fc28a6c6aebe43c0c
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388253"
+ms.locfileid: "107499504"
 ---
 # <a name="deprecation-of-azure-service-manager-support-for-azure-service-bus-relay-and-event-hubs"></a>Azure Service Bus, geçiş ve Event Hubs için Azure Service Manager desteği kullanımdan kaldırılıyor
 
@@ -46,7 +46,7 @@ Service Bus/Olay Hub 'ı/geçişi<br/>```PUT https://management.core.windows.net
 | **Eventhubitilen d-ListEventHubsAsync**<br/>[Liste Event Hubs](/rest/api/eventhub/list-event-hubs)<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/eventhubs?$skip={skip}&$top={top}``` | &nbsp; | [list](/rest/api/servicebus/stable/eventhubs/listbynamespace) | &nbsp; | 
 | **Eventhubitilen TID-GetEventHubAsync**<br/>[Event Hubs al](/rest/api/eventhub/get-event-hub)<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/eventhubs/{eventHubPath}``` | &nbsp; | [Al](/rest/api/eventhub/get-event-hub) | &nbsp; | 
 | **NamespaceAuthorizationRules-DeleteNamespaceAuthorizationRuleAsync**<br/>Service Bus/Olay Hub 'ı/geçişi<br/>```DELETE https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/AuthorizationRules/{rule name}``` | [deleteauthorizationrule](/rest/api/servicebus/stable/namespaces%20-%20authorization%20rules/deleteauthorizationrule) | [deleteauthorizationrule](/rest/api/eventhub/stable/authorization%20rules%20-%20namespaces/deleteauthorizationrule) | [deleteauthorizationrule](/rest/api/relay/namespaces/deleteauthorizationrule) |
-| **NamespaceAuthorizationRules-GetNamespaceAuthorizationRulesAsync**<br/>Service Bus/EventHub/geçiş<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/AuthorizationRules``` | [listauthorizationrules](/rest/api/relay/namespaces/listauthorizationrules) | [listauthorizationrules](/rest/api/eventhub/stable/authorization%20rules%20-%20namespaces/listauthorizationrules) | [listauthorizationrules](/rest/api/relay/namespaces/listauthorizationrules) |
+| **NamespaceAuthorizationRules-GetNamespaceAuthorizationRulesAsync**<br/>Service Bus/EventHub/geçiş<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/AuthorizationRules``` | [listauthorizationrules](/servicebus/stable/namespaces%20-%20authorization%20rules/listauthorizationrules) | [listauthorizationrules](/rest/api/eventhub/stable/authorization%20rules%20-%20namespaces/listauthorizationrules) | [listauthorizationrules](/rest/api/relay/namespaces/listauthorizationrules) |
 | **NamespaceAvailability-IsNamespaceAvailable**<br/>[Service Bus ad alanı kullanılabilirliği](/rest/api/servicebus/check-namespace-availability)<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/CheckNamespaceAvailability/?namespace=<namespaceValue>``` | [checknameavaılabılıty](/rest/api/servicebus/stable/namespaces%20-%20checkname%20availability/checknameavailability) | [checknameavaılabılıty](/rest/api/eventhub/stable/check%20name%20availability%20-%20namespaces/checknameavailability) | [checknameavaılabılıty](/rest/api/relay/namespaces/checknameavailability) |
 | **Ad alanları-CreateOrUpdateNamespaceAsync**<br/>Service Bus/Olay Hub 'ı/geçişi<br/>```PUT https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}``` | [CreateOrUpdate](/rest/api/servicebus/stable/namespaces/createorupdate) | [CreateOrUpdate](/rest/api/eventhub/stable/namespaces/createorupdate) | [CreateOrUpdate](/rest/api/relay/namespaces/createorupdate) | 
 | **Konular-GetTopicAsync**<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/topics/{topicPath}``` | [Al](/rest/api/servicebus/stable/topics/get) | &nbsp; | &nbsp; |

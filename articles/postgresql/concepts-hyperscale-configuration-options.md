@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 04/07/2021
-ms.openlocfilehash: ae416c9acd03b3ee239a858aae550fb87293465a
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 1dd0666c2946896ed324fb3986bb7946890b73de
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012794"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388712"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>PostgreSQL için Azure veritabanı – Hyperscale (Citus) yapılandırma seçenekleri
 
@@ -109,7 +109,8 @@ Sağladığınız toplam depolama miktarı, temel katman düğümü için kullan
 ## <a name="regions"></a>Bölgeler
 Hiper ölçek (Citus) sunucu grupları aşağıdaki Azure bölgelerinde kullanılabilir:
 
-* Kuzey
+* Kuzey ve Güney Amerika: 
+    * Güney Brezilya
     * Orta Kanada
     * Central US
     * Doğu ABD *
@@ -122,6 +123,7 @@ Hiper ölçek (Citus) sunucu grupları aşağıdaki Azure bölgelerinde kullanı
     * Güney Kore - Orta
     * Güneydoğu Asya
 * 'Ya
+    * Orta Fransa
     * Kuzey Avrupa
     * Güney Birleşik Krallık
     * West Europe

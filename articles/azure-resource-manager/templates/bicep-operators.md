@@ -2,17 +2,23 @@
 title: Bıcep işleçleri
 description: Azure Resource Manager dağıtımları için kullanılabilen Bıcep işleçlerini açıklar.
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: 4bf1005a11b1dcfea9f4b28d6bd3fa7c33e3278f
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.date: 04/15/2021
+ms.openlocfilehash: 0838ebf6bc03f4237ef76e07f1eb6f25aa996fc0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107211352"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537825"
 ---
 # <a name="bicep-operators"></a>Bıcep işleçleri
 
-Bu makalede, bir Bıcep şablonu oluşturduğunuzda ve kaynakları dağıtmak için Azure Resource Manager kullandığınızda kullanılabilen Bıcep işleçleri açıklanmaktadır. İşleçler değerleri hesaplamak, değerleri karşılaştırmak veya koşulları değerlendirmek için kullanılır. Üç tür bicep işleci vardır: [karşılaştırma](#comparison), [mantıksal](#logical)ve [sayısal](#numeric).
+Bu makalede, bir Bıcep şablonu oluşturduğunuzda ve kaynakları dağıtmak için Azure Resource Manager kullandığınızda kullanılabilen Bıcep işleçleri açıklanmaktadır. İşleçler değerleri hesaplamak, değerleri karşılaştırmak veya koşulları değerlendirmek için kullanılır. Üç tür bicep işleci vardır:
+
+- [Il](#comparison)
+- [mantıksal](#logical)
+- [rakamlardan](#numeric)
+
+Ve arasında bir ifadeyi `(` kapsayan `)` varsayılan bicep işleç önceliğini geçersiz kılmanızı sağlar. Örneğin, x + y/z ifadesi önce bölmeyi ve sonra eklemeyi değerlendirir. Ancak, ifade (x + y)/z, ilk ve bölme ikincisini değerlendirir.
 
 ## <a name="comparison"></a>Karşılaştırma
 

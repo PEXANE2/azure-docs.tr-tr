@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e356363d91c3aa429fd958c1dd3bc553e7a4d29
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 9266322d424d57ac847df85513db34d4a42e47e1
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030245"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389834"
 ---
 # <a name="azure-ad-built-in-roles"></a>Azure AD yerleşik rolleri
 
@@ -885,7 +885,7 @@ Bu roldeki kullanıcılar Microsoft 365 hizmetleri genelinde ayarları ve yönet
 > Genel okuyucu rolünde Şu anda birkaç kısıtlama vardır-
 >
 >- [OneDrive Yönetim Merkezi](https://admin.onedrive.com/) -OneDrive Yönetim Merkezi, genel okuyucu rolünü desteklemez
->- [M365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage) -genel okuyucu, müşteri kasası isteklerini okuyamıyor. M365 Yönetim Merkezi 'nin sol bölmesinde, **destek** altında **müşteri kasası istekleri** sekmesini bulmayacağız.
+>- [M365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage) -genel okuyucu tümleşik uygulamaları okuyamıyor. M365 Yönetim Merkezi 'nin sol bölmesindeki **Ayarlar** ' ın altında **Tümleşik uygulamalar** sekmesini bulmayacağız.
 >- [Office güvenlik & Uyumluluk Merkezi](https://sip.protection.office.com/homepage) -küresel okuyucu SCC denetim günlüklerini okuyamıyor, içerik araması yapamıyor veya güvenli puanı göremez.
 >- [Takımlar Yönetim Merkezi](https://admin.teams.microsoft.com) -küresel okuyucu **takımlar yaşam döngüsünü**, **analiz & raporlarını**, **IP telefon cihaz yönetimini** ve **uygulama kataloğunu** okuyamıyor.
 >- [Privileged Access Management (Pam)](/office365/securitycompliance/privileged-access-management-overview) , genel okuyucu rolünü desteklemez.
@@ -1861,7 +1861,7 @@ Bu role sahip kullanıcılar Kullanıcı oluşturabilir ve bazı kısıtlamalara
 
 `microsoft.directory/applications/credentials/update`
 
-| İzin öğesi | Description |
+| İzin öğesi | Açıklama |
 | --- | --- |
 | ad alanı | Görevi kullanıma sunan ürün veya hizmet, ve ile sona erer `microsoft` . Örneğin, Azure AD 'deki tüm görevler `microsoft.directory` ad alanını kullanır. |
 | varlık | Microsoft Graph ' de hizmet tarafından kullanıma sunulan mantıksal özellik veya bileşen. Örneğin, Azure AD Kullanıcı ve grupları kullanıma sunarsa, OneNote Notları kullanıma sunar ve Exchange posta kutularını ve takvimleri kullanıma sunar. `allEntities`Bir ad alanındaki tüm varlıkların belirtilmesine yönelik özel bir anahtar sözcük vardır. Bu, genellikle ürüne erişim izni veren rollerde kullanılır. |

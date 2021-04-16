@@ -1,0 +1,14 @@
+- name: Oracle için BareMetal Altyapısı nedir?
+  href: oracle-baremetal-overview.md
+- name: BareMetal SKU 'Ları
+  href: oracle-baremetal-skus.md
+- name: Depolama
+  href: oracle-baremetal-storage.md
+- name: Düzeltme eki uygulama konuları
+  href: oracle-baremetal-patching.md
+- name: Ethernet yapılandırması
+  href: oracle-baremetal-ethernet.md
+- name: Mimari
+  href: oracle-baremetal-architecture.md
+- name: Sağlama
+  href: oracle-baremetal-provision.md

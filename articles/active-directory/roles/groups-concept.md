@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 051963060531283b868a5a20e13e871de1919ccb
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: e1fea64305d4735c5bf1bf59b86ae5283600e622
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256081"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502207"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Azure Active Directory 'de rol atamalarını yönetmek için bulut gruplarını kullanma (Önizleme)
 
@@ -63,6 +63,7 @@ Olası ihlalin oluşmasını engellemek için grupların rollere nasıl atandı�
 - Grup üyeliği aracılığıyla rol atamaları için yeni [Exchange Yönetim merkezini](https://admin.exchange.microsoft.com/) kullanın. Eski Exchange Yönetim Merkezi bu özelliği henüz desteklemiyor. Exchange PowerShell cmdlet 'leri beklenen şekilde çalışır.
 - Azure Information Protection Portal (klasik portal) henüz grup aracılığıyla rol üyeliğini tanımıyor. [Birleşik duyarlılık etiketleme platformuna geçiş](/azure/information-protection/configure-policy-migrate-labels) yapabilir ve sonra rolleri yönetmek için Grup atamalarını kullanmak üzere Office 365 güvenlik & Uyumluluk Merkezi ' ni kullanabilirsiniz.
 - [Apps yönetim merkezi](https://config.office.com/) bu özelliği henüz desteklemiyor. Kullanıcıları doğrudan Office uygulamaları yönetici rolüne atayın.
+- [M365 Uyumluluk Merkezi](https://compliance.microsoft.com/) bu özelliği henüz desteklemiyor. Bu portalı kullanmak için kullanıcıları doğrudan uygun Azure AD rollerine atayın.
 
 Bu sorunları düzeltiyoruz.
 

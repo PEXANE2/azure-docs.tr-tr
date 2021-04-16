@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/07/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fcd194e2503610db314f6a975a4afb1d27962f8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a445e9869b0cd9928d95364f39e60fc892214b9a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98028214"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532456"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Öğretici: Video Indexer API'sini kullanma
 
@@ -88,7 +88,7 @@ Hesap Kimliği parametresi, işleme yönelik tüm API çağrıları için gerekl
 
 * Hesap Kimliğini programlı olarak almak için **Video Indexer Geliştirici Portalı**’nı kullanın.
 
-    [Hesap al](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account?) API 'sini kullanın.
+    [Hesap al](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Account) API 'sini kullanın.
 
     > [!TIP]
     > `generateAccessTokens=true` parametresini tanımlayarak hesaplar için erişim belirteçleri oluşturabilirsiniz.

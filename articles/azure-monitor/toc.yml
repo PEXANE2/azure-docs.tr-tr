@@ -101,7 +101,7 @@
           href: containers/resource-manager-container-insights.md
         - name: VM öngörüleri
           href: vm/resource-manager-vminsights.md
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -777,6 +777,8 @@
           displayname: 'e2e, end-to-end, component, dependency, cross-component transaction, operation ID, dependencies'
         - name: Kullanılabilirlik
           items:
+            - name: Genel Bakış
+              href: app/availability-overview.md
             - name: URL testleri
               displayname: 'ping, ping tests, availability, GSM, up/down'
               href: app/monitor-web-app-availability.md

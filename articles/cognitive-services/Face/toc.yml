@@ -36,16 +36,15 @@
     - name: Yüz kapsayıcısını kullanma
       items:
         - name: Bilişsel Hizmetler kapsayıcıları belgeleri
-          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
+          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/face/context/context
         - name: Kapsayıcılara genel bakış
-          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/computer-vision/context/context
+          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/face/context/context
         - name: Kapsayıcıları yükleme ve çalıştırma
           href: face-how-to-install-containers.md
         - name: Kapsayıcıları yapılandırma
           href: face-resource-container-config.md
         - name: Kapsayıcı örnekleri kullanma
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
+          href: /azure/cognitive-services/containers/azure-container-instance-recipe?context=/azure/cognitive-services/face/context/context
 - name: Kavramlar
   items:
     - name: Yüz algılama
@@ -54,8 +53,6 @@
       href: concepts/face-recognition.md
 - name: Öğreticiler
   items:
-    - name: Yüz algılayıcısı uygulaması oluşturma
-      href: Tutorials/FaceAPIinCSharpTutorial.md
     - name: Yüz hizmetine Kullanıcı ekleme
       items:
         - name: Kullanıcıları eklemek için en iyi uygulamalar

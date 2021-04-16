@@ -1,18 +1,18 @@
 ---
 title: Azure kanıtlama için yerleşik ilke tanımları
 description: Azure kanıtlama için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.topic: reference
 ms.service: attestation
 author: msmbaldwin
 ms.author: mbaldwin
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 1053588d826ce110a4e82cc68a6eb322d8fa88b8
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 693a734b30c3c21677554ad87e4a98cec3ad2518
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093711"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500249"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-attestation"></a>Azure Ilke Azure kanıtlama için yerleşik tanımlar
 

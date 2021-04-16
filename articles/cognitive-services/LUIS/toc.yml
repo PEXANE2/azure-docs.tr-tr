@@ -3,7 +3,7 @@
 - name: Genel Bakış
   expanded: true
   items:
-    - name: LUIS'e Genel Bakış
+    - name: Language Understanding (LUIS) nedir?
       href: what-is-luis.md
     - name: Dil desteği
       href: luis-language-support.md
@@ -119,22 +119,26 @@
           diplayName: 'import, export, container'
         - name: Traffic Manager ile
           href: luis-traffic-manager.md
-    - name: LUSıS dağıtma
+    - name: Kapsayıcıları kullanma
       items:
-        - name: Kapsayıcıları kullanma
-          items:
-            - name: Kapsayıcıları yükleme ve çalıştırma
-              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, export to container'
-              href: luis-container-howto.md
-            - name: Kapsayıcıları yapılandırma
-              href: luis-container-configuration.md
-            - name: Kapsayıcı örnekleri kullanma
-              href: ../containers/azure-container-instance-recipe.md
-            - name: Kapsayıcı sınırlamaları
-              href: luis-container-limitations.md
-              displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
-            - name: Bilişsel Hizmetler kapsayıcıları belgeleri
-              href: ../containers/index.yml
+        - name: Kapsayıcıları yükleme ve çalıştırma
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, export to container'
+          href: luis-container-howto.md
+        - name: Kapsayıcıları yapılandırma
+          href: luis-container-configuration.md
+        - name: Kapsayıcı örnekleri kullanma
+          href: ../containers/azure-container-instance-recipe.md
+        - name: Kapsayıcı sınırlamaları
+          href: luis-container-limitations.md
+          displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+        - name: Bilişsel Hizmetler kapsayıcıları belgeleri
+          href: ../containers/index.yml
+    - name: Kurumsal kullanıma hazır olma
+      items:
+        - name: Sanal ağları ayarlama
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/luis/context/context
+        - name: Müşteri tarafından yönetilen anahtarları kullan
+          href: encrypt-data-at-rest.md
 - name: Kavramlar
   items:
     - name: Yapay zeka
@@ -375,24 +379,21 @@
       href: luis-reference-prebuilt-sentiment.md
 - name: Kaynaklar
   items:
-    - name: LUIS portalı
-      href: 'https://www.luis.ai'
+    - name: Kurumsal kullanıma hazır olma
+      items:
+        - name: Bölge desteği
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+          displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+        - name: Uyumluluk ve sertifika
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Destek ve yardım seçenekleri
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
-    - name: Bölgesel kullanılabilirlik
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-      displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+    - name: LUIS portalı
+      href: 'https://www.luis.ai'
     - name: Azure Yol Haritası
       href: 'https://go.microsoft.com/fwlink/?linkid=2092089'
     - name: Sözlük
       href: luis-glossary.md
-    - name: Uyumluluk
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Şifreleme
-      href: encrypt-data-at-rest.md
-    - name: Sanal ağları yapılandırma
-      maintainContext: true
-      href: ../cognitive-services-virtual-networks.md
     - name: Arama
       href: /search/index?search=LUIS
     - name: Blog

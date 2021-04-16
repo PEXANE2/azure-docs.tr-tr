@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe0c7eec5c023fcba3152ad6329d318210a0c2ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f49e15984b7a673de1e7d1607f4802c17ebef4e2
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92370942"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531850"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Azure Active Directory sahip kullanıcılara yönetici ve yönetici olmayan roller atama
 
@@ -29,6 +29,8 @@ Kullanılabilir Azure AD rolleri hakkında daha fazla bilgi için, bkz. [Azure A
 ## <a name="assign-roles"></a>Rolleri atama
 
 Bir kullanıcıya Azure AD rolleri atamak için ortak bir yol, bir kullanıcı için **atanan roller** sayfasıdır. Ayrıca, Kullanıcı uygunluğunu Privileged Identity Management (PıM) kullanarak bir role tam zamanında Yükseltilmek üzere de yapılandırabilirsiniz. PıM kullanma hakkında daha fazla bilgi için bkz. [Privileged Identity Management](../privileged-identity-management/index.yml).
+
+Bir dizin rolü bir konuk kullanıcıya atanırsa, Konuk Kullanıcı, temel okuma izinleri dahil olmak üzere rolle birlikte gelen ek izinlerle verilir. Bkz. [Azure AD yerleşik rolleri](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference).
 
 > [!Note]
 > Bir Azure AD Premium P2 lisans planınız varsa ve zaten PıM kullanıyorsanız, tüm rol yönetim görevleri [Privileged Identity Management deneyimde](../roles/manage-roles-portal.md)gerçekleştirilir. Bu özellik şu anda aynı anda yalnızca bir rol atamak için sınırlıdır. Şu anda birden çok rol seçemezsiniz ve bunları bir kullanıcıya tek seferde atayabilirsiniz.

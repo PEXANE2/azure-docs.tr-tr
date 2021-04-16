@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 1e3549a6f5f4f9d7f6a6da574378c90c20e42dcf
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 2d23e073a43d61a501e93e0288f222ef26407744
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169581"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538241"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning işlem kümesi oluşturma
 
@@ -36,6 +36,14 @@ Bu makalede şunları yapmayı öğreneceksiniz:
 
 * [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)veya [Azure Machine Learning Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md).
 
+* Python SDK kullanıyorsanız, [geliştirme ortamınızı bir çalışma alanıyla ayarlayın](how-to-configure-environment.md).  Ortamınız kurulduktan sonra Python betiğinizdeki çalışma alanına ekleyin:
+
+    ```python
+    from azureml.core import Workspace
+    
+    ws = Workspace.from_config() 
+    ```
+
 ## <a name="what-is-a-compute-cluster"></a>İşlem kümesi nedir?
 
 Azure Machine Learning işlem kümesi, kolayca tek veya çok düğümlü bir işlem oluşturmanıza olanak sağlayan bir yönetilen işlem altyapısıdır. İşlem, çalışma alanınızdaki diğer kullanıcılarla paylaşılabilecek bir kaynak olarak çalışma alanı bölgeniz içinde oluşturulur. İşlem, bir iş gönderildiğinde otomatik olarak ölçeklendirilir ve bir Azure sanal ağına yerleştirilebilir. İşlem kapsayıcılı bir ortamda yürütülür ve model bağımlılıklarınızı bir [Docker kapsayıcısında](https://www.docker.com/why-docker)paketleyebilir.
@@ -53,7 +61,7 @@ Azure Machine Learning işlem kümesi, kolayca tek veya çok düğümlü bir iş
 * Azure, kaynakları, silinememesi veya salt okunurdur.  __Kaynak kilitlerini, çalışma alanınızı içeren kaynak grubuna uygulamayın__. Çalışma alanınızı içeren kaynak grubuna bir kilit uygulandığında, Azure ML işlem kümelerinin ölçeklendirme işlemleri engellenir. Kaynakları kilitleme hakkında daha fazla bilgi için, bkz. [beklenmeyen değişiklikleri engellemek için kaynakları kilitleme](../azure-resource-manager/management/lock-resources.md).
 
 > [!TIP]
-> Gereken çekirdek sayısı için yeterli kotanın olması koşuluyla, kümeler genellikle 100 düğüme kadar ölçeklendirebilir. Varsayılan olarak kümeler, MPı işlerini desteklemek üzere küme düğümleri arasında etkinleştirilen düğümler arası iletişim ile ayarlanır. Ancak, [bir destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)oluşturarak ve abonelik veya çalışma alanınızı ya da düğümler arası iletişimi devre dışı bırakmaya yönelik belirli bir kümeyi listelemek istiyorsanız kümelerinizi 1000 ' e ölçeklendirebilirsiniz. 
+> Gereken çekirdek sayısı için yeterli kotanın olması koşuluyla, kümeler genellikle 100 düğüme kadar ölçeklendirebilir. Varsayılan olarak kümeler, MPı işlerini desteklemek üzere küme düğümleri arasında etkinleştirilen düğümler arası iletişim ile ayarlanır. Ancak, [bir destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)oluşturarak ve abonelik veya çalışma alanınızı ya da düğümler arası iletişimi devre dışı bırakmaya yönelik belirli bir kümeyi listelemek istiyorsanız kümelerinizi 1000 ' e ölçeklendirebilirsiniz.
 
 
 ## <a name="create"></a>Oluştur
@@ -70,11 +78,11 @@ VM ailesi kotası başına bölge başına adanmış çekirdekler ve hesaplama k
     
 # <a name="python"></a>[Python](#tab/python)
 
-Python 'da kalıcı bir Azure Machine Learning Işlem kaynağı oluşturmak için **vm_size** ve **max_nodes** özelliklerini belirtin. Azure Machine Learning daha sonra diğer özellikler için akıllı Varsayılanları kullanır. 
+
+Python 'da kalıcı bir Azure Machine Learning Işlem kaynağı oluşturmak için **vm_size** ve **max_nodes** özelliklerini belirtin. Azure Machine Learning daha sonra diğer özellikler için akıllı Varsayılanları kullanır.
     
 * **vm_size**: Azure Machine Learning işlem tarafından oluşturulan düğümlerin VM ailesi.
 * **max_nodes**: Azure Machine Learning işlem sırasında bir işi çalıştırdığınızda otomatik olarak en fazla düğüm sayısı.
-
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
@@ -132,16 +140,18 @@ Studio 'da, bir VM oluştururken **düşük öncelik** ' i seçin.
 
 * Yönetilen kimliği, sağlama yapılandırmanızda yapılandırın:  
 
-    * Sistem tarafından atanan yönetilen kimlik:
+    * Sistem tarafından atanan yönetilen kimlik adlı bir çalışma alanında oluşturuldu `ws`
         ```python
         # configure cluster with a system-assigned managed identity
         compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
                                                                 max_nodes=5,
                                                                 identity_type="SystemAssigned",
                                                                 )
+        cpu_cluster_name = "cpu-cluster"
+        cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
         ```
     
-    * Kullanıcı tarafından atanan yönetilen kimlik:
+    * Adlı bir çalışma alanında oluşturulan kullanıcı tarafından atanan yönetilen kimlik `ws`
     
         ```python
         # configure cluster with a user-assigned managed identity
@@ -154,7 +164,7 @@ Studio 'da, bir VM oluştururken **düşük öncelik** ' i seçin.
         cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
         ```
 
-* Mevcut bir işlem kümesine yönetilen kimlik Ekle 
+* Şu adlı mevcut bir işlem kümesine yönetilen kimlik Ekle `cpu_cluster`
     
     * Sistem tarafından atanan yönetilen kimlik:
     

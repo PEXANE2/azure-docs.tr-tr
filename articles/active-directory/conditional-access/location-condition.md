@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 07af586bac71ee9b33ef314756454cb3c52ec912
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 8b46ca16fc32a7b96c071a745f49bf5d5557f34b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305931"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530229"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Bir koşullu erişim ilkesinde konum koşulunu kullanma 
 
@@ -165,7 +165,7 @@ Bir bulut proxy 'si olduğunda, karma bir Azure AD 'ye katılmış cihaz istemek
 
 ### <a name="api-support-and-powershell"></a>API desteği ve PowerShell
 
-Adlandırılmış konumlar için Graph API önizleme sürümü kullanılabilir. daha fazla bilgi için, [Namedlocation API 'sine](/graph/api/resources/namedlocation?view=graph-rest-beta)bakın.
+Adlandırılmış konumlar için Graph API önizleme sürümü kullanılabilir. daha fazla bilgi için, [Namedlocation API 'sine](/graph/api/resources/namedlocation)bakın.
 
 > [!NOTE]
 > PowerShell 'i kullanarak oluşturduğunuz adlandırılmış konumlar yalnızca adlandırılmış konumlarda (Önizleme) içinde görüntülenir. Eski görünümde adlandırılmış konumları göremezsiniz.  

@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/15/2021
 ms.author: jgao
-ms.openlocfilehash: 3240cce34a6fa645986a58ab43b28ad38485e97b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d35deb978b3b60b73ac393b241471cb528817d35
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308974"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536968"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>ARM şablonlarında dağıtım betikleri kullanma
 
@@ -136,7 +136,7 @@ Aşağıdaki JSON bir örnektir. Daha fazla bilgi için bkz. en son [şablon şe
 
 Özellik değeri ayrıntıları:
 
-- `identity`: Dağıtım betiği API 'SI sürüm 2020-10-01 veya üzeri için, betikte herhangi bir Azure 'a özgü eylem gerçekleştirmeniz gerekmedikçe Kullanıcı tarafından atanan yönetilen kimlik isteğe bağlıdır.  API sürümü 2019-10-01-önizleme için dağıtım betiği hizmeti tarafından betikleri yürütmek üzere kullandığı için yönetilen bir kimlik gerekir. Şu anda yalnızca Kullanıcı tarafından atanan yönetilen kimlik desteklenir.
+- `identity`: Dağıtım betiği API 'SI sürüm 2020-10-01 veya üzeri için, betikte herhangi bir Azure 'a özgü eylem gerçekleştirmeniz gerekmedikçe Kullanıcı tarafından atanan yönetilen kimlik isteğe bağlıdır.  API sürümü 2019-10-01-önizleme için dağıtım betiği hizmeti tarafından betikleri yürütmek üzere kullandığı için yönetilen bir kimlik gerekir. Identity özelliği belirtildiğinde, komut dosyası hizmeti, `Connect-AzAccount -Identity` Kullanıcı betiği çağırmadan önce çağrılır. Şu anda yalnızca Kullanıcı tarafından atanan yönetilen kimlik desteklenir. Farklı bir kimlikle oturum açmak için, betikte [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) ' u çağırabilirsiniz.
 - `kind`: Betiğin türünü belirtin. Şu anda, Azure PowerShell ve Azure CLı betikleri desteklenir. Değerler **AzurePowerShell** ve **azurecli**' dir.
 - `forceUpdateTag`: Bu değerin, şablon dağıtımları arasında değiştirilmesi dağıtım betiğini yeniden yürütmeye zorlar. `newGuid()`Veya `utcNow()` işlevlerini kullanırsanız, her iki işlev yalnızca bir parametre için varsayılan değerde kullanılabilir. Daha fazla bilgi için bkz. [betiği birden çok kez çalıştırma](#run-script-more-than-once).
 - `containerSettings`: Azure Container Instance 'ı özelleştirmek için ayarları belirtin. Dağıtım betiği yeni bir Azure Container örneği gerektirir. Mevcut bir Azure Container Instance belirtemezsiniz. Ancak, kullanarak kapsayıcı grubu adını özelleştirebilirsiniz `containerGroupName` . Belirtilmemişse, Grup adı otomatik olarak oluşturulur.
@@ -250,7 +250,7 @@ reference('<ResourceName>').outputs.text
 
 ## <a name="work-with-outputs-from-cli-script"></a>CLı betiğinin çıktılarla çalışma
 
-PowerShell dağıtım betiğinden farklı olarak, CLı/Bash desteği betik çıkışlarını depolamak için ortak bir değişken sunmaz, bunun yerine `AZ_SCRIPTS_OUTPUT_PATH` betik çıkışları dosyasının bulunduğu konumu depolayan bir ortam değişkeni vardır. Bir dağıtım betiği Kaynak Yöneticisi şablondan çalışıyorsa, bu ortam değişkeni bash kabuğu tarafından sizin için otomatik olarak ayarlanır.
+PowerShell dağıtım betiğinden farklı olarak, CLı/Bash desteği betik çıkışlarını depolamak için ortak bir değişken sunmaz, bunun yerine `AZ_SCRIPTS_OUTPUT_PATH` betik çıkışları dosyasının bulunduğu konumu depolayan bir ortam değişkeni vardır. Bir dağıtım betiği Kaynak Yöneticisi şablondan çalışıyorsa, bu ortam değişkeni bash kabuğu tarafından sizin için otomatik olarak ayarlanır. Değeri `AZ_SCRIPTS_OUTPUT_PATH` */mnt/azscripts/azscriptoutput/scriptoutputs.js'* dir.
 
 Dağıtım betiği çıktılarının konuma kaydedilmesi gerekir `AZ_SCRIPTS_OUTPUT_PATH` ve çıktılar geçerli BIR JSON dize nesnesi olmalıdır. Dosyanın içeriğinin anahtar-değer çifti olarak kaydedilmesi gerekir. Örneğin, bir dize dizisi olarak depolanır `{ "MyResult": [ "foo", "bar"] }` .  Yalnızca dizi sonuçlarının depolanması, örneğin `[ "foo", "bar" ]` , geçersiz.
 
@@ -310,6 +310,26 @@ Mevcut bir depolama hesabı kullanıldığında, betik hizmeti benzersiz bir ada
 Dağıtım betiğinizdeki değişkeni kullanarak, PowerShell 'in sonlandırmasız hatalara nasıl yanıt vereceğini denetleyebilirsiniz `$ErrorActionPreference` . Dağıtım betiğimizde değişken ayarlanmamışsa, komut dosyası hizmeti **devam et** varsayılan değerini kullanır.
 
 Betik hizmeti, ayarlarına rağmen bir hatayla karşılaştığında, kaynak sağlama durumunu **başarısız** olarak ayarlar `$ErrorActionPreference` .
+
+### <a name="use-environment-variables"></a>Ortam değişkenlerini kullanma
+
+Dağıtım betiği bu ortam değişkenlerini kullanır:
+
+|Ortam değişkeni|Varsayılan değer|Sistem ayrıldı|
+|--------------------|-------------|---------------|
+|AZ_SCRIPTS_AZURE_ENVIRONMENT|AzureCloud|N|
+|AZ_SCRIPTS_CLEANUP_PREFERENCE|OnExpiration|N|
+|AZ_SCRIPTS_OUTPUT_PATH|<AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY>/<AZ_SCRIPTS_PATH_SCRIPT_OUTPUT_FILE_NAME>|Y|
+|AZ_SCRIPTS_PATH_INPUT_DIRECTORY|/mnt/azscripts/azscriptınput|Y|
+|AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY|/mnt/azscripts/azscriptoutput|Y|
+|AZ_SCRIPTS_PATH_USER_SCRIPT_FILE_NAME|Azure PowerShell: userscript.ps1; Azure CLı: userscript.sh|Y|
+|AZ_SCRIPTS_PATH_PRIMARY_SCRIPT_URI_FILE_NAME|primaryscripturi.config|Y|
+|AZ_SCRIPTS_PATH_SUPPORTING_SCRIPT_URI_FILE_NAME|supportingscripturi.config|Y|
+|AZ_SCRIPTS_PATH_SCRIPT_OUTPUT_FILE_NAME|Üzerinde scriptoutputs.js|Y|
+|AZ_SCRIPTS_PATH_EXECUTION_RESULTS_FILE_NAME|Üzerinde executionresult.js|Y|
+|AZ_SCRIPTS_USER_ASSIGNED_IDENTITY|/Subscriptions/|N|
+
+Kullanma hakkında daha fazla bilgi için `AZ_SCRIPTS_OUTPUT_PATH` bkz. [CLI betiğinin çıktılarla çalışma](#work-with-outputs-from-cli-script).
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Güvenli dizeleri dağıtım betiğine geçir
 

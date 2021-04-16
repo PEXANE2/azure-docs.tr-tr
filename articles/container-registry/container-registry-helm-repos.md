@@ -2,22 +2,19 @@
 title: Held grafiklerini depola
 description: Azure Container Registry içindeki depoları kullanarak Kubernetes uygulamalarınız için hele grafiklerini depolamayı öğrenin
 ms.topic: article
-ms.date: 06/12/2020
-ms.openlocfilehash: 9897ed6e43813c16314076b0322cd263cd2ed150
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 04/15/2021
+ms.openlocfilehash: 6698eb8f5e18511717e44bf5dc06a51d8f3903b8
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223090"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537324"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Azure Container Registry 'de Held grafikleri gönderme ve çekme
 
 Kubernetes uygulamalarını hızlıca yönetmek ve dağıtmak için, [Açık kaynaklı HELI paket yöneticisini][helm]kullanabilirsiniz. Held ile uygulama paketleri, bir [Held grafik deposunda](https://helm.sh/docs/topics/chart_repository/)toplanan ve depolanan [grafikler](https://helm.sh/docs/topics/charts/)olarak tanımlanır.
 
 Bu makalede, Heln 3 komutlarını kullanarak bir Azure Container Registry 'de hele grafik depolarının nasıl barındırılacağını gösterilmektedir. Birçok senaryoda, geliştirdiğiniz uygulamalar için kendi grafiklerinizi derleyip karşıya yüklersiniz. Kendi HELI grafiklerinizi oluşturma hakkında daha fazla bilgi için bkz. [grafik şablonu Geliştirici Kılavuzu][develop-helm-charts]. Ayrıca, başka bir Held deposundan var olan bir Helu grafiğini de saklayabilirsiniz.
-
-> [!IMPORTANT]
-> Azure Container Registry 'de Held grafikleri için destek şu anda önizlemededir. Önizlemeler, ek [kullanım koşullarını][terms-of-use]kabul ettiğiniz koşulda size sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
 ## <a name="helm-3-or-helm-2"></a>Helb 3 veya Held 2?
 
@@ -26,7 +23,7 @@ Held grafiklerini depolamak, yönetmek ve yüklemek için bir hele istemcisi ve 
 Hele grafiklerini Azure Container Registry barındırmak için helm3 kullanılmalıdır. Helb 3 ile şunları yapabilirsiniz:
 
 * Bir Azure Container Registry 'de bir veya daha fazla Held deposu oluşturabilir
-* Helm3 grafiklerini bir kayıt defterinde [OCI yapıtları](container-registry-image-formats.md#oci-artifacts)olarak depolayın. Şu anda, OCı için Held 3 desteği *deneysel*.
+* Helm3 grafiklerini bir kayıt defterinde [OCI yapıtları](container-registry-image-formats.md#oci-artifacts)olarak depolayın. Azure Container Registry, Held grafikleri dahil [OCI yapıtları](container-registry-oci-artifacts.md)için GA desteği sağlar.
 * Komutunu kullanarak kayıt defterinizde kimlik doğrulaması yapın `helm registry login` .
 * `helm chart`Bir kayıt defterinde Held grafiklerini göndermek, çekmek ve yönetmek Için HELı CLI içindeki komutları kullanın
 * `helm install`Yerel bir depo önbelleğinden bir Kubernetes kümesine grafik yüklemek için kullanın.

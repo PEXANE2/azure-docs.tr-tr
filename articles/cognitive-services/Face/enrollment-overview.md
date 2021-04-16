@@ -1,5 +1,5 @@
 ---
-title: Yüz Tanıma API'si kaydına genel bakış
+title: Yüz hizmetine Kullanıcı eklemek için en iyi uygulamalar
 titleSuffix: Azure Cognitive Services
 description: Yüz tanıma hizmetinde kullanıcıları kaydetmek için yüz kaydı süreci hakkında bilgi edinin.
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: ac5106aa661cb2baea31ee15d57e9c6fac8c7192
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e710771dd14b389e856e752b6587e2a76ad9d85b
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350339"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505080"
 ---
-# <a name="face-api-enrollment"></a>Kayıt Yüz Tanıma API'si
+# <a name="best-practices-for-adding-users-to-a-face-service"></a>Yüz hizmetine Kullanıcı eklemek için en iyi uygulamalar
 
 Bilişsel hizmetler 'i yüz doğrulama veya tanımlama için Yüz Tanıma API'si kullanmak için yüzleri bir **Largepersongroup** içine kaydetmeniz gerekir. Bu derin, kullanıcılardan anlamlı onay toplamaya yönelik en iyi yöntemleri ve tanıma doğruluğunu en iyi hale getirecek yüksek kaliteli kayıtları oluşturmaya yönelik örnek mantığı gösterir.  
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 98b312066294f2c4ed7f9b089e0f8ea1a68fe4be
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2799e25dbd84ff07b375c6fa1b103789aae82b49
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059709"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538430"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Windows cihazı üzerinde Linux için Azure IoT Edge'i yükleme ve sağlama (Önizleme)
 
@@ -42,7 +42,7 @@ Bu makalede, bir Windows cihazında IoT Edge ayarlama adımları listelenir. Bu 
 
   * Windows 10 sürüm 1809 veya üzeri; derleme 17763 veya üzeri
   * Professional, Enterprise veya Server sürümleri
-  * Minimum boş bellek: 2 GB
+  * Minimum boş bellek: 1 GB
   * Minimum boş disk alanı: 10 GB
   * Windows 10 ' u kullanarak yeni bir dağıtım oluşturuyorsanız, Hyper-V ' y i etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [Windows 10 ' da Hyper-V ' d](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)e nasıl yüklenir.
   * Windows Server 'ı kullanarak yeni bir dağıtım oluşturuyorsanız, Hyper-V rolünü yüklediğinizden emin olun. Daha fazla bilgi için bkz. [Windows Server 'Da Hyper-V rolü nasıl yüklenir](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).

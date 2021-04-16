@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: 563155bb6559f8443f1453a65fa0b1574af106f7
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: ab9c9c6b9d908e86912565ba43cec665432aeda5
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106556245"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389630"
 ---
 # <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>Azure NP-Series VM 'Ler için FPGA kanıtlama (Önizleme)
 
@@ -52,7 +52,7 @@ https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-lates
 
 Netlist dosyanızın kanıtlama hizmeti tarafından erişim için bir Azure Storage blob kapsayıcısına yüklenmesi gerekir.  
 
-Hesabı, kapsayıcıyı oluşturma ve netlist dosyanızı bir blob olarak bu kapsayıcıya yükleme hakkında daha fazla bilgi için bu sayfaya bakın: https://docs.microsoft.com/azure/storage/blobs/storage-quickstartblobs-cli .  
+Hesabı, kapsayıcıyı oluşturma ve netlist dosyanızı bir blob olarak bu kapsayıcıya yükleme hakkında daha fazla bilgi için bu sayfaya bakın: [https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli](/azure/storage/blobs/storage-quickstart-blobs-cli) .  
 
 Ayrıca, bunun için Azure portal de kullanabilirsiniz.  
 
