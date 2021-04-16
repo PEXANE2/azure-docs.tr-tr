@@ -132,6 +132,8 @@
           href: start-virtual-machine-connect.md
         - name: Connect 'te VM 'yi başlatma SSS
           href: start-virtual-machine-connect-faq.md
+    - name: Boşaltma modunu ayarla
+      href: drain-mode.md
 - name: Kavramlar
   items:
     - name: Yerleşik roller

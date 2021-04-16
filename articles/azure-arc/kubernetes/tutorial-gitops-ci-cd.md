@@ -6,13 +6,13 @@ ms.author: tcare
 ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
-ms.custom: template-tutorial
-ms.openlocfilehash: a94784f2f3fc622e0232033d63bc957279a7d34c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.custom: template-tutorial, devx-track-azurecli
+ms.openlocfilehash: 6fb8802dd92e6f9bd55a96772abe3cef5150ac30
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076352"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478395"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Öğretici: Azure Arc özellikli Kubernetes kümelerini kullanarak Gile ile CI/CD uygulama
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Arc etkinleştirilmiş Kubernetes kümeleriyle Gilar kull
 > * `dev`Ve ortamlarını dağıtın `stage` .
 > * Uygulama ortamlarını test edin.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Bir Azure aboneliğine sahip™, başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -119,7 +119,7 @@ Bir Gila bağlantısını eşitlemediğiniz için bildirimleri oluşturan CI/CD 
 
 Uygulama deposu, `.pipeline` PR 'ler, CI ve CD için kullanacağınız işlem hatlarını içeren bir klasör içerir. Örnek depoda belirtilen üç işlem hattını içeri aktarıp yeniden adlandırın:
 
-| İşlem hattı dosya adı | Description |
+| İşlem hattı dosya adı | Açıklama |
 | ------------- | ------------- |
 | [`.pipelines/az-vote-pr-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-pr-pipeline.yaml)  | **Yay-cicd-demo-src PR** ADLı Application PR işlem hattı |
 | [`.pipelines/az-vote-ci-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-ci-pipeline.yaml) | **Yay-cicd-demo-src CI** ADLı uygulama CI işlem hattı |
