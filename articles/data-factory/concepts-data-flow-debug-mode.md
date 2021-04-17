@@ -6,13 +6,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/14/2021
-ms.openlocfilehash: ac0e088c587132b32f2112d21bce936eac35dc72
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 04/16/2021
+ms.openlocfilehash: 681a3643c04472cc42c1f672f4c9433da30e3955
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515878"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565511"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Eşleme veri akışı hata ayıklama modu
 
@@ -22,9 +22,9 @@ ms.locfileid: "107515878"
 
 Azure Data Factory eşleme veri akışının hata ayıklama modu, veri akışlarınızı oluştururken ve hata ayıkladığınızda veri şekli dönüşümünü etkileşimli bir şekilde izlemenize olanak sağlar. Hata ayıklama oturumu hem veri akışı tasarım oturumlarında hem de veri akışlarının işlem hattı hata ayıklamada yürütülmesi sırasında kullanılabilir. Hata ayıklama modunu açmak için, veri akışı aktivitenleriniz olduğunda veri akışı tuvalinin veya işlem hattı tuvalinin üst çubuğundaki **veri akışı hata ayıklama** düğmesini kullanın.
 
-![Hata ayıklama kaydırıcısı 1](media/data-flow/debugbutton.png "Hata ayıklama kaydırıcısı")
+![Hata ayıklama kaydırıcısının nerede olduğunu gösteren ekran görüntüsü 1](media/data-flow/debug-button.png)
 
-![Hata ayıklama kaydırıcısı 2](media/data-flow/debug-button-4.png "Hata ayıklama kaydırıcısı")
+![Hata ayıklama kaydırıcısının nerede olduğunu gösteren ekran görüntüsü 2](media/data-flow/debug-button-4.png)
 
 Kaydırıcıyı açtıktan sonra hangi tümleştirme çalışma zamanı yapılandırmasını kullanmak istediğinizi seçmeniz istenir. Oto Resolveıntegrationruntime seçilirse, varsayılan 60 dakikalık bir zamana kadar genel işlem içeren sekiz çekirdekli bir küme, ön uca olur. Oturumunuz zaman aşımına uğramadan önce daha fazla boşta takımına izin vermek isterseniz, daha yüksek bir TTL ayarı seçebilirsiniz. Veri akışı tümleştirme çalışma zamanları hakkında daha fazla bilgi için bkz. [veri akışı performansı](concepts-data-flow-performance.md#ir).
 

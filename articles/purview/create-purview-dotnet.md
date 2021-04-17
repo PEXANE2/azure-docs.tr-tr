@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 4/2/2021
 ms.author: nayenama
-ms.openlocfilehash: 04ed5cef351c81355a2390dd0b983c162f2b9532
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: b3dc7bf8ac7650a7219c15a09a31d4dcf84a40bf
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387578"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587808"
 ---
 # <a name="quickstart-create-a-purview-account-using-net-sdk"></a>Hızlı başlangıç: .NET SDK kullanarak bir purview hesabı oluşturma
 
@@ -55,7 +55,7 @@ Ardından, Visual Studio 'da bir C# .NET konsol uygulaması oluşturun:
 
 1. **Visual Studio 'yu** başlatın.
 2. Başlangıç penceresinde **Yeni proje**  >  **konsol uygulaması (.NET Framework)** oluştur ' u seçin. .NET sürüm 4.5.2 veya üzeri gereklidir.
-3. **Proje adı** alanına **ADFv2QuickStart** girin.
+3. **Proje adı** alanına **purviewquickstart** yazın.
 4. Projeyi oluşturmak için **Oluştur**'u seçin.
 
 ## <a name="install-nuget-packages"></a>NuGet paketlerini yükleme

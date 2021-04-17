@@ -16,6 +16,8 @@ items:
         href: create-purview-dotnet.md
       - name: Bir purview hesabı oluşturma-Python
         href: create-purview-python.md
+      - name: Kafka bildirimlerini yönetme-.NET
+        href: manage-kafka-dotnet.md
   - name: Öğreticiler
     items:
       - name: Başlangıç seti

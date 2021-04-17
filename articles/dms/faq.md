@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: f4d65c97bfccd223453583b25ee0586c5bc0b1ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83ffd405bf8e39737d2d36c294eac27f9bc76daf
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101091447"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588828"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti 'ni kullanma hakkında SSS
 
@@ -32,9 +32,7 @@ Azure veritabanı geçiş hizmeti, birden çok veritabanı kaynağından Azure v
 * Sürekli geçişlerde sürekli yatırım.
 
 **Ç. Azure veritabanı geçiş hizmeti şu anda hangi kaynak/hedef çiftleri destekliyor?**
-Hizmet şu anda çeşitli kaynak/hedef çiftlerini veya geçiş senaryolarını desteklemektedir. Kullanılabilir her geçiş senaryosunun durum listesinin tamamı için, [Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının](./resource-scenario-status.md)makalesine bakın.
-
-Diğer geçiş senaryoları önizlemededir ve DMS önizleme sitesi aracılığıyla bir aday gönderilmesini gerektirir. Önizlemedeki senaryoların tamamen listesi için ve bu tekliflerinden birine katılmak üzere kaydolmak için, [DMS önizleme sitesine](https://aka.ms/dms-preview/)bakın.
+Hizmet şu anda çeşitli kaynak/hedef çiftlerini veya geçiş senaryolarını desteklemektedir. Kullanılabilir her geçiş senaryosunun durum listesinin tamamı için, [Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının](https://github.com/MicrosoftDocs/azure-docs-pr/pull/resource-scenario-status.md)makalesine bakın.
 
 **Ç. Azure veritabanı geçiş hizmeti hangi SQL Server sürümlerini kaynak olarak destekler?**
 SQL Server geçiş yaparken, Azure veritabanı geçiş hizmeti için desteklenen kaynaklar SQL Server 2019 aracılığıyla SQL Server 2005 ' dir.

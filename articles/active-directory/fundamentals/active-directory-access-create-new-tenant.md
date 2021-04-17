@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeea88d8c21ba754fbeadbb24891126b639616c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31d82906625bc55cbdba21f2e356ee3f29f9d436
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96437249"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567392"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Hızlı başlangıç: Azure Active Directory yeni bir kiracı oluşturun
 Kuruluşunuz için yeni bir kiracı oluşturulması da dahil olmak üzere, Azure Active Directory (Azure AD) portalı kullanarak tüm yönetim görevlerinizi gerçekleştirebilirsiniz. 
@@ -59,10 +59,16 @@ Azure portalda oturum açtıktan sonra kuruluşunuz için yeni bir kiracı oluş
 
 contoso.onmicrosoft.com etki alanıyla yeni kiracınız oluşturulur.
 
+## <a name="your-user-account-in-the-new-tenant"></a>Yeni Kiracıdaki Kullanıcı hesabınız
+
+Yeni bir AAD kiracısı oluşturduğunuzda, bu kiracının ilk kullanıcısı olursunuz. İlk kullanıcı olarak, [genel yönetici](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference#global-administrator) rolünü otomatik olarak atamış olursunuz. [**Kullanıcılar**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/MsGraphUsers) sayfasına giderek Kullanıcı hesabınıza göz atın.
+
+Varsayılan olarak, kiracıya yönelik [teknik iletişim kişisi](https://docs.microsoft.com/microsoft-365/admin/manage/change-address-contact-and-more?view=o365-worldwide#what-do-these-fields-mean) olarak da listelenir. Teknik iletişim bilgileri, [**özelliklerde**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)değiştirebilmeniz için bir şeydir.
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımları kullanarak kiracıyı silebilirsiniz:
 
-- Azure portal **Dizin + abonelik** filtresi aracılığıyla silmek istediğiniz dizinde oturum açtığınızdan ve gerekirse hedef dizine geçiş yapıldığından emin olun.
+- Azure portal **Dizin + abonelik** filtresi aracılığıyla silmek istediğiniz dizinde oturum açtığınızdan emin olun. Gerekirse hedef dizine geçiş yapın.
 - **Azure Active Directory** seçeneğini belirleyin ve sonra **Contoso - Genel Bakış** sayfasında **Dizini sil**’i seçin.
 
     Kiracı ve ilişkili bilgileri silinir.

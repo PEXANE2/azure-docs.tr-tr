@@ -9,12 +9,12 @@ ms.subservice: verifiable-credentials
 ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 1e8bb59c09622a39dad680940ff34e643ee0cc3b
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: a50c8b083c1cd453dbe3c51c63ec9cf53859c3bd
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222750"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587275"
 ---
 # <a name="how-to-create-a-free-azure-active-directory-developer-tenant"></a>Ücretsiz Azure Active Directory geliştirici kiracısı oluşturma
 
@@ -45,7 +45,7 @@ P2 deneme lisansıyla ücretsiz Azure Active Directory oluşturmanın iki yolu v
 
 Bu noktada, 25 E5 kullanıcı lisansına sahip bir kiracı oluşturdunuz. E5 lisansları Azure AD P2 lisanslarını içerir. İsteğe bağlı olarak, geliştirme ortamınızda test etmenize yardımcı olmak için kullanıcılar, gruplar, posta ve SharePoint ile örnek veri paketleri ekleyebilirsiniz. Doğrulanabilir kimlik bilgisi veren hizmeti için, bu gerekli değildir.
 
-Size kolaylık olması için, yeni oluşturulan kiracıda kendi iş hesabınızı [Konuk](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal.md) olarak ekleyebilir ve bu hesabı kiracıyı yönetmek üzere kullanabilirsiniz. Konuk hesabının doğrulanabilir kimlik bilgisi hizmetini yönetebilmesini isterseniz, ' genel yönetici ' rolünü bu kullanıcıya atamanız gerekir.
+Size kolaylık olması için, yeni oluşturulan kiracıda kendi iş hesabınızı [Konuk](/azure/active-directory/external-identities/b2b-quickstart-add-guest-users-portal) olarak ekleyebilir ve bu hesabı kiracıyı yönetmek üzere kullanabilirsiniz. Konuk hesabının doğrulanabilir kimlik bilgisi hizmetini yönetebilmesini isterseniz, ' genel yönetici ' rolünü bu kullanıcıya atamanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

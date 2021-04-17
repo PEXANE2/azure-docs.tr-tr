@@ -7,12 +7,12 @@ ms.custom: mvc, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 562ec4cf19d15772b2dec5adf59582f1feb5363a
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: a7617a36ed800f1765ed7723568a4b612fcb6518
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478473"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587604"
 ---
 # <a name="tutorial-mock-api-responses"></a>Öğretici: sahte API yanıtları
 
@@ -20,7 +20,7 @@ Arka uç API 'Leri, bir API Management (APıM) API 'sine içeri aktarılabilir v
 
 Yanıtları artırma özelliği, çeşitli senaryolarda yararlı olabilir:
 
-+ API faÃ § Ade önce tasarlandıysa ve arka uç uygulama daha sonra gelir. Veya arka uç paralel olarak geliştirildiğinde.
++ İlk olarak API cephesi tasarlanıp arka uç uygulaması daha sonra geldiğinde. Veya arka uç paralel olarak geliştirildiğinde.
 + Arka uç geçici olarak çalışır durumda olmadığında veya ölçeklenemediğinde.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
@@ -84,7 +84,7 @@ Bir API, bir veya daha fazla işlem sunar. Bu bölümde, oluşturduğunuz boş A
 Bu örnek için gerekli olmamasına rağmen, bir API işleminin ek ayarları diğer sekmelerde yapılandırılabilir; örneğin:
 
 
-|Tab      |Açıklama  |
+|Tab      |Description  |
 |---------|---------|
 |**Sorgu**     |  Sorgu parametreleri ekleyin. Bir ad ve açıklama sağlamanın yanı sıra, bir sorgu parametresine atanmış değerler sağlayabilirsiniz. Varsayılan olarak işaretlenebilecek değerlerde biri (isteğe bağlı).        |
 |**İstek**     |  İstek içerik türleri, örnekler ve şemalar tanımlayın.       |

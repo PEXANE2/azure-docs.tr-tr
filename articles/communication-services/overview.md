@@ -8,70 +8,57 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0efdf48e78d0cc48e288bea354f5de5f9635c760
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 8c2559315e3bfffc41c138be6826adae95dd7b07
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106849"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588114"
 ---
 # <a name="what-is-azure-communication-services"></a>Azure İletişim Hizmetleri nedir?
 
-> [!IMPORTANT]
-> Azure Iletişim Hizmetleri 'ni kullanarak oluşturduğunuz uygulamalar Microsoft ekipleriyle iletişim kurabilir. Daha fazla bilgi edinmek için [takımlar birlikte çalışma](./quickstarts/voice-video-calling/get-started-teams-interop.md) belgelerimizi ziyaret edin.
+Azure Iletişim Hizmetleri, uygulamalarınıza kolayca gerçek zamanlı ses, video ve telefon iletişimi eklemenizi sağlar. İletişim Hizmetleri SDK 'Ları, iletişim çözümlerinizi SMS işlevselliği eklemenize de olanak tanır. Azure Iletişim Hizmetleri, kimlik belirsiz ve son kullanıcıların tanımlanması ve kimliklerinin doğrulanabilmesi üzerinde tamamen denetim sahibi olursunuz. İnsanlara iletişim veri düzlemine veya hizmetlerine (botlar) bağlanabilirsiniz.
 
+Uygulamalar şunlardır:
 
-Azure Iletişim Hizmetleri, uygulamalarınıza kolay bir şekilde gerçek zamanlı multimedya sesi, video ve telefon üzerinden iletişim özellikleri eklemenizi sağlar. Iletişim Hizmetleri SDK kitaplıkları, iletişim çözümlerinizi sohbet ve SMS işlevselliği eklemenize de olanak tanır.
+- **İşletmeden müşteriye (B2C).** Bir iş çalışanları ve Hizmetleri, özel bir tarayıcıda veya mobil uygulamada ses, video ve zengin metin sohbeti kullanarak tüketicilerle etkileşime girebilirler. Bir kuruluş SMS mesajları gönderebilir ve alabilir ya da Azure aracılığıyla aldığınız telefon numarasını kullanarak etkileşimli bir ses yanıt sistemi (ıVR) işleyebilir. [Microsoft ekipleri Ile tümleştirme,](./quickstarts/voice-video-calling/get-started-teams-interop.md) tüketicilerin çalışanlar tarafından barındırılan takımlar toplantılarına katılmasına izin verir; çalışanların ekiplere zaten alışkın olabileceği uzak sağlık, bankacılık ve ürün destek senaryolarında idealdir.
+- **Tüketiciden tüketici.** Ses, video ve zengin metin sohbeti ile tüketiciden müşteriye etkileşimi için ilgi çekici sosyal boşluklar oluşturun. Herhangi bir kullanıcı arabirimi türü, Azure Iletişim Hizmetleri SDK 'Ları üzerinde oluşturulabilir, ancak tüm uygulama örneklerini ve Kullanıcı arabirimi varlıklarını hızlıca kullanmaya başlamanıza yardımcı olmak için kullanılabilir.
 
-<br>
-
-> [!VIDEO https://www.youtube.com/embed/apBX7ASurgM]
-
-<br>
-<br>
-
-Ses, video, metin ve veri iletişimleri için Iletişim hizmetlerini çeşitli senaryolarda kullanabilirsiniz:
-
-- Tarayıcıdan tarayıcıya, tarayıcıdan uygulamaya ve uygulamadan uygulamaya iletişim
-- Botlar veya diğer hizmetlerle etkileşim kuran kullanıcılar
-- Ortak anahtarlı telefon ağı üzerinden etkileşim kuran kullanıcılar ve botlar
-
-Karışık senaryolar desteklenir. Örneğin, bir Iletişim Hizmetleri uygulaması kullanıcıların tarayıcılarından ve geleneksel telefon aygıtlarından aynı anda konuşuyor olabilir. İletişim Hizmetleri ayrıca, bot tabanlı etkileşimli sesli yanıt (ıVR) sistemleri oluşturmak için Azure bot hizmeti ile birleştirilebilir.
+Daha fazla bilgi edinmek için [Microsoft](https://www.youtube.com/watch?v=apBX7ASurgM) ortaklığımızı veya aşağıda bağlanılan kaynakları inceleyin.
 
 ## <a name="common-scenarios"></a>Genel senaryolar
 
-Azure Iletişim Hizmetleri 'ni kullanmaya başlamak için aşağıdaki kaynaklar harika bir yerdir.
 <br>
 
 | Kaynak                               |Açıklama                           |
 |---                                    |---                                   |
-|**[İletişim Hizmetleri kaynağı oluşturma](./quickstarts/create-communication-resource.md)**|İlk Iletişim Hizmetleri kaynağınızı sağlamak için Azure portal veya Iletişim Hizmetleri SDK 'sını kullanarak Azure Iletişim hizmetlerini kullanmaya başlayabilirsiniz. Iletişim Hizmetleri kaynak bağlantı dizeniz olduktan sonra, ilk Kullanıcı erişim belirteçlerinizi sağlayabilirsiniz.|
-|**[Telefon numarası alın](./quickstarts/telephony-sms/get-phone-number.md)**|Azure Iletişim hizmetlerini kullanarak telefon numaralarını temin edebilir ve serbest bırakabilirsiniz. Bu telefon numaraları, giden çağrıları başlatmak ve SMS iletişim çözümleri oluşturmak için kullanılabilir.|
+|**[İletişim Hizmetleri kaynağı oluşturma](./quickstarts/create-communication-resource.md)**|İlk Iletişim Hizmetleri kaynağınızı sağlamak için Azure portal veya Iletişim Hizmetleri SDK 'sını kullanarak Azure Iletişim hizmetlerini kullanmaya başlayın. Iletişim Hizmetleri kaynak bağlantı dizeniz olduktan sonra, ilk Kullanıcı erişim belirteçlerinizi sağlayabilirsiniz.|
+|**[Telefon numarası alın](./quickstarts/telephony-sms/get-phone-number.md)**|Azure Iletişim hizmetlerini kullanarak telefon numaralarını temin edebilir ve serbest bırakabilirsiniz. Bu telefon numaraları, telefon aramaları başlatmak veya almak ve SMS çözümleri oluşturmak için kullanılabilir.|
+|**[Uygulamanızdan SMS gönderin](./quickstarts/telephony-sms/send.md)**|Azure Iletişim Hizmetleri SMS SDK 'Sı, hizmet uygulamalarından SMS iletileri gönderme ve alma kullanılır.|
 
-Iletişim Hizmetleri kaynağı oluşturduktan sonra, ses ve video çağırma veya kısa sohbet gibi istemci senaryoları oluşturmaya başlayabilirsiniz.
+Iletişim Hizmetleri kaynağı oluşturduktan sonra, ses ve video çağırma veya kısa sohbet gibi istemci senaryoları oluşturmaya başlayabilirsiniz:
 
 | Kaynak                               |Açıklama                           |
 |---                                    |---                                   |
-|**[İlk Kullanıcı erişim belirtecinizi oluşturma](./quickstarts/access-tokens.md)**|Kullanıcı erişim belirteçleri, hizmetlerinizin kimlik doğrulaması için Azure Iletişim Hizmetleri kaynağına karşı kullanılır. Bu belirteçler, Iletişim Hizmetleri SDK 'Sı kullanılarak sağlanır ve yeniden yayımlandı.|
-|**[Ses ve video çağırma ile çalışmaya başlama](./quickstarts/voice-video-calling/getting-started-with-calling.md)**| Azure Iletişim Hizmetleri, arama SDK 'sını kullanarak uygulamalarınıza ses ve video çağırma olanağı eklemenize olanak tanır. Bu kitaplık WebRTC tarafından desteklenmektedir ve uygulamalarınızda eşler arası, çoklu ortam, gerçek zamanlı iletişim kurmanızı sağlar.|
+|**[İlk Kullanıcı erişim belirtecinizi oluşturma](./quickstarts/access-tokens.md)**|Kullanıcı erişim belirteçleri, istemcilerin kimliğini Azure Iletişim Hizmetleri kaynağına karşı doğrulamak için kullanılır. Bu belirteçler, Iletişim Hizmetleri SDK 'Sı kullanılarak sağlanır ve yeniden yayımlandı.|
+|**[Ses ve video çağırma ile çalışmaya başlama](./quickstarts/voice-video-calling/getting-started-with-calling.md)**| Azure Iletişim Hizmetleri, arama SDK 'sını kullanarak tarayıcınıza veya yerel uygulamalarınıza ses ve video çağırma olanağı eklemenize olanak tanır. |
 |**[Arama uygulamanızla bir Teams toplantısına katılma](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Azure Iletişim Hizmetleri, Microsoft ekipleriyle etkileşime geçen özel toplantı deneyimleri oluşturmak için kullanılabilir. Iletişim Hizmetleri çözümünüzün kullanıcıları ses, video, sohbet ve ekran paylaşımı üzerinde takımlar katılımcıları ile etkileşime geçebilir.|
-|**[Sohbetle çalışmaya başlama](./quickstarts/chat/get-started.md)**|Azure Iletişim Hizmetleri sohbet SDK 'Sı, gerçek zamanlı sohbeti uygulamalarınıza entegre etmek için kullanılabilir.|
-|**[Uygulamanızdan SMS gönderin](./quickstarts/telephony-sms/send.md)**|Azure Iletişim Hizmetleri SMS SDK 'Sı, .NET ve JavaScript uygulamalarınızdan SMS mesajları göndermenizi ve almanızı sağlar.|
+|**[Sohbetle çalışmaya başlama](./quickstarts/chat/get-started.md)**|Azure Iletişim Hizmetleri sohbet SDK 'Sı, uygulamalarınıza gerçek zamanlı kısa mesaj sohbeti eklemek için kullanılır.|
 
 ## <a name="samples"></a>Örnekler
 
-Aşağıdaki örneklerde, Azure Iletişim Hizmetleri SDK kitaplıklarının uçtan uca kullanımı gösterilmektedir. Bu örnekleri kullanarak kendi Iletişim Hizmetleri çözümlerinizi önyükleyebilirsiniz.
+Aşağıdaki örnekler, Azure Iletişim hizmetlerinin uçtan uca kullanımını gösterir. Bu örnekleri kullanarak kendi Iletişim Hizmetleri çözümlerinizi önyükleyebilirsiniz.
 <br>
 
 | Örnek adı                               | Description                           |
 |---                                    |---                                   |
-|**[Hero örneğini çağıran Grup](./samples/calling-hero-sample.md)**|Iletişim Hizmetleri SDK kitaplıklarının bir grup çağırma deneyimi oluşturmak için nasıl kullanılabileceğini öğrenin.|
-|**[Grup sohbeti Hero örneği](./samples/chat-hero-sample.md)**|Bkz. Iletişim Hizmetleri SDK kitaplıklarının grup sohbeti deneyimi oluşturmak için nasıl kullanılabileceğini öğrenin.|
+|**[Hero örneğini çağıran Grup](./samples/calling-hero-sample.md)**| Tarayıcılar, iOS ve Android cihazlar için Grup çağırma için tasarlanan bir uygulama örneği indirin. |
+|**[Grup sohbeti Hero örneği](./samples/chat-hero-sample.md)**| Tarayıcılar için Grup metni sohbeti için tasarlanan bir uygulama örneği indirin. |
 
 
 ## <a name="platforms-and-sdk-libraries"></a>Platformlar ve SDK kitaplıkları
 
-Aşağıdaki kaynaklar, Azure Iletişim Hizmetleri SDK kitaplıkları hakkında bilgi edinmenize yardımcı olur:
+Aşağıdaki kaynaklarla Azure Communication Services SDK 'Ları hakkında daha fazla bilgi edinin. Kendi istemcilerinizi derlemek veya hizmete Internet üzerinden erişmek istiyorsanız, REST API 'Leri çoğu işlevsellik için kullanılabilir.
 
 | Kaynak                               | Açıklama                           |
 |---                                    |---                                   |

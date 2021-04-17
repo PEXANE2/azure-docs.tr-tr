@@ -4,12 +4,12 @@ description: Oracle iş yükleri için BareMetal örneklerinde Ethernet arabirim
 ms.topic: reference
 ms.subservice: workloads
 ms.date: 04/14/2021
-ms.openlocfilehash: e98af51075d5193cab14d18f1cdb1f431c8fa892
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: c57cbc86d17090d6960a334c2790d80b43420aca
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107559317"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588896"
 ---
 # <a name="ethernet-configuration-of-baremetal-for-oracle"></a>Oracle için BareMetal 'ın Ethernet yapılandırması
 
@@ -35,16 +35,16 @@ Varsayılan yapılandırma bir BareMetal örneğine erişmek için Secure Shell 
 
 | **NIC mantıksal arabirimi** | **RHEL işletim sistemi ile ad** | **Kullanım örneği** |
 | --- | --- | --- |
-| A | eth1. Tenant | İstemciden BareMetal örneği |
-| C | eth2. Tenant | Düğümden depolamaya; depolama ortamının yönetimi için depolama denetleyicilerine koordine ve erişimi destekler. |
-| B | eth3. Tenant | Düğümden düğüme (özel bağlantı) |
-| C | eth4. Tenant | Ayrılmış/Iscsı |
-| C | eth5. Tenant | Ayrılmış/günlük yedeklemesi |
-| C | eth6. Tenant | Düğümden storage_Data yedekleme (RMAN, anlık görüntü) |
-| C | eth7. Tenant | Düğümden storage_dNFS-PRI; NetApp depolama dizisiyle bağlantı sağlar. |
-| C | eth8. Tenant | Düğüm-storage_dNFS-sn; NetApp depolama dizisiyle bağlantı sağlar. |
-| D | eth9. Tenant | Başka bir bölgedeki BMı 'ye erişmek için genel erişim kurulumu için DR bağlantısı. |
-| A | \*eth10. Tenant | \* İstemciden BareMetal örneği
+| A | Net1. Tenant | İstemciden BareMetal örneği |
+| C | NET2. Tenant | Düğümden depolamaya; depolama ortamının yönetimi için depolama denetleyicilerine koordine ve erişimi destekler. |
+| B | net3. Tenant | Düğümden düğüme (özel bağlantı) |
+| C | NET4. Tenant | Ayrılmış/Iscsı |
+| C | Net5. Tenant | Ayrılmış/günlük yedeklemesi |
+| C | NET6. Tenant | Düğümden storage_Data yedekleme (RMAN, anlık görüntü) |
+| C | Net7. Tenant | Düğümden storage_dNFS-PRI; NetApp depolama dizisiyle bağlantı sağlar. |
+| C | Net8. Tenant | Düğüm-storage_dNFS-sn; NetApp depolama dizisiyle bağlantı sağlar. |
+| D | Net9. Tenant | Başka bir bölgedeki BMı 'ye erişmek için genel erişim kurulumu için DR bağlantısı. |
+| A | \*Net10. Tenant | \* İstemciden BareMetal örneği
  |
 
 Gerekirse, sizin için daha fazla ağ arabirim denetleyicisi (NIC) kartı tanımlayabilirsiniz. Ancak, *mevcut NIC 'lerin yapılandırması değiştirilemez.*

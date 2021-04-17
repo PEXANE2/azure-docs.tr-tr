@@ -7,13 +7,13 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/14/2021
-ms.openlocfilehash: 0842dad0e0ea6f9987727e8abf3d0eaf8a59e821
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 04/16/2021
+ms.openlocfilehash: f8570c8b252fae91986508abd3725cbbedd361a0
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517527"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565432"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Eşleme veri akışlarını kullanarak verileri dönüştürme
 
@@ -100,7 +100,7 @@ Veri akışınızı oluşturduktan sonra otomatik olarak veri akışı tuvaline 
     ![Kaynağınızı doğruladıktan sonra yeni ' yi seçtiğiniz yeri gösteren ekran görüntüsü.](media/tutorial-data-flow/dataflow3.png)
 1. **Azure Data Lake Storage 2.** seçin. Devam’a tıklayın.
 
-    ![Azure Data Lake Storage 2. kutucuğunu gösteren ekran görüntüsü.](media/tutorial-data-flow/dataset1.png)
+    ![Azure Data Lake Storage 2. kutucuğun nerede olduğunu gösteren ekran görüntüsü.](media/tutorial-data-flow/dataset1.png)
 1. **Delimitedtext** öğesini seçin. Devam’a tıklayın.
 
     ![Delimitedmetin kutucuğunu gösteren ekran görüntüsü.](media/tutorial-data-flow/dataset2.png)
