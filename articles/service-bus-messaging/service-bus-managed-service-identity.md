@@ -3,12 +3,12 @@ title: Service Bus ile Azure kaynakları için Yönetilen kimlikler
 description: Bu makalede, Azure Service Bus varlıklara (kuyruklar, konular ve abonelikler) erişmek için yönetilen kimliklerin nasıl kullanılacağı açıklanır.
 ms.topic: article
 ms.date: 01/21/2021
-ms.openlocfilehash: bd985acd9b775d6baef0abf488952e28c17aef2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cac254ef6b57f1878620b1e3ca30e757d7f39a88
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98954319"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529466"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Service Bus kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama
 [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) , uygulama kodunuzun çalıştırıldığı dağıtımla ilişkili güvenli bir kimlik oluşturmanıza olanak sağlayan bir çapraz Azure özelliğidir. Daha sonra bu kimliği, uygulamanızın ihtiyaç duyacağı belirli Azure kaynaklarına erişim için özel izinler veren erişim denetimi rolleriyle ilişkilendirebilirsiniz.
@@ -92,7 +92,7 @@ Uygulama oluşturulduktan sonra aşağıdaki adımları izleyin:
 Bu ayarı etkinleştirdikten sonra, Azure Active Directory (Azure AD) ve App Service ana bilgisayarında yapılandırılmış yeni bir hizmet kimliği oluşturulur.
 
 > [!NOTE]
-> Yönetilen bir kimlik kullandığınızda bağlantı dizesinin şu biçimde olması gerekir: `Endpoint=sb://<NAMESPACE NAME>.servicebus.windows.net/;Authentication=Managed Identity` .
+> Yönetilen bir kimlik kullandığınızda bağlantı dizesinin şu biçimde olması gerekir: `Endpoint=sb://<NAMESPACE NAME>.servicebus.windows.net/;Authentication=ManagedIdentity` .
 
 Şimdi, bu hizmet kimliğini Service Bus kaynaklarınızın gerekli kapsamındaki bir role atayın.
 

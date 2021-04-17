@@ -4,12 +4,12 @@ description: Azure BareMetal altyapısının koşullarını öğrenin.
 ms.topic: conceptual
 ms.subservice: workloads
 ms.date: 04/06/2021
-ms.openlocfilehash: 53a601cc4556198479d8ca5d7495942d4dc2762c
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: aa7d9693b3417ff0bb6c6a61800aee72cd416c48
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580134"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536774"
 ---
 # <a name="know-the-terms-for-baremetal-infrastructure"></a>BareMetal altyapısının koşullarını öğrenin
 
@@ -24,6 +24,7 @@ Bu makalede, BareMetal altyapısıyla ilgili bazı önemli koşullar ele alınac
 - **Kiracı**: bir BareMetal örnek damgası dağıtan bir müşteri, kiracı olarak yalıtılır *.* Bir kiracı, diğer kiracılardan ağ, depolama ve işlem katmanında yalıtılmıştır. Farklı kiracılara atanan depolama ve işlem birimleri, her birinin veya BareMetal örnek damgası düzeyinde birbirleriyle iletişim kuramazlar. Müşteri, farklı kiracılarda dağıtımları olmasını seçebilir. Daha sonra bile, BareMetal örnek damgası düzeyinde kiracılar arasında iletişim yoktur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 BareMetal altyapısının önemli terimlerinin tanıtıldığına göre, şu bilgileri öğrenmek isteyebilirsiniz:
 - [Baremetal altyapısının](concepts-baremetal-infrastructure-overview.md)daha fazla ayrıntısı.
 - [Azure 'Da BareMetal altyapı örneklerine bağlanma](connect-baremetal-infrastructure.md).

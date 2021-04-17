@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: deb02c161dfe41bf79b7905fde23678425aaf55f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: c5c596735ad91f38d5ba4217135a9373d2856182
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448381"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538450"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX uygulama iliştirme sözlüğü
 
@@ -33,7 +33,7 @@ Bir MSIX paketi, bir MSIX dosyası veya uygulamasıdır.
 
 ## <a name="msix-share"></a>MSIX paylaşma
 
-MALTÝ Share, genişletilmiş MSIX paketlerini tutan bir ağ paylaşımıdır. MSIX paylaşımları SMB 3 veya üstünü destekler. Uygulamalar, uygulama dosyalarını sistem sürücüsüne taşımaya gerek kalmadan bu MSIX paylaşımından hazırlanmalıdır.
+MALTÝ Share, genişletilmiş MSIX paketlerini tutan bir ağ paylaşımıdır. MSIX paylaşımlarının SMB 3 veya sonraki bir sürümünü desteklemesi gerekir. Paylaşımlar, konak havuzu sistem hesabındaki sanal makineler (VM) için de erişilebilir olmalıdır. MSIX paketleri, uygulama dosyalarını sistem sürücüsüne taşımaya gerek kalmadan MSIX paylaşımından hazırlanmalıdır. 
 
 ## <a name="msix-image"></a>MSIX resmi
 

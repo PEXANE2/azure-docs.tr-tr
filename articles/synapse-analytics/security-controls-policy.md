@@ -2,17 +2,17 @@
 title: Azure SYNAPSE Analytics için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure SYNAPSE Analytics için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
 ms.date: 04/14/2021
-ms.topic: sample
+ms.topic: reference
 author: julieMSFT
 ms.author: jrasnick
 ms.service: synapse-analytics
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 68d297af078b8bc4457d5d4be9b1cc1bab009277
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: c6e578e743544861514c77784218a465aac4de2e
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497682"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565449"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için Azure Ilke mevzuat uyumluluk denetimleri
 

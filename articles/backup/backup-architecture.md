@@ -3,12 +3,12 @@ title: Mimariye Genel Bakış
 description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere ve işlemlere genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 1e5a61bd4e3287c1100ff1f54fda797c1add438b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ecf01838b8fe3104626f8ada5f832c3f52dc378
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466420"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515915"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -56,7 +56,7 @@ Kurtarma Hizmetleri kasaları aşağıdaki ek özelliklere sahiptir:
 
 Azure Backup, ne tür bir makinenin yedeklendiğine bağlı olarak farklı yedekleme aracıları sağlar:
 
-**Aracısı** | **Ayrıntılar**
+**Aracı** | **Ayrıntılar**
 --- | ---
 **MARS Aracısı** | <ul><li>Dosyaları, klasörleri ve sistem durumunu yedeklemek için tek bir şirket içi Windows Server makinesi üzerinde çalışır.</li> <li>Dosyaları, klasörleri ve sistem durumunu yedeklemek için Azure VM 'lerde çalışır.</li> <li>DPM/mabs sunucularında DPM/MABS yerel depolama diskini Azure 'a yedeklemek için çalışır.</li></ul>
 **Azure VM Uzantısı** | Azure VM 'lerde çalışarak bunları bir kasaya yedekler.
@@ -137,8 +137,8 @@ Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br
 - Azure dosya paylaşma: ilke [oluşturma](./backup-afs.md) ve [değiştirme](./manage-afs-backup.md#modify-policy) .
 - SAP HANA: ilke [oluşturma](./backup-azure-sap-hana-database.md#create-a-backup-policy) ve [değiştirme](./sap-hana-db-manage.md#change-policy) .
 - MARS: ilke [oluşturma](./backup-windows-with-mars-agent.md#create-a-backup-policy) ve [değiştirme](./backup-azure-manage-mars.md#modify-a-backup-policy) .
-- [İş yükü türüne bağlı olarak yedeklemeyi zamanlamaya yönelik herhangi bir sınırlama var mı?](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
-- [Saklama ilkesini değiştirirsem mevcut kurtarma noktalarına ne olur?](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
+- [İş yükü türüne bağlı olarak yedeklemeyi zamanlamaya yönelik herhangi bir sınırlama var mı?](./backup-azure-backup-faq.yml#are-there-limits-on-backup-scheduling-)
+- [Saklama ilkesini değiştirirsem mevcut kurtarma noktalarına ne olur?](./backup-azure-backup-faq.yml#what-happens-when-i-change-my-backup-policy-)
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Mimari: yerleşik Azure VM yedeklemesi
 

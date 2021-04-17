@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 2ecc5df9db51bb6c923b9e0f47163e492bd76cfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6646f131488a5ae4aa9b20fe614d7ebb46133444
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101695762"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538870"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI kiracı kaydetme ve tarama (Önizleme)
 
@@ -69,8 +69,6 @@ Kimlik doğrulaması ayarlamak için bir güvenlik grubu oluşturun ve bu gruba 
 ## <a name="register-your-power-bi-and-set-up-a-scan"></a>Power BI kaydetme ve tarama kurma
 
 Artık Power BI kiracınızın yönetim API 'sine bağlanmak için, yönetilen kimlik yönetimli kimlik izinlerini vermiş olduğunuza göre, Azure purview Studio 'dan taramanızı ayarlayabilirsiniz.
-
-İlk olarak, purview URL 'nize özel bir özellik bayrağı ekleyin 
 
 1. **Yönetim Merkezi** simgesini seçin.
 

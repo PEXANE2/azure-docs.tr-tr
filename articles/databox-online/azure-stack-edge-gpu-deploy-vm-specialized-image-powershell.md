@@ -6,45 +6,36 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: d03aeb9759fb321b580fa65e06dc09ccde4a44a0
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 6bfa42e99f295b429eba40a27eb59becb8aa80a1
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106556196"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575958"
 ---
-# <a name="deploy-a-vm-from-a-specialized-image-on-your-azure-stack-edge-pro-device-via-azure-powershell"></a>Azure PowerShell aracılığıyla Azure Stack Edge Pro cihazınızdan özelleştirilmiş bir görüntüden VM dağıtma 
+# <a name="deploy-a-vm-from-a-specialized-image-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Azure PowerShell aracılığıyla Azure Stack Edge Pro GPU cihazınızdan özelleştirilmiş bir görüntüden VM dağıtma 
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Bu makalede, bir sanal makineyi (VM) Azure Stack Edge Pro cihazınızda özelleştirilmiş bir görüntüden dağıtmak için gereken adımlar açıklanmaktadır. 
+Bu makalede, bir sanal makineyi (VM) Azure Stack Edge Pro GPU cihazınızda özelleştirilmiş bir görüntüden dağıtmak için gereken adımlar açıklanmaktadır. 
 
-## <a name="about-specialized-images"></a>Özelleştirilmiş görüntüler hakkında
+Azure Stack Edge Pro GPU 'da VM dağıtmak için genelleştirilmiş bir görüntü hazırlamak üzere bkz. [WINDOWS VHD 'den Genelleştirilmiş görüntü hazırlama](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md) veya [bir ISO 'Dan Genelleştirilmiş görüntü hazırlama](azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md).
+
+## <a name="about-vm-images"></a>VM görüntüleri hakkında
 
 Bir Windows VHD veya VHDX, *özel* bir görüntü veya *Genelleştirilmiş* görüntü oluşturmak için kullanılabilir. Aşağıdaki tabloda, *özelleştirilmiş* ve *Genelleştirilmiş* görüntüler arasındaki temel farklılıklar özetlenmektedir.
 
+[!INCLUDE [about-vm-images-for-azure-stack-edge](../../includes/azure-stack-edge-about-vm-images.md)]
 
-|Görüntü türü  |Genelleştirilmiş  |Özelleştirilmiş  |
-|---------|---------|---------|
-|Hedef     |Herhangi bir sisteme dağıtıldı         | Belirli bir sistemi hedefleyen        |
-|Önyüklemeden sonra kurulum     | Kurulum, VM 'nin ilk önyüklemesi sırasında gereklidir.          | Kurulum gerekli değil. <br> Platform VM 'yi açar.        |
-|Yapılandırma     |Ana bilgisayar adı, Yönetici-Kullanıcı ve VM 'ye özgü diğer ayarlar gereklidir.         |Önceden yapılandırılmış.         |
-|Kullanıldığı yer     |Aynı görüntüden birden çok yeni VM oluşturun.         |Belirli bir makineyi geçirin veya önceki yedeklemeden bir VM 'yi geri yükleyin.         |
-
-
-Bu makalede, özel bir görüntüden dağıtmak için gereken adımlar ele alınmaktadır. Genelleştirilmiş bir görüntüden dağıtmak için, bkz. cihazınız için [Genelleştirilmiş WINDOWS VHD 'Yi kullanma](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md) .
-
-
-## <a name="vm-image-workflow"></a>VM görüntüsü iş akışı
+## <a name="workflow"></a>İş akışı
 
 Özel görüntüden bir VM dağıtmak için üst düzey iş akışı:
 
 1. VHD 'yi Azure Stack Edge Pro GPU cihazındaki yerel bir depolama hesabına kopyalayın.
 1. VHD 'den yeni bir yönetilen disk oluşturun.
 1. Yönetilen diskten yeni bir sanal makine oluşturun ve yönetilen diski bağlayın.
-
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -65,7 +56,6 @@ Bir VM 'yi PowerShell aracılığıyla cihazınıza dağıtabilmeniz için önce
     ```
 
 2. `EdgeArmUser`Azure Resource Manager üzerinden bağlanmak için Kullanıcı adını ve parolayı belirtin. Parolayı geri çağırmıyorsanız, [Azure Resource Manager parolasını sıfırlayın](azure-stack-edge-gpu-set-azure-resource-manager-password.md) ve bu parolayı kullanarak oturum açın.
- 
 
 ## <a name="deploy-vm-from-specialized-image"></a>Özelleştirilmiş görüntüden VM dağıtma
 
@@ -75,10 +65,10 @@ Aşağıdaki bölümler, özelleştirilmiş bir görüntüden VM dağıtmak içi
 
 VHD 'yi yerel depolama hesabına kopyalamak için aşağıdaki adımları izleyin:
 
-1. Kaynak VHD 'yi Azure Stack Kenarunuzdaki yerel bir BLOB depolama hesabına kopyalayın. 
+1. Kaynak VHD 'yi Azure Stack Kenarunuzdaki yerel bir BLOB depolama hesabına kopyalayın.
 
 1. Elde edilen URI 'yi bir yere göz atın. Bu URI 'yi sonraki bir adımda kullanacaksınız.
-    
+
     Yerel bir depolama hesabı oluşturmak ve erişmek için, makaleye bir [VHD yükle](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#upload-a-vhd) aracılığıyla bir [depolama hesabı oluşturma](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#create-a-storage-account) başlıklı bölümlere bakın. [Azure Stack Edge cihazınızda VM 'leri Azure PowerShell aracılığıyla dağıtın](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md). 
 
 ## <a name="create-a-managed-disk-from-vhd"></a>VHD 'den yönetilen disk oluşturma
@@ -301,7 +291,5 @@ Bu makale, tüm VM kaynağını oluşturmak için yalnızca bir kaynak grubu kul
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Dağıtımın yapısına bağlı olarak, aşağıdaki yordamlardan birini seçebilirsiniz.
-
-- [Azure PowerShell aracılığıyla genelleştirilmiş bir görüntüden VM dağıtma](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)  
-- [Azure portal aracılığıyla VM dağıtma](azure-stack-edge-gpu-deploy-virtual-machine-portal.md)
+- [Azure Stack Edge Pro GPU üzerinde VM dağıtmak için Windows VHD 'den genelleştirilmiş bir görüntü hazırlama](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md)
+- [Azure Stack Edge Pro GPU d üzerinde VM dağıtmak için BIR ISO 'dan Genelleştirilmiş görüntü hazırlama](azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md)

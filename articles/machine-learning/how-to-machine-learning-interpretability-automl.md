@@ -10,20 +10,20 @@ ms.custom: how-to, automl, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 535ff489060c8099ba3c695f2b615f3c38309698
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 3258a1d53c4aa5010758bcd93ef32c53611f4684
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167949"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576474"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Yorumlanabilirlik: otomatik makine öğrenmesinde model açıklamaları (önizleme)
 
 
-
-Bu makalede, Azure Machine Learning ' de otomatik makine öğrenimi (Otomatikml) açıklamalarını alma hakkında bilgi edineceksiniz. Oto ml, oluşturulan modellerin Özellik önemini anlamanıza yardımcı olur. 
+Bu makalede, Python SDK kullanarak Azure Machine Learning ' de otomatik makine öğrenimi (otomatik ML) açıklamalarını alma hakkında bilgi edinebilirsiniz. Otomatikleştirilmiş ML, oluşturulan modellerin Özellik önemini anlamanıza yardımcı olur. 
 
 1.0.85 sonrasında tüm SDK sürümleri `model_explainability=True` Varsayılan olarak ayarlanır. SDK sürüm 1.0.85 ve önceki sürümlerinde, kullanıcıların `model_explainability=True` `AutoMLConfig` model yorumlenebilirliğini kullanabilmesi için nesnesine ayarlanması gerekir. 
+
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -34,7 +34,7 @@ Bu makalede şunları öğreneceksiniz:
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Yorumlenebilirlik özellikleri. `pip install azureml-interpret`Gerekli paketi almak için ' i çalıştırın.
-- Oto ml denemeleri oluşturma hakkında bilgi. Azure Machine Learning SDK 'sını kullanma hakkında daha fazla bilgi için, bu [regresyon modeli öğreticisini](tutorial-auto-train-models.md) doldurun veya bkz. [oto ml denemeleri 'ı yapılandırma](how-to-configure-auto-train.md).
+- Otomatik ML denemeleri oluşturma hakkında bilgi. Azure Machine Learning SDK 'sını kullanma hakkında daha fazla bilgi için, bu [regresyon modeli öğreticisini](tutorial-auto-train-models.md) doldurun veya [Otomatik ml denemeleri](how-to-configure-auto-train.md)'yi nasıl yapılandıracağınızı öğrenin.
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>En iyi model için eğitim sırasında yorumlenebilirlik
 
@@ -105,11 +105,11 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
 
 ### <a name="initialize-the-mimic-explainer-for-feature-importance"></a>Özellik önemi için benzeme açıklama 'ı başlatın
 
-Oto ml modelleriyle ilgili bir açıklama oluşturmak için `MimicWrapper` sınıfını kullanın. Mmıısarmalayıcı 'yi şu parametrelerle başlatabilirsiniz:
+Otomatik ML modelleriyle ilgili bir açıklama oluşturmak için `MimicWrapper` sınıfını kullanın. Mmıısarmalayıcı 'yi şu parametrelerle başlatabilirsiniz:
 
 - Açıklama Kurulum nesnesi
 - Çalışma alanınız
-- Oto ml modelini açıklamak için bir yedek modeli `fitted_model`
+- Otomatikleştirilmiş ML modelini açıklamak için bir yedek modeli `fitted_model`
 
 Mımısarmalayıcı, uygulanan açıklamalarının `automl_run` karşıya yükleneceği nesneyi de alır.
 
@@ -128,7 +128,7 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
 
 ### <a name="use-mimic-explainer-for-computing-and-visualizing-engineered-feature-importance"></a>Uygulanan özellik önemini hesaplamak ve görselleştirmek için Benzeaçıklama kullanma
 
-`explain()`Oluşturulan mühendislik özelliklerine ilişkin özellik önemini elde etmek için, dönüştürülmüş test örnekleriyle birlikte Msarmalayıcı içindeki yöntemi çağırabilirsiniz. Ayrıca, oluşturulan özelliklerin özellik önem değerlerinin Pano görselleştirmesini görüntülemek için [Azure Machine Learning Studio](https://ml.azure.com/) ' da oturum açabilirsiniz.
+`explain()`Oluşturulan mühendislik özelliklerine ilişkin özellik önemini elde etmek için, dönüştürülmüş test örnekleriyle birlikte Msarmalayıcı içindeki yöntemi çağırabilirsiniz. Ayrıca, üretilen mühendislik özelliklerinin Özellikler Pano görselleştirmesini otomatik ML özellikleri tarafından görüntülemek için [Azure Machine Learning Studio](https://ml.azure.com/) 'da da oturum açabilirsiniz.
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
@@ -172,7 +172,7 @@ ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipelin
 
 ### <a name="use-mimic-explainer-for-computing-and-visualizing-raw-feature-importance"></a>Ham Özellik önemini hesaplamak ve görselleştirmek için Benzeaçıklama kullanma
 
-`explain()`Ham özelliklerin özellik önem derecesini almak için, dönüştürülmüş test örnekleriyle birlikte MimicWrapper içindeki yöntemi çağırabilirsiniz. [Machine Learning Studio](https://ml.azure.com/), ham özelliklerin özellik önem değerlerinin Pano görselleştirmesini görüntüleyebilirsiniz.
+`explain()`Ham özelliklerin özellik önem derecesini almak için, dönüştürülmüş test örnekleriyle birlikte MimicWrapper içindeki yöntemi çağırabilirsiniz. [Machine Learning Studio](https://ml.azure.com/)'da, ham özelliklerin özellik önem derecesi değerlerinin Pano görselleştirmesini görüntüleyebilirsiniz.
 
 ```python
 raw_explanations = explainer.explain(['local', 'global'], get_raw=True,
@@ -184,7 +184,7 @@ print(raw_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-inference"></a>Çıkarım sırasında yorumlenebilirlik
 
-Bu bölümde, bir oto ml modelini, önceki bölümde yer alan açıklamaları hesaplamak için kullanılan açıklama ile nasıl gerçekleştireceğinizi öğreneceksiniz.
+Bu bölümde, önceki bölümde yer alan açıklamaları hesaplamak için kullanılan açıklama ile otomatik bir ML modeli oluşturmayı öğreneceksiniz.
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>Modeli ve Puanlama açıklama kaydetme
 
@@ -321,9 +321,9 @@ if service.state == 'Healthy':
     print('raw_local_importance_values:\n{}\n'.format(output['raw_local_importance_values']))
 ```
 
-### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Eğitim sırasında veri ve açıklamaları desenlerdeki desenleri keşfetmeyi görselleştirin
+## <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Eğitim sırasında veri ve açıklamaları desenlerdeki desenleri keşfetmeyi görselleştirin
 
-[Machine Learning Studio](https://ml.azure.com)çalışma alanınızda Özellik önem grafiğini görselleştirebilirsiniz. Oto ml çalıştırmanız tamamlandıktan sonra, belirli bir çalışmayı görüntülemek için **model ayrıntılarını görüntüle** ' yi seçin. Açıklama görselleştirme panosunu görmek için **açıklamalar** sekmesini seçin.
+Özellik önem grafiğini [Azure Machine Learning Studio](https://ml.azure.com)'daki çalışma alanınızda görselleştirebilirsiniz. Oto ml çalıştırmanız tamamlandıktan sonra, belirli bir çalışmayı görüntülemek için **model ayrıntılarını görüntüle** ' yi seçin. Açıklama panosundaki görselleştirmeleri görmek için **açıklamalar** sekmesini seçin.
 
 [![Machine Learning Yorumlenebilirlik mimarisi](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png)](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png#lightbox)
 

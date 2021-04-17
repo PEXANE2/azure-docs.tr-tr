@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 54ce9ca0ddffe074f5a343d192b4599b3449a855
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: fe8ac81a8b04aa88ce91a978c2bc9b979a065370
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538728"
+ms.locfileid: "107576168"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>SAP Solutions sağlayıcıları için Azure izleyici (Önizleme)
 
@@ -28,7 +28,7 @@ Müşteriler aynı SAP izleyici kaynağını ve ilişkili yönetilen grubu yenid
 - Yüksek kullanılabilirlik kümesi
 - Operating System
 
-![SAP Solutions sağlayıcıları için Azure Izleyici](./media/azure-monitor-sap/azure-monitor-providers.png)
+![SAP Solutions sağlayıcıları için Azure Izleyici](https://user-images.githubusercontent.com/75772258/115047655-5a5b2c00-9ef6-11eb-9e0c-073e5e1fcd0e.png)
 
 Müşteriler, SAP Monitor kaynağını dağıtma sırasında kullanılabilir sağlayıcı türlerinden en az bir sağlayıcıyı yapılandırmak için önerilir. Bir sağlayıcı yapılandırarak, müşteriler sağlayıcının yapılandırıldığı ilgili bileşenden veri toplamayı başlatır.   
 

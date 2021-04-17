@@ -12,14 +12,14 @@ ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26c56940e95fe32b709aa01fbaa9e567e797197
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: f67bc46b4f612d3d2f377070d5d8280512e0e3df
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074548"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576372"
 ---
-# <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
+# <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Sürüm yayınlama geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
 
 Bu makale, yayımlanan sürümleri izlemenize ve değişikliklerin en son sürümde ne olduğunu anlamanıza yardımcı olmak için tasarlanmıştır.
@@ -59,6 +59,12 @@ Bununla birlikte, tüm en son özellikleri ve güncelleştirmeleri beğenmezseni
 
 ## <a name="1640"></a>1.6.4.0
 
+>[!NOTE]
+> Azure AD Connect Sync v2 uç nokta API 'SI şu Azure ortamlarında kullanılabilir:
+> - Azure ticari
+> - Azure Çin bulutu
+> - Azure ABD kamu bulutu Azure Almanya bulutu 'nda kullanıma sunulacaktır
+
 ### <a name="release-status"></a>Yayın durumu
 3/31/2021: yalnızca indirme için yayınlandı, otomatik yükseltme için kullanılamaz
 
@@ -73,7 +79,7 @@ Bununla birlikte, tüm en son özellikleri ve güncelleştirmeleri beğenmezseni
 >[!NOTE]
 > - Bu sürüm yalnızca indirileceği için kullanılabilir hale getirilir.
 > - Bu sürüme yükseltme, eşitleme kuralı değişiklikleri nedeniyle tam eşitleme gerektirecektir.
-> - Bu sürüm, AADConnect sunucusunu yeni v2 uç noktasına varsayılan olarak alır. Bu uç noktasının, Almanya Ulusal bulutu, Çince Ulusal bulut ve ABD kamu bulutu 'nda desteklenmediğini ve bu sürümü bu bulutlarda dağıtmanız gerekiyorsa, v1 uç noktasına dönmek için [Bu yönergeleri](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2#rollback) izlemeniz gerekir. Bunun yapılmaması eşitlemede hatalara neden olur.
+> - Bu sürüm, AADConnect sunucusunu yeni v2 uç noktasına varsayılan olarak alır. Bu uç noktanın, Almanya Ulusal bulutu 'nda desteklenmediğini ve bu sürümü bu ortamda dağıtmanız gerekiyorsa, v1 uç noktasına geri dönmek için [Bu yönergeleri](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2#rollback) izlemeniz gerekir. Bunun yapılmaması eşitlemede hatalara neden olur.
 
 ### <a name="release-status"></a>Yayın durumu
 3/19/2021: karşıdan yüklenmek üzere yayınlandı, otomatik yükseltme için kullanılamaz

@@ -1786,6 +1786,8 @@
       href: /azure/cloud-adoption-framework/get-started/
     - name: Mimari merkezi
       href: /azure/architecture/
+    - name: Geçiş araçları
+      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/migrate/azure-migration-guide/?tabs=MigrationTools'
     - name: Microsoft Soru-Cevap
       href: /answers/topics/azure-virtual-machines.html
     - name: Azure Hızlı Başlangıç şablonları

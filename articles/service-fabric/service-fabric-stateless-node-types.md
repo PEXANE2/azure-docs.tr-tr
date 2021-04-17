@@ -3,14 +3,14 @@ title: Service Fabric kümesinde yalnızca durum bilgisi olan düğüm türlerin
 description: Azure Service Fabric kümesinde durum bilgisiz düğüm türleri oluşturmayı ve dağıtmayı öğrenin.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 09/25/2020
+ms.date: 04/16/2021
 ms.author: pepogors
-ms.openlocfilehash: 74680f7b56ad98851e2839b53c1f9e92b6c6c23a
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 68c617b6e9345910bfd913e61e227a8e6c401bbc
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030023"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576049"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types"></a>Yalnızca durum bilgisi olan düğüm türleriyle bir Azure Service Fabric kümesi dağıtma
 Service Fabric düğüm türleri, bazı zaman bir noktada, durum bilgisi olmayan hizmetlerin düğümlere yerleştirilebileceği bir süre ile gelir. Durum bilgisiz düğüm türleri bir düğüm türü için bu varsayımını daha hızlı hale getirme, böylece düğüm türünün daha hızlı genişleme işlemleri gibi diğer özellikleri kullanmasına izin vermek, bu sayede düğüm türünün daha hızlı genişleme işlemleri, en az sayıda düğüm için destek ve tek bir sanal makine ölçek kümesinde 100 ' den fazla düğüme

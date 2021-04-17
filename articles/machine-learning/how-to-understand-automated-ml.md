@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: b60e5f656b675a1382b8b4776975723a437183bc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 71d8d577bdfd8b359ce872f3489b60dca0b462b2
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773122"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575641"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Otomatik makine öğrenimi sonuçlarını değerlendir
 
@@ -234,18 +234,9 @@ Bu örnekte, daha iyi bir modelin ideal satıra daha yakın olan tahmini ve ger�
 
 ## <a name="model-explanations-and-feature-importances"></a>Model açıklamaları ve özellik kaynakları
 
-Model değerlendirme ölçümleri ve grafikleri, bir modelin genel kalitesini ölçmek için uygun olmakla çalışırken, sorumlu AI oluştururken tahmine dayalı hale getirmek için kullanılan bir modelin hangi veri kümesini temel alan olduğunu inceleyerek. Bu nedenle otomatikleştirilen ML, veri kümesi özelliklerinin göreli katlarını ölçmek ve raporlamak için bir model yorumlu pano sağlar.
+Model değerlendirme ölçümleri ve grafikleri, bir modelin genel kalitesini ölçmek için uygun olmakla çalışırken, sorumlu AI oluştururken tahmine dayalı hale getirmek için kullanılan bir modelin hangi veri kümesini temel alan olduğunu inceleyerek. Bu nedenle otomatikleştirilen ML, veri kümesi özelliklerinin göreli katlarını ölçmek ve raporlamak için bir model açıklamaları panosu sağlar. Bkz. [Azure Machine Learning Studio 'da açıklamalar panosunu görüntüleme](how-to-use-automated-ml-for-ml-models.md#model-explanations-preview).
 
-Yorumlenebilirlik panosunu Studio 'da görüntülemek için:
-1. [Studio 'Da oturum açın](https://ml.azure.com/) ve çalışma alanınıza gidin
-2. Sol menüden **denemeleri** ' yi seçin.
-3. Denemeleri listesinden denemenizi seçin
-4. Sayfanın altındaki tabloda bir oto ml çalıştırması seçin
-5. **Modeller** sekmesinde, açıklamak Istediğiniz modelin **algoritma adını** seçin
-6. **Açıklamalar** sekmesinde, model en iyi durumda olduğunda bir açıklama daha önceden oluşturulmuş olabilir
-7. Yeni bir açıklama oluşturmak için, **açıkla model** ' i seçin ve açıklamaları hesaplamak için uzaktan işlem ' i seçin
-
-[OTOMATIK ml 'de model açıklamaları hakkında daha fazla bilgi edinin](how-to-machine-learning-interpretability-automl.md).
+Kod ilk deneyimi için, bkz. [Azure Machine Learning Python SDK ile OTOMATIKLEŞTIRILMIŞ ml denemeleri için model açıklamalarını](how-to-machine-learning-interpretability-automl.md)ayarlama.
 
 > [!NOTE]
 > Forekısıtcn modeli şu anda otomatik ML açıklamaları tarafından desteklenmiyor ve diğer tahmin modelleri, yorumlu araçlara sınırlı erişime sahip olabilir.

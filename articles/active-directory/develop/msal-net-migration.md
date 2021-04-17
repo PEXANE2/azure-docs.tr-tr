@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 64107c3f667dd7e59fcf6d191e83457029b3a277
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 49b5da2da72e78226db19f5d8881073577aee5b0
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100546355"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575532"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Uygulamaları MSAL.NET 'a geçirme
 
@@ -29,9 +29,17 @@ Hem .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) hem de .NET i
 - Uygulamanız artımlı onayı etkinleştirebilir ve Koşullu erişimin desteklenmesi daha kolay olabilir
 - yeniliğin avantajlarından yararlanabilirsiniz.
 
-**Msal.net artık Microsoft Identity platformu ile kullanmak için önerilen kimlik doğrulama kitaplığıdır**. ADAL.NET üzerinde yeni özellik uygulanmayacak. Çabalar MSAL geliştirmeye odaklanılmıştır.
+**Msal.NET veya Microsoft. Identity. Web artık Microsoft Identity platformu ile kullanmak için önerilen kimlik doğrulama kitaplıklarıdır**. ADAL.NET üzerinde yeni özellik uygulanmayacak. Çabalar MSAL geliştirmeye odaklanılmıştır.
 
 Bu makalede, .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ve .NET için Azure AD kimlik doğrulama kitaplığı (ADAL.NET) arasındaki farklar açıklanmakta ve MSAL 'e geçiş yapmanıza yardımcı olur.
+
+## <a name="should-you-migrate-to-msalnet-or-to-microsoftidentityweb"></a>MSAL.NET 'e veya Microsoft. Identity. Web 'e geçirmeniz gerekir
+
+MSAL.NET vs ADAL.NET ayrıntılarına tıklamadan önce, MSAL.NET veya [Microsoft. Identity. Web](microsoft-identity-web.md) gibi daha yüksek düzeyde bir soyutlama kullanmak istediğinizi denetlemek isteyebilirsiniz.
+
+Aşağıdaki karar ağacı hakkında daha fazla bilgi için, okuma [yalnızca msal.net mi? ne de daha yüksek düzeyde bir soyutlama mi kullanmalıyım?](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Is-MSAL.NET-right-for-me%3F)
+
+:::image type="content" source="media/msal-net-migration/decision-diagram.png" alt-text="ADAL.NET 'den geçiş yaparken MSAL.NET ve Microsoft. Identity. Web 'i veya her ikisini de kullanmanız gerekiyorsa nasıl seçleyeceğinizi açıklayan blok diyagramı":::
 
 ## <a name="differences-between-adal-and-msal-apps"></a>ADAL ve MSAL uygulamaları arasındaki farklılıklar
 
@@ -51,7 +59,7 @@ MSAL.NET kullanmak için [Microsoft. Identity. Client](https://www.nuget.org/pac
 
 ### <a name="scopes-not-resources"></a>Kapsam kaynakları değil
 
-ADAL.NET, *kaynaklar* için belirteçleri alır, ancak msal.net *kapsamlar* için belirteçleri elde edin. Bir dizi MSAL.NET AcquireToken geçersiz kılma kapsamları () adlı bir parametre gerektirir `IEnumerable<string> scopes` . Bu parametre, istenen izinleri ve istenen kaynakları bildiren dizelerin basit bir listesidir. İyi bilinen kapsamlar [Microsoft Graph kapsamlardır](/graph/permissions-reference).
+ADAL.NET, *kaynaklar* için belirteçleri alır, ancak msal.net *kapsamlar* için belirteçleri elde edin. Bir dizi MSAL.NET AcquireToken geçersiz kılma kapsamları () adlı bir parametre gerektirir `IEnumerable<string> scopes` . Bu parametre, istenen izinleri ve istenen kaynakları bildiren dizelerin basit bir listesidir. İyi bilinen kapsamlar [Microsoft Graph kapsamlardır](https://docs.microsoft.com/graph/permissions-reference).
 
 V 1.0 kaynaklarına erişmek için MSAL.NET de mümkündür. Bkz. [bir v 1.0 uygulaması Için kapsamlar](#scopes-for-a-web-api-accepting-v10-tokens)içindeki ayrıntılar.
 

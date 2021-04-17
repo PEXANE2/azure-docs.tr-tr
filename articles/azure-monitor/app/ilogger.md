@@ -4,12 +4,12 @@ description: Azure Application Insights ILogger sağlayıcısını ASP.NET Core 
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: e7d0bd6f7d93eac944e0d53a8e898463bf9887f9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a4781e3f0208d355c06df506bab3b0a3dd457078
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592277"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568599"
 ---
 # <a name="applicationinsightsloggerprovider-for-microsoftextensionlogging"></a>Microsoft. Extension. Logging için Applicationınsightsloggerprovider
 
@@ -494,6 +494,9 @@ Bu kod yalnızca bir tek başına günlük sağlayıcısı kullandığınızda g
        }
    }
    ```
+
+> [!IMPORTANT]
+> Yeni Azure bölgeleri, izleme anahtarları yerine bağlantı dizelerinin kullanılmasını **gerektirir** . [Bağlantı dizesi](./sdk-connection-string.md?tabs=net) , telemetri verilerinizi ilişkilendirmek istediğiniz kaynağı tanımlar. Ayrıca, kaynağınızın telemetri için hedef olarak kullanacağı uç noktaları değiştirmenize de olanak tanır. Bağlantı dizesini kopyalamanız ve uygulamanızın koduna veya bir ortam değişkenine eklemeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

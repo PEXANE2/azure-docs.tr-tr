@@ -3,12 +3,12 @@ title: Kayıt defteri ile ağ sorunlarını giderme
 description: Bir sanal ağda veya bir güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişirken oluşan belirtiler, nedenler ve çözümler
 ms.topic: article
 ms.date: 03/30/2021
-ms.openlocfilehash: ae75959028e19ec61e6dcf41308e54df38139d59
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 0fdedf109703eb443904989d2c0b2d75a6ba5bb1
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220122"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481234"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Kayıt defteri ile ağ sorunlarını giderme
 
@@ -28,6 +28,7 @@ Aşağıdakilerden birini veya daha fazlasını içerebilir:
 * Sanal ağ ayarları veya genel erişim kuralları eklenemiyor veya değiştirilemiyor
 * ACR görevleri görüntüleri alamıyor veya çekmiyor
 * Azure Güvenlik Merkezi, kayıt defterindeki görüntüleri tarayamaz veya tarama sonuçları Azure Güvenlik Merkezi 'nde görünmüyor
+* `host is not reachable`Özel bir uç noktayla yapılandırılmış bir kayıt defterine erişmeye çalışırken hata alıyorsunuz.
 
 ## <a name="causes"></a>Nedenler
 
@@ -86,6 +87,8 @@ Kayıt defteri bir hizmet uç noktası olan bir sanal ağ için yapılandırılm
 
 Sanal ağın özel bağlantı için özel bir uç nokta veya bir hizmet uç noktası (Önizleme) ile yapılandırıldığını doğrulayın. Şu anda bir Azure savunma uç noktası desteklenmiyor.
 
+Özel bir uç nokta yapılandırılmışsa DNS 'nin kayıt defterinin özel IP adresine *myregistry.azurecr.io* gıbı genel FQDN 'yi çözümlediği onaylayın. `dig`DNS araması için veya gibi bir ağ yardımcı programı kullanın `nslookup` . [DNS kayıtlarının](container-registry-private-link.md#dns-configuration-options) kayıt defteri FQDN 'si ve veri uç noktası FQDN 'lerinin her biri için yapılandırıldığından emin olun.
+
 Ağdaki diğer kaynaklardan gelen trafiği kayıt defterine sınırlamak için kullanılan NSG kurallarını ve hizmet etiketlerini gözden geçirin. 
 
 Kayıt defterine yönelik bir hizmet uç noktası yapılandırılmışsa, bu ağ alt ağından erişime izin veren bir ağ kuralının kayıt defterine eklendiğini doğrulayın. Hizmet uç noktası yalnızca ağdaki sanal makinelerden ve AKS kümelerinden erişimi destekler.
@@ -94,11 +97,10 @@ Farklı bir Azure aboneliğindeki bir sanal ağ kullanarak kayıt defteri erişi
 
 Ağda Azure Güvenlik Duvarı veya benzer bir çözüm yapılandırılmışsa, bir AKS kümesi gibi diğer kaynaklardan gelen çıkış trafiğinin kayıt defteri uç noktalarına ulaşmak için etkinleştirildiğini denetleyin.
 
-Özel bir uç nokta yapılandırılmışsa DNS 'nin kayıt defterinin özel IP adresine *myregistry.azurecr.io* gıbı genel FQDN 'yi çözümlediği onaylayın. `dig`DNS araması için veya gibi bir ağ yardımcı programı kullanın `nslookup` .
-
 İlgili bağlantılar:
 
 * [Azure özel bağlantısını kullanarak bir Azure Container Registry 'ye özel olarak bağlanma](container-registry-private-link.md)
+* [Azure Özel Uç Nokta bağlantı sorunlarını giderme](../private-link/troubleshoot-private-endpoint-connectivity.md)
 * [Bir Azure sanal ağında hizmet uç noktası kullanarak bir kapsayıcı kayıt defterine erişimi kısıtlama](container-registry-vnet.md)
 * [AKS kümeleri için gerekli giden ağ kuralları ve FQDN 'Ler](../aks/limit-egress-traffic.md#required-outbound-network-rules-and-fqdns-for-aks-clusters)
 * [Kubernetes: DNS çözümlemesinde hata ayıklama](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)

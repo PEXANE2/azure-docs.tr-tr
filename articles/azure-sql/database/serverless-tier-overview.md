@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 4/15/2021
-ms.openlocfilehash: ea9d5a5c39bf73ede2391c586f09dd95ff79b63c
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.date: 4/16/2021
+ms.openlocfilehash: 7dcbcddc5062470cc3d44fa55ea2591dd989d22d
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531977"
+ms.locfileid: "107576423"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL veritabanı sunucusuz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -266,7 +266,7 @@ Sunucusuz bir veritabanının kaynakları uygulama paketi, SQL örneği ve Kulla
 
 #### <a name="app-package"></a>Uygulama paketi
 
-Uygulama paketi, veritabanının sunucusuz veya sağlanmış bir işlem katmanında olup olmamasına bakılmaksızın bir veritabanı için en dıştaki kaynak yönetimi sınırıdır. Uygulama paketi, SQL veritabanı 'nda bir veritabanı tarafından kullanılan tüm Kullanıcı ve sistem kaynakları kapsamındaki SQL örneğini ve dış hizmetleri içerir. Dış hizmet örnekleri R ve tam metin araması içerir. SQL örneği genellikle uygulama paketi genelinde genel kaynak kullanımını ayırır.
+Uygulama paketi, veritabanının sunucusuz veya sağlanmış bir işlem katmanında olup olmamasına bakılmaksızın bir veritabanı için en dıştaki kaynak yönetimi sınırıdır. Uygulama paketi, hepsi bir arada SQL veritabanındaki bir veritabanı tarafından kullanılan tüm Kullanıcı ve sistem kaynaklarının kapsamını kapsayan tam metin araması gibi SQL örneğini ve dış hizmetleri içerir. SQL örneği genellikle uygulama paketi genelinde genel kaynak kullanımını ayırır.
 
 #### <a name="user-resource-pool"></a>Kullanıcı kaynak havuzu
 
