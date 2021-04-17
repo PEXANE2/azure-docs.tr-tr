@@ -6,13 +6,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/19/2021
-ms.openlocfilehash: 0aa472aca40acbaf3f8c8a09469d08fe6b37187a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: ac0e088c587132b32f2112d21bce936eac35dc72
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699768"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515878"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Eşleme veri akışı hata ayıklama modu
 
@@ -20,9 +20,11 @@ ms.locfileid: "101699768"
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Data Factory eşleme veri akışının hata ayıklama modu, veri akışlarınızı oluştururken ve hata ayıkladığınızda veri şekli dönüşümünü etkileşimli bir şekilde izlemenize olanak sağlar. Hata ayıklama oturumu hem veri akışı tasarım oturumlarında hem de veri akışlarının işlem hattı hata ayıklamada yürütülmesi sırasında kullanılabilir. Hata ayıklama modunu açmak için tasarım yüzeyinin en üstündeki "veri akışı hata ayıklaması" düğmesini kullanın.
+Azure Data Factory eşleme veri akışının hata ayıklama modu, veri akışlarınızı oluştururken ve hata ayıkladığınızda veri şekli dönüşümünü etkileşimli bir şekilde izlemenize olanak sağlar. Hata ayıklama oturumu hem veri akışı tasarım oturumlarında hem de veri akışlarının işlem hattı hata ayıklamada yürütülmesi sırasında kullanılabilir. Hata ayıklama modunu açmak için, veri akışı aktivitenleriniz olduğunda veri akışı tuvalinin veya işlem hattı tuvalinin üst çubuğundaki **veri akışı hata ayıklama** düğmesini kullanın.
 
-![Hata ayıklama kaydırıcısı](media/data-flow/debugbutton.png "Hata ayıklama kaydırıcısı")
+![Hata ayıklama kaydırıcısı 1](media/data-flow/debugbutton.png "Hata ayıklama kaydırıcısı")
+
+![Hata ayıklama kaydırıcısı 2](media/data-flow/debug-button-4.png "Hata ayıklama kaydırıcısı")
 
 Kaydırıcıyı açtıktan sonra hangi tümleştirme çalışma zamanı yapılandırmasını kullanmak istediğinizi seçmeniz istenir. Oto Resolveıntegrationruntime seçilirse, varsayılan 60 dakikalık bir zamana kadar genel işlem içeren sekiz çekirdekli bir küme, ön uca olur. Oturumunuz zaman aşımına uğramadan önce daha fazla boşta takımına izin vermek isterseniz, daha yüksek bir TTL ayarı seçebilirsiniz. Veri akışı tümleştirme çalışma zamanları hakkında daha fazla bilgi için bkz. [veri akışı performansı](concepts-data-flow-performance.md#ir).
 

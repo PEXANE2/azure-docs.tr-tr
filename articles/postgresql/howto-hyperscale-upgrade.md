@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 4/5/2021
-ms.openlocfilehash: 3758e2d458e1a6bd052ac746ac361de033d508e9
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 161204bf02ac36c1f5a3969cf57c61e98560c9b5
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107024029"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518907"
 ---
 # <a name="upgrade-hyperscale-citus-server-group"></a>Hyperscale (Citus) sunucu grubunu yükselt
 
@@ -23,7 +23,7 @@ Bu yönergeler, tüm sunucu grubu düğümlerinde PostgreSQL 'in yeni ana sürü
 PostgreSQL 'in yükseltilmesi, Imagine 'den daha fazla değişikliğe neden olur, çünkü hiper ölçek (Citus), Citus uzantısı da dahil olmak üzere [veritabanı uzantılarını](concepts-hyperscale-extensions.md)da yükseltecektir.
 Üretim ortamınızı yükseltmeden önce, uygulamanızı yeni PostgreSQL ve Citus sürümüyle test etmenizi kesinlikle öneririz.
 
-Test etmenin kolay bir yolu, sunucu grubunuzun bir kopyasını, [zaman içinde geri yükleme](concepts-hyperscale-backup.md#point-in-time-restore-pitr)kullanarak yapmakla sonuçlanır. Kopyayı yükseltin ve uygulamanızı buna karşı test edin. Her şeyin düzgün şekilde çalışmasını doğruladıktan sonra, özgün sunucu grubunu yükseltin.
+Test etmenin kolay bir yolu, sunucu grubunuzun bir kopyasını, [zaman içinde geri yükleme](concepts-hyperscale-backup.md#restore)kullanarak yapmakla sonuçlanır. Kopyayı yükseltin ve uygulamanızı buna karşı test edin. Her şeyin düzgün şekilde çalışmasını doğruladıktan sonra, özgün sunucu grubunu yükseltin.
 
 ## <a name="upgrade-a-server-group-in-the-azure-portal"></a>Azure portal bir sunucu grubunu yükseltme
 

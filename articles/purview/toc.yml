@@ -75,6 +75,8 @@ items:
             href: manage-integration-runtimes.md
           - name: Bağlantı sorunlarını giderme
             href: troubleshoot-connections.md
+          - name: Kaynak kümesi model kuralları
+            href: how-to-resource-set-pattern-rules.md
           - name: Kaynaklar
             items:
               - name: Veri kaynaklarını yönetme

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6f2dfdbb5833b34441b4abba7359ad70c4717d1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95f27827950c5ed38caa1f83ede266afb57a1697
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98602150"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515643"
 ---
 # <a name="set-up-web-endpoints"></a>Web uç noktalarını ayarlama
 
@@ -27,13 +27,118 @@ Bu makalede istemci uygulamasından HTTP isteği oluşturmak için Özel Komutla
 - Web uç noktalarından gelen yanıtı özel bir JSON yüküyle tümleştirme, gönderme ve C# UWP Konuşma SDK'sı istemci uygulamasından görselleştirme
 
 ## <a name="prerequisites"></a>Önkoşullar
+
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 > * Konuşma hizmeti için Azure abonelik anahtarı: [Ücretsiz edinin](overview.md#try-the-speech-service-for-free) veya [Azure portalından](https://portal.azure.com) oluşturun
 > * Önceden oluşturulmuş [Özel Komutlar uygulaması](quickstart-custom-commands-application.md)
 > * Konuşma SDK'sı destekli istemci uygulaması: [Nasıl yapılır: İstemci uygulamasına etkinlik gönderme](./how-to-custom-commands-setup-speech-sdk.md)
 
-## <a name="setup-web-endpoints"></a>Web uç noktalarını ayarlama
+## <a name="deploy-an-external-web-endpoint-using-azure-function-app"></a>Azure İşlev Uygulaması kullanarak dış Web uç noktası dağıtma
+
+* Bu öğreticinin sau için, özel komutlar uygulamanızın **Türolmayan** komutunda ayarladığınız tüm cihazların durumlarını tutan bir HTTP uç noktası gerekir.
+
+* Çağırmak istediğiniz bir Web uç noktanız zaten varsa, [sonraki bölüme](#setup-web-endpoints-in-custom-commands)atlayın. Alternatif olarak, sonraki bölümde, bu bölümü atlamak istiyorsanız kullanabileceğiniz varsayılan bir barındırılan Web uç noktası sunuyoruz.
+
+### <a name="input-format-of-azure-function"></a>Azure Işlevinin giriş biçimi
+* Ardından, [Azure işlevleri](../../azure-functions/index.yml)'ni kullanarak bir uç nokta dağıtacaksınız.
+Aşağıda, Azure işlevinizde geçirilen özel komutlar olayının genel biçimi verilmiştir. İşlev uygulaması yazarken bu bilgileri kullanın.
+
+    ```json
+    {
+      "conversationId": "string",
+      "currentCommand": {
+        "name": "string",
+        "parameters": {
+          "SomeParameterName": "string",
+          "SomeOtherParameterName": "string"
+        }
+      },
+      "currentGlobalParameters": {
+          "SomeGlobalParameterName": "string",
+          "SomeOtherGlobalParameterName": "string"
+      }
+    }
+    ```
+
+    
+* Bu girdinin anahtar özniteliklerini gözden geçirelim:
+        
+    | Öznitelik | Açıklama |
+    | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
+    | **ConversationId** | Görüşmenin benzersiz tanımlayıcısı. Bu KIMLIğIN istemci uygulamasından oluşturulup oluşturulmadığını unutmayın. |
+    | **currentCommand** | Şu anda konuşmada etkin olan komut. |
+    | **ada** | Komutun adı. `parameters`Öznitelik, parametrelerin geçerli değerlerini içeren bir eşlemedir. |
+    | **currentGlobalParameters** | Gibi bir eşlem `parameters` , ancak genel parametreler için kullanılır. |
+
+
+* **Devicemlak** Azure işlevi için, örnek bir özel komutlar olayı aşağıdaki gibi görünür. Bu, işlev uygulamasına **giriş** görevi görür.
+    
+    ```json
+    {
+      "conversationId": "someConversationId",
+      "currentCommand": {
+        "name": "TurnOnOff",
+        "parameters": {
+          "item": "tv",
+          "value": "on"
+        }
+      }
+    }
+    ```
+
+### <a name="output-format-of-azure-function"></a>Azure Işlevinin çıkış biçimi
+
+#### <a name="output-consumed-by-a-custom-commands--application"></a>Özel komutlar uygulaması tarafından tüketilen çıkış
+Bu durumda, çıkış biçimini aşağıdaki biçime uymalısınız. Daha fazla ayrıntı için bir [Web uç noktasından bir komut Güncelleştir](./how-to-custom-commands-update-command-from-web-endpoint.md) ' i izleyin.
+
+```json
+{
+  "updatedCommand": {
+    "name": "SomeCommandName",
+    "updatedParameters": {
+      "SomeParameterName": "SomeParameterValue"
+    },
+    "cancel": false
+  },
+  "updatedGlobalParameters": {
+    "SomeGlobalParameterName": "SomeGlobalParameterValue"
+  }
+}
+```
+
+#### <a name="output-consumed-by-a-client-application"></a>İstemci uygulaması tarafından tüketilen çıkış
+Bu durumda, çıkış biçimini, istemcinizin ihtiyaçlarına uyacak şekilde ayarlayabilirsiniz.
+* **Devicme** uç noktası için Azure işlevinin çıktısı, özel komutlar uygulaması yerine bir istemci uygulaması tarafından kullanılır. Azure işlevinin örnek **çıktısı** aşağıdaki gibidir:
+    
+    ```json
+    {
+      "TV": "on",
+      "Fan": "off"
+    }
+    ``` 
+
+*  Ayrıca, cihazların durumunu uygun şekilde koruyabilmeniz için bu çıkışın bir dış depolamaya yazılması gerekir. Dış depolama durumu, [istemci uygulamasıyla tümleştirin bölümünde](#integrate-with-client-application)kullanılacaktır.
+
+
+### <a name="host-azure-function"></a>Azure Işlevi barındırma
+
+1. Cihaz durumunu kaydetmek için tablo depolama hesabı oluşturun.
+    1. Azure portal gidin ve ad **Devicgöre** **depolama hesabı** türünde yeni bir kaynak oluşturun.
+        1. **Bağlantı dizesi** değerini **devicemlak-> erişim tuşlarından** kopyalayın.
+        1. Bu dizeyi, indirilen örnek İşlev Uygulaması koduna eklemeniz gerekir.
+    1. Örnek [işlev uygulaması kodunu](https://aka.ms/speech/cc-function-app-sample)indirin.
+    1. İndirilen çözümü VS 2019 ' de açın. Dosya **Connections.js**, **STORAGE_ACCOUNT_SECRET_CONNECTION_STRING** değerini, *a adımındaki* kopyalanmış gizli dizi ile değiştirin.
+1.  **DeviceStateAzureFunction** kodunu indirin.
+1. Işlevler uygulamasını Azure 'a [dağıtın](../../azure-functions/index.yml) .
+    
+    1.  Dağıtımın başarılı olmasını bekleyin ve Azure portal dağıtılan kaynağa gidin. 
+    1. Sol bölmedeki **işlevler** ' i seçin ve ardından **devic'** ı seçin.
+    1.  Yeni pencerede, **kod + test** ' i seçin ve ardından **Işlev URL 'sini al**' ı seçin.
+ 
+## <a name="setup-web-endpoints-in-custom-commands"></a>Özel komutlarda Web uç noktalarını ayarlama
+Azure işlevini var olan özel komutlar uygulamasıyla yedeklim.
+Bu bölümde, mevcut bir varsayılan **devicme** uç noktası kullanacaksınız. Azure Işlevini kullanarak kendi web uç noktanızı oluşturduysanız veya aksi takdirde, varsayılan yerine bunu kullanın https://webendpointexample.azurewebsites.net/api/DeviceState .
 
 1. Önceden oluşturduğunuz Özel Komutlar uygulamasını açın.
 1. "Web uç noktaları"na gidip "Yeni web uç noktası"na tıklayın.
@@ -49,7 +154,7 @@ Bu makalede istemci uygulamasından HTTP isteği oluşturmak için Özel Komutla
    | Üst Bilgiler | Anahtar: app, Değer: applicationId değerinin ilk 8 basamağını kullanın | İstek üst bilgisine eklenecek üst bilgi parametreleri.|
 
     > [!NOTE]
-    > - Örnek web uç noktası [Azure İşlevi](../../azure-functions/index.yml) kullanılarak oluşturulmuştur ve televizyon ile vantilatörün cihaz durumunu kaydeden bir veritabanına bağlıdır
+    > - TV ve fanı 'nin cihaz durumunu kaydeden veritabanı ile birlikte gelen [Azure işlevi](../../azure-functions/index.yml)kullanılarak oluşturulan örnek Web uç noktası
     > - Önerilen üst bilgi yalnızca örnek uç nokta için gereklidir
     > - Üst bilgi değerinin örnek uç noktada benzersiz olmasını sağlamak için applicationId değerinizin ilk 8 basamağını kullanın
     > - Gerçek dünyada web uç noktası, cihazlarınızı yöneten [IOT hub'ının](../../iot-hub/about-iot-hub.md) uç noktası olabilir
@@ -115,7 +220,7 @@ Sorgu parametrelerinden birini kaldır, kaydet, yeniden eğit ve test et
 
 ## <a name="integrate-with-client-application"></a>İstemci uygulamasıyla tümleştirme
 
-[Nasıl yapılır: Etkinliği istemci uygulamasına gönderme (Önizleme)](./how-to-custom-commands-send-activity-to-client.md) bölümünde **Etkinliği istemciye gönder** eylemi eklediniz. Eylem, **Web uç noktasını çağırma** eyleminin başarılı olup olmadığına bakılmaksızın istemci uygulamasına gönderilir.
+" [Nasıl yapılır: etkinliği istemci uygulamasına gönder](./how-to-custom-commands-send-activity-to-client.md)" bölümünde, **Istemciye bir etkinlik Gönder** eylemi eklediniz. Eylem, **Web uç noktasını çağırma** eyleminin başarılı olup olmadığına bakılmaksızın istemci uygulamasına gönderilir.
 Ancak çoğu durumda etkinliği istemci uygulamasına yalnızca web uç noktasına yapılan çağrının başarılı olması durumunda göndermek istersiniz. Bu örnekte bu işlem, cihazın durumunun başarıyla güncelleştirilmesidir.
 
 1. Önceden eklediğiniz **Etkinliği istemciye gönder** eylemini silin.

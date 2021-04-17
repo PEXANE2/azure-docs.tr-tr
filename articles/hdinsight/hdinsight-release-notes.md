@@ -5,12 +5,12 @@ ms.custom: references_regions
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: a648ff3aa0c042aaefe16eaae0f9d73953241b3d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 3676889fc56f6dc4746282e5001e33d1bc3c7c9a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065506"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501238"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -67,7 +67,13 @@ HDInsight, giderek Azure sanal makine ölçek kümelerine geçiş yapar. Sanal m
 Gelecek sürümlerde aşağıdaki değişiklikler olur.
 
 ### <a name="os-version-upgrade"></a>İşletim sistemi sürümü yükseltme
-HDInsight, işletim sistemi sürümünü Ubuntu 16,04 ' den 18,04 ' ye yükseltecek. Yükseltme, 2021 Nisan 'dan önce tamamlanır.
+HDInsight kümeleri Şu anda Ubuntu 16,04 LTS üzerinde çalışıyor. [Ubuntu 'ın yayın döngüsünde](https://ubuntu.com/about/release-cycle)başvurulduğundan, ubuntu 16,04 çekirdeği, 2021 Nisan 'Daki yaşam sonuna (EOL) ulaşacaktır. Mayıs 2021 ' de Ubuntu 18,04 üzerinde çalışan yeni HDInsight 4,0 kümesi görüntüsünü kullanıma sunacağız. Yeni oluşturulan HDInsight 4,0 kümeleri, varsayılan olarak, varsa Ubuntu 18,04 üzerinde çalışacaktır. Ubuntu 16,04 üzerindeki mevcut kümeler tam destek ile olduğu gibi çalışacaktır.
+
+HDInsight 3,6, Ubuntu 16,04 ' de çalışmaya devam edecektir. 30 Haziran 2021 ' e kadar standart destek sonuna ulaşacak ve 1 Temmuz 2021 ' de başlayan Temel destek olarak değişecektir. Tarihler ve destek seçenekleri hakkında daha fazla bilgi için bkz. [Azure HDInsight sürümleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions). Ubuntu 18,04, HDInsight 3,6 için desteklenmez. Ubuntu 18,04 kullanmak isterseniz, kümelerinizi HDInsight 4,0 ' ye geçirmeniz gerekir. 
+
+Mevcut kümeleri Ubuntu 18,04 ' ye taşımak istiyorsanız, kümelerinizi bırakıp yeniden oluşturmanız gerekir. Ubuntu 18,04 desteği kullanılabilir hale geldikten sonra lütfen kümenizi oluşturmayı veya yeniden oluşturmayı planlayın. Yeni görüntü tüm bölgelerde kullanılabilir hale geldikten sonra başka bir bildirim göndereceğiz.
+
+Bir Ubuntu 18,04 sanal makinesi (VM) üzerinde Edge düğümlerinde dağıtılan özel uygulamalarınızı ve komut dosyası eylemlerinizi test etmeniz önemle önerilir. [18,04-LTS üzerinde basit bir Ubuntu LINUX VM oluşturabilir](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/), ardından, komut dosyası eylemlerinizi ve kenar düğümlerinde dağıtılan özel uygulamalarınızı çalıştırmak ve test etmek için VM 'niz üzerinde bir [GÜVENLI kabuk (SSH) anahtar çifti](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys#ssh-into-your-vm) oluşturup kullanabilirsiniz.
 
 ### <a name="basic-support-for-hdinsight-36-starting-july-1-2021"></a>HDInsight 3,6, 1 Temmuz 2021 tarihinden itibaren Temel destek
 Microsoft, 1 Temmuz 2021 ' den itibaren belirli HDInsight 3,6 küme türleri için [temel destek](hdinsight-component-versioning.md#support-options-for-hdinsight-versions) sunacaktır. Temel destek planı, 3 Nisan 2022 ' ye kadar kullanılabilir olacaktır. 1 Temmuz 2021 tarihinden itibaren otomatik olarak Temel destek kaydedilir. Kabul etmeniz için herhangi bir işlem yapmanız gerekmez. Temel destek altına eklenen küme türleri için [belgelerimize](hdinsight-36-component-versioning.md) bakın. 

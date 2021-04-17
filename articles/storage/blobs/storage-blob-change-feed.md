@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 1366f24ec3bd35ec23d5bf0879fced367c9f6a45
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 6da83ceb6d8ee51916d25949309d7ddfba0e4b30
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552450"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503612"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob depolamada akış desteğini değiştirme
 
@@ -67,8 +67,8 @@ Değişiklik akışını etkinleştirdiğinizde göz önünde bulundurmanız ger
 Azure portal kullanarak depolama hesabınızda değişiklik akışını etkinleştirin:
 
 1. [Azure Portal](https://portal.azure.com/)depolama hesabınızı seçin.
-1. **BLOB hizmeti** altındaki **veri koruma** seçeneğine gidin.
-1. **İzleme** altında **BLOB değişiklik akışını aç**' ı seçin.
+1. **Veri yönetimi** altında **veri koruma** seçeneğine gidin.
+1. **İzleme** altında **BLOB değişiklik akışını etkinleştir**' i seçin.
 1. Veri koruma ayarlarınızı onaylamak için **Kaydet** düğmesini seçin.
 
     :::image type="content" source="media/storage-blob-change-feed/change-feed-enable-portal.png" alt-text="Azure portal değişiklik akışını etkinleştirmeyi gösteren ekran görüntüsü":::

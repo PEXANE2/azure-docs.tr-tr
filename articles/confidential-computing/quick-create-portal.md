@@ -2,18 +2,20 @@
 title: Hızlı başlangıç-Azure portal Azure gizli bilgi işlem sanal makinesi oluşturma
 description: Azure portal hızlı bir şekilde gizli bilgi işlem sanal makinesi oluşturmayı öğrenerek dağıtımlarınızla çalışmaya başlayın.
 author: JBCook
+ms.author: JenCook
+ms.date: 04/23/2020
+ms.topic: quickstart
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
-ms.topic: quickstart
-ms.date: 04/23/2020
-ms.author: JenCook
-ms.openlocfilehash: 3f0984acd66bd5d6c148be8451938d3152fb9ca7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-portal
+ms.openlocfilehash: f43229570f6bab942cc57a2ea3be163d37f02f89
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566677"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536176"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Azure gizli bilgi işlem VM 'si dağıtma
 
@@ -107,7 +109,7 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
     * **Ağ**
     * **Yönetim**
     * **Konuk yapılandırması**
-    * **Etiketler**
+    * **Lerimi**
 
 1. **Gözden geçir ve oluştur**’u seçin.
 
@@ -148,7 +150,7 @@ Linux VM'lerinize bağlanma hakkında daha fazla bilgi için bkz. [Portal kullan
 
 Bir Ubuntu 18,04 LTS Gen 2 görüntüsünü çalıştıran DCsv2-Series sanal makinesine [OE SDK 'yı](https://github.com/openenclave/openenclave) yüklemek için adım adım yönergeleri izleyin. 
 
-Sanal makineniz Ubuntu 16,04 LTS Gen 2 üzerinde çalışıyorsa [ubuntu 16,04 yükleme yönergelerini](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_16.04.md)izlemeniz gerekir.
+Sanal makineniz Ubuntu 18,04 LTS Gen 2 üzerinde çalışıyorsa [ubuntu 18,04 yükleme yönergelerini](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md)izlemeniz gerekir.
 
 #### <a name="1-configure-the-intel-and-microsoft-apt-repositories"></a>1. Intel ve Microsoft APT depolarını yapılandırma
 

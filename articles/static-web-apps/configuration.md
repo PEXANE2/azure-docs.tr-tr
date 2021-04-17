@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 3ecd38b725307c7a3d75787795130c5106de85a7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9494bcc9941491bbb82c6a948dce720cb9e51424
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312255"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502292"
 ---
 # <a name="configure-azure-static-web-apps"></a>Azure statik Web Apps yapılandırma
 
@@ -33,7 +33,7 @@ _staticwebapp.config.js_ için önerilen konum, `app_location` [iş akışı dos
 Ayrıntılar için bkz. [örnek yapılandırma](#example-configuration-file) dosyası.
 
 > [!IMPORTANT]
-> Bir _staticwebapp.config.js_ varsa, [dosyadaki _staticwebapp.config.js_](./routes.md) yok sayılır.
+> Bir _staticwebapp.config.js_ varsa, [dosyadaki _routes.js_](./routes.md) yok sayılır.
 
 ## <a name="routes"></a>Yollar
 

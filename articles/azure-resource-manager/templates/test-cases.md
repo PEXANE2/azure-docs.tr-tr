@@ -2,15 +2,15 @@
 title: Test araç seti için test çalışmaları
 description: ARM şablonu test araç seti tarafından çalıştırılan testleri açıklar.
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 04/12/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 31e30b4853da03e28a4a2d15292050805f5bc292
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 7805d6dbdb8b93968a2792ed6dfaf2ac8fea9ae5
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064163"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363402"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>ARM şablonu test araç seti için varsayılan test çalışmaları
 
@@ -495,7 +495,7 @@ Test adı: **kimlikler Resourceıds 'Den türetilmelidir**
 
 Bir kaynak KIMLIĞI belirtirken, kaynak KIMLIĞI işlevlerinden birini kullanın. İzin verilen işlevler şunlardır:
 
-* [RESOURCEID](template-functions-resource.md#resourceid)
+* [resourceId](template-functions-resource.md#resourceid)
 * [Subscriptionresourceıd](template-functions-resource.md#subscriptionresourceid)
 * [Tenantresourceıd](template-functions-resource.md#tenantresourceid)
 * [Extensionresourceıd](template-functions-resource.md#extensionresourceid)
@@ -540,7 +540,7 @@ Sonraki örnek bu testi **geçirir** .
 
 Bu test için geçerlidir:
 
-* [RESOURCEID](template-functions-resource.md#resourceid)
+* [resourceId](template-functions-resource.md#resourceid)
 * [Subscriptionresourceıd](template-functions-resource.md#subscriptionresourceid)
 * [Tenantresourceıd](template-functions-resource.md#tenantresourceid)
 * [Extensionresourceıd](template-functions-resource.md#extensionresourceid)
@@ -637,7 +637,7 @@ Aşağıdaki örnek bu testi **geçirir** .
 
 Test adı: **Managedıdentityextension kullanılmamalıdır**
 
-Managedıdentity uzantısını bir sanal makineye uygulamayın. Daha fazla bilgi için bkz. [sanal makine tarafından yönetilen kimlikler uzantısını kullanmayı durdurma ve Azure Instance Metadata Service kullanmaya başlama](../../active-directory/managed-identities-azure-resources/howto-migrate-vm-extension.md).
+Managedıdentity uzantısını bir sanal makineye uygulamayın. Uzantı 2019 ' de kullanımdan kaldırılmıştır ve artık kullanılmamalıdır.
 
 ## <a name="outputs-cant-include-secrets"></a>Çıkışlar gizli dizileri içeremez
 

@@ -1,18 +1,18 @@
 ---
-title: Azure Otomasyonu hesabı yönetilen kimliğinizi devre dışı bırakma
+title: Azure Otomasyonu hesabı yönetilen kimliğinizi devre dışı bırakma (Önizleme)
 description: Bu makalede, bir Azure Otomasyonu hesabının yönetilen kimliğini devre dışı bırakma ve kaldırma işlemleri açıklanmaktadır.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/04/2021
+ms.date: 04/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 74d029db48f64b38eb323150068e173746d379b7
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: e17e1afda50d9a0263067a77bf26435f53b4f237
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107495097"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519281"
 ---
-# <a name="disable-your-azure-automation-account-managed-identity"></a>Azure Otomasyonu hesabı yönetilen kimliğinizi devre dışı bırakma
+# <a name="disable-your-azure-automation-account-managed-identity-preview"></a>Azure Otomasyonu hesabı yönetilen kimliğinizi devre dışı bırakma (Önizleme)
 
 Azure Otomasyonu 'nda sistem tarafından atanan bir kimliği devre dışı bırakmak için iki yol vardır. Bu görevi Azure portal veya bir Azure Resource Manager (ARM) şablonu kullanarak tamamlayabilirsiniz.
 
@@ -42,6 +42,6 @@ Bu yöntemi kullanarak sistem tarafından atanan bir kimliğin kaldırılması a
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Otomasyonu 'nda yönetilen kimliği etkinleştirme hakkında daha fazla bilgi için bkz. [Otomasyon için yönetilen kimliği etkinleştirme ve kullanma](enable-managed-identity-for-automation.md).
+- Azure Otomasyonu 'nda yönetilen kimliği etkinleştirme hakkında daha fazla bilgi için bkz. [Otomasyon için yönetilen kimliği etkinleştirme ve kullanma (Önizleme)](enable-managed-identity-for-automation.md).
 
 - Otomasyon hesabı güvenliğine genel bakış için bkz. [Otomasyon hesabı kimlik doğrulamasına genel bakış](automation-security-overview.md).

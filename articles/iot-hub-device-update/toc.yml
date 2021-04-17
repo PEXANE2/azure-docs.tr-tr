@@ -69,7 +69,7 @@
         - name: Cihaz güncelleştirmelerinin sorunlarını giderme
           href: troubleshoot-device-update.md
         - name: Cihaz güncelleştirme istemcisi hata kodları
-      href: device-update-error-codes.md
+          href: device-update-error-codes.md
 - name: Başvuru
   items:
     - name: REST API

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 4b4ee9d1e583241f8ec9b467ae9ddfdb1360fb52
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 37ac7573a1794c97c81fe5364204f85ff14d9fa6
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284711"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538075"
 ---
 # <a name="spatial-analysis-operations"></a>Uzamsal analiz işlemleri
 
@@ -23,7 +23,7 @@ Uzamsal analiz, kamera cihazlarından gerçek zamanlı akış videosunun analizi
 
 Uzamsal analiz kapsayıcısı aşağıdaki işlemleri uygular:
 
-| İşlem tanımlayıcısı| Description|
+| İşlem tanımlayıcısı| Açıklama|
 |---------|---------|
 | biliveservices. Vision. spatialanalysis-PersonCount | Kameranın görünüm alanındaki belirli bir bölgedeki kişileri sayar. PersonCount 'un doğru toplamı kaydedebilmesi için bölgenin tek bir kamera tarafından tam olarak kapsanmış olması gerekir. <br> Sayı değiştiğinde ilk bir _personcountevent_ olayını ve sonra da _personcountevent_ olaylarını yayar.  |
 | biliveservices. Vision. spatialanalysis-personcrossingline | Bir kişinin, kameranın görünüm alanındaki belirli bir satırı ne zaman kesişdiğini izler. <br>Kişi çizgiyi kesen ve yön bilgisi sağlayan bir _Personlineevent_ olayı yayar. 
@@ -33,7 +33,7 @@ Uzamsal analiz kapsayıcısı aşağıdaki işlemleri uygular:
 
 Tüm yukarıdaki işlemler, `.debug` işlenmekte oldukları gibi video çerçevelerini görselleştirme özelliğine sahip olan sürümde de mevcuttur. `xhost +`Video çerçevelerinin ve olaylarının görselleştirilmesini sağlamak için ana bilgisayarda çalıştırmanız gerekir.
 
-| İşlem tanımlayıcısı| Description|
+| İşlem tanımlayıcısı| Açıklama|
 |---------|---------|
 | biliveservices. Vision. spatialanalysis-PersonCount. Debug | Kameranın görünüm alanındaki belirli bir bölgedeki kişileri sayar. <br> Sayı değiştiğinde ilk bir _personcountevent_ olayını ve sonra da _personcountevent_ olaylarını yayar.  |
 | biliveservices. Vision. spatialanalysis-personcrossingline. Debug | Bir kişinin, kameranın görünüm alanındaki belirli bir satırı ne zaman kesişdiğini izler. <br>Kişi çizgiyi kesen ve yön bilgisi sağlayan bir _Personlineevent_ olayı yayar. 
@@ -45,7 +45,7 @@ Uzamsal analiz, video AI modülü olarak [canlı video analizi](../../media-serv
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| İşlem tanımlayıcısı| Description|
+| İşlem tanımlayıcısı| Açıklama|
 |---------|---------|
 | biliveservices. Vision. spatialanalysis-PersonCount. livevideoanalytics | Kameranın görünüm alanındaki belirli bir bölgedeki kişileri sayar. <br> Sayı değiştiğinde ilk bir _personcountevent_ olayını ve sonra da _personcountevent_ olaylarını yayar.  |
 | biliveservices. Vision. spatialanalysis-personcrossingline. livevideoanalytics | Bir kişinin, kameranın görünüm alanındaki belirli bir satırı ne zaman kesişdiğini izler. <br>Kişi çizgiyi kesen ve yön bilgisi sağlayan bir _Personlineevent_ olayı yayar. 
@@ -60,7 +60,7 @@ Canlı video analizi işlemleri de `.debug` (örneğin, biliveservices. Vision. 
 
 Bunlar, bu uzamsal analiz işlemlerinin her biri için gereken parametrelerdir.
 
-| İşlem parametreleri| Description|
+| İşlem parametreleri| Açıklama|
 |---------|---------|
 | İşlem KIMLIĞI | Yukarıdaki tablodan Işlem tanımlayıcısı.|
 | enabled | Boolean: true veya false|
@@ -120,12 +120,12 @@ Bu, tüm uzamsal analiz işlemleri için DETECTOR_NODE_CONFIG parametrelerine bi
 }
 ```
 
-| Ad | Tür| Description|
+| Ad | Tür| Açıklama|
 |---------|---------|---------|
 | `zones` | list| Bölgelerin listesi. |
 | `name` | string| Bu bölge için kolay ad.|
 | `polygon` | list| Her bir değer çifti, çokgenin köşeleri için x, y 'yi temsil eder. Çokgen, insanların izlenen veya sayılan olduğu alanı temsil eder ve çokgen noktaları, sol üst köşenin (0,0, 0,0) ve sağ alt köşenin (1,0, 1,0) olduğu normalleştirilmiş koordinatları (0-1) temel alır.   
-| `threshold` | float| AI modellerinin güvenilirliği bu değere eşit veya ondan fazlaysa, olaylar yumurallardır. |
+| `threshold` | float| Kişi, bölge içindeki bu pikselden daha büyük olduğunda olaylar olur. |
 | `type` | string| **Biliveservices. Vision. spatialanalysis-PersonCount** için bu olmalıdır `count` .|
 | `trigger` | string| Olay gönderme tetikleyicisinin türü. Desteklenen değerler, sayımdan `event` bağımsız olarak değişiklik yapılıp yapılmayacağını fark edildiğinde, sayı değiştiğinde ya da `interval` olayların düzenli aralıklarla gönderilmesi için olay göndermeye yöneliktir.
 | `output_frequency` | int | Olayların yumurdaki oranı. `output_frequency`= X olduğunda, her X olayı ise, EX olur. `output_frequency` = 2, diğer tüm olayların çıkış olduğu anlamına gelir. , `output_frequency` Ve için geçerlidir `event` `interval` . |
@@ -165,14 +165,14 @@ Bu, bir satırı yapılandıran SPACEANALYTICS_CONFIG parametresi için bir JSON
 }
 ```
 
-| Ad | Tür| Description|
+| Ad | Tür| Açıklama|
 |---------|---------|---------|
 | `lines` | list| Satır listesi.|
 | `name` | string| Bu satır için kolay ad.|
 | `line` | list| Çizginin tanımı. Bu bir yön çizgisi, "giriş" ve "çıkış" ile anlamanızı sağlar.|
 | `start` | değer çifti| çizginin başlangıç noktası için x, y koordinatları. Float değerleri, üst, sol köşeye göre köşe konumunu temsil eder. Mutlak x, y değerlerini hesaplamak için, bu değerleri çerçeve boyutuyla çarpmanız gerekir. |
 | `end` | değer çifti| çizginin bitiş noktası için x, y koordinatları. Float değerleri, üst, sol köşeye göre köşe konumunu temsil eder. Mutlak x, y değerlerini hesaplamak için, bu değerleri çerçeve boyutuyla çarpmanız gerekir. |
-| `threshold` | float| AI modellerinin güvenilirliği bu değere eşit veya ondan fazlaysa, olaylar yumurallardır. Varsayılan değer 16'dır. Bu, en fazla doğruluğu sağlamak için önerilen değerdir. |
+| `threshold` | float| Kişi, bölge içindeki bu pikselden daha büyük olduğunda olaylar olur. Varsayılan değer 16'dır. Bu, en fazla doğruluğu sağlamak için önerilen değerdir. |
 | `type` | string| **Biliveservices. Vision. spatialanalysis-personcrossingline** için bu olmalıdır `linecrossing` .|
 |`trigger`|string|Olay gönderme tetikleyicisinin türü.<br>Desteklenen değerler: "olay": bir kişi çizgiyi kesiştiğinde yangın.|
 | `focus` | string| Olayları hesaplamak için kullanılan öğenin sınırlayıcı kutusundaki nokta konumu. Odağın değeri `footprint` (kişinin parmak izi), (kişinin sınırlayıcı `bottom_center` kutusunun alt Merkezi), `center` (kişinin sınırlayıcı kutusunun merkezi) olabilir. Varsayılan değer, parmak izdir.|
@@ -211,12 +211,12 @@ Bu, bir bölgeyi yapılandıran SPACEANALYTICS_CONFIG parametresine yönelik JSO
 }
 ```
 
-| Ad | Tür| Description|
+| Ad | Tür| Açıklama|
 |---------|---------|---------|
 | `zones` | list| Bölgelerin listesi. |
 | `name` | string| Bu bölge için kolay ad.|
 | `polygon` | list| Her bir değer çifti, poligonun köşeleri için x, y 'yi temsil eder. Çokgen, insanların izlenmekte veya dikkate alındığı alanı temsil eder. Float değerleri, üst, sol köşeye göre köşe konumunu temsil eder. Mutlak x, y değerlerini hesaplamak için, bu değerleri çerçeve boyutuyla çarpmanız gerekir. 
-| `threshold` | float| AI modellerinin güvenilirliği bu değere eşit veya ondan fazlaysa, olaylar yumurallardır. Tür zonecrossing olduğunda varsayılan değer 48, saat DwellTime olduğunda 16 ' dır. Bunlar, en fazla doğruluğu elde etmek için önerilen değerlerdir.  |
+| `threshold` | float| Kişi, bölge içindeki bu pikselden daha büyük olduğunda olaylar olur. Tür zonecrossing olduğunda varsayılan değer 48, saat DwellTime olduğunda 16 ' dır. Bunlar, en fazla doğruluğu elde etmek için önerilen değerlerdir.  |
 | `type` | string| **Biliveservices. Vision. spatialanalysis-personcrossingçokgen** için bu veya olmalıdır `zonecrossing` `zonedwelltime` .|
 | `trigger`|string|Olay gönderme tetikleyicisinin türü<br>Desteklenen değerler: "olay": birisi bölgeden girdiğinde veya uygulamadan çıktığında yangın.|
 | `focus` | string| Olayları hesaplamak için kullanılan öğenin sınırlayıcı kutusundaki nokta konumu. Odağın değeri `footprint` (kişinin parmak izi), (kişinin sınırlayıcı `bottom_center` kutusunun alt Merkezi), `center` (kişinin sınırlayıcı kutusunun merkezi) olabilir. Varsayılan değer, parmak izdir.|
@@ -246,12 +246,12 @@ Bu, **biliveservices. Vision. spatialanalysis-persondistance** için bir bölgey
 }
 ```
 
-| Ad | Tür| Description|
+| Ad | Tür| Açıklama|
 |---------|---------|---------|
 | `zones` | list| Bölgelerin listesi. |
 | `name` | string| Bu bölge için kolay ad.|
 | `polygon` | list| Her bir değer çifti, poligonun köşeleri için x, y 'yi temsil eder. Çokgen, insanların sayıldığı ve kişiler arasındaki mesafe ölçülen alanı temsil eder. Float değerleri, üst, sol köşeye göre köşe konumunu temsil eder. Mutlak x, y değerlerini hesaplamak için, bu değerleri çerçeve boyutuyla çarpmanız gerekir. 
-| `threshold` | float| AI modellerinin güvenilirliği bu değere eşit veya ondan fazlaysa, olaylar yumurallardır. |
+| `threshold` | float| Kişi, bölge içindeki bu pikselden daha büyük olduğunda olaylar olur. |
 | `type` | string| **Biliveservices. Vision. spatialanalysis-persondistance** için olmalıdır `people_distance` .|
 | `trigger` | string| Olay gönderme tetikleyicisinin türü. Desteklenen değerler, sayımdan `event` bağımsız olarak değişiklik yapılıp yapılmayacağını fark edildiğinde, sayı değiştiğinde ya da `interval` olayların düzenli aralıklarla gönderilmesi için olay göndermeye yöneliktir.
 | `output_frequency` | int | Olayların yumurdaki oranı. `output_frequency`= X olduğunda, her X olayı ise, EX olur. `output_frequency` = 2, diğer tüm olayların çıkış olduğu anlamına gelir. , `output_frequency` Ve için geçerlidir `event` `interval` .|
@@ -1034,7 +1034,7 @@ GPU 'ların en iyi performansını ve kullanımını sağlamak için, grafik ör
       }
   }
   ```
-| Ad | Tür| Description|
+| Ad | Tür| Açıklama|
 |---------|---------|---------|
 | `batch_size` | int | Tüm kameralar aynı çözünürlüğe sahip ise, `batch_size` Bu işlemde kullanılacak olan kamera sayısına ayarlayın, aksi takdirde 1 olarak ayarlayın `batch_size` veya varsayılan olarak (1) olarak bırakın. Bu, hiçbir toplu işin desteklenmediğini gösterir. |
 
