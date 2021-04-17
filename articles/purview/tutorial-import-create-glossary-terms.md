@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 9443c6fbaca16cf075745972a1655a2b4b2ea43c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: b240806b934cae54810cf9dfe1a6c1f369cede7e
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077542"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587519"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>Öğretici: Azure purview 'da Sözlük terimleri oluşturma ve içeri aktarma (Önizleme)
 
@@ -96,6 +96,9 @@ Bu yordamda, sözlük koşullarını bir. csv dosyası aracılığıyla içeri a
 1. [Bu öğretici serisinin 1. bölümünde](tutorial-scan-data.md)indirdiğiniz Başlatıcı Kit 'in bir parçası olan *StarterKitTerms.csv* adlı dosyayı depoladığınız yere göz önünde bulabilirsiniz.
 
    Bu dosya, verilerinize uygun olan önceden doldurulmuş terimlerin bir listesini içerir.
+
+ > [!Important]
+   > İçindeki ödüller ve uzmanlar için e-posta adresi. CSV dosyası, AAD grubundan kullanıcının birincil adresi olmalıdır. Alternatif e-posta, Kullanıcı asıl adı ve AAD olmayan e-postalar henüz desteklenmiyor. E-posta adreslerini, kuruluşunuzdaki AAD birincil adresi ile değiştirmeniz gerekir.
 
 1. İçeri aktarmaya başlamak için **Sözlük**' i seçin ve ardından **Koşulları içeri aktar**' ı seçin.
 

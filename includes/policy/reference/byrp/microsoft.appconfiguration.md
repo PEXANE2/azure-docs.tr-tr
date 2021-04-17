@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d799bba02acadb7e16ea0ab912361cf5eedb87ee
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: e90ac3aa17d2dfcb4e71ded90337bf88e1f12180
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106092503"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497358"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Uygulama yapılandırması genel ağ erişimini devre dışı bırakmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3d9f5e4c-9947-4579-9539-2a7695fbc187) |Ortak ağ erişiminin devre dışı bırakılması, kaynağın genel İnternet 'te açık olmamasını sağlayarak güvenliği artırır. Bunun yerine özel uç noktalar oluşturarak kaynaklarınızın görünürlüğünü sınırlayabilirsiniz. Daha fazla bilgi: [https://aka.ms/appconfig/private-endpoint](https://aka.ms/appconfig/private-endpoint) . |Denetim, reddetme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/PrivateLink_PublicNetworkAccess_Audit.json) |
 |[Uygulama yapılandırması, müşteri tarafından yönetilen bir anahtar kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F967a4b4b-2da9-43c1-b7d0-f98d0d74d0b1) |Müşteri tarafından yönetilen anahtarlar, şifreleme anahtarlarınızı yönetmenize olanak tanıyarak gelişmiş veri koruması sağlar. Bu, genellikle uyumluluk gereksinimlerini karşılamak için gereklidir. |Denetim, reddetme, devre dışı |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/CustomerManagedKey_Audit.json) |

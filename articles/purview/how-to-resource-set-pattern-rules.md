@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 04/15/2021
-ms.openlocfilehash: b9d6ca88d5e9d49d3973193059197a1aa171e3e8
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 61de2cf2e3ad9175d97378234d62f72ab3517b51
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568707"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587842"
 ---
 # <a name="create-resource-set-pattern-rules"></a>Kaynak kümesi model kuralları oluşturma
 
@@ -53,6 +53,9 @@ Yeni bir kaynak kümesi model kuralı oluşturmak için aşağıdaki adımları 
       :::image type="content" source="media/how-to-resource-set-pattern-rules/scoped-resource-set-rule-example.png" alt-text="Yeni yapılandırma kuralı oluştur." border="true":::
 
 1. **Ekle**' ye tıklayarak Kuralı kaydedin.
+
+> [!NOTE]
+> Bir model kuralı oluşturulduktan sonra, tüm yeni taramalar alma sırasında kuralı uygular. Veri kataloğunda bulunan varlıklar, birkaç saat sürebilen bir arka plan işlemi aracılığıyla güncelleştirilir. 
 
 ## <a name="pattern-rule-syntax"></a><a name="syntax"></a> Model kuralı sözdizimi
 
@@ -168,7 +171,7 @@ Kural 2
 
 **Tam ad:**`raw/machinename-90/{date:date}/{time:time}-{id:int}.avro`
 
-#### <a name="resource-set-true"></a>*Kaynak kümesi: doğru*
+**Kaynak kümesi:** doğru
 
 #### <a name="outputs"></a>Çıkışlar
 

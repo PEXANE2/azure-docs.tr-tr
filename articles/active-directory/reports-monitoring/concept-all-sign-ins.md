@@ -13,27 +13,25 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/16/2021
+ms.date: 04/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17e7f34da1428eec219a393417b0a2a7b461078
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 781cafd9b382868d0aa4f6b77ff7338c4ee15ed2
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552742"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589678"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory oturum açma etkinlik raporları-önizleme
 
-Azure Active Directory (Azure AD) içindeki raporlama mimarisi aşağıdaki bileşenlerden oluşur:
+Azure Active Directory portalı, üç etkinlik günlüğüne erişmenizi sağlar:
 
-- **Etkinlik** 
-    - **Oturum açma** bilgileri – kullanıcıların, uygulamaların ve yönetilen KAYNAKLARıN Azure AD 'de oturum açma ve kaynaklara erişme hakkında bilgiler.
-    - **Denetim günlükleri**  -  [Denetim günlükleri](concept-audit-logs.md) , kullanıcılar ve Grup Yönetimi, yönetilen uygulamalar ve Dizin etkinlikleri hakkında sistem etkinliği bilgilerini sağlar.
-- **Güvenlik** 
-    - **Riskli oturum** açma işlemleri- [riskli oturum](../identity-protection/overview-identity-protection.md) açma, Kullanıcı hesabının meşru sahibi olmayan birisi tarafından gerçekleştirilen oturum açma girişimine yönelik bir göstergedir.
-    - **Risk için Işaretlenen kullanıcılar** - [riskli bir Kullanıcı](../identity-protection/overview-identity-protection.md) , tehlikeye girmiş olabilecek bir kullanıcı hesabı göstergesidir.
+- **Oturum açma** bilgileri – oturum açma işlemleri ve kaynaklarınızın kullanıcılarınız tarafından nasıl kullanıldığı hakkında bilgiler.
+- **[Denetim](concept-audit-logs.md)** – kiracınıza uygulanan kullanıcılar ve Grup Yönetimi veya kiracınızın kaynaklarına uygulanan güncelleştirmeler gibi değişiklikler hakkında bilgiler.
+- **[Sağlama](concept-provisioning-logs.md)** : ServiceNow 'da bir grup oluşturma veya Workday 'den içeri aktarılan bir kullanıcı gibi sağlama hizmeti tarafından gerçekleştirilen etkinlikler.
+
 
 Azure Active Directory içindeki klasik oturum açma işlemleri raporu etkileşimli kullanıcı oturum açma bilgileri için bir genel bakış sağlar. Ayrıca, şu anda önizleme aşamasında olan üç ek oturum açma raporlarına erişebilirsiniz:
 
@@ -130,7 +128,8 @@ Etkileşimli kullanıcı oturum açma işlemleri, kullanıcının Azure AD 'ye b
 
 
 
-Note: etkileşimli kullanıcı oturum açma işlemleri raporu, Microsoft Exchange istemcilerinden etkileşimli olmayan bazı oturum açma işlemleri için kullanılır. Bu oturum açma işlemleri etkileşimsiz olsa da, ek görünürlük için etkileşimli kullanıcı oturum açma raporuna dahil edilmiştir. Etkileşimli olmayan kullanıcı oturum açma işlemleri raporu Kasım 2020 ' de genel önizlemeye sunulduktan sonra, bu etkileşimli olmayan oturum açma olay günlükleri, daha fazla doğruluk için etkileşimli olmayan kullanıcı oturum açma raporuna taşınmıştır. 
+> [!NOTE] 
+> Etkileşimli kullanıcı oturum açma işlemleri raporu, Microsoft Exchange istemcilerinden etkileşimli olmayan bazı oturum açma işlemleri içerir. Bu oturum açma işlemleri etkileşimli olmamakla birlikte, ek görünürlük için etkileşimli kullanıcı oturum açma raporuna dahil edilmiştir. Etkileşimli olmayan kullanıcı oturum açma işlemleri raporu Kasım 2020 ' de genel önizlemeye sunulduktan sonra, bu etkileşimli olmayan oturum açma olay günlükleri, daha fazla doğruluk için etkileşimli olmayan kullanıcı oturum açma raporuna taşınmıştır. 
 
 
 **Rapor boyutu:** küçük <br> 
@@ -326,6 +325,18 @@ Verilerin özetlanmasını kolaylaştırmak için Azure kaynakları için Yönet
 Bir düğüm altında gruplandırılan tüm oturum açma işlemlerini görüntülemek için liste görünümünde bir öğe seçin.
 
 Oturum açma ayrıntılarının tüm ayrıntılarını görmek için gruplanmış bir öğe seçin. 
+
+
+## <a name="sign-in-error-code"></a>Oturum açma hata kodu
+
+Bir oturum açma başarısız olursa, ilgili günlük öğesinin **temel bilgi** bölümünde nedeni hakkında daha fazla bilgi edinebilirsiniz. 
+
+![Ekran görüntüsü ayrıntılı bir bilgi görünümünü gösterir.](./media/concept-all-sign-ins/error-code.png)
+ 
+Günlük öğesi size bir hata nedeni sağladığından, [oturum açma hatası arama aracını](https://login.microsoftonline.com/error)kullanarak daha fazla bilgi alabileceğiniz durumlar vardır. Örneğin, varsa, bu araç size düzeltme adımları sağlar.  
+
+![Hata kodu arama aracı](./media/concept-all-sign-ins/error-code-lookup-tool.png)
+
 
 
 ## <a name="filter-sign-in-activities"></a>Oturum açma etkinliklerini filtreleme

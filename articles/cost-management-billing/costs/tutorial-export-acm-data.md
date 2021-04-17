@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: a386b214c4372c9d8de729a8b6bed4aac9edd9f3
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: af050ae95b4ab161028229299a8de5ed3426430b
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043470"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482842"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Öğretici: Dışarı aktarılan verileri oluşturma ve yönetme
 
@@ -35,9 +35,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ## <a name="prerequisites"></a>Ön koşullar
 [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) ve [Microsoft Müşteri Sözleşmesi](get-started-partners.md) müşterileri dahil olmak üzere birçok farklı Azure hesap türünde veriler dışarı aktarılabilir. Desteklenen hesap türlerinin tam listesini görüntülemek için, bkz. [Maliyet Yönetimi verilerini anlama](understand-cost-mgt-data.md). Aşağıdaki Azure izinleri veya kapsamları abonelik başına kullanıcı ve grup tarafından yapılan veri dışarı aktarımı için desteklenir. Kapsamlar hakkında daha fazla bilgi için bkz. [Kapsamları anlama ve birlikte çalışma](understand-work-scopes.md).
 
-- Sahip – Bir abonelik için zamanlanan dışarı aktarmaları oluşturabilir, değiştirebilir veya silebilir.
-- Katkıda bulunan – Kendi zamanlanan dışarı aktarmalarını oluşturabilir, değiştirebilir veya silebilir. Başkaları tarafından oluşturulan zamanlanmış dışarı aktarmaların adını değiştirebilir.
-- Okuyucu – İzni oldukları dışarı aktarmaları zamanlayabilir.
+- Sahip â € "bir abonelik için zamanlanmış dışarı aktarmaları oluşturabilir, değiştirebilir veya silebilir.
+- Katkıda bulunan â € "kendi zamanlanmış dışarı aktarmaları oluşturabilir, değiştirebilir veya silebilir. Başkaları tarafından oluşturulan zamanlanmış dışarı aktarmaların adını değiştirebilir.
+- Okuyucu â € ", iznine sahip oldukları dışarı aktarmaları zamanlayabilir.
 
 Azure Depolama hesapları için:
 - Yazma izinlerinin, dışarı aktarma üzerindeki izinlerden bağımsız olarak yapılandırılmış depolama hesabını değiştirmesi gerekir.
@@ -63,10 +63,10 @@ Dışarı aktarma oluşturmak veya görüntülemek ya da zamanlamak için Azure 
     - **Gerçek maliyet (Kullanım ve Satın Almalar)** : Standart kullanımı ve satın almaları dışarı aktarmak için seçin
     - **İtfa edilen maliyet (Kullanım ve Satın Almalar)** : Azure rezervasyonları gibi satın almaların itfa edilen maliyetlerini dışarı aktarmak için seçin
 1. **Dışarı aktarma türü** için bir seçim yapın:
-    - **Ay başından bugüne kadarki maliyetlerin günlük dışarı aktarması**: Ay başından bugüne kadarki maliyetleriniz için günlük yeni bir dışarı aktarma dosyası sağlar. En son veriler önceki günlük dışarı aktarmalardan toplanır.
-    - **Son yedi günün maliyetine ilişkin haftalık dışarı aktarma**: Dışarı aktarma işlemi için seçilen başlangıç tarihinden itibaren geçen yedi günlük maliyetlerinizi içeren, haftalık bir dosya oluşturur.
-    - **Son ayın maliyetlerinin aylık dışarı aktarımı**: Dışarı aktarmayı oluşturduğunuz geçerli ayla karşılaştırılan son aya ilişkin maliyetlerinizin bir dışarı aktarma dosyasını sağlar. Bundan itibaren zamanlama, önceki aylardaki maliyetlerinizle her yeni ayın beşinci gününde bir dışarı aktarma dosyası çalıştırır.
-    - **Bir kerelik dışarı aktarma**: Azure blob depolamaya dışarı aktarmak üzere geçmiş verilere yönelik bir tarih aralığı seçmenize olanak verir. Seçtiğiniz günden itibaren en fazla 90 günlük geçmiş maliyetleri içeren bir dosyayı dışarı aktarabilirsiniz. Bu dışarı aktarma hemen çalışır ve iki saat içinde depolama hesabınızda kullanıma sunulur.
+    - **Aylık maliyetlerin güncel maliyetlerinin günlük dışa aktarılması,** aylık maliyetleriniz için günlük olarak yeni bir dışarı aktarma dosyası sağlar. En son veriler önceki günlük dışarı aktarmalardan toplanır.
+    - **Son yedi gün için maliyet dışa aktarma** â € ", dışarı aktarmanın seçili başlangıç tarihinden itibaren son yedi güne ait maliyetlerinizin haftalık olarak dışa aktarılmasını oluşturur.
+    - **Son ayın maliyetlerinin aylık dışa aktarılması** "â €", dışarı aktarmayı oluşturduğunuz geçerli aya kıyasla geçen ayın maliyetlerinin dışa aktarılmasını sağlar. Bundan itibaren zamanlama, önceki aylardaki maliyetlerinizle her yeni ayın beşinci gününde bir dışarı aktarma dosyası çalıştırır.
+    - **Bir kerelik dışarı aktarma** â € ", geçmiş verilerin Azure Blob depolama alanına aktarılması için bir tarih aralığı seçmenize olanak sağlar. Seçtiğiniz günden itibaren en fazla 90 günlük geçmiş maliyetleri içeren bir dosyayı dışarı aktarabilirsiniz. Bu dışarı aktarma hemen çalışır ve iki saat içinde depolama hesabınızda kullanıma sunulur.
         Dışarı aktarma türünüze bağlı olarak bir başlangıç tarihi veya **Başlangıç** ve **Bitiş** tarihi seçin.
 1. Azure depolama hesabınıza ait aboneliği belirttikten sonra bir kaynak grubu seçin veya yeni bir tane oluşturun.
 1. Depolama hesabı adını seçin veya yeni bir tane oluşturun.
