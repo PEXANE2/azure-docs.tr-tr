@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 592c128a05b66b268c954ccd32b06863df5b25d1
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 18a39adfff572b81e5fbb9d7a42c71834b93ad13
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029123"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575760"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -190,6 +190,7 @@ Veri kümenizi [oluşturup kaydettikten sonra](#register-datasets) , model eğit
 Herhangi bir veri için bir denetimi veya araştırma yapmanız gerekmiyorsa bkz. veri [kümeleriyle eğmek](how-to-train-with-datasets.md)üzere ml denemeleri göndermek için eğitim betiklerinizde veri kümelerini kullanma.
 
 ### <a name="filter-datasets-preview"></a>Veri kümelerini filtrele (Önizleme)
+
 Filtreleme özellikleri, sahip olduğunuz veri kümesinin türüne bağlıdır. 
 > [!IMPORTANT]
 > Veri kümelerini genel önizleme yöntemiyle filtrelemek, [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) [deneysel](/python/api/overview/azure/ml/#stable-vs-experimental) önizleme özelliğidir ve herhangi bir zamanda değişebilir. 

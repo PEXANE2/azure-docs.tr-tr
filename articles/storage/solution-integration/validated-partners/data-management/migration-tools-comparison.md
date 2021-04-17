@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2021
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 15daeb0e6bf320a0727d8e6ea502063a30e67ad0
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 862feace6aab4f49ad3482c4ccd6510669c876a1
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106231650"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576542"
 ---
 # <a name="comparison-matrix"></a>Karşılaştırma matrisi
 
@@ -25,7 +25,7 @@ Aşağıdaki karşılaştırma matrisi, yapılandırılmamış verilerin geçiri
 |  **Çözüm adı**  | [Azure Dosya Eşitleme](/azure/storage/files/storage-sync-files-deployment-guide) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview)              | [Veri taşınabilirliği ve geçiş](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [Akıllı Veri Yönetimi](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
 | **Azure dosyaları desteği (tüm katmanlar)** | Yes                          | Yes                      | Yes            | Yes                            |
 | **Azure NetApp Files desteği**      | Hayır                           | Yes                      | Yes            | Yes                            |
-| **Azure Blob sık/seyrek destek**   | Hayır                           | Evet (NFS önizlemesi aracılığıyla)    | Yes            | Yes                            |
+| **Azure Blob sık/seyrek destek**   | No                           | Evet (NFS önizlemesi aracılığıyla)    | Yes            | Yes                            |
 | **Azure Blob arşiv katmanı desteği** | Hayır                           | Hayır                       | Hayır             | Evet (geçiş hedefi olarak) |
 | **Azure Data Lake Storage desteği** | Hayır                           | Hayır                       | Hayır             | Hayır                             |
 | **Desteklenen Kaynaklar**      | Windows Server 2012 R2 ve yukarı | Bulut dosya sistemleri & NAS | Herhangi bir NAS ve S3 | NAS, blob, S3                  |
@@ -67,13 +67,13 @@ Aşağıdaki karşılaştırma matrisi, yapılandırılmamış verilerin geçiri
 | **Değiştirilme süresini koruma**              | Yes | Yes                        | Yes | Yes                            |
 | **Oluşturma süresini koruma**              | Hayır  | Yes                        | Yes | Yes                            |
 | **Azure Data Box desteği**       | Yes | Yes                        | Hayır  | Hayır                             |
-| **Anlık görüntülerin geçirilmesi**                | Hayır  | El ile                     | Yes | Hayır                             |
+| **Anlık görüntülerin geçirilmesi**                | No  | El ile                     | Yes | Hayır                             |
 | **Sembolik bağlantı desteği**                 | Hayır  | Yes                        | Hayır  | Yes                            |
-| **Sabit bağlantı desteği**                     | Hayır  | Ayrı dosyalar olarak geçirildi | Yes | Yes                            |
+| **Sabit bağlantı desteği**                     | No  | Ayrı dosyalar olarak geçirildi | Yes | Yes                            |
 | **Açık/kilitli dosyalar için destek**       | Yes | Yes                        | Yes | Yes                            |
 | **Artımlı geçiş**                 | Yes | Yes                        | Yes | Yes                            |
 | **Geçiş desteği**                    | Hayır  | Yes                        | Yes | Hayır (yalnızca el ile)               |
-| **[Diğer özellikler](#other-features)**         | [Bağlantı](#azure-file-sync)| [Bağlantı](#dobimigrate) | [Bağlantı](#data-mobility-and-migration) | [Bağlantı](#intelligent-data-management)                |
+| **[Diğer özellikler](#other-features)**         | [Bağlantısının](#azure-file-sync)| [Bağlantısının](#dobimigrate) | [Bağlantısının](#data-mobility-and-migration) | [Bağlantısının](#intelligent-data-management)                |
 
 ## <a name="assessment-and-reporting"></a>Değerlendirme ve raporlama
 
@@ -85,7 +85,7 @@ Aşağıdaki karşılaştırma matrisi, yapılandırılmamış verilerin geçiri
 | **Zaman içinde yaş dağılımı**      | Hayır      | Yes | Yes | Yes            |
 | **Erişim zamanı**                     | Hayır      | Yes | Yes | Yes            |
 | **Değiştirilme zamanı**                   | Hayır      | Yes | Yes | Yes            |
-| **Oluşturulma Zamanı**                   | Hayır      | Yes | Yes | Evet (yalnızca SMB) |
+| **Oluşturulma Zamanı**                   | Hayır      | Yes | Yes | Yes            |
 | **Dosya/nesne rapor durumu başına** | Kısmi | Yes | Yes | Yes            |
 
 ## <a name="licensing"></a>Lisanslama

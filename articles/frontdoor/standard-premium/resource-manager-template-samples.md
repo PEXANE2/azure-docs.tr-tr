@@ -6,13 +6,13 @@ author: johndowns
 ms.author: jodowns
 ms.service: frontdoor
 ms.topic: sample
-ms.date: 03/24/2021
-ms.openlocfilehash: 929adb0be948339af033d85b0dabd7e1cedf353e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/16/2021
+ms.openlocfilehash: 3559270710f56d43fe486e2e3d3e41c63e2a619b
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561755"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565840"
 ---
 # <a name="azure-resource-manager-templates-for-azure-front-door"></a>Azure ön kapısına yönelik Azure Resource Manager şablonları
 
@@ -23,7 +23,9 @@ Aşağıdaki tabloda, diğer Azure hizmetleri dahil olmak üzere başvuru mimari
 
 | Örnek | Açıklama |
 |-|-|
+| [Ön kapı (hızlı oluşturma)](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium/) | Uç nokta, kaynak grubu, kaynak ve yol dahil olmak üzere temel bir ön kapı profili oluşturur.  |
 | [Kural kümesi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set/) | Ön kapı profili ve kural kümesi oluşturur.  |
+| [Özel kuralla WAF ilkesi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-waf-custom/) | Özel kuralla bir ön kapı profili ve WAF oluşturur.  |
 |**App Service kaynakları**| **Açıklama** |
 | [App Service](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-app-service-public) | Ortak uç nokta ve bir ön kapı profili olan App Service bir uygulama oluşturur.  |
 | [Özel bağlantıyla birlikte App Service](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-app-service-private-link) | Özel bir uç nokta ve bir ön kapı profili olan App Service bir uygulama oluşturur.  |

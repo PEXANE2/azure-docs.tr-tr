@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 593ccac7326a0a04884fe433cac85cb8eaf79319
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: dfc8fe0f1b4bc043feecd5c76340d48bc5421854
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228240"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568548"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Depolama Gezgini sorun giderme kılavuzu
 
@@ -120,34 +120,62 @@ Bu adımları izleyerek kendinden imzalı bir sertifika bulamıyorsanız, geri b
 
 ## <a name="sign-in-issues"></a>Oturum açma sorunları
 
-### <a name="blank-sign-in-dialog-box"></a>Boş oturum açma iletişim kutusu
+### <a name="understanding-sign-in"></a>Oturum açma 'yı anlama
 
-Active Directory Federasyon Hizmetleri (AD FS) (AD FS), elektron tarafından desteklenmeyen bir yeniden yönlendirme gerçekleştirmeyi Depolama Gezgini istem yaparken, boş oturum açma iletişim kutuları çoğu zaman oluşur. Bu sorunu geçici olarak çözmek için, oturum açma için cihaz kod akışını kullanmayı deneyebilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin:
+[Depolama Gezgini Için oturum açma](./storage-explorer-sign-in.md) belgesini okuduğunuzdan emin olun.
 
-1. Sol dikey araç çubuğunda **Ayarlar**' ı açın. Ayarlar panelinde **uygulama**  >  **oturum açma**' ya gidin. **Cihaz kod akışı oturum açma** özelliğini etkinleştir.
-2. **Bağlan** iletişim kutusunu açın (sol taraftaki dikey çubukta bulunan tak simgesi veya hesap panelinde **Hesap Ekle** ' yi seçerek).
-3. Oturum açmak istediğiniz ortamı seçin.
-4. **Oturum aç '** ı seçin.
-5. Sonraki bölmede yer alan yönergeleri izleyin.
+### <a name="frequently-having-to-reenter-credentials"></a>Sık kullanılan kimlik bilgilerini yeniden girin
 
-Varsayılan tarayıcınız zaten farklı bir hesapta oturum açmış olduğu için kullanmak istediğiniz hesapta oturum açamazsınız, aşağıdakilerden birini yapın:
+Kimlik bilgilerinin yeniden girmesi, büyük olasılıkla AAD yöneticiniz tarafından ayarlanan koşullu erişim ilkelerinin sonucudur. Depolama Gezgini hesap panelinden kimlik bilgilerini yeniden girmeniz istediğinde, bir **hata ayrıntıları görürsünüz...** bağlantısı. Depolama Gezgini neden kimlik bilgilerini yeniden girmeniz gerektiğini görmek için burayı tıklatın. Kimlik bilgilerinin yeniden girilmesi gereken koşullu erişim ilkesi hataları aşağıdakine benzer olabilir:
+- Yenileme belirtecinin süresi doldu...
+- Erişmek için çok faktörlü kimlik doğrulaması kullanmanız gerekir...
+- Yöneticiniz tarafından yapılan bir yapılandırma değişikliği nedeniyle...
 
-- Bağlantıyı ve kodu tarayıcınızın özel oturumuna el ile kopyalayın.
-- Bağlantıyı ve kodu farklı bir tarayıcıya el ile kopyalayın.
+Yukarıdaki gibi hatalar nedeniyle kimlik bilgilerini yeniden girmeniz gereken sıklığı azaltmak için AAD yöneticinizle konuşmanız gerekecektir.
+
+### <a name="conditional-access-policies"></a>Koşullu erişim ilkeleri
+
+Hesabınız için karşılanması gereken koşullu erişim ilkelerinize sahipseniz, **oturum açma** ayarı Için **varsayılan Web tarayıcısı** değerini kullandığınızdan emin olun. Bu ayar hakkında daha fazla bilgi için bkz. [oturum açma nerede olacağını değiştirme](./storage-explorer-sign-in.md#changing-where-sign-in-happens).
+
+### <a name="unable-to-acquire-token-tenant-is-filtered-out"></a>Belirteç alınamıyor, kiracı filtrelendi
+
+Bir kiracının filtrelenmediği için bir belirtecin alınamadığından bir hata iletisi görürseniz, bu, filtrelenmemiş bir kiracıda olan bir kaynağa erişmeye çalıştığınız anlamına gelir. Kiracının filtreleneceğini kaldırmak için, **hesap paneline** gidin ve hatada belirtilen kiracı onay kutusunun işaretli olduğundan emin olun. Depolama Gezgini kiracıların filtrelenmesi hakkında daha fazla bilgi için [hesapları yönetme](./storage-explorer-sign-in.md#managing-accounts) bölümüne bakın.
+
+## <a name="authentication-library-failed-to-start-properly"></a>Kimlik doğrulama kitaplığı düzgün başlatılamadı
+
+Başlangıçta, Depolama Gezgini kimlik doğrulama kitaplığının düzgün başlayamadığını belirten bir hata iletisi görürsünüz ve sonra, Install ortamınızın tüm [önkoşulları](../../vs-azure-tools-storage-manage-with-storage-explorer.md#prerequisites)karşıladığından emin olun. Önkoşulları, bu hata iletisinin en olası nedenidir.
+
+Install ortamınızın tüm önkoşulları karşıladığını düşünüyorsanız, [GitHub 'da bir sorun açın](https://github.com/Microsoft/AzureStorageExplorer/issues/new). Sorununuzu açtığınızda şunları eklediğinizden emin olun:
+- İşletim sistemi.
+- Kullanmaya çalıştığınız Depolama Gezgini sürümü.
+- Önkoşulları denetlediyseniz.
+- Depolama Gezgini başarısız bir başlatma işleminden gelen [kimlik doğrulama günlükleri](#authentication-logs) . Ayrıntılı kimlik doğrulama günlüğü, bu tür bir hata oluştuktan sonra otomatik olarak etkinleştirilir.
+
+### <a name="blank-window-when-using-integrated-sign-in"></a>Tümleşik oturum açma kullanılırken boş pencere
+
+**Tümleşik oturum açma** kullanmayı seçtiyseniz ve boş bir oturum açma penceresi görüyorsanız, muhtemelen farklı bir oturum açma yöntemine geçmeniz gerekir. Yalnızca bir Active Directory Federasyon Hizmetleri (AD FS) (ADFS) sunucusu, elektron tarafından desteklenmeyen bir yeniden yönlendirme gerçekleştirmek için Depolama Gezgini istem yaparken boş oturum açma iletişim kutuları genellikle meydana gelir.
+
+Farklı bir oturum açma yöntemine geçiş yapmak için, **Ayarlar** uygulama oturum açma altındaki ayarı **ile oturum açma** ayarını değiştirin  >    >  . Farklı oturum açma yöntemlerinin türleri hakkında daha fazla bilgi için bkz. [oturum açma işleminin nerede olacağını değiştirme](./storage-explorer-sign-in.md#changing-where-sign-in-happens).
 
 ### <a name="reauthentication-loop-or-upn-change"></a>Yeniden kimlik doğrulama döngüsü veya UPN değişikliği
 
-Bir yeniden kimlik doğrulaması döngüsünde veya hesaplarınızdan birinin UPN 'sini değiştirdiyseniz, şu adımları izleyin:
+Bir yeniden kimlik doğrulaması döngüsünde veya hesaplarınızdan birinin UPN 'sini değiştirdiyseniz, şu adımları deneyin:
 
-1. Tüm hesapları kaldırın ve ardından Depolama Gezgini kapatın.
-2. Öğesini silin. Makinenizden IdentityService klasörü. Windows üzerinde, klasörü konumunda bulunur `C:\users\<username>\AppData\Local` . Mac ve Linux için, klasörü Kullanıcı dizininizin kökünde bulabilirsiniz.
-3. Mac veya Linux çalıştırıyorsanız, işletim sisteminizin keystore ' dan Microsoft. Developer. IdentityService girişini de silmeniz gerekir. Mac üzerinde, anahtar deposu *GNOME Anahtarlık* uygulamasıdır. Linux 'ta, uygulama genellikle _kimlik anahtarlığı_ olarak adlandırılır ancak ad, dağıtıma bağlı olarak farklılık gösterebilir.
+1. Depolama Gezgini açın
+2. Yardım > sıfırlamaya git
+3. En az kimlik doğrulamanın denetlendiğinden emin olun. Sıfırlamak istemediğiniz diğer öğelerin işaretini kaldırabilirsiniz.
+4. Sıfırla düğmesine tıklayın
+5. Depolama Gezgini yeniden başlatın ve yeniden oturum açmayı deneyin.
 
-### <a name="conditional-access"></a>Koşullu Erişim
+Bir sıfırlama gerçekleştirdikten sonra sorun yaşamaya devam ederseniz şu adımları deneyin:
 
-Depolama Gezgini tarafından kullanılan Azure AD kitaplığındaki bir sınırlama nedeniyle, Windows 10, Linux veya macOS 'ta Depolama Gezgini kullanılırken koşullu erişim desteklenmez.
+1. Depolama Gezgini açın
+2. Tüm hesapları kaldırın ve ardından Depolama Gezgini kapatın.
+3. `.IdentityService`Klasörü makinenizden silin. Windows üzerinde, klasörü konumunda bulunur `C:\users\<username>\AppData\Local` . Mac ve Linux için, klasörü Kullanıcı dizininizin kökünde bulabilirsiniz.
+4. Mac veya Linux çalıştırıyorsanız, işletim sisteminizin keystore ' dan Microsoft. Developer. IdentityService girişini de silmeniz gerekir. Mac üzerinde, anahtar deposu *GNOME Anahtarlık* uygulamasıdır. Linux 'ta, uygulama genellikle _kimlik anahtarlığı_ olarak adlandırılır ancak ad, dağıtıma bağlı olarak farklılık gösterebilir.
+6. Depolama Gezgini yeniden başlatın ve yeniden oturum açmayı deneyin.
 
-## <a name="mac-keychain-errors"></a>Mac Anahtarlık hataları
+### <a name="macos-keychain-errors-or-no-sign-in-window"></a>macOS: Anahtarlık hataları veya oturum açma penceresi yok
 
 MacOS anahtarlığı bazen Depolama Gezgini kimlik doğrulama kitaplığı için soruna neden olan bir durum girebilir. Anahtarlığı bu durumdan dışarı almak için aşağıdaki adımları izleyin:
 
@@ -162,15 +190,16 @@ MacOS anahtarlığı bazen Depolama Gezgini kimlik doğrulama kitaplığı için
 6. "Hizmet hub 'ı anahtarlığa erişmek istiyor." gibi bir iletiyle karşılaşıyoruz. Mac yönetici hesabı parolanızı girip **her zaman Izin ver** ' i seçin (veya **her zaman izin** ver ' **i seçerseniz)** .
 7. Oturum açmayı deneyin.
 
-### <a name="general-sign-in-troubleshooting-steps"></a>Genel oturum açma sorunlarını giderme adımları
+### <a name="default-browser-doesnt-open"></a>Varsayılan tarayıcı açık değil
 
-* MacOS kullanıyorsanız ve oturum açma penceresi **kimlik doğrulaması Için bekleniyor** iletişim kutusunda hiçbir şekilde yoksa, [aşağıdaki adımları](#mac-keychain-errors)deneyin.
-* Depolama Gezgini yeniden başlatın.
-* Kimlik doğrulama penceresi boşsa, kimlik doğrulama iletişim kutusunu kapatmadan önce en az bir dakika bekleyin.
-* Proxy ve sertifika ayarlarınızın hem makineniz hem de Depolama Gezgini için düzgün yapılandırıldığından emin olun.
-* Windows çalıştırıyorsanız ve aynı makinede ve oturum açma kimlik bilgilerinde Visual Studio 2019 ' e erişiminiz varsa, Visual Studio 2019 ' de oturum açmayı deneyin. Visual Studio 2019 ' de başarılı bir oturum açma işleminden sonra, Depolama Gezgini açıp hesabınızı hesap panelinde görebilirsiniz.
+Oturum açmaya çalışırken varsayılan tarayıcınız açılmadığından aşağıdaki tekniklerin hepsini deneyin:
+- Depolama Gezgini yeniden Başlat
+- Oturum açmayı başlatmadan önce tarayıcınızı el ile açın
+- **Tümleşik oturum açma** kullanmayı deneyin, bunun nasıl yapılacağı hakkında yönergeler için [oturum açma nerede olduğunu değiştirme](./storage-explorer-sign-in.md#changing-where-sign-in-happens) konusuna bakın.
 
-Bu yöntemlerin hiçbiri işe çalışmadıysanız, [GitHub 'da bir sorun açın](https://github.com/Microsoft/AzureStorageExplorer/issues).
+### <a name="other-sign-in-issues"></a>Diğer oturum açma sorunları
+
+Yukarıdaki hiçbiri, oturum açma sorununuz için geçerlidir veya oturum açma sorununuzu çözemezse [GitHub 'da bir sorun açın](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
 ### <a name="missing-subscriptions-and-broken-tenants"></a>Eksik abonelikler ve bozuk kiracılar
 
@@ -180,9 +209,9 @@ Başarıyla oturum açtıktan sonra aboneliklerinizi alamadıysanız aşağıdak
 * Doğru Azure ortamında (Azure, Azure Çin 21Vianet, Azure Almanya, Azure ABD kamu veya özel ortam) oturum açtığınızdan emin olun.
 * Bir ara sunucunun arkasındaysanız, Depolama Gezgini proxy 'yi doğru yapılandırdığınızdan emin olun.
 * Hesabı kaldırıp yeniden eklemeyi deneyin.
-* "Daha fazla bilgi" bağlantısı varsa, başarısız olan kiracılar için hangi hata iletilerinin raporlanmakta olduğunu kontrol edin. Hata iletilerine yanıt verme konusunda emin değilseniz, [GitHub 'da bir sorun açmayı](https://github.com/Microsoft/AzureStorageExplorer/issues)ücretsiz olarak kullanabilirsiniz.
+* "Daha fazla bilgi" veya "hata ayrıntıları" bağlantısı varsa, başarısız olan kiracılar için hangi hata iletilerinin raporlanmakta olduğunu kontrol edin. Hata iletilerine yanıt verme konusunda emin değilseniz, [GitHub 'da bir sorun açmayı](https://github.com/Microsoft/AzureStorageExplorer/issues)ücretsiz olarak kullanabilirsiniz.
 
-## <a name="cant-remove-an-attached-account-or-storage-resource"></a>Eklenmiş bir hesap veya depolama kaynağı kaldırılamıyor
+## <a name="cant-remove-an-attached-storage-account-or-resource"></a>Bağlı bir depolama hesabı veya kaynağı kaldırılamıyor
 
 Kullanıcı arabirimi aracılığıyla ekli bir hesabı veya depolama kaynağını kaldıramıyorum, aşağıdaki klasörleri silerek tüm bağlı kaynakları el ile silebilirsiniz:
 
@@ -526,6 +555,8 @@ Bazı sorunlar için, Depolama Gezgini tarafından yapılan ağ çağrılarını
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu çözümlerin hiçbiri sizin için işe çalışmadıysanız, [GitHub 'da bir sorun açın](https://github.com/Microsoft/AzureStorageExplorer/issues). Bunu, sol alt köşedeki **GitHub 'a sorun raporla** düğmesine seçerek de yapabilirsiniz.
+Bu çözümlerin hiçbiri sizin için işe çalışmadıysanız şunları yapabilirsiniz:
+- Destek bileti oluşturma
+- [GitHub 'da bir sorun açın](https://github.com/Microsoft/AzureStorageExplorer/issues). Bunu, sol alt köşedeki **GitHub 'a sorun raporla** düğmesine seçerek de yapabilirsiniz.
 
 ![Geri Bildirim](./media/storage-explorer-troubleshooting/feedback-button.PNG)

@@ -3,12 +3,12 @@ title: Azure Backup’taki yenilikler
 description: Azure Backup yeni özellikler hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: c5e6734c6a962fa43d79fc90fdfaa85923b6339f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 68e0e5cc0876840c30ab9e428a2b96bd7d667756
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612492"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516340"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup’taki yenilikler
 
@@ -89,7 +89,7 @@ Daha fazla bilgi için bkz. [Azure Backup için Azure Resource Manager şablonla
 
 Azure Backup artık Azure VM 'lerinde barındırılan SAP HANA veritabanları için artımlı yedeklemeleri desteklemektedir. Bu, SAP HANA verilerinizin daha hızlı ve daha verimli yedeklemeler sağlar.
 
-Daha fazla bilgi için bkz. [yedekleme ilkesi oluşturma sırasında kullanılabilen çeşitli seçenekler](sap-hana-faq-backup-azure-vm.md#policy) ve [SAP HANA veritabanları için yedekleme ilkesi oluşturma](tutorial-backup-sap-hana-db.md#creating-a-backup-policy).
+Daha fazla bilgi için bkz. [yedekleme ilkesi oluşturma sırasında kullanılabilen çeşitli seçenekler](/sap-hana-faq-backup-azure-vm.yml#policy) ve [SAP HANA veritabanları için yedekleme ilkesi oluşturma](tutorial-backup-sap-hana-db.md#creating-a-backup-policy).
 
 ## <a name="backup-center-in-preview"></a>Yedekleme merkezi (önizlemede)
 

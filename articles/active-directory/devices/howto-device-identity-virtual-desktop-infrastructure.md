@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5a4cc2b964bcf4fa49d90c8b6d5aa546b7148a1
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 6c1d78094effe6919587f24c2262612e4fab347d
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107954"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575386"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Cihaz kimliği ve Masaüstü Sanallaştırması
 
@@ -89,7 +89,7 @@ Kalıcı olmayan VDı dağıtımı yaparken, Microsoft BT yöneticilerinin aşa�
 - Windows alt düzeyi için:
    - Logoff komut dosyasının bir parçası olarak, **oto workplacejoın/Leave** komutunu uygulayın. Bu komut kullanıcı bağlamında tetiklenmelidir ve Kullanıcı tamamen oturumu kapatmadan ve hala ağ bağlantısı varken yürütülmesi gerekir.
 - Federasyon ortamında Windows için geçerli (ör. AD FS):
-   - **Dsregcmd/JOIN** ' i VM önyükleme sırasının bir parçası olarak uygulayın.
+   - **Dsregcmd/JOIN** ' i VM önyükleme sırasının/sırasının bir parçası olarak ve Kullanıcı oturum açmadan önce uygulayın.
    - VM kapatılırken/yeniden başlatma işleminin bir parçası olarak dsregcmd/Leave **yürütme.**
 - [Eski cihazları yönetmek](manage-stale-devices.md)için işlem tanımlayın ve uygulayın.
    - Kalıcı olmayan karma Azure AD 'ye katılmış cihazlarınızı (ör. bilgisayar görünen adı önekini kullanarak) belirleme stratejiniz varsa, dizininizin çok sayıda eski cihaz ile tüketilmemesini sağlamak için bu cihazların temizlenmesi üzerinde daha Agresif olmanız gerekir.

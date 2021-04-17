@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/05/2021
+ms.date: 04/16/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 37e508a0f4af940773a92271075239c204e52834
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 3665421ddbdd9cf079ff4aab9377fc9164a1599c
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010722"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575369"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Depolama yedekliliği
 
@@ -73,7 +73,7 @@ Aşağıdaki tabloda hangi depolama hesabı türlerinin hangi bölgelerde ZRS de
 
 | Depolama hesabı türü | Desteklenen bölgeler | Desteklenen hizmetler |
 |--|--|--|
-| Genel amaçlı v2<sup>1</sup> | Doğu Güney Afrika Kuzey<br /> (Asya Pasifik) Doğu Asya<br /> (Asya Pasifik) Güneydoğu Asya<br /> (Asya Pasifik) Avustralya Doğu<br /> (Asya Pasifik) Orta Hindistan<br /> (Asya Pasifik) Doğu Japonya<br /> (Asya Pasifik) Kore Orta<br /> 'Da Kanada Orta<br /> 'Ya Kuzey Avrupa<br /> 'Ya Batı Avrupa<br /> 'Ya Fransa Orta<br /> 'Ya Almanya Orta Batı<br /> 'Ya Norveç Doğu<br /> 'Ya İsviçre Kuzey<br /> 'Ya UK Güney<br /> (Orta Doğu) BAE Kuzey<br /> (Güney Amerika) Brezilya Güney<br /> ABD Orta ABD<br /> (ABD) Doğu ABD<br /> ABD Doğu ABD 2<br /> ABD Orta Kuzey ABD<br />ABD Orta Güney ABD<br /> ABD Batı ABD<br /> ABD Batı ABD 2 | Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tables<br /> Kuyruklar<br /> |
+| Genel amaçlı v2<sup>1</sup> | Doğu Güney Afrika Kuzey<br /> (Asya Pasifik) Güneydoğu Asya<br /> (Asya Pasifik) Avustralya Doğu<br /> (Asya Pasifik) Doğu Japonya<br /> 'Da Kanada Orta<br /> 'Ya Kuzey Avrupa<br /> 'Ya Batı Avrupa<br /> 'Ya Fransa Orta<br /> 'Ya Almanya Orta Batı<br /> 'Ya UK Güney<br /> (Güney Amerika) Brezilya Güney<br /> ABD Orta ABD<br /> (ABD) Doğu ABD<br /> ABD Doğu ABD 2<br /> ABD Orta Güney ABD<br /> ABD Batı ABD<br /> ABD Batı ABD 2 | Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tables<br /> Kuyruklar<br /> |
 | BlockBlobStorage<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br /> Batı Avrupa<br /> Orta Fransa <br /> Doğu Japonya<br /> Güney Birleşik Krallık <br /> ABD Doğu <br /> ABD Doğu 2 <br /> ABD Batı 2| Yalnızca Premium blok Blobları |
 | Dosya depolama | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br /> Batı Avrupa<br /> Orta Fransa <br /> Doğu Japonya<br /> Güney Birleşik Krallık <br /> ABD Doğu <br /> ABD Doğu 2 <br /> ABD Batı 2 | Yalnızca Premium dosya paylaşımları |
 

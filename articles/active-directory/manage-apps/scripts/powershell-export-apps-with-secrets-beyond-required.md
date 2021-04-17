@@ -2,21 +2,21 @@
 title: PowerShell örneği-Azure Active Directory kiracısındaki gerekli tarihin ötesinde gizli dizileri ve sertifikaları dışarı aktarma.
 description: Azure Active Directory kiracınızdaki belirtilen uygulamalar için gerekli tarihin ötesinde gizli dizi ve sertifikalara sahip tüm uygulamaları dışa aktaran PowerShell örneği.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 03/09/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: mifarca
-ms.openlocfilehash: daeea48758a9f08e7eedbfcaddcde3815f5c1e16
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 692ab2cfd480fd15760c13c63922fe76d23058ea
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729108"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375398"
 ---
 # <a name="export-apps-with-secrets-and-certificates-expiring-beyond-the-required-date"></a>Uygulamaları gizli ve sertifikalara göre, gerekli tarihin ötesinde süresi dolacak şekilde dışa aktarma
 

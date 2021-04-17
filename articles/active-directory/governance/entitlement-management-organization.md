@@ -16,12 +16,12 @@ ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b6a1ead2fe3c1ec4e2206d1ffbaea4e5ec57433
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 44b4e4bccde07d078c9749ee76c1653e6d431e63
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222530"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532089"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bağlı bir kuruluş ekleme
 
@@ -140,7 +140,7 @@ Artık dış Azure AD dizini veya etki alanı ile bir ilişkiniz yoksa bağlı k
 
 ## <a name="managing-a-connected-organization-programmatically"></a>Bağlı bir kuruluşu program aracılığıyla yönetme
 
-Ayrıca Microsoft Graph kullanarak bağlı kuruluşlar oluşturabilir, listeleyebilir, güncelleştirebilir ve silebilirsiniz. Temsilci izni olan bir uygulamayla uygun bir roldeki kullanıcı `EntitlementManagement.ReadWrite.All` , [connectedorganization](/graph/api/resources/connectedorganization?view=graph-rest-beta) nesnelerini yönetmek ve bunlar için sponsorları ayarlamak üzere API 'yi çağırabilir.
+Ayrıca Microsoft Graph kullanarak bağlı kuruluşlar oluşturabilir, listeleyebilir, güncelleştirebilir ve silebilirsiniz. Temsilci izni olan bir uygulamayla uygun bir roldeki kullanıcı `EntitlementManagement.ReadWrite.All` , [connectedorganization](/graph/api/resources/connectedorganization?view=graph-rest-beta&preserve-view=true) nesnelerini yönetmek ve bunlar için sponsorları ayarlamak üzere API 'yi çağırabilir.
 
 ## <a name="state-properties-of-connected-organizations"></a>Bağlı kuruluşların durum özellikleri
 
