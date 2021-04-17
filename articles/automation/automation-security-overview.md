@@ -4,14 +4,14 @@ description: Bu makalede, Azure Otomasyonu hesabı kimlik doğrulamasına genel 
 keywords: otomasyon güvenliği, güvenli otomasyon; otomasyon kimlik doğrulaması
 services: automation
 ms.subservice: process-automation
-ms.date: 04/08/2021
+ms.date: 04/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: b52fa3083dc5c42fa71e720e9a3991cb7aa5afec
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 09aab71513b1152924de4eae91a718bad23d1012
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501578"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518010"
 ---
 # <a name="azure-automation-account-authentication-overview"></a>Azure Otomasyonu hesabı kimlik doğrulamasına genel bakış
 
@@ -37,7 +37,7 @@ Azure Active Directory yönetilen bir kimlik (Azure AD), runbook 'un diğer Azur
 
 Yönetilen kimlikler kullanmanın avantajlarından bazıları şunlardır:
 
-- Azure AD kimlik doğrulamasını destekleyen herhangi bir Azure hizmetinde kimlik doğrulaması yapmak için Yönetilen kimlikler 'i kullanabilirsiniz.
+- Azure AD kimlik doğrulamasını destekleyen herhangi bir Azure hizmetinde kimlik doğrulaması yapmak için Yönetilen kimlikler 'i kullanabilirsiniz. Bunlar, karma işler ve bulut için de kullanılabilir. Karma işler, Azure veya Azure dışı VM 'de çalışan bir karma runbook çalışanı üzerinde çalıştırıldığında yönetilen kimlikleri kullanabilir.
 
 - Yönetilen kimlikler herhangi bir ek maliyet olmadan kullanılabilir.
 

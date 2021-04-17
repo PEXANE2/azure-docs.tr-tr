@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 1f03f99e6394c3939855c73548e8fb917f8696bc
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 901e857a346b0955726c5755e23595efefbc2ca1
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286037"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589508"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetri ve sorun giderme
 
@@ -161,7 +161,7 @@ Azure Blob depolama gibi uzak bir uç noktaya yüklenen günlükleri iyileştirm
 Günlük düzeyi yapılandırması, oluşturulan günlüklerin ayrıntı düzeyini denetlemenize olanak tanır. Desteklenen günlük düzeyleri şunlardır: `none` , `verbose` , `info` , `warning` ve `error` . Her iki düğüm ve platform için varsayılan günlük ayrıntı düzeyi `info` . 
 
 `ARCHON_LOG_LEVEL`Ortam değişkeni, izin verilen değerlerden birine ayarlanarak, günlük düzeyleri genel olarak değiştirilebilir.
-Ayrıca, tüm dağıtılan yetenekler için IoT Edge modülü Ikizi belgesi aracılığıyla ya da değerleri `platformLogLevel` aşağıda gösterildiği gibi ayarlayarak her belirli yetenek için de ayarlanabilir `nodeLogLevel` .
+Ayrıca, tüm dağıtılan yetenekler için IoT Edge modülü Ikizi belgesi aracılığıyla ya da değerleri `platformLogLevel` aşağıda gösterildiği gibi ayarlayarak her belirli yetenek için de ayarlanabilir `nodesLogLevel` .
 
 ```json
 {
@@ -173,7 +173,7 @@ Ayrıca, tüm dağıtılan yetenekler için IoT Edge modülü Ikizi belgesi arac
             },
             "graphs": {
                 "samplegraph": {
-                    "nodeLogLevel": "verbose",
+                    "nodesLogLevel": "verbose",
                     "platformLogLevel": "verbose"
                 }
             }

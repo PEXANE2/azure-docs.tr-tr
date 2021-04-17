@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 90ea52b0ed5ee2d8e36caab18491eecd6e1295fd
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: ad5bb6e45479b4cccfa0b002427066439135e468
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222824"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588454"
 ---
 # <a name="link-your-domain-to-your-decentralized-identifier-did"></a>Etki alanınızı, merkezi olmayan tanımlayıcılarınız (DıD) ile ilişkilendirin
 
@@ -122,7 +122,7 @@ Yukarıdakilerden herhangi biri doğru değilse, Microsoft Authenticator kullan�
 
 4. DID belgesini kopyalayın ve aynı etki alanının, DıD belgesine dahil edildiğini doğrulamak için [Iyon ağ Gezginini](https://identity.foundation/ion/explorer) açın. 
 
-5. Belirtilen konumda iyi bilinen yapılandırma kaynağını barındırın. Örnek: https://www.example.com/.well-known/did-configuration.json
+5. Belirtilen konumda iyi bilinen yapılandırma kaynağını barındırın. Örnek: `https://www.example.com/.well-known/did-configuration.json`
 
 6. Doğrulamak için Microsoft Authenticator test etme veya sunma. Kimlik doğrulayıcısında ' güvenli olmayan uygulamalar hakkında uyar ' ayarının açık olduğundan emin olun.
 

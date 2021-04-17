@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/29/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: ba75e11a067a257c659f8c659f68bb2bba6fa2e0
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: fac2eb75d210a34f4c5cd50c4649921aadfcd5ee
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012101"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588505"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti’nde (AKS) desteklenen Kubernetes sürümleri
 
@@ -108,6 +108,7 @@ Sürümünüzü yüklemek veya güncelleştirmek için `kubectl` ' i çalıştı
 
 Kubernetes 'in yeni **İkincil** sürümleri için:
   * AKS, yeni sürüm sürümünün planlı tarihi ile bir ön duyuru yayımlar ve ilgili eski sürüm, kaldırma işleminden önce en az 30 gün önce, [aks sürüm notlarını](https://aka.ms/aks/releasenotes) kullanımdan kaldırır.
+  * AKS, kullanım dışı bırakılmış API 'Ler nedeniyle yeni bir sürüm kümesinde sorunlara neden olursa kullanıcıları uyarmak için [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) 'ı kullanır. Azure Advisor, şu anda destek dışı olduklarında kullanıcıyı uyarmak için de kullanılır.
   * AKS, AKS ve Portal erişimi olan tüm kullanıcılar için kullanılabilir bir [hizmet durumu bildirimi](../service-health/service-health-overview.md) yayımlar ve abonelik yöneticilerine planlanan sürüm kaldırma tarihleriyle bir e-posta gönderir.
 
     ````
@@ -142,16 +143,18 @@ Son sürüm geçmişi için bkz. [Kubernetes](https://en.wikipedia.org/wiki/Kube
 
 |  K8s sürümü | Yukarı akış yayını  | AKS önizlemesi  | AKS GA  | Yaşam sonu |
 |--------------|-------------------|--------------|---------|-------------|
-| 1,17  | Ara-09-19  | Ocak 2019   | 2020 Tem  | 1,20 GA | 
 | 1,18  | Mar-23-20  | Mayıs 2020   | Ağu 2020  | 1,21 GA | 
 | 1,19  | Ağu-04-20  | Eyl 2020   | Kas 2020  | 1,22 GA | 
 | 1.20  | Ara-08-20  | Ocak 2021   | Mar 2021  | 1,23 GA |
-| 1,21  | Nis-08-21 * | Mayıs 2021   | Haz 2021  | 1,24 GA |
+| 1,21  | Nis-08-21 | Mayıs 2021   | Haz 2021  | 1,24 GA |
 
-\* Kubernetes 1,21 yukarı akış sürümü, henüz sonlandırılmadan yukarı akış tavtları olarak değişebilir.
 
 
 ## <a name="faq"></a>SSS
+
+**Microsoft yeni Kubernetes sürümlerini nasıl bilgilendirir?**
+
+AKS ekibi, belgelerimizde yeni Kubernetes sürümlerinin planlı tarihleriyle ön Duyurular yayınlar, [GitHub](https://github.com/Azure/AKS/releases) 'umuz ve destek dışı tutulacak kümelerin sahibi olan abonelik yöneticilerine e-postalar yayınlar.  Duyurulara ek olarak, AKS Ayrıca, Azure Portal 'ın bu müşterilerin destek dışında kullanıcıları uyarmasını ve uygulama veya geliştirme sürecini etkileyecek kullanım dışı API 'lerden haberdar olmasını sağlamak için [Azure Danışmanı](https://docs.microsoft.com/azure/advisor/advisor-overview) 'nı kullanır. 
 
 **Kubernetes sürümlerini desteklemeyi ne sıklıkta desteklemem gerekir?**
 

@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: c98d88d66e89df3efe186212d8c004ec2a65158d
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 1166585c7291c4fe0d78cbc9540e3f08f985db6c
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106450566"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107590206"
 ---
 | Kaynak | Sınır | Not |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ ms.locfileid: "106450566"
 | Yeniden yazma kuralı kümesi başına koşulların sayısı|40| |
 | Eşzamanlı WebSocket bağlantıları |Orta ağ geçitleri 20.000<sup>2</sup><br> Büyük ağ geçitleri 50.000<sup>2</sup>| |
 | En fazla URL uzunluğu|AŞAMAZ| |
-| HTTP/2 için üst bilgi boyutu üst sınırı |4 KB 'DIR| |
+| HTTP/2 için üst bilgi boyutu üst sınırı |16 KB| |
 | Dosya karşıya yükleme boyutu üst sınırı, standart |2 GB | |
 | En fazla dosya yükleme boyutu WAF |V1 orta WAF ağ geçitleri, 100 MB<br>V1 büyük WAF ağ geçitleri, 500 MB<br>V2 WAF, 750 MB| |
 | WAF gövde boyutu sınırı, dosyalar olmadan|128 KB||

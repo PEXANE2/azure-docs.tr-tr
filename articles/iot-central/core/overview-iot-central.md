@@ -8,18 +8,18 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2
-ms.openlocfilehash: 6f7b24c711d99b1127ee77a920b305acb114d20e
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: abf5f601bb98ab7e03b25f6ab9bd06cb051a1112
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505136"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589082"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central nedir?
 
 IoT Central, kurumsal düzeyde IoT çözümlerinin geliştirilmesine, yönetilmesine ve bakımının yapılmasına yönelik maliyet ve yükü azaltan bir IoT uygulama platformudur. IoT Central ile oluşturmayı seçtiğinizde, yalnızca karmaşık ve sürekli gelişen IoT altyapısını korumak ve güncelleştirmek yerine, işletmenizin IoT verileriyle dönüştürülmesi için zaman, para ve enerji tasarrufu sağlama fırsatı sunulmaktadır.
 
-Web Kullanıcı arabirimi, cihaz koşullarını izlemenizi, kurallar oluşturmanızı ve milyonlarca cihazı ve bunların yaşam döngüsü boyunca verilerini yönetmenizi sağlar. Ayrıca, IoT Intelligence 'ı iş kolu uygulamalarına genişleterek cihaz öngörülerine göre hareket etmenizi sağlar.
+Web Kullanıcı arabirimi, cihazları Hızlı bir şekilde bağlamanıza, cihaz koşullarını izlemenize, kurallar oluşturmanıza ve milyonlarca cihazı ve verilerini yaşam döngüsü boyunca yönetmenize olanak sağlar. Ayrıca, IoT Intelligence 'ı iş kolu uygulamalarına genişleterek cihaz öngörülerine göre hareket etmenizi sağlar.
 
 Bu makalede IoT Central için özetlenmektedir:
 
@@ -41,14 +41,13 @@ IoT Central belgeler, bir IoT Central uygulamayla etkileşime geçen dört kulla
 
 ## <a name="create-your-iot-central-application"></a>IoT Central uygulamanızı oluşturma
 
-Bir çözüm Oluşturucusu olarak, kuruluşunuz için özel, bulutta barındırılan bir IoT çözümü oluşturmak üzere IoT Central kullanırsınız. Özel bir IoT çözümü genellikle aşağıdakilerden oluşur:
+Yeni bir IoT Central uygulamasını hızlıca dağıtabilir ve ardından özel gereksinimlerinize göre özelleştirebilirsiniz. Genel bir _uygulama şablonuyla_ veya [Perakende](../retail/overview-iot-central-retail.md), [enerji](../energy/overview-iot-central-energy.md), [devlet](../government/overview-iot-central-government.md)veya [sağlık](../healthcare/overview-iot-central-healthcare.md)için sektör odaklı uygulama şablonlarından biriyle başlayın.
 
-- Cihazlarınızdan telemetri alan ve bu cihazları yönetmenizi sağlayan bulut tabanlı bir uygulama.
-- Bulut tabanlı uygulamanıza bağlı özel kod çalıştıran birden fazla cihaz.
+İlk uygulamanızı nasıl oluşturacağınız hakkında bilgi için bkz. [Yeni uygulama](quick-deploy-iot-central.md) hızlı başlangıcı oluşturma.
 
-Yeni bir IoT Central uygulamasını hızlıca dağıtabilir ve sonra tarayıcınızda özel gereksinimlerinize göre özelleştirebilirsiniz. Bir genel _uygulama şablonuyla_ veya [Perakende](../retail/overview-iot-central-retail.md), [enerji](../energy/overview-iot-central-energy.md), [devlet](../government/overview-iot-central-government.md)veya [sağlık](../healthcare/overview-iot-central-healthcare.md)için sektör odaklı uygulama şablonlarından biriyle başlayabilirsiniz.
+## <a name="connect-devices"></a>Cihazları bağlama
 
-Bir çözüm Oluşturucusu olarak, uygulamanıza bağlanan cihazlar için bir _cihaz şablonu_ oluşturmak üzere Web tabanlı araçları kullanın. Cihaz şablonu, şöyle bir cihaz türünün özelliklerini ve davranışını tanımlayan şema ' dir:
+Uygulamanızı oluşturduktan sonra ilk adım bir bağlantı aygıtları oluşturmaktır. IoT Central bağlı her cihaz bir _cihaz şablonu_ kullanır. Cihaz şablonu, şöyle bir cihaz türünün özelliklerini ve davranışını tanımlayan şema ' dir:
 
 - Gönderdiği telemetri. Sıcaklık ve nem örnekleri verilebilir. Telemetri veri akışı.
 - Bir operatörün değiştirebileceği iş özellikleri. Örneğin, bir müşteri adresi ve son hizmet verilen tarih verilebilir.
@@ -56,7 +55,7 @@ Bir çözüm Oluşturucusu olarak, uygulamanıza bağlanan cihazlar için bir _c
 - Bir işleç kümelerinin, cihazın davranışını belirleyen özellikler. Örneğin, cihaz için bir hedef sıcaklık.
 - Bir işlecin, bir cihazda çalışan, çağırabilirler. Örneğin, bir cihazı uzaktan yeniden başlatmak için bir komut.
 
-Bu [cihaz şablonu](howto-set-up-template.md) şunları içerir:
+Her [cihaz şablonu](howto-set-up-template.md) şunları içerir:
 
 - Bir cihazın uygulaması gereken özellikleri açıklayan bir _cihaz modeli_ . Cihaz özellikleri şunları içerir:
 
@@ -68,25 +67,21 @@ Bu [cihaz şablonu](howto-set-up-template.md) şunları içerir:
 - Cihazda depolanmayan bulut özellikleri.
 - IoT Central uygulamanızın parçası olan özelleştirmeler, panolar ve formlar.
 
-### <a name="create-device-templates"></a>Cihaz şablonları oluşturma
-
-Bir çözüm Oluşturucusu olarak, cihaz şablonları oluşturmak için çeşitli seçenekleriniz vardır:
+Cihaz şablonları oluşturmak için çeşitli seçenekleriniz vardır:
 
 - IoT Central cihaz şablonunu tasarlayın ve cihaz kodunuzda cihaz modelini uygulayın.
 - Visual Studio Code 'u kullanarak bir cihaz modeli oluşturun ve modeli bir depoya yayımlayın. Modelden cihaz kodunuzu uygulayın ve cihazınızı IoT Central uygulamanıza bağlayın. IoT Central, depodan cihaz modelini bulur ve sizin için basit bir cihaz şablonu oluşturur.
 - Visual Studio Code 'u kullanarak bir cihaz modeli oluşturun. Modelden cihaz kodunuzu uygulayın. Cihaz modelini IoT Central uygulamanıza el ile aktarın ve ardından IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları ekleyin.
 
-Bir çözüm Oluşturucusu olarak, cihaz şablonlarınızı doğrulamak üzere test cihazları için kod oluşturmak üzere IoT Central kullanabilirsiniz.
-
-Bir cihaz geliştiricisiyseniz, bu cihaz şablonlarını kullanan cihazları uygulamaya giriş için [IoT Central cihaz geliştirmeye genel bakış](./overview-iot-central-developer.md) bölümüne bakın.
+İlk cihazınızı oluşturma ve bağlama hakkında bilgi için [sanal cihaz ekleme](quick-create-simulated-device.md) hızlı başlangıç bölümüne bakın.
 
 ### <a name="customize-the-ui"></a>Kullanıcı arabirimini özelleştirme
 
-Bir çözüm Oluşturucusu olarak, uygulamanın günlük kullanımıyla sorumlu operatörler için IoT Central uygulama kullanıcı arabirimini de özelleştirebilirsiniz. Bir çözüm oluşturucusunun yapaiçereme özelleştirmeleri şunlardır:
+Uygulamanın günlük kullanımı için sorumlu olan operatörler için IoT Central uygulama kullanıcı arabirimini de özelleştirebilirsiniz. Yapabileceğiniz özelleştirmeler şunlar olabilir:
 
-- Bir cihaz şablonundaki özellik ve ayarların düzenini tanımlama.
 - Operatörlerin içgörüleri keşfetmesine ve sorunları daha hızlı çözümlemesine yardımcı olacak özel panoları yapılandırma.
 - Bağlı cihazlarınızdan zaman serisi verilerini keşfetmek için özel analizler yapılandırma.
+- Bir cihaz şablonundaki özellik ve ayarların düzenini tanımlama.
 
 ## <a name="manage-your-devices"></a>Cihazlarınızı yönetme
 
@@ -96,9 +91,9 @@ Bir operatör olarak, IoT Central çözümünüzdeki [cihazları yönetmek](howt
 - Cihazlarla ilgili sorunları giderme ve düzeltme.
 - Yeni cihazlar hazırlama.
 
-Bir çözüm Oluşturucusu olarak, bağlı cihazlardan veri akışı üzerinde çalışan [özel kurallar ve eylemler tanımlayabilirsiniz](howto-configure-rules.md) . Operatör ise uygulama içindeki görevleri denetlemek ve otomatik hale getirmek için cihaz düzeyinde bu kuralları etkinleştirebilir ya da devre dışı bırakabilir.
+Bağlı cihazlardan veri akışı üzerinde çalışan [özel kurallar ve eylemler tanımlayabilirsiniz](howto-configure-rules.md) . Operatör ise uygulama içindeki görevleri denetlemek ve otomatik hale getirmek için cihaz düzeyinde bu kuralları etkinleştirebilir ya da devre dışı bırakabilir.
 
-Ölçekte çalışacak şekilde tasarlanan tüm IoT çözümleri ile cihaz yönetimine yönelik yapılandırılmış bir yaklaşım önemlidir. Cihazlarınızı buluta bağlamak yeterli değildir, cihazlarınızı bağlı ve sağlıklı tutmanız gerekir. Bir operatör, uygulama yaşam döngüsü boyunca cihazlarınızı yönetmek için aşağıdaki IoT Central yeteneklerini kullanabilir:
+Ölçekte çalışacak şekilde tasarlanan tüm IoT çözümleri ile cihaz yönetimine yönelik yapılandırılmış bir yaklaşım önemlidir. Cihazlarınızı buluta bağlamak yeterli değildir, cihazlarınızı bağlı ve sağlıklı tutmanız gerekir. Aşağıdaki IoT Central yeteneklerini kullanarak cihazlarınızı uygulama yaşam döngüsü boyunca yönetin:
 
 ### <a name="dashboards"></a>Panolar
 

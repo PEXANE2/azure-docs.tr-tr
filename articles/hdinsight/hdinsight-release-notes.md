@@ -5,12 +5,12 @@ ms.custom: references_regions
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: 3676889fc56f6dc4746282e5001e33d1bc3c7c9a
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 838eb517697c0625139058a19c7def764e869ed5
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501238"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588182"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -74,6 +74,9 @@ HDInsight 3,6, Ubuntu 16,04 ' de çalışmaya devam edecektir. 30 Haziran 2021 '
 Mevcut kümeleri Ubuntu 18,04 ' ye taşımak istiyorsanız, kümelerinizi bırakıp yeniden oluşturmanız gerekir. Ubuntu 18,04 desteği kullanılabilir hale geldikten sonra lütfen kümenizi oluşturmayı veya yeniden oluşturmayı planlayın. Yeni görüntü tüm bölgelerde kullanılabilir hale geldikten sonra başka bir bildirim göndereceğiz.
 
 Bir Ubuntu 18,04 sanal makinesi (VM) üzerinde Edge düğümlerinde dağıtılan özel uygulamalarınızı ve komut dosyası eylemlerinizi test etmeniz önemle önerilir. [18,04-LTS üzerinde basit bir Ubuntu LINUX VM oluşturabilir](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/), ardından, komut dosyası eylemlerinizi ve kenar düğümlerinde dağıtılan özel uygulamalarınızı çalıştırmak ve test etmek için VM 'niz üzerinde bir [GÜVENLI kabuk (SSH) anahtar çifti](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys#ssh-into-your-vm) oluşturup kullanabilirsiniz.
+
+### <a name="disable-stardard_a5-vm-size-as-head-node-for-hdinsgiht-40"></a>HDInsgiht 4,0 için baş düğüm olarak Stardard_A5 VM boyutunu devre dışı bırak
+HDInsight kümesi baş düğümü, kümeyi başlatmaktan ve yönetmekten sorumludur. Standard_A5 VM boyutunun, HDInsight 4,0 için baş düğüm olarak güvenilirlik sorunları vardır. 2021 Mayıs 'ta bir sonraki sürümden itibaren, müşteriler baş düğüm olarak Standard_A5 VM boyutu ile yeni kümeler oluşturamayacak. E2_v3 veya E2s_v3 gibi diğer 2 çekirdekli VM 'Leri kullanabilirsiniz. Mevcut kümeler olduğu gibi çalışır. 4 çekirdekli bir VM, üretim HDInsight kümelerinizin yüksek kullanılabilirliğini ve güvenilirliğini sağlamak için baş düğüm için son derece önerilir.
 
 ### <a name="basic-support-for-hdinsight-36-starting-july-1-2021"></a>HDInsight 3,6, 1 Temmuz 2021 tarihinden itibaren Temel destek
 Microsoft, 1 Temmuz 2021 ' den itibaren belirli HDInsight 3,6 küme türleri için [temel destek](hdinsight-component-versioning.md#support-options-for-hdinsight-versions) sunacaktır. Temel destek planı, 3 Nisan 2022 ' ye kadar kullanılabilir olacaktır. 1 Temmuz 2021 tarihinden itibaren otomatik olarak Temel destek kaydedilir. Kabul etmeniz için herhangi bir işlem yapmanız gerekmez. Temel destek altına eklenen küme türleri için [belgelerimize](hdinsight-36-component-versioning.md) bakın. 

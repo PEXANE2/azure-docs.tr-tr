@@ -3,15 +3,15 @@ title: Sanal makine bağlantısını Başlat-Azure
 description: Connect üzerinde sanal makineyi Başlat özelliği nasıl yapılandırılır.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/10/2021
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d3ef8e3656051c4a99ab52a7b52a0d623fdf9ce2
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: af95cf5d3e4112c717d653062f186797d48fb515
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303973"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389817"
 ---
 # <a name="start-virtual-machine-on-connect-preview"></a>Bağlantı sırasında sanal makineyi Başlat (Önizleme)
 
@@ -119,7 +119,7 @@ Connect üzerinde VM 'yi Başlat bir konak havuzu ayarıdır. Yalnızca bir grup
 
 Connect üzerinde başlangıç sanal makinesini yapılandırmak üzere Azure portal kullanmak için:
 
-1. Tarayıcınızı açın ve [Azure Portal](https://portal.azure.com/?feature.startVMonConnect=true#home)gidin. Azure portal bir InPrivate pencerede açmanız önerilir.
+1. Tarayıcınızı açın ve [Azure Portal](https://portal.azure.com)gidin.
 
 2. Azure portal **Windows sanal masaüstü**' ne gidin.
 

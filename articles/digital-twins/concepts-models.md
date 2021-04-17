@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8942262c2e02670d57b1db324eb154dcc38f00f8
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: b3f0dd599f982e19fee7febc3b85d46f91a55b35
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575403"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589304"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins'deki ikiz modellerini anlama
 
@@ -58,7 +58,7 @@ Bir DTDL model arabirimi, aşağıdaki alanlardan her birinin sıfır, bir veya 
     
     >[!TIP] 
     >Bileşenler, bir model arabirimi içindeki ilgili özelliklerin kümelerini gruplamak için de kullanılabilir. Bu durumda, her bir bileşeni arabirim içinde bir ad alanı veya "klasör" olarak düşünebilirsiniz.
-* **İlişki** ilişkileri, dijital bir ikizi diğer dijital TWINS ile nasıl dahil edileceğini temsil etmenize olanak tanır. İlişkiler, *Contains* ("kat yer alan"), *cozı* ("HVAC Cozı"), *isbilledto* ("sıkıştırıcı kullanıcıya faturalandırılır") vb. gibi farklı anlam anlamlarını temsil edebilir. İlişkiler çözümün birbiriyle ilişkili varlıkların bir grafiğini sağlamasına izin verir.
+* **İlişki** ilişkileri, dijital bir ikizi diğer dijital TWINS ile nasıl dahil edileceğini temsil etmenize olanak tanır. İlişkiler, *Contains* ("kat yer alan"), *cozı* ("HVAC Cozı"), *isbilledto* ("sıkıştırıcı kullanıcıya faturalandırılır") vb. gibi farklı anlam anlamlarını temsil edebilir. İlişkiler çözümün birbiriyle ilişkili varlıkların bir grafiğini sağlamasına izin verir. İlişkiler Ayrıca kendi [özelliklerine](#properties-of-relationships) sahip olabilir.
 
 > [!NOTE]
 > [DTDL özelliği](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) Ayrıca, dijital bir ikizi (sıfırlama komutu gibi) veya bir fanı açık veya kapalı bir komut olarak yürütülebilecek Yöntemler olan **komutları** tanımlar. Ancak, *Komutlar Şu anda Azure dijital TWINS 'te desteklenmemektedir.*
@@ -80,6 +80,10 @@ Sonuç olarak, Azure dijital TWINS 'te bir model tasarlarken, büyük olasılık
 Telemetri ve özellikler genellikle cihazlardan veri girişini işlemek için birlikte çalışır. Azure dijital TWINS 'e yönelik tüm giriş [API 'ler](how-to-use-apis-sdks.md)aracılığıyla olduğundan, genellikle giriş işlevinizi kullanarak cihazlardan telemetri veya özellik olaylarını okuyabilir ve yanıt olarak Azure dijital TWINS 'te bir özellik ayarlarsınız. 
 
 Ayrıca Azure dijital TWINS API 'sinden bir telemetri olayı yayımlayabilirsiniz. Diğer telemetride olduğu gibi, işlemek için bir dinleyici gerektiren kısa süreli bir olaydır.
+
+#### <a name="properties-of-relationships"></a>İlişkilerin özellikleri
+
+DTDL Ayrıca **ilişkilerin** kendi özelliklerine sahip olmasını sağlar. Bir DTDL modeli içinde bir ilişki tanımlarken, ilişki, `properties` ilişkiye özgü durumu tanımlamak için özel özellikler tanımlayabileceğiniz kendi alanına sahip olabilir.
 
 ## <a name="model-inheritance"></a>Model devralma
 

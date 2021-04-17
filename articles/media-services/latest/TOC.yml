@@ -243,8 +243,6 @@
           displayName: 'accessing, long-running, sdk, invalid character, name, naming, file name'
         - name: 'Sayfa, filtre, düzen varlıkları'
           href: filter-order-page-entitites-how-to.md
-        - name: Azure RBAC
-          href: security-rbac-concept.md
         - name: Hata kodları
           items:
             - name: Akış uç noktası hata kodları
@@ -443,8 +441,18 @@
           href: asset-publish-cli-how-to.md
     - name: Güvenlik
       items:
+        - name: Azure RBAC
+          href: security-rbac-concept.md
         - name: Toplama depolama erişim anahtarları
           href: security-storage-roll-access-keys-how-to.md
+        - name: Güvenilen depolamayı etkinleştir
+          href: security-trusted-storage-rest-tutorial.md
+        - name: Azure Media PlayerPass kimlik doğrulama belirteçleri
+          href: security-pass-authentication-tokens-how-to.md
+        - name: Güvenilen depolamayı etkinleştir
+          href: security-trusted-storage-rest-tutorial.md
+        - name: REST API ile müşteri tarafından yönetilen anahtarlar
+          href: security-customer-managed-keys-rest-postman-tutorial.md
     - name: Medya oynatıcılarını kullanma
       items:
         - name: Eksiksiz Azure Media Player kurulumu

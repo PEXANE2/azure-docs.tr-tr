@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 43707a99792ae3c4d817f47d770629287b8a774b
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 86f4f31d45acd99ca97cfb48081d87c632da5c96
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374344"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587672"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
 
@@ -286,7 +286,7 @@ Erişimin bu şekilde kısıtlanması yalnızca Application Insights kaynaktaki 
 
 Azure Resource Manager şablonları, REST ve komut satırı arabirimlerini kullanarak daha önce açıklanan işlemi otomatikleştirebilirsiniz.
 
-Özel bağlantı kapsamları oluşturup yönetmek için [REST API](/rest/api/monitor/private%20link%20scopes%20(preview)) veya [Azure CLI (az Monitor Private-link-scope)](/cli/azure/monitor/private-link-scope)kullanın.
+Özel bağlantı kapsamları oluşturup yönetmek için [REST API](/rest/api/monitor/privatelinkscopes(preview)/private%20link%20scoped%20resources%20(preview)) veya [Azure CLI (az Monitor Private-link-scope)](/cli/azure/monitor/private-link-scope)kullanın.
 
 Ağ erişimini yönetmek için, bayraklarını `[--ingestion-access {Disabled, Enabled}]` ve `[--query-access {Disabled, Enabled}]` [Log Analytics çalışma alanlarını](/cli/azure/monitor/log-analytics/workspace) veya [Application Insights bileşenlerini](/cli/azure/ext/application-insights/monitor/app-insights/component)kullanın.
 

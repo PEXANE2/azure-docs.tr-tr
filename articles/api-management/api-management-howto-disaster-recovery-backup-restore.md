@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 223d119786d99eac611ece597fc0e8de4fcaf6bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 090eda3c3310a1b793733e37725c62758445d6b2
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98762409"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587375"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management'ta hizmet yedekleme ve geri yükleme işlevlerini kullanarak acil durumda kurtarma
 
@@ -78,11 +78,14 @@ Azure Resource Manager kullanan kaynaklarda yaptığınız tüm görevlerin aşa
 5. **Azure hizmet yönetimi**'ni seçin.
 6. **Seç**' e basın.
 
-    ![İzin ekleme](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
+    :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/add-app-permission.png" alt-text="Uygulama izinlerinin nasıl ekleneceğini gösteren ekran görüntüsü."::: 
 
 7. Yeni eklenen uygulamanın yanındaki **temsilci izinleri** ' ne tıklayın, **Azure hizmet yönetimi 'ne (Önizleme) erişim** kutusunu işaretleyin.
+
+    :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/delegated-app-permission.png" alt-text="Atanmış uygulama izinleri eklemeyi gösteren ekran görüntüsü.":::
+
 8. **Seç**' e basın.
-9. **Izin ver**' e tıklayın.
+9. **Izin Ekle**' ye tıklayın.
 
 ### <a name="configuring-your-app"></a>Uygulamanızı yapılandırma
 

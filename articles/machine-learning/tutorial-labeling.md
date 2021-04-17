@@ -11,12 +11,12 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
 ms.custom: data4ml
-ms.openlocfilehash: 3a86f0eb88ba0a56f0887d71f649cf9b9d5ec7a3
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 41e93584937ca10740e9ee0be3353d1edf5efb3e
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227271"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587689"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Öğretici: çok sınıflı görüntü sınıflandırması için etiketleme projesi oluşturma 
 
@@ -210,4 +210,5 @@ Resim etiketleri [Coco formatında](http://cocodataset.org/#format-data) veya Az
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bir veri etiketleme projesi oluşturun ve etiketleri dışarı aktarın](how-to-create-labeling-projects.md).
+> [Machine Learning görüntü tanıma modelini eğitme](/azure/machine-learning/how-to-use-labeled-dataset).
+

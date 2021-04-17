@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 3da4f8f946b11985d93be35fa2748e7f25015a71
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 98866a4f06df0380d52d1aee3eede8aa2f70aaed
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107564652"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588147"
 ---
 Azure Instance Metadata Service (IMDS), çalışmakta olan sanal makine örnekleri hakkında bilgi sağlar. Bunu, sanal makinelerinizi yönetmek ve yapılandırmak için kullanabilirsiniz.
 Bu bilgiler SKU, depolama, ağ yapılandırması ve yaklaşan bakım olaylarını içerir. Mevcut verilerin tüm listesi için bkz. [uç nokta kategorileri Özeti](#endpoint-categories).
@@ -333,7 +333,7 @@ Bu uç nokta, [yol parametreleri](#route-parameters)aracılığıyla yanıt filt
 | Veriler | Description | Sunulan sürüm |
 |------|-------------|--------------------|
 | `azEnvironment` | VM 'nin çalıştığı Azure ortamı | 2018-10-01
-| `customData` | Bu özellik kullanımdan kaldırıldı ve devre dışı bırakıldı. Yerine geçilen `userData` | 2019-02-01
+| `customData` | Bu özellik kullanım dışıdır ve [ıMD 'de](#frequently-asked-questions)devre dışıdır. Yerine geçilen `userData` | 2019-02-01
 | `evictionPolicy` | Bir [spot VM 'nin](../articles/virtual-machines/spot-vms.md) nasıl çıkarılacak olduğunu ayarlar. | 2020-12-01
 | `isHostCompatibilityLayerVm` | VM 'nin konak uyumluluk katmanında çalışıp çalışmadığına göre tanımlar | 2020-06-01
 | `licenseType` | [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit)için lisans türü. Bu yalnızca AHB özellikli VM 'Lerde mevcuttur | 2020-09-01

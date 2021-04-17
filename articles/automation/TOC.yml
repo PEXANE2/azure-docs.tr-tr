@@ -66,6 +66,12 @@
           href: automation-create-standalone-account.md
         - name: Resource Manager şablonu ile Otomasyon hesabı oluşturma
           href: quickstart-create-automation-account-template.md
+        - name: Yönetilen kimlik
+          items:
+            - name: Yönetilen kimliği etkinleştirme
+              href: enable-managed-identity-for-automation.md
+            - name: Yönetilen kimliği devre dışı bırak
+              href: disable-managed-identity-for-automation.md
         - name: Farklı Çalıştır hesabı
           items:
             - name: Farklı Çalıştır hesabı oluştur

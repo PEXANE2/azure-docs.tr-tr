@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 8a45d490d060febc18d77c8487c9f562fd2a914a
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: e19d39a32d48ec55473bb957595d47ec5148e74b
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275525"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588794"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için yerel geliştirmeyi ayarlama
 
@@ -43,7 +43,7 @@ Aşağıdaki grafikte isteklerin yerel olarak nasıl işlendiği gösterilmekted
 :::image type="content" source="media/local-development/cli-conceptual.png" alt-text="Azure statik Web uygulaması CLı isteği ve yanıt akışı":::
 
 > [!IMPORTANT]
-> [http://localhost:4280](http://localhost:4280)CLI tarafından sunulan uygulamaya erişmek için öğesine gidin.
+> `http://localhost:4280`CLI tarafından sunulan uygulamaya erişmek için öğesine gidin.
 
 -  Bağlantı noktasına yapılan istekler `4280` , istek türüne bağlı olarak uygun sunucuya iletilir.
 
@@ -79,7 +79,7 @@ Mevcut Azure statik Web Apps sitenizin kök klasörüne bir Terminal açın.
 
     `swa start`
 
-1. [http://localhost:4280](http://localhost:4280)Uygulamayı tarayıcıda görüntülemek için bölümüne gidin.
+1. http://localhost:4280Uygulamayı tarayıcıda görüntülemek için bölümüne gidin.
 
 ### <a name="other-ways-to-start-the-cli"></a>CLı 'yi başlatmak için diğer yollar
 

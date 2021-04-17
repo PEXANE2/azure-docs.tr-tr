@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: d1f0728a9a8da264f0960be2b956516b3c93742e
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 8c9d760ed888eb194ad8f282f180a634e3c09538
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258086"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587825"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ile Microsoft Dynamics 365 sahtekarlık korumasını yapılandırma
 
@@ -126,8 +126,8 @@ Belirtilen [özel ilkelerde](https://github.com/azure-ad-b2c/partner-integration
 |  {your_tenant_extensions_appid}   |  Kiracının depolama uygulamasının uygulama KIMLIĞI   |  01234567-89ab-cdef-0123-456789ABCDEF  |
 |   {your_tenant_extensions_app_objectid}  | Kiracınızın depolama uygulamasının nesne KIMLIĞI    | 01234567-89ab-cdef-0123-456789ABCDEF   |
 |   {your_app_insights_instrumentation_key}  |   App Insights örneğiniz için izleme anahtarı *  |   01234567-89ab-cdef-0123-456789ABCDEF |
-|  {your_ui_base_url}   | Uygulama hizmetinizde, Kullanıcı arabirimi dosyalarınıza hizmet verilen uç nokta    | https://yourapp.azurewebsites.net/B2CUI/GetUIPage   |
-|   {your_app_service_url}  | Uygulama hizmetinizin URL 'SI    |  https://yourapp.azurewebsites.net  |
+|  {your_ui_base_url}   | Uygulama hizmetinizde, Kullanıcı arabirimi dosyalarınıza hizmet verilen uç nokta    | `https://yourapp.azurewebsites.net/B2CUI/GetUIPage`   |
+|   {your_app_service_url}  | Uygulama hizmetinizin URL 'SI    |  `https://yourapp.azurewebsites.net`  |
 |   {Facebook-uygulama kimliği}  |  Azure AD B2C ile Federasyon için yapılandırdığınız Facebook uygulamasının uygulama KIMLIĞI   | 000000000000000   |
 |  {Facebook-uygulama-gizli}   |  Facebook 'un uygulama gizli anahtarını kaydettiğiniz ilke anahtarının adı   | B2C_1A_FacebookAppSecret   |
 

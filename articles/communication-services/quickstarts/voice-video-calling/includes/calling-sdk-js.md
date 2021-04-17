@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 2ecbd207c4b1946a69b01f43ec2bc77d29b1a8c9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f20099943d3cfa3dd4afc161c26e5582e467ca8d
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106073236"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107590193"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -50,7 +50,7 @@ Bir `CallClient` örneğiniz olduğunda, örnek `CallAgent` üzerinde yöntemini
 
 `createCallAgent`Yöntemi `CommunicationTokenCredential` bir bağımsız değişken olarak kullanır. Bir [Kullanıcı erişim belirtecini](../../access-tokens.md)kabul eder.
 
-Bir örnek oluşturduktan sonra `callAgent` , `getDeviceManager` `CallClient` öğesine erişmek için örneğinde yöntemini kullanabilirsiniz `deviceManager` .
+`getDeviceManager` `CallClient` Uygulamasına erişmek için örneğinde yöntemini kullanabilirsiniz `deviceManager` .
 
 ```js
 // Set the logger's log level
@@ -109,9 +109,10 @@ const groupCall = callAgent.startCall([userCallee, pstnCallee], {alternateCaller
 > [!IMPORTANT]
 > Şu anda birden fazla giden yerel video akışı yok.
 
-Bir video araması yerleştirmek için, içindeki metodunu kullanarak kameraları belirtmeniz gerekir `getCameras()` `deviceManager` .
+Bir video araması yerleştirmek için, içindeki yöntemi kullanarak yerel kameraları listeleyebilirsiniz `getCameras()` `deviceManager` .
 
 Bir kamerayı seçtikten sonra bir örnek oluşturmak için bunu kullanın `LocalVideoStream` . `videoOptions`Yöntemine dizi içindeki bir öğe olarak geçirin `localVideoStream` `startCall` .
+
 
 ```js
 const deviceManager = await callClient.getDeviceManager();
@@ -146,7 +147,7 @@ const call = callAgent.join(context);
 > [!NOTE]
 > Bu API, geliştiriciler için önizleme olarak sunulmuştur ve alacağımız geri bildirimler doğrultusunda değiştirilebilir. Bu API’yi üretim ortamında kullanmayın. Bu API 'yi kullanmak için lütfen ACS çağıran Web SDK ' nın ' Beta ' sürümünü kullanın
 
-Bir ekip toplantısına katmak için `join` yöntemini kullanın ve bir toplantı bağlantısı veya koordinatları geçirin.
+Bir ekip toplantısına katmak için `join` yöntemini kullanın ve bir toplantı bağlantısı veya toplantının koordinatlarını geçirin.
 
 Toplantı bağlantısı kullanarak birleştirin:
 
@@ -173,9 +174,13 @@ const call = callAgent.join(locator);
 
 ```js
 const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
-
-    //Get incoming call ID
+    const incomingCall = args.incomingCall; 
+    // Get incoming call ID
     var incomingCallId = incomingCall.id
+    // Get information about this Call. This API is provided as a preview for developers
+    // and may change based on feedback that we receive. Do not use this API in a production environment.
+    // To use this api please use 'beta' release of ACS Calling Web SDK
+    var callInfo = incomingCall.info;
 
     // Get information about caller
     var callerInfo = incomingCall.callerInfo
@@ -210,6 +215,12 @@ Bir çağrının benzersiz KIMLIĞINI (dize) al:
    ```js
     const callId: string = call.id;
    ```
+Çağrı hakkında bilgi alın:
+> [!NOTE]
+> Bu API, geliştiriciler için önizleme olarak sunulmuştur ve alacağımız geri bildirimler doğrultusunda değiştirilebilir. Bu API’yi üretim ortamında kullanmayın. Bu API 'yi kullanmak için lütfen ACS çağıran Web SDK ' nın ' Beta ' sürümünü kullanın
+   ```js
+   const callInfo = call.info;
+   ```
 
 ' Call ' örneğindeki koleksiyonu inceleyerek, çağrı içindeki diğer katılımcılar hakkında bilgi edinin `remoteParticipants` :
 
@@ -240,6 +251,7 @@ Bir çağrının durumunu al:
   - `Connected`: Çağrının bağlı olduğunu gösterir.
   - `LocalHold`: Çağrının bir yerel katılımcı tarafından beklemeye yerleştirileceğini belirtir. Yerel uç nokta ve uzak katılımcılar arasında medya akışı yapılmaz.
   - `RemoteHold`: Çağrının uzak katılımcı tarafından beklemeye alındığı anlamına gelir. Yerel uç nokta ve uzak katılımcılar arasında medya akışı yapılmaz.
+  - `InLobby`: Kullanıcının lobide olduğunu gösterir.
   - `Disconnecting`: Çağrının durumuna geçmeden önce geçiş durumu `Disconnected` .
   - `Disconnected`: Son çağrı durumu. Ağ bağlantısı kaybolursa, durum `Disconnected` iki dakika sonra olarak değişir.
 
@@ -276,17 +288,8 @@ Koleksiyonu denetleyerek etkin video akışlarını inceleyin `localVideoStreams
    const localVideoStreams = call.localVideoStreams;
    ```
 
-### <a name="check-a-callended-event"></a>Ayrılmış bir olayı denetleme
 
-`call`Örnek, `callEnded` çağrı sona erdiğinde bir olayı yayar. Bu olayı dinlemek için aşağıdaki kodu kullanarak abone olun:
 
-```js
-const callEndHander = async (args: { callEndReason: CallEndReason }) => {
-    console.log(args.callEndReason)
-};
-
-call.on('callEnded', callEndHander);
-```
 
 ### <a name="mute-and-unmute"></a>Sessiz ve aç
 
@@ -304,7 +307,7 @@ await call.unmute();
 
 ### <a name="start-and-stop-sending-local-video"></a>Yerel video göndermeyi başlatma ve durdurma
 
-Bir videoyu başlatmak için nesne üzerindeki metodunu kullanarak kameraları belirtmeniz gerekir `getCameras` `deviceManager` . Ardından, `LocalVideoStream` istenen kamerayı `startVideo` bağımsız değişken olarak yöntemine geçirerek yeni bir örneğini oluşturun:
+Bir videoyu başlatmak için nesne üzerindeki metodunu kullanarak kameraları numaralandırabilirsiniz gerekir `getCameras` `deviceManager` . Ardından, istenen kamerayla yeni bir örneğini oluşturun `LocalVideoStream` ve sonra `LocalVideoStream` nesneyi `startVideo` yöntemine geçirin:
 
 ```js
 const deviceManager = await callClient.getDeviceManager();
@@ -377,6 +380,7 @@ Uzak katılımcılar, ilişkili özellikler ve koleksiyonlar kümesine sahiptir:
   - `Connected`: Katılımcı çağrıya bağlı.
   - `Hold`: Katılımcı tutuluyor.
   - `EarlyMedia`: Bir katılımcının çağrıya bağlanmadan önce oynadığı duyuru.
+  - `InLobby`: Uzak katılımcının lobide olduğunu gösterir.
   - `Disconnected`: Son durum. Katılımcının çağrı bağlantısı kesildi. Uzak katılımcı ağ bağlantılarını kaybederse, durumu `Disconnected` iki dakika sonra olarak değişir.
 
 - `callEndReason`: Bir katılımcının çağrıyı neden bıraktı hakkında bilgi edinmek için, özelliği kontrol edin `callEndReason` :
@@ -412,7 +416,7 @@ Uzak katılımcılar, ilişkili özellikler ve koleksiyonlar kümesine sahiptir:
 
 ### <a name="add-a-participant-to-a-call"></a>Çağrıya katılımcı ekleme
 
-Çağrıya bir katılımcı (Kullanıcı veya telefon numarası) eklemek için kullanabilirsiniz `addParticipant` . Türlerden birini sağlayın `Identifier` . `remoteParticipant`Örnek döndürür.
+Çağrıya bir katılımcı (Kullanıcı veya telefon numarası) eklemek için kullanabilirsiniz `addParticipant` . Türlerden birini sağlayın `Identifier` . Zaman uyumlu olarak `remoteParticipant` örneği döndürür. Çağrıya yapılan `remoteParticipantsUpdated` olay, bir katılımcı başarıyla çağrıya eklendiğinde tetiklenir.
 
 ```js
 const userIdentifier = { communicationUserId: <ACS_USER_ID> };
@@ -441,7 +445,7 @@ const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStr
 const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
 
-İşlemek için `RemoteVideoStream` bir olaya abone olmanız gerekir `isAvailableChanged` . `isAvailable`Özelliği olarak değişirse `true` , uzak katılımcı bir akış gönderiyor. Bu durumda, yeni bir örneğini oluşturun `VideoStreamRenderer` ve ardından `VideoStreamRendererView` zaman uyumsuz yöntemi kullanarak yeni bir örnek oluşturun `createView` .  Daha sonra `view.target` herhangi bir kullanıcı arabirimi öğesine ekleyebilirsiniz.
+İşlemek için `RemoteVideoStream` , bu etkinliğe abone olmanız gerekir `isAvailableChanged` . `isAvailable`Özelliği olarak değişirse `true` , uzak katılımcı bir akış gönderiyor. Bu durumda, yeni bir örneğini oluşturun `VideoStreamRenderer` ve ardından `VideoStreamRendererView` zaman uyumsuz yöntemi kullanarak yeni bir örnek oluşturun `createView` .  Daha sonra `view.target` herhangi bir kullanıcı arabirimi öğesine ekleyebilirsiniz.
 
 Uzak bir akış değişikliklerinin kullanılabilirliği her kullanıldığında, belirli bir veya tek tek yok etme seçeneğini belirleyebilir `VideoStreamRenderer` `VideoStreamRendererView` , ancak bu, boş video çerçevesinin görüntülenmesine neden olur.
 
@@ -488,7 +492,6 @@ Uzak video akışları aşağıdaki özelliklere sahiptir:
   ```
 
 ### <a name="videostreamrenderer-methods-and-properties"></a>VideoStreamRenderer yöntemleri ve özellikleri
-
 `VideoStreamRendererView`Uygulama kullanıcı arabirimine eklenebilecek bir örnek oluşturma uzak video akışını işleyebilir, zaman uyumsuz `createView()` yöntemi kullanın, Stream işleme için ne zaman kullanılabilir olduğunda ÇÖZÜMLENIR ve `target` `video` Dom ağacının herhangi bir yerinden eklenebilir öğeyi temsil eden özelliği olan bir nesne döndürür
 
   ```js
@@ -523,7 +526,7 @@ view.updateScalingMode('Crop')
 
 ## <a name="device-management"></a>Cihaz yönetimi
 
-`deviceManager`' De, ses ve video akışlarınızı bir çağrıda aktarabilecek yerel cihazları belirtebilirsiniz. Ayrıca, yerel tarayıcı API 'sini kullanarak başka bir kullanıcının mikrofonuna ve kameraya erişme izni isteyebilmenizi de sağlar.
+`deviceManager`' De, ses ve video akışlarınızı bir çağrıda aktarabilecek yerel cihazları sıralayabilirsiniz. Ayrıca, yerel cihazın mikrofonlarını ve kameralara erişim izni istemek için de kullanabilirsiniz.
 
 `deviceManager`Yöntemini çağırarak erişebilirsiniz `callClient.getDeviceManager()` :
 
@@ -533,7 +536,7 @@ const deviceManager = await callClient.getDeviceManager();
 
 ### <a name="get-local-devices"></a>Yerel cihazları al
 
-Yerel cihazlara erişmek için, üzerinde listeleme yöntemlerini kullanabilirsiniz `deviceManager` .
+Yerel cihazlara erişmek için, üzerinde listeleme yöntemlerini kullanabilirsiniz `deviceManager` . Sabit listesi, zaman uyumsuz bir işlemdir
 
 ```js
 //  Get a list of available video devices for use.
