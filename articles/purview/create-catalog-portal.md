@@ -3,16 +3,18 @@ title: 'Hızlı başlangıç: Azure portal Azure purview hesabı oluşturma (Ön
 description: Bu hızlı başlangıçta, Azure purview hesabı oluşturma ve bu uygulamayı kullanmaya başlamak için izinleri yapılandırma açıklanmaktadır.
 author: nayenama
 ms.author: nayenama
+ms.date: 10/23/2020
+ms.topic: quickstart
 ms.service: purview
 ms.subservice: purview-data-catalog
-ms.topic: quickstart
-ms.date: 10/23/2020
-ms.openlocfilehash: 0346b467bc299b4eb6125df04a4449e94c035e47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 72f4ac8df39b9511fd98a1dd5a3eca76e11e34bf
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666466"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535163"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Azure purview hesabı oluşturun
 
