@@ -3,12 +3,12 @@ title: Application Insights kullanılabilirliğine genel bakış
 description: Uygulamanızın veya Web sitenizin kullanılabilirliğini ve yanıt hızını izlemek için yinelenen Web testleri ayarlayın.
 ms.topic: conceptual
 ms.date: 04/15/2021
-ms.openlocfilehash: c3b7a1d0bf8c50c77e5062a702bcdd7600d98d7a
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 3c2d248df98fcb9f75f5de9c05b9f600955cbac7
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107520802"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600803"
 ---
 # <a name="availability-tests-overview"></a>Kullanılabilirlik testlerine genel bakış
 
@@ -18,11 +18,9 @@ Genel İnternet'ten erişilebilen herhangi bir HTTP veya HTTPS uç noktası içi
 
 ## <a name="types-of-availability-tests"></a>Kullanılabilirlik testi türleri
 
-Dört tür kullanılabilirlik testi vardır:
+Üç tür kullanılabilirlik testi vardır:
 
 * [URL ping testi](monitor-web-app-availability.md): Bu kategoride Portal aracılığıyla oluşturabileceğiniz iki basit test vardır.
-    - Temel ping testi: Azure portal oluşturabileceğiniz basit bir test.
-    - Standart Ping testi: herhangi bir http istek yöntemi (örneğin,, `GET` `HEAD` `POST` vb.) veya özel üstbilgiler ekleme gibi özelliklerle gelişmiş bir standart ping testi testi.
 * [Çok adımlı Web testi](availability-multistep.md): daha karmaşık senaryoları test etmek için oynatılabilecek Web istekleri dizisinin bir kaydı. Çok adımlı Web testleri Visual Studio Enterprise oluşturulur ve yürütülmek üzere portala yüklenir.
 * [Özel Izleme kullanılabilirlik testleri](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability): kullanılabilirlik testlerini çalıştırmak için özel bir uygulama oluşturmaya karar verirseniz, bu `TrackAvailability()` Yöntem sonuçları Application Insights göndermek için kullanılabilir.
 

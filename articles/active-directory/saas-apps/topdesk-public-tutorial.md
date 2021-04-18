@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 5d16fd87b01db69d3f55e22aad573b7847b9048c
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: b787102065f93588cd796027123d61072e9d5aea
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518146"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107601024"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Öğretici: Topmasa-genel ile tümleştirme Azure Active Directory
 
@@ -95,7 +95,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     f. **Yanıt URL** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.topdesk.net/tas/public/login/verify`
     
     > [!NOTE] 
-    > **Tanımlayıcı** ve **yanıt URL 'si** değerleri otomatik olarak doldurulmazsa, bunları el ile girmeniz gerekir. Tanımlayıcı için yukarıda belirtilen kalıbı izleyin ve öğreticide daha sonra açıklanan **Topmasa genel çoklu oturum açma** bölümünden yanıt URL 'si değerini alın. **Oturum açma URL 'si** değeri gerçek değil, bu değeri gerçek Sign-On URL 'siyle güncelleştirmeniz gerekiyor. Değeri almak için [Topmasa-genel istemci desteği ekibine](https://help.topdesk.com/saas/enterprise/user/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > **Tanımlayıcı** ve **yanıt URL 'si** değerleri otomatik olarak doldurulmazsa, bunları el ile girmeniz gerekir. Tanımlayıcı için yukarıda belirtilen kalıbı izleyin ve öğreticide daha sonra açıklanan **Topmasa genel çoklu oturum açma** bölümünden yanıt URL 'si değerini alın. **Oturum açma URL 'si** değeri gerçek değil, bu değeri gerçek Sign-On URL 'siyle güncelleştirmeniz gerekiyor. Değeri almak için [Topmasa-genel istemci desteği ekibine](https://my.topdesk.com/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 

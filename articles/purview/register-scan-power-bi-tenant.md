@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 6646f131488a5ae4aa9b20fe614d7ebb46133444
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 8fb4c797df7961726ca785a56a6ab25807999842
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538870"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600871"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI kiracı kaydetme ve tarama (Önizleme)
 
@@ -70,13 +70,9 @@ Kimlik doğrulaması ayarlamak için bir güvenlik grubu oluşturun ve bu gruba 
 
 Artık Power BI kiracınızın yönetim API 'sine bağlanmak için, yönetilen kimlik yönetimli kimlik izinlerini vermiş olduğunuza göre, Azure purview Studio 'dan taramanızı ayarlayabilirsiniz.
 
-1. **Yönetim Merkezi** simgesini seçin.
+1. Sol gezinti bölmesinde **kaynakları** seçin.
 
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/management-center.png" alt-text="Yönetim Merkezi simgesi.":::
-
-1. Ardından **veri kaynaklarında** **+ Yeni** ' yi seçin.
-
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/data-sources.png" alt-text="Yeni veri kaynağı düğmesinin görüntüsü":::
+1. Ardından **Kaydet**’i seçin.
 
     Veri kaynağınız olarak **Power BI** seçin.
 

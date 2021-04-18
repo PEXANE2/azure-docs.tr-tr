@@ -384,6 +384,10 @@
       href: /legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context
     - name: Azure Market koşulları
       href: /legal/marketplace/terms?context=/azure/marketplace/context/context
+    - name: Microsoft Publisher Sözleşmesi
+      href: /legal/marketplace/msft-publisher-agreement
+    - name: Microsoft Publisher sözleşmesi için değişiklik geçmişi
+      href: /legal/marketplace/mpa-change-history
 - name: Başvuru
   items:
     - name: CPP API başvurusu

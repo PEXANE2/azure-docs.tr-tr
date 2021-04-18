@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 3bbf47da3724b9df0905e2a212cda4a16bf44bdb
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: e02fbe0f77a53b7d3f8f3ce420bf46189dc85a65
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258563"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600990"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
 
@@ -57,7 +57,7 @@ Bu sürümle birlikte, artık 60 dil/yerel ayarlarda Toplam 142 sinir sesi deste
 
 - **C++/c #/Java/Python**: Windows, Linux ve Android 'de herhangi bir medya biçimi için destek eklemek üzere GStreamer 'nin en son sürümüne taşındı (1.18.3). [Belgelere bakın](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams).
 - **C++/c #/Java/Objective-C/Python**: sıkıştırılmış TTS/BIRLEŞTIRILMIŞ sesin SDK 'ya çözülmesi için destek eklendi. Çıktı ses biçimini PCM olarak ayarlarsanız ve sisteminizde GStreamer varsa, SDK bant genişliğini kaydetmek ve istemcideki sesin kodunu çözmek için otomatik olarak hizmetten sıkıştırılmış ses ister. `SpeechServiceConnection_SynthEnableCompressedAudioTransmission` `false` Bu özelliği devre dışı bırakmak için ' i ayarlayabilirsiniz. [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#propertyid), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.propertyid?view=azure-dotnet), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.propertyid?view=azure-java-stable), [Amaç-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxpropertyid), [Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.propertyid?view=azure-python)için ayrıntılar.
-- **JavaScript**: Node.js kullanıcılar artık [ `AudioConfig.fromWavFileInput` API 'yi](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest#fromWavFileInput_File_)kullanabilir. Bu, [GitHub sorununun #252](https://github.com/microsoft/cognitive-services-speech-sdk-JavaScript/issues/252)adresleridir.
+- **JavaScript**: Node.js kullanıcılar artık [ `AudioConfig.fromWavFileInput` API 'yi](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest#fromWavFileInput_File_)kullanabilir. Bu, [GitHub sorununun #252](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/252)adresleridir.
 - **C++/c #/Java/Objective-C/Python**: `GetVoicesAsync()` tüm kullanılabilir sensıs SESSESINI döndürmek için TTS yöntemi eklendi. [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#getvoicesasync), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-dotnet#methods), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-java-stable#methods), [Amaç-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesizer#getvoiceasync)ve [Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer?view=azure-python#methods)için ayrıntılar.
 - **C++/c #/Java/JavaScript/Objective-C/Python**: `VisemeReceived` TTS/Speech sensepi için eklenen olay, zaman uyumlu viseme animasyonunu döndürmelidir. [Belgelere bakın](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-speech-synthesis-viseme).
 - **C++/c #/Java/JavaScript/Objective-C/Python**: `BookmarkReached` TTS için olay eklendi. SSML girişinde yer işaretlerini ayarlayabilir ve her bir yer işareti için ses uzaklıklarını alabilirsiniz. [Belgelere bakın](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup#bookmark-element).

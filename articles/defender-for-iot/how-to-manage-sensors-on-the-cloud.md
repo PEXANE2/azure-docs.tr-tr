@@ -1,16 +1,16 @@
 ---
-title: IoT portalı için Defender 'daki algılayıcıları ve abonelikleri yönetme
+title: IoT portalı için Defender 'daki algılayıcıları yönetme
 description: IoT portalı için Defender 'da sensöri ekleme, görüntüleme ve yönetme hakkında bilgi edinin.
-ms.date: 2/18/2021
+ms.date: 4/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 5b4c8b3d10fe88816e07eb775b2bf3827d578b17
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 2c948aa2387552f9815ab075abb43c98307ae087
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383057"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600191"
 ---
-# <a name="manage-sensors-and-subscriptions-in-the-defender-for-iot-portal"></a>IoT portalı için Defender 'daki algılayıcıları ve abonelikleri yönetme
+# <a name="manage-sensors-ain-the-defender-for-iot-portal"></a>Algılayıcıları yönetme Ain IoT portalındaki Defender
 
 Bu makalede, [IoT portalı Için Defender](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)'da algılayıcıları ekleme, görüntüleme ve yönetme işlemlerinin nasıl yapılacağı açıklanır.
 
@@ -118,24 +118,6 @@ Bir algılayıcıyı yeniden etkinleştirmek için:
 8. **Karşıya yükle** ' yi seçin ve ekleme algılayıcısı sayfasından kaydettiğiniz dosyayı seçin.
 
 9. **Etkinleştir**' i seçin.
-
-## <a name="offboard-a-subscription"></a>Abonelik çıkarma
-
-Abonelikler aylık olarak yönetilir. Bir aboneliği boşaltdığınızda, ayın sonuna kadar bu abonelik için faturalandırılırsınız. 
-
-Aboneliği boşaltmadan önce abonelikle ilişkili tüm algılayıcıları kaldırın. Algılayıcıyı silme hakkında daha fazla bilgi için bkz. [algılayıcı silme](#delete-a-sensor). 
-
-Bir aboneliği bırakmak için:
-
-1. **Fiyatlandırma** sayfasına gidin.
-1. Aboneliği seçin ve ardından **Sil** simgesini seçin :::image type="icon" source="media/how-to-manage-sensors-on-the-cloud/delete-icon.png" border="false"::: .
-1. Onay açılan penceresinde, abonelikle ilişkili tüm algılayıcıları sildiğini onaylamak için onay kutusunu işaretleyin.
-
-    :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/offboard-popup.png" alt-text="Onay kutusunu seçin ve sensöriz için kapalı Pano ' yı seçin.":::
-
-1. **Kapalı panosunu** seçin. 
-
-Şirket içi ortam etkilenmez, ancak ilgili verilerin şirket içi yönetim konsoluna akmasını engellemek için algılayıcıyı şirket içi ortamdan kaldırmanız veya algılayıcıyı başka bir aboneliğe yeniden atamanız gerekir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

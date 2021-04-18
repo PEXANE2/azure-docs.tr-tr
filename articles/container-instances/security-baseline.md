@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: be742de41979a218aeca588ce72a8ce80c8c59e5
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 8790e05edbaeb40debd997ea9b35d31b25947761
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078614"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598797"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Container Instances için Azure Güvenlik temeli
 
@@ -30,7 +30,7 @@ Container Instances Azure Güvenlik kıyaslaması ile tamamen nasıl eşlendiği
 
 Azure Güvenlik Duvarı 'nı kullanarak Azure Container Instances Temsilcili bir alt ağdan giden ağ erişimini denetleyin. 
 
-- [Kapsayıcı örneklerini Azure sanal ağına dağıtma](/azure/container-instances/container-instance-vnet)
+- [Kapsayıcı örneklerini Azure sanal ağına dağıtma](/azure/container-instances/container-instances-vnet)
 
 - [Azure Güvenlik duvarını dağıtma ve yapılandırma](../firewall/tutorial-firewall-deploy-portal.md)
 

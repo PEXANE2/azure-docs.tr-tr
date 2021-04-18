@@ -4,14 +4,14 @@ description: Rol tabanlı erişim denetimini Azure Cosmos DB hesabınız için A
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 04/16/2021
 ms.author: thweiss
-ms.openlocfilehash: 1a6bdf55e52a7060423d2a016f07eee3608f50d4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 145c60784ec9cef60d0863e1eb03aa564dea2b55
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063483"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600837"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Rol tabanlı erişim denetimini Azure Cosmos DB hesabınız için Azure Active Directory yapılandırma (Önizleme)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,6 +45,13 @@ Azure Cosmos DB veri düzlemi RBAC, [Azure RBAC](../role-based-access-control/ov
 
 ## <a name="permission-model"></a><a id="permission-model"></a> İzin modeli
 
+> [!IMPORTANT]
+> Bu izin modeli yalnızca verileri okuyup yazmanıza izin veren veritabanı işlemlerini içerir. Kapsayıcı oluşturma veya aktarım hızını değiştirme gibi herhangi bir yönetim işlemi **türünü kapsamaz.** Bu, bir AAD kimliğiyle yönetim işlemlerinin kimliğini doğrulamak için **herhangi bir Azure Cosmos DB veri düzlemi SDK 'sını** kullanamayacağı anlamına gelir. Bunun yerine, [Azure RBAC](role-based-access-control.md) 'yi şu şekilde kullanmanız gerekir:
+> - [ARM şablonları](manage-with-templates.md)
+> - [Azure PowerShell betikler](manage-with-powershell.md),
+> - [Azure CLI betikleri](manage-with-cli.md),
+> - [Azure Yönetim kitaplıkları](https://azure.github.io/azure-sdk/releases/latest/index.html).
+
 Aşağıdaki tabloda, izin modeli tarafından kullanıma sunulan tüm eylemler listelenmektedir.
 
 | Name | Karşılık gelen veritabanı işlemleri |
@@ -64,9 +71,6 @@ Joker karakterler hem *kapsayıcılar* hem de *öğe* düzeylerinde desteklenir:
 
 - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`
 - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*`
-
-> [!IMPORTANT]
-> Bu izin modeli yalnızca verileri okuyup yazmanıza izin veren veritabanı işlemlerini içerir. Kapsayıcı oluşturma veya aktarım hızını değiştirme gibi herhangi bir yönetim işlemi **türünü kapsamaz.** Yönetim işlemlerinin bir AAD kimliğiyle doğrulanması için bunun yerine [Azure RBAC](role-based-access-control.md) kullanın.
 
 ### <a name="metadata-requests"></a><a id="metadata-requests"></a> Meta veri istekleri
 

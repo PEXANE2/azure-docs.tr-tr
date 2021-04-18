@@ -6,21 +6,21 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ede0d279b8769f49afcdae1cb9352c1b47fb59b5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d33c7f87d77f371d4eb4bf903e4d534f334e39c4
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932412"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599511"
 ---
 # <a name="import-new-update"></a>Yeni güncelleştirme al
 IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı öğrenin. Henüz yapmadıysanız, temel [içeri aktarma kavramlarını öğrendiğinizden](import-concepts.md)emin olun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
+* Cihazlara dağıtmak istediğiniz mevcut bir güncelleştirme dosyası. Bu, görüntü tabanlı güncelleştirme için bir görüntü dosyası veya paket tabanlı güncelleştirme için bir [apt bildirim dosyası](device-update-apt-manifest.md) olabilir. ([Nasıl yaparım? seçin?](understand-device-update.md#support-for-a-wide-range-of-update-artifacts))
 * [IoT Hub etkinleştirilmiş cihaz güncelleştirmesiyle bir IoT Hub erişim](create-device-update-account.md). 
 * IoT Hub içinde cihaz güncelleştirmesi için sağlanan bir IoT cihazı (veya simülatör).
-   * Gerçek bir cihaz kullanıyorsanız, görüntü güncelleştirmesi için bir güncelleştirme görüntü dosyası veya paket güncelleştirmesi için [apt bildirim dosyası](device-update-apt-manifest.md) gerekir.
 * [PowerShell 5](/powershell/scripting/install/installing-powershell) veya üzeri (Linux, MacOS ve Windows yüklemelerini içerir)
 * Desteklenen tarayıcılar:
   * [Microsoft Edge](https://www.microsoft.com/edge)
@@ -31,7 +31,7 @@ IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı 
 
 ## <a name="create-device-update-import-manifest"></a>Cihaz güncelleştirme Içeri aktarma bildirimi oluştur
 
-1. Güncelleştirme görüntü dosyanızın veya APT bildirim dosyasının PowerShell 'den erişilebilen bir dizinde bulunduğundan emin olun.
+1. Daha önce yapmadıysanız, cihazlara dağıtmak istediğiniz bir görüntü dosyası ya da APT bildirim dosyası alın. Bu, cihazlarınızın üreticisinden veya çalıştığınız bir sistem tümleştirmeinden ya da kuruluşunuzun içindeki bir gruba ait olabilir. Güncelleştirme görüntüsü dosyasının veya APT bildirim dosyasının PowerShell 'den erişilebilen bir dizinde bulunduğundan emin olun.
 
 2. Güncelleştirme görüntü dosyanızın veya APT bildirim dosyasının bulunduğu dizinde **Aduupdate. psm1** adlı bir metin dosyası oluşturun. Daha sonra [Aduupdate. psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) PowerShell cmdlet 'ini açın, içeriği metin dosyanıza kopyalayın ve metin dosyasını kaydedin.
 

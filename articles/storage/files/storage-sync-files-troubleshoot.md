@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 4/12/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 54a2493d930069142a8cd6965421dd588b8d76b8
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: bf74b3a1659547772368c9fb394eeab8321b5f5d
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366309"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599647"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -35,6 +35,20 @@ StorageSyncAgent.msi /l*v AFSInstaller.log
 ```
 
 Yükleme hatasının nedenini öğrenmek için Installer. log dosyasına bakın.
+
+<a id="agent-installation-gpo"></a>**Aracı yüklemesi hata vererek başarısız oldu: depolama eşitleme Aracısı Kurulum Sihirbazı bir hata nedeniyle erken sona erdi**
+
+Aracı yükleme günlüğünde, aşağıdaki hata günlüğe kaydedilir:
+
+```
+CAQuietExec64:  + CategoryInfo          : SecurityError: (:) , PSSecurityException
+CAQuietExec64:  + FullyQualifiedErrorId : UnauthorizedAccess
+CAQuietExec64:  Error 0x80070001: Command line returned an error.
+```
+
+Bu sorun, [PowerShell yürütme ilkesi](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy) Grup İlkesi kullanılarak yapılandırılmışsa ve ilke ayarı "yalnızca imzalı betiklerine izin ver" ise oluşur. Azure Dosya Eşitleme aracısına dahil edilen tüm betikler imzalanır. Yükleyici, yürütme ilkesini atla ilke ayarını kullanarak betik yürütmeyi gerçekleştirdiğinden Azure Dosya Eşitleme Aracısı yüklemesi başarısız olur.
+
+Bu sorunu çözmek için, sunucuda [betik yürütmeyi aç](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy) Grup İlkesi ayarını geçici olarak devre dışı bırakın. Aracı yüklemesi tamamlandıktan sonra, Grup İlkesi ayarı yeniden etkinleştirilebilir.
 
 <a id="agent-installation-on-DC"></a>**Active Directory Etki Alanı denetleyicisinde aracı yüklemesi başarısız oluyor**  
 Bir Active Directory etki alanı denetleyicisine, PDC rolü sahibinin bir Windows Server 2008 R2 veya altında işletim sistemi sürümü olan bir etki alanı denetleyicisine yüklemeye çalışırsanız, eşitleme aracısının yüklenememe sorununa ulaşırsınız.
@@ -378,7 +392,7 @@ Aşağıdaki tabloda, Azure Dosya Eşitleme henüz desteklemediği tüm Unicode 
 | **HRESULT** | 0x800704c7 |
 | **HRESULT (ondalık)** | -2147023673 | 
 | **Hata dizesi** | ERROR_CANCELLED |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Eşitleme oturumları, sunucunun yeniden başlatılması veya güncelleştirilmesini, VSS anlık görüntülerini vb. dahil çeşitli nedenlerle başarısız olabilir. Bu hata, izlenmesi gereken gibi görünse de, birkaç saat boyunca devam etmediği takdirde bu hatayı yoksaymak güvenlidir.
 
@@ -400,7 +414,7 @@ Eşitleme oturumları, sunucunun yeniden başlatılması veya güncelleştirilme
 | **HRESULT** | 0x80c8004c |
 | **HRESULT (ondalık)** | -2134376372 |
 | **Hata dizesi** | ECS_E_USER_REQUEST_THROTTLED |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Herhangi bir eylem gerekmez; sunucu yeniden denenecek. Bu hata birkaç saat devam ederse destek isteği oluşturun.
 
@@ -411,7 +425,7 @@ Herhangi bir eylem gerekmez; sunucu yeniden denenecek. Bu hata birkaç saat deva
 | **HRESULT** | 0x80c83075 |
 | **HRESULT (ondalık)** | -2134364043 |
 | **Hata dizesi** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 İşlem yapmanız gerekmez. Bir dosya veya dosya paylaşma (bulut uç noktası) Azure Backup kullanılarak geri yüklendiğinde, Azure dosya paylaşımında değişiklik algılama tamamlanana kadar eşitleme engellenir. Geri yükleme tamamlandıktan hemen sonra değişiklik algılama çalıştırılır ve çalışma süresi dosya paylaşımındaki dosyaların sayısına bağlıdır.
 
@@ -422,7 +436,7 @@ Herhangi bir eylem gerekmez; sunucu yeniden denenecek. Bu hata birkaç saat deva
 | **HRESULT** | 0x80041295 |
 | **HRESULT (ondalık)** | -2147216747 |
 | **Hata dizesi** | SYNC_E_METADATA_INVALID_OPERATION |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Normalde bir yedekleme uygulaması VSS anlık görüntüsü oluşturduğunda ve eşitleme veritabanının yüklemesi kaldırıldığında bu hata oluşur. Bu hata birkaç saat devam ederse destek isteği oluşturun.
 
@@ -591,7 +605,7 @@ Depolama hesabı güvenlik duvarından veya depolama hesabının bir sanal ağa 
 | **HRESULT** | 0x80c80219 |
 | **HRESULT (ondalık)** | -2134375911 |
 | **Hata dizesi** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Bu hata genellikle kendiliğinden çözülür ve şunlar varsa gerçekleşebilir:
 
@@ -727,7 +741,7 @@ Bu hata birimin doldurulmuş olması nedeniyle oluşur. Bu hata genellikle sunuc
 | **HRESULT** | 0x80c8300f |
 | **HRESULT (ondalık)** | -2134364145 |
 | **Hata dizesi** | ECS_E_REPLICA_NOT_READY |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Bu hata, bulut uç noktasının Azure dosya paylaşımında zaten mevcut olan içerikle oluşturulduğu için oluşur. Azure Dosya Eşitleme, sunucu uç noktasının ilk eşitlemesine devam etmesini sağlamak için Azure dosya paylaşımında tüm içerikleri taramalıdır.
 
@@ -788,7 +802,7 @@ Yüklenmiş olan bulut katmanlama filtresi sürücüsü (StorageSync.sys) sürü
 | **HRESULT** | 0x80c8004b |
 | **HRESULT (ondalık)** | -2134376373 |
 | **Hata dizesi** | ECS_E_SERVICE_UNAVAILABLE |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Azure Dosya Eşitleme hizmeti kullanılamadığından bu hata oluşur. Azure Dosya Eşitleme hizmeti kullanılabilir olduğunda bu hata otomatik olarak çözülecektir.
 
@@ -799,7 +813,7 @@ Azure Dosya Eşitleme hizmeti kullanılamadığından bu hata oluşur. Azure Dos
 | **HRESULT** | 0x80131500 |
 | **HRESULT (ondalık)** | -2146233088 |
 | **Hata dizesi** | COR_E_EXCEPTION |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Eşitleme özel bir durum nedeniyle başarısız olduğu için bu hata oluşur. Hata birkaç saat devam ederse lütfen bir destek isteği oluşturun.
 
@@ -821,7 +835,7 @@ Depolama hesabı başka bir bölgeye yük devrettiği için bu hata oluştu. Azu
 | **HRESULT** | 0x80c8020e |
 | **HRESULT (ondalık)** | -2134375922 |
 | **Hata dizesi** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Eşitleme veritabanındaki bir iç sorundan dolayı bu hata oluşur. Eşitleme yeniden denendiğinde bu hata otomatik olarak düzelecektir. Bu hata uzabir süre devam ederse, bir destek isteği oluşturun ve bu sorunu çözmenize yardımcı olması için sizinle iletişim kuracağız.
 
@@ -905,7 +919,7 @@ Bu hatanın nedeni, Azure Dosya Eşitleme'nin HTTP yeniden yönlendirme (3xx dur
 | **HRESULT** | 0x80c83085 |
 | **HRESULT (ondalık)** | -2134364027 |
 | **Hata dizesi** | ECS_E_DATA_INGESTION_WAIT_TIMEOUT |
-| **Düzeltme gerekli** | Hayır |
+| **Düzeltme gerekli** | No |
 
 Bu hata, bir veri alma işlemi zaman aşımını aştığında oluşur. Eşitleme ilerleme durumu (AppliedItemCount 0 ' dan büyükse) Bu hata yoksayılabilir. [Geçerli bir eşitleme oturumunun ilerlemesini izlemek nasıl yaparım? bakın mi?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 

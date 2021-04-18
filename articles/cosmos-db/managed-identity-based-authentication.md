@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e4a41d508d15c3d8f41cc727776f233cc56c0817
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b85e1fc74688f2883531bd3a6e724a2ce326a9db
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480962"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600259"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Azure Cosmos DB verilerine erişmek için sistem tarafından atanan Yönetilen kimlikler kullanın
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ Bu adımda, işlev uygulamanıza sistem tarafından atanmış bir yönetilen kim
 
 Bu adımda, işlev uygulamasının sistem tarafından atanan yönetilen kimliğine bir rol atayacaksınız. Azure Cosmos DB yönetilen kimliğe atayabilmeniz için birden çok yerleşik rol içerir. Bu çözüm için aşağıdaki iki rolü kullanacaksınız:
 
-|Yerleşik rol  |Açıklama  |
+|Yerleşik rol  |Description  |
 |---------|---------|
 |[DocumentDB hesabı Katılımcısı](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|, Azure Cosmos DB hesaplarını yönetebilir. Okuma/yazma anahtarlarının alınmasına izin verir. |
 |[Cosmos DB hesabı okuyucu rolü](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB hesabı verilerini okuyabilir. Okuma anahtarlarının alınmasına izin verir. |
@@ -93,10 +93,10 @@ az role assignment create --assignee $principalId --role "DocumentDB Account Con
 
 Artık Azure Cosmos DB izinlerinde **DocumentDB hesabı katılımcısı** rolüyle sistem tarafından atanmış bir yönetilen kimliğe sahip bir işlev uygulamasına sahipsiniz. Aşağıdaki işlev uygulama kodu Azure Cosmos DB anahtarları alır, bir CosmosClient nesnesi oluşturur, Aquarium 'un sıcaklığını alır ve bunu Azure Cosmos DB kaydeder.
 
-Bu örnek Azure Cosmos DB hesap Anahtarlarınıza erişmek için [liste anahtarları API](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listkeys) 'sini kullanır.
+Bu örnek Azure Cosmos DB hesap Anahtarlarınıza erişmek için [liste anahtarları API](/rest/api/cosmos-db-resource-provider/2021-03-15/databaseaccounts/listkeys) 'sini kullanır.
 
 > [!IMPORTANT] 
-> [Cosmos DB hesap okuyucusu rolünü atamak](#grant-access-to-your-azure-cosmos-account) Istiyorsanız, [salt okuma anahtarları API 'sini](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listreadonlykeys)kullanmanız gerekir. Bu, yalnızca salt okunurdur tuşları doldurur.
+> [Cosmos DB hesap okuyucusu rolünü atamak](#grant-access-to-your-azure-cosmos-account) Istiyorsanız, [salt okuma anahtarları API 'sini](/rest/api/cosmos-db-resource-provider/2021-03-15/databaseaccounts/listreadonlykeys)kullanmanız gerekir. Bu, yalnızca salt okunurdur tuşları doldurur.
 
 Liste anahtarları API 'SI nesneyi döndürür `DatabaseAccountListKeysResult` . Bu tür C# kitaplıklarında tanımlı değildir. Aşağıdaki kod bu sınıfın uygulamasını gösterir:  
 

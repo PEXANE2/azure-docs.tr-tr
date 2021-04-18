@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: b106c82e3755fbd0e02f12a769d80ce4761cf026
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 9382feeb16f2f6a82b946c05a6b4780866fdda5c
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285867"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600157"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 
@@ -196,7 +196,7 @@ Bulut katmanlaması etkinleştirilmiş bir birimde yinelenen verileri kaldırma 
 Birim tasarruflarının yalnızca sunucuya uygulanacağını aklınızda yapın; Azure dosya paylaşımındaki verileriniz yinelenenleri kaldırma işlemi geri alınamaz.
 
 > [!Note]  
-> Windows Server 2019 ' de etkinleştirilmiş bulut katmanlaması olan birimlerde yinelenen verileri kaldırmayı desteklemek için Windows Update [KB4520062](https://support.microsoft.com/help/4520062) 'in yüklü olması ve Azure dosya eşitleme Aracı sürüm 9.0.0.0 veya daha yeni bir sürümü gereklidir.
+> Windows Server 2019 ' de etkinleştirilmiş bulut katmanlaması olan birimlerde yinelenen verileri kaldırmayı desteklemek için Windows Update [KB4520062-2019](https://support.microsoft.com/help/4520062) veya daha sonraki bir aylık toplu güncelleştirme yüklenmelidir ve Azure dosya eşitleme aracı sürümü 12.0.0.0 veya daha yeni bir sürüm gerekir.
 
 **Windows Server 2012 R2**  
 Azure Dosya Eşitleme, Windows Server 2012 R2 'deki aynı birimde yinelenen verileri kaldırma ve bulut katmanlaması desteklemez. Yinelenen verileri kaldırma özelliği bir birimde etkinleştirilmişse, bulut katmanlaması devre dışı bırakılmalıdır. 

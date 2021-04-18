@@ -12,12 +12,12 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: anomali algılama, makine öğrenimi, algoritmalar
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 3bfa30cc5d3d57cfcd2677bb4b2719061541d5a9
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: d63399d0f492f85a4a2d57a595a6d8ef5b606d92
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278873"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599528"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomali Algılayıcısı API'si nedir?
 
@@ -113,5 +113,5 @@ Bölge dayanıklılığı sağlamak için hiçbir müşteri yapılandırması ge
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Hızlı başlangıç: anomali algılayıcısının kullanıldığı zaman serisi verilerinizde bozukluklar saptama](quickstarts/client-libraries.md)
-* Anomali algılayıcı API 'SI [çevrimiçi tanıtımı](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)
+* Anomali algılayıcı API 'SI [çevrimiçi tanıtımı](https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook)
 * Anomali algılayıcısı [REST API başvurusu](https://aka.ms/anomaly-detector-rest-api-ref)

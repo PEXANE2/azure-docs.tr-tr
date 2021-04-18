@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: b8733d499b2396160a73906f16a69291cf0b9d71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 650c0847942635e2a6a901db40ed0e51e9412057
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103015429"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600072"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>REST kullanarak Azure Media Services içeriği yayımlama
 
@@ -49,7 +49,7 @@ Bu makalede, varlığınızı yayımlamak ve sorunsuz, MPEG DASH ve HLS akış U
 AMS API 'sine bağlanma hakkında daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure MEDIA SERVICES API 'Sine erişme](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->Hizmetine başarıyla bağlandıktan sonra https://media.windows.net , başka bir MEDIA SERVICES URI belirten 301 yeniden yönlendirme alırsınız. Yeni URI 'ye sonraki çağrıları yapmanız gerekir.
+>Hizmetine başarıyla bağlandıktan sonra `https://media.windows.net` , başka bir MEDIA SERVICES URI belirten 301 yeniden yönlendirme alırsınız. Yeni URI 'ye sonraki çağrıları yapmanız gerekir.
 
 ## <a name="create-an-ondemand-streaming-locator"></a>Bir Ondemandstreaming Locator oluşturma
 OnDemand akış bulucusu oluşturmak ve URL 'Leri almak için aşağıdakileri yapmanız gerekir:

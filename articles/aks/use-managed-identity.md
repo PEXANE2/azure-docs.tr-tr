@@ -4,12 +4,12 @@ description: Azure Kubernetes hizmeti 'nde (AKS) yönetilen kimlikleri nasıl ku
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: 3ace7f1c93ab3918f460d245a863db43d98f1db5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 58813504c5de057e06433b2e955931b37560d825
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176102"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600667"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
 
@@ -66,42 +66,14 @@ Ardından, bir AKS kümesi oluşturun:
 az aks create -g myResourceGroup -n myManagedCluster --enable-managed-identity
 ```
 
-Yönetilen kimlikler kullanılarak başarılı bir küme oluşturulması, bu hizmet sorumlusu profil bilgilerini içerir:
-
-```output
-"servicePrincipalProfile": {
-    "clientId": "msi"
-  }
-```
-
-Denetim düzlemi tarafından yönetilen kimliğinizin ObjectID 'yi sorgulamak için aşağıdaki komutu kullanın:
-
-```azurecli-interactive
-az aks show -g myResourceGroup -n myManagedCluster --query "identity"
-```
-
-Sonuç şöyle görünmelidir:
-
-```output
-{
-  "principalId": "<object_id>",   
-  "tenantId": "<tenant_id>",      
-  "type": "SystemAssigned"                                 
-}
-```
-
 Küme oluşturulduktan sonra, uygulama iş yüklerinizi yeni kümeye dağıtabilir ve hizmet sorumlusu tabanlı AKS kümelerinde yaptığınız gibi etkileşime geçebilirsiniz.
-
-> [!NOTE]
-> Kendi VNet 'i, statik IP adresinizi veya kaynakların çalışan düğümü kaynak grubunun dışında olduğu bağlı Azure diskini oluşturmak ve kullanmak için, rol ataması gerçekleştirmek üzere küme sistemi tarafından atanan yönetilen kimliğin PrincipalId 'sini kullanın. Rol atama hakkında daha fazla bilgi için bkz. [diğer Azure kaynaklarına erişim yetkisi verme](kubernetes-service-principal.md#delegate-access-to-other-azure-resources).
->
-> Azure bulut sağlayıcısı tarafından kullanılan küme tarafından yönetilen kimliğin izin verdiği süre, 60 dakika sürebilir.
 
 Son olarak, kümeye erişmek için kimlik bilgilerini alın:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
+
 ## <a name="update-an-aks-cluster-to-managed-identities-preview"></a>AKS kümesini yönetilen kimliklere güncelleştirme (Önizleme)
 
 Aşağıdaki CLı komutlarını kullanarak, şu anda hizmet sorumluları ile çalışan bir AKS kümesini yönetilen kimliklerle çalışacak şekilde güncelleştirebilirsiniz.
@@ -131,6 +103,43 @@ az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identi
 ```
 > [!NOTE]
 > Sistem tarafından atanan veya Kullanıcı tarafından atanan kimlikler yönetilen kimliğe güncelleştirildikten sonra, `az aks nodepool upgrade --node-image-only` yönetilen kimlik güncelleştirmesini tamamlamak için düğümlerinizde bir oluşturma işlemi gerçekleştirin.
+
+## <a name="obtain-and-use-the-system-assigned-managed-identity-for-your-aks-cluster"></a>AKS kümeniz için sistem tarafından atanan yönetilen kimliği edinin ve kullanın
+
+Aşağıdaki CLı komutuyla AKS kümenizin yönetilen kimliği kullandığını doğrulayın:
+
+```azurecli-interactive
+az aks show -g <RGName> -n <ClusterName> --query "servicePrincipalProfile"
+```
+
+Küme Yönetilen kimlikler kullanıyorsa, `clientId` "MSI" değeri görüntülenir. Bunun yerine bir hizmet sorumlusu kullanan bir küme, nesne KIMLIĞINI gösterir. Örnek: 
+
+```output
+{
+  "clientId": "msi"
+}
+```
+
+Kümenin yönetilen kimlikleri kullandığını doğruladıktan sonra, aşağıdaki komutla denetim düzlemi sistem tarafından atanan kimliğin nesne KIMLIĞINI bulabilirsiniz:
+
+```azurecli-interactive
+az aks show -g <RGName> -n <ClusterName> --query "identity"
+```
+
+```output
+{
+    "principalId": "<object-id>",
+    "tenantId": "<tenant-id>",
+    "type": "SystemAssigned",
+    "userAssignedIdentities": null
+},
+```
+
+> [!NOTE]
+> Kendi VNet 'i, statik IP adresinizi veya kaynakların çalışan düğümü kaynak grubunun dışında olduğu bağlı Azure diskini oluşturmak ve kullanmak için, rol ataması gerçekleştirmek üzere küme sistemi tarafından atanan yönetilen kimliğin PrincipalId 'sini kullanın. Rol atama hakkında daha fazla bilgi için bkz. [diğer Azure kaynaklarına erişim yetkisi verme](kubernetes-service-principal.md#delegate-access-to-other-azure-resources).
+>
+> Azure bulut sağlayıcısı tarafından kullanılan küme tarafından yönetilen kimliğin izin verdiği süre, 60 dakika sürebilir.
+
 
 ## <a name="bring-your-own-control-plane-mi"></a>Kendi denetim düzlemi 'ni getir MI?
 Özel denetim düzlemi kimliği, küme oluşturma işleminden önce mevcut kimliğe erişim izni verilmesini sağlar. Bu özellik, önceden oluşturulmuş yönetilen kimlik ile özel VNET veya outboundType of UDR kullanma gibi senaryolara izin vermez.

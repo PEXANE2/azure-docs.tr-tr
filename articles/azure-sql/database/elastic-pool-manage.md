@@ -10,12 +10,12 @@ ms.author: moslake
 ms.reviewer: sstein
 ms.date: 03/12/2019
 ms.custom: seoapril2019 sqldbrb=1, devx-track-azurecli
-ms.openlocfilehash: dc2bb24880b77eae24e9bb2ef0baf70ac0b92ac7
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 2ccc34d1fc48c54bce90a2cde5b14bdc7059d480
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588641"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598916"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Azure SQL veritabanı 'nda elastik havuzları yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -106,8 +106,7 @@ SQL veritabanı elastik havuzları ve havuza alınmış veritabanları oluşturu
 |[Elastik havuzlar-Sil](/rest/api/sql/elasticpools/delete)|Elastik havuzu siler.|
 |[Elastik havuzlar-al](/rest/api/sql/elasticpools/get)|Elastik havuz alır.|
 |[Elastik havuzlar-sunucuya göre Listele](/rest/api/sql/elasticpools/listbyserver)|Bir sunucudaki elastik havuzların listesini döndürür.|
-|[Elastik havuzlar-güncelleştirme] (/REST/api/SQL/2020-11-01-önizleme/elayapışpools/Update
-)|Mevcut bir elastik havuzu güncelleştirir.|
+|[Elastik havuzlar-Güncelleştir](/rest/api/sql/2020-11-01-preview/elasticpools/update)|Mevcut bir elastik havuzu güncelleştirir.|
 |[Elastik havuz etkinlikleri](/rest/api/sql/elasticpoolactivities)|Elastik havuz etkinliklerini döndürür.|
 |[Elastik havuz veritabanı etkinlikleri](/rest/api/sql/elasticpooldatabaseactivities)|Elastik havuzun içindeki veritabanları üzerinde etkinlik döndürür.|
 |[Veritabanları-oluştur veya güncelleştir](/rest/api/sql/databases/createorupdate)|Yeni bir veritabanı oluşturur veya var olan bir veritabanını güncelleştirir.|

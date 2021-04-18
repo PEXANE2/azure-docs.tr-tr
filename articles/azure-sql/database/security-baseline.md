@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bf89830745207e264e3d8080ac84d1cac5ddb708
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 29db5b82d73bf96465581ccd6a663455464bbeb9
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079123"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599579"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>Azure SQL veritabanı için Azure Güvenlik temeli
 
@@ -250,7 +250,7 @@ Ayrıca Azure SQL tanılama telemetrisini, Azure SQL veritabanlarının ve Azure
 
 **Rehberlik**: Azure Active Directory (Azure AD) varsayılan parola kavramına sahip değil. Azure SQL veritabanı örneği sağlanırken, kimlik doğrulamasını Azure AD ile tümleştirmeyi tercih etmeniz önerilir.
 
-- [Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme](/azure/sql-database/azure-sql/database/authentication-aad-configure)
+- [Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme](/azure/azure-sql/database/authentication-aad-configure)
 
 **Sorumluluk**: Müşteri
 

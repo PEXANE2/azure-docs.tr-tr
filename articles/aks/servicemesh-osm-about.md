@@ -7,12 +7,12 @@ ms.date: 3/12/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: d266021a666070fdbade819eadb819b973768a72
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 65b02ae1baef97442828de747249ab6ffeaf2417
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480853"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599481"
 ---
 # <a name="open-service-mesh-aks-add-on-preview"></a>Hizmet ağı AKS eklentisini aç (Önizleme)
 
@@ -2150,7 +2150,7 @@ Grafana 'de başarıyla oturum açtıktan sonra, bir sonraki adım Grafana için
 
 OSA panoları her ikisi de ile kullanılabilir:
 
-- [Depomız](/charts/osm/grafana)ve Web Yöneticisi portalı aracılığıyla JSON blob 'ları olarak alınabilir.
+- [Depomız](https://github.com/grafana/grafana)ve Web Yöneticisi portalı aracılığıyla JSON blob 'ları olarak alınabilir.
 - veya [Grafana.com adresinden çevrimiçi](https://grafana.com/grafana/dashboards/14145)
 
 Bir panoyu içeri aktarmak için `+` sol taraftaki oturum açma menüsünü bulun ve öğesini seçin `import` .

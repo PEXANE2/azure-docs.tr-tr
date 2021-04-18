@@ -4,65 +4,37 @@ description: Application Insights ' de ping testleri ayarlayın. Web sitesi kull
 ms.topic: conceptual
 ms.date: 04/15/2021
 ms.reviewer: sdash
-ms.openlocfilehash: ecfd4ffee3582ff37411e59c75d8be8fca5e945f
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 60698862e26175425221940a4b69867cb414fe86
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516644"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598882"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Bir web sitesinin kullanılabilirliğini izleme
 
 "URL ping test" adı, bir hatalı Nomer 'nin bir bitidir. Bu sınamalar, bu testler sitenizin kullanılabilirliğini denetlemek için ıCMP (Internet Denetim Iletisi Protokolü) kullanmaz. Bunun yerine, bir uç noktanın yanıt verip vermediğini doğrulamak için daha gelişmiş HTTP isteği işlevselliği kullanırlar. Ayrıca, bu Yanıt ile ilişkili performansı ölçer ve bağımlı istekleri ayrıştırma ve yeniden denemeye izin verme gibi daha gelişmiş özelliklerle birlikte özel başarı ölçütlerini ayarlama özelliğini ekler.
 
-Temel ve standart ping testleri oluşturabileceğiniz iki tür URL ping testi vardır.
-
-> [!NOTE]
-> Temel ve standart ping testleri Şu anda genel önizlemededir. Bu önizleme sürümleri, bir hizmet düzeyi sözleşmesi olmadan sunulmaktadır. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-
-Temel vs standart:
-
-- Temel, test başına beş konum ile kısıtlıdır.
-- Standart testlerin özel üstbilgileri veya istek gövdesi olabilir.
-- Standart testler, temel yalnızca kullanabileceği sürece herhangi bir HTTP isteği yöntemini kullanabilir `GET` .
-- SSL sertifikası yaşam süresi denetimi, sertifikanızın süresi dolmadan önce ayarlanan bir süre için sizi uyarır.
-- Standart testler ücretli bir özelliktir.
-
-> [!NOTE]
-> Şu anda önizleme özelliği standart ping testleri için ek ücret alınmaz. Önizlemede olan özellikler için fiyatlandırma, gelecekte duyurulacak ve faturalandırma başlamadan önce bir bildirim sunulacaktır. Bildirim döneminden sonra standart ping testlerini kullanmaya devam etmeyi tercih etmeniz gerekir, ilgili ücret üzerinden faturalandırılırsınız.
-
-## <a name="create-a-url-ping-test"></a>URL ping testi oluşturma
-
 Bir kullanılabilirlik testi oluşturmak için, var olan bir Application Insight kaynağı kullanmanız veya [bir Application Insights kaynağı oluşturmanız](create-new-resource.md)gerekir.
 
-İlk kullanılabilirlik isteğinizi oluşturmak için kullanılabilirlik bölmesini açın ve test oluştur & test SKU 'nuzu seçin.
+İlk kullanılabilirlik isteğinizi oluşturmak için kullanılabilirlik bölmesini açın ve  **Test oluştur**' u seçin.
 
-:::image type="content" source="./media/monitor-web-app-availability/create-basic-test.png" alt-text="Azure portalında temel URL ping sınaması oluşturma ekranının ekran görüntüsü":::
+:::image type="content" source="./media/monitor-web-app-availability/availability-create-test-001.png" alt-text="Test oluşturma oluşturma ekranının ekran görüntüsü.":::
 
-|Ayar | Açıklama |
-|--------|-------------|
+## <a name="create-a-test"></a>Test oluşturma
+
+|Ayar| Açıklama
+|----|----|----|
 |**URL** |  URL, test etmek istediğiniz herhangi bir web sayfası olabilir, ancak ortak İnternet’te görünür olmalıdır. URL bir sorgu dizesi içerebilir. Bu nedenle, örneğin, veritabanınızla biraz alıştırma yapabilirsiniz. URL yeniden yönlendirme adresine çözümlenirse, en fazla 10 yeniden yönlendirmeyi izleriz.|
-|**Bağımlı istekleri Ayrıştır**| Test istekleri görüntüleri, betikleri, stil dosyaları ve test edilen Web sayfasının parçası olan diğer dosyalar. Kayıtlı yanıt süresi, bu dosyaları almak için geçen süreyi içerir. Bu kaynaklardan herhangi biri, tüm test için zaman aşımı süresi içinde başarıyla indirilemezse test başarısız olur. Seçenek işaretlenmezse, test yalnızca belirttiğiniz URL’deki dosyayı ister. Bu seçeneğin etkinleştirilmesi, daha sıkı bir denetim elde ediyor. Test, siteye el ile gözatarken dikkat çekici olmayan durumlar için başarısız olabilir. |
-|**Yeniden denemeleri etkinleştir**| Test başarısız olduğunda, kısa bir aralıktan sonra yeniden denenir. Art arda üç deneme başarısız olursa bir hata bildirilir. Sonraki testler bundan sonra her zamanki test sıklığında gerçekleştirilir. Bir sonraki başarılı olana kadar yeniden deneme geçici olarak askıya alınır. Bu kural her test konuma bağımsız olarak uygulanır. **Bu seçeneği öneririz**. Ortalama olarak hataların yaklaşık %80’i yeniden deneme sırasında kaybolur.|
-| **SSL sertifikası doğrulama testi** | Web sitenizdeki SSL sertifikasını, doğru şekilde yüklendiğinden, geçerli, güvenilir olduğundan ve kullanıcılarınızın hiçbirine herhangi bir hata vermediği emin olmak için doğrulayabilirsiniz. |
-| **Proaktif ömür denetimi** | Bu, SSL sertifikanızın süresi dolmadan önce ayarlanan bir zaman aralığı tanımlamanızı sağlar. Süresi dolduktan sonra test başarısız olur. |
+|**Bağımlı istekleri Ayrıştır**| Test istekleri görüntüleri, betikleri, stil dosyaları ve test edilen Web sayfasının parçası olan diğer dosyalar. Kayıtlı yanıt süresi, bu dosyaları almak için geçen süreyi içerir. Bu kaynaklardan herhangi biri, tüm test için zaman aşımı süresi içinde başarıyla indirilemezse test başarısız olur. Seçenek işaretlenmezse, test yalnızca belirttiğiniz URL’deki dosyayı ister. Bu seçeneğin etkinleştirilmesi, daha sıkı bir denetim elde ediyor. Test, siteye el ile gözatarken dikkat çekici olmayan durumlar için başarısız olabilir.
+|**Yeniden denemeleri etkinleştir**|test başarısız olduğunda, kısa bir aralıktan sonra yeniden denenir. Art arda üç deneme başarısız olursa bir hata bildirilir. Sonraki testler bundan sonra her zamanki test sıklığında gerçekleştirilir. Bir sonraki başarılı olana kadar yeniden deneme geçici olarak askıya alınır. Bu kural her test konuma bağımsız olarak uygulanır. **Bu seçeneği öneririz**. Ortalama olarak hataların yaklaşık %80’i yeniden deneme sırasında kaybolur.|
 |**Sınama sıklığı**| Testin her test konumundan ne sıklıkla çalıştırılacağını ayarlar. Beş dakikalık varsayılan sıklıkta ve beş test konumuyla, siteniz ortalama olarak dakikada bir test edilir.|
-|**Test konumları**| , Sunucularımızın URL 'nize Web istekleri gönderdiğimiz yerdir. Web sitenizdeki sorunları ağ sorunlarından ayırabilmeniz için **en az önerilen test konumu sayısı beş ' dir** . Standart test ve en fazla 16 konuma sahip beşten fazla konum seçebilirsiniz.|
+|**Test konumları**| , Sunucularımızın URL 'nize Web istekleri gönderdiğimiz yerdir. Web sitenizdeki sorunları ağ sorunlarından ayırabilmeniz için **en az önerilen test konumu sayısı beş ' dir** . En fazla 16 konum seçebilirsiniz.
 
 **URL 'niz genel İnternet 'ten görünmüyorsa, yalnızca test işlemlerine izin vermek için güvenlik duvarınızı seçmeli olarak açmayı seçebilirsiniz**. Kullanılabilirlik testi aracılarımız için güvenlik duvarı özel durumları hakkında daha fazla bilgi edinmek için [IP adresi kılavuzuna](./ip-addresses.md#availability-tests)bakın.
 
 > [!NOTE]
 > **En az beş konum** içeren birden çok konumdan test etmenizi önemle öneririz. Bu, belirli bir konum ile geçici sorunlardan kaynaklanan yanlış alarmları önlemektir. Ayrıca en iyi yapılandırmanın, **Test konumları sayısının, uyarı konum eşiğine + 2 ' ye eşit** olduğunu bulduk.
-
-## <a name="standard-test"></a>Standart test
-
-:::image type="content" source="./media/monitor-web-app-availability/standard-test-post.png" alt-text="Standart test bilgisi sekmesinin ekran görüntüsü." border="false":::
-
-|Ayar | Açıklama |
-|--------|-------------|
-| **Özel üst bilgiler** | İşletim parametrelerini tanımlayan anahtar değer çiftleri. |
-| **HTTP istek fiili** | İsteğinize hangi eylemi yapmak istediğinizi belirtin. Seçtiğiniz fiil kullanıcı arabiriminde yoksa, Azure Kaynak İzleyicisi kullanarak istediğiniz seçime standart bir test dağıtabilirsiniz. |
-| **İstek gövdesi** | HTTP isteğinizle ilişkili özel veriler. İçeriğinizi türüne kendi dosya türlerini yükleyebilir veya bu özelliği devre dışı bırakabilirsiniz. Ham gövde içeriği için metın, JSON, HTML, XML ve JavaScript destekliyoruz. |
 
 ## <a name="success-criteria"></a>Başarı ölçütleri
 
@@ -83,7 +55,7 @@ Bir kullanılabilirlik testi oluşturmak için, var olan bir Application Insight
 
 Azure Resource Manager kullanarak bir kullanılabilirlik URL 'SI ping testi dağıtıldığında, coğrafi konum özniteliği için aşağıdaki popülasyon etiketleri kullanılabilir.
 
-#### <a name="azure-gov"></a>Azure devleti
+### <a name="azure-gov"></a>Azure devleti
 
 | Görünen Ad   | Popülasyon adı     |
 |----------------|---------------------|

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bd3bb5e3060752d086f80f44a8f136cb861669c0
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: f002c7196b864d4a04beda1124d0519af612b716
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078528"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600242"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>Azure Izleyici için Azure Güvenlik temeli
 
@@ -605,7 +605,7 @@ Canlı akış APM özellikleri kullanıyorsanız, izleme anahtarına ek olarak k
 
 - [Key Vault oluşturma](../key-vault/secrets/quick-create-portal.md)
 
-- [Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama](/azure/key-vault/general/assign-access=policy-portal)
+- [Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama](/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad)
 
 **Sorumluluk**: Müşteri
 
