@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: c5dfd442bb52a5b1d319bd0a40b656d549134e7e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4230ced172de52e5acf45e071fa2a49a332eb696
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612334"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719232"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE Studio Not defterleri oluşturma, geliştirme ve bakımını yapma
 
@@ -40,7 +40,6 @@ SYNAPSE ekibi, Microsoft müşterileri için tutarlı Not defteri deneyimi sağl
 |Yük yüzdesi| Desteklenmez |&#9745;|
 |%% HTML| Desteklenmez |&#9745;|
 |Hücreyi taşımak için sürükle ve bırak| Desteklenmez |&#9745;|
-|Kalıcı görüntü () çıkışı|&#9745;| Kullanılamaz |
 |Araç çubuğu düğmeleriyle metin hücresini Biçimlendir|&#9745;| Kullanılamaz |
 |Hücre işlemini geri al| &#9745;| Kullanılamaz |
 
@@ -416,7 +415,7 @@ Birincil depolama hesabındaki verilere doğrudan erişebilirsiniz. Gizli anahta
 
 ![verilerden hücrelere](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
 
-## <a name="save-notebooks"></a>Not defterlerini Kaydet
+## <a name="save-notebooks"></a>Not defterlerini kaydetme
 
 Çalışma alanınızdaki tek bir not defterini veya tüm not defterlerini kaydedebilirsiniz.
 
@@ -432,7 +431,7 @@ Not defteri özelliklerinde, kaydetme sırasında hücre çıkışının eklenip
 
    ![Not defteri-Özellikler](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
-## <a name="magic-commands"></a>MAGIC komutları
+## <a name="magic-commands"></a>Magic komutları
 Azure SYNAPSE Studio not defterlerinde tanıdık Jupyıter Magic komutlarını kullanabilirsiniz. Geçerli kullanılabilir sihirli komutları olarak aşağıdaki listeyi gözden geçirin. İhtiyaçlarınızı karşılamak için daha fazla sihirli komut oluşturmaya devam edebilmemiz için [kullanım durumlarınızı GitHub 'da](https://github.com/MicrosoftDocs/azure-docs/issues/new) bize söyleyin.
 
 > [!NOTE]

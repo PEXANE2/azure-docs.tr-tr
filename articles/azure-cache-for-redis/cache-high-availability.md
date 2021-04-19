@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 69dec2ce00b263f3536e30ba0a5376e6d922b79c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 6c44c87221442797f063877385ac5eb7f8585850
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308362"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719106"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için yüksek kullanılabilirlik
 
@@ -22,7 +22,7 @@ Redin için Azure Cache, bir önbellek için *düğüm* olarak adlandırılan bi
 | Seçenek | Açıklama | Kullanılabilirlik | Standart | Premium | Kurumsal |
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
 | [Standart çoğaltma](#standard-replication)| Otomatik yük devretme ile tek bir veri merkezinde çift düğümlü çoğaltılan yapılandırma | % 99,9 ( [ayrıntılara](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)bakın) |✔|✔|-|
-| [Bölge yedekliliği](#zone-redundancy) | Otomatik yük devretme ile AZs genelinde çok düğümlü çoğaltılan yapılandırma | % 99,99 ' e kadar ( [ayrıntılara](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)bakın) |-|Önizleme|Önizleme|
+| [Bölge yedekliliği](#zone-redundancy) | Otomatik yük devretme ile AZs genelinde çok düğümlü çoğaltılan yapılandırma | % 99,99 ' e kadar ( [ayrıntılara](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)bakın) |-|Önizleme|✔|
 | [Coğrafi çoğaltma](#geo-replication) | Kullanıcı denetimli yük devretmeyle, iki bölgedeki bağlantılı önbellek örnekleri | % 99,999 ' e kadar ( [ayrıntılara](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)bakın) |-|✔|Önizleme|
 
 ## <a name="standard-replication"></a>Standart çoğaltma

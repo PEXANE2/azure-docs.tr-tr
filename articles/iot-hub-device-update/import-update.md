@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: d33c7f87d77f371d4eb4bf903e4d534f334e39c4
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 196a449f25d97fb1c1b7b8d79ee8889e0d31a5ae
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599511"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717756"
 ---
 # <a name="import-new-update"></a>Yeni güncelleştirme al
 IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı öğrenin. Henüz yapmadıysanız, temel [içeri aktarma kavramlarını öğrendiğinizden](import-concepts.md)emin olun.
@@ -112,8 +112,8 @@ IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı 
 
 ## <a name="import-update"></a>Güncelleştirmeyi içeri aktar
 
-[!NOTE]
-Aşağıdaki yönergelerde Azure portal Kullanıcı arabirimi aracılığıyla bir güncelleştirmenin nasıl içeri aktarılacağı gösterilmektedir. Ayrıca, bir güncelleştirmeyi içeri aktarmak için [IoT Hub API 'leri Için cihaz güncelleştirmesini](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) de kullanabilirsiniz. 
+> [!NOTE]
+> Aşağıdaki yönergelerde Azure portal Kullanıcı arabirimi aracılığıyla bir güncelleştirmenin nasıl içeri aktarılacağı gösterilmektedir. Ayrıca, bir güncelleştirmeyi içeri aktarmak için [IoT Hub API 'leri Için cihaz güncelleştirmesini](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) de kullanabilirsiniz. 
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve cihaz güncelleştirmesiyle IoT Hub gidin.
 

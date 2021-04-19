@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d8aaa8d5013c426ac1ab6b367309c51be4929cee
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: a2d4ebee02d85d10d5db8ec2de0bb1be334770dc
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366411"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717666"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach"></a>MSIX uygulama iliştirme için dosya paylaşma ayarlama
 
@@ -77,7 +77,7 @@ Depolama hesabı ve dosya paylaşımında oturum ana bilgisayar VM 'Leri atamak 
 
 4. Depolama hesabı oluşturma.
 
-5. [Azure dosya paylaşma oluşturma](../storage/files/storage-how-to-create-file-share.md#create-file-share)bölümündeki yönergeleri izleyerek depolama hesabı altında bir dosya paylaşma oluşturun.
+5. [Azure dosya paylaşma oluşturma](../storage/files/storage-how-to-create-file-share.md#create-a-file-share)bölümündeki yönergeleri izleyerek depolama hesabı altında bir dosya paylaşma oluşturun.
 
 6. Birinci bölüm içindeki yönergeleri izleyerek AD DS depolama hesabına katılarak [Azure dosya paylaşımlarınız için AD DS kimlik doğrulamasını etkinleştirin](../storage/files/storage-files-identity-ad-ds-enable.md#option-one-recommended-use-azfileshybrid-powershell-module).
 

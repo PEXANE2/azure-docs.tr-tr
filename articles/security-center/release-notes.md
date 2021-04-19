@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 04/11/2021
 ms.author: memildin
-ms.openlocfilehash: 3e4dddf61656ea38bac406366bf993788fd34943
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: bb79bbe918bb1a68b982ae4d44739c2c77a11434
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303160"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719160"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -329,7 +329,7 @@ Windows Server 'da sunucular için Azure Defender 'ı etkinleştirdiğinizde, pl
 Windows Server 2019 ve [Windows sanal masaüstü (WVD)](../virtual-desktop/overview.md)dahil etmek için destek artık genişletildi.
 
 > [!NOTE]
-> Windows Server 2019 makinesinde Endpoint için Defender 'ı etkinleştirdiğinizden, [Endpoint Integration Için Microsoft Defender 'ı etkinleştirme](security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration)konusunda açıklanan önkoşulları karşıladığından emin olun.
+> Windows Server 2019 makinesinde Endpoint için Defender 'ı etkinleştirdiğinizden, [Endpoint Integration Için Microsoft Defender 'ı etkinleştirme](security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration)bölümünde açıklanan önkoşulları karşıladığından emin olun.
 
 ### <a name="direct-link-to-policy-from-recommendation-details-page"></a>Öneri ayrıntıları sayfasından ilkeye doğrudan bağlantı
 
@@ -411,7 +411,7 @@ Mevcut öneriler etkilenmemiştir ve kıyaslama arttıkça, değişiklikler otom
 
 Daha fazla bilgi edinmek için aşağıdaki sayfalara bakın:
 
-- [Azure Güvenlik kıyaslaması hakkında daha fazla bilgi](../security/benchmarks/introduction.md)
+- [Azure Güvenlik kıyaslaması hakkında daha fazla bilgi](https://docs.microsoft.com/security/benchmark/azure/introduction)
 - [Yasal uyumluluk panonuzdaki standartlar kümesini özelleştirme](update-regulatory-compliance-packages.md)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>Şirket içi ve çoklu bulut makinelerinde güvenlik açığı değerlendirmesi, genel kullanıma sunuldu (GA)
@@ -526,7 +526,7 @@ Bir kullanıcının güvenlik merkezi verilerini görme izni yoksa, kuruluşunuz
 
 ### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure Güvenlik kıyaslamasının kapsamını artırmak için 35 önizleme önerisi eklendi
 
-Azure Güvenlik kıyaslaması, Azure Güvenlik Merkezi 'ndeki varsayılan ilke girişimidir. 
+[Azure Güvenlik kıyaslaması](https://docs.microsoft.com/security/benchmark/azure/introduction) , Azure Güvenlik Merkezi 'ndeki varsayılan ilke girişimidir. 
 
 Bu kıyaslama kapsamını artırmak için, güvenlik merkezi 'ne aşağıdaki 35 önizleme önerileri eklenmiştir.
 
@@ -544,7 +544,7 @@ Bu kıyaslama kapsamını artırmak için, güvenlik merkezi 'ne aşağıdaki 35
 
 İlgili bağlantılar:
 
-- [Azure Güvenlik kıyaslaması hakkında daha fazla bilgi](../security/benchmarks/introduction.md)
+- [Azure Güvenlik kıyaslaması hakkında daha fazla bilgi](https://docs.microsoft.com/security/benchmark/azure/introduction)
 - [MariaDB için Azure veritabanı hakkında daha fazla bilgi edinin](../mariadb/overview.md)
 - [MySQL için Azure veritabanı hakkında daha fazla bilgi edinin](../mysql/overview.md)
 - [PostgreSQL için Azure veritabanı hakkında daha fazla bilgi edinin](../postgresql/overview.md)
@@ -787,7 +787,7 @@ Bu kıyaslama kapsamını artırmak için Güvenlik Merkezi 'ne aşağıdaki 29 
 
 İlgili bağlantılar:
 
-- [Azure Güvenlik kıyaslaması hakkında daha fazla bilgi](../security/benchmarks/introduction.md)
+- [Azure Güvenlik kıyaslaması hakkında daha fazla bilgi](https://docs.microsoft.com/security/benchmark/azure/introduction)
 - [Azure API Apps hakkında daha fazla bilgi](../app-service/app-service-web-tutorial-rest-api.md)
 - [Azure işlev uygulamaları hakkında daha fazla bilgi edinin](../azure-functions/functions-overview.md)
 - [Azure Web Apps hakkında daha fazla bilgi](../app-service/overview.md)

@@ -7,12 +7,12 @@ ms.date: 03/11/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d545610b8fa13d0c0f8b91bf92107d53b81454c3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 13abb35d0fa9ad3ee949b6edf5205de601a02956
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313853"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718566"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Güvenli puanınızdan kaynakları ve önerileri muaf tutma 
 
@@ -35,8 +35,8 @@ Bu gibi durumlarda öneri için bir istisna oluşturabilirsiniz:
 | Yayın durumu:                  | Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
 | Fiyat                        | Bu, Azure Defender müşterileri için ek ücret ödemeden sunulan bir Premium Azure Ilke özelliğidir. Diğer kullanıcılar için ücretler gelecekte uygulanabilir.                                                                                                                                                                 |
 | Gerekli roller ve izinler: | Muafiyet oluşturmak için **sahip** veya **kaynak ilkesi katılımcısı**<br>Bir kural oluşturmak için Azure Ilkesinde ilkeleri düzenleme izinlerinizin olması gerekir.<br>Azure [Ilkesinde Azure RBAC izinleri](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)hakkında daha fazla bilgi edinin.                                            |
-| Sınırlamalar:                    | Muafiyetler yalnızca güvenlik merkezi 'nin varsayılan girişim, Azure Güvenlik kıyaslaması veya sağlanan mevzuata standart girişimlerinin herhangi biri için eklenen öneriler için oluşturulabilir. Özel girişimlerden oluşturulan öneriler muaf tutulamaz. [İlkeler, girişimler ve öneriler](security-policy-concept.md)arasındaki ilişkiler hakkında daha fazla bilgi edinin. |
-| Larının                         | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)                                                                                                                                                                                         |
+| Sınırlamalar:                    | Muafiyetler yalnızca güvenlik merkezi 'nin varsayılan girişim, [Azure Güvenlik kıyaslaması](https://docs.microsoft.com/security/benchmark/azure/introduction)veya sağlanan mevzuata standart girişimlerinin herhangi biri için eklenen öneriler için oluşturulabilir. Özel girişimlerden oluşturulan öneriler muaf tutulamaz. [İlkeler, girişimler ve öneriler](security-policy-concept.md)arasındaki ilişkiler hakkında daha fazla bilgi edinin. |
+| Larının                         | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)                                                                                                                                                                                         |
 |                                 |                                                                                                                                                                                                                                                                                                                                    |
 
 ## <a name="define-an-exemption"></a>İstisna tanımlama

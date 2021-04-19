@@ -7,17 +7,28 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37ff3300935e90304754b5f2b375df0adecdaefa
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: a41717e9be0918dead9f77a5f5472494d734b38a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256251"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717540"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'deki ilke anahtarlarına genel bakış
+
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Azure Active Directory B2C (Azure AD B2C), tümleştiği hizmetlerle güven sağlamak için gizli dizileri ve sertifikaları ilke anahtarları biçiminde depolar. Bu güvenler aşağıdakilerden oluşur:
 
@@ -89,3 +100,5 @@ Anahtar kümesi içindeki anahtarlar değiştirilebilir veya kaldırılabilir. V
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Anahtar kümesi](microsoft-graph-operations.md#trust-framework-policy-keyset) ve [ilke anahtarları](microsoft-graph-operations.md#trust-framework-policy-key) dağıtımını otomatik hale getirmek için Microsoft Graph nasıl kullanacağınızı öğrenin.
+
+::: zone-end

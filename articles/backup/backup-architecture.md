@@ -3,12 +3,12 @@ title: Mimariye Genel Bakış
 description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere ve işlemlere genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 6ecf01838b8fe3104626f8ada5f832c3f52dc378
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 8fca05f8718fc5e44da33b19447895f5daafc905
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515915"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107716759"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -142,23 +142,7 @@ Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Mimari: yerleşik Azure VM yedeklemesi
 
-1. Bir Azure VM için yedeklemeyi etkinleştirdiğinizde, belirttiğiniz zamanlamaya göre bir yedekleme çalışır.
-1. İlk yedekleme sırasında VM çalışıyorsa VM 'ye bir yedekleme uzantısı yüklenir.
-    - Windows VM'lerine VMSnapshot uzantısı yüklenir.
-    - Linux VM 'Leri için VMSnapshot Linux uzantısı yüklenir.
-1. Uzantı, depolama düzeyinde bir anlık görüntü alır.
-    - Çalıştıran Windows VM 'Leri için, VM 'nin uygulamayla tutarlı bir anlık görüntüsünü almak üzere Windows Birim Gölge Kopyası Hizmeti (VSS) ile yedekleme koordinatları. Varsayılan olarak, yedekleme tam VSS yedeklemeleri alır. Yedekleme, uygulamayla tutarlı bir anlık görüntü alacağından, dosya ile tutarlı bir anlık görüntü alır.
-    - Linux VM 'Leri için yedekleme, dosya ile tutarlı bir anlık görüntü alır. Uygulamayla tutarlı anlık görüntüler için, ön/son betikleri el ile özelleştirmeniz gerekir.
-    - Yedekleme, her bir sanal makine diski paralel olarak yedeklenerek en iyi duruma getirilir. Yedeklenmekte olan her disk için Azure Backup disk üzerindeki blokları okur ve yalnızca değiştirilen verileri depolar.
-1. Anlık görüntü alındıktan sonra veriler kasaya aktarılır.
-    - Yalnızca son yedeklemeden bu yana değiştirilen veri blokları.
-    - Veriler şifrelenmedi. Azure Backup, Azure disk şifrelemesi kullanılarak şifrelenmiş Azure VM 'Leri yedekleyebilir.
-    - Anlık görüntü verileri kasaya hemen kopyalanmayabilir. Yoğun saatlerde yedekleme birkaç saat sürebilir. Bir VM için toplam yedekleme süresi, günlük yedekleme ilkeleri için 24 saatten az olacaktır.
-1. Veriler kasaya gönderildikten sonra bir kurtarma noktası oluşturulur. Varsayılan olarak, anlık görüntüler silinmeden önce iki gün boyunca tutulur. Bu özellik bu anlık görüntülerden geri yükleme işlemine izin verir ve bu sayede geri yükleme sürelerini kapatır. Verileri kasadan geri dönüştürmek ve kopyalamak için gereken süreyi azaltır. Bkz. [Azure Backup Instant Restore özelliği](./backup-instant-restore-capability.md).
-
-Azure VM 'lerinizi yedeklemek için internet bağlantısına açık bir şekilde izin vermeniz gerekmez.
-
-![Azure VM 'lerinin yedeklenmesi](./media/backup-architecture/architecture-azure-vm.png)
+[!INCLUDE [azure-vm-backup-process.md](../../includes/azure-vm-backup-process.md)]
 
 ## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>Mimari: şirket içi Windows Server makinelerini veya Azure VM dosyalarını veya klasörlerini doğrudan yedekleyin
 

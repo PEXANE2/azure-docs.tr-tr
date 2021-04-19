@@ -2,13 +2,13 @@
 title: Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerini şifreleme
 description: Azure Backup, müşteri tarafından yönetilen anahtarları (CMK) kullanarak yedekleme verilerinizi şifrelemenize nasıl olanak sağladığını öğrenin.
 ms.topic: conceptual
-ms.date: 04/01/2021
-ms.openlocfilehash: b6cb1a288d0052b39bbeb52ed9fd20e68a6427ed
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.date: 04/19/2021
+ms.openlocfilehash: bd51be06e707674f3e35b3478d7f99d096be912a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167899"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718782"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerini şifreleme
 
@@ -44,7 +44,7 @@ Bu makalede aşağıdakiler ele alınmaktadır:
     >Kurtarma Hizmetleri kasasındaki yedeklemeler için müşteri tarafından yönetilen anahtarları kullanmak için az Module 5.3.0 veya üstünü kullanın.
     
     >[!Warning]
-    >Yedekleme için şifreleme anahtarlarını yönetmek üzere PowerShell kullanıyorsanız, bu anahtarları portaldan güncelleştirmeyi önermiyoruz.<br></br>Anahtarı portaldan güncelleştirirseniz, yeni modeli desteklemek için bir PowerShell güncelleştirmesi kullanılabilir olduğunda, şifreleme anahtarını daha fazla güncelleştirmek için PowerShell 'i kullanamazsınız. Ancak, Azure portal anahtarı güncelleştirmeye devam edebilirsiniz.
+    >Yedekleme için şifreleme anahtarlarını yönetmek üzere PowerShell kullanıyorsanız, bu anahtarları portaldan güncelleştirmeyi önermiyoruz.<br>Anahtarı portaldan güncelleştirirseniz, yeni modeli desteklemek için bir PowerShell güncelleştirmesi kullanılabilir olduğunda, şifreleme anahtarını daha fazla güncelleştirmek için PowerShell 'i kullanamazsınız. Ancak, Azure portal anahtarı güncelleştirmeye devam edebilirsiniz.
 
 Kurtarma Hizmetleri kasanızı oluşturup yapılandırmadıysanız, [nasıl yapılacağını burada](backup-create-rs-vault.md)bulabilirsiniz.
 
@@ -383,6 +383,16 @@ Yedeklemeleri şifrelemek için kullanılması gereken müşteri tarafından yö
 **Key Vault Seç** seçeneğinin kullanılması seçili anahtar için Otomatik döndürmeyi etkinleştirmeye yardımcı olur. Bu, sonraki sürüme güncelleştirme için el ile çaba ortadan kaldırır. Ancak, bu seçeneği kullanarak:
 - Anahtar sürüm güncelleştirmesinin etkili olması bir saate kadar sürebilir.
 - Anahtarın yeni bir sürümü geçerli olduğunda, anahtar güncelleştirmesi geçerli olduktan sonra en az bir sonraki yedekleme işi için eski sürüm de kullanılabilir (etkin durumda).
+
+### <a name="using-azure-policies-for-auditing-and-enforcing-encryption-utilizing-customer-managed-keys-in-preview"></a>Müşteri tarafından yönetilen anahtarlar kullanılarak şifrelemeyi denetleme ve zorunlu tutma için Azure Ilkelerini kullanma (önizlemede)
+
+Azure Backup, kurtarma hizmetleri kasasındaki verilerin müşteri tarafından yönetilen anahtarlarını kullanarak şifrelemeyi denetlemek ve zorlamak için Azure Ilkeleri kullanmanıza olanak sağlar. Azure Ilkelerini kullanarak:
+
+- Denetim ilkesi, 04/01/2021 sonrasında etkinleştirilen müşteri tarafından yönetilen anahtarları kullanarak kasaların denetlenmesi için kullanılabilir. Bu tarihten önce CMK Şifrelemesi etkin olan kasaların, ilke uygulanamayacak veya hatalı negatif sonuçları gösterebilir (yani, **CMK şifrelemesi** etkin olsa da bu kasalar uyumsuz olarak bildirilebilir).
+- 04/01/2021 öncesinde **CMK şifrelemesi** etkin olan denetim kasalarına yönelik denetim ilkesini kullanmak için, bir şifreleme anahtarını güncelleştirmek üzere Azure Portal kullanın. Bu, yeni modele yükseltmeye yardımcı olur. Şifreleme anahtarını değiştirmek istemiyorsanız, anahtar URI 'SI veya anahtar seçim seçeneği ile aynı anahtarı yeniden sağlayın. 
+
+   >[!Warning]
+    >Yedekleme için şifreleme anahtarlarını yönetmek üzere PowerShell kullanıyorsanız, bu anahtarları portaldan güncelleştirmeyi önermiyoruz.<br>Anahtarı portaldan güncelleştirirseniz, yeni modeli desteklemek için bir PowerShell güncelleştirmesi kullanılabilir olduğunda, şifreleme anahtarını daha fazla güncelleştirmek için PowerShell 'i kullanamazsınız. Ancak, Azure portal anahtarı güncelleştirmeye devam edebilirsiniz.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 

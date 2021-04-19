@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 564e7d3d2353661d0a69cbd15ad8b281defacf87
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: bf60f512416007137e71119fa7474b1393099ebf
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600579"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718890"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Azure IoT Central Kullanıcı Arabirimi turuna katılın
 
@@ -28,7 +28,7 @@ Bu makale sizi Azure IoT Central kullanıcı arabirimine tanıtır. Kullanıcı 
 
 ### <a name="create-an-application"></a>Uygulama oluşturma
 
-Yapı bölümünde, sektörle ilgili IoT Central şablonlarının listesine gözatabilir veya özel bir uygulama şablonu kullanarak sıfırdan başlayabilirsiniz.  
+**Yapı** bölümünde, sektörle ilgili IoT Central şablonlarının listesine gözatabilir veya özel bir uygulama şablonu kullanarak sıfırdan başlayabilirsiniz.  
 
 :::image type="content" source="media/overview-iot-central-tour/iot-central-build.png" alt-text="IoT Central derleme sayfası":::
 
@@ -53,7 +53,7 @@ IoT uygulamanızın içindeyken, çeşitli özelliklere erişmek için sol bölm
 
   :::column-end:::
   :::column span="2":::
-     **Panolar** tüm uygulama ve kişisel panoları görüntüler. 
+     **Pano** tüm uygulama ve kişisel panoları görüntüler. 
      
      **Cihazlar** , tüm cihazlarınızı yönetmenizi sağlar.
 
@@ -67,7 +67,7 @@ IoT uygulamanızın içindeyken, çeşitli özelliklere erişmek için sol bölm
 
      **Cihaz şablonları** , uygulamanıza bağlanan cihazların özelliklerini oluşturmanıza ve yönetmenize olanak sağlar.
 
-     **Veri dışa aktarma** , depolama ve kuyruklar gibi dış hizmetlere sürekli bir dışarı aktarma yapılandırmanıza olanak sağlar.
+     **Veri dışa aktarma** , depolama ve kuyruklar gibi dış hizmetlere sürekli bir dışarı aktarma yapılandırmanıza olanak tanır.
 
      **Yönetim** , uygulamanızın ayarlarını, özelleştirmesini, faturalandırmasını, kullanıcılarını ve rollerini yönetmenizi sağlar.
 
@@ -98,7 +98,7 @@ Kullanıcı arabirimi için açık renkli tema veya koyu renkli temayı seçebil
 
 :::image type="content" source="Media/overview-iot-central-tour/dashboard.png" alt-text="IoT Central panonun ekran görüntüsü.":::
 
-* Pano, IoT Central uygulamanızda oturum açtığınızda gördüğünüz ilk sayfasıdır. Birden çok uygulama panosu oluşturup özelleştirebilirsiniz. [Panonuza kutucuk ekleme](howto-add-tiles-to-your-dashboard.md) hakkında daha fazla bilgi edinin
+* **Pano** , IoT Central uygulamanızda oturum açtığınızda gördüğünüz ilk sayfasıdır. Birden çok uygulama panosu oluşturup özelleştirebilirsiniz. [Panonuza kutucuk ekleme](howto-add-tiles-to-your-dashboard.md) hakkında daha fazla bilgi edinin
 
 * Kişisel panolar Ayrıca, ilgilendiğiniz şeyi izlemek için de oluşturulabilir. Daha fazla bilgi edinmek için bkz. [Azure IoT Central kişisel panolar](howto-create-personal-dashboards.md) nasıl yapılır makalesi oluşturma.
 
@@ -106,7 +106,7 @@ Kullanıcı arabirimi için açık renkli tema veya koyu renkli temayı seçebil
 
 :::image type="content" source="Media/overview-iot-central-tour/devices.png" alt-text="Cihazlar sayfasının ekran görüntüsü.":::
 
-Bu sayfa, IoT Central uygulamanızdaki cihazları _cihaz şablonuna_ göre gruplanmış olarak gösterir. 
+Bu sayfa, IoT Central uygulamanızdaki cihazları _cihaz şablonuna_ göre gruplanmış olarak gösterir.
 
 * Cihaz şablonu, uygulamanıza bağlanabilen bir cihaz türünü tanımlar.
 * Cihaz, uygulamanızdaki gerçek veya sanal bir cihazı temsil eder.
@@ -122,7 +122,7 @@ Bu sayfa IoT Central uygulamanızda cihaz grupları oluşturmanızı ve görünt
 ### <a name="rules"></a>Kurallar
 :::image type="content" source="Media/overview-iot-central-tour/rules.png" alt-text="Kurallar sayfasının ekran görüntüsü.":::
 
-Bu sayfa, cihaz verilerine göre kuralları görüntülemenize ve oluşturmanıza olanak sağlar. Bir kural tetiklendiğinde, e-posta gönder veya Web kancası çağırma gibi bir veya daha fazla eylemi tetikleyebilirler. Bilgi edinmek için bkz. [kuralları yapılandırma](tutorial-create-telemetry-rules.md) öğreticisi. 
+Bu sayfa, cihaz verilerine göre kuralları görüntülemenize ve oluşturmanıza olanak sağlar. Bir kural tetiklendiğinde, bir e-posta gönderme veya Web kancası çağırma gibi bir veya daha fazla eylemi tetikleyebilirler. Bilgi edinmek için bkz. [kuralları yapılandırma](tutorial-create-telemetry-rules.md) öğreticisi.
 
 ### <a name="analytics"></a>Analiz
 
@@ -140,7 +140,7 @@ Bu sayfa, cihazlarınızdaki toplu cihaz yönetimi işlemleri için kullanılabi
 
 :::image type="content" source="Media/overview-iot-central-tour/templates.png" alt-text="Cihaz şablonlarının ekran görüntüsü.":::
 
-Cihaz şablonları sayfası, uygulamada cihaz şablonlarını görüntüleyebileceğiniz ve oluşturabileceğiniz yerdir. Daha fazla bilgi almak için [Azure IoT Central uygulamanızda yeni bir cihaz türü tanımlama](howto-set-up-template.md) öğreticisine bakın. 
+Cihaz şablonları sayfası, uygulamada cihaz şablonlarını görüntüleyebileceğiniz ve oluşturabileceğiniz yerdir. Daha fazla bilgi almak için [Azure IoT Central uygulamanızda yeni bir cihaz türü tanımlama](howto-set-up-template.md) öğreticisine bakın.
 
 ### <a name="data-export"></a>Veri dışarı aktarma
 

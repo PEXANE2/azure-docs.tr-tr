@@ -1,23 +1,25 @@
 ---
 title: Azure IoT Central uygulamasındaki kullanıcıları ve rolleri yönetme | Microsoft Docs
 description: Yönetici olarak, Azure IoT Central uygulamanızda kullanıcıları ve rolleri yönetme
-author: vishwam
-ms.author: vishwams
+author: lmasieri
+ms.author: lmasieri
 ms.date: 04/16/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 928a9fbad7bde7fe7f1cfaf181bff2a7b9ce458b
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: cff8830d180b0c234e54f7578ed9fafafeb598f0
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599069"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719178"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>IoT Central uygulamanızda kullanıcıları ve rolleri yönetme
 
 Bu makalede, yönetici olarak Azure IoT Central uygulamanızda Kullanıcı ekleme, düzenleme ve silme işlemlerinin nasıl yapılacağı açıklanır. Makalede ayrıca uygulamanızdaki rollerin nasıl yönetileceği açıklanır.
+
+**Yönetim** bölümüne erişmek ve bunları kullanmak için, bir Azure IoT Central uygulaması için **yönetici** rolünde olmanız gerekir. Bir Azure IoT Central uygulaması oluşturursanız, bu uygulamanın **yönetici** rolüne otomatik olarak eklendiniz.
 
 ## <a name="add-users"></a>Kullanıcı ekle
 
@@ -26,21 +28,20 @@ Her kullanıcının, bir uygulamaya oturum açıp bir uygulamaya erişmeden önc
 Daha fazla bilgi için bkz. [Microsoft hesabı yardım](https://support.microsoft.com/products/microsoft-account?category=manage-account) ve  [hızlı başlangıç: Azure Active Directory yeni kullanıcı ekleme](../../active-directory/fundamentals/add-users-azure-active-directory.md).
 
 1. Bir IoT Central uygulamasına kullanıcı eklemek için **Yönetim** bölümündeki **Kullanıcılar** sayfasına gidin.
-    
-    > [!div class="mx-imgBorder"]
-    >![Kullanıcıları yönetme](media/howto-manage-users-roles/manage-users-pnp.png)
+
+  :::image type="content" source="media/howto-manage-users-roles/manage-users-pnp.png" alt-text="Kullanıcıları yönetme":::
 
 1. Kullanıcı eklemek için, **Kullanıcılar** sayfasında **+ Kullanıcı Ekle**' yi seçin.
 
 1. **Rol** açılan menüsünden Kullanıcı için bir rol seçin. Roller hakkında daha fazla bilgi için bu makalenin [rolleri Yönet](#manage-roles) bölümünden daha fazla bilgi edinebilirsiniz.
 
-    > [!div class="mx-imgBorder"]
-    >![Kullanıcı ekleme ve rol seçme](media/howto-manage-users-roles/add-user-pnp.png)
+  :::image type="content" source="media/howto-manage-users-roles/add-user-pnp.png" alt-text="Kullanıcı ekleyin ve bir rol seçin.":::
 
-    > [!NOTE]
-    > Özel bir rolde başka Kullanıcı ekleme izni veren bir Kullanıcı, yalnızca kendi rolünden aynı veya daha az izne sahip bir role Kullanıcı ekleyebilirler.
-    > 
-    > Bir Kullanıcı Azure Active Directory silinip sonra geri eklendiyse, otomatik olarak IoT Central uygulamada oturum açamaz. Erişimi yeniden etkinleştirmek için, uygulamanın yöneticisinin kullanıcıyı da silip yeniden eklemesi gerekir.
+  > [!NOTE]
+  > Özel bir rolde başka Kullanıcı ekleme izni veren bir Kullanıcı, yalnızca kendi rolünden aynı veya daha az izne sahip bir role Kullanıcı ekleyebilirler.
+
+  > [!NOTE]
+  > Bir Kullanıcı Azure Active Directory silinip sonra geri eklendiyse, IoT Central uygulamada oturum açamaz. Erişimi yeniden etkinleştirmek için, uygulamanın yöneticisinin kullanıcıyı da silip yeniden eklemesi gerekir.
 
 ### <a name="edit-the-roles-that-are-assigned-to-users"></a>Kullanıcılara atanan rolleri düzenleme
 
@@ -72,7 +73,7 @@ Bir uygulamayı oluşturan kullanıcı otomatik olarak **yönetici** rolüne ata
 
 ### <a name="operator"></a>Operatör
 
-**Operatör** rolündeki kullanıcılar, cihaz sistem durumunu ve durumunu izleyebilir. Cihaz şablonlarında değişiklik yapmasına veya uygulamayı yönetmeye izin verilmez. İşleçler cihaz ekleyip silebilir, cihaz kümelerini yönetebilir ve analiz ve işleri çalıştırabilir. 
+**Operatör** rolündeki kullanıcılar, cihaz sistem durumunu ve durumunu izleyebilir. Cihaz şablonlarında değişiklik yapmasına veya uygulamayı yönetmeye izin verilmez. İşleçler cihaz ekleyip silebilir, cihaz kümelerini yönetebilir ve analiz ve işleri çalıştırabilir.
 
 ## <a name="create-a-custom-role"></a>Özel rol oluşturma
 
@@ -85,7 +86,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 ### <a name="custom-role-options"></a>Özel rol seçenekleri
 
-Özel bir rol tanımladığınızda, bir kullanıcının rolün üyesi olmaları durumunda izin verilen izinler kümesini seçersiniz. Bazı izinler diğerlerine bağımlıdır. Örneğin, bir role **uygulama panoları güncelleştirme** iznini eklerseniz, **uygulama panoları görüntüle** iznine de ihtiyacınız vardır. Aşağıdaki tablolar, özel roller oluştururken kullanabileceğiniz kullanılabilir izinleri ve bunların bağımlılıklarını özetler.
+Özel bir rol tanımladığınızda, bir kullanıcının rolün üyesi olmaları durumunda izin verilen izinler kümesini seçersiniz. Bazı izinler diğerlerine bağımlıdır. Örneğin, **Kişisel panoları Güncelleştir** iznini bir role eklerseniz, **Kişisel panoları görüntüle** izni otomatik olarak eklenir. Aşağıdaki tablolar, özel roller oluştururken kullanabileceğiniz kullanılabilir izinleri ve bunların bağımlılıklarını özetler.
 
 #### <a name="managing-devices"></a>Cihazları yönetme
 

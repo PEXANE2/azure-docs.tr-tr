@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 04/19/2021
 ms.author: memildin
-ms.openlocfilehash: 88d0a3dcd89ea678d77bc558fc680630bc0f2309
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: e12578fa6da679587d41fb25b17b00eb1645299a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168187"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718422"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Güvenlik Merkezi 'nin tümleşik EDR çözümü ile uç noktalarınızı koruyun: uç nokta için Microsoft Defender
 
@@ -38,7 +38,7 @@ Uç nokta için Microsoft Defender, bütünsel, bulut tarafından sunulan bir u�
 | Yayın durumu:                  | Genel olarak kullanılabilir (GA)                                                                                                                                                                                                                                                                                      |
 | Fiyat                        | [Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir                                                                                                                                                                                                                                             |
 | Desteklenen platformlar:            |  • Windows çalıştıran Azure makineleri<br> • Windows çalıştıran Azure Arc makineleri|
-| Desteklenen Windows sürümleri:  |  • **Genel kullanılabilirlik (GA)-** Windows Server 2016, 2012 r2 ve 2008 R2 SP1 'de algılama<br> • Windows Server 2019, [Windows sanal masaüstü (WVD)](../virtual-desktop/overview.md)ve [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.yml) (eski adıyla sanal masaüstleri) üzerinde **Önizleme-** algılama|
+| Algılama için desteklenen Windows sürümleri:  |  • Windows Server 2019, 2016, 2012 R2 ve 2008 R2 SP1<br> • [Windows sanal masaüstü (WVD)](../virtual-desktop/overview.md)<br> • [Windows 10 Enterprise çoklu oturum](../virtual-desktop/windows-10-multisession-faq.yml) (eski adıyla sanal masaüstleri için Enterprise (EVD)|
 | Desteklenmeyen işletim sistemleri:  |  • Windows 10 (EVD veya WVD dışında)<br> • Linux|
 | Gerekli roller ve izinler: | Tümleştirmeyi etkinleştirmek/devre dışı bırakmak için: **Güvenlik Yöneticisi** veya **sahibi**<br>Güvenlik Merkezi 'nde MDADTP uyarılarını görüntülemek için: **güvenlik okuyucu**, **okuyucu**, **kaynak grubu katılımcısı**, **kaynak grubu sahibi**, **Güvenlik Yöneticisi**, **abonelik sahibi** veya **abonelik katılımcısı**|
 | Larının                         | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov                                                        |
@@ -69,20 +69,22 @@ Sunucularınızı izlemek için Azure Güvenlik Merkezi 'ni kullandığınızda,
 Konumu yapılandırdıktan sonra değiştiremezsiniz. Uç nokta için Microsoft Defender lisansınız varsa ve verilerinizi başka bir konuma taşımanız gerekiyorsa, kiracıyı sıfırlamak için Microsoft Desteği başvurun.
 
 
-## <a name="enabling-the-microsoft-defender-for-endpoint-integration"></a>Endpoint Integration için Microsoft Defender 'ı etkinleştirme
+## <a name="enable-the-microsoft-defender-for-endpoint-integration"></a>Endpoint Integration için Microsoft Defender 'ı etkinleştirin
 
-1. Makinenizin Endpoint için Defender için gereken gereksinimleri karşıladığından emin olun:
+### <a name="prerequisites"></a>Önkoşullar
 
-    - **Tüm Windows sürümleri** için:
-        - [Cihaz ara sunucusunu ve Internet bağlantısı ayarlarını yapılandırma](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet) bölümünde açıklanan ağ ayarlarını yapılandırın
-        - Defender 'ı bir şirket içi makinelere uç noktaya dağıtıyorsanız, [Azure Arc etkin sunucularıyla karma makinelere bağlanma](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) bölümünde açıklandığı gibi Azure yaya bağlayın
-    - Ayrıca, **Windows Server 2019 makineleri** için, bunların geçerli bir aracı çalıştırdığından ve microsoftmonitoringagent uzantısının bulunduğunu onaylayın
+Makinenizin Endpoint için Defender için gereken gereksinimleri karşıladığından emin olun:
 
+1. [Cihaz ara sunucusunu ve Internet bağlantısı ayarlarını yapılandırma](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet) bölümünde açıklanan ağ ayarlarını yapılandırın
+1. Defender 'ı bir şirket içi makinelere uç noktaya dağıtıyorsanız, [Azure Arc etkin sunucularıyla karma makinelere bağlanma](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) bölümünde açıklandığı gibi Azure yaya bağlayın
+1. Yalnızca Windows Server 2019 makineler için, makinelerinizin geçerli bir aracı çalıştırdığından ve MicrosoftMonitoringAgent uzantısının olduğunu doğrulayın
 1. **Sunucular Için Azure Defender 'ı** etkinleştirin. Bkz. [hızlı başlangıç: Azure Defender 'ı etkinleştirme](enable-azure-defender.md).
-
 1. Sunucularınızdaki uç noktalar için Microsoft Defender 'ı zaten lisanslandırdıysanız ve dağıttıysanız, yerleşik [Windows sunucularında](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)açıklanan yordamı kullanarak kaldırın.
-1. Güvenlik Merkezi 'nin menüsünde **fiyatlandırma & ayarları**' nı seçin.
-1. Değiştirmek istediğiniz aboneliği seçin.
+1. Aboneliğinizi Azure kiracılar arasında taşıdıysanız, bazı el ile hazırlık adımları da gereklidir. Tüm ayrıntılar için [Microsoft destek 'e başvurun](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+
+
+### <a name="enable-the-integration"></a>Tümleştirmeyi etkinleştir
+1. Güvenlik Merkezi 'nin menüsünde, **fiyatlandırma & ayarları** ' nı seçin ve değiştirmek istediğiniz aboneliği seçin.
 1. **Tehdit algılamayı** seçin.
 1. **Endpoint Için Microsoft Defender 'ın verilerinize erişmesine Izin ver**' i seçin ve **Kaydet**' i seçin.
 

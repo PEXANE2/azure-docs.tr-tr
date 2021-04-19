@@ -4,16 +4,16 @@ description: Windows ve Windows Server ile Azure dosya paylaşımlarını kullan
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9121774af0a1cfac6f677b4b8e2f4cd4b535042e
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94626903"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717195"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
 [Azure Dosyaları](storage-files-introduction.md), Microsoft’un kullanımı kolay bulut dosya sistemidir. Azure dosya paylaşımları, Windows ve Windows Server’da sorunsuz bir şekilde kullanılabilir. Bu makalede Azure dosya paylaşımını Windows ve Windows Server ile kullanma konusunda dikkat edilmesi gerekenler anlatılmaktadır.
@@ -63,7 +63,7 @@ Bu betiği almak için:
 1. **Dosya paylaşımları**’nı seçin.
 1. Bağlamak istediğiniz dosya payını seçin.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="örneğinde":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="Dosya paylaşımları dikey penceresinin ekran görüntüsü, dosya paylaşımı vurgulanır.":::
 
 1. **Bağlan**’ı seçin.
 
@@ -72,7 +72,7 @@ Bu betiği almak için:
 1. Paylaşımın bağlanması için sürücü harfini seçin.
 1. Belirtilen betiği kopyalayın.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Örnek metin":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Bağlan dikey penceresinin ekran görüntüsü, betikteki kopyalama düğmesi vurgulanır.":::
 
 1. Betiği, dosya paylaşımının üzerine bağlamak istediğiniz konaktaki bir kabuğa yapıştırın ve çalıştırın.
 

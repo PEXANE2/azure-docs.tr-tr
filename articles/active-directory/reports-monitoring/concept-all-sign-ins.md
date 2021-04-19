@@ -4,7 +4,7 @@ description: Azure Active Directory portalındaki oturum açma etkinlik raporlar
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -13,20 +13,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/16/2021
+ms.date: 04/19/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 781cafd9b382868d0aa4f6b77ff7338c4ee15ed2
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: dc9aa77b3fdc3cda94670545f847bb9de31e1160
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589678"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718962"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory oturum açma etkinlik raporları-önizleme
 
-Azure Active Directory portalı, üç etkinlik günlüğüne erişmenizi sağlar:
+BT Yöneticisi olarak BT ortamınızın nasıl çalıştığını öğrenmek istersiniz. Sisteminizin sistem durumu hakkındaki bilgiler, olası sorunlara yanıt vermek isteyip istemediğinizi değerlendirmenizi sağlar. 
+
+Bu hedefle ilgili sizi desteklemek için Azure Active Directory portalı, üç etkinlik günlüğüne erişmenizi sağlar:
 
 - **Oturum açma** bilgileri – oturum açma işlemleri ve kaynaklarınızın kullanıcılarınız tarafından nasıl kullanıldığı hakkında bilgiler.
 - **[Denetim](concept-audit-logs.md)** – kiracınıza uygulanan kullanıcılar ve Grup Yönetimi veya kiracınızın kaynaklarına uygulanan güncelleştirmeler gibi değişiklikler hakkında bilgiler.

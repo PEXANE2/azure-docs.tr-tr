@@ -8,16 +8,16 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c22b3f3164cbb7c1a7ed150d093f77777c7b1023
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20f9aaf73fe0cb30b136254d57e6c9b960c16af4
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501303"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717010"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Büyük dosya paylaşımlarını etkinleştirme ve oluşturma
 
-Depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdiğinizde, dosya paylaşımlarınız 100 TiB 'ye kadar ölçeklenebilir ve ayrıca standart paylaşımlar için ıOPS ve aktarım hızı sınırlarını de artırır. Bu ölçeklendirmeyi, mevcut dosya paylaşımlarınız için mevcut depolama hesaplarınızda da etkinleştirebilirsiniz. Ayrıntılar için bkz. [dosya paylaşma ve dosya ölçeği hedefleri](storage-files-scale-targets.md#azure-files-scale-targets) . 
+Azure dosya paylaşımlarınız, depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdikten sonra 100 TiB 'ye kadar ölçeklenebilir. Büyük dosya paylaşımlarını etkinleştirdiğinizde dosya paylaşımınızın ıOPS ve aktarım hızı sınırlarını de artırabilir. Ayrıca, mevcut ve yeni dosya paylaşımları için mevcut depolama hesaplarınızda bu ölçeklendirmeyi etkinleştirebilirsiniz. Performans farkları hakkında daha fazla bilgi için bkz. [dosya paylaşma ve dosya ölçeği hedefleri](storage-files-scale-targets.md#azure-files-scale-targets).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -27,7 +27,7 @@ Depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdiğinizde, 
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
-Şimdilik, yalnızca yerel olarak yedekli depolama (LRS) veya bölgesel olarak yedekli depolama (ZRS), büyük dosya paylaşımında etkinleştirilmiş hesaplarda kullanabilirsiniz. Coğrafi bölge yedekli depolama (GZRS), coğrafi olarak yedekli depolama (GRS), Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) veya Okuma Erişimli Coğrafi bölge-yedekli depolama (RA-GZRS) kullanamazsınız.
+Şimdilik, büyük dosya paylaşımları etkinleştirilmiş depolama hesaplarında yalnızca yerel olarak yedekli depolama (LRS) veya bölge yedekli depolama (ZRS) kullanabilirsiniz. Coğrafi bölge yedekli depolama (GZRS), coğrafi olarak yedekli depolama (GRS), Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) veya Okuma Erişimli Coğrafi bölge-yedekli depolama (RA-GZRS) kullanamazsınız.
 
 Hesapta büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz bir işlemdir. Bu uygulamayı etkinleştirdikten sonra, hesabınızı GZRS, GRS, RA-GRS veya RA-GZRS ' e dönüştüremeyeceksiniz.
 
@@ -38,29 +38,12 @@ Hesapta büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz bir 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Azure portal, **tüm hizmetler**' i seçin. 
 1. Kaynak listesinde **depolama hesapları**' nı girin. Siz yazarken, liste, girişinizi temel alarak filtreler. **Depolama hesapları**' nı seçin.
-1. Görüntülenen **depolama hesapları** penceresinde **Ekle**' yi seçin.
-1. Depolama hesabını oluşturmak için kullanacağınız aboneliği seçin.
-1. **Kaynak grubu** alanı altında **Yeni oluştur**’u seçin. Yeni kaynak grubunuz için bir ad girin.
-
-    ![Portalda kaynak grubu oluşturmayı gösteren ekran görüntüsü](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
-
-1. Ardından, depolama hesabınız için bir ad girin. AD Azure genelinde benzersiz olmalıdır. Ad ayrıca 3 ile 24 karakter uzunluğunda olmalı ve yalnızca rakamlardan ve küçük harflerden oluşabilir.
-1. Depolama hesabınız için bir konum seçin.
-1. Çoğaltmayı **yerel olarak yedekli depolama** ya da bölgesel olarak **yedekli depolama** olarak ayarlayın.
-1. Bu alanları varsayılan değerlerinde bırakın:
-
-   |Alan  |Değer  |
-   |---------|---------|
-   |Dağıtım modeli     |Resource Manager         |
-   |Performans     |Standart         |
-   |Hesap türü     |StorageV2 (genel amaçlı v2)         |
-   |Erişim katmanı     |Sık Erişimli         |
-
-1. **Gelişmiş**' i seçin ve ardından **büyük dosya paylaşımlarının** sağ tarafındaki **etkin** seçenek düğmesini seçin.
+1. Görüntülenen **depolama hesapları** dikey penceresinde **+ Yeni**' yi seçin.
+1. Temel bilgiler dikey penceresinde, yaptığınız seçimleri doldurun.
+1. **Performansın** **Standart** olarak ayarlandığından emin olun.
+1. **Artıklığı** **yerel olarak yedekli depolama** ya da bölgesel olarak **yedekli depolama** olarak ayarlayın.
+1. **Gelişmiş** dikey penceresini seçin ve ardından **büyük dosya paylaşımlarının** sağ tarafındaki **etkin** seçenek düğmesini seçin.
 1. Depolama hesabı ayarlarınızı gözden geçirmek ve hesabı oluşturmak için **Gözden Geçir + Oluştur**’u seçin.
-
-    ![Azure portal yeni bir depolama hesabında "etkin" seçenek düğmesi ile ekran görüntüsü](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
-
 1. **Oluştur**’u seçin.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -93,11 +76,12 @@ Ayrıca, mevcut hesaplarınızda büyük dosya paylaşımlarını etkinleştireb
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com)açın ve büyük dosya paylaşımlarını etkinleştirmek istediğiniz depolama hesabına gidin.
-1. Depolama hesabını açın ve **yapılandırma**' yı seçin.
+1. Depolama hesabını açın ve **dosya paylaşımları**' nı seçin.
 1. **Büyük dosya paylaşımlarında** **etkin** ' i seçin ve ardından **Kaydet**' i seçin.
 1. **Genel bakış** ' ı ve **Yenile**' yi seçin.
+1. **Kapasiteyi paylaşma** **' yı seçin ve ardından** **100 TİB** ' yi seçin.
 
-![Azure portal var olan bir depolama hesabında etkin seçenek düğmesini seçme](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)
+    :::image type="content" source="media/storage-files-how-to-create-large-file-share/files-enable-large-file-share-existing-account.png" alt-text="Azure depolama hesabı, 100 TİB paylaşımlarının bulunduğu dosya paylaşımları dikey penceresinin ekran görüntüsü.":::
 
 Artık depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdiniz. Daha sonra, daha fazla kapasitenin ve ölçeğin avantajlarından yararlanmak için [mevcut paylaşımın kotasını güncelleştirmeniz](#expand-existing-file-shares) gerekir.
 

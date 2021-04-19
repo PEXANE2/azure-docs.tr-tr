@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 0396c028c8c0e1a18baf037fed4efc21aad944f1
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 2eb0e3ce2ac20c89d9c0176ca3e7b33dc839c923
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/19/2021
-ms.locfileid: "107715109"
+ms.locfileid: "107718836"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Hızlı başlangıç: IoT Central uygulamanıza sanal cihaz ekleme
 
@@ -94,7 +94,7 @@ Varsayılan görünümler, önemli cihaz bilgilerinizin görselleştirilmesi ile
 * **Genel bakış** görünümü cihaz telemetrisini görüntülemek için grafikleri ve ölçümleri kullanır.
 * **Hakkında** görünümü cihaz özelliklerini görüntüler.
 
-Cihaz şablonundaki **Görünümler** düğümünü seçin. IoT Central, şablonu eklediğinizde bir **genel bakış**, **hakkında** bir görünüm ve **ham veri** görünümü üretdiğine bakabilirsiniz.
+Cihaz şablonundaki **Görünümler** düğümünü seçin. IoT Central, şablonu eklediğinizde, sizin için **genel bakış**, **hakkında** ve **ham veri** görünümlerini üretdiğine bakabilirsiniz.
 
 Cihazı yönetmek için yeni bir form eklemek için:
 

@@ -460,6 +460,8 @@
                   href: aad-sspr-technical-profile.md
                 - name: Talepleri dönüştürme
                   href: claims-transformation-technical-profile.md
+                - name: Koşullu erişim
+                  href: conditional-access-technical-profile.md
                 - name: Kimlik belirteci ipucu
                   href: id-token-hint.md
                 - name: JWT belirtecini veren

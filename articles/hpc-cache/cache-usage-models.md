@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 04/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: a22f4b257476e96c51ae491b8570e3798f7b3ab7
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 7e1b11fd15cca9b11fc627222318f08d31743336
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259736"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719196"
 ---
 # <a name="understand-cache-usage-models"></a>Önbellek kullanım modellerini anlama
 
@@ -82,7 +82,7 @@ Azure HPC Cache iş akışınız için en iyi kullanım modeliyle ilgili sorular
 
 Bazı durumlarda, bir depolama hedefinin kullanım modelini değiştirirseniz istemcileri yeniden bağlama yapmanız gerekebilir. Bu, farklı kullanım modellerinin ağ kilitleme Yöneticisi (NLM) isteklerini işleme biçimi nedeniyle gereklidir.
 
-HPC önbelleği istemciler ve arka uç depolama sistemi arasında bulunur. Genellikle önbellek, NLM isteklerini arka uç depolama sistemine geçirir, ancak bazı durumlarda, önbellek, NLM isteğini onaylar ve istemciye bir değer döndürür. Azure HPC önbelleğinde bu, yalnızca kullanım modelini **okuma ağır, seyrek okunan yazma** (veya standart bir BLOB depolama hedefi içinde, yapılandırılabilir kullanım modelleri olmayan) kullandığınızda oluşur.
+HPC önbelleği istemciler ve arka uç depolama sistemi arasında bulunur. Genellikle önbellek, NLM isteklerini arka uç depolama sistemine geçirir, ancak bazı durumlarda, önbellek, NLM isteğini onaylar ve istemciye bir değer döndürür. Azure HPC önbelleğinde bu, yalnızca kullanım modelini **okuma ağır, seyrek kullanılan yazma** (veya standart bir BLOB depolama hedefi olan veya yapılandırılabilir kullanım modelleri olmayan) kullandığınızda oluşur.
 
 **Yoğun okuma, seyrek kullanılan yazma** kullanım modeli ve farklı kullanım modeli arasında değişiklik yaparsanız dosya çakışmasıyla oluşan küçük bir risk vardır. Geçerli NLM durumunu önbellekten depolama sistemine aktarmanın bir yolu yoktur ya da tam tersi de geçerlidir. Bu nedenle, istemcinin kilit durumu yanlış.
 

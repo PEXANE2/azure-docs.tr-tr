@@ -4,16 +4,16 @@ description: Veri kurtarma için Azure dosya paylaşımlarında geçici silme ö
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/23/2021
+ms.date: 04/05/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 428ef41340cd565bef0fa3c1e6519fb8862b091a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a0dff310ce4a40b7a66cc548f3c77213f4a10e00
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727578"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717032"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Azure dosya paylaşımlarında geçici silme özelliğini etkinleştirme
 
@@ -26,12 +26,13 @@ Aşağıdaki bölümlerde, var olan bir depolama hesabında Azure dosya paylaş�
 ## <a name="getting-started"></a>Kullanmaya başlama
 
 1. [Azure portal](https://portal.azure.com/) oturum açın.
-1. Depolama hesabınıza gidin ve **Dosya hizmeti** altında **dosya paylaşımları** ' nı seçin.
+1. Depolama hesabınıza gidin ve **veri depolama** alanındaki **dosya paylaşımları** ' nı seçin.
+1. **Geçici silme** seçeneğinin yanında **etkin** ' i seçin.
 1. **Tüm dosya paylaşımları Için geçici silme** **etkin** ' i seçin.
 1. **Dosya paylaşma saklama süresini gün olarak** seçin ve seçtiğiniz bir sayıyı girin.
 1. Veri saklama ayarlarınızı onaylamak için **Kaydet** ' i seçin.
 
-:::image type="content" source="media/storage-how-to-recover-deleted-account/enable-soft-delete-files.png" alt-text="Depolama hesabı geçici silme ayarları bölmesinin ekran görüntüsü. Dosya paylaşımları geçici silme bölümünü vurgulama, geçişi etkinleştirme, bekletme süresi ayarlama ve kaydetme. Bu, Depolama hesabınızdaki tüm dosya paylaşımları için geçici silme olanağı sağlar.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/files-enable-soft-delete-new-ui.png" alt-text="Depolama hesabı geçici silme ayarları bölmesinin ekran görüntüsü. Dosya paylaşımları geçici silme bölümünü vurgulama, geçişi etkinleştirme, bekletme süresi ayarlama ve kaydetme. Bu, Depolama hesabınızdaki tüm dosya paylaşımları için geçici silme olanağı sağlar.":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -129,11 +130,12 @@ Geçici silme kullanmayı durdurmak istiyorsanız bu yönergeleri izleyin. Geçi
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Depolama hesabınıza gidin ve **Dosya hizmeti** altında **dosya paylaşımları** ' nı seçin.
+1. Depolama hesabınıza gidin ve **veri depolama** alanındaki **dosya paylaşımları** ' nı seçin.
+1. **Geçici silme** seçeneğinin yanındaki bağlantıyı seçin.
 1. **Tüm dosya paylaşımları Için geçici silme** Için **devre dışı** seçeneğini belirleyin.
 1. Veri saklama ayarlarınızı onaylamak için **Kaydet** ' i seçin.
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="Geçici silme devre dışı bırakıldığında, Depolama hesabınızdaki tüm dosya paylaşımlarını boş olarak hemen ve kalıcı olarak silebilirsiniz.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/files-disable-soft-delete.png" alt-text="Geçici silme devre dışı bırakıldığında, Depolama hesabınızdaki tüm dosya paylaşımlarını boş olarak hemen ve kalıcı olarak silebilirsiniz.":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

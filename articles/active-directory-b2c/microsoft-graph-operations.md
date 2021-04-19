@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 04/19/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 884cb0c30bc754366fda79a4b54b977517fbadd3
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: cf62330fd677dc978c8f25a81c6a1e5bfbb612ac
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530536"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717612"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C yönetme
 
@@ -48,6 +48,9 @@ Kullanıcı tarafından [SMS veya sesli çağrılar](identity-provider-local.md#
 [Liste](/graph/api/authentication-list-phonemethods) işleminin yalnızca etkin telefon numaralarını döndürdüğünü göz önünde kalmaz. Aşağıdaki telefon numarası, liste işlemleriyle birlikte kullanılmak üzere etkinleştirilmelidir. 
 
 ![Telefonla oturum açmayı etkinleştir](./media/microsoft-graph-operations/enable-phone-sign-in.png)
+
+> [!NOTE]
+> Geçerli beta sürümünde, bu API yalnızca telefon numarası ülke kodu ve telefon numarası arasında bir boşluk ile depolanıyorsa kullanılabilir. Azure AD B2C hizmeti şu anda varsayılan olarak bu alanı eklemez.
 
 ## <a name="self-service-password-reset-email-address-beta"></a>Self servis parola sıfırlama e-posta adresi (Beta)
 

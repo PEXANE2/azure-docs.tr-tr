@@ -7,14 +7,17 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.topic: how-to
 ms.date: 02/08/2021
-ms.openlocfilehash: 99e9994d01e4579bf6ef2e369e0fe85c48af52ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dc27fd67a3801815464ecd37fea567c02dee6e49
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182443"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719052"
 ---
 # <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>Azure büyük örnekler RHEL 'de SAP için yüksek kullanılabilirlik
+
+> [!NOTE]
+> Bu makale, Microsoft 'un artık kullanmadığını gösteren bir terim olan *kara liste* dönemi başvuruları içerir. Bu terim yazılımlardan kaldırıldığında, bu makaleyi kaldıracağız.
 
 Bu makalede, bir SAP HANA veritabanı yük devretmesini otomatikleştirmek üzere RHEL 7,6 ' de Paceoluşturucu kümesini nasıl yapılandıracağınızı öğreneceksiniz. Bu kılavuzdaki adımları tamamlayabilmeniz için Linux, SAP HANA ve Paceyapıcısı hakkında iyi bir fikir sahibi olmanız gerekir.
 
