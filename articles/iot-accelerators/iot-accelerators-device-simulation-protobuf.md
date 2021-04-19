@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 565e6fd5aae3068605b617deccb0d04785c1e248
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a94f3cc6b2387857d19c7b98fa0be64dd6646ec9
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057635"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713867"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Protokol arabellekleri kullanarak telemetri serileştirme
 
@@ -57,7 +57,7 @@ Bu makaledeki yönergeler Windows kullandığınızı varsayar. Başka bir işle
 
 GitHub 'dan [Uzaktan Izleme mikro hizmetlerini](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) indirin ve yerel makinenizde uygun bir konuma ayıklayın. Bu depo, bu nasıl yapılır için ihtiyacınız olan depolama bağdaştırıcısı mikro hizmetini içerir.
 
-[Cihaz benzetimi mikro hizmetini](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) GitHub 'dan yerel makinenizde uygun bir konuma indirip sıkıştırmasını açın.
+[Cihaz benzetimi mikro hizmetini](https://github.com/Azure/azure-iot-pcs-device-simulation/archive/master.zip) GitHub 'dan yerel makinenizde uygun bir konuma indirip sıkıştırmasını açın.
 
 ### <a name="run-the-storage-adapter-microservice"></a>Depolama bağdaştırıcısı mikro hizmetini çalıştırma
 
@@ -277,4 +277,4 @@ Birçok IoT Hub özellik, prototip veya diğer ikili biçimleri yerel olarak des
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Telemetri göndermek için cihaz benzetiminin prototip kullanmak üzere nasıl özelleştirileceğini öğrendiniz bir sonraki adım, daha fazla [cihaz benzetimi](https://github.com/Azure/device-simulation-dotnet)öğrenmek için GitHub deposunu ziyaret etmektir.
+Telemetri göndermek için cihaz benzetiminin prototip kullanmak üzere nasıl özelleştirileceğini öğrendiniz bir sonraki adım, daha fazla [cihaz benzetimi](https://github.com/Azure/azure-iot-pcs-device-simulation)öğrenmek için GitHub deposunu ziyaret etmektir.

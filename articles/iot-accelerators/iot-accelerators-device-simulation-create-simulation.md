@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
-ms.openlocfilehash: 3376b3714dc41c7d5ce33756671050d19471a757
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: df658a95069f39026daab7afb14c5f1d0f47c5a5
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057720"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713903"
 ---
 # <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Öğretici: IoT cihaz simülasyonu oluşturma ve çalıştırma
 
@@ -34,7 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu öğreticiyi izlemek için Azure aboneliğinizde Cihaz Simülasyonu'nun dağıtılmış örneğine sahip olmanız gerekir.
 
-Henüz cihaz benzetimi dağıtmadıysanız, GitHub 'da [cihaz benzetimi dağıtımı](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) ' na bakın.
+Henüz cihaz benzetimi dağıtmadıysanız, GitHub 'da [cihaz benzetimi dağıtımı](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md) ' na bakın.
 
 ## <a name="view-simulations"></a>Simülasyonları görüntüleme
 

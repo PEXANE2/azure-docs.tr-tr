@@ -4,12 +4,12 @@ description: Azure Backup hizmeti ile Azure VM 'lerinde SQL Server yedeklenirken
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: bcbac4f6a91ad77d21eb6274aa03d251b8fbfe7c
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 354f64eb86cd545860c47562fba7ff43babe72ca
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515065"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714155"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure VM 'lerinde SQL Server yedekleme için destek matrisi
 
@@ -97,7 +97,7 @@ Copy-Only tam |  İkincil
 
 Azure Backup, büyük SQL veritabanlarının tam ve fark yedeklemeleri (500 GB) için 200 Mbps 'lik tutarlı veri aktarımı hızını destekler. En iyi performansı kullanmak için şunları doğrulayın:
 
-- Temel alınan VM (veritabanını barındıran SQL Server örneğini içeren), gereken ağ aktarım hızı ile yapılandırılır. VM 'nin en yüksek aktarım hızı 200 Mbps 'den küçükse Azure Backup en uygun hızda veri aktarabilir.<br></br>Ayrıca, veritabanı dosyalarını içeren diskte, sağlanan yeterli üretilen iş olması gerekir. Azure VM 'lerinde disk işleme ve performans hakkında [daha fazla bilgi edinin](../virtual-machines/disks-performance.md) . 
+- Temel alınan VM (veritabanını barındıran SQL Server örneğini içeren), gereken ağ aktarım hızı ile yapılandırılır. VM 'nin en yüksek aktarım hızı 200 Mbps 'den küçükse Azure Backup en uygun hızda veri aktarabilir.<br>Ayrıca, veritabanı dosyalarını içeren diskte, sağlanan yeterli üretilen iş olması gerekir. Azure VM 'lerinde disk işleme ve performans hakkında [daha fazla bilgi edinin](../virtual-machines/disks-performance.md) . 
 - VM 'de çalışan süreçler VM bant genişliğini tüketmez. 
 - Yedekleme zamanlamaları, veritabanlarının bir alt kümesi arasında yayılır. Bir VM 'de eşzamanlı olarak çalışan birden çok yedekleme, yedeklemeler arasındaki ağ tüketimi oranını paylaşır. Eşzamanlı yedeklemelerin sayısını denetleme hakkında [daha fazla bilgi edinin](faq-backup-sql-server.yml#can-i-control-how-many-concurrent-backups-run-on-the-sql-server-) .
 

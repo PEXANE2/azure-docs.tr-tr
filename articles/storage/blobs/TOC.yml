@@ -266,11 +266,9 @@
       items:
         - name: Depolama hesapları oluşturma ve yönetme
           items:
-            - name: Genel amaçlı depolama hesabı oluşturma
+            - name: Depolama hesabı oluşturma
               displayName: 'Resource Manager, Resource Manager template, template, ARM'
               href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Blok blobu depolama hesabı oluşturma
-              href: storage-blob-create-account-block-blob.md
             - name: Depolama hesabını yükseltme
               href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Silinmiş bir depolama hesabını kurtarma

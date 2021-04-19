@@ -793,7 +793,11 @@
         - name: İşlem Hattı Tetikleyicileri
           href: pipeline-trigger-troubleshoot-guide.md
         - name: Veri Akışları
-          href: data-flow-troubleshoot-guide.md
+          items:
+            - name: Veri akışlarına genel bakış
+              href: data-flow-troubleshoot-guide.md
+            - name: Bağlayıcı ve biçim
+              href: data-flow-troubleshoot-connector-format.md
         - name: Sürekli Tümleştirme ve Dağıtım
           href: ci-cd-github-troubleshoot-guide.md
         - name: Güvenlik ve erişim denetimi

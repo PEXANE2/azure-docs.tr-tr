@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/09/2021
+ms.date: 04/16/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a40f3286b4e832f5c73e650859fa9a1d4fe4b6cb
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: f48135523238711eb9058b35348895c851a95403
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256965"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713831"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Mailjet ile özel e-posta doğrulama
 
@@ -44,6 +44,10 @@ Henüz bir tane yoksa, bir Mailjet hesabı ayarlayarak başlayın (Azure müşte
 1. [Bir Mailjet hesabı oluşturma](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/)bölümündeki kurulum yönergelerini izleyin.
 1. E-posta gönderebilmek için gönderici e-posta adresinizi veya etki alanınızı [kaydedin ve doğrulayın](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/#how-to-configure-mailjet-for-use) .
 2. [API anahtarı yönetim sayfasına](https://app.mailjet.com/account/api_keys)gidin. Daha sonraki bir adımda kullanmak için **API anahtarını** ve **gizli anahtarı** kaydedin. Her iki anahtar de hesabınız oluşturulduğunda otomatik olarak oluşturulur.  
+
+> [!IMPORTANT]
+> Mailjet, müşterilere Paylaşılan IP ve [ayrılmış IP adreslerinden](https://documentation.mailjet.com/hc/articles/360043101973-What-is-a-dedicated-IP)e-posta gönderme yeteneği sunar. Ayrılmış IP adreslerini kullanırken, bir IP adresi ısınma ile kendi sayınızı doğru bir şekilde oluşturmanız gerekir. Daha fazla bilgi için bkz. [IP mi nasıl yaparım? ısınma?](https://documentation.mailjet.com/hc/articles/1260803352789-How-do-I-warm-up-my-IP-).
+
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Azure AD B2C İlkesi anahtarı oluştur
 

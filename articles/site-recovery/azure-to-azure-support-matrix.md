@@ -3,12 +3,12 @@ title: Azure Site Recovery ile Azure VM olağanüstü durum kurtarma için deste
 description: Azure Site Recovery olan ikincil bir bölgeye Azure VM olağanüstü durum kurtarma desteğini özetler.
 ms.topic: article
 ms.date: 11/29/2020
-ms.openlocfilehash: 02268471d58cbd473493b6001aa9f1df271077bb
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 79cde5957b2090b8337a3af424dbda7e42608398
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376163"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713345"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure sanal makinesi olağanüstü durum kurtarma için destek matrisi
 
@@ -46,21 +46,21 @@ Aynı coğrafi küme içindeki iki bölge arasında VM 'Leri çoğaltıp kurtara
 Amerika | Kanada Doğu, Kanada Orta, Orta Güney ABD, Orta Batı ABD, Doğu ABD, Doğu ABD 2, Batı ABD, Batı ABD 2, Orta ABD, Orta Kuzey ABD
 Avrupa | UK Batı, UK Güney, Kuzey Avrupa, Batı Avrupa, Güney Afrika Batı, Güney Afrika Kuzey, Norveç Doğu, Fransa Orta, İsviçre Kuzey Almanya Orta Batı
 Asya | Güney Hindistan, Orta Hindistan, Batı Hindistan, Güneydoğu Asya, Doğu Asya, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney
+JIO | JıO Hindistan Batı
 Avustralya    | Avustralya Doğu, Avustralya Güneydoğu, Avustralya Orta, Avustralya Orta 2
 Azure Kamu    | ABD devleti Virginia, US GOV IWA, US GOV Arizona, US GOV Texas, US DOD Doğu, US DOD orta
 Almanya    | Almanya Orta, Almanya Kuzeydoğu
 Çin | Çin Doğu, Çin Kuzey, Çin North2, Çin Doğu2
-Ülke içi olağanüstü durum kurtarma için ayrılan kısıtlı bölgeler |İsviçre Kuzey için ayrılan İsviçre Batı Fransa Güney Fransa Orta için ayrılan, BAE Orta müşterileri için de kısıtlanmış, Norveç Doğu müşterileri için Norveç Batı
+Brezilya | Güney Brezilya
+Ülke içi olağanüstü durum kurtarma için ayrılan kısıtlı bölgeler |İsviçre Batı İsviçre Kuzey için ayrılan Fransa Güney Fransa Orta için ayrılan BAE Orta BAE Kuzey müşterileri için Norveç Batı Doğu müşterileri, JIO Hindistan orta müşterileri için JıO Hindistan Batı, Brezilya Güneydoğu
 
 >[!NOTE]
 >
-> - **Brezilya Güney** için, şu bölgelere çoğaltabilir ve yük devredebilmeniz gerekir: Orta Güney ABD, Orta Batı ABD, Doğu ABD, Doğu ABD 2, Batı ABD, Batı ABD 2 ve Orta Kuzey ABD.
-> - Brezilya Güney yalnızca, Site Recovery kullanılarak sanal makinelerin çoğaltılacağı kaynak bölge olarak kullanılabilir. Hedef bölge işlevi görebilir. Bu, coğrafi uzaklıkları nedeniyle gecikme sorunlarından kaynaklanır. Bir hedefe kaynak bölge olarak Brezilya Güney yük devretmek, hedef bölgeden Brezilya Güney için yeniden çalışma desteklendiğini unutmayın.
+> - **Brezilya Güney** için şu bölgelere çoğaltabilir ve yük devredebilmeniz gerekir: Brezilya güneydoğu, Orta Güney ABD, Orta Batı ABD, Doğu ABD, Doğu ABD 2, Batı ABD, Batı ABD 2 ve Orta Kuzey ABD.
+> - Brezilya Güney yalnızca, Site Recovery kullanılarak sanal makinelerin çoğaltılacağı kaynak bölge olarak kullanılabilir. Hedef bölge işlevi görebilir. Bu, coğrafi uzaklıkları nedeniyle gecikme sorunlarından kaynaklanır. Bir hedefe kaynak bölge olarak Brezilya Güney yük devretmek, hedef bölgeden Brezilya Güney için yeniden çalışma desteklendiğini unutmayın. Brezilya Güneydoğu, yalnızca hedef bölge olarak kullanılabilir.
 > - Uygun erişiminiz olan bölgeler içinde çalışabilirsiniz.
 > - Bir kasa oluşturmak istediğiniz bölge görünmüyorsa, aboneliğinizin bu bölgedeki kaynakları oluşturmak için erişime sahip olduğundan emin olun.
 > - Çoğaltmayı etkinleştirdiğinizde coğrafi bir küme içinde bölge göremiyorsanız, aboneliğinizin bu bölgede VM oluşturma izinlerine sahip olduğundan emin olun.
-
-
 
 ## <a name="cache-storage"></a>Önbellek depolama
 

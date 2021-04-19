@@ -96,6 +96,8 @@
       href: policy-keys-overview.md
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Kiracınızı yönetme
+      href: tenant-management.md
     - name: Uygulama tümleştirmesi
       items:
         - name: Web uygulaması kaydetme
