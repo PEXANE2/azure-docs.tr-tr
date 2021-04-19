@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/17/2021
 ms.author: sstein
-ms.openlocfilehash: 81c306ac2a8a5c00c5d06877974db7e04964c76b
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: d0522fe2c8b6d6b623903a720e6c8e760bd6aa92
+ms.sourcegitcommit: 089c2bd1ac4861f43c4b89396d3d056a6eef4913
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600922"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107602082"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>SQL yönetilen örneği & Azure SQL veritabanı 'ndaki yenilikler nelerdir?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -132,7 +132,7 @@ Aşağıdaki özellikler, H1 2019 ' de SQL yönetilen örnek dağıtım modelind
 
 Bir örnek [otomatik yük devretme grubuna](https://docs.microsoft.com/azure/azure-sql/database/auto-failover-group-overview)katılıyorsa, örneğin [bağlantı türünü](https://docs.microsoft.com/azure/azure-sql/managed-instance/connection-types-overview) değiştirmek, yük devretme grubu dinleyicisi uç noktası aracılığıyla kurulan bağlantılar için geçerli olmaz.
 
-**Geçici çözüm**: bağlantı türünü değiştirerek otomatik yük devretme grubu ' nu bırakıp yeniden oluştur.
+**Geçici çözüm**: bağlantı türünü değiştirerek otomatik yük devretme grubunu bırakın ve yeniden oluşturun.
 
 ### <a name="procedure-sp_send_dbmail-may-transiently-fail-when-query-parameter-is-used"></a>Parametre kullanıldığında yordam sp_send_dbmail geçişli olarak başarısız olabilir @query
 

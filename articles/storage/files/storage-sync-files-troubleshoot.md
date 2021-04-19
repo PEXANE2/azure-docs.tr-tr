@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 4/12/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: bf74b3a1659547772368c9fb394eeab8321b5f5d
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 6007ec954682c0cb0ba20cbbf6b3621ead0bf7ff
+ms.sourcegitcommit: 089c2bd1ac4861f43c4b89396d3d056a6eef4913
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599647"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107602110"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -378,11 +378,12 @@ Aşağıdaki tabloda, Azure Dosya Eşitleme henüz desteklemediği tüm Unicode 
 
 | Karakter kümesi | Karakter sayısı |
 |---------------|-----------------|
+| 0x00000000-0x0000001F (denetim karakterleri) | 32 |
+| <ul><li>0x00000022 (tırnak işareti)</li><li>0x0000002A (yıldız işareti)</li><li>0x0000002F (eğik çizgi)</li><li>0x0000003A (iki nokta üst üste)</li><li>0x0000003C (küçüktür)</li><li>0x0000003E (büyüktür)</li><li>0x0000003F (soru işareti)</li><li>0x0000005C (ters eğik çizgi)</li><li>0x0000007C (kanal veya çubuk)</li></ul> | 9 |
+| <ul><li>0x0004FFFE-0x0004FFFF = 2 (karakter olmayan)</li><li>0x0008FFFE-0x0008FFFF = 2 (karakter olmayan)</li><li>0x000CFFFE-0x000CFFFF = 2 (karakter olmayan)</li><li>0x0010FFFE-0x0010FFFF = 2 (karakter olmayan)</li></ul> | 8 |
 | <ul><li>0x0000009D (OSC işletim sistemi komutu)</li><li>0x00000090 (DCS cihaz denetim dizesi)</li><li>0x0000008F (SS3 tek SHIFT üç)</li><li>0x00000081 (yüksek sekizli ön ayarı)</li><li>0x0000007F (del Delete)</li><li>0x0000008D (RI ters satır besleme)</li></ul> | 6 |
-| 0x0000FDD0-0x0000FDEF (Arapça sunum formları-a) | 32 |
-| 0x0000FFF0-0x0000FFFF (özel) | 16 |
-| <ul><li>0x0001FFFE-0x0001FFFF = 2 (karakter olmayan)</li><li>0x0002FFFE-0x0002FFFF = 2 (karakter olmayan)</li><li>0x0003FFFE-0x0003FFFF = 2 (karakter olmayan)</li><li>0x0004FFFE-0x0004FFFF = 2 (karakter olmayan)</li><li>0x0005FFFE-0x0005FFFF = 2 (karakter olmayan)</li><li>0x0006FFFE-0x0006FFFF = 2 (karakter olmayan)</li><li>0x0007FFFE-0x0007FFFF = 2 (karakter olmayan)</li><li>0x0008FFFE-0x0008FFFF = 2 (karakter olmayan)</li><li>0x0009FFFE-0x0009FFFF = 2 (karakter olmayan)</li><li>0X000affe-0X000afff = 2 (karakter olmayan)</li><li>0x000BFFFE-0x000BFFFF = 2 (karakter olmayan)</li><li>0x000CFFFE-0x000CFFFF = 2 (karakter olmayan)</li><li>0x000DFFFE-0x000DFFFF = 2 (karakter olmayan)</li><li>0x000EFFFE-0x000EFFFF = 2 (tanımsız)</li><li>0x000FFFFE-0x000FFFFF = 2 (tamamlayıcı özel kullanım alanı)</li></ul> | 30 |
-| 0x0010FFFE, 0x0010FFFF | 2 |
+| 0x0000FFF0, 0x0000FFFD, 0x0000FFFE, 0x0000FFFF (özel) | 4 |
+| Bir noktayla biten dosyalar veya dizinler | 1 |
 
 ### <a name="common-sync-errors"></a>Ortak Eşitleme hataları
 <a id="-2147023673"></a>**Eşitleme oturumu iptal edildi.**  
