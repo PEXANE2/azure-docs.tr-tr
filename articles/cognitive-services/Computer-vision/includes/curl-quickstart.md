@@ -7,16 +7,16 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: quickstart
-ms.date: 12/02/2020
+ms.topic: include
+ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 01149eed5cc4195ca501507e7fe1d66fffecb84d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 2f01b1d222470c49505638be64180948b6f7e046
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327349"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728267"
 ---
 Yazdırılmış ve el yazısı metin okumak için optik karakter tanıma REST API kullanın.
 
@@ -37,6 +37,8 @@ Yazdırılmış ve el yazısı metin okumak için optik karakter tanıma REST AP
 
 OCR hizmeti görüntüdeki görünür metni okuyabilir ve bunu bir karakter akışına dönüştürebilir. Metin tanıma hakkında daha fazla bilgi için bkz. [optik karakter tanıma (OCR) genel bakış](../overview-ocr.md).
 
+### <a name="call-the-read-api"></a>Okuma API 'sini çağırma
+
 Örneği oluşturup çalıştırmak için aşağıdaki adımları uygulayın:
 
 1. Aşağıdaki komutu bir metin düzenleyicisine kopyalayın.
@@ -53,6 +55,8 @@ curl -v -X POST "https://westcentralus.api.cognitive.microsoft.com/vision/v3.2/r
 ```
 
 Yanıt, `Operation-Location` değeri benzersiz BIR URL olan bir üst bilgi içerecektir. Okuma işleminin sonuçlarını sorgulamak için bu URL 'YI kullanırsınız. URL 48 saat içinde sona erecek.
+
+### <a name="get-read-results"></a>Okuma sonuçları al
 
 1. Aşağıdaki komutu metin düzenleyicinize kopyalayın.
 1. URL 'YI, `Operation-Location` önceki adımda kopyaladığınız değerle değiştirin.
@@ -131,7 +135,9 @@ Başarılı bir yanıt JSON biçiminde döndürülür. Örnek uygulama, aşağı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-OCR API 'sini daha ayrıntılı bir şekilde araştırın. API 'yi hızlı bir şekilde denemek için, [Açık API test konsolunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005/console)deneyin.
+Bu hızlı başlangıçta, okuma REST API nasıl çağrılacağını öğrendiniz. Ardından, okuma API 'SI özellikleri hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [OCR API 'sini keşfet](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
+>[Okuma API 'sini çağırma](../Vision-API-How-to-Topics/call-read-api.md)
+
+* [OCR genel bakış](../overview-ocr.md)

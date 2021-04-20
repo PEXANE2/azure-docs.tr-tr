@@ -6,12 +6,12 @@ ms.author: edoyle
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 1b59d482b8b88e37da2d61636ff3f254a46ba5c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f3fcdc56b4e8d7873872212cb62f57a7669b459
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99626096"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726637"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Service Fabric bir kafes uygulamasını başka bir Azure bölgesine taşıma
 
@@ -22,7 +22,7 @@ ms.locfileid: "99626096"
 
 Bu makalede, Service Fabric kafes uygulamanızın ve kaynaklarının farklı bir Azure bölgesine nasıl taşınacağı açıklanır. Birkaç nedenden dolayı kaynaklarınızı başka bir bölgeye taşıyabilirsiniz. Örneğin kesintilere yanıt olarak, yalnızca belirli bölgelerde bulunan özellik veya Hizmetleri, iç ilke ve idare gereksinimlerini karşılayacak şekilde veya kapasite planlama gereksinimlerine yanıt olarak elde etmek için.
 
- [Service Fabric kafesi](../azure-resource-manager/management/region-move-support.md#microsoftservicefabricmesh) , kaynakları Azure bölgelerinde doğrudan taşıma özelliğini desteklemez. Ancak, geçerli Azure Resource Manager şablonunuzun bir kopyasını yeni hedef bölgeye dağıtarak ve sonra giriş trafiğini ve bağımlılıklarını yeni oluşturulan Service Fabric kafes uygulamasına yönlendirerek kaynakları dolaylı olarak taşıyabilirsiniz.
+ [Service Fabric kafesi](../azure-resource-manager/management/move-support-resources.md#microsoftservicefabricmesh) , kaynakları Azure bölgelerinde doğrudan taşıma özelliğini desteklemez. Ancak, geçerli Azure Resource Manager şablonunuzun bir kopyasını yeni hedef bölgeye dağıtarak ve sonra giriş trafiğini ve bağımlılıklarını yeni oluşturulan Service Fabric kafes uygulamasına yönlendirerek kaynakları dolaylı olarak taşıyabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -43,7 +43,7 @@ Bu makalede, Service Fabric kafes uygulamanızın ve kaynaklarının farklı bir
 
 2. Verdiğiniz şablonla, Azure portal kullanarak [özel şablondan kaynak dağıtma](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) ' daki adımları izleyin. [Azure CLI](../azure-resource-manager/templates/deploy-cli.md), [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)veya [REST API](../azure-resource-manager/templates/deploy-rest.md)de kullanabilirsiniz.
 
-3. [Azure depolama hesapları](../storage/common/storage-account-move.md)gibi ilgili kaynakları taşımaya yönelik yönergeler Için, [Azure kaynaklarını bölgeler arasında taşıma](../azure-resource-manager/management/move-region.md)konusunun altında yer alan hizmetlere yönelik kılavuza bakın.
+3. [Azure depolama hesapları](../storage/common/storage-account-move.md)gibi ilgili kaynakları taşımaya yönelik yönergeler Için, [Azure kaynaklarını bölgeler arasında taşıma](../azure-resource-manager/management/move-resources-overview.md#move-resources-across-regions)konusunun altında yer alan hizmetlere yönelik kılavuza bakın.
 
 ## <a name="verify"></a>Doğrulama
 
@@ -61,8 +61,8 @@ Service Fabric kafes uygulamasının taşınmasını tamamlamaya yönelik [kayna
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure kaynaklarını bölgeler arasında taşıma](../azure-resource-manager/management/move-region.md)
-* [Bölgeler arasında Azure kaynaklarını taşıma desteği](../azure-resource-manager/management/region-move-support.md)
+* [Azure kaynaklarını bölgeler arasında taşıma](../azure-resource-manager/management/move-resources-overview.md#move-resources-across-regions)
+* [Bölgeler arasında Azure kaynaklarını taşıma desteği](../azure-resource-manager/management/move-support-resources.md)
 * [Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md)
 * [Kaynaklar için taşıma işlemi desteği](../azure-resource-manager/management/move-support-resources.md
 )

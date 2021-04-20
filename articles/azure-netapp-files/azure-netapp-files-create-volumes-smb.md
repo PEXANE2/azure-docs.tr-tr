@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 04/19/2021
 ms.author: b-juche
-ms.openlocfilehash: eeeaf01dd20e5b309884a01f954ceca576cbcbb9
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 9bb995e5e3038d7a4cd24f0db2608461c8848497
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259634"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726305"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
@@ -56,7 +56,7 @@ SMB birimi oluşturmadan önce bir Active Directory bağlantısı oluşturmanız
     * **Kapasite havuzu**  
         Birimin oluşturulmasını istediğiniz kapasite havuzunu belirtin.
 
-    * **Kota**  
+    * **Kotasının**  
         Birime ayrılmış mantıksal depolama miktarını belirtin.  
 
         **Kullanılabilir kota** alanı, yeni birimi oluştururken kullanabildiğiniz, seçilen kapasite havuzundaki kullanılmamış alan miktarını gösterir. Yeni birimin boyutu kullanılabilir kotayı aşamaz.  
@@ -91,6 +91,26 @@ SMB birimi oluşturmadan önce bir Active Directory bağlantısı oluşturmanız
     * Birimin protokol türü olarak **SMB** ' yi seçin. 
     * Açılır listeden **Active Directory** bağlantınızı seçin.
     * **Paylaşım adı**' nda paylaşılan birimin adını belirtin.
+    * SMB3 için şifrelemeyi etkinleştirmek istiyorsanız, **SMB3 protokol şifrelemesini etkinleştir**' i seçin.   
+        Bu özellik, uçuş SMB3 verileri için şifrelemeyi mümkün bir şekilde sunar. SMB3 şifrelemesi kullanmayan SMB istemcileri bu birime erişemeyecektir.  Bekleyen veriler, bu ayardan bağımsız olarak şifrelenir.  
+        Ek bilgi için bkz. [SMB şifreleme SSS](azure-netapp-files-faqs.md#smb-encryption-faqs) . 
+
+        **SMB3 Protokolü şifreleme** özelliği şu anda önizlemededir. Bu özelliği ilk kez kullanıyorsanız, özelliği kullanmadan önce kaydedin: 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+
+        Özellik kaydının durumunu denetleyin: 
+
+        > [!NOTE]
+        > **Registrationstate** , ' a `Registering` değiştirilmeden önce 60 dakikaya kadar bir durumda olabilir `Registered` . Devam etmeden önce durum olana kadar bekleyin `Registered` .
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+        
+        Ayrıca, [Azure CLI komutlarını](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz.  
     * SMB birimi için sürekli kullanılabilirliği etkinleştirmek istiyorsanız **sürekli kullanılabilirliği etkinleştir**' i seçin.    
 
         > [!IMPORTANT]   

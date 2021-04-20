@@ -85,6 +85,8 @@
       items:
         - name: Uzaktaki bir dosyayı kodlama ve akış ile aktarma Node.js
           href: stream-files-nodejs-quickstart.md
+        - name: Node.js ile canlı akış
+          href: stream-live-tutorial-with-nodejs.md
     - name: Python
       items:
         - name: Python temel kodlama

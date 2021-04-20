@@ -4,14 +4,14 @@ description: Rol tabanlı erişim denetimini Azure Cosmos DB hesabınız için A
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/16/2021
+ms.date: 04/19/2021
 ms.author: thweiss
-ms.openlocfilehash: 145c60784ec9cef60d0863e1eb03aa564dea2b55
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 209d18dfbadea89f14fd90da9a1bc57b3ccf0dfe
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600837"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728085"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Rol tabanlı erişim denetimini Azure Cosmos DB hesabınız için Azure Active Directory yapılandırma (Önizleme)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -50,7 +50,10 @@ Azure Cosmos DB veri düzlemi RBAC, [Azure RBAC](../role-based-access-control/ov
 > - [ARM şablonları](manage-with-templates.md)
 > - [Azure PowerShell betikler](manage-with-powershell.md),
 > - [Azure CLI betikleri](manage-with-cli.md),
-> - [Azure Yönetim kitaplıkları](https://azure.github.io/azure-sdk/releases/latest/index.html).
+> - Azure Yönetim Kitaplıkları ' de kullanılabilir
+>   - [.NET](https://www.nuget.org/packages/Azure.ResourceManager.CosmosDB)
+>   - [Java](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-cosmos)
+>   - [Python](https://pypi.org/project/azure-mgmt-cosmosdb/)
 
 Aşağıdaki tabloda, izin modeli tarafından kullanıma sunulan tüm eylemler listelenmektedir.
 

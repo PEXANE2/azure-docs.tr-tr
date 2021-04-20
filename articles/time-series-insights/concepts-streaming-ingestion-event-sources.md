@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 4e22d93d3037c190193f53b7cfdbc87cff2da6ed
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 499cb3c978a67f9ef71e6ad9dd03be9f05b45729
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504405"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726979"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2 olay kaynakları
 
@@ -31,9 +31,12 @@ Olay kaynağı, hub 'ınız ve Azure Time Series Insights Gen2 ortamınız aras�
 
 Ortamınızın olay kaynaklarını oluşturmak, düzenlemek veya kaldırmak için [Azure Portal](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment), [Azure CLI](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/event-source), [Azure Resource Manager şablonları](time-series-insights-manage-resources-using-azure-resource-manager-template.md)ve [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) kullanabilirsiniz.
 
+> [!WARNING]
+> Time Series Insights tarafından kullanılan bir hub veya olay kaynağına yönelik genel Internet erişimini kısıtlamayın veya gerekli bağlantı bozulur.
+
 ## <a name="start-options"></a>Başlatma seçenekleri
 
-Bir olay kaynağı oluştururken, önceden varolan verilerin ne şekilde toplandığını belirtme seçeneğiniz vardır. Bu ayar isteğe bağlıdır. Aşağıdaki seçenekler kullanılabilir:
+Bir olay kaynağı oluştururken, önceden mevcut verilerin ne şekilde toplandığını belirtebilirsiniz. Bu ayar isteğe bağlıdır. Aşağıdaki seçenekler kullanılabilir:
 
 | Ad   |  Açıklama  |  Azure Resource Manager şablonu örneği |
 |----------|-------------|------|
@@ -46,18 +49,17 @@ Bir olay kaynağı oluştururken, önceden varolan verilerin ne şekilde topland
 > - EarliestAvailable ' ı seçerseniz ve önceden var olan verilere sahipseniz, Azure Time Series Insights Gen2 ortamınız tüm verilerinizi işlerken yüksek gecikme süresine karşılaşabilirsiniz.
 > - Verilerin dizinlendiği için bu yüksek gecikme süresi sonunda alt kenar olmalıdır. Devam eden yüksek gecikme süresi yaşarsanız Azure portal aracılığıyla bir destek bileti gönderebilirsiniz.
 
-* EarliestAvailable
+- EarliestAvailable
 
 ![EarliestAvailable diyagramı](media/concepts-streaming-event-sources/event-source-earliest-available.png)
 
-* EventSourceCreationTime
+- EventSourceCreationTime
 
 ![EventSourceCreationTime diyagramı](media/concepts-streaming-event-sources/event-source-creation-time.png)
 
-* CustomEnqueuedTime
+- CustomEnqueuedTime
 
 ![CustomEnqueuedTime diyagramı](media/concepts-streaming-event-sources/event-source-custom-enqueued-time.png)
-
 
 ## <a name="streaming-ingestion-best-practices"></a>Akış alma en iyi uygulamaları
 
@@ -113,9 +115,9 @@ Tarih damgalarının ISO 8601 biçiminde gönderilmesi ve UTC 'de depolanacak ol
 
 Saat dilimi boşluğu, aşağıdakilerden biri olarak biçimlendirilmelidir:
 
-± HHMMZ</br>
-± HH: MM</br>
-± HH: MMZ</br>
+± HHMMZ<br />
+± HH: MM<br />
+± HH: MMZ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,20 +4,20 @@ description: Azure BareMetal altyapısının koşullarını öğrenin.
 ms.topic: conceptual
 ms.subservice: workloads
 ms.date: 04/06/2021
-ms.openlocfilehash: aa7d9693b3417ff0bb6c6a61800aee72cd416c48
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 61ff958e75952f73efb222df3f0c4d5437668cd3
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536774"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725467"
 ---
 # <a name="know-the-terms-for-baremetal-infrastructure"></a>BareMetal altyapısının koşullarını öğrenin
 
 Bu makalede, BareMetal altyapısıyla ilgili bazı önemli koşullar ele alınacaktır.
 
-- **Düzeltme**: düzeltme 3 (Rev 3) olarak bilinen bir özgün damga düzeltmesi ve BareMetal örnek damgaları için iki ek damga düzeltmesi vardır. Her damga mimaride ve Azure sanal makine konaklarına yakınlığa göre farklılık gösterir:
-    - **Düzeltme 4** (Rev 4): Azure sanal MAKINESI (VM) konaklarına daha yakından yakınlık sağlayan ve Azure VM 'ler ile SAP HANA örnekleri arasındaki gecikmeyi düşürür. 
-    - **Düzeltme 4,2** (Rev 4,2): var olan Rev 4 mimarisini kullanan en son yeniden markalı BareMetal altyapısı. Rev 4, Azure sanal makinesi (VM) konaklarına daha yakın bir yakınlık sağlar. Bu, Rev 4 Damgalarında veya satırlarda dağıtılan Azure VM 'Leri ile BareMetal örnekleri arasındaki ağ gecikmesi açısından önemli geliştirmelere sahiptir. BareMetal örneklerinizi Azure portal aracılığıyla erişebilir ve yönetebilirsiniz.    
+- **Düzeltme**: BareMetal ıNFRASTRUCTURE (Hana büyük örnek) damgaları için iki farklı damga düzeltmesi vardır. Bunlar, mimaride ve Azure sanal makine konaklarına yakınlığa göre farklılık gösterir:
+    - "Düzeltme 3" (Rev 3): özgün tasarım orta 2016 ' i dağıttı.
+    - "Düzeltme 4,2" (Rev 4,2): Azure VM 'Leri ve HANA büyük örnekleri arasında Ultra düşük ağ gecikme süresi ile Azure sanal makine konaklarına daha yakından yakınlık sağlayan yeni bir tasarım. Azure portal kaynaklar "BareMetal altyapısı" olarak adlandırılır ve müşteriler kaynaklarına Azure portal BareMetal örnekleri olarak erişebilir.
 
 - **Damga**: BareMetal örneklerinin Microsoft iç dağıtım boyutunu tanımlar. Örneklerin dağıtılması için işlem, ağ ve depolama raflarından oluşan bir BareMetal örnek damgası, bir veri merkezi konumuna dağıtılmalıdır. Böyle bir dağıtıma BareMetal örnek damgası denir.
 

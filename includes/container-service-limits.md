@@ -5,28 +5,27 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: include
-ms.date: 11/22/2019
+ms.date: 04/06/2021
 ms.author: mlearned
 ms.custom: include file
-ms.openlocfilehash: 1c2dec106ae72ddead7bda54792fa74e38eb6660
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 15e91e6f275c3a6ebe44690441404a38e8f61394
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106081079"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732251"
 ---
 | Kaynak                                                                                                           | Sınır                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Abonelik başına en fazla küme                                                                                  | 1000                                                                                                                                                                                                        |
 | Sanal makine kullanılabilirlik kümeleri ve temel Load Balancer SKU 'SU ile küme başına en fazla düğüm                       | 100                                                                                                                                                                                                         |
-| Sanal Makine Ölçek Kümeleri ve [Standart Load Balancer SKU 'su][standard-load-balancer] olan küme başına en fazla düğüm | 1000 ( [düğüm havuzu][node-pool]başına 100 düğüm)                                                                                                                                                                 |
-| Düğüm başına maksimum Pod: kubenet ile [temel ağ][basic-networking]                                           | 110                                                                                                                                                                                                         |
-| Düğüm başına en fazla düğüm sayısı: Azure Container ağ arabirimi ile [Gelişmiş ağ][advanced-networking]        | Azure CLI dağıtımı: 30<sup>1</sup><br />Azure Resource Manager şablonu: 30<sup>1</sup><br />Portal dağıtımı: 30                                                                                        |
-| Açık hizmet ağı (OSDK) AKS eklentisi önizlemesi                                                                          | Kubernetes kümesi sürümü: 1.19 +<sup>2</sup><br />Küme başına OSA denetleyicileri: 1<sup>2</sup><br />OSD denetleyicisi başına pods: 500<sup>2</sup><br />OSD tarafından yönetilen Kubernetes hizmet hesapları: 50<sup>2</sup> |
+| Sanal Makine Ölçek Kümeleri ve [Standart Load Balancer SKU 'su][standard-load-balancer] olan küme başına en fazla düğüm | 1000 (tüm [düğüm havuzları][node-pool]genelinde)                                            |
+| Küme başına en fazla düğüm havuzu                                                                                     | 100                                                                                  |
+| Düğüm başına maksimum Pod: kubenet ile [temel ağ][basic-networking]                                           | Maksimum: 250 <br /> Azure CLı varsayılan: 110 <br /> Azure Resource Manager şablonu varsayılanı: 110 <br /> Azure portal dağıtım varsayılanı: 30          |
+| Düğüm başına en fazla düğüm sayısı: Azure Container ağ arabirimi ile [Gelişmiş ağ][advanced-networking]        | Maksimum: 250 <br /> Varsayılan: 30                                                      |
+| Açık hizmet ağı (OSDK) AKS eklentisi önizlemesi                                                                          | Kubernetes kümesi sürümü: 1.19 +<sup>1</sup><br />Küme başına OSD denetleyicileri: 1<sup>1</sup><br />OSD denetleyicisi başına pods: 500<sup>1</sup><br />OSD tarafından yönetilen Kubernetes hizmet hesapları: 50<sup>1</sup> |
 
-<sup>1</sup> Azure CLI veya Kaynak Yöneticisi şablonuyla bir Azure Kubernetes hizmeti (aks) kümesi dağıttığınızda, bu değer düğüm başına 250 Pod 'ye yapılandırılabilir. Zaten bir aks kümesi dağıttıktan sonra veya Azure Portal kullanarak bir küme dağıtırsanız, düğüm başına maksimum Pod yapılandıramazsınız.<br />
-
-<sup>2</sup> AKS için OSA eklentisi bir önizleme durumundadır ve genel kullanıma (GA) önce ek geliştirmelere sahip olacak. Önizleme aşamasında, gösterilen limitlerin aşılmadığından önerilir.<br />
+<sup>1</sup> AKS için OSA eklentisi önizleme durumundadır ve genel kullanılabilirlik (GA) öncesinde daha fazla geliştirmeler yapılacaktır. Önizleme aşamasında, gösterilen limitlerin aşılmadığından önerilir.<br />
 
 <!-- LINKS - Internal -->
 

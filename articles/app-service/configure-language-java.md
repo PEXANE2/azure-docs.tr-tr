@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: cc532c5ac6babb8378860ac5049e931cc7657932
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1caa8b680b6bc3df20ad31e581d336195308a2dc
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629266"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726331"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service için bir Java uygulaması yapılandırma
 
@@ -32,7 +32,10 @@ Aksi takdirde, dağıtım yönteminiz arşiv türüne bağlı olacaktır:
 
 ### <a name="java-se"></a>Java SE
 
-. Jar dosyalarını Java mak 'a dağıtmak için `/api/zipdeploy/` kudu sitesinin uç noktasını kullanın. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](./deploy-zip.md#rest)bakın.
+. Jar dosyalarını Java mak 'a dağıtmak için `/api/zipdeploy/` kudu sitesinin uç noktasını kullanın. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](./deploy-zip.md#rest)bakın. 
+
+> [!NOTE]
+>  `app.jar`Uygulamanızı tanımlamak ve çalıştırmak için,. jar uygulamanızın adı App Service olmalıdır. Maven eklentisi (yukarıda bahsedilen), dağıtım sırasında uygulamanızı sizin için otomatik olarak yeniden adlandıracaktır. JAR 'nizi *app. jar*'e yeniden adlandırmak istemiyorsanız,. jar uygulamanızı çalıştırmak için komutuyla bir kabuk betiği yükleyebilirsiniz. Bu betiğin mutlak yolunu portalın yapılandırma bölümündeki [başlangıç dosyası](faq-app-service-linux.md#built-in-images) metin kutusuna yapıştırın. Başlatma dizesi içine yerleştirildiği dizinden çalıştırılmaz. Bu nedenle başlatma dizenizde her zaman başvuru dosyalarının mutlak yollarını kullanın (örneğin: `java -jar /home/myapp/myapp.jar`).
 
 ### <a name="tomcat"></a>Tomcat
 

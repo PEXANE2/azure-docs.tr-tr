@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 04/19/2021
 ms.author: b-juche
-ms.openlocfilehash: ae94ac9719a827a2d1af258398988f0972e61b3a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: a8c06b25b923d663e982e940100be7b9a2a009e1
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305523"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726853"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -213,6 +213,43 @@ En iyi uygulama olarak, bilgisayar saati eşitlemesi için maksimum toleransı b
 ### <a name="how-can-i-obtain-the-ip-address-of-an-smb-volume-via-the-portal"></a>Portal aracılığıyla bir SMB biriminin IP adresini nasıl alabilirim?
 
 Birime Genel Bakış bölmesinde **JSON görünümü** bağlantısını kullanın ve **Özellikler** bağlamahedefleri altında **startip** tanımlayıcısı ' nı arayın  ->  .
+
+### <a name="smb-encryption-faqs"></a>SMB şifreleme SSS
+
+Bu bölümde, SMB şifrelemesi (SMB 3,0 ve SMB 3.1.1) hakkında sıkça sorulan sorular yanıtlanmaktadır.
+
+#### <a name="what-is-smb-encryption"></a>SMB şifrelemesi nedir?  
+
+[SMB şifrelemesi](/windows-server/storage/file-server/smb-security) , SMB verileri için uçtan uca şifrelemeyi sağlar ve verileri güvenilmeyen ağlarda izinsiz bir yerden bırakarak verileri korur. SMB şifreleme, SMB 3,0 ve üzeri bir sürümü destekler. 
+
+#### <a name="how-does-smb-encryption-work"></a>SMB şifrelemesi nasıl çalışır?
+
+Depolama alanına bir istek gönderilirken istemci, isteğin şifresini çözdüğü için isteği şifreler. Yanıtlar sunucu tarafından benzer şekilde şifrelenir ve istemci tarafından şifresi çözülür.
+
+#### <a name="which-clients-support-smb-encryption"></a>Hangi istemciler SMB şifrelemesini destekliyor?
+
+Windows 10, Windows 2012 ve sonraki sürümler SMB şifrelemesini destekler.
+
+#### <a name="with-azure-netapp-files-at-what-layer-is-smb-encryption-enabled"></a>Azure NetApp Files, SMB şifrelemesi hangi katmanda etkinleştirilmiştir?  
+
+SMB şifrelemesi, paylaşma düzeyinde etkindir.
+
+#### <a name="what-forms-of-smb-encryption-are-used-by-azure-netapp-files"></a>Azure NetApp Files hangi SMB şifrelemesi biçimlerini kullanır?
+
+SMB 3,0 AES-CCM algoritmasını kullanır, SMB 3.1.1 AES-GCM algoritmasını kullanır
+
+#### <a name="is-smb-encryption-required"></a>SMB şifrelemesi gerekli mi?
+
+SMB şifrelemesi gerekli değildir. Bu nedenle, yalnızca Kullanıcı Azure NetApp Files etkinleştirmek isterse, belirli bir paylaşıma yönelik olarak etkinleştirilir. Azure NetApp Files paylaşımlar Internet 'e hiçbir şekilde gösterilmez. Yalnızca belirli bir sanal ağ içinden VPN veya Express Route üzerinden erişilebilir, bu nedenle Azure NetApp Files paylaşımlar doğal olarak güvenlidir. SMB şifrelemesini etkinleştirme seçimi tamamen kullanıcıya tamamıyla yapılır. Bu özelliği etkinleştirmeden önce beklenen performans cezası hakkında dikkat edin.
+
+#### <a name="what-is-the-anticipated-impact-of-smb-encryption-on-client-workloads"></a><a name="smb_encryption_impact"></a>İstemci iş yükleri üzerinde SMB şifrelemenin beklenen etkisi nedir?
+
+SMB şifrelemesi hem istemciye (iletileri şifrelemek ve şifrelerini çözmek için CPU ek yükü) hem de depolama (aktarım hızı ile indirimleri) üzerinde etkilense de aşağıdaki tabloda yalnızca depolama etkisi vurgulanmaktadır. İş yüklerini üretime dağıtmaya başlamadan önce kendi uygulamalarınıza karşı şifreleme performansı etkisini test etmelisiniz.
+
+|     G/ç profili       |     Etki        |
+|-  |-  |
+|     İş yüklerini okuma ve yazma      |     %10 ila %15        |
+|     Meta veriler yoğun        |     %5    |
 
 ## <a name="capacity-management-faqs"></a>Kapasite Yönetimi SSS
 

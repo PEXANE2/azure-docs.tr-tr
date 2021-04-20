@@ -9,12 +9,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 72f4ac8df39b9511fd98a1dd5a3eca76e11e34bf
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 158eed6d287fa384023defbb20a7a1c39ea3d838
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535163"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728599"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Azure purview hesabı oluşturun
 
@@ -119,7 +119,7 @@ Gerekirse, aboneliğinizi Azure purview 'ın aboneliğinizde çalışacak şekil
    :::image type="content" source="./media/create-catalog-portal/add-purview-instance.png" alt-text="Azure portal Azure purview hesap örneğinin nasıl oluşturulacağını gösteren ekran görüntüsü.":::
 
     > [!Note] 
-    > Azure purview, hesabı bölgeler arasında taşımayı desteklemez. Bu konuda [Azure desteklenen Hizmetler sayfasında](../azure-resource-manager/management/region-move-support.md)daha fazla bilgi edinebilirsiniz.
+    > Azure purview, hesabı bölgeler arasında taşımayı desteklemez. Bu konuda, [kaynak Için taşıma işlemi desteğiyle](../azure-resource-manager/management/move-support-resources.md)ilgili daha fazla bilgi bulabilirsiniz.
 
 1. **Temel bilgiler** sekmesinde şunları yapın:
     1. Bir **kaynak grubu** seçin.

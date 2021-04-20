@@ -2,14 +2,14 @@
 title: Kaynakları yeni bir aboneliğe veya kaynak grubuna taşıma
 description: Kaynakları yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 04/16/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 800e605571ae18b008a86b4add4b0b2adce9c140
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 08f2c123d37ac992e926e983d59edc650a8ab7ef
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078392"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728311"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma
 
@@ -160,7 +160,7 @@ retry-after: 15
 ...
 ```
 
-202 durum kodu, doğrulama isteğinin kabul edildiğini gösterir, ancak taşıma işleminin başarılı olup olmayacağını henüz belirlemiştir. `location`Değer, uzun süre çalışan işlemin durumunu denetlemek için kullandığınız BIR URL içerir.  
+202 durum kodu, doğrulama isteğinin kabul edildiğini gösterir, ancak taşıma işleminin başarılı olup olmayacağını henüz belirlemiştir. `location`Değer, uzun süre çalışan işlemin durumunu denetlemek için kullandığınız BIR URL içerir.
 
 Durumu denetlemek için aşağıdaki isteği gönderin:
 
@@ -209,8 +209,6 @@ Kaynakların taşınabileceği doğrulandıktan sonra taşıma işleminin çalı
 
 Tamamlandığında, sonuç size bildirilir.
 
-Bir hata alırsanız bkz. [Azure kaynaklarını yeni kaynak grubuna veya aboneliğe taşıma sorunlarını giderme](troubleshoot-move.md).
-
 ## <a name="use-azure-powershell"></a>Azure PowerShell kullanma
 
 Mevcut kaynakları başka bir kaynak grubuna veya aboneliğe taşımak için [Move-AzResource](/powershell/module/az.resources/move-azresource) komutunu kullanın. Aşağıdaki örnek, birkaç kaynağın yeni bir kaynak grubuna nasıl taşınacağını gösterir.
@@ -223,8 +221,6 @@ Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.Resource
 
 Yeni bir aboneliğe geçmek için parametresi için bir değer ekleyin `DestinationSubscriptionId` .
 
-Bir hata alırsanız bkz. [Azure kaynaklarını yeni kaynak grubuna veya aboneliğe taşıma sorunlarını giderme](troubleshoot-move.md).
-
 ## <a name="use-azure-cli"></a>Azure CLI kullanma
 
 Mevcut kaynakları başka bir kaynak grubuna veya aboneliğe taşımak için [az Resource Move](/cli/azure/resource#az-resource-move) komutunu kullanın. Taşınacak kaynakların kaynak kimliklerini sağlayın. Aşağıdaki örnek, birkaç kaynağın yeni bir kaynak grubuna nasıl taşınacağını gösterir. `--ids`Parametresinde, taşınacak kaynak kimliklerinin boşlukla ayrılmış bir listesini sağlayın.
@@ -236,8 +232,6 @@ az resource move --destination-group newgroup --ids $webapp $plan
 ```
 
 Yeni bir aboneliğe geçmek için `--destination-subscription-id` parametresini sağlayın.
-
-Bir hata alırsanız bkz. [Azure kaynaklarını yeni kaynak grubuna veya aboneliğe taşıma sorunlarını giderme](troubleshoot-move.md).
 
 ## <a name="use-rest-api"></a>REST API’yi kullanma
 
@@ -255,8 +249,6 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
  "targetResourceGroup": "/subscriptions/<subscription-id>/resourceGroups/<target-group>"
 }
 ```
-
-Bir hata alırsanız bkz. [Azure kaynaklarını yeni kaynak grubuna veya aboneliğe taşıma sorunlarını giderme](troubleshoot-move.md).
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
@@ -303,6 +295,18 @@ Diğer bir yaygın örnek, bir sanal ağın taşınmasını içerir. Bu sanal a�
 **Soru: Azure 'daki bazı kaynakları neden taşıyamıyorum?**
 
 Şu anda Azure desteği 'ndeki tüm kaynaklar hareket etmez. Taşımayı destekleyen kaynakların listesi için bkz. [kaynaklar Için taşıma işlemi desteği](move-support-resources.md).
+
+**Soru: tek bir işlemde kaç kaynak taşıyabilirim?**
+
+Mümkün olduğunda, büyük taşıma işlemlerini ayrı olarak bölün. Tek bir işlemde 800 'den fazla kaynak olduğunda hemen Kaynak Yöneticisi bir hata döndürür. Ancak, 800 'den az kaynak taşıma zaman aşımına uğramasından de başarısız olabilir.
+
+**Soru: bir kaynağın başarılı durumda olmadığı hatanın anlamı nedir?**
+
+Kaynak başarılı bir durumda olmadığından, bir kaynağın taşınamayacağını belirten bir hata iletisi aldığınızda, gerçekten taşımayı engelleyen bir bağımlı kaynak olabilir. Genellikle, hata kodu **MoveCannotProceedWithResourcesNotInSucceededState**' dir.
+
+Kaynak veya hedef kaynak grubu bir sanal ağ içeriyorsa, sanal ağ için tüm bağımlı kaynakların durumları taşıma sırasında denetlenir. Denetim, bu kaynakları doğrudan ve sanal ağa dolaylı olarak bağlı olarak içerir. Bu kaynaklardan herhangi biri başarısız durumdaysa taşıma engellenir. Örneğin, sanal ağ kullanan bir sanal makine başarısız olduysa, taşıma engellenir. Sanal makine, taşınmakta olan kaynaklardan biri olmadığında ve taşıma için kaynak gruplarından birinde yer alsa bile taşıma engellenir.
+
+Bu hatayı aldığınızda, iki seçeneğiniz vardır. Kaynaklarınızı sanal ağı olmayan bir kaynak grubuna taşıyın veya [desteğe başvurun](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

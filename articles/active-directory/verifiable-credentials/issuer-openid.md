@@ -9,16 +9,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 8771c61f96b244e0cc0bca1c61ceb8042b4a5b4c
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 942b77f8338636f9dda5dcf6cd4262dad57b4b0a
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220207"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726277"
 ---
 # <a name="issuer-service-communication-examples-preview"></a>Veren hizmeti iletişim örnekleri (Önizleme)
 
-Doğrulanabilir kimlik bilgisi veren hizmeti, kuruluşunuzun OpenID uyumlu kimlik sağlayıcısı tarafından oluşturulan bir KIMLIK belirtecinden talepleri alarak doğrulanabilir kimlik bilgileri verebilir. Bu makalede kimlik doğrulayıcı ile iletişim kurabilmesi ve veren hizmete geçirilecek doğru KIMLIK belirtecini alabilmesi için kimlik sağlayıcınızı nasıl ayarlayabileceğiniz açıklanır. 
+Azure AD doğrulanabilir kimlik bilgisi hizmeti, kuruluşunuzun OpenID uyumlu kimlik sağlayıcısı tarafından oluşturulan bir KIMLIK belirtecinden talepleri alarak doğrulanabilir kimlik bilgileri verebilir. Bu makalede kimlik doğrulayıcı ile iletişim kurabilmesi ve veren hizmete geçirilecek doğru KIMLIK belirtecini alabilmesi için kimlik sağlayıcınızı nasıl ayarlayabileceğiniz açıklanır. 
 
 > [!IMPORTANT]
 > Azure Active Directory doğrulanabilir kimlik bilgileri şu anda genel önizlemede.

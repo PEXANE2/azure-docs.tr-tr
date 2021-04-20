@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 49b5da2da72e78226db19f5d8881073577aee5b0
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 2ec4ca8b24f1e8534e7f8434bc86a2eb2745e946
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575532"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727051"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Uygulamaları MSAL.NET 'a geçirme
 
@@ -59,7 +59,7 @@ MSAL.NET kullanmak için [Microsoft. Identity. Client](https://www.nuget.org/pac
 
 ### <a name="scopes-not-resources"></a>Kapsam kaynakları değil
 
-ADAL.NET, *kaynaklar* için belirteçleri alır, ancak msal.net *kapsamlar* için belirteçleri elde edin. Bir dizi MSAL.NET AcquireToken geçersiz kılma kapsamları () adlı bir parametre gerektirir `IEnumerable<string> scopes` . Bu parametre, istenen izinleri ve istenen kaynakları bildiren dizelerin basit bir listesidir. İyi bilinen kapsamlar [Microsoft Graph kapsamlardır](https://docs.microsoft.com/graph/permissions-reference).
+ADAL.NET, *kaynaklar* için belirteçleri alır, ancak msal.net *kapsamlar* için belirteçleri elde edin. Bir dizi MSAL.NET AcquireToken geçersiz kılma kapsamları () adlı bir parametre gerektirir `IEnumerable<string> scopes` . Bu parametre, istenen izinleri ve istenen kaynakları bildiren dizelerin basit bir listesidir. İyi bilinen kapsamlar [Microsoft Graph kapsamlardır](/graph/permissions-reference).
 
 V 1.0 kaynaklarına erişmek için MSAL.NET de mümkündür. Bkz. [bir v 1.0 uygulaması Için kapsamlar](#scopes-for-a-web-api-accepting-v10-tokens)içindeki ayrıntılar.
 

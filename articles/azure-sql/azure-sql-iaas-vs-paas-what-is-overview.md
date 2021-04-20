@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: ea097119111d5dbd5eba3c11aba549d201186e3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 394b3390386c60e2a64f52dd944dfcdb0d33951e
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592192"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727033"
 ---
 # <a name="what-is-azure-sql"></a>Azure SQL nedir? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -98,18 +98,19 @@ Azure SQL veritabanı aşağıdaki dağıtım seçeneklerini sunar:
 ### <a name="sql-server-on-azure-vm"></a>Azure Sanal Makinesi üzerinde SQL Server
 
 [Azure VM SQL Server](virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) , sektör kategorisi *hizmet olarak altyapı (IaaS)* ile sonuçlanır ve Azure 'da tam olarak yönetilen BIR sanal makine (VM) içinde SQL Server çalıştırmanızı sağlar. 
-- İşletim sistemi düzeyinde erişim gerektiren geçişler ve uygulamalar için idealdir. Azure 'daki SQL sanal makineleri, en az değişiklikle veya hiçbir değişikliğe gerek olmadan buluta hızlı geçiş gerektiren mevcut uygulamalar için yükseltme ve kaydırma. SQL sanal makineleri, Azure 'a geçiş için SQL Server örneği ve temel alınan işletim sistemi üzerinde tam yönetim denetimi sunar. 
-- Şirket içi üretim dışı SQL Server donanımı satın almak istemediğinizde hızlı geliştirme ve test senaryoları. SQL sanal makineleri, Microsoft tarafından sahip olunan, barındırılan ve korunan standartlaştırılmış donanımlar üzerinde de çalışır. SQL sanal makinelerini kullanırken, zaten bir SQL Server görüntüsüne dahil olan bir SQL Server Lisansı için ödeme yapabilir veya mevcut bir lisansı kolayca kullanabilirsiniz. Ayrıca, gerektiğinde VM 'yi durdurabilir veya sürdürebilirsiniz. 
 - Bulutta yüklü ve barındırılan SQL Server, hizmet olarak altyapı (IaaS) olarak da bilinen, Azure üzerinde çalışan Windows Server veya Linux sanal makinelerinde çalışır. SQL sanal makineleri, herhangi bir veritabanı değişikliği olmadan şirket içi SQL Server veritabanlarını ve uygulamaları geçirmek için iyi bir seçenektir. SQL Server tüm yeni sürümleri ve sürümleri IaaS sanal makinesinde yüklenebilir. 
-
-    SQL veritabanı ve SQL yönetilen örneğinden en önemli fark, Azure sanal makinelerinde SQL Server, veritabanı altyapısı üzerinde tam denetim sağlar. Bakım/düzeltme eki uygulamayı ne zaman başlatacağınızı, kurtarma modelini basit veya toplu Günlüksüz olarak değiştirmeyi, gerektiğinde hizmeti duraklatmayı veya başlatmayı seçebilirsiniz ve SQL Server veritabanı altyapısını tam olarak özelleştirebilirsiniz. Bu ek denetimle, sanal makineyi yönetmek için eklenen sorumluluğa yer verilir.
+- İşletim sistemi düzeyinde erişim gerektiren geçişler ve uygulamalar için idealdir. Azure 'daki SQL sanal makineleri, en az değişiklikle veya hiçbir değişikliğe gerek olmadan buluta hızlı geçiş gerektiren mevcut uygulamalar için yükseltme ve kaydırma. SQL sanal makineleri, Azure 'a geçiş için SQL Server örneği ve temel alınan işletim sistemi üzerinde tam yönetim denetimi sunar. 
+- SQL veritabanı ve SQL yönetilen örneğinden en önemli fark, Azure sanal makinelerinde SQL Server, veritabanı altyapısı üzerinde tam denetim sağlar. Bakım/düzeltme eki uygulamayı ne zaman başlatacağınızı, kurtarma modelini basit veya toplu Günlüksüz olarak değiştirmeyi, gerektiğinde hizmeti duraklatmayı veya başlatmayı seçebilirsiniz ve SQL Server veritabanı altyapısını tam olarak özelleştirebilirsiniz. Bu ek denetimle, sanal makineyi yönetmek için eklenen sorumluluğa yer verilir.
+- Şirket içi üretim dışı SQL Server donanımı satın almak istemediğinizde hızlı geliştirme ve test senaryoları. SQL sanal makineleri, Microsoft tarafından sahip olunan, barındırılan ve korunan standartlaştırılmış donanımlar üzerinde de çalışır. SQL sanal makinelerini kullanırken, zaten bir SQL Server görüntüsüne dahil olan bir SQL Server Lisansı için ödeme yapabilir veya mevcut bir lisansı kolayca kullanabilirsiniz. Ayrıca, gerektiğinde VM 'yi durdurabilir veya sürdürebilirsiniz. 
 - Mevcut uygulamaları Azure 'a geçirmek veya mevcut şirket içi uygulamaları karma dağıtımlarda buluta genişletmek için iyileştirilmiştir. Ayrıca, SQL Server’ı sanal bir makinede kullanarak geleneksel SQL Server uygulamaları geliştirip test edebilirsiniz. SQL sanal makineler ile adanmış bir SQL Server örneği ve bulut tabanlı VM üzerinde tam yönetici haklarına sahip olursunuz. Bu, bir kuruluşun halihazırda sanal makinelerin bakımını yapmak için kullanılabilir BT kaynaklarına sahip olması durumunda ideal bir seçenektir. Bu özellikler uygulamanızın belirli performans ve kullanılabilirlik gereksinimlerini karşılamak üzere yüksek düzeyde özelleştirilmiş bir sistem oluşturmanıza olanak sağlar.
+
+
+### <a name="comparison-table"></a>Karşılaştırma tablosu
 
 Aşağıdaki tabloda ek farklılıklar listelenmiştir, ancak *hem SQL veritabanı hem de SQL yönetilen örneği, birçok veritabanını sağlamak ve yönetmek için genel yönetim maliyetlerini en düşük düzeye düşürmek üzere iyileştirilmiştir.* Herhangi bir sanal makineyi, işletim sistemini veya veritabanı yazılımını yönetmeniz gerektiğinden devam eden yönetim maliyetleri azalır. Yükseltme, yüksek kullanılabilirlik veya [yedeklemeleri](database/automated-backups-overview.md) yönetmeniz gerekli değildir. 
 
-Genel olarak, SQL veritabanı ve SQL yönetilen örneği, tek bir BT veya geliştirme kaynağıyla yönetilen veritabanlarının sayısını ciddi ölçüde artırabilir. [Elastik havuzlar](database/elastic-pool-overview.md) , kiracı yalıtımı ve veritabanları arasında kaynakları paylaşarak maliyetleri azaltmak için ölçekleyebilme dahil özelliklerle çok kiracılı uygulama mimarilerini de destekler. [SQL yönetilen örneği](managed-instance/sql-managed-instance-paas-overview.md) , mevcut uygulamaların kolayca geçirilmesini sağlayan örnek kapsamlı özellikler için destek sağlar ve kaynakları veritabanları arasında paylaşıyor.
+Genel olarak, SQL veritabanı ve SQL yönetilen örneği, tek bir BT veya geliştirme kaynağıyla yönetilen veritabanlarının sayısını ciddi ölçüde artırabilir. [Elastik havuzlar](database/elastic-pool-overview.md) , kiracı yalıtımı ve veritabanları arasında kaynakları paylaşarak maliyetleri azaltmak için ölçekleyebilme dahil özelliklerle çok kiracılı uygulama mimarilerini de destekler. [SQL yönetilen örneği](managed-instance/sql-managed-instance-paas-overview.md) , mevcut uygulamaların kolayca geçirilmesini sağlayan örnek kapsamlı özellikler için destek sağlar ve kaynakları veritabanları arasında paylaşıyor. Ancak, [Azure VM 'lerinde SQL Server](virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) , öğrendikleri şirket içi ortama benzer bir deneyimle DBAS sağlar. 
 
-### <a name="comparison-table"></a>Karşılaştırma tablosu
 
 | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek | Azure Sanal Makinesi üzerinde SQL Server |
 | :--- | :--- | :--- |

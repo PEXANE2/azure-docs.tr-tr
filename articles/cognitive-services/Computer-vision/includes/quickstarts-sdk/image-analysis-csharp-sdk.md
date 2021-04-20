@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 03/29/2021
 ms.author: pafarley
-ms.openlocfilehash: 407ef167ca05f08d349a017c60164e2fe67977a6
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0af6c97d6179a645b078f2335ff38f48890c42a3
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327532"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728203"
 ---
 <a name="HOLTop"></a>
 
@@ -79,7 +79,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 > [!TIP]
 > Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek mi istiyorsunuz? Bu hızlı başlangıçta kod örneklerini içeren [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs)'da bulabilirsiniz.
 
-Proje dizininden, tercih ettiğiniz düzenleyicide veya IDE 'de *ComputerVisionQuickstart. cs* dosyasını açın. Aşağıdaki yönergeleri ekleyin `using` :
+Proje dizininden, tercih ettiğiniz düzenleyicide veya IDE 'de *program. cs* dosyasını açın. Aşağıdaki yönergeleri ekleyin `using` :
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_using)]
 
@@ -150,19 +150,19 @@ Görüntü analizi için yeni yönteminizi tanımlayın. Analizinizden ayıklama
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_visualfeatures)]
 
-Özelliklerini uygulamak için, aşağıdaki kod bloklarını **analiz Zeımageurl** yöntemine ekleyin. Sonuna bir kapanış ayracı eklemeyi unutmayın.
-
-```csharp
-}
-```
-
-### <a name="analyze"></a>Analiz
+### <a name="call-the-analyze-api"></a>Çözümle API 'sini çağırma
 
 Analysis **Zeımageasync** yöntemi, ayıklanan tüm bilgileri Içeren bir **ımageanalysis** nesnesi döndürür.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_analyze_call)]
 
 Aşağıdaki bölümlerde bu bilgilerin ayrıntılı olarak nasıl ayrıştırılacak gösterilmektedir.
+
+Yukarıda istediğiniz görsel özelliklerden verileri ayrıştırmak için aşağıdaki kod bloklarından herhangi birini **analiz Zeımageurl** yöntemine ekleyin. Sonuna bir kapanış ayracı eklemeyi unutmayın.
+
+```csharp
+}
+```
 
 ### <a name="get-image-description"></a>Görüntü açıklamasını al
 

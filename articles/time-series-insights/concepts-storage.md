@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 67ab4c8cf079adaf3b38cdcc30abeec43cd4612f
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: cd26df1de86ee4bdb33050d0bc4769663707733e
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505204"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725035"
 ---
 # <a name="data-storage"></a>Veri Depolama
 
@@ -53,7 +53,7 @@ Isınma deponuzdaki veriler yalnızca [zaman serisi sorgu API 'leri](./concepts-
 
 * Etkinleştirildiğinde, ortamınızda akan tüm veriler, etkinlik zaman damgasına bakılmaksızın ısınma deponuza yönlendirilir. Akış alma işlem hattının neredeyse gerçek zamanlı akış için oluşturulup oluşturulmadığını ve geçmiş olayların [desteklenmediğini](./concepts-streaming-ingestion-event-sources.md#historical-data-ingestion)unutmayın.
 * Saklama dönemi, olay zaman damgasında değil, etkinliğin ısınma deposunda dizine alındığı zamana göre hesaplanır. Bu, olay zaman damgası ileride olsa bile, saklama süresi dolduktan sonra, verilerin artık ısınma deposunda kullanılamadığı anlamına gelir.
-  * Örnek: 10 günlük hava durumu tahminlerine sahip bir olay, 7 günlük saklama süresiyle yapılandırılmış bir sıcak depolama kapsayıcısında alınır ve dizinlenir. 7 gün geçtikten sonra, tahmine daha fazla yarı mağaza 'da erişilemez, ancak soğuk bir şekilde sorgulanabilir.
+  * Örnek: 10 günlük hava durumu tahminlerine sahip bir olay, 7 günlük saklama süresiyle yapılandırılmış bir sıcak depolama kapsayıcısında alınır ve dizinlenir. Yedi gün sonra, tahmine daha fazla yarı mağaza 'da erişilemez, ancak soğuk bir şekilde sorgulanabilir.
 * En yeni verileri soğuk depolamada dizinli olan mevcut bir ortamda yarı depolamayı etkinleştirirseniz, ısınma mağazalarınızın bu verilerle doldurulmadığını unutmayın.
 * Yalnızca yarı depolamayı etkinleştirdiyseniz ve en son verilerinizi gezgin 'de görüntülerken sorunlarla karşılaşıyorsanız, geçici olarak yarı mağaza sorgularını kapalı bırakabilirsiniz:
 
@@ -70,6 +70,9 @@ Azure Blob depolama alanının kapsamlı bir açıklaması için, [depolama Blob
 Azure Time Series Insights Gen2, Azure Depolama hesabınızdaki her bir olayın en fazla iki kopyasını tutar. Bir kopya alma zamanına göre sıralanmış olayları depolar, her zaman bir zaman sıralı dizideki olaylara erişime izin verir. Zaman içinde, Azure Time Series Insights Gen2, performans sorguları için iyileştirmek üzere verilerin yeniden bölümlendirilmiş bir kopyasını da oluşturur.
 
 Tüm verileriniz, Azure depolama hesabınızda süresiz olarak depolanır.
+
+> [!WARNING]
+> Time Series Insights tarafından kullanılan bir hub veya olay kaynağına yönelik genel Internet erişimini kısıtlamayın veya gerekli bağlantı bozulur.
 
 #### <a name="writing-and-editing-blobs"></a>Blob yazma ve düzenleniyor
 

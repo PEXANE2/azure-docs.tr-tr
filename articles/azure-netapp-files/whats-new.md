@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/05/2021
+ms.date: 04/19/2021
 ms.author: b-juche
-ms.openlocfilehash: 94981cd0912f76b710b3a60040ffbffd38381bcd
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 3c6da2137f2db43284ce7a533ff763e9ef157f35
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552113"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726655"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files yenilikleri
 
@@ -27,12 +27,16 @@ Azure NetApp Files düzenli olarak güncelleştirilir. Bu makale, en son yeni ö
 
 ## <a name="april-2021"></a>2021 Nisan
 
+* [SMB3 Protokolü şifreleme](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (Önizleme) 
+
+    Artık Azure NetApp Files SMB ve çift protokol birimlerinde SMB3 Protokolü şifrelemeyi etkinleştirebilirsiniz. Bu özellik, [smb 3,0 ' de AES-CCM algoritması ve SMB 3.1.1 BAĞLANTıLARıNDA AES-GCM algoritması](/windows-server/storage/file-server/file-server-smb-overview#features-added-in-smb-311-with-windows-server-2016-and-windows-10-version-1607) KULLANıLARAK uçuş SMB3 verileri için şifrelemeyi mümkün bir şekilde sunar. SMB3 şifrelemesi kullanmayan SMB istemcileri bu birime erişemeyecektir. Bekleyen veriler, bu ayardan bağımsız olarak şifrelenir. SMB şifrelemesi güvenliği geliştirir. Ancak, istemciyi etkileyebilir (iletileri şifrelemek ve şifrelerini çözmek için CPU ek yükü). Ayrıca, depolama kaynak kullanımını etkileyebilir (işleme göre indirimleri). İş yüklerini üretime dağıtmaya başlamadan önce, uygulamalarınıza karşı şifreleme performansı etkisini test etmelisiniz.
+
 * [Active Directory Domain Services (ekler) NFS genişletilmiş GRUPLARıYLA LDAP kullanıcı eşlemesi](configure-ldap-extended-groups.md) (Önizleme)   
 
     Varsayılan olarak, Azure NetApp Files, [RFC 5531](https://tools.ietf.org/html/rfc5531)' de tanımlanan şekilde NFS Kullanıcı kimlik bilgilerini işlerken en fazla 16 grup kimliği destekler. Bu yeni özellik sayesinde, varsayılan grup sayısından daha fazla üye olan kullanıcılarınız varsa, artık en fazla 1.024 kadar artırabilirsiniz. Bu özelliği desteklemek için, NFS birimleri artık LDAP eklemek için de eklenebilir, bu da genişletilmiş gruplar girişleri olan (1024 grup ile) LDAP kullanıcılarının birime erişmesine Active Directory olanak sağlar. 
 
 ## <a name="march-2021"></a>Mart 2021
-
+ 
 * [SMB sürekli kullanılabilirlik (CA) paylaşımları](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (Önizleme)  
 
     SMB saydam yük devretme, SMB birimlerinde verileri depolayan ve bunlara erişen sunucu uygulamalarına bağlantıyı kesintiye uğramadan Azure NetApp Files hizmetinde bakım işlemlerine olanak sağlar. SMB saydam yük devretmeyi desteklemek için Azure NetApp Files artık Azure VM 'lerinde çalışan SMB üzerinde SQL Server uygulamalarla birlikte kullanılacak SMB sürekli kullanılabilirlik paylaşımları seçeneğini desteklemektedir. Bu özellik şu anda Windows SQL Server 'de desteklenmektedir. Linux SQL Server şu anda desteklenmiyor. Bu özelliği etkinleştirmek [, tek örnek, Always-On yük devretme kümesi örneği ve Always-On kullanılabilirlik grubu dağıtımları](azure-netapp-files-solution-architectures.md#sql-server)için önemli SQL Server performans iyileştirmeleri ve ölçek ve maliyet avantajları sağlar. [SQL Server dağıtımı için Azure NetApp Files kullanma avantajlarına](solutions-benefits-azure-netapp-files-sql-server.md)bakın.

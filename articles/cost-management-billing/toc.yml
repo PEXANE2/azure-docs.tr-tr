@@ -428,6 +428,8 @@
           href: /rest/api/consumption/reservationsdetails
 - name: Kaynaklar
   items:
+    - name: SSS
+      href: cost-management-billing-faq.yml
     - name: Microsoft Learn ile becerilerinizi geliştirin
       href: /learn/browse/?products=azure-cost-management
     - name: Maliyet Yönetimi geri bildirim forumu

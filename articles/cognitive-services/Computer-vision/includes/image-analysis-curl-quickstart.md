@@ -7,16 +7,16 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: quickstart
-ms.date: 12/02/2020
+ms.topic: include
+ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 77958746487ffbcf19ad14be71818c59e9520374
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 7a2e8613aab61beec3720cadaa20eb008386b43b
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106287249"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728182"
 ---
 Görüntü analizini REST API için kullanın:
 
@@ -140,7 +140,9 @@ Başarılı bir yanıt, küçük resim görüntüsünü `<thumbnailFile>` içind
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Görüntü analizi API 'sini daha ayrıntılı bir şekilde araştırın. API 'yi hızlı bir şekilde denemek için, [Açık API test konsolunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console)deneyin.
+Bu hızlı başlangıçta, REST API kullanarak temel görüntü analiz çağrıları oluşturma hakkında daha fazla öğrendiniz. Sonra, API özelliklerini çözümle hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Görüntü analizi API 'sini keşfet](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b)
+>[Çözümle API 'sini çağırma](../Vision-API-How-to-Topics/HowToCallVisionAPI.md)
+
+* [Görüntü analizine genel bakış](../overview-image-analysis.md)

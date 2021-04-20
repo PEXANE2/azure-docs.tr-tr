@@ -235,6 +235,8 @@
           href: core/howto-export-data.md
         - name: Verileri bulut hedeflerine dışarı aktarma (eski)
           href: core/howto-export-data-legacy.md
+        - name: Azure IoT Central için veri dönüştürme
+          href: core/howto-transform-data.md
         - name: Diğer hizmetlerle tümleştirmek için iş akışlarını kullanma
           href: core/howto-configure-rules-advanced.md
         - name: Özel kurallar oluşturma

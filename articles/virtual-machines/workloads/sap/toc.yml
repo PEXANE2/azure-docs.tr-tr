@@ -76,6 +76,8 @@
           href: hana-li-portal.md
         - name: STONITH ile HA Kurulumu
           href: ha-setup-with-stonith.md
+        - name: Azure büyük örnekler RHEL 'de SAP için yüksek kullanılabilirlik
+          href: large-instance-high-availability-rhel.md
         - name: Type II SKU'ları için İşletim Sistemi Yedeklemesi
           href: os-backup-type-ii-skus.md
         - name: HANA Büyük Örnekleri için Kdump’ı etkinleştirme

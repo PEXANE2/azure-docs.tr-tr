@@ -87,6 +87,8 @@
               href: app/resource-manager-web-app.md
             - name: Azure İşlevleri
               href: app/resource-manager-function-app.md
+        - name: Kapsayıcı öngörüleri
+          href: containers/resource-manager-container-insights.md
         - name: Veri toplama kuralları
           href: agents/resource-manager-data-collection-rules.md
         - name: Tanılama ayarları
@@ -95,10 +97,10 @@
           href: logs/resource-manager-workspace.md
         - name: Günlük sorguları
           href: logs/resource-manager-log-queries.md
+        - name: SQL öngörüleri
+          href: insights/resource-manager-sql-insights.md
         - name: Çalışma Kitapları
           href: visualize/resource-manager-workbooks.md
-        - name: Kapsayıcı öngörüleri
-          href: containers/resource-manager-container-insights.md
         - name: VM öngörüleri
           href: vm/resource-manager-vminsights.md
     - name: Azure CLI

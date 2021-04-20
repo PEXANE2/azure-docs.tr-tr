@@ -5,21 +5,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: cfcb34b731855fd26ddad191b819e308406117cb
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 012aa364fe9e379455b6b63f7c9e541d2d5b97ed
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478344"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726907"
 ---
 # <a name="enable-sql-insights-preview"></a>SQL Insights 'ı etkinleştir (Önizleme)
 Bu makalede, SQL dağıtımlarınızı izlemek için [SQL Insights](sql-insights-overview.md) 'ın nasıl etkinleştirileceği açıklanır. İzleme, SQL dağıtımlarınıza bir bağlantı yapan ve izleme verilerini toplamak için dinamik yönetim görünümleri (DMVs) kullanan bir Azure sanal makineden gerçekleştirilir. Hangi veri kümelerinin toplanacağını ve bir izleme profili kullanan koleksiyon sıklığını denetleyebilirsiniz.
+
+> [!NOTE]
+> Bir Resource Manager şablonu kullanarak izleme profili ve sanal makine oluşturarak SQL öngörülerini etkinleştirmek için, bkz. [SQL Insights için Kaynak Yöneticisi şablonu örnekleri](resource-manager-sql-insights.md).
 
 ## <a name="create-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
 SQL Insights, verilerini bir veya daha fazla [Log Analytics çalışma](../logs/data-platform-logs.md#log-analytics-workspaces)alanında depolar.  SQL öngörülerini etkinleştirebilmeniz için önce [bir çalışma alanı oluşturmanız](../logs/quick-create-workspace.md) ya da var olan bir çalışma alanı seçmeniz gerekir. Tek bir çalışma alanı birden çok izleme profili ile kullanılabilir, ancak çalışma alanı ve profillerin aynı Azure bölgesinde bulunması gerekir. SQL Insights 'daki özellikleri etkinleştirmek ve erişmek için, çalışma alanında [Log Analytics katkıda bulunan rolüne](../logs/manage-access.md) sahip olmanız gerekir. 
 
 ## <a name="create-monitoring-user"></a>İzleme kullanıcısı oluştur 
 İzlemek istediğiniz SQL dağıtımlarında bir kullanıcıya ihtiyacınız vardır. Farklı türlerde SQL dağıtımları için aşağıdaki yordamları izleyin.
+
+Aşağıdaki yönergelerde, izleyebilmeniz gereken SQL türü başına işlem ele alınmaktadır.  Bunu tek seferde birkaç SQL kaynak üzerinde bir komut dosyasıyla gerçekleştirmek için lütfen aşağıdaki [Benioku dosyasına](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Workloads/SQL/SQL%20Insights%20Onboarding%20Scripts/Permissions_LoginUser_Account_Creation-README.txt) ve [örnek betiğe](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Workloads/SQL/SQL%20Insights%20Onboarding%20Scripts/Permissions_LoginUser_Account_Creation.ps1)bakın.
+
 
 ### <a name="azure-sql-database"></a>Azure SQL veritabanı
 [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) veya [sorgu Düzenleyicisi (Önizleme)](../../azure-sql/database/connect-query-portal.md) ile Azure SQL veritabanı 'nı Azure Portal açın.
@@ -87,7 +93,7 @@ Kullanıcının oluşturulduğunu doğrulayın.
 select name as username,
        create_date,
        modify_date,
-       type_desc as type,
+       type_desc as type
 from sys.server_principals
 where type not in ('A', 'G', 'R', 'X')
        and sid is not null

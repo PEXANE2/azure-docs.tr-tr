@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/16/2021
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2c4dcaaa1deaa50d620e7c24dacbe56fa91c217f
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: d63e7916423038e53c375b2be4114582cf4d6152
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713453"
+ms.locfileid: "107725773"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>SendGrid ile özel e-posta doğrulama
 
@@ -35,8 +35,6 @@ Uygulamalarınızı kullanmak üzere kaydolan kullanıcılara özelleştirilmiş
 
 Özel e-posta doğrulaması için [SendGrid](https://sendgrid.com), [Mailjet](https://Mailjet.com)veya [mini](https://sparkpost.com)posta, özel bir REST API veya herhangi bir HTTP tabanlı e-posta sağlayıcısı (kendinizğiniz dahil) gibi bir üçüncü taraf e-posta sağlayıcısının kullanılması gerekir. Bu makalede, SendGrid kullanan bir çözümün kurulması açıklanmaktadır.
 
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="create-a-sendgrid-account"></a>SendGrid hesabı oluşturma
 
 Henüz bir tane yoksa, bir SendGrid hesabı ayarlayarak başlayın (Azure müşterileri her ay 25.000 ücretsiz e-postaların kilidini açabilir). Kurulum yönergeleri için, [Azure Ile SendGrid kullanarak e-posta gönderme](../sendgrid-dotnet-how-to-send-email.md)konusunun [SendGrid hesabı oluşturma](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account) bölümüne bakın.
@@ -44,7 +42,7 @@ Henüz bir tane yoksa, bir SendGrid hesabı ayarlayarak başlayın (Azure müşt
 [SendGrid API anahtarı oluşturduğunuz](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)bölümünü tamamladığınızdan emin olun. API anahtarını sonraki bir adımda kullanmak üzere kaydedin.
 
 > [!IMPORTANT]
-> SendGrid, müşterilere Paylaşılan IP ve [ayrılmış IP adreslerinden](https://sendgrid.com/docs/ui/account-and-settings/dedicated-ip-addresses/)e-posta gönderme yeteneği sunar. Ayrılmış IP adreslerini kullanırken, bir IP adresi ısınma ile kendi sayınızı doğru bir şekilde oluşturmanız gerekir. Daha fazla bilgi için bkz. [IP adresi hazırlama](https://sendgrid.com/docs/ui/sending-email/warming-up-an-ip-address/).
+> SendGrid, müşterilere Paylaşılan IP ve [ayrılmış IP adreslerinden](https://sendgrid.com/docs/ui/account-and-settings/dedicated-ip-addresses/)e-posta gönderme yeteneği sunar. Ayrılmış IP adreslerini kullanırken, bir IP adresi ısınma ile kendi saygınlığını doğru bir şekilde oluşturmanız gerekir. Daha fazla bilgi için bkz. [IP adresi hazırlama](https://sendgrid.com/docs/ui/sending-email/warming-up-an-ip-address/).
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Azure AD B2C İlkesi anahtarı oluştur
 
@@ -304,6 +302,9 @@ Bu örnek görüntü denetimi şu şekilde yapılandırılır:
 ## <a name="add-otp-technical-profiles"></a>OTP teknik profilleri ekleme
 
 `GenerateOtp`Teknik profil, e-posta adresi için bir kod oluşturur. `VerifyOtp`Teknik profil, e-posta adresiyle ilişkili kodu doğrular. Biçimin yapılandırmasını ve tek seferlik parolanın kullanım süresini değiştirebilirsiniz. OTP teknik profilleri hakkında daha fazla bilgi için bkz. [tek seferlik parola teknik profili tanımlama](one-time-password-technical-profile.md).
+
+> [!NOTE]
+> Web. TPEngine. Providers. OneTimePasswordProtocolProvider protokolü tarafından oluşturulan OTP kodları tarayıcı oturumuna bağlanır. Bu, bir kullanıcının ilgili oturumları için geçerli olan farklı tarayıcı oturumlarında benzersiz OTP kodları oluşturabileceği anlamına gelir. Bunun aksine, yerleşik Kullanıcı akışı tarafından oluşturulan bir OTP kodu tarayıcı oturumundan bağımsızdır, bu nedenle bir Kullanıcı yeni bir tarayıcı oturumunda yeni bir OTP kodu oluşturursa, önceki OTP kodunun yerini alır.
 
 Aşağıdaki teknik profilleri `<ClaimsProviders>` öğesine ekleyin.
 

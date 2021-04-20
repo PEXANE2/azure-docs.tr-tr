@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cc00a4f1c1551932b4a30a8ef9b27cb1d4082667
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46c8845b4f01db09bf5f96eb1e67078b4e361f9f
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071605"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728329"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault temel kavramlar
 
-Azure Key Vault, gizli dizileri güvenli bir şekilde depolamak ve bunlara erişmek için bir bulut hizmetidir. Gizli dizi, API anahtarları, parolalar, sertifikalar veya şifreleme anahtarları gibi erişimi sıkı şekilde denetlemek istediğiniz her şeydir. Key Vault hizmet iki tür kapsayıcıyı destekler: kasa ve yönetilen HSM havuzları. Kasalar, yazılım ve HSM destekli anahtarları, parolaları ve sertifikaları depolamayı destekler. Yönetilen HSM havuzları yalnızca HSM destekli anahtarları destekler. Tüm ayrıntılar için [Azure Key Vault REST API genel bakış](about-keys-secrets-certificates.md) bölümüne bakın.
+Azure Key Vault, gizli dizileri güvenli bir şekilde depolamak ve bunlara erişmek için bir bulut hizmetidir. Gizli dizi, API anahtarları, parolalar, sertifikalar veya şifreleme anahtarları gibi erişimi sıkı şekilde denetlemek istediğiniz her şeydir. Key Vault hizmet iki tür kapsayıcıyı destekler: kasa ve yönetilen donanım güvenlik modülü (HSM) havuzları. Kasalar, yazılım ve HSM destekli anahtarları, parolaları ve sertifikaları depolamayı destekler. Yönetilen HSM havuzları yalnızca HSM destekli anahtarları destekler. Tüm ayrıntılar için [Azure Key Vault REST API genel bakış](about-keys-secrets-certificates.md) bölümüne bakın.
 
 Diğer önemli terimler şunlardır:
 

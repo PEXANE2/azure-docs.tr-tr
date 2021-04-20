@@ -1,24 +1,23 @@
 ---
-title: Yeni bir güncelleştirmeyi içeri aktarma | Microsoft Docs
-description: Yeni bir güncelleştirmeyi IoT Hub için IoT Hub cihaz güncelleştirmesine aktarma Kılavuzu How-To.
+title: Yeni bir güncelleştirme ekleme | Microsoft Docs
+description: IoT Hub için cihaz güncelleştirmesine yeni bir güncelleştirme ekleme Kılavuzu How-To.
 author: andrewbrownmsft
 ms.author: andbrown
-ms.date: 2/11/2021
+ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 196a449f25d97fb1c1b7b8d79ee8889e0d31a5ae
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: e90253100b86397c5ca4873d5c38a3511ba21555
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717756"
+ms.locfileid: "107728581"
 ---
-# <a name="import-new-update"></a>Yeni güncelleştirme al
-IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı öğrenin. Henüz yapmadıysanız, temel [içeri aktarma kavramlarını öğrendiğinizden](import-concepts.md)emin olun.
+# <a name="add-an-update-to-device-update-for-iot-hub"></a>IoT Hub için cihaz güncelleştirmesine bir güncelleştirme ekleyin
+IoT Hub için cihaz güncelleştirmesine yeni bir güncelleştirme eklemeyi öğrenin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Cihazlara dağıtmak istediğiniz mevcut bir güncelleştirme dosyası. Bu, görüntü tabanlı güncelleştirme için bir görüntü dosyası veya paket tabanlı güncelleştirme için bir [apt bildirim dosyası](device-update-apt-manifest.md) olabilir. ([Nasıl yaparım? seçin?](understand-device-update.md#support-for-a-wide-range-of-update-artifacts))
 * [IoT Hub etkinleştirilmiş cihaz güncelleştirmesiyle bir IoT Hub erişim](create-device-update-account.md). 
 * IoT Hub içinde cihaz güncelleştirmesi için sağlanan bir IoT cihazı (veya simülatör).
 * [PowerShell 5](/powershell/scripting/install/installing-powershell) veya üzeri (Linux, MacOS ve Windows yüklemelerini içerir)
@@ -29,9 +28,19 @@ IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı 
 > [!NOTE]
 > Bu hizmete gönderilen bazı veriler, bu örneğin oluşturulduğu bölge dışında bir bölgede işlenebilir.
 
-## <a name="create-device-update-import-manifest"></a>Cihaz güncelleştirme Içeri aktarma bildirimi oluştur
+## <a name="obtain-an-update-for-your-devices"></a>Cihazlarınız için bir güncelleştirme edinin
 
-1. Daha önce yapmadıysanız, cihazlara dağıtmak istediğiniz bir görüntü dosyası ya da APT bildirim dosyası alın. Bu, cihazlarınızın üreticisinden veya çalıştığınız bir sistem tümleştirmeinden ya da kuruluşunuzun içindeki bir gruba ait olabilir. Güncelleştirme görüntüsü dosyasının veya APT bildirim dosyasının PowerShell 'den erişilebilen bir dizinde bulunduğundan emin olun.
+Cihaz güncelleştirmesi [ayarlandığına](create-device-update-account.md)göre, cihazlarınızı güncelleştirmeye hazırsınız demektir. Ancak ilk olarak, dağıtacaksınız olan cihazlar için gerçek güncelleştirme dosyaları gerekir.
+
+Bir OEM 'den veya çözüm tümleştirmelerinden cihaz satın aldıysanız, bu kuruluş, güncelleştirmeleri oluşturmanız gerekmeden sizin için en büyük olasılıkla sizin için güncelleştirme dosyaları sağlamaktır. Güncelleştirmelerin nasıl kullanılabilir hale yapıldığını öğrenmek için OEM veya çözüm tümleştiricisi ile iletişim kurun.
+
+Kuruluşunuz kullandığınız cihazlar için zaten yazılım oluşturursa, bu yazılım için güncelleştirmeleri oluşturanlara aynı grup olacaktır. IoT Hub için cihaz güncelleştirmesi kullanılarak dağıtılacak bir güncelleştirme oluştururken, senaryonuza bağlı olarak [görüntü tabanlı veya paket tabanlı yaklaşımla](understand-device-update.md#support-for-a-wide-range-of-update-artifacts) başlayın. Göz atın: kendi güncelleştirmelerinizi oluşturmak istiyorsanız ancak yeni başladıysanız, GitHub uygulamanızı yönetmek için harika bir seçenektir. Kaynak kodunuzu depolayıp yönetebilir ve [GitHub eylemlerini](https://docs.github.com/en/actions/guides/about-continuous-integration)kullanarak sürekli TÜMLEŞTIRME (CI) ve sürekli DAĞıTıM (CD) gerçekleştirebilirsiniz.
+
+## <a name="create-a-device-update-import-manifest"></a>Cihaz güncelleştirmesi içeri aktarma bildirimi oluşturma
+
+Henüz yapmadıysanız, temel [içeri aktarma kavramlarını öğrendiğinizden](import-concepts.md)emin olun.
+
+1. Güncelleştirme dosya (ler) ın PowerShell 'den erişilebilen bir dizinde bulunduğundan emin olun.
 
 2. Güncelleştirme görüntü dosyanızın veya APT bildirim dosyasının bulunduğu dizinde **Aduupdate. psm1** adlı bir metin dosyası oluşturun. Daha sonra [Aduupdate. psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) PowerShell cmdlet 'ini açın, içeriği metin dosyanıza kopyalayın ve metin dosyasını kaydedin.
 
@@ -67,7 +76,7 @@ IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı 
     | updateFilePath | Bilgisayarınızdaki güncelleştirme dosyalarının yolu
 
 
-## <a name="review-generated-import-manifest"></a>Oluşturulan Içeri aktarma bildirimini gözden geçirin
+## <a name="review-the-generated-import-manifest"></a>Oluşturulan içeri aktarma bildirimini gözden geçirin
 
 Örnek:
 ```json
@@ -110,7 +119,7 @@ IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı 
 }
 ```
 
-## <a name="import-update"></a>Güncelleştirmeyi içeri aktar
+## <a name="import-an-update"></a>Bir güncelleştirmeyi içeri aktar
 
 > [!NOTE]
 > Aşağıdaki yönergelerde Azure portal Kullanıcı arabirimi aracılığıyla bir güncelleştirmenin nasıl içeri aktarılacağı gösterilmektedir. Ayrıca, bir güncelleştirmeyi içeri aktarmak için [IoT Hub API 'leri Için cihaz güncelleştirmesini](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) de kullanabilirsiniz. 

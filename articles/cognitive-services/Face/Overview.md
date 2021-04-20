@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: yüz tanıma, yüz tanıma yazılımı, yüz analizi, yüz eşleştirme, yüz tanıma uygulaması, görüntüye göre arama, yüz tanıma arama
-ms.openlocfilehash: a999b2100dc57d7b623cebbbe261f821a80835e3
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 30707dd844769f730f135a451cd5306ca7e402cb
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505131"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726997"
 ---
 # <a name="what-is-the-azure-face-service"></a>Azure yüz hizmeti nedir?
 
@@ -64,7 +64,7 @@ Kişi kimliği hakkında daha fazla bilgi için, [yüz tanıma](concepts/face-re
 
 ## <a name="find-similar-faces"></a>Benzer yüzleri bulma
 
-Benzer API 'yi bul, hedef yüzü ve aday yüzey kümesi arasında eşleşen bir yüzey kümesi, hedef yüztekine benzer daha küçük bir yüzey kümesi buluyor. Bu, görüntüye göre yüz arama yapmak için yararlıdır. 
+Benzer API 'yi bul, hedef yüzü ve aday yüzey kümesi arasında eşleşen bir yüzey kümesi, hedef yüztekine benzer daha küçük bir yüzey kümesi buluyor. Bu işlem, görüntüye göre yüz arama yapmak için yararlıdır. 
 
 İki çalışma modu, **Matchperson** ve **matchface** desteklenir. **Matchperson** modu, [Verify API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)'sini kullanarak aynı kişi için filtreledikten sonra benzer yüzler döndürür. **Matchface** modu aynı kişi filtresini yoksayar. Aynı kişiye ait olan veya olmayan benzer aday yüzlerin bir listesini döndürür.
 

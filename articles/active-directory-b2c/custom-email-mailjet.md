@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/16/2021
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f48135523238711eb9058b35348895c851a95403
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: b4bb58f106f3255ec6cd80b14b175ff413bc0dc6
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713831"
+ms.locfileid: "107725809"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Mailjet ile özel e-posta doğrulama
 
@@ -35,8 +35,6 @@ Uygulamalarınızı kullanmak üzere kaydolan kullanıcılara özelleştirilmiş
 
 Özel e-posta doğrulaması, [Mailjet](https://Mailjet.com), [SendGrid](./custom-email-sendgrid.md)veya [mini](https://sparkpost.com)posta, özel bir REST API veya herhangi bir HTTP tabanlı e-posta sağlayıcısı (kendinizğiniz dahil) gibi bir üçüncü taraf e-posta sağlayıcısının kullanılmasını gerektirir. Bu makalede, Mailjet kullanan bir çözümün kurulması açıklanmaktadır.
 
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="create-a-mailjet-account"></a>Mailjet hesabı oluşturma
 
 Henüz bir tane yoksa, bir Mailjet hesabı ayarlayarak başlayın (Azure müşterileri, 6.000 e-postalarının bir sınırı 200 e-posta/gün) ile başlar. 
@@ -46,7 +44,7 @@ Henüz bir tane yoksa, bir Mailjet hesabı ayarlayarak başlayın (Azure müşte
 2. [API anahtarı yönetim sayfasına](https://app.mailjet.com/account/api_keys)gidin. Daha sonraki bir adımda kullanmak için **API anahtarını** ve **gizli anahtarı** kaydedin. Her iki anahtar de hesabınız oluşturulduğunda otomatik olarak oluşturulur.  
 
 > [!IMPORTANT]
-> Mailjet, müşterilere Paylaşılan IP ve [ayrılmış IP adreslerinden](https://documentation.mailjet.com/hc/articles/360043101973-What-is-a-dedicated-IP)e-posta gönderme yeteneği sunar. Ayrılmış IP adreslerini kullanırken, bir IP adresi ısınma ile kendi sayınızı doğru bir şekilde oluşturmanız gerekir. Daha fazla bilgi için bkz. [IP mi nasıl yaparım? ısınma?](https://documentation.mailjet.com/hc/articles/1260803352789-How-do-I-warm-up-my-IP-).
+> Mailjet, müşterilere Paylaşılan IP ve [ayrılmış IP adreslerinden](https://documentation.mailjet.com/hc/articles/360043101973-What-is-a-dedicated-IP)e-posta gönderme yeteneği sunar. Ayrılmış IP adreslerini kullanırken, bir IP adresi ısınma ile kendi saygınlığını doğru bir şekilde oluşturmanız gerekir. Daha fazla bilgi için bkz. [IP mi nasıl yaparım? ısınma?](https://documentation.mailjet.com/hc/articles/1260803352789-How-do-I-warm-up-my-IP-).
 
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Azure AD B2C İlkesi anahtarı oluştur
@@ -321,6 +319,9 @@ Bu örnek görüntü denetimi şu şekilde yapılandırılır:
 ## <a name="add-otp-technical-profiles"></a>OTP teknik profilleri ekleme
 
 `GenerateOtp`Teknik profil, e-posta adresi için bir kod oluşturur. `VerifyOtp`Teknik profil, e-posta adresiyle ilişkili kodu doğrular. Biçimin yapılandırmasını ve tek seferlik parolanın kullanım süresini değiştirebilirsiniz. OTP teknik profilleri hakkında daha fazla bilgi için bkz. [tek seferlik parola teknik profili tanımlama](one-time-password-technical-profile.md).
+
+> [!NOTE]
+> Web. TPEngine. Providers. OneTimePasswordProtocolProvider protokolü tarafından oluşturulan OTP kodları tarayıcı oturumuna bağlanır. Bu, bir kullanıcının ilgili oturumları için geçerli olan farklı tarayıcı oturumlarında benzersiz OTP kodları oluşturabileceği anlamına gelir. Bunun aksine, yerleşik Kullanıcı akışı tarafından oluşturulan bir OTP kodu tarayıcı oturumundan bağımsızdır, bu nedenle bir Kullanıcı yeni bir tarayıcı oturumunda yeni bir OTP kodu oluşturursa, önceki OTP kodunun yerini alır.
 
 Aşağıdaki teknik profilleri `<ClaimsProviders>` öğesine ekleyin.
 

@@ -5,7 +5,7 @@ services: traffic-manager
 author: duongau
 ms.author: duau
 manager: twooley
-ms.date: 10/15/2020
+ms.date: 04/19/2021
 ms.topic: quickstart
 ms.service: traffic-manager
 ms.workload: infrastructure-services
@@ -13,18 +13,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 60facae195abd2808195f776ac6eef54ab63752f
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 13b5925310c615461424f78d90ba9849c9bf58c5
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534936"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727987"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Traffic Manager profili oluşturma
 
 Bu hızlı başlangıçta, Web uygulamanız için yüksek kullanılabilirlik sunan bir Traffic Manager profilinin nasıl oluşturulacağı açıklanmaktadır.
 
 Bu hızlı başlangıçta, bir Web uygulamasının iki örneği hakkında bilgi edineceksiniz. Bunların her biri farklı bir Azure bölgesinde çalışmaktadır. [Uç nokta önceliğine](traffic-manager-routing-methods.md#priority-traffic-routing-method)göre bir Traffic Manager profili oluşturacaksınız. Profil, Kullanıcı trafiğini Web uygulamasını çalıştıran birincil siteye yönlendirir. Traffic Manager Web uygulamasını sürekli izler. Birincil site kullanılamıyorsa, yedekleme sitesine otomatik yük devretme sağlar.
+
+:::image type="content" source="./media/quickstart-create-traffic-manager-profile/environment-diagram.png" alt-text="Traffic Manager dağıtım ortamının diyagramı." border="false":::
 
 Azure aboneliğiniz yoksa şimdi [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -83,7 +85,7 @@ Tüm kullanıcı trafiğini yönlendirmek için birincil uç nokta olarak *Doğu
 1. Arama sonuçlarından profili seçin.
 1. **Traffic Manager profili**' nde, **Ayarlar** bölümünde **uç noktalar**' ı seçin ve ardından **Ekle**' yi seçin.
 
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-endpoint-menu.png" alt-text="Traffic Manager profilindeki uç nokta ayarları":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-endpoint-menu.png" alt-text="Traffic Manager profilindeki uç nokta ayarlarının ekran görüntüsü.":::
 
 1. Bu ayarları girin veya seçin:
 
@@ -95,7 +97,7 @@ Tüm kullanıcı trafiğini yönlendirmek için birincil uç nokta olarak *Doğu
     | Hedef kaynak | Doğu ABD **bir App Service seçin öğesini** seçin  >  . |
     | Öncelik | **1**'i seçin. Tüm trafik sağlıklı olduğunda bu uç noktaya gider. |
 
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png" alt-text="Traffic Manager profilinize bir uç nokta eklediğiniz konum ekran görüntüsü":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png" alt-text="Traffic Manager profilinize bir uç nokta eklediğiniz ekran görüntüsü.":::
     
 1. **Tamam**’ı seçin.
 1. İkinci Azure bölgenize yönelik bir yük devretme uç noktası oluşturmak için bu ayarlarla 3 ve 4 numaralı adımları yineleyin:
@@ -122,7 +124,7 @@ Bu bölümde, Traffic Manager profilinizin etki alanı adını kontrol edeceksin
 1. Traffic Manager profilini seçin. **Genel bakış** görüntülenir.
 1. **Traffic Manager profili** penceresinde yeni oluşturduğunuz Traffic Manager profilinin DNS adı görüntülenir.
   
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png" alt-text="Traffic Manager DNS adınızın konumunun ekran görüntüsü":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png" alt-text="Traffic Manager DNS adınızın konumunun ekran görüntüsü.":::
 
 ### <a name="view-traffic-manager-in-action"></a>Traffic Manager'ın nasıl çalıştığını görün
 
@@ -131,7 +133,7 @@ Bu bölümde, Traffic Manager profilinizin etki alanı adını kontrol edeceksin
     > [!NOTE]
     > Bu hızlı başlangıç senaryosunda, tüm istekler birincil uç noktaya yönlendirir. **Öncelik 1** olarak ayarlanır.
 
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-test.png" alt-text="Traffic Manager profilinin kullanılabilirliğini onaylamak için Web sayfasının ekran görüntüsü":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-test.png" alt-text="Traffic Manager profilinin kullanılabilirliğini onaylamak için Web sayfasının ekran görüntüsü.":::
 
 1. Traffic Manager yük devretmeyi görüntülemek için birincil sitenizi devre dışı bırakın:
     1. Traffic Manager profili sayfasında, **genel bakış** bölümünden **Myprimaryendpoint**' i seçin.

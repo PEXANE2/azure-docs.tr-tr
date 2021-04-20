@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/06/2021
 ms.author: mbullwin
-ms.openlocfilehash: 4e0f2d1bae07f0814b4f096d8be315bd92cd42fe
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 03fbd5e641c72a03a4a3cb19219678bc3d3fff51
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107316046"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732426"
 ---
 JavaScript için anomali algılayıcısının çok sayıda istemci kitaplığını kullanmaya başlayın. Paketi yüklemek ve hizmet tarafından sunulan algoritmaları kullanmaya başlamak için bu adımları izleyin. Yeni multivarianomali algılama API 'Leri, Machine Learning bilgisine veya etiketli verilere gerek kalmadan, gelişmiş AI 'nin ölçüm gruplarından aykırları tespit etmek üzere kolayca tümleştirilmesine olanak tanır. Farklı sinyaller arasındaki bağımlılıklar ve eş düzeyli ilişkiler otomatik olarak anahtar faktörleri olarak sayılır. Bu, karmaşık sistemlerinizi hatalara karşı korumanıza yardımcı olur.
 
@@ -22,6 +22,8 @@ JavaScript için anomali algılayıcısının çok değişkenli istemci kitaplı
 * Bir zaman serisi grubundan sistem düzeyi bozuklulıkları algılayın.
 * Herhangi bir bireysel zaman serisi size çok bilgi vermez ve bir sorunu tespit etmek için tüm sinyallere bakmanız gerekir.
 * Sistem durumunun çeşitli yönlerini ölçen, yüzlerce fiziksel varlık için onlarca yüzlerce farklı algılayıcı türü ile tahmine dayalı bakım.
+
+[Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/anomalydetector/ai-anomaly-detector)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/ai-anomaly-detector)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
