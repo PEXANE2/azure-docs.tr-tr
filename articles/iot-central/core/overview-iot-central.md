@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2
-ms.openlocfilehash: 03b9c7d5231745f77d40abed16273514cac2692c
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 88f59c1b3fc1014cef5035845f1f2e8616bea908
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107715091"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739917"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central nedir?
 
@@ -98,7 +98,7 @@ Bir operatör olarak, IoT Central çözümünüzdeki [cihazları yönetmek](howt
 
 Bağlı cihazlardan veri akışı üzerinde çalışan [özel kurallar ve eylemler tanımlayabilirsiniz](howto-configure-rules.md) . Operatör ise uygulama içindeki görevleri denetlemek ve otomatik hale getirmek için cihaz düzeyinde bu kuralları etkinleştirebilir ya da devre dışı bırakabilir.
 
-Ölçekte çalışacak şekilde tasarlanan tüm IoT çözümleri ile cihaz yönetimine yönelik yapılandırılmış bir yaklaşım önemlidir. Cihazlarınızı buluta bağlamak yeterli değildir, cihazlarınızı bağlı ve sağlıklı tutmanız gerekir. Aşağıdaki IoT Central yeteneklerini kullanarak cihazlarınızı uygulama yaşam döngüsü boyunca yönetin:
+Ölçekli olarak çalışacak şekilde tasarlanan tüm IoT çözümünde olduğu gibi, cihaz yönetimine yönelik yapılandırılmış bir yaklaşım da önemlidir. Cihazlarınızı buluta bağlamak yeterli değildir, cihazlarınızı bağlı ve sağlıklı tutmanız gerekir. Aşağıdaki IoT Central yeteneklerini kullanarak cihazlarınızı uygulama yaşam döngüsü boyunca yönetin:
 
 ### <a name="dashboards"></a>Panolar
 

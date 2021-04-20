@@ -3,18 +3,18 @@ title: IoT Tak ve Kullan 'ye giriş | Microsoft Docs
 description: IoT Tak ve Kullan hakkında bilgi edinin. IoT Tak ve Kullan, akıllı IoT cihazlarının yeteneklerini bildirmesine olanak sağlayan bir açık modelleme dilini temel alır. IoT cihazları, bulut çözümlerine bağlandıklarında cihaz modeli olarak adlandırılan bu bildirimi sunar. Bulut çözümü daha sonra herhangi bir kod yazmadan cihazı otomatik olarak anlayabilir ve bununla etkileşime başlayabilir.
 author: rido-min
 ms.author: rmpablos
-ms.date: 07/06/2020
+ms.date: 03/21/2021
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: eb39939f4a48a549479605dcccc346094359875f
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 91a09db16524ebc7e4c04069b69b1c42c67538c6
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079021"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739719"
 ---
 # <a name="what-is-iot-plug-and-play"></a>IoT Tak Çalıştır nedir?
 

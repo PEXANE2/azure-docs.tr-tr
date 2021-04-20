@@ -10,12 +10,12 @@ ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: e4772b6701065a44416d849faa9a501bd7895f27
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 310c821bf102d267d0b5f77dbf206b896ab2f1c7
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553388"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739233"
 ---
 # <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>Öğretici-kiracınızı kullanarak doğrulanabilen kimlik bilgilerini verme ve doğrulama (Önizleme)
 
@@ -271,14 +271,14 @@ Doğrulanabilen kimlik bilgisini vermek ve uygulamanızla doğrulamak için önc
 
   ![kimlik doğrulamasından sonra kimlik bilgisi ekranı ekle](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified-authenticated.png)
 
-Şimdi, kimlik doğrulaması için B2C kiracımızı kullanırken, VC 'imizi oluşturmak üzere kiracımızı kullanarak bir doğrulanabilen kimlik bilgisi verdik.
+Artık kimlik doğrulaması için özgün B2C kiracısı kullanılırken, kiracınızı oluşturmak üzere kiracınızı kullanarak doğrulanabilir bir kimlik bilgisi vermiş olduğumuz.
 
   ![Azure AD 'niz tarafından verilen ve Azure B2C örneğimiz tarafından kimliği doğrulanan VC](media/enable-your-tenant-verifiable-credentials/my-vc-b2c.png)
 
 
 ## <a name="test-verifying-the-vc-using-the-sample-app"></a>Örnek uygulamayı kullanarak VC 'yi doğrulama testi
 
-Azure AD 'nizden gelen Taleplerimizden doğrulanabilir kimlik bilgilerini verdiğimiz için, bunu örnek uygulamamız ile doğrulayalım.
+Artık Azure AD 'nizden gelen taleplerden doğrulanabilir kimlik bilgilerini verdiğimiz için, bunu örnek uygulamayı kullanarak doğrulayalım.
 
 1. Verenin ngrok hizmetini çalıştırmayı durdurun.
 

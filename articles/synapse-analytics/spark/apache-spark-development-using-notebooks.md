@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 4230ced172de52e5acf45e071fa2a49a332eb696
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 6859a2f8571c11e6ef93a5e5b1635cdbe39ad001
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107719232"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737679"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE Studio Not defterleri oluşturma, geliştirme ve bakımını yapma
 
@@ -150,6 +150,18 @@ IntelliSense özellikleri farklı diller için farklı ölçü düzeyleridir. De
 |Mini SQL|Yes|Yes|-|-|-|-|-|-|
 |Spark için .NET (C#)|Yes|-|-|-|-|-|-|-|
 
+
+
+### <a name="code-snippets"></a>Kod Parçacıkları
+
+Azure SYNAPSE Studio Not defterleri, Spark oturumunuzu yapılandırma, verileri Spark veri çerçevesi olarak okuma veya Matplotlib gibi grafikleri çizme gibi yaygın olarak kullanılan kod düzenlerini girmeyi kolaylaştıran kod parçacıkları sağlar.
+
+Kod parçacıkları [IntelliSense](#ide-style-intellisense) 'de diğer önerilerden karışık olarak görünür. Kod parçacıkları içerikleri, kod hücresi diliyle hizalanır. Kod hücresi düzenleyicisindeki kod parçacığı başlığında bir kod **parçacığı** yazarak veya herhangi bir anahtar sözcük görünürse, kullanılabilir parçacıkları görebilirsiniz. Örneğin, **okuma** yazarak çeşitli veri kaynaklarından veri okumak için kod parçacıklarının listesini görebilirsiniz.
+
+![SYNAPSE kod parçacıkları](./media/apache-spark-development-using-notebooks/synapse-code-snippets.gif#lightbox)
+
+
+
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Araç çubuğu düğmeleriyle metin hücresini Biçimlendir
 
 # <a name="classical-notebook"></a>[Klasik Not defteri](#tab/classical)
@@ -181,7 +193,7 @@ Geri alma işlemi, henüz önizleme Not defteri deneyimi için kullanılamaz.
 
 # <a name="classical-notebook"></a>[Klasik Not defteri](#tab/classical)
 
-En sağdaki Ek hücre eylemleri menüsüne erişmek için üç nokta (...) simgesini seçin. Ardından, geçerli hücreyi taşımak için **hücreyi yukarı taşı** veya **hücreyi aşağı taşı** ' yı seçin. 
+En sağdaki diğer hücre eylemleri menüsüne erişmek için üç nokta (...) simgesini seçin. Ardından, geçerli hücreyi taşımak için **hücreyi yukarı taşı** veya **hücreyi aşağı taşı** ' yı seçin. 
 
 [Komut modu altında kısayol tuşlarını](#shortcut-keys-under-command-mode)da kullanabilirsiniz. Geçerli hücreyi taşımak için **Ctrl + Alt + ↑** tuşlarına basın. Geçerli hücreyi aşağı taşımak için **Ctrl + Alt + ↓** tuşlarına basın.
 
@@ -198,7 +210,7 @@ Hücrenin sol tarafına tıklayın ve istediğiniz konuma sürükleyin.
 
 # <a name="classical-notebook"></a>[Klasik Not defteri](#tab/classical)
 
-Bir hücreyi silmek için, en sağdaki Ek hücre eylemleri menüsüne erişmek üzere üç nokta (...) simgesini seçin ve ardından **hücreyi Sil**' i seçin. 
+Bir hücreyi silmek için, en sağdaki diğer hücre eylemleri menüsüne erişmek üzere üç nokta (...) simgesini seçin ve ardından **hücreyi Sil**' i seçin. 
 
 [Komut modu altında kısayol tuşlarını](#shortcut-keys-under-command-mode)da kullanabilirsiniz. Geçerli hücreyi silmek için **d, d** tuşuna basın.
   
@@ -273,7 +285,7 @@ Geçerli not defterindeki tüm hücreleri sırayla çalıştırmak için **Tüm�
 
 # <a name="classical-notebook"></a>[Klasik Not defteri](#tab/classical)
 
-En sağdaki Ek hücre eylemleri menüsüne erişmek için üç nokta (**...**) simgesini seçin. Ardından, geçerli sıradaki tüm hücreleri çalıştırmak için **yukarıdaki hücreleri Çalıştır** ' ı seçin. Sıradaki geçerli olan tüm hücreleri çalıştırmak için **aşağıdaki hücreleri Çalıştır** ' ı seçin.
+En sağdaki diğer hücre eylemleri menüsüne erişmek için üç nokta (**...**) simgesini seçin. Ardından, geçerli sıradaki tüm hücreleri çalıştırmak için **yukarıdaki hücreleri Çalıştır** ' ı seçin. Sıradaki geçerli olan tüm hücreleri çalıştırmak için **aşağıdaki hücreleri Çalıştır** ' ı seçin.
 
    ![çalışma--veya-aşağı hücreleri](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
@@ -467,7 +479,7 @@ Mevcut bir işlem hattına bir not defteri eklemek veya yeni bir işlem hattı o
 
 # <a name="classical-notebook"></a>[Klasik Not defteri](#tab/classical)
 
-Not defterinizi parametreleştirin, en sağdaki Ek hücre eylemleri menüsüne erişmek için üç nokta (...) simgesini seçin. Ardından, parametreyi parametre hücresi olarak belirlemek için **parametre hücresini değiştirin** ' i seçin.
+Not defterinizi parametreleştirin, en sağdaki diğer hücre eylemleri menüsüne erişmek için üç nokta (...) simgesini seçin. Ardından, parametreyi parametre hücresi olarak belirlemek için **parametre hücresini değiştirin** ' i seçin.
 
 ![iki durumlu parametre](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 

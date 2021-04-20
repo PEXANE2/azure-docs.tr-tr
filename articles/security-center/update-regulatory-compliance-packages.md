@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 768f686889663d9b1af4b88d84b361ac9460a5a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dab6b504fe026324251b7284fc3abdb52bb9911a
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381741"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738963"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Yasal uyumluluk panonuzdaki standartlar kümesini özelleştirme
 
@@ -38,7 +38,7 @@ Microsoft, mevzuat standartlarının kendisini izler ve zaman içindeki bazı pa
 
 ## <a name="what-regulatory-compliance-standards-are-available-in-security-center"></a>Güvenlik Merkezi 'nde hangi yasal uyumluluk standartları mevcuttur?
 
-Varsayılan olarak, her abonelikte **Azure Güvenlik kıyaslaması** atanır. Bu, yaygın uyumluluk çerçevelerine göre güvenlik ve uyum en iyi uygulamaları için Microsoft tarafından yazılan, Azure 'a özgü kılavuzlardır. [Azure Güvenlik Karşılaştırması hakkında daha fazla bilgi edinin](../security/benchmarks/introduction.md).
+Varsayılan olarak, her abonelikte **Azure Güvenlik kıyaslaması** atanır. Bu, yaygın uyumluluk çerçevelerine göre güvenlik ve uyum en iyi uygulamaları için Microsoft tarafından yazılan, Azure 'a özgü kılavuzlardır. [Azure Güvenlik Karşılaştırması hakkında daha fazla bilgi edinin](https://docs.microsoft.com/security/benchmark/azure/introduction).
 
 Ayrıca, gibi standartlar da ekleyebilirsiniz:
 
@@ -122,6 +122,6 @@ Bu makalede, mevzuat ve sektör standartları ile uyumluluğunuzu izlemek için 
 
 İlgili malzemeler için aşağıdaki sayfalara bakın:
 
-- [Azure Güvenlik Karşılaştırması](../security/benchmarks/introduction.md)
+- [Azure Güvenlik Karşılaştırması](https://docs.microsoft.com/security/benchmark/azure/introduction)
 - [Güvenlik Merkezi mevzuat uyumluluk panosu](security-center-compliance-dashboard.md) -yasal uyumluluk verilerinizi güvenlik merkezi ve dış araçlarla izleme ve dışa aktarma hakkında bilgi edinin
 - [Güvenlik ilkeleriyle çalışma](tutorial-security-policy.md)

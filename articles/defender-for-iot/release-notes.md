@@ -2,19 +2,33 @@
 title: IoT için Azure Defender 'daki yenilikler
 description: Bu makale, IoT için Defender 'ın en son sürümündeki yenilikleri öğrenmenizi sağlar.
 ms.topic: overview
-ms.date: 03/14/2021
-ms.openlocfilehash: 7d8c4ebfc55c80878b780fe9f663aaec62a75f9d
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.date: 4/6/2021
+ms.openlocfilehash: df6a43dc68acd025b1c65877c65d1b7e947f210b
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382921"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739395"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>IoT için Azure Defender 'daki yenilikler nelerdir?
 
 Bu makalede, IoT için Defender için yeni özellikler ve özellik geliştirmeleri listelenmektedir.
 
 Belirtilen özellikler ÖNIZLEMEDEDIR. [Azure önizleme ek koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) , Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan ek yasal koşulları içerir.
+
+## <a name="versioning-and-support-for-azure-defender-for-iot"></a>IoT için Azure Defender sürümü oluşturma ve desteği 
+
+Aşağıda listelenen IoT için Defender için destek, önemli değişiklik ilkeleri ve şu anda kullanılabilen IoT için Azure Defender sürümleri verilmiştir. 
+
+### <a name="servicing-information-and-timelines"></a>Bakım bilgileri ve zaman çizelgeleri 
+
+Microsoft, IoT için Azure Defender güncelleştirmelerini ayda bir kereden az bir kez yayınlamak için planlar. IoT algılayıcısı için Azure Defender 'ın her bir genel kullanılabilirlik (GA) sürümü ve şirket içi yönetim konsolu, sürümünden sonra dokuz aya kadar desteklenir. Düzeltmeler ve yeni işlevler, şu anda destek içinde olan geçerli GA sürümüne uygulanır ve eski GA sürümlerine uygulanmaz.
+
+### <a name="versions-and-support-dates"></a>Sürümler ve destek tarihleri
+
+| Sürüm | Yayımlanma tarihi | Destek tarihini bitir |
+|--|--|--|
+| 10.0 | 01/2021 | 10/2021 |
 ## <a name="march-2021"></a>Mart 2021
 
 ### <a name="sensor---enhanced-custom-alert-rules-public-preview"></a>Algılayıcı gelişmiş özel uyarı kuralları (Genel Önizleme)

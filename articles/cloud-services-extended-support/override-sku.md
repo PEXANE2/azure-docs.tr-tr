@@ -8,12 +8,12 @@ ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 04/05/2021
 ms.custom: ''
-ms.openlocfilehash: 17e47b562c52ffce631a01cf03004d77053ea647
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: d5dfae4b5cfee8f61e11e418a05e86017d119410
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387365"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739269"
 ---
 # <a name="override-sku-information-over-cscfgcsdef-in-cloud-services-extended-support"></a>Cloud Services 'de CSCFG/CSDEF üzerinde SKU bilgilerini geçersiz kıl (genişletilmiş destek) 
 
@@ -37,7 +37,7 @@ Burada "allowModelOverride" = true özelliği ayarlandığında, bulut hizmeti r
         "packageUrl": "[parameters('packageSasUri')]",
         "configurationUrl": "[parameters('configurationSasUri')]",
         "upgradeMode": "[parameters('upgradeMode')]",
-        “**allowModelOverride**” : true,
+        “allowModelOverride” : true,
         "roleProfile": {
           "roles": [
             {
@@ -96,7 +96,7 @@ CloudService cloudService = new CloudService
             };
 CloudService createOrUpdateResponse = m_CrpClient.CloudServices.CreateOrUpdate(“ContosOrg”, “ContosoCS”, cloudService);
 ```
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 Portal, yukarıdaki özelliğin, csdef ve cscfg içindeki rol boyutunu ve örnek sayısını geçersiz kılmasına izin vermez. 
 
 

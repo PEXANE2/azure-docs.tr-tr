@@ -2,13 +2,13 @@
 title: MABS ile Hyper-V sanal makinelerini yedekleme
 description: Bu makale, Microsoft Azure Backup sunucusu (MABS) kullanarak sanal makinelerin yedeklenmesi ve kurtarılması için prosedürleri içerir.
 ms.topic: conceptual
-ms.date: 07/18/2019
-ms.openlocfilehash: c1c894df29659dce312d092f1aa3ea5d584e248a
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 04/20/2021
+ms.openlocfilehash: b4de791269161b477fc07d6539feaa975fdd72ad
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107219"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107740007"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Azure Backup Sunucusu ile Hyper-V sanal makinelerini yedekleme
 
@@ -126,7 +126,7 @@ Bir yük devretme başlatılana kadar bir çoğaltma sanal makine kapalıdır ve
 
 Yedeklenen bir sanal makineyi kurtardığınızda, sanal makineyi ve özgül kurtarma noktasını seçmek için Kurtarma sihirbazını kullanırsınız. Kurtarma Sihirbazı'nı açmak ve bir sanal makineyi kurtarmak için:
 
-1. MABS Yönetici Konsolu 'nda, VM 'nin adını yazın veya korunan öğeler listesini genişletin ve kurtarmak istediğiniz VM 'yi seçin.
+1. MABS yönetici konsolunda, VM 'nin adını yazın veya korunan öğelerin listesini genişletin, **tüm korumalı hyperv verilerine** gidin ve kurtarmak istediğiniz VM 'yi seçin.
 
 2. Kurtarma **noktaları** bölmesinde, takvim üzerinde, kullanılabilir kurtarma noktalarını görmek için herhangi bir tarih seçin. Sonra, **Yol** bölmesinde, Kurtarma sihirbazında kullanmak istediğiniz kurtarma noktasını seçin.
 

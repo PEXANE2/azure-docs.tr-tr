@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 942b77f8338636f9dda5dcf6cd4262dad57b4b0a
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 6aa502e1ed0e49192220174d5a8573690035a4a3
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726277"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739143"
 ---
 # <a name="issuer-service-communication-examples-preview"></a>Veren hizmeti iletişim örnekleri (Önizleme)
 
@@ -31,9 +31,9 @@ Doğrulanabilir bir kimlik bilgisi vermek için, kullanıcıdan girişi toplamak
 | ------- | ----------- |
 | Verme türü | Yetkilendirme kodu verme türünü desteklemelidir. |
 | Belirteç biçimi | Şifrelenmemiş kompakt JWTs 'ler üretmelidir. |
-| İmza algoritması | RSA 256 kullanılarak imzalanmış JWTs 'nin üretilmesi gerekir. |
+| İmza algoritması | RS 256 kullanılarak imzalanmış JWTs 'leri üretmelidir. |
 | Yapılandırma belgesi | OpenID Connect yapılandırma belgesi ve ile desteklenmesi gerekir `jwks_uri` . | 
-| İstemci kaydı | , Bir değeri kullanılarak genel istemci kaydını desteklemelidir `redirect_uri` `vclient://openid/` . | 
+| İstemci kaydı | , Bir değeri kullanılarak genel istemci kaydını desteklemelidir `redirect_uri` `vcclient://openid/` . | 
 | PKCE | Güvenlik nedenleriyle önerilir, ancak gerekli değildir. |
 
 Kimlik sağlayıcınızda gönderilen HTTP isteklerinin örnekleri aşağıda verilmiştir. Kimlik sağlayıcınız, OpenID Connect kimlik doğrulama standardına uygun olarak bu istekleri kabul etmeli ve bunlara yanıt vermelidir.

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b1bcba264589d6cbe9b4f671e1e4f2c9b1dbf2c5
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 6e595f7ff313ff85a12209e8c124b9aa376b20b6
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594257"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739755"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Öğretici: Azure uzaktan Işleme ve model depolamanın güvenliğini sağlama
 
@@ -211,7 +211,7 @@ Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandı
     ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
-
+    
     using Microsoft.Azure.RemoteRendering;
     using Microsoft.Identity.Client;
     using System;
@@ -219,17 +219,9 @@ Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandı
     using System.Threading;
     using System.Threading.Tasks;
     using UnityEngine;
-
+    
     public class AADAuthentication : BaseARRAuthentication
     {
-        [SerializeField]
-        private string accountDomain;
-        public string AccountDomain
-        {
-            get => accountDomain.Trim();
-            set => accountDomain = value;
-        }
-
         [SerializeField]
         private string activeDirectoryApplicationClientID;
         public string ActiveDirectoryApplicationClientID
@@ -237,7 +229,7 @@ Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandı
             get => activeDirectoryApplicationClientID.Trim();
             set => activeDirectoryApplicationClientID = value;
         }
-
+    
         [SerializeField]
         private string azureTenantID;
         public string AzureTenantID
@@ -245,7 +237,15 @@ Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandı
             get => azureTenantID.Trim();
             set => azureTenantID = value;
         }
-
+    
+        [SerializeField]
+        private string azureRemoteRenderingDomain;
+        public string AzureRemoteRenderingDomain
+        {
+            get => azureRemoteRenderingDomain.Trim();
+            set => azureRemoteRenderingDomain = value;
+        }
+    
         [SerializeField]
         private string azureRemoteRenderingAccountID;
         public string AzureRemoteRenderingAccountID
@@ -255,37 +255,37 @@ Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandı
         }
     
         [SerializeField]
-        private string azureRemoteRenderingAccountAuthenticationDomain;
-        public string AzureRemoteRenderingAccountAuthenticationDomain
+        private string azureRemoteRenderingAccountDomain;
+        public string AzureRemoteRenderingAccountDomain
         {
-            get => azureRemoteRenderingAccountAuthenticationDomain.Trim();
-            set => azureRemoteRenderingAccountAuthenticationDomain = value;
-        }
-
+            get => azureRemoteRenderingAccountDomain.Trim();
+            set => azureRemoteRenderingAccountDomain = value;
+        }    
+    
         public override event Action<string> AuthenticationInstructions;
-
+    
         string authority => "https://login.microsoftonline.com/" + AzureTenantID;
-
+    
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
-
-        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountAuthenticationDomain + "/mixedreality.signin" };
-
+    
+        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountDomain + "/mixedreality.signin" };
+    
         public void OnEnable()
         {
             RemoteRenderingCoordinator.ARRCredentialGetter = GetAARCredentials;
             this.gameObject.AddComponent<ExecuteOnUnityThread>();
         }
-
+    
         public async override Task<SessionConfiguration> GetAARCredentials()
         {
             var result = await TryLogin();
             if (result != null)
             {
                 Debug.Log("Account signin successful " + result.Account.Username);
-
+    
                 var AD_Token = result.AccessToken;
-
-                return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+    
+                return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountDomain, AzureRemoteRenderingDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -293,7 +293,7 @@ Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandı
             }
             return default;
         }
-
+    
         private Task DeviceCodeReturned(DeviceCodeResult deviceCodeDetails)
         {
             //Since everything in this task can happen on a different thread, invoke responses on the main Unity thread
@@ -303,10 +303,10 @@ Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandı
                 Debug.Log(deviceCodeDetails.Message);
                 AuthenticationInstructions?.Invoke(deviceCodeDetails.Message);
             });
-
+    
             return Task.FromResult(0);
         }
-
+    
         public override async Task<AuthenticationResult> TryLogin()
         {
             var clientApplication = PublicClientApplicationBuilder.Create(ActiveDirectoryApplicationClientID).WithAuthority(authority).WithRedirectUri(redirect_uri).Build();
@@ -314,11 +314,11 @@ Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandı
             try
             {
                 var accounts = await clientApplication.GetAccountsAsync();
-
+    
                 if (accounts.Any())
                 {
                     result = await clientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
-
+    
                     return result;
                 }
                 else
@@ -356,7 +356,7 @@ Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandı
                 Debug.LogError("GetAccountsAsync");
                 Debug.LogException(ex);
             }
-
+    
             return null;
         }
     }
@@ -372,10 +372,10 @@ Bu kod için, bir erişim belirteci almak üzere [cihaz kod akışını](../../.
 Bu sınıfın bir ARR perspektifinden en önemli bölümü bu satırdır:
 
 ```cs
-return await Task.FromResult(new SessionConfiguration(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountDomain, AzureRemoteRenderingDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-Burada hesap etki alanını, hesap KIMLIĞINI, hesap kimlik doğrulama etki alanını ve erişim belirtecini kullanarak yeni bir **Sessionconfiguration** nesnesi oluşturacağız. Bu belirteç daha sonra, Kullanıcı daha önce yapılandırılan rol tabanlı izinlere göre yetkilendirildiği sürece, uzak işleme oturumlarını sorgulamak, oluşturmak ve birleştirmek için ARR hizmeti tarafından kullanılır.
+Burada, uzaktan işleme etki alanını, hesap KIMLIĞINI, hesap etki alanını ve erişim belirtecini kullanarak yeni bir **Sessionconfiguration** nesnesi oluşturacağız. Bu belirteç daha sonra, Kullanıcı daha önce yapılandırılan rol tabanlı izinlere göre yetkilendirildiği sürece, uzak işleme oturumlarını sorgulamak, oluşturmak ve birleştirmek için ARR hizmeti tarafından kullanılır.
 
 Bu değişiklik ile uygulamanın geçerli durumu ve Azure kaynaklarınıza erişimi şöyle görünür:
 
@@ -393,11 +393,11 @@ Unity düzenleyicisinde, AAD kimlik doğrulaması etkin olduğunda, uygulamayı 
 
 1. Istemci KIMLIĞI ve kiracı KIMLIĞI için değerlerinizi girin. Bu değerler, uygulama kaydınızın Genel Bakış sayfasında bulunabilir:
 
-    * **Hesap etki alanı** , **Remoterenderingcoordinator**'ın hesap etki alanında kullandığınız etki alanıdır.
     * **Active Directory Uygulama ISTEMCI kimliği** , AAD uygulamanızın kaydında bulunan *uygulama (istemci) kimliğidir* (aşağıdaki resme bakın).
     * **Azure KIRACı kimliği** , AAD uygulama kaydınızda bulunan *Dizin (kiracı) kimliğidir* (aşağıdaki resme bakın).
+    * **Azure uzaktan Işleme etki alanı** , **Remoterenderingcoordinator**'ın uzaktan işleme etki alanında kullandığınız etki alanıdır.
     * **Azure uzaktan Işleme hesap kimliği** , **Remoterenderingcoordinator** IÇIN kullanmakta olduğunuz **Hesap kimliğidir** .
-    * **Hesap kimlik doğrulama etki alanı** , **Remoterenderingcoordinator**'Da kullanmakta olduğunuz **Hesap kimlik doğrulama etki alanıdır** .
+    * **Azure uzaktan Işleme hesabı etki alanı** , **Remoterenderingcoordinator**'Da kullanmakta olduğunuz **hesap etki alanıdır** .
 
     ![Uygulama (istemci) KIMLIĞINI ve dizin (kiracı) KIMLIĞINI vurgulayan ekran görüntüsü.](./media/app-overview-data.png)
 

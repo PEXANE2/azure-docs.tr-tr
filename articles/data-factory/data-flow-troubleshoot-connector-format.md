@@ -5,13 +5,13 @@ author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/12/2021
-ms.openlocfilehash: 7596bf3182f59758eeee66e248404e98c18da2e7
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.date: 04/20/2021
+ms.openlocfilehash: 1991436e2cc890b5c6a339f79e42536ced2fbd36
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107715547"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739485"
 ---
 # <a name="troubleshoot-connector-and-format-issues-in-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşlerken bağlayıcı ve biçimlendirme sorunlarını giderme
 
@@ -36,16 +36,15 @@ Varsayılan davranışın üzerine yazmak ve ek alanlara getirmek için ADF, kay
 
     1. Tüm şemayı almak için örnek dosya/tablolarla **Içeri aktarma projeksiyonunu** sağlamak üzere veri akışı kaynak **hata ayıklama ayarlarını** kullanın. Aşağıdaki resimdeki adımları izleyebilirsiniz:<br/>
 
-        ![Önerinin 1-1 seçeneğini gösteren ekran görüntüsü](./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-1.png)<br/>
+        ![Kaynak şemayı özelleştirmek için ilk seçeneğin ilk bölümünü gösteren ekran görüntüsü.](./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-1.png)<br/>
          1. Veri akışı tuvalindeki **hata ayıklama ayarları** ' nı seçin.
-         1. Açılır bölmede, **Cosmossource** sekmesinin altındaki **örnek tablo** ' yı seçin. 
-         1. **Tablo bloğunda tablonuzun** adını girin.
+         1. Açılır bölmede, **Cosmossource** sekmesi altında **örnek tablo** ' yı seçin ve **tablo bloğunda tablonuzun** adını girin.
          1. Ayarlarınızı kaydetmek için **Kaydet** ' i seçin.
          1. **Içeri aktarma projeksiyonu** seçin.<br/>  
     
     1. **Hata ayıklama ayarlarını** geri kalan veri taşıma/dönüştürme için kaynak veri kümesini kullanacak şekilde değiştirin. Aşağıdaki resimdeki adımlarla geçiş yapabilirsiniz:<br/>
 
-        ![Önerinin 1-2 seçeneğini gösteren ekran görüntüsü](./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-2.png) <br/>   
+        ![Kaynak şemayı özelleştirmek için ilk seçeneğin ikinci bölümünü gösteren ekran görüntüsü.](./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-2.png) <br/>   
          1. Veri akışı tuvalindeki **hata ayıklama ayarları** ' nı seçin.
          1. Açılır bölmede, **cosmossource** sekmesinin altındaki **kaynak veri kümesi** ' ni seçin.
          1. Ayarlarınızı kaydetmek için **Kaydet** ' i seçin.<br/>
@@ -54,7 +53,7 @@ Varsayılan davranışın üzerine yazmak ve ek alanlara getirmek için ADF, kay
 
 - **Seçenek-2**: kaynak verilerin ŞEMASı ve DSL diline alışkın değilseniz, verileri okumak üzere ek/eksik sütunlar eklemek için veri akışı kaynak betiğini el ile güncelleştirebilirsiniz. Aşağıdaki resimde bir örnek gösterilmektedir: 
 
-    ![Önerinin 2 seçeneğini gösteren ekran görüntüsü](./media/data-flow-troubleshoot-connector-format/customize-schema-option-2.png)
+    ![Kaynak şemayı özelleştirmek için ikinci seçeneği gösteren ekran görüntüsü.](./media/data-flow-troubleshoot-connector-format/customize-schema-option-2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sorun giderme konusunda daha fazla yardım için şu kaynaklara bakın:

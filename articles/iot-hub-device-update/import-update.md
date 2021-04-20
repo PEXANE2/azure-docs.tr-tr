@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e90253100b86397c5ca4873d5c38a3511ba21555
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: ecbc76651f09a9b4f2bde01c733cace5037f5fd4
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728581"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738837"
 ---
 # <a name="add-an-update-to-device-update-for-iot-hub"></a>IoT Hub için cihaz güncelleştirmesine bir güncelleştirme ekleyin
 IoT Hub için cihaz güncelleştirmesine yeni bir güncelleştirme eklemeyi öğrenin.
@@ -30,7 +30,7 @@ IoT Hub için cihaz güncelleştirmesine yeni bir güncelleştirme eklemeyi öğ
 
 ## <a name="obtain-an-update-for-your-devices"></a>Cihazlarınız için bir güncelleştirme edinin
 
-Cihaz güncelleştirmesi [ayarlandığına](create-device-update-account.md)göre, cihazlarınızı güncelleştirmeye hazırsınız demektir. Ancak ilk olarak, dağıtacaksınız olan cihazlar için gerçek güncelleştirme dosyaları gerekir.
+Cihaz güncelleştirmesi [ayarlandığına](create-device-update-account.md)göre, cihazlarınızı güncelleştirmeye hazırsınız demektir. Ardından, bu cihazlara dağıttığınız gerçek güncelleştirme dosyaları gerekir.
 
 Bir OEM 'den veya çözüm tümleştirmelerinden cihaz satın aldıysanız, bu kuruluş, güncelleştirmeleri oluşturmanız gerekmeden sizin için en büyük olasılıkla sizin için güncelleştirme dosyaları sağlamaktır. Güncelleştirmelerin nasıl kullanılabilir hale yapıldığını öğrenmek için OEM veya çözüm tümleştiricisi ile iletişim kurun.
 

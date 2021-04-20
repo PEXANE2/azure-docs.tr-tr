@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: c3eecb0b9628ae889ac22bfe6d621266f06abc83
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: f2a4083e8cbbdbfbf971c441d8942b48e712c472
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107598933"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107740037"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Azure 'da sanal makineler için Boyutlar
 
 Bu makalede, uygulamalarınızı ve iş yüklerinizi çalıştırmak için kullanabileceğiniz Azure sanal makineleri için kullanılabilen Boyutlar ve seçenekler açıklanmaktadır. Ayrıca, bu kaynakları kullanmayı planlarken göz önünde bulundurmanız gereken dağıtım konuları da sunar. 
+
+:::image type="content" source="media/sizes/azurevmsthumb.jpg" alt-text="SANAL makinenizin doğru boyutunu seçmek için YouTube videosu." link="https://youtu.be/zOSvnJFd3ZM":::
 
 | Tür | Boyutlar | Açıklama |
 |------|-------|-------------|

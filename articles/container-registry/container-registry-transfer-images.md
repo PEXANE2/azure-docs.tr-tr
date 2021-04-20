@@ -4,12 +4,12 @@ description: Azure depolama hesaplarını kullanarak bir aktarım işlem hattı 
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: e921880eb0b8ae5a38e69c9c0045f6a26d84084d
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 7784ce3e5e0171c84fb1f1da6e69f7d38bec9637
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497991"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737415"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Yapıtları başka bir kayıt defterine aktar
 
@@ -416,8 +416,14 @@ az resource delete \
 * **Hata veya hata Şablon dağıtımı**
   * Bir işlem hattı çalıştırması başarısız olursa, `pipelineRunErrorMessage` çalışma kaynağı özelliğine bakın.
   * Ortak şablon dağıtım hataları için bkz. [ARM şablon dağıtımları sorunlarını giderme](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)
+* **Depolamaya erişme sorunları**<a name="problems-accessing-storage"></a>
+  * `403 Forbidden`Depolama alanından bir hata görürseniz, büyük OLASıLıKLA SAS belirtecinizle ilgili bir sorununuz olabilir.
+  * SAS belirteci Şu anda geçerli olmayabilir. SAS belirteci oluşturulduktan sonra SAS belirtecinin geçerliliği bitmiş olabilir veya depolama hesabı anahtarları değişmiş olabilir. Depolama hesabı kapsayıcısına erişim için kimlik doğrulaması yapmak üzere SAS belirtecini kullanmayı deneyerek SAS belirtecinin geçerli olduğunu doğrulayın. Örneğin, var olan bir blob uç noktasını, ardından yeni bir Microsoft Edge InPrivate penceresinin Adres çubuğundaki SAS belirtecini yerleştirin veya kullanarak SAS belirtecine bir blob yükleyin `az storage blob upload` .
+  * SAS belirteci, Izin verilen yeterli kaynak türüne sahip olmayabilir. SAS belirtecine Izin verilen kaynak türleri altındaki hizmet, kapsayıcı ve nesne izinleri verildiğini doğrulayın ( `srt=sco` SAS belirtecinde).
+  * SAS belirteci yeterli izinlere sahip olmayabilir. Dışa aktarma işlem hatları için, gerekli SAS belirteç izinleri okuma, yazma, listeleme ve ekleme. İçeri aktarma işlem hatları için, gerekli SAS belirteç izinleri okuma, silme ve Listetir. (Silme izni yalnızca, içeri aktarma işlem hattının `DeleteSourceBlobOnSuccess` seçeneği etkinse gereklidir.)
+  * SAS belirteci yalnızca HTTPS ile çalışacak şekilde yapılandırılmamış olabilir. SAS belirtecinin yalnızca HTTPS ile çalışacak şekilde yapılandırıldığını doğrulayın ( `spr=https` SAS belirtecinde).
 * **Depolama bloblarını dışa aktarma veya içeri aktarma sorunları**
-  * SAS belirtecinin geçerliliği, belirtilen dışarı aktarma veya içeri aktarma çalıştırması için yeterli izinlere sahip olmayabilir.
+  * SAS belirteci geçersiz olabilir veya belirtilen dışarı aktarma veya içeri aktarma çalıştırması için yeterli izinlere sahip olmayabilir. Bkz. [depolama erişimi sorunları](#problems-accessing-storage).
   * Birden çok dışa aktarma çalıştırması sırasında kaynak depolama hesabındaki mevcut depolama Blobun üzerine yazılamaz. Dışarı aktarma çalıştırmasında OverwriteBlob seçeneğinin ayarlandığını ve SAS belirtecinin yeterli izinlere sahip olduğunu doğrulayın.
   * Hedef depolama hesabındaki Depolama Blobu, başarılı bir içeri aktarma çalıştırdıktan sonra silinmeyebilir. DeleteBlobOnSuccess seçeneğinin içeri aktarma çalıştırmasında ayarlandığını ve SAS belirtecinin yeterli izinlere sahip olduğunu doğrulayın.
   * Depolama Blobu oluşturulmadı veya silinmedi. Dışarı aktarma veya içeri aktarma çalıştırmasında belirtilen kapsayıcının bulunduğunu veya el ile içeri aktarma çalıştırması için belirtilen Depolama Blobu olduğunu onaylayın. 

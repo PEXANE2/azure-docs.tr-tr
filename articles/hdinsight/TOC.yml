@@ -260,6 +260,8 @@
               href: ./hdinsight-cluster-availability.md
             - name: Küme kullanılabilirliği - Azure İzleyici günlükleri
               href: ./cluster-availability-monitor-logs.md
+            - name: Azure Izleyici tablosu güncelleştirmeleri
+              href: ./log-analytics-migration.md
         - name: Sorun giderme
           items:
             - name: CPU çekirdeği kotası için artış isteme

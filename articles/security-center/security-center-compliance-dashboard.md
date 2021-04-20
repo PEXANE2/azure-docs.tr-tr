@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: memildin
-ms.openlocfilehash: fb8dc22c923b7b53a6263baa43046862af4d2f04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 284a7f532ed918397fe1cfcf3458bbc6fb0bdd32
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100370282"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739017"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Öğretici: Mevzuat uyumluluğunuzu artırma
 
@@ -26,7 +26,7 @@ Azure Güvenlik Merkezi, mevzuat **Uyumluluk panosunu** kullanarak, mevzuat uyum
 
 Güvenlik Merkezi, aboneliklerinize uygulanan standartların denetimlerine ve en iyi uygulamalarına göre risk faktörlerini analiz etmek için karma bulut ortamınızı sürekli değerlendirir. Pano, bu standartlarla uyumluluğun durumunu yansıtır. 
 
-Azure aboneliğinde Güvenlik Merkezi 'ni etkinleştirdiğinizde, [Azure Güvenlik kıyaslaması](../security/benchmarks/introduction.md) otomatik olarak bu aboneliğe atanır. Bu, yaygın olarak kullanılan kıyaslama, [Internet güvenliği (CIS) Için merkezden](https://www.cisecurity.org/benchmark/azure/) ve [ulusal standartlar ve teknolojı Enstitüsü (NIST)](https://www.nist.gov/) ile bulut merkezli güvenliğe odaklanarak yapılar oluşturur.
+Azure aboneliğinde Güvenlik Merkezi 'ni etkinleştirdiğinizde, [Azure Güvenlik kıyaslaması](https://docs.microsoft.com/security/benchmark/azure/introduction) otomatik olarak bu aboneliğe atanır. Bu, yaygın olarak kullanılan kıyaslama, [Internet güvenliği (CIS) Için merkezden](https://www.cisecurity.org/benchmark/azure/) ve [ulusal standartlar ve teknolojı Enstitüsü (NIST)](https://www.nist.gov/) ile bulut merkezli güvenliğe odaklanarak yapılar oluşturur.
 
 Mevzuat uyumluluk panosu, ortamınızdaki tüm değerlendirmelerin durumunu seçtiğiniz standartlar ve yönetmeliklerinize göre gösterir. Önerilerle ilgili işlem yaparken ve ortamınızdaki risk etmenlerini azaltmanız durumunda uyumluluk durmanız artar.
 

@@ -3,12 +3,12 @@ title: Coğrafi olağanüstü durum kurtarma-Azure Event Hubs | Microsoft Docs
 description: Coğrafi bölgeleri kullanarak yük devretme ve Azure Event Hubs olağanüstü durum kurtarma gerçekleştirme
 ms.topic: article
 ms.date: 04/14/2021
-ms.openlocfilehash: 504a83772c2ac8e3afc86465899357d0eda4eb92
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b2cf2b0ebef2b460b626e45d6b52309c9281d6ce
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478667"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739251"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs-coğrafi olağanüstü durum kurtarma 
 
@@ -55,7 +55,7 @@ Aşağıdaki birincil ve ikincil ad alanları birleşimleri desteklenir:
 | Standart | Standart | Yes | 
 | Standart | Ayrılmış | Yes | 
 | Ayrılmış | Ayrılmış | Yes | 
-| Ayrılmış | Standart | Hayır | 
+| Ayrılmış | Standart | No | 
 
 > [!NOTE]
 > Aynı adanmış kümede bulunan ad alanlarını eşleştiriyorsunuz. Ayrı kümelerdeki ad alanlarını eşleştirde ayırabilirsiniz. 
@@ -117,14 +117,6 @@ Yük devretmeyi başlatırsanız iki adım gereklidir:
 ## <a name="management"></a>Yönetim
 
 Bir hata yaptıysanız, Örneğin, ilk kurulum sırasında yanlış bölgeleri eşleştirdikten sonra, iki ad alanının eşleştirmesini dilediğiniz zaman kesebilirsiniz. Eşleştirilmiş ad alanlarını normal ad alanları olarak kullanmak istiyorsanız, diğer adı silin.
-
-## <a name="samples"></a>Örnekler
-
-[GitHub 'daki örnek](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) , bir yük devretme ayarlamayı ve başlatmayı gösterir. Bu örnek aşağıdaki kavramları göstermektedir:
-
-- Event Hubs ile Azure Resource Manager kullanmak için Azure Active Directory gereken ayarlar. 
-- Örnek kodu yürütmek için gereken adımlar. 
-- Geçerli birincil ad alanından gönderin ve alın. 
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 

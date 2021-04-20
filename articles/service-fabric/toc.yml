@@ -356,6 +356,8 @@
               href: service-fabric-cluster-resource-manager-movement-cost.md
             - name: Hizmetleri otomatik ölçeklendirme
               href: service-fabric-cluster-resource-manager-autoscaling.md
+            - name: Düğüm etiketleme
+              href: service-fabric-cluster-resource-manager-node-tagging.md
     - name: İzleme ve tanılama
       items:
         - name: İzlemeye genel bakış

@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: b527a2c7cbfe4971f5dd99f40f98d3eaa32aa451
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 53f3c79886d26b20a584d747759176ea842741cf
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227322"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739287"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Azure 'da .NET 5,0 üzerinde işlev çalıştırmaya yönelik kılavuz
 
@@ -74,6 +74,8 @@ Aşağıdaki kod, [Hostbuilder] işlem hattının bir örneğini göstermektedir
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_startup":::
 
+Bu kod için gerekir `using Microsoft.Extensions.DependencyInjection;` . 
+
 Bir [Hostbuilder] , işlev uygulamanızı başlatmak için zaman uyumsuz olarak çalıştırdığınız, tam olarak başlatılmış bir [IHOST] örneği oluşturmak ve döndürmek için kullanılır. 
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_host_run":::
@@ -103,7 +105,7 @@ Aşağıdaki örnek bir tek hizmet bağımlılığını çıkarır:
  
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_dependency_injection" :::
 
-Daha fazla bilgi için bkz. [ASP.NET Core bağımlılık ekleme](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true).
+Bu kod için gerekir `using Microsoft.Extensions.DependencyInjection;` . Daha fazla bilgi için bkz. [ASP.NET Core bağımlılık ekleme](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true).
 
 ### <a name="middleware"></a>Ara yazılım
 

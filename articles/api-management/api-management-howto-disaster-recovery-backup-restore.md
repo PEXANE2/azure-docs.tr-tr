@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 090eda3c3310a1b793733e37725c62758445d6b2
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: ad0936fddacf8f5b2e4917441f5feaa41aad9de4
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587375"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739809"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management'ta hizmet yedekleme ve geri yükleme işlevlerini kullanarak acil durumda kurtarma
 
@@ -230,7 +230,7 @@ Restore, tamamlanması 30 veya daha fazla dakika süren uzun süredir çalışan
 -   [Yönetilen kimlik](api-management-howto-use-managed-service-identity.md) yapılandırması.
 -   [Azure Izleyici tanısı](api-management-howto-use-azure-monitor.md) Yapılandırmada.
 -   [Protokoller ve şifre](api-management-howto-manage-protocols-ciphers.md) ayarları.
--   [Geliştirici Portalı](api-management-howto-developer-portal.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management) içeriği.
+-   [Geliştirici Portalı](developer-portal-faq.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management) içeriği.
 
 Hizmet yedeklemeleri gerçekleştirdiğiniz sıklık, kurtarma noktası hedefini etkiler. Bunu en aza indirmek için, API Management hizmetinize değişiklikler yaptıktan sonra düzenli yedeklemeler uygulamanızı ve isteğe bağlı yedeklemeler gerçekleştirmenizi öneririz.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: dcfe12b30e336863c8e112d9ad675a2f57fe48f4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ac147df90d3fa0c27bb4299c57ec79d9a9031710
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179145"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737607"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Veri Gezgini için Azure Izleyici (Önizleme)
 
@@ -117,6 +117,11 @@ Azure Veri Gezgini için Azure Izleyici, genel bir izleme çözümü sağlamak i
 **Önbellek** sekmesi kullanıcıların gerçek sorgularını gözden geçirin ve bunları yapılandırılmış önbellek ilkesiyle karşılaştırın (her tablo için). En çok sorgu ve tablo tarafından kullanılan tabloları tanımlayabilir ve önbellek ilkesini buna uygun şekilde uyarlayabilir. Azure Advisor 'daki belirli tablolar üzerinde belirli bir önbellek ilkesi önerisi alabilirsiniz (Şu anda önbellek önerileri yalnızca [ana Azure Danışmanı panosundan](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations)kullanılabilir) ve sorguların en az %95 ' i için son 30 güne ve en iyi duruma getirilmiş bir önbellek ilkesine göre görünür. Azure Advisor 'daki önbellek azaltma önerileri, "verilere göre sınırlanmış" kümeler için kullanılabilir (kümenin düşük CPU ve düşük Alım kullanımı, ancak yüksek veri kapasitesi nedeniyle, küme ölçeklendiremez veya azaltılamamıştır).
 
 [![Önbellek ayrıntılarının ekran görüntüsü](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
+
+**Küme sınırları** sekmesi, kullanımınıza göre küme sınırlarını görüntüler. Bu sekmede CPU, alım ve önbellek kullanımını inceleyebilirsiniz. Bu ölçümler "düşük", "Orta" veya "yüksek" olarak puanlanır. Bu ölçümler ve puanlar, kümenizin en iyi SKU ve örnek sayısına karar verirken önemlidir ve Azure Advisor SKU/boyut önerisi ' nde hesaba götürülürsünüz. Bu sekmede, eğilimini ve Puanının nasıl karar sağladığını anlamak için bir ölçüm kutucuğu ve derin bir seçim yapabilirsiniz. Ayrıca, kümeniz için Azure Advisor SKU 'SU/boyut önerisini görüntüleyebilirsiniz. Örneğin, aşağıdaki görüntüde tüm ölçümlerin "düşük" olarak puanlandığına ve bu nedenle kümenin bir maliyet önerisi aldığından ve maliyeti değiştirmesine/azalmasına ve maliyeti kaydetmesine izin vermiş olursunuz.
+
+> [!div class="mx-imgBorder"]
+> [![Küme sınırları ekran görüntüsü.](./media/data-explorer/cluster-boundaries.png)](./media/data-explorer/cluster-boundaries.png#lightbox)
 
 ## <a name="pin-to-azure-dashboard"></a>Azure panosuna sabitle
 
