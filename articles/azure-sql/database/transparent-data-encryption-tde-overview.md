@@ -12,19 +12,19 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 10/12/2020
-ms.openlocfilehash: 160066f9599388256c7c821732a1e06fec49bdf5
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: f93d65b4d10c1a8454a8e24b5cb081dae4d6943e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749051"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812813"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics için saydam veri şifrelemesi
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 [Saydam veri şifrelemesi (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) , bekleyen verileri şifreleyerek kötü amaçlı çevrimdışı etkinlik tehditlerine KARŞı Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE analizlerinin korunmasına yardımcı olur. Bu özellik bütün bir veritabanı, yedekleri ve işlem günlüğü dosyaları için gerçek zamanlı şifreleme ve şifre çözme işlemlerini gerçekleştirir ve uygulamada değişiklik yapmayı gerektirmez. Varsayılan olarak, TDE, tüm yeni dağıtılan SQL veritabanları için etkinleştirilmiştir ve Azure SQL veritabanı, Azure SQL yönetilen örneği 'nin eski veritabanları için el ile etkinleştirilmelidir. TDE, Azure SYNAPSE Analytics için el ile etkinleştirilmelidir.
 
-TDE, verilerin sayfa düzeyindeki gerçek zamanlı g/ç şifrelemesini ve şifresini çözmeyi gerçekleştirir. Okunarak belleğe alınan her sayfanın şifresi çözülür ve sayfalar diske yazılmadan önce şifrelenir. TDE, veritabanı şifreleme anahtarı (DEK) adlı bir simetrik anahtar kullanarak veritabanının tamamının depolanmasını şifreler. Veritabanı başlangıcında, şifrelenen DEK şifresi çözülür ve veritabanı dosyalarının şifresini çözmek ve SQL Server veritabanı altyapısı işleminde yeniden şifrelemek için kullanılır. DEK, TDE koruyucusu tarafından korunur. TDE koruyucusu, hizmet tarafından yönetilen bir sertifika (hizmet tarafından yönetilen saydam veri şifrelemesi) veya [Azure Key Vault](../../key-vault/general/security-overview.md) depolanan bir asimetrik anahtardır (müşteri tarafından yönetilen saydam veri şifrelemesi).
+TDE, verilerin sayfa düzeyindeki gerçek zamanlı g/ç şifrelemesini ve şifresini çözmeyi gerçekleştirir. Okunarak belleğe alınan her sayfanın şifresi çözülür ve sayfalar diske yazılmadan önce şifrelenir. TDE, veritabanı şifreleme anahtarı (DEK) adlı bir simetrik anahtar kullanarak veritabanının tamamının depolanmasını şifreler. Veritabanı başlangıcında, şifrelenen DEK şifresi çözülür ve veritabanı dosyalarının şifresini çözmek ve SQL Server veritabanı altyapısı işleminde yeniden şifrelemek için kullanılır. DEK, TDE koruyucusu tarafından korunur. TDE koruyucusu, hizmet tarafından yönetilen bir sertifika (hizmet tarafından yönetilen saydam veri şifrelemesi) veya [Azure Key Vault](../../key-vault/general/security-features.md) depolanan bir asimetrik anahtardır (müşteri tarafından yönetilen saydam veri şifrelemesi).
 
 Azure SQL veritabanı ve Azure SYNAPSE için, TDE koruyucusu [sunucu](logical-servers.md) düzeyinde ayarlanır ve bu sunucuyla ilişkili tüm veritabanları tarafından devralınır. Azure SQL yönetilen örneği için, TDE koruyucusu örnek düzeyinde ayarlanır ve bu örnekteki tüm şifreli veritabanları tarafından devralınır. *Sunucu* terimi, farklı belirtilmedikçe, bu belge boyunca hem sunucu hem de örneğe başvurur.
 
@@ -156,4 +156,4 @@ Azure SQL veritabanı ve Azure SYNAPSE için aşağıdaki komut kümesini kullan
 - TDE genel bir açıklaması için bkz. [Saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption).
 - Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE için BYOK desteği ile TDE hakkında daha fazla bilgi edinmek için [kendi anahtarını getir desteğiyle saydam veri şifrelemesi](transparent-data-encryption-byok-overview.md)bölümüne bakın.
 - Kendi Anahtarını Getir desteği ile TDE kullanmaya başlamak için, Key Vault ' de [kendi anahtarınızı kullanarak](transparent-data-encryption-byok-configure.md)nasıl yapılır Kılavuzu ' na bakın.
-- Key Vault hakkında daha fazla bilgi için bkz. [bir anahtar kasasına güvenli erişim](../../key-vault/general/security-overview.md).
+- Key Vault hakkında daha fazla bilgi için bkz. [bir anahtar kasasına güvenli erişim](../../key-vault/general/security-features.md).

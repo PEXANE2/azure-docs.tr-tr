@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 05c98102109d1925eb78d4558faf62b366801e77
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: aa78d6495eeffd0ea733451e029f07413602ce0d
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538987"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812741"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure gizli bilgi Işlem için sık sorulan sorular
 
@@ -32,7 +32,7 @@ Bir DCsv2 VM dağıtımı için bazı yollar şunlardır:
 
 **Tüm işletim sistemi görüntüleri Azure gizli bilgi işlem ile çalışacak mı?**
 
-Hayır. Sanal makineler yalnızca Ubuntu Server 18,04, Ubuntu Server 16,04, Windows Server 2019 Datacenter ve Windows Server 2016 Datacenter ile 2. nesil işletim makinelerine dağıtılabilir. [Linux](../virtual-machines/generation-2.md) ve [Windows](../virtual-machines/generation-2.md) üzerinde gen 2 VM 'ler hakkında daha fazla bilgi edinin
+Hayır. Sanal makineler yalnızca Ubuntu Server 18,04, Ubuntu Server 20,04, Windows Server 2019 Datacenter ve Windows Server 2016 Datacenter ile 2. nesil işletim makinelerine dağıtılabilir. [Linux](../virtual-machines/generation-2.md) ve [Windows](../virtual-machines/generation-2.md) üzerinde gen 2 VM 'ler hakkında daha fazla bilgi edinin
 
 **DCsv2 sanal makineler portalda gri renkte bulunur ve bir tane seçemiyorum**
 

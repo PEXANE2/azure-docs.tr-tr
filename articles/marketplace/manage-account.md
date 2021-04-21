@@ -7,12 +7,12 @@ ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
 ms.date: 04/07/2021
-ms.openlocfilehash: c76d9d06425405cf7f43e089cb9c2995e30410ee
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 6b721e7acb7907743c0696aff6c11ad59f5ceba9
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107108470"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812579"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme
 
@@ -179,7 +179,7 @@ Cihaz yönetimi ayarları yalnızca Evrensel Windows platformu (UWP) yayımlamas
 
 ## <a name="create-a-billing-profile"></a>Faturalandırma profili oluşturma
 
-Müşteriler için bir [dynamics 365 & Power Apps](./partner-center-portal/create-new-customer-engagement-offer.md) veya [Operations teklifi için Dynamics 365](./partner-center-portal/create-new-operations-offer.md) ' i yayımlıyorsanız, *faturalandırma profilinizi* doldurmanız gerekir.
+Müşteriler için bir [dynamics 365 & Power Apps](dynamics-365-customer-engage-offer-setup.md) veya [Operations teklifi için Dynamics 365](./partner-center-portal/create-new-operations-offer.md) ' i yayımlıyorsanız, *faturalandırma profilinizi* doldurmanız gerekir.
 
 Faturalandırma adresi yasal varlığınızdan önceden doldurulur ve bu adresi daha sonra güncelleştirebilirsiniz. VERGI ve KDV KIMLIĞI alanları, bazı ülkelerde ve diğerleri için isteğe bağlı olarak gereklidir. Ülke/bölge adı ve şirket adı düzenlenemez.
 

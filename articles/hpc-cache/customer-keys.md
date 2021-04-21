@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: 36ce494c7fd51a1341834d5c231e32e60c5a32b9
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: ae4c52ec1390166eccb0e73d6f81a8553c445b2e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752003"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813299"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Azure HPC Cache için müşteri tarafından yönetilen şifreleme anahtarlarını kullanma
 
@@ -56,7 +56,7 @@ Anahtar Kasası erişim izinleri:
 
 * Azure HPC önbelleğini oluşturan kullanıcının [Key Vault katkıda bulunan rolüne](../role-based-access-control/built-in-roles.md#key-vault-contributor)eşdeğer izinlere sahip olması gerekir. Azure Key Vault ayarlamak ve yönetmek için aynı izinler gerekir.
 
-  Daha fazla bilgi için [bir anahtar kasasına güvenli erişimi](../key-vault/general/security-overview.md) okuyun.
+  Daha fazla bilgi için [bir anahtar kasasına güvenli erişimi](../key-vault/general/security-features.md) okuyun.
 
 ## <a name="1-set-up-azure-key-vault"></a>1. Azure Key Vault ayarla
 
