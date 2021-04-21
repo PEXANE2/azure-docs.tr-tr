@@ -1,4 +1,4 @@
-- name: Cloud Services (genişletilmiş destek) belgeleri
+- name: Azure Cloud Services (genişletilmiş destek) belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
@@ -53,7 +53,7 @@
           href: schema-cscfg-networkconfiguration.md
 - name: Nasıl yapılır
   items:
-    - name: Cloud Services geçir (genişletilmiş destek)
+    - name: Azure Cloud Services 'e geçiş (genişletilmiş destek)
       items:
         - name: Geçişe genel bakış
           href: in-place-migration-overview.md
@@ -79,7 +79,7 @@
       href: certificates-and-key-vault.md
     - name: Portalı kullanarak ARM şablonu oluşturma
       href: generate-template-portal.md
-    - name: İki bulut hizmetini değiştirme
+    - name: Bulut hizmeti dağıtımlarını değiştirme
       href: swap-cloud-service.md
     - name: SKU ayrıntılarını geçersiz kıl
       href: override-sku.md
@@ -91,7 +91,7 @@
           href: faq.md
 - name: Örnekler
   items:
-    - name: Örnek Şablonlar
+    - name: Örnek şablonlar
       href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
     - name: Yeni bir bulut hizmeti oluşturun
       href: sample-create-cloud-service.md
@@ -107,7 +107,7 @@
       href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
     - name: PowerShell cmdlet'leri
       href: /powershell/module/az.cloudservice/#cloudservice
-    - name: ARM şablon başvurusu
+    - name: ARM şablonu başvurusu
       href: /azure/templates/microsoft.compute/cloudservices
     - name: REST
       href: /rest/api/compute/cloudservices

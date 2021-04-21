@@ -3,19 +3,18 @@ title: Azure Key Vault erişim ilkesi atama (portal)
 description: Bir güvenlik sorumlusu veya uygulama kimliğine Key Vault erişim ilkesi atamak için Azure portal nasıl kullanılır.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a64a91e6f41f3fba7584630380ffb878979b4389
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 443b269e7155fc206ee50e7907a7acded2c22f53
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968773"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751499"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Azure portal kullanarak Key Vault erişim ilkesi atama
 
@@ -55,5 +54,5 @@ Azure portal üzerinden Azure Active Directory Grup oluşturma hakkında daha fa
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Key Vault güvenliği: kimlik ve erişim yönetimi](security-overview.md#identity-management)
-- [Anahtar kasanızın güvenliğini sağlayın](secure-your-key-vault.md).
+- [Anahtar kasanızın güvenliğini sağlayın](security-overview.md).
 - [Geliştirici Kılavuzu Azure Key Vault](developers-guide.md)

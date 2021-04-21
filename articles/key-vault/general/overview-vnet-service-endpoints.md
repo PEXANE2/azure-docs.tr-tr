@@ -4,17 +4,16 @@ description: Azure Key Vault için sanal ağ hizmet uç noktalarının, kullanı
 services: key-vault
 author: amitbapat
 ms.author: ambapat
-manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: ae22f07a70f3317b62776e5024b7a3d1084516a1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 985cbe1128d1dd64fda86ef062750dc5dd068ffe
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643494"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751742"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault için sanal ağ hizmet uç noktaları
 
@@ -27,7 +26,7 @@ Bu kısıtlamanın önemli bir istisnası vardır. Bir kullanıcı güvenilen Mi
 [Key Vault güvenlik duvarlarını ve sanal ağları](network-security.md) , varsayılan olarak tüm ağlardan gelen trafiğe (internet trafiği dahil) erişimi reddedecek şekilde yapılandırabilirsiniz. Belirli Azure sanal ağlarından ve genel İnternet IP adresi aralıklarından trafiğe erişim izni vererek uygulamalarınız için güvenli bir ağ sınırı oluşturabilirsiniz.
 
 > [!NOTE]
-> Key Vault güvenlik duvarları ve sanal ağ kuralları yalnızca Key Vault [veri düzlemine](secure-your-key-vault.md#data-plane-access-control) uygulanır. Key Vault denetim düzlemi işlemleri (oluşturma, silme ve değiştirme işlemleri, erişim ilkelerini ayarlama, güvenlik duvarları ayarlama ve sanal ağ kuralları ile gizli dizileri veya anahtarların ARM şablonları aracılığıyla dağıtılması), güvenlik duvarları ve sanal ağ kurallarından etkilenmez.
+> Key Vault güvenlik duvarları ve sanal ağ kuralları yalnızca Key Vault [veri düzlemine](security-overview.md#privileged-access) uygulanır. Key Vault denetim düzlemi işlemleri (oluşturma, silme ve değiştirme işlemleri, erişim ilkelerini ayarlama, güvenlik duvarları ayarlama ve sanal ağ kuralları ile gizli dizileri veya anahtarların ARM şablonları aracılığıyla dağıtılması), güvenlik duvarları ve sanal ağ kurallarından etkilenmez.
 
 Hizmet uç noktalarını nasıl kullanabileceğinizi gösteren bazı örnekler şunlardır:
 

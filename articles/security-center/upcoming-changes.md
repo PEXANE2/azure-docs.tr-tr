@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 04/08/2021
+ms.date: 04/20/2021
 ms.author: memildin
-ms.openlocfilehash: f9e1b5d19acbc9bcee86c374a3f843530b8adc61
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3307d3aed422c3eab63412388244ef14ef3be699
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103768"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751012"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Güvenlik Merkezi 'Nde yapılan önemli değişiklikler
 
@@ -30,7 +30,8 @@ En son sürüm notlarını arıyorsanız, bunları [Azure Güvenlik Merkezi 'nde
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
 | [21 güvenlik denetimleri arasında hareket eden öneriler](#21-recommendations-moving-between-security-controls)                                                           | 2021 Nisan                |
 | ["Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | 2021 Nisan                |
-| [AWS 'nin önerileri genel kullanıma sunulacaktır (GA)](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | **Ağustos** 2021             |
+| [ISO 27001 ' nin eski uygulanması yeni ISO 27001:2013 ile değiştiriliyor](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)          | Haziran 2021                 |
+| [AWS 'nin önerileri genel kullanıma sunulacaktır (GA)](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | **Ağustos** 2021           |
 | [SQL veri sınıflandırması önerisine yönelik geliştirmeler](#enhancements-to-sql-data-classification-recommendation)                                                     | S2 2021                   |
 |                                                                                                                                                                       |                           |
 
@@ -59,6 +60,12 @@ Aşağıdaki iki öneri kullanım dışı bırakılmıştır:
 - **Bulut hizmeti rolleriniz Için Işletim sistemi sürümü güncellenmelidir** . varsayılan olarak, Azure Konuk işletim sistemini, Windows Server 2016 gibi hizmet yapılandırmanızda (. cscfg) belirttiğiniz işletim sistemi ailesi içinde en son desteklenen görüntüye düzenli olarak güncelleştirir.
 - **Kubernetes Hizmetleri, güvenlik açığı olmayan bir Kubernetes sürümüne yükseltilmelidir** . bu önerinin değerlendirmeleri, aralarında olmasını istediğimizde geniş kapsamlı değildir. Bu önerinin geçerli sürümü, sonunda müşterinin güvenlik gereksinimleriyle daha iyi hizalanan gelişmiş bir sürümle değiştirilmiştir.
 
+
+### <a name="legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013"></a>ISO 27001 ' nin eski uygulanması yeni ISO 27001:2013 ile değiştiriliyor
+
+ISO 27001 ' nin eski sürümü güvenlik merkezi 'nin mevzuat uyumluluk panosundan kaldırılacak. ISO 27001 uyumluluğunu Güvenlik Merkezi ile izliyorsanız, tüm ilgili yönetim grupları veya abonelikleri için yeni ISO 27001:2013 standardını ekleyin ve geçerli eski ISO 27001 yakında panodan kaldırılır.
+
+:::image type="content" source="media/upcoming-changes/removing-iso-27001-legacy-implementation.png" alt-text="Güvenlik Merkezi 'nin, eski ISO 27001 uygulamasının kaldırılmasına ilişkin iletiyi gösteren yasal uyumluluk panosu." lightbox="media/upcoming-changes/removing-iso-27001-legacy-implementation.png":::
 
 ### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>AWS 'nin önerileri genel kullanıma sunulacaktır (GA)
 

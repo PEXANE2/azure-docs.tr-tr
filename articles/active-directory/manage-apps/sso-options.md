@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: iangithinji
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: d81ad34c81a451f1faecb6cb33c0cc427567f122
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 202ccf6f540ec78c2bb30e0f0a0173609bba578c
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379613"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751463"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Azure AD 'de çoklu oturum açma seçenekleri
 
@@ -86,13 +86,12 @@ Parola tabanlı oturum açma sayesinde, kullanıcılar ilk kez erişirken Kullan
 
 Parola tabanlı çoklu oturum açma, uygulama tarafından sunulan mevcut kimlik doğrulama işlemini kullanır. Bir uygulama için parola çoklu oturum açmayı etkinleştirdiğinizde, Azure AD uygulama için Kullanıcı adlarını ve parolaları toplayıp güvenli bir şekilde depolar. Kullanıcı kimlik bilgileri, dizinde şifrelenmiş bir durumda depolanır.
 
+Azure AD koşullu erişim ilkelerini veya çok faktörlü kimlik doğrulamasını parola tabanlı SSO için yönetici, bir arada sağlayabilir.
+
 Şu durumlarda parola tabanlı çoklu oturum açma seçin:
 
 - Bir uygulama SAML çoklu oturum açma protokolünü desteklemez.
 - Bir uygulama, belirteç ve üst bilgiler yerine Kullanıcı adı ve parolayla kimlik doğrular.
-
->[!NOTE]
->Parola tabanlı SSO için koşullu erişim ilkeleri veya Multi-Factor Authentication uygulayamazsınız.
 
 Parola tabanlı çoklu oturum açma, HTML tabanlı bir oturum açma sayfasına sahip olan tüm bulut tabanlı uygulamalar için desteklenir. Kullanıcı aşağıdaki tarayıcılardan herhangi birini kullanabilir:
 

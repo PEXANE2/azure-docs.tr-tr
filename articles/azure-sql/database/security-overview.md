@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
-ms.openlocfilehash: 39119f62fa938f5f4f6529539d4ca9a84bdf8fd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39012e1f5a0282da7dda6bab216719e31fdc5061
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94989199"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752183"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL veritabanı ve SQL yönetilen örnek güvenlik özelliklerine genel bakış
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -114,11 +114,11 @@ En iyi yöntem olarak, uygulama tarafından kullanılan bağlantı dizesinde, ş
 
 [SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics Için saydam veri şifrelemesi (TDE),](transparent-data-encryption-tde-overview.md) bekleyen verilerin ham dosyalara veya yedeklemelere izinsiz veya çevrimdışı erişimden korunmasına yardımcı olmak için bir güvenlik katmanı ekler. Yaygın senaryolar, veri merkezi hırsızlığı veya disk sürücüleri ve yedekleme bantları gibi donanım veya ortamların güvenli bir şekilde çıkarılması içerir.TDE, uygulama geliştiricilerinin mevcut uygulamalarda herhangi bir değişiklik yapmasını gerektirmeyen bir AES şifreleme algoritması kullanarak tüm veritabanını şifreler.
 
-Azure 'da, yeni oluşturulan tüm veritabanları varsayılan olarak şifrelenir ve veritabanı şifreleme anahtarı yerleşik bir sunucu sertifikası tarafından korunur.  Sertifika bakımı ve döndürme, hizmet tarafından yönetilir ve kullanıcıdan giriş gerektirmez. Şifreleme anahtarlarının denetimini almayı tercih eden müşteriler [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md)anahtarlarını yönetebilir.
+Azure 'da, yeni oluşturulan tüm veritabanları varsayılan olarak şifrelenir ve veritabanı şifreleme anahtarı yerleşik bir sunucu sertifikası tarafından korunur.  Sertifika bakımı ve döndürme, hizmet tarafından yönetilir ve kullanıcıdan giriş gerektirmez. Şifreleme anahtarlarının denetimini almayı tercih eden müşteriler [Azure Key Vault](../../key-vault/general/security-overview.md)anahtarlarını yönetebilir.
 
 ### <a name="key-management-with-azure-key-vault"></a>Azure Key Vault ile anahtar yönetimi
 
-[Kendi anahtarını getir](transparent-data-encryption-byok-overview.md) (byok) [Saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption) (tde) desteği, müşterilerin Azure 'un bulut tabanlı dış anahtar yönetim sistemini [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md)kullanarak anahtar yönetiminin ve döndürmenin sahipliğini almasına olanak tanır. Veritabanının anahtar kasasına erişimi iptal edildiğinde, bir veritabanının şifresi çözülemez ve belleğe okunamaz. Azure Key Vault, merkezi bir temel yönetim platformu sağlar, sıkı izlenen donanım güvenlik modüllerini (HSM 'ler) kullanır ve güvenlik uyumluluk gereksinimlerini karşılamaya yardımcı olmak için anahtar ve veri yönetimi arasında görev ayrımı sağlar.
+[Kendi anahtarını getir](transparent-data-encryption-byok-overview.md) (byok) [Saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption) (tde) desteği, müşterilerin Azure 'un bulut tabanlı dış anahtar yönetim sistemini [Azure Key Vault](../../key-vault/general/security-overview.md)kullanarak anahtar yönetiminin ve döndürmenin sahipliğini almasına olanak tanır. Veritabanının anahtar kasasına erişimi iptal edildiğinde, bir veritabanının şifresi çözülemez ve belleğe okunamaz. Azure Key Vault, merkezi bir temel yönetim platformu sağlar, sıkı izlenen donanım güvenlik modüllerini (HSM 'ler) kullanır ve güvenlik uyumluluk gereksinimlerini karşılamaya yardımcı olmak için anahtar ve veri yönetimi arasında görev ayrımı sağlar.
 
 ### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (kullanımda olan şifreleme)
 

@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 61fcbfa9d40ebb26485ce8160fa3b011935ab4d6
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 4b7251be220c012ca51970863ac2eed55d46d711
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536313"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751157"
 ---
 # <a name="creating-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
 
@@ -69,7 +69,7 @@ Azure SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu a
 * Adresine gidin `https://web.azuresynapse.net` ve çalışma alanınızda oturum açın.
 
 ## <a name="place-sample-data-into-the-primary-storage-account"></a>Örnek verileri birincil depolama hesabına yerleştirme
-Bu başlangıç kılavuzunda birçok örnek için NYX TAXI cab verilerinin küçük 100 K satırı örnek veri kümesini kullanacağız. Çalışma alanı için oluşturduğunuz birincil depolama hesabına yerleştirilerek başlayacağız.
+Bu başlangıç kılavuzunda birçok örnek için NYX TAXI cab verilerinin küçük bir 100K satırı örnek veri kümesini kullanacağız. Çalışma alanı için oluşturduğunuz birincil depolama hesabına yerleştirilerek başlayacağız.
 
 * Bu dosyayı bilgisayarınıza indirin: https://azuresynapsestorage.blob.core.windows.net/sampledata/NYCTaxiSmall/NYCTripSmall.parquet 
 * SYNAPSE Studio 'da veri merkezine gidin. 
@@ -77,6 +77,14 @@ Bu başlangıç kılavuzunda birçok örnek için NYX TAXI cab verilerinin küç
 * Kategori **Azure Data Lake Storage 2.** , **MyWorkspace (Primary-contosolake)** gibi bir ada sahip bir öğe görürsünüz.
 * **Kullanıcılar (birincil)** adlı kapsayıcıyı seçin.
 * **Karşıya yükle** ' yi seçin ve `NYCTripSmall.parquet` indirdiğiniz dosyayı seçin.
+
+Bir Parquet dosyası karşıya yüklendi, iki eşdeğer URI üzerinden kullanılabilir:
+* `https://contosolake.dfs.core.windows.net/users/NYCTripSmall.parquet` 
+* `abfss://users@contosolake.dfs.core.windows.net/NYCTripSmall.parquet`
+
+Bu öğreticide izleyen örneklerde, Kullanıcı arabirimindeki **contosolake** ' i, çalışma alanınız için seçtiğiniz birincil depolama hesabının adıyla değiştirdiğinizden emin olun.
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,12 +4,12 @@ description: Birden çok ileti aracıları kullanarak Service Bus kuyrukların v
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c500a69f853b11437a0dcaa48213fe3a84da53b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc41bcf31102b19dd35f62452b956faf4f029551
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97796644"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750923"
 ---
 # <a name="partitioned-queues-and-topics"></a>Bölümlenmiş kuyruklar ve konular
 
@@ -146,6 +146,7 @@ Service Bus bölümlenmiş varlıkların içinden, öğesinden veya arasında ot
 * Service Bus şu anda ad alanı başına en çok 100 bölümlenmiş kuyruğa veya konuya izin vermektedir. Her bölümlenmiş kuyruk veya konu, ad alanı başına 10.000 varlık kotasına (Premium katmana uygulanmaz) göre sayılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+Azure portal, PowerShell, CLı, Kaynak Yöneticisi şablonu, .NET, Java, Python ve JavaScript kullanarak bölümlemeyi etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [bölümlemeyi etkinleştirme](enable-partitions.md). 
 
 [Amqp 1,0 protokol kılavuzunda](service-bus-amqp-protocol-guide.md)amqp 1,0 mesajlaşma belirtiminin temel kavramları hakkında bilgi edinin.
 

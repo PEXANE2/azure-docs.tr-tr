@@ -3,19 +3,18 @@ title: ARM şablonunu kullanarak bir Azure Anahtar Kasası ve kasa erişim ilkes
 description: Bu makalede, bir Azure Resource Manager şablonu kullanarak Azure Anahtar Kasası ve kasa erişim ilkelerinin nasıl oluşturulacağı gösterilmektedir.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 3/14/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e489efd335d2a46a0e55d4ceb9bdee809ae6c39d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e70906cbf26c899744bfbe137da4ce9cfa651b20
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104595252"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753155"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Azure Anahtar Kasası ve kasa erişim ilkesi oluşturma
 
@@ -218,6 +217,6 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Anahtar kasasına erişimin güvenliğini sağlama](secure-your-key-vault.md)
+- [Anahtar kasasına erişimin güvenliğini sağlama](security-overview.md)
 - [Anahtar kasasında kimlik doğrulama](authentication.md)
 - [Azure Key Vault Geliştirici Kılavuzu](developers-guide.md)

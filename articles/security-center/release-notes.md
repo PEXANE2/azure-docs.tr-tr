@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/11/2021
+ms.date: 04/20/2021
 ms.author: memildin
-ms.openlocfilehash: 5f94b17fac17a7238b3f4b7eef218961df7a42d5
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 92138b0253d28c8bf2617ee7b17474f30ac5cafe
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739971"
+ms.locfileid: "107751212"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -30,10 +30,12 @@ Güvenlik Merkezi 'ne yakında çıkacak *planlı* değişiklikler hakkında bil
 Nisan 'daki güncelleştirmeler şunları içerir:
 - [Son çekilen kapsayıcı kayıt defteri görüntüleri artık haftalık olarak yeniden taranıp (genel kullanılabilirlik)](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
 - [Karma ve çoklu bulut Kubernetes dağıtımlarını korumak için Kubernetes için Azure Defender 'ı kullanma (Önizleme)](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
+- [DNS ve Kaynak Yöneticisi için Azure Defender 'ı etkinleştirme önerileri (Önizleme)](#recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview)
 - [Konuk yapılandırmasıyla ilgili dört yeni öneri (Önizleme)](#four-new-recommendations-related-to-guest-configuration-preview)
 - [CMK önerileri en iyi yöntemler güvenlik denetimine taşındı](#cmk-recommendations-moved-to-best-practices-security-control)
 - [11 Azure Defender uyarıları kullanım dışı](#11-azure-defender-alerts-deprecated)
 - ["Sistem güncelleştirmelerini Uygula" güvenlik denetiminin iki önerisi kullanım dışı bırakıldı](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
+- [Makinedeki SQL için Azure Defender kutucuk Azure Defender panosundan kaldırıldı](#azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard)
 
 ### <a name="recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability"></a>Son çekilen kapsayıcı kayıt defteri görüntüleri artık haftalık olarak yeniden taranıp (genel kullanılabilirlik)
 
@@ -65,6 +67,19 @@ Azure Güvenlik Merkezi, Azure Defender ve Azure Arc etkin Kubernetes arasındak
 Şirket [içi ve çoklu bulut Kubernetes kümelerinizle Kubernetes Için Azure Defender 'ı kullanma](defender-for-kubernetes-azure-arc.md)hakkında daha fazla bilgi edinin.
 
 :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Güvenlik Merkezi 'nin Azure Arc etkin Kubernetes kümeleri için Azure Defender uzantısını dağıtmaya yönelik önerisi." lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+
+
+### <a name="recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview"></a>DNS ve Kaynak Yöneticisi için Azure Defender 'ı etkinleştirme önerileri (Önizleme)
+
+[Kaynak Yöneticisi Için Azure Defender](defender-for-resource-manager-introduction.md) 'ı ve [DNS Için Azure Defender 'ı](defender-for-dns-introduction.md)etkinleştirme sürecini basitleştirmek üzere iki yeni öneri eklenmiştir:
+
+- **Kaynak Yöneticisi Için Azure Defender etkinleştirilmiş** olmalıdır-Defender, Kaynak Yöneticisi için otomatik olarak kuruluşunuzdaki kaynak yönetimi işlemlerini izler. Azure Defender tehditleri algılar ve şüpheli etkinlikler hakkında sizi uyarır.
+- **DNS Için Azure Defender etkin** OLMALıDıR-DNS için Defender, Azure kaynaklarınızdaki tüm DNS sorgularını sürekli olarak izleyerek bulut kaynaklarınız için ek bir koruma katmanı sağlar. Azure Defender, DNS katmanında şüpheli etkinlik hakkında sizi uyarır.
+
+Azure Defender planlarını etkinleştirme, ücretlere neden olur. Güvenlik Merkezi 'nin fiyatlandırma sayfasındaki Bölge başına fiyatlandırma ayrıntıları hakkında bilgi edinin: https://aka.ms/pricing-security-center .
+
+> [!TIP]
+> Önizleme önerileri bir kaynağı sağlıksız bir şekilde işlemez ve güvenli puanınızın hesaplamalarına dahil değildir. Önizleme dönemi sona erdiğinde puanınızın altına katkıda bulunmak için bunları mümkün olduğunda düzeltin. [Azure Güvenlik Merkezi 'ndeki önerileri düzeltin](security-center-remediate-recommendations.md)bölümünde bu önerilere yanıt verme hakkında daha fazla bilgi edinin.
 
 ### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Konuk yapılandırmasıyla ilgili dört yeni öneri (Önizleme)
 
@@ -141,6 +156,10 @@ Aşağıdaki iki öneri kullanımdan kaldırılmıştır ve değişiklikler güv
 Bu önerilerin bunlara dahil edilip edilmeyeceğini görmek için sürekli dışarı aktarma ve iş akışı Otomasyonu yapılandırmalarının denetlenmesini öneririz. Ayrıca, bunları kullanıyor olabilecek panolar veya diğer izleme araçları da buna uygun şekilde güncelleştirilmeleri gerekir.
 
 [Güvenlik önerileri başvuru sayfasında](recommendations-reference.md)bu öneriler hakkında daha fazla bilgi edinin.
+
+### <a name="azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard"></a>Makinedeki SQL için Azure Defender kutucuk Azure Defender panosundan kaldırıldı
+
+Azure Defender panosunun kapsam alanı, ortamınız için ilgili Azure Defender planlarına yönelik kutucukları içerir. Korunan ve korumasız kaynakların sayısı ile ilgili bir sorun nedeniyle, sorun çözülene kadar **MAKINELERDE SQL Için Azure Defender** kaynak kapsamı durumunu geçici olarak kaldırmaya karar verdik.
 
 
 ## <a name="march-2021"></a>Mart 2021

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 305fdd3a0b8e0c876924c6e1f090424e67571af0
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 1f56de94df4fd5d4dd154ae8485edb9eed88364c
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968722"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753353"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Key Vault için Azure Güvenlik temeli
 
@@ -136,7 +136,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynakları aray
 
 **Rehberlik**: Azure Key Vault tarafından oluşturulan güvenlik verilerini toplamak Için Azure izleyici aracılığıyla günlükleri alma. Azure Izleyici 'de Azure Log Analytics çalışma alanını kullanarak Analytics 'i sorgulayın ve gerçekleştirin ve uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın. Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinleştirebilir ve bu verileri ayarlayabilirsiniz. 
 
-- [Azure Key Vault günlüğü](/azure/key-vault/key-vault-logging)
+- [Günlüğe kaydetme Azure Key Vault](/azure/key-vault/key-vault-logging)
 
 - [Hızlı başlangıç: Pano içi Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
@@ -148,7 +148,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynakları aray
 
 **Rehberlik**: denetim, güvenlik ve tanılama günlüklerine erişim için Azure Key Vault örneklerinizin tanılama ayarlarını etkinleştirin. Otomatik olarak kullanılabilen etkinlik günlükleri Olay kaynağını, tarihi, kullanıcıyı, zaman damgasını, kaynak adreslerini, hedef adreslerini ve diğer yararlı öğeleri içerir.
 
-- [Azure Key Vault günlüğü](/azure/key-vault/key-vault-logging)
+- [Günlüğe kaydetme Azure Key Vault](/azure/key-vault/key-vault-logging)
 
 **Sorumluluk**: Müşteri
 
@@ -208,7 +208,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynakları aray
 
 - [Azure AD ile uygulama kaydetme](/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory)
 
-- [Anahtar kasasına erişimin güvenliğini sağlama](secure-your-key-vault.md)
+- [Anahtar kasasına erişimin güvenliğini sağlama](security-overview.md)
 
 **Sorumluluk**: Müşteri
 
@@ -368,11 +368,11 @@ Güvenlik duvarı kuralları etkin olduktan sonra, isteğiniz izin verilen alt a
 
 **Rehberlik**: Azure Key Vault içinde depolanan tüm veriler hassas olarak kabul edilir. Azure Key Vault gizli dizi erişimini denetlemek için Azure Key Vault veri düzlemi erişim denetimleri kullanın. Ayrıca, Ağ katmanında erişimi denetlemek için Key Vault yerleşik güvenlik duvarını da kullanabilirsiniz. Azure Key Vault erişimi izlemek için, Key Vault tanılama ayarlarını etkinleştirin ve günlükleri bir Azure depolama hesabına veya Log Analytics çalışma alanına gönderin.
 
-- [Anahtar kasasına erişimin güvenliğini sağlama](secure-your-key-vault.md)
+- [Anahtar kasasına erişimin güvenliğini sağlama](security-overview.md)
 
 - [Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma](/azure/key-vault/key-vault-network-security)
 
-- [Azure Key Vault günlüğü](/azure/key-vault/key-vault-logging)
+- [Günlüğe kaydetme Azure Key Vault](/azure/key-vault/key-vault-logging)
 
 **Sorumluluk**: Müşteri
 
@@ -382,7 +382,7 @@ Güvenlik duvarı kuralları etkin olduktan sonra, isteğiniz izin verilen alt a
 
 **Rehberlik**: Azure Key Vault örneklerinizin yönetimine ve veri düzlemine güvenli erişim.
 
-- [Anahtar kasasına erişimin güvenliğini sağlama](secure-your-key-vault.md)
+- [Anahtar kasasına erişimin güvenliğini sağlama](security-overview.md)
 
 **Sorumluluk**: Müşteri
 

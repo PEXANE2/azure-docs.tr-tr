@@ -8,12 +8,12 @@ ms.date: 01/05/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: 124e56fad35be0f3ac5b08ee9dd66454b9d077c5
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: f0933a19ecfebfde8ac43ac3e88332506e2256ec
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374701"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750386"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>Hızlı başlangıç: Java için Azure Key Vault anahtar istemci kitaplığı
 Java için Azure Key Vault anahtar istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere aşağıdaki adımları izleyin.
@@ -271,4 +271,4 @@ Bu hızlı başlangıçta bir Anahtar Kasası oluşturdunuz, bir anahtar oluştu
 - [Azure Key Vault genel bakışını](../general/overview.md) okuyun
 - [Key Vault güvenliğine genel bakış](../general/security-overview.md) konusunu okuyun
 - [Azure Key Vault geliştirici kılavuzuna](../general/developers-guide.md) bakın
-- [Anahtar kasasına erişimi güvenli hale getirme](../general/secure-your-key-vault.md)
+- [Anahtar kasasına erişimi güvenli hale getirme](../general/security-overview.md)

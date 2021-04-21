@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 2bc9b1c5724fa7bab1fdf5ac9332d87ba03a6d11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0e076f3b248942870ba58a51c85c3df1f1277a4
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100545845"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750617"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Azure API Management ilkelerinde adlandırılmış değerleri kullanın
 
@@ -42,7 +42,7 @@ Gizli değerler, API Management (özel gizlilikler) şifreli dizeler olarak veya
 Anahtar Kasası gizliliklerin kullanılması önerilir API Management güvenliği artırmaya yardımcı olur:
 
 * Anahtar kasalarında depolanan gizli dizileri, hizmetler arasında yeniden kullanılabilir
-* Ayrıntılı [erişim ilkeleri](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) gizli anahtarlara uygulanabilir
+* Ayrıntılı [erişim ilkeleri](../key-vault/general/security-overview.md#privileged-access) gizli anahtarlara uygulanabilir
 * Anahtar kasasında güncellenen gizli diziler API Management otomatik olarak döndürülür. Anahtar kasasındaki güncelleştirmeden sonra, API Management bir adlandırılmış değer 4 saat içinde güncelleştirilir. Ayrıca, Azure portal kullanarak veya yönetim REST API aracılığıyla gizli dizi el ile yenileyebilirsiniz.
 
 ### <a name="prerequisites-for-key-vault-integration"></a>Anahtar Kasası tümleştirmesi için Önkoşullar

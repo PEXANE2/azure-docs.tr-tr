@@ -7,12 +7,12 @@ ms.date: 04/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 7d9575bedbdce96ef59e9b1d77b9034162bc16bf
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 6032300bd203db78e8cd147cf79300d6dcd9b1dc
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107730488"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751697"
 ---
 # <a name="transform-data-for-iot-central"></a>IoT Central için veri dönüştürme
 
@@ -51,7 +51,7 @@ Giriş sırasında cihaz verilerini dönüştürmek için iki seçenek vardır:
 
 - **IoT Edge**: verileri IoT Central uygulamanıza göndermeden önce aşağı akış cihazlarından verileri dönüştürmek için bir IoT Edge modülü kullanın.
 
-- **IoT Central cihaz Köprüsü**: [IoT Central cihaz Köprüsü](https://github.com/Azure/iotc-device-bridge) , Sigfox, parçacık ve nesnelerin ağı gibi diğer ıot cihaz bulutlarını IoT Central 'e bağlar. Cihaz Köprüsü, verileri iletmek için bir Azure işlevi kullanır ve cihazı, cihaz verilerini dönüştürmek için özelleştirebilirsiniz.
+- **IoT Central cihaz Köprüsü**: [IoT Central cihaz Köprüsü](howto-build-iotc-device-bridge.md) , Sigfox, parçacık ve nesnelerin ağı gibi diğer ıot cihaz bulutlarını IoT Central 'e bağlar. Cihaz Köprüsü, verileri iletmek için bir Azure işlevi kullanır ve cihazı, cihaz verilerini dönüştürmek için özelleştirebilirsiniz.
 
 ### <a name="use-iot-edge-to-transform-device-data"></a>Cihaz verilerini dönüştürmek için IoT Edge kullanma
 

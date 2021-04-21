@@ -3,19 +3,18 @@ title: Azure Key Vault erişim ilkesi atama
 description: Bir güvenlik sorumlusu veya uygulama kimliğine Key Vault erişim ilkesi atamak için Azure portal, Azure CLı veya Azure PowerShell kullanma.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4637715b2ba885d58ebb4c5f3ed40a79be2f815b
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 1c7c31f38d6a59f4ded17e1e1fd7e985ce59922a
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968739"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751427"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>Azure PowerShell kullanarak Key Vault erişim ilkesi atama
 
@@ -80,5 +79,5 @@ Yalnızca `-PermissionsToSecrets` `-PermissionsToKeys` `-PermissionsToCertificat
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Key Vault güvenliği: kimlik ve erişim yönetimi](security-overview.md#identity-management)
-- [Anahtar kasanızın güvenliğini sağlayın](secure-your-key-vault.md).
+- [Anahtar kasanızın güvenliğini sağlayın](security-overview.md).
 - [Geliştirici Kılavuzu Azure Key Vault](developers-guide.md)

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/29/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: fac2eb75d210a34f4c5cd50c4649921aadfcd5ee
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 43b0304ec6ac4266c3727990bf013c3dcfe523a3
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588505"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750257"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti’nde (AKS) desteklenen Kubernetes sürümleri
 
@@ -111,9 +111,9 @@ Kubernetes 'in yeni **İkincil** sürümleri için:
   * AKS, kullanım dışı bırakılmış API 'Ler nedeniyle yeni bir sürüm kümesinde sorunlara neden olursa kullanıcıları uyarmak için [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) 'ı kullanır. Azure Advisor, şu anda destek dışı olduklarında kullanıcıyı uyarmak için de kullanılır.
   * AKS, AKS ve Portal erişimi olan tüm kullanıcılar için kullanılabilir bir [hizmet durumu bildirimi](../service-health/service-health-overview.md) yayımlar ve abonelik yöneticilerine planlanan sürüm kaldırma tarihleriyle bir e-posta gönderir.
 
-    ````
-    To find out who is your subscription administrators or to change it, please refer to [manage Azure subscriptions](../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator).
-    ````
+    > [!NOTE]
+    > Abonelik yöneticilerinizi kim olduğunu öğrenmek veya değiştirmek için lütfen [Azure aboneliklerini yönetme](../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator)bölümüne bakın.
+    
   * Kullanıcıların, destek almaya devam etmek için desteklenen bir ikincil sürüm sürümüne yükseltilmesi için sürüm kaldırma işleminden **30 gün** daha vardır.
 
 Kubernetes 'in yeni **Düzeltme Eki** sürümleri için:

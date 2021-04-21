@@ -2,13 +2,13 @@
 title: İleti oturumlarını Azure Service Bus | Microsoft Docs
 description: Bu makalede, sınırsız sayıda ilişkili ileti dizisinin Birleşik ve sıralı işlenmesini sağlamak üzere oturumların nasıl kullanılacağı açıklanmaktadır.
 ms.topic: article
-ms.date: 04/12/2021
-ms.openlocfilehash: c9a1c4fdccbbc8b38805e23d4895448959126f10
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 04/19/2021
+ms.openlocfilehash: e22dfb2aa7372a227f70fd2bfa8f72d2161cda17
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308492"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750761"
 ---
 # <a name="message-sessions"></a>İleti oturumları
 Microsoft Azure Service Bus oturumlar, sınırsız sayıda ilgili ileti dizisinin birleşme ve sıralı işlenmesini sağlar. Oturumlar **ilk içinde, ilk çıkar (FIFO)** ve **istek-yanıt** desenlerinde kullanılabilir. Bu makalede, Service Bus kullanırken bu desenleri uygulamak için oturumların nasıl kullanılacağı gösterilmektedir. 
@@ -24,15 +24,6 @@ Her gönderici, oturum **kimliği** özelliğini oturum için benzersiz olan uyg
 Oturum kullanan sıralarda veya aboneliklerde oturum KIMLIĞI olan en az bir ileti olduğunda oturumlar mevcut duruma gelir. Bir oturum varsa, oturumun süresinin dolması veya kaybolması durumunda için tanımlı bir zaman veya API yoktur. Teorik olarak, bugün bir oturum için bir ileti alınabilir, bir yılda bir sonraki ileti ve oturum KIMLIĞI eşleşiyorsa, oturum Service Bus perspektifinden aynı olur.
 
 Bununla birlikte, genellikle bir uygulama, ilgili bir ileti kümesinin başladığı ve bittiği yerde açık bir kavram içerir. Service Bus belirli bir kural yapmaz. Örneğin, uygulamanız ilk ileti için **etiket** özelliğini **Başlangıç** olarak, ara iletiler için **içerik** ve son iletinin **sona erdirmek** için ayarlayabilir. İçerik iletilerinin göreli konumu, *SequenceNumber* **Başlangıç** iletisinden Delta *SequenceNumber* geçerli ileti olarak hesaplanabilir.
-
-Azure Resource Manager aracılığıyla ya da portalda bayrağını ayarlayarak ya da abonelik veya abonelikte [RequiresSession](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) özelliğini ayarlayarak özelliği etkinleştirebilirsiniz. İlgili API işlemlerini kullanmayı denemeden önce bu gereklidir.
-
-Portalda, aşağıdaki örneklerde gösterildiği gibi bir varlık (kuyruk veya abonelik) oluştururken oturumları etkinleştirebilirsiniz. 
-
-:::image type="content" source="./media/message-sessions/queue-sessions.png" alt-text="Kuyruğu sıra oluşturma sırasında etkinleştirin":::
-
-:::image type="content" source="./media/message-sessions/subscription-sessions.png" alt-text="Abonelik oluşturma sırasında oturumu etkinleştir":::
-
 
 > [!IMPORTANT]
 > Bir kuyrukta veya abonelikte Oturumlar etkinleştirildiğinde, istemci uygulamalar ***artık*** normal iletileri gönderemez/alamaz. Tüm iletilerin bir oturumun parçası olarak gönderilmesi (oturum kimliği ayarlanarak) ve oturum kabul edildiğinde alınması gerekir.
@@ -78,7 +69,7 @@ Oturum bağlamındaki ileti başına teslim sayısı tanımı, oturum yokluğund
 | Senaryo | İletinin teslim sayısı arttırılır |
 |----------|---------------------------------------------|
 | Oturum kabul edildi, ancak oturum kilidinin süresi dolduğunda (zaman aşımı nedeniyle) | Yes |
-| Oturum kabul edildi, oturumdaki iletiler (kilitli olsalar bile) tamamlanmaz ve oturum kapalı | Hayır |
+| Oturum kabul edildi, oturumdaki iletiler (kilitli olsalar bile) tamamlanmaz ve oturum kapalı | No |
 | Oturum kabul edildi, iletiler tamamlandı, sonra oturum açık olarak kapalı | Yok (Standart akışdır. Buradan iletiler oturumdan kaldırılır) |
 
 ## <a name="request-response-pattern"></a>İstek-yanıt deseninin
@@ -90,14 +81,19 @@ Birden çok uygulama, kendi isteklerini tek bir istek kuyruğuna gönderebilir v
 > İlk istekleri gönderen uygulamanın oturum KIMLIĞINI bilmesi ve yanıtı beklediği oturumun kilitli olması için oturumu kabul etmesi için kullanması gerekir. Uygulamanın örneğini bir oturum kimliği olarak benzersiz bir şekilde tanımlayan GUID kullanmak iyi bir fikirdir. Yanıtların belirli alıcılar tarafından kilitlenmek ve işlenmek üzere kullanılabilir olmasını sağlamak için, bir oturum işleyicisi veya kuyruğun oturum alıcısında bir zaman aşımı belirtilmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+Azure portal, PowerShell, CLı, Kaynak Yöneticisi şablonu, .NET, Java, Python ve JavaScript kullanarak bir kuyruk oluştururken ileti oturumlarını etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [ileti oturumlarını etkinleştirme](enable-message-sessions.md). 
 
+Azure Service Bus özellikleri araştırmak için istediğiniz dildeki örnekleri deneyin. 
+
+- [Java için Azure Service Bus istemci kitaplığı örnekleri](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [Python için Azure Service Bus istemci kitaplığı örnekleri](/samples/azure/azure-sdk-for-python/servicebus-samples/)
+- [JavaScript için Azure Service Bus istemci kitaplığı örnekleri](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [TypeScript için Azure Service Bus istemci kitaplığı örnekleri](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
 - [.NET için Azure. Messaging. ServiceBus örnekleri](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
-- [Java için Azure Service Bus istemci kitaplığı-örnekler](/samples/azure/azure-sdk-for-java/servicebus-samples/)
-- [Python için Azure Service Bus istemci kitaplığı-örnekler](/samples/azure/azure-sdk-for-python/servicebus-samples/)
-- [JavaScript için Azure Service Bus istemci kitaplığı-örnekler](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
-- [TypeScript için Azure Service Bus istemci kitaplığı-örnekler](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
-- [.Net Için Microsoft. Azure. ServiceBus örnekleri](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/) (oturumlar ve sessionState örnekleri)  
 
-Service Bus mesajlaşma hakkında daha fazla bilgi edinmek için bkz. [Service Bus kuyruklar, konular ve abonelikler](service-bus-queues-topics-subscriptions.md).
+Aşağıdaki eski .NET ve Java istemci kitaplıkları için örnekler bulun:
+- [.NET için Microsoft. Azure. ServiceBus örnekleri](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [Java için Azure-ServiceBus örnekleri](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)
 
 [1]: ./media/message-sessions/sessions.png
+

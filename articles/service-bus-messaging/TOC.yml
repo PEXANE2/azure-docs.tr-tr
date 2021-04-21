@@ -100,6 +100,8 @@
       items:
         - name: İleti oturumları
           href: message-sessions.md
+        - name: Yinelenen iletileri algılama
+          href: duplicate-detection.md
         - name: Konu başlığı filtreleri ve eylemleri
           href: topic-filters.md
         - name: İletilere göz atma
@@ -206,8 +208,6 @@
           items:
             - name: İletileri önceden getirme
               href: service-bus-prefetch.md
-            - name: Yinelenen iletileri algılama
-              href: duplicate-detection.md
             - name: İleti erteleme
               href: message-deferral.md
             - name: Otomatik yönlendirme ile varlıklar arasında zincir oluşturma
@@ -236,6 +236,14 @@
           href: service-bus-integrate-with-rabbitmq.md
     - name: Yönetme
       items:
+        - name: Bir kuyruk veya abonelik için oturumları etkinleştirme
+          href: enable-message-sessions.md
+        - name: Bir kuyruk veya konu için yinelenen saptamayı etkinleştirme
+          href: enable-duplicate-detection.md
+        - name: Bir kuyruk veya konu için bölümleri etkinleştirme
+          href: enable-partitions.md
+        - name: Bir kuyruk veya abonelik için Otomatik iletmeyi etkinleştirme
+          href: enable-auto-forward.md
         - name: Bölgeler arasında taşıma
           href: move-across-regions.md
         - name: Mesajlaşma birimlerini otomatik olarak güncelleştirme

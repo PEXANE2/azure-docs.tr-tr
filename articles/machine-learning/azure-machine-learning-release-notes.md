@@ -9,18 +9,42 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 7c22381d547029aedc5965d07033e8800fcbddc3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 1de495253dacac5aeab7dcff95f74aeed11782a8
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313156"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750743"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
 Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](/python/api/overview/azure/ml/intro) sayfasına gidin.
 
 __RSS akışı__: aşağıdaki URL 'yi kopyalayıp akış okuyucunuzun içine yapıştırarak Bu sayfa güncelleştirildikten sonra bildirim alın: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+
+## <a name="2021-04-19"></a>2021-04-19
+
+### <a name="azure-machine-learning-sdk-for-python-v1270"></a>Python v 1.27.0 için SDK Azure Machine Learning
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + **azureml-core**
+    + "AZUREML_ARTIFACTS_DEFAULT_TIMEOUT" ortam değişkeni aracılığıyla, yapıt yükleme için varsayılan zaman aşımı değerini geçersiz kılma özelliği eklendi.
+    + ScriptRunConfig üzerinde ortam nesnesindeki Docker ayarlarının dikkate alınmadığından bir hata düzeltildi.
+    + Bir hedefe kopyalarken bir veri kümesini bölümlemeye izin ver.
+    + Bir bağlantı işlevi aracılığıyla işlem hatlarında oluşturulan veri kümelerini geçirmeyi etkinleştirmek için OutputDatasetConfig öğesine özel bir mod eklendi. Bu destek geliştirmeleri, PR 'ler için tablolu bölümlemeyi etkinleştirmek üzere yapılmıştır.
+    + Azureml-Core ' a yeni bir KubernetesCompute işlem türü eklendi.
+  + **azureml-pipeline-core**
+    + OutputDatasetConfig 'e özel bir mod ekleme ve bir kullanıcının bir bağlantı işlevi aracılığıyla işlem hatlarında oluşturulan veri kümelerinde geçmesini sağlama. Dosya yolu hedefleri, yer tutucuları destekler. Bu, PR 'ler için tablolu bölümlendirme sağlamak üzere yapılan geliştirmeleri destekler.
+    + Yeni KubernetesCompute işlem türünün azureml-Core 'a eklenmesi.
+  + **azureml-pipeline-steps**
+    + Yeni KubernetesCompute işlem türünün azureml-Core 'a eklenmesi.
+  + **azureml-synapse**
+    + Azureml SYNAPSE 'in pencere öğesinde Spark Kullanıcı arabirimi URL 'sini güncelleştirme
+  + **azureml-train-automl-client**
+    + Tahmin görevi için STL feaizer, zaman serisinin sıklığından daha sağlam bir mevsimsellik algılaması kullanıyor.
+  + **azureml-train-core**
+    + Ortam nesnesindeki Docker ayarlarının dikkate alınmadığından oluşan hata düzeltildi.
+    + Yeni KubernetesCompute işlem türünün azureml-Core 'a eklenmesi.
 
 
 ## <a name="2021-04-05"></a>2021-04-05
@@ -1140,7 +1164,7 @@ Artık Azure Machine Learning doğrudan stüdyo Web deneyiminin içinde Machine 
 
 Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     
-| Web tabanlı araç  |     Açıklama  |
+| Web tabanlı araç  |     Description  |
 |---|---|
 | Azure ML Studio Not defterleri   |     Not defteri dosyaları için birinci sınıf yazma ve Azure ML Python SDK 'da bulunan tüm işlemleri destekleme. | 
 
@@ -1652,7 +1676,7 @@ Studio 'dan veri kümeleri, işlem hatları, modeller, uç noktaları ve daha fa
 
 Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
 
-| Web tabanlı araç | Açıklama | 
+| Web tabanlı araç | Description | 
 |-|-|-|
 | Not defteri VM (Önizleme) | Tam olarak yönetilen bulut tabanlı iş istasyonu | 
 | [Otomatik makine öğrenimi](tutorial-first-experiment-automated-ml.md) (Önizleme) | Machine Learning modeli geliştirmeyi otomatikleştirmek için kod deneyimi yok | 

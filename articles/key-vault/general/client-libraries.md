@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c5b07c1059e146aaf3c3c2a26038514eb614a3cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37e67ad869af23b51497e1497865f620bae612aa
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505928"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749195"
 ---
 # <a name="client-libraries-for-azure-key-vault"></a>Azure Key Vault için istemci kitaplıkları
 
@@ -35,4 +35,4 @@ Her SDK, aşağıdaki tabloya göre Anahtar Kasası, gizlilikler, anahtarlar ve 
 
 - Bkz. [Azure Key Vault Geliştirici Kılavuzu](developers-guide.md)
 - [Anahtar kasasında kimlik doğrulama](authentication.md) hakkında daha fazla bilgi edinin
-- [Key Vault erişimi güvenli hale getirme](secure-your-key-vault.md) hakkında daha fazla bilgi edinin
+- [Key Vault erişimi güvenli hale getirme](security-overview.md) hakkında daha fazla bilgi edinin

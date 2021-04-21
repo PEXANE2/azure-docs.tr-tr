@@ -3,19 +3,18 @@ title: Sık sorulan sorular-Azure Key Vault sertifika içeri aktarma
 description: Azure Key Vault sertifikalarını içeri aktarma hakkında sık sorulan soruların yanıtlarını alın.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: d8a06471129f8d79e1ced150f7410392b91d498b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 39fe4e77d701f8e9311ea343c88eb3b905496680
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728037"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749249"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Azure Key Vault sertifikaları içeri aktarma hakkında SSS
 

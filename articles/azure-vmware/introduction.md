@@ -1,18 +1,18 @@
 ---
 title: Giriş
-description: Azure 'da VMware tabanlı iş yüklerini dağıtmak ve yönetmek için Azure VMware çözümünün özelliklerini ve avantajlarını öğrenin.
+description: Azure 'da VMware tabanlı iş yüklerini dağıtmak ve yönetmek için Azure VMware çözümünün özelliklerini ve avantajlarını öğrenin. Azure VMware Çözüm SLA 'Sı, Azure VMware yönetim araçları 'nın (vCenter Server ve NSX Manager) en az% 99,9 kullanılabilir olacağını garanti eder.
 ms.topic: overview
-ms.date: 03/24/2021
-ms.openlocfilehash: 32dd73108dc12d7d7acc605f43a0fbf6d2cf1cd7
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.date: 04/20/2021
+ms.openlocfilehash: 9471aa2e427d28e0b8211dc8b25b2e61a4bfa8c4
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107999"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752651"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Azure VMware Çözümü nedir?
 
-Azure VMware çözümü, adanmış çıplak Azure altyapısından oluşturulan vSphere kümelerini içeren özel bulutlar sağlar. En düşük ilk dağıtım üç ana bilgisayar olmakla kalmaz, küme başına en fazla 16 ana bilgisayar için aynı anda ek konaklar eklenebilir.  Sağlanan tüm özel bulutların vCenter Server, vSAN, vSphere ve NSX-T vardır. Şirket içi ortamlarınızdaki iş yüklerini geçirebilir, yeni sanal makineler (VM 'Ler) dağıtabilir ve özel bulutlarınızdaki Azure hizmetlerini kullanabilirsiniz.
+Azure VMware çözümü, adanmış çıplak Azure altyapısından oluşturulan vSphere kümelerini içeren özel bulutlar sağlar. En düşük ilk dağıtım üç ana bilgisayar olmakla kalmaz, küme başına en fazla 16 ana bilgisayar için aynı anda ek konaklar eklenebilir.  Sağlanan tüm özel bulutların vCenter Server, vSAN, vSphere ve NSX-T vardır. Şirket içi ortamlarınızdaki iş yüklerini geçirebilir, yeni sanal makineler (VM 'Ler) dağıtabilir ve özel bulutlarınızdaki Azure hizmetlerini kullanabilirsiniz.  Azure VMware Yönetim Araçları (vCenter Server ve NSX Manager) en az% 99,9 kullanılabilir olacaktır. Daha fazla bilgi için bkz. [Azure VMware Çözüm SLA 'sı](https://aka.ms/avs/sla).
 
 Azure VMware çözümü, geliştirme ve yükseltmelerin üzerinde doğrulanmasını ve test edilmesine yönelik bir VMware tarafından doğrulanan çözümdür. Microsoft özel bulut altyapısını ve yazılımlarını yönetir ve korur. Özel bulutlarınızın iş yüklerini geliştirmeye ve çalıştırmaya odaklanabilmenize olanak tanır. 
 

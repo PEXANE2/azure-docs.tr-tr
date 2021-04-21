@@ -2,20 +2,19 @@
 title: İzleme ve uyarma Azure Key Vault | Microsoft Docs
 description: Anahtar kasanızın durumunu izlemek ve uyarıları yapılandırmak için bir pano oluşturun.
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 04/06/2020
-ms.author: sudbalas
-ms.openlocfilehash: 684c2f3bc7a15d7652ef271fd01872dc2149827d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 03/31/2021
+ms.author: mbaldwin
+ms.openlocfilehash: f8f9dd6d51b974ebd31804daf0402ca5535ffc92
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059607"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751589"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault için izleme ve uyarma
 
@@ -39,7 +38,7 @@ Key Vault için Azure Izleyici, genel bir izleme çözümü sağlamak için hem 
 
 **Kasa kullanılabilirliği** -Bu ölçüm her zaman %100 olmalıdır. Bu, anahtar kasanızın kesintiye neden olduğunu hızlıca gösterebildiklerinden, izlemeniz gereken önemli bir ölçümdür. 
 
-**Kasa doygunluğu** : bir anahtar kasasının, saniye başına kullanılabileceği istek sayısı, gerçekleştirilen işlem türüne bağlıdır. Bazı kasa işlemlerinde, saniye başına daha düşük bir istek vardır. Bu ölçüm, geçerli Anahtar Kasası kullanımınızı gösteren bir yüzde değeri ile birlikte olmak üzere tüm işlem türlerinde anahtar kasaınızın toplam kullanımını toplar. Anahtar Kasası hizmeti limitlerinin tam listesi için aşağıdaki belgeye bakın. [Azure Key Vault Hizmet Sınırları](service-limits.md)
+**Kasa doygunluğu** : bir anahtar kasasının, saniye başına kullanılabileceği istek sayısı, gerçekleştirilen işlem türüne bağlıdır. Bazı kasa işlemlerinde, saniye başına daha düşük bir istek vardır. Bu ölçüm, geçerli Anahtar Kasası kullanımınızı gösteren bir yüzde değeri ile birlikte olmak üzere tüm işlem türlerinde anahtar kasaınızın toplam kullanımını toplar. Anahtar Kasası hizmeti limitlerinin tam listesi için aşağıdaki belgeye bakın. [Hizmet sınırlarını Azure Key Vault](service-limits.md)
 
 **Hizmet API 'Si gecikmesi** -Bu ölçüm, hizmette ölçülen Anahtar Kasası çağrılarının ortalama gecikme süresini gösterir. İstemci veya istemci ile hizmet arasında ağ tarafından tüketilen zamanı içermez.
 
