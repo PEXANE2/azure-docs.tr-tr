@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: overview
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7f8bc4cadc720c7ac02a7246e741552e81eb3876
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ab54192480a1c36a27c175254d6d4d275b67c8b7
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057159"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835335"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Azure Sanal WAN nedir?
 
@@ -73,7 +73,7 @@ Sanal WAN, aşağıdaki bağlantı türlerine izin verir: siteden siteye VPN, ku
 
 Azure 'daki kaynaklarınıza site IPSec/ıKE (Ikev2) bağlantısı üzerinden kaynaklarınıza bağlanabilirsiniz. Daha fazla bilgi için bkz. [sanal WAN kullanarak siteden siteye bağlantı oluşturma](virtual-wan-site-to-site-portal.md). 
 
-Bu tür bir bağlantı, bir VPN cihazı veya bir sanal WAN Iş ortağı cihazı gerektirir. Sanal WAN iş ortakları, cihaz bilgilerini Azure 'a dışarı aktarma, Azure yapılandırmasını indirme ve Azure sanal WAN hub 'ına bağlantı kurma özelliği olan bağlantı için Otomasyon sağlar. Kullanılabilir iş ortaklarının ve konumların bir listesi için bkz. [sanal WAN iş ortakları ve konumları](virtual-wan-locations-partners.md) makalesi. VPN/SD-WAN cihaz sağlayıcınız söz konusu bağlantıda listelenmiyorsa, bağlantıyı ayarlamak için [sanal WAN kullanarak siteden siteye bağlantı oluşturma](virtual-wan-site-to-site-portal.md) ' yı da kullanabilirsiniz.
+Bu tür bir bağlantı, bir VPN cihazı veya bir sanal WAN Iş ortağı cihazı gerektirir. Sanal WAN iş ortakları, cihaz bilgilerini Azure 'a dışarı aktarma, Azure yapılandırmasını indirme ve Azure sanal WAN hub 'ına bağlantı kurma özelliği olan bağlantı için Otomasyon sağlar. Kullanılabilir iş ortaklarının ve konumların bir listesi için bkz. [sanal WAN iş ortakları ve konumları](virtual-wan-locations-partners.md) makalesi. VPN/SD-WAN cihaz sağlayıcınız belirtilen bağlantıda listelenmiyorsa, bağlantıyı ayarlamak için [sanal WAN kullanarak siteden siteye bağlantı oluşturma](virtual-wan-site-to-site-portal.md) adımını yalnızca adım adım yönergeler ' i kullanabilirsiniz.
 
 ### <a name="user-vpn-point-to-site-connections"></a><a name="uservpn"></a>Kullanıcı VPN (Noktadan siteye) bağlantıları
 

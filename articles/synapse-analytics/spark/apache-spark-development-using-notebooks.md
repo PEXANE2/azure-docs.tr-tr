@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 6859a2f8571c11e6ef93a5e5b1635cdbe39ad001
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: c28bc47945882e6b7bbd39d1ba8524a1f7491ceb
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107737679"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835226"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE Studio Not defterleri oluşturma, geliştirme ve bakımını yapma
 
@@ -331,6 +331,22 @@ Desteklenmez.
 
 ---
 
+### <a name="variable-explorer"></a>Değişken Gezgini
+
+# <a name="classical-notebook"></a>[Klasik Not defteri](#tab/classical)
+
+Desteklenmez.
+
+# <a name="preview-notebook"></a>[İnceleme Not defteri](#tab/preview)
+
+SYNAPSE Not defteri, PySpark (Python) hücreleri için geçerli Spark oturumunda değişken adı, tür, uzunluk ve değerin listesini görmeniz için yerleşik bir değişkenler Gezgini sağlar. Kod hücrelerinde tanımlandıklarında, daha fazla değişken otomatik olarak gösterilir. Her bir sütun başlığına tıkladığınızda tablodaki değişkenler sıralanır.
+
+Değişken Gezginini açmak veya gizlemek için Not defteri komut çubuğundaki **değişkenler** düğmesini seçebilirsiniz.
+
+![Azure-Not defteri-değişken-gezgin](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-variable-explorer.png)
+
+
+---
 
 ### <a name="cell-status-indicator"></a>Hücre durumu göstergesi
 

@@ -1,29 +1,25 @@
 ---
 title: Azure Güvenlik Merkezi 'nde mevzuat uyumluluk panosunu kullanma
 description: Güvenlik Merkezi 'ndeki mevzuat uyumluluk panosundan mevzuat standartları ekleme ve kaldırma hakkında bilgi edinin
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: c42d02e4-201d-4a95-8527-253af903a5c6
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/04/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: dab6b504fe026324251b7284fc3abdb52bb9911a
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 4ba65517b698896c57ca2254394efcadd6efbb1d
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738963"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835047"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Yasal uyumluluk panonuzdaki standartlar kümesini özelleştirme
 
 Azure Güvenlik Merkezi, kaynaklarınızın yapılandırmalarını endüstri standartları, yönetmelikler ve kıyaslamalar ile sürekli olarak karşılaştırır. **Mevzuat uyumluluk panosu** , uyumluluk için özel uyumluluk gereksinimlerini nasıl karşıladığınızı temel alarak öngörülerinizi açıklar.
 
+> [!TIP]
+> [Sık sorulan sorular](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard)bölümünde güvenlik merkezi 'nin yasal uyumluluk panosu hakkında daha fazla bilgi edinin.
 
 ## <a name="how-are-regulatory-compliance-standards-represented-in-security-center"></a>Yasal uyumluluk standartları Güvenlik Merkezi 'nde nasıl temsil edilir?
 
@@ -42,11 +38,13 @@ Varsayılan olarak, her abonelikte **Azure Güvenlik kıyaslaması** atanır. Bu
 
 Ayrıca, gibi standartlar da ekleyebilirsiniz:
 
-- NIST SP 800-53 R4
+- NIST SP 800-53
 - SWIFT CSP CSCF-V2020
 - UK resmi ve UK NHS
 - Kanada Federal PBMM
-- Azure CIS 1.1.0
+- Azure CIS 1.3.0
+- CMMC düzey 3
+- Yeni Zelanda ıSM kısıtlanmış
 
 Standartlar, kullanılabilir hale geldiğinde panoya eklenir.
 
@@ -71,13 +69,15 @@ Aşağıdaki adımlarda, desteklenen mevzuata standartlarından biriyle uyumlulu
 
 1. **Yasal uyumluluk standartları Ekle** sayfasında, aşağıdakiler dahil olmak üzere kullanılabilir standartlardan herhangi birini arayabilirsiniz:
 
-    - **NIST SP 800-53 R4**
-    - **NIST SP 800 171 R2**
+    - **NIST SP 800-53**
+    - **NıST SP 800 171**
     - **SWIFT CSP CSCF v2020**
     - **UKO ve UK NHS**
     - **Kanada Federal PBMM**
     - **HIPAA HITRUST**
-    - **Azure CIS 1.1.0**
+    - **Azure CIS 1.3.0**
+    - **CMMC düzey 3**
+    - **Yeni Zelanda ıSM kısıtlanmış**
     
     ![Azure Güvenlik Merkezi 'nin mevzuat uyumluluk panosuna mevzuat standartları ekleme](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
