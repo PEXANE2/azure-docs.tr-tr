@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Services için rol örneği başlatma hatası (genişletilmiş destek)
-description: Azure Cloud Services için rol örneği başlatma hatası giderme (genişletilmiş destek)
+title: Azure Cloud Services rol örneği başlatma hatası (genişletilmiş destek)
+description: Azure Cloud Services 'de rol örneği başlatma hatası giderme (genişletilmiş destek).
 ms.topic: article
 ms.service: cloud-services-extended-support
 author: surbhijain
@@ -8,114 +8,138 @@ ms.author: surbhijain
 ms.reviewer: gachadw
 ms.date: 04/01/2021
 ms.custom: ''
-ms.openlocfilehash: ced7675350c0e0deadf77837cf0f13ba54fffab9
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: f4892fe50c1832628181a11a5166c8cb705f79aa
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382364"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748962"
 ---
-# <a name="troubleshoot-azure-cloud-service-extended-support-roles-that-fail-to-start"></a>Başlayamayabilir Azure bulut hizmeti (genişletilmiş destek) rollerinin sorunlarını giderme
-İşte başlayamamasının başarısız olduğu Cloud Services (genişletilmiş destek) rolleriyle ilgili bazı yaygın sorunlar ve çözümleri aşağıda verilmiştir.
+# <a name="troubleshoot-azure-cloud-services-extended-support-roles-that-fail-to-start"></a>Başlayamayabilir Azure Cloud Services (genişletilmiş destek) rollerinin sorunlarını giderme
 
-## <a name="cloud-service-operation-failed-with-roleinstancestartuptimeouterror"></a>Bulut hizmeti Işlemi Roleınstancestartuptimeouterror ile başarısız oldu
-Hizmet sunucunuzun bir veya daha fazla rol örneği (genişletilmiş destek), belirlenen sürede başlatılamayabilir. Bu rol örneklerinin başlaması zaman alabilir veya geri dönüşüm olabilir ve rol örneği bir Roleınstancestartuptimeouterror ile başarısız olabilir bu bir rol uygulama hatasıdır. Rol uygulaması iki ana bölüm içerir: ' Başlangıç görevleri ' ve ' rol kodu (RoleEntryPoint uygulaması) ', her ikisi de rol geri dönüşüme neden olabilir. Rol kilitlenirse PaaS Aracısı her zaman yeniden başlatılır. 
+İşte başlayamamasının başarısız olduğu Azure Cloud Services (genişletilmiş destek) rolleriyle ilgili bazı yaygın sorunlar ve çözümleri aşağıda verilmiştir.
 
-Hata durumunda rol örneklerinin geçerli durumunu ve ayrıntılarını almak için şunu kullanın:
+## <a name="cloud-service-operation-fails-with-roleinstancestartuptimeouterror"></a>Bulut hizmeti işlemi Roleınstancestartuptimeouterror ile başarısız oluyor
 
-* PowerShell: bir bulut hizmetindeki rol örneğinin çalışma zamanı durumu hakkında bilgi almak için [Get-Azcloudserviceroleınstanceview](https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstanceview) cmdlet 'ini kullanın.
-```powershell
-Get-AzCloudServiceRoleInstanceView -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "WebRole1_IN_0"
- 
-Statuses           PlatformFaultDomain PlatformUpdateDomain
---------           ------------------- --------------------
-{RoleStateStarting} 0                   0
-```
+Azure Cloud Services (genişletilmiş destek) içindeki rol örneklerinizin bir veya daha fazlası başlatılabilir veya geri dönüşüm olabilir ve rol örneği başarısız olabilir. Rol uygulama hatası `RoleInstanceStartupTimeoutError` görüntülenir.
 
-* Azure portal: bulut hizmetinize gidin ve roller ve örnekler sekmesini seçin. Rol örneğine tıklayarak durum ayrıntılarını alın 
- 
-   :::image type="content" source="media/role-startup-failure-1.png" alt-text="Görüntüde portalda rol başlatma hatası gösterilir.":::
-   
-Başlatma, meşgul ve durdurma durumları arasında geçiş yapmak için Azure Cloud Services (genişletilmiş destek) rolleriyle ilgili bazı yaygın sorunlar ve çözümleri aşağıda bulabilirsiniz.
+Rol uygulaması, rol geri dönüşüme neden olabilecek iki bölüm içerir: *Başlangıç görevleri* ve *rol kodu (roleentrypoint uygulaması)*. 
+
+Rol durdurulduğunda, hizmet olarak platform (PaaS) Aracısı rolü yeniden başlatır.
+
+PowerShell veya Azure portal kullanarak hataları tanılamak üzere bir rol örneğinin geçerli durum ve ayrıntılarını alabilirsiniz:
+
+* **PowerShell**: rol örneğinin çalışma zamanı durumu hakkında bilgi almak için [Get-Azcloudserviceroleınstanceview](/powershell/module/az.cloudservice/get-azcloudserviceroleinstanceview) cmdlet 'ini kullanın:
+
+    ```powershell
+    Get-AzCloudServiceRoleInstanceView -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "WebRole1_IN_0"
+     
+    Statuses           PlatformFaultDomain PlatformUpdateDomain
+    --------           ------------------- --------------------
+    {RoleStateStarting} 0                   0
+    ```
+
+* **Azure Portal**: portalda bulut hizmeti örneğine gidin. Durum ayrıntılarını görüntülemek için **Roller ve örnekler**' i seçin ve ardından rol örneğini seçin.
+
+  :::image type="content" source="media/role-startup-failure-portal.png" alt-text="Azure portal rol başlatma hatası gösteren ekran görüntüsü.":::
 
 ## <a name="missing-dlls-or-dependencies"></a>Eksik DLL 'Ler veya bağımlılıklar
-Başlatma, meşgul ve durdurma durumları arasında geçiş yapan yanıt vermeyen roller ve roller, eksik DLL 'Ler veya derlemeler nedeniyle oluşabilir.
-Eksik DLL 'Ler veya derlemelerin belirtileri şu olabilir:
 
-* Rol örneğiniz **başlatma**, **meşgul** ve **durdurma** durumlarıyla geçiş yapıyor.
-* Rol örneğiniz **başlamaya** taşındı, ancak Web uygulamanıza gittiğinizde sayfa görünmez.
+Durumlar arasında geçiş yapan yanıt vermeyen roller ve roller, eksik DLL 'Ler veya derlemeler nedeniyle olabilir.
 
-Bu sorunları araştırmak için önerilen birkaç yöntem vardır.
+Eksik DLL 'Ler veya derlemelerin bazı belirtileri şunlardır:
 
-## <a name="diagnose-missing-dll-issues-in-a-web-role"></a>Eksik DLL sorunlarını bir Web rolünde tanılayın
-Bir Web rolünde dağıtılan bir Web sitesine gittiğinizde ve tarayıcı aşağıdakine benzer bir sunucu hatası görüntülerse, bir DLL 'nin eksik olduğunu gösterebilir.
+* Rol örneğiniz **başlatma**, **meşgul** ve **durdurma** durumlarında geçiş yapar.
+* Rol örneğiniz, **Ready** durumuna taşındı, ancak Web uygulamanıza giderseniz, sayfa görünmez.
 
-:::image type="content" source="media/role-startup-failure-2.png" alt-text="Görüntü, rol başlatma hatasında çalışma zamanı hatasını gösterir":::
 
-## <a name="diagnose-issues-by-turning-off-custom-errors"></a>Özel hataları kapatarak sorunları tanılayın
-Web rolü web.config, hizmetin kapalı ve yeniden dağıtılması için özel hata modunu ayarlamak üzere yapılandırılarak daha fazla hata bilgisi görüntülenebilir.
-Uzak Masaüstü kullanmadan daha fazla Tamam hata görüntülemek için:
-1.  Çözümü Microsoft Visual Studio açın.
-2.  Çözüm Gezgini, web.config dosyasını bulun ve açın.
-3.  web.config dosyasında, System. Web bölümünü bulun ve aşağıdaki satırı ekleyin:
- ```xml
-<customErrors mode="Off" />
-```
-4.  Dosyayı kaydedin.
-5.  Hizmeti yeniden paketleyin ve dağıtın.
-Hizmet yeniden dağıtıldıktan sonra, eksik derleme veya DLL adına sahip bir hata iletisi görürsünüz.
+Bir Web rolünde dağıtılan ve DLL dosyası eksik olan bir Web sitesi bu sunucu çalışma zamanı hatasını görüntüleyebilir:
 
-## <a name="diagnose-issues-by-viewing-the-error-remotely"></a>Hatayı uzaktan görüntüleyerek sorunları tanılayın
-Role erişmek ve daha fazla hata bilgisini uzaktan görüntülemek için Uzak Masaüstü 'Nü kullanabilirsiniz. Uzak Masaüstü kullanarak hataları görüntülemek için aşağıdaki adımları kullanın:
-1.  Bulut hizmeti için Uzak Masaüstü uzantısını etkinleştirin (genişletilmiş destek). Daha fazla bilgi için bkz. [Azure Portal kullanarak Uzak Masaüstü uzantısı Cloud Services (genişletilmiş destek) uygulama](enable-rdp.md)
-2.  Azure portal, örnek, örneğine uzak bir durumu gösterir. Cloud Services ile uzak masaüstü 'nü kullanma hakkında daha fazla bilgi için bkz. [Uzak Masaüstü ile rol örneklerine bağlanma](https://docs.microsoft.com/azure/cloud-services-extended-support/enable-rdp#connect-to-role-instances-with-remote-desktop-enabled)
-3.  Uzak Masaüstü yapılandırması sırasında belirtilen kimlik bilgilerini kullanarak sanal makinede oturum açın.
-4.  Komut penceresi açın.
-5.  IPconfig yazın.
-6.  IPv4 adresi değerini aklınızda edin.
-7.  Internet Explorer'ı açın.
-8.  Web uygulamasının adresini ve adını yazın. Örneğin, http:// <IPV4 Address> /default. aspx.
-Web sitesine gidildiğinde artık daha açık hata iletileri geri alınacaktır:
-* '/' Uygulamasında sunucu hatası.
-* Açıklama: geçerli Web isteğinin yürütülmesi sırasında işlenmeyen bir özel durum oluştu. Hata ve kodun kaynaklandığı yer hakkında daha fazla bilgi için lütfen yığın izlemesini gözden geçirin.
-* Özel durum ayrıntıları: System. ıO. FIleNotFoundException: dosya veya derleme ' Microsoft. WindowsAzure. StorageClient, Version = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35 ' veya bağımlılıklarından biri yüklenemedi. Sistem belirtilen dosyayı bulamıyor.
-Örnek:
+  :::image type="content" source="media/role-startup-failure-runtime-error.png" alt-text="Rol başlatma hatasından sonra bir çalışma zamanı hatası gösteren ekran görüntüsü.":::
 
-  :::image type="content" source="media/role-startup-failure-3.png" alt-text="Görüntü, rol başlatma hatasında özel durumu gösterir":::
+### <a name="resolve-missing-dlls-and-assemblies"></a>Eksik DLL 'Leri ve derlemeleri çözümle
+
+Eksik DLL 'Lerin ve derlemelerin hatalarını çözmek için:
+
+1. Visual Studio 'da çözümü açın.
+2. Çözüm Gezgini, *Başvurular* klasörünü açın.
+3. Hatada tanımlanan derlemeyi seçin.
+4. **Özellikler**' de yereli **Kopyala** özelliğini **true** olarak ayarlayın.
+5. Bulut hizmetini yeniden dağıtın.
+
+Hataların artık görünmediğini doğruladıktan sonra, hizmeti yeniden dağıtın. Dağıtımı ayarlarken, **.NET 4 rolleri Için IntelliTrace 'ı etkinleştir** onay kutusunu seçmeyin.
+
+## <a name="diagnose-role-instance-errors"></a>Rol örneği hatalarını tanılama
+
+Rol örnekleriyle ilgili sorunları tanılamak için aşağıdaki seçenekler arasından seçim yapın.
+
+### <a name="turn-off-custom-errors"></a>Özel hataları kapat
+
+Tüm hata bilgilerini görüntülemek için, Web rolünün *web.config* dosyasında, özel hata modunu olarak ayarlayın `off` ve ardından hizmeti yeniden dağıtın:
+
+1. Visual Studio 'da çözümü açın.
+2. Çözüm Gezgini, *web.config* dosyasını açın.
+3. `system.web`Bölümünde aşağıdaki kodu ekleyin:
+
+   ```xml
+   <customErrors mode="Off" />
+   ```
+
+4. Dosyayı kaydedin.
+5. Hizmeti yeniden paketleyin ve dağıtın.
+
+Hizmet yeniden dağıtıldığında, bir hata iletisi eksik derlemelerin veya dll 'Lerin adını içerir.
+
+### <a name="use-remote-desktop"></a>Uzak Masaüstü kullanma
+
+Role erişmek ve tamamlanan hata bilgilerini görüntülemek için Uzak Masaüstü 'Nü kullanın:
+
+1. [Azure Cloud Services Için Uzak Masaüstü uzantısı 'nı (genişletilmiş destek) ekleyin](enable-rdp.md).
+2. Azure portal, bulut hizmeti örneği bir **hazırlık** durumu gösterdiğinde, bulut hizmetinde oturum açmak Için uzak masaüstü 'nü kullanın. Daha fazla bilgi için bkz. [Uzak Masaüstü kullanarak rol örneklerine bağlanma](enable-rdp.md#connect-to-role-instances-with-remote-desktop-enabled).
+3. Uzak Masaüstü kurmak için kullandığınız kimlik bilgilerini kullanarak sanal makinede oturum açın.
+4. Bir komut istemi penceresi açın.
+5. Komut isteminde **ipconfig** yazın. IPv4 adresi için döndürülen değeri aklınızda edin.
+6. Microsoft Internet Explorer 'ı açın.
+7. Adres çubuğunda IPv4 adresini, ardından bir eğik çizgi ve Web uygulaması varsayılan dosyası adını girin. Örneğin, `http://<IPv4 address>/default.aspx`.
+
+Şimdi Web sitesine giderseniz, daha fazla bilgi içeren hata iletileri görürsünüz. Aşağıda bir örnek verilmiştir:
+
+:::image type="content" source="media/role-startup-failure-error-message.png" alt-text="Bir hata iletisine bir örnek gösteren ekran görüntüsü.":::
   
-## <a name="diagnose-issues-by-using-the-compute-emulator"></a>İşlem öykünücüsünü kullanarak sorunları tanılama
-Eksik bağımlılıkların ve web.config hatalarının sorunlarını tanılamak ve gidermek için Azure Işlem öykünücüsünü kullanabilirsiniz.
-Bu tanılama yöntemini kullanmanın en iyi sonucu için, temiz bir Windows yüklemesi olan bir bilgisayar veya sanal makine kullanmanız gerekir. 
-1.  [Azure SDK 'sını](https://azure.microsoft.com/downloads/) yükler 
-2.  Geliştirme makinesinde, bulut hizmeti projesini derleyin.
-3.  Windows Gezgini 'nde, bulut hizmeti projesinin bin\debug klasörüne gidin.
-4.  . CSX klasörünü ve. cscfg dosyasını, sorunları ayıklamak için kullandığınız bilgisayara kopyalayın.
-5.  Temiz makinede, bir Azure SDK komut Istemi penceresi açın ve csrun.exe/devstore: start yazın.
-6.  Komut isteminde,. cscfg dosyasının yolunu> <. CSX klasörüne <CSV Çalıştır ' ı>/Launchbrowseryazın.
-7.  Rol başlatıldığında, Internet Explorer 'da ayrıntılı hata bilgileri görürsünüz. Ayrıca, sorunu tanılamak için standart Windows sorun giderme araçları 'nı kullanabilirsiniz.
+### <a name="use-the-compute-emulator"></a>İşlem öykünücüsünü kullanma
 
-## <a name="diagnose-issues-by-using-intellitrace"></a>IntelliTrace kullanarak sorunları tanılama
-.NET Framework 4 kullanan çalışan ve Web rolleri için, Microsoft Visual Studio Enterprise kullanılabilen [IntelliTrace](https://docs.microsoft.com/visualstudio/debugger/intellitrace)kullanabilirsiniz.
-Hizmeti IntelliTrace etkin olarak dağıtmak için şu adımları izleyin:
-1.  Azure SDK 1,3 veya sonraki bir sürümünün yüklü olduğunu doğrulayın.
-2.  Visual Studio 'Yu kullanarak çözümü dağıtın. Dağıtım sırasında, .NET 4 rolleri için IntelliTrace 'i etkinleştir onay kutusunu işaretleyin.
-3.  Örnek başladıktan sonra Sunucu Gezgini açın.
-4.  Azure\Cloud Services düğümünü genişletin ve dağıtımı bulun.
-5.  Rol örneklerini görene kadar dağıtımı genişletin. Örneklerden birine sağ tıklayın.
-6.  IntelliTrace günlüklerini görüntüle ' yi seçin. IntelliTrace Özeti açılır.
-7.  Özetin özel durumlar bölümünü bulun. Özel durumlar varsa, Bölüm özel durum verileri olarak etiketlenir.
-8.  Özel durum verilerini genişletin ve aşağıdakilere benzer şekilde System. ıO. FileNotFoundException hatalarını arayın:
+Eksik bağımlılıkların ve *web.config* hatalarının sorunlarını tanılamak ve gidermek için Azure işlem öykünücüsünü kullanabilirsiniz. Sorunları tanılamak için bu yöntemi kullandığınızda, en iyi sonuçlar için, temiz bir Windows yüklemesi olan bir bilgisayar veya sanal makine kullanın.
 
-    :::image type="content" source="media/role-startup-failure-4.png" alt-text="Görüntü, rol başlatma hatasında özel durum verilerini gösterir" lightbox="media/role-startup-failure-4.png":::
+Azure işlem öykünücüsünü kullanarak sorunları tanılamak için:
 
-## <a name="address-missing-dlls-and-assemblies"></a>Eksik DLL 'Ler ve derlemeler için adres
-Eksik DLL ve derleme hatalarını gidermek için aşağıdaki adımları izleyin:
-1.  Visual Studio 'da çözümü açın.
-2.  Çözüm Gezgini, başvurular klasörünü açın.
-3.  Hatada tanımlanan derlemeye tıklayın.
-4.  Özellikler bölmesinde, yerel özelliği Kopyala ' yı bulun ve değeri true olarak ayarlayın.
-5.  Bulut hizmetini yeniden dağıtın.
-Tüm hataların düzeltilmediğini doğruladıktan sonra, .NET 4 rolleri için IntelliTrace 'i etkinleştir onay kutusunu işaretleyerek Hizmeti dağıtabilirsiniz.
+1. [Azure SDK 'sını](https://azure.microsoft.com/downloads/)yükler.
+2. Geliştirme bilgisayarında, bulut hizmeti projesini derleyin.
+3. Dosya Gezgini 'nde, bulut hizmeti projesinde *bin\Debug* klasörüne gidin.
+4. *. CSX* klasörünü ve *. cscfg* dosyasını, sorunlarını ayıklamak için kullanmakta olduğunuz bilgisayara kopyalayın.
+5. Temiz makinede, bir Azure SDK komut Istemi penceresi açın.
+6. Komut isteminde **csrun.exe/Devstore: Start** yazın.
+7. Ardından, **csrun \<path to .csx folder\> \<path to .cscfg file\> /launchbrowser** komutunu girin.
+8. Rol başlatıldığında, Internet Explorer ayrıntılı hata bilgilerini görüntüler.
 
-## <a name="next-steps"></a>Sonraki adımlar 
-- Azure PaaS bilgisayar tanılama verilerini kullanarak bulut hizmeti rolü sorunlarını giderme hakkında bilgi edinmek için bkz. [Kevin Williamson 'ın blog serisi](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
+Daha fazla tanılama gerekliyse standart Windows sorun giderme araçları ' nı kullanabilirsiniz.
+
+### <a name="use-intellitrace"></a>IntelliTrace kullanma
+
+.NET Framework 4 kullanan çalışan ve Web rolleri için [IntelliTrace](/visualstudio/debugger/intellitrace)kullanabilirsiniz. IntelliTrace Visual Studio Enterprise bulunabilir.
+
+Bulut hizmetinizi IntelliTrace 'e açık bir şekilde dağıtmak için:
+
+1. Azure SDK 1,3 veya sonraki bir sürümünün yüklü olduğunu doğrulayın.
+2. Visual Studio 'da çözümü dağıtın. Dağıtımı ayarlarken, **.NET 4 rolleri Için IntelliTrace 'ı etkinleştir** onay kutusunu işaretleyin.
+3. Rol örneği başladıktan sonra Sunucu Gezgini açın.
+4. **Azure\Cloud Services** düğümünü genişletin.
+5. Rol örneklerini listelemek için dağıtımı genişletin. Rol örneğine sağ tıklayın.
+6. **IntelliTrace günlüklerini görüntüle**' yi seçin.
+7. **IntelliTrace Özeti**' nde **özel durum verileri**' ne gidin.
+8. **Özel durum verilerini** genişletin ve bir hata olup olmadığına bakın `System.IO.FileNotFoundException` :
+
+   :::image type="content" source="media/role-startup-failure-exception-data.png" alt-text="Rol başlatma hatası için özel durum verisinin ekran görüntüsü." lightbox="media/role-startup-failure-exception-data.png":::
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Azure PaaS bilgisayar tanılama verilerini kullanarak bulut hizmeti rolü sorunlarını giderme](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)hakkında bilgi edinin.

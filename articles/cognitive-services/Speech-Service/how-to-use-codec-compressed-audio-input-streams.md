@@ -12,16 +12,16 @@ ms.date: 03/30/2020
 ms.author: amishu
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-two
-ms.openlocfilehash: f02a9a3b493ed0f3068e6e0ccd2daa40850a4fb6
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: db902019b4fb1237c8403c719862d8fca4ba4f28
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726187"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772532"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Konuşma SDK 'Sı ile codec ile sıkıştırılmış ses girişi kullanma
 
-Konuşma hizmeti SDK 'Sı, bir veya kullanarak konuşma hizmetine doğrudan sıkıştırılmış ses biçimleri göndermek için bir yol sağlar `PullStream` `PushStream` . (yaklaşım, doğrudan arka uca akışı yoksa, BIR ham PCM hala hizmete gönderilir).
+Konuşma hizmeti SDK 'Sı sıkıştırılmış ses biçimlerini kabul edebilir. Konuşmayı, ham PCM olarak konuşma hizmetine göndermeden önce sese ayırır.
 
 Platform | Diller | Desteklenen GStreamer sürümü
 | :--- | ---: | :---:

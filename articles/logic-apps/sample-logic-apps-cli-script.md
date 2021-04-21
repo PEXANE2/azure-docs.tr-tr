@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: a4553ceee482fb232e9ab56deca650be93f9dc6b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b81d9b4a637965dd103d8fa89305424686a0c72c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218052"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789924"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLı betik örneği-mantıksal uygulama oluşturma
 
@@ -197,7 +197,7 @@ Bu örnek betik, yeni bir kaynak grubu ve mantıksal uygulama oluşturmak için 
 
 | Komut | Notlar |
 | ------- | ----- |
-| [`az group create`](/cli/azure/group#az-group-create) | Mantıksal uygulamanızın kaynaklarından depolandığı bir kaynak grubu oluşturur. |
+| [`az group create`](/cli/azure/group#az_group_create) | Mantıksal uygulamanızın kaynaklarından depolandığı bir kaynak grubu oluşturur. |
 | [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | Parametresinde tanımlanan iş akışını temel alan bir mantıksal uygulama oluşturur `--definition` . |
 | [`az group delete`](/cli/azure/vm/extension) | Bir kaynak grubunu ve tüm iç içe geçmiş kaynaklarını siler. |
 
