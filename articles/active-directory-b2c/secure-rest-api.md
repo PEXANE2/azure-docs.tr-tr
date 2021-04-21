@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/19/2021
+ms.date: 04/21/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 462d69a8bde0dec2689ac30620276b5bcd335410
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: a1c161c28a589e4250fded13cd3d94ccdda97b55
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717702"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829827"
 ---
 # <a name="secure-your-restful-services"></a>Yeniden takip eden hizmetlerinizi güvenli hale getirin 
 
@@ -236,10 +236,10 @@ Bir erişim belirtecini çeşitli yollarla elde edebilirsiniz: bir [Federasyon k
 
 Aşağıdaki örnek, HTTP temel kimlik doğrulaması olarak geçirilen istemci kimlik bilgilerini kullanarak Azure AD belirteç uç noktasına bir istek yapmak için REST API teknik bir profil kullanır. Daha fazla bilgi için bkz. [Microsoft Identity platform ve OAuth 2,0 istemci kimlik bilgileri akışı](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). 
 
-Azure AD erişim belirteci almak için Azure AD kiracınızda bir uygulama oluşturun:
+Teknik profil, bir erişim belirteci almak için Azure AD ile etkileşime girebilmesi için bir uygulamayı kaydetmeniz gerekir. Azure AD B2C Azure AD platformunu kullanır. Uygulamayı Azure AD B2C kiracınızda veya yönettiğiniz herhangi bir Azure AD kiracısında oluşturabilirsiniz. Bir uygulamayı kaydetmek için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD kiracınızı içeren dizini seçin.
+1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD 'nizi veya Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure Active Directory**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure Active Directory** seçin.
 1. **Uygulama kayıtları** öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
 1. Uygulama için bir **ad** girin. Örneğin, *Client_Credentials_Auth_app*.
@@ -250,7 +250,7 @@ Azure AD erişim belirteci almak için Azure AD kiracınızda bir uygulama oluş
 
 İstemci kimlik bilgileri akışı için bir uygulama gizli anahtarı oluşturmanız gerekir. İstemci parolası, uygulama parolası olarak da bilinir. Gizli anahtar, uygulamanız tarafından erişim belirteci almak için kullanılacaktır.
 
-1. **Azure AD B2C-uygulama kayıtları** sayfasında oluşturduğunuz uygulamayı (örneğin *Client_Credentials_Auth_app*) seçin.
+1. **Azure AD-uygulama kayıtları** sayfasında oluşturduğunuz uygulamayı seçin, örneğin *Client_Credentials_Auth_app*.
 1. Sol taraftaki menüde, **Yönet** altında, **Sertifikalar & gizlilikler**' ı seçin.
 1. **Yeni istemci gizli dizisi**’ni seçin.
 1. **Açıklama** kutusuna istemci parolası için bir açıklama girin. Örneğin, *clientsecret1*.
@@ -270,7 +270,7 @@ Daha önce Azure AD B2C kiracınızda kaydettiğiniz istemci KIMLIĞINI ve istem
 7. İlke anahtarı için bir **ad** girin `SecureRESTClientId` . Ön ek, `B2C_1A_` anahtarınızın adına otomatik olarak eklenir.
 8. **Gizli** alanına, daha önce KAYDETTIĞINIZ istemci kimliğinizi girin.
 9. **Anahtar kullanımı** için öğesini seçin `Signature` .
-10. **Oluştur**’a tıklayın.
+10. **Oluştur**’u seçin.
 11. Aşağıdaki ayarlarla başka bir ilke anahtarı oluşturun:
     -   **Ad**: `SecureRESTClientSecret` .
     -   **Gizli**: daha önce kaydettiğiniz istemci gizli anahtarını girin
@@ -278,7 +278,7 @@ Daha önce Azure AD B2C kiracınızda kaydettiğiniz istemci KIMLIĞINI ve istem
 ServiceUrl 'Si için-kiracı adınızı Azure AD kiracınızın adıyla değiştirin. Kullanılabilir tüm seçenekler için bkz. [yeniden teknik profil](restful-technical-profile.md) başvurusu.
 
 ```xml
-<TechnicalProfile Id="SecureREST-AccessToken">
+<TechnicalProfile Id="REST-AcquireAccessToken">
   <DisplayName></DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
@@ -312,7 +312,7 @@ ServiceUrl 'Si için-kiracı adınızı Azure AD kiracınızın adıyla değişt
     ```xml
     <Item Key="AuthenticationType">Bearer</Item>
     ```
-1. *Useclaimasyataertoken* öğesini aşağıdaki gibi *yataertoken*'a değiştirin veya ekleyin. *Pulertoken* , taşıyıcı belirtecin alınacağı talebin adıdır (çıkış talebi kaynağından `SecureREST-AccessToken` ).
+1. *Useclaimasyataertoken* öğesini aşağıdaki gibi *yataertoken*'a değiştirin veya ekleyin. *Pulertoken* , taşıyıcı belirtecin alınacağı talebin adıdır (çıkış talebi kaynağından `REST-AcquireAccessToken` ).
 
     ```xml
     <Item Key="UseClaimAsBearerToken">bearerToken</Item>

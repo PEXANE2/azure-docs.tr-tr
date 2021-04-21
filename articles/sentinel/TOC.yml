@@ -61,6 +61,8 @@
       href: extend-sentinel-across-workspaces-tenants.md
     - name: Tablolardaki verilerinizi normalleştirme
       href: normalization.md
+    - name: Uzun süreli günlük tutma için Azure Veri Gezgini kullanma
+      href: store-logs-in-azure-data-explorer.md
     - name: Güvenlik
       items:
         - name: Güvenlik temeli

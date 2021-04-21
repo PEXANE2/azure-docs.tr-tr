@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ile ilgili teknoloji ve tolerans, d�
 services: container-service
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 27b32d7d10b691ed806e4d7aa31a095630d2bfc9
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 971916c3fc903ff5d69db2e0f82fd884acf807b3
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103632"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831591"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) gelişmiş zamanlayıcı özellikleri için en iyi yöntemler
 
@@ -42,13 +42,18 @@ Kubernetes Scheduler, düğümlerde hangi iş yüklerinin çalıştırılacağı
 * Yalnızca belirli yığınların zamanlanabilecek olduğunu göstermek için bir düğüme **taınt** uygulayın.
 * Daha sonra bir pod 'a **tolerans** uygulayıp, bir düğümün Taint 'i kabul *edebilmesine* izin verir.
 
-Bir aks kümesine Pod dağıttığınızda, Kubernetes yalnızca taınt toleransı ile hizalanan düğümlerde Pod 'yi zamanlar. Örneğin, GPU desteği olan düğümler için AKS kümenizdeki bir düğüm havuzunuzun olduğunu varsayalım. *GPU* gibi bir ad, sonra da zamanlama için bir değer tanımlarsınız. Bu değerin *NoSchedule* olarak ayarlanması, Kubernetes Scheduler 'ın düğüm üzerinde tanımsız toleransıyla planlamasını planladığını kısıtlar.
+Bir aks kümesine Pod dağıttığınızda, Kubernetes yalnızca taınt toleransı ile hizalanan düğümlerde Pod 'yi zamanlar. Örneğin, GPU desteği olan düğümler için AKS kümenize bir düğüm havuzu eklediğinizi varsayalım. *GPU* gibi bir ad, sonra da zamanlama için bir değer tanımlarsınız. Bu değerin *NoSchedule* olarak ayarlanması, Kubernetes Scheduler 'ın düğüm üzerinde tanımsız toleransıyla planlamasını planladığını kısıtlar.
 
-```console
-kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name taintnp \
+    --node-taints sku=gpu:NoSchedule \
+    --no-wait
 ```
 
-Düğümlere bir taınt uygulandıktan sonra, düğümlerde zamanlamaya izin veren Pod belirtiminde bir tolerans tanımlayacaksınız. Aşağıdaki örnek, `sku: gpu` `effect: NoSchedule` önceki adımda düğümüne uygulanan Taint 'i kabul etmek için ve öğesini tanımlar:
+Düğüm havuzundaki düğümlere uygulanan bir Taint ile,, düğümlerde zamanlamaya izin veren Pod belirtiminde bir tolerans tanımlayacaksınız. Aşağıdaki örnek, `sku: gpu` `effect: NoSchedule` önceki adımda düğüm havuzuna uygulanmış olan taınt 'in tolerans için ve ' i tanımlar:
 
 ```yaml
 kind: Pod
@@ -115,16 +120,22 @@ AKS 'deki bir düğüm havuzunu ölçeklendirdiğiniz zaman, litre ve tolerans, 
 > 
 > Düğüm seçicileri, düğüm benzeşimi veya Pod tabanlı benzeşim kullanarak düğümlerdeki düğüm zamanlamasını denetleyin. Bu ayarlar, Kubernetes Scheduler 'ın, düğümdeki donanımlar gibi iş yüklerini mantıksal olarak yalıtmak için izin verir.
 
-Litre ve toleransyonlar, kaynakları sabit bir kesme ile mantıksal olarak yalıtır. Pod bir düğümün Taint 'i kabul etmez, düğüm üzerinde zamanlanmamış. 
+Litre ve toleransyonlar, kaynakları sabit bir kesme ile mantıksal olarak yalıtır. Pod bir düğümün Taint 'i kabul etmez, düğüm üzerinde zamanlanmamış.
 
-Alternatif olarak, düğüm seçicileri de kullanabilirsiniz. Örneğin, düğümleri yerel olarak bağlı SSD depolamayı veya büyük miktarda belleği belirtecek şekilde etiketleyebilir ve sonra Pod belirtiminde bir düğüm Seçicisi tanımlayın. Kubernetes, bu düğümleri eşleşen bir düğümde zamanlar. 
+Alternatif olarak, düğüm seçicileri de kullanabilirsiniz. Örneğin, düğümleri yerel olarak bağlı SSD depolamayı veya büyük miktarda belleği belirtecek şekilde etiketleyebilir ve sonra Pod belirtiminde bir düğüm Seçicisi tanımlayın. Kubernetes, bu düğümleri eşleşen bir düğümde zamanlar.
 
 Toleranların aksine, eşleşen düğüm seçici olmayan yığınların etiketli düğümlerde zamanlanması devam edebilir. Bu davranış, düğümlerde kullanılmayan kaynakların kullanılmasına izin verir, ancak eşleşen düğüm seçiciyi tanımlayan düğüm önceliklerini önceliklendirir.
 
-Yüksek miktarda bellekle bir düğüm örneğine göz atalım. Bu düğümler, yüksek miktarda bellek isteyen düğüm önceliklerini önceliklendirin. Kaynakların boşta olmadığından emin olmak için diğer yığınların çalışmasına de izin verir.
+Yüksek miktarda bellekle bir düğüm örneğine göz atalım. Bu düğümler, yüksek miktarda bellek isteyen düğüm önceliklerini önceliklendirin. Kaynakların boşta olmadığından emin olmak için diğer yığınların çalışmasına de izin verir. Örnek izle komutu, *Myresourcegroup* Içindeki *Myakscluster* etiketli bir Node *= highmem* etiketine sahip bir düğüm havuzu ekler. Bu düğüm havuzundaki tüm düğümler bu etikete sahip olacaktır.
 
-```console
-kubectl label node aks-nodepool1 hardware=highmem
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name labelnp \
+    --node-count 1 \
+    --labels hardware=highmem \
+    --no-wait
 ```
 
 Pod belirtimi, `nodeSelector` bir düğüm üzerinde ayarlanan etiketle eşleşen bir düğüm seçici tanımlamak için özelliğini ekler:

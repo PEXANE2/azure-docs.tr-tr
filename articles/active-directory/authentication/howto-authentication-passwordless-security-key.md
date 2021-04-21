@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 04/21/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a88bb7904143f69a0eea84ea291c65e3244c70a1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 436a972693aafd220d277d7411c0da12636e9cc6
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765872"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829809"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>Passwordless güvenlik anahtarı oturum açmayı etkinleştir 
 
@@ -32,6 +32,7 @@ Bu belge güvenlik anahtarı tabanlı passwordless kimlik doğrulamasını etkin
 - WebAuthN, Windows 10 sürüm 1903 veya üstünü gerektirir * *
 
 Web Apps ve hizmetlerinde oturum açmak için güvenlik anahtarlarını kullanmak üzere, WebAuthN protokolünü destekleyen bir tarayıcıya sahip olmanız gerekir. Bunlara Microsoft Edge, Chrome, Firefox ve Safari dahildir.
+
 
 ## <a name="prepare-devices"></a>Cihazları hazırlama
 

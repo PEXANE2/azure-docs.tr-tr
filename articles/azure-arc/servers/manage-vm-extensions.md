@@ -3,12 +3,12 @@ title: Azure Arc etkin sunucularıyla VM Uzantısı yönetimi
 description: Azure Arc etkin sunucuları, Azure olmayan VM 'lerle dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan sanal makine uzantılarının dağıtımını yönetebilir.
 ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 67f1b5b3db6ef446342e8381d54d487af1f3426a
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: e28cd7753fc85f2e40385c65392fea73502aa05b
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389800"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832851"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc özellikli sunucularla sanal makine uzantısı yönetimi
 
@@ -30,7 +30,7 @@ Azure Arc etkin sunucuları VM uzantısı desteği aşağıdaki önemli avantajl
 
 - Log Analytics Aracısı VM uzantısını etkinleştirerek [Azure izleyici 'de Günlükler](../../azure-monitor/logs/data-platform-logs.md) ile analizler için günlük verileri toplayın. Bu, farklı türdeki kaynaklardaki veriler arasında karmaşık analizler yapmak için yararlıdır.
 
-- [VM'ler için Azure izleyici](../../azure-monitor/vm/vminsights-overview.md), Windows ve Linux sanal makinelerinizin performansını analiz eder ve diğer kaynaklardaki ve dış süreçlerdeki işlem ve bağımlılıklarını izler. Bu, hem Log Analytics Aracısı hem de bağımlılık Aracısı VM uzantılarını etkinleştirerek elde edilir.
+- [VM öngörüleri](../../azure-monitor/vm/vminsights-overview.md)sayesinde, Windows ve Linux sanal makinelerinizin performansını analiz eder ve diğer kaynaklardaki ve dış süreçlerdeki işlemleri ve bağımlılıklarını izler. Bu, hem Log Analytics Aracısı hem de bağımlılık Aracısı VM uzantılarını etkinleştirerek elde edilir.
 
 - Özel Betik uzantısını kullanarak karma bağlantılı makinelerde komut dosyalarını indirip yürütün. Bu uzantı, dağıtım sonrası yapılandırma, yazılım yükleme veya başka herhangi bir yapılandırma ya da yönetim görevi için yararlıdır.
 

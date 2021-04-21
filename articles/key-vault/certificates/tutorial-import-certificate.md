@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 67531c1c5d37b02f9107dfc487c10b2fcac734d8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: aebb0fa5da4cef655acc424c5ac90b628a4ba3af
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791976"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814451"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Öğretici: Azure Key Vault sertifikayı Içeri aktarma
 
@@ -153,4 +153,4 @@ Bu öğreticide bir Key Vault oluşturdunuz ve bir sertifikayı içeri aktardın
 
 - [Azure Key Vault 'da sertifika oluşturmayı yönetme](./create-certificate-scenarios.md) hakkında daha fazla bilgi edinin
 - [REST API 'Leri kullanarak sertifika alma](/rest/api/keyvault/importcertificate/importcertificate) örneklerine bakın
-- [Key Vault güvenliğine genel bakış](../general/security-overview.md) konusunu gözden geçirin
+- [Key Vault güvenliğine genel bakış](../general/security-features.md) konusunu gözden geçirin

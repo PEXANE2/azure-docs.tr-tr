@@ -6,18 +6,18 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: fa52327225667bd84047e74a89e3b1394964b22c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 08c66fe33da78d9b07931c37653b07ba07b22746
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769994"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813803"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>PostgreSQL için Azure veritabanı müşteri tarafından yönetilen bir anahtarla tek sunuculu veri şifrelemesi
 
 Azure PostgreSQL, Microsoft tarafından yönetilen anahtarları kullanarak varsayılan olarak rest verileri şifrelemek için [Azure depolama şifrelemesini](../storage/common/storage-service-encryption.md) kullanır. Azure PostgreSQL kullanıcıları için, SQL Server gibi diğer veritabanlarındaki Saydam Veri Şifrelemesi (TDE) çok benzer. Birçok kuruluş, müşteri tarafından yönetilen bir anahtar kullanarak verilere erişim için tam denetim gerektirir. PostgreSQL için Azure veritabanı için müşteri tarafından yönetilen anahtarlarla veri şifreleme tek sunucu, bekleyen veri koruması için kendi anahtarınızı (BYOK) almanıza olanak sağlar. Kuruluşlar bu sayede anahtarların ve verilerin yönetiminde görev ayrımı yapabilir. Müşteri tarafından yönetilen şifreleme senaryosunda anahtarın yaşam döngüsü, anahtar kullanım izinleri ve anahtar işlemlerinin denetimi konusunda sorumlu ve tam denetim sahibi olursunuz.
 
-PostgreSQL için Azure veritabanı için müşteri tarafından yönetilen anahtarlarla veri şifreleme tek sunucu, sunucu düzeyinde ayarlanır. Belirli bir sunucu için, anahtar şifreleme anahtarı (KEK) olarak adlandırılan ve hizmet tarafından kullanılan veri şifreleme anahtarını (DEK) şifrelemek için kullanılan müşteri tarafından yönetilen bir anahtar kullanılır. KEK, müşterinin sahip olduğu ve müşteri tarafından yönetilen [Azure Key Vault](../key-vault/general/security-overview.md) örneğinde depolanan bir asimetrik anahtardır. Anahtar şifreleme anahtarı (KEK) ve veri şifreleme anahtarı (DEK), bu makalenin ilerleyen kısımlarında daha ayrıntılı olarak açıklanmıştır.
+PostgreSQL için Azure veritabanı için müşteri tarafından yönetilen anahtarlarla veri şifreleme tek sunucu, sunucu düzeyinde ayarlanır. Belirli bir sunucu için, anahtar şifreleme anahtarı (KEK) olarak adlandırılan ve hizmet tarafından kullanılan veri şifreleme anahtarını (DEK) şifrelemek için kullanılan müşteri tarafından yönetilen bir anahtar kullanılır. KEK, müşterinin sahip olduğu ve müşteri tarafından yönetilen [Azure Key Vault](../key-vault/general/security-features.md) örneğinde depolanan bir asimetrik anahtardır. Anahtar şifreleme anahtarı (KEK) ve veri şifreleme anahtarı (DEK), bu makalenin ilerleyen kısımlarında daha ayrıntılı olarak açıklanmıştır.
 
 Key Vault, bulut tabanlı, dış anahtar yönetim sistemidir. Bu yüksek oranda kullanılabilir ve isteğe bağlı olarak FIPS 140-2 düzey 2 tarafından doğrulanan donanım güvenlik modülleri (HSM 'ler) tarafından desteklenen RSA şifreleme anahtarlarına yönelik ölçeklenebilir, güvenli depolama alanı sağlar. Depolanan bir anahtara doğrudan erişime izin vermez, ancak yetkili varlıklara şifreleme ve şifre çözme hizmetleri sağlar. Key Vault anahtarı oluşturabilir, içeri aktarılabilir veya [Şirket içi BIR HSM cihazından aktarılmasını](../key-vault/keys/hsm-protected-keys.md)sağlayabilir.
 

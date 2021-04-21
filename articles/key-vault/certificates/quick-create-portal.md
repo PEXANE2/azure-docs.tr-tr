@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: be138a0c97e02cace45a57d8d6b32d7c9aea83b7
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: b7a3126aef94ccdef7f6c9120ddeb6f20d872ab5
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749987"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815783"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure Key Vault bir sertifikayı ayarlama ve alma
 
@@ -88,4 +88,4 @@ Bu hızlı başlangıçta bir Key Vault oluşturdunuz ve içinde bir sertifika d
 
 - [Azure Key Vault genel bakışını](../general/overview.md) okuyun
 - [Azure Key Vault geliştirici kılavuzuna](../general/developers-guide.md) bakın
-- [Key Vault güvenliğine genel bakış](../general/security-overview.md) konusunu gözden geçirin
+- [Key Vault güvenliğine genel bakış](../general/security-features.md) konusunu gözden geçirin

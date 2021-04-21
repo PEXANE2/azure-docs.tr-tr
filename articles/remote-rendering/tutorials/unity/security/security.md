@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6e595f7ff313ff85a12209e8c124b9aa376b20b6
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: d30ab051e58573daefd16f178feb4fc94f2ec83f
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739755"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835479"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Öğretici: Azure uzaktan Işleme ve model depolamanın güvenliğini sağlama
 
@@ -405,8 +405,10 @@ Unity düzenleyicisinde, AAD kimlik doğrulaması etkin olduğunda, uygulamayı 
     **Aadauthentication** bileşeninin bir görünüm denetleyicisi olduğundan, oturum yetkilendirme kalıcı panelinden sonra bir istem görüntülemek için otomatik olarak bağlanır.
 1. **Appmenu**'in sağındaki panelde bulunan yönergeleri izleyin.
     Şuna benzer bir şey görmeniz gerekir: ![ AppMenu 'nin sağında görüntülenen yönerge panelini gösteren çizim.](./media/device-flow-instructions.png)
-    İkincil cihazınıza (veya aynı cihaza gözatıcıya) verilen kodlanmış bir işlem ve kimlik bilgilerinizi kullanarak oturum açtıktan sonra, istenen uygulamaya bir erişim belirteci döndürülür, bu durumda Unity Düzenleyicisi.
-1. Bu noktadan sonra, uygulamadaki her şey normal olarak devam etmelidir. Evrelerin beklendiği gibi ilerlemeden devam ediyorsanız, Unity konsolunda herhangi bir hata olup olmadığını denetleyin.
+    
+    Belirtilen kodu ikincil cihazınıza (veya aynı cihaza tarayıcınızda) girdikten ve kimlik bilgilerinizi kullanarak oturum açtıktan sonra, istenen uygulamaya bir erişim belirteci döndürülür, bu örnekte Unity Düzenleyicisi kullanılır.
+
+Bu noktadan sonra, uygulamadaki her şey normal olarak devam etmelidir. Evrelerin beklendiği gibi ilerlemeden devam ediyorsanız, Unity konsolunda herhangi bir hata olup olmadığını denetleyin.
 
 ## <a name="build-to-device"></a>Cihaza oluştur
 

@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/16/2021
+ms.date: 04/13/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9d2c42a664c8d8a591d95a312cdf1c0034c4d031
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c067dba3a8af87e354019154fad8304fe9edfbbc
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305472"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829665"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Azure AD Multi-Factor Authentication ayarlarını yapılandırma
 
@@ -347,7 +347,7 @@ Multi-Factor Authentication hatırlayın özelliği, Kullanıcı oturum açma s�
 
 Uygulamanın modern kimlik doğrulamasını destekleyip desteklemediğini fark etmeksizin, **X gün boyunca yeniden sorma** seçeneği, tarayıcı olmayan uygulamalarda gösterilmez. Bu uygulamalar, her saat yeni erişim belirteçleri sağlayan _yenileme belirteçlerini_ kullanır. Yenileme belirteci doğrulandıktan sonra Azure AD, son Multi-Factor Authentication 'ın belirtilen gün sayısı içinde gerçekleştiğini denetler.
 
-Özelliği, Web Apps 'teki kimlik doğrulama sayısını azaltır ve bu, normalde her seferinde uyarır. Bu özellik, daha düşük bir süre yapılandırılırsa, normalde her 90 günde bir istemde bulunan modern kimlik doğrulama istemcilerinin kimlik doğrulama sayısını artırabilir. , Koşullu erişim ilkeleriyle birleştirildiğinde kimlik doğrulama sayısını da artırabilir.
+Özelliği, Web Apps 'teki kimlik doğrulama sayısını azaltır ve bu, normalde her seferinde uyarır. Bu özellik, daha düşük bir süre yapılandırılırsa, normalde her 180 günde bir istemde bulunan modern kimlik doğrulama istemcilerinin kimlik doğrulama sayısını artırabilir. , Koşullu erişim ilkeleriyle birleştirildiğinde kimlik doğrulama sayısını da artırabilir.
 
 > [!IMPORTANT]
 > **Multi-Factor Authentication anımsa** özelliği, kullanıcılar Azure Multi-Factor Authentication sunucusu veya üçüncü taraf bir multi-factor authentication çözümü AD FS için multi-factor authentication gerçekleştirirken AD FS Oturumumu **açık tut** özelliği ile uyumlu değildir.

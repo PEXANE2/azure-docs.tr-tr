@@ -1,7 +1,7 @@
 ---
-title: Belge durumunu Al yöntemi
+title: Çeviri yöntemini iptal et
 titleSuffix: Azure Cognitive Services
-description: Belge durumunu Al yöntemi, belirli bir belgenin durumunu döndürür.
+description: Çeviri iptali yöntemi şu anda bir işleme veya sıraya alınmış işlemi iptal eder.
 services: cognitive-services
 author: jann-skotdal
 manager: nitinme
@@ -10,22 +10,23 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/25/2021
 ms.author: v-jansk
-ms.openlocfilehash: 36cd10a0b04be21e9f332832b4381662eeedd01d
+ms.openlocfilehash: 3de052f50676065a6656f77a0ea68cf8c9ab46a8
 ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833679"
+ms.locfileid: "107836268"
 ---
-# <a name="get-document-status"></a>Belge durumunu al
+# <a name="cancel-translation"></a>Çeviriyi iptal et
 
-Belge durumunu Al yöntemi, belirli bir belgenin durumunu döndürür. Yöntemi, istek KIMLIĞI ve belge KIMLIĞI temelinde belirli bir belge için çeviri durumunu döndürür.
+Şu anda işleme veya sıraya alınmış işlemi iptal edin. Bir işlem zaten tamamlanmışsa veya başarısız olduysa veya iptal edildiğinde iptal edilemez. Hatalı bir istek döndürülecek. Çeviri tamamlanmış tüm belgeler iptal edilemez ve ücretlendirilecektir. Tüm bekleyen belgeler mümkünse iptal edilecek.
 
 ## <a name="request-url"></a>İstek URL’si
 
-Şu kişiye bir `GET` istek gönder:
-```HTTP
-GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches/{id}/documents/{documentId}
+Şu kişiye bir `DELETE` istek gönder:
+
+```DELETE HTTP
+https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches/{id}
 ```
 
 [Özel etki alanı adınızı](../get-started-with-document-translation.md#find-your-custom-domain-name)bulmayı öğrenin.
@@ -40,43 +41,49 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 |Sorgu parametresi|Gerekli|Açıklama|
-|--- |--- |--- |
-|DocumentID değeri bulunmuyor|Doğru|Belge KIMLIĞI.|
-|kimlik|Doğru|Toplu iş KIMLIĞI.|
+|-----|-----|-----|
+|kimlik|Doğru|İşlem kimliği.|
+
 ## <a name="request-headers"></a>İstek üst bilgileri
 
 İstek üst bilgileri:
 
 |Üst Bilgiler|Description|
-|--- |--- |
+|-----|-----|
 |Ocp-Apim-Subscription-Key|Gerekli istek üst bilgisi|
 
 ## <a name="response-status-codes"></a>Yanıt durum kodları
 
 Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
 
-|Durum Kodu|Description|
-|--- |--- |
-|200|Tamam ögesini seçin. Başarılı istek ve hizmet tarafından kabul edildi. İşlem ayrıntıları döndürülür. HeadersRetry-After: ıntegeretag: String|
+| Durum Kodu| Description|
+|-----|-----|
+|200|Tamam ögesini seçin. İptal isteği gönderildi|
 |401|Erişilmesini. Kimlik bilgilerinizi denetleyin.|
-|404|Bulunamadı. Kaynak bulunamadı.|
-|500|İç sunucu hatası.|
+|404|Bulunamadı. Kaynak bulunamadı. 
+|500|İç sunucu hatası.
 |Diğer durum kodları|<ul><li>Çok fazla istek</li><li>Sunucu geçici olarak kullanılamıyor</li></ul>|
 
-## <a name="get-document-status-response"></a>Belge durumu yanıtını al
+## <a name="cancel-translation-response"></a>Çeviri yanıtını iptal et
 
-### <a name="successful-get-document-status-response"></a>Başarılı belge durumu yanıtı al
+### <a name="successful-response"></a>Başarılı yanıt
+
+Aşağıdaki bilgiler başarılı bir yanıtta döndürülür.
 
 |Ad|Tür|Description|
 |--- |--- |--- |
-|path|string|Belge veya klasörün konumu.|
+|kimlik|string|İşlemin KIMLIĞI.|
 |createdDateTimeUtc|string|İşlem Oluşturulma tarihi.|
 |lastActionDateTimeUtc|string|İşlemin durumunun güncelleştirildiği tarih ve saat.|
 |durum|Dize|İş veya belge için olası durumların listesi: <ul><li>İptal edildi</li><li>Hoparlör</li><li>Başarısız</li><li>NotStarted</li><li>Çalışma</li><li>Başarılı</li><li>ValidationFailed</li></ul>|
-|kullanıcısı|string|Dil Için iki harfli dil kodu. Dillerin listesine bakın.|
-|progress|sayı|Varsa çevirinin ilerlemesi|
-|kimlik|string|Belge KIMLIĞI.|
-|uygulanan karakter|tamsayı|API tarafından ücretlendirilen karakterler.|
+|Özet|StatusSummary|Aşağıda listelenen ayrıntıları içeren Özet.|
+|Özet. Toplam|tamsayı|Toplam belge sayısı.|
+|Özet. başarısız|tamsayı|Belge sayısı başarısız oldu.|
+|Özet. başarılı|tamsayı|Başarıyla çevrilen belge sayısı.|
+|Summary. InProgress|tamsayı|Sürmekte olan belge sayısı.|
+|Summary. notYetStarted|tamsayı|Henüz işleme başlamamış belge sayısı.|
+|Özet. iptal edildi|tamsayı|İptal edilen sayısı.|
+|Summary. Totalkarakterücret|tamsayı|API tarafından ücretlendirilen toplam karakter sayısı.|
 
 ### <a name="error-response"></a>Hata yanıtı
 
@@ -84,25 +91,34 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
 |--- |--- |--- |
 |kod|string|Üst düzey hata kodlarını içeren Numaralandırmalar. Olası değerler:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>Invalidrequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Yetkisiz</li></ul>|
 |message|string|Üst düzey hata iletisini alır.|
+|hedef|string|Hatanın kaynağını alır. Örneğin, geçersiz bir belge için "belgeler" veya "belge kimliği" olacaktır.|
 |ınnererror|InnerErrorV2|Bilişsel hizmetler API yönergelerine uyan yeni bir Iç hata biçimi. Gerekli özellikleri hata kodu, ileti ve isteğe bağlı özellikler hedefi, ayrıntılar (anahtar değeri çifti), iç hata (iç içe olabilir) içerir.|
 |ınnererror. Code|string|Kod hata dizesini alır.|
-|ınnererror. Message|string|Üst düzey hata iletisini alır.|
+|Dahili. EROOR. iletisi|string|Üst düzey hata iletisini alır.|
 
 ## <a name="examples"></a>Örnekler
 
 ### <a name="example-successful-response"></a>Örnek başarılı yanıt
+
 Aşağıdaki JSON nesnesi, başarılı bir yanıt örneğidir.
+
+Durum kodu: 200
 
 ```JSON
 {
-  "path": "https://myblob.blob.core.windows.net/destinationContainer/fr/mydoc.txt",
+  "id": "727bf148-f327-47a0-9481-abae6362f11e",
   "createdDateTimeUtc": "2020-03-26T00:00:00Z",
   "lastActionDateTimeUtc": "2020-03-26T01:00:00Z",
-  "status": "Running",
-  "to": "fr",
-  "progress": 0.1,
-  "id": "273622bd-835c-4946-9798-fd8f19f6bbf2",
-  "characterCharged": 0
+  "status": "Succeeded",
+  "summary": {
+    "total": 10,
+    "failed": 1,
+    "success": 9,
+    "inProgress": 0,
+    "notYetStarted": 0,
+    "cancelled": 0,
+    "totalCharacterCharged": 0
+  }
 }
 ```
 
@@ -110,17 +126,17 @@ Aşağıdaki JSON nesnesi, başarılı bir yanıt örneğidir.
 
 Aşağıdaki JSON nesnesi bir hata yanıtı örneğidir. Diğer hata kodlarının şeması aynı.
 
-Durum kodu: 401
+Durum kodu: 500
 
 ```JSON
 {
   "error": {
-    "code": "Unauthorized",
-    "message": "User is not authorized",
-    "target": "Document",
+    "code": "InternalServerError",
+    "message": "Internal Server Error",
+    "target": "Operation",
     "innerError": {
-      "code": "Unauthorized",
-      "message": "Operation is not authorized"
+      "code": "InternalServerError",
+      "message": "Unexpected internal server error has occurred"
     }
   }
 }

@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 04/07/2020
-ms.openlocfilehash: e4feaa8f1b30bfe31f4e645943f766b5736150b3
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 82811c731c158d970d7ec2c2350a0cba106f6a67
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/21/2021
-ms.locfileid: "107818377"
+ms.locfileid: "107835497"
 ---
 # <a name="using-azure-migrate-with-private-endpoints"></a>Azure geçişi 'ni özel uç noktalarla kullanma  
 
@@ -95,16 +95,33 @@ Bu, bir geçiş projesi oluşturur ve kendisine özel bir uç nokta ekler.
 
 #### <a name="download-the-appliance-installer-file"></a>Gereç yükleyicisi dosyasını indirin  
 
-> [!Note]
-> Gereç yükleyicisi dosyasını indirirken sorun yaşıyorsanız lütfen bir destek durumu oluşturun.
-
 Azure geçişi: bulma ve değerlendirme basit bir Azure geçişi gereci kullanır. Gereç sunucu bulma işlemini gerçekleştirir ve Azure geçişi 'ne sunucu yapılandırma ve performans meta verileri gönderir.
 
-Gereci ayarlamak için, portaldan yükleyici betiğini içeren daraltılmış dosyayı indirin. Sıkıştırılmış dosyayı, gereci barındıracak olan sunucuya kopyalayın. 
+Gereci ayarlamak için, portaldan yükleyici betiğini içeren daraltılmış dosyayı indirin. Sıkıştırılmış dosyayı, gereci barındıracak olan sunucuya kopyalayın. ZIP dosyasını indirdikten sonra, dosya güvenliğini doğrulayın ve gereci dağıtmak için yükleyici betiğini çalıştırın. 
+
+Aşağıda, her senaryonun karma değerleri ile ilgili karşıdan yükleme bağlantıları verilmiştir:
+
+Senaryo | İndirme bağlantısı | Karma değeri
+--- | --- | ---
+Hyper-V | [AzureMigrateInstaller-HyperV-Public-PrivateLink.zip](https://go.microsoft.com/fwlink/?linkid=2160557) | 17EFA01E3A7683F1CE2A08E3A9197A27D8BD2CC03C3AB5C6E00E4261A822BDB3
+Fiziksel | [AzureMigrateInstaller-Physical-Public-PrivateLink.zip](https://go.microsoft.com/fwlink/?linkid=2160558) | 01028F92C2095452F2DDCB89986CDC1F177AAC58E150A5B219A69CF1B7DA3BE0
+VMware | [AzureMigrateInstaller-VMware-public-PrivateLink.zip](https://go.microsoft.com/fwlink/?linkid=2160648) | 66D3217AEC1DE51D84EC608B22BDDAV605EC9C4FAFX06FC691/B 985886627C224
+VMware genişleme | [AzureMigrateInstaller-VMware-Public-Scaleout-PrivateLink.zip](https://go.microsoft.com/fwlink/?linkid=2160811) | 42C1E8D5CF428E35E5B98E4E7465DD08439F0FD5C319340CE3E3ADC3DC1717A6
+
+#### <a name="verify-security"></a>Güvenliği doğrulama
+
+Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
+
+1. Dosyayı indirdiğiniz sunucuda bir yönetici komut penceresi açın.
+2. Daraltılmış dosyanın karmasını oluşturmak için aşağıdaki komutu çalıştırın
+
+    - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
+    - Genel bulut için örnek kullanım: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-public-PrivateLink.zip SHA256 ```
+
+3.  Yukarıdaki tablodaki karma değerleri karşılaştırarak gerecin en son sürümünü doğrulayın.
 
 Sunucunun seçilen senaryo (VMware/Hyper-V/fiziksel veya diğer) için [donanım gereksinimlerini](https://docs.microsoft.com/azure/migrate/migrate-appliance) karşıladığından ve gerekli Azure URL 'lerine ( [genel](./migrate-appliance.md#public-cloud-urls-for-private-link-connectivity) ve [kamu](./migrate-appliance.md#government-cloud-urls-for-private-link-connectivity) bulutlarına) bağlanabildiğinden emin olun.
 
-ZIP dosyasını indirdikten sonra, gereci dağıtmak için yükleyici betiğini çalıştırın.
 
 #### <a name="run-the-script"></a>Betiği çalıştırın
 
@@ -113,7 +130,7 @@ ZIP dosyasını indirdikten sonra, gereci dağıtmak için yükleyici betiğini 
 3. PowerShell dizinini, indirilen sıkıştırılmış dosyadan ayıklanan içerikleri içeren klasör olarak değiştirin.
 4. Komut dosyası **AzureMigrateInstaller.ps1** aşağıdaki gibi çalıştırın:
 
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1```
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-public-PrivateLink> .\AzureMigrateInstaller.ps1```
    
 5. Betik başarıyla çalıştıktan sonra gereci yapılandırabilmeniz için gereç yapılandırma yöneticisini başlatır. Herhangi bir sorunla karşılaşırsanız, C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log konumundaki betik günlüklerini gözden geçirin.
 

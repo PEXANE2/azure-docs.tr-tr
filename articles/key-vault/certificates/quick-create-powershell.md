@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: a641ca1206cb41ded0513db72daa278dc3753c85
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 32150fb4cce76d5a2537c5ec969f265e0d8aae20
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750401"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816197"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Azure Key Vault bir sertifikayı ayarlama ve alma
 
@@ -84,4 +84,4 @@ Bu hızlı başlangıçta bir Key Vault oluşturup içinde bir sertifika depolad
 
 - [Azure Key Vault genel bakışını](../general/overview.md) okuyun
 - [Azure PowerShell Key Vault cmdlet 'lerine](/powershell/module/az.keyvault/) yönelik başvuruya bakın
-- [Key Vault güvenliğine genel bakış](../general/security-overview.md) konusunu gözden geçirin
+- [Key Vault güvenliğine genel bakış](../general/security-features.md) konusunu gözden geçirin

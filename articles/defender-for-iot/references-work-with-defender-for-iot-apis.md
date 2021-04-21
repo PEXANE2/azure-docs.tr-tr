@@ -3,12 +3,12 @@ title: IoT API’leri için Defender ile çalışma
 description: Sensörler ve yönetim konsolları tarafından bulunan verilere erişmek ve bu verilerle ilgili eylemler gerçekleştirmek için bir dış REST API kullanın.
 ms.date: 12/14/2020
 ms.topic: reference
-ms.openlocfilehash: e7833a20d4f708ecb5b80394fae2c56fc07c9489
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 0e3659d8d5e6829651012dae02ca74c5ecacaf0c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752741"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829971"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>IoT algılayıcısı ve Yönetim Konsolu API 'Leri için Defender
 
@@ -622,8 +622,8 @@ Uyarıları temsil eden JSON nesneleri dizisi.
 | **altyapısına** | Dize | No | Protokol Ihlali, Ilke Ihlali, kötü amaçlı yazılım, anomali veya operasyonel |
 | **sourceDevice** | Sayısal | Yes | Cihaz Kimliği |
 | **Hedef cihaz** | Sayısal | Yes | Cihaz Kimliği |
-| **sourceDeviceAddress** | Sayısal | Yes | IP, MAC, null |
-| **destinationDeviceAddress** | Sayısal | Yes | IP, MAC, null |
+| **sourceDeviceAddress** | Sayısal | Yes | ıP, MAC |
+| **destinationDeviceAddress** | Sayısal | Yes | ıP, MAC |
 | **Düzeltme adımları** | Dize | Yes | Uyarı bölümünde açıklanan düzeltme adımları |
 | **AdditionalInformation** | Ek bilgi nesnesi | Yes | - |
 
@@ -2056,12 +2056,12 @@ Cihazları temsil eden JSON nesneleri dizisi.
 | **altyapısına** | Dize | No | Protokol Ihlali, Ilke Ihlali, kötü amaçlı yazılım, anomali veya operasyonel |
 | **sourceDevice** | Sayısal | Yes | Cihaz Kimliği |
 | **Hedef cihaz** | Sayısal | Yes | Cihaz Kimliği |
-| **sourceDeviceAddress** | Sayısal | Yes | IP, MAC, null |
-| **destinationDeviceAddress** | Sayısal | Yes | IP, MAC, null |
+| **sourceDeviceAddress** | Sayısal | Yes | ıP, MAC |
+| **destinationDeviceAddress** | Sayısal | Yes | ıP, MAC |
 | **Düzeltme adımları** | Dize | Yes | Uyarı bölümünde gösterilen düzeltme adımları|
-| **sensorName** | Dize | Yes | Konsolda Kullanıcı tarafından tanımlanan sensör adı|
-|**ZoneName & lt** | Dize | Yes | Konsolda sensörle ilişkili bölgenin adı|
-| **siteName** | Dize | Yes | Konsolda sensörle ilişkili sitenin adı |
+| **sensorName** | Dize | Yes | Kullanıcı tarafından tanımlanan sensör adı |
+|**ZoneName & lt** | Dize | Yes | Sensörle ilişkili bölgenin adı|
+| **siteName** | Dize | Yes | Sensörle ilişkili sitenin adı |
 | **AdditionalInformation** | Ek bilgi nesnesi | Yes | - |
 
 Aşağıdaki bilgiler için/api/v2/gereklidir:
