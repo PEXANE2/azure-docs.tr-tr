@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
 ms.custom: references_regions
-ms.openlocfilehash: b896c25434374590d9eefb591b09e907f0c99273
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: fa800fe030005fd96dfdd7c35b886f5ae220d5b5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107564499"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107799956"
 ---
 > [!IMPORTANT]
-> Büyük miktarda telefon numarası almak için, **[Bu formu](https://github.com/Azure/Communication/blob/master/Forms/ACS%20-%20Bulk%20Number%20Acquisition.docx)** doldurun ve gcstnmsd@microsoft.com "ACS numarası isteği:" ile başlayan bir konu satırıyla e-posta gönderin.
+> Yüksek hacimli siparişler veya istediğiniz telefon numaranız kullanılamaz durumda olduğunda, **[Bu formu](https://github.com/Azure/Communication/blob/master/Forms/ACS%20-%20Bulk%20Number%20Acquisition.docx)** doldurun ve gcstnmsd@microsoft.com "ACS numarası isteği:" ile başlayan bir konu satırıyla e-posta gönderin.
 

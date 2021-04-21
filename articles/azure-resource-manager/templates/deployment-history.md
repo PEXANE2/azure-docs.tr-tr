@@ -4,12 +4,12 @@ description: Portal, PowerShell, Azure CLı ve REST API Azure Resource Manager d
 tags: top-support-issue
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 898af2365dfbb0f61b6b87e7532c9256269d799a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e7ed2096a696efdc9a2654a8fd0c294c82cbd4f7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732780"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781874"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Azure Resource Manager ile dağıtım geçmişini görüntüle
 
@@ -61,13 +61,13 @@ Bağıntı KIMLIĞINI almak için şunu kullanın:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bir kaynak grubunun dağıtımını listelemek için [az Deployment Group List](/cli/azure/group/deployment#az-deployment-group-list)kullanın.
+Bir kaynak grubunun dağıtımını listelemek için [az Deployment Group List](/cli/azure/group/deployment#az_deployment_group_list)kullanın.
 
 ```azurecli-interactive
 az deployment group list --resource-group ExampleGroup
 ```
 
-Belirli bir dağıtımı almak için [az Deployment Group Show](/cli/azure/group/deployment#az-deployment-group-show)' ı kullanın.
+Belirli bir dağıtımı almak için [az Deployment Group Show](/cli/azure/group/deployment#az_deployment_group_show)' ı kullanın.
 
 ```azurecli-interactive
 az deployment group show --resource-group ExampleGroup --name ExampleDeployment
@@ -81,13 +81,13 @@ az deployment group show --resource-group ExampleGroup --name ExampleDeployment 
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-Bir kaynak grubunun dağıtımlarını listelemek için aşağıdaki işlemi kullanın. İstekte kullanılacak en son API sürüm numarası için bkz.  [kaynak grubuna göre dağıtımlar-Listele](/rest/api/resources/resources/deployments/listbyresourcegroup).
+Bir kaynak grubunun dağıtımlarını listelemek için aşağıdaki işlemi kullanın. İstekte kullanılacak en son API sürüm numarası için bkz.  [kaynak grubuna göre dağıtımlar-Listele](/rest/api/resources/deployments/listbyresourcegroup).
 
 ```
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/?api-version={api-version}
 ```
 
-Belirli bir dağıtımı almak için. aşağıdaki işlemi kullanın. İstekte kullanılacak en son API sürüm numarası için bkz. [dağıtımlar-al](/rest/api/resources/resources/deployments/get).
+Belirli bir dağıtımı almak için. aşağıdaki işlemi kullanın. İstekte kullanılacak en son API sürüm numarası için bkz. [dağıtımlar-al](/rest/api/resources/deployments/get).
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
@@ -147,7 +147,7 @@ Başarısız işlemlerin durum iletisini almak için aşağıdaki komutu kullan�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bir kaynak grubuna dağıtıma yönelik dağıtım işlemlerini görüntülemek için [az Deployment Operation Group List](/cli/azure/deployment/operation/group#az-deployment-operation-group-list) komutunu kullanın. Azure CLı 2.6.0 veya sonraki bir sürümü olmalıdır.
+Bir kaynak grubuna dağıtıma yönelik dağıtım işlemlerini görüntülemek için [az Deployment Operation Group List](/cli/azure/deployment/operation/group#az_deployment-operation-group-list) komutunu kullanın. Azure CLı 2.6.0 veya sonraki bir sürümü olmalıdır.
 
 ```azurecli-interactive
 az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment
@@ -167,7 +167,7 @@ az deployment operation group list --resource-group ExampleGroup --name ExampleD
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-Dağıtım işlemlerini almak için aşağıdaki işlemi kullanın. İstekte kullanılacak en son API sürüm numarası için bkz. [dağıtım işlemleri-listesi](/rest/api/resources/resources/deploymentoperations/list).
+Dağıtım işlemlerini almak için aşağıdaki işlemi kullanın. İstekte kullanılacak en son API sürüm numarası için bkz. [dağıtım işlemleri-listesi](/rest/api/resources/deploymentoperations/list).
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
@@ -214,4 +214,3 @@ Yanıt bir hata iletisi içerir.
 * Belirli dağıtım hatalarını çözümlemede yardım için bkz. [Azure 'a kaynak dağıtılırken sık karşılaşılan hataları çözümleme Azure Resource Manager](common-deployment-errors.md).
 * Dağıtımların geçmişte nasıl yönetildiği hakkında bilgi edinmek için bkz. [dağıtım geçmişinden otomatik silme işlemleri](deployment-history-deletions.md).
 * Yürütmeden önce dağıtımınızı doğrulamak için, bkz. [Azure Resource Manager şablonuyla kaynak grubu dağıtma](deploy-powershell.md).
-

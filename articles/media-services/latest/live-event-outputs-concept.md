@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: dec4eec16ba24baf31d911db882625479c33fb3b
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 44ab9e4ff83fec2ddfbd1cb44f503298d12789d1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278635"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766308"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Canlı etkinlikler ve canlı çıktılar Media Services
 
@@ -169,10 +169,10 @@ Canlı olay oluşturulduktan sonra, canlı şirket içi kodlayıcıya sağlayaca
     |Dil|Statik konak adı URL 'sini etkinleştir|Erişim belirteci ayarlama|
     |---|---|---|
     |REST|[Properties. useStaticHostname](/rest/api/media/liveevents/create#liveevent)|[Liveeventınput. useStaticHostname](/rest/api/media/liveevents/create#liveeventinput)|
-    |CLI|[--Use-static-hostname](/cli/azure/ams/live-event#az-ams-live-event-create)|[--erişim-belirteç](/cli/azure/ams/live-event#optional-parameters)|
+    |CLI|[--Use-static-hostname](/cli/azure/ams/live-event#az_ams_live_event_create)|[--erişim-belirteç](/cli/azure/ams/live-event#optional-parameters)|
     |.NET|[LiveEvent. useStaticHostname](/dotnet/api/microsoft.azure.management.media.models.liveevent.usestatichostname?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Management_Media_Models_LiveEvent_UseStaticHostname)|[Liveeventınput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
 
-### <a name="live-ingest-url-naming-rules"></a>Canlı alma URL'si adlandırma kuralları
+### <a name="live-ingest-url-naming-rules"></a>Canlı alma URL 'SI adlandırma kuralları
 
 * Aşağıdaki *rastgele* dize, 128 bit bir onaltılık sayıdır (0-9 a-f arası 32 karakterden oluşur).
 * *erişim belirteciniz*: statik konak adı ayarı kullanılırken AYARLADıĞıNıZ geçerli GUID dizesi. Örneğin, `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
