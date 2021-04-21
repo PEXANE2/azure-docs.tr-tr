@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 04/12/2021
 ms.author: banders
-ms.openlocfilehash: 13a9e3ad1dcdfa230d757230e3fdea91e4ee9d23
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b2cdb106ab1c77c23626258f7e0708a20ffd3c4e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310402"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772262"
 ---
 # <a name="buy-a-reservation"></a>Ayırma satın alma
 
@@ -133,4 +133,8 @@ Bireysel abonelikleri olan müşteriler için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [Ayırmalar izinleri hakkında daha fazla bilgi edinin](view-reservations.md)
 - [Azure kaynakları için Ayırmaları Yönetme](manage-reserved-vm-instance.md)
+- [REST API 'Lerini kullanarak otomatikleştirme](/rest/api/reserved-vm-instances/reservationorder)
+- [Azure PowerShell kullanarak otomatikleştirin](/powershell/module/az.reservations)
+- [CLı kullanarak otomatikleştirme](/cli/azure/reservations)
