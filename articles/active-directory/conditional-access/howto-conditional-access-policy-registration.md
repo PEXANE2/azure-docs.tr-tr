@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 04/20/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38ddd825321a3cb7947eb76c4f5f6cdbc6cb3414
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 05aca853e2eba98d224131c98751b4e2f4200024
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055714"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765656"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Koşullu Erişim: Güvenlik bilgileri kaydının güvenliğini sağlama
 
@@ -85,3 +85,5 @@ Dizininizde Multi-Factor Authentication 'a kaydolmaları gereken [Konuk kullanı
 [Koşullu erişim yalnızca rapor modunu kullanarak etkiyi belirleme](howto-conditional-access-insights-reporting.md)
 
 [Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)
+
+[Kullanıcıların kimlik doğrulama bilgilerini yeniden onaylamasını gerektir](../authentication/concept-sspr-howitworks.md#reconfirm-authentication-information)

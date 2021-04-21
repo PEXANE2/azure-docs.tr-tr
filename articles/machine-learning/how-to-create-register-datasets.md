@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 18a39adfff572b81e5fbb9d7a42c71834b93ad13
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: f47d610a24de2cfc8f1131f61afc8c8173a34376
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575760"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786630"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -193,7 +193,7 @@ Herhangi bir veri için bir denetimi veya araştırma yapmanız gerekmiyorsa bkz
 
 Filtreleme özellikleri, sahip olduğunuz veri kümesinin türüne bağlıdır. 
 > [!IMPORTANT]
-> Veri kümelerini genel önizleme yöntemiyle filtrelemek, [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) [deneysel](/python/api/overview/azure/ml/#stable-vs-experimental) önizleme özelliğidir ve herhangi bir zamanda değişebilir. 
+> Veri kümelerini önizleme yöntemiyle filtreleyerek, [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) [deneysel](/python/api/overview/azure/ml/#stable-vs-experimental) önizleme özelliği bulunur ve herhangi bir zamanda değişebilir. 
 > 
 **Tabulardataset 'Ler için** [keep_columns ()](/python/api/azureml-core/azureml.data.tabulardataset#keep-columns-columns--validate-false-) ve [drop_columns ()](/python/api/azureml-core/azureml.data.tabulardataset#drop-columns-columns-) yöntemleriyle sütunları tutabilir veya kaldırabilirsiniz.
 
@@ -230,6 +230,59 @@ labeled_dataset = labeled_dataset.filter(labeled_dataset['label'] == 'dog')
 # Dataset that only contains records where the label and isCrowd columns are True and where the file size is larger than 100000
 labeled_dataset = labeled_dataset.filter((labeled_dataset['label']['isCrowd'] == True) & (labeled_dataset.file_metadata['Size'] > 100000))
 ```
+
+### <a name="partition-data-preview"></a>Bölüm verileri (Önizleme)
+
+Bir `partitions_format` TabularDataset veya FileDataset oluştururken parametresini ekleyerek bir veri kümesini bölümleyebilirsiniz. 
+
+> [!IMPORTANT]
+> Veri kümesi bölümlerinin oluşturulması [deneysel](/python/api/overview/azure/ml/#stable-vs-experimental) önizleme yeteneğidir ve herhangi bir zamanda değişebilir. 
+
+Bir veri kümesini bölümleyerek, her dosya yolunun bölüm bilgileri, belirtilen biçime göre sütunlara ayıklanır. Biçim, dosya yolunun sonuna kadar ilk bölüm anahtarının konumundan başlamalıdır. 
+
+Örneğin, `../Accounts/2019/01/01/data.jsonl` bölümün bölüm adı ve saatine göre olduğu yol verildiğinde; değeri `partition_format='/{Department}/{PartitionDate:yyyy/MM/dd}/data.jsonl'` ' accounts ' değeri Ile ' partitiondate ' DateTime sütunu ve değeri ile ' partitiondate ' dize sütununu oluşturur `2019-01-01` .
+
+Verileriniz zaten mevcut bölümlere sahipse ve bu biçimi korumak istiyorsanız, `partitioned_format` [`from_files()`](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#from-files-path--validate-true--partition-format-none-) bir dosya veri kümesi oluşturmak için yöntemizin parametresini ekleyin. 
+
+Varolan bölümleri koruyan bir TabularDataset oluşturmak için, `partitioned_format` [from_parquet_files ()](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) veya [from_delimited_files ()](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false--empty-as-string-false--encoding--utf8--) metoduna parametresini ekleyin.
+
+Aşağıdaki örnek,
+* Bölümlenmiş dosyalardan bir dosya veri kümesi oluşturur.
+* Bölüm anahtarlarını alır
+* Kullanarak yeni, dizinli bir dosya veri kümesi oluşturur
+ 
+```Python
+
+file_dataset = Dataset.File.from_files(data_paths, partition_format = '{userid}/*.wav')
+ds.register(name='speech_dataset')
+
+# access partition_keys
+indexes = file_dataset.partition_keys # ['userid']
+
+# get all partition key value pairs should return [{'userid': 'user1'}, {'userid': 'user2'}]
+partitions = file_dataset.get_partition_key_values()
+
+
+partitions = file_dataset.get_partition_key_values(['userid'])
+# return [{'userid': 'user1'}, {'userid': 'user2'}]
+
+# filter API, this will only download data from user1/ folder
+new_file_dataset = file_dataset.filter(ds['userid'] == 'user1').download()
+```
+
+Ayrıca, [partitions_by ()](/python/api/azureml-core/azureml.data.tabulardataset#partition-by-partition-keys--target--name-none--show-progress-true--partition-as-file-dataset-false-) yöntemiyle Tabulardataset için yeni bir bölüm yapısı da oluşturabilirsiniz.
+
+```Python
+
+ dataset = Dataset.get_by_name('test') # indexed by country, state, partition_date
+
+# call partition_by locally
+new_dataset = ds.partition_by(name="repartitioned_ds", partition_keys=['country'], target=DataPath(datastore, "repartition"))
+partition_keys = new_dataset.partition_keys # ['country']
+```
+
+>[!IMPORTANT]
+> TabularDataset bölümleri, birçok model uygulamasında ParallelRunStep verilerinize giriş olarak Azure Machine Learning işlem hatlarına da uygulanabilir. [Birçok model Hızlandırıcı belgelerindeki](https://github.com/microsoft/solution-accelerator-many-models/blob/master/01_Data_Preparation.ipynb)bir örneğe bakın.
 
 ## <a name="explore-data"></a>Verileri inceleme
 

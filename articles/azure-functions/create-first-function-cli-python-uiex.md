@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: da7f6fdaedd8105363cc62bf55bae2cb5f72f234
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 626cff867a336880689373c289087e2332a816ee
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031659"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787458"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Hızlı başlangıç: Azure 'da komut satırından bir Python işlevi oluşturma
 
@@ -38,7 +38,7 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) sürüm 3. x. 
   
-+ Her iki <abbr title="Azure portal kullanımına alternatif olarak, yerel geliştirme bilgisayarınızdan Azure kaynaklarıyla çalışmaya yönelik platformlar arası komut satırı araçları kümesi.">Azure CLI’si</abbr> veya <abbr title="Azure portal kullanımına alternatif olarak, yerel geliştirme bilgisayarınızdan Azure kaynaklarıyla çalışmaya yönelik komutlar sağlayan bir PowerShell modülü.">Azure PowerShell</abbr> Azure kaynakları oluşturmak için:
++ Her iki <abbr title="Azure portal kullanımına alternatif olarak, yerel geliştirme bilgisayarınızdan Azure kaynaklarıyla çalışmaya yönelik platformlar arası komut satırı araçları kümesi.">Azure CLI</abbr> veya <abbr title="Azure portal kullanımına alternatif olarak, yerel geliştirme bilgisayarınızdan Azure kaynaklarıyla çalışmaya yönelik komutlar sağlayan bir PowerShell modülü.">Azure PowerShell</abbr> Azure kaynakları oluşturmak için:
 
     + [Azure CLI](/cli/azure/install-azure-cli) sürüm 2,4 veya üzeri.
 
@@ -239,7 +239,7 @@ Bu bölümde, yerel bir <abbr title="Birlikte dağıtılabilecek ve yönetilebil
     az login
     ```
 
-    [Az Login](/cli/azure/reference-index#az-login) komutu sizi Azure hesabınızda oturum açar.
+    [Az Login](/cli/azure/reference-index#az_login) komutu sizi Azure hesabınızda oturum açar.
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
     ```azurepowershell
@@ -258,7 +258,7 @@ Bu bölümde, yerel bir <abbr title="Birlikte dağıtılabilecek ve yönetilebil
     az group create --name AzureFunctionsQuickstart-rg --location westeurope
     ```
  
-    [Az Group Create](/cli/azure/group#az-group-create) komutu bir kaynak grubu oluşturur. Genellikle kaynak grubunuzu ve kaynaklarınızı bir <abbr title="Kaynakların ayrıldığı belirli bir Azure veri merkezine coğrafi başvuru.">region</abbr> yakın bir şekilde, komuttan döndürülen kullanılabilir bir bölgeyi kullanarak `az account list-locations` .
+    [Az Group Create](/cli/azure/group#az_group_create) komutu bir kaynak grubu oluşturur. Genellikle kaynak grubunuzu ve kaynaklarınızı bir <abbr title="Kaynakların ayrıldığı belirli bir Azure veri merkezine coğrafi başvuru.">region</abbr> yakın bir şekilde, komuttan döndürülen kullanılabilir bir bölgeyi kullanarak `az account list-locations` .
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -280,7 +280,7 @@ Bu bölümde, yerel bir <abbr title="Birlikte dağıtılabilecek ve yönetilebil
     az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
     ```
 
-    [Az Storage Account Create](/cli/azure/storage/account#az-storage-account-create) komutu depolama hesabı oluşturur. 
+    [Az Storage Account Create](/cli/azure/storage/account#az_storage_account_create) komutu depolama hesabı oluşturur. 
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 

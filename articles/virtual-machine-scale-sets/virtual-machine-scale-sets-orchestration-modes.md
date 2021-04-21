@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 72e36a942eeaea00699f346db99a7ca3503495da
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: d089708ead67891164aee074394e923d2a84a977
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481659"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774458"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Önizleme: Azure 'da sanal makine ölçek kümeleri için düzenleme modları 
 
@@ -55,7 +55,7 @@ Esnek düzenleme 'nin başlıca avantajlarından biri, ölçek kümesi alt sanal
 Esnek düzenleme ölçeği kümesi için hata etki alanı sayısını seçebilirsiniz. Varsayılan olarak, esnek ölçek kümesine bir sanal makine eklediğinizde, Azure bu örnekleri hata etki alanları arasında eşit olarak yayar. Azure 'un hata etki alanını atamasına izin vermekle önerilse de, gelişmiş veya sorun giderme senaryoları için bu varsayılan davranışı geçersiz kılabilir ve örneğin geçilebileceği hata etki alanını belirtebilirsiniz.
 
 ```azurecli-interactive 
-az vm create â€“vmss "myVMSS"  â€“-platform_fault_domain 1
+az vm create –vmss "myVMSS"  –-platform_fault_domain 1
 ```
 
 ### <a name="instance-naming"></a>Örnek adlandırma 
@@ -65,11 +65,11 @@ Bir VM oluşturup esnek ölçek kümesine eklediğinizde, Azure adlandırma kura
 Tercih edilen yöntem, bir sanal makine ölçek kümesindeki tüm VM 'Leri sorgulamak için Azure Kaynak Grafiği 'ni kullanmaktır. Azure Kaynak Grafiği, Azure kaynakları için abonelikler arasında ölçeklendirerek verimli sorgu özellikleri sağlar. 
 
 ``` 
-|â€¯whereâ€¯typeâ€¯=~â€¯'Microsoft.Compute/virtualMachines' 
-|â€¯whereâ€¯properties.virtualMachineScaleSetâ€¯containsâ€¯"demo" 
-|â€¯extendâ€¯powerStateâ€¯=â€¯properties.extended.instanceView.powerState.code 
-|â€¯projectâ€¯name,â€¯resourceGroup,â€¯location,â€¯powerState 
-|â€¯orderâ€¯byâ€¯resourceGroupâ€¯desc,â€¯nameâ€¯desc 
+| where type =~ 'Microsoft.Compute/virtualMachines' 
+| where properties.virtualMachineScaleSet contains "demo" 
+| extend powerState = properties.extended.instanceView.powerState.code 
+| project name, resourceGroup, location, powerState 
+| order by resourceGroup desc, name desc 
 ```
 
 Kaynakları [Azure Kaynak Graph](../governance/resource-graph/overview.md) ile sorgulamak, Azure kaynaklarını sorgulamak ve kaynak SAĞLAYıCıSıNA yönelik API çağrılarını en aza indirecek kullanışlı ve verimli bir yoldur. Azure Kaynak Grafiği, yeni veya güncelleştirilmiş kaynakların 60 saniyeye kadar yansıtılmamış, sonuçta tutarlı bir önbellektir. Seçenekleriniz şunlardır:
@@ -105,24 +105,24 @@ Aşağıdaki tabloda esnek düzenleme modu, Tekdüzen düzenleme modu ve kullan�
 |         Otomatik ölçeklendirme  |            Hayır  |            Yes  |            Hayır  |
 |         VM 'yi belirli bir hata etki alanına atama  |            Yes  |             Hayır   |            Hayır  |
 |         Sanal makine örneklerini silerken NIC 'Leri ve diskleri kaldırma  |            Hayır  |            Yes  |            Hayır  |
-|         Yükseltme Ilkesi (VM Ölçek Kümeleri) |            Hayır  |            Otomatik, kayan, El Ile  |            Yok  |
+|         Yükseltme Ilkesi (VM Ölçek Kümeleri) |            No  |            Otomatik, kayan, El Ile  |            Yok  |
 |         Otomatik işletim sistemi güncelleştirmeleri (VM Ölçek Kümeleri) |            Hayır  |            Yes  |            Yok  |
 |         Konuk güvenlik düzeltme eki uygulama  |            Yes  |            Hayır  |            Yes  |
 |         Bildirimleri sonlandır (VM Ölçek Kümeleri) |            Hayır  |            Yes  |            Yok  |
 |         Örnek onarımı (VM Ölçek Kümeleri) |            Hayır  |            Yes   |            Yok  |
 |         Hızlandırılmış ağ iletişimi  |            Yes  |            Yes  |            Yes  |
-|         Spotâ € ̄instances ve pricingâ € ̄  |            Evet, hem nokta hem de normal öncelik örneklerine sahip olabilirsiniz  |            Evet, örneklerin tümü nokta veya hepsi normal olmalıdır  |            Hayır, yalnızca normal öncelik örnekleri  |
+|         Spot örnekleri ve fiyatlandırma   |            Evet, hem nokta hem de normal öncelik örneklerine sahip olabilirsiniz  |            Evet, örneklerin tümü nokta veya hepsi normal olmalıdır  |            Hayır, yalnızca normal öncelik örnekleri  |
 |         İşletim sistemlerini karıştır  |            Evet, Linux ve Windows aynı esnek ölçek kümesinde bulunabilir |            Hayır, örnek aynı işletim sistemidir  |               Evet, Linux ve Windows aynı esnek ölçek kümesinde bulunabilir |
 |         Uygulama durumunu izleme  |            Uygulama durumu uzantısı  |            Uygulama durumu uzantısı veya Azure yük dengeleyici araştırması  |            Uygulama durumu uzantısı  |
-|         UltraSSDâ € ̄Disksâ € ̄  |            Yes  |            Evet, yalnızca bölgesel dağıtımları için  |            Hayır  |
-|         Infinibandâ € ̄  |            Hayır  |            Evet, yalnızca tek yerleşim grubu  |            Yes  |
-|         Writeâ € ̄Acceleratorâ € ̄  |            Hayır  |            Yes  |            Yes  |
-|         ProximityÂ € ̄Placement Groupsâ € ̄  |            Yes  |            Yes  |            Yes  |
-|         Azure adanmış Hostsâ € ̄  |            Hayır  |            Yes  |            Yes  |
-|         Temel SLBâ € ̄  |            Hayır  |            Yes  |            Yes  |
+|         UltraSSD diskler   |            Yes  |            Evet, yalnızca bölgesel dağıtımları için  |            No  |
+|         InfiniBand   |            No  |            Evet, yalnızca tek yerleşim grubu  |            Yes  |
+|         Yazma Hızlandırıcısı   |            Hayır  |            Yes  |            Yes  |
+|         Yakınlık yerleştirme grupları   |            Yes  |            Yes  |            Yes  |
+|         Azure ayrılmış Konakları   |            Hayır  |            Yes  |            Yes  |
+|         Temel SLB   |            Hayır  |            Yes  |            Yes  |
 |         Standart SKU 'YU Azure Load Balancer |            Yes  |            Yes  |            Yes  |
 |         Application Gateway  |            Hayır  |            Yes  |            Yes  |
-|         Bakım Controlâ € ̄  |            Hayır  |            Yes  |            Yes  |
+|         Bakım denetimi   |            Hayır  |            Yes  |            Yes  |
 |         Küme içindeki VM 'Leri Listele  |            Yes  |            Yes  |            Evet, AvSet 'teki VM 'Leri Listele  |
 |         Azure uyarıları  |            Hayır  |            Yes  |            Yes  |
 |         VM öngörüleri  |            Hayır  |            Yes  |            Yes  |
@@ -165,7 +165,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0 
-Aboneliğiniz için Önizlemeyi etkinleştirmek üzere [az Feature Register](/cli/azure/feature#az-feature-register) kullanın. 
+Aboneliğiniz için Önizlemeyi etkinleştirmek üzere [az Feature Register](/cli/azure/feature#az_feature_register) kullanın. 
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name VMOrchestratorMultiFD

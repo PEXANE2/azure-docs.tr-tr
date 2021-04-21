@@ -4,12 +4,12 @@ description: Kullanıcıların tüm kullanıcılar ve roller için bir kilit uyg
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1cc96a855c2bfe79bbf5876f0476c016d36ca9a4
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 71637318a60e66bf5000de2f564d740cc101cc60
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030075"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768732"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Beklenmeyen değişiklikleri önlemek için kaynakları kilitleme
 
@@ -278,7 +278,7 @@ Remove-AzResourceLock -LockId $lockId
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Dağıtılan kaynakları, [az Lock Create](/cli/azure/lock#az-lock-create) komutunu kullanarak Azure CLI ile kilitlersiniz.
+Dağıtılan kaynakları, [az Lock Create](/cli/azure/lock#az_lock_create) komutunu kullanarak Azure CLI ile kilitlersiniz.
 
 Bir kaynağı kilitlemek için kaynağın adını, kaynak türünü ve kaynak grubu adını belirtin.
 
@@ -292,7 +292,7 @@ Bir kaynak grubunu kilitlemek için kaynak grubunun adını sağlayın.
 az lock create --name LockGroup --lock-type CanNotDelete --resource-group exampleresourcegroup
 ```
 
-Bir kilit hakkında bilgi almak için [az Lock List](/cli/azure/lock#az-lock-list)kullanın. Aboneliğinizdeki tüm kilitleri almak için şunu kullanın:
+Bir kilit hakkında bilgi almak için [az Lock List](/cli/azure/lock#az_lock_list)kullanın. Aboneliğinizdeki tüm kilitleri almak için şunu kullanın:
 
 ```azurecli
 az lock list

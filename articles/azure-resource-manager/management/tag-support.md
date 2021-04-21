@@ -2,13 +2,13 @@
 title: Kaynaklar için etiket desteği
 description: Hangi Azure kaynak türlerinin etiketleri desteklediğini gösterir. Tüm Azure hizmetleri için ayrıntılar sağlar.
 ms.topic: conceptual
-ms.date: 04/08/2021
-ms.openlocfilehash: 713fb5401db965787c2d9458da9afc3183a4c6a9
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.date: 04/20/2021
+ms.openlocfilehash: b196cae267a8d7dc878f055f6b2d70a3ff6f9313
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227339"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773972"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure kaynakları için etiket desteği
 Bu makalede, bir kaynak türünün [etiketleri](tag-resources.md)destekleyip desteklemediğini açıklanmaktadır. Etiketi **destekleyen** sütun, kaynak türünün etiket için bir özelliğe sahip olup olmadığını gösterir. **Maliyet raporundaki etiket** etiketli sütun, kaynak türünün etiketi maliyet raporuna geçirip geçirmediğini belirtir. [Maliyet yönetimi maliyet analizi](../../cost-management-billing/costs/group-filter.md) ve [Azure Faturalandırma faturasında ve günlük kullanım verilerinde](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)maliyeti etiketlere göre görüntüleyebilirsiniz.
@@ -120,7 +120,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. HybridNetwork](#microsofthybridnetwork)
 > - [Microsoft. Hydra](#microsofthydra)
 > - [Microsoft. ımportexport](#microsoftimportexport)
-> - [Microsoft. Insights](#microsoftinsights)
+> - [Microsoft.Insights](#microsoftinsights)
 > - [Microsoft.Intune](#microsoftintune)
 > - [Microsoft. ıotcentral](#microsoftiotcentral)
 > - [Microsoft. ıotsecurity](#microsoftiotsecurity)
@@ -939,7 +939,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | virtualMachineScaleSets/virtualMachines/NetworkInterfaces | Hayır | Hayır |
 
 > [!NOTE]
-> Genelleştirilmiş olarak işaretlenmiş bir sanal makineye etiket ekleyemezsiniz. [Set-AzVm-Genelleştirilmiş](/powershell/module/Az.Compute/Set-AzVM) veya [az VM generalize](/cli/azure/vm#az-vm-generalize)ile bir sanal makineyi genelleştirilemez.
+> Genelleştirilmiş olarak işaretlenmiş bir sanal makineye etiket ekleyemezsiniz. [Set-AzVm-Genelleştirilmiş](/powershell/module/Az.Compute/Set-AzVM) veya [az VM generalize](/cli/azure/vm#az_vm_generalize)ile bir sanal makineyi genelleştirilemez.
 
 ## <a name="microsoftconnectedcache"></a>Microsoft. ConnectedCache
 
@@ -1193,8 +1193,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Etiketleri destekler | Maliyet raporundaki etiket |
 > | ------------- | ----------- | ----------- |
 > | Databasegeçişleri | Hayır | Hayır |
-> | services | Hayır | Hayır |
-> | Hizmetler/Projeler | Hayır | Hayır |
+> | services | Yes | Yes |
+> | Hizmetler/Projeler | Yes | Yes |
 > | SqlMigrationServices | Yes | Yes |
 
 ## <a name="microsoftdataprotection"></a>Microsoft. DataProtection
@@ -1614,7 +1614,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ----------- |
 > | Çizelge | Yes | Yes |
 
-## <a name="microsoftinsights"></a>Microsoft. Insights
+## <a name="microsoftinsights"></a>Microsoft.Insights
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Etiketleri destekler | Maliyet raporundaki etiket |
@@ -2567,7 +2567,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | sunucular/Restokbledroppeddatabases | Hayır | Hayır |
 > | Sunucu/hizmet hedefleri | Hayır | Hayır |
 > | sunucular/tdeCertificates | Hayır | Hayır |
-> | Virtualkümeler | Hayır | Hayır |
+> | Virtualkümeler | Yes | Yes |
 
 <a id="sqlnote"></a>
 
