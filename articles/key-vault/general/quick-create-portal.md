@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2d8bfdf3a4ad8b713fb6c937d61fa437fc7977f2
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 93c0c77ad36be82802fd53e4130e48ac431b0280
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749681"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819295"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Anahtar Kasası oluşturma
 
@@ -69,5 +69,5 @@ Artık gerek kalmadığında kaynak grubunu silin; bunu yaptığınızda Key Vau
 Bu hızlı başlangıçta, Azure portal kullanarak bir Key Vault oluşturdunuz. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 
 - [Azure Key Vault genel bakışını](overview.md) okuyun
-- [Azure Key Vault güvenliğine genel bakış](security-overview.md) konusunu gözden geçirin
+- [Azure Key Vault güvenliğine genel bakış](security-features.md) konusunu gözden geçirin
 - [Azure Key Vault geliştirici kılavuzuna](developers-guide.md) bakın

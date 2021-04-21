@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 755386bfa36b18796eccec0020efe9136e0215cd
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 146697dec7e3d22e745fba2a1e9fae5d486195ef
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068158"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819331"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 
@@ -391,7 +391,7 @@ Alt çalıştırmaların yönetilmesine yardımcı olmak ve bunların gerçekle�
 
 Otomatikleştirilmiş ML, eğitim sonuçlarınızı izlemenize ve değerlendirmenize yönelik seçenekler sunar. 
 
-* Bir not defteriniz varsa, eğitim sonuçlarınızı bir pencere öğesinde veya satır içi olarak görüntüleyebilirsiniz. Daha fazla ayrıntı için bkz. [OTOMATIK ml çalıştırmalarını izleme](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs) .
+* Bir not defteriniz varsa, eğitim sonuçlarınızı bir pencere öğesinde veya satır içi olarak görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [otomatik makine öğrenimi çalıştırmalarını izleme](#monitor) .
 
 * Her çalıştırma için belirtilen performans grafiklerine ve ölçümlere ilişkin tanımlar ve örnekler için bkz. [otomatik makine öğrenme deneme sonuçlarını değerlendir](how-to-understand-automated-ml.md) . 
 
@@ -493,6 +493,22 @@ print_model(model_from_aml)
 ```
 > [!NOTE]
 > Otomatik ML algoritmaları, önerilen bir modelin nihai ölçüm puanından, doğruluk gibi hafif çeşitçine neden olabilecek, rastgele bir açıklık elde ediyor. Otomatikleştirilmiş ML, gerektiğinde tren-test Split, tren-doğrulama bölme veya çapraz doğrulama gibi veriler üzerinde işlemler de gerçekleştirir. Bu nedenle, aynı yapılandırma ayarları ve birincil ölçüm ile bir denemeyi birden çok kez çalıştırırsanız, bu faktörlere bağlı olarak her bir denemeleri son ölçüm puanı için çeşitleme görürsünüz. 
+
+## <a name="monitor-automated-machine-learning-runs"></a><a name="monitor"></a> Otomatik makine öğrenimi çalıştırmalarını izleyin
+
+Otomatik makine öğrenimi çalıştırmaları için, önceki bir çalıştırmalardan grafiklere erişmek üzere `<<experiment_name>>` uygun deneme adıyla değiştirin:
+
+```python
+from azureml.widgets import RunDetails
+from azureml.core.run import Run
+
+experiment = Experiment (workspace, <<experiment_name>>)
+run_id = 'autoML_my_runID' #replace with run_ID
+run = Run(experiment, run_id)
+RunDetails(run).show()
+```
+
+![Otomatik Machine Learning için Jupyter Not defteri pencere öğesi](./media/how-to-configure-auto-train/azure-machine-learning-auto-ml-widget.png)
 
 ## <a name="register-and-deploy-models"></a>Modelleri kaydetme ve dağıtma
 

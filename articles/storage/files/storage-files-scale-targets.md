@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 276dd7aa1925fefaaa94dfdd5d7a5baba5164f56
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: bdcee6b8ced45dba34309724e5a634cbb60a6d37
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790266"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818827"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Dosyaları ölçeklenebilirlik ve performans hedefleri
 [Azure dosyaları](storage-files-introduction.md) , BULUTTA, SMB ve NFS dosya sistemi protokolleri aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Bu makalede, Azure dosyaları ve Azure Dosya Eşitleme için ölçeklenebilirlik ve performans hedefleri ele alınmaktadır.
@@ -35,8 +35,8 @@ Azure, müşterilerin sahip olabileceği farklı depolama senaryoları için bir
 | Maksimum depolama hesabı kapasitesi | 5 PiB<sup>1</sup> | 100 TiB (sağlandı) |
 | En fazla dosya paylaşımı sayısı | Sınırsız | Sınırsız, tüm paylaşımların toplam sağlanan boyutu en fazla depolama hesabı kapasitesinden daha az olmalıdır |
 | Maksimum eşzamanlı istek hızı | 20.000 ıOPS<sup>1</sup> | 100.000 ıOPS |
-| Maksimum giriş | <ul><li>ABD/Avrupa: 10 GB<sup>/sn</sup></li><li>Diğer bölgeler (LRS/ZRS): 10 GBP/sn<sup>1</sup></li><li>Diğer bölgeler (GRS): 5 GBP/sn<sup>1</sup></li></ul> | 4.136 MIB/sn |
-| Maksimum çıkış | 50 GBP/sn<sup>1</sup> | 6.204 MIB/sn |
+| Maksimum giriş | <ul><li>ABD/Avrupa: 9.536 MIB/sn<sup>1</sup></li><li>Diğer bölgeler (LRS/ZRS): 9.536 MiB/sec<sup>1</sup></li><li>Diğer bölgeler (GRS): 4.768 GiB/sec<sup>1</sup></li></ul> | 4.136 MIB/sn |
+| Maksimum çıkış | 47.683 MIB/sn<sup>1</sup> | 6.204 MIB/sn |
 | En fazla sanal ağ kuralı sayısı | 200 | 200 |
 | En fazla IP adresi kuralı sayısı | 200 | 200 |
 | Yönetim okuma işlemleri | 5 dakikada 800 | 5 dakikada 800 |

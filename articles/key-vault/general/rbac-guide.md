@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 966f704bd47b4b238ed72579a6103bd2e4348849
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9806327c7393c3ba1fdab09acfb5545d6026e5cf
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772226"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818471"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi ile Key Vault anahtarlarına, sertifikalara ve gizli anahtarlara erişim sağlama
 
@@ -41,7 +41,7 @@ Tek tek anahtarlar, gizli diziler ve sertifikalar izinleri yalnızca belirli sen
 
 Azure Key Vault yönetim yönergeleri hakkında daha fazla bilgi için bkz.:
 
-- [Azure Key Vault güvenliğe genel bakış](security-overview.md)
+- [Azure Key Vault güvenlik özellikleri](security-features.md)
 - [Hizmet sınırlarını Azure Key Vault](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations"></a>Key Vault veri düzlemi işlemleri için Azure yerleşik rolleri

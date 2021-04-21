@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/19/2021
 ms.author: thweiss
-ms.openlocfilehash: 209d18dfbadea89f14fd90da9a1bc57b3ccf0dfe
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 9de41835e33d50a670a44089cb10d44cc57e92a7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728085"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818719"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Rol tabanlı erişim denetimini Azure Cosmos DB hesabınız için Azure Active Directory yapılandırma (Önizleme)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -331,8 +331,9 @@ Uygulamanızda Azure Cosmos DB RBAC 'yi kullanmak için, Azure Cosmos DB SDK 's�
 Örnek oluşturma yönteminiz `TokenCredential` Bu makalenin kapsamı dışındadır. Kullanmak istediğiniz AAD kimliği türüne (Kullanıcı sorumlusu, hizmet sorumlusu, Grup vb.) bağlı olarak böyle bir örnek oluşturmanın birçok yolu vardır. En önemlisi, `TokenCredential` örneğiniz, rollerinizi atadığınız kimliğe (asıl kimlik) çözümlenmelidir. Sınıf oluşturma örneklerini bulabilirsiniz `TokenCredential` :
 
 - [.NET 'te](/dotnet/api/overview/azure/identity-readme#credential-classes)
-- [Java 'da](/java/api/overview/azure/identity-readme#credential-classes)
+- [Java üzerinde](/java/api/overview/azure/identity-readme#credential-classes)
 - [JavaScript 'te](/javascript/api/overview/azure/identity-readme#credential-classes)
+- REST API
 
 Aşağıdaki örneklerde bir örneği olan bir hizmet sorumlusu kullanılmaktadır `ClientSecretCredential` .
 
@@ -379,6 +380,12 @@ const client = new CosmosClient({
     aadCredentials: servicePrincipal
 });
 ```
+
+### <a name="in-rest-api"></a>REST API
+
+Azure Cosmos DB RBAC Şu anda REST API 2021-03-15 sürümü ile desteklenmektedir. [Yetkilendirme üst bilgisini](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)oluştururken, aşağıdaki örnekte gösterildiği gibi **tür** parametresini **AAD** olarak, karma imzasını **(SIG)** **OAuth belirtecine** ayarlayın:
+
+`type=aad&ver=1.0&sig=<token-from-oauth>`
 
 ## <a name="auditing-data-requests"></a>Veri isteklerini denetleme
 

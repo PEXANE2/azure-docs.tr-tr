@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 02/23/2021
-ms.openlocfilehash: 4db523624922d8ddcb8c1868b84927926d9ed3d5
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 04/20/2021
+ms.openlocfilehash: 59c1ca67c9e93b62890512cda647ffcdf7712f9a
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103819"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819277"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Azure Blob Depolama ve Azure Data Lake Storage'dan verileri paylaşma ve alma
 
@@ -19,7 +19,7 @@ ms.locfileid: "107103819"
 
 Azure veri paylaşımı, bir depolama hesabından anlık görüntü tabanlı paylaşımı destekler. Bu makalede, Azure Blob depolama, Azure Data Lake Storage 1. ve Azure Data Lake Storage 2. nasıl paylaşılacağını ve verilerin alınacağını açıklamaktadır.
 
-Azure veri paylaşımı, Azure Data Lake gen1 ve Azure Data Lake Gen2 ' den dosya, klasör ve dosya sistemlerinin paylaşılmasını destekler. Ayrıca, Azure Blob depolamadan blob, klasör ve kapsayıcı paylaşımını da destekler. Şu anda yalnızca blok Blobları destekleniyor. Bu kaynaklardan paylaşılan veriler Azure Data Lake Gen2 veya Azure Blob depolama alanı tarafından alınabilir.
+Azure veri paylaşımı, Azure Data Lake gen1 ve Azure Data Lake Gen2 ' den dosya, klasör ve dosya sistemlerinin paylaşılmasını destekler. Ayrıca, Azure Blob depolamadan blob, klasör ve kapsayıcı paylaşımını da destekler. Blok, ekleme veya sayfa bloblarını paylaşabilir ve blok Blobları olarak alınır. Bu kaynaklardan paylaşılan veriler Azure Data Lake Gen2 veya Azure Blob depolama alanı tarafından alınabilir.
 
 Dosya sistemleri, kapsayıcılar veya klasörler anlık görüntü tabanlı paylaşımda paylaşıldığında, veri tüketicileri, paylaşım verilerinin tam bir kopyasını yapmayı seçebilirler. Ya da yalnızca yeni veya güncelleştirilmiş dosyaları kopyalamak için Artımlı anlık görüntü özelliğini kullanabilirler. Artımlı anlık görüntü özelliği, dosyaların son değiştirilme zamanına göre belirlenir. 
 

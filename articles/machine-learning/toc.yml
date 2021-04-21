@@ -390,15 +390,12 @@
           href: how-to-migrate-from-estimators-to-scriptrunconfig.md
         - name: Eğitim takibi ve izleme
           items:
-            - name: 'Çalıştırmaları başlatma, izleme ve iptal etme'
+            - name: 'Çalışmaları izleme, izleme ve çözümleme'
               displayName: 'cancel, fail, status, child run'
-              href: how-to-manage-runs.md
-            - name: Günlükleri etkinleştirme
-              displayName: 'troubleshoot, log, files, tracing'
-              href: how-to-track-experiments.md
-            - name: Çalıştırmalar için günlükleri ve ölçümleri görüntüleme
+              href: how-to-track-monitor-analyze-runs.md
+            - name: Günlük & görünüm ölçümleri ve günlük dosyaları
               displayName: 'troubleshoot, log, files, tracing, metrics'
-              href: how-to-monitor-view-training-logs.md
+              href: how-to-log-view-metrics.md
             - name: TensorBoard ile çalıştırmaları görselleştirme
               displayName: 'log, monitor, metrics'
               href: how-to-monitor-tensorboard.md

@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 04/07/2020
-ms.openlocfilehash: 97d4f0a387b75c9b23f64992a8ef39bc0bad17f0
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: e4feaa8f1b30bfe31f4e645943f766b5736150b3
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107715577"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818377"
 ---
 # <a name="using-azure-migrate-with-private-endpoints"></a>Azure geçişi 'ni özel uç noktalarla kullanma  
 
@@ -93,31 +93,18 @@ Bu, bir geçiş projesi oluşturur ve kendisine özel bir uç nokta ekler.
 
 4. Anahtar başarıyla oluşturulduktan sonra, Gereç yapılandırmak ve kaydetmek için anahtar ayrıntılarını kopyalayın.   
 
-#### <a name="download-the-appliance-installer-file"></a>Gereç yükleyicisi dosyasını indirin
+#### <a name="download-the-appliance-installer-file"></a>Gereç yükleyicisi dosyasını indirin  
+
+> [!Note]
+> Gereç yükleyicisi dosyasını indirirken sorun yaşıyorsanız lütfen bir destek durumu oluşturun.
 
 Azure geçişi: bulma ve değerlendirme basit bir Azure geçişi gereci kullanır. Gereç sunucu bulma işlemini gerçekleştirir ve Azure geçişi 'ne sunucu yapılandırma ve performans meta verileri gönderir.
 
-Gereci ayarlamak için, portaldan yükleyici betiğini içeren daraltılmış dosyayı indirin. Sıkıştırılmış dosyayı, gereci barındıracak olan sunucuya kopyalayın.
+Gereci ayarlamak için, portaldan yükleyici betiğini içeren daraltılmış dosyayı indirin. Sıkıştırılmış dosyayı, gereci barındıracak olan sunucuya kopyalayın. 
 
 Sunucunun seçilen senaryo (VMware/Hyper-V/fiziksel veya diğer) için [donanım gereksinimlerini](https://docs.microsoft.com/azure/migrate/migrate-appliance) karşıladığından ve gerekli Azure URL 'lerine ( [genel](./migrate-appliance.md#public-cloud-urls-for-private-link-connectivity) ve [kamu](./migrate-appliance.md#government-cloud-urls-for-private-link-connectivity) bulutlarına) bağlanabildiğinden emin olun.
 
-ZIP dosyasını indirdikten sonra, dosya güvenliğini doğrulayın ve gereci dağıtmak için yükleyici betiğini çalıştırın.
-
-#### <a name="verify-file-security"></a>Dosya güvenliğini doğrula
-
-Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
-
-1. Dosyayı indirdiğiniz sunucuda bir yönetici komut penceresi açın. 
-2. Daraltılmış dosyanın karmasını oluşturmak için aşağıdaki komutu çalıştırın
-    - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Örnek: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-PrivateEndPoint.zip SHA256```
-3. Azure genel bulutu için en son gereç sürümünü ve betiğini doğrulayın:
-
-    **Algoritma** | **İndir** | **SHA256**
-    --- | --- | ---
-    VMware (85,8 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
-    Hyper-V (85,8 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
-    Fiziksel veya diğer (85,8 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
+ZIP dosyasını indirdikten sonra, gereci dağıtmak için yükleyici betiğini çalıştırın.
 
 #### <a name="run-the-script"></a>Betiği çalıştırın
 
