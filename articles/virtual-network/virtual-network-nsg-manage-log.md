@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 42ce7a1760ecdb1dcbd5275927f351bef5da07a8
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0d171dee87a391c5e1d66db10363e6823ef387c1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531171"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774170"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>Bir ağ güvenlik grubu için kaynak günlüğü
 
@@ -95,9 +95,9 @@ Günlükleri görüntüleyin ve çözümleyin. Daha fazla bilgi için bkz. [gün
 
 [Azure Cloud Shell](https://shell.azure.com/bash)izleyen komutları veya BILGISAYARıNıZDAN Azure CLI 'yi çalıştırarak çalıştırabilirsiniz. Azure Cloud Shell, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. CLı 'yı bilgisayarınızdan çalıştırırsanız, sürüm 2.0.38 veya daha yeni bir sürüme ihtiyacınız vardır. `az --version`Yüklü sürümü bulmak için bilgisayarınızda çalıştırın. Yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli). CLı 'yi yerel olarak çalıştırıyorsanız, `az login` Azure 'da [gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir hesapla oturum açmak için öğesini de çalıştırmanız gerekir.
 
-Kaynak günlüğünü etkinleştirmek için mevcut bir NSG 'nin kimliğine sahip olmanız gerekir. Mevcut bir NSG yoksa, [az Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create)komutuyla bir tane oluşturabilirsiniz.
+Kaynak günlüğünü etkinleştirmek için mevcut bir NSG 'nin kimliğine sahip olmanız gerekir. Mevcut bir NSG yoksa, [az Network NSG Create](/cli/azure/network/nsg#az_network_nsg_create)komutuyla bir tane oluşturabilirsiniz.
 
-[Az Network NSG Show](/cli/azure/network/nsg#az-network-nsg-show)ile için kaynak günlüğünü etkinleştirmek istediğiniz ağ güvenlik grubunu alın. Örneğin, *Myresourcegroup* adlı bir kaynak grubunda bulunan *mynsg* adlı bir NSG 'yi almak için aşağıdaki komutu girin:
+[Az Network NSG Show](/cli/azure/network/nsg#az_network_nsg_show)ile için kaynak günlüğünü etkinleştirmek istediğiniz ağ güvenlik grubunu alın. Örneğin, *Myresourcegroup* adlı bir kaynak grubunda bulunan *mynsg* adlı bir NSG 'yi almak için aşağıdaki komutu girin:
 
 ```azurecli-interactive
 nsgId=$(az network nsg show \
@@ -109,7 +109,7 @@ nsgId=$(az network nsg show \
 
 Kaynak günlüklerini üç hedef türüne yazabilirsiniz. Daha fazla bilgi için bkz. [günlük hedefleri](#log-destinations). Bu makalede, Günlükler bir örnek olarak *Log Analytics* hedefine gönderilir. Daha fazla bilgi için bkz. [günlük kategorileri](#log-categories).
 
-[Az Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create)komutuyla NSG için kaynak günlüğünü etkinleştirin. Aşağıdaki örnek hem olay hem de sayaç kategorisi verilerini *Myworkspaces* adlı bir kaynak grubunda bulunan *MyWorkspace* adlı mevcut bir çalışma alanına ve daha önce ALDıĞıNıZ NSG 'nin kimliğine sahip olur:
+[Az Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create)komutuyla NSG için kaynak günlüğünü etkinleştirin. Aşağıdaki örnek hem olay hem de sayaç kategorisi verilerini *Myworkspaces* adlı bir kaynak grubunda bulunan *MyWorkspace* adlı mevcut bir çalışma alanına ve daha önce ALDıĞıNıZ NSG 'nin kimliğine sahip olur:
 
 ```azurecli-interactive
 az monitor diagnostic-settings create \

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2ee2aad290c03743d8a2627922446b8167f3ffee
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 51b5714f9009cbe48aa49c6a04a1434cec12396e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480530"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790698"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Cihaz sağlama hizmeti 'ni (DPS) kullanarak Azure dijital TWINS 'de cihazları otomatik olarak yönetme
 
@@ -330,7 +330,7 @@ Cihazın ikizi artık Azure dijital TWINS örneğinde bulunamadığını görmen
 
 Bu makalede oluşturulan kaynaklara artık ihtiyacınız yoksa, bunları silmek için aşağıdaki adımları izleyin.
 
-Azure Cloud Shell veya yerel Azure CLı kullanarak, [az Group Delete](/cli/azure/group#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Bu, kaynak grubunu kaldırır; Azure dijital TWINS örneği; IoT Hub ve Hub cihaz kaydı; olay Kılavuzu konusu ve ilişkili abonelikler; depolama gibi ilişkili kaynaklar da dahil olmak üzere, Olay Hub 'ları ve her ikisi de Azure Işlevleri uygulaması.
+Azure Cloud Shell veya yerel Azure CLı kullanarak, [az Group Delete](/cli/azure/group#az_group_delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Bu, kaynak grubunu kaldırır; Azure dijital TWINS örneği; IoT Hub ve Hub cihaz kaydı; olay Kılavuzu konusu ve ilişkili abonelikler; depolama gibi ilişkili kaynaklar da dahil olmak üzere, Olay Hub 'ları ve her ikisi de Azure Işlevleri uygulaması.
 
 > [!IMPORTANT]
 > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. 

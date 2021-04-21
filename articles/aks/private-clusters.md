@@ -4,12 +4,12 @@ description: Özel bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmayı öğ
 services: container-service
 ms.topic: article
 ms.date: 3/31/2021
-ms.openlocfilehash: 339bb41aed5ead3d7ee7d1217bfbc771cf068832
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 76785caedb9ca97d947e83f5aa8ff5b32d827914
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107719124"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772910"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma
 
@@ -195,10 +195,10 @@ Belirtildiği gibi, sanal ağ eşlemesi özel kümenize erişmenin bir yoludur. 
 * Denetim düzlemine yönelik bakım durumunda [aks IP](./limit-egress-traffic.md) 'niz değişebilir. Bu durumda, özel DNS sunucunuzdaki API sunucusu özel IP 'sine işaret eden bir kaydı güncelleştirmeniz ve hostnetwork kullanarak tüm özel POD veya dağıtımları yeniden başlatmanız gerekir.
 
 <!-- LINKS - internal -->
-[az-provider-register]: /cli/azure/provider#az-provider-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-provider-register]: /cli/azure/provider#az_provider_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
 [private-link-service]: ../private-link/private-link-service-overview.md#limitations
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
 [azure-bastion]: ../bastion/tutorial-create-host-portal.md

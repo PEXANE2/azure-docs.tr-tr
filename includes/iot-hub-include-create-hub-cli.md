@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: 10bd2c4902157b9e01b1cb0ff10b3ebdf448568c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: be51d4db6c98b63fcb1c9c60df045b494536d78f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102244840"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766535"
 ---
 Aşağıdaki bölümlerde bir Terminal ayarlarsınız ve bir IoT Hub 'ı oluşturmak için Azure CLı 'yi kullanırsınız. Azure CLı komutlarını çalıştıran bir Terminal yapılandırmak için tarayıcı tabanlı Azure Cloud Shell kullanabilir ya da yerel bir Terminal kullanabilirsiniz.
 * Cloud Shell kullanmak için sonraki bölüme gidin: [Cloud Shell başlatın](#launch-the-cloud-shell). 
@@ -65,7 +65,7 @@ Bu bölümde, Azure CLı için Microsoft Azure IoT uzantısını CLı kabuğunuz
 > [!IMPORTANT]
 > Bu hızlı başlangıçtaki geri kalan terminal komutları Cloud Shell veya yerel terminalde aynı şekilde çalışır. Bir komut çalıştırmak için, bu hızlı başlangıçta bir kod bloğunu kopyalamak üzere **Kopyala** ' yı seçin. Daha sonra CLı kabuğunuzun içine yapıştırın ve çalıştırın.
 
-[Az Extension Add](/cli/azure/extension#az-extension-add) komutunu çalıştırın. 
+[Az Extension Add](/cli/azure/extension#az_extension_add) komutunu çalıştırın. 
 
    ```azurecli
    az extension add --name azure-iot
@@ -77,7 +77,7 @@ Bu bölümde, bir IoT Hub 'ı ve bir kaynak grubu oluşturmak için Azure CLı '
 
 Bir IoT Hub 'ı ve bir kaynak grubu oluşturmak için:
 
-1. Bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group#az-group-create) komutunu çalıştırın. Aşağıdaki komut *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur. 
+1. Bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group#az_group_create) komutunu çalıştırın. Aşağıdaki komut *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur. 
     >[!NOTE]
     > İsteğe bağlı olarak alternatif bir konum ayarlayabilirsiniz. Kullanılabilir konumları görmek için öğesini çalıştırın `az account list-locations` . Bu öğretici, örnek komutta gösterildiği gibi *eastus* kullanır. 
 
@@ -85,7 +85,7 @@ Bir IoT Hub 'ı ve bir kaynak grubu oluşturmak için:
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. IoT Hub 'ı oluşturmak için [az IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) komutunu çalıştırın. IoT Hub 'ı oluşturmak birkaç dakika sürebilir. 
+1. IoT Hub 'ı oluşturmak için [az IoT Hub Create](/cli/azure/iot/hub#az_iot_hub_create) komutunu çalıştırın. IoT Hub 'ı oluşturmak birkaç dakika sürebilir. 
 
     *Youriothubname*. IoT Hub 'ınız için seçtiğiniz adı kullanarak aşağıdaki komutta yer tutucuyu ve çevreleyen ayraçları değiştirin. IoT Hub 'ı adı Azure 'da genel olarak benzersiz olmalıdır. Yer tutucusunu gördüğünüz her yerde, bu hızlı başlangıçta IoT Hub 'ınızın adını kullanın.
 

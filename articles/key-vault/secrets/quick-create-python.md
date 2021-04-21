@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 2f15aa394f7a271d6b3af49f0106611c4fc943a1
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: e06881d078b4e881174c3e931f7898cb622ad7f9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753091"
+ms.locfileid: "107766362"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>Hızlı başlangıç: Python için Azure Key Vault gizli istemci kitaplığı
 
@@ -170,7 +170,7 @@ retrieved_secret = client.get_secret(secretName)
 
 Gizli anahtar değeri içinde bulunur `retrieved_secret.value` .
 
-Azure CLı komutu [az keykasa gizli göster](/cli/azure/keyvault/secret?#az-keyvault-secret-show)komutuyla da bir gizli dizi alabilirsiniz.
+Azure CLı komutu [az keykasa gizli göster](/cli/azure/keyvault/secret?#az_keyvault_secret_show)komutuyla da bir gizli dizi alabilirsiniz.
 
 ### <a name="delete-a-secret"></a>Gizli anahtarı silme
 
@@ -183,7 +183,7 @@ deleted_secret = poller.result()
 
 `begin_delete_secret`Yöntemi zaman uyumsuzdur ve bir Poller nesnesi döndürür. Poller 'ın metodunu çağırma işleminin `result` tamamlanmasını bekler.
 
-Azure CLı komutu [az keykasa gizli göster](/cli/azure/keyvault/secret?#az-keyvault-secret-show)komutuyla parolanın kaldırıldığını doğrulayabilirsiniz.
+Azure CLı komutu [az keykasa gizli göster](/cli/azure/keyvault/secret?#az_keyvault_secret_show)komutuyla parolanın kaldırıldığını doğrulayabilirsiniz.
 
 Silindikten sonra gizli anahtar, bir zaman için silinmiş ancak kurtarılabilir durumda kalır. Kodu yeniden çalıştırırsanız, farklı bir gizli dizi adı kullanın.
 

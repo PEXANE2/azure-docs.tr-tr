@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 11/07/2020
 ms.author: allensu
-ms.openlocfilehash: f74a143859f0a6629c88f0dcb61a97697f49d0be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5088b4e50899a2643488103ba29a7e36a7f256ea
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889238"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778364"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak özel uç nokta oluşturma
 
@@ -72,7 +72,7 @@ az network vnet create \
     --subnet-prefixes 10.0.0.0/24
 ```
 
-[Az Network VNET subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)ile özel uç nokta için özel uç nokta ağ ilkelerini devre dışı bırakacak şekilde alt ağı güncelleştirin:
+[Az Network VNET subnet Update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update)ile özel uç nokta için özel uç nokta ağ ilkelerini devre dışı bırakacak şekilde alt ağı güncelleştirin:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -82,7 +82,7 @@ az network vnet subnet update \
     --disable-private-endpoint-network-policies true
 ```
 
-Savunma konağı için genel bir IP adresi oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip#az-network-public-ip-create) kullanın:
+Savunma konağı için genel bir IP adresi oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip#az_network_public_ip_create) kullanın:
 
 * **Mybastionıp** adlı standart bölge YEDEKLI genel IP adresi oluşturun.
 * **Createprivateendpointqs-RG** içinde.
@@ -94,7 +94,7 @@ az network public-ip create \
     --sku Standard
 ```
 
-Bir savunma alt ağı oluşturmak için [az Network VNET subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) kullanın:
+Bir savunma alt ağı oluşturmak için [az Network VNET subnet Create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) kullanın:
 
 * **AzureBastionSubnet** adlı.
 * **10.0.1.0/24** adres ön eki.
@@ -109,7 +109,7 @@ az network vnet subnet create \
     --address-prefixes 10.0.1.0/24
 ```
 
-Bir savunma konağı oluşturmak için [az Network savunma Create](/cli/azure/network/bastion#az-network-bastion-create) kullanın:
+Bir savunma konağı oluşturmak için [az Network savunma Create](/cli/azure/network/bastion#az_network_bastion_create) kullanın:
 
 * Adlandırılmış **Mybastionhost**.
 * **Createprivateendpointqs-RG** içinde.
@@ -150,6 +150,8 @@ az vm create \
     --subnet myBackendSubnet \
     --admin-username azureuser
 ```
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="create-private-endpoint"></a>Özel uç nokta oluştur
 

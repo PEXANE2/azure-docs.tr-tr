@@ -6,12 +6,12 @@ ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 32cb1a54e8d3b4cca942616bb249968c4ed9e50c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 60ac56cfda026871afa1725bbd54625b7ce7585e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107477851"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789204"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için tanılama ayarlarını oluşturma
 Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](./platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. [Platform ölçümleri](./data-platform-metrics.md) varsayılan olarak toplanır ve genellikle Azure izleyici ölçümleri veritabanında depolanır. Bu makalede, farklı hedeflere platform ölçümleri ve platform günlükleri göndermek için tanılama ayarlarını oluşturma ve yapılandırma hakkında ayrıntılı bilgi verilmektedir.
@@ -42,7 +42,7 @@ Aşağıdaki videoda, platform günlüklerine tanılama ayarlarıyla yönlendirm
 ## <a name="destinations"></a>Hedefler
 Platform günlükleri ve ölçümleri aşağıdaki tablodaki hedeflere gönderilebilir. 
 
-| Hedef | Açıklama |
+| Hedef | Description |
 |:---|:---|
 | [Log Analytics çalışma alanı](../logs/design-logs-deployment.md) | Log Analytics çalışma alanına Günlükler ve ölçümler gönderme, güçlü günlük sorguları ve ayrıca uyarılar ve görselleştirmeler gibi diğer Azure Izleyici özelliklerinden yararlanmak için Azure Izleyici tarafından toplanan diğer izleme verileriyle analiz etmenizi sağlar. |
 | [Olay hub’ları](../../event-hubs/index.yml) | Event Hubs Günlükler ve ölçümler gönderme, üçüncü taraf SIG 'ler ve diğer Log Analytics çözümleri gibi dış sistemlere veri akışını sağlar.  |
@@ -148,7 +148,7 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 
 ## <a name="create-using-azure-cli"></a>Azure CLı kullanarak oluşturma
 
-[Azure CLI](/cli/azure/monitor)ile bir tanılama ayarı oluşturmak için [az Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) komutunu kullanın. Parametrelerinin açıklamaları için bu komuta yönelik belgelere bakın.
+[Azure CLI](/cli/azure/monitor)ile bir tanılama ayarı oluşturmak için [az Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) komutunu kullanın. Parametrelerinin açıklamaları için bu komuta yönelik belgelere bakın.
 
 > [!IMPORTANT]
 > Azure etkinlik günlüğü için bu yöntemi kullanamazsınız. Bunun yerine, bir Kaynak Yöneticisi şablonu oluşturmak ve CLı ile dağıtmak için [Kaynak Yöneticisi şablonu kullanarak Azure izleyici 'de tanılama ayarı oluştur](./resource-manager-diagnostic-settings.md) ' u kullanın.

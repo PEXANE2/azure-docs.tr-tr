@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: a9a9fe93ebe302a76d69249dc56933e1bcc924d1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 46caae53ed81de335c2b9d5ddbd3fd7f89424fdd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200096"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780424"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>CLı kullanarak Internet çözümleyici testi oluşturma (Önizleme)
 
@@ -50,7 +50,7 @@ Internet Çözümleyicisi CLı aşağıdaki kaynak türlerini kullanıma sunar:
 
 5. Internet Çözümleyicisi Genel önizlemesine erişim izni verilen abonelik KIMLIĞINIZI seçin.
 
-    Oturum açtıktan sonra, Azure hesabınızla ilişkili Aboneliklerin listesini görürsünüz. İle abonelik bilgileri, `isDefault: true` oturum açtıktan sonra şu anda etkinleştirilmiş olan aboneliğdir. Başka bir abonelik seçmek için, abone KIMLIĞIYLE [az Account set](/cli/azure/account#az-account-set) komutunu kullanın. Abonelik seçimi hakkında daha fazla bilgi için bkz. [birden çok Azure aboneliği kullanma](/cli/azure/manage-azure-subscriptions-azure-cli).
+    Oturum açtıktan sonra, Azure hesabınızla ilişkili Aboneliklerin listesini görürsünüz. İle abonelik bilgileri, `isDefault: true` oturum açtıktan sonra şu anda etkinleştirilmiş olan aboneliğdir. Başka bir abonelik seçmek için, abone KIMLIĞIYLE [az Account set](/cli/azure/account#az_account_set) komutunu kullanın. Abonelik seçimi hakkında daha fazla bilgi için bkz. [birden çok Azure aboneliği kullanma](/cli/azure/manage-azure-subscriptions-azure-cli).
 
     [Azure CLI ile oturum açma](/cli/azure/authenticate-azure-cli) bölümünde ayrıntılı bir şekilde ele alınan etkileşimsiz olarak oturum açma yöntemleri mevcuttur.
 

@@ -8,12 +8,12 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 804c4732ce979cd9ec46c69456b3f731284c9c73
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: b45bb353ae32f1037fde7dc5d518472089edf12f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748535"
+ms.locfileid: "107766344"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Hızlı başlangıç: Java için Azure Key Vault gizli istemci kitaplığı
 Java için Azure Key Vault gizli istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere aşağıdaki adımları izleyin.
@@ -175,7 +175,7 @@ Uygulamanızın kimliği doğrulandığına göre, yöntemi kullanarak anahtar k
 secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
 ```
 
-Parolanın [az keykasası Secret Show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) komutuyla ayarlandığını doğrulayabilirsiniz:
+Parolanın [az keykasası Secret Show](/cli/azure/keyvault/secret?#az_keyvault_secret_show) komutuyla ayarlandığını doğrulayabilirsiniz:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
@@ -200,7 +200,7 @@ SyncPoller<DeletedSecret, Void> deletionPoller = secretClient.beginDeleteSecret(
 deletionPoller.waitForCompletion();
 ```
 
-Parolanın [az keykasası Secret Show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) komutuyla silindiğini doğrulayabilirsiniz:
+Parolanın [az keykasası Secret Show](/cli/azure/keyvault/secret?#az_keyvault_secret_show) komutuyla silindiğini doğrulayabilirsiniz:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret

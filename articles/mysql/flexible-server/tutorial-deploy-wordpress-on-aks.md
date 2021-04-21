@@ -6,13 +6,13 @@ author: mksuni
 ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b631173ed92905870e73e6c560d90aab08476ce1
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.custom: vc, devx-track-azurecli
+ms.openlocfilehash: 0c6211f4cd647addd6f1d18a153695d16a9d9952
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480163"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770192"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>Öğretici: MySQL için Azure veritabanı-esnek sunucu ile AKS 'de WordPress uygulaması dağıtma
 
@@ -60,7 +60,7 @@ Aşağıdaki örnek çıktıda başarıyla oluşturulan kaynak grubu gösterilme
 
 ## <a name="create-aks-cluster"></a>AKS kümesi oluşturma
 
-AKS kümesi oluşturmak için [az aks create](/cli/azure/aks#az-aks-create) komutunu kullanın. Aşağıdaki örnekte, bir düğüm ile *myAKSCluster* adlı bir küme oluşturulmuştur. Bu işlem birkaç dakika sürer.
+AKS kümesi oluşturmak için [az aks create](/cli/azure/aks#az_aks_create) komutunu kullanın. Aşağıdaki örnekte, bir düğüm ile *myAKSCluster* adlı bir küme oluşturulmuştur. Bu işlem birkaç dakika sürer.
 
 ```azurecli-interactive
 az aks create --resource-group wordpress-project --name myAKSCluster --node-count 1 --generate-ssh-keys
@@ -73,13 +73,13 @@ Birkaç dakika sonra komut tamamlanır ve küme hakkında JSON biçimli bilgiler
 
 ## <a name="connect-to-the-cluster"></a>Kümeye bağlanma
 
-Kubernetes kümesini yönetmek için Kubernetes komut satırı istemcisi olan [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)'yi kullanırsınız. Azure Cloud Shell kullanıyorsanız, `kubectl` zaten yüklüdür. `kubectl`Yerel olarak yüklemek için [az aks install-cli](/cli/azure/aks#az-aks-install-cli) komutunu kullanın:
+Kubernetes kümesini yönetmek için Kubernetes komut satırı istemcisi olan [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)'yi kullanırsınız. Azure Cloud Shell kullanıyorsanız, `kubectl` zaten yüklüdür. `kubectl`Yerel olarak yüklemek için [az aks install-cli](/cli/azure/aks#az_aks_install_cli) komutunu kullanın:
 
 ```azurecli-interactive
 az aks install-cli
 ```
 
-`kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks get-credentials](/cli/azure/aks#az-aks-get-credentials) komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır.
+`kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks get-credentials](/cli/azure/aks#az_aks_get_credentials) komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group wordpress-project --name myAKSCluster
@@ -121,20 +121,20 @@ Oluşturulan sunucu aşağıdaki özniteliklere sahiptir:
 [En son WordPress](https://wordpress.org/download/) sürümünü indirin. Projeniz için yeni bir dizin oluşturun ```my-wordpress-app``` ve bu basit klasör yapısını kullanın
 
 ```
-â””â”€â”€â”€my-wordpress-app
-    â””â”€â”€â”€public
-        â”œâ”€â”€â”€wp-admin
-        â”‚   â”œâ”€â”€â”€css
+└───my-wordpress-app
+    └───public
+        ├───wp-admin
+        │   ├───css
         . . . . . . .
-        â”œâ”€â”€â”€wp-content
-        â”‚   â”œâ”€â”€â”€plugins
+        ├───wp-content
+        │   ├───plugins
         . . . . . . .
-        â””â”€â”€â”€wp-includes
+        └───wp-includes
         . . . . . . .
-        â”œâ”€â”€â”€wp-config-sample.php
-        â”œâ”€â”€â”€index.php
+        ├───wp-config-sample.php
+        ├───index.php
         . . . . . . .
-    â””â”€â”€â”€ Dockerfile
+    └─── Dockerfile
 
 ```
 
@@ -327,4 +327,3 @@ az group delete --name wordpress-project --yes --no-wait
 - [Kümenizi ölçeklendirmeyi](../../aks/tutorial-kubernetes-scale.md) öğrenin
 - [MySQL esnek sunucunuzu](./quickstart-create-server-cli.md) yönetme hakkında bilgi edinin
 - Veritabanı sunucunuz için [sunucu parametrelerini yapılandırmayı](./how-to-configure-server-parameters-cli.md) öğrenin.
-

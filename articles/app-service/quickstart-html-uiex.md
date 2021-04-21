@@ -8,12 +8,12 @@ ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: be555039375e2d71d00bcf8ee58898f54cc3645a
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 603d8e642cd2e88beec6ae34094a2c6c43d179ee
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379579"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768962"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Azure'da statik bir HTML web uygulaması oluşturma
 
@@ -55,7 +55,7 @@ az webapp up --location westeurope --name <app_name> --html
 <li><code>&lt;app-name&gt;</code>Tüm Azure genelinde benzersiz olan bir adla değiştirin ( <em> geçerli karakterler <code>a-z</code> , <code>0-9</code> ve <code>-</code> </em> ). İyi bir model, şirketinizin adının ve uygulama tanımlayıcısının bir birleşimini kullanmaktır.</li>
 <li><code>--sku F1</code>Bağımsız değişkeni, ücretsiz fiyatlandırma katmanında Web uygulaması oluşturur. Saatlik maliyet içeren daha hızlı bir Premium katmanı kullanmak için bu bağımsız değişkeni atlayın.</li>
 <li><code>--html</code>Bağımsız değişkeni, tüm klasör içeriğini statik içerik olarak değerlendirmek ve derleme Otomasyonu 'nu devre dışı bırakmak için diyor.</li>
-<li>İsteğe bağlı olarak <code>--location &lt;location-name&gt;</code> <code>&lt;location-name&gt;</code> , kullanılabilir bir Azure bölgesi olan bağımsız değişkeni ekleyebilirsiniz. Komutunu çalıştırarak, Azure hesabınız için izin verilen bölgelerin bir listesini alabilirsiniz <a href="/cli/azure/appservice#az-appservice-list-locations"> <code>az account list-locations</code> </a> .</li>
+<li>İsteğe bağlı olarak <code>--location &lt;location-name&gt;</code> <code>&lt;location-name&gt;</code> , kullanılabilir bir Azure bölgesi olan bağımsız değişkeni ekleyebilirsiniz. Komutunu çalıştırarak, Azure hesabınız için izin verilen bölgelerin bir listesini alabilirsiniz <a href="/cli/azure/appservice#az_appservice_list_locations"> <code>az account list-locations</code> </a> .</li>
 </ul>
 </details>
 
@@ -67,7 +67,7 @@ Komutun tamamlanması birkaç dakika sürebilir.
 <ul>
 <li>Varsayılan kaynak grubunu oluşturur.</li>
 <li>Varsayılan bir App Service planı oluşturun.</li>
-<li>Belirtilen ada sahip <a href="/cli/azure/webapp#az-webapp-create">bir App Service uygulaması oluşturun</a> .</li>
+<li>Belirtilen ada sahip <a href="/cli/azure/webapp#az_webapp_create">bir App Service uygulaması oluşturun</a> .</li>
 <li><a href="/azure/app-service/deploy-zip">ZIP</a> dosyalarını geçerli çalışma dizininden uygulamaya dağıtın.</li>
 <li>Çalıştırılırken, kaynak oluşturma, günlüğe kaydetme ve ZIP dağıtımı hakkında iletiler sağlar.</li>
 </ul>

@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: e6630cbb44157f25bd2cbfcff25ec3132c74c61c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d347be4e6727cdda659620befe20824678160020
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565580"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792444"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLı ile bir sanal makine ölçek kümesindeki işletim sistemini ve bağlı veri disklerini şifreleme
 
@@ -87,7 +87,7 @@ az keyvault update --name $keyvault_name --enabled-for-disk-encryption
 
 ## <a name="enable-encryption"></a>Şifrelemeyi etkinleştir
 
-Bir ölçek kümesindeki sanal makine örneklerini şifrelemek için, öncelikle Key Vault kaynak KIMLIĞIYLE ilgili bazı bilgileri [az keykasashow](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-show)komutuyla alın. Bu değişkenler daha sonra [az VMSS ENCRYPTION Enable](/cli/azure/vmss/encryption#az-vmss-encryption-enable)ile şifreleme işlemini başlatmak için kullanılır:
+Bir ölçek kümesindeki sanal makine örneklerini şifrelemek için, öncelikle Key Vault kaynak KIMLIĞIYLE ilgili bazı bilgileri [az keykasashow](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-show)komutuyla alın. Bu değişkenler daha sonra [az VMSS ENCRYPTION Enable](/cli/azure/vmss/encryption#az_vmss_encryption_enable)ile şifreleme işlemini başlatmak için kullanılır:
 
 ```azurecli-interactive
 # Get the resource ID of the Key Vault
@@ -103,7 +103,7 @@ az vmss encryption enable \
 
 Şifreleme işleminin başlaması bir veya iki dakika sürebilir.
 
-Ölçek kümesi, önceki bir adımda oluşturulan ölçek kümesindeki yükseltme ilkesi *Otomatik* olarak ayarlandığından, sanal makine örnekleri otomatik olarak şifreleme işlemini başlatır. Yükseltme ilkesinin el ile olduğu ölçek kümelerinde, [az VMSS Update-Instances](/cli/azure/vmss#az-vmss-update-instances)ile sanal makine örneklerinde şifreleme ilkesini başlatın.
+Ölçek kümesi, önceki bir adımda oluşturulan ölçek kümesindeki yükseltme ilkesi *Otomatik* olarak ayarlandığından, sanal makine örnekleri otomatik olarak şifreleme işlemini başlatır. Yükseltme ilkesinin el ile olduğu ölçek kümelerinde, [az VMSS Update-Instances](/cli/azure/vmss#az_vmss_update_instances)ile sanal makine örneklerinde şifreleme ilkesini başlatın.
 
 ### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>Anahtarı kaydırmak için KEK kullanarak şifrelemeyi etkinleştirme
 
@@ -131,7 +131,7 @@ https://[keykasaadı]. kasa. Azure. net/Keys/[kekname]/[kek-Unique-ID]
 
 ## <a name="check-encryption-progress"></a>Şifreleme ilerlemesini denetleme
 
-Disk şifrelemenin durumunu denetlemek için [az VMSS ENCRYPTION Show](/cli/azure/vmss/encryption#az-vmss-encryption-show)komutunu kullanın:
+Disk şifrelemenin durumunu denetlemek için [az VMSS ENCRYPTION Show](/cli/azure/vmss/encryption#az_vmss_encryption_show)komutunu kullanın:
 
 ```azurecli-interactive
 az vmss encryption show --resource-group myResourceGroup --name myScaleSet
@@ -166,7 +166,7 @@ VM örnekleri şifrelendiğinde, aşağıdaki örnek çıktıda gösterildiği g
 
 ## <a name="disable-encryption"></a>Şifrelemeyi devre dışı bırak
 
-Artık şifrelenmiş VM örnekleri disklerini kullanmak istemiyorsanız, [az VMSS ENCRYPTION Disable](/cli/azure/vmss/encryption#az-vmss-encryption-disable) ile şifrelemeyi şu şekilde devre dışı bırakabilirsiniz:
+Artık şifrelenmiş VM örnekleri disklerini kullanmak istemiyorsanız, [az VMSS ENCRYPTION Disable](/cli/azure/vmss/encryption#az_vmss_encryption_disable) ile şifrelemeyi şu şekilde devre dışı bırakabilirsiniz:
 
 ```azurecli-interactive
 az vmss encryption disable --resource-group myResourceGroup --name myScaleSet

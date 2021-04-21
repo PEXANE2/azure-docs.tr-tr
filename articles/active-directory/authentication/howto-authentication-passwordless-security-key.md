@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8779ee2d3c4d83c06a2c1803e65219d43f0ef14
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: a88bb7904143f69a0eea84ea291c65e3244c70a1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275813"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765872"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>Passwordless güvenlik anahtarı oturum açmayı etkinleştir 
 
@@ -90,7 +90,9 @@ Geri bildirim paylaşmak veya bu özellikle ilgili sorunlarla karşılaşırsan�
 
 Yönetici sağlama ve güvenlik anahtarlarının ön sağlamasını kaldırma kullanılamıyor.
 
-**Note:** FIDO2 önbellekli oturum açma, win10 20H2 sürümüne özel karma Azure AD 'ye katılmış makinede başarısız olur (DC 'nin kullanılamadığı durumlarda). Bu, şu anda mühendisle araştırma aşamasındadır.
+### <a name="cached-logon-on-hybrid-azure-ad-joined-devices"></a>Karma Azure AD 'ye katılmış cihazlarda önbelleğe alınan oturum açma
+
+FIDO2 anahtarlarla önbelleğe alınmış oturum açma, Windows 10, sürüm 20H2 ' de karma Azure AD 'ye katılmış cihazlarda başarısız olur. Sonuç olarak, şirket içi etki alanı denetleyicisine görüş alanı kullanılamadığında kullanıcılar oturum açamaz. Bu, şu anda araştırma aşamasındadır.
 
 ### <a name="upn-changes"></a>UPN değişiklikleri
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3f762597ad81dfaba907115cbcf6074d81ec2fa4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 97eee5d852450df2341d57932052839825523933
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549592"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769760"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Öğretici: Azure 'daki bir Linux sanal makinesinde bulunan ve Key Vault depolanan TLS/SSL sertifikaları ile Web sunucusunun güvenliğini sağlama
 Web sunucularının güvenliğini sağlamak için, daha önce Güvenli Yuva Katmanı (SSL) olarak bilinen bir Aktarım Katmanı Güvenliği (TLS), sertifika Web trafiğini şifrelemek için kullanılabilir. Bu TLS/SSL sertifikaları Azure Key Vault depolanabilir ve Azure 'da Linux sanal makinelerine (VM 'Ler) sertifikaların güvenli bir şekilde dağıtılmasına izin verebilir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -70,7 +70,7 @@ az keyvault certificate create \
 ```
 
 ### <a name="prepare-a-certificate-for-use-with-a-vm"></a>VM ile kullanım için sertifika hazırlama
-VM oluşturma sürecinde sertifikayı kullanmak için, [az keyvault secret list-versions](/cli/azure/keyvault/secret) komutuyla sertifikanızın kimliğini alın. [az vm secret format](/cli/azure/vm/secret#az-vm-secret-format) komutuyla sertifikayı dönüştürün. Aşağıdaki örnekte, sonraki adımlarda kullanım kolaylığı sağlamak için bu komutların çıkışı değişkenlere atanmaktadır:
+VM oluşturma sürecinde sertifikayı kullanmak için, [az keyvault secret list-versions](/cli/azure/keyvault/secret) komutuyla sertifikanızın kimliğini alın. [az vm secret format](/cli/azure/vm/secret#az_vm_secret_format) komutuyla sertifikayı dönüştürün. Aşağıdaki örnekte, sonraki adımlarda kullanım kolaylığı sağlamak için bu komutların çıkışı değişkenlere atanmaktadır:
 
 ```azurecli-interactive 
 secret=$(az keyvault secret list-versions \

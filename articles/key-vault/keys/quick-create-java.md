@@ -8,12 +8,12 @@ ms.date: 01/05/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: f0933a19ecfebfde8ac43ac3e88332506e2256ec
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 75cb7b6c9225e8579561f980df10da8994257133
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750386"
+ms.locfileid: "107777194"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>Hızlı başlangıç: Java için Azure Key Vault anahtar istemci kitaplığı
 Java için Azure Key Vault anahtar istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere aşağıdaki adımları izleyin.
@@ -176,7 +176,7 @@ Uygulamanızın kimliği doğrulandığına göre, yöntemi kullanarak anahtar k
 keyClient.createKey(keyName, KeyType.RSA);
 ```
 
-Anahtarın, [az keykasakey Show](/cli/azure/keyvault/key?#az-keyvault-key-show) komutuyla ayarlandığını doğrulayabilirsiniz:
+Anahtarın, [az keykasakey Show](/cli/azure/keyvault/key?#az_keyvault_key_show) komutuyla ayarlandığını doğrulayabilirsiniz:
 
 ```azurecli
 az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
@@ -201,7 +201,7 @@ SyncPoller<DeletedKey, Void> deletionPoller = keyClient.beginDeleteKey(keyName);
 deletionPoller.waitForCompletion();
 ```
 
-Anahtarın, [az keykasakey Show](/cli/azure/keyvault/key?#az-keyvault-key-show) komutuyla silindiğini doğrulayabilirsiniz:
+Anahtarın, [az keykasakey Show](/cli/azure/keyvault/key?#az_keyvault_key_show) komutuyla silindiğini doğrulayabilirsiniz:
 
 ```azurecli
 az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
