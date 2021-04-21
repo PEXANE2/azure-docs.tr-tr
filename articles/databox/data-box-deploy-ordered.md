@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: aa3614aa3c4fbaec3611806406e5129379999bc3
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: eae8cca0302993c16ea29adddf6e4ee9b5b24be8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067150"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770907"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Öğretici: Azure Data Box sipariş etme
 
@@ -59,7 +59,7 @@ Başlamadan önce aşağıdakilerden emin olun:
 
 **Azure'da oturum açma**
 
-Bir Windows PowerShell komut penceresi açın ve [az Login](/cli/azure/reference-index#az-login) komutuyla Azure 'da oturum açın:
+Bir Windows PowerShell komut penceresi açın ve [az Login](/cli/azure/reference-index#az_login) komutuyla Azure 'da oturum açın:
 
 ```azurecli
 PS C:\Windows> az login

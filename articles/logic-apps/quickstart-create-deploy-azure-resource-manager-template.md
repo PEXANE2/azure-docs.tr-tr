@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.date: 06/30/2020
-ms.openlocfilehash: 8cee79efd9be53ddb9d450f643c04f21ae5e7fca
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/01/2021
+ms.openlocfilehash: bdeb80dc487d8418e21a40a29e5d2baab49d7b05
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102214006"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771902"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak mantıksal uygulama iş akışı oluşturma ve dağıtma
 
@@ -32,7 +32,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https:
 
 Bu hızlı başlangıçta, [Azure hızlı başlangıç şablonları galerisinde](https://azure.microsoft.com/resources/templates) bulabileceğiniz ancak burada gösteremeyeceği çok uzun olan [**bir mantıksal uygulama oluşturma**](https://azure.microsoft.com/resources/templates/101-logic-app-create/) şablonu kullanılmaktadır. Bunun yerine, şablonlar galerisinde hızlı başlangıç şablonunun ["dosya üzerinde azuredeploy.js"](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) bölümünü inceleyebilirsiniz.
 
-Hızlı başlangıç şablonu, her saat çalışacak şekilde ayarlanan yinelenme tetikleyicisini ve Azure 'un durumunu döndüren bir URL 'YI çağıran bir HTTP [ *yerleşik* eylemini](../connectors/apis-list.md#connector-types)kullanan bir mantıksal uygulama iş akışı oluşturur. Yerleşik bir eylem Azure Logic Apps platformuna yereldir.
+Hızlı başlangıç şablonu, her saat çalışacak şekilde ayarlanan yinelenme tetikleyicisini ve Azure 'un durumunu döndüren bir URL 'YI çağıran bir HTTP [ *yerleşik* eylemini](../connectors/built-in.md)kullanan bir mantıksal uygulama iş akışı oluşturur. Yerleşik bir eylem Azure Logic Apps platformuna yereldir.
 
 Bu şablon aşağıdaki Azure kaynağını oluşturur:
 
@@ -303,7 +303,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-Daha fazla bilgi için bkz. [Azure CLI: az Group Delete](/cli/azure/group#az-group-delete).
+Daha fazla bilgi için bkz. [Azure CLI: az Group Delete](/cli/azure/group#az_group_delete).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

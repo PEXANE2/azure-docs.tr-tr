@@ -3,19 +3,18 @@ title: Azure Anahtar Kasası nedir? | Microsoft Belgeleri
 description: Bulut uygulamalarının ve hizmetlerinin kullandığı şifreleme anahtarlarını ve gizli dizileri Azure Key Vault nasıl korutuını öğrenin.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 46c8845b4f01db09bf5f96eb1e67078b4e361f9f
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 6fafacda322a974d04a04bb5e79d1ee086eaf7a5
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728329"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753407"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault temel kavramlar
 
@@ -81,7 +80,7 @@ Geliştiriciler ayrıca anahtarları doğrudan API'lerini kullanarak yönetebili
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Kasalarınızın güvenliğini](secure-your-key-vault.md)nasıl sağlayacağınızı öğrenin.
+- [Kasalarınızın güvenliğini](security-overview.md)nasıl sağlayacağınızı öğrenin.
 - [YÖNETILEN HSM havuzlarınızı güvenli hale getirme](../managed-hsm/access-control.md) hakkında bilgi edinin
 
 <!--Image references-->

@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f2c0b82f14fd16ecb9eef163e7a263f4327cfc46
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 4f9523594c07209d530a143713061be6d0467af8
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364558"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753389"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault Geliştirici Kılavuzu
 
@@ -45,7 +45,7 @@ Yönetim katmanına erişim, [Azure rol tabanlı erişim denetimi](../../role-ba
 
 Bkz. yükleme paketleri ve kaynak kodu için [Istemci kitaplıkları](client-libraries.md) .
 
-Key Vault yönetim düzlemi hakkında daha fazla bilgi için bkz. [Key Vault yönetim düzlemi](./secure-your-key-vault.md#management-plane-and-azure-rbac)
+Key Vault yönetim düzlemi hakkında daha fazla bilgi için bkz. [Key Vault yönetim düzlemi](security-overview.md)
 
 ## <a name="authenticate-to-key-vault-in-code"></a>Kodda Key Vault kimlik doğrulaması
 
@@ -105,7 +105,7 @@ Anahtarlar, gizlilikler ve sertifikalara erişim veri düzlemine göre denetleni
 
 Bkz. yükleme paketleri ve kaynak kodu için [Istemci kitaplıkları](client-libraries.md) .
 
-Veri düzlemi güvenliği Key Vault hakkında daha fazla bilgi için bkz. [Key Vault veri düzlemi ve erişim ilkeleri](./secure-your-key-vault.md#data-plane-and-access-policies) ve [Key Vault veri DÜZLEMI ve Azure RBAC](./secure-your-key-vault.md#data-plane-and-azure-rbac)
+Key Vault veri düzlemi güvenliği hakkında daha fazla bilgi için bkz. [Key Vault güvenliğine genel bakış](security-overview.md).
 
 ### <a name="code-examples"></a>Kod örnekleri
 

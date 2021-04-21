@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c779e95b790d91b801d5d35b4702191f5e7986d5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b93fb61cc58360ddfcf15d2af2c936203d869500
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802973"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771542"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service’ta hazırlık ortamları ayarlama
 <a name="Overview"></a>
@@ -248,7 +248,7 @@ Ayar kaydedildikten sonra, belirtilen istemci yüzdesi, bir üretim dışı yuva
 İstemci belirli bir yuvaya otomatik olarak yönlendirildikten sonra, o istemci oturumunun ömrü için bu yuvaya "sabitlenmiş" olur. İstemci tarayıcısında, `x-ms-routing-name` http başlıklarınızın tanımlama bilgisine bakarak oturumunuzun hangi yuvaya sabitlendiği hakkında bilgi alabilirsiniz. "Hazırlama" yuvasına yönlendirilen bir istek tanımlama bilgisine sahiptir `x-ms-routing-name=staging` . Üretim yuvasına yönlendirilen bir istek tanımlama bilgisine sahiptir `x-ms-routing-name=self` .
 
    > [!NOTE]
-   > Azure portal yanında, [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) DevOps işlem hatları veya diğer otomasyon sistemleri gıbı CI/CD araçlarından yönlendirme yüzdelerini ayarlamak Için Azure CLI 'daki komutunu da kullanabilirsiniz.
+   > Azure portal yanında, [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az_webapp_traffic_routing_set) DevOps işlem hatları veya diğer otomasyon sistemleri gıbı CI/CD araçlarından yönlendirme yüzdelerini ayarlamak Için Azure CLI 'daki komutunu da kullanabilirsiniz.
    > 
 
 ### <a name="route-production-traffic-manually"></a>Üretim trafiğini el ile yönlendirin

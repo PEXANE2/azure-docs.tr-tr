@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: f148a5b267edd3fc1dd33ef17d5ad01005b4a903
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 202278d6436439a212dda229f209ab8fb75db596
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566294"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752345"
 ---
 # <a name="start-monitor-and-track-run-history"></a>Çalıştırma geçmişini başlatma, izleme ve izleme 
 
@@ -405,7 +405,12 @@ with exp.start_logging() as parent_run:
 
 Alt çalıştırmalar da bir üst çalışmadan gönderilebilir. Bu, üst ve alt çalıştırmaların hiyerarşilerini oluşturmanızı sağlar. Parentdaha az alt çalışma oluşturamazsınız: üst çalıştırma Nothing olsa da alt çalıştırmaları çalıştırsa bile, hiyerarşinin oluşturulması hala gereklidir. Tüm çalıştırmaların durumları bağımsızdır: bir `"Completed"` veya daha fazla alt çalışma iptal edildiyse veya başarısız olsa bile üst öğe başarılı durumunda olabilir.  
 
-Çocuğunuzun, üst çalışmadan farklı bir çalıştırma yapılandırması kullanmasını isteyebilirsiniz. Örneğin, çocuklarınız için GPU tabanlı yapılandırmalar kullanırken üst için daha az güçlü ve CPU tabanlı bir yapılandırma kullanabilirsiniz. Diğer bir yaygın, her bir alt öğenin farklı bağımsız değişkenlerini ve verileri geçirmektir. Alt çalışmayı özelleştirmek için `ScriptRunConfig` alt çalıştırma için bir nesne oluşturun. Aşağıdaki kod:
+Çocuğunuzun, üst çalışmadan farklı bir çalıştırma yapılandırması kullanmasını isteyebilirsiniz. Örneğin, çocuklarınız için GPU tabanlı yapılandırmalar kullanırken üst için daha az güçlü ve CPU tabanlı bir yapılandırma kullanabilirsiniz. Diğer bir yaygın, her bir alt öğenin farklı bağımsız değişkenlerini ve verileri geçirmektir. Alt çalışmayı özelleştirmek için `ScriptRunConfig` alt çalıştırma için bir nesne oluşturun. 
+
+> [!IMPORTANT]
+> Bir alt çalışmayı uzak bir işlem üzerinde bir üst çalıştırana bilgisayardan göndermek için önce üst çalışma kodundaki çalışma alanında oturum açmanız gerekir. Varsayılan olarak, uzak çalıştırmada çalıştırma bağlamı nesnesinin alt çalıştırmaları göndermek için kimlik bilgileri yoktur. Oturum açmak için bir hizmet sorumlusu veya yönetilen kimlik kimlik bilgileri kullanın. Kimlik doğrulama hakkında daha fazla bilgi için bkz. [kimlik doğrulamasını ayarlama](how-to-setup-authentication.md).
+
+Aşağıdaki kod:
 
 - Çalışma alanından adlı bir işlem kaynağı alır `"gpu-cluster"``ws`
 - Alt nesnelere geçirilecek farklı bağımsız değişken değerlerini yineler `ScriptRunConfig`
