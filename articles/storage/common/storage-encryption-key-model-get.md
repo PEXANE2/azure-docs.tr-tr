@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: ef0f32ecc59bea6ee7a0f7ff12083fd2358c223c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 08bc36500bbd95633d1cb1d02bf10a7397401aa4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478922"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780128"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>Depolama hesabı için hangi Azure depolama şifreleme anahtarı modelinin kullanımda olduğunu belirleme
 
@@ -62,7 +62,7 @@ $account.Encryption.KeySource
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Azure CLı kullanarak depolama hesabının şifreleme modelini denetlemek için [az Storage Account Show](/cli/azure/storage/account#az-storage-account-show) komutunu çağırın, sonra hesabın **KeySource** özelliğini denetleyin.
+Azure CLı kullanarak depolama hesabının şifreleme modelini denetlemek için [az Storage Account Show](/cli/azure/storage/account#az_storage_account_show) komutunu çağırın, sonra hesabın **KeySource** özelliğini denetleyin.
 
 ```azurecli-interactive
 key_source=$(az storage account show \

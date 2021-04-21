@@ -3,12 +3,12 @@ title: Dağıtım geçmişi silme işlemleri
 description: Azure Resource Manager dağıtım geçmişinden dağıtımları otomatik olarak silme işlemini açıklar. Geçmiş 800 sınırını aşmaya yakın olduğunda dağıtımlar silinir.
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: 83383411ec317e228dabb14273e2b566792c774c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b55c022c35c43be6818bb3c551d5db85b1927ebb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732474"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781856"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Dağıtım geçmişinden otomatik silme işlemleri
 
@@ -84,7 +84,7 @@ Otomatik silme işlemlerini yeniden etkinleştirmek için Azure REST API veya Az
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLı için [az Feature Register](/cli/azure/feature#az-feature-register)kullanın.
+Azure CLı için [az Feature Register](/cli/azure/feature#az_feature_register)kullanın.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Resources --name DisableDeploymentGrooming
@@ -96,7 +96,7 @@ Aboneliğinizin geçerli durumunu görmek için şunu kullanın:
 az feature show --namespace Microsoft.Resources --name DisableDeploymentGrooming
 ```
 
-Otomatik silme işlemlerini yeniden etkinleştirmek için [az Feature Unregister](/cli/azure/feature#az-feature-unregister)kullanın.
+Otomatik silme işlemlerini yeniden etkinleştirmek için [az Feature Unregister](/cli/azure/feature#az_feature_unregister)kullanın.
 
 ```azurecli-interactive
 az feature unregister --namespace Microsoft.Resources --name DisableDeploymentGrooming
@@ -104,7 +104,7 @@ az feature unregister --namespace Microsoft.Resources --name DisableDeploymentGr
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-REST API için, [Özellikler-kaydet](/rest/api/resources/features/features/register)' i kullanın.
+REST API için, [Özellikler-kaydet](/rest/api/resources/features/register)' i kullanın.
 
 ```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
@@ -116,7 +116,7 @@ Aboneliğinizin geçerli durumunu görmek için şunu kullanın:
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
 ```
 
-Otomatik silme işlemlerini yeniden etkinleştirmek için, [özellikleri kullanın-kaydını kaldırın](/rest/api/resources/features/features/unregister)
+Otomatik silme işlemlerini yeniden etkinleştirmek için, [özellikleri kullanın-kaydını kaldırın](/rest/api/resources/features/unregister)
 
 ```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/unregister?api-version=2015-12-01
