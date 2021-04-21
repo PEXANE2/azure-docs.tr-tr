@@ -3,12 +3,12 @@ title: Kayıt defteri kimlik doğrulama seçenekleri
 description: Bir Azure Active Directory kimlikle oturum açma, hizmet sorumlularını kullanma ve isteğe bağlı yönetici kimlik bilgilerini kullanma dahil olmak üzere, özel bir Azure Kapsayıcı kayıt defteri için kimlik doğrulama seçenekleri.
 ms.topic: article
 ms.date: 03/15/2021
-ms.openlocfilehash: d12895502ecd30991fbef836903a8ceea445b770
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 7ff55d569e2659262ce9f323e4db2ea7ed671d20
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285510"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784290"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Azure Container Registry ile kimlik doğrulama
 
@@ -31,7 +31,7 @@ Aşağıdaki tabloda, kullanılabilir kimlik doğrulama yöntemleri ve tipik sen
 
 ## <a name="individual-login-with-azure-ad"></a>Azure AD ile bireysel oturum açma
 
-Kayıt defteriyle doğrudan çalışırken, bir geliştirme iş istasyonundan görüntü çekme ve görüntüleri oluşturduğunuz bir kayıt defterine gönderme gibi, bireysel Azure kimliğinizi kullanarak kimlik doğrulaması yapın. [Az Login](/cli/azure/reference-index#az-login)komutuyla [Azure CLI](/cli/azure/install-azure-cli) 'da oturum açın ve [az ACR Login](/cli/azure/acr#az-acr-login) komutunu çalıştırın:
+Kayıt defteriyle doğrudan çalışırken, bir geliştirme iş istasyonundan görüntü çekme ve görüntüleri oluşturduğunuz bir kayıt defterine gönderme gibi, bireysel Azure kimliğinizi kullanarak kimlik doğrulaması yapın. [Az Login](/cli/azure/reference-index#az_login)komutuyla [Azure CLI](/cli/azure/install-azure-cli) 'da oturum açın ve [az ACR Login](/cli/azure/acr#az_acr_login) komutunu çalıştırın:
 
 ```azurecli
 az login
@@ -111,7 +111,7 @@ docker login myregistry.azurecr.io
 
 Oturum açma kimlik bilgilerini yönetmek için önerilen uygulamalar için [Docker Login](https://docs.docker.com/engine/reference/commandline/login/) komut başvurusuna bakın.
 
-Mevcut bir kayıt defteri için yönetici kullanıcıyı etkinleştirmek üzere, `--admin-enabled` Azure CLI 'de [az ACR Update](/cli/azure/acr#az-acr-update) komutunun parametresini kullanabilirsiniz:
+Mevcut bir kayıt defteri için yönetici kullanıcıyı etkinleştirmek üzere, `--admin-enabled` Azure CLI 'de [az ACR Update](/cli/azure/acr#az_acr_update) komutunun parametresini kullanabilirsiniz:
 
 ```azurecli
 az acr update -n <acrName> --admin-enabled true

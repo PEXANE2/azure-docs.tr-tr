@@ -12,12 +12,12 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: c1613c61143044c4fa355c6225cf0fa1d4e2e09d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: f98dcdd9c1a479703c82c01b4fd240507ea355de
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308396"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784478"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell kullanarak Saydam Veri Şifrelemesi (TDE) koruyucusunu kaldırma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -136,7 +136,7 @@ Alternatif olarak, PowerShell veya Azure CLı 'yi de kullanabilirsiniz:
 
 Komut başvurusu için bkz. [Azure CLI Anahtar Kasası](/cli/azure/keyvault/key).
 
-1. [Key Vault yeni bir anahtar](/cli/azure/keyvault/key#az-keyvault-key-create)oluşturun. Bu yeni anahtarın, çok riskli bir TDE koruyucudan farklı bir anahtar kasasında oluşturulduğundan emin olun, çünkü erişim denetimi bir kasa düzeyinde sağlanır.
+1. [Key Vault yeni bir anahtar](/cli/azure/keyvault/key#az_keyvault_key_create)oluşturun. Bu yeni anahtarın, çok riskli bir TDE koruyucudan farklı bir anahtar kasasında oluşturulduğundan emin olun, çünkü erişim denetimi bir kasa düzeyinde sağlanır.
 
 2. Yeni anahtarı sunucuya ekleyin ve sunucunun yeni TDE koruyucusu olarak güncelleştirin.
 

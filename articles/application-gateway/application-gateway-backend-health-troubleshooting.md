@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 1373e0eeead805dcd3a439878c9737c46d75bf3b
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 8664f9327af37345c7104c65b2521212669ae806
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078511"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786335"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway'de arka uç durumu sorunlarını giderme
 ==================================================
@@ -24,7 +24,7 @@ Varsayılan olarak Azure Application Gateway, arka uç sunucularını inceleyere
 
 ### <a name="how-to-check-backend-health"></a>Arka uç durumunu denetleme
 
-Arka uç havuzunuzun durumunu denetlemek için Azure portal **arka uç sistem durumu** sayfasını kullanabilirsiniz. Ya da [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth), [CLI](/cli/azure/network/application-gateway#az-network-application-gateway-show-backend-health)veya [REST API](/rest/api/application-gateway/applicationgateways/backendhealth)kullanabilirsiniz.
+Arka uç havuzunuzun durumunu denetlemek için Azure portal **arka uç sistem durumu** sayfasını kullanabilirsiniz. Ya da [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth), [CLI](/cli/azure/network/application-gateway#az_network_application_gateway_show_backend_health)veya [REST API](/rest/api/application-gateway/applicationgateways/backendhealth)kullanabilirsiniz.
 
 Bu yöntemlerin herhangi biri tarafından alınan durum aşağıdakilerden biri olabilir:
 
