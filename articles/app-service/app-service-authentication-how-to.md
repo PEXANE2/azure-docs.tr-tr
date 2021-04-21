@@ -4,12 +4,12 @@ description: Farklı senaryolar için App Service kimlik doğrulaması ve yetkil
 ms.topic: article
 ms.date: 03/29/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: b7faf47363a5efee6a60951e67d9ad2bed8bf76f
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 9335bb62e494fab50f7beadf3d7bbc423d80cf14
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076879"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775736"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 'da gelişmiş kimlik doğrulama ve yetkilendirme kullanımı
 
@@ -652,7 +652,7 @@ Azure CLı kullanarak veya uygulamanızdaki yerleşik sürüm HTTP uç noktalar�
 
 ##### <a name="from-the-azure-cli"></a>Azure CLı 'dan
 
-Azure CLı 'yı kullanarak, [az WebApp auth Show](/cli/azure/webapp/auth#az-webapp-auth-show) komutuyla geçerli ara yazılım sürümünü görüntüleyin.
+Azure CLı 'yı kullanarak, [az WebApp auth Show](/cli/azure/webapp/auth#az_webapp_auth_show) komutuyla geçerli ara yazılım sürümünü görüntüleyin.
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -683,7 +683,7 @@ Ayrıca, uygulamanın üzerinde çalıştığı geçerli ara yazılım sürümü
 
 #### <a name="update-the-current-runtime-version"></a>Geçerli çalışma zamanı sürümünü güncelleştirme
 
-Azure CLı 'yı kullanarak, `runtimeVersion` [az WebApp auth Update](/cli/azure/webapp/auth#az-webapp-auth-update) komutuyla uygulamadaki ayarı güncelleştirebilirsiniz.
+Azure CLı 'yı kullanarak, `runtimeVersion` [az WebApp auth Update](/cli/azure/webapp/auth#az_webapp_auth_update) komutuyla uygulamadaki ayarı güncelleştirebilirsiniz.
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \
@@ -693,7 +693,7 @@ az webapp auth update --name <my_app_name> \
 
 `<my_app_name>`Uygulamanızın adıyla değiştirin. Ayrıca `<my_resource_group>` , uygulamanızın kaynak grubu adıyla değiştirin. Ayrıca, `<version>` 1. x çalışma zamanının geçerli bir sürümüyle veya `~1` en son sürüm ile değiştirin. Sürüm notlarını farklı çalışma zamanı sürümlerinde bulabilirsiniz [buraya] ( https://github.com/Azure/app-service-announcements) sabitlenemeyecek sürümü belirlemenize yardımcı olmak için).
 
-Yukarıdaki kod örneğinde **deneyin** ' i seçerek bu komutu [Azure Cloud Shell](../cloud-shell/overview.md) çalıştırabilirsiniz. Ayrıca, oturum açmak için [az Login](/cli/azure/reference-index#az-login) komutunu çalıştırdıktan sonra bu komutu yürütmek IÇIN [Azure CLI 'yı yerel olarak](/cli/azure/install-azure-cli) da kullanabilirsiniz.
+Yukarıdaki kod örneğinde **deneyin** ' i seçerek bu komutu [Azure Cloud Shell](../cloud-shell/overview.md) çalıştırabilirsiniz. Ayrıca, oturum açmak için [az Login](/cli/azure/reference-index#az_login) komutunu çalıştırdıktan sonra bu komutu yürütmek IÇIN [Azure CLI 'yı yerel olarak](/cli/azure/install-azure-cli) da kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
