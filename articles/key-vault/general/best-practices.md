@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 5e4ec2749cec8444382e2b6e7c856e74c57ebb59
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7cfa2059cc03b96db39183cfa5056c9934a02290
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777176"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814361"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Key Vault kullanmak için en iyi uygulamalar
 
@@ -24,7 +24,7 @@ ms.locfileid: "107777176"
 
 ## <a name="control-access-to-your-vault"></a>Kasanıza erişimi denetleme
 
-Azure Key Vault, şifreleme anahtarlarını ve sertifikalar, bağlantı dizeleri ve parolalar gibi gizli dizileri koruyan bir bulut hizmetidir. Bu veriler hassas ve iş açısından kritik olduğundan, yalnızca yetkili uygulamalara ve kullanıcılara izin vererek anahtar kasalarınıza güvenli bir şekilde erişmeniz gerekir. Bu [makalede](security-overview.md) Key Vault erişim modeline genel bir bakış sunulmaktadır. Kimlik doğrulama ve yetkilendirmeyi açıklar ve anahtar kasalarınıza erişimin güvenliğini nasıl sağlayabileceğinizi açıklar.
+Azure Key Vault, şifreleme anahtarlarını ve sertifikalar, bağlantı dizeleri ve parolalar gibi gizli dizileri koruyan bir bulut hizmetidir. Bu veriler hassas ve iş açısından kritik olduğundan, yalnızca yetkili uygulamalara ve kullanıcılara izin vererek anahtar kasalarınıza güvenli bir şekilde erişmeniz gerekir. Bu [makalede](security-features.md) Key Vault erişim modeline genel bir bakış sunulmaktadır. Kimlik doğrulama ve yetkilendirmeyi açıklar ve anahtar kasalarınıza erişimin güvenliğini nasıl sağlayabileceğinizi açıklar.
 
 Kasanıza erişimi denetlerken öneriler aşağıdaki gibidir:
 1. Aboneliğiniz, kaynak grubunuz ve Anahtar kasaları (Azure RBAC) için erişimi kilitleme

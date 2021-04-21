@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/20/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: 92138b0253d28c8bf2617ee7b17474f30ac5cafe
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: c47543fa1401a8da533a9af3ebe4554e405622d3
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751212"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835551"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -31,6 +31,7 @@ Nisan 'daki güncelleştirmeler şunları içerir:
 - [Son çekilen kapsayıcı kayıt defteri görüntüleri artık haftalık olarak yeniden taranıp (genel kullanılabilirlik)](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
 - [Karma ve çoklu bulut Kubernetes dağıtımlarını korumak için Kubernetes için Azure Defender 'ı kullanma (Önizleme)](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
 - [DNS ve Kaynak Yöneticisi için Azure Defender 'ı etkinleştirme önerileri (Önizleme)](#recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview)
+- [Eklenen üç mevzuat uyumluluk standardı: Azure CIS 1.3.0, CMMC düzey 3 ve Yeni Zelanda ıSM kısıtlanmış](#three-regulatory-compliance-standards-added-azure-cis-130-cmmc-level-3-and-new-zealand-ism-restricted)
 - [Konuk yapılandırmasıyla ilgili dört yeni öneri (Önizleme)](#four-new-recommendations-related-to-guest-configuration-preview)
 - [CMK önerileri en iyi yöntemler güvenlik denetimine taşındı](#cmk-recommendations-moved-to-best-practices-security-control)
 - [11 Azure Defender uyarıları kullanım dışı](#11-azure-defender-alerts-deprecated)
@@ -80,6 +81,24 @@ Azure Defender planlarını etkinleştirme, ücretlere neden olur. Güvenlik Mer
 
 > [!TIP]
 > Önizleme önerileri bir kaynağı sağlıksız bir şekilde işlemez ve güvenli puanınızın hesaplamalarına dahil değildir. Önizleme dönemi sona erdiğinde puanınızın altına katkıda bulunmak için bunları mümkün olduğunda düzeltin. [Azure Güvenlik Merkezi 'ndeki önerileri düzeltin](security-center-remediate-recommendations.md)bölümünde bu önerilere yanıt verme hakkında daha fazla bilgi edinin.
+
+
+### <a name="three-regulatory-compliance-standards-added-azure-cis-130-cmmc-level-3-and-new-zealand-ism-restricted"></a>Eklenen üç mevzuat uyumluluk standardı: Azure CIS 1.3.0, CMMC düzey 3 ve Yeni Zelanda ıSM kısıtlanmış
+
+Azure Güvenlik Merkezi ile kullanılmak üzere üç standart ekledik. Yasal uyumluluk panosunu kullanarak bundan sonra uyumluluğunuzu izleyebilirsiniz:
+
+- [CIS Microsoft Azure temelleri kıyaslaması 1.3.0](../governance/policy/samples/cis-azure-1-3-0.md)
+- [CMMC düzey 3](../governance/policy/samples/cmmc-l3.md)
+- [Yeni Zelanda ıSM kısıtlanmış](../governance/policy/samples/new-zealand-ism.md)
+
+Bunları [, mevzuat uyumluluk panonuzdaki standartlar kümesini özelleştirme](update-regulatory-compliance-packages.md)bölümünde açıklandığı gibi aboneliklerinize atayabilirsiniz.
+
+:::image type="content" source="media/release-notes/additional-regulatory-compliance-standards.png" alt-text="Azure Güvenlik Merkezi 'nin mevzuat uyumluluk panosu ile kullanılmak üzere üç standart eklenmiştir." lightbox="media/release-notes/additional-regulatory-compliance-standards.png":::
+
+Daha fazlasını öğrenin:
+- [Yasal uyumluluk panonuzdaki standartlar kümesini özelleştirme](update-regulatory-compliance-packages.md)
+- [Öğretici: Mevzuat uyumluluğunuzu artırma](security-center-compliance-dashboard.md)
+- [SSS - Mevzuat uyumluluğu panosu](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard)
 
 ### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Konuk yapılandırmasıyla ilgili dört yeni öneri (Önizleme)
 

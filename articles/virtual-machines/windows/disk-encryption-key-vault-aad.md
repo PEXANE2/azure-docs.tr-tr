@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: f2f301556bd24adb5e4a18f15717374ef26c400b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b3ba3e18f175fad543dbb2350df76354b758575f
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777896"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813821"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD ile Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma (önceki sürüm)
 
 **Azure disk şifrelemesi 'nin yeni sürümü, VM disk şifrelemeyi etkinleştirmek için bir Azure AD uygulama parametresi sağlama gereksinimini ortadan kaldırır. Yeni sürümde, artık şifrelemeyi Etkinleştir adımını kullanarak Azure AD kimlik bilgilerini sağlamanız gerekmez. Yeni sürüm kullanılarak Azure AD uygulama parametreleri olmadan tüm yeni VM 'Ler şifrelenmelidir. Yeni sürümü kullanarak VM disk şifrelemesini etkinleştirme yönergelerini görüntülemek için bkz. [Azure disk şifrelemesi](disk-encryption-overview.md). Azure AD uygulama parametreleriyle zaten şifrelenmiş VM 'Ler hala desteklenmektedir ve AAD sözdizimi ile sürdürülmeye devam etmelidir.**
 
-Azure disk şifrelemesi, disk şifreleme anahtarlarını ve gizli dizileri denetlemek ve yönetmek için Azure Key Vault kullanır.  Anahtar kasaları hakkında daha fazla bilgi için bkz. [Azure Key Vault kullanmaya başlama](../../key-vault/general/overview.md) ve [anahtar kasanızın güvenliğini sağlama](../../key-vault/general/security-overview.md). 
+Azure disk şifrelemesi, disk şifreleme anahtarlarını ve gizli dizileri denetlemek ve yönetmek için Azure Key Vault kullanır.  Anahtar kasaları hakkında daha fazla bilgi için bkz. [Azure Key Vault kullanmaya başlama](../../key-vault/general/overview.md) ve [anahtar kasanızın güvenliğini sağlama](../../key-vault/general/security-features.md). 
 
 Azure AD ile Azure disk şifrelemesi ile kullanım için bir Anahtar Kasası oluşturma ve yapılandırma (önceki sürüm) üç adımdan oluşur:
 
@@ -37,7 +37,7 @@ Ayrıca, anahtar şifreleme anahtarı (KEK) oluşturabilir veya içeri aktarabil
 
 
 ## <a name="create-a-key-vault"></a>Anahtar kasası oluşturma 
-Azure disk şifrelemesi, Anahtar Kasası aboneliğinizdeki disk şifreleme anahtarlarını ve gizli dizileri denetlemenize ve yönetmenize yardımcı olmak için [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) ile tümleşiktir. Bir Anahtar Kasası oluşturabilir veya mevcut bir Azure disk şifrelemesi kullanabilirsiniz. Anahtar kasaları hakkında daha fazla bilgi için bkz. [Azure Key Vault kullanmaya başlama](../../key-vault/general/overview.md) ve [anahtar kasanızın güvenliğini sağlama](../../key-vault/general/security-overview.md). Bir Anahtar Kasası oluşturmak için Kaynak Yöneticisi şablonu, Azure PowerShell veya Azure CLı kullanabilirsiniz. 
+Azure disk şifrelemesi, Anahtar Kasası aboneliğinizdeki disk şifreleme anahtarlarını ve gizli dizileri denetlemenize ve yönetmenize yardımcı olmak için [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) ile tümleşiktir. Bir Anahtar Kasası oluşturabilir veya mevcut bir Azure disk şifrelemesi kullanabilirsiniz. Anahtar kasaları hakkında daha fazla bilgi için bkz. [Azure Key Vault kullanmaya başlama](../../key-vault/general/overview.md) ve [anahtar kasanızın güvenliğini sağlama](../../key-vault/general/security-features.md). Bir Anahtar Kasası oluşturmak için Kaynak Yöneticisi şablonu, Azure PowerShell veya Azure CLı kullanabilirsiniz. 
 
 
 >[!WARNING]

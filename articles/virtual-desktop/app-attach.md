@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d1ca4a843c6731cde7ed70d65fc230a21ef6e7c4
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 43a8cb00804927784982999db13ee193c34f55ca
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389443"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835389"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach"></a>MSIX uygulama iliştirme için PowerShell betikleri oluşturma
 
@@ -24,7 +24,7 @@ Ana bilgisayar havuzundaki tüm oturum konaklarına sertifika yükleyerek, MSIX 
 Uygulamanız ortak güvenilir olmayan ya da kendinden imzalı bir sertifika kullanıyorsa, bunu nasıl yükleyeceksiniz:
 
 1. Pakete sağ tıklayın ve **Özellikler**' i seçin.
-2. Görüntülenen pencerede **dijital imzalar** sekmesini seçin. Aşağıdaki görüntüde gösterildiği gibi sekmedeki listede yalnızca bir öğe olmalıdır. Öğeyi vurgulamak için bu öğeyi seçin, sonra **Ayrıntılar**' ı seçin.
+2. Görüntülenen pencerede **dijital imzalar** sekmesini seçin. Sekmedeki listede yalnızca bir öğe olmalıdır. Öğeyi vurgulamak için bu öğeyi seçin, sonra **Ayrıntılar**' ı seçin.
 3. Dijital imza ayrıntıları penceresi göründüğünde **genel** sekmesini seçin, ardından **sertifikayı görüntüle**' yi seçin ve **sertifikayı yükler**' i seçin.
 4. Yükleyici açıldığında, depolama konumunuz olarak **yerel makine** ' yi seçin ve ardından **İleri**' yi seçin.
 5. Yükleyici, uygulamanın cihazınızda değişiklik yapmasına izin vermek isteyip istemediğinizi isterse, **Evet**' i seçin.

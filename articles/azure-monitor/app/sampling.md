@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a03dab43c12b372fc52e7516821fe7aef22d2e16
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ba7892c8afbe8e557c7dcf9aa3bd663f53a5728f
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305251"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834759"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -34,10 +34,10 @@ Aşağıdaki tabloda her SDK ve uygulama türü için kullanılabilir örnekleme
 |-|-|-|-|
 | ASP.NET | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-applications) | Yalnızca başka bir örnekleme geçerli değilse |
 | ASP.NET Core | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| Azure İşlevleri | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-azure-functions) | Hayır | Yalnızca başka bir örnekleme geçerli değilse |
-| Java | Hayır | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| Node.JS | Hayır | [Evet](./nodejs.md#sampling) | Yalnızca başka bir örnekleme geçerli değilse
-| Python | Hayır | [Evet](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| Azure İşlevleri | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-azure-functions) | No | Yalnızca başka bir örnekleme geçerli değilse |
+| Java | No | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| Node.JS | No | [Evet](./nodejs.md#sampling) | Yalnızca başka bir örnekleme geçerli değilse
+| Python | No | [Evet](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Yalnızca başka bir örnekleme geçerli değilse |
 | Tüm diğerleri | Hayır | Hayır | [Evet](#ingestion-sampling) |
 
 > [!NOTE]
@@ -320,7 +320,7 @@ Varsayılan olarak, Java Aracısı ve SDK 'da hiçbir örnekleme etkinleştirilm
 ```json
 {
   "sampling": {
-    "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
+    "percentage": 10 //this is just an example that shows you how to enable only 10% of transaction 
   }
 }
 ```

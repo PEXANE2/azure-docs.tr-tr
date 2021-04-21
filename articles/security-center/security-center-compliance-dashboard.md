@@ -1,24 +1,18 @@
 ---
 title: 'Öğretici: mevzuat uyumluluk denetimleri-Azure Güvenlik Merkezi'
 description: "Öğretici: Azure Güvenlik Merkezi 'ni kullanarak mevzuata uyumluluğunuzu geliştirmeyi öğrenin."
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 5f50c4dc-ea42-418d-9ea8-158ffeb93706
 ms.service: security-center
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/10/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: 284a7f532ed918397fe1cfcf3458bbc6fb0bdd32
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: c8ac9079321e47a1e6d9b8689be46bf55bdd4243
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739017"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834629"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Öğretici: Mevzuat uyumluluğunuzu artırma
 
@@ -135,14 +129,15 @@ Güvenlik Merkezi 'nin iş akışı Otomasyonu özelliği, mevzuat uyumluluk de�
 - [Uyumluluk verileriyle bir raporu PDF dışında bir biçimde nasıl indirebilirim?](#how-can-i-download-a-report-with-compliance-data-in-a-format-other-than-pdf)
 - [Yasal uyumluluk panosundaki bazı ilkeler için nasıl özel durumlar oluşturabilirim?](#how-can-i-create-exceptions-for-some-of-the-policies-in-the-regulatory-compliance-dashboard)
 - [Yasal uyumluluk panosunu kullanmak için hangi Azure Defender planlarına veya lisanslarına ihtiyacım var?](#what-azure-defender-plans-or-licenses-do-i-need-to-use-the-regulatory-compliance-dashboard)
+- [Nasıl yaparım? hangi kıyaslama veya standart kullanacağınızı tanıyor musunuz?](#how-do-i-know-which-benchmark-or-standard-to-use)
 
 ### <a name="what-standards-are-supported-in-the-compliance-dashboard"></a>Uyumluluk panosunda hangi standartlar destekleniyor?
 Varsayılan olarak, mevzuat uyumluluk panosu Azure Güvenlik kıyaslaması ' nı gösterir. Azure Güvenlik kıyaslaması, genel uyumluluk çerçevelerine dayalı olarak güvenlik ve uyumluluk en iyi uygulamaları için Microsoft tarafından yazılan, Azure 'a özgü kılavuzlardır. [Azure Güvenlik kıyaslaması giriş](../security/benchmarks/introduction.md)bölümünde daha fazla bilgi edinin.
 
 Diğer standartlarla uyumluluğunuzu izlemek için, bunları panonuza açıkça eklemeniz gerekir.
  
-Azure CIS 1.1.0 (New), NıST SP 800-53 R4, NıST SP 800-171 R2, SWIFT CSP CSCF-V2020, UK resmi ve UK NHS, HIPAA ZRUST, Kanada Federal PBMM, ISO 27001, SOC2-TSP ve PCI-DSS 3.2.1 gibi standartları ekleyebilirsiniz.  
- 
+Azure CIS 1.3.0, NıST SP 800-53, NıST SP 800-171, SWIFT CSP CSCF-V2020, UK resmi ve UK NHS, HIPAA, Kanada Federal PBMM, ISO 27001, SOC2-TSP ve PCI-DSS 3.2.1 gibi diğer standartları ekleyebilirsiniz.  
+
 Panoya daha fazla standartlar eklenecektir ve [mevzuat uyumluluk panonuzdaki standartlar kümesini özelleştirme](update-regulatory-compliance-packages.md)bilgilerine dahil edilecek.
 
 ### <a name="why-do-some-controls-appear-grayed-out"></a>Bazı denetimler neden gri renkte görünüyor?
@@ -195,7 +190,12 @@ Diğer ilkeler için, [Azure ilke muafiyet yapısındaki](../governance/policy/c
 Azure Kaynak türlerinizi üzerinde etkinleştirilmiş Azure Defender Paketleriniz varsa, güvenlik merkezi 'nde tüm verileriyle birlikte mevzuat uyumluluk panosuna erişebilirsiniz.
 
 
+### <a name="how-do-i-know-which-benchmark-or-standard-to-use"></a>Nasıl yaparım? hangi kıyaslama veya standart kullanacağınızı tanıyor musunuz?
+[Azure Güvenlik kıyaslaması](https://docs.microsoft.com/security/benchmark/azure/introduction) (ASB), Microsoft tarafından tanımlanan, CIS ve [nıst SP 800-53](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final) [Microsoft Azure](https://www.cisecurity.org/benchmark/azure/) temel uyumluluk denetim çerçeveleri ile hizalı, Microsoft tarafından tanımlanan, yaygın olarak kullanılan güvenlik önerileri ve en iyi uygulamalar kümesidir. ASB, çok kapsamlı bir kıyaslama sağlar ve çok çeşitli Azure hizmetlerinin en güncel güvenlik yeteneklerini önermek üzere tasarlanmıştır. ASB 'nin güvenlik duruşunu en üst düzeye çıkarmak isteyen müşterilerine ve uyumluluk durumlarını sektör standartlarıyla hizalamasına olanak öneririz.
 
+[CIS kıyaslaması](https://www.cisecurity.org/benchmark/azure/) , Internet GÜVENLIĞI (CIS) için bir bağımsız varlık tarafından yazılır ve temel Azure hizmetlerinin bir alt kümesiyle ilgili öneriler içerir. Azure 'daki en son geliştirmeler sayesinde önerilerin güncel olduğundan emin olmak için CIS ile birlikte çalışacağız, ancak bazen arka planda yer aldığından ve süresi geçmiş hale gelmiştir. Nonetheless, bazı müşteriler bu amacı, CIS 'den ilk ve birincil güvenlik temeli olarak üçüncü taraf değerlendirmesi kullanmak gibi bazı müşteriler.
+
+Azure Güvenlik kıyaslaması yayımladığımız için birçok müşteri, CIS kıyaslamalarıyla ilgili olarak bu uygulamayı geçirmeye seçti.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

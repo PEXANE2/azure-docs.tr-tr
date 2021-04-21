@@ -48,7 +48,7 @@
     - name: Güvenlik
       items:
         - name: Güvenlik özellikleri
-          href: security-overview.md
+          href: security-features.md
         - name: Key Vault kimlik doğrulamasının temelleri
           href: authentication-fundamentals.md
         - name: Güvenlik dünyaları ve coğrafi lıklar

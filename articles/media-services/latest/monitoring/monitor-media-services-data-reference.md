@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: media-services
 ms.custom: subject-monitoring
 ms.date: 03/17/2021
-ms.openlocfilehash: 8908fd1acc64fb180121ac0b6a4dc38ce5a02572
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 4e4c65966ec8a6a5b47d5f68596f6d2d496fda17
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121175"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835515"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Media Services veri başvurusunu izleme
 
@@ -23,62 +23,33 @@ Bu makale Media Services izlemek için yararlı olan verileri içerir. Azure Izl
 
 Ölçümler, değerin değiştirilip değişmediğini düzenli aralıklarla toplanır. Bunlar genelde örneklenebilir ve bir uyarı görece basit mantık ile hızlı bir şekilde tetiklenebilir.
 
+
 Media Services aşağıdaki kaynaklar için izleme ölçümlerini destekler:
 
-* Hesap
-* Akış uç noktası
+|Ölçüm türü | Kaynak sağlayıcısı/tür ad alanı<br/> ve bireysel ölçümlere bağlantı |
+|-------|-----|
+| Media Services genel | [Genel](/azure/azure-monitor/essentials/metrics-supported#microsoftmediamediaservices) |
+| Canlı Etkinlikler | [Microsoft. Media/mediaservices/liveEvents](/azure/azure-monitor/essentials/metrics-supported#microsoftmediamediaservicesliveevents) 
+| Akış Uç Noktaları | [Akış uç noktaları](/rest/api/media/streamingendpoints)ile Ilgili olan [Microsoft. Media/mediaservices/streamingEndpoints](/azure/azure-monitor/essentials/metrics-supported#microsoftmediamediaservicesstreamingendpoints)REST API. 
 
-### <a name="account"></a>Hesap
-
-Aşağıdaki hesap ölçümlerini izleyebilirsiniz.
-
-|Ölçüm adı|Görünen ad|Description|
-|---|---|---|
-|AssetCount|Varlık sayısı|Hesabınızdaki varlıklar.|
-|AssetQuota|Varlık kotası|Hesabınızdaki varlık kotası.|
-|AssetQuotaUsedPercentage|Kullanılan varlık kotası yüzdesi|Zaten kullanılan varlık kotasının yüzdesi.|
-|ContentKeyPolicyCount|İçerik anahtarı Ilke sayısı|Hesabınızdaki içerik anahtarı Ilkeleri.|
-|ContentKeyPolicyQuota|İçerik anahtarı Ilke kotası|Hesabınızdaki içerik anahtarı Ilkeleri kotası.|
-|ContentKeyPolicyQuotaUsedPercentage|İçerik anahtarı Ilke kotası kullanılan yüzde|Zaten kullanılan Içerik anahtarı Ilke kotasının yüzdesi.|
-|Streammingpolicycount|Akış Ilkesi sayısı|Hesabınızdaki akış Ilkeleri.|
-|StreamingPolicyQuota|Akış Ilkesi kotası|Hesabınızdaki akış Ilkeleri kotası.|
-|StreamingPolicyQuotaUsedPercentage|Akış Ilkesi kotası kullanılan yüzde|Zaten kullanılan akış Ilkesi kotasının yüzdesi.|
 
 [Hesap kotalarını ve sınırlarını](../limits-quotas-constraints-reference.md)de gözden geçirmeniz gerekir.
 
-### <a name="streaming-endpoint"></a>Akış uç noktası
-
-Aşağıdaki Media Services [akış uç noktası](/rest/api/media/streamingendpoints) ölçümleri desteklenir:
-
-|Ölçüm adı|Görünen ad|Description|
-|---|---|---|
-|İstekler|İstekler|Akış uç noktası tarafından hizmet verilen toplam HTTP isteği sayısını sağlar.|
-|Çıkış|Çıkış|Akış uç noktası başına dakika başına toplam çıkış baytı.|
-|SuccessE2ELatency|Başarılı uçtan uca gecikme süresi|Akış uç noktasının, yanıtın son baytı gönderilirken isteği aldığı zaman süresi.|
-|CPU kullanımı| | Premium akış uç noktaları için CPU kullanımı. Bu veriler standart akış uç noktaları için kullanılamaz. |
-|Çıkış bant genişliği | | Bit/saniye cinsinden çıkış bant genişliği.|
 
 ## <a name="metric-dimensions"></a>Ölçüm boyutları
 
 Ölçüm boyutları hakkında daha fazla bilgi için bkz. [çok boyutlu ölçümler](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
 <!--**PLACEHOLDER** for dimensions table.-->
+OutputFormat, HttpStatusCode, HataKodu, TrackName
 
 ## <a name="resource-logs"></a>Kaynak günlükleri
 
-## <a name="media-services-diagnostic-logs"></a>Tanılama günlüklerini Media Services
+## <a name="media-services-resource-logs"></a>Kaynak günlüklerini Media Services
 
-Tanılama günlükleri, bir Azure kaynağının çalışması hakkında zengin ve sık veriler sağlar. Daha fazla bilgi için bkz. [Azure kaynaklarınızdan günlük verilerini toplama ve kullanma](../../../azure-monitor/essentials/platform-logs-overview.md).
+Kaynak günlükleri bir Azure kaynağının çalışması hakkında zengin ve sık veriler sağlar. Daha fazla bilgi için bkz. [Azure kaynaklarınızdan günlük verilerini toplama ve kullanma](../../../azure-monitor/essentials/platform-logs-overview.md).
 
-Media Services aşağıdaki tanılama günlüklerini destekler:
-
-* Anahtar teslimi
-
-### <a name="key-delivery"></a>Anahtar teslimi
-
-|Ad|Açıklama|
-|---|---|
-|Anahtar teslim hizmeti isteği|Anahtar teslim hizmeti istek bilgilerini gösteren Günlükler. Daha fazla bilgi için bkz. [şemalar](monitor-media-services-data-reference.md).|
+Media Services şu kaynak günlüklerini destekler: [Microsoft. Media/mediaservices](/azure/azure-monitor/essentials/resource-logs-categories#microsoftmediamediaservices)
 
 ## <a name="schemas"></a>Şemalar
 

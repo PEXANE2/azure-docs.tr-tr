@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 04/07/2021
+ms.date: 04/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: a0559028192b0a99aeffd45a3b2896f9c9d159be
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 75a7cba1e47509e3186ab519d0d8ca82dd315373
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310211"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815531"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Amazon için Azure purview Bağlayıcısı S3
 
@@ -50,23 +50,23 @@ Aşağıdaki tabloda, verileri Azure purview tarafından taranacak bölgede depo
 | Depolama bölgesi | Tarama bölgesi |
 | ------------------------------- | ------------------------------------- |
 | ABD Doğu (Ohio)                  | ABD Doğu (Ohio)                        |
-| ABD Doğu (N. Virginia           | ABD Doğu (Ohio) veya ABD Doğu (N. Virginia                       |
+| ABD Doğu (N. Virginia           | ABD Doğu (N. Virginia                       |
 | ABD Batı (N. For         | ABD Doğu (Ohio)                        |
 | ABD Batı (Oregon)                | ABD Doğu (Ohio)                        |
 | Afrika (Cabo Town)              | Avrupa (Frankfurt)                    |
-| Asya Pasifik (Hong Kong)        | Avrupa (Frankfurt) veya Asya Pasifik (Sidney)                   |
-| Asya Pasifik (Mumbai)           | Avrupa (Frankfurt) veya Asya Pasifik (Sidney)                   |
-| Asya Pasifik (Osaka-yerel)      | Avrupa (Frankfurt) veya Asya Pasifik (Sidney)                   |
-| Asya Pasifik (Seoul)            | Avrupa (Frankfurt) veya Asya Pasifik (Sidney)                   |
-| Asya Pasifik (Singapur)        | Avrupa (Frankfurt) veya Asya Pasifik (Sidney)                   |
-| Asya Pasifik (Sidney)           | Avrupa (Frankfurt) veya Asya Pasifik (Sidney)                  |
-| Asya Pasifik (Tokyo)            | Avrupa (Frankfurt) veya Asya Pasifik (Sidney)                 |
+| Asya Pasifik (Hong Kong)        | Asya Pasifik (Sidney)                   |
+| Asya Pasifik (Mumbai)           | Asya Pasifik (Sidney)                   |
+| Asya Pasifik (Osaka-yerel)      | Asya Pasifik (Sidney)                   |
+| Asya Pasifik (Seoul)            | Asya Pasifik (Sidney)                   |
+| Asya Pasifik (Singapur)        | Asya Pasifik (Sidney)                   |
+| Asya Pasifik (Sidney)           | Asya Pasifik (Sidney)                  |
+| Asya Pasifik (Tokyo)            | Asya Pasifik (Sidney)                 |
 | Kanada (orta)                | ABD Doğu (Ohio)                        |
 | Çin (Pekin)                 | Desteklenmez                    |
 | Çin (Ningxia)                 | Desteklenmez                   |
 | Avrupa (Frankfurt)              | Avrupa (Frankfurt)                    |
-| Avrupa (Irlanda)                | Avrupa (Frankfurt) veya Avrupa (Irlanda)                   |
-| Avrupa (Londra)                 | Avrupa (Frankfurt) veya Avrupa (Irlanda)                   |
+| Avrupa (Irlanda)                | Avrupa (Irlanda)                   |
+| Avrupa (Londra)                 | Avrupa (Irlanda)                   |
 | Avrupa (MILAN)                  | Avrupa (Frankfurt)                    |
 | Avrupa (Paris)                  | Avrupa (Frankfurt)                    |
 | Avrupa (Stockholm)              | Avrupa (Frankfurt)                    |
@@ -387,7 +387,7 @@ Demetlerinizi takip etme veri kaynakları olarak ekledikten sonra, bir taramayı
 
     Yeni bir özel tarama kuralı kümesi oluşturmayı seçerseniz, aşağıdaki ayarları tanımlamak için Sihirbazı kullanın:
 
-    |Bölme  |Açıklama  |
+    |Bölme  |Description  |
     |---------|---------|
     |**Yeni tarama kuralı kümesi** /<br>**Tarama kuralı açıklaması**    |   Kural kümesi için anlamlı bir ad ve isteğe bağlı bir açıklama girin      |
     |**Dosya türlerini seçin**     | Taramaya dahil etmek istediğiniz tüm dosya türlerini seçin ve ardından **devam**' ı seçin.<br><br>Yeni dosya türü eklemek için **yeni dosya türü**' nü seçin ve aşağıdakileri tanımlayın: <br>-Eklemek istediğiniz dosya uzantısı <br>-İsteğe bağlı bir açıklama  <br>-Dosya içeriğinin özel bir sınırlayıcısı olup olmadığı veya bir sistem dosyası türü olup olmadığı. Ardından, özel sınırlayıcıyı girin veya sistem dosya türünü seçin. <br><br>Özel dosya türünü oluşturmak için **Oluştur** ' u seçin.     |

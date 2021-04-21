@@ -3,12 +3,12 @@ title: Azure Event Hubs verilerini bekleyen bir şekilde şifrelemek için kendi
 description: Bu makalede, Azure Event Hubs Data Rest 'i şifrelemek için kendi anahtarınızı yapılandırma hakkında bilgi verilmektedir.
 ms.topic: conceptual
 ms.date: 02/01/2021
-ms.openlocfilehash: e3dd7cb1158294102d9bfe67629c80ae01ccdd17
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 33587812121051d93aa8b939c3df70530ba65c5e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775196"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812453"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure Event Hubs verilerini Rest 'te şifrelemek için müşteri tarafından yönetilen anahtarları Azure portal kullanarak yapılandırın
 Azure Event Hubs, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Event Hubs hizmeti, verileri depolamak için Azure Storage 'ı kullanır. Azure depolama ile depolanan tüm veriler, Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. Kendi anahtarınızı (Kendi Anahtarını Getir (BYOK) veya müşteri tarafından yönetilen anahtar olarak da bilinir) kullanırsanız, veriler Microsoft tarafından yönetilen anahtar kullanılarak şifrelenir, ancak ek olarak, Microsoft tarafından yönetilen anahtar, müşteri tarafından yönetilen anahtar kullanılarak şifrelenir. Bu özellik, Microsoft tarafından yönetilen anahtarları şifrelemek için kullanılan müşteri tarafından yönetilen anahtarlara erişimi oluşturmanıza, döndürmenize, devre dışı bırakmanızı ve iptal etmenize olanak sağlar. BYOK özelliğinin etkinleştirilmesi, ad alanınız üzerinde bir kerelik kurulum işlemidir.
@@ -65,7 +65,7 @@ Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşter
 Anahtarı anahtar kasasında Azure Anahtar Kasası döndürme mekanizmasını kullanarak döndürebilirsiniz. Etkinleştirme ve sona erme tarihleri, anahtar döndürmeyi otomatik hale getirmek için de ayarlanabilir. Event Hubs hizmet yeni anahtar sürümlerini algılar ve otomatik olarak kullanmaya başlar.
 
 ## <a name="revoke-access-to-keys"></a>Anahtarlara erişimi iptal et
-Şifreleme anahtarlarına erişimin iptal edilmemesi Event Hubs verileri temizleyemezsiniz. Ancak, verilere Event Hubs ad alanından erişilemez. Şifreleme anahtarını erişim ilkesi veya anahtarı silerek iptal edebilirsiniz. Erişim ilkeleri hakkında daha fazla bilgi edinin ve anahtar kasasının güvenliğini [güvenli bir şekilde bir anahtar kasasına erişin](../key-vault/general/security-overview.md).
+Şifreleme anahtarlarına erişimin iptal edilmemesi Event Hubs verileri temizleyemezsiniz. Ancak, verilere Event Hubs ad alanından erişilemez. Şifreleme anahtarını erişim ilkesi veya anahtarı silerek iptal edebilirsiniz. Erişim ilkeleri hakkında daha fazla bilgi edinin ve anahtar kasasının güvenliğini [güvenli bir şekilde bir anahtar kasasına erişin](../key-vault/general/security-features.md).
 
 Şifreleme anahtarı iptal edildiğinde, şifrelenen ad alanındaki Event Hubs hizmeti çalışamaz hale gelir. Anahtara erişim etkinleştirilirse veya silme anahtarı geri yüklenirse, şifrelenmiş Event Hubs ad alanındaki verilere erişebilmek için Event Hubs hizmet anahtarı seçer.
 
