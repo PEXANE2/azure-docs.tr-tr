@@ -10,12 +10,12 @@ ms.date: 04/19/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: cb5caeb7f75834a317b222392c6e827185cfac00
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 8c0158ea4e93b4bbefa7b41b5a280fa804ede35f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714370"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791292"
 ---
 # <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
@@ -90,7 +90,7 @@ Connect-AzAccount
 
 Azure Cloud Shell başlatmak için [Azure Portal](https://portal.azure.com)oturum açın.
 
-CLı 'nın yerel yüklemesinde oturum açmak için [az Login](/cli/azure/reference-index#az-login) komutunu çalıştırın:
+CLı 'nın yerel yüklemesinde oturum açmak için [az Login](/cli/azure/reference-index#az_login) komutunu çalıştırın:
 
 ```azurecli-interactive
 az login
@@ -323,7 +323,7 @@ Remove-AzStorageAccount -Name <storage-account> -ResourceGroupName <resource-gro
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Depolama hesabını silmek için [az Storage Account Delete](/cli/azure/storage/account#az-storage-account-delete) komutunu kullanın:
+Depolama hesabını silmek için [az Storage Account Delete](/cli/azure/storage/account#az_storage_account_delete) komutunu kullanın:
 
 ```azurecli-interactive
 az storage account delete --name <storage-account> --resource-group <resource-group>

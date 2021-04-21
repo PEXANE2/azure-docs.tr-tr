@@ -3,12 +3,12 @@ title: Olay işleyicilerine olay teslimini doğrulama (Azure Event Grid)
 description: Bu makalede, Azure Event Grid ' de olay işleyicilerine teslimin doğrulanması için farklı yollar açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: f7a105c36b7c924e35c295edc43107353d738d5b
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 7db258ee152e4b1c46362e74e0246b80513ca9f2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968144"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777266"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>Olay işleyicilerine olay teslimini doğrulama (Azure Event Grid)
 Bu makalede olay işleyicilerine olay teslimini doğrulama hakkında bilgi sağlanır. Ayrıca, Azure Active Directory (Azure AD) veya paylaşılan bir gizli dizi kullanarak Event Grid olayları almak için kullanılan Web kancası uç noktalarının güvenliğini nasıl güvence altına alacağını gösterir.
@@ -35,7 +35,7 @@ Azure AD 'yi kullanarak Event Grid olayları almak için kullanılan Web kancas�
 ### <a name="using-client-secret-as-a-query-parameter"></a>Sorgu parametresi olarak istemci gizli anahtarını kullanma
 Ayrıca, olay aboneliği oluşturmanın bir parçası olarak belirtilen Web kancası hedef URL 'sine sorgu parametreleri ekleyerek Web kancası uç noktanızı da güvenli hale getirebilirsiniz. Sorgu parametrelerinden birini, [erişim belirteci](https://en.wikipedia.org/wiki/Access_token) veya paylaşılan gizlilik gibi bir istemci gizli anahtarı olacak şekilde ayarlayın. Event Grid hizmet, Web kancasına her olay teslim isteğindeki tüm sorgu parametrelerini içerir. Web kancası hizmeti gizli dizi alabilir ve doğrulayabilir. İstemci parolası güncelleştirilirse olay aboneliğinin da güncelleştirilmesi gerekir. Bu gizli anahtar sırasında teslimat hatalarından kaçınmak için, Web kancasının, olay aboneliğini yeni gizli anahtar ile güncelleştirmeden önce sınırlı bir süre için hem eski hem de yeni gizli dizileri kabul etmesini sağlayın. 
 
-Sorgu parametreleri, istemci gizli dizileri içerebildiği için, bunlar daha fazla dikkatli işlenir. Bunlar şifreli olarak depolanır ve hizmet işleçlerine erişemez. Hizmet günlüklerinin/izlemelerinin bir parçası olarak günlüğe kaydedilmez. Olay aboneliği özellikleri alınırken, hedef sorgu parametreleri varsayılan olarak döndürülmez. Örneğin: [--Include-Full-Endpoint-URL](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-show) parametresi Azure [CLI](/cli/azure)'da kullanılır.
+Sorgu parametreleri, istemci gizli dizileri içerebildiği için, bunlar daha fazla dikkatli işlenir. Bunlar şifreli olarak depolanır ve hizmet işleçlerine erişemez. Hizmet günlüklerinin/izlemelerinin bir parçası olarak günlüğe kaydedilmez. Olay aboneliği özellikleri alınırken, hedef sorgu parametreleri varsayılan olarak döndürülmez. Örneğin: [--Include-Full-Endpoint-URL](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_show) parametresi Azure [CLI](/cli/azure)'da kullanılır.
 
 Web kancalarına olay sunma hakkında daha fazla bilgi için bkz. [Web kancası olay teslimi](webhook-event-delivery.md)
 

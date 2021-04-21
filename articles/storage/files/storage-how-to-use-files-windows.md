@@ -8,12 +8,12 @@ ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9121774af0a1cfac6f677b4b8e2f4cd4b535042e
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: e864dcaa2a611746ae813a4f0adf8409fbc50871
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717195"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789798"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
 [Azure Dosyaları](storage-files-introduction.md), Microsoft’un kullanımı kolay bulut dosya sistemidir. Azure dosya paylaşımları, Windows ve Windows Server’da sorunsuz bir şekilde kullanılabilir. Bu makalede Azure dosya paylaşımını Windows ve Windows Server ile kullanma konusunda dikkat edilmesi gerekenler anlatılmaktadır.
@@ -48,7 +48,7 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 ## <a name="using-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
 Bir Azure dosya paylaşımını Windows'da kullanmak için bağlayarak bir sürücü harfi veya bağlama noktası yolu atamanız veya [UNC adı](/windows/win32/fileio/naming-a-file) aracılığıyla erişmeniz gerekir. 
 
-Bu makale, dosya paylaşımıyla erişmek için depolama hesabı anahtarını kullanır. Depolama hesabı anahtarı, eriştiğiniz dosya paylaşımındaki tüm dosya ve klasörlere yönelik yönetici izinleri ve depolama hesabınızda bulunan tüm dosya paylaşımları ve diğer depolama kaynakları (blob 'lar, kuyruklar, tablolar vb.) dahil olmak üzere bir depolama hesabı için yönetici anahtarıdır. İş yükünüz için yeterli değilse, [Azure dosya eşitleme](storage-sync-files-planning.md) KULLANILABILIR veya [SMB üzerinden kimlik tabanlı kimlik doğrulaması](storage-files-active-directory-overview.md)kullanabilirsiniz.
+Bu makale, dosya paylaşımıyla erişmek için depolama hesabı anahtarını kullanır. Depolama hesabı anahtarı, eriştiğiniz dosya paylaşımındaki tüm dosya ve klasörlere yönelik yönetici izinleri ve depolama hesabınızda bulunan tüm dosya paylaşımları ve diğer depolama kaynakları (blob 'lar, kuyruklar, tablolar vb.) dahil olmak üzere bir depolama hesabı için yönetici anahtarıdır. İş yükünüz için yeterli değilse, [Azure dosya eşitleme](../file-sync/file-sync-planning.md) KULLANILABILIR veya [SMB üzerinden kimlik tabanlı kimlik doğrulaması](storage-files-active-directory-overview.md)kullanabilirsiniz.
 
 Azure'da SMB dosya paylaşımına ihtiyaç duyan iş kolu (LOB) uygulamalarını kullanıma sunmak için sıklıkla kullanılan model, Azure dosya paylaşımını Azure VM'de ayrılmış bir Windows dosya sunucusu çalıştırmaya alternatif olarak kullanmaktır. Bir iş kolu uygulamasını, Azure dosya paylaşımını kullanacak şekilde yapılandırma sırasında dikkat edilmesi gereken önemli noktalardan biri, çoğu iş kolu uygulamasının VM'nin yönetici hesabı yerine sınırlı sistem izinlerine sahip adanmış hizmet hesabı bağlamında çalıştığıdır. Bu nedenle Azure dosya paylaşımında yönetici hesabı yerine hizmet hesabı bağlamında bağlama yaptığınızdan/kimlik bilgilerini kaydettiğinizden emin olun.
 
