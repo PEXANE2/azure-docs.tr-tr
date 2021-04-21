@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 author: msmbaldwin
 ms.date: 09/30/2020
-ms.openlocfilehash: c3ffbba9546ada54a42c3f2c2aa5d98da599b353
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: b9c249bedd0432458b3e6f5c010cdc5ff39dff44
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749749"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815675"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Geçici silme ve Temizleme koruması ile kurtarma yönetimi Azure Key Vault
 
@@ -398,6 +398,5 @@ Geçici silme hakkında daha fazla bilgi için bkz. [Azure Key Vault geçici gen
 - [Azure CLı komutlarını Key Vault](/cli/azure/keyvault)
 - [Azure Key Vault yedekleme](backup.md)
 - [Key Vault günlüğü etkinleştirme](howto-logging.md)
-- [Anahtar kasasına erişimin güvenliğini sağlama](security-overview.md)
+- [Azure Key Vault güvenlik özellikleri](security-features.md)
 - [Geliştirici Kılavuzu Azure Key Vault](developers-guide.md)
-- [Anahtar Kasası kullanmak için en iyi uygulamalar](security-overview.md)

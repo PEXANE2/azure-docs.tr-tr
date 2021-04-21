@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/19/2021
 ms.author: memildin
-ms.openlocfilehash: e12578fa6da679587d41fb25b17b00eb1645299a
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: a9997fac66dd49af04f4ed78737118d605e27072
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718422"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829899"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Güvenlik Merkezi 'nin tümleşik EDR çözümü ile uç noktalarınızı koruyun: uç nokta için Microsoft Defender
 
@@ -62,11 +62,12 @@ Defender for Endpoint for Security Center ile tümleştirerek aşağıdaki ek ye
 
     :::image type="content" source="./media/security-center-wdatp/microsoft-defender-security-center.png" alt-text="Uç noktanın kendi güvenlik merkezi için Microsoft Defender" lightbox="./media/security-center-wdatp/microsoft-defender-security-center.png":::
 
-## <a name="microsoft-defender-for-endpoint-tenant-location"></a>Uç nokta kiracı konumu için Microsoft Defender
+## <a name="what-are-the-requirements-for-the-microsoft-defender-for-endpoint-tenant"></a>Endpoint Tenant için Microsoft Defender gereksinimleri nelerdir?
 
-Sunucularınızı izlemek için Azure Güvenlik Merkezi 'ni kullandığınızda, bir uç nokta kiracısı için Microsoft Defender otomatik olarak oluşturulur. Endpoint için Defender tarafından toplanan veriler, sağlama sırasında tanımlandığı şekilde kiracının coğrafi konumunda depolanır. Müşteri verileri-sahte bir biçimde, Birleşik Devletler merkezi depolama ve işleme sistemlerinde de depolanabilir. 
+Sunucularınızı izlemek için Azure Güvenlik Merkezi 'ni kullandığınızda, bir uç nokta kiracısı için Microsoft Defender otomatik olarak oluşturulur. 
 
-Konumu yapılandırdıktan sonra değiştiremezsiniz. Uç nokta için Microsoft Defender lisansınız varsa ve verilerinizi başka bir konuma taşımanız gerekiyorsa, kiracıyı sıfırlamak için Microsoft Desteği başvurun.
+- **Konum:** Endpoint için Defender tarafından toplanan veriler, sağlama sırasında tanımlandığı şekilde kiracının coğrafi konumunda depolanır. Müşteri verileri-sahte bir biçimde, Birleşik Devletler merkezi depolama ve işleme sistemlerinde de depolanabilir. Konumu yapılandırdıktan sonra değiştiremezsiniz. Uç nokta için Microsoft Defender lisansınız varsa ve verilerinizi başka bir konuma taşımanız gerekiyorsa, kiracıyı sıfırlamak için Microsoft Desteği başvurun.
+- **Abonelikler taşınıyor:** Azure aboneliğinizi Azure kiracılar arasında taşıdıysanız, güvenlik merkezi 'nin uç nokta için Defender 'ı dağıtması için bazı el ile hazırlık adımları gereklidir. Tüm ayrıntılar için [Microsoft destek 'e başvurun](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 
 ## <a name="enable-the-microsoft-defender-for-endpoint-integration"></a>Endpoint Integration için Microsoft Defender 'ı etkinleştirin
@@ -75,9 +76,12 @@ Konumu yapılandırdıktan sonra değiştiremezsiniz. Uç nokta için Microsoft 
 
 Makinenizin Endpoint için Defender için gereken gereksinimleri karşıladığından emin olun:
 
-1. [Cihaz ara sunucusunu ve Internet bağlantısı ayarlarını yapılandırma](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet) bölümünde açıklanan ağ ayarlarını yapılandırın
-1. Defender 'ı bir şirket içi makinelere uç noktaya dağıtıyorsanız, [Azure Arc etkin sunucularıyla karma makinelere bağlanma](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) bölümünde açıklandığı gibi Azure yaya bağlayın
-1. Yalnızca Windows Server 2019 makineler için, makinelerinizin geçerli bir aracı çalıştırdığından ve MicrosoftMonitoringAgent uzantısının olduğunu doğrulayın
+1. Makinenin Azure 'a gerektiği şekilde bağlı olduğundan emin olun:
+
+    - **Windows** sunucuları için, [cihaz ara sunucusunu ve Internet bağlantısı ayarlarını yapılandırma](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet) bölümünde açıklanan ağ ayarlarını yapılandırın
+    - **Şirket içi** makineler Için, [Azure Arc etkin sunucularıyla karma makinelere bağlanma](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) bölümünde açıklandığı gibi Azure yaya bağlayın
+    - **Windows Server 2019** ve [Windows sanal masaüstü (WVD)](../virtual-desktop/overview.md) makineleri için makinelerinizin Log Analytics Aracısı çalıştığını ve microsoftmonitoringagent uzantısının olduğunu doğrulayın.
+    
 1. **Sunucular Için Azure Defender 'ı** etkinleştirin. Bkz. [hızlı başlangıç: Azure Defender 'ı etkinleştirme](enable-azure-defender.md).
 1. Sunucularınızdaki uç noktalar için Microsoft Defender 'ı zaten lisanslandırdıysanız ve dağıttıysanız, yerleşik [Windows sunucularında](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)açıklanan yordamı kullanarak kaldırın.
 1. Aboneliğinizi Azure kiracılar arasında taşıdıysanız, bazı el ile hazırlık adımları da gereklidir. Tüm ayrıntılar için [Microsoft destek 'e başvurun](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).

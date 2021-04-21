@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 04/09/2021
 ms.custom: generated
-ms.openlocfilehash: f4112d4b9bf55e45ec865f5c8606ead9088a7983
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 0e8363ee29df84478e5ab5c14b43ea07e3bea8ee
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752399"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815315"
 ---
 # <a name="azure-built-in-roles"></a>Yerleşik Azure rolleri
 
@@ -8210,7 +8210,7 @@ Tüm veri düzlemi işlemlerini bir anahtar kasasında ve içindeki tüm nesnele
 
 ### <a name="key-vault-contributor"></a>Katkıda bulunan Key Vault
 
-Anahtar kasalarını yönetin, ancak Azure RBAC 'de roller atamanıza izin vermez ve gizli dizi, anahtar veya sertifikalara erişmenize izin vermez. [Daha fazla bilgi edinin](../key-vault/general/security-overview.md)
+Anahtar kasalarını yönetin, ancak Azure RBAC 'de roller atamanıza izin vermez ve gizli dizi, anahtar veya sertifikalara erişmenize izin vermez. [Daha fazla bilgi edinin](../key-vault/general/security-features.md)
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |

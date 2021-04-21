@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.date: 04/01/2021
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: b56031d131743a3dc8c97bcd3e85d4653cdd2833
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: a9df83535bf0ee7a6c484a7682392d2ad0ef59f7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484192"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815333"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm"></a>Azure Key Vault Yönetilen HSM nedir?
 
-Azure Key Vault yönetilen HSM, **fıps 140-2 düzey 3** tarafından doğrulanan HSM 'leri kullanarak bulut uygulamalarınızın şifreleme anahtarlarını korumanıza olanak sağlayan, tam olarak yönetilen, yüksek oranda kullanılabilir, tek kiracılı ve standartlara uygun bir bulut hizmetidir.  
+Azure Key Vault yönetilen HSM, **fıps 140-2 düzey 3** tarafından doğrulanan HSM 'leri kullanarak bulut uygulamalarınızın şifreleme anahtarlarını korumanıza olanak sağlayan, tam olarak yönetilen, yüksek oranda kullanılabilir, tek kiracılı ve standartlara uygun bir bulut hizmetidir. Fiyatlandırma bilgileri için lütfen [Azure Key Vault fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/key-vault/)yönetilen HSM havuzları bölümüne bakın. 
 
 ## <a name="why-use-managed-hsm"></a>Neden yönetilen HSM kullanmalıyım?
 

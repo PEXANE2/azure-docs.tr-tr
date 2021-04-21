@@ -3,12 +3,12 @@ title: Azure Service Bus kuyrukları ve abonelikleri için Otomatik iletmeyi etk
 description: Bu makalede Azure portal, PowerShell, CLı ve programlama dillerini (C#, Java, Python ve JavaScript) kullanarak kuyruklar ve abonelikler için otomatik yönlendirmeyi etkinleştirme açıklanmaktadır
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: ef22ae08485dc896c94858db4e422cf89a00ec1f
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: e5f69a82aac96deaf96f0ae6aaa1a26d0ee3aaf3
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107755317"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814694"
 ---
 # <a name="enable-auto-forwarding-for-azure-service-bus-queues-and-subscriptions"></a>Azure Service Bus kuyrukları ve abonelikleri için Otomatik iletmeyi etkinleştirme
 Service Bus otomatik iletme özelliği, bir kuyruğu veya aboneliği aynı ad alanının parçası olan başka bir kuyruğa veya konuya zincirlemenize olanak sağlar. Otomatik iletme etkinleştirildiğinde Service Bus, ilk sıraya veya aboneliğe (kaynak) yerleştirilmiş iletileri otomatik olarak kaldırır ve bunları ikinci kuyruğa veya konuya (hedef) koyar. Hedef varlığa doğrudan bir ileti göndermek yine de mümkündür. Daha fazla bilgi için bkz. [otomatik iletme ile Service Bus varlıkları zincirleme](service-bus-auto-forwarding.md). Bu makalede, Service Bus kuyrukları ve abonelikleri için Otomatik iletmeyi etkinleştirmenin farklı yolları gösterilmektedir. 
@@ -17,13 +17,23 @@ Service Bus otomatik iletme özelliği, bir kuyruğu veya aboneliği aynı ad al
 > Service Bus temel katmanı otomatik iletme özelliğini desteklemez. Standart ve Premium katmanlar özelliği destekler. Bu katmanlar arasındaki farklar için bkz. [Service Bus fiyatlandırması](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="using-azure-portal"></a>Azure portalını kullanma
-Azure portal konu başlığı için bir **kuyruk** veya **abonelik** oluştururken, aşağıdaki örneklerde gösterildiği gibi **iletileri kuyruğa/konuya ilet** ' i seçin. Ardından, iletilerin bir kuyruğa veya konuya iletilmesini isteyip istemediğinizi belirtin. Bu örnekte, **Queue** seçeneği seçilidir ve aynı ad alanından bir sıra (**myQueue**) seçilidir.
+Azure portal konu başlığı için bir **kuyruk** veya **abonelik** oluştururken, aşağıdaki örneklerde gösterildiği gibi **iletileri kuyruğa/konuya ilet** ' i seçin. Ardından, iletilerin bir kuyruğa veya konuya iletilmesini isteyip istemediğinizi belirtin. Bu örnekte, **kuyruk** seçeneği seçilidir ve aynı ad alanından bir sıra seçilir.
 
 ### <a name="create-a-queue-with-auto-forwarding-enabled"></a>Otomatik iletme etkin olan bir kuyruk oluşturma
 :::image type="content" source="./media/enable-auto-forward/create-queue.png" alt-text="Sıra oluşturma sırasında otomatik iletmeyi etkinleştir":::
 
 ### <a name="create-a-subscription-for-a-topic-with-auto-forwarding-enabled"></a>Otomatik iletme özelliği etkin olan bir konu için abonelik oluşturma
 :::image type="content" source="./media/enable-auto-forward/create-subscription.png" alt-text="Abonelik oluşturma sırasında otomatik iletmeyi etkinleştirin":::
+
+### <a name="update-the-auto-forward-setting-for-an-existing-queue"></a>Mevcut bir sıra için otomatik iletme ayarını Güncelleştir
+Service Bus kuyruğunuzun **genel bakış** sayfasında, **görüntülenecek iletme iletileri** için geçerli değeri seçin. Aşağıdaki örnekte, geçerli değer **devre dışıdır**. **İletileri kuyruğa/konuya ilet** penceresinde, iletilerin iletilmesini istediğiniz kuyruğu veya konuyu seçebilirsiniz. 
+
+:::image type="content" source="./media/enable-auto-forward/queue-auto-forward.png" alt-text="Mevcut bir sıra için Otomatik iletmeyi etkinleştir":::
+
+### <a name="update-the-auto-forward-setting-for-an-existing-subscription"></a>Mevcut bir abonelik için otomatik iletme ayarını Güncelleştir
+Service Bus aboneliğiniz için **genel bakış** sayfasında, **görüntülenecek iletme iletileri** için geçerli değeri seçin. Aşağıdaki örnekte, geçerli değer **devre dışıdır**. **İletileri kuyruğa/konuya ilet** penceresinde, iletilerin iletilmesini istediğiniz kuyruğu veya konuyu seçebilirsiniz. 
+
+:::image type="content" source="./media/enable-auto-forward/subscription-auto-forward.png" alt-text="Mevcut bir abonelik için Otomatik iletmeyi etkinleştir":::
 
 ## <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 **Otomatik iletme özelliği etkinken bir sıra oluşturmak** için, [`az servicebus queue create`](/cli/azure/servicebus/queue#az_servicebus_queue_create) Bu komutu, `--forward-to` İletilerin iletilmesini istediğiniz sıranın veya konunun adı olarak ayarlayın. 
@@ -36,7 +46,29 @@ az servicebus queue create \
     --forward-to myqueue2
 ```
 
-**Otomatik iletme özelliği etkinken bir konu için abonelik oluşturmak** üzere, [`az servicebus topic subscription create`](/cli/azure/servicebus/topic/subscription#az_servicebus_topic_subscription_create) Bu komutu, `--forward-to` İletilerin iletilmesini istediğiniz sıranın veya konunun adı olarak ayarlayın.
+**Mevcut bir kuyruğun otomatik iletme ayarını güncelleştirmek** için, [`az servicebus queue update`](/cli/azure/servicebus/queue#az_servicebus_queue_update) Bu komutu, `--forward-to` İletilerin iletilmesini istediğiniz sıranın veya konunun adına ayarlayın. 
+
+```azurecli-interactive
+az servicebus queue update \
+    --resource-group myresourcegroup \
+    --namespace-name mynamespace \
+    --name myqueue \
+    --forward-to myqueue2
+```
+
+
+**Otomatik iletme özelliği etkinken bir konuya abonelik oluşturmak** için, [`az servicebus topic subscription create`](/cli/azure/servicebus/topic/subscription#az_servicebus_topic_subscription_create) Bu komutu, `--forward-to` İletilerin iletilmesini istediğiniz sıranın veya konunun adı olarak ayarlayın.
+
+```azurecli-interactive
+az servicebus topic subscription create \
+    --resource-group myresourcegroup \
+    --namespace-name mynamespace \
+    --topic-name mytopic \
+    --name mysubscription \
+    --forward-to myqueue2
+```
+
+**Bir aboneliğe yönelik otomatik iletme ayarını güncelleştirmek** için, [`az servicebus topic subscription update`](/cli/azure/servicebus/topic/subscription#az_servicebus_topic_subscription_update) `--forward-to` İletilerin iletilmesini istediğiniz sıranın veya konunun adına ayarla komutunu kullanın.
 
 ```azurecli-interactive
 az servicebus topic subscription create \
@@ -57,6 +89,21 @@ New-AzServiceBusQueue -ResourceGroup myresourcegroup `
     -ForwardTo myqueue2
 ```
 
+**Mevcut bir sıranın otomatik iletme ayarını güncelleştirmek** için [`Set-AzServiceBusQueue`](/powershell/module/az.servicebus/set-azservicebusqueue) Aşağıdaki örnekte gösterildiği gibi komutunu kullanın.
+
+```azurepowershell-interactive
+$queue=Get-AzServiceBusQueue -ResourceGroup myresourcegroup `
+    -NamespaceName mynamespace `
+    -QueueName myqueue 
+
+$queue.ForwardTo='myqueue2'
+
+Set-AzServiceBusQueue -ResourceGroup myresourcegroup `
+    -NamespaceName mynamespace `
+    -QueueName myqueue `
+    -QueueObj $queue
+``` 
+
 **Otomatik iletme özelliği etkinken bir konu için abonelik oluşturmak** üzere, [`New-AzServiceBusSubscription`](/powershell/module/az.servicebus/new-azservicebussubscription) Bu komutu, `-ForwardTo` İletilerin iletilmesini istediğiniz sıranın veya konunun adı olarak ayarlayın.
 
 ```azurepowershell-interactive
@@ -65,6 +112,23 @@ New-AzServiceBusSubscription -ResourceGroup myresourcegroup `
     -TopicName mytopic `
     -SubscriptionName mysubscription `
     -ForwardTo myqueue2
+```
+
+**Mevcut bir aboneliğin otomatik iletme ayarını güncelleştirmek** için aşağıdaki örneğe bakın.
+
+```azurepowershell-interactive
+$subscription=Get-AzServiceBusSubscription -ResourceGroup myresourcegroup `
+    -NamespaceName mynamespace `
+    -TopicName mytopic `
+    -SubscriptionName mysub
+
+$subscription.ForwardTo='mytopic2'
+
+Set-AzServiceBusSubscription -ResourceGroup myresourcegroup `
+    -NamespaceName mynamespace `
+    -Name mytopic `
+    -SubscriptionName mysub `
+    -SubscriptionObj $subscription 
 ```
 
 ## <a name="using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanma

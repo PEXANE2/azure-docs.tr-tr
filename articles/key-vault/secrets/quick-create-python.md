@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: e06881d078b4e881174c3e931f7898cb622ad7f9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d7b5144264b31e62eac43513d6a851d09a09c60f
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766362"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814055"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>Hızlı başlangıç: Python için Azure Key Vault gizli istemci kitaplığı
 
@@ -200,7 +200,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Anahtar Kasası'na Genel Bakış](../general/overview.md)
-- [Anahtar kasasına erişimin güvenliğini sağlama](../general/security-overview.md)
+- [Anahtar kasasına erişimin güvenliğini sağlama](../general/security-features.md)
 - [Geliştirici Kılavuzu Azure Key Vault](../general/developers-guide.md)
-- [Key Vault güvenliğe genel bakış](../general/security-overview.md)
+- [Key Vault güvenliğe genel bakış](../general/security-features.md)
 - [Key Vault ile kimlik doğrulama](../general/authentication.md)

@@ -8,12 +8,12 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: b45bb353ae32f1037fde7dc5d518472089edf12f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c52ac859f72c440e2cebd59555606c7b3986a314
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766344"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814883"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Hızlı başlangıç: Java için Azure Key Vault gizli istemci kitaplığı
 Java için Azure Key Vault gizli istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere aşağıdaki adımları izleyin.
@@ -281,4 +281,4 @@ Bu hızlı başlangıçta bir Anahtar Kasası oluşturdunuz, bir gizli dizi depo
 
 - [Azure Key Vault genel bakışını](../general/overview.md) okuyun
 - [Azure Key Vault geliştirici kılavuzuna](../general/developers-guide.md) bakın
-- [Anahtar kasasına erişimi güvenli hale getirme](../general/security-overview.md)
+- [Anahtar kasasına erişimi güvenli hale getirme](../general/security-features.md)

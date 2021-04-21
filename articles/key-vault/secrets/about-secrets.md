@@ -9,12 +9,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6d4f3f744a85c14c42ffef1c894b237081e871f8
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: dc4368075e1cecb43887c9fab21e55b23208dbab
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752435"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814937"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Azure Key Vault gizli dizileri hakkında
 
@@ -132,5 +132,5 @@ Key Vault erişimi denetlemek için nasıl yapılır kılavuzlarından:
 - [Anahtarlar, gizli diziler ve sertifikalar hakkında](../general/about-keys-secrets-certificates.md)
 - [Anahtarlar hakkında](../keys/about-keys.md)
 - [Sertifikalar hakkında](../certificates/about-certificates.md)
-- [Anahtar kasasına erişimin güvenliğini sağlama](../general/security-overview.md)
+- [Anahtar kasasına erişimin güvenliğini sağlama](../general/security-features.md)
 - [Key Vault Geliştirici Kılavuzu](../general/developers-guide.md)
