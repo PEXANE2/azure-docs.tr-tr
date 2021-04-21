@@ -3,12 +3,12 @@ title: Kayıt defteri ile ağ sorunlarını giderme
 description: Bir sanal ağda veya bir güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişirken oluşan belirtiler, nedenler ve çözümler
 ms.topic: article
 ms.date: 03/30/2021
-ms.openlocfilehash: 0fdedf109703eb443904989d2c0b2d75a6ba5bb1
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: dc2110405713791d11fb438565fc091da9c9dd5c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481234"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780761"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Kayıt defteri ile ağ sorunlarını giderme
 
@@ -39,7 +39,7 @@ Aşağıdakilerden birini veya daha fazlasını içerebilir:
 
 ## <a name="further-diagnosis"></a>Daha fazla tanılama 
 
-Kayıt defteri ortamının sistem durumu ve isteğe bağlı olarak bir hedef kayıt defterine erişim hakkında daha fazla bilgi almak için [az ACR Check-Health](/cli/azure/acr#az-acr-check-health) komutunu çalıştırın. Örneğin, belirli ağ bağlantısını veya yapılandırma sorunlarını tanılayın. 
+Kayıt defteri ortamının sistem durumu ve isteğe bağlı olarak bir hedef kayıt defterine erişim hakkında daha fazla bilgi almak için [az ACR Check-Health](/cli/azure/acr#az_acr_check_health) komutunu çalıştırın. Örneğin, belirli ağ bağlantısını veya yapılandırma sorunlarını tanılayın. 
 
 Bkz. komut örnekleri için [Azure Container Registry 'nin sistem durumunu denetleme](container-registry-check-health.md) . Hatalar raporlandıysanız, önerilen çözümler için [hata başvurusunu](container-registry-health-error-reference.md) ve aşağıdaki bölümleri gözden geçirin.
 

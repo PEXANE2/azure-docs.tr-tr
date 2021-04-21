@@ -3,12 +3,12 @@ title: Karma Kubernetes kümelerini kapsayıcı öngörüleri ile yapılandırma
 description: Bu makalede, Azure Stack veya başka bir ortamda barındırılan Kubernetes kümelerini izlemek için kapsayıcı öngörülerinin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d2692b4a634d60ef62339f68277591d711260712
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90a4c14397df8e70fc8f3d88bc339f826bb1ccc9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711255"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767032"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-container-insights"></a>Karma Kubernetes kümelerini kapsayıcı öngörüleri ile yapılandırma
 
@@ -202,7 +202,7 @@ DosyacontainerSolutionParams.jsiçindeki parametre değeri için gereken Log Ana
     }
     ```
 
-7. Adım 3 ' te kopyaladığınız değeri kullanarak **workspaceResourceId** değerlerini düzenleyin ve **WorkspaceRegion** for the Azure CLI komutunu çalıştırdıktan sonra **bölge** değerini kopyalayın [az Monitor Log-Analytics Workspace Show](/cli/azure/monitor/log-analytics/workspace#az-monitor-log-analytics-workspace-list&preserve-view=true).
+7. Adım 3 ' te kopyaladığınız değeri kullanarak **workspaceResourceId** değerlerini düzenleyin ve **WorkspaceRegion** for the Azure CLI komutunu çalıştırdıktan sonra **bölge** değerini kopyalayın [az Monitor Log-Analytics Workspace Show](/cli/azure/monitor/log-analytics/workspace#az_monitor-log-analytics-workspace-list&preserve-view=true).
 
 8. Bu dosyayı yerel bir klasöre containerSolutionParams.jsolarak kaydedin.
 

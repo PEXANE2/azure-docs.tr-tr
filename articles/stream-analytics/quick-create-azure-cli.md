@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: a3cc4c3d6936a51ca2010209ce23e4d82c9333eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58dccf56cd493782a422b0ddf0386e31d4d87daf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98016363"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765998"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure Stream Analytics işi oluşturma
 
@@ -29,7 +29,7 @@ Bu hızlı başlangıçta, Azure CLı 'yı kullanarak gerçek zamanlı algılay�
 
 - Bir kaynak grubu oluşturun. Tüm Azure kaynakları bir kaynak grubuna dağıtılmalıdır. Kaynak grupları, ilgili Azure kaynaklarını düzenlemenizi ve yönetmenizi sağlar.
 
-   Bu hızlı başlangıç için, *streamanalyticsrg* adlı bir kaynak grubunu aşağıdaki [az Group Create](/cli/azure/group#az-group-create) komutuyla *eastus* konumunda oluşturun:
+   Bu hızlı başlangıç için, *streamanalyticsrg* adlı bir kaynak grubunu aşağıdaki [az Group Create](/cli/azure/group#az_group_create) komutuyla *eastus* konumunda oluşturun:
 
    ```azurecli
    az group create --name streamanalyticsrg --location eastus

@@ -5,15 +5,15 @@ services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm, azla
-ms.topic: article
-ms.date: 04/05/2021
+ms.topic: conceptual
+ms.date: 04/19/2021
 tags: connectors
-ms.openlocfilehash: 5eae6b48a65f919ea233ad77a215ed5672425175
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: a19253e117f748b4d4045bfd2a29552018bba91e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385862"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781568"
 ---
 # <a name="create-and-manage-sftp-files-using-ssh-and-azure-logic-apps"></a>SSH ve Azure Logic Apps kullanarak SFTP dosyaları oluşturma ve yönetme
 
@@ -123,7 +123,7 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
 ### <a name="trigger-recurrence-shift-and-drift"></a>Yineleme kaydırma ve DRFT tetikleme
 
-Önce bir bağlantı oluşturmanız gereken, SFTP-SSH tetikleyicisi gibi bağlantı tabanlı tetikleyiciler, [yineleme tetikleyicisi](../connectors/connectors-native-recurrence.md)gibi Azure Logic Apps yerel olarak çalışan yerleşik tetikleyicilerden farklıdır. Yinelenen bağlantı tabanlı tetikleyicilerle, yineleme zamanlaması, yürütmeyi denetleyen tek sürücü değildir ve saat dilimi yalnızca ilk başlangıç saatini belirler. Sonraki çalıştırmalar yineleme zamanlaması, son tetikleme yürütmesi *ve* çalışma sürelerinin veya beklenmeyen davranışlara neden olabilecek diğer faktörlere bağlıdır. Örneğin, beklenmedik davranış gün ışığından yararlanma saati (DST) başladığında ve sona erdiğinde belirtilen zamanlamayı sürdürmek için hata içerebilir. DST etkin olduğunda yinelenme saatinin kaydırılamaz olduğundan emin olmak için yinelemeyi el ile ayarlayın. Bu şekilde, iş akışınız beklenen zamanda çalışmaya devam eder. Aksi takdirde, DST başlatıldığında başlangıç saati bir saat ileri ve DST sona erdiğinde bir saat geriye geçer. Daha fazla bilgi için bkz. [bağlantı tabanlı tetikleyiciler Için yinelenme](../connectors/apis-list.md#recurrence-connection-based).
+Önce bir bağlantı oluşturmanız gereken, SFTP-SSH tetikleyicisi gibi bağlantı tabanlı tetikleyiciler, [yineleme tetikleyicisi](../connectors/connectors-native-recurrence.md)gibi Azure Logic Apps yerel olarak çalışan yerleşik tetikleyicilerden farklıdır. Yinelenen bağlantı tabanlı tetikleyicilerle, yineleme zamanlaması, yürütmeyi denetleyen tek sürücü değildir ve saat dilimi yalnızca ilk başlangıç saatini belirler. Sonraki çalıştırmalar yineleme zamanlaması, son tetikleme yürütmesi *ve* çalışma sürelerinin veya beklenmeyen davranışlara neden olabilecek diğer faktörlere bağlıdır. Örneğin, beklenmedik davranış gün ışığından yararlanma saati (DST) başladığında ve sona erdiğinde belirtilen zamanlamayı sürdürmek için hata içerebilir. DST etkin olduğunda yinelenme saatinin kaydırılamaz olduğundan emin olmak için yinelemeyi el ile ayarlayın. Bu şekilde, iş akışınız beklenen zamanda çalışmaya devam eder. Aksi takdirde, DST başlatıldığında başlangıç saati bir saat ileri ve DST sona erdiğinde bir saat geriye geçer. Daha fazla bilgi için bkz. [bağlantı tabanlı tetikleyiciler Için yinelenme](../connectors/apis-list.md#recurrence-for-connection-based-triggers).
 
 <a name="convert-to-openssh"></a>
 

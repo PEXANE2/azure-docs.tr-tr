@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: ff024ff97baa8a80ae6b1fcdafba010e482afd98
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 7e300f896bb11ed7c77738836f894cff41cc8bf3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074633"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781838"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM şablonu dağıtımı what-if işlemi
 
@@ -91,21 +91,21 @@ Yukarıdaki komutlar el ile inceleyebilmeniz için bir metin Özeti döndürür.
 * `$results = Get-AzResourceGroupDeploymentWhatIfResult` kaynak grubu dağıtımları için
 * `$results = Get-AzSubscriptionDeploymentWhatIfResult``$results = Get-AzDeploymentWhatIfResult`abonelik düzeyi dağıtımlar için veya
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Bir şablonu dağıtımdan önce değişiklikleri önizlemek için şunu kullanın:
 
-* [az dağıtım grubu](/cli/azure/deployment/group#az-deployment-group-what-if) kaynak grubu dağıtımları için ne yapılır?
-* abonelik düzeyi dağıtımlar için [az Deployment Sub](/cli/azure/deployment/sub#az-deployment-sub-what-if)
-* Yönetim grubu dağıtımları için [az Deployment mg ne-if](/cli/azure/deployment/mg#az-deployment-mg-what-if)
-* [az dağıtım kiracısı](/cli/azure/deployment/tenant#az-deployment-tenant-what-if) kiracı dağıtımları için ne yapılır?
+* [az dağıtım grubu](/cli/azure/deployment/group#az_deployment_group_what_if) kaynak grubu dağıtımları için ne yapılır?
+* abonelik düzeyi dağıtımlar için [az Deployment Sub](/cli/azure/deployment/sub#az_deployment_sub_what_if)
+* Yönetim grubu dağıtımları için [az Deployment mg ne-if](/cli/azure/deployment/mg#az_deployment_mg_what_if)
+* [az dağıtım kiracısı](/cli/azure/deployment/tenant#az_deployment_tenant_what_if) kiracı dağıtımları için ne yapılır?
 
 `--confirm-with-what-if` `-c` Değişiklikleri önizlemek ve dağıtıma devam etmek isteyip istemediğiniz sorulduğunda anahtarı (veya kısa biçimini) kullanabilirsiniz. Bu anahtarı şu şekilde ekleyin:
 
-* [az dağıtım grubu oluştur](/cli/azure/deployment/group#az-deployment-group-create)
-* [az Deployment Sub Create](/cli/azure/deployment/sub#az-deployment-sub-create).
-* [az Deployment mg Create](/cli/azure/deployment/mg#az-deployment-mg-create)
-* [az Deployment Tenant Create](/cli/azure/deployment/tenant#az-deployment-tenant-create)
+* [az dağıtım grubu oluştur](/cli/azure/deployment/group#az_deployment_group_create)
+* [az Deployment Sub Create](/cli/azure/deployment/sub#az_deployment_sub_create).
+* [az Deployment mg Create](/cli/azure/deployment/mg#az_deployment_mg_create)
+* [az Deployment Tenant Create](/cli/azure/deployment/tenant#az_deployment_tenant_create)
 
 Örneğin, `az deployment group create --confirm-with-what-if` `-c` kaynak grubu dağıtımları için veya kullanın.
 

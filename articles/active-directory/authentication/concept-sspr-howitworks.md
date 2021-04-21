@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c2d4181a80f48f5f6dd5775e6eb3bd172a65df8
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 94077a1c6329aa1fecf9593f2df41fa77afc8a44
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209638"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765926"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Nasıl çalışır? Azure AD self servis parola sıfırlama
 
@@ -93,7 +93,7 @@ Kayıt gerekmiyorsa, kullanıcılar oturum açma sırasında istenmez, ancak bun
 
 Kimlik doğrulama yöntemlerinin parolasını sıfırlama veya değiştirme gereksinimlerinde doğru olduğundan emin olmak için, belirli bir süre sonra kullanıcıların bilgileri kayıtlı bilgilerini onaylamasını zorunlu kılabilirsiniz. Bu seçenek yalnızca **kullanıcıların oturum açarken kaydolmasını gerektir** seçeneğini etkinleştirdiğinizde kullanılabilir.
 
-Kullanıcının kayıtlı yöntemlerinin onaylamasını istemek için geçerli değerler *0* ile *730* gün arasında. Bu değerin *0* olarak ayarlanması, kullanıcıların kimlik doğrulama bilgilerini hiçbir şekilde onaylamasını istemeyeceği anlamına gelir.
+Kullanıcının kayıtlı yöntemlerinin onaylamasını istemek için geçerli değerler *0* ile *730* gün arasında. Bu değerin *0* olarak ayarlanması, kullanıcıların kimlik doğrulama bilgilerini hiçbir şekilde onaylamasını istemeyeceği anlamına gelir. Birleşik kayıt deneyimini kullanırken, kullanıcıların bilgilerini yeniden onaylamadan önce kimliklerini onaylamalarını sağlamak gerekecektir.
 
 ## <a name="authentication-methods"></a>Kimlik doğrulama yöntemleri
 

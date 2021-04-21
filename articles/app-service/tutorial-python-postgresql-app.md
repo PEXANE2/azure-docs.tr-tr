@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 8e9656aa1f850dc9e59ab71b5df605df8dd49269
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 882a9fb0f8d528ca21cdc8149c60b9d5bdaf1723
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732814"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767104"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Öğretici: Azure App Service içindeki PostgreSQL ile Docgo Web uygulaması dağıtma
 
@@ -160,7 +160,7 @@ Komut tamamlandığında, veritabanı için farklı bağlantı dizeleri içeren 
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
-> `-l <location-name>`, [Azure bölgelerinden](https://azure.microsoft.com/global-infrastructure/regions/)herhangi birine ayarlanabilir. Komutu ile aboneliğiniz için kullanılabilir bölgeleri edinebilirsiniz [`az account list-locations`](/cli/azure/account#az-account-list-locations) . Üretim uygulamaları için, veritabanınızı ve uygulamanızı aynı konuma koyun.
+> `-l <location-name>`, [Azure bölgelerinden](https://azure.microsoft.com/global-infrastructure/regions/)herhangi birine ayarlanabilir. Komutu ile aboneliğiniz için kullanılabilir bölgeleri edinebilirsiniz [`az account list-locations`](/cli/azure/account#az_account_list_locations) . Üretim uygulamaları için, veritabanınızı ve uygulamanızı aynı konuma koyun.
 
 Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/DjangoCLITutorialHelp).
 
@@ -172,7 +172,7 @@ Bu bölümde App Service uygulamasında uygulama konağı oluşturur, bu uygulam
 
 Terminalde, uygulama kodunu içeren *docgoapp* depo klasöründe olduğunuzdan emin olun.
 
-Komutuyla bir App Service uygulaması (ana bilgisayar işlemi) oluşturun [`az webapp up`](/cli/azure/webapp#az-webapp-up) :
+Komutuyla bir App Service uygulaması (ana bilgisayar işlemi) oluşturun [`az webapp up`](/cli/azure/webapp#az_webapp_up) :
 
 ```azurecli
 az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --plan DjangoPostgres-tutorial-plan --sku B1 --name <app-name>
@@ -205,7 +205,7 @@ Kod artık App Service dağıtılır ve sonraki adım, uygulamayı Azure 'daki P
 
 Uygulama kodu,,, ve adlı dört ortam değişkeni içinde veritabanı bilgilerini bulmayı bekler `DBHOST` `DBNAME` `DBUSER` `DBPASS` .
 
-App Service ortam değişkenlerini ayarlamak için, aşağıdaki [az WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) komutuyla "uygulama ayarları" oluşturun.
+App Service ortam değişkenlerini ayarlamak için, aşağıdaki [az WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) komutuyla "uygulama ayarları" oluşturun.
 
 ```azurecli
 az webapp config appsettings set --settings DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
