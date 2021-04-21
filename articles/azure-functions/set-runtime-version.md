@@ -3,12 +3,13 @@ title: Azure Işlevleri çalışma zamanı sürümlerini hedefleme
 description: Azure Işlevleri, çalışma zamanının birden çok sürümünü destekler. Azure 'da barındırılan bir işlev uygulamasının çalışma zamanı sürümünü belirtmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 9a9f8fca1c39fd0251df3e3a8da3d789aae4d3d6
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ca107ec2f0ce04bf7b1eae3a98087217c267d33d
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779282"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830925"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Işlevleri çalışma zamanı sürümlerini hedefleme
 

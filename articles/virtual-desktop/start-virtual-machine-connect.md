@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: af95cf5d3e4112c717d653062f186797d48fb515
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 161a4d578509a7752f9438ce8f05d599bdb54e93
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389817"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832293"
 ---
 # <a name="start-virtual-machine-on-connect-preview"></a>Bağlantı sırasında sanal makineyi Başlat (Önizleme)
 
@@ -19,7 +19,7 @@ ms.locfileid: "107389817"
 > Connect üzerinde VM Başlat özelliği şu anda genel önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Connect üzerinde sanal makine (VM) Başlat (Önizleme) özelliği, kullanmadığınız durumlarda VM 'lerinizi serbest bırakmanıza izin vererek maliyetleri kaydetmenizi sağlar. VM 'yi yeniden kullanmanız gerektiğinde, tüm yapmanız gereken sanal makinelerinizi yeniden açmanız gerekir.
+Connect üzerinde sanal makine (VM) Başlat (Önizleme) özelliği, son kullanıcıların VM 'Leri yalnızca ihtiyaç duydukları zaman açmasına izin vererek maliyetleri kaydetmenizi sağlar. Ardından, gerekli olmadığında VM 'Leri kapatabilirsiniz.
 
 >[!NOTE]
 >Windows sanal masaüstü (klasik) bu özelliği desteklemez.
