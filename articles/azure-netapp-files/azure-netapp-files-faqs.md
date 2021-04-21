@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2021
+ms.date: 04/20/2021
 ms.author: b-juche
-ms.openlocfilehash: a8c06b25b923d663e982e940100be7b9a2a009e1
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 6cef4860184b217e96e8967ab24a3befc632e316
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726853"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811859"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -213,6 +213,11 @@ En iyi uygulama olarak, bilgisayar saati eşitlemesi için maksimum toleransı b
 ### <a name="how-can-i-obtain-the-ip-address-of-an-smb-volume-via-the-portal"></a>Portal aracılığıyla bir SMB biriminin IP adresini nasıl alabilirim?
 
 Birime Genel Bakış bölmesinde **JSON görünümü** bağlantısını kullanın ve **Özellikler** bağlamahedefleri altında **startip** tanımlayıcısı ' nı arayın  ->  .
+
+### <a name="can-an-azure-netapp-files-smb-share-act-as-an-dfs-namespace-dfs-n-root"></a>Bir Azure NetApp Files SMB paylaşımının DFS ad alanı (DFS-N) kökü işlevi görebilir mi?
+
+Hayır. Ancak, Azure NetApp Files SMB paylaşımları, DFS ad alanı (DFS-N) klasörü hedefi olarak görev yapabilir.   
+DFS-N klasör hedefi olarak bir Azure NetApp Files SMB paylaşımının kullanılması için, [DFS klasör hedefi ekleme](/windows-server/storage/dfs-namespaces/add-folder-targets#to-add-a-folder-target) yordamını kullanarak Azure NetApp Files SMB paylaşımının evrensel adlandırma KURALı (UNC) bağlama yolunu sağlayın.  
 
 ### <a name="smb-encryption-faqs"></a>SMB şifreleme SSS
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: f43bdd0ec6654ba2fc8a04dbb62d2d658e06ce0f
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 189966c468fe5a39fbd44f7961e9512b7b054882
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107108501"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811824"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Hesabınızı Iş Ortağı Merkezi 'ne geçirme
 
@@ -72,7 +72,7 @@ Dynamics 365 müşteri katılımı, PowerApps ve Dynamics 365 Işlemler teklifle
 
 1. MPN üyelik hesabınız ilk olarak Iş ortağı üyelik Merkezi 'nde (PMC) oluşturulduysa, hesabınızın geçirildiğini onaylamak için [Iş Ortağı Merkezi](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) ' nde oturum açın. MPN KIMLIĞINIZLE bir profil ekranı görürseniz devam etmeye hazırsınız demektir. Aksi takdirde, [Iş ortağı üyeliği merkezindeki](https://partners.microsoft.com/partnerprogram/Welcome.aspx)istemler ' i izleyerek hesap geçişinizi başlatmanız gerekir. Yardıma ihtiyacınız varsa, [destek](https://partner.microsoft.com/support?issueid=100-0077)' i ziyaret edin.
 2. [Iş Ortağı Merkezi ' nde ticari Market genel bakış sayfasına](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)gidin. Sol gezinti bölmesinde "ticari Market" görürseniz, kaydolmuş ve sonraki adıma devam etmeniz gerekir. Aksi takdirde, [ticari Market 'e hemen kaydolun](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
-3. Tekliflerinizi [arayarak](https://appsource.microsoft.com/)appsource 'ta tekliflerinizin olduğunu doğrulayın. Tekliflerinizin zaten AppSource 'ta olması durumunda, bir sonraki adımla devam edin. AppSource 'ta olmayan herhangi bir teklif için yeni bir [dynamics 365 müşteri katılımı teklifi](.\partner-center-portal\create-new-customer-engagement-offer.md) veya yeni bir [Dynamics 365 işlemler teklifi](.\partner-center-portal\create-new-operations-offer.md)oluşturun.
+3. Tekliflerinizi [arayarak](https://appsource.microsoft.com/)appsource 'ta tekliflerinizin olduğunu doğrulayın. Tekliflerinizin zaten AppSource 'ta olması durumunda, bir sonraki adımla devam edin. AppSource 'ta olmayan herhangi bir teklif için, bkz. [dynamics 365 müşteri katılımı teklifini planlayın](dynamics-365-customer-engage-offer-setup.md) veya bir [Dynamics 365 işlemleri teklifi oluşturun](.\partner-center-portal\create-new-operations-offer.md).
 4. Iş Ortağı Merkezi 'nin [anlaşmalar sayfasında](https://partner.microsoft.com/dashboard/account/agreements), **Business Applications ISV eki**'ni gözden geçirdiğinizden ve kabul ettiğinizden emin olun.
 5. Iş Ortağı Merkezi 'nin [Hesap ayarları](https://partner.microsoft.com/dashboard/account/v3/accountsettings/billingprofile)' nda, faturalandırma bilgilerinizin tamamlanmış olduğundan emin olun.
 6. Tekliflerinizin daha önce sertifikalı olması durumunda bile, her yeni ve mevcut teklifi sertifika ve yayın için gönderebilirsiniz.
