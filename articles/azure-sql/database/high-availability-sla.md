@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 7204f32b8fec411fba2afa39b011a8755aea3744
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 21ac73b461ebcb171f48621aa27a16dfc0e8c936
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309688"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781748"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için yüksek kullanılabilirlik
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -125,9 +125,9 @@ PowerShell, REST API veya Azure CLı kullanılarak yük devretme başlatılabili
 
 |Dağıtım türü|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
-|Veritabanı|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Veritabanı yük devretmesi](/rest/api/sql/databases/failover)|[az Rest](/cli/azure/reference-index#az-rest) , Azure CLI 'dan bir REST API çağrısı çağırmak için kullanılabilir|
-|Elastik havuz|[Invoke-Azsqtalayapışpoolfailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Elastik havuz yük devretme](/javascript/api/@azure/arm-sql/elasticpools#failover_string__string__string__msRest_RequestOptionsBase)|[az Rest](/cli/azure/reference-index#az-rest) , Azure CLI 'dan bir REST API çağrısı çağırmak için kullanılabilir|
-|Yönetilen Örnek|[Invoke-Azsqlınstancefailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Yönetilen örnekler-yük devretme](/rest/api/sql/managed%20instances%20-%20failover/failover)|[az SQL mı yük devretme](/cli/azure/sql/mi/#az-sql-mi-failover)|
+|Veritabanı|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Veritabanı yük devretmesi](/rest/api/sql/databases/failover)|[az Rest](/cli/azure/reference-index#az_rest) , Azure CLI 'dan bir REST API çağrısı çağırmak için kullanılabilir|
+|Elastik havuz|[Invoke-Azsqtalayapışpoolfailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Elastik havuz yük devretme](/javascript/api/@azure/arm-sql/elasticpools#failover_string__string__string__msRest_RequestOptionsBase)|[az Rest](/cli/azure/reference-index#az_rest) , Azure CLI 'dan bir REST API çağrısı çağırmak için kullanılabilir|
+|Yönetilen Örnek|[Invoke-Azsqlınstancefailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Yönetilen örnekler-yük devretme](/rest/api/sql/managed%20instances%20-%20failover/failover)|[az SQL mı yük devretme](/cli/azure/sql/mi/#az_sql_mi_failover)|
 
 > [!IMPORTANT]
 > Hiper ölçek veritabanlarının okunabilir ikincil çoğaltmaları için yük devretme komutu kullanılamaz.

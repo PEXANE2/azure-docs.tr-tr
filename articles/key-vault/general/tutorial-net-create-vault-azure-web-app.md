@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 901f2b938512f842a5b4c34adbfc61f9379e5131
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 479181e851e6f54246a2ad89e7529bf3f50bb8a4
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772189"
+ms.locfileid: "107751985"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Öğretici: .NET 'teki bir Azure Web uygulamasına Key Vault bağlamak için yönetilen bir kimlik kullanın
 
@@ -85,7 +85,7 @@ git commit -m "first commit"
 
 Bir Azure Web uygulamasını bir *dağıtım kullanıcısı* kullanarak DAĞıTMAK için FTP ve yerel git ' i kullanabilirsiniz. Dağıtım kullanıcısını yapılandırdıktan sonra tüm Azure dağıtımlarınız için kullanabilirsiniz. Hesap düzeyinde dağıtım Kullanıcı adınız ve parolanız, Azure aboneliği kimlik bilgilerinizden farklı. 
 
-Dağıtım kullanıcısını yapılandırmak için [az WebApp Deployment User set](/cli/azure/webapp/deployment/user?#az_webapp_deployment_user_set) komutunu çalıştırın. Bu yönergelere uygun bir Kullanıcı adı ve parola seçin: 
+Dağıtım kullanıcısını yapılandırmak için [az WebApp Deployment User set](/cli/azure/webapp/deployment/user?#az-webapp-deployment-user-set) komutunu çalıştırın. Bu yönergelere uygun bir Kullanıcı adı ve parola seçin: 
 
 - Kullanıcı adı Azure içinde benzersiz olmalıdır. Yerel git gönderimleri için, at işareti simgesine (@) sahip olamaz. 
 - Parola en az sekiz karakter uzunluğunda olmalı ve şu üç öğeden ikisini içermelidir: harfler, rakamlar ve semboller. 
@@ -100,7 +100,7 @@ Kullanıcı adınızı ve parolanızı, Web uygulamalarınızı dağıtmak için
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Kaynak grubu, Azure kaynaklarını dağıttığınız ve yönettiğiniz mantıksal bir kapsayıcıdır. [Az Group Create](/cli/azure/group?#az_group_create) komutunu kullanarak hem anahtar kasanızı hem de Web uygulamanızı içerecek bir kaynak grubu oluşturun:
+Kaynak grubu, Azure kaynaklarını dağıttığınız ve yönettiğiniz mantıksal bir kapsayıcıdır. [Az Group Create](/cli/azure/group?#az-group-create) komutunu kullanarak hem anahtar kasanızı hem de Web uygulamanızı içerecek bir kaynak grubu oluşturun:
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
@@ -243,7 +243,7 @@ Bu bölümde, Key Vault bir gizli dizi almak için Key Vault ve uygulama kodunuz
 
 Bu öğreticide, Key Vault kimlik doğrulaması için [yönetilen kimlik](../../active-directory/managed-identities-azure-resources/overview.md) kullanacağız. Yönetilen kimlik, uygulama kimlik bilgilerini otomatik olarak yönetir.
 
-Azure CLı 'da, uygulamanın kimliğini oluşturmak için [az WebApp-Identity Assign](/cli/azure/webapp/identity?#az_webapp_identity_assign) komutunu çalıştırın:
+Azure CLı 'da, uygulamanın kimliğini oluşturmak için [az WebApp-Identity Assign](/cli/azure/webapp/identity?#az-webapp-identity-assign) komutunu çalıştırın:
 
 ```azurecli-interactive
 az webapp identity assign --name "<your-webapp-name>" --resource-group "myResourceGroup"
@@ -259,7 +259,7 @@ Komut bu JSON kod parçacığını döndürür:
 }
 ```
 
-Web uygulamanıza, anahtar kasanıza yönelik **Get** ve **Listeleme** işlemlerine Izin vermek için, `principalId` Azure CLI [az keykasası Set-Policy](/cli/azure/keyvault?#az_keyvault_set_policy) komutunu geçirin:
+Web uygulamanıza, anahtar kasanıza yönelik **Get** ve **Listeleme** işlemlerine Izin vermek için, `principalId` Azure CLI [az keykasası Set-Policy](/cli/azure/keyvault?#az-keyvault-set-policy) komutunu geçirin:
 
 ```azurecli-interactive
 az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>" --secret-permissions get list

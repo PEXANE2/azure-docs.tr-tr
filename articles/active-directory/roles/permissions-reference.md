@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 04/06/2021
+ms.date: 04/20/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9266322d424d57ac847df85513db34d4a42e47e1
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: cf614922503212488c822ac020960b0ddb99fc28
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389834"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780074"
 ---
 # <a name="azure-ad-built-in-roles"></a>Azure AD yerleşik rolleri
 
@@ -519,7 +519,7 @@ Kuruluşunuzdaki [müşteri kasası isteklerini](/office365/admin/manage/custome
 
 ## <a name="desktop-analytics-administrator"></a>Masaüstü Analizi Yöneticisi
 
-Bu roldeki kullanıcılar masaüstü Analizi ve Office özelleştirmesi & Ilkesi hizmetlerini yönetebilir. Bu, masaüstü analizi için varlık envanterini görüntüleme, dağıtım planları oluşturma, dağıtım ve sistem durumunu görüntüleme imkanını içerir. Office özelleştirmesi & Ilke hizmetinde, bu rol kullanıcıların Office ilkelerini yönetmesine olanak sağlar.
+Bu roldeki kullanıcılar masaüstü Analizi hizmetini yönetebilir. Bu, varlık envanterini görüntüleme, dağıtım planları oluşturma ve dağıtım ve sistem durumunu görüntüleme imkanını içerir.
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -527,9 +527,6 @@ Bu roldeki kullanıcılar masaüstü Analizi ve Office özelleştirmesi & Ilkesi
 > | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuma ve yapılandırma |
 > | Microsoft. Azure. Supportbilet/allEntities/allTasks | Azure destek biletleri oluşturma ve yönetme |
 > | Microsoft. office365. desktopAnalytics/allEntities/allTasks | Masaüstü analizinin tüm yönlerini yönetme |
-> | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 Yönetim merkezinde hizmet durumunu okuyun ve yapılandırın |
-> | Microsoft. office365. Supportbilet/allEntities/allTasks | Microsoft 365 hizmet istekleri oluşturma ve yönetme |
-> | Microsoft. office365. webPortal/allEntities/standart/okuma | Microsoft 365 Yönetim Merkezi 'ndeki tüm kaynaklardaki temel özellikleri okuyun |
 
 ## <a name="directory-readers"></a>Dizin okuyucuları
 
@@ -1861,7 +1858,7 @@ Bu role sahip kullanıcılar Kullanıcı oluşturabilir ve bazı kısıtlamalara
 
 `microsoft.directory/applications/credentials/update`
 
-| İzin öğesi | Açıklama |
+| İzin öğesi | Description |
 | --- | --- |
 | ad alanı | Görevi kullanıma sunan ürün veya hizmet, ve ile sona erer `microsoft` . Örneğin, Azure AD 'deki tüm görevler `microsoft.directory` ad alanını kullanır. |
 | varlık | Microsoft Graph ' de hizmet tarafından kullanıma sunulan mantıksal özellik veya bileşen. Örneğin, Azure AD Kullanıcı ve grupları kullanıma sunarsa, OneNote Notları kullanıma sunar ve Exchange posta kutularını ve takvimleri kullanıma sunar. `allEntities`Bir ad alanındaki tüm varlıkların belirtilmesine yönelik özel bir anahtar sözcük vardır. Bu, genellikle ürüne erişim izni veren rollerde kullanılır. |

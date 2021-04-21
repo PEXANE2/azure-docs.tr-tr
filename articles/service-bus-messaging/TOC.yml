@@ -345,7 +345,7 @@
 - name: Kaynaklar
   items:
     - name: SSS
-      href: service-bus-faq.md
+      href: service-bus-faq.yml
     - name: Microsoft Learn ile becerilerinizi geliştirin
       href: /learn/browse/?products=azure-service-bus
     - name: Azure Yol Haritası
