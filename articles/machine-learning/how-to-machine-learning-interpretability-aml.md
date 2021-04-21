@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: 2d60c6dbedb24847b95ce268bedafcb073421319
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: d79458cfc76adcfd35a6b8dee40c0c45786abc28
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576525"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763298"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Python 'da (Önizleme), ML modellerini & öngörülerini açıklamak için yorumlamalar paketini kullanın
 
@@ -34,8 +34,9 @@ Bu nasıl yapılır kılavuzunda, aşağıdaki görevleri gerçekleştirmek içi
 * Inkoya sınırlama sırasında açıklamaları gözlemlemek için modelinize birlikte bir Puanlama açıklama dağıtın.
 
 
-
 Desteklenen yorumlenebilirlik teknikleri ve makine öğrenimi modelleri hakkında daha fazla bilgi için, Azure Machine Learning ve [örnek not defterlerinde](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) [model yorumlenebilirliğini](how-to-machine-learning-interpretability.md) inceleyin.
+
+Otomatik makine öğrenimi ile eğitilen modeller için yorumlenebilirliği etkinleştirme hakkında yönergeler için bkz. [otomatik makine öğrenimi modelleri için model açıklamaları (Önizleme)](how-to-machine-learning-interpretability-automl.md). 
 
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>Kişisel makinenizde Özellik önemi değeri oluştur 
 Aşağıdaki örnekte, Azure hizmetleriyle iletişim kurmadan kişisel makinenizde yorumlenebilirlik paketinin nasıl kullanılacağı gösterilmektedir.

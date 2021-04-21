@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 4a01429e938b09752fa93b440877a5a4928b9d27
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 2d385357f7d4b1d1edec1cf336628bf8b3f9dda3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750941"
+ms.locfileid: "107764648"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release-for-linux-vms"></a>Linux VM 'Ler için Azure AD (önceki sürüm) ile Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma
 
@@ -66,16 +66,16 @@ Azure disk şifrelemesi, Anahtar Kasası aboneliğinizdeki disk şifreleme anaht
 
 
 ### <a name="create-a-key-vault-with-azure-cli"></a><a name="bkmk_KVCLI"></a> Azure CLı ile Anahtar Kasası oluşturma
-[Az keykasa](/cli/azure/keyvault#commands) komutlarını kullanarak anahtar kasanızı Azure CLI ile yönetebilirsiniz. Bir Anahtar Kasası oluşturmak için [az keykasacreate](/cli/azure/keyvault#az-keyvault-create)komutunu kullanın.
+[Az keykasa](/cli/azure/keyvault#commands) komutlarını kullanarak anahtar kasanızı Azure CLI ile yönetebilirsiniz. Bir Anahtar Kasası oluşturmak için [az keykasacreate](/cli/azure/keyvault#az_keyvault_create)komutunu kullanın.
 
-1. Gerekirse, [az Group Create](/cli/azure/group#az-group-create)ile yeni bir kaynak grubu oluşturun. Konumları listelemek için [az Account List-Locations](/cli/azure/account#az-account-list) kullanın 
+1. Gerekirse, [az Group Create](/cli/azure/group#az_group_create)ile yeni bir kaynak grubu oluşturun. Konumları listelemek için [az Account List-Locations](/cli/azure/account#az_account_list) kullanın 
      
      ```azurecli-interactive
      # To list locations: az account list-locations --output table
      az group create -n "MyKeyVaultResourceGroup" -l "East US"
      ```
 
-3. [Az keykasa Create](/cli/azure/keyvault#az-keyvault-create)komutunu kullanarak yeni bir Anahtar Kasası oluşturun.
+3. [Az keykasa Create](/cli/azure/keyvault#az_keyvault_create)komutunu kullanarak yeni bir Anahtar Kasası oluşturun.
     
      ```azurecli-interactive
      az keyvault create --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --location "East US"
@@ -151,7 +151,7 @@ Azure AD uygulamanız, kasadaki anahtarlara veya gizli anahtara erişmek için h
      ```
 
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-azure-cli"></a><a name="bkmk_KVAPCLI"></a> Azure CLı ile Azure AD uygulaması için Anahtar Kasası erişim ilkesini ayarlama
-Erişim ilkesini ayarlamak için [az keykasası Set-Policy](/cli/azure/keyvault#az-keyvault-set-policy) komutunu kullanın. Daha fazla bilgi için bkz. [clı 2,0 kullanarak Key Vault yönetme](../../key-vault/general/manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret).
+Erişim ilkesini ayarlamak için [az keykasası Set-Policy](/cli/azure/keyvault#az_keyvault_set_policy) komutunu kullanın. Daha fazla bilgi için bkz. [clı 2,0 kullanarak Key Vault yönetme](../../key-vault/general/manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret).
 
 Aşağıdaki komutla gizli anahtar almak ve anahtarları kaydırmak için Azure CLı erişimi aracılığıyla oluşturduğunuz hizmet sorumlusuna izin verin:
 
@@ -197,7 +197,7 @@ Azure platformunun, birimleri önyüklemek ve şifrelerini çözmek için sanal 
      ```
 
 ### <a name="set-key-vault-advanced-access-policies-using-the-azure-cli"></a><a name="bkmk_KVperCLI"></a> Azure CLı kullanarak Anahtar Kasası Gelişmiş erişim ilkelerini ayarlama
-Anahtar Kasası için disk şifrelemeyi etkinleştirmek üzere [az keykasatıon Update](/cli/azure/keyvault#az-keyvault-update) kullanın. 
+Anahtar Kasası için disk şifrelemeyi etkinleştirmek üzere [az keykasatıon Update](/cli/azure/keyvault#az_keyvault_update) kullanın. 
 
  - **Key Vault disk şifrelemesi Için etkinleştir:** Etkin-disk şifrelemesi gereklidir. 
 

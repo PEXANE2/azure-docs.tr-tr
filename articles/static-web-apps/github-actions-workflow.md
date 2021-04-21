@@ -7,18 +7,21 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 4f1f432da33bded4fc0f04170673e5943dec5fb0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b20a1670c13a272ed48088567a205d854ac99179
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311337"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791256"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için GitHub eylemleri iş akışları
 
-Yeni bir Azure statik Web uygulaması kaynağı oluşturduğunuzda Azure, uygulamanın sürekli dağıtımını denetlemek için bir GitHub eylemleri iş akışı oluşturur. İş akışı bir YAML dosyası tarafından yönlendiriliyor. Bu makalede, iş akışı dosyasının yapısı ve seçenekleri ayrıntılı olarak açıklanır.
+Yeni bir Azure statik Web Apps kaynağı oluşturduğunuzda Azure, uygulamanın sürekli dağıtımını denetlemek için bir GitHub eylemleri iş akışı oluşturur. İş akışı bir YAML dosyası tarafından yönlendiriliyor. Bu makalede, iş akışı dosyasının yapısı ve seçenekleri ayrıntılı olarak açıklanır.
 
 Dağıtımlar, tek tek [adımlarla](#steps)tanımlanan [işleri](#jobs) çalıştıran [Tetikleyiciler](#triggers)tarafından başlatılır.
+
+> [!NOTE]
+> Azure statik Web Apps Ayrıca Azure DevOps 'ı destekler. İşlem hattı ayarlama hakkında bilgi için bkz. [Azure DevOps Ile yayımlama](publish-devops.md) .
 
 ## <a name="file-location"></a>Dosya konumu
 
@@ -179,13 +182,16 @@ with:
 
 ## <a name="route-file-location"></a>Yol dosyası konumu
 
-Deponuzdaki herhangi bir klasörde [staticwebapp.config.js](routes.md) aramak için iş akışını özelleştirebilirsiniz. Aşağıdaki özellik bir iş bölümünün altında tanımlanabilir `with` .
+Deponuzdaki herhangi bir klasörde [routes.js](routes.md) aramak için iş akışını özelleştirebilirsiniz. Aşağıdaki özellik bir iş bölümünün altında tanımlanabilir `with` .
 
 | Özellik          | Açıklama                                                                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `routes_location` | Dosyadaki _staticwebapp.config.js_ bulunduğu dizin konumunu tanımlar. Bu konum, deponun köküne göredir. |
+| `routes_location` | Dosyadaki _routes.js_ bulunduğu dizin konumunu tanımlar. Bu konum, deponun köküne göredir. |
 
-_staticwebapp.config.jsdosya üzerinde_ açık olması özellikle, ön uç Framework derleme adımınız bu dosyayı varsayılan olarak ' a taşımadığından önemlidir `output_location` .
+_routes.jsdosya üzerinde_ açık olması özellikle, ön uç Framework derleme adımınız bu dosyayı varsayılan olarak ' a taşımadığından önemlidir `output_location` .
+
+> [!IMPORTANT]
+> Dosyasında _routes.js_ tanımlanan işlevsellik artık kullanım dışıdır. _Üzerindestaticwebapp.config.js_ hakkında bilgi için bkz. Azure statik Web Apps [yapılandırma dosyası](./configuration.md) .
 
 ## <a name="environment-variables"></a>Ortam değişkenleri
 

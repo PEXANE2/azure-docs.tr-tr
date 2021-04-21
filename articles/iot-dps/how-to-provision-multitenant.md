@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 04ab4ae4d3de6f33f800011b9b0802665d5fb16e
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 0b88923ff6447785a4ef5a7c80e1ff44d1a2b9cb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228342"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777392"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Çok kiracı için sağlama 
 
@@ -47,7 +47,7 @@ Bu makalede, bölgeler arasında çok kiracılı bir senaryoda cihazların nası
 Bu bölümde, bir kiracının **Batı ABD** ve **Doğu ABD** bölgelerinde iki yeni bölgesel IoT hub 'ı oluşturmak için Azure Cloud Shell kullanacaksınız.
 
 
-1. [Az Group Create](/cli/azure/group#az-group-create) komutuyla bir kaynak grubu oluşturmak için Azure Cloud Shell kullanın. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. 
+1. [Az Group Create](/cli/azure/group#az_group_create) komutuyla bir kaynak grubu oluşturmak için Azure Cloud Shell kullanın. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. 
 
     Aşağıdaki örnek, *eastus* bölgesinde *contoso-US-Resource-Group* adlı bir kaynak grubu oluşturur. Bu makalede oluşturulan tüm kaynaklar için bu grubu kullanmanız önerilir. Bu işlem tamamlandıktan sonra Temizleme işlemi daha kolay hale getirir.
 
@@ -55,7 +55,7 @@ Bu bölümde, bir kiracının **Batı ABD** ve **Doğu ABD** bölgelerinde iki y
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. [Az IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) komutuyla **Eastus** bölgesinde bir IoT hub 'ı oluşturmak için Azure Cloud Shell kullanın. IoT Hub 'ı *contoso-US-Resource-Group*'a eklenecektir.
+2. [Az IoT Hub Create](/cli/azure/iot/hub#az_iot_hub_create) komutuyla **Eastus** bölgesinde bir IoT hub 'ı oluşturmak için Azure Cloud Shell kullanın. IoT Hub 'ı *contoso-US-Resource-Group*'a eklenecektir.
 
     Aşağıdaki örnek *eastus* konumunda *contoso-Doğu-hub* adlı bir IoT Hub 'ı oluşturur. **Contoso-Doğu-hub** yerine kendi benzersiz hub 'ınızın adını kullanmanız gerekir.
 
@@ -65,7 +65,7 @@ Bu bölümde, bir kiracının **Batı ABD** ve **Doğu ABD** bölgelerinde iki y
     
     Bu komutun tamamlanması birkaç dakika sürebilir.
 
-3. [Az IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) komutuyla **Westus** bölgesinde bir IoT hub 'ı oluşturmak için Azure Cloud Shell kullanın. Bu IoT Hub 'ı de *contoso-US-Resource-Group*' a eklenecektir.
+3. [Az IoT Hub Create](/cli/azure/iot/hub#az_iot_hub_create) komutuyla **Westus** bölgesinde bir IoT hub 'ı oluşturmak için Azure Cloud Shell kullanın. Bu IoT Hub 'ı de *contoso-US-Resource-Group*' a eklenecektir.
 
     Aşağıdaki örnek *westus* konumunda *contoso-Batı-hub* adlı bir IoT Hub 'ı oluşturur. **Contoso-Batı-hub** yerine kendi benzersiz hub 'ınızın adını kullanmanız gerekir.
 

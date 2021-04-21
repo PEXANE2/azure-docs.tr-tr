@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 62885a4695e7b061a5e7f0e70496cde4663c943d
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 839aa012cedaaa6f5bd3d1edad60e3ea7278133b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478939"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775898"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'te (AKS) Azure CNı ağını yapılandırma
 
@@ -63,7 +63,7 @@ AKS kümesindeki düğüm başına en fazla düğüm sayısı 250 ' dir. Düğü
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | Evet (250 'e kadar) |
 | Resource Manager şablonu | 110 | 30 | Evet (250 'e kadar) |
-| Portal | 110 | 110 (düğüm havuzları sekmesinde yapılandırılır) | Hayır |
+| Portal | 110 | 110 (düğüm havuzları sekmesinde yapılandırılır) | No |
 
 ### <a name="configure-maximum---new-clusters"></a>En fazla yeni küme yapılandırma
 
@@ -345,7 +345,7 @@ Aşağıdaki makalelerde AKS 'de ağ oluşturma hakkında daha fazla bilgi edini
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
 
 <!-- LINKS - Internal -->
-[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-create]: /cli/azure/aks#az_aks_create
 [aks-ssh]: ssh.md
 [ManagedClusterAgentPoolProfile]: /azure/templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object
 [aks-network-concepts]: concepts-network.md

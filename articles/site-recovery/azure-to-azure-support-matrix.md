@@ -3,12 +3,12 @@ title: Azure Site Recovery ile Azure VM olağanüstü durum kurtarma için deste
 description: Azure Site Recovery olan ikincil bir bölgeye Azure VM olağanüstü durum kurtarma desteğini özetler.
 ms.topic: article
 ms.date: 11/29/2020
-ms.openlocfilehash: 79cde5957b2090b8337a3af424dbda7e42608398
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: daba23ec1382f1b5fb18bffba48d0571fe998a2f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713345"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792462"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure sanal makinesi olağanüstü durum kurtarma için destek matrisi
 
@@ -53,6 +53,12 @@ Almanya    | Almanya Orta, Almanya Kuzeydoğu
 Çin | Çin Doğu, Çin Kuzey, Çin North2, Çin Doğu2
 Brezilya | Güney Brezilya
 Ülke içi olağanüstü durum kurtarma için ayrılan kısıtlı bölgeler |İsviçre Batı İsviçre Kuzey için ayrılan Fransa Güney Fransa Orta için ayrılan BAE Orta BAE Kuzey müşterileri için Norveç Batı Doğu müşterileri, JIO Hindistan orta müşterileri için JıO Hindistan Batı, Brezilya Güneydoğu
+
+Farklı kıtaların iki bölgesi arasında VM 'lerin çoğaltılması ve kurtarılması aşağıdaki bölge çiftleri ile sınırlıdır:
+
+* Güneydoğu Asya ve Avustralya Doğu
+* Güneydoğu Asya ve Avustralya Güneydoğu
+* Batı Avrupa ve Orta Güney ABD.
 
 >[!NOTE]
 >

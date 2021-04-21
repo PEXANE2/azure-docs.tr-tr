@@ -81,11 +81,13 @@ additionalContent:
       items:
         - title: Şirket içi dosya paylaşımını buluta genişletme
           links:
-            - url: ./files/storage-sync-files-planning.md
+            - url: ./file-sync/file-sync-introduction.md
+              text: Azure Dosya Eşitleme hakkında bilgi edinin
+            - url: ./file-sync/file-sync-planning.md
               text: Azure dosya paylaşımlarını Windows dosya sunucusu ile eşitleme (Azure FileSync)
-            - url: ./files/storage-sync-files-deployment-guide.md
+            - url: ./file-sync/file-sync-deployment-guide.md
               text: Azure Dosya Eşitleme’yi dağıtma
-            - url: ./files/index.yml
+            - url: ./file-sync/index.yml
               text: Daha fazla göster >
         - title: Çevrimiçi veri aktarımı (şirket içinden Azure’a)
           links:

@@ -4,12 +4,12 @@ description: Azure Işlevleri 'nde işlevleri devre dışı bırakmayı ve etkin
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ef3886c4b9b73f87238bf386d1320ecbac8ad181
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 03803abfda010c81fa8286a478d626ef39db59fb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374905"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777590"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Işlevleri 'nde işlevleri devre dışı bırakma
 
@@ -35,7 +35,7 @@ Bir işlevi devre dışı bırakmak için önerilen yol, olarak ayarlanan biçim
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
-Azure CLı 'da, [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) uygulama ayarını oluşturmak ve değiştirmek için komutunu kullanın. Aşağıdaki komut adında bir `QueueTrigger` uygulama ayarı oluşturarak `AzureWebJobs.QueueTrigger.Disabled` ve olarak ayarlanarak adlı bir işlevi devre dışı bırakır `true` . 
+Azure CLı 'da, [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) uygulama ayarını oluşturmak ve değiştirmek için komutunu kullanın. Aşağıdaki komut adında bir `QueueTrigger` uygulama ayarı oluşturarak `AzureWebJobs.QueueTrigger.Disabled` ve olarak ayarlanarak adlı bir işlevi devre dışı bırakır `true` . 
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <FUNCTION_APP_NAME> \

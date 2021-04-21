@@ -8,12 +8,12 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 473e87904742395eca6b7eeba0875cd93789104d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 285f0acd5097ce68cddee6f732b17944dffb0eba
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91978994"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762578"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Bir VHD 'yi Azure 'a yükleme veya yönetilen bir diski başka bir bölgeye kopyalama-Azure CLı
 
@@ -44,7 +44,7 @@ Bu tür yönetilen disklerin iki benzersiz durumu vardır:
 
 Karşıya yüklemek üzere boş bir standart HDD oluşturabilmeniz için önce, yüklemek istediğiniz VHD 'nin bayt cinsinden dosya boyutu gerekir. Bunu sağlamak için ya da kullanabilirsiniz `wc -c <yourFileName>.vhd` `ls -al <yourFileName>.vhd` . Bu değer, **--karşıya yükleme-boyut-bayt** parametresi belirtildiğinde kullanılır.
 
-Bir [disk oluşturma](/cli/azure/disk#az-disk-create) cmdlet 'inde-- **for-upload** parametresini ve **--upload-size-bytes** parametresini belirterek KARŞıYA yüklemek için boş bir standart HDD oluşturun:
+Bir [disk oluşturma](/cli/azure/disk#az_disk_create) cmdlet 'inde-- **for-upload** parametresini ve **--upload-size-bytes** parametresini belirterek KARŞıYA yüklemek için boş bir standart HDD oluşturun:
 
 Öğesini `<yourdiskname>` `<yourresourcegroupname>` `<yourregion>` seçtiğiniz değerlerle değiştirin. `--upload-size-bytes`Parametresi örnek bir değeri içerir `34359738880` , bunu sizin için uygun bir değerle değiştirin.
 

@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: 23ae69f49d37a210dd9fa1bfeedeca6c1b461e20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 721fe31f514cb948c93dc2a779a92ef3b2775ef9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94888870"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779246"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Hızlı başlangıç: özel bir sağlayıcı oluşturma ve özel kaynaklar dağıtma
 
@@ -27,7 +27,7 @@ Ortamınızı Azure CLı için hazırlayın.
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Azure CLı örnekleri, `az rest` istekler için kullanır `REST` . Daha fazla bilgi için bkz. [az Rest](/cli/azure/reference-index#az-rest).
+Azure CLı örnekleri, `az rest` istekler için kullanır `REST` . Daha fazla bilgi için bkz. [az Rest](/cli/azure/reference-index#az_rest).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -52,7 +52,7 @@ Azure CLı örnekleri, `az rest` istekler için kullanır `REST` . Daha fazla bi
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bu örnek, bir kaynak grubu, konum ve sağlayıcının işlev uygulaması adını girmenizi ister. Adlar, diğer komutlarda kullanılan değişkenlerde depolanır. [Az Group Create](/cli/azure/group#az-group-create) ve [az Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create) komutları kaynakları dağıtır.
+Bu örnek, bir kaynak grubu, konum ve sağlayıcının işlev uygulaması adını girmenizi ister. Adlar, diğer komutlarda kullanılan değişkenlerde depolanır. [Az Group Create](/cli/azure/group#az_group_create) ve [az Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create) komutları kaynakları dağıtır.
 
 ```azurecli-interactive
 read -p "Enter a resource group name:" rgName &&

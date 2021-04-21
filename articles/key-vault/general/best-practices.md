@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 83fc2639ccfeccb7de974739562e1a212bac78a4
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 5e4ec2749cec8444382e2b6e7c856e74c57ebb59
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749915"
+ms.locfileid: "107777176"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Key Vault kullanmak için en iyi uygulamalar
 
@@ -44,9 +44,9 @@ Bir kasadaki nesnelerin güncelleştirme/silme/silme işlemleri sırasında kasa
 
 ### <a name="azure-cli-backup-commands"></a>Azure CLı yedekleme komutları
 
-* [Yedekleme sertifikası](/cli/azure/keyvault/certificate#az-keyvault-certificate-backup)
-* [Yedekleme anahtarı](/cli/azure/keyvault/key#az-keyvault-key-backup)
-* [Yedekleme gizli dizisi](/cli/azure/keyvault/secret#az-keyvault-secret-backup)
+* [Yedekleme sertifikası](/cli/azure/keyvault/certificate#az_keyvault_certificate_backup)
+* [Yedekleme anahtarı](/cli/azure/keyvault/key#az_keyvault_key_backup)
+* [Yedekleme gizli dizisi](/cli/azure/keyvault/secret#az_keyvault_secret_backup)
 
 
 ## <a name="turn-on-logging"></a>Günlüğü aç

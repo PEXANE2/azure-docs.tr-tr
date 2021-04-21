@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 04/16/2021
-ms.openlocfilehash: 9887350842749809dd4c3708acc71a08f416e54f
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 286da1412e8a74ffbf34e4abb493241914d4f925
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565891"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764882"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -391,7 +391,7 @@ Mantıksal uygulamanızın trafiği belirli IP adresleriyle sınırlayan bir gü
 
 Örneğin, Batı ABD bölgesindeki mantıksal uygulamaların, [http tetikleyicisi veya eylemi](../connectors/connectors-native-http.md)gibi yerleşik Tetikleyiciler ve eylemler aracılığıyla gönderme veya alma işlemini desteklemesi için, güvenlik duvarınızın, Batı ABD bölgesinde mevcut olan *Tüm* Logic Apps hizmeti gelen IP adresleri *ve* giden IP adresleri için erişime izin verilmesi gerekir.
 
-Mantıksal uygulamanız ayrıca Office 365 Outlook Bağlayıcısı veya SQL Bağlayıcısı gibi [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)kullanıyorsa veya [özel bağlayıcılar](/connectors/custom-connectors/)kullanıyorsa, güvenlik duvarının ayrıca mantıksal uygulamanızın Azure bölgesindeki *Tüm* [yönetilen bağlayıcı giden IP adresleri](#outbound) için erişime izin verilmesi gerekir. Ayrıca, [Azure 'da şirket içi veri ağ geçidi kaynağı](logic-apps-gateway-connection.md)aracılığıyla şirket içi kaynaklara erişen özel bağlayıcılar kullanırsanız, ağ geçidi yüklemesini, ilgili *YÖNETILEN bağlayıcılar [giden IP adreslerine](#outbound)* erişime izin verecek şekilde ayarlamanız gerekir.
+Mantıksal uygulamanız ayrıca Office 365 Outlook Bağlayıcısı veya SQL Bağlayıcısı gibi [yönetilen bağlayıcılar](../connectors/managed.md)kullanıyorsa veya [özel bağlayıcılar](/connectors/custom-connectors/)kullanıyorsa, güvenlik duvarının ayrıca mantıksal uygulamanızın Azure bölgesindeki *Tüm* [yönetilen bağlayıcı giden IP adresleri](#outbound) için erişime izin verilmesi gerekir. Ayrıca, [Azure 'da şirket içi veri ağ geçidi kaynağı](logic-apps-gateway-connection.md)aracılığıyla şirket içi kaynaklara erişen özel bağlayıcılar kullanırsanız, ağ geçidi yüklemesini, ilgili *YÖNETILEN bağlayıcılar [giden IP adreslerine](#outbound)* erişime izin verecek şekilde ayarlamanız gerekir.
 
 Ağ geçidinde iletişim ayarlarını ayarlama hakkında daha fazla bilgi için şu konulara bakın:
 
@@ -406,7 +406,7 @@ Güvenlik duvarınızı IP adresleriyle ayarlamadan önce, şu hususları gözde
 
 * [Güç otomatikleştirme](/power-automate/getting-started)'yi kullanıyorsanız, **http** ve **http + openapı** gibi bazı eylemler doğrudan Azure Logic Apps HIZMETI aracılığıyla gider ve burada listelenen IP adreslerinden gelir. Güç otomatikleştirme tarafından kullanılan IP adresleri hakkında daha fazla bilgi için bkz. [Güç otomatikleştirme Için sınırlamalar ve yapılandırma](/flow/limits-and-config#ip-address-configuration).
 
-* [Azure Çin 21Vianet](/azure/china/)için, [özel bağlayıcılar](../logic-apps/custom-connector-overview.md) ve Azure depolama, SQL Server, Office 365 Outlook gibi [yönetilen BAĞLAYıCıLAR](../connectors/apis-list.md#managed-api-connectors)için sabit veya ayrılmış IP adresleri kullanılamaz.
+* [Azure Çin 21Vianet](/azure/china/)için, [özel bağlayıcılar](../logic-apps/custom-connector-overview.md) ve Azure depolama, SQL Server, Office 365 Outlook gibi [yönetilen BAĞLAYıCıLAR](../connectors/managed.md)için sabit veya ayrılmış IP adresleri kullanılamaz.
 
 * Mantıksal uygulamalarınız bir [tümleştirme hizmeti ortamında (ıSE)](connect-virtual-network-vnet-isolated-environment-overview.md)çalışıyorsa, [Bu bağlantı noktalarını da açtığınızdan](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise)emin olun.
 

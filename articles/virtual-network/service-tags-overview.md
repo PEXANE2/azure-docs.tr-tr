@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 4/14/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: b5f6f06af3eecabe26f7b587a790912f99b006e4
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 4a18e0f257ac8d7b7d981d53249cf29f2f8f38bd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107496767"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790158"
 ---
 # <a name="virtual-network-service-tags"></a>Sanal ağ hizmeti etiketleri
 <a name="network-service-tags"></a>
@@ -135,7 +135,7 @@ Hizmet etiketlerinin geçerli listesini, IP adres aralığı ayrıntıları ile 
 
 - [REST](/rest/api/virtualnetwork/servicetags/list)
 - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
-- [Azure CLI](/cli/azure/network#az-network-list-service-tags)
+- [Azure CLI](/cli/azure/network#az_network_list_service_tags)
 
 > [!NOTE]
 > Yeni hizmet etiketi verilerinin API sonuçlarına yayılması 4 hafta kadar sürer. Bu gerçekleştiğinde, yanıt meta verilerindeki değişiklik numarası artacaktır. Farklı konum değerleri belirtildiğinde sonuçlarda geçici farklılıklar olabilir. NSG kuralları oluşturmak için sonuçları kullanırken, konum parater ' ı NSG 'nin bölgesiyle eşleşecek şekilde ayarlamanız gerekir. 

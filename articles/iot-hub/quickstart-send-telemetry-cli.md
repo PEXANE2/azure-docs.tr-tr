@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 4671880490a9ce9e29f49ede0e7687bdcf639a7e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a34fd5480ae47678f250dbf888005c396ba32f38
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199807"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792156"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme ve Azure CLı ile izleme
 
@@ -55,7 +55,7 @@ Bu bölümde, iki Azure CLı oturumu hazırlarsınız. Cloud Shell kullanıyorsa
 
 Azure CLı, Azure hesabınızda oturum açmanızı gerektirir. Azure CLı kabuğu oturumunuz ile IoT Hub 'ınız arasındaki tüm iletişimin kimliği doğrulanır ve şifrelenir. Sonuç olarak, bu hızlı başlangıç, bağlantı dizesi gibi gerçek bir cihazla kullanacağınız ek kimlik doğrulamasına gerek kalmaz.
 
-*  CLı kabuğunuzun Azure CLı için Microsoft Azure IoT uzantısını eklemek için [az Extension Add](/cli/azure/extension#az-extension-add) komutunu çalıştırın. IOT uzantısı, Azure CLı 'ye IoT Hub, IoT Edge ve IoT cihaz sağlama hizmeti 'ne (DPS) özel komutlar ekler.
+*  CLı kabuğunuzun Azure CLı için Microsoft Azure IoT uzantısını eklemek için [az Extension Add](/cli/azure/extension#az_extension_add) komutunu çalıştırın. IOT uzantısı, Azure CLı 'ye IoT Hub, IoT Edge ve IoT cihaz sağlama hizmeti 'ne (DPS) özel komutlar ekler.
 
    ```azurecli
    az extension add --name azure-iot
@@ -76,13 +76,13 @@ Bu bölümde, bir kaynak grubu ve bir IoT Hub oluşturmak için Azure CLı 'yi k
 > [!TIP]
 > İsteğe bağlı olarak, [Azure Portal](iot-hub-create-through-portal.md), [Visual Studio Code](iot-hub-create-use-iot-toolkit.md)veya diğer programlı yöntemleri kullanarak bir Azure Kaynak grubu, IoT Hub ve diğer kaynakları oluşturabilirsiniz.  
 
-1. Bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group#az-group-create) komutunu çalıştırın. Aşağıdaki komut *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur. 
+1. Bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group#az_group_create) komutunu çalıştırın. Aşağıdaki komut *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur. 
 
     ```azurecli
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. IoT Hub 'ı oluşturmak için [az IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) komutunu çalıştırın. IoT Hub 'ı oluşturmak birkaç dakika sürebilir. 
+1. IoT Hub 'ı oluşturmak için [az IoT Hub Create](/cli/azure/iot/hub#az_iot_hub_create) komutunu çalıştırın. IoT Hub 'ı oluşturmak birkaç dakika sürebilir. 
 
     *Youriothubname*. Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin. IoT Hub 'ı adı Azure 'da genel olarak benzersiz olmalıdır. Bu yer tutucu, IoT Hub 'ınızın adını göstermek için bu hızlı başlangıçtaki geri kalanında kullanılır.
 
@@ -184,12 +184,12 @@ Bu hızlı başlangıçta oluşturulan Azure kaynaklarına artık ihtiyacınız 
 > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. 
 
 Bir kaynak grubunu adıyla silmek için:
-1. [Az Group Delete](/cli/azure/group#az-group-delete) komutunu çalıştırın. Bu, kaynak grubunu, IoT Hub ve oluşturduğunuz cihaz kaydını kaldırır.
+1. [Az Group Delete](/cli/azure/group#az_group_delete) komutunu çalıştırın. Bu, kaynak grubunu, IoT Hub ve oluşturduğunuz cihaz kaydını kaldırır.
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. Kaynak grubunun silindiğini onaylamak için [az Group List](/cli/azure/group#az-group-list) komutunu çalıştırın.  
+1. Kaynak grubunun silindiğini onaylamak için [az Group List](/cli/azure/group#az_group_list) komutunu çalıştırın.  
 
     ```azurecli
     az group list

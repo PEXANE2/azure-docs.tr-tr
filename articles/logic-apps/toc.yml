@@ -36,8 +36,12 @@
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic'
 - name: Kavramlar
   items:
-    - name: Logic Apps için bağlayıcılar
+    - name: Logic Apps için bağlayıcılara genel bakış
       href: ../connectors/apis-list.md
+    - name: Logic Apps için yönetilen bağlayıcılar
+      href: ../connectors/managed.md
+    - name: Logic Apps için yerleşik bağlayıcılar
+      href: ../connectors/built-in.md
     - name: Yinelenen iş akışlarını zamanlama
       href: concepts-schedule-automated-recurring-tasks-workflows.md
     - name: Azure ile sunucusuz mimari

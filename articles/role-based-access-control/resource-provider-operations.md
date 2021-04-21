@@ -9,16 +9,16 @@ author: rolyon
 ms.author: rolyon
 ms.date: 04/09/2021
 ms.custom: generated
-ms.openlocfilehash: e11e03ec7379dede6bf998f639a237201c297e72
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d6126e9d782765b992ae2fd51016984389c9b187
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303636"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778311"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Kaynak sağlayıcısı işlemleri
 
-Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının işlemleri listelenmektedir. Azure 'daki kaynaklara ayrıntılı erişim denetimi sağlamak için, bu işlemleri kendi [Azure özel rolleriniz](custom-roles.md) içinde kullanabilirsiniz. Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri almak için [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) veya [az Provider Operation List](/cli/azure/provider/operation#az-provider-operation-list)komutunu kullanın.
+Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının işlemleri listelenmektedir. Azure 'daki kaynaklara ayrıntılı erişim denetimi sağlamak için, bu işlemleri kendi [Azure özel rolleriniz](custom-roles.md) içinde kullanabilirsiniz. Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri almak için [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) veya [az Provider Operation List](/cli/azure/provider/operation#az_provider_operation_list)komutunu kullanın.
 
 İşlem listesini görmek için aşağıdaki tablodaki kaynak sağlayıcısı adına tıklayın.
 

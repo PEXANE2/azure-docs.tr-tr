@@ -12,12 +12,12 @@ ms.date: 04/09/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: Şirket içi, OCR, Docker, kapsayıcı
-ms.openlocfilehash: 1b4af5dddf8878118bc5f222532cc9e2d0f9dd66
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: dead48d7d449d1d403359c518eb842b32a54c634
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308789"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779102"
 ---
 # <a name="install-read-ocr-docker-containers"></a>Okuma OCR Docker Kapsayıcıları 'nı yükler
 
@@ -452,6 +452,6 @@ Bu makalede, Görüntü İşleme kapsayıcıları indirmek, yüklemek ve çalı�
 
 * Yapılandırma ayarları için [kapsayıcıları](computer-vision-resource-container-config.md) yapılandırmayı gözden geçir
 * [OCR genel bakışını](overview-ocr.md) inceleyerek yazdırılmış ve el yazısı metin tanıma hakkında daha fazla bilgi edinin
-* Kapsayıcı tarafından desteklenen yöntemler hakkındaki ayrıntılar için [okuma API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) 'sine bakın.
+* Kapsayıcı tarafından desteklenen yöntemler hakkındaki ayrıntılar için [okuma API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) 'sine bakın.
 * Görüntü İşleme işlevlerle ilgili sorunları çözmek için [sık sorulan sorular (SSS)](FAQ.md) bölümüne bakın.
 * Daha fazla bilişsel [Hizmetler kapsayıcısı](../cognitive-services-container-support.md) kullanın

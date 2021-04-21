@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 03/26/2021
-ms.openlocfilehash: c0149dbb5f17af87229d951cf744c285e54835af
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: f3bc1dfcfeeb6dda110f71ed7a1c53909153cf00
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375959"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762164"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -434,11 +434,11 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 | Komut | Açıklama |
 | --- | --- |
-| [az SQL yük devretme-Grup oluşturma](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Bu komut bir yük devretme grubu oluşturur ve hem birincil hem de ikincil sunuculara kaydeder|
-| [az SQL yük devretme-Grup silme](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Yük devretme grubunu sunucudan kaldırır |
-| [az SQL yük devretme-grup göster](/cli/azure/sql/failover-group#az-sql-failover-group-show) | Yük devretme grubu yapılandırmasını alır |
-| [az SQL Failover-Group Update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |Bir yük devretme grubunun yapılandırmasını değiştirir ve/veya bir yük devretme grubuna bir veya daha fazla veritabanı ekler|
-| [az SQL yük devretme-grup kümesi-birincil](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | İkincil sunucuya bir yük devretme grubunun yük devretmesini tetikler |
+| [az SQL yük devretme-Grup oluşturma](/cli/azure/sql/failover-group#az_sql_failover_group_create) |Bu komut bir yük devretme grubu oluşturur ve hem birincil hem de ikincil sunuculara kaydeder|
+| [az SQL yük devretme-Grup silme](/cli/azure/sql/failover-group#az_sql_failover_group_delete) | Yük devretme grubunu sunucudan kaldırır |
+| [az SQL yük devretme-grup göster](/cli/azure/sql/failover-group#az_sql_failover_group_show) | Yük devretme grubu yapılandırmasını alır |
+| [az SQL Failover-Group Update](/cli/azure/sql/failover-group#az_sql_failover_group_update) |Bir yük devretme grubunun yapılandırmasını değiştirir ve/veya bir yük devretme grubuna bir veya daha fazla veritabanı ekler|
+| [az SQL yük devretme-grup kümesi-birincil](/cli/azure/sql/failover-group#az_sql_failover_group_set_primary) | İkincil sunucuya bir yük devretme grubunun yük devretmesini tetikler |
 
 # <a name="rest-api"></a>[REST API 'SI](#tab/rest-api)
 
@@ -472,11 +472,11 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 | Komut | Açıklama |
 | --- | --- |
-| [az SQL yük devretme-Grup oluşturma](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Bu komut bir yük devretme grubu oluşturur ve hem birincil hem de ikincil sunuculara kaydeder|
-| [az SQL yük devretme-Grup silme](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Yük devretme grubunu sunucudan kaldırır |
-| [az SQL yük devretme-grup göster](/cli/azure/sql/failover-group#az-sql-failover-group-show) | Yük devretme grubu yapılandırmasını alır |
-| [az SQL Failover-Group Update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |Bir yük devretme grubunun yapılandırmasını değiştirir ve/veya bir yük devretme grubuna bir veya daha fazla veritabanı ekler|
-| [az SQL yük devretme-grup kümesi-birincil](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | İkincil sunucuya bir yük devretme grubunun yük devretmesini tetikler |
+| [az SQL yük devretme-Grup oluşturma](/cli/azure/sql/failover-group#az_sql_failover_group_create) |Bu komut bir yük devretme grubu oluşturur ve hem birincil hem de ikincil sunuculara kaydeder|
+| [az SQL yük devretme-Grup silme](/cli/azure/sql/failover-group#az_sql_failover_group_delete) | Yük devretme grubunu sunucudan kaldırır |
+| [az SQL yük devretme-grup göster](/cli/azure/sql/failover-group#az_sql_failover_group_show) | Yük devretme grubu yapılandırmasını alır |
+| [az SQL Failover-Group Update](/cli/azure/sql/failover-group#az_sql_failover_group_update) |Bir yük devretme grubunun yapılandırmasını değiştirir ve/veya bir yük devretme grubuna bir veya daha fazla veritabanı ekler|
+| [az SQL yük devretme-grup kümesi-birincil](/cli/azure/sql/failover-group#az_sql_failover_group_set_primary) | İkincil sunucuya bir yük devretme grubunun yük devretmesini tetikler |
 
 # <a name="rest-api"></a>[REST API 'SI](#tab/rest-api)
 

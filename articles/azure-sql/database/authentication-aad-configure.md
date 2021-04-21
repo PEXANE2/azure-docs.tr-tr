@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: 5894defca5a90f1d8cd7f312f47a37df6495ccd3
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: c75364f2565611b6738996c082610229db0cb2a8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376180"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762236"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme
 
@@ -190,7 +190,7 @@ Bir Azure AD yöneticisi sağlamak için aşağıdaki Azure PowerShell komutlar�
 
 SQL yönetilen örneğiniz için Azure AD yöneticisi 'ni sağlamak ve yönetmek için kullanılan cmdlet 'ler aşağıdaki tabloda listelenmiştir:
 
-| Cmdlet adı | Açıklama |
+| Cmdlet adı | Description |
 | --- | --- |
 | [Set-Azsqlınstanceactivedirectoryadministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Geçerli abonelikte SQL yönetilen örneği için bir Azure AD yöneticisi sağlar. (Geçerli abonelikte olmalıdır)|
 | [Remove-Azsqlınstanceactivedirectoryadministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Geçerli abonelikteki SQL yönetilen örneği için bir Azure AD yöneticisini kaldırır. |
@@ -220,10 +220,10 @@ Ayrıca, aşağıdaki CLı komutlarını çağırarak SQL yönetilen örneği i�
 
 | Komut | Açıklama |
 | --- | --- |
-|[az SQL mı ad-admin Create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | SQL yönetilen örneği için bir Azure Active Directory Yöneticisi sağlar (geçerli abonelikte olmalıdır). |
-|[az SQL mı ad-admin Delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | SQL yönetilen örneği için Azure Active Directory yöneticisini kaldırır. |
-|[az SQL mı ad-yönetici listesi](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-list) | SQL yönetilen örneği için şu anda yapılandırılmış bir Azure Active Directory Yöneticisi hakkında bilgiler döndürür. |
-|[az SQL mi ad-Admin Update](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-update) | SQL yönetilen örneği için Active Directory yöneticisini güncelleştirir. |
+|[az SQL mı ad-admin Create](/cli/azure/sql/mi/ad-admin#az_sql_mi_ad_admin_create) | SQL yönetilen örneği için bir Azure Active Directory Yöneticisi sağlar (geçerli abonelikte olmalıdır). |
+|[az SQL mı ad-admin Delete](/cli/azure/sql/mi/ad-admin#az_sql_mi_ad_admin_delete) | SQL yönetilen örneği için Azure Active Directory yöneticisini kaldırır. |
+|[az SQL mı ad-yönetici listesi](/cli/azure/sql/mi/ad-admin#az_sql_mi_ad_admin_list) | SQL yönetilen örneği için şu anda yapılandırılmış bir Azure Active Directory Yöneticisi hakkında bilgiler döndürür. |
+|[az SQL mi ad-Admin Update](/cli/azure/sql/mi/ad-admin#az_sql_mi_ad_admin_update) | SQL yönetilen örneği için Active Directory yöneticisini güncelleştirir. |
 
 CLı komutları hakkında daha fazla bilgi için bkz. [az SQL mi](/cli/azure/sql/mi).
 
@@ -279,7 +279,7 @@ PowerShell cmdlet 'lerini çalıştırmak için Azure PowerShell yüklü ve çal
 
 SQL veritabanı ve Azure SYNAPSE için Azure AD yöneticisi 'ni sağlamak ve yönetmek için kullanılan cmdlet 'ler:
 
-| Cmdlet adı | Açıklama |
+| Cmdlet adı | Description |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |SQL veritabanı veya Azure SYNAPSE barındıran sunucu için Azure Active Directory Yöneticisi sağlar. (Geçerli abonelikte olmalıdır) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |SQL veritabanı veya Azure SYNAPSE barındıran sunucu için Azure Active Directory yöneticisini kaldırır.|
@@ -326,10 +326,10 @@ Aşağıdaki CLı komutlarını çağırarak bir Azure AD yöneticisi sağlayabi
 
 | Komut | Açıklama |
 | --- | --- |
-|[az SQL Server ad-admin Create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | SQL veritabanı veya Azure SYNAPSE barındıran sunucu için Azure Active Directory Yöneticisi sağlar. (Geçerli abonelikte olmalıdır) |
-|[az SQL Server ad-admin Delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | SQL veritabanı veya Azure SYNAPSE barındıran sunucu için Azure Active Directory yöneticisini kaldırır. |
-|[az SQL Server ad-yönetici listesi](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) | SQL veritabanı veya Azure SYNAPSE barındıran sunucu için şu anda yapılandırılmış bir Azure Active Directory Yöneticisi hakkındaki bilgileri döndürür. |
-|[az SQL Server ad-Admin Update](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) | SQL veritabanı veya Azure SYNAPSE barındıran sunucu için Active Directory yöneticisini güncelleştirir. |
+|[az SQL Server ad-admin Create](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_create) | SQL veritabanı veya Azure SYNAPSE barındıran sunucu için Azure Active Directory Yöneticisi sağlar. (Geçerli abonelikte olmalıdır) |
+|[az SQL Server ad-admin Delete](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_delete) | SQL veritabanı veya Azure SYNAPSE barındıran sunucu için Azure Active Directory yöneticisini kaldırır. |
+|[az SQL Server ad-yönetici listesi](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) | SQL veritabanı veya Azure SYNAPSE barındıran sunucu için şu anda yapılandırılmış bir Azure Active Directory Yöneticisi hakkındaki bilgileri döndürür. |
+|[az SQL Server ad-Admin Update](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_update) | SQL veritabanı veya Azure SYNAPSE barındıran sunucu için Active Directory yöneticisini güncelleştirir. |
 
 CLı komutları hakkında daha fazla bilgi için bkz. [az SQL Server](/cli/azure/sql/server).
 

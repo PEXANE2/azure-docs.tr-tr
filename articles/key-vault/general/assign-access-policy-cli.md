@@ -3,19 +3,18 @@ title: Azure Key Vault erişim ilkesi atama (CLı)
 description: Azure CLı kullanarak bir güvenlik sorumlusu veya uygulama kimliğine Key Vault erişim ilkesi atama.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a9dc03f776ac430072e456332955cbfc75d73bf2
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 349d7453962a736c9f15bb7d31d5a44098f463a4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968858"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791958"
 ---
 # <a name="assign-a-key-vault-access-policy"></a>Key Vault erişim ilkesi atama
 
@@ -23,7 +22,7 @@ Key Vault erişim ilkesi, bir Kullanıcı, uygulama veya Kullanıcı grubu gibi 
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
-Azure CLı kullanarak Azure Active Directory Grup oluşturma hakkında daha fazla bilgi için, bkz. [az Ad Group Create](/cli/azure/ad/group#az-ad-group-create) ve [az Ad Group member Add](/cli/azure/ad/group/member#az-ad-group-member-add).
+Azure CLı kullanarak Azure Active Directory Grup oluşturma hakkında daha fazla bilgi için, bkz. [az Ad Group Create](/cli/azure/ad/group#az_ad_group_create) ve [az Ad Group member Add](/cli/azure/ad/group/member#az_ad_group_member_add).
 
 ## <a name="configure-the-azure-cli-and-sign-in"></a>Azure CLı 'yı yapılandırma ve oturum açma
 
@@ -43,19 +42,19 @@ Azure CLı kullanarak Azure Active Directory Grup oluşturma hakkında daha fazl
 
 Erişim ilkesini atamak istediğiniz uygulamanın, grubun veya kullanıcının nesne KIMLIĞINI belirleme:
 
-- Uygulamalar ve diğer hizmet sorumluları: hizmet sorumlularını almak için [az ad SP List](/cli/azure/ad/sp#az-ad-sp-list) komutunu kullanın. Erişim ilkesini atamak istediğiniz güvenlik sorumlusunun nesne KIMLIĞINI belirleme komutunun çıkışını inceleyin.
+- Uygulamalar ve diğer hizmet sorumluları: hizmet sorumlularını almak için [az ad SP List](/cli/azure/ad/sp#az_ad_sp_list) komutunu kullanın. Erişim ilkesini atamak istediğiniz güvenlik sorumlusunun nesne KIMLIĞINI belirleme komutunun çıkışını inceleyin.
 
     ```azurecli-interactive
     az ad sp list --show-mine
     ```
 
-- Gruplar: sonuçları parametresiyle filtreleyerek [az Ad Group List](/cli/azure/ad/group#az-ad-group-list) komutunu kullanın `--display-name` :
+- Gruplar: sonuçları parametresiyle filtreleyerek [az Ad Group List](/cli/azure/ad/group#az_ad_group_list) komutunu kullanın `--display-name` :
 
      ```azurecli-interactive
     az ad group list --display-name <search-string>
     ```
 
-- Kullanıcılar: Kullanıcı e-posta adresini parametreye geçirerek [az ad User Show](/cli/azure/ad/user#az-ad-user-show) komutunu kullanın `--id` :
+- Kullanıcılar: Kullanıcı e-posta adresini parametreye geçirerek [az ad User Show](/cli/azure/ad/user#az_ad_user_show) komutunu kullanın `--id` :
 
     ```azurecli-interactive
     az ad user show --id <email-address-of-user>
@@ -63,7 +62,7 @@ Erişim ilkesini atamak istediğiniz uygulamanın, grubun veya kullanıcının n
 
 ## <a name="assign-the-access-policy"></a>Erişim ilkesini atama
     
-İstenen izinleri atamak için [az keykasası Set-Policy](/cli/azure/keyvault#az-keyvault-set-policy) komutunu kullanın:
+İstenen izinleri atamak için [az keykasası Set-Policy](/cli/azure/keyvault#az_keyvault_set_policy) komutunu kullanın:
 
 ```azurecli-interactive
 az keyvault set-policy --name myKeyVault --object-id <object-id> --secret-permissions <secret-permissions> --key-permissions <key-permissions> --certificate-permissions <certificate-permissions>
@@ -71,10 +70,10 @@ az keyvault set-policy --name myKeyVault --object-id <object-id> --secret-permis
 
 `<object-id>`Güvenlik sorumlusunun nesne kimliğiyle değiştirin.
 
-Yalnızca `--secret-permissions` `--key-permissions` `--certificate-permissions` Bu belirli türlere izinler atarken, ve dahil etmeniz gerekir. , Ve için izin verilen değerler, `<secret-permissions>` `<key-permissions>` `<certificate-permissions>` [az keykasa Set-Policy](/cli/azure/keyvault#az-keyvault-set-policy) belgelerinde verilmiştir.
+Yalnızca `--secret-permissions` `--key-permissions` `--certificate-permissions` Bu belirli türlere izinler atarken, ve dahil etmeniz gerekir. , Ve için izin verilen değerler, `<secret-permissions>` `<key-permissions>` `<certificate-permissions>` [az keykasa Set-Policy](/cli/azure/keyvault#az_keyvault_set_policy) belgelerinde verilmiştir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Key Vault güvenliği: kimlik ve erişim yönetimi](security-overview.md#identity-management)
-- [Anahtar kasanızın güvenliğini sağlayın](secure-your-key-vault.md).
+- [Anahtar kasanızın güvenliğini sağlayın](security-overview.md).
 - [Geliştirici Kılavuzu Azure Key Vault](developers-guide.md)

@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/15/2021
 ms.author: jgao
-ms.openlocfilehash: d35deb978b3b60b73ac393b241471cb528817d35
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: c39b332e9ee62a8502d5e2fdf155819194a30e34
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536968"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762200"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>ARM şablonlarında dağıtım betikleri kullanma
 
@@ -397,10 +397,10 @@ Timeout             : PT1H
 
 Azure CLı kullanarak, abonelik veya kaynak grubu kapsamındaki Dağıtım betiklerini yönetebilirsiniz:
 
-- [az Deployment-betikler Delete](/cli/azure/deployment-scripts#az-deployment-scripts-delete): bir dağıtım betiğini silin.
-- [az Deployment-Scripts List](/cli/azure/deployment-scripts#az-deployment-scripts-list): tüm Dağıtım betiklerini listeleyin.
-- [az Deployment-Scripts Show](/cli/azure/deployment-scripts#az-deployment-scripts-show): dağıtım betiği alma.
-- [az Deployment-betikler Show-log](/cli/azure/deployment-scripts#az-deployment-scripts-show-log): dağıtım betiği günlüklerini göster.
+- [az Deployment-betikler Delete](/cli/azure/deployment-scripts#az_deployment_scripts_delete): bir dağıtım betiğini silin.
+- [az Deployment-Scripts List](/cli/azure/deployment-scripts#az_deployment_scripts_list): tüm Dağıtım betiklerini listeleyin.
+- [az Deployment-Scripts Show](/cli/azure/deployment-scripts#az_deployment_scripts_show): dağıtım betiği alma.
+- [az Deployment-betikler Show-log](/cli/azure/deployment-scripts#az_deployment_scripts_show_log): dağıtım betiği günlüklerini göster.
 
 Liste komut çıktısı şuna benzerdir:
 
@@ -586,7 +586,7 @@ Betiği başarıyla test edildikten sonra, şablonlarınızı şablonlarda bir d
 
 ## <a name="deployment-script-error-codes"></a>Dağıtım betiği hata kodları
 
-| Hata kodu | Açıklama |
+| Hata kodu | Description |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Şablondaki dağıtım betiği kaynak tanımı geçersiz özellik adları içeriyor. |
 | DeploymentScriptResourceConflict | Terminal dışı durumda olan bir dağıtım betiği kaynağı silinemez ve yürütme 1 saati aşmadı. Ya da aynı dağıtım betiğini aynı kaynak tanımlayıcısıyla (aynı abonelik, kaynak grubu adı ve kaynak adı), aynı anda farklı betik gövdesi içeriğiyle yeniden çalıştıramıyorum. |
