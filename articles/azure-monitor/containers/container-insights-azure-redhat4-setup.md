@@ -3,12 +3,12 @@ title: Azure Red Hat OpenShift v4. x 'i Container Insights ile yapılandırma | 
 description: Bu makalede, Azure Red Hat OpenShift sürüm 4 veya sonraki sürümlerde barındırılan Azure Izleyici ile bir Kubernetes kümesi için izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 7c44a7c6eea6182316d626e3e8501f9aa63eef78
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 11c702d1f46725a12e90a01dc1b38467344a1123
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221526"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784650"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-container-insights"></a>Azure Red Hat OpenShift v4. x 'i kapsayıcı öngörüleri ile yapılandırma
 
@@ -20,7 +20,7 @@ Kapsayıcı öngörüleri, Azure Kubernetes hizmeti (AKS) ve AKS motoru kümeler
 
 Bu makalede açıklanan desteklenen yöntemleri kullanarak bir veya daha fazla mevcut Azure Red Hat OpenShift v4. x dağıtımı için kapsayıcı öngörülerini etkinleştirebilirsiniz.
 
-Var olan bir küme için [Azure CLI 'da bu Bash betiğini](/cli/azure/openshift#az-openshift-create&preserve-view=true)çalıştırın.
+Var olan bir küme için [Azure CLI 'da bu Bash betiğini](/cli/azure/openshift#az_openshift_create&preserve-view=true)çalıştırın.
 
 ## <a name="supported-and-unsupported-features"></a>Desteklenen ve desteklenmeyen özellikler
 

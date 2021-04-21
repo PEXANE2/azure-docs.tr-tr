@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 7c2e1a54861e47ba8009078ba718fba4fc738f0d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 2c15090551ad9d84282f65925ff9c2cfbab7e14f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750329"
+ms.locfileid: "107773360"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>Hızlı başlangıç: Python için Azure Key Vault anahtarlar istemci kitaplığı
 
@@ -179,7 +179,7 @@ Key Vault bir anahtarı okumak için [get_key](/python/api/azure-keyvault-keys/a
 retrieved_key = client.get_key(keyName)
  ```
 
-Anahtarın, [az keykasakey Show](/cli/azure/keyvault/key?#az-keyvault-key-show)Azure CLI komutuyla ayarlandığını da doğrulayabilirsiniz.
+Anahtarın, [az keykasakey Show](/cli/azure/keyvault/key?#az_keyvault_key_show)Azure CLI komutuyla ayarlandığını da doğrulayabilirsiniz.
 
 ### <a name="delete-a-key"></a>Bir anahtarı silme
 
@@ -192,7 +192,7 @@ deleted_key = poller.result()
 
 `begin_delete_key`Yöntemi zaman uyumsuzdur ve bir Poller nesnesi döndürür. Poller 'ın metodunu çağırma işleminin `result` tamamlanmasını bekler.
 
-Anahtarın Azure CLı komutuyla silindiğini, [az keykasakey Show](/cli/azure/keyvault/key?#az-keyvault-key-show)komutunu doğrulayabilirsiniz.
+Anahtarın Azure CLı komutuyla silindiğini, [az keykasakey Show](/cli/azure/keyvault/key?#az_keyvault_key_show)komutunu doğrulayabilirsiniz.
 
 Silinen bir anahtar, bir süredir silinmiş ancak kurtarılabilir durumunda kalır. Kodu yeniden çalıştırırsanız, farklı bir anahtar adı kullanın.
 

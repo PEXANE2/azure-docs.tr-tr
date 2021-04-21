@@ -6,16 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 04/19/2021
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: 3640a03f8ac814fec2823a761e651ab386438c5c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 72ca331546d53f85ca82f33ec6a02558d91f1c1e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327179"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765104"
 ---
 <a name="HOLTop"></a>
 
@@ -710,8 +710,7 @@ ID: 0
 
 # <a name="version-31-preview"></a>[Sürüm 3,1 Önizleme](#tab/version-3-1)
 
-> [!CAUTION]
-> Analiz işlemlerini kullanmak için standart fiyatlandırma katmanıyla bir Metin Analizi kaynağı kullanmanız gerekir.  
+[!INCLUDE [Analyze Batch Action pricing](../analyze-operation-pricing-caution.md)]
 
 İşlevini çağıran, adlı yeni bir işlev oluşturun `analyze_example()` `beginAnalyze()` . Sonuç, sonuçlar için yoklamak üzere uzun süren bir işlem olacaktır.
 

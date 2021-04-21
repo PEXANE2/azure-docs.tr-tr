@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 21db7ed0cf13a3ed282929b09847c6c3ba8a36ed
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9dce264b7f2c88aed11f5b82a61f83cbac6c9697
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307257"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785118"
 ---
 # <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Kerberos Anahtar Dağıtım Merkezi ara sunucusunu yapılandırma (Önizleme)
 
@@ -36,7 +36,7 @@ Bu makalede, Azure portal Windows sanal masaüstü istemcisinde akışın nasıl
 Bir Windows sanal masaüstü oturumu konağını bir KDC proxy ile yapılandırmak için aşağıdaki işlemleri yapmanız gerekir:
 
 - Azure portal ve bir Azure yönetici hesabına erişin.
-- Uzak istemci makineler Windows 10 veya Windows 7 çalıştırıyor olmalı ve [Windows Masaüstü istemcisinin](/windows-server/remote/remote-desktop-services/clients/windowsdesktop) yüklü olması gerekir.
+- Uzak istemci makineler Windows 10 veya Windows 7 çalıştırıyor olmalı ve [Windows Masaüstü istemcisinin](/windows-server/remote/remote-desktop-services/clients/windowsdesktop) yüklü olması gerekir. Şu anda Web istemcisi desteklenmiyor.
 - Makinenizde zaten yüklü bir KDC ara sunucusu olmalıdır. Bunun nasıl yapılacağını öğrenmek için bkz. [Windows sanal masaüstü için RD Ağ geçidi rolünü ayarlama](rd-gateway-role.md).
 - Makinenin işletim sistemi Windows Server 2016 veya sonraki bir sürümü olmalıdır.
 

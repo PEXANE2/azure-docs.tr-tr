@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 17c1ea19f3879f5490922ab4b54f21773191eebd
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: e2846b7ba07ec0a7678a8287fe6a84bc169497a3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484242"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785136"
 ---
 # <a name="create-an-azure-time-series-insights-gen2-environment-using-the-azure-cli"></a>Azure CLı kullanarak Azure Time Series Insights Gen2 ortamı oluşturma
 
@@ -74,7 +74,7 @@ az tsi environment delete --name "my-tsi-env" --resource-group $rg
 az storage account delete --name $storage --resource-group $rg
 ```
 
-[Bir kaynak grubunu](/cli/azure/group#az-group-delete) ve tüm kaynaklarını silmek için aşağıdaki komutu çalıştırın:
+[Bir kaynak grubunu](/cli/azure/group#az_group_delete) ve tüm kaynaklarını silmek için aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az group delete --name $rg

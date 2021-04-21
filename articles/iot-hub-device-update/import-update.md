@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ecbc76651f09a9b4f2bde01c733cace5037f5fd4
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: ebfeee2828b3a36f9cf47891f8aea6d889db85bd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738837"
+ms.locfileid: "107763586"
 ---
 # <a name="add-an-update-to-device-update-for-iot-hub"></a>IoT Hub için cihaz güncelleştirmesine bir güncelleştirme ekleyin
 IoT Hub için cihaz güncelleştirmesine yeni bir güncelleştirme eklemeyi öğrenin.
@@ -19,7 +19,7 @@ IoT Hub için cihaz güncelleştirmesine yeni bir güncelleştirme eklemeyi öğ
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [IoT Hub etkinleştirilmiş cihaz güncelleştirmesiyle bir IoT Hub erişim](create-device-update-account.md). 
-* IoT Hub içinde cihaz güncelleştirmesi için sağlanan bir IoT cihazı (veya simülatör).
+* IoT Hub içinde [cihaz güncelleştirmesi için sağlanan](device-update-agent-provisioning.md) bir IoT cihazı (veya simülatör).
 * [PowerShell 5](/powershell/scripting/install/installing-powershell) veya üzeri (Linux, MacOS ve Windows yüklemelerini içerir)
 * Desteklenen tarayıcılar:
   * [Microsoft Edge](https://www.microsoft.com/edge)
@@ -30,7 +30,7 @@ IoT Hub için cihaz güncelleştirmesine yeni bir güncelleştirme eklemeyi öğ
 
 ## <a name="obtain-an-update-for-your-devices"></a>Cihazlarınız için bir güncelleştirme edinin
 
-Cihaz güncelleştirmesi [ayarlandığına](create-device-update-account.md)göre, cihazlarınızı güncelleştirmeye hazırsınız demektir. Ardından, bu cihazlara dağıttığınız gerçek güncelleştirme dosyaları gerekir.
+Cihaz güncelleştirmesini ayarladığınıza ve cihazlarınızı sağladığınıza göre, bu cihazlara dağıtacaksınız güncelleştirme dosyaları gerekir.
 
 Bir OEM 'den veya çözüm tümleştirmelerinden cihaz satın aldıysanız, bu kuruluş, güncelleştirmeleri oluşturmanız gerekmeden sizin için en büyük olasılıkla sizin için güncelleştirme dosyaları sağlamaktır. Güncelleştirmelerin nasıl kullanılabilir hale yapıldığını öğrenmek için OEM veya çözüm tümleştiricisi ile iletişim kurun.
 

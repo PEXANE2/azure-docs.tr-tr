@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 39fe4e77d701f8e9311ea343c88eb3b905496680
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 97dfc2db837f728b8cb4ece9a064f99006c9996b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749249"
+ms.locfileid: "107767826"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Azure Key Vault sertifikaları içeri aktarma hakkında SSS
 
@@ -42,7 +42,7 @@ Hayır, bir Azure Resource Manager (ARM) şablonu kullanarak sertifika işlemler
 
 ### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>Azure portal aracılığıyla bir sertifikayı içeri aktardığımda, "sorun oluştu" hatası alıyorum. Nasıl daha fazla araştırma yapabilirim?
      
-Daha açıklayıcı bir hata görüntülemek için, [Azure CLI](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) veya [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate)kullanarak sertifika dosyasını içeri aktarın.
+Daha açıklayıcı bir hata görüntülemek için, [Azure CLI](/cli/azure/keyvault/certificate#az_keyvault_certificate_import) veya [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate)kullanarak sertifika dosyasını içeri aktarın.
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>"Hata türü: erişim engellendi veya Kullanıcı sertifikayı içeri aktarma yetkisi yok" hatasını nasıl çözebilirim?
     
