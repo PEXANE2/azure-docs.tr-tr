@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: azhussai
-ms.openlocfilehash: 3e7bdc92dc6268c712eecbd69ff014e2229b3b84
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: b7cf7c98e71da215eb30dcab556a88d6d2701591
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490973"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789456"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>HTTP üstbilgilerini ve URL 'YI Application Gateway yeniden yazın
 
- Application Gateway, istek ve yanıtların seçili içeriğini yeniden yazmanız için izin verir. Bu özellikle, URL 'Leri, sorgu dizesi parametrelerini ve değişiklik isteği ve yanıt üst bilgilerini çevirebilirsiniz. Ayrıca, URL veya belirtilen üstbilgilerin yalnızca belirli koşullar karşılandığında yeniden yazılabilir olmasını sağlamak için koşullar eklemenize de olanak tanır. Bu koşullar istek ve yanıt bilgilerine dayanır.
+Application Gateway, istek ve yanıtların seçili içeriğini yeniden yazmanız için izin verir. Bu özellikle, URL 'Leri, sorgu dizesi parametrelerini ve değişiklik isteği ve yanıt üst bilgilerini çevirebilirsiniz. Ayrıca, URL veya belirtilen üstbilgilerin yalnızca belirli koşullar karşılandığında yeniden yazılabilir olmasını sağlamak için koşullar eklemenize de olanak tanır. Bu koşullar istek ve yanıt bilgilerine dayanır.
 
 >[!NOTE]
 >HTTP üstbilgisi ve URL yeniden yazma özellikleri yalnızca [Application Gateway v2 SKU 'su](application-gateway-autoscaling-zone-redundant.md) için kullanılabilir
@@ -101,7 +101,7 @@ Application Gateway sunucu, istemciyle bağlantı ve bağlantıdaki geçerli ist
 
 Application Gateway aşağıdaki sunucu değişkenlerini destekler:
 
-|   Değişken adı    |                   Açıklama                                           |
+|   Değişken adı    |                   Description                                           |
 | ------------------------- | ------------------------------------------------------------ |
 | add_x_forwarded_for_proxy | `client_ip`IP1, IP2, IP3, vb. biçiminde bu değişkene eklenen (Bu tablodaki açıklamaya bakın) X-iletilmiş istemci isteği üst bilgisi alanı. X-Iletilmiş-for alanı istemci isteği üstbilgisinde yoksa, `add_x_forwarded_for_proxy` değişken `$client_ip` değişkenine eşittir.   Bu değişken özellikle, üstbilginin yalnızca bağlantı noktası bilgisi olmadan yalnızca IP adresini içermesi için, Application Gateway tarafından ayarlanmış X-Iletilmiş-for üst bilgisini yeniden yazmak istediğinizde yararlıdır. |
 | ciphers_supported         | İstemci tarafından desteklenen şifrelemelerin listesi.               |
@@ -130,9 +130,9 @@ Application Gateway aşağıdaki sunucu değişkenlerini destekler:
 
 Application Gateway, karşılıklı kimlik doğrulama senaryolarında aşağıdaki sunucu değişkenlerini destekler. Bu sunucu değişkenlerini diğer sunucu değişkenleriyle aynı şekilde kullanın. 
 
-|   Değişken adı    |                   Açıklama                                           |
+|   Değişken adı    |                   Description                                           |
 | ------------------------- | ------------------------------------------------------------ |
-| client_certificate        | Kurulan bir SSL bağlantısı için PEM formate istemci sertifikası. |
+| client_certificate        | Kurulan bir SSL bağlantısı için pek biçimindeki istemci sertifikası. |
 | client_certificate_end_date| İstemci sertifikasının bitiş tarihi. |
 | client_certificate_fingerprint| Kurulan bir SSL bağlantısı için istemci sertifikasının SHA1 parmak izi. |
 | client_certificate_issuer | Kurulan bir SSL bağlantısı için istemci sertifikasının "verenin DN 'si" dizesi. |
@@ -153,13 +153,13 @@ Bir yeniden yazma kuralı kümesi şunları içerir:
 
 * **Yeniden yazma türü**: kullanılabilir 3 tür yeniden yazma vardır:
    * İstek üst bilgilerini yeniden yazma 
-   * Yanıt üst bilgilerini yeniden yazma.
-   * Yeniden yazma URL 'SI: URL yeniden yazma türünün 3 bileşeni vardır
+   * Yanıt üst bilgilerini yeniden yazma
+   * URL bileşenlerini yeniden yazma
       * **URL yolu**: yolun yeniden yazılması için gereken değer. 
       * **URL sorgu dizesi**: sorgu dizesinin yeniden yazılması için gereken değer. 
       * **Yol haritasını yeniden değerlendir**: URL yol eşlemesinin yeniden değerlendirilip değerlendirilmeyeceğini anlamak için kullanılır. İşaretlenmediyse, URL yolu eşlemesindeki yol düzeniyle eşleştirmek için özgün URL yolu kullanılacaktır. True olarak ayarlanırsa, URL yolu eşlemesi yeniden yazan yol ile eşleştirmeyi denetlemek için yeniden değerlendirilir. Bu anahtarı etkinleştirmek, isteği farklı bir arka uç havuzuna yeniden yazmaya yönlendirmenize yardımcı olur.
 
-## <a name="rewrite-configuration-common-pitfall"></a>Yapılandırmayı yeniden yazma ortak
+## <a name="rewrite-configuration-common-pitfalls"></a>Yapılandırma ortak sınırları yeniden yaz
 
 * Temel istek yönlendirme kuralları için ' yol haritasını yeniden değerlendir ' kullanımına izin verilmez. Bu, temel bir yönlendirme kuralı için sonsuz değerlendirme döngüsünü önlemektir.
 
@@ -191,7 +191,7 @@ Application Gateway, istekleri arka uca iletmeden önce tüm isteklere X-Iletilm
 
 Bir arka uç uygulaması yeniden yönlendirme yanıtı gönderdiğinde, istemciyi arka uç uygulaması tarafından belirtilene göre farklı bir URL 'ye yönlendirmek isteyebilirsiniz. Örneğin, bir uygulama hizmeti bir uygulama ağ geçidinin arkasında barındırılıyorsa ve istemcinin göreli yoluna yeniden yönlendirme yapması için bunu yapmak isteyebilirsiniz. (Örneğin, contoso.azurewebsites.net/path1 öğesinden contoso.azurewebsites.net/path2 'e yeniden yönlendirme.)
 
-App Service çok kiracılı bir hizmet olduğundan, isteği doğru uç noktaya yönlendirmek için istekteki ana bilgisayar üst bilgisini kullanır. Uygulama Hizmetleri, Application Gateway 'in etki alanı adından (deyin contoso.com) farklı olan *. azurewebsites.net (deyin contoso.azurewebsites.net) varsayılan etki alanı adına sahiptir. İstemciden gelen özgün istek ana bilgisayar adı olarak uygulama ağ geçidinin etki alanı adına (contoso.com) sahip olduğundan, Application Gateway ana bilgisayar adını contoso.azurewebsites.net olarak değiştirir. Bu değişiklik, App Service 'in isteği doğru uç noktaya yönlendirebilmesi için yapar.
+App Service çok kiracılı bir hizmet olduğundan, isteği doğru uç noktaya yönlendirmek için istekteki ana bilgisayar üst bilgisini kullanır. Uygulama Hizmetleri \* , Application Gateway 'in etki alanı adından (contoso.azurewebsites.net contoso.com) farklı olan varsayılan bir. azurewebsites.net etki alanı adına sahiptir (deyin). İstemciden gelen özgün istek ana bilgisayar adı olarak uygulama ağ geçidinin etki alanı adına (contoso.com) sahip olduğundan, Application Gateway ana bilgisayar adını contoso.azurewebsites.net olarak değiştirir. Bu değişiklik, App Service 'in isteği doğru uç noktaya yönlendirebilmesi için yapar.
 
 App Service bir yeniden yönlendirme yanıtı gönderdiğinde, uygulamanın konum üstbilgisindeki ana bilgisayar adını uygulama ağ geçidinden aldığı istekte olduğu gibi kullanır. Bu nedenle, istemci, `contoso.azurewebsites.net/path2` uygulama ağ geçidi () boyunca değil, isteği doğrudan bir hale getirir `contoso.com/path2` . Application Gateway 'i atlamak istenmez.
 
@@ -226,7 +226,7 @@ Bir üst bilgi veya sunucu değişkeni varlığı için bir HTTP isteği veya ya
 
 #### <a name="parameter-based-path-selection"></a>Parametre tabanlı yol seçimi
 
-Arka uç havuzunu bir üstbilginin değerine, URL 'nin bir bölümüne veya istekteki sorgu dizesine göre seçmek istediğiniz senaryoları gerçekleştirmek için, URL yeniden yazma özelliği ve yol tabanlı yönlendirme birleşimini kullanabilirsiniz.  Örneğin, bir alışveriş web siteniz varsa ve ürün kategorisi URL 'de sorgu dizesi olarak geçirilirse ve isteği sorgu dizesine göre arka uca yönlendirmek istiyorsanız:
+Arka uç havuzunu bir üstbilginin değerine, URL 'nin bir bölümüne veya istekteki sorgu dizesine göre seçmek istediğiniz senaryoları gerçekleştirmek için, URL yeniden yazma özelliği ve yol tabanlı yönlendirme birleşimini kullanabilirsiniz. Örneğin, bir alışveriş web siteniz varsa ve ürün kategorisi URL 'de sorgu dizesi olarak geçirilirse ve isteği sorgu dizesine göre arka uca dolaştırmak istiyorsanız:
 
 **Adım:**  Aşağıdaki görüntüde gösterildiği gibi bir yol haritası oluşturun
 
@@ -250,10 +250,10 @@ Arka uç havuzunu bir üstbilginin değerine, URL 'nin bir bölümüne veya iste
 
 Artık Kullanıcı *contoso.com/Listing?category=any* isterse, yol haritadaki yol desenlerinden hiçbiri (/listing1,/listing2,/listing3) eşleşmesinden bu yana varsayılan yol ile eşleştirilir. Yukarıdaki yeniden yazma kümesini bu yol ile ilişkilendirdikten sonra, bu yeniden yazma kümesi değerlendirilecek. Sorgu dizesi bu yeniden yazma kümesindeki 3 yeniden yazma kuralındaki koşulla eşleşmediğinden, yeniden yazma eylemi gerçekleşmeyecek ve bu nedenle, istek varsayılan yol ( *GenericList*) ile ilişkili arka uca değişmeden yönlendirilir.
 
- Kullanıcı *contoso.com/Listing?category=Shoes isterse,* varsayılan yol eşleştirilir. Ancak, bu durumda, ilk kuraldaki koşul eşleşmeyecektir ve bu nedenle, koşulla ilişkili eylem, URL yolunu/*listing1*  olarak yeniden yazıp yol eşlemesini yeniden değerlendilecektir. Path-Map yeniden değerlendirildiğinde, istek artık, */listing1* düzeniyle ilişkili yol ile eşleşir ve Istek, Showeslistbackendpool olan bu Düzenle ilişkili olan arka uca yönlendirilir
+Kullanıcı *contoso.com/Listing?category=Shoes* isterse, varsayılan yol eşleştirilir. Ancak, bu durumda, ilk kuraldaki koşul eşleşmeyecektir ve bu nedenle, koşulla ilişkili eylem, URL yolunu/*listing1*  olarak yeniden yazıp yol eşlemesini yeniden değerlendilecektir. Path-Map yeniden değerlendirildiğinde, istek artık, */listing1* düzeniyle ilişkili yol ile eşleşir ve Istek, Showeslistbackendpool olan bu Düzenle ilişkili olan arka uca yönlendirilir.
 
 >[!NOTE]
->Bu senaryo, tanımlı koşula bağlı olarak herhangi bir üst bilgi veya tanımlama bilgisi değeri, URL yolu, sorgu dizesi veya sunucu değişkenine genişletilebilir ve temelde istekleri bu koşullara göre yönlendirmenizi sağlar.
+>Bu senaryo, tanımlanan koşullara bağlı olarak herhangi bir üst bilgi veya tanımlama bilgisi değeri, URL yolu, sorgu dizesi veya sunucu değişkenine genişletilebilir ve temelde istekleri bu koşullara göre yönlendirmenizi sağlar.
 
 #### <a name="rewrite-query-string-parameters-based-on-the-url"></a>Sorgu dizesi parametrelerini URL 'ye göre yeniden yaz
 
@@ -275,7 +275,7 @@ Yukarıda açıklanan senaryoya ulaşmak için adım adım kılavuz için bkz. [
 
 URL yeniden yazma durumunda, istek arka uca gönderilmeden önce URL 'YI yeniden yazar Application Gateway. Bu, değişiklikler kullanıcıdan gizlendiğinden kullanıcıların tarayıcıda gördüklerinizi değiştirmeyecektir.
 
-URL yeniden yönlendirme durumunda, Application Gateway istemciye yeni URL ile yeniden yönlendirme yanıtı gönderir. Bu durumda, istemcinin isteğini yeniden yönlendirmeye sunulan yeni URL 'ye yeniden göndermesi gerekir. Kullanıcının tarayıcıda gördüğü URL yeni URL 'ye güncelleştirilecek
+URL yeniden yönlendirme durumunda, Application Gateway istemciye yeni URL ile yeniden yönlendirme yanıtı gönderir. Bu durumda, istemcinin isteğini yeniden yönlendirmeye sunulan yeni URL 'ye yeniden göndermesi gerekir. Kullanıcının tarayıcıda gördüğü URL yeni URL 'ye güncelleştirilecek.
 
 :::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="Vs yeniden yönlendirmeyi yeniden yazın.":::
 
@@ -283,7 +283,7 @@ URL yeniden yönlendirme durumunda, Application Gateway istemciye yeni URL ile y
 
 - Bir yanıtta aynı ada sahip birden fazla üst bilgi varsa, bu üst bilgilerden birinin değerini yeniden yazmak yanıttaki diğer üstbilgilerin bırakılmasına neden olur. Yanıt içinde birden fazla Set-Cookie üst bilgisine sahip olabileceğinizden bu durum genellikle Set-Cookie üst bilgisinde meydana gelebilir. Bu tür bir senaryo, uygulama ağ geçidi ile uygulama hizmeti kullanırken ve uygulama ağ geçidinde tanımlama bilgisi tabanlı oturum benzeşimi yapılandırmış olduğunuz bir senaryodur. Bu durumda, yanıt iki Set-Cookie üst bilgi içerir: App Service tarafından kullanılan, örneğin: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` ve uygulama ağ geçidi benzeşimi için bir diğeri (örneğin,) `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Bu senaryodaki Set-Cookie başlıklarından birini yeniden yazmak, diğer Set-Cookie üstbilgisinin yanıttan kaldırılmasına neden olabilir.
 - Uygulama ağ geçidi istekleri yeniden yönlendirmek veya özel bir hata sayfası göstermek üzere yapılandırıldığında, yeniden yazar desteklenmez.
-- Üst bilgi adları, [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27)' de tanımlanan alfasayısal karakterleri ve belirli sembolleri içerebilir. Şu anda üstbilgi adlarında alt çizgi (_) özel karakterini desteklemiyoruz.
+- Üst bilgi adları, [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27)' de tanımlanan alfasayısal karakterleri ve belirli sembolleri içerebilir. Şu anda üstbilgi adlarında alt çizgi ( \_ ) özel karakterini desteklemiyoruz.
 - Bağlantı ve yükseltme üstbilgileri yeniden yazılamıyor
 
 ## <a name="next-steps"></a>Sonraki adımlar

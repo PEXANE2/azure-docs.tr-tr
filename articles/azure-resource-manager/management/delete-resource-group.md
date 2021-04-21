@@ -4,12 +4,12 @@ description: Kaynak gruplarının ve kaynakların nasıl silineceğini açıklar
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: seodec18
-ms.openlocfilehash: 8dd6c3f9ac178a518545a662eb94d33066f7614b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3c062c2f775e145347129f24b201748ee517daf4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932735"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768678"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager kaynak grubu ve kaynak silme
 
@@ -130,4 +130,4 @@ Gerekli erişime sahipseniz, ancak silme isteği başarısız olursa, bunun nede
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Kaynak Yöneticisi kavramları anlamak için bkz. [Azure Resource Manager genel bakış](overview.md).
-* Silme komutları için bkz. [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup), [Azure CLI](/cli/azure/group#az-group-delete)ve [REST API](/rest/api/resources/resources/resourcegroups/delete).
+* Silme komutları için bkz. [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup), [Azure CLI](/cli/azure/group#az_group_delete)ve [REST API](/rest/api/resources/resourcegroups/delete).

@@ -7,12 +7,12 @@ ms.date: 3/12/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 65b02ae1baef97442828de747249ab6ffeaf2417
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: bbc07a7ee3f996c778cfc1b9d1764f10a613c50b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599481"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782954"
 ---
 # <a name="open-service-mesh-aks-add-on-preview"></a>Hizmet ağı AKS eklentisini aç (Önizleme)
 
@@ -107,7 +107,7 @@ Yeni bir AKS küme dağıtım senaryosunda, küme oluşturma işleminde OSı ekl
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure 'da, ilgili kaynakları bir kaynak grubuna ayırabilirsiniz. [Az Group Create](/cli/azure/group#az-group-create)kullanarak bir kaynak grubu oluşturun. Aşağıdaki örnek _eastus2_ konumunda (bölge) _Myosmaksgroup_ adlı bir kaynak grubu oluşturur:
+Azure 'da, ilgili kaynakları bir kaynak grubuna ayırabilirsiniz. [Az Group Create](/cli/azure/group#az_group_create)kullanarak bir kaynak grubu oluşturun. Aşağıdaki örnek _eastus2_ konumunda (bölge) _Myosmaksgroup_ adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 az group create --name <myosmaksgroup> --location <eastus2>

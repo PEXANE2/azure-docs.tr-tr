@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/30/2021
 ms.author: pafarley
 keywords: bilgisayar görme, görüntü işleme uygulamaları, görüntü işleme hizmeti
-ms.openlocfilehash: f262fdb49cac4ab9abe7f3f6873160d3059968c6
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 0258eb7c57bc0734b5c0a67644cbaa4f62a34537
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106287279"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766924"
 ---
 # <a name="what-is-image-analysis"></a>Görüntü analizi nedir?
 
@@ -24,7 +24,7 @@ ms.locfileid: "106287279"
 
 Görüntü İşleme resim Analizi hizmeti, görüntülerinizden çok çeşitli görsel özellikleri ayıklayabilir. Örneğin, bir görüntünün yetişkinlere yönelik içerik içerip içermediğini, belirli marka veya nesne bulmasını veya insan yüzlerini bulmasını belirleyebilirsiniz.
 
-Görüntü analizini bir istemci kitaplığı SDK 'Sı aracılığıyla veya [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) doğrudan çağırarak kullanabilirsiniz. Başlamak için [hızlı](quickstarts-sdk/image-analysis-client-library.md) başlangıcı izleyin.
+Görüntü analizini bir istemci kitaplığı SDK 'Sı aracılığıyla veya [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v2-ga/operations/5d986960601faab4bf452005) doğrudan çağırarak kullanabilirsiniz. Başlamak için [hızlı](quickstarts-sdk/image-analysis-client-library.md) başlangıcı izleyin.
 
 Bu belge aşağıdaki makale türlerini içerir:
 * [Hızlı başlangıç](./quickstarts-sdk/image-analysis-client-library.md) , hizmete çağrı yapmanızı ve sonuçların kısa bir süre içinde elde etmenize olanak tanıyan adım adım yönergelerdir. 
@@ -34,7 +34,7 @@ Bu belge aşağıdaki makale türlerini içerir:
 
 ## <a name="image-analysis-features"></a>Görüntü analizi özellikleri
 
-Görsel özellikleri ve özellikleri hakkında Öngörüler sağlamak için görüntüleri çözümleyebilirsiniz. Aşağıdaki listedeki tüm özellikler, [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API 'si tarafından sağlanmaktadır. Başlamak için [hızlı](./quickstarts-sdk/image-analysis-client-library.md) başlangıcı izleyin.
+Görsel özellikleri ve özellikleri hakkında Öngörüler sağlamak için görüntüleri çözümleyebilirsiniz. Aşağıdaki listedeki tüm özellikler, [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) API 'si tarafından sağlanmaktadır. Başlamak için [hızlı](./quickstarts-sdk/image-analysis-client-library.md) başlangıcı izleyin.
 
 
 ### <a name="tag-visual-features"></a>Görsel özellikleri etiketleme

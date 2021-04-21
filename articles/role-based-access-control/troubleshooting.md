@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.date: 04/06/2021
 ms.author: rolyon
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: b4a3f7f613f75f2f285437b7ae6f816adf56d999
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: d816854c8d8a78931060c6e56fffbaee1fde5150
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580097"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771722"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC sorunlarını giderme
 
@@ -138,7 +138,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Benzer şekilde, bu rol atamasını Azure CLı kullanarak listelüyor olmanız halinde boş bir durum görebilirsiniz `principalName` . Örneğin, [az role atama listesi](/cli/azure/role/assignment#az-role-assignment-list) aşağıdaki çıktıya benzer bir rol ataması döndürür:
+Benzer şekilde, bu rol atamasını Azure CLı kullanarak listelüyor olmanız halinde boş bir durum görebilirsiniz `principalName` . Örneğin, [az role atama listesi](/cli/azure/role/assignment#az_role_assignment_list) aşağıdaki çıktıya benzer bir rol ataması döndürür:
 
 ```
 {
