@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ce3bda82e634cd80560d7915a08fa33218173779
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: eb8bbf852803df53c43cef90bd2229bfcddd60d4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967208"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766196"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Depolama hesabının çoğaltma yöntemini değiştirme
 
@@ -31,7 +31,7 @@ Azure Storage aşağıdaki çoğaltma türlerini sunar:
 
 Bu seçeneklerin her birine genel bir bakış için bkz. [Azure Storage yedekliği](storage-redundancy.md).
 
-## <a name="switch-between-types-of-replication"></a>Çoğaltma türleri arasında geçiş yap
+## <a name="switch-between-types-of-replication"></a>Çoğaltma türleri arasında geçiş yapma
 
 Bir depolama hesabını bir çoğaltma türünden başka bir türe geçirebilirsiniz, ancak bazı senaryolar diğerlerinden daha basittir. Coğrafi çoğaltma eklemek veya kaldırmak istiyorsanız, çoğaltma ayarını güncelleştirmek için Azure portal, PowerShell veya Azure CLı ' yi kullanabilirsiniz. Ancak, birincil bölgede verilerin nasıl çoğaltıldığını değiştirmek istiyorsanız, LRS 'den ZRS 'ye geçerek veya bunun tersini yaparak el ile geçiş gerçekleştirmeniz gerekir.
 
@@ -79,7 +79,7 @@ Set-AzStorageAccount -ResourceGroupName <resource_group> `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLı ile depolama hesabınızın artıklık seçeneğini değiştirmek için [az Storage Account Update](/cli/azure/storage/account#az-storage-account-update) komutunu çağırın ve `--sku` parametresini belirtin:
+Azure CLı ile depolama hesabınızın artıklık seçeneğini değiştirmek için [az Storage Account Update](/cli/azure/storage/account#az_storage_account_update) komutunu çağırın ve `--sku` parametresini belirtin:
 
 ```azurecli-interactive
 az storage account update \

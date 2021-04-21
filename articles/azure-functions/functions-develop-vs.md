@@ -4,12 +4,12 @@ description: Visual Studio 2019 için Azure Işlevleri araçlarını kullanarak 
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 877c82e375b0ea469071402b83fadbd634177f3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cba0a9ad63e319af0a5eaa1c1c018c3b285c28a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97655824"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765584"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio ile Azure İşlevleri geliştirme  
 
@@ -237,7 +237,7 @@ Ayrıca, uygulama ayarlarını şu diğer yollarla da yönetebilirsiniz:
 
 * [Azure Portal kullanın](functions-how-to-use-azure-function-app-settings.md#settings).
 * [ `--publish-local-settings` Azure Functions Core Tools Yayımla seçeneğini kullanın](functions-run-local.md#publish).
-* [Azure CLI 'Yi kullanın](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set).
+* [Azure CLI 'Yi kullanın](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set).
 
 ## <a name="monitoring-functions"></a>İzleme işlevleri
 
