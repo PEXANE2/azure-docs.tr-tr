@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/08/2021
 ms.author: amgowda
 ms.custom: contentperf-fy21q3, devx-track-azurecli
-ms.openlocfilehash: 261deb0c4f5f28be51e806ab76261278709efc3b
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b1ef397c1a3f6770d197ca8fd0faa83c9e8360f5
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482883"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816467"
 ---
 # <a name="quickstart-deploy-an-aks-cluster-with-confidential-computing-nodes-by-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak bir AKS kümesini gizli bilgi işlem düğümleri ile dağıtma
 
@@ -211,7 +211,7 @@ az aks nodepool delete --cluster-name myAKSCluster --name confcompool1 --resourc
 AKS kümesini silmek için aşağıdaki komutu kullanın: 
 
 ```azurecli-interactive
-az aks delete --resource-group myResourceGroup --name myAKSCluster
+az aks delete --resource-group myResourceGroup --cluster-name myAKSCluster
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

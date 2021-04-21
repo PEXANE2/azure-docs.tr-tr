@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 989bcbb7e509b9b7692f067af2989fcad94b6ad1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 284ef8de1c672fdc0a5bb1a996a3446010253f57
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107797138"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816800"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -402,10 +402,12 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 ---
 
 ## <a name="create-a-server-endpoint"></a>Sunucu uç noktası oluşturma
-Sunucu uç noktası, bir sunucu birimi üzerindeki klasör gibi kayıtlı bir sunucu üzerindeki belirli bir noktayı temsil eder. Sunucu uç noktası kayıtlı bir sunucuda (bağlı bir paylaşıma değil) bir yol olmalıdır ve bulut katmanlaması kullanmak için, yolun sistem dışı bir birimde olması gerekir. Ağa bağlı depolama (NAS) desteklenmiyor.
+Sunucu uç noktası, bir sunucu birimi üzerindeki klasör gibi kayıtlı bir sunucu üzerindeki belirli bir noktayı temsil eder. Sunucu uç noktası aşağıdaki koşullara tabidir:
 
-> [!NOTE]
-> Bir birimde sunucu uç noktası oluşturulduktan sonra yolu veya sürücü harfini değiştirme desteklenmez. Kayıtlı sunucunuzda son bir yol kullandığınızdan emin olun.
+- Sunucu uç noktası, kayıtlı bir sunucuda (bağlı bir paylaşıma değil) bir yol olmalıdır. Ağa bağlı depolama (NAS) desteklenmiyor.
+- Sunucu uç noktası sistem biriminde olabilse de, sistem birimindeki sunucu uç noktaları bulut katmanlaması kullanmıyor olabilir.
+- Bir birimde sunucu uç noktası oluşturulduktan sonra yolu veya sürücü harfini değiştirme desteklenmez. Kayıtlı sunucunuzda son bir yol kullandığınızdan emin olun.
+- Kayıtlı bir sunucu birden çok sunucu uç noktasını destekleyebilir, ancak bir eşitleme grubu herhangi bir zamanda kayıtlı sunucu başına yalnızca bir sunucu uç noktası olabilir. Eşitleme grubu içindeki diğer sunucu uç noktaları, farklı kayıtlı sunucularda olmalıdır.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Sunucu uç noktası eklemek için yeni oluşturulan eşitleme grubuna gidin ve **sunucu uç noktası Ekle**' yi seçin.

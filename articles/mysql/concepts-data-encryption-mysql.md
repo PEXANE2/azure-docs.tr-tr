@@ -6,18 +6,18 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: bed0ccbc25c6fcc43d8fb0948182f229bce63edf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d8e40cf9dac496266f67ad94e1e65db01e42f9d2
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764721"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816845"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Müşteri tarafından yönetilen bir anahtarla MySQL için Azure veritabanı veri şifrelemesi
 
 MySQL için Azure Veritabanı'nda verilerin müşteri tarafından yönetilen anahtarlarla şifrelenmesini sağlayarak bekleyen veriler için kendi anahtarını getir (KAG) yaklaşımından faydalanabilirsiniz. Kuruluşlar bu sayede anahtarların ve verilerin yönetiminde görev ayrımı yapabilir. Müşteri tarafından yönetilen şifreleme senaryosunda anahtarın yaşam döngüsü, anahtar kullanım izinleri ve anahtar işlemlerinin denetimi konusunda sorumlu ve tam denetim sahibi olursunuz.
 
-MySQL için Azure veritabanı 'nda müşteri tarafından yönetilen anahtarlarla veri şifreleme, sunucu düzeyinde ayarlanır. Belirli bir sunucu için, anahtar şifreleme anahtarı (KEK) olarak adlandırılan ve hizmet tarafından kullanılan veri şifreleme anahtarını (DEK) şifrelemek için kullanılan müşteri tarafından yönetilen bir anahtar kullanılır. KEK, müşterinin sahip olduğu ve müşteri tarafından yönetilen [Azure Key Vault](../key-vault/general/security-overview.md) örneğinde depolanan bir asimetrik anahtardır. Anahtar şifreleme anahtarı (KEK) ve veri şifreleme anahtarı (DEK), bu makalenin ilerleyen kısımlarında daha ayrıntılı olarak açıklanmıştır.
+MySQL için Azure veritabanı 'nda müşteri tarafından yönetilen anahtarlarla veri şifreleme, sunucu düzeyinde ayarlanır. Belirli bir sunucu için, anahtar şifreleme anahtarı (KEK) olarak adlandırılan ve hizmet tarafından kullanılan veri şifreleme anahtarını (DEK) şifrelemek için kullanılan müşteri tarafından yönetilen bir anahtar kullanılır. KEK, müşterinin sahip olduğu ve müşteri tarafından yönetilen [Azure Key Vault](../key-vault/general/security-features.md) örneğinde depolanan bir asimetrik anahtardır. Anahtar şifreleme anahtarı (KEK) ve veri şifreleme anahtarı (DEK), bu makalenin ilerleyen kısımlarında daha ayrıntılı olarak açıklanmıştır.
 
 Key Vault, bulut tabanlı, dış anahtar yönetim sistemidir. Bu yüksek oranda kullanılabilir ve isteğe bağlı olarak FIPS 140-2 düzey 2 tarafından doğrulanan donanım güvenlik modülleri (HSM 'ler) tarafından desteklenen RSA şifreleme anahtarlarına yönelik ölçeklenebilir, güvenli depolama alanı sağlar. Depolanan bir anahtara doğrudan erişime izin vermez, ancak yetkili varlıklara şifreleme ve şifre çözme hizmetleri sağlar. Key Vault anahtarı oluşturabilir, içeri aktarabilir veya [Şirket içi BIR HSM cihazından aktarılmasını](../key-vault/keys/hsm-protected-keys.md)sağlayabilir.
 
