@@ -4,12 +4,12 @@ description: Azure Service Bus içindeki atılacak ileti kuyruklarını açıkla
 ms.topic: article
 ms.date: 04/08/2021
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: cb791982b50d7afff7b74d70adfd285bb5e0a11c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6293a3a9a760ece137644578d8ee7dccebc63d95
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773234"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812381"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus atılacak ileti sıralarına genel bakış
 
@@ -75,8 +75,4 @@ Aşağıdaki sözdizimini kullanarak atılacak ileti kuyruğuna erişebilirsiniz
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-Service Bus kuyrukları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
-
-* [Service Bus kuyrukları ile çalışmaya başlama](service-bus-dotnet-get-started-with-queues.md)
-* [Azure kuyrukları ve Service Bus kuyrukları karşılaştırması](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+**İleti süre sonu ayarını geçersiz** kılmak için farklı yollar hakkında bilgi edinmek için, bkz. [bir kuyruk veya abonelik Için atılacak ayarları etkinleştirme](enable-dead-letter.md) .

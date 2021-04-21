@@ -323,15 +323,18 @@
           href: partner-lexisnexis.md
         - name: Onfido
           href: partner-onfido.md
-    - name: Sahtekarlık koruması
+    - name: Sahtekarlık koruma iş ortakları
       items:
-        - name: Microsoft Dynamics 365 sahtekarlık koruması
-          href: partner-dynamics-365-fraud-protection.md
-          displayName: 'm365 dynamics, dynamics fraud protection, fraud, 365 protection'
         - name: Arkose Labs
           href: partner-arkose-labs.md
           displayName: 'fraud protection, fraud, Azure AD b2c, protection, B2Cprotection'
-    - name: Eski ve şirket içi uygulamaların güvenliğini sağlama
+        - name: BioCatch
+          href: partner-biocatch.md
+          displayName: 'fraud protection, fraud, Azure AD b2c, protection, B2Cprotection, user behavior'
+        - name: Microsoft Dynamics 365 sahtekarlık koruması
+          href: partner-dynamics-365-fraud-protection.md
+          displayName: 'm365 dynamics, dynamics fraud protection, fraud, 365 protection'
+    - name: Eski ve şirket içi uygulamalara güvenli erişim
       items:
         - name: Ping kimliği
           href: partner-ping-identity.md

@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 997a4e115f8632544b2f73aef498d40dceb0d459
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b78aaa659598e6eb58841c5cef0c209daaced5e0
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449979"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811985"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Yapılandırma seçenekleri-Java için Azure Izleyici Application Insights
 
@@ -256,13 +256,13 @@ Mikro ölçüm ölçümlerinin otomatik toplanmasını devre dışı bırakmak i
 }
 ```
 
-## <a name="auto-collected-azure-sdk-telemetry"></a>Otomatik toplanan Azure SDK telemetrisi
+## <a name="auto-collected-azure-sdk-telemetry-preview"></a>Otomatik toplanan Azure SDK telemetrisi (Önizleme)
 
-Bu özellik önizlemede.
+En son Azure SDK kitaplıklarının birçoğu telemetri yayar ( [tam listeye](./java-in-process-agent.md#azure-sdks-preview)bakın).
 
-En son Azure SDK kitaplıklarının çoğu telemetri yaymalıdır.
+Application Insights Java 3.0.3 'den başlayarak bu Telemetriyi yakalamayı etkinleştirebilirsiniz.
 
-3.0.3 sürümünden başlayarak, bu Telemetriyi toplamayı etkinleştirebilirsiniz:
+Bu özelliği etkinleştirmek istiyorsanız:
 
 ```json
 {

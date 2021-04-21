@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f76b2811531b49c9312a02a581e876f9ef569a2a
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 95ab5917779a73b7221a5b431126164aef88b494
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750977"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812129"
 ---
 # <a name="data-encryption-models"></a>Veri şifreleme modelleri
 
@@ -102,7 +102,7 @@ Azure Key Vault içindeki müşteri tarafından yönetilen anahtarlarla sunucu t
 Bekleyen verileri şifrelemek veya şifrelerini çözmek için bir anahtar almak üzere Kaynak Yöneticisi hizmet örneğinin çalışacağı hizmet kimliğinin UnwrapKey olması gerekir (şifre çözme anahtarını almak için) ve WrapKey (yeni anahtar oluştururken anahtar kasasına bir anahtar eklemek için).
 
 >[!NOTE]
->Key Vault yetkilendirmesi hakkında daha fazla ayrıntı için, [Azure Key Vault belgelerindeki](../../key-vault/general/security-overview.md)anahtar kasasının güvenliğini sağlama sayfasına bakın.
+>Key Vault yetkilendirmesi hakkında daha fazla ayrıntı için, [Azure Key Vault belgelerindeki](../../key-vault/general/security-features.md)anahtar kasasının güvenliğini sağlama sayfasına bakın.
 
 **Avantajlar**
 

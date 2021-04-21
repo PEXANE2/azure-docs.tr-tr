@@ -10,12 +10,13 @@ ms.service: api-management
 ms.topic: how-to
 ms.date: 04/12/2021
 ms.author: apimpm
-ms.openlocfilehash: 4298b291e5d183c31d30a548751599aeb3746c47
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 35d813b6dfedbd7f76a88713757ce83c2644ff95
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534621"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813155"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Azure API Management hizmetini iç sanal ağ ile kullanma
 Azure API Management, Azure sanal ağları ile internet 'te erişilemeyen API 'Leri yönetebilir. Bağlantıyı yapmak için bir dizi VPN teknolojisi mevcuttur. API Management, bir sanal ağ içindeki iki ana modda dağıtılabilir:

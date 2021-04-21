@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: dc6eaaec334e7373f1a673bd1513ef05b761fee6
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3f22e165fe4a3f86ecce8b1e307b19fae0eeac81
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450030"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812057"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights
 
@@ -130,9 +130,45 @@ Tüm ayrıntılar için bkz. [yapılandırma seçenekleri](./java-standalone-con
 * Mikro ölçer (Spring Boot çalıştırıcı ölçümleri dahil)
 * JMX ölçümleri
 
-### <a name="azure-sdks"></a>Azure SDK’ları
+### <a name="azure-sdks-preview"></a>Azure SDK 'Ları (Önizleme)
 
-* Bu özellik önizleme aşamasındadır ve nasıl etkinleştirileceği için [yapılandırma seçeneklerine](./java-standalone-config.md#auto-collected-azure-sdk-telemetry) bakın.
+Bu önizleme özelliğini etkinleştirmek ve bu Azure SDK 'Ları tarafından yayınlanan Telemetriyi yakalamak için [yapılandırma seçeneklerine](./java-standalone-config.md#auto-collected-azure-sdk-telemetry-preview) bakın:
+
+* [Uygulama yapılandırması](https://docs.microsoft.com/java/api/overview/azure/data-appconfiguration-readme) 1.1.10 +
+* [Bilişsel arama](https://docs.microsoft.com/java/api/overview/azure/search-documents-readme) 11.3.0 +
+* [Iletişim sohbeti](https://docs.microsoft.com/java/api/overview/azure/communication-chat-readme) 1.0.0 +
+* [Iletişim ortak](https://docs.microsoft.com/java/api/overview/azure/communication-common-readme) 1.0.0 +
+* [Iletişim kimliği](https://docs.microsoft.com/java/api/overview/azure/communication-identity-readme) 1.0.0 +
+* [Iletişim SMS](https://docs.microsoft.com/java/api/overview/azure/communication-sms-readme) 1.0.0 +
+* [Cosmos DB](https://docs.microsoft.com/java/api/overview/azure/cosmos-readme) 4.13.0 +
+* [Event Grid](https://docs.microsoft.com/java/api/overview/azure/messaging-eventgrid-readme) 4.0.0 +
+* [Event Hubs](https://docs.microsoft.com/java/api/overview/azure/messaging-eventhubs-readme) 5.6.0 +
+* [Event Hubs-Azure Blob depolama denetim noktası deposu](https://docs.microsoft.com/java/api/overview/azure/messaging-eventhubs-checkpointstore-blob-readme) 1.5.1 +
+* [Form tanıyıcı](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme) 3.0.6 +
+* [Identity](https://docs.microsoft.com/java/api/overview/azure/identity-readme) 1.2.4 +
+* [Key Vault-sertifikalar](https://docs.microsoft.com/java/api/overview/azure/security-keyvault-certificates-readme) 4.1.6 +
+* [Key Vault-Keys](https://docs.microsoft.com/java/api/overview/azure/security-keyvault-keys-readme) 4.2.6 +
+* [Key Vault-gizlilikler](https://docs.microsoft.com/java/api/overview/azure/security-keyvault-secrets-readme) 4.2.6 +
+* [Service Bus](https://docs.microsoft.com/java/api/overview/azure/messaging-servicebus-readme) 7.1.0 +
+* [Metin analizi](https://docs.microsoft.com/java/api/overview/azure/ai-textanalytics-readme) 5.0.4 +
+
+[//]: # "Yukarıdaki adlar ve bağlantılar şu kaynaktan açıldı https://azure.github.io/azure-sdk/releases/latest/java.html"
+[//]: # "ve sürüm eşitleme, Azure 'da yerleşik olarak bulunan Maven merkezi 'nin en eski sürümüne karşı el ile karşılaştırılır 1.14.0"
+[//]: # ""
+[//]: # "var Table = Document. querySelector (' #tg-SB-Content > div > Table ')"
+[//]: # "var Str = ' '"
+[//]: # "(var ı = 1, satır; satır = Table. Rows [i]; i + +) {"
+[//]: # "  var Name = Row. hücreler [0]. getElementsByTagName (' div ') [0]. textContent. Trim ()"
+[//]: # "  var stableRow = Row. hücreler [1]"
+[//]: # "  var Versionrozet = stableRow. querySelector ('. rozet ')"
+[//]: # "  if (! Versionrozet) {"
+[//]: # "    devam"
+[//]: # "  }"
+[//]: # "  var sürümü = Versionrozet. textContent. Trim ()"
+[//]: # "  var link = stableRow. querySelectorAll (' a ') [2]. href"
+[//]: # "  Str + = ' * [' + ad + '] (' + link + ') ' + sürüm"
+[//]: # "}"
+[//]: # "Console. log (str)"
 
 ## <a name="send-custom-telemetry-from-your-application"></a>Uygulamanızdan Özel telemetri gönderin
 

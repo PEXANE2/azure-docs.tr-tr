@@ -6,12 +6,12 @@ ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/13/2021
-ms.openlocfilehash: f4ba3763dd781053349417fe3fed3a2848a06fc7
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: bd7f19df5eed87f2fb02af4b5f2577340bcbfd60
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515847"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812111"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Izleyici 'de özel ölçümler (Önizleme)
 
@@ -224,15 +224,15 @@ Bu ölçümle, 10 bölgeiniz varsa, 20 departman ve 100 müşteri, size 10 x 20 
 
 Bu sınır, tek bir ölçüm için değildir. Bu, bir abonelik ve bölge genelinde tüm ölçümlerin toplamına yöneliktir.  
 
-## <a name="design-limitations"></a>Tasarım sınırlamaları
+## <a name="design-limitations-and-considerations"></a>Tasarım sınırlamaları ve konuları
 
-**Denetim amacıyla Application Insights kullanmayın** – Application Insights işlem hattı arka planda özel ölçüm API 'sini kullanır. İşlem hattı, uygulamanız üzerinde en az etkiyle yüksek bir telemetri hacmi için iyileştirilmiştir. Bu nedenle, gelen veri akışınızın çok büyük hale gelmesi durumunda ya da örneklerinizi kısıtlar (yalnızca telemetrinizin bir yüzdesini alır ve REST 'yi yoksayar). Bu davranış nedeniyle, bazı kayıtların bırakılmakta olma olasılığı olduğu için bunu denetim amacıyla kullanamazsınız. 
+**Denetim amacıyla Application Insights kullanmayın** – Application Insights telemetri işlem hattı, performans etkisini en aza indirmek ve ağ trafiğini uygulamanızı izlemeden sınırlamak için iyileştirilmiştir. Bu nedenle, ilk veri kümesi çok büyük hale gelirse, bir veya örneklerinizi kısıtlar (yalnızca telemetrinizin yüzdesini alır ve REST 'yi yoksayar). Bu davranış nedeniyle, bazı kayıtların bırakılmakta olma olasılığı olduğu için bunu denetim amacıyla kullanamazsınız. 
 
-**Adında bir değişken olan ölçümler** – ölçüm adının bir parçası olarak bir değişken kullanmayın; Örneğin, bir GUID veya zaman damgası. Bu, hızlı bir şekilde 50.000 zaman serisi sınırlamasını vurmanıza neden olur. 
- 
-**Yüksek kardinalite ölçüm boyutları** -bir boyutta ("yüksek kardinalite") çok sayıda geçerli değere sahip ölçümler 50.000 sınırına ulaşmaya çok daha fazladır. Genel olarak, asla bir boyut veya ölçüm adında sürekli değişen bir değer kullanmamalısınız. Örneğin, zaman damgası hiçbir zaman bir boyut olmamalıdır. Sunucu, müşteri veya ProductID, ancak bu türden her biri daha az sayıda varsa kullanılabilir. Bir test olarak, bir grafik üzerinde her bir grafikte veri alıyorsa kendinize sorun.  10 veya belki de 100 sunucularınız varsa, bunları karşılaştırma için bir grafikte görmek faydalı olabilir. Ancak, 1000 varsa, bu durum okunmadığında ortaya çıkan grafik büyük olasılıkla zor olabilir. En iyi yöntem, 100 geçerli değerler için daha az bir değer olmasını sağlar. 300 kadar gri bir alandır.  Bu miktarın üzerine gitmeniz gerekiyorsa Azure Izleyici özel günlüklerini kullanın.   
+**Adda bir değişken bulunan ölçümler** – ölçüm adının bir parçası olarak bir değişken kullanmayın, bunun yerine bir sabit kullanın. Değişken, her değeri değiştirdiğinde, Azure Izleyici yeni bir ölçüm oluşturur ve ölçüm sayısı limitlerine hızlıca ulaşacaktır. Genellikle, geliştiriciler ölçüm adına bir değişken eklemek istediklerinde, gerçekten bir ölçüm içinde birden çok zaman serisi 'i izlemek ve değişken ölçüm adları yerine boyutları kullanması gerekir. 
 
-Ad veya yüksek kardinalite boyutunda bir değişkeniniz varsa, aşağıdakiler meydana gelebilir. 
+**Yüksek kardinalite ölçüm boyutları** -bir boyutta ("yüksek kardinalite") çok sayıda geçerli değere sahip ölçümler 50.000 sınırına ulaşmaya çok daha fazladır. Genel olarak, asla bir boyut veya ölçüm adında sürekli değişen bir değer kullanmamalısınız. Örneğin, zaman damgası hiçbir zaman bir boyut olmamalıdır. Sunucu, müşteri veya ProductID, ancak bu türden her biri daha az sayıda varsa kullanılabilir. Bir test olarak, bu verileri bir grafikte grafik üzerinde barındırmanız durumunda kendinize sorun.  10 veya belki de 100 sunucularınız varsa, bunları karşılaştırma için bir grafikte görmek faydalı olabilir. Ancak, 1000 varsa, bu durum okunmadığında ortaya çıkan grafik büyük olasılıkla zor olabilir. En iyi yöntem, 100 geçerli değerler için daha az bir değer olmasını sağlar. 300 kadar gri bir alandır.  Bu miktarın üzerine gitmeniz gerekiyorsa Azure Izleyici özel günlüklerini kullanın.   
+
+Ad veya yüksek kardinalite boyutunda bir değişkeniniz varsa, şunlar meydana gelebilir:
 - Kısıtlama nedeniyle ölçümler güvenilir hale getirilir
 - Ölçüm Gezgini çalışmıyor
 - Uyarı ve bildirimler öngörülemeyen hale gelir

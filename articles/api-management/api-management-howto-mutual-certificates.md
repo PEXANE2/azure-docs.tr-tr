@@ -9,12 +9,13 @@ ms.service: api-management
 ms.topic: article
 ms.date: 01/26/2021
 ms.author: apimpm
-ms.openlocfilehash: d5d261368260a1c9658ae0bef8bdf63a7ca6bafe
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9d198f34abe826af2dce0c1ed9950600d4c7bbd3
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750635"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812309"
 ---
 # <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management istemci sertifikası kimlik doğrulaması kullanarak arka uç hizmetleri güvenli hale getirme
 
@@ -32,7 +33,7 @@ API Management, arka uç hizmetlerine erişimin güvenliğini sağlamak için ku
 Anahtar Kasası sertifikalarının kullanılması önerilir API Management güvenliği artırmaya yardımcı olur:
 
 * Anahtar kasalarında depolanan sertifikalar, hizmetler arasında yeniden kullanılabilir
-* Ayrıntılı [erişim ilkeleri](../key-vault/general/security-overview.md#privileged-access) , anahtar kasalarında depolanan sertifikalara uygulanabilir
+* Ayrıntılı [erişim ilkeleri](../key-vault/general/security-features.md#privileged-access) , anahtar kasalarında depolanan sertifikalara uygulanabilir
 * Anahtar kasasında güncellenen sertifikalar API Management otomatik olarak döndürülür. Anahtar kasasındaki güncelleştirmeden sonra, API Management bir sertifika 4 saat içinde güncelleştirilir. Ayrıca, Azure portal kullanarak veya yönetim REST API aracılığıyla sertifikayı el ile yenileyebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
