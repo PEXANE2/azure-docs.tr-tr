@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 8edb5e44fc0a8e7aa67c4edd69971c35c6866d82
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: fa52327225667bd84047e74a89e3b1394964b22c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752471"
+ms.locfileid: "107769994"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>PostgreSQL için Azure veritabanı müşteri tarafından yönetilen bir anahtarla tek sunuculu veri şifrelemesi
 
@@ -97,7 +97,7 @@ Key Vault, müşteri tarafından yönetilen bir anahtarla veri şifrelemeyi yap�
 * Veri şifrelemesi etkin olan PostgreSQL için Azure veritabanınız için bir okuma çoğaltması oluşturuyorsanız, çoğaltma sunucusu *erişilemez* durumda olur. Sunucu durumunu [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) veya [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers)aracılığıyla çözebilirsiniz.
 * Keykasasını silerseniz, PostgreSQL için Azure veritabanı tek sunucu anahtara erişemez ve *erişilemez* duruma geçer. [Key Vault](../key-vault/general/key-vault-recovery.md) kurtarın ve sunucuyu *kullanılabilir* hale getirmek için veri şifrelemeyi yeniden doğrulayın.
 * Anahtar kasasından anahtarı silmemiz durumunda, PostgreSQL için Azure veritabanı tek sunucu anahtara erişemez ve *erişilemeyen* duruma geçer. [Anahtarı](../key-vault/general/key-vault-recovery.md) kurtarın ve sunucuyu *kullanılabilir* hale getirmek için veri şifrelemeyi yeniden doğrulayın.
-* Azure Keykasasında depolanan anahtarın süresi dolarsa, anahtar geçersiz hale gelir ve PostgreSQL için Azure veritabanı tek sunucu *erişilemez* duruma geçer. [CLI](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) kullanarak anahtar sona erme tarihini genişletin ve ardından sunucuyu *kullanılabilir* hale getirmek için veri şifrelemesini yeniden doğrulayın.
+* Azure Keykasasında depolanan anahtarın süresi dolarsa, anahtar geçersiz hale gelir ve PostgreSQL için Azure veritabanı tek sunucu *erişilemez* duruma geçer. [CLI](/cli/azure/keyvault/key#az_keyvault_key_set_attributes) kullanarak anahtar sona erme tarihini genişletin ve ardından sunucuyu *kullanılabilir* hale getirmek için veri şifrelemesini yeniden doğrulayın.
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Key Vault 'den yanlışlıkla anahtar erişimi iptali
 

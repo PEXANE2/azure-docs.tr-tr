@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 0b48963fa6cb28c836c57de8b46861ef83752231
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 77d5ce2cc903be51b7a38d6edc34bb8424c52ddb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388573"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786108"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Hızlı başlangıç: Azure NetApp Files ayarlama ve NFS birimi oluşturma
 
@@ -147,7 +147,7 @@ Daha fazla bilgi için bkz. [Azure NetApp Files Için kaydolun](azure-netapp-fil
     > Komut satırı araçlarımız tarafından desteklenen bölge adını almak için lütfen şunu kullanın `az account list-locations --query "[].{Region:name}" --out table`
     >
 
-2. [Az Group Create](/cli/azure/group#az-group-create) komutunu kullanarak yeni bir kaynak grubu oluşturun:
+2. [Az Group Create](/cli/azure/group#az_group_create) komutunu kullanarak yeni bir kaynak grubu oluşturun:
 
     ```azurecli-interactive
     az group create \
@@ -155,7 +155,7 @@ Daha fazla bilgi için bkz. [Azure NetApp Files Için kaydolun](azure-netapp-fil
         --location $LOCATION
     ```
 
-3. [Az netappfiles hesabı Create](/cli/azure/netappfiles/account#az-netappfiles-account-create) komutuyla Azure NetApp Files hesabı oluşturun:
+3. [Az netappfiles hesabı Create](/cli/azure/netappfiles/account#az_netappfiles_account_create) komutuyla Azure NetApp Files hesabı oluşturun:
 
     ```azurecli-interactive
     az netappfiles account create \
@@ -226,7 +226,7 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts](/azure/templa
     SERVICE_LEVEL="Premium" # Valid values are Standard, Premium and Ultra
     ```
 
-2. [Az netappfiles Havuz oluştur](/cli/azure/netappfiles/pool#az-netappfiles-pool-create) kullanarak yeni bir kapasite havuzu oluşturun
+2. [Az netappfiles Havuz oluştur](/cli/azure/netappfiles/pool#az_netappfiles_pool_create) kullanarak yeni bir kapasite havuzu oluşturun
 
     ```azurecli-interactive
     az netappfiles pool create \
@@ -343,7 +343,7 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/Capacityhavuzl
     SUBNET_NAME="myANFSubnet"
     ```
 
-1. [Az Network VNET Create](/cli/azure/network/vnet#az-network-vnet-create) komutunu kullanarak alt ağ olmadan sanal ağ oluşturun.
+1. [Az Network VNET Create](/cli/azure/network/vnet#az_network_vnet_create) komutunu kullanarak alt ağ olmadan sanal ağ oluşturun.
 
     ```azurecli-interactive
     az network vnet create \
@@ -354,7 +354,7 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/Capacityhavuzl
 
     ```
 
-2. [Az Network VNET subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) komutunu kullanarak Temsilcili bir alt ağ oluşturun.
+2. [Az Network VNET subnet Create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) komutunu kullanarak Temsilcili bir alt ağ oluşturun.
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -365,7 +365,7 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/Capacityhavuzl
         --delegations "Microsoft.NetApp/volumes"
     ```
 
-3. [Az netappfiles Volume Create](/cli/azure/netappfiles/volume#az-netappfiles-volume-create) komutunu kullanarak birimi oluşturun.
+3. [Az netappfiles Volume Create](/cli/azure/netappfiles/volume#az_netappfiles_volume_create) komutunu kullanarak birimi oluşturun.
 
     ```azurecli-interactive
     VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP --name $VNET_NAME --query "id" -o tsv)
@@ -449,7 +449,7 @@ Aşağıdaki kod parçacıkları, bir sanal ağı ayarlamayı ve bir Azure Resou
 > [!IMPORTANT]
 > Kaynak grupları içindeki tüm kaynaklar kalıcı olarak silinecek ve geri alınamaz.
 
-1. [Az Group Delete](/cli/azure/group#az-group-delete) komutunu kullanarak kaynak grubunu silin.
+1. [Az Group Delete](/cli/azure/group#az_group_delete) komutunu kullanarak kaynak grubunu silin.
 
     ```azurecli-interactive
     az group delete \

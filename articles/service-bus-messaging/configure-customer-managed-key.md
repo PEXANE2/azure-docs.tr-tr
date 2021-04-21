@@ -3,12 +3,12 @@ title: Bekleyen verileri şifrelemek için kendi anahtarınızı yapılandırın
 description: Bu makalede, Azure Service Bus veri kalanını şifrelemek için kendi anahtarınızı yapılandırma hakkında bilgi verilmektedir.
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 5d14c8953819575d1c2688520838135efc7121e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b982f01b02e7aa99f1b83e2f590e3660cb69c54
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100378324"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751355"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Azure portal kullanarak geri kalan Azure Service Bus verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırın
 Azure Service Bus Premium, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Service Bus Premium, verileri depolamak için Azure depolama kullanır. Azure depolama ile depolanan tüm veriler, Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. Kendi anahtarınızı (Kendi Anahtarını Getir (BYOK) veya müşteri tarafından yönetilen anahtar olarak da bilinir) kullanırsanız, veriler Microsoft tarafından yönetilen anahtar kullanılarak şifrelenir, ancak ek olarak, Microsoft tarafından yönetilen anahtar, müşteri tarafından yönetilen anahtar kullanılarak şifrelenir. Bu özellik, Microsoft tarafından yönetilen anahtarları şifrelemek için kullanılan müşteri tarafından yönetilen anahtarlara erişimi oluşturmanıza, döndürmenize, devre dışı bırakmanızı ve iptal etmenize olanak sağlar. BYOK özelliğinin etkinleştirilmesi, ad alanınız üzerinde bir kerelik kurulum işlemidir.
@@ -70,7 +70,7 @@ Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşter
     > [!IMPORTANT]
     > Coğrafi olağanüstü durum kurtarma ile birlikte müşteri tarafından yönetilen anahtar kullanmak istiyorsanız lütfen bu bölümü gözden geçirin. 
     >
-    > Müşteri tarafından yönetilen bir anahtarla Microsoft tarafından yönetilen anahtar şifrelemesini etkinleştirmek için, belirtilen Azure Keykasasında Service Bus ' yönetilen kimliği için bir [erişim ilkesi](../key-vault/general/secure-your-key-vault.md) ayarlanır. Bu, Azure Keykasasına Azure Service Bus ad alanından denetimli erişim sağlar.
+    > Müşteri tarafından yönetilen bir anahtarla Microsoft tarafından yönetilen anahtar şifrelemesini etkinleştirmek için, belirtilen Azure Keykasasında Service Bus ' yönetilen kimliği için bir [erişim ilkesi](../key-vault/general/security-overview.md) ayarlanır. Bu, Azure Keykasasına Azure Service Bus ad alanından denetimli erişim sağlar.
     >
     > Bunun nedeni:
     > 
@@ -91,7 +91,7 @@ Anahtarı anahtar kasasında Azure Anahtar Kasası döndürme mekanizmasını ku
 
 ## <a name="revoke-access-to-keys"></a>Anahtarlara erişimi iptal et
 
-Şifreleme anahtarlarına erişimin iptal edilmemesi Service Bus verileri temizleyemezsiniz. Ancak, verilere Service Bus ad alanından erişilemez. Şifreleme anahtarını erişim ilkesi veya anahtarı silerek iptal edebilirsiniz. Erişim ilkeleri hakkında daha fazla bilgi edinin ve anahtar kasasının güvenliğini [güvenli bir şekilde bir anahtar kasasına erişin](../key-vault/general/secure-your-key-vault.md).
+Şifreleme anahtarlarına erişimin iptal edilmemesi Service Bus verileri temizleyemezsiniz. Ancak, verilere Service Bus ad alanından erişilemez. Şifreleme anahtarını erişim ilkesi veya anahtarı silerek iptal edebilirsiniz. Erişim ilkeleri hakkında daha fazla bilgi edinin ve anahtar kasasının güvenliğini [güvenli bir şekilde bir anahtar kasasına erişin](../key-vault/general/security-overview.md).
 
 Şifreleme anahtarı iptal edildiğinde, şifrelenen ad alanındaki Service Bus hizmeti çalışamaz hale gelir. Anahtara erişim etkinleştirilirse veya silinen anahtar geri yüklenirse, şifrelenmiş Service Bus ad alanındaki verilere erişebilmek için Service Bus hizmet anahtarı seçer.
 

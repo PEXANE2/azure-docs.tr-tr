@@ -138,6 +138,8 @@
       items:
         - name: Dağıtım hataları için destek isteği açma
           href: fix-deployment-provisioning-failures.md
+        - name: VMware araçları Vix hata kodu = 21009
+          href: 'https://kb.vmware.com/s/article/2129927'
     - name: SSS
       items:
         - name: Genel

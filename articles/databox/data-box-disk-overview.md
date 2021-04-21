@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: cca08e1be0f81c26d0838566ac4900d36580b8b8
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ca46ce3355edf2b77400011d023cd6af330a3b58
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066305"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770443"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Azure Data Box Disk nedir?
 
@@ -35,7 +35,7 @@ Azure sağlayıcıları ve Azure dışı sağlayıcılar Azure Data Box verileri
 
 - **SharePoint Online** -dosya paylaşma Içeriğinizi SharePoint Online 'a geçirmek için Azure Data Box ve SharePoint Geçiş Aracı 'Nı (SPMT) kullanın. Data Box kullanarak, WAN bağlantılarınızın bağımlılığını kaldırarak verileri aktarabilirsiniz. Daha fazla bilgi için, bkz. [Azure Data Box Heavy kullanarak dosya paylaşma Içeriğinizi SharePoint Online 'a geçirin](data-box-heavy-migrate-spo.md).
 
-- **Azure dosya eşitleme** -Data Box dosyaları bir Azure dosya paylaşımıyla çoğaltarak verilerinize yerel erişimi sürdürirken dosya hizmetlerinizi Azure 'da merkezileştirmenizi sağlar. Daha fazla bilgi için bkz. [dağıtma Azure dosya eşitleme](../storage/files/storage-sync-files-deployment-guide.md).
+- **Azure dosya eşitleme** -Data Box dosyaları bir Azure dosya paylaşımıyla çoğaltarak verilerinize yerel erişimi sürdürirken dosya hizmetlerinizi Azure 'da merkezileştirmenizi sağlar. Daha fazla bilgi için bkz. [dağıtma Azure dosya eşitleme](../storage/file-sync/file-sync-deployment-guide.md).
 
 -  , Data Box kullanarak Hadoop kümenizin şirket içi Hadoop Dağıtılmış dosya sistemi (bir) deposundan verileri Azure depolama alanına geçirin. Daha fazla bilgi için, [Azure Data Box ile şirket içi bir Azure depolama 'Ya geçiş](../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)konusuna bakın.
 

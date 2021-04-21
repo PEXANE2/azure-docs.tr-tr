@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/30/2021
-ms.openlocfilehash: 491d5f14cc8f456d228a5bc6efaa6686575979c1
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 4010f7e2d0d20216107a45109056478694c940ca
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078749"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772514"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (Önizleme) uzantısıyla Visual Studio Code durum bilgisiz ve durum bilgisi olmayan iş akışları oluşturma
 
@@ -360,7 +360,7 @@ Yazma özelliği şu anda yalnızca Visual Studio Code ' de kullanılabilir, anc
    !["Azure 'da bağlayıcıları etkinleştir" listesinin açık ve "Azure 'dan bağlayıcılar kullan" seçiliyken Gezgin bölmesini gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/use-connectors-from-azure.png)
 
    > [!NOTE]
-   > Durum bilgisiz iş akışları Şu anda yalnızca Azure 'da dağıtılan ve tetikleyici olmayan [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)için *eylemleri* desteklemektedir. Azure 'da bağlayıcıları durum bilgisiz iş akışınız için etkinleştirme seçeneğine sahip olsanız da tasarımcı, seçtiğiniz herhangi bir yönetilen bağlayıcı tetikleyicisi göstermez.
+   > Durum bilgisiz iş akışları Şu anda yalnızca Azure 'da dağıtılan ve tetikleyici olmayan [yönetilen bağlayıcılar](../connectors/managed.md)için *eylemleri* desteklemektedir. Azure 'da bağlayıcıları durum bilgisiz iş akışınız için etkinleştirme seçeneğine sahip olsanız da tasarımcı, seçtiğiniz herhangi bir yönetilen bağlayıcı tetikleyicisi göstermez.
 
 1. **Abonelik Seç** listesinde, mantıksal uygulama projeniz Için kullanılacak Azure aboneliğini seçin.
 

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f2bc71100a92d1811d69af31a7a3085af36f60a8
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 4c86811ee72d2713fced6320a17d1ccde1866d99
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121940"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769958"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Tablolar ve kuyruklar için müşteri tarafından yönetilen anahtarları destekleyen bir hesap oluşturun
 
@@ -58,7 +58,7 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
 
 Hesap şifreleme anahtarına dayanan bir depolama hesabı oluşturmak için Azure CLı 'yi kullanmak için Azure CLı sürüm 2.0.80 veya üstünü yüklediğinizden emin olun. Daha fazla bilgi için bkz. [Azure CLI 'Yı yüklerken](/cli/azure/install-azure-cli).
 
-Ardından, [az Storage Account Create](/cli/azure/storage/account#az-storage-account-create) komutunu çağırarak, uygun parametrelerle genel amaçlı v2 depolama hesabı oluşturun:
+Ardından, [az Storage Account Create](/cli/azure/storage/account#az_storage_account_create) komutunu çağırarak, uygun parametrelerle genel amaçlı v2 depolama hesabı oluşturun:
 
 - `--encryption-key-type-for-queue`' İ ve değerini `Account` kuyruk depolamadaki verileri şifrelemek için hesap şifreleme anahtarını kullanacak şekilde ayarlayın.
 - Seçeneğini ekleyin `--encryption-key-type-for-table` ve değerini `Account` tablo depolamadaki verileri şifrelemek için hesap şifreleme anahtarını kullanacak şekilde ayarlayın.
@@ -119,7 +119,7 @@ Hesap şifreleme anahtarına dayanan bir hesap oluşturduktan sonra, Azure Key V
 
 ## <a name="verify-the-account-encryption-key"></a>Hesap şifreleme anahtarını doğrulama
 
-Bir depolama hesabındaki bir hizmetin hesap şifreleme anahtarını kullandığını doğrulamak için Azure CLı [az Storage Account](/cli/azure/storage/account#az-storage-account-show) komutunu çağırın. Bu komut, bir depolama hesabı özellikleri kümesi ve değerlerini döndürür. `keyType`Şifreleme özelliği içindeki her bir hizmetin alanını bulun ve olarak ayarlandığını doğrulayın `Account` .
+Bir depolama hesabındaki bir hizmetin hesap şifreleme anahtarını kullandığını doğrulamak için Azure CLı [az Storage Account](/cli/azure/storage/account#az_storage_account_show) komutunu çağırın. Bu komut, bir depolama hesabı özellikleri kümesi ve değerlerini döndürür. `keyType`Şifreleme özelliği içindeki her bir hizmetin alanını bulun ve olarak ayarlandığını doğrulayın `Account` .
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -134,7 +134,7 @@ $account.Encryption.Services.Table
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bir depolama hesabındaki bir hizmetin hesap şifreleme anahtarını kullandığını doğrulamak için [az Storage Account Show](/cli/azure/storage/account#az-storage-account-show) komutunu çağırın. Bu komut, bir depolama hesabı özellikleri kümesi ve değerlerini döndürür. `keyType`Şifreleme özelliği içindeki her bir hizmetin alanını bulun ve olarak ayarlandığını doğrulayın `Account` .
+Bir depolama hesabındaki bir hizmetin hesap şifreleme anahtarını kullandığını doğrulamak için [az Storage Account Show](/cli/azure/storage/account#az_storage_account_show) komutunu çağırın. Bu komut, bir depolama hesabı özellikleri kümesi ve değerlerini döndürür. `keyType`Şifreleme özelliği içindeki her bir hizmetin alanını bulun ve olarak ayarlandığını doğrulayın `Account` .
 
 ```azurecli
 az storage account show /

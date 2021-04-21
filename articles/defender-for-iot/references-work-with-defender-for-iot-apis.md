@@ -3,12 +3,12 @@ title: IoT API’leri için Defender ile çalışma
 description: Sensörler ve yönetim konsolları tarafından bulunan verilere erişmek ve bu verilerle ilgili eylemler gerçekleştirmek için bir dış REST API kullanın.
 ms.date: 12/14/2020
 ms.topic: reference
-ms.openlocfilehash: d509f2674a61af1d0ab03892186526b1cb109eee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7833a20d4f708ecb5b80394fae2c56fc07c9489
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778840"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752741"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>IoT algılayıcısı ve Yönetim Konsolu API 'Leri için Defender
 
@@ -617,12 +617,21 @@ Uyarıları temsil eden JSON nesneleri dizisi.
 | **ID** | Sayısal | No | - |
 | **ışınızda** | Sayısal | No | Dönem (UTC) |
 | **başlık** | Dize | No | - |
-| **message** | Dize | No | - |
+| **İleti** | Dize | No | - |
 | **inin** | Dize | No | Uyarı, Ikincil, büyük veya kritik |
 | **altyapısına** | Dize | No | Protokol Ihlali, Ilke Ihlali, kötü amaçlı yazılım, anomali veya operasyonel |
 | **sourceDevice** | Sayısal | Yes | Cihaz Kimliği |
 | **Hedef cihaz** | Sayısal | Yes | Cihaz Kimliği |
+| **sourceDeviceAddress** | Sayısal | Yes | IP, MAC, null |
+| **destinationDeviceAddress** | Sayısal | Yes | IP, MAC, null |
+| **Düzeltme adımları** | Dize | Yes | Uyarı bölümünde açıklanan düzeltme adımları |
 | **AdditionalInformation** | Ek bilgi nesnesi | Yes | - |
+
+Aşağıdaki bilgiler için/api/v2/gereklidir:
+
+- sourceDeviceAddress 
+- destinationDeviceAddress
+- Düzeltme adımları
 
 #### <a name="additional-information-fields"></a>Ek bilgi alanları
 
@@ -1742,19 +1751,16 @@ response:
 > |--|--|--|
 > | POST | kıvrımlı-k-d ' {"admin_username": "<ADMIN_USERNAME>", "admin_password": "<ADMIN_PASSWORD>", "kullanıcıadı": "<user_name>", "new_password": "<NEW_PASSWORD>"} '-H ' Content-Type: Application/JSON ' https://<IP_address>/api/External/Authentication/set_password_by_admin | kıvrımlı-k-d ' {"admin_user": "adminUser", "admin_password": " 1234@abcd ", "kullanıcıadı": "myUser", "new_password": " abcd@1234 "} '-H ' Content-Type: Application/JSON ' https:/ <span> /127.0.0.1/api/External/Authentication/set_password_by_admin |
 
-## <a name="on-premises-management-console-api-specifications"></a>Şirket içi yönetim konsolu API 'SI belirtimleri
+## <a name="on-premises-management-console-api-specifications"></a>Şirket içi yönetim konsolu API 'SI belirtimleri ##
 
-Bu bölümde, aşağıdaki şirket içi yönetim konsolu API 'Leri açıklanmaktadır:
+Bu bölümde, için şirket içi yönetim konsolu API 'Leri açıklanmaktadır:
+- Uyarı dışlamaları
+- Cihaz bilgileri
+- Uyarı bilgileri
 
-- **/External/v1/Alerts/<UUID>**
+### <a name="alert-exclusions"></a>Uyarı dışlamaları ###
 
-- **Uyarı dışlamaları (bakım penceresi)**
-
-:::image type="content" source="media/references-work-with-defender-for-iot-apis/alert-exclusion-window.png" alt-text="Etkin kuralları gösteren uyarı dışlama penceresi.":::
-
-Uyarıların gönderileceği koşulları tanımlayın. Örneğin, durdurma ve başlangıç zamanlarını, uyarıları tetiklerken dışlanmayacak cihazları veya alt ağları ve dışlanmalıdır IoT motorları için Defender 'ı tanımlayın ve güncelleştirin. Örneğin, bakım penceresi sırasında, kritik cihazlarda kötü amaçlı yazılım uyarıları hariç olmak üzere tüm uyarıların teslimini durdurmak isteyebilirsiniz.
-
-Burada tanımladığınız API 'Ler, şirket içi yönetim konsolunun **Uyarı dışlamaları** penceresinde, salt okuma dışında tutma kuralı olarak görüntülenir.
+Uyarıların gönderileceği koşulları tanımlayın. Örneğin, durdurma ve başlangıç zamanlarını, uyarıları tetiklerken dışlanmayacak cihazları veya alt ağları ve dışlanmalıdır IoT motorları için Defender 'ı tanımlayın ve güncelleştirin. Örneğin, bakım penceresi sırasında, kritik cihazlarda kötü amaçlı yazılım uyarıları hariç olmak üzere tüm uyarıların teslimini durdurmak isteyebilirsiniz. Burada tanımladığınız öğeler, şirket içi yönetim konsolunun **Uyarı dışlamaları** penceresinde salt okuma dışlama kuralları olarak görüntülenir.
 
 #### <a name="externalv1maintenancewindow"></a>/external/v1/maintenanceWindow
 
@@ -1771,15 +1777,15 @@ Burada tanımladığınız API 'Ler, şirket içi yönetim konsolunun **Uyarı d
 
 ```
 
-#### <a name="change-password---externalauthenticationset_password"></a>Parolayı Değiştir-/External/Authentication/set_password
+#### <a name="change-password---externalauthenticationset_password"></a>Parolayı Değiştir-/External/Authentication/set_password 
 
 Kullanıcıların kendi parolalarını değiştirmesine izin vermek için bu API 'yi kullanın. IoT Kullanıcı rolleri için tüm Defender, API ile çalışabilir. Bu API 'yi kullanmak için IoT erişim belirtecinin bir Defender 'a ihtiyacınız yoktur.
 
-#### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>Sistem Yöneticisi tarafından Kullanıcı parolası güncelleştirmesi-/External/Authentication/set_password_by_admin
+#### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>Sistem Yöneticisi tarafından Kullanıcı parolası güncelleştirmesi-/External/Authentication/set_password_by_admin 
 
 Sistem yöneticilerinin belirli kullanıcılar için parolaları değiştirmesine izin vermek için bu API 'yi kullanın. IoT Yönetici Kullanıcı rolleri için Defender, API ile çalışabilir. Bu API 'yi kullanmak için IoT erişim belirtecinin bir Defender 'a ihtiyacınız yoktur.
 
-### <a name="retrieve-device-information---externalv1devices"></a>Cihaz bilgilerini alma-/External/v1/Devices
+### <a name="retrieve-device-information---externalv1devices"></a>Cihaz bilgilerini alma-/External/v1/Devices ###
 
 Bu API, bir şirket içi yönetim konsoluna bağlı olan IoT algılayıcılarının Defender tarafından algılanan tüm cihazların bir listesini ister.
 
@@ -2032,27 +2038,40 @@ Cihazları temsil eden JSON nesneleri dizisi.
 
   `/api/v1/alerts?toTime=<epoch>`
 
-- **siteID**: uyarının bulunduğu site. [2](#2)
-
-- **bölge kimliği**: uyarının bulunduğu bölge. [2](#2)
-
+- **siteID**: uyarının bulunduğu site.
+- **bölge kimliği**: uyarının bulunduğu bölge.
 - **algılayıcı**: uyarının bulunduğu algılayıcı.
 
-##### <a name="you-might-not-have-the-site-and-zone-id-if-this-is-the-case-query-all-devices-to-retrieve-the-site-and-zone-id"></a><a id="2">2</a> *SITE ve bölge kimliğiniz olmayabilir. Bu durumda, site ve bölge KIMLIĞINI almak için tüm cihazları sorgulayın.*
+*Site ve bölge KIMLIĞINIZ olmayabilir. Bu durumda, site ve bölge KIMLIĞINI almak için tüm cihazları sorgulayın.*
 
-#### <a name="alert-fields"></a>Uyarı alanları
+#### <a name="alert-fields"></a>Uyarı alanları 
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
 | **ID** | Sayısal | No | - |
 | **ışınızda** | Sayısal | No | Dönem (UTC) |
 | **başlık** | Dize | No | - |
-| **message** | Dize | No | - |
+| **İleti** | Dize | No | - |
 | **inin** | Dize | No | Uyarı, Ikincil, büyük veya kritik |
 | **altyapısına** | Dize | No | Protokol Ihlali, Ilke Ihlali, kötü amaçlı yazılım, anomali veya operasyonel |
 | **sourceDevice** | Sayısal | Yes | Cihaz Kimliği |
 | **Hedef cihaz** | Sayısal | Yes | Cihaz Kimliği |
+| **sourceDeviceAddress** | Sayısal | Yes | IP, MAC, null |
+| **destinationDeviceAddress** | Sayısal | Yes | IP, MAC, null |
+| **Düzeltme adımları** | Dize | Yes | Uyarı bölümünde gösterilen düzeltme adımları|
+| **sensorName** | Dize | Yes | Konsolda Kullanıcı tarafından tanımlanan sensör adı|
+|**ZoneName & lt** | Dize | Yes | Konsolda sensörle ilişkili bölgenin adı|
+| **siteName** | Dize | Yes | Konsolda sensörle ilişkili sitenin adı |
 | **AdditionalInformation** | Ek bilgi nesnesi | Yes | - |
+
+Aşağıdaki bilgiler için/api/v2/gereklidir:
+
+- sourceDeviceAddress 
+- destinationDeviceAddress
+- Düzeltme adımları
+- sensorName
+- ZoneName & lt
+- siteName
 
 #### <a name="additional-information-fields"></a>Ek bilgi alanları
 
@@ -2206,7 +2225,7 @@ UUID 'yi içeren uyarı üzerinde gerçekleştirilecek eylemi temsil eden JSON n
 
 | Ad | Tür | Null Atanabilir | Değer listesi |
 |--|--|--|--|
-| **ön** | Dize | No | tanıtıcı veya Handleandöğren |
+| **action** | Dize | No | tanıtıcı veya Handleandöğren |
 
 #### <a name="request-example"></a>İstek örneği
 
@@ -2390,7 +2409,7 @@ Bakım sırasında sistemde gerçekleştirilen tüm açık, kapalı ve güncelle
 
 - **Tokenname**: belirli bir belirteç adıyla ilgili günlüklere filtre uygular.
 
-#### <a name="error-code"></a>Hata kodu
+#### <a name="error-code"></a>Hata kodu 
 
 - **200 (Tamam)**: eylem başarıyla tamamlandı.
 

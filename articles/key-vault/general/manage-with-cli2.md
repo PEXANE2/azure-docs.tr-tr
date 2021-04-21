@@ -3,19 +3,18 @@ title: CLı-Azure Key Vault kullanarak Azure Key Vault yönetme | Microsoft Docs
 description: Azure CLı kullanarak Key Vault ortak görevleri otomatikleştirmek için bu makaleyi kullanın
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c084df60fa2293a614726be44669a1465b399d2c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0b29b668b21c375dd1202652b5093526f648c300
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557216"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749609"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Azure CLı kullanarak Key Vault yönetme 
 

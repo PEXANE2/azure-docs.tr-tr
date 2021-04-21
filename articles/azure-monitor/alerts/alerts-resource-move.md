@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 02/14/2021
-ms.openlocfilehash: 727196f274db3abae75a38d3ecdf31a78dec0fab
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: d21ee7a60d11a154737c5380ec20d3e9c4490962
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725953"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786072"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Hedef kaynakları farklı bir Azure bölgesine hareket ettirildiğinde uyarı kurallarını veya eylem kurallarını güncelleştirme
 
@@ -104,8 +104,8 @@ Kapsamdaki kaynakların **yalnızca bir kısmı** taşınırsa, taşınan kaynak
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>Azure CLı kullanarak bir kuralın kapsamını değiştirme
 
-1.  Mevcut kuralı al ([ölçüm uyarıları](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-show), [etkinlik günlüğü uyarıları](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
-2.  Kural kapsamını doğrudan güncelleştirme ([ölçüm uyarıları](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [etkinlik günlüğü uyarıları](/cli/azure/monitor/activity-log/alert/scope))
+1.  Mevcut kuralı al ([ölçüm uyarıları](/cli/azure/monitor/metrics/alert#az_monitor_metrics_alert_show), [etkinlik günlüğü uyarıları](/cli/azure/monitor/activity-log/alert#az_monitor_activity_log-alert_list)).
+2.  Kural kapsamını doğrudan güncelleştirme ([ölçüm uyarıları](/cli/azure/monitor/metrics/alert#az_monitor_metrics_alert_update), [etkinlik günlüğü uyarıları](/cli/azure/monitor/activity-log/alert/scope))
 3.  Gerekirse, iki kurala ayırın (yukarıda belirtilen bazı ölçüm uyarıları durumları için geçerlidir).
 
 ## <a name="next-steps"></a>Sonraki adımlar

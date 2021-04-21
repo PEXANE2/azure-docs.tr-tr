@@ -4,12 +4,12 @@ description: Komut satırından bir JavaScript işlevi oluşturmayı ve ardında
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c9810b1eb9e5f6bc65843d65f2f2452eac1be703
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b8db78e56087e7cb777d1aa85391d4b6ac2aae27
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102447325"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787548"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>Hızlı başlangıç: Azure 'da komut satırından bir JavaScript işlevi oluşturma
 
@@ -118,7 +118,7 @@ Her bağlama bir yön, tür ve benzersiz bir ad gerektirir. HTTP tetikleyicisini
     az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime node --runtime-version 12 --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     
-    [Az functionapp Create](/cli/azure/functionapp#az-functionapp-create) komutu, Azure 'da işlev uygulaması oluşturur. Node.js 10 kullanıyorsanız, olarak da değiştirin `--runtime-version` `10` .
+    [Az functionapp Create](/cli/azure/functionapp#az_functionapp_create) komutu, Azure 'da işlev uygulaması oluşturur. Node.js 10 kullanıyorsanız, olarak da değiştirin `--runtime-version` `10` .
     
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
     

@@ -1,6 +1,6 @@
 ---
-title: İki Azure Cloud Services arasında takas/geçiş (genişletilmiş destek)
-description: İki Azure Cloud Services arasında takas/geçiş (genişletilmiş destek)
+title: Azure Cloud Services 'de dağıtımları değiştirme veya geçiş (genişletilmiş destek)
+description: Azure Cloud Services (genişletilmiş destek) ile dağıtım arasında geçiş yapmayı veya geçişi yapmayı öğrenin.
 ms.topic: how-to
 ms.service: cloud-services-extended-support
 author: surbhijain
@@ -8,46 +8,65 @@ ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 04/01/2021
 ms.custom: ''
-ms.openlocfilehash: 6f96656af9afd9874cc6273a9cea9ed43e8c69cc
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: f5e01075ffb460c7ddd70b40a6b19f7ea70dd776
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106294337"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748847"
 ---
-# <a name="swapswitch-between-two-azure-cloud-services-extended-support"></a>İki Azure Cloud Services arasında takas/geçiş (genişletilmiş destek)
-Cloud Services (genişletilmiş destek) ile iki bağımsız bulut hizmeti dağıtımı arasında takas yapabilirsiniz. Cloud Services (klasik) aksine, yuva kavramı Azure Resource Manager modelde yok. Bir bulut hizmetinin yeni bir sürümünü dağıtmaya karar verirken (genişletilmiş destek), bu dağıtımı kullanarak yeni yayınınızı hazırlamayabilmeniz ve test etmeniz için, başka bir mevcut bulut hizmeti (genişletilmiş destek) ile "takas edilebilir" yapabilirsiniz. Bulut hizmeti, yalnızca ikinci bulut hizmetini dağıtma sırasında (çiftin) başka bir bulut hizmeti ile ' swapyönetilebilir ' hale getirilebilir. ARM şablon tabanlı dağıtım yöntemi kullanılırken, bu işlem, bulut hizmeti nesnesinin ağ profili içindeki SwappableCloudService özelliğinin eşleştirilmiş bulut hizmeti KIMLIĞINE ayarlanarak yapılır. 
+# <a name="swap-or-switch-deployments-in-azure-cloud-services-extended-support"></a>Azure Cloud Services 'de dağıtımları değiştirme veya geçiş (genişletilmiş destek)
 
-```
+Azure Cloud Services (genişletilmiş destek) ile iki bağımsız bulut hizmeti dağıtımı arasında takas yapabilirsiniz. Azure Cloud Services 'den (klasik) farklı olarak, Azure Cloud Services 'daki Azure Resource Manager modeli (genişletilmiş destek) dağıtım yuvalarını kullanmaz. Azure Cloud Services 'de (genişletilmiş destek), bir bulut hizmetinin yeni bir sürümünü dağıtırken, bulut hizmetini Azure Cloud Services (genişletilmiş destek) ' de var olan bir bulut hizmetiyle "takas edilebilir" yapabilirsiniz.
+
+Dağıtımları değiştirdikten sonra, yeni bulut hizmeti dağıtımını kullanarak yeni sürümü kullanıma alabilir ve test edebilirsiniz. Aslında, takas, üretim sürümü için hazırlanan yeni bir bulut hizmeti yükseltir.
+
+> [!NOTE]
+> Azure Cloud Services (klasik) dağıtımı ve Azure Cloud Services (genişletilmiş destek) dağıtımı arasında geçiş yapamazsınız.
+
+Bir bulut hizmeti çiftinin ikinci kısmını dağıtırken, bulut hizmetini başka bir bulut hizmeti ile değiştirilebilir hale getirebilirsiniz.
+
+Azure Resource Manager şablonu (ARM şablonu), Azure portal veya REST API kullanarak dağıtımları takas edebilirsiniz.
+
+## <a name="arm-template"></a>ARM şablonu
+
+Bir ARM şablonu dağıtım yöntemi kullanıyorsanız, bulut hizmetlerini değiştirilebilir hale getirmek için `SwappableCloudService` `networkProfile` `cloudServices` nesnesindeki özelliğini EŞLEŞTIRILMIŞ bulut hizmetinin kimliğine ayarlayın:
+
+```json
 "networkProfile": {
  "SwappableCloudService": {
               "id": "[concat(variables('swappableResourcePrefix'), 'Microsoft.Compute/cloudServices/', parameters('cloudServicesToBeSwappedWith'))]"
             },
+        }
 ```
-> [!Note] 
-> Bulut hizmeti (klasik) ile bulut hizmeti arasında geçiş yapılamaz (genişletilmiş destek)
 
-İki bulut hizmetinin giderildiği URL 'Leri değiştirmek için **değiştirme** 'yi kullanın, yeni bir bulut hizmetini (hazırlanmış) üretim sürümüne yükselterek etkilidir.
-Dağıtımları Cloud Services sayfasından veya Panodan takas edebilirsiniz.
+## <a name="azure-portal"></a>Azure portalı
 
-1. [Azure Portal](https://portal.azure.com), güncelleştirmek istediğiniz bulut hizmetini seçin. Bu adım, bulut hizmeti örneği dikey penceresini açar.
-2. Dikey pencerede **takas** resmi ' ni seçin 
-    :::image type="content" source="media/swap-cloud-service-1.png" alt-text="bulut hizmeti değiştirme seçeneğini gösterir":::
-   
-3. Aşağıdaki onay istemi açılır
-   
-   :::image type="content" source="media/swap-cloud-service-2.png" alt-text="Görüntü, bulut hizmetini değiştirmeyi gösterir":::
-   
-4. Dağıtım bilgilerini doğruladıktan sonra, dağıtımları değiştirmek için Tamam ' ı seçin.
-Tek şey, iki bulut hizmeti için sanal IP adresleri (VIP) olduğundan, takas hızlı bir şekilde gerçekleşir.
+Azure portal bir dağıtımı değiştirmek için:
+
+1. Portal menüsünde **Cloud Services (genişletilmiş destek)** veya **Pano**' yı seçin.
+1. Güncelleştirmek istediğiniz bulut hizmetini seçin.
+1. Bulut hizmeti **'Ne genel bakış** bölümünde **takas**' ı seçin:
+
+   :::image type="content" source="media/swap-cloud-service-portal-swap.png" alt-text="Bulut hizmeti için takas sekmesini gösteren ekran görüntüsü.":::
+
+1. Değiştirme onayı bölmesinde, dağıtım bilgilerini doğrulayın ve ardından dağıtımları değiştirmek için **Tamam** ' ı seçin:
+
+   :::image type="content" source="media/swap-cloud-service-portal-confirm.png" alt-text="Dağıtım takas bilgisinin onaylandığını gösteren ekran görüntüsü.":::
+
+Yapılan tek şey, dağıtılan bulut hizmeti için sanal IP adresi olduğundan, dağıtımlar hızla takas edilir.
 
 İşlem maliyetlerini kaydetmek için, bulunan bulut hizmetinizin beklendiği gibi çalıştığını doğruladıktan sonra bulut hizmetlerinden birini (uygulamanızın dağıtımı için hazırlama ortamı olarak belirlenmiş) silebilirsiniz.
 
-İki bulut hizmeti genişletilmiş destek dağıtımı arasında bir ' takas ' gerçekleştirmeye yönelik REST API 'SI aşağıda verilmiştir:
+## <a name="rest-api"></a>REST API
+
+REST API kullanarak Azure Cloud Services (genişletilmiş destek) yeni bir bulut hizmetleri dağıtımına geçiş yapmak için aşağıdaki komutu ve JSON yapılandırmasını kullanın:
+
 ```http
 POST https://management.azure.com/subscriptions/subId/providers/Microsoft.Network/locations/region/setLoadBalancerFrontendPublicIpAddresses?api-version=2020-11-01
 ```
-```
+
+```json
 {
   "frontendIPConfigurations": [
     {
@@ -68,23 +87,36 @@ POST https://management.azure.com/subscriptions/subId/providers/Microsoft.Networ
     }
   ]
  }
+}
 ```
+
 ## <a name="common-questions-about-swapping-deployments"></a>Dağıtımları değiştirme hakkında sık sorulan sorular
 
-### <a name="what-are-the-prerequisites-for-swapping-between-two-cloud-services"></a>İki bulut hizmeti arasında takas önkoşulları nelerdir?
-Başarılı bir bulut hizmeti (genişletilmiş destek) takası için iki temel önkoşul vardır:
-* Değiştirilebilir bulut hizmetlerinden biri için statik/ayrılmış bir IP adresi kullanmak istiyorsanız, diğer bulut hizmeti de ayrılmış bir IP kullanmalıdır. Aksi takdirde, değiştirme başarısız olur.
-* Değiştirme işlemini gerçekleştirebilmeniz için rollerinizin tüm örneklerinin çalışıyor olması gerekir. Örneklerinizin durumunu Azure portal genel bakış dikey penceresinde kontrol edebilirsiniz. Alternatif olarak, Windows PowerShell 'de Get-AzRole komutunu da kullanabilirsiniz.
+Azure Cloud Services 'de dağıtım takas (genişletilmiş destek) hakkında sık sorulan sorulara yönelik bu yanıtları gözden geçirin.
 
-Konuk işletim sistemi güncelleştirmeleri ve hizmet düzeltme işlemleri de dağıtım yamasının başarısız olmasına neden olabilir. Daha fazla bilgi için bkz. Cloud Service dağıtım sorunlarını giderme.
+### <a name="what-are-the-prerequisites-for-swapping-to-a-new-cloud-services-deployment"></a>Yeni bir bulut hizmetleri dağıtımına değiştirme önkoşulları nelerdir?
 
-### <a name="can-i-perform-a-vip-swap-in-parallel-with-another-mutating-operation"></a>Bir VIP takas işlemini başka bir değiştirici işlemle paralel olarak gerçekleştirebilir miyim?
-Hayır. VIP takas, bulut hizmetinde başka bir işlem işlemi yapılmadan önce yalnızca tamamlanmalı bir ağ değişikdir. Bulut hizmetinde bir güncelleştirme, silme veya otomatik ölçeklendirme işlemi gerçekleştirme, bir VIP takası devam ederken veya başka bir işlem işlemi devam ederken bir VIP takas tetikleniyor, bulut hizmetini kurtarmanın mümkün olmadığı istenmeyen bir durumda bırakabilir. 
+Azure Cloud Services başarılı bir dağıtım takas işlemi için iki temel önkoşulları karşılamanız gerekir (genişletilmiş destek):
 
-### <a name="does-a-swap-incur-downtime-for-my-application-how-should-i-handle-it"></a>Bir değiştirme uygulamam için kapalı kalma süresine neden olur mu? Bunu nasıl işleymem gerekir?
-Önceki bölümde açıklandığı gibi, Azure Yük dengeleyicide yalnızca bir yapılandırma değişikliği olduğu için bir bulut hizmeti takası genellikle hızlıdır. Bazı durumlarda, 10 veya daha fazla saniye sürebilir ve geçici bağlantı hatalarıyla sonuçlanır. Müşterilerinizin etkisini sınırlandırmak için, istemci yeniden deneme mantığını uygulamayı düşünün.
+* Değiştirilebilir bulut hizmetlerinden biri için statik veya ayrılmış bir IP adresi kullanmak istiyorsanız, diğer bulut hizmeti de ayrılmış bir IP adresi kullanmalıdır. Aksi takdirde, değiştirme başarısız olur.
+* Değiştirme işleminin başarılı olması için rollerinizin tüm örneklerinin çalışıyor olması gerekir. Örneklerinizin durumunu denetlemek için, Azure portal, yeni dağıtılan bulut hizmeti için **Genel Bakış ' a** gidin veya `Get-AzRole` Windows PowerShell 'de komutunu kullanın.
+
+Konuk işletim sistemi güncelleştirmeleri ve hizmet düzeltme işlemleri bir dağıtım değiştirmenin başarısız olmasına neden olabilir. Daha fazla bilgi için bkz. [bulut hizmeti dağıtımlarında sorun giderme](../cloud-services/cloud-services-troubleshoot-deployment-problems.md).
+
+### <a name="can-i-make-a-vip-swap-in-parallel-with-another-mutating-operation"></a>Bir VIP takasını, başka bir değiştirici işlemle paralel yapabilir miyim?
+
+Hayır. Bir VIP takas, bir bulut hizmetinde başka bir işlem işlemi başlatılmadan önce yalnızca ağ salt ağ değişikdir. Bir bulut hizmeti için bir güncelleştirme, silme veya otomatik ölçeklendirme işlemi başlatmak veya başka bir işlem işlemi devam ederken bir VIP takas tetiklenmesi, bulut hizmetini kurtarılamaz bir hata durumuna yerleştirebilir.
+
+### <a name="does-a-swap-incur-downtime-for-my-application-and-how-should-i-handle-it"></a>Bir değiştirme uygulamam için kapalı kalma süresi doğurur ve bunu nasıl işleymem gerekir?
+
+Yalnızca Azure Yük dengeleyicide bir yapılandırma değişikliği olduğundan, bulut hizmeti takası genellikle hızlıdır. Bazı durumlarda, takas 10 veya daha fazla saniye sürebilir ve geçici bağlantı hatalarıyla sonuçlanır. Kullanıcıların değiştirme efektini sınırlamak için, istemci yeniden deneme mantığını uygulamayı düşünün.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
-- Cloud Services için [dağıtım önkoşullarını](deploy-prerequisite.md) gözden geçirin (genişletilmiş destek).
-- Cloud Services için [sık sorulan soruları](faq.md) gözden geçirin (genişletilmiş destek).
-- [Azure Portal](deploy-portal.md), [PowerShell](deploy-powershell.md), [şablon](deploy-template.md) veya [Visual Studio](deploy-visual-studio.md)kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtın.
+
+* Azure Cloud Services [dağıtım önkoşullarını](deploy-prerequisite.md) gözden geçirin (genişletilmiş destek).
+* Azure Cloud Services (genişletilmiş destek) [hakkında sık sorulan soruları](faq.md) gözden geçirin.
+* Aşağıdaki seçeneklerden birini kullanarak bir Azure Cloud Services (genişletilmiş destek) bulut hizmeti dağıtın:
+  * [Azure portalı](deploy-portal.md)
+  * [PowerShell](deploy-powershell.md)
+  * [ARM şablonu](deploy-template.md)
+  * [Visual Studio](deploy-visual-studio.md)

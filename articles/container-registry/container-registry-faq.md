@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: 5550c53289228f154fab485b4b7bbff17555aad7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a8c007d7f4419ddbe1555b50ceb6fb92ea0a6f98
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045748"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783908"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
 
@@ -110,7 +110,7 @@ Güvenlik duvarı kuralı değişikliklerinin yayılması biraz zaman alır. Gü
 - [Azure Container Registry Içerik güvenini destekliyor mu?](#does-azure-container-registry-support-content-trust)
 - [Kayıt defteri kaynağını yönetme izni olmadan çekme veya gönderme görüntülerine erişim izni Nasıl yaparım? mı?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [Kayıt defteri için otomatik görüntü karantinasını etkinleştirmek Nasıl yaparım? mı?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
-- [Anonim çekme erişimini etkinleştirmek Nasıl yaparım? istiyor musunuz?](#how-do-i-enable-anonymous-pull-access)
+- [Anonim çekme erişimini nasıl etkinleştirebilirim?](#how-do-i-enable-anonymous-pull-access)
 - [Dağıtılabilir olmayan katmanları bir kayıt defterine itmi Nasıl yaparım??](#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Docker kayıt defteri HTTP API v2 'ye Nasıl yaparım? erişin?
@@ -258,7 +258,7 @@ Yalnızca `AcrPull` veya `AcrPush` rolü kullanımıyla, atanan oturum, Azure 'd
 
 Görüntü karantina Şu anda ACR 'nin önizleme özelliğidir. Yalnızca güvenlik taramasını başarıyla geçen görüntülerin normal kullanıcılara görünür olması için bir kayıt defterinin karantina modunu etkinleştirebilirsiniz. Ayrıntılar için bkz. [ACR GitHub deposu](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
-### <a name="how-do-i-enable-anonymous-pull-access"></a>Anonim çekme erişimini etkinleştirmek Nasıl yaparım? istiyor musunuz?
+### <a name="how-do-i-enable-anonymous-pull-access"></a>Anonim çekme erişimini nasıl etkinleştirebilirim?
 
 Anonim (kimliği doğrulanmamış) çekme erişimi için bir Azure Kapsayıcı kayıt defteri ayarlamak, standart ve Premium [Hizmet katmanlarında](container-registry-skus.md)kullanılabilen bir önizleme özelliğidir. 
 
@@ -484,7 +484,7 @@ Lütfen ağ yöneticinize başvurun veya ağ yapılandırmanızı ve bağlantın
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Neden çekme veya gönderim isteği izin verilmeyen işlemle başarısız oluyor?
 
 İşlemlere izin verilmeyen bazı senaryolar aşağıda verilmiştir:
-* Klasik kayıt defterleri artık desteklenmiyor. Lütfen [az ACR Update](/cli/azure/acr#az-acr-update) veya Azure Portal kullanarak desteklenen bir [hizmet katmanına](./container-registry-skus.md) yükseltin.
+* Klasik kayıt defterleri artık desteklenmiyor. Lütfen [az ACR Update](/cli/azure/acr#az_acr_update) veya Azure Portal kullanarak desteklenen bir [hizmet katmanına](./container-registry-skus.md) yükseltin.
 * Resim veya depo silinemeyebilir veya güncelleştirilemeyebilir. Geçerli öznitelikleri görüntülemek için [az ACR Show Repository](./container-registry-image-lock.md) komutunu kullanabilirsiniz.
 * Görüntü karantinaya alındı ise bazı işlemlere izin verilmez. [Karantina](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)hakkında daha fazla bilgi edinin.
 * Kayıt defteriniz [depolama sınırına](container-registry-skus.md#service-tier-features-and-limits)ulaşmış olabilir.

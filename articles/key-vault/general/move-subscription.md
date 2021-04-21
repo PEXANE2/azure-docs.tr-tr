@@ -3,19 +3,18 @@ title: Kasayı farklı bir aboneliğe taşımak Azure Key Vault | Microsoft Docs
 description: Anahtar kasasını farklı bir aboneliğe taşıma Kılavuzu.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c23f961b8aeaae3e338f9c513a9f2b9d07b64abb
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 65dc9da03a6b763d419c51e53bf756550e8b56a4
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056411"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751859"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault'u başka bir aboneliğe taşıma
 
@@ -124,5 +123,5 @@ Yönetilen kimlik kullanıyorsanız, eski kimlik artık doğru Azure Active Dire
 - [Anahtarlar, gizli diziler ve sertifikalar](about-keys-secrets-certificates.md) hakkında daha fazla bilgi edinin
 - Key Vault günlüklerinin nasıl yorumlanacağı dahil olmak üzere kavramsal bilgiler için bkz. [Key Vault günlüğe kaydetme](logging.md)
 - [Key Vault Geliştirici Kılavuzu](../general/developers-guide.md)
-- [Anahtar kasanızın güvenliğini sağlama](secure-your-key-vault.md)
+- [Anahtar kasanızın güvenliğini sağlama](security-overview.md)
 - [Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma](network-security.md)

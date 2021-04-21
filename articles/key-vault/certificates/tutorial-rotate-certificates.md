@@ -3,7 +3,6 @@ title: Öğretici-Key Vault 'de sertifika otomatik döndürme sıklığı günce
 description: Azure Key Vault Azure portal kullanarak bir sertifikanın otomatik döndürme sıklığını güncelleştirmeyi gösteren öğretici
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
@@ -11,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: ec648f02918717dad6b739aa6ae99206bcec1d6e
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 48a531e054bf92c8ddc7761689b8fdf1df8a28a7
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581822"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750023"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Öğretici: Key Vault içinde sertifika otomatik döndürmeyi yapılandırma
 
@@ -80,10 +79,12 @@ Key Vault CAs ile belirlenen ortaklıklar aracılığıyla sertifikaları otomat
    - **Geçerlilik süresi**: değeri girin (ay). Kısa süreli sertifikaların oluşturulması önerilen bir güvenlik uygulamasıdır. Varsayılan olarak, yeni oluşturulan sertifikanın geçerlilik değeri 12 aydan oluşur.
    - **Ömür eylemi türü**: sertifikanın otomatik yenileme ve uyarı eylemini seçin ve ardından **yüzde ömrü** veya **süre sonu öncesindeki gün sayısını** güncelleştirin. Varsayılan olarak, bir sertifikanın otomatik yenilenmesi, yaşam süresinin yüzde 80 ' sinden belirlenir. Aşağı açılan menüden, aşağıdaki seçeneklerden birini seçin.
 
-        |  Belirli bir zamanda otomatik olarak Yenile| Belirli bir zamanda tüm kişileri e-postayla gönder |
-        |-----------|------|
-        |Bu seçeneğin belirlenmesi, oto dönüşü *etkinleştirebilir* . | Bu seçeneğin *belirlenmesi otomatik olarak döndürülmez, ancak* yalnızca ilgili kişileri uyarır.|
-         You can learn about [setting up Email contact here](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration)
+      |  Belirli bir zamanda otomatik olarak Yenile| Belirli bir zamanda tüm kişileri e-postayla gönder |
+      |-----------|------|
+      |Bu seçeneğin belirlenmesi, oto dönüşü *etkinleştirebilir* . | Bu seçeneğin *belirlenmesi otomatik olarak döndürülmez, ancak* yalnızca ilgili kişileri uyarır.|
+      
+      [Buraya e-posta kişisi ayarlama](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration) hakkında bilgi edinebilirsiniz
+
 1. **Oluştur**’u seçin.
 
 ![Sertifika yaşam döngüsü](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)

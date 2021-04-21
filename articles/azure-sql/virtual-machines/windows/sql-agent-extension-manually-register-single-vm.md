@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 3cea15114e125951a8fbec73f965b272a4f8053d
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: e34876c76259b8274e0b0ef9059659802eb55cf1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284167"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765458"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>SQL IaaS Aracısı Uzantısı ile SQL Server VM kaydetme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -304,7 +304,7 @@ Azure portal kullanarak SQL Server VM uzantıdan kaydını silmek için şu adı
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Uzantınızın Azure CLı ile SQL Server VM kaydını silmek için [az SQL VM Delete](/cli/azure/sql/vm#az-sql-vm-delete) komutunu kullanın. Bu işlem SQL Server VM *kaynağını* kaldırır ancak sanal makineyi silmez. 
+Uzantınızın Azure CLı ile SQL Server VM kaydını silmek için [az SQL VM Delete](/cli/azure/sql/vm#az_sql_vm_delete) komutunu kullanın. Bu işlem SQL Server VM *kaynağını* kaldırır ancak sanal makineyi silmez. 
 
 
 ```azurecli-interactive

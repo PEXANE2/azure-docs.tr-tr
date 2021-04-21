@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 3442c3b6023edcde97aabcb13e91120ba6811027
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d94640e1c6a037893fb1ad9198b82195c46dd24
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91323082"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768134"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure blok zinciri hizmeti blok zinciri üyesi oluşturma
 
@@ -34,7 +34,7 @@ CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlang
 
 1. Oturum açın.
 
-    CLI’nın yerel yüklemesini kullanıyorsanız [az login](/cli/azure/reference-index#az-login) komutunu kullanarak oturum açın.
+    CLI’nın yerel yüklemesini kullanıyorsanız [az login](/cli/azure/reference-index#az_login) komutunu kullanarak oturum açın.
 
     ```azurecli
     az login
@@ -56,7 +56,7 @@ CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlang
 
     Tüm Azure kaynakları gibi Azure blok zinciri hizmeti 'nin bir kaynak grubuna dağıtılması gerekir. Kaynak grupları, ilgili Azure kaynaklarını düzenlemenizi ve yönetmenizi sağlar.
 
-    Bu hızlı başlangıç için, _eastus_ konumunda aşağıdaki [az Group Create](/cli/azure/group#az-group-create) komutuyla _myresourcegroup_ adlı bir kaynak grubu oluşturun:
+    Bu hızlı başlangıç için, _eastus_ konumunda aşağıdaki [az Group Create](/cli/azure/group#az_group_create) komutuyla _myresourcegroup_ adlı bir kaynak grubu oluşturun:
 
     ```azurecli-interactive
     az group create \

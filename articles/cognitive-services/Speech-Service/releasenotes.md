@@ -8,15 +8,15 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 04/20/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: e02fbe0f77a53b7d3f8f3ce420bf46189dc85a65
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: f97ecedd4088a825b9ec5a076f4da70df92a3269
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600990"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775412"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
 
@@ -67,6 +67,10 @@ Bu sürümle birlikte, artık 60 dil/yerel ayarlarda Toplam 142 sinir sesi deste
 - **C++/c #/Java/Objective-C/Python**: ses mikrofonu ve konuşmacı denetimi için ayrı paylaşılan kitaplık desteği eklendi. Bu, gerekli ses kitaplığı bağımlılıkları olmayan ortamlarda SDK 'Yı kullanmanıza izin verir.
 - **Amaç-C/Swift**: şemsiye Header ile modül çerçevesi için destek eklendi. Bu, konuşma SDK 'sını iOS/Mac hedefi-C/Swift uygulamalarında bir modül olarak içeri aktarmaya izin verir. Bu, [GitHub sorununun #452](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/452)adresleridir.
 - **Python**: Python [3,9](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-python) Için destek eklendi ve Python 'un [3,5 için son geçerlilik süresi](https://devguide.python.org/devcycle/#end-of-life-branches)için Python 3,5 için destek eklendi.
+
+**Bilinen sorunlar**
+
+- **C++/c #/Java**: `DialogServiceConnector` `CustomCommandsConfig` özel bir komut uygulamasına erişmek için kullanılamaz ve bunun yerine bir bağlantı hatasıyla karşılaşır. Bu, uygulama KIMLIĞINIZI ile isteğe el ile ekleyerek geçici bir çözüm olabilir `config.SetServiceProperty("X-CommandsAppId", "your-application-id", ServicePropertyChannel.UriQueryParameter)` . Beklenen davranışı `CustomCommandsConfig` sonraki sürümde geri yüklenecektir.
 
 #### <a name="improvements"></a>Geliştirmeleri
 
