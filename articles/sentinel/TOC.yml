@@ -96,6 +96,8 @@
               href: connect-azure-kubernetes-service.md
             - name: Azure SQL veritabanı günlükleri
               href: connect-azure-sql-logs.md
+            - name: Azure Depolama hesapları
+              href: connect-azure-storage-account.md
             - name: Azure Web Uygulaması Güvenlik Duvarı (WAF)
               href: connect-azure-waf.md
             - name: IoT için Defender (daha önce IoT için ASC)
@@ -298,7 +300,7 @@
     - name: Popüler Azure Sentinel çalışma kitapları
       href: top-workbooks.md
     - name: Azure CLI
-      href: /cli/azure/ext/sentinel/sentinel
+      href: /cli/azure/sentinel
     - name: Azure RBAC rolleri
       items:
         - name: Tüm Azure rolleri

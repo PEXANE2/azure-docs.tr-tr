@@ -10,12 +10,12 @@ ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 11323f2aec05935b9dc45187ed54597e61af924d
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 4a8d1f872ca042429276b8f0e1112bc5837d8e38
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554132"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869284"
 ---
 # <a name="enable-soft-delete-for-blobs"></a>Bloblar için geçici silmeyi etkinleştirme
 
@@ -62,7 +62,7 @@ $properties.DeleteRetentionPolicy.Days
 
 # <a name="cli"></a>[CLI](#tab/azure-CLI)
 
-Azure CLı ile blob geçici silme özelliğini etkinleştirmek için [az Storage Account blob-Service-Properties Update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) komutunu çağırın, bu durumda saklama süresini gün olarak belirtin.
+Azure CLı ile blob geçici silme özelliğini etkinleştirmek için [az Storage Account blob-Service-Properties Update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) komutunu çağırın, bu durumda saklama süresini gün olarak belirtin.
 
 Aşağıdaki örnek, blob geçici silmeyi sağlar ve bekletme süresini yedi güne ayarlar. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
@@ -73,7 +73,7 @@ az storage account blob-service-properties update --account-name <storage-accoun
     --delete-retention-days 7
 ```
 
-Blob geçici silme için geçerli ayarları denetlemek için [az Storage Account blob-Service-Properties Show](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_show) komutunu çağırın:
+Blob geçici silme için geçerli ayarları denetlemek için [az Storage Account blob-Service-Properties Show](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_show) komutunu çağırın:
 
 ```azurecli-interactive
 az storage account blob-service-properties show --account-name <storage-account> \

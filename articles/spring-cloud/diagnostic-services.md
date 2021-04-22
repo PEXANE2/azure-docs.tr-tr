@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 68b9aee49e4cf7c02c07fc7dd90e9cc6065a443c
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 6472ba7dd055de97a1855211f21fd0c75eea814f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259430"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874126"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme
 
@@ -27,7 +27,7 @@ Azure Spring Cloud 'ın tanılama işlevini kullanarak, aşağıdaki hizmetlerde
 İzlemek istediğiniz günlük kategorisini ve ölçüm kategorisini seçin.
 
 > [!TIP]
-> Günlüklerinizi akışa almak mı istiyorsunuz? Bu [Azure CLI komutuna](/cli/azure/ext/spring-cloud/spring-cloud/app#ext-spring-cloud-az-spring-cloud-app-logs)göz atın!
+> Günlüklerinizi akışa almak mı istiyorsunuz? Bu [Azure CLI komutuna](/cli/azure/spring-cloud/app#az_spring_cloud_app_logs)göz atın!
 
 ## <a name="logs"></a>Günlükler
 

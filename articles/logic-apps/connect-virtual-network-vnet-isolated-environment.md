@@ -5,15 +5,15 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/30/2021
-ms.openlocfilehash: a56a41b704b12da08cf86b450ac1c734409c8032
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 04/21/2021
+ms.openlocfilehash: bfef9f2b5420ac9377cc369d7bf9a9bdac76743b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219323"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874234"
 ---
-# <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE) kullanarak Azure Logic Apps Azure sanal ağlarına bağlanma
+# <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Tümleştirme hizmeti ortamını (ISE) kullanarak Azure Logic Apps'ten Azure sanal ağlarına bağlanma
 
 Mantıksal uygulamalarınızın ve tümleştirme hesaplarınızın bir [Azure sanal ağına](../virtual-network/virtual-networks-overview.md)erişmesi gereken senaryolarda, bir [ *tümleştirme hizmeti ortamı* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)oluşturun. ISE, "küresel" çok kiracılı Logic Apps hizmetinden ayrı tutulan, ayrılmış depolama alanının ve diğer kaynakların kullanıldığı ayrılmış bir ortamdır. Bu ayrım Ayrıca diğer Azure kiracılarının uygulamalarınızın performansı üzerinde sahip olabileceği etkileri azaltır. ISE, size kendi statik IP adreslerinizi de sağlar. Bu IP adresleri, genel, çok kiracılı hizmette Logic Apps tarafından paylaşılan statik IP adreslerinden ayrıdır.
 
@@ -122,7 +122,7 @@ Bu tabloda, ıSE 'nizin erişilebilir olması ve bu bağlantı noktalarının am
 | Amaç | Kaynak hizmet etiketi veya IP adresleri | Kaynak bağlantı noktaları | Hedef hizmet etiketi veya IP adresleri | Hedef bağlantı noktaları | Notlar |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | Sanal ağ içinde ıntersubnet iletişimi | ISE alt ağları ile sanal ağın adres alanı | * | ISE alt ağları ile sanal ağın adres alanı | * | Sanal ağınızdaki alt ağlar *arasında* akış için gereken trafik. <p><p>**Önemli**: her bir alt ağdaki *Bileşenler* arasında akış yapılacak trafik için, her alt ağ içinde tüm bağlantı noktalarını açtığınızdan emin olun. |
-| Mantıksal uygulamanızdan iletişim | **VirtualNetwork** | * | Hedefe göre farklılık gösterir | 80, 443 | Hedef, mantıksal uygulamanızın iletişim kurması gereken dış hizmetin uç noktalarına göre farklılık gösterir. |
+| Mantıksal uygulamanızdan iletişim | **VirtualNetwork** | * | Hedefe göre farklılık gösterir | Hedefe göre farklılık gösterir | Hedef bağlantı noktaları, mantıksal uygulamanızın iletişim kurması gereken dış hizmetlerin uç noktalarına bağlı olarak farklılık gösterir. <p><p>Örneğin, hedef bağlantı noktası bir Web hizmeti için 443, bir SMTP hizmeti için bağlantı noktası 25, bir SFTP hizmeti için bağlantı noktası 22 ve bu şekilde devam eder. |
 | Azure Active Directory | **VirtualNetwork** | * | **AzureActiveDirectory** | 80, 443 ||
 | Azure depolama bağımlılığı | **VirtualNetwork** | * | **Depolama** | 80, 443, 445 ||
 | Bağlantı yönetimi | **VirtualNetwork** | * | **AppService** | 443 ||

@@ -1167,7 +1167,7 @@ items:
   - name: Başvuru
     items:
       - name: Azure CLI
-        href: /cli/azure/ext/synapse/
+        href: /cli/azure/
       - name: Veritabanı harmanlama türleri
         href: sql/reference-collation-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
       - name: Başlayın

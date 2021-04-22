@@ -3,12 +3,12 @@ title: Program aracılığıyla Azure panoları oluşturma
 description: Program aracılığıyla Azure panoları oluşturmak için Azure portal bir panoyu şablon olarak kullanın. JSON başvurusunu içerir.
 ms.topic: how-to
 ms.date: 12/4/2020
-ms.openlocfilehash: 416eeb772e347b28fcb4a4dcc93c746562ea3571
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 92848ac238ff11a90afc82713639b8abebf076ec
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767068"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878803"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Program aracılığıyla Azure panoları oluşturma
 
@@ -658,27 +658,27 @@ Ortamınızı Azure CLı için hazırlayın.
 
 - Bu örnekler aşağıdaki panoyu kullanır: [ üzerindeportal-dashboard-template-testvm.js](https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json). Açılı parantez içindeki içeriği değerlerinizle değiştirin.
 
-Bir pano oluşturmak için [az Portal Dashboard Create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) komutunu çalıştırın:
+Bir pano oluşturmak için [az Portal Dashboard Create](/cli/azure/portal/dashboard#az_portal_dashboard_create) komutunu çalıştırın:
 
 ```azurecli
 az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
    --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-[Az Portal Dashboard Update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) komutunu kullanarak bir panoyu güncelleştirebilirsiniz:
+[Az Portal Dashboard Update](/cli/azure/portal/dashboard#az_portal_dashboard_update) komutunu kullanarak bir panoyu güncelleştirebilirsiniz:
 
 ```azurecli
 az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
 --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-[Az Portal panosu göster](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) komutunu çalıştırarak bir panonun ayrıntılarına bakın:
+[Az Portal panosu göster](/cli/azure/portal/dashboard#az_portal_dashboard_show) komutunu çalıştırarak bir panonun ayrıntılarına bakın:
 
 ```azurecli
 az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
 ```
 
-Geçerli abonelik için tüm panoları görmek için [az Portal Dashboard List](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list)kullanın:
+Geçerli abonelik için tüm panoları görmek için [az Portal Dashboard List](/cli/azure/portal/dashboard#az_portal_dashboard_list)kullanın:
 
 ```azurecli
 az portal dashboard list
@@ -694,4 +694,4 @@ az portal dashboard list --resource-group myResourceGroup
 
 Masaüstleri hakkında daha fazla bilgi için bkz. [Azure Portal ayarlarını ve tercihlerini yönetme](set-preferences.md).
 
-Panolar için Azure CLı desteği hakkında daha fazla bilgi için, bkz. [az Portal Dashboard](/cli/azure/ext/portal/portal/dashboard).
+Panolar için Azure CLı desteği hakkında daha fazla bilgi için, bkz. [az Portal Dashboard](/cli/azure/portal/dashboard).

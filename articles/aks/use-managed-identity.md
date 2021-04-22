@@ -4,12 +4,12 @@ description: Azure Kubernetes hizmeti 'nde (AKS) yönetilen kimlikleri nasıl ku
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: 59da03985f0bc9248fdb498d7b0222158029e0d8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7eb0ab6247e8afc27f938b8b4a25d1fb1ee723f4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777680"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877003"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
 
@@ -209,10 +209,144 @@ Kendi yönetilen kimliklerinizi kullanarak başarılı bir küme oluşturma, bu 
  },
 ```
 
+## <a name="bring-your-own-kubelet-mi-preview"></a>Kendi kubelet MI (Önizleme) getirin
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+Kubelet kimliği, küme oluşturma işleminden önce mevcut kimliğe erişim izni verir. Bu özellik, önceden oluşturulmuş yönetilen kimlik ile ACR 'ye bağlantı gibi senaryolara olanak sağlar.
+
+### <a name="prerequisites"></a>Önkoşullar
+
+- Azure CLı, sürüm 2.21.1 veya daha yeni bir sürümün yüklü olması gerekir.
+- Aks-Preview, sürüm 0.5.10 veya daha yeni bir sürümün yüklü olması gerekir.
+
+### <a name="limitations"></a>Sınırlamalar
+
+- Yalnızca User-Assigned yönetilen bir kümeyle birlikte kullanılabilir.
+- Azure Kamu Şu anda desteklenmiyor.
+- Azure Çin 21Vianet Şu anda desteklenmemektedir.
+
+İlk olarak, Kubelet kimliği için özellik bayrağını kaydedin:
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n CustomKubeletIdentityPreview
+```
+
+Durumun *kayıtlı* gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/CustomKubeletIdentityPreview')].{Name:name,State:properties.state}"
+```
+
+Hazırlandığınızda, [az Provider Register][az-provider-register] komutunu kullanarak *Microsoft. Containerservice* kaynak sağlayıcısı kaydını yenileyin:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="create-or-obtain-managed-identities"></a>Yönetilen kimlikler oluşturma veya alma
+
+Henüz bir denetim düzlemi yönetilen kimliğiniz yoksa, devam edip bir tane oluşturmanız gerekir. Aşağıdaki örnekte [az Identity Create][az-identity-create] komutu kullanılmaktadır:
+
+```azurecli-interactive
+az identity create --name myIdentity --resource-group myResourceGroup
+```
+
+Sonuç şöyle görünmelidir:
+
+```output
+{                                  
+  "clientId": "<client-id>",
+  "clientSecretUrl": "<clientSecretUrl>",
+  "id": "/subscriptions/<subscriptionid>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity", 
+  "location": "westus2",
+  "name": "myIdentity",
+  "principalId": "<principalId>",
+  "resourceGroup": "myResourceGroup",                       
+  "tags": {},
+  "tenantId": "<tenant-id>",
+  "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+}
+```
+
+Henüz bir kubelet yönetilen kimliğiniz yoksa, devam edip bir tane oluşturmanız gerekir. Aşağıdaki örnekte [az Identity Create][az-identity-create] komutu kullanılmaktadır:
+
+```azurecli-interactive
+az identity create --name myKubeletIdentity --resource-group myResourceGroup
+```
+
+Sonuç şöyle görünmelidir:
+
+```output
+{
+  "clientId": "<client-id>",
+  "clientSecretUrl": "<clientSecretUrl>",
+  "id": "/subscriptions/<subscriptionid>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myKubeletIdentity", 
+  "location": "westus2",
+  "name": "myKubeletIdentity",
+  "principalId": "<principalId>",
+  "resourceGroup": "myResourceGroup",                       
+  "tags": {},
+  "tenantId": "<tenant-id>",
+  "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+}
+```
+
+Mevcut yönetilen kimliğiniz aboneliğinizin bir parçasıysa, bunu sorgulamak için [az Identity List][az-identity-list] komutunu kullanabilirsiniz:
+
+```azurecli-interactive
+az identity list --query "[].{Name:name, Id:id, Location:location}" -o table
+```
+
+### <a name="create-a-cluster-using-kubelet-identity"></a>Kubelet kimliğini kullanarak bir küme oluşturma
+
+Artık kümenizi mevcut kimliklerinizde oluşturmak için aşağıdaki komutu kullanabilirsiniz. Denetim düzlemi kimlik kimliğini `assign-identity` ve aracılığıyla kubelet yönetilen kimliğini sağlayın `assign-kublet-identity` :
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myManagedCluster \
+    --network-plugin azure \
+    --vnet-subnet-id <subnet-id> \
+    --docker-bridge-address 172.17.0.1/16 \
+    --dns-service-ip 10.2.0.10 \
+    --service-cidr 10.2.0.0/24 \
+    --enable-managed-identity \
+    --assign-identity <identity-id> \
+    --assign-kubelet-identity <kubelet-identity-id> \
+```
+
+Kendi kubelet yönetilen kimliğinizi kullanarak başarılı bir küme oluşturma işlemi şu çıktıyı içerir:
+
+```output
+  "identity": {
+    "principalId": null,
+    "tenantId": null,
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "/subscriptions/<subscriptionid>/resourcegroups/resourcegroups/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity": {
+        "clientId": "<client-id>",
+        "principalId": "<principal-id>"
+      }
+    }
+  },
+  "identityProfile": {
+    "kubeletidentity": {
+      "clientId": "<client-id>",
+      "objectId": "<object-id>",
+      "resourceId": "/subscriptions/<subscriptionid>/resourcegroups/resourcegroups/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myKubeletIdentity"
+    }
+  },
+```
+
 ## <a name="next-steps"></a>Sonraki adımlar
-* Yönetilen kimlik etkin kümeler oluşturmak için [Azure Resource Manager (ARM) şablonları ][aks-arm-template] kullanın.
+* Yönetilen kimlik etkin kümeler oluşturmak için [Azure Resource Manager şablonlarını ][aks-arm-template] kullanın.
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
+
+<!-- LINKS - internal -->
 [az-identity-create]: /cli/azure/identity#az_identity_create
 [az-identity-list]: /cli/azure/identity#az_identity_list
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register

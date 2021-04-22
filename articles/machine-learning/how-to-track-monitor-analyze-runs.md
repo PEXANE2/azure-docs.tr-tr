@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 04/19/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 01c3dacc2754a3df6afb87b160ca2feea81807ad
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: af591a5defcef1e8d043d54f08447324a34a10c4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107820446"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876304"
 ---
 # <a name="start-monitor-and-track-run-history"></a>Çalıştırma geçmişini başlatma, izleme ve izleme
 
@@ -101,7 +101,7 @@ Aşağıdaki öğeler gerekir:
     
         Bu komut `.azureml` , örnek runconfig ve Conda ortam dosyalarını içeren bir alt dizin oluşturur. Ayrıca `config.json` , Azure Machine Learning çalışma alanınız ile iletişim kurmak için kullanılan bir dosya içerir.
     
-        Daha fazla bilgi için bkz. [az ml Folder Attach](/cli/azure/ext/azure-cli-ml/ml/folder?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
+        Daha fazla bilgi için bkz. [az ml Folder Attach](/cli/azure/ml/folder?preserve-view=true&view=azure-cli-latest#az_ml_folder_attach).
     
     2. Çalıştırmayı başlatmak için aşağıdaki komutu kullanın. Bu komutu kullanırken,-c parametresine karşı runconfig dosyasının adını ( \* dosya sisteminize bakıyorsanız. runconfig öğesinden önceki metin) belirtin.
     
@@ -116,7 +116,7 @@ Aşağıdaki öğeler gerekir:
         >
         > Daha fazla örnek runconfig dosyası için bkz [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) ..
     
-        Daha fazla bilgi için bkz. [az ml Run gönderme-betiği](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
+        Daha fazla bilgi için bkz. [az ml Run gönderme-betiği](/cli/azure/ml/run?preserve-view=true&view=azure-cli-latest#az_ml_run_submit-script).
 
     # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -167,7 +167,7 @@ Aşağıdaki öğeler gerekir:
     
         Bu komut, bu deneme için çalıştırmalar hakkındaki bilgileri listeleyen bir JSON belgesi döndürür.
     
-        Daha fazla bilgi için bkz. [az ml deneme listesi](/cli/azure/ext/azure-cli-ml/ml/experiment?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
+        Daha fazla bilgi için bkz. [az ml deneme listesi](/cli/azure/ml/experiment?preserve-view=true&view=azure-cli-latest#az_ml_experiment_list).
     
     * Belirli bir çalıştırma hakkındaki bilgileri görüntülemek için aşağıdaki komutu kullanın. `runid`ÇALıŞTıRMANıN kimliğiyle değiştirin:
     
@@ -177,7 +177,7 @@ Aşağıdaki öğeler gerekir:
     
         Bu komut, çalıştırma hakkındaki bilgileri listeleyen bir JSON belgesi döndürür.
     
-        Daha fazla bilgi için bkz. [az ml Run Show](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
+        Daha fazla bilgi için bkz. [az ml Run Show](/cli/azure/ml/run?preserve-view=true&view=azure-cli-latest#az_ml_run_show).
     
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
@@ -259,7 +259,7 @@ Azure Machine Learning ' de, önemli bilgiler için çalıştırmalarınızı d�
     az ml run update -r runid --add-tag quality='fantastic run'
     ```
     
-    Daha fazla bilgi için bkz. [az ml Run Update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
+    Daha fazla bilgi için bkz. [az ml Run Update](/cli/azure/ml/run?preserve-view=true&view=azure-cli-latest#az_ml_run_update).
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
@@ -337,7 +337,7 @@ CLı kullanarak bir çalıştırmayı iptal etmek için aşağıdaki komutu kull
 az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
-Daha fazla bilgi için bkz. [az ml Run Cancel](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
+Daha fazla bilgi için bkz. [az ml Run Cancel](/cli/azure/ml/run?preserve-view=true&view=azure-cli-latest#az_ml_run_cancel).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 

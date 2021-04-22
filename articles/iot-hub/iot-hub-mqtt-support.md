@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 9678648b6417138e216ba2dce3a3605bb4c1bce4
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 077b4ea6c7d4506e29673cbb4d6d89a92657b9c1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169241"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873694"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
 
@@ -162,7 +162,7 @@ Bir cihaz, cihaz SDK 'larını kullanalamazsanız, bağlantı noktası 8883 üze
 
   SAS belirteçleri oluşturma hakkında daha fazla bilgi için [IoT Hub güvenlik belirteçlerini kullanma](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)konusunun cihaz bölümüne bakın.
 
-  Test edilirken, kendi kodunuza kopyalayabilir ve yapıştırabileceğiniz bir SAS belirtecini hızlıca oluşturmak için, [Visual Studio Code için platformlar arası Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 'Nı veya CLI uzantısı komutunu [az IoT Hub Generate-SAS-Token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token) komutunu da kullanabilirsiniz.
+  Test edilirken, kendi kodunuza kopyalayabilir ve yapıştırabileceğiniz bir SAS belirtecini hızlıca oluşturmak için, [Visual Studio Code için platformlar arası Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 'Nı veya CLI uzantısı komutunu [az IoT Hub Generate-SAS-Token](/cli/azure/iot/hub#az_iot_hub_generate_sas_token) komutunu da kullanabilirsiniz.
 
 ### <a name="for-azure-iot-tools"></a>Azure IoT araçları için
 

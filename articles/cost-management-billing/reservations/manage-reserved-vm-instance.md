@@ -6,14 +6,14 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 04/21/2021
 ms.author: banders
-ms.openlocfilehash: 1523ca77b06281b84ed57fbc0e2e49ffede85fb4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e8a5e6d40b745efb7fcd50919cd27664b3406b7d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934351"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862858"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure kaynakları için Rezervasyonları yönetme
 
@@ -177,23 +177,9 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-
-- [Azure rezervasyonları nedir?](save-compute-costs-reservations.md)
-
-Hizmet planı satın alma:
-- [Azure Ayrılmış VM Örnekleri ile Sanal Makinelere ön ödeme yapma](../../virtual-machines/prepay-reserved-vm-instances.md)
-- [Azure SQL Veritabanı ayrılmış kapasitesi ile SQL Veritabanı işlem kaynakları için ön ödeme yapma](../../azure-sql/database/reserved-capacity-overview.md)
-- [Azure Cosmos DB ayrılmış kapasitesiyle Azure Cosmos DB kaynakları için önceden ödeme yapma](../../cosmos-db/cosmos-db-reserved-capacity.md)
-
-Yazılım planı satın alma:
-- [Azure Ayırmaları ile Red Hat yazılım planları için ön ödeme yapma](../../virtual-machines/linux/prepay-suse-software-charges.md)
-- [Azure Ayırmaları ile SUSE yazılım planları için ön ödeme yapma](../../virtual-machines/linux/prepay-suse-software-charges.md)
-
-İndirimi ve kullanımı anlama:
-- [Sanal makine rezervasyon indiriminin nasıl uygulandığını anlama](../manage/understand-vm-reservation-charges.md)
-- [Red Hat Enterprise Linux yazılım planı indiriminin nasıl uygulandığını anlama](understand-rhel-reservation-charges.md)
-- [SUSE Linux Enterprise yazılım planı indiriminin nasıl uygulandığını anlama](understand-suse-reservation-charges.md)
-- [Diğer rezervasyon indirimlerinin nasıl uygulandığını anlama](understand-reservation-charges.md)
-- [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](understand-reserved-instance-usage.md)
-- [Kurumsal kaydınız için rezervasyon kullanımını anlama](understand-reserved-instance-usage-ea.md)
-- [Rezervasyonlara dahil olmayan Windows yazılımı maliyetleri](reserved-instance-windows-software-costs.md)
+ - [Ayırma kullanımını görüntüle](reservation-utilization.md)
+ - [Exchange ve iadesi](exchange-and-refund-azure-reservations.md)
+ - [Rezervasyonları yenileme](reservation-renew.md)
+ - [Kiracılar arasında aktarımlar](troubleshoot-reservation-transfers-between-tenants.md)
+ - [Azure günlüklerinden bir rezervasyon Satınalmacı bulma](find-reservation-purchaser-from-logs.md)
+ - [Rezervasyonu yenileme](reservation-renew.md)

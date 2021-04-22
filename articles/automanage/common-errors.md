@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: alsin
-ms.openlocfilehash: 3c9f1b76bb707a296da00ac503482efe6a22385b
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 6ee0164dd8243d30cf691350352757f2503e34c8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278346"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862984"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>Ortak oto yönetimi ekleme hatalarını giderme
 Oto yönetimi, bir makineyi hizmete eklemek için başarısız olabilir. Bu belgede dağıtım hatalarının nasıl giderileceği, dağıtımların başarısız olmasının bazı yaygın nedenlerini nasıl paylaştığı ve hafifletme konusunda olası bir sonraki adım açıklanmaktadır.
@@ -41,11 +41,10 @@ Bölge eşleme gereksinimleriyle eşleşmeyen çalışma alanı bölgesi | Makin
 "' Yönetilen uygulama tarafından oluşturulan ' sistem reddetme ataması '" adlı reddetme ataması nedeniyle erişim engellendi " | Kaynağınız üzerinde bir [denyAssignment](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) oluşturulmuştur ve bu da, sizin için, bu, sizin verilerinize erişimini engelledi. Bu denyAssignment, bir [Blueprint](https://docs.microsoft.com/azure/governance/blueprints/concepts/resource-locking) veya [yönetilen uygulama](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/overview)tarafından oluşturulmuş olabilir.
 "OS ınformation: Name = ' (null) ', ver = ' (null) ', aracı durumu = ' Ready '." | [En az desteklenen bir aracı sürümü](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version)([Linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) ve [Windows](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/windows-azure-guest-agent)) çalıştırdığından ve aracının güncel olduğundan emin olun ([Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) ve [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)).
 "VM IŞLETIM sistemi adı için işletim sistemi belirlenemiyor:, ver. Lütfen VM aracısının çalıştığını, geçerli durumunun Ready olduğunu kontrol edin. " | [En az desteklenen bir aracı sürümü](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version)([Linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) ve [Windows](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/windows-azure-guest-agent)) çalıştırdığından ve aracının güncel olduğundan emin olun ([Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) ve [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)).
-
 "VM, ' ıaasantimalware ' uzantısını işlerken bir hata bildirdi" | VM 'nize zaten yüklü başka bir kötü amaçlı yazılımdan koruma/virüsten koruma teklifi olmadığından emin olun. Başarısız olursa, desteğe başvurun.
 ASC çalışma alanı: oto yönetimi şu anda _konumunda_ Log Analytics hizmetini desteklememektedir. | SANAL makinenizin [desteklenen bir bölgede](./automanage-virtual-machines.md#supported-regions)bulunduğundan emin olun.
 İlke ihlali nedeniyle şablon dağıtımı başarısız oldu. Daha fazla bilgi için lütfen ayrıntılara bakın. | Bir ilke, VM 'nizi ekleme işlemini yapmanızı önler. Aboneliğinize veya sizin için eklemek istediğiniz VM 'nizi içeren kaynak grubunuza uygulanan ilkeleri kontrol edin.
-"Atama başarısız oldu; kullanılabilir ek bilgi yok "| Lütfen Microsoft Azure desteğiyle bir servis talebi açın.
+"Atama başarısız oldu; kullanılabilir ek bilgi yok " | Lütfen Microsoft Azure desteğiyle bir servis talebi açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

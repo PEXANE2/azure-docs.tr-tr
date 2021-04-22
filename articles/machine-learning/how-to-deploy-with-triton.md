@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: 8775696a35bfccc363aa2c6ec06c6c44115916b9
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 9b7b8fe9c05d0de64dcd0cf7c6c324e0d03cb1ac
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479279"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874162"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton çıkarım sunucusuyla yüksek performanslı hizmet (Önizleme) 
 
@@ -116,7 +116,7 @@ models
 az ml model register -n my_triton_model -p models --model-framework=Multi
 ```
 
-Hakkında daha fazla bilgi için `az ml model register` [başvuru belgelerine](/cli/azure/ext/azure-cli-ml/ml/model)bakın.
+Hakkında daha fazla bilgi için `az ml model register` [başvuru belgelerine](/cli/azure/ml/model)bakın.
 
 Model Azure Machine Learning ' de kaydedilirken, parametrenin değeri, `--model-path  -p` üç aylık dönemin üst klasörünün adı olmalıdır.  
 Yukarıdaki örnekte,  `--model-path` ' modeller '.
@@ -339,7 +339,7 @@ print(local_service.scoring_uri)
 
 ---
 
-Dağıtım tamamlandıktan sonra Puanlama URI 'SI görüntülenir. Bu yerel dağıtım için, olacaktır `http://localhost:6789/score` . Buluta dağıtırsanız, Puanlama URI 'sini almak için [az ml Service CLI göster](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) komutunu kullanabilirsiniz.
+Dağıtım tamamlandıktan sonra Puanlama URI 'SI görüntülenir. Bu yerel dağıtım için, olacaktır `http://localhost:6789/score` . Buluta dağıtırsanız, Puanlama URI 'sini almak için [az ml Service CLI göster](/cli/azure/ml/service#az_ml_service_show) komutunu kullanabilirsiniz.
 
 Puanlama URI 'sine çıkarım istekleri gönderen bir istemci oluşturma hakkında daha fazla bilgi için bkz. [Web hizmeti olarak dağıtılan bir modeli](how-to-consume-web-service.md)kullanma.
 
