@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d421cc34af7663e5399ecf7747fcbfabe3766017
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 44e227d3dbac2717b01f34109801eb6dc2064363
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500494"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877301"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Kubernetes küme kapsayıcıları CPU 'SU ve bellek kaynağı sınırları belirtilen sınırları aşmamalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345eecc-fa47-480f-9e88-67dcc122b164) |Bir Kubernetes kümesinde kaynak tükenmesi saldırılarını engellemek için kapsayıcı CPU ve bellek kaynağı sınırlarını zorunlu tutun. Bu ilke, Kubernetes hizmeti (AKS) için genel kullanıma sunulmuştur ve AKS altyapısı ve Azure Arc etkin Kubernetes için Önizleme. Daha fazla bilgi için bkz. [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc). |Denetim, reddetme, devre dışı |[6.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerResourceLimits.json) |
 |[Kubernetes küme kapsayıcıları konak işlem KIMLIĞI veya konak IPC ad alanını paylaşmamalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8) |Pod kapsayıcıları, ana bilgisayar işlem KIMLIĞI ad alanını ve bir Kubernetes kümesinde konak IPC ad alanını paylaşmayı engelleyin. Bu öneri, Kubernetes ortamlarınızın güvenliğini artırmak için tasarlanan, CIS 5.2.2 ve CIS 5.2.3 'in bir parçasıdır. Bu ilke, Kubernetes hizmeti (AKS) için genel kullanıma sunulmuştur ve AKS altyapısı ve Azure Arc etkin Kubernetes için Önizleme. Daha fazla bilgi için bkz. [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc). |Denetim, reddetme, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockHostNamespace.json) |
