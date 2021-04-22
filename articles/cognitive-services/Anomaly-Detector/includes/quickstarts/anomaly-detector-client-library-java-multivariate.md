@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/06/2021
 ms.author: mbullwin
-ms.openlocfilehash: f2e227b2a589955191a2e602495cf0ffbb3f6d8b
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: e85f54beb9a3d4203e527ed9c8ce5582b6a2f5b0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107732417"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107879705"
 ---
 Java için anomali algılayıcısının çok sayıda istemci kitaplığını kullanmaya başlayın. Hizmet tarafından sunulan algoritmaları kullanarak paketi başlatmak için bu adımları izleyin. Yeni multivarianomali algılama API 'Leri, Machine Learning bilgisine veya etiketli verilere gerek kalmadan, gelişmiş AI 'nin ölçüm gruplarından aykırları tespit etmek üzere kolayca tümleştirilmesine olanak tanır. Farklı sinyaller arasındaki bağımlılıklar ve eş düzeyli ilişkiler otomatik olarak anahtar faktörleri olarak sayılır. Bu, karmaşık sistemlerinizi hatalara karşı korumanıza yardımcı olur.
 
@@ -23,7 +23,7 @@ Java için anomali algılayıcısının çok değişkenli istemci kitaplığın�
 * Herhangi bir bireysel zaman serisi size çok bilgi vermez ve bir sorunu tespit etmek için tüm sinyallere bakmanız gerekir.
 * Sistem durumunun çeşitli yönlerini ölçen, yüzlerce fiziksel varlık için onlarca yüzlerce farklı algılayıcı türü ile tahmine dayalı bakım.
 
-[Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/anomalydetector/azure-ai-anomalydetector)  |  [Paket (Maven)](https://repo1.maven.org/maven2/com/azure/azure-ai-anomalydetector/3.0.0-beta.2/)
+[Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/anomalydetector/azure-ai-anomalydetector)  |  [Paket (Maven)](https://repo1.maven.org/maven2/com/azure/azure-ai-anomalydetector/3.0.0-beta.2/)  |  [Örnek kod](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/src/samples/java/com/azure/ai/anomalydetector/MultivariateSample.java)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -255,6 +255,8 @@ Uygulamayı ile oluşturabilirsiniz:
 gradle build
 ```
 ### <a name="run-the-application"></a>Uygulamayı çalıştırma
+
+Çalıştırmadan önce, kodunuzu [tam örnek koda](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/src/samples/java/com/azure/ai/anomalydetector/MultivariateSample.java)karşı denetlemek yararlı olabilir.
 
 Uygulamayı `run` hedefle çalıştırın:
 

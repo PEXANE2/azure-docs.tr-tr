@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: a94f3cc6b2387857d19c7b98fa0be64dd6646ec9
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 2d2c33d0b6f86bc1a779361b86d242cde4c5df38
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713867"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873676"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Protokol arabellekleri kullanarak telemetri serileştirme
 
@@ -37,7 +37,7 @@ Bu nasıl yapılır kılavuzundaki adımlarda şu adımları nasıl kullanabilec
 Bu nasıl yapılır kılavuzundaki adımları izlemek için şunlar gerekir:
 
 * Visual Studio Code. [Mac, Linux ve Windows için Visual Studio Code](https://code.visualstudio.com/download)indirebilirsiniz.
-* .NET Core. [Mac, Linux ve Windows için .NET Core 'u](https://www.microsoft.com/net/download)indirebilirsiniz.
+* .NET Core. [Mac, Linux ve Windows için .NET Core 'u](https://dotnet.microsoft.com/download)indirebilirsiniz.
 * Postman. [Mac, Windows veya Linux Için Postman](https://www.getpostman.com/apps)indirebilirsiniz.
 * [Azure aboneliğinize dağıtılan bir IoT Hub 'ı](../iot-hub/iot-hub-create-through-portal.md). Bu kılavuzdaki adımları tamamlayabilmeniz için IoT Hub 'ın bağlantı dizesine ihtiyacınız vardır. Bağlantı dizesini Azure portal alabilirsiniz.
 * SQL API 'sini kullanan ve [güçlü tutarlılık](../cosmos-db/how-to-manage-database-account.md)Için yapılandırılmış [Azure aboneliğinize dağıtılan bir Cosmos DB veritabanı](../cosmos-db/create-sql-api-dotnet.md#create-account) . Bu kılavuzdaki adımları tamamlayabilmeniz için Cosmos DB veritabanının bağlantı dizesine ihtiyacınız vardır. Bağlantı dizesini Azure portal alabilirsiniz.

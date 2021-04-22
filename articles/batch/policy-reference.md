@@ -1,15 +1,15 @@
 ---
 title: Azure Batch için yerleşik ilke tanımları
 description: Azure Batch için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: e013d27d2c8e813fc2eb6d0f288a98e0867d8889
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 753e704f078856d6687841b49373a3fb02a9f77b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497257"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876769"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-batch"></a>Azure Batch için Azure Ilkesi yerleşik tanımları
 

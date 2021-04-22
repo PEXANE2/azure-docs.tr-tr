@@ -3,12 +3,12 @@ title: Öğretici-Azure VMware çözümü özel bulutu dağıtma
 description: Azure VMware çözümü özel bulutu oluşturmayı ve dağıtmayı öğrenin
 ms.topic: tutorial
 ms.date: 02/22/2021
-ms.openlocfilehash: 89a44ce7e5910609068f72c321971ced2e3646b4
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: ea4bf27a1ff14e4872bc2a0e19daa032dd4ba66d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374854"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870922"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>Öğretici: Azure VMware çözümü özel bulutu dağıtma
 
@@ -40,7 +40,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure VMware çözümü özel bulutu oluşturmak için Azure portal yerine Azure Cloud Shell kullanarak Azure CLı 'yi kullanabilirsiniz.  Azure VMware çözümü ile kullanabileceğiniz komutların listesi için bkz. [Azure VMware komutları](/cli/azure/ext/vmware/vmware).
+Azure VMware çözümü özel bulutu oluşturmak için Azure portal yerine Azure Cloud Shell kullanarak Azure CLı 'yi kullanabilirsiniz.  Azure VMware çözümü ile kullanabileceğiniz komutların listesi için bkz. [Azure VMware komutları](/cli/azure/vmware).
 
 #### <a name="open-azure-cloud-shell"></a>Azure Cloud Shell’i açma
 
@@ -74,7 +74,7 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
 
 ## <a name="azure-vmware-commands"></a>Azure VMware komutları
 
-Azure VMware çözümü ile kullanabileceğiniz komutların listesi için bkz. [Azure VMware komutları](/cli/azure/ext/vmware/vmware).
+Azure VMware çözümü ile kullanabileceğiniz komutların listesi için bkz. [Azure VMware komutları](/cli/azure/vmware).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 04/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 5e9df582ce6eddd50fbecf02858f4afe611dcf18
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 8a00f5474fb73677125b85e48fcc2a42f34fdeb0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220224"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876412"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLı ile Azure Machine Learning çalışma alanı oluşturma
 
@@ -283,7 +283,7 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 ]
 ```
 
-Daha fazla bilgi için bkz. [az ml çalışma alanı listesi](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-list) belgeleri.
+Daha fazla bilgi için bkz. [az ml çalışma alanı listesi](/cli/azure/ml/workspace#az_ml_workspace_list) belgeleri.
 
 ## <a name="get-workspace-information"></a>Çalışma alanı bilgilerini al
 
@@ -316,7 +316,7 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 }
 ```
 
-Daha fazla bilgi için bkz. [az ml çalışma alanı belgeleri gösterme](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-show) .
+Daha fazla bilgi için bkz. [az ml çalışma alanı belgeleri gösterme](/cli/azure/ml/workspace#az_ml_workspace_show) .
 
 ## <a name="update-a-workspace"></a>Çalışma alanını güncelleştirme
 
@@ -349,7 +349,7 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 }
 ```
 
-Daha fazla bilgi için, [az ml çalışma alanı güncelleştirme](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-update) belgelerine bakın.
+Daha fazla bilgi için, [az ml çalışma alanı güncelleştirme](/cli/azure/ml/workspace#az_ml_workspace_update) belgelerine bakın.
 
 ## <a name="share-a-workspace-with-another-user"></a>Çalışma alanını başka bir kullanıcıyla paylaşma
 
@@ -361,7 +361,7 @@ az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user>
 
 Azure Machine Learning ile Azure rol tabanlı erişim denetimi (Azure RBAC) hakkında daha fazla bilgi için bkz. [kullanıcıları ve rolleri yönetme](how-to-assign-roles.md).
 
-Daha fazla bilgi için, [az ml çalışma alanı paylaşma](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-share) belgelerine bakın.
+Daha fazla bilgi için, [az ml çalışma alanı paylaşma](/cli/azure/ml/workspace#az_ml_workspace_share) belgelerine bakın.
 
 ## <a name="sync-keys-for-dependent-resources"></a>Bağımlı kaynaklar için eşitleme anahtarları
 
@@ -373,7 +373,7 @@ az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
 
 Anahtarları değiştirme hakkında daha fazla bilgi için bkz. [depolama erişim anahtarlarını yeniden üretme](how-to-change-storage-access-key.md).
 
-Daha fazla bilgi için, [az ml çalışma alanı eşitleme anahtarları](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-sync-keys) belgelerine bakın.
+Daha fazla bilgi için, [az ml çalışma alanı eşitleme anahtarları](/cli/azure/ml/workspace#az_ml_workspace_sync-keys) belgelerine bakın.
 
 ## <a name="delete-a-workspace"></a>Çalışma alanı silme
 
@@ -392,7 +392,7 @@ Kaynak grubundaki çalışma alanını ve diğer tüm Azure kaynaklarını silen
 az group delete -g <resource-group-name>
 ```
 
-Daha fazla bilgi için bkz. [az ml çalışma alanı silme](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-delete) belgeleri.
+Daha fazla bilgi için bkz. [az ml çalışma alanı silme](/cli/azure/ml/workspace#az_ml_workspace_delete) belgeleri.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -413,4 +413,4 @@ Azure Machine Learning çalışma alanı bazı işlemler için Azure Container R
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Machine Learning için Azure CLı uzantısı hakkında daha fazla bilgi için, [az ml](/cli/azure/ext/azure-cli-ml/ml) belgelerine bakın.
+Machine Learning için Azure CLı uzantısı hakkında daha fazla bilgi için, [az ml](/cli/azure/ml) belgelerine bakın.

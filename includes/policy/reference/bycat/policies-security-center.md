@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 8af95749fc84fc04ba1c012a34d08f00fe02f372
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 541fe93a59cab6a52e265c2046d606fdc736dd67
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107499274"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867175"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Aboneliğiniz için en fazla 3 sahip belirtilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f11b553-d42e-4e3a-89be-32ca364cad4c) |Güvenliği aşılmış bir sahibe göre ihlal olasılığını azaltmak için 3 adede kadar abonelik sahibi belirlemeniz önerilir. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_DesignateLessThanXOwners_Audit.json) |
 |[Sanal makinelerinizde bir güvenlik açığı değerlendirme çözümünün etkinleştirilmesi gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9) |Sanal makineleri, desteklenen bir güvenlik açığı değerlendirme çözümü çalıştırıp çalıştırmadığını tespit etmek üzere denetler. Her bir siber risk ve güvenlik programının çekirdek bileşeni, güvenlik açıklarının tanımlama ve analizidir. Azure Güvenlik Merkezi 'nin standart fiyatlandırma katmanı, sanal makineleriniz için ek ücret olmadan güvenlik açığı taraması içerir. Ayrıca, güvenlik merkezi bu aracı sizin için otomatik olarak dağıtabilir. |Auditınotexists, devre dışı |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerVulnerabilityAssessment_Audit.json) |

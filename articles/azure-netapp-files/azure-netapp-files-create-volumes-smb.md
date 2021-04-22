@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 28fc465627032522afb9da8f6ec0fad704834d09
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: d3ca94524c334a20f5ee75e5300ad419fa1542c5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813713"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873280"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
@@ -116,7 +116,7 @@ SMB birimi oluşturmadan önce bir Active Directory bağlantısı oluşturmanız
         > [!IMPORTANT]   
         > SMB sürekli kullanılabilirliği özelliği şu anda genel önizlemededir. **[Azure NetApp Files SMB sürekli kullanılabilirlik paylaşımları genel önizleme eklenebileceğinizi gönderim sayfası](https://aka.ms/anfsmbcasharespreviewsignup)** aracılığıyla özelliğe erişmek için bir eklenebileceğinizi isteği göndermeniz gerekir. Sürekli kullanılabilirlik özelliğini kullanmadan önce Azure NetApp Files ekibinden resmi bir onay e-postası için bekleyin.   
         > 
-        > Yalnızca SQL Server ve [Fslogix Kullanıcı profili kapsayıcıları](../virtual-desktop/create-fslogix-profile-container.md)Için sürekli kullanılabilirliği etkinleştirmeniz gerekir. SQL Server ve FsLogix Kullanıcı profili kapsayıcıları dışındaki iş yükleri için SMB sürekli kullanılabilirlik paylaşımlarının *kullanılması desteklenmez.* Bu özellik şu anda Windows SQL Server 'de desteklenmektedir. Linux SQL Server şu anda desteklenmiyor. SQL Server yüklemek için yönetici olmayan bir hesap kullanıyorsanız, hesapta gerekli güvenlik ayrıcalığının atandığından emin olun. Etki alanı hesabı gerekli güvenlik ayrıcalığına () sahip değilse `SeSecurityPrivilege` ve ayrıcalık etki alanı düzeyinde ayarlanamıyor ise, Active Directory bağlantıları 'Nın **güvenlik ayrıcalığı kullanıcıları** alanını kullanarak ayrıcalığı hesaba verebilirsiniz. Bkz. [Active Directory bağlantı oluşturma](create-active-directory-connections.md#create-an-active-directory-connection).
+        > Yalnızca SQL Server ve [Fslogix Kullanıcı profili kapsayıcıları](../virtual-desktop/create-fslogix-profile-container.md)Için sürekli kullanılabilirliği etkinleştirmeniz gerekir. SQL Server ve FSLogix Kullanıcı profili kapsayıcıları dışındaki iş yükleri için SMB sürekli kullanılabilirlik paylaşımlarının *kullanılması desteklenmez.* Bu özellik şu anda Windows SQL Server 'de desteklenmektedir. Linux SQL Server şu anda desteklenmiyor. SQL Server yüklemek için yönetici olmayan bir hesap kullanıyorsanız, hesapta gerekli güvenlik ayrıcalığının atandığından emin olun. Etki alanı hesabı gerekli güvenlik ayrıcalığına () sahip değilse `SeSecurityPrivilege` ve ayrıcalık etki alanı düzeyinde ayarlanamıyor ise, Active Directory bağlantıları 'Nın **güvenlik ayrıcalığı kullanıcıları** alanını kullanarak ayrıcalığı hesaba verebilirsiniz. Bkz. [Active Directory bağlantı oluşturma](create-active-directory-connections.md#create-an-active-directory-connection).
 
     <!-- [1/13/21] Commenting out command-based steps below, because the plan is to use form-based (URL) registration, similar to CRR feature registration -->
     <!-- 

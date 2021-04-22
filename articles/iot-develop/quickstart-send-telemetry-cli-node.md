@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: node
 ms.topic: quickstart
 ms.date: 03/25/2021
-ms.openlocfilehash: 3d42ac814678136c2f6342cd1064e3c3ff394507
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0e1c99124228da9490abaa17ecc41b931631d9fb
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777248"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876985"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-nodejs"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme (Node.js)
 
@@ -91,7 +91,7 @@ Bu bölümde, sanal cihazınızdan IoT Hub 'ınıza ileti göndermek için Node.
     ```bash
     export IOTHUB_DEVICE_SECURITY_TYPE="connectionString"
     ```
-1. Açık CLı kabuğunuzun içinde, sanal IoT cihazınızdan olayları izlemeye başlamak için [az IoT Hub Monitor-Events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) komutunu çalıştırın.  Olay iletileri, geldikçe terminalde yazdırılacaktır.
+1. Açık CLı kabuğunuzun içinde, sanal IoT cihazınızdan olayları izlemeye başlamak için [az IoT Hub Monitor-Events](/cli/azure/iot/hub#az_iot_hub_monitor_events) komutunu çalıştırın.  Olay iletileri, geldikçe terminalde yazdırılacaktır.
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}

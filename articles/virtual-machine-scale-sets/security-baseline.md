@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/08/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9ea9720e719fbf7c1e0952f1d31b2eb952be0e4d
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 60b1de12f031a55388960a6e3c4e7df00c43e3c8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285556"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867960"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için Azure Güvenlik temeli
 
@@ -307,7 +307,7 @@ Alternatif olarak, günlüklerinizi izlemek ve gözden geçirmek için Azure Sen
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics çalışma alanını anlayın](/azure/azure-monitor/logs/get-started-portal)
+- [Log Analytics çalışma alanını anlayın](/azure/azure-monitor/logs/get-started-queries)
 
 - [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/log-analytics-tutorial.md)
 
@@ -509,7 +509,7 @@ Linux sanal makineleri için, konsol günlüğünü düğüm başına temelinde 
 
 - [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/get-started-queries.md)
 
-- [Azure 'da sanal makineleri izleme](/azure/azure-monitor/vm/monitor-vm-azur)
+- [Azure 'da sanal makineleri izleme](/azure/azure-monitor/vm/monitor-vm-azure)
 
 **Sorumluluk**: Müşteri
 

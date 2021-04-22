@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/17/2021
-ms.openlocfilehash: a8419ff2ba269b05d1fbf7e9d08a284085465fd8
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 96b52c80fa06be8c157ad39fd65be4e491e0cbe3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257424"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874864"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL veritabanı ve Azure SQL yönetilen örnek Connect ve sorgu makaleleri
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -86,7 +86,7 @@ Aşağıdaki tabloda, istemci uygulamalarının şirket içinde veya bulutta ça
 
 | Dil | Platform | Ek kaynaklar | İndir | başlarken |
 | :-- | :-- | :-- | :-- | :-- |
-| C# | Windows, Linux, macOS | [SQL Server için Microsoft ADO.NET](/sql/connect/ado-net/microsoft-ado-net-sql-server) | [İndir](https://www.microsoft.com/net/download/) | [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
+| C# | Windows, Linux, macOS | [SQL Server için Microsoft ADO.NET](/sql/connect/ado-net/microsoft-ado-net-sql-server) | [İndir](https://dotnet.microsoft.com/download) | [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows, Linux, macOS | [SQL Server için Microsoft JDBC sürücüsü](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [İndir](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server) |  [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
 | PHP | Windows, Linux, macOS| [SQL Server için PHP SQL sürücüsü](/sql/connect/php/microsoft-php-driver-for-sql-server) | [İndir](/sql/connect/php/download-drivers-php-sql-server) | [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows, Linux, macOS | [ SQL Server içinNode.js sürücüsü](/sql/connect/node-js/node-js-driver-for-sql-server/) | [Yükleme](/sql/connect/node-js/step-1-configure-development-environment-for-node-js-development/) |  [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)

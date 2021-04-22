@@ -4,12 +4,12 @@ description: 'Hızlı başlangıç: Azure CLı kullanarak Azure portal Pano olu�
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.date: 12/4/2020
-ms.openlocfilehash: d951c692c7d3c282ae68c5f9b53e9cda5407df10
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 581c8cc4c2da275467bc39c5c2008b29a5bc0e0e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481030"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875764"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure portal panosu oluşturma
 
@@ -73,20 +73,20 @@ Daha fazla bilgi için bkz. [Microsoft Portal panoları şablon başvurusu](/azu
 
 Şimdi de şablonu Azure CLı içinden dağıtabilirsiniz.
 
-1. Şablonu dağıtmak için [az Portal Dashboard Create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) komutunu çalıştırın:
+1. Şablonu dağıtmak için [az Portal Dashboard Create](/cli/azure/portal/dashboard#az_portal_dashboard_create) komutunu çalıştırın:
 
    ```azurecli
    az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
       --input-path portal-dashboard-template-testvm.json --location centralus
    ```
 
-1. Panonun, [az Portal panosu göster](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) komutunu çalıştırarak başarıyla oluşturulduğunu denetleyin:
+1. Panonun, [az Portal panosu göster](/cli/azure/portal/dashboard#az_portal_dashboard_show) komutunu çalıştırarak başarıyla oluşturulduğunu denetleyin:
 
    ```azurecli
    az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
    ```
 
-Geçerli abonelik için tüm panoları görmek için [az Portal Dashboard List](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list)kullanın:
+Geçerli abonelik için tüm panoları görmek için [az Portal Dashboard List](/cli/azure/portal/dashboard#az_portal_dashboard_list)kullanın:
 
 ```azurecli
 az portal dashboard list
@@ -98,7 +98,7 @@ Ayrıca, bir kaynak grubu için tüm panoları görebilirsiniz:
 az portal dashboard list --resource-group myResourceGroup
 ```
 
-[Az Portal Dashboard Update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) komutunu kullanarak bir panoyu güncelleştirebilirsiniz:
+[Az Portal Dashboard Update](/cli/azure/portal/dashboard#az_portal_dashboard_update) komutunu kullanarak bir panoyu güncelleştirebilirsiniz:
 
 ```azurecli
 az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
@@ -119,7 +119,7 @@ Sanal makineyi ve ilişkili panoyu kaldırmak için, bunları içeren kaynak gru
 az group delete --name myResourceGroup
 ```
 
-Yalnızca panoyu kaldırmak için [az Portal Dashboard Delete](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_delete) komutunu kullanın:
+Yalnızca panoyu kaldırmak için [az Portal Dashboard Delete](/cli/azure/portal/dashboard#az_portal_dashboard_delete) komutunu kullanın:
 
 ```azurecli
 az portal dashboard delete --resource-group myResourceGroup --name "Simple VM Dashboard"
@@ -127,4 +127,4 @@ az portal dashboard delete --resource-group myResourceGroup --name "Simple VM Da
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Panolar için Azure CLı desteği hakkında daha fazla bilgi için, bkz. [az Portal Dashboard](/cli/azure/ext/portal/portal/dashboard).
+Panolar için Azure CLı desteği hakkında daha fazla bilgi için, bkz. [az Portal Dashboard](/cli/azure/portal/dashboard).

@@ -215,7 +215,7 @@
     - name: Linux desteği
       href: linux-overview.md
     - name: Azure CLI
-      href: /cli/azure/ext/desktopvirtualization/desktopvirtualization
+      href: /cli/azure/desktopvirtualization
     - name: Azure Izleyici maliyetlerini tahmin etme
       href: azure-monitor-costs.md
     - name: Desteklenen RDP dosyası ayarları
@@ -223,7 +223,7 @@
     - name: Sanal makine boyutlandırma kılavuzu
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure komut satırı arabirimi (CLI)
-      href: /cli/azure/ext/desktopvirtualization/
+      href: /cli/azure/
     - name: Örnek Azure senaryoları
       href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
     - name: E-posta bulma

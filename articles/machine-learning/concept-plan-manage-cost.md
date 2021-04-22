@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 39c649cccdf159810ad01c2312c4ea4837d9f4fc
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: d8f74e438175758b1f09e1809b5eba15c1b26c3c
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478650"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873640"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning maliyetlerini planlayın ve yönetin
 
@@ -121,7 +121,7 @@ Ayrıca, düğümlerin ölçeğini ölçeklendirmadan önce boşta kaldığı s�
 + Daha az yinelemeli deneme gerçekleştirirseniz, maliyetleri kaydetmek için bu süreyi azaltın.
 + Son derece yinelemeli geliştirme/test deneme gerçekleştirirseniz, eğitim betiğinizdeki veya ortamınızdaki her değişiklikten sonra sabit ölçekleme için ödeme yapmak zorunda kalmaması için süreyi artırmanız gerekebilir.
 
-AmlCompute kümeleri, amlcompute [SDK sınıfı](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute)olan AMLCOMPUTE [CLI](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)ve [REST API 'leri](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable)ile birlikte Azure Portal değişen iş yükü gereksinimleriniz için yapılandırılabilir.
+AmlCompute kümeleri, amlcompute [SDK sınıfı](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute)olan AMLCOMPUTE [CLI](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_amlcompute)ve [REST API 'leri](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable)ile birlikte Azure Portal değişen iş yükü gereksinimleriniz için yapılandırılabilir.
 
 ```azurecli
 az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300

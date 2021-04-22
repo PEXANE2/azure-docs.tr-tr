@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 693c181f8a4a6db3b8b163f4b4d3350a3730b618
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 30abc4a5a1431800cef2bcbda6f5eeedf9a216a3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221656"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874648"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Öğretici: Azure Işlevlerini IoT Edge modülleri olarak dağıtma
 
@@ -51,7 +51,7 @@ Bu öğreticiye başlamadan önce, Linux kapsayıcı geliştirmesi için gelişt
 Azure Işlevleri ile ' de bir IoT Edge modülü geliştirmek için, aşağıdaki ek önkoşulları geliştirme makinenize yüklersiniz:
 
 * [Visual Studio Code için C# (OmniSharp tarafından desteklenen) uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
-* [.NET Core 2.1 SDK'sı](https://www.microsoft.com/net/download).
+* [.NET Core 2.1 SDK'sı](https://dotnet.microsoft.com/download/dotnet/2.1).
 
 ## <a name="create-a-function-project"></a>İşlev projesi oluşturma
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 284ef8de1c672fdc0a5bb1a996a3446010253f57
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 64b9ce78f05e1c8d14317f33f21758a86baeabd6
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816800"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869194"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -88,7 +88,7 @@ Bu makalede açıklanan adımları tamamlamadan önce bir [Azure dosyaları dağ
 
     Terminalinizde görüntülenen adımları uygulayarak kimlik doğrulama işlemini tamamlayın.
 
-1. [Az FileSync](/cli/azure/ext/storagesync/storagesync) Azure CLI uzantısını yükler.
+1. [Az FileSync](/cli/azure/storagesync) Azure CLI uzantısını yükler.
 
    ```azurecli
    az extension add --name storagesync
@@ -380,7 +380,7 @@ New-AzStorageSyncCloudEndpoint `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Yeni bir eşitleme grubu oluşturmak için [az storagessync Sync-Group](/cli/azure/ext/storagesync/storagesync/sync-group#ext-storagesync-az-storagesync-sync-group-create) komutunu kullanın.  Tüm CLı komutları için bir kaynak grubuna varsayılan olarak, [az configure](/cli/azure/reference-index#az_configure)komutunu kullanın.
+Yeni bir eşitleme grubu oluşturmak için [az storagessync Sync-Group](/cli/azure/storagesync/sync-group#az_storagesync_sync_group_create) komutunu kullanın.  Tüm CLı komutları için bir kaynak grubuna varsayılan olarak, [az configure](/cli/azure/reference-index#az_configure)komutunu kullanın.
 
 ```azurecli
 az storagesync sync-group create --resource-group myResourceGroupName \
@@ -388,7 +388,7 @@ az storagesync sync-group create --resource-group myResourceGroupName \
                                  --storage-sync-service myStorageSyncServiceName \
 ```
 
-Yeni bir bulut uç noktası oluşturmak için [az storagessync Sync-Group Cloud-Endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/cloud-endpoint#ext-storagesync-az-storagesync-sync-group-cloud-endpoint-create) komutunu kullanın.
+Yeni bir bulut uç noktası oluşturmak için [az storagessync Sync-Group Cloud-Endpoint](/cli/azure/storagesync/sync-group/cloud-endpoint#az_storagesync_sync_group_cloud_endpoint_create) komutunu kullanın.
 
 ```azurecli
 az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup \
@@ -464,7 +464,7 @@ if ($cloudTieringDesired) {
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Yeni bir sunucu uç noktası oluşturmak için [az storagessync Sync-Group Server-Endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/server-endpoint#ext-storagesync-az-storagesync-sync-group-server-endpoint-create) komutunu kullanın.
+Yeni bir sunucu uç noktası oluşturmak için [az storagessync Sync-Group Server-Endpoint](/cli/azure/storagesync/sync-group/server-endpoint#az_storagesync_sync_group_server_endpoint_create) komutunu kullanın.
 
 ```azurecli
 # Create a new sync group server endpoint 

@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b7695c825dbdd2c207c87799ea801026f7506bcb
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: e24c04152911f976907e6bdc433c33e035ade639
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219459"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874756"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>Öğretici: Linux kapsayıcıları kullanarak C# IoT Edge modülü geliştirme
 
@@ -60,7 +60,7 @@ Bu öğreticiye başlamadan önce, bir önceki öğreticiden yararlanarak geliş
 Bu öğreticileri tamamlayabilmeniz için geliştirme makinenizde aşağıdaki ek önkoşulları hazırlayın:
 
 * [Visual Studio Code için C# (OmniSharp tarafından desteklenen) uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
-* [.NET Core 2.1 SDK'sı](https://www.microsoft.com/net/download).
+* [.NET Core 2.1 SDK'sı](https://dotnet.microsoft.com/download/dotnet/2.1).
 
 ## <a name="create-a-module-project"></a>Modül projesi oluşturma
 

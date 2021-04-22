@@ -8,16 +8,16 @@ ms.service: ddos-protection
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: yitoh
 ms.custom: subject-policy-reference
 ms.topic: include
-ms.openlocfilehash: 86fa383fe2456eabe0cce142bd4a9c665fb95a2a
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: b58dddef0aa63aec525e039f333a7a785c32d23e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505709"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875656"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-ddos-protection-standard"></a>Azure DDoS koruma standardı için Azure Ilkesi yerleşik tanımları
 
@@ -27,7 +27,7 @@ Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. Ka
 
 ## <a name="azure-ddos-protection-standard"></a>Azure DDoS Koruması Standart
 
-|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Sanal ağlar Azure DDoS koruma standardı tarafından korunmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d)|Azure DDoS koruma standardı ile sanal ağlarınızı Volumetric ve protokol saldırılarına karşı koruyun. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/ddosprotectiondocs](https://aka.ms/ddosprotectiondocs) .|Değiştirme, denetim, devre dışı|[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkDdosStandard_Audit.json)|
 |[Genel IP adreslerinde Azure DDoS koruma standardı için kaynak günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F752154a7-1e0f-45c6-a880-ac75a7e4f648)|Tanılama ayarlarındaki genel IP adresleri için kaynak günlüklerini bir Log Analytics çalışma alanına akışa yönelik olarak etkinleştirin. Bildirimler, raporlar ve akış günlükleri aracılığıyla DDoS saldırılarını azaltmak için gerçekleştirilen saldırı trafiğine ve eylemlerine yönelik ayrıntılı görünürlük alın.|Auditınotexists, DeployIfNotExists, devre dışı|[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/PublicIpDdosLogging_Audit.json)|

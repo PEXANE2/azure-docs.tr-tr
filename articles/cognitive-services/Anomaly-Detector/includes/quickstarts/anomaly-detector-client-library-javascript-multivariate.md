@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/06/2021
 ms.author: mbullwin
-ms.openlocfilehash: 261dbb7cab2ac17a39777241d24e2c73cf550873
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 656270c80e8da0ece83bb04190fa7e5710a0203e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107799779"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107879444"
 ---
 JavaScript için anomali algılayıcısının çok sayıda istemci kitaplığını kullanmaya başlayın. Paketi yüklemek ve hizmet tarafından sunulan algoritmaları kullanmaya başlamak için bu adımları izleyin. Yeni multivarianomali algılama API 'Leri, Machine Learning bilgisine veya etiketli verilere gerek kalmadan, gelişmiş AI 'nin ölçüm gruplarından aykırları tespit etmek üzere kolayca tümleştirilmesine olanak tanır. Farklı sinyaller arasındaki bağımlılıklar ve eş düzeyli ilişkiler otomatik olarak anahtar faktörleri olarak sayılır. Bu, karmaşık sistemlerinizi hatalara karşı korumanıza yardımcı olur.
 
@@ -23,7 +23,7 @@ JavaScript için anomali algılayıcısının çok değişkenli istemci kitaplı
 * Herhangi bir bireysel zaman serisi size çok bilgi vermez ve bir sorunu tespit etmek için tüm sinyallere bakmanız gerekir.
 * Sistem durumunun çeşitli yönlerini ölçen, yüzlerce fiziksel varlık için onlarca yüzlerce farklı algılayıcı türü ile tahmine dayalı bakım.
 
-[Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/anomalydetector/ai-anomaly-detector)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/ai-anomaly-detector)
+[Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/anomalydetector/ai-anomaly-detector)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/ai-anomaly-detector)  |  [Örnek kod](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/anomalydetector/ai-anomaly-detector/samples/v3/javascript/sample_multivariate_detection.js)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -183,6 +183,8 @@ console.log("New model has been deleted.")
 ```
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
+
+Uygulamayı çalıştırmadan önce, kodunuzun [tam örnek koda](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/anomalydetector/ai-anomaly-detector/samples/v3/javascript/sample_multivariate_detection.js) karşı denetlenmesi yararlı olabilir
 
 Uygulamayı `node` hızlı başlangıç dosyanızdaki komutla çalıştırın.
 

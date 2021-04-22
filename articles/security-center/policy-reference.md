@@ -1,18 +1,18 @@
 ---
 title: Azure Güvenlik Merkezi için yerleşik ilke tanımları
 description: Azure Güvenlik Merkezi için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 8023dcc29fe8ea3af853237e911524549e4d2bcb
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 0fc5e2ed183020f32b59fec7f4436754467968e0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739647"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872438"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Azure Güvenlik Merkezi için Azure İlkesi yerleşik tanımları
 

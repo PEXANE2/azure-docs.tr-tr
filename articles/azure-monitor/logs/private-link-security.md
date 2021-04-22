@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 97e589755602c14a11873fee5288ee8c6e24ba83
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: b3bbd8510c47831c9568bb10c62e2a5ca751902a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714315"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863038"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
 
@@ -294,7 +294,7 @@ Azure Resource Manager şablonları, REST ve komut satırı arabirimlerini kulla
 
 Özel bağlantı kapsamları oluşturup yönetmek için [REST API](/rest/api/monitor/privatelinkscopes(preview)/private%20link%20scoped%20resources%20(preview)) veya [Azure CLI (az Monitor Private-link-scope)](/cli/azure/monitor/private-link-scope)kullanın.
 
-Ağ erişimini yönetmek için, bayraklarını `[--ingestion-access {Disabled, Enabled}]` ve `[--query-access {Disabled, Enabled}]` [Log Analytics çalışma alanlarını](/cli/azure/monitor/log-analytics/workspace) veya [Application Insights bileşenlerini](/cli/azure/ext/application-insights/monitor/app-insights/component)kullanın.
+Ağ erişimini yönetmek için, bayraklarını `[--ingestion-access {Disabled, Enabled}]` ve `[--query-access {Disabled, Enabled}]` [Log Analytics çalışma alanlarını](/cli/azure/monitor/log-analytics/workspace) veya [Application Insights bileşenlerini](/cli/azure/monitor/app-insights/component)kullanın.
 
 ## <a name="collect-custom-logs-and-iis-log-over-private-link"></a>Özel Günlükler ve IIS oturumunu özel bağlantı üzerinden topla
 

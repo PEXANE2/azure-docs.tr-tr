@@ -152,7 +152,7 @@
     - name: Başvuru belgelerine genel bakış
       href: concepts/reference.md
     - name: Azure CLI
-      href: /cli/azure/ext/communication/communication
+      href: /cli/azure/communication
     - name: REST API belgeleri
       href: /rest/api/communication/
     - name: Arama kitaplıkları

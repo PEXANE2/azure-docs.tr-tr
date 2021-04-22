@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 5a24f125bf2f90141e1a6836cb156d51a2c15047
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 963ff8f77b2e78927dfadc4a114085de4eb39811
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107512859"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867919"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Kimliği olmayan sanal makinelerde Konuk yapılandırma atamalarını etkinleştirmek için sistem tarafından atanan yönetilen kimlik Ekle](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e) |Bu ilke, Azure 'da barındırılan, Konuk yapılandırması tarafından desteklenen ancak herhangi bir yönetilen kimliği bulunmayan sanal makinelere sistem tarafından atanan yönetilen bir kimlik ekler. Sistem tarafından atanan yönetilen kimlik, tüm konuk yapılandırma atamaları için bir önkoşuldur ve herhangi bir konuk yapılandırma ilkesi tanımı kullanılmadan önce makinelere eklenmelidir. Konuk yapılandırması hakkında daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/gcpol](https://aka.ms/gcpol) . |değiştir |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AddSystemIdentityWhenNone_Prerequisite.json) |
 |[Kullanıcı tarafından atanan bir kimliğe sahip VM 'lerde Konuk yapılandırma atamalarını etkinleştirmek için sistem tarafından atanan yönetilen kimlik Ekle](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6) |Bu ilke, Azure 'da barındırılan sanal makinelere, Konuk yapılandırması tarafından desteklenen ve en az bir kullanıcı tarafından atanan kimliğe sahip ancak sistem tarafından atanan bir yönetilen kimliğe sahip olmayan bir yönetilen kimlik ekler. Sistem tarafından atanan yönetilen kimlik, tüm konuk yapılandırma atamaları için bir önkoşuldur ve herhangi bir konuk yapılandırma ilkesi tanımı kullanılmadan önce makinelere eklenmelidir. Konuk yapılandırması hakkında daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/gcpol](https://aka.ms/gcpol) . |değiştir |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AddSystemIdentityWhenUser_Prerequisite.json) |
