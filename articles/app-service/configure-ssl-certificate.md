@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 99dc8cb2acf06faae16df6d3a48c4d38b1be46d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e05435f364cc30b351275439a04caff47c35512
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577793"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871804"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service'de TLS/SSL sertifikası ekleme
 
@@ -217,7 +217,7 @@ Sertifikayı seçmenize yardımcı olması için aşağıdaki tabloyu kullanın.
 ![Key Vault sertifikası alma tamamlandı](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
 
 > [!NOTE]
-> Sertifikanızı yeni bir sertifikayla Key Vault güncelleştirirseniz, App Service sertifikayı otomatik olarak 48 saat içinde eşitler.
+> Sertifikanızı yeni bir sertifikayla Key Vault güncelleştirirseniz, App Service sertifikayı 24 saat içinde otomatik olarak eşitler.
 
 > [!IMPORTANT] 
 > Özel bir etki alanını bu sertifikayla güvenli hale getirmek için yine de bir sertifika bağlaması oluşturmanız gerekir. [Bağlama oluşturma](configure-ssl-bindings.md#create-binding)bölümündeki adımları izleyin.
@@ -325,7 +325,7 @@ Sertifikanızın yeniden oluşturulması sertifikayı sertifika yetkilisinden ve
 Yeniden anahtarlama işlemi tamamlandıktan sonra **Eşitle**' ye tıklayın. Eşitleme işlemi, uygulamalarınıza herhangi bir kapalı kalma süresine neden olmadan App Service içindeki sertifika için konak bağlamalarını otomatik olarak güncelleştirir.
 
 > [!NOTE]
-> **Eşitle**' yi tıklamıyorsanız, App Service sertifikanızı otomatik olarak 48 saat içinde eşitler.
+> **Eşitle**' yi tıklamıyorsanız, App Service sertifikanızı 24 saat içinde otomatik olarak eşitler.
 
 ### <a name="renew-certificate"></a>Sertifikayı Yenile
 
@@ -340,7 +340,7 @@ Bunun yerine sertifikayı el ile yenilemek için **El Ile Yenile**' ye tıklayı
 Yenileme işlemi tamamlandıktan sonra **Eşitle**' ye tıklayın. Eşitleme işlemi, uygulamalarınıza herhangi bir kapalı kalma süresine neden olmadan App Service içindeki sertifika için konak bağlamalarını otomatik olarak güncelleştirir.
 
 > [!NOTE]
-> **Eşitle**' yi tıklamıyorsanız, App Service sertifikanızı otomatik olarak 48 saat içinde eşitler.
+> **Eşitle**' yi tıklamıyorsanız, App Service sertifikanızı 24 saat içinde otomatik olarak eşitler.
 
 ### <a name="export-certificate"></a>Sertifikayı dışarı aktarma
 

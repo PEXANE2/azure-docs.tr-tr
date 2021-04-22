@@ -1,18 +1,18 @@
 ---
 title: Key Vault için yerleşik ilke tanımları
 description: Key Vault için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: reference
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: key-vault
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 5362b84135a8efd53284b9c2308ba70d9ae113bc
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 127783cdbfe5f0a2ce51ac655d348883c6546d19
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107506202"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872613"
 ---
 # <a name="azure-policy-built-in-definitions-for-key-vault"></a>Key Vault için Azure Ilkesi yerleşik tanımları
 

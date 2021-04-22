@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 0c77fa8b4ef401c939bcb54a9a149e988d59dbf2
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 1d7df26ea20a933b47641c5afbf677699b055aa4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107499279"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867187"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure Dosya Eşitleme özel bağlantı kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d320205-c6a1-4ac6-873d-46224024e8e2) |Belirtilen depolama eşitleme hizmeti kaynağı için özel bir uç nokta oluşturulması, depolama eşitleme hizmeti kaynağınızı, internet erişimli genel uç nokta yerine kuruluşunuzun ağının özel IP adresi alanından adresetmenize olanak tanır. Özel bir uç noktanın kendi başına oluşturulması, genel uç noktayı devre dışı bırakmaz. |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_PrivateEndpoint_AuditIfNotExists.json) |
 |[Azure Dosya Eşitleme özel DNS bölgelerini kullanacak şekilde yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F06695360-db88-47f6-b976-7500d4297475) |Kayıtlı bir sunucudan depolama eşitleme hizmeti kaynak arabirimlerinin özel uç noktalara erişmek için DNS 'nizi, Özel uç noktanızın özel IP adreslerine doğru adları çözümlemek üzere yapılandırmanız gerekir. Bu ilke, önkoşul olan Azure Özel DNS bölgesini ve depolama eşitleme hizmeti özel uç noktalarının arabirimleri için bir kayıt oluşturur. |DeployIfNotExists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_PrivateDNSZone_DeployIfNotExists.json) |

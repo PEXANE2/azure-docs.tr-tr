@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: adc78dceb5269d65bcf76dc99af309fb5e28f450
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3277d5836d85f1071b7aa169cc83896934a2f63d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774124"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872452"
 ---
 # <a name="manage-public-ip-addresses"></a>Genel IP adreslerini yönetme
 
@@ -93,7 +93,7 @@ Oluşturma sırasında genel IP adresinin belirli öznitelikleri hakkında daha 
 |---|---|---|---|
 |[Sanal Makine](./remove-public-ip-address-vm.md)|IP adresinin NIC yapılandırmasından ilişkilendirmesini **kaldırmak için ilişkiyi kaldırın '** ı seçin ve **Sil**' i seçin.|IP adresinin NIC yapılandırmasından ilişkilendirmesini kaldırmak için [set-Azpublicıpaddress](/powershell/module/az.network/set-azpublicipaddress) ; [Remove-Azpublicıpaddress](/powershell/module/az.network/remove-azpublicipaddress) öğesini Sil|[az Network public-ip Update--](/cli/azure/network/public-ip#az_network_public_ip_update) IP adresinin NIC yapılandırmasından ilişkilendirmesini kaldırmak için kaldırın; [az Network PUBLIC-](/cli/azure/network/public-ip#az_network_public_ip_delete) silmek için Delete |
 |Load Balancer ön uç | Kullanılmayan bir genel IP adresine gidip **ilişkilendir** ' i seçin ve bunu değiştirmek Için Ilgili ön uç IP yapılandırması ile Load Balancer seçin (eski IP, VM için aynı yöntem kullanılarak silinebilir)  | Yeni ön uç IP yapılandırmasını genel Load Balancer ilişkilendirmek için [set-Azloadbalancerfrontendıpconfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig) ; Silinecek [-Azpublicıpaddress](/powershell/module/az.network/remove-azpublicipaddress) ; , birden fazla varsa ön uç IP yapılandırmasını kaldırmak için [Remove-Azloadbalancerfrontendıpconfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) komutunu da kullanabilir |[az Network lb ön uç-IP Update](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_update) Ile yeni ön uç IP yapılandırmasını genel Load Balancer ilişkilendirebilirsiniz; Silinecek [-Azpublicıpaddress](/powershell/module/az.network/remove-azpublicipaddress) ; , birden fazla varsa ön uç IP yapılandırmasını kaldırmak için [az Network lb ön uç-IP Delete](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_delete) komutunu da kullanabilirsiniz|
-|Güvenlik Duvarı|Yok| Güvenlik duvarını serbest bırakma ve tüm IP yapılandırmasını kaldırma [()](../firewall/firewall-faq.yml#how-can-i-stop-and-start-azure-firewall) | [az Network Firewall IP-Config Delete](/cli/azure/ext/azure-firewall/network/firewall/ip-config#ext_azure_firewall_az_network_firewall_ip_config_delete) , IP 'yi kaldırmak için (ancak önce PowerShell kullanılmalıdır)|
+|Güvenlik Duvarı|Yok| Güvenlik duvarını serbest bırakma ve tüm IP yapılandırmasını kaldırma [()](../firewall/firewall-faq.yml#how-can-i-stop-and-start-azure-firewall) | [az Network Firewall IP-Config Delete](/cli/azure/network/firewall/ip-config#az_network_firewall_ip_config_delete) , IP 'yi kaldırmak için (ancak önce PowerShell kullanılmalıdır)|
 
 ## <a name="virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri
 

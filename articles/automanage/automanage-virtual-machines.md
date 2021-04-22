@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 514f1af2a1b120254840986fc5ceb803dfc24345
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 42b469963761ae1ffc736c719487ee93c3a1c149
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363385"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863128"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Sanal makineler için Azure oto yönetimi
 
@@ -183,6 +183,12 @@ Kabul etmiş önce **devre dışı bırakmak** için ortaya çıkan açılan pen
 
 
 İlk ve daha önce, sanal makineyi eklendi ve yapılandırdığımız hizmetlerden herhangi birinden kurmayacak. Bu nedenle, bu hizmetler tarafından tahakkuk eden ücretler faturalandırılabilir olmaya devam edecektir. Gerekirse Pano 'ya ihtiyacınız olacaktır. Herhangi bir oto yönetimi davranışı hemen durdurulur. Örneğin, artık VM 'yi DRFT için izliyoruz.
+
+## <a name="automanage-and-azure-disk-encryption"></a>Oto yönetimi ve Azure disk şifrelemesi
+Oto yönetimi, Azure disk şifrelemesi (ADE) etkin olan VM 'lerle uyumludur.
+
+Üretim ortamını kullanıyorsanız, Azure Backup için de eklendi olmanız gerekir. Başarılı bir şekilde ADE ve Azure Backup kullanımı için bir önkoşul vardır:
+* ATA 'nın üretim ortamına, ADE özellikli VM 'nizi eklemeden önce, [Bu belgenin](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption#before-you-start) **başlamadan önce** bölümünde yer alan adımları izlediğinizden emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

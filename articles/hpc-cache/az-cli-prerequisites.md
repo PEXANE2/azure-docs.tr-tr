@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 30621eceefd69cd3e08de137bb34f1079a17a406
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0b8e1158bc60c4cceea508db988000fe952a90a4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780504"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864298"
 ---
 # <a name="set-up-azure-cli-for-azure-hpc-cache"></a>Azure HPC Önbelleği için Azure CLI’yı ayarlama
 
@@ -30,4 +30,4 @@ HPC-Cache komutlarının çoğu, önbelleğin kaynak grubunu geçirmenize gerek 
 Azure CLı uzantısını yükledikten ve oturum açarak Azure HPC önbellek sistemleri oluşturup yönetmek için Azure CLı kullanabilirsiniz.
 
 * [Azure HPC önbelleği oluşturma](hpc-cache-create.md)
-* [Azure CLı HPC-önbellek belgeleri](/cli/azure/ext/hpc-cache/hpc-cache)
+* [Azure CLı HPC-önbellek belgeleri](/cli/azure/hpc-cache)

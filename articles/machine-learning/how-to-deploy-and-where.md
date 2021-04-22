@@ -12,12 +12,12 @@ ms.date: 03/25/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2
 adobe-target: true
-ms.openlocfilehash: 598da277214a2ee8e52cc5baaf2c792dfdc0429d
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: f2128949090ce0ec2aa4ed66eb476384d662953a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220241"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872650"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Makine öğrenimi modellerini Azure 'a dağıtma
 
@@ -112,7 +112,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 
 Model kaydına birden çok dosya eklemek için, `-p` dosyaları içeren bir klasörün yoluna ayarlayın.
 
-Hakkında daha fazla bilgi için `az ml model register` [başvuru belgelerine](/cli/azure/ext/azure-cli-ml/ml/model)bakın.
+Hakkında daha fazla bilgi için `az ml model register` [başvuru belgelerine](/cli/azure/ml/model)bakın.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -357,9 +357,9 @@ Aşağıdaki tabloda farklı hizmet durumları açıklanmaktadır:
 
 | Web hizmeti durumu | Description | Son durum?
 | ----- | ----- | ----- |
-| Kta | Hizmet, dağıtım sürecinde. | Hayır |
-| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | Hayır |
-| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | Hayır |
+| Kta | Hizmet, dağıtım sürecinde. | No |
+| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | No |
+| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | No |
 | Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Yes |
 | Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Yes |
 
@@ -390,7 +390,7 @@ Dağıtılan bir Web hizmetini silmek için kullanın `az ml service <name of we
 
 Çalışma alanınızdan kayıtlı bir modeli silmek için şunu kullanın `az ml model delete <model id>`
 
-[Bir Web hizmetini silme](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete) ve [bir modeli silme](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete)hakkında daha fazla bilgi edinin.
+[Bir Web hizmetini silme](/cli/azure/ml/service#az_ml_service_delete) ve [bir modeli silme](/cli/azure/ml/model#az_ml_model_delete)hakkında daha fazla bilgi edinin.
 
 # <a name="python"></a>[Python](#tab/python)
 

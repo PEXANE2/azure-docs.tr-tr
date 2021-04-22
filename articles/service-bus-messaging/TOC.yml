@@ -110,6 +110,8 @@
           href: message-transfers-locks-settlement.md
         - name: Teslim edilemeyen iletiler sırası
           href: service-bus-dead-letter-queues.md
+        - name: İleti erteleme
+          href: message-deferral.md
         - name: Performansı iyileştirme
           href: service-bus-performance-improvements.md
         - name: Coğrafi olağanüstü durum kurtarma ve coğrafi çoğaltma
@@ -206,8 +208,6 @@
           items:
             - name: İletileri önceden getirme
               href: service-bus-prefetch.md
-            - name: İleti erteleme
-              href: message-deferral.md
             - name: Otomatik yönlendirme ile varlıklar arasında zincir oluşturma
               href: service-bus-auto-forwarding.md
             - name: İşlem gerçekleştirme

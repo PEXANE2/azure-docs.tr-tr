@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: a8c007d7f4419ddbe1555b50ceb6fb92ea0a6f98
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e5c855675990d6fd3ec97b839539acd843016a7d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783908"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864712"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
 
@@ -274,6 +274,7 @@ az acr update --name myregistry --anonymous-pull-enabled
 > * Anonim çekme işlemini denemeden önce, `docker logout` tüm mevcut Docker kimlik bilgilerini temizlemenizi sağlamak için öğesini çalıştırın.
 > * Yalnızca veri düzlemi işlemleri, kimliği doğrulanmamış istemciler tarafından kullanılabilir.
 > * Kayıt defteri, yüksek oranda kimliği doğrulanmamış isteklerin azaledebilir.
+> * Şu anda, [coğrafi olarak çoğaltılan](container-registry-geo-replication.md) kayıt defteri bölgelerinde anonim çekme erişimi desteklenmez.
 
 > [!WARNING]
 > Anonim çekme erişimi şu anda kayıt defterindeki tüm depolar için geçerlidir. Depoda [kapsamlı belirteçleri](container-registry-repository-scoped-permissions.md)kullanarak depo erişimini yönetiyorsanız, tüm kullanıcıların anonim çekme için etkinleştirilen bir kayıt defterindeki depolardan çekeceğini unutmayın. Anonim çekme erişimi etkinleştirildiğinde belirteçleri silmenizi öneririz.

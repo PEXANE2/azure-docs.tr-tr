@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.author: v-erkel
-ms.openlocfilehash: d61612b6e491fae550559e499cb360efc0f7c044
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ebf68c1eb06984e2de8114c53e1bb55d52aed70a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258920"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862642"
 ---
 # <a name="edit-storage-targets"></a>Depolama hedeflerini düzenleme
 
@@ -45,7 +45,7 @@ Bir depolama hedefini kaldırmak için **depolama hedefleri** sayfasını açın
 
 [Azure HPC önbelleği Için Azure CLI 'Yi ayarlayın](./az-cli-prerequisites.md).
 
-Önbellekten bir depolama hedefini silmek için [az HPC-Cache Storage-Target Remove](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-remove) kullanın.
+Önbellekten bir depolama hedefini silmek için [az HPC-Cache Storage-Target Remove](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage_target_remove) kullanın.
 
 ```azurecli
 $ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-cache0629 --name blob1
@@ -84,7 +84,7 @@ Değişiklik yaptıktan sonra, depolama hedefini güncelleştirmek için **Tamam
 
 [Azure HPC önbelleği Için Azure CLI 'Yi ayarlayın](./az-cli-prerequisites.md).
 
-Azure CLı ile bir BLOB depolama hedefinin ad alanını değiştirmek için [az HPC-Cache blob-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-update)komutunu kullanın. Yalnızca `--virtual-namespace-path` değer değiştirilebilir.
+Azure CLı ile bir BLOB depolama hedefinin ad alanını değiştirmek için [az HPC-Cache blob-Storage-Target Update](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_update)komutunu kullanın. Yalnızca `--virtual-namespace-path` değer değiştirilebilir.
 
   ```azurecli
   az hpc-cache blob-storage-target update --cache-name cache-name --name target-name \
@@ -125,7 +125,7 @@ Ad alanı değerlerini güncelleştirmek için Azure HPC önbelleğiniz için **
 
 [Azure HPC önbelleği Için Azure CLI 'Yi ayarlayın](./az-cli-prerequisites.md).
 
-``--junction``Ad alanı yolunu, NFS dışarı aktarmayı veya dışarı aktarma alt dizinini değiştirmek için [az HPC-Cache NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target) komutundaki seçeneğini kullanın.
+``--junction``Ad alanı yolunu, NFS dışarı aktarmayı veya dışarı aktarma alt dizinini değiştirmek için [az HPC-Cache NFS-Storage-Target Update](/cli/azure/hpc-cache/nfs-storage-target) komutundaki seçeneğini kullanın.
 
 ``--junction``Parametresi şu değerleri kullanır:
 
@@ -170,7 +170,7 @@ Yeni bir kullanım modeli seçmek için açılan seçiciyi kullanın. Depolama h
 
 [Azure HPC önbelleği Için Azure CLI 'Yi ayarlayın](./az-cli-prerequisites.md).
 
-[Az HPC-Cache NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) komutunu kullanın.
+[Az HPC-Cache NFS-Storage-Target Update](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_update) komutunu kullanın.
 
 Güncelleştirme komutu, NFS depolama hedefi eklemek için kullandığınız komutla neredeyse aynıdır. Ayrıntılar ve örnekler için [NFS depolama hedefi oluşturma](hpc-cache-add-storage.md#create-an-nfs-storage-target) bölümüne bakın.
 
@@ -178,7 +178,7 @@ Kullanım modelini değiştirmek için, ``--nfs3-usage-model`` seçeneğini gün
 
 Önbellek adı, depolama hedefi adı ve kaynak grubu değerleri de gereklidir.
 
-Kullanım modellerinin adlarını doğrulamak istiyorsanız, [az HPC-Cache Usage-model List](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list)komutunu kullanın.
+Kullanım modellerinin adlarını doğrulamak istiyorsanız, [az HPC-Cache Usage-model List](/cli/azure/hpc-cache/usage-model#az_hpc_cache_usage-model-list)komutunu kullanın.
 
 Önbellek durdurulmuşsa veya sağlıklı durumda değilse güncelleştirme, önbellek sağlıklı olduktan sonra uygulanır.
 

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 630b8d9a965f4b34e7b14b5b1d80fe74b0cc31c3
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: e623932d26ec3e90f8e82df69b1db63c03c9c615
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107499261"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867103"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[\[Önizleme \] : Azure IoT Hub, bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarı kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d7e144b-159c-44fc-95c1-ac3dbf5e6e54) |Müşteri tarafından yönetilen anahtarla IoT Hub bekleyen verilerin şifrelenmesi, varsayılan hizmet tarafından yönetilen anahtarların üzerine ikinci bir şifreleme katmanı ekler, anahtar erişim denetimi aracılığıyla anahtar erişimi, özel döndürme ilkeleri ve verilere erişimi yönetme olanağı sağlar. IoT Hub oluşturulması sırasında müşterinin yönettiği anahtarların yapılandırılması gerekir. Müşteri tarafından yönetilen anahtarların nasıl yapılandırılacağı hakkında daha fazla bilgi için bkz [https://aka.ms/iotcmk](https://aka.ms/iotcmk) .. |Denetim, reddetme, devre dışı |[1.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IotHub_CMKEncryptionEnabled.json) |
 |[IoT Hub cihaz sağlama örneklerini özel DNS bölgelerini kullanacak şekilde yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faaa64d2d-2fa3-45e5-b332-0b031b9b30e8) |Özel bir uç nokta için DNS çözümlemesini geçersiz kılmak üzere özel DNS bölgelerini kullanın. Özel bir DNS bölgesi, bir IoT Hub cihaz sağlama hizmeti örneğine çözülecek sanal ağınıza bağlanır. Daha fazla bilgi: [https://aka.ms/iotdpsvnet](https://aka.ms/iotdpsvnet) . |DeployIfNotExists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_DeployPrivateDnsZoneForPrivateEndpoint_Deploy.json) |

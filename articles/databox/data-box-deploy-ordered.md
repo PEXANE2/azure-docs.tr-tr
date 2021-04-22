@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: eae8cca0302993c16ea29adddf6e4ee9b5b24be8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ed539df9fec3c66b3881257ff1ce68d03cf4c382
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770907"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878605"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Öğretici: Azure Data Box sipariş etme
 
@@ -449,7 +449,7 @@ Bir cihaz sıralamak için Azure CLı kullanarak aşağıdaki adımları uygulay
    |sorgu| JMESPath sorgu dizesi. Daha fazla bilgi için bkz. [Jmespath](http://jmespath.org/). | --sorgu <string>|
    |ayrıntılı| Ayrıntılı günlük kaydı ekleyin. | --ayrıntılı |
 
-2. Komut istemindeki veya terminalinizde, Azure Data Box siparişinizi oluşturmak için [az Data Box Job Create](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-create) komutunu çalıştırın.
+2. Komut istemindeki veya terminalinizde, Azure Data Box siparişinizi oluşturmak için [az Data Box Job Create](/cli/azure/databox/job#az_databox_job_create) komutunu çalıştırın.
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -617,7 +617,7 @@ Microsoft ardından cihazınızı hazırlar ve bölgeye uygun gönderim şirketi
 
 ### <a name="track-a-single-order"></a>Tek bir siparişi izleyin
 
-Tek, var olan bir Azure Data Box sıra hakkında izleme bilgileri almak için, öğesini çalıştırın [`az databox job show`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-show) . Bu komut, şu sıralama hakkında bilgiler görüntüler: ad, kaynak grubu, izleme bilgileri, abonelik KIMLIĞI, iletişim bilgileri, sevkiyat türü ve cihaz SKU 'su.
+Tek, var olan bir Azure Data Box sıra hakkında izleme bilgileri almak için, öğesini çalıştırın [`az databox job show`](/cli/azure/databox/job#az_databox_job_show) . Bu komut, şu sıralama hakkında bilgiler görüntüler: ad, kaynak grubu, izleme bilgileri, abonelik KIMLIĞI, iletişim bilgileri, sevkiyat türü ve cihaz SKU 'su.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -658,7 +658,7 @@ Tek, var olan bir Azure Data Box sıra hakkında izleme bilgileri almak için, �
 
 ### <a name="list-all-orders"></a>Tüm siparişleri Listele
 
-Birden çok cihaz siparişi aldıysanız, [`az databox job list`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-list) tüm Azure Data Box siparişlerinizi görüntülemek için çalıştırabilirsiniz. Komut, belirli bir kaynak grubuna ait olan tüm siparişleri listeler. Çıktıda da gösterildiği gibi: sipariş adı, Sevkiyat durumu, Azure bölgesi, teslim türü, sipariş durumu. İptal edilen siparişler listeye de dahildir.
+Birden çok cihaz siparişi aldıysanız, [`az databox job list`](/cli/azure/databox/job#az_databox_job_list) tüm Azure Data Box siparişlerinizi görüntülemek için çalıştırabilirsiniz. Komut, belirli bir kaynak grubuna ait olan tüm siparişleri listeler. Çıktıda da gösterildiği gibi: sipariş adı, Sevkiyat durumu, Azure bölgesi, teslim türü, sipariş durumu. İptal edilen siparişler listeye de dahildir.
 Komut ayrıca her bir siparişin zaman damgalarını görüntüler.
 
 ```azurecli
@@ -777,7 +777,7 @@ Sipariş verdikten sonra, sipariş durumu işlendi olmadan önce herhangi bir no
 
 ### <a name="cancel-an-order"></a>Siparişi iptal etme
 
-Azure Data Box sırayı iptal etmek için, öğesini çalıştırın [`az databox job cancel`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-cancel) . Siparişi iptal etme nedeninizi belirtmeniz gerekir.
+Azure Data Box sırayı iptal etmek için, öğesini çalıştırın [`az databox job cancel`](/cli/azure/databox/job#az_databox_job_cancel) . Siparişi iptal etme nedeninizi belirtmeniz gerekir.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -814,7 +814,7 @@ Azure Data Box sırayı iptal etmek için, öğesini çalıştırın [`az databo
 
 ### <a name="delete-an-order"></a>Bir siparişi silme
 
-Azure Data Box sırayı iptal etmiş olmanız durumunda [`az databox job delete`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-delete) siparişi silebilirsiniz.
+Azure Data Box sırayı iptal etmiş olmanız durumunda [`az databox job delete`](/cli/azure/databox/job#az_databox_job_delete) siparişi silebilirsiniz.
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]
