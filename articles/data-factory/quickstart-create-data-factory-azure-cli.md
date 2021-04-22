@@ -9,12 +9,12 @@ ms.date: 03/24/2021
 ms.custom:
 - template-quickstart
 - devx-track-azurecli
-ms.openlocfilehash: 9af5f276e49e9eb2756dc544db353c75c99bc5a9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b40407f4c4fb81bbf76bd0b552f3c9f2c827232a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105938071"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871545"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure Data Factory oluşturma
 
@@ -73,7 +73,7 @@ Bu hızlı başlangıç, bir dosya içeren bir kapsayıcı içeren bir Azure dep
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-Bir Azure Data Factory oluşturmak için [az DataFactory Factory Create](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_create) komutunu çalıştırın:
+Bir Azure Data Factory oluşturmak için [az DataFactory Factory Create](/cli/azure/datafactory/factory#az_datafactory_factory_create) komutunu çalıştırın:
 
 ```azurecli
 az datafactory factory create --resource-group ADFQuickStartRG \
@@ -83,7 +83,7 @@ az datafactory factory create --resource-group ADFQuickStartRG \
 > [!IMPORTANT]
 > `ADFTutorialFactory`Genel olarak benzersiz bir veri fabrikası adıyla değiştirin, örneğin, ADFTutorialFactorySP1127.
 
-[Az DataFactory Factory Show](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_show) komutunu kullanarak oluşturduğunuz veri fabrikasını görebilirsiniz:
+[Az DataFactory Factory Show](/cli/azure/datafactory/factory#az_datafactory_factory_show) komutunu kullanarak oluşturduğunuz veri fabrikasını görebilirsiniz:
 
 ```azurecli
 az datafactory factory show --resource-group ADFQuickStartRG \
@@ -94,7 +94,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 
 Ardından, bağlı bir hizmet ve iki veri kümesi oluşturun.
 
-1. [Az Storage Account Show-Connection-String](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_show) komutunu kullanarak depolama hesabınızın bağlantı dizesini alın:
+1. [Az Storage Account Show-Connection-String](/cli/azure/datafactory/factory#az_datafactory_factory_show) komutunu kullanarak depolama hesabınızın bağlantı dizesini alın:
 
    ```azurecli
    az storage account show-connection-string --resource-group ADFQuickStartRG \
@@ -115,7 +115,7 @@ Ardından, bağlı bir hizmet ve iki veri kümesi oluşturun.
    }
    ```
 
-1. `AzureStorageLinkedService` [Az DataFactory Linked-Service Create](/cli/azure/ext/datafactory/datafactory/linked-service#ext_datafactory_az_datafactory_linked_service_create) komutunu kullanarak adlı bağlı bir hizmet oluşturun:
+1. `AzureStorageLinkedService` [Az DataFactory Linked-Service Create](/cli/azure/datafactory/linked-service#az_datafactory_linked_service_create) komutunu kullanarak adlı bağlı bir hizmet oluşturun:
 
    ```azurecli
    az datafactory linked-service create --resource-group ADFQuickStartRG \
@@ -146,7 +146,7 @@ Ardından, bağlı bir hizmet ve iki veri kümesi oluşturun.
    }
    ```
 
-1. `InputDataset` [Az DataFactory DataSet Create](/cli/azure/ext/datafactory/datafactory/dataset#ext_datafactory_az_datafactory_dataset_create) komutunu kullanarak adlı bir giriş veri kümesi oluşturun:
+1. `InputDataset` [Az DataFactory DataSet Create](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) komutunu kullanarak adlı bir giriş veri kümesi oluşturun:
 
    ```azurecli
    az datafactory dataset create --resource-group ADFQuickStartRG \
@@ -177,7 +177,7 @@ Ardından, bağlı bir hizmet ve iki veri kümesi oluşturun.
    }
    ```
 
-1. `OutputDataset` [Az DataFactory DataSet Create](/cli/azure/ext/datafactory/datafactory/dataset#ext_datafactory_az_datafactory_dataset_create) komutunu kullanarak adlı bir çıktı veri kümesi oluşturun:
+1. `OutputDataset` [Az DataFactory DataSet Create](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) komutunu kullanarak adlı bir çıktı veri kümesi oluşturun:
 
    ```azurecli
    az datafactory dataset create --resource-group ADFQuickStartRG \
@@ -243,7 +243,7 @@ Son olarak, işlem hattını oluşturun ve çalıştırın.
    }
    ```
 
-1. `Adfv2QuickStartPipeline` [Az DataFactory ardışık düzen Create](/cli/azure/ext/datafactory/datafactory/pipeline#ext_datafactory_az_datafactory_pipeline_create) komutunu kullanarak adlı bir işlem hattı oluşturun:
+1. `Adfv2QuickStartPipeline` [Az DataFactory ardışık düzen Create](/cli/azure/datafactory/pipeline#az_datafactory_pipeline_create) komutunu kullanarak adlı bir işlem hattı oluşturun:
 
    ```azurecli
    az datafactory pipeline create --resource-group ADFQuickStartRG \
@@ -251,7 +251,7 @@ Son olarak, işlem hattını oluşturun ve çalıştırın.
        --pipeline @Adfv2QuickStartPipeline.json
    ```
 
-1. [Az DataFactory ardışık düzen oluştur-Çalıştır](/cli/azure/ext/datafactory/datafactory/pipeline#ext_datafactory_az_datafactory_pipeline_create_run) komutunu kullanarak işlem hattını çalıştırın:
+1. [Az DataFactory ardışık düzen oluştur-Çalıştır](/cli/azure/datafactory/pipeline#az_datafactory_pipeline_create_run) komutunu kullanarak işlem hattını çalıştırın:
 
    ```azurecli
    az datafactory pipeline create-run --resource-group ADFQuickStartRG \
@@ -260,7 +260,7 @@ Son olarak, işlem hattını oluşturun ve çalıştırın.
 
    Bu komut bir çalıştırma KIMLIĞI döndürür. Sonraki komutta kullanmak üzere kopyalayın.
 
-1. [Az DataFactory işlem hattı-Run Show](/cli/azure/ext/datafactory/datafactory/pipeline-run#ext_datafactory_az_datafactory_pipeline_run_show) komutunu kullanarak işlem hattının başarılı olduğunu doğrulayın:
+1. [Az DataFactory işlem hattı-Run Show](/cli/azure/datafactory/pipeline-run#az_datafactory_pipeline_run_show) komutunu kullanarak işlem hattının başarılı olduğunu doğrulayın:
 
    ```azurecli
    az datafactory pipeline-run show --resource-group ADFQuickStartRG \
@@ -277,7 +277,7 @@ Bu hızlı başlangıçtaki tüm kaynaklar aynı kaynak grubunun bir parçasıd�
 az group delete --name ADFQuickStartRG
 ```
 
-Bu kaynak grubunu başka bir şey için kullanıyorsanız, tek tek kaynakları silin. Örneğin, bağlı hizmeti kaldırmak için [az DataFactory Linked-Service Delete](/cli/azure/ext/datafactory/datafactory/linked-service#ext_datafactory_az_datafactory_linked_service_delete) komutunu kullanın.
+Bu kaynak grubunu başka bir şey için kullanıyorsanız, tek tek kaynakları silin. Örneğin, bağlı hizmeti kaldırmak için [az DataFactory Linked-Service Delete](/cli/azure/datafactory/linked-service#az_datafactory_linked_service_delete) komutunu kullanın.
 
 Bu hızlı başlangıçta aşağıdaki JSON dosyalarını oluşturdunuz:
 

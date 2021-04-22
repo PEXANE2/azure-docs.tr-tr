@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: wiassaf
 ms.date: 03/10/2021
-ms.openlocfilehash: 3ce07af74c3f01fd78ef15ab0e7d43b91361e556
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b7084ef045d14b9715c41bb9ffa483d1f2f7bedf
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784488"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865162"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda bir veritabanının işlemsel olarak tutarlı bir kopyasını kopyalama
 
@@ -218,7 +218,7 @@ Azure portal kullanarak veritabanı kopyasını yönetmek için aşağıdaki izi
 
    Microsoft. resources/abonelikleri/kaynakları/Microsoft. resources/abonelikleri/kaynakları/yaz Microsoft. resources/dağıtımlar/okuma Microsoft. resources/dağıtımlar/Write Microsoft. resources/dağıtımlar/operationdurumlar/Read
 
-Portalda kaynak grubunda bulunan ve SQL işlemleri de dahil olmak üzere birden çok kaynak sağlayıcısı arasındaki işlemleri görmek isterseniz, bu ek Azure rollerine ihtiyacınız olacaktır:
+Portalda kaynak grubunda bulunan ve SQL işlemleri de dahil olmak üzere birden çok kaynak sağlayıcılarındaki işlemler altında gerçekleştirilen işlemleri görmek isterseniz, bu ek izinlere ihtiyacınız olacaktır:
 
    Microsoft. resources/abonelikler/ResourceGroups/dağıtımlar/işlemler/okuma Microsoft. resources/abonelikler/ResourceGroups/dağıtımlar/operationdurumlarının/Read
 

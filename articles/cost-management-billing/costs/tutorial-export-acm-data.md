@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: af050ae95b4ab161028229299a8de5ed3426430b
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 08bf165254c8759a978b406b3e9a990a41ab7a30
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482842"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873223"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Öğretici: Dışarı aktarılan verileri oluşturma ve yönetme
 
@@ -87,7 +87,7 @@ Başlangıç olarak ortamınızı Azure CLI için hazırlayın:
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-1. Oturum açtıktan sonra geçerli dışarı aktarmaları görmek için [az costmanagement export list](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_list) komutunu kullanın:
+1. Oturum açtıktan sonra geçerli dışarı aktarmaları görmek için [az costmanagement export list](/cli/azure/costmanagement/export#az_costmanagement_export_list) komutunu kullanın:
 
    ```azurecli
    az costmanagement export list --scope "subscriptions/00000000-0000-0000-0000-000000000000"
@@ -110,7 +110,7 @@ Başlangıç olarak ortamınızı Azure CLI için hazırlayın:
    az storage account create --resource-group TreyNetwork --name cmdemo
    ```
 
-1. Dışarı aktarmayı oluşturmak için [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create) komutunu kullanın:
+1. Dışarı aktarmayı oluşturmak için [az costmanagement export create](/cli/azure/costmanagement/export#az_costmanagement_export_create) komutunu kullanın:
 
    ```azurecli
    az costmanagement export create --name DemoExport --type ActualCost \
@@ -124,14 +124,14 @@ Başlangıç olarak ortamınızı Azure CLI için hazırlayın:
 
    Bu örnekte `MonthToDate` kullanılmıştır. Dışarı aktarma işlemi ay başından bugüne kadarki maliyetler için her gün bir dışarı aktarma dosyası oluşturur. Bu ayın önceki günlük dışarı aktarmalarından alınan en güncel veriler toplanır.
 
-1. Dışarı aktarma işleminizin ayrıntılarını görmek için [az costmanagement export show](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_show) komutunu kullanın:
+1. Dışarı aktarma işleminizin ayrıntılarını görmek için [az costmanagement export show](/cli/azure/costmanagement/export#az_costmanagement_export_show) komutunu kullanın:
 
    ```azurecli
    az costmanagement export show --name DemoExport \
       --scope "subscriptions/00000000-0000-0000-0000-000000000000"
    ```
 
-1. Dışarı aktarmayı güncelleştirmek için [az costmanagement export update](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_update) komutunu kullanın:
+1. Dışarı aktarmayı güncelleştirmek için [az costmanagement export update](/cli/azure/costmanagement/export#az_costmanagement_export_update) komutunu kullanın:
 
    ```azurecli
    az costmanagement export update --name DemoExport
@@ -143,7 +143,7 @@ Başlangıç olarak ortamınızı Azure CLI için hazırlayın:
 >[!NOTE]
 >Başlangıçta, dışarı aktarmanın çalışmaya başlaması 12 ila 24 saat arası sürebilir. Öte yandan verilerin dışarı aktarılan dosyalarda gösterilmesi daha uzun sürebilir.
 
-Dışarı aktarmayı silmek için [az costmanagement export delete](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_delete) komutunu kullanın:
+Dışarı aktarmayı silmek için [az costmanagement export delete](/cli/azure/costmanagement/export#az_costmanagement_export_delete) komutunu kullanın:
 
 ```azurecli
 az costmanagement export delete --name DemoExport --scope "subscriptions/00000000-0000-0000-0000-000000000000"

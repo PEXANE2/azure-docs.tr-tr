@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 0478e606cd5eb6652b992b647d5f69b347753341
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 871a648eada2e710604d5fb42ea83a8559049b6a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107504314"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876030"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure Dosya Eşitleme özel bağlantı kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d320205-c6a1-4ac6-873d-46224024e8e2) |Belirtilen depolama eşitleme hizmeti kaynağı için özel bir uç nokta oluşturulması, depolama eşitleme hizmeti kaynağınızı, internet erişimli genel uç nokta yerine kuruluşunuzun ağının özel IP adresi alanından adresetmenize olanak tanır. Özel bir uç noktanın kendi başına oluşturulması, genel uç noktayı devre dışı bırakmaz. |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_PrivateEndpoint_AuditIfNotExists.json) |
 |[Özel uç noktalarla Azure Dosya Eşitleme yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb35dddd9-daf7-423b-8375-5a5b86806d5a) |Belirtilen depolama eşitleme hizmeti kaynağı için özel bir uç nokta dağıtılır. Bu, depolama eşitleme hizmeti kaynağınızın, internet erişimli genel uç nokta yerine, kuruluşunuzun ağının özel IP adresi alanından adreslemenize olanak sağlar. Tek başına bir veya daha fazla özel bitiş noktasının varlığı, genel uç noktasını devre dışı bırakmaz. |DeployIfNotExists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_PrivateEndpoint_DeployIfNotExists.json) |

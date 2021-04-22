@@ -7,16 +7,16 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: b81d9b4a637965dd103d8fa89305424686a0c72c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8086ce0e5964d4e37a5ffc3082d5f2856058e4e5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789924"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875494"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLı betik örneği-mantıksal uygulama oluşturma
 
-Bu betik, () [Azure clı Logic Apps uzantısı](/cli/azure/ext/logic/logic)aracılığıyla bir örnek mantıksal uygulama oluşturur `az logic` . Azure CLı aracılığıyla mantıksal uygulamalar oluşturmaya ve yönetmeye yönelik ayrıntılı bir kılavuz için bkz. [Azure CLI için Logic Apps hızlı](quickstart-logic-apps-azure-cli.md)başlangıcı.
+Bu betik, () [Azure clı Logic Apps uzantısı](/cli/azure/logic)aracılığıyla bir örnek mantıksal uygulama oluşturur `az logic` . Azure CLı aracılığıyla mantıksal uygulamalar oluşturmaya ve yönetmeye yönelik ayrıntılı bir kılavuz için bkz. [Azure CLI için Logic Apps hızlı](quickstart-logic-apps-azure-cli.md)başlangıcı.
 
 > [!WARNING]
 > Azure CLı Logic Apps uzantısı Şu anda *deneysel* ve *müşteri desteği kapsamında değil*. Özellikle uzantıyı üretim ortamlarında kullanmayı seçerseniz, bu CLı uzantısını dikkatle kullanın.
@@ -198,7 +198,7 @@ Bu örnek betik, yeni bir kaynak grubu ve mantıksal uygulama oluşturmak için 
 | Komut | Notlar |
 | ------- | ----- |
 | [`az group create`](/cli/azure/group#az_group_create) | Mantıksal uygulamanızın kaynaklarından depolandığı bir kaynak grubu oluşturur. |
-| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | Parametresinde tanımlanan iş akışını temel alan bir mantıksal uygulama oluşturur `--definition` . |
+| [`az logic workflow create`](/cli/azure/logic/workflow#az_logic_workflow_create) | Parametresinde tanımlanan iş akışını temel alan bir mantıksal uygulama oluşturur `--definition` . |
 | [`az group delete`](/cli/azure/vm/extension) | Bir kaynak grubunu ve tüm iç içe geçmiş kaynaklarını siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

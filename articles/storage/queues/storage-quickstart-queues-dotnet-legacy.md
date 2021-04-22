@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10ab1c487095fe1587a3c665d8a06e0d5cbab7e0
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: df2f3593f904c5c6c6c9af0ae635a2e152f9eb82
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275898"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871084"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Hızlı başlangıç: bir kuyruğu yönetmek için .NET için Azure depolama SDK v11 kullanın
 
@@ -31,19 +31,19 @@ Ardından, işletim sisteminiz için .NET Core 2.0’ı indirip yükleyin. Windo
 
 ### <a name="windows"></a>Windows
 
-- [Windows için .NET Core](https://www.microsoft.com/net/download/windows) veya [.NET Framework](https://www.microsoft.com/net/download/windows) (Windows için Visual Studio ile birlikte gelir) yükleyin
+- Windows veya [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) [Için .NET Core SDK](https://dotnet.microsoft.com/download) (Windows için Visual Studio ile birlikte) yükler
 - [Windows için Visual Studio](https://www.visualstudio.com/) yükleyin. .NET Core kullanıyorsanız, Visual Studio yüklenmesi isteğe bağlıdır.
 
 .NET Core ve .NET Framework arasında seçim yapma hakkında bilgi için bkz: [Sunucu uygulamaları için .NET Framework ve .NET Core arasında seçim yapma](/dotnet/standard/choosing-core-framework-server).
 
 ### <a name="linux"></a>Linux
 
-- [Linux için .NET Core](https://www.microsoft.com/net/download/linux) yükleyin
+- [Linux için .NET Core SDK](/dotnet/core/install/linux) 'i yükler
 - İsteğe bağlı olarak [Visual Studio Code](https://www.visualstudio.com/) ve [C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) yükleyin
 
 ### <a name="macos"></a>Mac OS
 
-- [macOS için .NET Core](https://www.microsoft.com/net/download/macos) yükleyin.
+- [MacOS için .NET Core SDK](https://dotnet.microsoft.com/download)'i yükler.
 - İsteğe bağlı olarak [Mac için Visual Studio](https://www.visualstudio.com/vs/visual-studio-mac/) yükleyin
 
 ## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
@@ -283,4 +283,4 @@ Bu hızlı başlangıçta, bir kuyruğa ileti eklemeyi, sıradaki iletilere göz
 > [!div class="nextstepaction"]
 > [Azure kuyruk depolama ile uygulamalar arasında iletişim kurma](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
 
-- .NET Core hakkında daha fazla bilgi için bkz. [10 dakika içinde .NET kullanmaya başlama](https://www.microsoft.com/net/learn/get-started/).
+- .NET Core hakkında daha fazla bilgi için bkz. [10 dakika içinde .NET kullanmaya başlama](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro).

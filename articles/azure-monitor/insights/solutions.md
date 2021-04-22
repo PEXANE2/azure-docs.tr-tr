@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 8a18a47331eb5d4a9ed5578cca320beef5e0ba45
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6a98571f513e25d801acd4f4a9c2901dcd56fabc
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766996"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869230"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de çözümleri izleme
 
@@ -48,7 +48,7 @@ Bir çözümün adına tıklayarak Özet sayfasını açın. Bu sayfada çözüm
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Aboneliğinizde yüklü izleme çözümlerini listelemek için [az Monitor Log-Analytics çözüm List](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-list) komutunu kullanın.   Komutu çalıştırmadan önce `list` , [Izleme çözümü yüklerken](#install-a-monitoring-solution)bulunan önkoşulları izleyin.
+Aboneliğinizde yüklü izleme çözümlerini listelemek için [az Monitor Log-Analytics çözüm List](/cli/azure/monitor/log-analytics/solution#az_monitor_log_analytics_solution_list) komutunu kullanın.   Komutu çalıştırmadan önce `list` , [Izleme çözümü yüklerken](#install-a-monitoring-solution)bulunan önkoşulları izleyin.
 
 ```azurecli
 # List all log-analytics solutions in the current subscription.
@@ -142,7 +142,7 @@ Topluluk üyeleri, yönetim çözümlerini Azure hızlı başlangıç şablonlar
 
 Bir çözüm yüklediğinizde, çözümün yükleneceği ve verilerinin toplanacağı bir [Log Analytics çalışma alanı](../logs/manage-access.md) seçmeniz gerekir.  Azure CLı ile, [az Monitor Log-Analytics çalışma alanı](/cli/azure/monitor/log-analytics/workspace) başvuru komutlarını kullanarak çalışma alanlarını yönetirsiniz.  Çalışma alanını ve hesabı bağlamak için [Log Analytics çalışma alanı ve Otomasyon hesabı](#log-analytics-workspace-and-automation-account) ' nda açıklanan süreci izleyin.
 
-İzleme çözümü yüklemek için [az Monitor Log-Analytics çözüm Create](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) ' i kullanın.  Köşeli parantezler içindeki parametreler isteğe bağlıdır.
+İzleme çözümü yüklemek için [az Monitor Log-Analytics çözüm Create](/cli/azure/monitor/log-analytics/solution) ' i kullanın.  Köşeli parantezler içindeki parametreler isteğe bağlıdır.
 
 ```azurecli
 az monitor log-analytics solution create --name
@@ -241,7 +241,7 @@ Portalı kullanarak yüklü bir çözümü kaldırmak için, [yüklü çözümle
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLı 'yı kullanarak yüklü bir çözümü kaldırmak için [az Monitor Log-Analytics çözüm Delete](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-delete) komutunu kullanın.
+Azure CLı 'yı kullanarak yüklü bir çözümü kaldırmak için [az Monitor Log-Analytics çözüm Delete](/cli/azure/monitor/log-analytics/solution#az_monitor_log_analytics_solution_delete) komutunu kullanın.
 
 ```azurecli
 az monitor log-analytics solution delete --name

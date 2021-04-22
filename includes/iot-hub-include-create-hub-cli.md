@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: be51d4db6c98b63fcb1c9c60df045b494536d78f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4999bd93f338ca7b34b141b88e06e4a769a4aaa1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766535"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876447"
 ---
 Aşağıdaki bölümlerde bir Terminal ayarlarsınız ve bir IoT Hub 'ı oluşturmak için Azure CLı 'yi kullanırsınız. Azure CLı komutlarını çalıştıran bir Terminal yapılandırmak için tarayıcı tabanlı Azure Cloud Shell kullanabilir ya da yerel bir Terminal kullanabilirsiniz.
 * Cloud Shell kullanmak için sonraki bölüme gidin: [Cloud Shell başlatın](#launch-the-cloud-shell). 
@@ -97,7 +97,7 @@ Bir IoT Hub 'ı ve bir kaynak grubu oluşturmak için:
 Bu bölümde, IoT Hub 'ınıza bağlı bir sanal IoT cihazı oluşturursunuz. 
 
 Sanal cihaz oluşturmak için:
-1. CLı kabuğunuzun [az IoT Hub Device-Identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) komutunu çalıştırın. Bu, sanal cihaz kimliğini oluşturur. 
+1. CLı kabuğunuzun [az IoT Hub Device-Identity Create](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create) komutunu çalıştırın. Bu, sanal cihaz kimliğini oluşturur. 
 
     *Youriothubname*. Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin. 
 
@@ -107,7 +107,7 @@ Sanal cihaz oluşturmak için:
     az iot hub device-identity create --device-id myDevice --hub-name {YourIoTHubName} 
     ```
 
-1.  [Az IoT Hub cihazı-Identity Connection-String Show](/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) komutunu çalıştırın. 
+1.  [Az IoT Hub cihazı-Identity Connection-String Show](/cli/azure/iot/hub/device-identity/connection-string#az_iot_hub_device_identity_connection_string_show) komutunu çalıştırın. 
 
     ```azurecli
     az iot hub device-identity connection-string show --device-id myDevice --hub-name {YourIoTHubName}

@@ -7,19 +7,19 @@ manager: femila
 ms.topic: reference
 ms.service: media-services
 ms.custom: subject-monitoring
-ms.date: 03/17/2021
-ms.openlocfilehash: 4e4c65966ec8a6a5b47d5f68596f6d2d496fda17
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.date: 04/21/2021
+ms.openlocfilehash: 3fd7b8013ec67d718f308ccd1b72a6f90012e02e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835515"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873064"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Media Services veri başvurusunu izleme
 
 Bu makale Media Services izlemek için yararlı olan verileri içerir. Azure Izleyici 'de desteklenen tüm platform ölçümleri hakkında daha fazla bilgi için [Azure izleyici Ile desteklenen ölçümleri](../../../azure-monitor/essentials/metrics-supported.md)gözden geçirin.
 
-## <a name="media-services-metrics"></a>Media Services ölçümleri
+## <a name="metrics"></a>Ölçümler
 
 Ölçümler, değerin değiştirilip değişmediğini düzenli aralıklarla toplanır. Bunlar genelde örneklenebilir ve bir uyarı görece basit mantık ile hızlı bir şekilde tetiklenebilir.
 
@@ -40,12 +40,13 @@ Media Services aşağıdaki kaynaklar için izleme ölçümlerini destekler:
 
 Ölçüm boyutları hakkında daha fazla bilgi için bkz. [çok boyutlu ölçümler](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
-<!--**PLACEHOLDER** for dimensions table.-->
-OutputFormat, HttpStatusCode, HataKodu, TrackName
+Media Services 'in ölçüm boyutları şunlardır.  Bunlar, destekledikleri ölçümlere göre kendi kendine explantory.  Daha fazla bilgi için bkz. [ölçüm bağlantıları](#metrics) .   
+- OutputFormat
+- HttpStatusCode 
+- ErrorCode 
+- TrackName 
 
 ## <a name="resource-logs"></a>Kaynak günlükleri
-
-## <a name="media-services-resource-logs"></a>Kaynak günlüklerini Media Services
 
 Kaynak günlükleri bir Azure kaynağının çalışması hakkında zengin ve sık veriler sağlar. Daha fazla bilgi için bkz. [Azure kaynaklarınızdan günlük verilerini toplama ve kullanma](../../../azure-monitor/essentials/platform-logs-overview.md).
 

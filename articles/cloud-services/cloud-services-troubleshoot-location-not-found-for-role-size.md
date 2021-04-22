@@ -2,17 +2,17 @@
 title: Azure 'a bir bulut hizmeti (klasik) dağıttığınızda LocationNotFoundForRoleSize sorunlarını giderme | Microsoft Docs
 description: Bu makalede, Azure 'a bir bulut hizmeti (klasik) dağıtımında bir LocationNotFoundForRoleSize özel durumunun nasıl çözümleneceği gösterilmektedir.
 services: cloud-services
-author: mibufo
-ms.author: v-mibufo
+author: mamccrea
+ms.author: mamccrea
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: 2ed889bea715ff5a26bf8e918789429e57fa31b2
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 54af2387ec0ff6c8f86f96821baad17736e8d85b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109671"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877975"
 ---
 # <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>Azure 'a bir bulut hizmeti (klasik) dağıttığınızda LocationNotFoundForRoleSize sorunlarını giderme
 
@@ -20,7 +20,7 @@ Bu makalede, bir Azure bulut hizmeti dağıtırken (klasik) bir sanal makine (VM
 
 Bir bulut hizmetine (klasik) örnekler dağıtırken veya yeni Web veya çalışan rolü örnekleri eklediğinizde Microsoft Azure işlem kaynaklarını ayırır.
 
-Azure abonelik sınırına ulaşmadan bile bu işlemler sırasında zaman zaman bir hata alabilirsiniz.
+Azure abonelik sınırına ulaşmadan önce bile bu işlemler sırasında bazen hatalar alabilirsiniz.
 
 > [!TIP]
 > Ayrıca, hizmetlerinizin dağıtımını planlarken bilgiler de yararlı olabilir.
@@ -54,7 +54,7 @@ Bu senaryoda, bulut hizmetinizi (klasik) dağıtmak için farklı bir bölge vey
 - `--size`Kısmi bir boyut adına göre arama yapmak için parametresini kullanın.
 - Daha fazla bilgi için bkz. [SKU kullanılamıyor Kılavuzu Için çözüm hatası](../azure-resource-manager/templates/error-sku-not-available.md#solution-2---azure-cli) .
 
-    **Örnek:**
+    **Örneğin:**
 
     ```azurecli
     az vm list-skus --location southcentralus --size Standard_F --output table
@@ -70,7 +70,7 @@ Bu senaryoda, bulut hizmetinizi (klasik) dağıtmak için farklı bir bölge vey
 - Bu komut için en son PowerShell sürümüne sahip olmanız gerekir.
 - Daha fazla bilgi için bkz. [SKU kullanılamıyor Kılavuzu Için çözüm hatası](../azure-resource-manager/templates/error-sku-not-available.md#solution-1---powershell) .
 
-**Örnek:**
+**Örneğin:**
 
 ```azurepowershell
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}

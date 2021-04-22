@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 03/25/2021
+ms.date: 04/21/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39eec4fb6e9907b36908a87c09aceabd0dd1a678
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 8c18dd231a708030e3a454ab8708e3f0f11dbecf
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075177"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861832"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Öğretici: kullanıcıların Self servis parola sıfırlama Azure Active Directory kullanarak hesaplarının kilidini açma veya parolaları sıfırlamalarını sağlama
 
@@ -37,7 +37,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 Bu öğreticiyi bitirebilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
-* En az bir Azure AD ücretsiz veya deneme lisansı etkin olan çalışan bir Azure AD kiracısı. Ücretsiz katmanda SSPR yalnızca Azure AD 'deki bulut kullanıcıları için geçerlidir.
+* En az bir Azure AD ücretsiz veya deneme lisansı etkin olan çalışan bir Azure AD kiracısı. Ücretsiz katmanda SSPR yalnızca Azure AD 'deki bulut kullanıcıları için geçerlidir. Parola değişikliği ücretsiz katmanda desteklenir, ancak parola sıfırlama desteklenmez. 
     * Bu serideki sonraki öğreticiler için, şirket içi parola geri yazma için Azure AD Premium P1 veya deneme lisansı gerekir.
     * Gerekirse, [ücretsiz olarak bir Azure hesabı oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * *Genel yönetici* ayrıcalıklarına sahip bir hesap.

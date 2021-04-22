@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: aa67a858d0396badc25a625b23dc2f2fdf1bdff9
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 61488b88b00206cb78beed4fe773bf9377848701
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551382"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861058"
 ---
 # <a name="np-series"></a>NP serisi 
 NP serisi sanal makineler, makine öğrenimi çıkarımı, video dönüştürme kodu ve veritabanı arama & analizi dahil olmak üzere iş yüklerini hızlandırma için [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) fpgile desteklenir. NP serisi VM 'Ler, 3,2 GHz 'nin tüm çekirdek Turbo saat hızına sahip Intel Xeon 8171M (ufuk Gölü) CPU 'Ları tarafından da desteklenir.
@@ -135,6 +135,15 @@ Y **:** Şu anda değil. Yalnızca dağıtım platformu paketlerinde sunulan PLP
 **S:** PLP bilgilerini nasıl sorgularım? 
 
 Y **:** Xbutil sorgusunun çalıştırılması ve alt bölüme bakmamız gerekir. 
+
+**S:** Kendi VM 'im oluşturup XRT 'yi el ile dağıtırsanız ne yapmam gerekir? 
+
+Y **:** /Seçenek/Xilinx/XRT/Setup.exe ' de,/seçenek/Xilinx/XRT/xrt.ini işaret eden XRT_INI_PATH için bir giriş ekleyin
+
+ 
+/Seçenek/Xilinx/XRT/xrt.ini içeriği şunları içermelidir: <br>
+Çalışma zamanı<br>
+ert = yanlış <br>
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 

@@ -3,18 +3,16 @@ title: Yüz hizmeti kullanılırken gecikme süresini azaltma
 titleSuffix: Azure Cognitive Services
 description: Yüz hizmetini kullanırken gecikme süresini nasıl azaltacağınızı öğrenin.
 services: cognitive-services
-author: v-jaswel
 manager: chrhoder
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
-ms.author: v-jawe
-ms.openlocfilehash: 412105e3262a3baf8780bd3bd1082508967ea486
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: a306883573387a2a5c20a53c7015c6dbd3eddf65
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012593"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878677"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>Nasıl yapılır: yüz hizmetini kullanırken gecikme süresini azaltma
 

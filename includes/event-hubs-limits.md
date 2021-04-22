@@ -45,7 +45,7 @@ Azure portal kullanarak adanmış Event Hubs kümesi oluşturma hakkında bu [be
 | Özellik | Standart | Ayrılmış |
 | --- |:---|:---|
 | Bant genişliği | 20 s (40 'e kadar) | 20 cu düzeyinde kapsanır |
-| Ad alanları |  1 | CU başına 50 |
+| Ad alanları |  Abonelik başına 100 | CU başına 50 (abonelik başına 100) |
 | Event Hubs |  ad alanı başına 10 | ad alanı başına 1000 |
 | Giriş olayları | Milyon olay başına ödeme | Dahil |
 | İleti boyutu | 1.000.000 bayt | 1.000.000 bayt |

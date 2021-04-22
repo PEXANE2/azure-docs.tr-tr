@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: d347be4e6727cdda659620befe20824678160020
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: af870b3be9c2ab7022a05c9cf9e3a662c5850214
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792444"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875080"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLı ile bir sanal makine ölçek kümesindeki işletim sistemini ve bağlı veri disklerini şifreleme
 
@@ -61,7 +61,7 @@ Tüm ölçek kümesi kaynaklarının ve VM'lerin oluşturulup yapılandırılmas
 
 Azure Key Vault, uygulamaları ve hizmetlerinize güvenli bir şekilde uygulamanızı sağlayan anahtarları, parolaları veya parolaları depolayabilirler. Şifreleme anahtarları yazılım korumasını kullanarak Azure Key Vault depolanır veya anahtarlarınızı FIPS 140-2 düzey 2 standartlarına sertifikalı donanım güvenlik modüllerinde (HSM 'ler) içeri aktarabilir veya oluşturabilirsiniz. Bu şifreleme anahtarları, VM 'nize bağlı sanal diskleri şifrelemek ve şifrelerini çözmek için kullanılır. Bu şifreleme anahtarlarının denetimini koruyabilir ve kullanımlarını denetleyebilir.
 
-Kendi benzersiz *keyvault_name* tanımlayın. Daha sonra, ölçek kümesiyle aynı abonelikte ve bölgede [az keykasatıon Create](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-create) Ile bir keykasa oluşturun ve *--Enabled-for-disk şifrelemesi* erişim ilkesini ayarlayın.
+Kendi benzersiz *keyvault_name* tanımlayın. Daha sonra, ölçek kümesiyle aynı abonelikte ve bölgede [az keykasatıon Create](/cli/azure/keyvault#az_keyvault_create) Ile bir keykasa oluşturun ve *--Enabled-for-disk şifrelemesi* erişim ilkesini ayarlayın.
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -75,7 +75,7 @@ az keyvault create --resource-group myResourceGroup --name $keyvault_name --enab
 
 Bu adım yalnızca disk şifrelemesi ile kullanmak istediğiniz mevcut bir Key Vault varsa gereklidir. Önceki bölümde bir Key Vault oluşturduysanız bu adımı atlayın.
 
-Kendi benzersiz *keyvault_name* tanımlayın. Ardından, [az keykasatıon Update](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-update) Ile keykasalarınızı güncelledi ve *--Enabled-for-disk şifrelemesi* erişim ilkesini ayarlayın.
+Kendi benzersiz *keyvault_name* tanımlayın. Ardından, [az keykasatıon Update](/cli/azure/keyvault#az_keyvault_update) Ile keykasalarınızı güncelledi ve *--Enabled-for-disk şifrelemesi* erişim ilkesini ayarlayın.
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -87,7 +87,7 @@ az keyvault update --name $keyvault_name --enabled-for-disk-encryption
 
 ## <a name="enable-encryption"></a>Şifrelemeyi etkinleştir
 
-Bir ölçek kümesindeki sanal makine örneklerini şifrelemek için, öncelikle Key Vault kaynak KIMLIĞIYLE ilgili bazı bilgileri [az keykasashow](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-show)komutuyla alın. Bu değişkenler daha sonra [az VMSS ENCRYPTION Enable](/cli/azure/vmss/encryption#az_vmss_encryption_enable)ile şifreleme işlemini başlatmak için kullanılır:
+Bir ölçek kümesindeki sanal makine örneklerini şifrelemek için, öncelikle Key Vault kaynak KIMLIĞIYLE ilgili bazı bilgileri [az keykasashow](/cli/azure/keyvault#az_keyvault_show)komutuyla alın. Bu değişkenler daha sonra [az VMSS ENCRYPTION Enable](/cli/azure/vmss/encryption#az_vmss_encryption_enable)ile şifreleme işlemini başlatmak için kullanılır:
 
 ```azurecli-interactive
 # Get the resource ID of the Key Vault

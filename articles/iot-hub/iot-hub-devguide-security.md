@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: e72af412f61f2084fb78907c15a92a22b9e3bc99
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 7f919069005e8fcb813baf2521c8cb20cffafc88
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567188"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870364"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub’a erişimi denetleme
 
@@ -99,7 +99,7 @@ HTTPS, **Yetkilendirme** isteği üstbilgisine geçerli bir belirteç ekleyerek 
 
 Kullanıcı adı (DeviceID, büyük/küçük harfe duyarlıdır): `iothubname.azure-devices.net/DeviceId`
 
-Parola (CLı uzantısı komutu ile bir SAS belirteci oluşturabilirsiniz [az IoT Hub Generate-SAS-Token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token)veya [Visual Studio Code Için Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)):
+Parola (CLı uzantısı komutu ile bir SAS belirteci oluşturabilirsiniz [az IoT Hub Generate-SAS-Token](/cli/azure/iot/hub#az_iot_hub_generate_sas_token)veya [Visual Studio Code Için Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)):
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -303,7 +303,7 @@ Device1 için tüm işlevlere erişim izni veren sonuç şöyle olacaktır:
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> CLı uzantısı komutu ile bir SAS belirteci oluşturmak için [az IoT Hub Generate-SAS-Token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token)veya [Visual Studio Code Için Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
+> CLı uzantısı komutu ile bir SAS belirteci oluşturmak için [az IoT Hub Generate-SAS-Token](/cli/azure/iot/hub#az_iot_hub_generate_sas_token)veya [Visual Studio Code Için Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 
 ### <a name="use-a-shared-access-policy"></a>Paylaşılan erişim ilkesi kullanma
 
@@ -396,7 +396,7 @@ Sertifika yetkilisini kullanarak kimlik doğrulaması hakkında daha fazla bilgi
 
 [C# için Azure IoT hizmeti SDK 'Sı](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) (sürüm 1.0.8 +), kimlik doğrulaması Için bir X. 509.440 sertifikası kullanan bir cihazın kaydedilmesini destekler. Cihazların içeri/dışarı aktarılması gibi diğer API 'Ler de X. 509.440 sertifikalarını destekler.
 
-Cihazlarda X. 509.440 sertifikalarını yapılandırmak için [az IoT Hub Device-ıDENTITY](/cli/azure/ext/azure-iot/iot/hub/device-identity) CLI uzantı komutunu da kullanabilirsiniz.
+Cihazlarda X. 509.440 sertifikalarını yapılandırmak için [az IoT Hub Device-ıDENTITY](/cli/azure/iot/hub/device-identity) CLI uzantı komutunu da kullanabilirsiniz.
 
 ### <a name="c-support"></a>C \# desteği
 

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 1329914e108d62e62c75bc1a09dbb008987dda5b
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: deefb4de82eed20cde2b7e5e882e19f78e359520
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107498992"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867032"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Ortak ağ erişimini devre dışı bırakmak için kapsayıcı kayıt defterleri yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa3701552-92ea-433e-9d17-33b7f1208fc9) |Genel internet üzerinden erişilememesi için Container Registry kaynağınız için ortak ağ erişimini devre dışı bırakın. Bu, veri sızıntısı riskini azaltabilir. Ve hakkında daha fazla bilgi edinin [https://aka.ms/acr/portal/public-network](https://aka.ms/acr/portal/public-network) [https://aka.ms/acr/private-link](https://aka.ms/acr/private-link) . |Değiştirme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PublicNetworkAccess_Modify.json) |
 |[Özel DNS bölgelerini kullanmak için kapsayıcı kayıt defterleri yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe9585a95-5b8c-4d03-b193-dc7eb5ac4c32) |Özel bir uç nokta için DNS çözümlemesini geçersiz kılmak üzere özel DNS bölgelerini kullanın. Özel bir DNS bölgesi, Container Registry çözümlemek için sanal ağınıza bağlanır. Daha fazla bilgi edinin: [https://aka.ms/privatednszone](https://aka.ms/privatednszone) ve [https://aka.ms/acr/private-link](https://aka.ms/acr/private-link) . |DeployIfNotExists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PrivateDNSZone_DeployIfNotExists.json) |

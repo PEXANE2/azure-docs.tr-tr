@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: a34fd5480ae47678f250dbf888005c396ba32f38
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 843db24707b8c826fe48e9d50aa7ec5bc135399f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792156"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863614"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme ve Azure CLı ile izleme
 
@@ -94,7 +94,7 @@ Bu bölümde, bir kaynak grubu ve bir IoT Hub oluşturmak için Azure CLı 'yi k
 Bu bölümde, ilk CLı oturumunda bir sanal cihaz oluşturacaksınız. Sanal cihaz, IoT Hub 'ınıza cihaz telemetri gönderir. İkinci CLı oturumunda, olayları ve Telemetriyi izler ve sanal cihaza buluttan cihaza bir ileti gönderirsiniz.
 
 Sanal cihaz oluşturmak ve başlatmak için:
-1. İlk CLı oturumunda [az IoT Hub Device-Identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) komutunu çalıştırın. Bu, sanal cihaz kimliğini oluşturur. 
+1. İlk CLı oturumunda [az IoT Hub Device-Identity Create](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create) komutunu çalıştırın. Bu, sanal cihaz kimliğini oluşturur. 
 
     *Youriothubname*. Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin. 
 
@@ -104,7 +104,7 @@ Sanal cihaz oluşturmak ve başlatmak için:
     az iot hub device-identity create --device-id simDevice --hub-name {YourIoTHubName} 
     ```
 
-1. İlk CLı oturumunda [az IoT Device simülasyonu](/cli/azure/ext/azure-iot/iot/device#ext-azure-iot-az-iot-device-simulate) komutunu çalıştırın.  Bu, sanal cihazı başlatır. Cihaz, IoT Hub 'ınıza telemetri gönderir ve bundan gelen iletileri alır.  
+1. İlk CLı oturumunda [az IoT Device simülasyonu](/cli/azure/iot/device#az_iot_device_simulate) komutunu çalıştırın.  Bu, sanal cihazı başlatır. Cihaz, IoT Hub 'ınıza telemetri gönderir ve bundan gelen iletileri alır.  
 
     *Youriothubname*. Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin. 
 
@@ -113,7 +113,7 @@ Sanal cihaz oluşturmak ve başlatmak için:
     ```
 
 Bir cihazı izlemek için:
-1. İkinci CLı oturumunda, [az IoT Hub Monitor-Events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) komutunu çalıştırın. Bu, sanal cihazı izlemeye başlar. Çıkış, sanal cihazın IoT Hub 'ına gönderdiği Telemetriyi gösterir.
+1. İkinci CLı oturumunda, [az IoT Hub Monitor-Events](/cli/azure/iot/hub#az_iot_hub_monitor_events) komutunu çalıştırın. Bu, sanal cihazı izlemeye başlar. Çıkış, sanal cihazın IoT Hub 'ına gönderdiği Telemetriyi gösterir.
 
     *Youriothubname*. Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin. 
 
@@ -136,7 +136,7 @@ Bu bölümde, sanal cihaza bir ileti göndermek için ikinci CLı oturumunu kull
     az iot device simulate -d simDevice -n {YourIoTHubName}
     ```
 
-1. İkinci CLı oturumunda, [az IoT Device C2D-Message Send](/cli/azure/ext/azure-iot/iot/device/c2d-message#ext-azure-iot-az-iot-device-c2d-message-send) komutunu çalıştırın. Bu, IoT Hub 'ınızdan sanal cihaza buluttan cihaza bir ileti gönderir. İleti bir dize ve iki anahtar-değer çifti içerir.  
+1. İkinci CLı oturumunda, [az IoT Device C2D-Message Send](/cli/azure/iot/device/c2d-message#az_iot_device_c2d-message-send) komutunu çalıştırın. Bu, IoT Hub 'ınızdan sanal cihaza buluttan cihaza bir ileti gönderir. İleti bir dize ve iki anahtar-değer çifti içerir.  
 
     *Youriothubname*. Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin. 
 
