@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: c08d0c210e992cba5bca2695fda0bcf08c4689dc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ba299ff52ccdf811d739efdb1d379889444a02b8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772100"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868402"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Öğretici: .NET 'teki bir sanal makine ile Azure Key Vault kullanma
 
@@ -138,7 +138,7 @@ Bir konsol uygulaması oluşturun ve komutunu kullanarak gerekli paketleri yükl
 
 ### <a name="install-net-core"></a>.NET Core'u yükleyin
 
-.NET Core 'u yüklemek için [.net İndirmeleri](https://www.microsoft.com/net/download) sayfasına gidin.
+.NET Core 'u yüklemek için [.net İndirmeleri](https://dotnet.microsoft.com/download) sayfasına gidin.
 
 ### <a name="create-and-run-a-sample-net-app"></a>Örnek bir .NET uygulaması oluşturma ve çalıştırma
 

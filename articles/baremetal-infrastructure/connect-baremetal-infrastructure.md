@@ -4,12 +4,12 @@ description: Azure portal veya Azure CLı 'de BareMetal örnekleri belirlemeyi v
 ms.topic: how-to
 ms.subservice: workloads
 ms.date: 04/06/2021
-ms.openlocfilehash: a7fdc17aa4271915f7dc02aaa2d7a688016bf892
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: e67ede85608f2a33dcc179005f0090ca2ce6a640
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579229"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871660"
 ---
 # <a name="connect-baremetal-infrastructure-instances-in-azure"></a>Azure 'da BareMetal altyapı örnekleri bağlama
 
@@ -83,7 +83,7 @@ BareMetal örneklerinizin dağıtımı sırasında, dağıtım isteğinde kullan
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Tüm BareMetal örneklerinizi görmek için, kaynak grubunuz için [az baremetalinstance List](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_list) komutunu çalıştırın:
+Tüm BareMetal örneklerinizi görmek için, kaynak grubunuz için [az baremetalinstance List](/cli/azure/baremetalinstance#az_baremetalinstance_list) komutunu çalıştırın:
 
 ```azurecli
 az baremetalinstance list --resource-group DSM05A-T550 –output table
@@ -127,7 +127,7 @@ Ayrıca, sağ tarafta, dağıtılan her BareMetal örnek için otomatik olarak o
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bir BareMetal örneğinin ayrıntılarını görmek için [az baremetalinstance Show](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_show) komutunu çalıştırın:
+Bir BareMetal örneğinin ayrıntılarını görmek için [az baremetalinstance Show](/cli/azure/baremetalinstance#az_baremetalinstance_show) komutunu çalıştırın:
 
 ```azurecli
 az baremetalinstance show --resource-group DSM05A-T550 --instance-name orcllabdsm01
@@ -159,7 +159,7 @@ Etiketlerin silinmesi VM 'Lerle aynı şekilde de aynı şekilde çalışacaktı
 
 BareMetal örneklerine etiket atama, sanal makineler için etiket atama ile aynı şekilde çalışacaktır. VM 'Lerde olduğu gibi, Etiketler Azure meta verilerinde bulunur. Etiketler, sanal makinelerin bulunduğu BareMetal örnekleri için aynı kısıtlamalara sahiptir.
 
-Bir BareMetal örneğine etiket eklemek için [az baremetalinstance Update](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_update) komutunu çalıştırın:
+Bir BareMetal örneğine etiket eklemek için [az baremetalinstance Update](/cli/azure/baremetalinstance#az_baremetalinstance_update) komutunu çalıştırın:
 
 ```azurecli
 az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllabdsm01 --set tags.Dept=Finance tags.Status=Normal
@@ -197,7 +197,7 @@ Bir BareMetal örneğini yeniden başlattığınızda bir gecikme yaşarsınız.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bir BareMetal örneğini yeniden başlatmak için [az baremetalinstance restart](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_restart) komutunu kullanın:
+Bir BareMetal örneğini yeniden başlatmak için [az baremetalinstance restart](/cli/azure/baremetalinstance#az_baremetalinstance_restart) komutunu kullanın:
 
 ```azurecli
 az baremetalinstance restart --resource-group DSM05a-T550 --instance-name orcllabdsm01

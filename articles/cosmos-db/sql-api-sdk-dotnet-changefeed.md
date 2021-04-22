@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
-ms.openlocfilehash: b53f4047fcdf2832026f532137915e7b9ad4ed12
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 8f38ed175241bdb9235795d7a999a82d0799d46d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364592"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876589"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Değişiklik Akışı İşlemci SDK'sı: İndirme ve sürüm notları
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "107364592"
 |**SDK indirmesi**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**API belgeleri**|[Değişiklik Akışı İşlemcisi kitaplığı API başvurusu belgeleri](/dotnet/api/microsoft.azure.documents.changefeedprocessor)|
 |**Kullanmaya başlama**|[Değişiklik Akışı İşlemcisi .NET SDK'sını kullanmaya başlama](change-feed.md)|
-|**Şu anda desteklenen çerçeve**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
+|**Şu anda desteklenen çerçeve**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://dotnet.microsoft.com/download) |
 
 > [!NOTE]
 > Değişiklik akışı işlemcisini kullanıyorsanız, değişiklik akışının SDK'da yerleşik olarak bulunduğu [.NET SDK'sının](change-feed-processor.md) en yeni sürümü 3.x'e bakın. 

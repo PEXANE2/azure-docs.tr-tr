@@ -12,20 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/19/2021
+ms.date: 04/21/2021
 ms.author: b-juche
-ms.openlocfilehash: 3c6da2137f2db43284ce7a533ff763e9ef157f35
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: fa028d8fffd2a4097b5bf7d7326d355ae56aebd7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726655"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862822"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files yenilikleri
 
 Azure NetApp Files düzenli olarak güncelleştirilir. Bu makale, en son yeni özellikler ve geliştirmeler hakkında bir Özet sağlar. 
 
 ## <a name="april-2021"></a>2021 Nisan
+
+* [FSLogix Kullanıcı profili kapsayıcıları Için SMB sürekli kullanılabilirlik (CA) paylaşımları desteği](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (Önizleme)  
+
+    [Fslogix](/fslogix/overview) , kalıcı olmayan Windows bilgi işlem ortamlarını geliştiren, etkinleştiren ve basitleştiren bir çözüm kümesidir. FSLogix çözümleri, hem genel hem de özel bulutlardaki sanal ortamlar için uygundur. FSLogix çözümleri, fiziksel cihazları kullandığınızda daha fazla taşınabilir bilgi işlem oturumu oluşturmak için de kullanılabilir. FSLogix, Azure NetApp Files de dahil olmak üzere, SMB paylaşılan ağa bağlı depolamada depolanan kalıcı Kullanıcı profili kapsayıcılarına dinamik erişim sağlamak için kullanılabilir. Azure NetApp Files, depolama hizmeti bakım olaylarına FSLogix dayanıklılığı artırmak için, Kullanıcı profili kapsayıcıları için [Azure NetApp Files SMB sürekli kullanılabilirlik (CA) paylaşımları](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) aracılığıyla SMB saydam yük devretme desteği sağlar. Daha fazla bilgi için bkz. Azure NetApp Files [Windows sanal masaüstü çözümleri](azure-netapp-files-solution-architectures.md#windows-virtual-desktop) .  
 
 * [SMB3 Protokolü şifreleme](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (Önizleme) 
 

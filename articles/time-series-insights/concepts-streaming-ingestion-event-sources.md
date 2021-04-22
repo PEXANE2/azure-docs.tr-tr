@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 499cb3c978a67f9ef71e6ad9dd03be9f05b45729
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: e0d40a4e0e376a42841bd8df5d76e5c83d11b1e3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726979"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865491"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2 olay kaynakları
 
@@ -29,7 +29,7 @@ Olayların UTF-8 kodlu JSON olarak gönderilmesi gerekir.
 
 Olay kaynağı, hub 'ınız ve Azure Time Series Insights Gen2 ortamınız arasındaki bağlantıdır ve kaynak grubunuzda farklı türde bir kaynak `Time Series Insights event source` oluşturulur. IoT Hub veya Olay Hub 'ı kaynakları, Azure Time Series Insights Gen2 ortamınız veya farklı bir abonelikle aynı Azure aboneliğinde bulunabilir. Ancak, Azure Time Series Insights ortamınızı ve IoT Hub ya da Olay Hub 'ını aynı Azure bölgesi içinde barındırmak en iyi uygulamadır.
 
-Ortamınızın olay kaynaklarını oluşturmak, düzenlemek veya kaldırmak için [Azure Portal](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment), [Azure CLI](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/event-source), [Azure Resource Manager şablonları](time-series-insights-manage-resources-using-azure-resource-manager-template.md)ve [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) kullanabilirsiniz.
+Ortamınızın olay kaynaklarını oluşturmak, düzenlemek veya kaldırmak için [Azure Portal](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment), [Azure CLI](/cli/azure/tsi/event-source), [Azure Resource Manager şablonları](time-series-insights-manage-resources-using-azure-resource-manager-template.md)ve [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) kullanabilirsiniz.
 
 > [!WARNING]
 > Time Series Insights tarafından kullanılan bir hub veya olay kaynağına yönelik genel Internet erişimini kısıtlamayın veya gerekli bağlantı bozulur.

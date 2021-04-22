@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/25/2020
 ms.author: mbullwin
-ms.openlocfilehash: 684c61dfb34d55681904943160ca389c19a4c8db
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: b0eba6d0be1d6a65b911f05dabf3cdbecc9c666d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107732361"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107880088"
 ---
 Python için anomali algılayıcısının çok sayıda istemci kitaplığını kullanmaya başlayın. Hizmet tarafından sunulan algoritmaları kullanarak paketi başlatmak için bu adımları izleyin. Yeni multivarianomali algılama API 'Leri, Machine Learning bilgisine veya etiketli verilere gerek kalmadan, gelişmiş AI 'nin ölçüm gruplarından aykırları tespit etmek üzere kolayca tümleştirilmesine olanak tanır. Farklı sinyaller arasındaki bağımlılıklar ve eş düzeyli ilişkiler otomatik olarak anahtar faktörleri olarak sayılır. Bu, karmaşık sistemlerinizi hatalara karşı korumanıza yardımcı olur.
 
@@ -23,7 +23,7 @@ Python için anomali algılayıcı çok değişkenli istemci kitaplığını kul
 * Herhangi bir bireysel zaman serisi size çok bilgi vermez ve bir sorunu tespit etmek için tüm sinyallere bakmanız gerekir.
 * Sistem durumunun çeşitli yönlerini ölçen, yüzlerce fiziksel varlık için onlarca yüzlerce farklı algılayıcı türü ile tahmine dayalı bakım.
 
-[Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector)  |  [Paket (Pypı)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/)
+[Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector)  |  [Paket (Pypı)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/)  |  [Örnek kod](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/samples/sample_multivariate_detect.py)  |  [Jupyter Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -236,6 +236,11 @@ if __name__ == '__main__':
 
 ```
 
+Bu uygulamayı çalıştırmadan önce, bu hızlı başlangıç 'nin türetildiği [tam örnek koda](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb) göre projenizi denetlemek yararlı olabilir.
+
+Başlamanıza yardımcı olmak için [ayrıntılı bir Jupyter Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb) de sunuyoruz.
+
 Uygulamayı `python` komutuyla ve dosya adınızla çalıştırın.
+
 
 [!INCLUDE [anomaly-detector-next-steps](../quickstart-cleanup-next-steps.md)]

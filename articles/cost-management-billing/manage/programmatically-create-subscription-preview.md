@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 9f20659e772f6321f4d3953f0e55192c833e78b9
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d3247a86795b9661196c3264c60b06e7c61d6e23
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310606"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877921"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>Önizleme API’leriyle program aracılığıyla Azure abonelikleri oluşturma
 
@@ -198,7 +198,7 @@ Tüm parametrelerin listesini görmek için bkz. [New-AzSubscription](/powershel
 
 İlk olarak `az extension add --name subscription` komutunu çalıştırarak önizleme uzantısını yükleyin.
 
-Aşağıdaki [az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create) komutunu çalıştırın; `<enrollmentAccountObjectId>` öğesini ilk adımda kopyaladığınız `name` ile değiştirin (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Sahipleri belirtmek için bkz. [kullanıcı nesnesi kimliklerini alma](grant-access-to-create-subscription.md#userObjectId).
+Aşağıdaki [az account create](/cli/azure/account#-ext-subscription-az-account-create) komutunu çalıştırın; `<enrollmentAccountObjectId>` öğesini ilk adımda kopyaladığınız `name` ile değiştirin (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Sahipleri belirtmek için bkz. [kullanıcı nesnesi kimliklerini alma](grant-access-to-create-subscription.md#userObjectId).
 
 ```azurecli-interactive
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
@@ -213,7 +213,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `owner-upn`    | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklenecek kullanıcının e-posta adresi. `owner-object-id` yerine bu parametreyi kullanabilirsiniz.|
 | `owner-spn` | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklenecek hizmet sorumlusunun uygulama kimliği. `owner-object-id` yerine bu parametreyi kullanabilirsiniz. Bu parametre kullanıldığında hizmet sorumlusunun [dizine okuma erişimi](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole) olmalıdır.|
 
-Tüm parametrelerin listesini görmek için bkz. [az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create).
+Tüm parametrelerin listesini görmek için bkz. [az account create](/cli/azure/account#-ext-subscription-az-account-create).
 
 ---
 

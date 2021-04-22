@@ -1,18 +1,18 @@
 ---
 title: Azure Bilişsel Arama için yerleşik ilke tanımları
 description: Azure Bilişsel Arama için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: reference
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ecfb70d3b56445921a34adb7bc66d1c608b79509
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 49d68169cf40b38a5cd7953eb553f9907def3021
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497597"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874594"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cognitive-search"></a>Azure için Azure Ilkesi yerleşik tanımları Bilişsel Arama
 

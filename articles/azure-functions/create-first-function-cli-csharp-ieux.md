@@ -8,12 +8,12 @@ ms.custom:
 - devx-track-azurecli
 - devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: fb287333ba8b0b4fc0bb35ce91d2e3113ff50e2b
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 45173a74c0e3189c1f356aea2f8024ff15409f32
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831123"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866206"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Hızlı başlangıç: Azure 'da komut satırından C# işlevi oluşturma
 
@@ -35,7 +35,7 @@ Bu makalenin [Visual Studio Code tabanlı bir sürümü](create-first-function-v
 
 + Azure alın <abbr title="Azure kullanımı için fatura bilgilerini tutan profil.">account</abbr> etkin bir <abbr title="Azure 'da, genellikle bir kuruluş içindeki bir birey veya departmanla ilişkili kaynakları yönettiğiniz temel kuruluş yapısıdır.">aboneliği</abbr>. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ [.NET Core SDK 3,1](https://www.microsoft.com/net/download) 'yi yükler
++ [.NET Core 3,1 SDK 'sını](https://dotnet.microsoft.com/download) yükler
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) sürüm 3. x sürümünü yükler.
 

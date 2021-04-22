@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 29c6ca6a394c2fe4343159f985a90f8bc13cadfb
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 837ee0669c0dbd1743b47dc4a31a40ee950d0af3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107499270"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862929"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[\[Önizleme \] : \[ ASC özel önizleme \] dağıtımı-VM 'lerde Azure izleyici atamalarını etkinleştirmek için sistem tarafından atanan yönetilen kimliği yapılandırın](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17b3de92-f710-4cf4-aa55-0e7859f1ed7b) |[ASC özel önizleme] Azure 'da barındırılan ve sistem tarafından atanan yönetilen kimliğe sahip olmayan Azure Izleyici tarafından desteklenen sanal makinelere sistem tarafından atanan yönetilen kimliği yapılandırın. Sistem tarafından atanan yönetilen kimlik, tüm Azure Izleyici atamaları için bir önkoşuldur ve herhangi bir Azure Izleyici uzantısı kullanılmadan önce makinelere eklenmelidir. Hedef sanal makineler desteklenen bir konumda olmalıdır. |değiştir |[1.2.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/AzureMonitoring_AddSystemIdentity_Prerequisite.json) |
 |[Etkinlik günlüğü en az bir yıl bekletilecektir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb02aacc0-b073-424e-8298-42b22829ee0a) |Bu ilke, bekletme 365 gün veya süresiz olarak ayarlanmamışsa etkinlik günlüğünü denetler (bekletme günleri 0 olarak ayarlanır). |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLogRetention_365orGreater.json) |

@@ -9,12 +9,12 @@ ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 3275fe0a72b70038cf834436e8290b9c55643414
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: e57f385dce6446ebb3aa2df0ceb48f97a7e0c2f4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963300"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877919"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>En son API’lerle program aracılığıyla Azure Kurumsal Anlaşma abonelikleri oluşturma
 
@@ -253,7 +253,7 @@ Komutun yanıtının bir parçası olarak subscriptionId bilgisini alırsınız.
 
 İlk olarak, `az extension add --name account` ve `az extension add --name alias` komutlarını çalıştırarak uzantıyı yükleyin.
 
-Aşağıdaki [az account alias create](/cli/azure/ext/account/account/alias#ext_account_az_account_alias_create) komutunu çalıştırıp `enrollmentAccounts` hesaplarınızdan birindeki `billing-scope` ve `id` bilgilerini sağlayın. 
+Aşağıdaki [az account alias create](/cli/azure/account/alias#az_account_alias_create) komutunu çalıştırıp `enrollmentAccounts` hesaplarınızdan birindeki `billing-scope` ve `id` bilgilerini sağlayın. 
 
 ```azurecli-interactive
 az account alias create --name "sampleAlias" --billing-scope "/providers/Microsoft.Billing/billingAccounts/1234567/enrollmentAccounts/654321" --display-name "Dev Team Subscription" --workload "Production"

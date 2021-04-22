@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/08/2021
-ms.openlocfilehash: 1c9434d137114560b5585b081961497412dfbf69
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 375a8f6613ff90edd3df635c8236196aab62b6ac
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770264"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861148"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma ve iliştirme
 
@@ -198,7 +198,7 @@ Bu örnekte kullanılan sınıflar, Yöntemler ve parametreler hakkında daha fa
 az ml computetarget create aks -n myaks
 ```
 
-Daha fazla bilgi için, [az ml computetarget Create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-aks) Reference bölümüne bakın.
+Daha fazla bilgi için, [az ml computetarget Create aks](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_aks) Reference bölümüne bakın.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -275,7 +275,7 @@ Mevcut kümeyi çalışma alanınıza eklemek için aşağıdaki komutu kullanı
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-Daha fazla bilgi için, [az ml computetarget Attach aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach#ext-azure-cli-ml-az-ml-computetarget-attach-aks) başvurusuna bakın.
+Daha fazla bilgi için, [az ml computetarget Attach aks](/cli/azure/ml/computetarget/attach#az_ml_computetarget_attach_aks) başvurusuna bakın.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

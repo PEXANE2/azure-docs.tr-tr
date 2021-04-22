@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 04/12/2021
 ms.author: victorh
-ms.openlocfilehash: e08be08f2d898b017bb34ed38c9c3a69ee0582fa
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 18b3680e47fe808413998144259e033a4cbcaa27
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312986"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864478"
 ---
 # <a name="azure-firewall-active-ftp-support"></a>Azure Güvenlik Duvarı etkin FTP desteği
 
@@ -33,7 +33,7 @@ Azure PowerShell kullanarak dağıtmak için `AllowActiveFTP` parametresini kull
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Azure CLı kullanarak dağıtmak için `--allow-active-ftp` parametresini kullanın. Daha fazla bilgi için bkz. [az Network Firewall Create](/cli/azure/ext/azure-firewall/network/firewall#ext_azure_firewall_az_network_firewall_create-optional-parameters). 
+Azure CLı kullanarak dağıtmak için `--allow-active-ftp` parametresini kullanın. Daha fazla bilgi için bkz. [az Network Firewall Create](/cli/azure/network/firewall#az_network_firewall_create-optional-parameters). 
 
 ## <a name="azure-resource-manager-arm-template"></a>Azure Resource Manager (ARM) şablonu
 

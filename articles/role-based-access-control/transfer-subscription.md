@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 5baf5f503542f31b26c4c210741f1ce986f6a549
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 72dc92ae211034e2a49bc77f60880f17ab15dec7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580118"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868186"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure aboneliğini farklı bir Azure AD dizinine aktarma
 
@@ -116,7 +116,7 @@ Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
 ### <a name="install-the-azure-resource-graph-extension"></a>Azure Kaynak Grafiği uzantısını yükler
 
- [Azure Kaynak Grafiği](../governance/resource-graph/index.yml)IÇIN Azure CLI uzantısı *kaynak* grafiği, Azure Resource Manager tarafından yönetilen kaynakları sorgulamak için [az Graph](/cli/azure/ext/resource-graph/graph) komutunu kullanmanıza olanak sağlar. Sonraki adımlarda bu komutu kullanacaksınız.
+ [Azure Kaynak Grafiği](../governance/resource-graph/index.yml)IÇIN Azure CLI uzantısı *kaynak* grafiği, Azure Resource Manager tarafından yönetilen kaynakları sorgulamak için [az Graph](/cli/azure/graph) komutunu kullanmanıza olanak sağlar. Sonraki adımlarda bu komutu kullanacaksınız.
 
 1. *Kaynak grafik* uzantısının yüklenip yüklenmediğini görmek için [az Extension List](/cli/azure/extension#az_extension_list) kullanın.
 
@@ -233,7 +233,7 @@ Bir Anahtar Kasası oluşturduğunuzda, otomatik olarak oluşturulduğu aboneli�
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Azure AD kimlik doğrulamasıyla Azure SQL veritabanlarını listeleme
 
-- Azure AD kimlik doğrulaması tümleştirmesinin etkin olduğu Azure SQL veritabanlarını kullanıp kullankullandığınızı görmek için [az SQL Server ad-yönetici listesi](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) ' ni ve [az Graph](/cli/azure/ext/resource-graph/graph) Extension ' i kullanın. Daha fazla bilgi için bkz. [SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](../azure-sql/database/authentication-aad-configure.md).
+- Azure AD kimlik doğrulaması tümleştirmesinin etkin olduğu Azure SQL veritabanlarını kullanıp kullankullandığınızı görmek için [az SQL Server ad-yönetici listesi](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) ' ni ve [az Graph](/cli/azure/graph) Extension ' i kullanın. Daha fazla bilgi için bkz. [SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](../azure-sql/database/authentication-aad-configure.md).
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -255,7 +255,7 @@ Bir Anahtar Kasası oluşturduğunuzda, otomatik olarak oluşturulduğu aboneli�
     subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"$//')
     ```
 
-1. Diğer Azure kaynaklarını bilinen Azure AD dizin bağımlılıklarıyla listelemek için [az Graph](/cli/azure/ext/resource-graph/graph) uzantısını kullanın.
+1. Diğer Azure kaynaklarını bilinen Azure AD dizin bağımlılıklarıyla listelemek için [az Graph](/cli/azure/graph) uzantısını kullanın.
 
     ```azurecli
     az graph query -q \

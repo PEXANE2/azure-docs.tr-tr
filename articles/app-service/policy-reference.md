@@ -1,15 +1,15 @@
 ---
 title: Azure App Service için yerleşik ilke tanımları
 description: Azure App Service için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 3d65df93ea2db1d7e878389ca41ed32872b8930a
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 7dba2f1149250e9862c50028f96e73f63d10ad00
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503986"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863884"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-app-service"></a>Azure App Service için Azure Ilkesi yerleşik tanımları
 
